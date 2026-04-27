@@ -1,0 +1,15 @@
+---
+Category: Revenue Stream
+---
+#### Audio & Podcast Bookmarks
+|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/preview_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|
+|---|---|---|---|
+|[[Babel]]|[https://babel.audio/](https://babel.audio/)|Babel Audio is a platform for paid conversations used to help train and evaluate AI systems. It’s relevant if you’re looking for flexible voice/data work or want insight into human-in-the-loop audio data collection.|Voice Over|
+|[[Podcastle]]|[https://podcastle.ai/](https://podcastle.ai/)|Podcastle is a podcast and audio production platform with AI tools for recording, editing, and enhancing voice. It helps creators clean up audio, generate voiceovers, and produce podcast episodes faster with a streamlined workflow.|Podcast|
+|[[Wondercraft]]|[https://www.wondercraft.ai/](https://www.wondercraft.ai/)|Wondercraft is an AI audio creation tool for turning text into narrated audio, podcasts, and ads. It includes voice generation and editing features so teams can produce polished audio content without recording everything manually.|Podcast|
+|[[Urban Writers]]|[https://theurbanwriters.com/](https://theurbanwriters.com/)|The Urban Writers is a ghostwriting marketplace for books, articles, and other long-form content. It’s useful if you want to outsource writing and editing for a book or audiobook project before moving into narration and distribution.||
+|[[NotebookML]]|[https://notebooklm.google/](https://notebooklm.google/)|NotebookLM is Google’s AI research notebook that summarizes and answers questions using your uploaded sources. It can also turn notes into audio-style overviews, making it useful for studying, outlining, and listening to your own research.|Podcast|
+|[[JellyPod]]|[https://jellypod.ai/](https://jellypod.ai/)|Jellypod is an AI podcast creation platform for generating realistic podcast episodes from scripts or prompts. It supports customization and voice cloning so you can produce consistent shows and iterate quickly without a full recording setup.|Podcast|
+|[[Findawayvoices]]|[https://www.findawayvoices.com/](https://www.findawayvoices.com/)|Findaway Voices is an audiobook production and distribution platform that connects authors with professional narrators. Use it to manage narration, production, and distribution to major audiobook retailers (and compare options vs. ACX).|Voice Over|
+|[[ACX]]|[https://www.acx.com/](https://www.acx.com/)|ACX (Audiobook Creation Exchange) is Amazon’s platform for producing and distributing audiobooks on Audible and Amazon. It connects rights holders with narrators/producers and manages deals like royalty share or paid production.|Revenue|
+|[[GenFM by Elevenlabs]]|[https://elevenlabs.io/genfm](https://elevenlabs.io/genfm)|GenFM (by ElevenLabs) is a tool for generating long-form spoken-audio content using AI voices. Use it to turn scripts or source material into listenable audio with high-quality narration and voice options.|Podcast|

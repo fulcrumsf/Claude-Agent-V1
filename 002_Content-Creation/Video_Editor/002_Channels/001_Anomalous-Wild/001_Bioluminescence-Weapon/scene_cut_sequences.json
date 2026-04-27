@@ -1,0 +1,228 @@
+{
+  "_notes": "Each scene lists clips in cut order. 'existing' = already generated. 'new' = in new_clips_prompts.json. 'flux_kb' = Flux image used with Ken Burns in Remotion. 'remotion' = built as Remotion animation component. All AI video clips are exactly 8s — Remotion Sequences truncate to the cut duration needed.",
+
+  "scene_01": {
+    "audio": "scene_01/audio.mp3",
+    "total_duration_s": 14.0,
+    "cuts": [
+      { "clip": "scene_01", "source": "existing", "cut_start_s": 0, "cut_end_s": 5, "notes": "Ultra-macro lure pulsing in black. The hook." },
+      { "clip": "scene_01b", "source": "new_veo3", "cut_start_s": 5, "cut_end_s": 10, "notes": "Pull back reveals anglerfish face." },
+      { "clip": "scene_01c", "source": "new_kling", "cut_start_s": 10, "cut_end_s": 14, "notes": "Lure dims to near-black. Smash to title." }
+    ]
+  },
+
+  "scene_02": {
+    "audio": null,
+    "total_duration_s": 3.0,
+    "cuts": [
+      { "clip": "REMOTION:BioluminescenceTitleCard", "source": "remotion", "cut_start_s": 0, "cut_end_s": 3, "notes": "Three.js particle ocean + title text assembles from particles." }
+    ]
+  },
+
+  "scene_03": {
+    "audio": "scene_03/audio.mp3",
+    "total_duration_s": 19.8,
+    "overlays": [
+      { "type": "callout", "text": "< 200m — TWILIGHT ZONE", "start_s": 3, "duration_s": 5 },
+      { "type": "callout", "text": "< 1000m — NO SUNLIGHT. EVER.", "start_s": 9, "duration_s": 5 }
+    ],
+    "cuts": [
+      { "clip": "scene_03b", "source": "new_kling", "cut_start_s": 0, "cut_end_s": 4, "notes": "Sunlit surface, camera descends. Warm." },
+      { "clip": "scene_03c", "source": "new_kling", "cut_start_s": 4, "cut_end_s": 8, "notes": "Twilight zone, light fading, first bioluminescence." },
+      { "clip": "scene_03", "source": "existing", "cut_start_s": 8, "cut_end_s": 12, "notes": "Existing descent clip — use mid-sequence." },
+      { "clip": "scene_03d", "source": "new_kling", "cut_start_s": 12, "cut_end_s": 16, "notes": "Midnight zone, scattered glows." },
+      { "clip": "scene_03e", "source": "new_kling", "cut_start_s": 16, "cut_end_s": 19.8, "notes": "Dense bioluminescent aggregation." }
+    ]
+  },
+
+  "scene_04": {
+    "audio": "scene_04/audio.mp3",
+    "total_duration_s": 21.2,
+    "overlays": [
+      { "type": "species", "name": "Sea Sparkle", "scientific": "Noctiluca scintillans", "fact": "Dinoflagellate", "start_s": 6, "duration_s": 9 }
+    ],
+    "cuts": [
+      { "clip": "scene_04b", "source": "new_kling", "cut_start_s": 0, "cut_end_s": 4, "notes": "Beach at night, waves breaking in electric blue." },
+      { "clip": "scene_04c", "source": "new_veo3", "cut_start_s": 4, "cut_end_s": 8, "notes": "Wave close-up, blue explosion on impact." },
+      { "clip": "scene_04", "source": "existing", "cut_start_s": 8, "cut_end_s": 13, "notes": "Existing dinoflagellate cloud — use as the underwater wide." },
+      { "clip": "scene_04d", "source": "new_kling", "cut_start_s": 13, "cut_end_s": 17, "notes": "Individual organisms flaring when disturbed." },
+      { "clip": "scene_04e", "source": "flux_kb", "cut_start_s": 17, "cut_end_s": 21.2, "notes": "Extreme macro cell illustration. Ken Burns slow zoom in.", "ken_burns": { "zoom_from": 1.0, "zoom_to": 1.1, "pan_x": 0, "pan_y": -20 } }
+    ]
+  },
+
+  "scene_05": {
+    "audio": "scene_05/audio.mp3",
+    "total_duration_s": 40.2,
+    "overlays": [
+      { "type": "callout", "text": "LUCIFERASE + LUCIFERIN + O₂", "subtext": "→ cold light. zero heat wasted.", "position": "center", "start_s": 18, "duration_s": 10 }
+    ],
+    "cuts": [
+      { "clip": "scene_05b", "source": "new_kling", "cut_start_s": 0, "cut_end_s": 5, "notes": "Wide glowing ctenophore. Narrator sets up chemistry." },
+      { "clip": "scene_05c", "source": "new_kling", "cut_start_s": 5, "cut_end_s": 10, "notes": "Macro bioluminescent light organ." },
+      { "clip": "scene_05", "source": "existing", "cut_start_s": 10, "cut_end_s": 17, "notes": "Existing molecular animation — use as the chemistry visual." },
+      { "clip": "scene_05e", "source": "flux_kb", "cut_start_s": 17, "cut_end_s": 25, "notes": "Luciferase diagram. Ken Burns slow drift.", "ken_burns": { "zoom_from": 1.0, "zoom_to": 1.06, "pan_x": 30, "pan_y": 0 } },
+      { "clip": "scene_05d", "source": "new_kling", "cut_start_s": 25, "cut_end_s": 31, "notes": "Split: incandescent bulb vs bioluminescence cold light." },
+      { "clip": "scene_05f", "source": "new_kling", "cut_start_s": 31, "cut_end_s": 36, "notes": "Wide ocean, multiple species glowing." },
+      { "clip": "scene_05c", "source": "new_kling", "cut_start_s": 36, "cut_end_s": 40.2, "notes": "Return to macro glow. Loop the clip from 0 — different visual window.", "_reuse_note": "Second use of scene_05c — shows different 4s of the 8s clip" }
+    ]
+  },
+
+  "scene_06": {
+    "audio": "scene_06/audio.mp3",
+    "total_duration_s": 36.7,
+    "overlays": [
+      { "type": "callout", "text": "40+", "subtext": "INDEPENDENT EVOLUTIONS", "position": "center", "start_s": 28, "duration_s": 8 }
+    ],
+    "cuts": [
+      { "clip": "REMOTION:PhylogeneticTree", "source": "remotion", "cut_start_s": 0, "cut_end_s": 36.7, "notes": "Full Remotion animation. SVG tree draws itself, nodes flash. No AI video." }
+    ]
+  },
+
+  "scene_07": {
+    "audio": "scene_07/audio.mp3",
+    "total_duration_s": 53.4,
+    "overlays": [
+      { "type": "species", "name": "Anglerfish", "scientific": "Melanocetus johnsonii", "start_s": 4, "duration_s": 9 },
+      { "type": "fact_flash", "text": "Its light isn't its own. It's bacteria.", "start_s": 20, "duration_s": 8 },
+      { "type": "annotation", "label": "Aliivibrio sp. bacteria inside esca", "target_x_pct": 0.45, "target_y_pct": 0.38, "start_s": 17, "duration_s": 7 },
+      { "type": "species", "name": "Aliivibrio sp.", "scientific": "Bioluminescent bacteria inside the esca", "start_s": 34, "duration_s": 9 }
+    ],
+    "cuts": [
+      { "clip": "scene_07b", "source": "new_kling", "cut_start_s": 0, "cut_end_s": 5, "notes": "Wide — anglerfish hovering in dark." },
+      { "clip": "scene_07", "source": "existing", "cut_start_s": 5, "cut_end_s": 9, "notes": "Existing macro push-in on face and lure. HERO." },
+      { "clip": "scene_07c", "source": "new_kling", "cut_start_s": 9, "cut_end_s": 13, "notes": "Lure close-up pulsing rhythmically." },
+      { "clip": "scene_07d", "source": "new_kling", "cut_start_s": 13, "cut_end_s": 17, "notes": "Prey fish in background, unaware." },
+      { "clip": "scene_07e", "source": "flux_kb", "cut_start_s": 17, "cut_end_s": 22, "notes": "Esca anatomy diagram. Annotation arrow draws to bacteria colonies.", "ken_burns": { "zoom_from": 1.0, "zoom_to": 1.08, "pan_x": 0, "pan_y": 20 } },
+      { "clip": "scene_07f", "source": "new_veo3", "cut_start_s": 22, "cut_end_s": 27, "notes": "Lure dims then brightens — bacteria communication reveal." },
+      { "clip": "scene_07g", "source": "new_kling", "cut_start_s": 27, "cut_end_s": 31, "notes": "Prey fish closer now." },
+      { "clip": "scene_07h", "source": "new_kling", "cut_start_s": 31, "cut_end_s": 36, "notes": "Anglerfish jaw detail." },
+      { "clip": "scene_07i", "source": "new_veo3", "cut_start_s": 36, "cut_end_s": 41, "notes": "Prey right at the lure. Maximum tension. HERO." },
+      { "clip": "scene_07j", "source": "new_kling", "cut_start_s": 41, "cut_end_s": 46, "notes": "Near-black, only lure glow remains. Aftermath." },
+      { "clip": "scene_07k", "source": "flux_kb", "cut_start_s": 46, "cut_end_s": 50, "notes": "Aliivibrio bacteria illustration. Ken Burns.", "ken_burns": { "zoom_from": 1.0, "zoom_to": 1.06, "pan_x": -20, "pan_y": 0 } },
+      { "clip": "scene_07b", "source": "new_kling", "cut_start_s": 50, "cut_end_s": 53.4, "notes": "Wide anglerfish. Loop from 0 — closing shot.", "_reuse_note": "Second use, different 3.4s window" }
+    ]
+  },
+
+  "scene_08": {
+    "audio": "scene_08/audio.mp3",
+    "total_duration_s": 54.8,
+    "overlays": [
+      { "type": "species", "name": "Hawaiian Bobtail Squid", "scientific": "Euprymna scolopes", "start_s": 5, "duration_s": 9 },
+      { "type": "annotation", "label": "Photophore light organs", "target_x_pct": 0.5, "target_y_pct": 0.65, "start_s": 20, "duration_s": 7 },
+      { "type": "callout", "text": "COUNTER-ILLUMINATION", "subtext": "No shadow. No silhouette. Gone.", "position": "bottom", "start_s": 34, "duration_s": 10 }
+    ],
+    "cuts": [
+      { "clip": "scene_08b", "source": "new_kling", "cut_start_s": 0, "cut_end_s": 5, "notes": "Overhead: moonlit coastal water, calm." },
+      { "clip": "scene_08", "source": "existing", "cut_start_s": 5, "cut_end_s": 10, "notes": "Existing squid overhead/POV shot. HERO." },
+      { "clip": "scene_08c", "source": "new_kling", "cut_start_s": 10, "cut_end_s": 15, "notes": "POV from below — squid silhouetted against moonlight." },
+      { "clip": "scene_08d", "source": "new_kling", "cut_start_s": 15, "cut_end_s": 20, "notes": "Photophores activating on squid underside." },
+      { "clip": "scene_08h", "source": "flux_kb", "cut_start_s": 20, "cut_end_s": 26, "notes": "Light organ anatomy diagram. Annotation arrow.", "ken_burns": { "zoom_from": 1.0, "zoom_to": 1.07, "pan_x": 25, "pan_y": 0 } },
+      { "clip": "scene_08e", "source": "new_veo3", "cut_start_s": 26, "cut_end_s": 32, "notes": "Silhouette disappears. HERO — the counter-illumination money shot." },
+      { "clip": "scene_08f", "source": "new_kling", "cut_start_s": 32, "cut_end_s": 37, "notes": "Predator POV — nothing there." },
+      { "clip": "scene_08i", "source": "flux_kb", "cut_start_s": 37, "cut_end_s": 43, "notes": "Counter-illumination concept diagram.", "ken_burns": { "zoom_from": 1.0, "zoom_to": 1.06, "pan_x": 0, "pan_y": -15 } },
+      { "clip": "scene_08g", "source": "new_kling", "cut_start_s": 43, "cut_end_s": 48, "notes": "Squid swimming free. It survived." },
+      { "clip": "scene_08e", "source": "new_veo3", "cut_start_s": 48, "cut_end_s": 54.8, "notes": "Final wide — squid vanishes again. Echo the hero shot.", "_reuse_note": "Second use, shows different window of 8s clip" }
+    ]
+  },
+
+  "scene_09": {
+    "audio": "scene_09/audio.mp3",
+    "total_duration_s": 48.2,
+    "overlays": [
+      { "type": "species", "name": "Loosejaw Dragonfish", "scientific": "Malacosteus niger", "start_s": 5, "duration_s": 9 },
+      { "type": "annotation", "label": "Sub-orbital red photophore", "target_x_pct": 0.38, "target_y_pct": 0.55, "start_s": 20, "duration_s": 7 },
+      { "type": "callout", "text": "SEES RED LIGHT.", "subtext": "Nothing else in the deep can.", "position": "bottom", "start_s": 22, "duration_s": 9 },
+      { "type": "fact_flash", "text": "It doesn't evolve the ability. It eats it.", "start_s": 36, "duration_s": 8 }
+    ],
+    "cuts": [
+      { "clip": "scene_09b", "source": "new_veo3", "cut_start_s": 0, "cut_end_s": 5, "notes": "Absolute black then single red line. Cold open. HERO." },
+      { "clip": "scene_09c", "source": "new_veo3", "cut_start_s": 5, "cut_end_s": 9, "notes": "Dragonfish side profile, red photophores." },
+      { "clip": "scene_09", "source": "existing", "cut_start_s": 9, "cut_end_s": 14, "notes": "Existing red-light POV. HERO — the centrepiece shot." },
+      { "clip": "scene_09d", "source": "new_kling", "cut_start_s": 14, "cut_end_s": 18, "notes": "Prey fish, oblivious in normal light." },
+      { "clip": "scene_09e", "source": "flux_kb", "cut_start_s": 18, "cut_end_s": 24, "notes": "Visible spectrum diagram. Annotation: sub-orbital photophore.", "ken_burns": { "zoom_from": 1.0, "zoom_to": 1.05, "pan_x": 40, "pan_y": 0 } },
+      { "clip": "scene_09f", "source": "flux_kb", "cut_start_s": 24, "cut_end_s": 30, "notes": "Dragonfish eye anatomy. The chlorophyll derivative adaptation.", "ken_burns": { "zoom_from": 1.05, "zoom_to": 1.1, "pan_x": -20, "pan_y": 10 } },
+      { "clip": "scene_09g", "source": "new_veo3", "cut_start_s": 30, "cut_end_s": 37, "notes": "Full red-light POV hunt. HERO." },
+      { "clip": "scene_09h", "source": "new_kling", "cut_start_s": 37, "cut_end_s": 42, "notes": "Prey disappears in red flash." },
+      { "clip": "scene_09i", "source": "new_kling", "cut_start_s": 42, "cut_end_s": 48.2, "notes": "Dragonfish fades into black. Closing." }
+    ]
+  },
+
+  "scene_10": {
+    "audio": "scene_10a/audio.mp3",
+    "total_duration_s": 49.1,
+    "_note": "One audio track covers all three sub-clips. Each sub-clip is ~16.4s.",
+
+    "scene_10a": {
+      "overlays": [
+        { "type": "species", "name": "Firefly Squid", "scientific": "Watasenia scintillans", "start_s": 1, "duration_s": 8 }
+      ],
+      "cuts": [
+        { "clip": "scene_10a2", "source": "new_kling", "cut_start_s": 0, "cut_end_s": 4.1, "notes": "Wide aggregation shot." },
+        { "clip": "scene_10a", "source": "existing", "cut_start_s": 4.1, "cut_end_s": 8.2, "notes": "Existing photophore firing. Use mid-sequence." },
+        { "clip": "scene_10a3", "source": "new_kling", "cut_start_s": 8.2, "cut_end_s": 12.3, "notes": "Coordinated light patterns rippling." },
+        { "clip": "scene_10a4", "source": "new_kling", "cut_start_s": 12.3, "cut_end_s": 16.4, "notes": "Close-up single squid photophore complexity." }
+      ]
+    },
+
+    "scene_10b": {
+      "overlays": [
+        { "type": "species", "name": "Siphonophore", "scientific": "Praya dubia", "fact": "Can reach 40 metres in length", "start_s": 1, "duration_s": 8 }
+      ],
+      "cuts": [
+        { "clip": "scene_10b", "source": "existing", "cut_start_s": 0, "cut_end_s": 4.1, "notes": "Existing siphonophore pulse. Use as cut 1." },
+        { "clip": "scene_10b2", "source": "new_kling", "cut_start_s": 4.1, "cut_end_s": 8.2, "notes": "Wide pulse traveling full length." },
+        { "clip": "scene_10b3", "source": "new_kling", "cut_start_s": 8.2, "cut_end_s": 12.3, "notes": "Colony structure detail." },
+        { "clip": "scene_10b4", "source": "new_kling", "cut_start_s": 12.3, "cut_end_s": 16.4, "notes": "Scale reveal — organism beyond frame." }
+      ]
+    },
+
+    "scene_10c": {
+      "overlays": [
+        { "type": "fact_flash", "text": "Light as a weapon. As a decoy. As a tool.", "start_s": 1, "duration_s": 8 }
+      ],
+      "cuts": [
+        { "clip": "scene_10c2", "source": "new_kling", "cut_start_s": 0, "cut_end_s": 4.1, "notes": "Calm jellyfish before threat." },
+        { "clip": "scene_10c3", "source": "new_kling", "cut_start_s": 4.1, "cut_end_s": 8.2, "notes": "Predator approaching." },
+        { "clip": "scene_10c", "source": "existing", "cut_start_s": 8.2, "cut_end_s": 12.3, "notes": "Existing particle cloud decoy release." },
+        { "clip": "scene_10c4", "source": "new_kling", "cut_start_s": 12.3, "cut_end_s": 16.3, "notes": "Jellyfish escapes, predator confused." }
+      ]
+    }
+  },
+
+  "scene_11": {
+    "audio": "scene_11/audio.mp3",
+    "total_duration_s": 67.7,
+    "overlays": [
+      { "type": "callout", "text": "CONVERGENT EVOLUTION", "subtext": "The same solution. 40+ times. In unrelated life.", "position": "center", "start_s": 28, "duration_s": 12 },
+      { "type": "callout", "text": "EUROPA", "subtext": "Ocean beneath 10–30km of ice", "position": "bottom", "start_s": 52, "duration_s": 12 }
+    ],
+    "cuts": [
+      { "clip": "scene_11b", "source": "new_kling", "cut_start_s": 0, "cut_end_s": 5, "notes": "Callback: anglerfish lure." },
+      { "clip": "scene_11c", "source": "new_kling", "cut_start_s": 5, "cut_end_s": 10, "notes": "Callback: dinoflagellate wave." },
+      { "clip": "scene_11d", "source": "new_kling", "cut_start_s": 10, "cut_end_s": 15, "notes": "Callback: bobtail squid vanishing." },
+      { "clip": "scene_11e", "source": "new_kling", "cut_start_s": 15, "cut_end_s": 20, "notes": "Callback: dragonfish red sweep." },
+      { "clip": "scene_11f", "source": "new_veo3", "cut_start_s": 20, "cut_end_s": 28, "notes": "HERO — all species glowing together. The spectacle." },
+      { "clip": "scene_11g", "source": "new_kling", "cut_start_s": 28, "cut_end_s": 35, "notes": "Rising through the water column." },
+      { "clip": "scene_11h", "source": "new_kling", "cut_start_s": 35, "cut_end_s": 43, "notes": "Breaking surface, pulling back to space." },
+      { "clip": "scene_11", "source": "existing", "cut_start_s": 43, "cut_end_s": 50, "notes": "Existing epic pullback shot. HERO." },
+      { "clip": "scene_11i", "source": "flux_kb", "cut_start_s": 50, "cut_end_s": 56, "notes": "Earth from space. Ken Burns pull-back.", "ken_burns": { "zoom_from": 1.06, "zoom_to": 1.0, "pan_x": 0, "pan_y": 0 } },
+      { "clip": "scene_11j", "source": "flux_kb", "cut_start_s": 56, "cut_end_s": 61, "notes": "Jupiter system, Europa in foreground. Push toward Europa.", "ken_burns": { "zoom_from": 1.0, "zoom_to": 1.1, "pan_x": -30, "pan_y": 10 } },
+      { "clip": "scene_11k", "source": "flux_kb", "cut_start_s": 61, "cut_end_s": 66, "notes": "Europa close-up ice crust. Slow push-in.", "ken_burns": { "zoom_from": 1.0, "zoom_to": 1.12, "pan_x": 20, "pan_y": -20 } },
+      { "clip": "scene_11m", "source": "new_veo3", "cut_start_s": 66, "cut_end_s": 67.7, "notes": "FINAL SHOT — single bioluminescent pulse in absolute black. Callback to scene_01. Fade to black." }
+    ]
+  },
+
+  "scene_12": {
+    "_status": "REMOVED",
+    "_notes": "User will add custom YouTube end card. No scene_12 in composition."
+  },
+
+  "asset_summary": {
+    "existing_clips_used": 11,
+    "new_video_veo3": 10,
+    "new_video_kling": 42,
+    "new_flux_images": 12,
+    "remotion_animations": 2,
+    "total_assets": 77
+  }
+}

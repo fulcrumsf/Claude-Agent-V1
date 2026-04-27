@@ -1,0 +1,61 @@
+# Secrets & credentials
+.env
+.env.*
+.env.local
+*.env
+.credentials/
+client_secret.json
+yt_token.*
+*.key
+*.pem
+
+# Node
+node_modules/
+
+# Build outputs
+dist/
+build/
+.next/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# osX
+.DS_Store
+
+# Claude local state
+.claude/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Media assets (not needed in repo)
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.psd
+*.ai
+*.tiff
+*.bmp
+*.ico
+*.svg
+*.mp3
+*.wav
+*.aac
+*.flac
+*.ogg
+*.m4a

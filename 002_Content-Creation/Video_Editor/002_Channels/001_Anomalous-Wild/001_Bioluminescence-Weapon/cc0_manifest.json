@@ -1,0 +1,30 @@
+{
+  "project": "bioluminescence_weapon",
+  "notes": "CC0 / public domain footage sources. NOAA and NASA are US government = public domain. Pixabay = CC0 commercial OK. MBARI = CC BY-NC-SA — do NOT use in monetized YouTube without permission waiver.",
+  "footage": [
+    {
+      "scene_id": "scene_04",
+      "description": "Dinoflagellate bioluminescence — sea sparkle cloud (Noctiluca scintillans)",
+      "url": "https://www.youtube.com/watch?v=AS6ZIwAFarU",
+      "source_type": "youtube",
+      "source_name": "EVNautilus / NOAA Ocean Exploration",
+      "license": "public_domain",
+      "license_notes": "NOAA is a US government agency — all content is public domain",
+      "output_folder": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_04/",
+      "verify_before_use": true,
+      "fallback": "Run AI generation with prompt: Wide shot underwater camera drifting slowly through a massive cloud of bioluminescent dinoflagellates Noctiluca scintillans, each tiny organism glowing blue-green when disturbed by the camera movement, thousands of living glowing organisms fill the dark water, photorealistic 8K, BBC Earth underwater cinematography style, 7 seconds"
+    },
+    {
+      "scene_id": "scene_04_alt",
+      "description": "Bioluminescent dinoflagellates — Pixabay CC0 fallback",
+      "url": "https://www.youtube.com/watch?v=_cFO0N-wqUU",
+      "source_type": "youtube",
+      "source_name": "NOAA Ocean Exploration YouTube",
+      "license": "public_domain",
+      "license_notes": "NOAA Ocean Exploration — US Government public domain",
+      "output_folder": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_04/",
+      "verify_before_use": true,
+      "fallback": "AI generate if download fails"
+    }
+  ]
+}

@@ -1,0 +1,1353 @@
+{
+  "name": "RNV6_POV_RR_Flux_Schnell",
+  "nodes": [
+    {
+      "parameters": {
+        "triggerTimes": {
+          "item": [
+            {}
+          ]
+        }
+      },
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        2120,
+        -100
+      ],
+      "id": "3509a8fe-150a-43ee-9f93-b90178e4d939"
+    },
+    {
+      "parameters": {
+        "content": "# 💡 **INPUT: STARTING IDEA**\nThis is where the idea is created manually or from a trigger.\n",
+        "height": 80,
+        "width": 940,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1160,
+        -100
+      ],
+      "id": "5e438393-fe52-493e-b666-be2f7bbad4f2",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "# **STEP 1: GENERATE PROMPTS**\n",
+        "height": 80,
+        "width": 940,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1060,
+        60
+      ],
+      "id": "e161c8eb-da57-4163-b02a-3cbb4bf94915",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "# **STEP 2: GENERATE IMAGES**\n",
+        "height": 80,
+        "width": 940,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        920,
+        220
+      ],
+      "id": "4e765109-9dfd-4da1-b637-88b988cd6371",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "# **STEP 3: GENERATE VIDEOS**\n",
+        "height": 80,
+        "width": 940,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        720,
+        380
+      ],
+      "id": "bf6eb657-6c11-4a3d-ba38-1c3b1b0bef1d",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "# **STEP 4: GENERATE SOUNDS**\n",
+        "height": 80,
+        "width": 940,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        560,
+        540
+      ],
+      "id": "762d073f-2151-4e2d-b3fc-4bf3d0acdf3e",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "# **OUTPUT: FINAL VIDEOS**\n",
+        "height": 220,
+        "width": 920,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        420,
+        700
+      ],
+      "id": "40e344ff-3b1b-4d0f-9c51-c3bfe8189511",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are an AI designed to generate 1 immersive, viral POV-style video idea. Each idea takes place in a speculative future where real ancient civilizations evolved with advanced technology — this is for a cinematic sci-fi channel called **Reimagined Realms**.\n\nYou must always output exactly:\n- One \"Title\"\n- One \"Idea\"\n- One \"Environment\"\n- Status must always be \"for production\"\n\nRULES:\n1. Only return 1 idea at a time.\n2. The idea must:\n   - Be under 13 words.\n   - Be grounded in physical reality (no magic, fantasy creatures, or abstract narration).\n   - Include a specific action performed by the viewer (e.g. scanning, gripping, shielding eyes, activating device, adjusting panel).\n   - Use first-person language — this is the viewer’s GoPro.\n   - The action can be subtle or implied, not just object-focused (e.g. \"You steady yourself as sparks rain from above\").\n   - It must feel like one moment in a larger **day-long narrative arc**, e.g., part of a larger daily ritual, event, or mission.\n3. The title must:\n   - Be in this exact format: \"POV: You wake up in [year] as a [role]\"\n   - Reflect a **futuristic version of an ancient civilization** (e.g., “Mayan Rift Diver”, “Neo-Roman Strategist”).\n4. The environment must:\n   - Be under 20 words.\n   - Describe the world as *seen through a GoPro camera*: include architecture, lighting, textures, atmosphere, and tech.\n   - Emphasize **ancient-futuristic fusion**: historical elements upgraded with cybernetic, glowing, atmospheric technology (e.g. \"hovering chariots\", \"digital obelisks\", \"holo-scroll libraries\").\n5. Status must be set to “for production”.\n\nAlways assume this camera setting:\n- {From GoPro View} {130-degree FOV} {Forehead-mounted} — do not show or describe the GoPro device.\n\nOutput format (JSON array):\n[\n{\n\"Title\": \"POV: You wake up in 2135 as a Biotech Monk\",\n\"Idea\": \"You activate a relic drone beneath a flooded marble shrine\",\n\"Environment\": \"Hydro-Catholic vaults, glowing coral icons, algae mist, drone relics, blue bioluminescence\",\n\"Status\": \"for production\"\n}\n]\n\n"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        2320,
+        -100
+      ],
+      "id": "8d290e01-ccc9-447f-bedd-8b43bb50204b",
+      "name": "Create New Ideas",
+      "credentials": {
+        "openAiApi": {
+          "id": "giHMFu5jDLSoU23K",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "let story;\n\ntry {\n  const sceneObject = items[0].json.message.content;\n  if (sceneObject && typeof sceneObject === \"object\") {\n    story = Object.entries(sceneObject)\n      .filter(([key, value]) => key.startsWith(\"Scene\"))\n      .map(([key, value]) => value); // <<<< ADD THIS .map() TO GET ONLY SCENE TEXTS\n  } else {\n    throw new Error(\"No valid scene object found.\");\n  }\n} catch (e2) {\n  throw new Error(\"Could not extract scenes properly.\");\n}\n\nlet output = [];\n\nfor (const scene of story) {\n  output.push({ description: scene });\n}\n\nreturn output;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2480,
+        60
+      ],
+      "id": "9ded9613-6a54-43ce-af78-e287bdc1b68f",
+      "name": "Unbundle Prompts"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1sa3yDWJ74bZd0a7GjRtBT21R6gHI8YFXy0YdT0kL9AA",
+          "mode": "list",
+          "cachedResultName": "RNV4_POV_RR_Flux_Schnell",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1sa3yDWJ74bZd0a7GjRtBT21R6gHI8YFXy0YdT0kL9AA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZuQC-LhOaYqMwOowJrCM9ZQLFB5tKC-vsolA-XWcWaI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "idea": "={{ $json.message.content.Idea }}",
+            "caption": "={{ $json.message.content.Title }}",
+            "environment_prompts": "={{ $json.message.content.Environment }}",
+            "id": "==ROW()-1",
+            "production": "for production"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "idea",
+              "displayName": "idea",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "caption",
+              "displayName": "caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "production",
+              "displayName": "production",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "environment_prompts",
+              "displayName": "environment_prompts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "final_output",
+              "displayName": "final_output",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        2020,
+        60
+      ],
+      "id": "c76772a5-787c-4a51-a538-2e1d8ea3b705",
+      "name": "Log the ideas",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mmoqedQOc2hTYa0J",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You are a cinematic prompt-generation AI that creates 13 visually detailed still-image prompts for a POV-style short video. Each prompt must simulate a moment captured from a body-mounted GoPro in a futuristic alternate history setting.\n\nYou must always output exactly:\n- One \"Idea\"\n- One \"Environment\"\n- Thirteen numbered \"Scene\" prompts labeled Scene 1 to Scene 13\n\nAll fields are required. Never skip or summarize scenes. Never return fewer than 13 scene prompts.\n\nRULES:\n- All scenes must be in first-person perspective. The camera *is* the viewer.\n- Each scene must begin with the viewer’s visible limbs: hands, feet, arms, or legs — or show HUDs or gear that clearly imply their POV.\n- Scenes must be frozen moments, not continuous motion.\n- ⚠️ Do not use continuous motion verbs like \"walking,\" \"flying,\" \"riding,\" \"running.\"\n- ✅ Instead, describe physical positioning or interaction that implies movement:\n   “Your boots rest on a cracked metal hoverboard mid-lift over neon tracks”\n   “You lean over your bed’s holo-panel as the alarm pulses in red”\n   “Your fingers tense on the rail as the cargo lift descends into the quarry”\n- If the viewer is piloting a vehicle or riding a mount (hoverbike, droneboard, chariot, etc.), it is allowed — but describe a **frozen cinematic moment during control**, not the motion itself.\n   - In these cases, both hands may be visible doing the same action (e.g. \"Both hands grip the control yoke {left and right sides of frame}\")\n   - You must still describe hand position, contact point, and side(s) of frame where visible.\n- The viewer must physically interact with the environment in each scene (e.g. touching, gripping, scanning, blocking light, brushing against something).\n- Each scene must include at least one **sensory texture** (e.g. steam, grit, glass, humidity, vibration, fog).\n- Focus on worldbuilding details: architecture, surface texture, lighting, tech, atmosphere.\n- Keep all narration realistic — no poetic language, no abstract emotion, no fantasy.\n- You may optionally anchor scenes to phases of a day-in-the-life story using soft categories like: [\"awakening\", \"travel\", \"arrival\", \"task\", \"conflict\", \"downtime\"]\n\nCore Inputs:  \nIdea: \"{{ $('Create New Ideas').first().json.message.content.Idea }}\"  \nEnvironment: \"{{ $('Create New Ideas').first().json.message.content.Environment }}\"\n\nIdea: \"...\"\nEnvironment: \"...\"\n\nScene 1: \"...\"\nScene 2: \"...\"\nScene 3: \"...\"\nScene 4: \"...\"\nScene 5: \"...\"\nScene 6: \"...\"\nScene 7: \"...\"\nScene 8: \"...\"\nScene 9: \"...\"\nScene 10: \"...\"\nScene 11: \"...\"\nScene 12: \"...\"\nScene 13: \"...\"\n\nEmbedded Example Output (TRUE STYLE):\n\nIdea: \"{{idea}}\"  \nEnvironment: \"{{environment}}\"\n\nScene 1: \"[Your gloved fingers brush aside static-sparking vines as you scan a cracked interface stone.]\"  \nScene 2: \"[You wipe fog from your cracked visor, revealing glyph-lit walls stretching into shadow.]\"  \nScene 3: \"[Your boots crunch over fractured tiles as you kneel to probe a molten sensor node.]\"  \nScene 4: \"[Fingers tighten on a signal staff etched with pulsing copper lines as heat pulses through your gauntlet.]\"  \nScene 5: \"[Your arm extends toward a relic console sunk into obsidian — the screen flickers under your palm.]\"  \nScene 6: \"[You steady a quaking relic crate, mist hissing from vents as alarms glow red overhead.]\"  \nScene 7: \"[Your fingertips smear ash from a glowing panel, revealing golden symbols beneath crystal dust.]\"  \nScene 8: \"[One hand braces against moss-covered stone as blue light bleeds through shifting glyph seams.]\"  \nScene 9: \"[You adjust your scanner lens, its display flickering against dripping carved walls.]\"  \nScene 10: \"[Both hands grip a relic torch emitting vapor-light as shadows twitch along archways.]\"  \nScene 11: \"[Your glove peels off a thermal barrier, steam erupting from a hidden channel below.]\"  \nScene 12: \"[You reach for a chrome data shard buried inside a ritual helmet crusted with grit.]\"  \nScene 13: \"[Your fingers tighten around a relic latch — the floor beneath trembles with awakening power.]\"\n"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        2180,
+        60
+      ],
+      "id": "3f28a3cb-fc5a-464d-bf4a-96c0b5651b52",
+      "name": "Generate Prompts",
+      "credentials": {
+        "openAiApi": {
+          "id": "giHMFu5jDLSoU23K",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://queue.fal.run/fal-ai/flux/requests/",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Key "
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={   \"prompt\": \"{{ $json.description }}\",   \"image_size\": \"portrait_16_9\" }",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 2000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1960,
+        220
+      ],
+      "id": "1442e064-32da-4495-83c3-9e8cca8430ca",
+      "name": "Create Images"
+    },
+    {
+      "parameters": {
+        "url": "=https://queue.fal.run/fal-ai/flux/requests/{{ $json.request_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Key "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2480,
+        220
+      ],
+      "id": "3c11dd2d-dcd6-4e42-b2f2-2261f257c0f1",
+      "name": "Get Images"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "text": "=You are a prompt-generation AI trained to create short, cinematic, first-person video prompts for speculative alt-history environments.\n\nYou will analyze an uploaded image and create one clear, realistic prompt describing a frozen moment from a futuristic alternate-history POV scene, as captured by a body-mounted GoPro.\n\nEach prompt must match the style of immersive, first-person realism — no fantasy, no magic.\n\n**Original photo-generation prompt for context:**  \n\"{{ $('Unbundle Prompts').item.json.description }}\"  \nUse this only to understand the role, setting, or tone. Do not copy or repeat it.\n\n---\n\n### Rules\n\n- Use first-person perspective only. The camera *is* the viewer.\n- Begin with a visible body part (hands, feet, arms, legs, or helmet visor).\n- Write a short sentence (under 300 characters) describing one frozen moment.\n- Describe physical positioning or interaction (e.g. leaning on console, gripping lever, resting foot on rail).\n- Avoid continuous motion verbs like walking, flying, riding, running, turning, or looking around.\n- If the viewer is operating a vehicle or riding a hover mount, describe a **frozen moment during that control**.\n   - Example: “Both hands grip the hoverbike joysticks {left and right of frame} as static sparks across your visor.”\n   - You may show both hands doing the same task — just freeze the motion and place limbs correctly in frame.\n- Always include physical interaction (gripping, steadying, adjusting, bracing, blocking, holding).\n- Focus on tactile textures and environmental cues (fog, glass, rust, humidity, static, stone, glyphs, vibration).\n- Do not use emotion, narration, or cinematic phrasing (no \"the camera pans...\" or \"you feel...\").\n- Visually match the uploaded image — describe what is seen or implied by the viewer's physical position.\n- The tone must be grounded and realistic. No fantasy or abstract visuals.\n\n---\n\n### Example Outputs\n\n- Your gloved fingers hover over a glyph-stamped throttle as steam curls from the dashboard vents.\n- One foot rests on a grated floor while your arm braces a sparking pipe overhead.\n- Your palm steadies a cracked interface panel as red light pulses across its glass.\n- Both hands grip a chrome railing while vapor rises from the shaft below.\n- You lean over a relic control node embedded in obsidian, blue glyphs strobing under your glove.\n- A cracked visor reflects your armored hand reaching toward a glowing ignition crystal.\n\n---\n\nUse the uploaded image and matching description to generate one short alt-history futuristic prompt in this style.\n",
+        "imageUrls": "={{ $json.images[0].url }}",
+        "options": {
+          "detail": "high"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1700,
+        380
+      ],
+      "id": "f36e7ab3-c803-4957-b5ae-e81d3cfd115b",
+      "name": "Video Prompts",
+      "credentials": {
+        "openAiApi": {
+          "id": "giHMFu5jDLSoU23K",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://queue.fal.run/fal-ai/kling-video/v2.1/standard/image-to-video",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Key "
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\n\"prompt\": \"{{ $json.content }}\",\n\"image_url\": \"{{ $('Get Images').item.json.images[0].url }}\",\n\"duration\": \"5\",\n\"aspect_ratio\": \"9:16\",\n\"negative_prompt\": \"bad quality\",\n\"cfg_scale\": 0.5\n}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 2000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1960,
+        380
+      ],
+      "id": "1cbf4f6e-3987-464d-b6e0-6458e794d1b8",
+      "name": "Create Videos"
+    },
+    {
+      "parameters": {
+        "url": "=https://queue.fal.run/fal-ai/kling-video/v2.1/standard/requests/{{ $json.request_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Key "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2480,
+        380
+      ],
+      "id": "0a33742e-3154-4a29-8e5f-cf9a877b96c5",
+      "name": "Get Videos"
+    },
+    {
+      "parameters": {
+        "amount": 180
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2220,
+        220
+      ],
+      "id": "b7c6c617-ff55-41b7-ad82-fce18fc903bc",
+      "name": "Wait for Images",
+      "webhookId": "31ce49ee-c872-4329-bd23-e5536d4ceb03"
+    },
+    {
+      "parameters": {
+        "amount": 600
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2220,
+        380
+      ],
+      "id": "489dfb17-8698-4131-9760-e4df62905c4a",
+      "name": "Wait for Videos",
+      "webhookId": "752b877b-c114-4d71-91d2-78d7d7aa9c5b"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Generate a concise, immersive sound description for Eleven Labs based on the given environment. Remove unnecessary words and limit the output to 250 characters max, including spaces and symbols. The description must be precise, clear, and logically match the environment. No extra details, just essential sound characteristics.\n\nEnvironment Idea: {{ $('Log the ideas').item.json.environment_prompts }}\nPhoto Idea: {{ $('Get Images').item.json.prompt }}\nVideo Idea: {{ $('Video Prompts').item.json.content }}\n\n\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1560,
+        540
+      ],
+      "id": "009109ca-0568-4f03-8d60-8e72c2ae3d0f",
+      "name": "Sound Prompts",
+      "credentials": {
+        "openAiApi": {
+          "id": "giHMFu5jDLSoU23K",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://queue.fal.run/fal-ai/mmaudio-v2",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Key 2146361c-0b50-4512-a401-38039e234bd4:1e1c954786a1d5f0a1ede9bf59bc949e"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\n  \"prompt\": \"ambient musical background sounds for this idea: Underwater, sunbeams filter through blue water, whale and divers framed in cinematic realism, the action is: {{ $json.message.content }}\",\n  \"duration\": 5,\n  \"video_url\": \"{{ $('Get Videos').item.json.video.url }}\"\n}\n",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 2000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1960,
+        540
+      ],
+      "id": "4cf40da1-5048-47e6-a6ca-257fb9fcc2fe",
+      "name": "Create Sounds"
+    },
+    {
+      "parameters": {
+        "amount": 180
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2220,
+        540
+      ],
+      "id": "b936ec80-c930-4d70-81e1-632f7eb97435",
+      "name": "Wait for Sounds",
+      "webhookId": "49394ab9-46cf-4d25-b95e-196acd9d73ec"
+    },
+    {
+      "parameters": {
+        "url": "=https://queue.fal.run/fal-ai/mmaudio-v2/requests/{{ $json.request_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Key "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2480,
+        540
+      ],
+      "id": "9088374d-852c-4b05-89a1-dcab9507781e",
+      "name": "Get Sounds"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.1,
+      "position": [
+        520,
+        -40
+      ],
+      "id": "59306161-ea1a-4ee3-bf0b-8ecd1081cc91",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    video_urls: items.map(item => item.json.video.url)\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1700,
+        720
+      ],
+      "id": "fc3f2800-5ebe-4481-85f7-faeb7b452619",
+      "name": "List Elements"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://queue.fal.run/fal-ai/ffmpeg-api/compose",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Key 2146361c-0b50-4512-a401-38039e234bd4:1e1c954786a1d5f0a1ede9bf59bc949e"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "raw",
+        "rawContentType": "application/json",
+        "body": "={\n  \"tracks\": [\n    {\n      \"id\": \"1\",\n      \"type\": \"video\",\n      \"keyframes\": [\n        { \"url\": \"{{ $json.video_urls[0] }}\", \"timestamp\": 0, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[1] }}\", \"timestamp\": 5, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[2] }}\", \"timestamp\": 10, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[3] }}\", \"timestamp\": 15, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[4] }}\", \"timestamp\": 20, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[5] }}\", \"timestamp\": 25, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[6] }}\", \"timestamp\": 30, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[7] }}\", \"timestamp\": 35, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[8] }}\", \"timestamp\": 40, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[9] }}\", \"timestamp\": 45, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[10] }}\", \"timestamp\": 50, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[11] }}\", \"timestamp\": 55, \"duration\": 5 },\n        { \"url\": \"{{ $json.video_urls[12] }}\", \"timestamp\": 60, \"duration\": 5 }\n      ]\n    }\n  ]\n}\n",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 1,
+              "batchInterval": 2000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1960,
+        720
+      ],
+      "id": "d063084a-6b99-4863-94ac-c3fb3452cf27",
+      "name": "Sequence Video"
+    },
+    {
+      "parameters": {
+        "amount": 240
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2220,
+        720
+      ],
+      "id": "06507c8a-5082-488b-8ea5-7d1ba41169c1",
+      "name": "Wait for Sequence",
+      "webhookId": "194e521f-5764-4152-be1b-00a0209859ad"
+    },
+    {
+      "parameters": {
+        "url": "=https://queue.fal.run/fal-ai/ffmpeg-api/requests/{{ $json.request_id }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Key 2146361c-0b50-4512-a401-38039e234bd4:1e1c954786a1d5f0a1ede9bf59bc949e"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2480,
+        720
+      ],
+      "id": "c6004981-9497-4d71-93b2-447d6e6f6d42",
+      "name": "Get Final Video"
+    },
+    {
+      "parameters": {
+        "content": "### Future Tools \n**If you need to merge two outputs into one",
+        "height": 320,
+        "width": 460,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        360,
+        -180
+      ],
+      "id": "25d701d7-1501-4e3c-a278-748e073b6ad5",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1sa3yDWJ74bZd0a7GjRtBT21R6gHI8YFXy0YdT0kL9AA",
+          "mode": "list",
+          "cachedResultName": "RNV4_POV_RR_Flux_Schnell",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1sa3yDWJ74bZd0a7GjRtBT21R6gHI8YFXy0YdT0kL9AA/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ZuQC-LhOaYqMwOowJrCM9ZQLFB5tKC-vsolA-XWcWaI/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "idea": "={{ $('Log the ideas').first().json.idea }}",
+            "final_output": "={{ $json.video_url }}",
+            "production": "complete"
+          },
+          "matchingColumns": [
+            "idea"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "idea",
+              "displayName": "idea",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "caption",
+              "displayName": "caption",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "production",
+              "displayName": "production",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "environment_prompts",
+              "displayName": "environment_prompts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "final_output",
+              "displayName": "final_output",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        1160,
+        740
+      ],
+      "id": "115f01cb-a91d-4542-aaa5-70b522b79256",
+      "name": "Log Final Video",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "mmoqedQOc2hTYa0J",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Schedule Trigger": [
+      {
+        "json": {}
+      }
+    ],
+    "Create New Ideas": [
+      {
+        "json": {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": {
+              "Title": "POV: You wake up in 2472 as a Neo-Pharaonic Tomb Coder",
+              "Idea": "You adjust a glyph interface inside a sealed quantum sarcophagus",
+              "Environment": "Gold-inlaid burial chamber, shifting hologlyph walls, plasma torches, sand-filtered ambient light",
+              "Status": "for production"
+            },
+            "refusal": null,
+            "annotations": []
+          },
+          "logprobs": null,
+          "finish_reason": "stop"
+        }
+      }
+    ],
+    "Log the ideas": [
+      {
+        "json": {
+          "idea": "You adjust a glyph interface inside a sealed quantum sarcophagus",
+          "caption": "POV: You wake up in 2472 as a Neo-Pharaonic Tomb Coder",
+          "environment_prompts": "Gold-inlaid burial chamber, shifting hologlyph walls, plasma torches, sand-filtered ambient light",
+          "id": "=ROW()-1",
+          "production": "for production"
+        }
+      }
+    ],
+    "Generate Prompts": [
+      {
+        "json": {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": {
+              "Idea": "You adjust a glyph interface inside a sealed quantum sarcophagus",
+              "Environment": "Gold-inlaid burial chamber, shifting hologlyph walls, plasma torches, sand-filtered ambient light",
+              "Scene 1": "[Your gloved hands press against the inner lid of the sarcophagus—etched gold symbols pulse faintly beneath your palms, and the lining vibrates with latent charge.]",
+              "Scene 2": "[You swipe your index finger across a flickering glyph pad embedded in the ceiling—your right thumb rests on a thumbprint reader glowing cobalt through your glove.]",
+              "Scene 3": "[Both forearms brace against the chamber’s interior wallplate—your HUD reflects scrolling data while amber condensation beads along the inner surface.]",
+              "Scene 4": "[Your fingers adjust a rotating dial of obsidian and chrome—heat seeps through your glove as microholograms ripple over the sarcophagus interface screen.]",
+              "Scene 5": "[Right hand reaches toward a broken light node recessed into the corner—plasma condensation crackles between your glove and the shattered emitter.]",
+              "Scene 6": "[Your left knee presses into sand-caked plating as your right hand steadies a levitating glyph slate—its surface oscillates with static and particles of grit.]",
+              "Scene 7": "[Both hands pry open a recessed panel along the sarcophagus sidewall—fine sand pours out over your wrists, catching the light of flickering glyph projections.]",
+              "Scene 8": "[Your palm hovers an inch from a swirling glyph hologram—sweat fogs the visor edge as the projection map warps with heat and motion feedback.]",
+              "Scene 9": "[One arm pushes aside dangling cabling coated in crystal dust while the other steadies a thermal probe veined with red glow—your HUD flickers as it interfaces.]",
+              "Scene 10": "[Your fingers trace an activation sequence on a sealed junction node covered in ancient residue—the pad gleams briefly, then emits a sharp vibration beneath your palm.]",
+              "Scene 11": "[Both arms extend toward an illuminated sarcophagus lock—your gloves press into two halves of a magnetic interface, sparks biting at the contact points.]",
+              "Scene 12": "[Your left hand pushes a torch bracket into a socket near the ceiling—plasma flame ignites with a low hiss as soft light races along gold lines in the wall.]",
+              "Scene 13": "[Right hand activates the primary glyph sequence—your fingertips sink into elastic gel nodes as the sarcophagus shell trembles and ambient dust catches in the blue backlight.]"
+            },
+            "refusal": null,
+            "annotations": []
+          },
+          "logprobs": null,
+          "finish_reason": "stop"
+        }
+      }
+    ],
+    "Unbundle Prompts": [
+      {
+        "json": {
+          "description": "[Your gloved hands press against the inner lid of the sarcophagus—etched gold symbols pulse faintly beneath your palms, and the lining vibrates with latent charge.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[You swipe your index finger across a flickering glyph pad embedded in the ceiling—your right thumb rests on a thumbprint reader glowing cobalt through your glove.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[Both forearms brace against the chamber’s interior wallplate—your HUD reflects scrolling data while amber condensation beads along the inner surface.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[Your fingers adjust a rotating dial of obsidian and chrome—heat seeps through your glove as microholograms ripple over the sarcophagus interface screen.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[Right hand reaches toward a broken light node recessed into the corner—plasma condensation crackles between your glove and the shattered emitter.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[Your left knee presses into sand-caked plating as your right hand steadies a levitating glyph slate—its surface oscillates with static and particles of grit.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[Both hands pry open a recessed panel along the sarcophagus sidewall—fine sand pours out over your wrists, catching the light of flickering glyph projections.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[Your palm hovers an inch from a swirling glyph hologram—sweat fogs the visor edge as the projection map warps with heat and motion feedback.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[One arm pushes aside dangling cabling coated in crystal dust while the other steadies a thermal probe veined with red glow—your HUD flickers as it interfaces.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[Your fingers trace an activation sequence on a sealed junction node covered in ancient residue—the pad gleams briefly, then emits a sharp vibration beneath your palm.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[Both arms extend toward an illuminated sarcophagus lock—your gloves press into two halves of a magnetic interface, sparks biting at the contact points.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[Your left hand pushes a torch bracket into a socket near the ceiling—plasma flame ignites with a low hiss as soft light races along gold lines in the wall.]"
+        }
+      },
+      {
+        "json": {
+          "description": "[Right hand activates the primary glyph sequence—your fingertips sink into elastic gel nodes as the sarcophagus shell trembles and ambient dust catches in the blue backlight.]"
+        }
+      }
+    ],
+    "Create Images": [
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "ac8a9e2b-86aa-4256-ae7c-4281adb10870",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/ac8a9e2b-86aa-4256-ae7c-4281adb10870",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/ac8a9e2b-86aa-4256-ae7c-4281adb10870/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/ac8a9e2b-86aa-4256-ae7c-4281adb10870/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 0
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "b245ca9e-7e58-4f12-815c-79ee852c49c9",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/b245ca9e-7e58-4f12-815c-79ee852c49c9",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/b245ca9e-7e58-4f12-815c-79ee852c49c9/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/b245ca9e-7e58-4f12-815c-79ee852c49c9/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 1
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "4511e48e-60bd-47e8-9b34-68134cf6641e",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/4511e48e-60bd-47e8-9b34-68134cf6641e",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/4511e48e-60bd-47e8-9b34-68134cf6641e/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/4511e48e-60bd-47e8-9b34-68134cf6641e/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 1
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "3be29280-9116-4fc7-9a00-3f678005103b",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/3be29280-9116-4fc7-9a00-3f678005103b",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/3be29280-9116-4fc7-9a00-3f678005103b/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/3be29280-9116-4fc7-9a00-3f678005103b/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 1
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "906413ad-995b-4414-8299-9464196111ae",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/906413ad-995b-4414-8299-9464196111ae",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/906413ad-995b-4414-8299-9464196111ae/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/906413ad-995b-4414-8299-9464196111ae/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 2
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "e1212396-4a20-4f59-a089-901d0e4a1d11",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/e1212396-4a20-4f59-a089-901d0e4a1d11",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/e1212396-4a20-4f59-a089-901d0e4a1d11/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/e1212396-4a20-4f59-a089-901d0e4a1d11/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 0
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "ab50281a-95c8-4bc4-81ae-895be9ccd32c",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/ab50281a-95c8-4bc4-81ae-895be9ccd32c",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/ab50281a-95c8-4bc4-81ae-895be9ccd32c/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/ab50281a-95c8-4bc4-81ae-895be9ccd32c/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 0
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "a21ea63c-4f1b-4bb9-b50f-cb00a1c61cd3",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/a21ea63c-4f1b-4bb9-b50f-cb00a1c61cd3",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/a21ea63c-4f1b-4bb9-b50f-cb00a1c61cd3/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/a21ea63c-4f1b-4bb9-b50f-cb00a1c61cd3/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 0
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "56fa892a-6e45-4b64-97df-5cbdaad73429",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/56fa892a-6e45-4b64-97df-5cbdaad73429",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/56fa892a-6e45-4b64-97df-5cbdaad73429/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/56fa892a-6e45-4b64-97df-5cbdaad73429/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 1
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "cc16fff4-c60e-4637-9bf5-c5a37d5f9545",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/cc16fff4-c60e-4637-9bf5-c5a37d5f9545",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/cc16fff4-c60e-4637-9bf5-c5a37d5f9545/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/cc16fff4-c60e-4637-9bf5-c5a37d5f9545/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 0
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "96208f4d-0f4b-41fb-92f5-b31248d16ac6",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/96208f4d-0f4b-41fb-92f5-b31248d16ac6",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/96208f4d-0f4b-41fb-92f5-b31248d16ac6/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/96208f4d-0f4b-41fb-92f5-b31248d16ac6/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 0
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "6ef853c0-14e4-46e8-902c-fa01abf65a67",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/6ef853c0-14e4-46e8-902c-fa01abf65a67",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/6ef853c0-14e4-46e8-902c-fa01abf65a67/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/6ef853c0-14e4-46e8-902c-fa01abf65a67/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 1
+        }
+      },
+      {
+        "json": {
+          "status": "IN_QUEUE",
+          "request_id": "549bd7f2-51a4-464d-8e52-e4b2d8f61733",
+          "response_url": "https://queue.fal.run/fal-ai/flux/requests/549bd7f2-51a4-464d-8e52-e4b2d8f61733",
+          "status_url": "https://queue.fal.run/fal-ai/flux/requests/549bd7f2-51a4-464d-8e52-e4b2d8f61733/status",
+          "cancel_url": "https://queue.fal.run/fal-ai/flux/requests/549bd7f2-51a4-464d-8e52-e4b2d8f61733/cancel",
+          "logs": null,
+          "metrics": {},
+          "queue_position": 1
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Create New Ideas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create New Ideas": {
+      "main": [
+        [
+          {
+            "node": "Log the ideas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Unbundle Prompts": {
+      "main": [
+        [
+          {
+            "node": "Create Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log the ideas": {
+      "main": [
+        [
+          {
+            "node": "Generate Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate Prompts": {
+      "main": [
+        [
+          {
+            "node": "Unbundle Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Images": {
+      "main": [
+        [
+          {
+            "node": "Wait for Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Images": {
+      "main": [
+        [
+          {
+            "node": "Video Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Video Prompts": {
+      "main": [
+        [
+          {
+            "node": "Create Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Videos": {
+      "main": [
+        [
+          {
+            "node": "Wait for Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Images": {
+      "main": [
+        [
+          {
+            "node": "Get Images",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Videos": {
+      "main": [
+        [
+          {
+            "node": "Get Videos",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Videos": {
+      "main": [
+        [
+          {
+            "node": "Sound Prompts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Sounds": {
+      "main": [
+        [
+          {
+            "node": "Wait for Sounds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sound Prompts": {
+      "main": [
+        [
+          {
+            "node": "Create Sounds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Sounds": {
+      "main": [
+        [
+          {
+            "node": "Get Sounds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Sounds": {
+      "main": [
+        [
+          {
+            "node": "List Elements",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        []
+      ]
+    },
+    "List Elements": {
+      "main": [
+        [
+          {
+            "node": "Sequence Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sequence Video": {
+      "main": [
+        [
+          {
+            "node": "Wait for Sequence",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Sequence": {
+      "main": [
+        [
+          {
+            "node": "Get Final Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Final Video": {
+      "main": [
+        [
+          {
+            "node": "Log Final Video",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "da7c06e5-0bd0-440b-9675-e91ae87c0b76",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8c7b2111a9eef59965780eaa851e988438b034cfc4fbab9972ae739846cfbca6"
+  },
+  "id": "g7qBdwokOYTxP2Wi",
+  "tags": [
+    {
+      "createdAt": "2025-05-14T08:20:24.419Z",
+      "updatedAt": "2025-05-14T08:20:24.419Z",
+      "id": "AGY4bNedLjTi9Ajm",
+      "name": "Test"
+    }
+  ]
+}

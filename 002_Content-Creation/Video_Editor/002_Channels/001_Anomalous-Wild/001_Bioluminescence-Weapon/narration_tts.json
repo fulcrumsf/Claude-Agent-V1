@@ -1,0 +1,67 @@
+{
+  "voice_id": "KYhuk3Y57IlkV1ZjtDAt",
+  "model_id": "eleven_multilingual_v2",
+  "voice_settings": {
+    "stability": 0.55,
+    "similarity_boost": 0.80,
+    "style": 0.30,
+    "use_speaker_boost": true
+  },
+  "scenes": [
+    {
+      "scene_id": "scene_01",
+      "output_file": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_01/audio.mp3",
+      "text": "In the deepest part of the ocean, there is no light. None. Not a single photon from the sun has ever reached this far. So where is that glow coming from?"
+    },
+    {
+      "scene_id": "scene_03",
+      "output_file": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_03/audio.mp3",
+      "text": "Below 200 metres, sunlight disappears completely. Below 1,000 metres, it has never existed. The deep ocean covers more than half the surface of our planet. And remarkably, nearly three quarters of everything that lives there... produces its own light."
+    },
+    {
+      "scene_id": "scene_04",
+      "output_file": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_04/audio.mp3",
+      "text": "We think of the deep ocean as empty. Silent. Dead. What science has only recently confirmed is that it may be the most illuminated environment on Earth — just not by the sun. Every flash you see in these waters is alive. And it is doing something."
+    },
+    {
+      "scene_id": "scene_05",
+      "output_file": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_05/audio.mp3",
+      "text": "The mechanism is called bioluminescence. And the chemistry behind it sounds less like biology and more like alchemy. Every bioluminescent organism on Earth uses a reaction between two molecules — a protein called luciferase, and a compound called luciferin. When oxygen is introduced, the reaction releases energy. Not as heat. As light. Cold light. Pure light. With almost zero energy wasted. It is, by every engineering standard, more efficient than any light source humans have ever built."
+    },
+    {
+      "scene_id": "scene_06",
+      "output_file": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_06/audio.mp3",
+      "text": "What makes this more remarkable is what evolution did with it. Bioluminescence did not appear once, spread across the tree of life, and diversify. It evolved independently — in completely unrelated lineages — more than forty separate times. Fish that share no ancestor with squid. Jellyfish with no connection to fungi. Beetles with no relationship to bacteria. Each one arrived at the same solution. The same chemistry. The same cold light. Evolution, apparently, has a favourite trick."
+    },
+    {
+      "scene_id": "scene_07",
+      "output_file": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_07/audio.mp3",
+      "text": "The anglerfish is perhaps the most famous example. That glow is called the esca — a modified spine on the top of its head. But here is what's extraordinary about it: the anglerfish did not evolve the ability to produce that light itself. The esca glows because it is filled with living bacteria — bioluminescent microbes that colonised the lure during the fish's early development. The fish and the bacteria exist in a relationship so precise that neither can survive without the other. And the anglerfish controls the light — dimming it, brightening it, pulsing it in rhythms — to attract specific prey at specific depths. It does not hunt. It waits. And the light does the work."
+    },
+    {
+      "scene_id": "scene_08",
+      "output_file": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_08/audio.mp3",
+      "text": "But not all bioluminescence is designed to attract. Some of it is designed to vanish. The Hawaiian bobtail squid lives in shallow coastal water — where moonlight creates a faint glow on the ocean surface. Any creature swimming below it would cast a shadow. A silhouette visible to predators looking up. So the squid solved this problem with an organ on its underside filled with bioluminescent bacteria — calibrated, every night, to match the exact brightness and colour of the moon above. No shadow. No silhouette. The squid effectively disappears. This technique is called counter-illumination. And it has evolved, independently, in at least a dozen separate lineages."
+    },
+    {
+      "scene_id": "scene_09",
+      "output_file": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_09/audio.mp3",
+      "text": "Counter-illumination is defensive. What comes next is not. Deep in the midnight zone lives an animal called the dragonfish. It has evolved something that, until recently, scientists believed was physically impossible for biological tissue. The dragonfish can produce — and see — red light. This matters because red light does not penetrate below a few hundred metres of ocean. Every other creature in the deep — every predator, every prey — is effectively blind to it. The dragonfish moves through a frequency of light that no other animal in that environment can perceive. It is hunting with a flashlight that its prey cannot see."
+    },
+    {
+      "scene_id": "scene_10",
+      "output_file": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_10a/audio.mp3",
+      "text": "It is not alone in weaponising light. The firefly squid coordinates thousands of photophores across its body — not to hide, but to create patterns that disorient and confuse prey. The siphonophore — a colonial organism that can reach 40 metres in length — pulses cascading waves of bioluminescence along its body to herd prey into range. And some species of deep-sea jellyfish, when threatened, release glowing particles into the water — a decoy cloud of light that attracts a predator's predators. They use light the way other animals use sound, smell, or venom. As a tool. As a weapon."
+    },
+    {
+      "scene_id": "scene_11",
+      "output_file": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_11/audio.mp3",
+      "text": "Evolution invented this solution more than forty times. In fish. In squid. In fungi. In bacteria. In worms. In beetles. Each time arriving at the same chemistry. The same reaction. The same cold light. There is a principle in biology called convergent evolution — when unrelated species independently develop the same solution to the same problem. Wings evolved four times. Eyes evolved forty times. Bioluminescence evolved more than forty times. What that tells us is this: wherever life encounters darkness, it finds a way to make light. Not just on Earth. The deep ocean is the closest environment we have to the conditions of Europa — Jupiter's moon, with a liquid ocean beneath miles of ice. If life exists there, science now believes it is almost certainly bioluminescent. In the dark, life lights itself. It has no other choice."
+    },
+    {
+      "scene_id": "scene_12",
+      "output_file": "outputs/001_anomalous_wild/bioluminescence_weapon/scene_12/audio.mp3",
+      "text": "There are creatures in the deep ocean we have never seen. And they are already watching us — with light we cannot perceive."
+    }
+  ]
+}

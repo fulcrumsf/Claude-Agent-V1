@@ -1,0 +1,465 @@
+{
+  "name": "agent3",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        120,
+        20
+      ],
+      "id": "360d3d2d-d200-4eb5-9fe8-fdefe33969b1",
+      "name": "Telegram Trigger",
+      "webhookId": "3b64f82e-dcf6-4d21-816b-8b76f5eb8e4d",
+      "credentials": "REDACTED"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    },
+                    "id": "1fdedf8e-b1c8-49ff-993d-ac3ea39b7737"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7d07ab83-6207-4c48-a72f-c8a1958aafd5",
+                    "leftValue": "={{ $json.message.voice.file_id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "voice"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        300,
+        20
+      ],
+      "id": "4efefc3f-e42c-4229-8c33-fc2ad3c35dbc",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $json.message.voice.file_id }}"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        520,
+        100
+      ],
+      "id": "d6b232e4-4700-451e-b76e-1d6d7107e088",
+      "name": "Telegram",
+      "webhookId": "5715a0ec-25c0-4f97-849c-acfd2ed6df7c",
+      "credentials": "REDACTED"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        660,
+        100
+      ],
+      "id": "1cbe7be9-c188-4637-9364-cdee5840b97a",
+      "name": "OpenAI",
+      "credentials": "REDACTED"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.text }}",
+        "options": {
+          "systemMessage": "=You are a helpful assistant\n\nAlways give a full summary of the unread email, instead of a snippet.\n\nAlways Use your contacts database \"Get Contacts\" tool for all contact information.\n\nCurrent date and time: {{ $now }}\n\nMy name is Koen."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.9,
+      "position": [
+        900,
+        0
+      ],
+      "id": "c8e3588f-4935-4241-9fd7-1a263e210f40",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        820,
+        180
+      ],
+      "id": "c5527721-3c2e-440e-9d2a-4d0d34ad3b18",
+      "name": "OpenAI Chat Model",
+      "credentials": "REDACTED"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "REDACTED"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        980,
+        180
+      ],
+      "id": "4ba84a84-3a6b-4985-8f0f-68456a5c5a15",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "emailType": "text",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        1120,
+        280
+      ],
+      "id": "8f59cf5d-19c3-41c6-abbe-0f4bae1f77e6",
+      "name": "Send",
+      "webhookId": "d1ebcde2-e614-4a2e-9438-6428ea83bd30",
+      "credentials": "REDACTED"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "REDACTED",
+          "mode": "list",
+          "cachedResultName": "Contacts",
+          "cachedResultUrl": "REDACTED"
+        },
+        "table": {
+          "__rl": true,
+          "value": "REDACTED",
+          "mode": "list",
+          "cachedResultName": "Table 1",
+          "cachedResultUrl": "REDACTED"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        1240,
+        280
+      ],
+      "id": "e93d4844-2729-4616-b4a6-c7b53c191419",
+      "name": "Get Contacts",
+      "credentials": "REDACTED"
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "filters": {
+          "labelIds": [
+            "INBOX",
+            "UNREAD"
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        1360,
+        280
+      ],
+      "id": "3fe7c8c5-a571-49e2-a29c-52ff869b4179",
+      "name": "Read",
+      "webhookId": "00474342-d67c-41ea-8f8b-8be7aecd7f83",
+      "credentials": "REDACTED"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "example@gmail.com",
+          "mode": "list",
+          "cachedResultName": "example@gmail.com"
+        },
+        "start": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Start', ``, 'string') }}",
+        "end": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('End', ``, 'string') }}",
+        "additionalFields": {
+          "attendees": [
+            "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('attendees0_Attendees', ``, 'string') }}"
+          ],
+          "summary": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Summary', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        1480,
+        280
+      ],
+      "id": "62f21d50-de75-43ee-8032-ec4e2d517049",
+      "name": "Create Event",
+      "credentials": "REDACTED"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1240,
+        0
+      ],
+      "id": "b8c923fd-3af5-4526-88fd-fd469a5ec8f1",
+      "name": "Agent Response",
+      "webhookId": "e8ca3af1-316a-4ce1-8795-1e75944c56d6",
+      "credentials": "REDACTED"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa958279-caf8-4f04-a91e-4171954aa1fe",
+              "name": "text",
+              "value": "={{ $json.message.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        600,
+        -60
+      ],
+      "id": "784d9b92-e672-46f1-974a-72e0e8ccbbca",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Agent Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Contacts": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create Event": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "991f0d02-437b-4d0e-85d4-0484f4da5f3c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "dc7ac3c935443efe3da08349440ffc92ac6539729601a00b00aa4a9b13ee6627"
+  },
+  "id": "dOEoV4m5tUeZ9MKQ",
+  "tags": []
+}

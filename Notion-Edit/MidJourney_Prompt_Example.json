@@ -1,0 +1,42 @@
+{
+    "items": [
+        {
+            "subject": "glass dice",
+            "material": "transparent glass with iridescent colors",
+            "surface": "smooth, polished, highly reflective",
+            "lighting": "HDRI studio light, angled top-left key light",
+            "colors": [
+                "blue",
+                "green",
+                "purple"
+            ],
+            "background": "black",
+            "effects": [
+                "bloom",
+                "refractions",
+                "chromatic aberration",
+                "soft rim light"
+            ],
+            "aspect_ratio": "1:1",
+            "quality": "2"
+        },
+        {
+            "subject": "crystal sphere",
+            "material": "clear quartz with rainbow sheen",
+            "surface": "flawless, glossy",
+            "lighting": "soft ambient fill light with rim highlights",
+            "colors": [
+                "white",
+                "pink"
+            ],
+            "background": "dark grey",
+            "effects": [
+                "dispersion",
+                "subsurface scattering",
+                "high contrast"
+            ],
+            "aspect_ratio": "3:4",
+            "quality": "1"
+        }
+    ]
+}

@@ -1,0 +1,19 @@
+---
+Category: Research
+---
+view. Yes just continue with the remaining true databases
+#### Design Bookmarks
+|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/tag_gray.svg)Tags|
+|---|---|---|---|
+|[[Polymet.ai]]|[https://www.polymet.ai/](https://www.polymet.ai/)|Polymet helps product teams to create production-ready designs and front-end code. They explain what they want or provide an image, and Polymet designs and implements the interface.|Tool|
+|[[Modyfi]]|[https://www.modyfi.com/](https://www.modyfi.com/)|Modyfi is a collaborative design tool that combines image editing and design workflows in one place. It’s geared toward multidisciplinary teams who want faster iteration and shared design assets (and it has been connected to the Figma ecosystem).|Tool|
+|[[Glyphy]]|[https://glyphy.io/](https://glyphy.io/)|Copy and paste 400+ fancy fonts, over 10k cool symbols and emoticons, and generate names for Instagram, Discord, Twitter, Facebook, and TikTok!|Etsy, Tool|
+|[[Etsy Check]]|[https://www.etsycheck.com/](https://www.etsycheck.com/)|EtsyCheck is a toolkit for Etsy listing research and optimization. Use it to analyze shops/listings, research keywords and trends, and generate listing elements (tags/titles/descriptions) to improve discoverability.|Etsy, SEO, Tool|
+|[[Picryl]]|[https://picryl.com/](https://picryl.com/)|Picryl is a public-domain and Creative Commons image library for sourcing free-to-use visuals. Use it to find historical photos/illustrations and download assets for commercial designs with appropriate license checks.|Curation, Public Domain|
+|[[Vectorizer]]|[https://vectorizer.ai/](https://vectorizer.ai/)|[Vectorizer.AI](http://Vectorizer.AI) is an image vectorization tool that converts raster images (PNG/JPG) into clean SVG vectors. Use it to turn logos or artwork into scalable assets for print, design systems, and cutting workflows.|Tool|
+|[[Recraft.ai]]|[https://www.recraft.ai/](https://www.recraft.ai/)|Recraft is an AI design tool for generating images and vector graphics (including SVG). Use it to create logo/illustration concepts, generate variations, and export vectors you can refine in a design tool.|Tool|
+|[[Public.work]]|[https://public.work/](https://public.work/)|Public Work by Cosmos / Cosmos Cosmos Logo Menu Open Explore Careers Login Sign up Public Work is a search engine for public domain content. Explore 100,000+ copyright-free images from The MET, New York Public Library, and other sources. Links: ⬝ What's Public Domain? ⬝ Terms of service|Curation, Public Domain|
+|[[Coolors.co]]|[https://coolors.co/](https://coolors.co/)|Coolors is a color palette generator and exploration tool for designers. Use it to quickly generate palette options, check contrast, and export colors for branding, UI design, and templates.|Tool|
+|[[BLKMarket]]|[https://blkmarket.com/](https://blkmarket.com/)|BLKMARKET is a design asset marketplace with templates, brushes, textures, and creative resources. Use it to source ready-made assets and speed up production for graphics, branding, and digital products.|Marketplace|
+|[[Cosmo]]|[https://www.cosmos.so/](https://www.cosmos.so/)|Cosmos Logo Menu Open Explore Careers Login Sign up Jesse Winton @ thejessewinton Welcome to the Cosmos https://cosmos.so 0 Following 0 Following Edit profile|Curation|
+|[[Same.energy]]|[https://same.energy/](https://same.energy/)|Same Energy is a visual search engine for finding images with a similar aesthetic to a reference image. Use it to discover public-domain/Creative Commons visuals and build cohesive moodboards or design inspiration sets quickly.|Curation|

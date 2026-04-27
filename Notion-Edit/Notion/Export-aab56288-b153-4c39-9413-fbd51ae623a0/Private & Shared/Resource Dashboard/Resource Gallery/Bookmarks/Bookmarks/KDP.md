@@ -1,0 +1,14 @@
+---
+Category: Revenue Stream
+---
+#### KDP Bookmarks
+|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/snippet_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/categories_gray.svg)Tags|
+|---|---|---|---|---|
+|[[Book Bolt Studio]]|[https://boltdesigner.io/](https://boltdesigner.io/)|Book Bolt is a design and research tool for creating KDP-ready low-content books (journals, planners, coloring books). Use it to design interiors/covers and research keywords and niches to improve Amazon discoverability.|Book Templates|Reference, Work|
+|[[Book Sprout]]|[https://booksprout.co/](https://booksprout.co/)|BookSprout is an ARC/review management platform for authors. Use it to distribute advance copies, automate follow-ups, and collect early reviews on Amazon and other sites before or after launch.|Service|Research, Tutorial|
+|[[Books.by]]|[https://www.books.by/](https://www.books.by/)|[Books.by](http://Books.by) is a direct-to-reader selling platform built for authors. Use it to sell books from your own storefront with better control over pricing, customer data, and royalties compared to marketplace-only distribution.|Marketplace|Reference, Tool, Work|
+|[[Notion-Edit/Notion/Export-aab56288-b153-4c39-9413-fbd51ae623a0/Private & Shared/Resource Dashboard/Resource Gallery/Bookmarks/Bookmarks/KDP/KDP Bookmarks/Helium\|Helium]]|[https://www.helium10.com/](https://www.helium10.com/)|Helium 10 is an Amazon seller toolkit for product and keyword research, listing optimization, and analytics. Use it to validate niches, track rankings, and improve listings for KDP or physical product businesses.|Research||
+|[[HeyZine]]|[https://heyzine.com/](https://heyzine.com/)|Heyzine is a flipbook creator that turns PDFs into interactive, page-turning web experiences. Use it to present lead magnets, catalogs, or digital books in a more engaging format and embed them on sites.|Tool||
+|[[Publisher Rocket]]|[https://publisherrocket.com/](https://publisherrocket.com/)|Boost your book&#039;s Amazon rankings with Publisher Rocket&#039;s data-driven tools. Find profitable keywords, categories &amp; more. Try risk-free for 30 days.|Book Templates||
+|[[Typeset]]|[https://typeset.com/](https://typeset.com/)|Typeset (by SamCart) is an AI design tool for creating marketing assets and digital content quickly. Use it to generate on-brand designs (graphics, promos, PDFs) for book launches, funnels, and creator businesses.|Tool||
+|[[Wattpad]]|[https://www.wattpad.com/](https://www.wattpad.com/)|Wattpad is a publishing platform for serialized fiction and web novels. Use it to build an audience, test story ideas, and potentially monetize through reads, partnerships, or adapting successful stories into books.|Marketplace||

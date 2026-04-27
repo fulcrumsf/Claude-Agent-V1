@@ -1,0 +1,21 @@
+{
+  "name": "ocean-depth-descent",
+  "version": "1.0.0",
+  "description": "Standalone Remotion composition — ocean depth descent diagram for Anomalous Wild",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts OceanDepthDescent out/ocean-depth-descent.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.0.0"
+  }
+}

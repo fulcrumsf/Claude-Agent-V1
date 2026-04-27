@@ -1,0 +1,6 @@
+remotion-app/node_modules/
+.credentials/
+.env
+.DS_Store
+__pycache__/
+*.pyc

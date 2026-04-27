@@ -1,0 +1,320 @@
+{
+  "metadata": {
+    "created": "2026-04-04",
+    "description": "Cross-platform model catalog for cinematic style production. Covers image and video generation models from kie.ai and fal.ai with current pricing and API details.",
+    "currency": "USD",
+    "lastUpdated": "2026-04-04"
+  },
+  "platforms": {
+    "kie_ai": {
+      "name": "Kie.ai",
+      "url": "https://kie.ai",
+      "description": "Unified API gateway for AI models (image, video, audio). Generally 30-70% cheaper than competitors.",
+      "models": {
+        "image_generation": {
+          "nano_banana_2": {
+            "name": "Nano Banana 2 (Google Gemini 3.1 Flash 4K)",
+            "description": "Fast, high-quality image generation with 4K support",
+            "pricing": {
+              "1k_resolution": "$0.04/image",
+              "2k_resolution": "$0.06/image",
+              "4k_resolution": "$0.09/image"
+            },
+            "use_case": "Primary for all styles needing static images",
+            "speed": "Fast",
+            "quality": "High"
+          },
+          "nano_banana_pro": {
+            "name": "Nano Banana Pro (Google Gemini 3.0 Pro)",
+            "description": "Advanced image generation with editing capabilities",
+            "pricing": {
+              "1k_resolution": "$0.09/image",
+              "2k_resolution": "$0.12/image",
+              "4k_resolution": "$0.12/image"
+            },
+            "use_case": "Higher quality variant when precision is critical",
+            "speed": "Standard",
+            "quality": "Very High"
+          },
+          "flux_ai": {
+            "name": "Flux AI",
+            "description": "Black Forest Labs image model with vivid, coherent scenes",
+            "pricing": "Variable (dashboard pricing)",
+            "use_case": "Alternative for complex scenes",
+            "speed": "Standard",
+            "quality": "High"
+          }
+        },
+        "video_generation": {
+          "veo_3_fast": {
+            "name": "Veo 3 Fast (Google DeepMind)",
+            "description": "Fast Google video generation at lower cost",
+            "pricing": "$0.40/8-second video",
+            "pricing_per_second": "$0.05/second",
+            "use_case": "Quick iterations, B-roll assembly",
+            "speed": "Fast",
+            "quality": "Good",
+            "resolution": "Up to 1080p"
+          },
+          "veo_3_quality": {
+            "name": "Veo 3 Quality (Google DeepMind)",
+            "description": "Higher-quality video generation with improved coherence",
+            "pricing": "$2.00/8-second video",
+            "pricing_per_second": "$0.25/second",
+            "use_case": "Final renders, hero sequences",
+            "speed": "Standard",
+            "quality": "Excellent",
+            "resolution": "Up to 1080p"
+          },
+          "kling_2_1_standard": {
+            "name": "Kling 2.1 Standard",
+            "description": "Kling video generation at 720p resolution",
+            "pricing": "$0.125/5-second video",
+            "pricing_per_second": "$0.025/second",
+            "use_case": "Cost-effective video composition",
+            "speed": "Standard",
+            "quality": "Good",
+            "resolution": "720p"
+          },
+          "kling_2_1_pro": {
+            "name": "Kling 2.1 Pro",
+            "description": "Kling video generation at 1080p with enhanced realism",
+            "pricing": "$0.25/5-second video",
+            "pricing_per_second": "$0.05/second",
+            "use_case": "Professional-grade video output",
+            "speed": "Standard",
+            "quality": "High",
+            "resolution": "1080p"
+          },
+          "seedance_1_5_pro": {
+            "name": "Seedance 1.5 Pro",
+            "description": "ByteDance video generation with audio support",
+            "pricing": "$0.26/5-second video (audio off), $0.26+ (audio on)",
+            "pricing_per_second": "$0.052/second",
+            "use_case": "Multi-shot sequences with native audio",
+            "speed": "Standard",
+            "quality": "High",
+            "resolution": "720p"
+          },
+          "seedance_2_0": {
+            "name": "Seedance 2.0",
+            "description": "ByteDance multimodal video generation with audio sync",
+            "pricing": "$0.30/request",
+            "availability": "SUSPENDED as of March 15, 2026 (Hollywood copyright suspension)",
+            "use_case": "Multi-shot narrative generation (when available)",
+            "speed": "Standard",
+            "quality": "Excellent",
+            "resolution": "1080p"
+          },
+          "runway_api": {
+            "name": "Runway API",
+            "description": "Runway video generation and extension",
+            "pricing": "Credit-based (1000 credits = $5)",
+            "use_case": "Video extension and manipulation",
+            "speed": "Standard",
+            "quality": "High",
+            "resolution": "720p, 1080p"
+          }
+        }
+      }
+    },
+    "fal_ai": {
+      "name": "Fal.ai",
+      "url": "https://fal.ai",
+      "description": "GPU-accelerated API platform for image and video generation. Strong performance on video models.",
+      "models": {
+        "image_generation": {
+          "nano_banana_2": {
+            "name": "Nano Banana 2 (Google Gemini 3.1 Flash 4K)",
+            "description": "Fast Google image generation with 4K support",
+            "pricing": {
+              "512x512": "$0.06/image",
+              "1k_resolution": "$0.08/image",
+              "2k_resolution": "$0.12/image",
+              "4k_resolution": "$0.16/image"
+            },
+            "use_case": "Primary for all styles needing static images",
+            "speed": "Very Fast",
+            "quality": "High"
+          },
+          "nano_banana_pro": {
+            "name": "Nano Banana Pro (Google Gemini 3.0 Pro)",
+            "description": "Advanced image generation with commercial rights",
+            "pricing": "$0.15/image",
+            "use_case": "Higher quality when precision critical",
+            "speed": "Standard",
+            "quality": "Very High"
+          },
+          "seedream_v4": {
+            "name": "Seedream V4",
+            "description": "Image generation model",
+            "pricing": "$0.03/image",
+            "use_case": "Budget-friendly image generation",
+            "speed": "Fast",
+            "quality": "Good"
+          },
+          "flux_kontext_pro": {
+            "name": "Flux Kontext Pro",
+            "description": "Advanced image generation with context awareness",
+            "pricing": "$0.04/image",
+            "use_case": "Mid-tier image generation",
+            "speed": "Standard",
+            "quality": "High"
+          },
+          "qwen": {
+            "name": "Qwen",
+            "description": "Image generation model",
+            "pricing": "$0.02/megapixel",
+            "use_case": "Budget alternative",
+            "speed": "Fast",
+            "quality": "Good"
+          }
+        },
+        "video_generation": {
+          "veo_3": {
+            "name": "Veo 3 (Google DeepMind)",
+            "description": "Google video generation via Fal.ai",
+            "pricing": "$0.40/second",
+            "use_case": "High-quality video generation",
+            "speed": "Standard",
+            "quality": "Excellent",
+            "resolution": "Up to 1080p"
+          },
+          "kling_2_5_turbo_pro": {
+            "name": "Kling 2.5 Turbo Pro",
+            "description": "Fast Kling video generation at 720p",
+            "pricing": "$0.07/second ($0.35/5-second video)",
+            "use_case": "Quick video iteration",
+            "speed": "Fast",
+            "quality": "Good",
+            "resolution": "720p"
+          },
+          "wan_2_5": {
+            "name": "Wan 2.5",
+            "description": "Efficient video generation",
+            "pricing": "$0.05/second",
+            "use_case": "Budget-friendly video generation",
+            "speed": "Fast",
+            "quality": "Good",
+            "resolution": "720p"
+          },
+          "ovi": {
+            "name": "Ovi",
+            "description": "Video generation model",
+            "pricing": "$0.20/video",
+            "use_case": "Fixed-cost video clips",
+            "speed": "Fast",
+            "quality": "Good",
+            "resolution": "720p"
+          },
+          "seedance_2_0": {
+            "name": "Seedance 2.0 (Coming Soon)",
+            "description": "ByteDance multimodal video generation with audio sync",
+            "pricing": "TBA",
+            "availability": "Coming soon (expected late Q2 2026)",
+            "use_case": "Multi-shot narrative generation with native audio",
+            "speed": "TBD",
+            "quality": "Excellent",
+            "resolution": "1080p"
+          }
+        }
+      }
+    }
+  },
+  "cross_platform_comparison": {
+    "image_generation": [
+      {
+        "model": "Nano Banana 2",
+        "kie_ai_price": "$0.04-0.09/image",
+        "fal_ai_price": "$0.06-0.16/image",
+        "cheaper_on": "kie.ai (30-40% cheaper)",
+        "recommendation": "Use kie.ai for volume production"
+      },
+      {
+        "model": "Nano Banana Pro",
+        "kie_ai_price": "$0.09-0.12/image",
+        "fal_ai_price": "$0.15/image",
+        "cheaper_on": "kie.ai (20-40% cheaper)",
+        "recommendation": "Use kie.ai for higher precision"
+      }
+    ],
+    "video_generation": [
+      {
+        "model": "Veo 3",
+        "kie_ai_price": "$0.05/second (Fast) or $0.25/second (Quality)",
+        "fal_ai_price": "$0.40/second",
+        "cheaper_on": "kie.ai (8-60% cheaper depending on tier)",
+        "recommendation": "Use kie.ai for all Veo 3 work"
+      },
+      {
+        "model": "Kling 2.x",
+        "kie_ai_price": "$0.025-0.05/second",
+        "fal_ai_price": "$0.07/second (Turbo only)",
+        "cheaper_on": "kie.ai (significant savings)",
+        "recommendation": "Use kie.ai Kling 2.1 Pro for best value"
+      },
+      {
+        "model": "Seedance",
+        "kie_ai_price": "$0.052-0.30/video (1.5 Pro and 2.0)",
+        "fal_ai_price": "Coming soon",
+        "cheaper_on": "kie.ai (currently only option)",
+        "recommendation": "Use kie.ai Seedance 1.5 Pro; avoid 2.0 (suspended)"
+      },
+      {
+        "model": "Wan 2.5",
+        "kie_ai_price": "Not listed",
+        "fal_ai_price": "$0.05/second",
+        "cheaper_on": "fal.ai (only option on kie.ai)",
+        "recommendation": "Use fal.ai for budget video"
+      }
+    ]
+  },
+  "style_to_model_recommendations": {
+    "style_01_archival_bw_documentary": {
+      "primary_image_model": "nano_banana_2",
+      "primary_platform": "kie.ai",
+      "workflow": "Generate image → post-process to grayscale + grain in Remotion",
+      "estimated_cost_per_image": "$0.04-0.09"
+    },
+    "style_02_3d_animated_synthetic": {
+      "primary_image_model": "nano_banana_2",
+      "primary_platform": "kie.ai",
+      "workflow": "Generate with '3D render' style parameter → clean up in Figma if needed",
+      "estimated_cost_per_image": "$0.04-0.09"
+    },
+    "style_03_satellite_map_visualization": {
+      "primary_image_model": "nano_banana_2",
+      "primary_platform": "kie.ai",
+      "workflow": "Generate map visualization → add Remotion overlays for depth markers",
+      "estimated_cost_per_image": "$0.04-0.09"
+    },
+    "style_04_hd_underwater_camera": {
+      "primary_video_model": "veo_3_fast",
+      "secondary_video_model": "kling_2_1_pro",
+      "primary_platform": "kie.ai",
+      "workflow": "Generate video with underwater/cinematic prompt → add SFX in Suno → composite in Remotion",
+      "estimated_cost_per_8_second_video": "$0.40 (Veo 3 Fast) or $0.125 (Kling 2.1 Standard)"
+    },
+    "style_05_national_geographic_wildlife": {
+      "primary_image_model": "nano_banana_2",
+      "secondary_video_model": "veo_3_quality",
+      "primary_platform": "kie.ai",
+      "workflow": "Generate creature images with wildlife cinematography prompt → optionally extend to video with Veo 3",
+      "estimated_cost_per_image": "$0.04-0.09",
+      "estimated_cost_per_video": "$2.00 (Veo 3 Quality for cinematic creature sequences)"
+    },
+    "style_06_scientific_infographic": {
+      "primary_image_model": "nano_banana_2",
+      "primary_platform": "kie.ai",
+      "workflow": "Generate clean graphic design → add text/labels in Remotion (never in image model)",
+      "estimated_cost_per_image": "$0.04-0.09"
+    }
+  },
+  "notes": {
+    "seedance_2_0_suspension": "Seedance 2.0 API access was suspended on March 15, 2026 across kie.ai, WaveSpeed, and BytePlus International due to Hollywood copyright concerns. Use Seedance 1.5 Pro as fallback.",
+    "platform_recommendation": "For 2026 production, kie.ai is the primary platform—30-70% cheaper than fal.ai on most models. Use fal.ai only for models unavailable on kie.ai (e.g., Wan 2.5).",
+    "image_first_workflow": "All styles use image generation as the foundation. Video is extended from images via image-to-video models.",
+    "audio_sync": "Narration extracted with timestamps → beat_sheet.json → visuals scheduled against beat map. Never use model-generated voiceover; use ElevenLabs TTS only.",
+    "cost_optimization": "For high-volume production, use Nano Banana 2 on kie.ai ($0.04/image at 1K). For final hero shots, upgrade to Veo 3 Quality on kie.ai ($0.25/sec)."
+  }
+}

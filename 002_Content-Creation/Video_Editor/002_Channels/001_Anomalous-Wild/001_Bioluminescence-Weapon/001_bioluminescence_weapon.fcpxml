@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+<fcpxml version="1.9">
+
+  <resources>
+    <format id="r1" name="FFVideoFormat1080p30" frameDuration="100/3000s" width="1920" height="1080" colorSpace="1-1-1 (Rec. 709)"/>
+
+    <asset id="r2" name="scene_01" src="./scene_01/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_01/video_looped.mp4"/>
+    </asset>
+    <asset id="r3" name="scene_01b" src="./scene_01b/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_01b/video_looped.mp4"/>
+    </asset>
+    <asset id="r4" name="scene_01c" src="./scene_01c/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_01c/video_looped.mp4"/>
+    </asset>
+    <asset id="r5" name="scene_01_audio" src="./scene_01/audio.mp3" start="0s" duration="999s" hasVideo="0" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100">
+      <media-rep kind="original-media" src="./scene_01/audio.mp3"/>
+    </asset>
+    <asset id="r6" name="scene_03b" src="./scene_03b/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_03b/video_looped.mp4"/>
+    </asset>
+    <asset id="r7" name="scene_03c" src="./scene_03c/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_03c/video_looped.mp4"/>
+    </asset>
+    <asset id="r8" name="scene_03" src="./scene_03/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_03/video_looped.mp4"/>
+    </asset>
+    <asset id="r9" name="scene_03d" src="./scene_03d/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_03d/video_looped.mp4"/>
+    </asset>
+    <asset id="r10" name="scene_03e" src="./scene_03e/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_03e/video_looped.mp4"/>
+    </asset>
+    <asset id="r11" name="scene_03_audio" src="./scene_03/audio.mp3" start="0s" duration="999s" hasVideo="0" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100">
+      <media-rep kind="original-media" src="./scene_03/audio.mp3"/>
+    </asset>
+    <asset id="r12" name="scene_04b" src="./scene_04b/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_04b/video_looped.mp4"/>
+    </asset>
+    <asset id="r13" name="scene_04c" src="./scene_04c/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_04c/video_looped.mp4"/>
+    </asset>
+    <asset id="r14" name="scene_04" src="./scene_04/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_04/video_looped.mp4"/>
+    </asset>
+    <asset id="r15" name="scene_04d" src="./scene_04d/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_04d/video_looped.mp4"/>
+    </asset>
+    <asset id="r16" name="scene_04e" src="./scene_04e/image.png" start="0s" duration="999s" hasVideo="1" hasAudio="0">
+      <media-rep kind="original-media" src="./scene_04e/image.png"/>
+    </asset>
+    <asset id="r17" name="scene_04_audio" src="./scene_04/audio.mp3" start="0s" duration="999s" hasVideo="0" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100">
+      <media-rep kind="original-media" src="./scene_04/audio.mp3"/>
+    </asset>
+    <asset id="r18" name="scene_05b" src="./scene_05b/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_05b/video_looped.mp4"/>
+    </asset>
+    <asset id="r19" name="scene_05c" src="./scene_05c/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_05c/video_looped.mp4"/>
+    </asset>
+    <asset id="r20" name="scene_05" src="./scene_05/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_05/video_looped.mp4"/>
+    </asset>
+    <asset id="r21" name="scene_05e" src="./scene_05e/image.png" start="0s" duration="999s" hasVideo="1" hasAudio="0">
+      <media-rep kind="original-media" src="./scene_05e/image.png"/>
+    </asset>
+    <asset id="r22" name="scene_05d" src="./scene_05d/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_05d/video_looped.mp4"/>
+    </asset>
+    <asset id="r23" name="scene_05f" src="./scene_05f/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_05f/video_looped.mp4"/>
+    </asset>
+    <asset id="r24" name="scene_05_audio" src="./scene_05/audio.mp3" start="0s" duration="999s" hasVideo="0" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100">
+      <media-rep kind="original-media" src="./scene_05/audio.mp3"/>
+    </asset>
+    <asset id="r25" name="scene_06_audio" src="./scene_06/audio.mp3" start="0s" duration="999s" hasVideo="0" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100">
+      <media-rep kind="original-media" src="./scene_06/audio.mp3"/>
+    </asset>
+    <asset id="r26" name="scene_07b" src="./scene_07b/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_07b/video_looped.mp4"/>
+    </asset>
+    <asset id="r27" name="scene_07" src="./scene_07/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_07/video_looped.mp4"/>
+    </asset>
+    <asset id="r28" name="scene_07c" src="./scene_07c/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_07c/video_looped.mp4"/>
+    </asset>
+    <asset id="r29" name="scene_07d" src="./scene_07d/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_07d/video_looped.mp4"/>
+    </asset>
+    <asset id="r30" name="scene_07e" src="./scene_07e/image.png" start="0s" duration="999s" hasVideo="1" hasAudio="0">
+      <media-rep kind="original-media" src="./scene_07e/image.png"/>
+    </asset>
+    <asset id="r31" name="scene_07f" src="./scene_07f/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_07f/video_looped.mp4"/>
+    </asset>
+    <asset id="r32" name="scene_07g" src="./scene_07g/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_07g/video_looped.mp4"/>
+    </asset>
+    <asset id="r33" name="scene_07h" src="./scene_07h/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_07h/video_looped.mp4"/>
+    </asset>
+    <asset id="r34" name="scene_07i" src="./scene_07i/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_07i/video_looped.mp4"/>
+    </asset>
+    <asset id="r35" name="scene_07j" src="./scene_07j/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_07j/video_looped.mp4"/>
+    </asset>
+    <asset id="r36" name="scene_07k" src="./scene_07k/image.png" start="0s" duration="999s" hasVideo="1" hasAudio="0">
+      <media-rep kind="original-media" src="./scene_07k/image.png"/>
+    </asset>
+    <asset id="r37" name="scene_07_audio" src="./scene_07/audio.mp3" start="0s" duration="999s" hasVideo="0" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100">
+      <media-rep kind="original-media" src="./scene_07/audio.mp3"/>
+    </asset>
+    <asset id="r38" name="scene_08b" src="./scene_08b/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_08b/video_looped.mp4"/>
+    </asset>
+    <asset id="r39" name="scene_08" src="./scene_08/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_08/video_looped.mp4"/>
+    </asset>
+    <asset id="r40" name="scene_08c" src="./scene_08c/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_08c/video_looped.mp4"/>
+    </asset>
+    <asset id="r41" name="scene_08d" src="./scene_08d/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_08d/video_looped.mp4"/>
+    </asset>
+    <asset id="r42" name="scene_08h" src="./scene_08h/image.png" start="0s" duration="999s" hasVideo="1" hasAudio="0">
+      <media-rep kind="original-media" src="./scene_08h/image.png"/>
+    </asset>
+    <asset id="r43" name="scene_08e" src="./scene_08e/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_08e/video_looped.mp4"/>
+    </asset>
+    <asset id="r44" name="scene_08f" src="./scene_08f/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_08f/video_looped.mp4"/>
+    </asset>
+    <asset id="r45" name="scene_08i" src="./scene_08i/image.png" start="0s" duration="999s" hasVideo="1" hasAudio="0">
+      <media-rep kind="original-media" src="./scene_08i/image.png"/>
+    </asset>
+    <asset id="r46" name="scene_08g" src="./scene_08g/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_08g/video_looped.mp4"/>
+    </asset>
+    <asset id="r47" name="scene_08_audio" src="./scene_08/audio.mp3" start="0s" duration="999s" hasVideo="0" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100">
+      <media-rep kind="original-media" src="./scene_08/audio.mp3"/>
+    </asset>
+    <asset id="r48" name="scene_09b" src="./scene_09b/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_09b/video_looped.mp4"/>
+    </asset>
+    <asset id="r49" name="scene_09c" src="./scene_09c/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_09c/video_looped.mp4"/>
+    </asset>
+    <asset id="r50" name="scene_09" src="./scene_09/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_09/video_looped.mp4"/>
+    </asset>
+    <asset id="r51" name="scene_09d" src="./scene_09d/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_09d/video_looped.mp4"/>
+    </asset>
+    <asset id="r52" name="scene_09e" src="./scene_09e/image.png" start="0s" duration="999s" hasVideo="1" hasAudio="0">
+      <media-rep kind="original-media" src="./scene_09e/image.png"/>
+    </asset>
+    <asset id="r53" name="scene_09f" src="./scene_09f/image.png" start="0s" duration="999s" hasVideo="1" hasAudio="0">
+      <media-rep kind="original-media" src="./scene_09f/image.png"/>
+    </asset>
+    <asset id="r54" name="scene_09g" src="./scene_09g/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_09g/video_looped.mp4"/>
+    </asset>
+    <asset id="r55" name="scene_09h" src="./scene_09h/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_09h/video_looped.mp4"/>
+    </asset>
+    <asset id="r56" name="scene_09i" src="./scene_09i/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_09i/video_looped.mp4"/>
+    </asset>
+    <asset id="r57" name="scene_09_audio" src="./scene_09/audio.mp3" start="0s" duration="999s" hasVideo="0" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100">
+      <media-rep kind="original-media" src="./scene_09/audio.mp3"/>
+    </asset>
+    <asset id="r58" name="scene_10a2" src="./scene_10a2/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10a2/video_looped.mp4"/>
+    </asset>
+    <asset id="r59" name="scene_10a" src="./scene_10a/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10a/video_looped.mp4"/>
+    </asset>
+    <asset id="r60" name="scene_10a3" src="./scene_10a3/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10a3/video_looped.mp4"/>
+    </asset>
+    <asset id="r61" name="scene_10a4" src="./scene_10a4/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10a4/video_looped.mp4"/>
+    </asset>
+    <asset id="r62" name="scene_10b" src="./scene_10b/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10b/video_looped.mp4"/>
+    </asset>
+    <asset id="r63" name="scene_10b2" src="./scene_10b2/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10b2/video_looped.mp4"/>
+    </asset>
+    <asset id="r64" name="scene_10b3" src="./scene_10b3/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10b3/video_looped.mp4"/>
+    </asset>
+    <asset id="r65" name="scene_10b4" src="./scene_10b4/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10b4/video_looped.mp4"/>
+    </asset>
+    <asset id="r66" name="scene_10c2" src="./scene_10c2/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10c2/video_looped.mp4"/>
+    </asset>
+    <asset id="r67" name="scene_10c3" src="./scene_10c3/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10c3/video_looped.mp4"/>
+    </asset>
+    <asset id="r68" name="scene_10c" src="./scene_10c/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10c/video_looped.mp4"/>
+    </asset>
+    <asset id="r69" name="scene_10c4" src="./scene_10c4/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_10c4/video_looped.mp4"/>
+    </asset>
+    <asset id="r70" name="scene_10a_audio" src="./scene_10a/audio.mp3" start="0s" duration="999s" hasVideo="0" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100">
+      <media-rep kind="original-media" src="./scene_10a/audio.mp3"/>
+    </asset>
+    <asset id="r71" name="scene_11b" src="./scene_11b/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_11b/video_looped.mp4"/>
+    </asset>
+    <asset id="r72" name="scene_11c" src="./scene_11c/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_11c/video_looped.mp4"/>
+    </asset>
+    <asset id="r73" name="scene_11d" src="./scene_11d/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_11d/video_looped.mp4"/>
+    </asset>
+    <asset id="r74" name="scene_11e" src="./scene_11e/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_11e/video_looped.mp4"/>
+    </asset>
+    <asset id="r75" name="scene_11f" src="./scene_11f/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_11f/video_looped.mp4"/>
+    </asset>
+    <asset id="r76" name="scene_11g" src="./scene_11g/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_11g/video_looped.mp4"/>
+    </asset>
+    <asset id="r77" name="scene_11h" src="./scene_11h/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_11h/video_looped.mp4"/>
+    </asset>
+    <asset id="r78" name="scene_11" src="./scene_11/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_11/video_looped.mp4"/>
+    </asset>
+    <asset id="r79" name="scene_11i" src="./scene_11i/image.png" start="0s" duration="999s" hasVideo="1" hasAudio="0">
+      <media-rep kind="original-media" src="./scene_11i/image.png"/>
+    </asset>
+    <asset id="r80" name="scene_11j" src="./scene_11j/image.png" start="0s" duration="999s" hasVideo="1" hasAudio="0">
+      <media-rep kind="original-media" src="./scene_11j/image.png"/>
+    </asset>
+    <asset id="r81" name="scene_11k" src="./scene_11k/image.png" start="0s" duration="999s" hasVideo="1" hasAudio="0">
+      <media-rep kind="original-media" src="./scene_11k/image.png"/>
+    </asset>
+    <asset id="r82" name="scene_11m" src="./scene_11m/video_looped.mp4" start="0s" duration="999s" hasVideo="1" hasAudio="0" format="r1">
+      <media-rep kind="original-media" src="./scene_11m/video_looped.mp4"/>
+    </asset>
+    <asset id="r83" name="scene_11_audio" src="./scene_11/audio.mp3" start="0s" duration="999s" hasVideo="0" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100">
+      <media-rep kind="original-media" src="./scene_11/audio.mp3"/>
+    </asset>
+  </resources>
+
+  <library location=".">
+    <event name="Bioluminescence Weapon">
+      <project name="001_bioluminescence_weapon">
+        <sequence format="r1" duration="4081/10s" tcStart="0s" tcFormat="NDF" audioLayout="stereo" audioRate="48k">
+          <spine>
+
+            <!-- ── SCENE_01 ── -->
+            <asset-clip ref="r2" name="scene_01" offset="0s" duration="5s" start="0s">
+              <asset-clip ref="r5" lane="-1" offset="0s" duration="14s" start="0s" name="scene_01_audio" audioRole="dialogue"/>
+            </asset-clip>
+            <asset-clip ref="r3" name="scene_01b" offset="5s" duration="5s" start="0s"/>
+            <asset-clip ref="r4" name="scene_01c" offset="10s" duration="4s" start="0s"/>
+
+            <!-- ── SCENE_02 ── -->
+            <gap name="[Remotion] BioluminescenceTitleCard" offset="14s" duration="3s"/>
+
+            <!-- ── SCENE_03 ── -->
+            <asset-clip ref="r6" name="scene_03b" offset="17s" duration="4s" start="0s">
+              <asset-clip ref="r11" lane="-1" offset="0s" duration="99/5s" start="0s" name="scene_03_audio" audioRole="dialogue"/>
+            </asset-clip>
+            <asset-clip ref="r7" name="scene_03c" offset="21s" duration="4s" start="0s"/>
+            <asset-clip ref="r8" name="scene_03" offset="25s" duration="4s" start="0s"/>
+            <asset-clip ref="r9" name="scene_03d" offset="29s" duration="4s" start="0s"/>
+            <asset-clip ref="r10" name="scene_03e" offset="33s" duration="19/5s" start="0s"/>
+
+            <!-- ── SCENE_04 ── -->
+            <asset-clip ref="r12" name="scene_04b" offset="184/5s" duration="4s" start="0s">
+              <asset-clip ref="r17" lane="-1" offset="0s" duration="106/5s" start="0s" name="scene_04_audio" audioRole="dialogue"/>
+            </asset-clip>
+            <asset-clip ref="r13" name="scene_04c" offset="204/5s" duration="4s" start="0s"/>
+            <asset-clip ref="r14" name="scene_04" offset="224/5s" duration="5s" start="0s"/>
+            <asset-clip ref="r15" name="scene_04d" offset="249/5s" duration="4s" start="0s"/>
+            <asset-clip ref="r16" name="scene_04e" offset="269/5s" duration="21/5s" start="0s"/>
+
+            <!-- ── SCENE_05 ── -->
+            <asset-clip ref="r18" name="scene_05b" offset="58s" duration="5s" start="0s">
+              <asset-clip ref="r24" lane="-1" offset="0s" duration="201/5s" start="0s" name="scene_05_audio" audioRole="dialogue"/>
+            </asset-clip>
+            <asset-clip ref="r19" name="scene_05c" offset="63s" duration="5s" start="0s"/>
+            <asset-clip ref="r20" name="scene_05" offset="68s" duration="7s" start="0s"/>
+            <asset-clip ref="r21" name="scene_05e" offset="75s" duration="8s" start="0s"/>
+            <asset-clip ref="r22" name="scene_05d" offset="83s" duration="6s" start="0s"/>
+            <asset-clip ref="r23" name="scene_05f" offset="89s" duration="5s" start="0s"/>
+            <asset-clip ref="r19" name="scene_05c_r" offset="94s" duration="21/5s" start="0s"/>
+
+            <!-- ── SCENE_06 ── -->
+            <gap name="[Remotion] PhylogeneticTree" offset="491/5s" duration="367/10s">
+              <asset-clip ref="r25" lane="-1" offset="0s" duration="367/10s" start="0s" name="scene_06_audio" audioRole="dialogue"/>
+            </gap>
+
+            <!-- ── SCENE_07 ── -->
+            <asset-clip ref="r26" name="scene_07b" offset="1349/10s" duration="5s" start="0s">
+              <asset-clip ref="r37" lane="-1" offset="0s" duration="267/5s" start="0s" name="scene_07_audio" audioRole="dialogue"/>
+            </asset-clip>
+            <asset-clip ref="r27" name="scene_07" offset="1399/10s" duration="4s" start="0s"/>
+            <asset-clip ref="r28" name="scene_07c" offset="1439/10s" duration="4s" start="0s"/>
+            <asset-clip ref="r29" name="scene_07d" offset="1479/10s" duration="4s" start="0s"/>
+            <asset-clip ref="r30" name="scene_07e" offset="1519/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r31" name="scene_07f" offset="1569/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r32" name="scene_07g" offset="1619/10s" duration="4s" start="0s"/>
+            <asset-clip ref="r33" name="scene_07h" offset="1659/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r34" name="scene_07i" offset="1709/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r35" name="scene_07j" offset="1759/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r36" name="scene_07k" offset="1809/10s" duration="4s" start="0s"/>
+            <asset-clip ref="r26" name="scene_07b_r" offset="1849/10s" duration="17/5s" start="0s"/>
+
+            <!-- ── SCENE_08 ── -->
+            <asset-clip ref="r38" name="scene_08b" offset="1883/10s" duration="5s" start="0s">
+              <asset-clip ref="r47" lane="-1" offset="0s" duration="274/5s" start="0s" name="scene_08_audio" audioRole="dialogue"/>
+            </asset-clip>
+            <asset-clip ref="r39" name="scene_08" offset="1933/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r40" name="scene_08c" offset="1983/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r41" name="scene_08d" offset="2033/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r42" name="scene_08h" offset="2083/10s" duration="6s" start="0s"/>
+            <asset-clip ref="r43" name="scene_08e" offset="2143/10s" duration="6s" start="0s"/>
+            <asset-clip ref="r44" name="scene_08f" offset="2203/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r45" name="scene_08i" offset="2253/10s" duration="6s" start="0s"/>
+            <asset-clip ref="r46" name="scene_08g" offset="2313/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r43" name="scene_08e_r" offset="2363/10s" duration="34/5s" start="0s"/>
+
+            <!-- ── SCENE_09 ── -->
+            <asset-clip ref="r48" name="scene_09b" offset="2431/10s" duration="5s" start="0s">
+              <asset-clip ref="r57" lane="-1" offset="0s" duration="241/5s" start="0s" name="scene_09_audio" audioRole="dialogue"/>
+            </asset-clip>
+            <asset-clip ref="r49" name="scene_09c" offset="2481/10s" duration="4s" start="0s"/>
+            <asset-clip ref="r50" name="scene_09" offset="2521/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r51" name="scene_09d" offset="2571/10s" duration="4s" start="0s"/>
+            <asset-clip ref="r52" name="scene_09e" offset="2611/10s" duration="6s" start="0s"/>
+            <asset-clip ref="r53" name="scene_09f" offset="2671/10s" duration="6s" start="0s"/>
+            <asset-clip ref="r54" name="scene_09g" offset="2731/10s" duration="7s" start="0s"/>
+            <asset-clip ref="r55" name="scene_09h" offset="2801/10s" duration="5s" start="0s"/>
+            <asset-clip ref="r56" name="scene_09i" offset="2851/10s" duration="31/5s" start="0s"/>
+
+            <!-- ── SCENE_10 ── -->
+            <asset-clip ref="r58" name="scene_10a2" offset="2913/10s" duration="41/10s" start="0s">
+              <asset-clip ref="r70" lane="-1" offset="0s" duration="491/10s" start="0s" name="scene_10_audio" audioRole="dialogue"/>
+            </asset-clip>
+            <asset-clip ref="r59" name="scene_10a" offset="1477/5s" duration="41/10s" start="0s"/>
+            <asset-clip ref="r60" name="scene_10a3" offset="599/2s" duration="41/10s" start="0s"/>
+            <asset-clip ref="r61" name="scene_10a4" offset="1518/5s" duration="61/15s" start="0s"/>
+            <asset-clip ref="r62" name="scene_10b" offset="923/3s" duration="41/10s" start="0s"/>
+            <asset-clip ref="r63" name="scene_10b2" offset="9353/30s" duration="41/10s" start="0s"/>
+            <asset-clip ref="r64" name="scene_10b3" offset="4738/15s" duration="41/10s" start="0s"/>
+            <asset-clip ref="r65" name="scene_10b4" offset="9599/30s" duration="61/15s" start="0s"/>
+            <asset-clip ref="r66" name="scene_10c2" offset="9721/30s" duration="41/10s" start="0s"/>
+            <asset-clip ref="r67" name="scene_10c3" offset="4922/15s" duration="41/10s" start="0s"/>
+            <asset-clip ref="r68" name="scene_10c" offset="9967/30s" duration="41/10s" start="0s"/>
+            <asset-clip ref="r69" name="scene_10c4" offset="1009/3s" duration="61/15s" start="0s"/>
+
+            <!-- ── SCENE_11 ── -->
+            <asset-clip ref="r71" name="scene_11b" offset="1702/5s" duration="5s" start="0s">
+              <asset-clip ref="r83" lane="-1" offset="0s" duration="677/10s" start="0s" name="scene_11_audio" audioRole="dialogue"/>
+            </asset-clip>
+            <asset-clip ref="r72" name="scene_11c" offset="1727/5s" duration="5s" start="0s"/>
+            <asset-clip ref="r73" name="scene_11d" offset="1752/5s" duration="5s" start="0s"/>
+            <asset-clip ref="r74" name="scene_11e" offset="1777/5s" duration="5s" start="0s"/>
+            <asset-clip ref="r75" name="scene_11f" offset="1802/5s" duration="8s" start="0s"/>
+            <asset-clip ref="r76" name="scene_11g" offset="1842/5s" duration="7s" start="0s"/>
+            <asset-clip ref="r77" name="scene_11h" offset="1877/5s" duration="8s" start="0s"/>
+            <asset-clip ref="r78" name="scene_11" offset="1917/5s" duration="7s" start="0s"/>
+            <asset-clip ref="r79" name="scene_11i" offset="1952/5s" duration="6s" start="0s"/>
+            <asset-clip ref="r80" name="scene_11j" offset="1982/5s" duration="5s" start="0s"/>
+            <asset-clip ref="r81" name="scene_11k" offset="2007/5s" duration="5s" start="0s"/>
+            <asset-clip ref="r82" name="scene_11m" offset="2032/5s" duration="17/10s" start="0s"/>
+
+          </spine>
+        </sequence>
+      </project>
+    </event>
+  </library>
+
+</fcpxml>

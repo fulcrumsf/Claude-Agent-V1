@@ -1,0 +1,36 @@
+{
+  "style_id": "style_05",
+  "name": "National Geographic Wildlife Documentary",
+  "description": "Professional broadcast wildlife cinematography. Subject-focused with shallow depth of field, warm color grading, isolated subjects against clean backgrounds, cinematic elegance.",
+  "visual_attributes": {
+    "color_palette": ["#1a3a52", "#2d5a7b", "#4080aa", "#6eb3e6", "#a8d8ff"],
+    "lighting": "Broadcast-quality, warm, subject-focused with backlighting",
+    "texture": "Fine detail on subject, soft background, cinematic bokeh",
+    "camera_feel": "Professional cinema, shallow depth of field, focal-length compression",
+    "mood": "Dramatic, elegant, focused, majestic"
+  },
+  "use_cases": ["creature reveals", "close-ups", "specimen focus", "dramatic moments", "wildlife showcase"],
+  "image_gen_workflow": {
+    "primary_model": "nano-banana-2",
+    "prompt_template": "[creature/subject] underwater, National Geographic documentary photography style, professional wildlife cinematography, shallow depth of field, subject sharp and detailed, soft blurred background, warm color grading, broadcast quality, cinematic elegance",
+    "params": {
+      "resolution": "4K",
+      "aspect_ratio": "16:9",
+      "output_format": "jpg",
+      "depth_of_field": "shallow",
+      "color_grade": "warm"
+    }
+  },
+  "video_gen_workflow": {
+    "primary_model": "kling-2.6/image-to-video",
+    "motion_prompt_template": "slow subtle movement of [creature], shallow depth of field maintained, subject in sharp focus, elegant camera work, broadcast wildlife cinematography, dramatic lighting",
+    "params": {
+      "duration": "5-8",
+      "sound": false,
+      "motion_intensity": "very-low"
+    }
+  },
+  "text_overlay_strategy": "avoid",
+  "remotion_role": "Minimal - this style showcases subjects, not for text/data overlay",
+  "representative_frames": ["frames/style_05_frame_001.jpg", "frames/style_05_frame_002.jpg"]
+}

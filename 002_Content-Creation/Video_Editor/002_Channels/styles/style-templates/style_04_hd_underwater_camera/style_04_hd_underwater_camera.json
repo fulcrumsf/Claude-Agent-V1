@@ -1,0 +1,35 @@
+{
+  "style_id": "style_04",
+  "name": "High-Definition Underwater Camera Documentary",
+  "description": "Professional cinema underwater footage from submersible/ROV perspective. Natural deep-sea lighting conditions, particle backscatter, equipment visible in frame, cinematic composition.",
+  "visual_attributes": {
+    "color_palette": ["#001f3f", "#003d7a", "#0055cc", "#00aaff", "#66ddff"],
+    "lighting": "Natural underwater, submersible light sources, depth-dependent color shift",
+    "texture": "Water particles, backscatter, fine sediment, realistic depth cues",
+    "camera_feel": "Stable submersible POV, cinematic framing, deliberate composition",
+    "mood": "Immersive, authentic, documentary, discovery-driven"
+  },
+  "use_cases": ["primary footage", "main narrative sequences", "exploration scenes", "immersive experience", "authentic research documentation"],
+  "image_gen_workflow": {
+    "primary_model": "nano-banana-2",
+    "prompt_template": "[subject/location] underwater filmed from submersible, cinematic deep-sea documentary footage, professional underwater camera, natural lighting with depth, water particles and backscatter, realistic underwater cinematography, submersible POV",
+    "params": {
+      "resolution": "4K",
+      "aspect_ratio": "16:9",
+      "output_format": "jpg",
+      "cinematography_style": "documentary"
+    }
+  },
+  "video_gen_workflow": {
+    "primary_model": "kling-2.6/image-to-video",
+    "motion_prompt_template": "slow, deliberate submersible camera movement, cinematic underwater exploration, natural backscatter and particles, immersive deep-sea footage, steady professional cinematography",
+    "params": {
+      "duration": "6-10",
+      "sound": false,
+      "motion_intensity": "low-medium"
+    }
+  },
+  "text_overlay_strategy": "avoid",
+  "remotion_role": "Minimal - this style is for immersive background footage only",
+  "representative_frames": ["frames/style_04_frame_001.jpg", "frames/style_04_frame_002.jpg", "frames/style_04_frame_003.jpg"]
+}

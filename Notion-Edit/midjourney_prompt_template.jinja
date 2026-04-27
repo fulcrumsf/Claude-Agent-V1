@@ -1,0 +1,8 @@
+
+{% if items is iterable %}
+{% for item in items %}
+{{ item.subject }}, photorealistic 3D render, made of {{ item.material }}, {{ item.surface }}, {{ item.lighting }}, colors: {{ item.colors | join(', ') }}, set against a {{ item.background }} background, effects: {{ item.effects | join(', ') }} --v 7 --style raw --ar {{ item.aspect_ratio or "1:1" }} --quality {{ item.quality or "2" }}
+{% endfor %}
+{% else %}
+{{ items.subject }}, photorealistic 3D render, made of {{ items.material }}, {{ items.surface }}, {{ items.lighting }}, colors: {{ items.colors | join(', ') }}, set against a {{ items.background }} background, effects: {{ items.effects | join(', ') }} --v 7 --style raw --ar {{ items.aspect_ratio or "1:1" }} --quality {{ items.quality or "2" }}
+{% endif %}

@@ -1,0 +1,5 @@
+#### Gaming Gallery
+|![](https://www.notion.so/icons/font_gray.svg)Game Title|![](https://www.notion.so/icons/tag_gray.svg)Tags|![](https://www.notion.so/icons/subtitles_gray.svg)Description|![](https://www.notion.so/icons/link_gray.svg)URL|
+|---|---|---|---|
+|[[BeamNG.drive]]|Racing, Simulation|[BeamNG.drive](http://BeamNG.drive) is a realistic vehicle physics and crash simulation sandbox with mods, scenarios, and user-made maps. It’s great for recording satisfying driving/challenge footage for YouTube, and supports custom tracks/obstacles for content ideas.||
+|[[Automation The Car Company by Tycoon]]|Racing, Simulation|Automation: The Car Company Tycoon Game is a car design and manufacturing sim where you build and test custom vehicles. Many creators use it alongside [BeamNG.drive](http://BeamNG.drive) by exporting cars into BeamNG for driving/crash content and comparison videos.||

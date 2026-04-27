@@ -1,0 +1,35 @@
+{
+  "style_id": "style_02",
+  "name": "3D Animated/Synthetic Visualization",
+  "description": "Computer-generated 3D renders with synthetic underwater environments. Clean geometry, perfectly controlled lighting, technical equipment rendered with precision.",
+  "visual_attributes": {
+    "color_palette": ["#001a4d", "#0033cc", "#0052ff", "#3385ff", "#66b3ff"],
+    "lighting": "Artificial, synthetic illumination - not natural underwater",
+    "texture": "Smooth, polished surfaces, clean geometry, no water particles",
+    "camera_feel": "Smooth, technical, cinematic 3D camera movement",
+    "mood": "Technical, precise, explanatory, modern"
+  },
+  "use_cases": ["equipment visualization", "vessel explanation", "hypothetical scenarios", "technical diagrams", "3D cutaways"],
+  "image_gen_workflow": {
+    "primary_model": "nano-banana-2",
+    "prompt_template": "[subject] 3D animated render, underwater visualization, synthetic 3D model, clean geometry, artificial lighting, professional 3D animation style, technical illustration, cinematic 3D rendering",
+    "params": {
+      "resolution": "4K",
+      "aspect_ratio": "16:9",
+      "output_format": "jpg",
+      "style": "3D render"
+    }
+  },
+  "video_gen_workflow": {
+    "primary_model": "kling-2.6/image-to-video",
+    "motion_prompt_template": "smooth 3D camera movement around [subject], 360-degree rotation, cinematic technical visualization, synthetic underwater lighting, clean geometry animation",
+    "params": {
+      "duration": "5-8",
+      "sound": false,
+      "motion_intensity": "medium"
+    }
+  },
+  "text_overlay_strategy": "remotion_svg_only",
+  "remotion_role": "Text labels, measurements, annotations - never background imagery",
+  "representative_frames": ["frames/style_02_frame_001.jpg"]
+}

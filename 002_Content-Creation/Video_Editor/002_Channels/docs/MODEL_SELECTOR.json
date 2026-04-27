@@ -1,0 +1,284 @@
+{
+  "metadata": {
+    "created": "2026-04-04",
+    "description": "Decision matrix for selecting the optimal model and platform for each cinematic style. Used by video generation agents to make cost/quality/speed tradeoffs.",
+    "decision_framework": "Decision rules are prioritized: 1) Quality threshold, 2) Budget constraint, 3) Speed requirement",
+    "target_audience": "AI video generation agents, production schedulers, cost optimization workflows"
+  },
+  "decision_rules": [
+    {
+      "rule_id": "select_image_model",
+      "title": "Select Image Generation Model",
+      "logic": [
+        {
+          "condition": "style_category IN [style_01, style_02, style_03, style_06]",
+          "reasoning": "All non-video styles use static images as foundation",
+          "sub_decisions": [
+            {
+              "condition": "budget_constraint == 'minimal'",
+              "recommendation": "nano_banana_2 on kie.ai",
+              "cost": "$0.04/image (1K resolution)",
+              "quality_tier": "Good",
+              "when_to_use": "High-volume B-roll, rough cuts, proof-of-concept"
+            },
+            {
+              "condition": "budget_constraint == 'moderate'",
+              "recommendation": "nano_banana_2 on kie.ai (2K resolution)",
+              "cost": "$0.06/image",
+              "quality_tier": "High",
+              "when_to_use": "Standard production, final sequences"
+            },
+            {
+              "condition": "budget_constraint == 'generous' AND quality_requirement == 'hero_shot'",
+              "recommendation": "nano_banana_pro on kie.ai (4K)",
+              "cost": "$0.12/image",
+              "quality_tier": "Excellent",
+              "when_to_use": "Title cards, key sequences, high-visibility content"
+            }
+          ]
+        },
+        {
+          "condition": "style_category == style_05",
+          "reasoning": "Wildlife cinematography can use either images or short video sequences",
+          "sub_decisions": [
+            {
+              "condition": "format == 'static_image' AND quality_requirement == 'high'",
+              "recommendation": "nano_banana_2 on kie.ai with 'wildlife cinematography' prompt",
+              "cost": "$0.04-0.09/image",
+              "quality_tier": "High",
+              "when_to_use": "Creature showcase, close-ups, specimen beauty shots"
+            },
+            {
+              "condition": "format == 'video_sequence' AND duration <= 8_seconds AND quality_requirement == 'hero'",
+              "recommendation": "veo_3_quality on kie.ai",
+              "cost": "$2.00/8-second video",
+              "quality_tier": "Excellent",
+              "when_to_use": "Creature behavior, movement showcase, cinematic reveals"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "select_video_model",
+      "title": "Select Video Generation Model",
+      "logic": [
+        {
+          "condition": "style_category == style_04",
+          "reasoning": "Underwater footage is the primary video workhorse; needs depth color simulation and water particles",
+          "sub_decisions": [
+            {
+              "condition": "quality_requirement == 'rough_cut'",
+              "recommendation": "kling_2_1_standard on kie.ai (720p)",
+              "cost": "$0.025/second ($0.125 per 5-second clip)",
+              "quality_tier": "Good",
+              "duration_limit": "Up to 30 seconds per clip",
+              "when_to_use": "Early edits, iteration cycles, speed-over-quality"
+            },
+            {
+              "condition": "quality_requirement == 'broadcast'",
+              "recommendation": "kling_2_1_pro on kie.ai (1080p)",
+              "cost": "$0.05/second ($0.25 per 5-second clip)",
+              "quality_tier": "High",
+              "duration_limit": "Up to 30 seconds per clip",
+              "when_to_use": "Final render, published content"
+            },
+            {
+              "condition": "quality_requirement == 'hero_shot' AND duration <= 8_seconds",
+              "recommendation": "veo_3_quality on kie.ai",
+              "cost": "$0.25/second ($2.00 per 8-second video)",
+              "quality_tier": "Excellent",
+              "when_to_use": "Key sequences, creature reveals, cinematic moments"
+            },
+            {
+              "condition": "quality_requirement == 'broadcast' AND cost_optimization == 'aggressive'",
+              "recommendation": "veo_3_fast on kie.ai",
+              "cost": "$0.05/second ($0.40 per 8-second video)",
+              "quality_tier": "Good-High",
+              "when_to_use": "Balanced cost/quality for standard sequences"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rule_id": "cross_platform_selection",
+      "title": "Platform Priority (Kie.ai vs Fal.ai)",
+      "logic": [
+        {
+          "condition": "model_type == 'image'",
+          "recommendation": "kie.ai (default)",
+          "reasoning": "Kie.ai is 30-40% cheaper on all image models (Nano Banana 2/Pro)",
+          "exception": "None identified"
+        },
+        {
+          "condition": "model_type == 'video'",
+          "recommendation": "kie.ai (default)",
+          "reasoning": "Kie.ai offers Veo 3, Kling 2.1 at significantly lower cost than fal.ai",
+          "exception": "Use fal.ai only for Wan 2.5 if ultra-budget is required"
+        },
+        {
+          "condition": "model == 'veo_3'",
+          "recommendation": "kie.ai",
+          "kie_ai_cost": "$0.05-0.25/second",
+          "fal_ai_cost": "$0.40/second",
+          "savings": "60-80% cheaper on kie.ai"
+        },
+        {
+          "condition": "model == 'seedance_2_0'",
+          "recommendation": "AVOID (suspended as of March 15, 2026)",
+          "fallback": "Use seedance_1_5_pro on kie.ai ($0.052/second) or veo_3_quality ($0.25/second)"
+        }
+      ]
+    },
+    {
+      "rule_id": "style_to_model_direct_mapping",
+      "title": "Direct Style → Model Assignment (Quick Lookup)",
+      "style_mappings": [
+        {
+          "style": "style_01_archival_bw_documentary",
+          "primary_model": "nano_banana_2",
+          "platform": "kie.ai",
+          "cost_per_asset": "$0.04-0.09",
+          "post_processing": "Grayscale + grain added in Remotion"
+        },
+        {
+          "style": "style_02_3d_animated_synthetic",
+          "primary_model": "nano_banana_2",
+          "platform": "kie.ai",
+          "cost_per_asset": "$0.04-0.09",
+          "prompt_modifier": "'3D render style, clean geometry, synthetic colors'",
+          "post_processing": "None required; use as-is"
+        },
+        {
+          "style": "style_03_satellite_map_visualization",
+          "primary_model": "nano_banana_2",
+          "platform": "kie.ai",
+          "cost_per_asset": "$0.04-0.09",
+          "prompt_modifier": "'Satellite view, topographic mapping, overhead perspective'",
+          "post_processing": "Remotion overlays: depth markers, labels, scale indicators"
+        },
+        {
+          "style": "style_04_hd_underwater_camera",
+          "primary_model": "kling_2_1_pro (or veo_3_fast for larger budget)",
+          "platform": "kie.ai",
+          "cost_per_5_second_clip": "$0.125 (Kling Standard) or $0.25 (Kling Pro) or $0.40 (Veo 3 Fast)",
+          "prompt_modifier": "'Underwater cinematic footage, depth color gradient, water particles, bioluminescence where applicable'",
+          "post_processing": "SFX layer (Suno), color grading for zone transition"
+        },
+        {
+          "style": "style_05_national_geographic_wildlife",
+          "primary_model": "nano_banana_2 (images) or veo_3_quality (video)",
+          "platform": "kie.ai",
+          "cost_per_image": "$0.04-0.09",
+          "cost_per_8_sec_video": "$2.00",
+          "prompt_modifier": "'Wildlife cinematography, shallow depth of field, warm color grading, professional documentary'",
+          "post_processing": "Bokeh/blur added in Remotion if needed"
+        },
+        {
+          "style": "style_06_scientific_infographic",
+          "primary_model": "nano_banana_2",
+          "platform": "kie.ai",
+          "cost_per_asset": "$0.04-0.09",
+          "prompt_modifier": "'Scientific diagram, clean graphic design, information-dense, high contrast'",
+          "post_processing": "Text labels added ONLY in Remotion (never in image model)"
+        }
+      ]
+    }
+  ],
+  "cost_optimization_strategies": [
+    {
+      "strategy": "Minimize image generation cost",
+      "approach": "Use nano_banana_2 on kie.ai at 1K resolution for all non-hero sequences",
+      "estimated_savings": "60% compared to fal.ai"
+    },
+    {
+      "strategy": "Optimize video generation cost",
+      "approach": "Use kling_2_1_standard for rough cuts, kling_2_1_pro for final renders",
+      "estimated_savings": "50% compared to Veo 3 Quality, still maintains broadcast quality"
+    },
+    {
+      "strategy": "Reserve hero budgets for key moments",
+      "approach": "Use Veo 3 Quality or Nano Banana Pro only for: title cards, creature reveals, final shots",
+      "rationale": "Viewer attention peaks at specific narrative beats; allocate higher quality where it matters most"
+    },
+    {
+      "strategy": "Batch generation for efficiency",
+      "approach": "Generate 10+ images in single prompt batch → reduces overhead",
+      "estimated_savings": "10-15% on platform overheads"
+    }
+  ],
+  "quality_tiers": [
+    {
+      "tier": "Proof of Concept",
+      "target_audience": "Internal review only",
+      "image_model": "nano_banana_2 (1K)",
+      "video_model": "kling_2_1_standard",
+      "cost_efficiency": "Highest",
+      "use_case": "Early iteration, brainstorming, script validation"
+    },
+    {
+      "tier": "Broadcast Standard",
+      "target_audience": "YouTube viewers, public release",
+      "image_model": "nano_banana_2 (2K) or nano_banana_pro (1K)",
+      "video_model": "kling_2_1_pro or veo_3_fast",
+      "cost_efficiency": "High",
+      "use_case": "Standard video production, published content"
+    },
+    {
+      "tier": "Hero / Feature",
+      "target_audience": "Premium channel content, paid distribution",
+      "image_model": "nano_banana_pro (4K)",
+      "video_model": "veo_3_quality",
+      "cost_efficiency": "Medium",
+      "use_case": "Title sequences, creature reveals, key narrative moments"
+    }
+  ],
+  "decision_tree_example": {
+    "scenario": "Producing a 30-second underwater descent sequence for style_04 (HD Underwater Camera) with moderate budget",
+    "step_1_check_style": "style_04 → requires video generation",
+    "step_2_check_budget": "moderate → use kling_2_1_pro (not Veo 3)",
+    "step_3_check_duration": "30 seconds → generate as six 5-second clips",
+    "step_4_select_platform": "kie.ai (60% cheaper than fal.ai)",
+    "step_5_set_prompt": "'Underwater cinematic descent, water particles, bioluminescence, natural depth color gradient'",
+    "step_6_cost_estimate": "6 clips × $0.125/clip = $0.75 total",
+    "step_7_post_process": "Add SFX layer from Suno, color grade in Remotion for zone transitions"
+  },
+  "rules_for_agents": [
+    {
+      "rule": "ALWAYS use kie.ai as default platform",
+      "exception": "Only use fal.ai if model not available on kie.ai",
+      "rationale": "Cost savings 30-70% across all models"
+    },
+    {
+      "rule": "NEVER use Seedance 2.0",
+      "reason": "Suspended March 15, 2026; use Seedance 1.5 Pro or Veo 3 instead",
+      "fallback_cost": "Seedance 1.5 Pro: $0.052/sec; Veo 3 Quality: $0.25/sec"
+    },
+    {
+      "rule": "Image-first workflow for ALL styles",
+      "meaning": "Generate base images → extend to video if needed; never video-first",
+      "rationale": "Images are cheapest, fastest, most flexible for iteration"
+    },
+    {
+      "rule": "Text labels ALWAYS in Remotion, NEVER in image model",
+      "rationale": "Models hallucinate text; Remotion allows precise placement and animation"
+    },
+    {
+      "rule": "Schedule visuals against narration beat_sheet.json timestamps",
+      "rationale": "Narrator is master clock; prevents timing gaps and ensures pacing alignment"
+    }
+  ],
+  "future_updates": [
+    {
+      "model": "Seedance 2.0",
+      "expected_fal_ai_availability": "Late Q2 2026",
+      "action": "Re-add to comparison table once pricing announced"
+    },
+    {
+      "model": "Additional video models (TBD)",
+      "expected_date": "Q3 2026",
+      "action": "Monitor kie.ai and fal.ai release calendars quarterly"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "style_id": "style_03",
+  "name": "Satellite/Map Data Visualization",
+  "description": "Google Earth style topographic mapping and satellite imagery. Aerial perspective with information overlays, flat design aesthetic, data-visualization focused.",
+  "visual_attributes": {
+    "color_palette": ["#003d99", "#0055cc", "#0066ff", "#3399ff", "#66ccff"],
+    "lighting": "Overhead, even illumination, satellite perspective",
+    "texture": "Flat design, topographic contours, minimal depth",
+    "camera_feel": "Aerial, zoom-in/zoom-out, bird's-eye view",
+    "mood": "Informational, authoritative, educational, modern"
+  },
+  "use_cases": ["location context", "depth markers", "geographic data", "scale comparison", "route visualization"],
+  "image_gen_workflow": {
+    "primary_model": "nano-banana-2",
+    "prompt_template": "Satellite map view of [location], Google Earth style topographic visualization, aerial perspective, geographic data visualization, flat design aesthetic, clean overlays, professional map design",
+    "params": {
+      "resolution": "1080p",
+      "aspect_ratio": "16:9",
+      "output_format": "jpg",
+      "style": "satellite map"
+    }
+  },
+  "video_gen_workflow": {
+    "primary_model": "kling-2.6/image-to-video",
+    "motion_prompt_template": "smooth zoom in/out on satellite map, aerial camera movement, topographic visualization, flat design data overlay animation",
+    "params": {
+      "duration": "5-8",
+      "sound": false,
+      "motion_intensity": "low-medium"
+    }
+  },
+  "text_overlay_strategy": "remotion_svg_only",
+  "remotion_role": "All text labels, measurements, data overlays, icons - never background imagery",
+  "representative_frames": ["frames/style_03_frame_001.jpg", "frames/style_03_frame_002.jpg"]
+}

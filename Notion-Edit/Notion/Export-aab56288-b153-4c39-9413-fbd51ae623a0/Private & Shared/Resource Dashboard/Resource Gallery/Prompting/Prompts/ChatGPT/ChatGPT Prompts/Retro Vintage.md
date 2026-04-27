@@ -1,0 +1,4 @@
+**Give me 10 variations of this image prompt.**
+**[Subject]**, styled in **[Specific Clothing or Era-Appropriate Fashion]**, captured in a **[Scene/Location]** setting. Shot on a **[Camera Type or Model]** using a **[Camera Angle]** with **[Lens Type or Focal Length]**.
+The image is lit with **[Lighting Style – e.g., harsh midday sun, tungsten glow, soft ambient haze]** and colored in a **[Color Palette – e.g., warm tones, faded pastels, deep contrast]** mood.
+Include **[Prop/Object Details]** that reflect the era or enhance storytelling. The overall image should evoke a **[Mood/Tone – e.g., melancholic, rebellious, carefree, intimate]** aesthetic.

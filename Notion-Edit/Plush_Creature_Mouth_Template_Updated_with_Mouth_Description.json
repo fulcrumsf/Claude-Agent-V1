@@ -1,0 +1,31 @@
+{
+  "prompt_template": {
+    "description": "Scene Inside a Creature\u2019s Open Mouth \u2014 modular image prompt template.",
+    "group_1_environment": {
+      "structure": "{ENVIRONMENT_STRUCTURE}",
+      "features": "{ENVIRONMENT_FEATURES}",
+      "lighting": "{ENVIRONMENT_LIGHTING}",
+      "decor_elements": "{ENVIRONMENT_DECOR}",
+      "mood": "{ENVIRONMENT_MOOD}"
+    },
+    "group_2_creature_and_interior": {
+      "creature_type": "{CREATURE_TYPE}",
+      "creature_position": "{CREATURE_POSITION}",
+      "mouth_shape": "{MOUTH_SHAPE}",
+      "interior_scene_type": "{INTERIOR_SCENE_TYPE}",
+      "interior_elements": "{INTERIOR_ELEMENTS}",
+      "interior_lighting": "{INTERIOR_LIGHTING}",
+      "interior_mood": "{INTERIOR_MOOD}"
+    },
+    "group_3_visual_presentation": {
+      "camera_angle": "{CAMERA_ANGLE}",
+      "camera_details": "{CAMERA_DETAILS}",
+      "visual_style": "{VISUAL_STYLE}",
+      "post_processing": "{POST_PROCESSING}"
+    },
+    "mouth_description": {
+      "standard_rule": "The creature\u2019s mouth is wide open, forming an archway with visible teeth slightly above the floor level. The mouth serves as a fully visible interior space, with a scene unfolding inside, framed by the creature\u2019s plush teeth. The interior lighting creates a contrast between the creature\u2019s soft fur and the detailed interior scene."
+    },
+    "full_prompt_text": "{VISUAL_STYLE} image of a {CREATURE_TYPE} with a soft, plush or fantasy texture, resting inside a {ENVIRONMENT_STRUCTURE} featuring {ENVIRONMENT_FEATURES}. The creature\u2019s fur and presence blend with the {ENVIRONMENT_MOOD} atmosphere and {ENVIRONMENT_DECOR}. Its mouth is {MOUTH_SHAPE}, forming an entryway where a full interior scene \u2014 a {INTERIOR_SCENE_TYPE} \u2014 unfolds inside. This space includes {INTERIOR_ELEMENTS}, lit by {INTERIOR_LIGHTING} to create a {INTERIOR_MOOD} feel. Shot from a {CAMERA_ANGLE} using a {CAMERA_DETAILS}, the scene is completed with {POST_PROCESSING} for texture and depth."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "include": ["tools", "remotion-app/src"],
+  "extraPaths": ["tools"],
+  "venvPath": ".",
+  "pythonVersion": "3.11",
+  "typeCheckingMode": "basic",
+  "reportMissingImports": false,
+  "reportMissingModuleSource": false
+}
