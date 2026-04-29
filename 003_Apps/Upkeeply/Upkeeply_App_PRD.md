@@ -1,3 +1,10 @@
+---
+title: "Upkeeply App PRD"
+type: spec
+domain: app-dev
+tags: [spec, app-dev, ai-agents, upkeeply]
+---
+
 ## 1–2 sentence summary
 
 A mobile app (iOS + Android) that tracks home assets (HVAC, pools, spas, safety devices) and automates maintenance reminders by letting users talk to a built‑in chat model, upload photos of equipment labels, and sync reminders to calendars, email, and SMS.[1][2]

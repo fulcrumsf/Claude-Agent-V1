@@ -1,3 +1,10 @@
+---
+title: "Video Production System — Rough PDR"
+type: spec
+domain: video-production
+tags: [spec, video-production, workflow-automation]
+---
+
 # Video Production System — Rough PDR
 
 ## 1. Purpose

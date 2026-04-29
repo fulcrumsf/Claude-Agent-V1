@@ -1,3 +1,10 @@
+---
+title: "Video Production System — Technical PDR V2"
+type: spec
+domain: video-production
+tags: [spec, video-production, workflow-automation, remotion]
+---
+
 # Video Production System — Technical PDR V2
 
 ## 1. Objective

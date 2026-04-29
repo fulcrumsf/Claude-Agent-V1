@@ -1,0 +1,10 @@
+node_modules/
+dist/
+__pycache__/
+.claude/
+.agents/
+.venv/
+.git/
+000_Ingest/
+000_Daily/
+006_Websites/

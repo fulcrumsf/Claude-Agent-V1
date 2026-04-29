@@ -1,3 +1,10 @@
+---
+title: "CLAUDE.md — Game Building (Roblox)"
+type: config
+domain: gaming
+tags: [config, gaming, ai-agents, roblox]
+---
+
 # CLAUDE.md — Game Building (Roblox)
 
 ## Vault Access

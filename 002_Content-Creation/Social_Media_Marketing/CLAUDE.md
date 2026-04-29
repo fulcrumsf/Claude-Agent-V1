@@ -1,3 +1,10 @@
+---
+title: "CLAUDE.md — Social Media Marketing"
+type: config
+domain: social-media
+tags: [config, social-media, content-creation, workflow-automation]
+---
+
 # CLAUDE.md — Social Media Marketing
 
 ## Vault Access

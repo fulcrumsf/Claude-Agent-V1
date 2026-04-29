@@ -1,3 +1,10 @@
+---
+title: "Cinematic Styles Framework"
+type: skill
+domain: video-production
+tags: [skill, video-production, kie-ai, video-generation, pricing]
+---
+
 # Cinematic Styles Framework
 
 ## Overview

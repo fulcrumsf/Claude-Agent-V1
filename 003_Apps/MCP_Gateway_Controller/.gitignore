@@ -1,0 +1,12 @@
+node_modules/
+*.log
+dist/
+
+# TSC output in src dirs (Vite build generates these, but .tsx files are source of truth)
+dashboard/src/**/*.js
+server/src/**/*.js
+
+# Secrets — never commit
+.env
+.env.*
+*.secrets

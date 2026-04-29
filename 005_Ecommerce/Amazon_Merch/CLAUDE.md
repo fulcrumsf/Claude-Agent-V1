@@ -1,3 +1,10 @@
+---
+title: "CLAUDE.md — Amazon Merch"
+type: config
+domain: ecommerce
+tags: [config, ecommerce, design]
+---
+
 # CLAUDE.md — Amazon Merch
 
 ## Vault Access

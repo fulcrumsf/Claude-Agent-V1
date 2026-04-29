@@ -1,3 +1,10 @@
+---
+title: "Business Strategy"
+type: doc
+domain: architecture
+tags: [doc, architecture, content-creation, ecommerce]
+---
+
 # Business Strategy
 
 ## Overview

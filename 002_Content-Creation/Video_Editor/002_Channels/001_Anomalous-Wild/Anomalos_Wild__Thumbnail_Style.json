@@ -1,0 +1,176 @@
+{
+  "template_name": "Anomalos Wild Thumbnail Template v1",
+  "purpose": "Reusable YouTube thumbnail template for mystery-driven animal videos. Swap the subject, headline text, and arrow target while preserving the same visual style.",
+  "canvas": {
+    "aspect_ratio": "16:9",
+    "recommended_size": "1280x720",
+    "safe_margin_percent": 5
+  },
+  "style_identity": {
+    "overall_look": "clean, bold, mysterious, high-contrast, modern",
+    "reference_style": "minimal composition with one realistic subject, simple large text, bright arrow, and glowing cutout on a deep purple background",
+    "brand_feel": "curious, slightly eerie, educational, visually simple"
+  },
+  "background": {
+    "type": "smooth gradient",
+    "primary_color": "#612DD8",
+    "secondary_color": "#2B0B5A",
+    "direction": "top-left to bottom-right",
+    "texture": "very subtle haze or soft grain only",
+    "allowed_effects": [
+      "soft glow bloom behind subject",
+      "faint vignette",
+      "subtle light falloff"
+    ],
+    "avoid": [
+      "busy scenery",
+      "complex environmental details",
+      "multiple colors fighting for attention",
+      "hard patterns"
+    ]
+  },
+  "headline": {
+    "text": "why echidnas are aliens",
+    "case_style": "lowercase",
+    "font_style": "bold rounded sans-serif",
+    "color": "#FFFFFF",
+    "shadow": {
+      "enabled": true,
+      "color": "rgba(0,0,0,0.45)",
+      "blur": "medium",
+      "offset_x": 4,
+      "offset_y": 5
+    },
+    "outline": {
+      "enabled": false
+    },
+    "max_lines": 2,
+    "placement": {
+      "anchor": "top-left",
+      "x_percent": 4,
+      "y_percent": 5,
+      "width_percent": 42
+    },
+    "alignment": "left",
+    "line_spacing": 0.9,
+    "rules": [
+      "keep wording short and easy to read",
+      "use 2 to 6 words when possible",
+      "do not let text overlap the subject",
+      "text should occupy the upper-left quadrant"
+    ]
+  },
+  "subject": {
+    "type": "single realistic animal cutout",
+    "example": "echidna",
+    "placement": {
+      "anchor": "right-center",
+      "x_percent": 58,
+      "y_percent": 20,
+      "width_percent": 38,
+      "height_percent": 62
+    },
+    "orientation": "facing right or slightly toward frame edge",
+    "render_style": "photorealistic or highly realistic",
+    "cutout": {
+      "enabled": true,
+      "edge_quality": "clean, crisp"
+    },
+    "glow": {
+      "enabled": true,
+      "color": "#8AFA47",
+      "intensity": "medium",
+      "spread": "medium"
+    },
+    "shadow": {
+      "enabled": true,
+      "color": "rgba(0,0,0,0.30)",
+      "blur": "medium"
+    },
+    "rules": [
+      "subject must be the only main object",
+      "subject should fill a large part of the frame",
+      "subject anatomy must remain readable at small size",
+      "keep the pose clear enough to show the unusual feature"
+    ]
+  },
+  "arrow": {
+    "enabled": true,
+    "color": "#FF2A2A",
+    "outline": {
+      "enabled": false
+    },
+    "style": "thick curved arrow",
+    "placement": {
+      "start_anchor": "left-center",
+      "start_x_percent": 15,
+      "start_y_percent": 52,
+      "end_target": "subject_feature"
+    },
+    "target_feature_description": "hind leg",
+    "rules": [
+      "arrow should clearly point to the unusual anatomy or mystery detail",
+      "only use one arrow",
+      "arrow should not block the main subject",
+      "arrow should visually connect text area to subject area"
+    ]
+  },
+  "composition": {
+    "layout_type": "text left, subject right, arrow bridging toward key feature",
+    "visual_hierarchy": [
+      "headline",
+      "subject",
+      "arrow",
+      "background"
+    ],
+    "negative_space": "leave open space around text and around subject silhouette",
+    "balance_rule": "frame should feel uncluttered and instantly readable on mobile"
+  },
+  "color_palette": {
+    "background_primary": "#612DD8",
+    "background_secondary": "#2B0B5A",
+    "subject_glow": "#8AFA47",
+    "headline": "#FFFFFF",
+    "arrow": "#FF2A2A",
+    "shadow": "rgba(0,0,0,0.45)"
+  },
+  "thumbnail_logic": {
+    "story_function": "Show one strange creature and direct attention to the weird body part without overexplaining.",
+    "curiosity_trigger": "The viewer sees a realistic animal, a provocative title, and a pointer to an unusual feature.",
+    "click_reason": "The thumbnail implies a hidden biological oddity that the video explains."
+  },
+  "replaceable_fields": {
+    "headline_text": "why echidnas are aliens",
+    "subject_name": "echidna",
+    "subject_description": "realistic echidna with visible hind legs",
+    "arrow_target": "hind leg",
+    "subject_position": "right-center",
+    "headline_position": "top-left",
+    "background_primary_color": "#612DD8",
+    "subject_glow_color": "#8AFA47"
+  },
+  "prompt_template": {
+    "base_prompt": "Create a clean YouTube thumbnail in a 16:9 layout with a deep purple gradient background. Place bold lowercase white text in the top-left reading '{headline_text}' with a soft dark shadow. On the right side, place one highly realistic cutout of a {subject_description}. Add a soft neon green glow around the subject. Include one thick curved red arrow starting from the left side and pointing to the subject's {arrow_target}. Keep the composition simple, bold, mysterious, and readable on mobile. No clutter, no extra objects, no busy scenery.",
+    "example_values": {
+      "headline_text": "why echidnas are aliens",
+      "subject_description": "realistic echidna with clearly visible backward-looking hind legs",
+      "arrow_target": "hind leg"
+    }
+  },
+  "do": [
+    "use one realistic animal",
+    "use short bold white text",
+    "use deep purple as the main background color",
+    "use neon green glow around the subject",
+    "use one red arrow to point at the weird feature",
+    "keep the frame clean and easy to read"
+  ],
+  "dont": [
+    "do not add multiple animals",
+    "do not use long explanatory text",
+    "do not make the background busy",
+    "do not use more than one arrow",
+    "do not hide the key anatomy",
+    "do not overcrowd the frame"
+  ]
+}

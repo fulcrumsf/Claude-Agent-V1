@@ -1,3 +1,10 @@
+---
+title: "Room Portal — Channel Content System"
+type: doc
+domain: content-creation
+tags: [doc, content-creation, video-production]
+---
+
 # ROOM PORTAL — CHANNEL CONTENT SYSTEM
 
 ## CORE IDENTITY

@@ -1,3 +1,10 @@
+---
+title: "Cinematic Style Guide"
+type: guideline
+domain: video-production
+tags: [guideline, video-production, kie-ai, video-generation, content-creation]
+---
+
 # Cinematic Style Guide
 
 ## Overview

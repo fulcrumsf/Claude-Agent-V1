@@ -1,3 +1,10 @@
+---
+title: "Remotion Prompt to Motion Graphics"
+type: doc
+domain: video-production
+tags: [doc, video-production, remotion, motion-graphics, animation]
+---
+
 # Remotion Prompt to Motion Graphics
 
 <p align="center">

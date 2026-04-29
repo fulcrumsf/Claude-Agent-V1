@@ -1,3 +1,10 @@
+---
+title: "Strategic Roadmap"
+type: doc
+domain: architecture
+tags: [doc, architecture, automation, workflow-automation]
+---
+
 # Strategic Roadmap
 
 ## Overview

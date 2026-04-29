@@ -1,3 +1,10 @@
+---
+title: "Case Study: The Wildest Animal Facts You've Never Heard Of"
+type: case-study
+domain: video-production
+tags: [case-study, video-production, content-creation, anomalous-wild]
+---
+
 # Case Study: The Wildest Animal Facts You've Never Heard Of
 
 ## Video Metadata

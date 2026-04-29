@@ -29,6 +29,13 @@ venv/
 # Claude local state
 .claude/
 
+# Working/staging folders — not ready for repo
+000_Ingest/
+Notion-Edit/
+
+# Auto-generated data files (map .md is sufficient)
+001_Architecture/Install_Maps/system_map_data.json
+
 # Logs
 *.log
 

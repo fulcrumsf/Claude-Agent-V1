@@ -1,3 +1,10 @@
+---
+title: "Revenue Streams"
+type: doc
+domain: architecture
+tags: [doc, architecture, ecommerce, content-creation]
+---
+
 # Revenue Streams
 
 ## Overview

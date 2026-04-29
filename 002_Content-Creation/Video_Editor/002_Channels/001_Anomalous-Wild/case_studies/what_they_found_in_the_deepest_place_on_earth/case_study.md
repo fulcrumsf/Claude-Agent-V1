@@ -1,3 +1,10 @@
+---
+title: "Case Study: What They Found In the Deepest Place on Earth"
+type: case-study
+domain: video-production
+tags: [case-study, video-production, content-creation, anomalous-wild]
+---
+
 # Case Study: What They Found In the Deepest Place on Earth
 
 ## Video Metadata

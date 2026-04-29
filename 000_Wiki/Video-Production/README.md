@@ -1,3 +1,10 @@
+---
+title: "Video Production Wiki"
+type: doc
+domain: video-production
+tags: [doc, video-production, knowledge-graph]
+---
+
 # Video Production Wiki
 
 ## Articles (Placeholder Structure)

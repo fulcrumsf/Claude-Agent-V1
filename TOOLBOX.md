@@ -1,10 +1,33 @@
+---
+title: "TOOLBOX: Complete Tool & Capability Reference"
+type: guideline
+domain: architecture
+tags: [guideline, architecture, doc]
+---
+
 # TOOLBOX: Complete Tool & Capability Reference
 
-**Last updated:** 2026-04-05
+**Last updated:** 2026-04-29
 
 This is the single source of truth for all pre-installed tools, CLIs, MCPs, skills, and plugins.
 
 **CRITICAL MAINTENANCE RULE:** Whenever you install a new skill, plugin, MCP, CLI, or Python tool anywhere in the workspace, **immediately update this file**. Add the new capability under the appropriate section below. Agents don't know tools exist unless they're documented here.
+
+---
+
+## System Maps (Install Maps)
+
+Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the system map"** or **"look at the install map"**, read the appropriate file.
+
+| Map | File | What it covers |
+|-----|------|----------------|
+| **Workspace Map** | [`001_Architecture/Install_Maps/Workspace-Map.md`](001_Architecture/Install_Maps/Workspace-Map.md) | Folder structure, departments, active projects |
+| **System Map** | [`001_Architecture/Install_Maps/System-Map.md`](001_Architecture/Install_Maps/System-Map.md) | All installed apps, Homebrew, Python, Docker, MCPs, CLIs, scripts, skills, Adobe plugins |
+
+**Auto-update script:** `001_Architecture/Scripts/generate_system_map.py`
+- Runs weekly via cron (Sundays 3 AM)
+- Refresh manually: `python3 001_Architecture/Scripts/generate_system_map.py`
+- Output: `System-Map.md` + `system_map_data.json` (machine-readable)
 
 ---
 

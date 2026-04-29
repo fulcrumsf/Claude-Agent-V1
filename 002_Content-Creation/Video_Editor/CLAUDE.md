@@ -1,20 +1,32 @@
+---
+title: "CLAUDE.md — Video Content Engine"
+type: config
+domain: video-production
+tags: [config, video-production, content-creation, kie-ai, remotion]
+---
+
 # CLAUDE.md — Video Content Engine
 
 ---
 
-## Vault Access
+## Knowledge Graph Access
 
-**Before starting work:** Read `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/000_VAULT-INDEX.md`
+**Before starting work:** Read the federation registry at `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Graphify/REGISTRY.md` and query the Video Editor graph for any lookup question:
 
-This department's knowledge is organized in the vault under:
-- Skills: `/Obsidian-Vault/000_Skills/` (shared workflows including NotebookLM protocol, video production workflow, case study analysis)
-- Brand systems: `/Obsidian-Vault/002_Brands/` (guidelines, content systems, case studies for all active brands)
-- Tools: `/Obsidian-Vault/003_Tools/` (video model pricing, kie.ai vs fal.ai analysis, Nano Banana guide)
+```bash
+cd 002_Content-Creation/Video_Editor && graphify query "your question"
+```
+
+This department's knowledge is wikified across:
+- **Workflows / case studies / channels:** `002_Content-Creation/Video_Editor/`
+- **Cinematic style system:** `002_Content-Creation/Video_Editor/002_Channels/Styles/` (CINEMATIC_STYLE_GUIDE.md, MODEL_SELECTOR.md, MODEL_CATALOG.json)
+- **API specs (Kie.ai, Fal.ai):** `007_Resource_Library/Docs/Video_Editor/`
+- **Distilled wiki summaries:** `000_Wiki/Video-Production/`
 
 **Warehouse root:** `/Users/tonymacbook2025/Documents/Claude-Agent/`
 **TOOLBOX:** `/Users/tonymacbook2025/Documents/Claude-Agent/TOOLBOX.md`
 
-**Vault-first rule:** Search the vault for context before asking the user. If you need clarification, ask a focused question instead of requesting extensive background.
+**Graph-first rule:** Query the graph before grepping or asking the user. If the graph returns nothing useful, ask a focused question instead of requesting extensive background.
 
 ---
 

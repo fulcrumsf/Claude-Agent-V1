@@ -1,3 +1,10 @@
+---
+title: "Cinematic Style Intelligence System — Verification Checklist"
+type: report
+domain: video-production
+tags: [report, video-production, kie-ai, video-generation]
+---
+
 # Cinematic Style Intelligence System — Verification Checklist
 
 **Date Completed:** April 4, 2026  

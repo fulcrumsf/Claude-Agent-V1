@@ -1,3 +1,10 @@
+---
+title: "Business Context"
+type: doc
+domain: architecture
+tags: [doc, architecture]
+---
+
 # Business Context
 
 ## Revenue Streams (Current + Planned)

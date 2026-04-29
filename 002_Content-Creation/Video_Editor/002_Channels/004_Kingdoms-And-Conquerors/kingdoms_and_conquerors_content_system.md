@@ -1,3 +1,10 @@
+---
+title: "Kingdoms and Conquerors — Channel Content System"
+type: doc
+domain: content-creation
+tags: [doc, content-creation, video-production]
+---
+
 # KINGDOMS AND CONQUERORS — CHANNEL CONTENT SYSTEM
 
 ## CORE IDENTITY

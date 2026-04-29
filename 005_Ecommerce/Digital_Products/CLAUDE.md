@@ -1,3 +1,10 @@
+---
+title: "CLAUDE.md — Digital Products"
+type: config
+domain: ecommerce
+tags: [config, ecommerce, content-creation]
+---
+
 # CLAUDE.md — Digital Products
 
 ## Vault Access

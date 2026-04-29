@@ -1,3 +1,10 @@
+---
+title: "Content Strategy Wiki"
+type: doc
+domain: content-creation
+tags: [doc, content-creation, knowledge-graph]
+---
+
 # Content Strategy Wiki
 
 ## Articles (Placeholder Structure)

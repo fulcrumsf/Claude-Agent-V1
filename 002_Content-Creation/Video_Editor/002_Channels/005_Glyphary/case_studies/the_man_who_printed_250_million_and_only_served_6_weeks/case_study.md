@@ -1,3 +1,10 @@
+---
+title: "Case Study: The Man Who Printed $250 Million and ONLY Served 6 Weeks"
+type: case-study
+domain: content-creation
+tags: [case-study, content-creation, video-production]
+---
+
 # Case Study: The Man Who Printed $250 Million and ONLY Served 6 Weeks
 
 ## Video Metadata

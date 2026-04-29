@@ -1,3 +1,10 @@
+---
+title: "Bored Nomad — Channel Content System"
+type: doc
+domain: content-creation
+tags: [doc, content-creation, video-production, board-nomad]
+---
+
 # BORED NOMAD — CHANNEL CONTENT SYSTEM
 
 ## CORE IDENTITY

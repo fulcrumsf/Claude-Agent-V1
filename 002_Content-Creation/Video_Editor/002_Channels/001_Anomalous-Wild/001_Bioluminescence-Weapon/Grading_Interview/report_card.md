@@ -1,3 +1,10 @@
+---
+title: "Video Report Card — Bioluminescence Weapon"
+type: report
+domain: video-production
+tags: [report, video-production, content-creation, anomalous-wild]
+---
+
 # Video Report Card — Bioluminescence Weapon
 **Channel:** Anomalous Wild
 **Video:** 001_anomalous_wild — Bioluminescence (The Deep-Sea Animal That Makes Its Own Light)

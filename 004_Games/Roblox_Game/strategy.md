@@ -1,3 +1,10 @@
+---
+title: "Roblox Game Building — Strategy & Mission"
+type: doc
+domain: gaming
+tags: [doc, gaming, content-creation, roblox]
+---
+
 # Roblox Game Building — Strategy & Mission
 
 ## Mission

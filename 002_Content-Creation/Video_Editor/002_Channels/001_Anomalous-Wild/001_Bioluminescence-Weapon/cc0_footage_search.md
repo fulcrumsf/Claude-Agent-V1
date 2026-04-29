@@ -1,3 +1,10 @@
+---
+title: "CC0 Footage Search List — Bioluminescence Weapon"
+type: doc
+domain: research
+tags: [doc, research, video-production, anomalous-wild]
+---
+
 # CC0 Footage Search List — Bioluminescence Weapon
 
 Check these sources BEFORE generating AI footage for marked scenes.

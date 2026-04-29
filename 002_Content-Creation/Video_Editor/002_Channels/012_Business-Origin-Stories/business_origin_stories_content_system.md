@@ -1,3 +1,10 @@
+---
+title: "Business Origin Stories — Channel Content System"
+type: doc
+domain: content-creation
+tags: [doc, content-creation, video-production]
+---
+
 # BUSINESS ORIGIN STORIES — CHANNEL CONTENT SYSTEM
 
 ## CORE IDENTITY

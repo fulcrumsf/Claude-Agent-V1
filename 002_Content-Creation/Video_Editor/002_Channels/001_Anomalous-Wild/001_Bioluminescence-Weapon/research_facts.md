@@ -1,3 +1,10 @@
+---
+title: "Bioluminescence Research Fact Sheet"
+type: doc
+domain: research
+tags: [doc, research, content-creation, anomalous-wild]
+---
+
 # Bioluminescence Research Fact Sheet
 ## Compiled for: Anomalous Wild — "The Animal That Makes Its Own Light"
 

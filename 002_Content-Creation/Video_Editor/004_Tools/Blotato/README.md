@@ -1,3 +1,10 @@
+---
+title: "Creative Content Engine + Blotato — Free Template"
+type: doc
+domain: social-media
+tags: [doc, social-media, blotato, automation, content-creation]
+---
+
 # 🚀 Creative Content Engine + Blotato — Free Template
 
 A ready-to-use AI agent template for creating visual ad content at scale. Generate images, build campaigns, and schedule social media posts — all from a single AI conversation.

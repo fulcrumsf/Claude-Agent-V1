@@ -1,3 +1,10 @@
+---
+title: "Video Editor Project"
+type: doc
+domain: video-production
+tags: [doc, video-production, content-creation, remotion, kie-ai]
+---
+
 # Video Editor Project
 
 This project automates the orchestration and generation of video content using AI tools (Google Veo/Kling via Kie.ai API, TTS models, etc.) and programmatic rendering via Remotion.

@@ -1,3 +1,10 @@
+---
+title: "Case Study: The Most Unusual Creatures In The World — Museum of Terrestrial Life"
+type: case-study
+domain: video-production
+tags: [case-study, video-production, content-creation, anomalous-wild]
+---
+
 # Case Study: The Most Unusual Creatures In The World | The Museum of Terrestrial Life
 
 ## Video Metadata

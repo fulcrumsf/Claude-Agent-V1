@@ -1,3 +1,10 @@
+---
+title: "RAG Systems Wiki"
+type: doc
+domain: research
+tags: [doc, research, ai-agents, knowledge-graph]
+---
+
 # RAG Systems Wiki
 
 ## Articles (Placeholder Structure)

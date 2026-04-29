@@ -1,3 +1,10 @@
+---
+title: "Ecosystem Map"
+type: doc
+domain: architecture
+tags: [doc, architecture, content-creation, workflow-automation]
+---
+
 # Ecosystem Map
 
 ## Overview

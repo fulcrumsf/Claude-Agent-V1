@@ -1,3 +1,10 @@
+---
+title: "CLAUDE.md — Upkeeply"
+type: config
+domain: app-dev
+tags: [config, app-dev, ai-agents, upkeeply]
+---
+
 # CLAUDE.md — Upkeeply
 
 ## Vault Access

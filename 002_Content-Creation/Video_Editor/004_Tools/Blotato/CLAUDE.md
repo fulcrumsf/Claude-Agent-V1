@@ -1,3 +1,10 @@
+---
+title: "CLAUDE.md — Blotato"
+type: config
+domain: social-media
+tags: [config, social-media, blotato, automation]
+---
+
 # CLAUDE.md — Blotato
 
 ## What This Is

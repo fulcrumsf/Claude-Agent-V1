@@ -1,3 +1,10 @@
+---
+title: "Case Study: True Facts About The Mantis Shrimp"
+type: case-study
+domain: video-production
+tags: [case-study, video-production, content-creation, anomalous-wild]
+---
+
 # Case Study: True Facts About The Mantis Shrimp
 
 ## Video Metadata

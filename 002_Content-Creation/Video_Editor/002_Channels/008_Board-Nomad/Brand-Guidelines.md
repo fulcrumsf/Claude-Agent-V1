@@ -1,3 +1,10 @@
+---
+title: "Board-Nomad Brand Guidelines"
+type: guideline
+domain: content-creation
+tags: [guideline, content-creation, video-production, board-nomad]
+---
+
 # Board-Nomad Brand Guidelines
 
 ## Brand Overview

@@ -1,4 +1,17 @@
+---
+title: "App Building — Warehouse Manifest"
+type: config
+domain: architecture
+tags: [config, architecture, doc]
+---
+
 # App Building — Warehouse Manifest
+
+## Token Efficiency
+
+**Minimize tokens on every interaction.** When you have a choice between asking a clarifying question vs. making a reasonable assumption — make the assumption. When you can just do the work vs. asking for confirmation — do the work. When you can reference a skill by name vs. loading its full content into context — reference by name.
+
+**Skills directory:** Skills live in `~/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7/skills/` and project-local skill directories. If Tony asks about a domain (design, marketing, video production, etc.), check if a relevant skill exists in the cached skills directory and invoke it via the Skill tool rather than pre-loading knowledge. Only use skills when they're actually needed for the current task.
 
 ## What This Is
 
@@ -35,8 +48,41 @@ Common tasks and what tools exist:
 A multi-stream digital business spanning content creation, e-commerce, affiliate marketing, digital products, and SaaS tools. The goal is systematic automation — each department builds toward replacing manual effort with reliable systems.
 
 **Owner:** Tony
-**Knowledge vault:** `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/` (also accessible via Obsidian MCP)
-**Graphify registry:** `/Users/tonymacbook2025/Documents/App Building/000_Graphify/REGISTRY.md`
+**Knowledge vault:** workspace root is the Obsidian vault (`/Users/tonymacbook2025/Documents/Claude-Agent/`) — accessible via Obsidian MCP
+**Graphify registry:** `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Graphify/REGISTRY.md`
+
+## Session Memory — Read First
+
+Before starting work, scan these folders for logs and past decisions so Tony never has to repeat himself:
+- **Logs:** `001_Architecture/Logs/` — session summaries, what was done, what changed
+- **Memory:** `001_Architecture/Memory/` — conventions, tag systems, user preferences, workflow rules
+- **Feedback Loop:** `001_Architecture/Feedback_Loop/` — captured corrections, preferences, and validated approaches
+- **Self-Learning Loop:** `001_Architecture/Self_Learning_Loop/` — periodic insights and patterns from past work
+- **Claude memory:** `~/.claude/projects/-Users-tonymacbook2025-Documents-Claude-Agent/memory/MEMORY.md` — persistent cross-session memory (auto-written by Claude)
+
+If a file in Logs, Memory, Feedback, or Self-Learning covers the current topic, read it before asking Tony for clarification.
+
+## Session Memory — Write Automatically
+
+Capture knowledge without being asked. These four layers update continuously:
+
+### Feedback Loop (`001_Architecture/Feedback_Loop/`)
+Save automatically when Tony gives feedback. Don't wait for him to say "record this." Detect it from the conversation:
+- **Corrections:** "stop doing X", "that's wrong", "don't do it that way" → what should have been done, why it matters
+- **Preferences revealed:** "I prefer X", "I don't like Y", "this is overkill" → capture the preference with context
+- **Validated approaches:** Tony accepts or affirms an unusual choice ("perfect", "yes that's what I meant", no pushback on a non-obvious decision) → capture what worked and why
+- Write to: `YYYY-MM-DD_Feedback.md` — one per day, append entries
+
+### Session Logs (`001_Architecture/Logs/`)
+Compact record of what happened, not a transcript. One line per significant action: what changed, why, what files were touched, what decisions were made, what's pending. Write to: `YYYY-MM-DD_Session-Log.md`
+
+### Self-Learning Loop (`001_Architecture/Self_Learning_Loop/`)
+At session close, review the day's work and identify patterns: what went wrong, what worked well, what keeps recurring, what could be automated. Be honest about mistakes. Write to: `YYYY-MM-DD_Self-Review.md`
+
+### Cross-Session Memory
+Also update `~/.claude/.../memory/MEMORY.md` with the system — user preferences go to user feedback entries, project decisions go to project entries, external references go to reference entries.
+
+**Trigger:** When Tony says "I'm about to close this session" or similar, write all four. Also write incrementally throughout the session — don't batch everything at the end.
 
 ---
 
@@ -69,7 +115,7 @@ Before asking the user for context:
 
 ### Read First
 
-Start every session by reviewing `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/000_VAULT-INDEX.md`.
+Start every session by reading the federation registry at `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Graphify/REGISTRY.md` — it routes any lookup question to the correct domain graph.
 
 ---
 
@@ -115,6 +161,26 @@ The video engine is the top of the funnel.
 
 ---
 
+## File Naming Convention
+
+**Apply this rule to every new file or directory created in this workspace.**
+
+- **No spaces** — use `_` or `-` as word separators
+- **Capitalize the first letter of every word**: `Video_Pipeline_PDR.md` (not `video_pipeline_pdr.md`)
+- **Acronyms stay fully uppercase**: `MCP_Gateway_Controller`, `Video_Pipeline_PDR`, `AI_Footage_Prompter`
+- **Python scripts (`.py`) are exempt** — do not rename them, as other scripts may reference them by their current name
+
+**Examples:**
+
+| Bad | Good |
+|-----|------|
+| `video_pipeline_pdr.md` | `Video_Pipeline_PDR.md` |
+| `Kling 2.6_Image_to_Video.md` | `Kling_2.6_Image_to_Video.md` |
+| `anomalous-wild-hybrid.md` | `Anomalous-Wild-Hybrid.md` |
+| `case-study.md` | `Case-Study.md` |
+
+---
+
 ## Shared Principles
 
 - Every department builds toward automation — manual first, then systematize
@@ -141,3 +207,12 @@ When Tony asks about video production, case studies, or cinematic styles:
 - **Full documentation:** `CINEMATIC_STYLE_GUIDE.md`, `MODEL_SELECTOR.md`, `MODEL_CATALOG.json`, `MODEL_SELECTOR.json`
 - **Cost optimization:** kie.ai is 30–70% cheaper than fal.ai
 - **Agent coordination:** If new departments need video generation, point them to Video Editor's cinematic style system
+
+## graphify
+
+This project has a graphify knowledge graph at graphify-out/.
+
+Rules:
+- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
+- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
+- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)

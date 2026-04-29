@@ -1,3 +1,10 @@
+---
+title: "Ikigai Digital Studio — Channel Content System"
+type: doc
+domain: content-creation
+tags: [doc, content-creation, video-production, ikigai]
+---
+
 # IKIGAI DIGITAL STUDIO — CHANNEL CONTENT SYSTEM
 
 ## CORE IDENTITY

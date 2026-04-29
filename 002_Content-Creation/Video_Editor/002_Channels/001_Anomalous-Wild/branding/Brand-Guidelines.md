@@ -1,3 +1,10 @@
+---
+title: "Anomalous-Wild Brand Guidelines"
+type: guideline
+domain: content-creation
+tags: [guideline, content-creation, video-production, anomalous-wild]
+---
+
 # Anomalous-Wild Brand Guidelines
 
 ## Brand Overview

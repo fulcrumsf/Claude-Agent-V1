@@ -1,3 +1,10 @@
+---
+title: "Polyoculis — Channel Content System"
+type: doc
+domain: content-creation
+tags: [doc, content-creation, video-production]
+---
+
 # POLYOCULIS — CHANNEL CONTENT SYSTEM
 
 ## CORE IDENTITY

@@ -1,3 +1,10 @@
+---
+title: "Agent Registry — Department CLAUDE.md Files"
+type: doc
+domain: architecture
+tags: [doc, architecture]
+---
+
 # Agent Registry — Department CLAUDE.md Files
 
 This is the single source of truth for locating department documentation, agent responsibilities, and production guidelines across the warehouse.

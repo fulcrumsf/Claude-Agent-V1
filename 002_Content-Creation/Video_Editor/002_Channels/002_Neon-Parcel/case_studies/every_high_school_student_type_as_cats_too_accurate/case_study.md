@@ -1,3 +1,10 @@
+---
+title: "Case Study: Every High School Student Type as Cats (Too Accurate)"
+type: case-study
+domain: content-creation
+tags: [case-study, content-creation, video-production]
+---
+
 # Case Study: Every High School Student Type… as Cats 😭🐱 (Too Accurate)
 
 ## Video Metadata

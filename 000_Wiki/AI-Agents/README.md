@@ -1,3 +1,10 @@
+---
+title: "AI Agents Wiki"
+type: doc
+domain: research
+tags: [doc, research, ai-agents, automation]
+---
+
 # AI Agents Wiki
 
 ## Articles (Placeholder Structure)

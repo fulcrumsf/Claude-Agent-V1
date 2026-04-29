@@ -1,3 +1,10 @@
+---
+title: "CLAUDE.md — Print-on-Demand (POD)"
+type: config
+domain: ecommerce
+tags: [config, ecommerce, board-nomad, unamoss-creative]
+---
+
 # CLAUDE.md — Print-on-Demand (POD)
 
 ## Vault Access

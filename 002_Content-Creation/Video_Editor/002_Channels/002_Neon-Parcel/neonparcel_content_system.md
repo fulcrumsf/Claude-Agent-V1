@@ -1,3 +1,10 @@
+---
+title: "NeonParcel — Full Content System"
+type: doc
+domain: content-creation
+tags: [doc, content-creation, video-production]
+---
+
 # NEONPARCEL — FULL CONTENT SYSTEM
 
 ## CORE IDENTITY

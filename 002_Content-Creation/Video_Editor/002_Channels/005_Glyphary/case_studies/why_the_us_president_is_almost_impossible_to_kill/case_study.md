@@ -1,3 +1,10 @@
+---
+title: "Case Study: Why the U.S. President Is Almost Impossible to Kill"
+type: case-study
+domain: content-creation
+tags: [case-study, content-creation, video-production]
+---
+
 # Case Study: Why the U.S. President Is Almost Impossible to Kill
 
 ## Video Metadata

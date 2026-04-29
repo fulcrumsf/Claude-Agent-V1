@@ -1,3 +1,10 @@
+---
+title: "CLAUDE.md — Whop Clipping"
+type: config
+domain: content-creation
+tags: [config, content-creation, video-production, social-media]
+---
+
 # CLAUDE.md — Whop Clipping
 
 ## Vault Access

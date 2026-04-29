@@ -1,3 +1,10 @@
+---
+title: "Ikigai-Digital-Studios Brand Guidelines"
+type: guideline
+domain: content-creation
+tags: [guideline, content-creation, video-production, ikigai]
+---
+
 # Ikigai-Digital-Studios Brand Guidelines
 
 ## Brand Overview

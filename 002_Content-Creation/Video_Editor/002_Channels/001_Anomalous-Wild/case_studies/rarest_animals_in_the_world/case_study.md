@@ -1,3 +1,10 @@
+---
+title: "Case Study: Rarest Animals in the World"
+type: case-study
+domain: video-production
+tags: [case-study, video-production, content-creation, anomalous-wild]
+---
+
 # Case Study: Rarest Animals in the World
 
 ## Video Metadata

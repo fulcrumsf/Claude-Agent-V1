@@ -1,3 +1,10 @@
+---
+title: "Anomalous Wild — Script: The Deep-Sea Animal That Makes Its Own Light"
+type: script
+domain: content-creation
+tags: [script, content-creation, video-production, anomalous-wild]
+---
+
 # ANOMALOUS WILD — SCRIPT
 ## "The Deep-Sea Animal That Makes Its Own Light — And Uses It to Kill"
 

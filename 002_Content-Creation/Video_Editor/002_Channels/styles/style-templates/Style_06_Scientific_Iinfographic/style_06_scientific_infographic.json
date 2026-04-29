@@ -1,0 +1,35 @@
+{
+  "style_id": "style_06",
+  "name": "Scientific Infographic Animation",
+  "description": "Animated data visualization with text overlays, labeled illustrations, and measurements. Clean graphic design aesthetic, information-dense composition, high contrast and clarity.",
+  "visual_attributes": {
+    "color_palette": ["#001f66", "#0047b3", "#0066ff", "#3399ff", "#66ccff"],
+    "lighting": "Even, studio lighting, high contrast for text readability",
+    "texture": "Clean graphic design, flat or semi-3D rendering, sharp edges",
+    "camera_feel": "Static or slow pan, information-focused framing",
+    "mood": "Informational, precise, educational, modern, authoritative"
+  },
+  "use_cases": ["explanations", "comparisons", "measurements", "educational breakdowns", "data visualization", "scientific annotation"],
+  "image_gen_workflow": {
+    "primary_model": "nano-banana-2",
+    "prompt_template": "[subject] scientific infographic style illustration, labeled diagram, measurements and annotations visible, clean graphic design, high contrast, educational visualization, information design aesthetic, data visualization",
+    "params": {
+      "resolution": "1080p",
+      "aspect_ratio": "16:9",
+      "output_format": "jpg",
+      "style": "infographic"
+    }
+  },
+  "video_gen_workflow": {
+    "primary_model": "kling-2.6/image-to-video",
+    "motion_prompt_template": "animated infographic sequence, labels and measurements appearing, data points highlighting, educational animation style, clean graphic transitions",
+    "params": {
+      "duration": "5-8",
+      "sound": false,
+      "motion_intensity": "medium"
+    }
+  },
+  "text_overlay_strategy": "can_use_model",
+  "remotion_role": "Text, labels, measurements can be part of the background OR added in Remotion - use whichever produces cleaner output",
+  "representative_frames": ["frames/style_06_frame_001.png"]
+}

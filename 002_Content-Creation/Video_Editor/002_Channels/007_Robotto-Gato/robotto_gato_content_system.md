@@ -1,3 +1,10 @@
+---
+title: "Robotto Gato — Channel Content System"
+type: doc
+domain: content-creation
+tags: [doc, content-creation, video-production]
+---
+
 # ROBOTTO GATO — CHANNEL CONTENT SYSTEM
 
 ## CORE IDENTITY

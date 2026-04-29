@@ -1,3 +1,10 @@
+---
+title: "Upkeeply README — React + Vite"
+type: doc
+domain: app-dev
+tags: [doc, app-dev, upkeeply]
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

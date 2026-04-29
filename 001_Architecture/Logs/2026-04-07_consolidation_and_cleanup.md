@@ -1,3 +1,10 @@
+---
+title: "File Structure & Secrets Consolidation Log"
+type: report
+domain: architecture
+tags: [report, architecture, automation]
+---
+
 # File Structure & Secrets Consolidation Log
 
 **Date:** 2026-04-07  

@@ -1,3 +1,10 @@
+---
+title: "Anomalous Wild — Full Content System"
+type: doc
+domain: content-creation
+tags: [doc, content-creation, video-production, anomalous-wild]
+---
+
 # ANOMALOUS WILD — FULL CONTENT SYSTEM
 
 ## CORE IDENTITY

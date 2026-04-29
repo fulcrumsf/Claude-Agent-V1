@@ -1,3 +1,10 @@
+---
+title: "CLAUDE.md — AI Character Builder"
+type: config
+domain: app-dev
+tags: [config, app-dev, ai-agents]
+---
+
 # CLAUDE.md — AI Character Builder
 
 ## Vault Access
