@@ -29,10 +29,13 @@ Graphify is an on-device knowledge graph engine that turns any directory of file
 
 ## How Tony Uses This
 
-Graphify is the knowledge layer of the entire Claude-Agent workspace. It runs on the root directory after every ingest session, mapping relationships between wiki pages, resource files, skill docs, and department folders. Any agent (Claude Code, Codex, Antigravity) can query the graph to find related content without grepping through files. The `graphify update .` command is the final step of every ingest pipeline. The graph lives in `graphify-out/` and the `GRAPH_REPORT.md` gives agents a fast summary of god-nodes and community structure.
+Graphify is the knowledge layer of the entire Agent-OS workspace. It runs on the relevant domain folder after every ingest session, mapping relationships between wiki pages, resource files, skill docs, and department folders. Any agent (Claude Code, Codex, Antigravity) can query the graph to find related content without grepping through files. The `graphify update .` command is the fast AST-only path for code-bearing domains; docs-only or wiki-heavy domains need the interactive `/graphify <domain> --update` flow so semantic extraction runs too. The graph lives in `graphify-out/` and the `GRAPH_REPORT.md` gives agents a fast summary of god-nodes and community structure.
 
 ## Related
+
 
 - [[LLM-Wiki-Idea]] — the wiki methodology Graphify supports
 - [[007_Resource_Library/Bookmarks/Graphify-On-Device-Knowledge-Graph-Engine.md]] — source bookmark
 - [[001_Architecture/Graphify/]] — workspace Graphify config and hooks
+- [[Knowledge-Graph-Skill-for-AI-Coding-Assistants]]
+- [[Graphify-AI-Coding-Assistant-Skill]]

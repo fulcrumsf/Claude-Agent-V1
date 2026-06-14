@@ -166,5 +166,8 @@ This niche has strong performers (Company Man, Casual Criminalist for business, 
 **For thumbnails:**
 Create a YouTube thumbnail: dark navy background, split visual showing [company's humble origin — air mattress / sewing machine / cereal box] on the left and [company's scale — logo / product at peak] on the right, bold electric gold (`#F5B800`) and white text reading "[Company] Started As [Origin]", clean bold typography, contrast between then and now is the visual hook — business success story energy.
 
+Related shared skill:
+- [[../../../../001_Architecture/Skills/low-poly-cyberpunk-thumbnail/SKILL.md]]
+
 **For video concepts:**
 Generate a Business Origin Stories video concept: [company name] origin story, open with the most absurd or counterintuitive founding fact in the first 3 seconds (no intro), follow the structure: punchline premise → humble beginning → struggle/rejection → the pivot moment → scale, punchy and fast-paced, 5–10 minute target length, tone: "you will not believe this is how it started."

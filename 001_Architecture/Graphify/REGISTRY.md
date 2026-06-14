@@ -9,6 +9,8 @@ tags: [config, architecture, graphify, knowledge-graph]
 
 Single source of truth for Tony's federated knowledge graphs. Each domain has its own graph; this file routes queries to the right one.
 
+`000_Ingest/` is intentionally excluded from federation. It is a temporary staging area for unsorted incoming files, not an ingested knowledge domain.
+
 ## How agents use this file
 
 **Rule #1 in the global CLAUDE.md:** Before ANY lookup task — questions, research, "where is X", finding files, searching for concepts — read this registry, identify the relevant domain graph, then run `cd <domain> && /graphify query "your question"`. Only fall back to Grep/Read if the graph returns nothing useful.
@@ -19,7 +21,10 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 
 | Domain | Path | Graph location | MD files | Status | Last built |
 |--------|------|----------------|----------|--------|------------|
-| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 14 | pending build | — |
+| Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | pending build | — |
+| Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
+| Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 75 | pending build | — |
+| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 3038 | built | 2026-05-29T02:00Z|
 | Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 83 | pending build | — |
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | pending build | — |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | pending build | — |
@@ -28,7 +33,7 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Ecommerce | `005_Ecommerce/` | `005_Ecommerce/graphify-out/` | 4 | pending build | — |
 | Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 25 | pending build | — |
 
-Total: 8 graphs covering 138 wikified MD files.
+Total: 11 graphs covering 214 Markdown files.
 
 > **Status legend:**
 > - `pending build` — domain has YAML frontmatter, but graph hasn't been built yet

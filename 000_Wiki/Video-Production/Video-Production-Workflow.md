@@ -19,3 +19,6 @@ End-to-end pipeline from research to publishing across all 12 YouTube channels a
 6. **Publishing** — handoff to Blotato/scheduling layer; thumbnails A/B-tested across 3–5 variants.
 
 The workflow is the canonical reference any new channel or department should follow before deviating.
+
+## Related
+- [[Pipeline-Orchestration]]

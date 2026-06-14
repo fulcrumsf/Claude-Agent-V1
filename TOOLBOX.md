@@ -7,7 +7,7 @@ tags: [guideline, architecture, doc]
 
 # TOOLBOX: Complete Tool & Capability Reference
 
-**Last updated:** 2026-04-29
+**Last updated:** 2026-04-30
 
 This is the single source of truth for all pre-installed tools, CLIs, MCPs, skills, and plugins.
 
@@ -29,6 +29,49 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - Refresh manually: `python3 001_Architecture/Scripts/generate_system_map.py`
 - Output: `System-Map.md` + `system_map_data.json` (machine-readable)
 
+**Vision audit script:** `001_Architecture/Scripts/check_vision_needed.py`
+- Checks images against their category-folder notes to determine which files actually need vision analysis
+- Searches `007_Resource_Library/{Tools,Tutorials,Research,...}/` for paired markdown notes (NOT legacy Asset_Notes/)
+- Reads description from `## AI Analysis` section; detects filler ("likely a saved reference", "general visual reference", etc.)
+- Run: `python 001_Architecture/Scripts/check_vision_needed.py "/path/to/images"`
+- Pipe-friendly: add `--needs-vision-only` to print just filenames needing vision
+- Always run this BEFORE calling the ingest script — avoids duplicate API spend
+- Output: count of already-cataloged vs needs-vision, with per-file reasons
+
+**Skill registry sync script:** `001_Architecture/Scripts/sync_skill_index.py`
+- Regenerates `001_Architecture/Skills/Skill-Index.md` from every `SKILL.md` in the skills tree
+- Designed to run from Claude/Gemini hooks after skill edits so Gemini can discover new or changed skills automatically
+- Safe to run manually at any time if the registry needs a refresh
+
+**Image Extraction script:** `001_Architecture/Scripts/process_image_ingest.py`
+- Uses OpenRouter vision first (qwen model), then OpenAI vision fallback, to extract semantic knowledge
+- OCR is not the default path for screenshot renaming
+- Run: `python3 001_Architecture/Scripts/process_image_ingest.py "/path/to/images"`
+- Output: `Title-Case-With-Dashes.md` note in correct category folder, raw image moved to `Visual_Assets/`, undetermined items to `Undetermined/`
+
+**Image case fix script:** `001_Architecture/Scripts/fix_image_case.py`
+- Post-process cleanup: converts any remaining lowercase kebab-case image filenames in Visual_Assets to Title-Case-With-Dashes
+- Uses paired note's frontmatter `title:` field as source of truth; falls back to word-capitalizing the stem
+- Updates `![[...]]` embeds in paired notes and logs to `rename_log.md`
+- Run: `python3 001_Architecture/Scripts/fix_image_case.py` (dry run) or `--apply` to rename
+
+**Notion export processor:** `001_Architecture/Scripts/process_notion_edit.py`
+- Heuristic offline batch processor for large Notion exports when the export mixes md, json, csv, images, PDFs, spreadsheets, and Pages files.
+- Run: `python3 001_Architecture/Scripts/process_notion_edit.py "/path/to/Notion-Edit"`
+- Output: routes files into the current Resource Library categories, creates markdown notes for images/text exports, and leaves the source folder empty.
+
+**Markitdown CLI** — converts files to Markdown
+- Install: `pip install 'markitdown[all]'` (v0.1.5, already installed)
+- CLI: `markitdown file.pdf -o output.md`
+- Supports: PDF, Word (.docx), PowerPoint (.pptx), Excel (.xlsx), HTML, images, audio, zip
+- Use case: Step 0 of ingest pipeline — converts binary files to `.md` before classify/route steps run
+- Also usable standalone anywhere in the workspace
+
+**Video Extraction script:** `001_Architecture/Scripts/process_video_ingest.py`
+- Automates multi-step FFmpeg scene detection and audio Whisper transcription for incoming raw videos.
+- Run: `python3 001_Architecture/Scripts/process_video_ingest.py "/path/to/video.mp4"`
+- Output: Properly structured package with keyframes and transcript files in `007_Resource_Library/Videos/`.
+
 ---
 
 ## Web Scraping & URL Content
@@ -45,7 +88,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
   - `/firecrawl-download` — Download files from URLs
   - `/firecrawl-agent` — Agent mode for complex scraping tasks
 - **Python Tool:** `App Building/tools/enrich-notion-bookmarks.py` — uses Firecrawl to enrich Notion bookmarks with AI summaries
-- **API Key:** `FIRECRAWL_API_KEY` in `~/.mcp-secrets.env`
+- **API Key:** `FIRECRAWL_API_KEY` in `~/.env-secrets`
 - **When quota exhausted:** Falls back to Open Graph metadata extraction
 
 ---
@@ -64,7 +107,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 ### Openverse API
 - **What it does:** Search for Creative Commons and public domain images, audio, and video
 - **Registration:** OAuth2 API-based (POST `/v1/auth_tokens/register/` endpoint)
-- **API Key:** `OPENVERSE_API_KEY_CLIENT_ID` and `OPENVERSE_API_KEY_CLIENT_SECRET` in `~/.mcp-secrets.env`
+- **API Key:** `OPENVERSE_API_KEY_CLIENT_ID` and `OPENVERSE_API_KEY_CLIENT_SECRET` in `~/.env-secrets`
 - **Features:** Search filters for CC licensing, public domain content, usage rights
 - **Use case:** Video Editor stock media sourcing — find free, legally-usable footage and images before generating AI assets
 - **Status:** Registered and active (app: "Uno Mas Video Editor")
@@ -147,10 +190,31 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ## Video Editing & Composition
 
+### video-use (Agent-Driven Video Editor)
+- **Repo:** `001_Architecture/Tools/Video-Generation/video-use/`
+- **Skill:** `/video-use` — symlinked into `001_Architecture/Skills/video-use/`
+- **What it does:** Drop raw footage + pre-recorded VO clips in a folder, agent cuts, trims silences, self-evaluates, outputs `final.mp4`. Audio-first: transcript drives cut decisions.
+- **Pipeline:** Transcribe (ElevenLabs Scribe) → Pack → LLM Reasons → EDL → Render → Self-Eval
+- **API key:** `ELEVENLABS_API_KEY` via `source ~/.env-secrets` (never stored in .env)
+- **When to use:** Raw footage → clean cut. Primary engine for the TikTok Shop affiliate video workflow.
+- **Wiki:** `000_Wiki/Video-Production/Video-Use-Agent-Editor.md`
+
+### Hyperframes (HTML-Native Video Renderer)
+- **CLI:** `hyperframes` — globally installed via npm (v0.6.25)
+- **Repo:** `001_Architecture/Tools/Video-Generation/hyperframes/`
+- **Skills (all symlinked into `001_Architecture/Skills/`):**
+  - `/hyperframes` — composition authoring, captions, TTS, audio-reactive animation
+  - `/hyperframes-cli` — dev-loop: init, lint, preview, render, doctor
+  - `/gsap` — GSAP timeline animations, frame-accurate seeking
+- **What it does:** Write HTML → render MP4. Motion graphics, text overlays, subtitle animations, 3D assets, shader transitions. 50+ catalog blocks. Website-to-video.
+- **No API key needed** for core rendering. TTS uses Kokoro (local).
+- **When to use:** After video-use produces a clean cut, when captions/overlays/motion graphics are needed. Not yet active in affiliate workflow — add when analytics justify it.
+- **Wiki:** `000_Wiki/Video-Production/Hyperframes-Video-Rendering.md`
+
 ### FFmpeg
 - **Location:** `/opt/homebrew/bin/ffmpeg`
 - **What it does:** Frame extraction, audio/video stitching, encoding
-- **Invoked by:** `extract-frames` skill and `video_stitcher.py`
+- **Invoked by:** `extract-frames` skill, `video_stitcher.py`, video-use, and Hyperframes
 
 ### Remotion (React-based Video Composition)
 - **Project:** `App Building/my-video/` (full Next.js + Remotion app)
@@ -184,7 +248,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
   - Scrapes URLs via Firecrawl
   - Generates AI summaries via Claude
   - Updates Notion descriptions
-  - Runs: `source ~/.mcp-secrets.env && python3 /Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Notion/enrich-notion-bookmarks.py`
+  - Runs: `source ~/.env-secrets && python3 /Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Notion/enrich-notion-bookmarks.py`
 
 ---
 
@@ -206,12 +270,30 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ---
 
+## Cross-Agent Memory
+
+### claude-mem
+- **Version:** 12.4.9
+- **What it does:** Captures coding-session activity, compresses it into searchable observations, and injects relevant context into future sessions.
+- **Installed for:** Claude Code and Gemini CLI
+- **Codex:** Local `thedotmack` marketplace registered from `/Users/tonymacbook2025/.claude/plugins/marketplaces/thedotmack`; use worker/search route if plugin tools are not loaded in the active session.
+- **Worker:** `http://localhost:37701`
+- **Status:** `npx claude-mem status`
+- **Start:** `npx claude-mem start`
+- **Data:** `/Users/tonymacbook2025/.claude-mem/`
+- **Gemini hooks:** `/Users/tonymacbook2025/.gemini/settings.json`
+- **Gemini context injection:** `/Users/tonymacbook2025/.gemini/GEMINI.md`
+- **Claude search:** `/mem-search`
+- **Privacy:** Wrap sensitive text in `<private>...</private>` to exclude it from memory.
+
+---
+
 ## GitHub
 
 ### GitHub MCP Plugin
 - **Status:** Enabled
 - **What it does:** Full GitHub repo management — PRs, issues, commits, branches
-- **Auth:** `GITHUB_PERSONAL_ACCESS_TOKEN` in `~/.mcp-secrets.env`
+- **Auth:** `GITHUB_PERSONAL_ACCESS_TOKEN` in `~/.env-secrets`
 - **Skills** (via plugin):
   - Git workflow: `/commit`, `/commit-push-pr`, `/clean_gone`
   - PR/code review: `/review-pr`, `/code-review`
@@ -243,6 +325,21 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
   4. Analysis — analyze media, get stats
   5. MediaFlows — automated media transformation workflows
 
+### Cloudinary Python SDK
+- **Status:** Installed (`pip3 install cloudinary --break-system-packages`)
+- **Version:** 1.44.2 — `/opt/homebrew/lib/python3.14/site-packages`
+- **Credentials:** `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_Key`, `CLOUDINARY_API_Secret` in `~/.env-secrets`
+- **Primary use:** Upload local images to get public HTTPS URLs for AI APIs that require hosted image URLs (e.g. `firstFrame`/`lastFrame` in kie.ai Seedance, Veo3, etc.)
+- **Pattern:**
+  ```python
+  import cloudinary, cloudinary.uploader
+  cloudinary.config(cloud_name=os.environ['CLOUDINARY_CLOUD_NAME'],
+                    api_key=os.environ['CLOUDINARY_API_Key'],
+                    api_secret=os.environ['CLOUDINARY_API_Secret'], secure=True)
+  result = cloudinary.uploader.upload(local_path, public_id="my_id", overwrite=True)
+  url = result['secure_url']  # public HTTPS URL
+  ```
+
 ---
 
 ## n8n Workflow Automation
@@ -250,7 +347,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 ### n8n MCP
 - **Connected to:** `unomas.app.n8n.cloud`
 - **What it does:** Create, run, inspect n8n workflows from Claude
-- **Auth:** `N8N_MCP_TOKEN` in `~/.mcp-secrets.env`
+- **Auth:** `N8N_MCP_TOKEN` in `~/.env-secrets`
 
 ### n8n Skills (6 available)
 - `/n8n-workflow-patterns` — Design patterns for workflows
@@ -354,7 +451,45 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ---
 
+## Affiliate Marketing (005_Affiliate_Marketing/)
+
+Multi-platform affiliate marketing operations. 18 programs tracked across travel, digital tools, and e-commerce.
+
+### Programs Active
+| Program | Network | Niche |
+|---------|---------|-------|
+| Amazon Associates | Direct | General / travel gear |
+| Impact Affiliates | Impact | Multi-brand network |
+| TravelPayouts | TravelPayouts | Flights, hotels, travel |
+| Expedia | Direct | Hotels / travel |
+| Bookaway | Direct | Ground transport |
+| GetYourGuide | Direct | Tours & activities |
+| Hostelworld | Direct | Accommodation |
+| JR Pass | Direct | Japan rail |
+| Klook | Direct | Travel experiences |
+| SafetyWing | Direct | Travel insurance |
+| Stay22 | Direct | Accommodation |
+| Digistore24 | Digistore24 | Digital products |
+| 12Go | Direct | Asia transport |
+| Higgsfield | Direct | AI video tool |
+| Magnific | Direct | AI upscaler |
+| OpusClip | Direct | Video clipping |
+| VidIQ | Direct | YouTube tools |
+| TikTok Shop Affiliate | TikTok | Product affiliate |
+
+### Key Docs
+- Affiliate compliance docs → `007_Resource_Library/Docs/Affiliate_Marketing/` (ToS, allowed/prohibited rules for all programs)
+
+---
+
 ## Video Editor Specific Tools
+
+### TikTok Shop Affiliate Video
+- **Skill:** `/tiktok-shop-affiliate-video` — `001_Architecture/Skills/TikTok-Shop-Affiliate-Video/`
+- **Script:** `scripts/analyze_clips.py` — FFmpeg scene detection → Qwen-VL (OpenRouter) → `clip_analysis.md`
+- **What it does:** Produces 6 TikTok/YouTube Shorts affiliate videos (9:16) from raw product footage + pre-recorded VO clips. Audio-first: VO drives the cut. 3 visual edits × 2 audio tracks = 6 outputs.
+- **API keys:** `OPENROUTER_API_KEY` (vision analysis) + `ELEVENLABS_API_KEY` (transcription) via `source ~/.env-secrets`
+- **Trigger:** "create affiliate video", "edit product footage for TikTok", "make shop video"
 
 ### Video Editor Skills (in Video-Editor `.agents/skills/` and Obsidian Vault)
 - `/download-video` — Download YouTube videos at 720p
@@ -374,7 +509,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ## API Keys Reference
 
-All keys stored in `~/.mcp-secrets.env`. When a tool requires a key, it's listed in `TOOLBOX.md` under that tool's section.
+All keys stored in `~/.env-secrets`. When a tool requires a key, it's listed in `TOOLBOX.md` under that tool's section.
 
 | Service | Key Variable | Used By |
 |---------|--------------|---------|
@@ -405,8 +540,19 @@ All keys stored in `~/.mcp-secrets.env`. When a tool requires a key, it's listed
 | CLI | Location | What It Does |
 |-----|----------|-------------|
 | `ffmpeg` | `/opt/homebrew/bin/ffmpeg` | Video frame extraction, stitching, encoding |
+| `bun` | `/Users/tonymacbook2025/.bun/bin/bun` | JavaScript runtime used by claude-mem worker and hooks |
+| `gemini` | `/opt/homebrew/bin/gemini` | Google Gemini CLI for terminal-based AI agent workflows |
 | `yt-dlp` | `/Library/Frameworks/Python.framework/Versions/3.13/bin/yt-dlp` | Download videos from YouTube and public sources |
 | `python3` | `/Library/Frameworks/Python.framework/Versions/3.13/bin/python3` | Python interpreter for all .py tools |
+
+---
+
+## Python Packages (System-Wide, pip3)
+
+| Package | Version | What It Does |
+|---------|---------|-------------|
+| `cloudinary` | 1.44.2 | Upload images/video to Cloudinary CDN; returns public HTTPS URLs for AI API parameters |
+| `Pillow` | 12.2.0 | Image processing — resize, pixel diff, frame comparison; used by scene detection scripts |
 
 ---
 

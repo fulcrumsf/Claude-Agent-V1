@@ -17,7 +17,7 @@ import datetime
 # ── Config ────────────────────────────────────────────────────────────────────
 
 HOME = Path.home()
-WORKSPACE = Path("/Users/tonymacbook2025/Documents/Claude-Agent")
+WORKSPACE = Path("/Users/tonymacbook2025/Documents/Agent-OS")
 OUTPUT_DIR = WORKSPACE / "001_Architecture" / "Install_Maps"
 OUTPUT_MD  = OUTPUT_DIR / "System-Map.md"
 OUTPUT_JSON = OUTPUT_DIR / "system_map_data.json"
@@ -237,7 +237,7 @@ def scan_clis():
         "gh", "git", "node", "npm", "npx", "bun", "deno",
         "firecrawl", "docker", "docker-compose",
         "ffmpeg", "ffprobe", "imagemagick", "convert", "magick",
-        "graphify", "obsidian", "claude", "codex",
+        "graphify", "obsidian", "claude", "codex", "gemini",
         "terraform", "kubectl", "helm",
         "aws", "gcloud", "az",
         "jq", "yq", "fd", "rg", "fzf", "tmux", "zsh", "bash",
@@ -247,12 +247,17 @@ def scan_clis():
         "supabase", "vercel", "netlify",
         "blotato", "n8n",
     ]
+    fallback_paths = {
+        "bun": HOME / ".bun" / "bin" / "bun",
+    }
     clis = []
     for cli in known:
         path = run(["which", cli])
+        if not path and cli in fallback_paths and fallback_paths[cli].exists():
+            path = str(fallback_paths[cli])
         if path:
             for flag in ["--version", "version", "-v", "-V"]:
-                version = run([cli, flag], timeout=5)
+                version = run([path if cli in fallback_paths else cli, flag], timeout=5)
                 if version:
                     version = version.split("\n")[0][:100]
                     break
@@ -410,9 +415,12 @@ def generate_markdown(data):
         "",
         f"> **Auto-generated:** {ts}  ",
         "> Do not edit manually. Refresh by running:",
-        "> `python3 /Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Scripts/generate_system_map.py`",
+        "> `python3 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/generate_system_map.py`",
         "",
         "**When Tony says 'look at the system map' — this is that file.**",
+        "",
+        "### ⚠️ Manual Environment Customizations",
+        "- **Antigravity (VS Code fork):** We manually patched `/Applications/Antigravity.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.html` to load custom CSS for explorer row colors. **Note:** This causes Antigravity to display a \"Your Antigravity installation appears to be corrupt. Please reinstall.\" warning. This is expected behavior when modifying core files and can be ignored or reverted later.",
         "",
         "---",
         "",

@@ -5,7 +5,7 @@
 set -euo pipefail
 
 # Workspace root (resolves regardless of where the hook is invoked from)
-WORKSPACE_ROOT="/Users/tonymacbook2025/Documents/Claude-Agent"
+WORKSPACE_ROOT="/Users/tonymacbook2025/Documents/Agent-OS"
 
 # Where dirty sentinels live (one empty file per domain that needs rebuild)
 DIRTY_DIR="${WORKSPACE_ROOT}/.graphify/dirty"
@@ -18,6 +18,8 @@ HOOK_LOG="${WORKSPACE_ROOT}/.graphify/hooks.log"
 
 # Domains that have their own graph. Each entry: "<sentinel-slug>:<relative-path>"
 # Order matters — longer paths first so prefix matching is unambiguous.
+# Note: `000_Ingest/` is intentionally excluded. It is a temporary staging area,
+# not an ingested knowledge domain, so hooks must never mark it dirty.
 DOMAINS=(
   "video-editor:002_Content-Creation/Video_Editor"
   "whop-clipping:002_Content-Creation/Whop_Clipping"

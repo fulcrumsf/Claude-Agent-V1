@@ -5,7 +5,7 @@ domain: video-production
 tags: [guideline, video-production, kie-ai, video-generation, content-creation]
 ---
 
-Source: [Cinematic Style Guide](/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/002_Channels/Styles/CINEMATIC_STYLE_GUIDE.md)
+Source: [Cinematic Style Guide](/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/Styles/CINEMATIC_STYLE_GUIDE.md)
 
 ## Summary
 

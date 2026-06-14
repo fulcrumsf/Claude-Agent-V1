@@ -1,0 +1,112 @@
+/* Explorer row colors for Antigravity / VS Code tree rows.
+   Requires a CSS injection extension such as Custom CSS and JS Loader. */
+
+/* Shared row treatment */
+.monaco-workbench .part.sidebar .monaco-list-row[class*="focus"],
+.monaco-workbench .part.sidebar .monaco-list-row[class*="selected"] {
+  outline: none !important;
+}
+
+/* Background Colors */
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="000_Daily"], :has([aria-label="000_Daily"])) {
+  background-color: #c45b64 !important;
+}
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="000_Ingest"], :has([aria-label="000_Ingest"])) {
+  background-color: #d88d6f !important;
+}
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="000_Project-Ideas"], :has([aria-label="000_Project-Ideas"])) {
+  background-color: #e7c67d !important;
+}
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="000_Wiki"], :has([aria-label="000_Wiki"])) {
+  background-color: #98bd8f !important;
+}
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="001_Architecture"], :has([aria-label="001_Architecture"])) {
+  background-color: #8ebab5 !important;
+}
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="002_Content-Creation"], :has([aria-label="002_Content-Creation"])) {
+  background-color: #88b9c8 !important;
+}
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="003_Apps"], :has([aria-label="003_Apps"])) {
+  background-color: #80a0c0 !important;
+}
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="004_Games"], :has([aria-label="004_Games"])) {
+  background-color: #647b9e !important;
+}
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="005_Ecommerce"], :has([aria-label="005_Ecommerce"])) {
+  background-color: #b48eaf !important;
+}
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="006_Websites"], :has([aria-label="006_Websites"])) {
+  background-color: #c45b64 !important;
+}
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="007_Resource_Library"], :has([aria-label="007_Resource_Library"])) {
+  background-color: #d88d6f !important;
+}
+.monaco-workbench .part.sidebar .monaco-list-row:is([aria-label="008_Investments"], :has([aria-label="008_Investments"])) {
+  background-color: #e7c67d !important;
+}
+
+/* Force text and twistie arrows to be strictly black for ANY of the colored rows above */
+.monaco-workbench .part.sidebar .monaco-list-row:is(
+  [aria-label="000_Daily"], :has([aria-label="000_Daily"]),
+  [aria-label="000_Ingest"], :has([aria-label="000_Ingest"]),
+  [aria-label="000_Project-Ideas"], :has([aria-label="000_Project-Ideas"]),
+  [aria-label="000_Wiki"], :has([aria-label="000_Wiki"]),
+  [aria-label="001_Architecture"], :has([aria-label="001_Architecture"]),
+  [aria-label="002_Content-Creation"], :has([aria-label="002_Content-Creation"]),
+  [aria-label="003_Apps"], :has([aria-label="003_Apps"]),
+  [aria-label="004_Games"], :has([aria-label="004_Games"]),
+  [aria-label="005_Ecommerce"], :has([aria-label="005_Ecommerce"]),
+  [aria-label="006_Websites"], :has([aria-label="006_Websites"]),
+  [aria-label="007_Resource_Library"], :has([aria-label="007_Resource_Library"]),
+  [aria-label="008_Investments"], :has([aria-label="008_Investments"])
+) {
+  color: #000000 !important;
+}
+
+.monaco-workbench .part.sidebar .monaco-list-row:is(
+  [aria-label="000_Daily"], :has([aria-label="000_Daily"]),
+  [aria-label="000_Ingest"], :has([aria-label="000_Ingest"]),
+  [aria-label="000_Project-Ideas"], :has([aria-label="000_Project-Ideas"]),
+  [aria-label="000_Wiki"], :has([aria-label="000_Wiki"]),
+  [aria-label="001_Architecture"], :has([aria-label="001_Architecture"]),
+  [aria-label="002_Content-Creation"], :has([aria-label="002_Content-Creation"]),
+  [aria-label="003_Apps"], :has([aria-label="003_Apps"]),
+  [aria-label="004_Games"], :has([aria-label="004_Games"]),
+  [aria-label="005_Ecommerce"], :has([aria-label="005_Ecommerce"]),
+  [aria-label="006_Websites"], :has([aria-label="006_Websites"]),
+  [aria-label="007_Resource_Library"], :has([aria-label="007_Resource_Library"]),
+  [aria-label="008_Investments"], :has([aria-label="008_Investments"])
+) .label-name,
+.monaco-workbench .part.sidebar .monaco-list-row:is(
+  [aria-label="000_Daily"], :has([aria-label="000_Daily"]),
+  [aria-label="000_Ingest"], :has([aria-label="000_Ingest"]),
+  [aria-label="000_Project-Ideas"], :has([aria-label="000_Project-Ideas"]),
+  [aria-label="000_Wiki"], :has([aria-label="000_Wiki"]),
+  [aria-label="001_Architecture"], :has([aria-label="001_Architecture"]),
+  [aria-label="002_Content-Creation"], :has([aria-label="002_Content-Creation"]),
+  [aria-label="003_Apps"], :has([aria-label="003_Apps"]),
+  [aria-label="004_Games"], :has([aria-label="004_Games"]),
+  [aria-label="005_Ecommerce"], :has([aria-label="005_Ecommerce"]),
+  [aria-label="006_Websites"], :has([aria-label="006_Websites"]),
+  [aria-label="007_Resource_Library"], :has([aria-label="007_Resource_Library"]),
+  [aria-label="008_Investments"], :has([aria-label="008_Investments"])
+) .monaco-tl-twistie,
+.monaco-workbench .part.sidebar .monaco-list-row:is(
+  [aria-label="000_Daily"], :has([aria-label="000_Daily"]),
+  [aria-label="000_Ingest"], :has([aria-label="000_Ingest"]),
+  [aria-label="000_Project-Ideas"], :has([aria-label="000_Project-Ideas"]),
+  [aria-label="000_Wiki"], :has([aria-label="000_Wiki"]),
+  [aria-label="001_Architecture"], :has([aria-label="001_Architecture"]),
+  [aria-label="002_Content-Creation"], :has([aria-label="002_Content-Creation"]),
+  [aria-label="003_Apps"], :has([aria-label="003_Apps"]),
+  [aria-label="004_Games"], :has([aria-label="004_Games"]),
+  [aria-label="005_Ecommerce"], :has([aria-label="005_Ecommerce"]),
+  [aria-label="006_Websites"], :has([aria-label="006_Websites"]),
+  [aria-label="007_Resource_Library"], :has([aria-label="007_Resource_Library"]),
+  [aria-label="008_Investments"], :has([aria-label="008_Investments"])
+) .monaco-icon-label {
+  color: #000000 !important;
+  fill: #000000 !important;
+  text-shadow: none !important;
+  font-weight: 600 !important;
+}

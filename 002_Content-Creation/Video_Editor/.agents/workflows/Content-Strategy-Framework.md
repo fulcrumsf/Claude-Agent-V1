@@ -255,7 +255,7 @@ Each brand folder in 002_Brands/ should have Content-System.md containing:
 - Audience data: YouTube Analytics, community feedback
 - Performance baseline: Case studies in 002_Brands/[Brand]/Case-Studies/
 - Research materials: 004_Research/reference-material/
-- Publishing tools: See `/Users/tonymacbook2025/Documents/Claude-Agent/TOOLBOX.md`
+- Publishing tools: See `/Users/tonymacbook2025/Documents/Agent-OS/TOOLBOX.md`
 - Trending content: NotebookLM for research-backed insights
 
 ## Success Metrics

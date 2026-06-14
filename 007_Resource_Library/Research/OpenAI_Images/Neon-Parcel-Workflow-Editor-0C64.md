@@ -1,0 +1,20 @@
+---
+title: "Neon Parcel Workflow Editor 0C64"
+type: asset-note
+category: research
+tags:
+  - neon-parcel
+  - workflow-automation
+  - task-integration
+conversation_id: "69307b6d-65a8-832f-adad-69a3713b6f61"
+conversation_title: "Build n8n workflow"
+theme: "Image Generation / Design"
+image_role: "output"
+original_filename: "file_00000000153c723095d0f7a0299fd3e8-9223315a-4760-4dee-950a-2a27507e0405.png"
+created: 2026-05-06
+---
+
+![[Obsidian_Attachments/OpenAI_Images/Outputs/Neon-Parcel-Workflow-0C64.png]]
+
+## AI Analysis
+The screenshot shows the workflow editor of Neon Parcel, a platform for automating tasks and integrating various applications. The interface highlights a user workflow that is set to execute when a button is clicked, with nodes defining actions and data inputs needed to manipulate or pass information across different apps.

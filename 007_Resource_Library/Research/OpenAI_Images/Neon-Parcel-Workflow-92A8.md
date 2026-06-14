@@ -1,0 +1,20 @@
+---
+title: "Neon Parcel Workflow 92A8"
+type: asset-note
+category: research
+tags:
+  - neon-parcel
+  - workflow
+  - automation
+conversation_id: "69307b6d-65a8-832f-adad-69a3713b6f61"
+conversation_title: "Build n8n workflow"
+theme: "Image Generation / Design"
+image_role: "output"
+original_filename: "file_00000000e8f87230b9dfb56dfad4ef77-2ac414e5-5974-4d9f-9523-30091a9517c3.png"
+created: 2026-05-06
+---
+
+![[Obsidian_Attachments/OpenAI_Images/Outputs/Neon-Parcel-Workflow-92A8.png]]
+
+## AI Analysis
+This screenshot captures a workflow creation interface in the Neon Parcel application. It shows a visual representation of a workflow with an option to execute by clicking 'Execute workflow'. The interface suggests that users can create and manage automated workflows easily.

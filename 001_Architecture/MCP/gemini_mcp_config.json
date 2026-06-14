@@ -1,0 +1,57 @@
+{
+  "mcpServers": {
+    "blotato": {
+      "serverURL": "https://mcp.blotato.com/mcp",
+      "headers": {
+        "blotato-api-key": "${BLOTATO_API_KEY}"
+      },
+      "disabled": true
+    },
+    "docker": {
+      "command": "zsh",
+      "args": [
+        "-lc",
+        "uvx mcp-server-docker"
+      ],
+      "disabled": true
+    },
+    "docker-mcp-toolkit": {
+      "command": "zsh",
+      "args": [
+        "-lc",
+        "docker mcp gateway run"
+      ],
+      "disabledTools": [
+        "API-create-a-comment",
+        "API-create-a-data-source",
+        "API-delete-a-block",
+        "API-get-block-children",
+        "API-get-self",
+        "API-get-user",
+        "API-get-users"
+      ],
+      "disabled": true
+    },
+    "stitch": {
+      "serverURL": "https://stitch.googleapis.com/mcp",
+      "headers": {
+        "X-Goog-Api-Key": "${GOOG_API_KEY}"
+      },
+      "disabled": true
+    },
+    "remotion-documentation": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@remotion/mcp@latest"
+      ],
+      "disabled": true
+    },
+    "claude-mem": {
+      "command": "node",
+      "args": [
+        "/Users/tonymacbook2025/.claude/plugins/cache/thedotmack/claude-mem/13.3.0/scripts/mcp-server.cjs"
+      ]
+    }
+  }
+}

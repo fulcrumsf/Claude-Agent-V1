@@ -1,0 +1,20 @@
+---
+title: "Neon Parcel Workflow 2C7F"
+type: asset-note
+category: research
+tags:
+  - neon-parcel
+  - workflow
+  - automation
+conversation_id: "69307b6d-65a8-832f-adad-69a3713b6f61"
+conversation_title: "Build n8n workflow"
+theme: "Image Generation / Design"
+image_role: "output"
+original_filename: "file_000000000db07230a5ff5ab28b50ff2c-9cb87b85-3664-47a3-a308-78b4dce48417.png"
+created: 2026-05-06
+---
+
+![[Obsidian_Attachments/OpenAI_Images/Outputs/Neon-Parcel-Workflow-2C7F.png]]
+
+## AI Analysis
+This screenshot displays a workflow created in the Neon Parcel application. The workflow includes steps for executing a task when a button is clicked, using components such as 'Input Data', 'Convert Text to Speech', 'HTTP Request', and 'WebSocket Request'. The purpose is to automate a process that involves text-to-speech conversion and network requests.

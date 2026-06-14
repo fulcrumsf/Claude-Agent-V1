@@ -5,7 +5,7 @@ domain: video-production
 tags: [doc, video-production, research, knowledge-graph]
 ---
 
-**Source:** [[/Users/tonymacbook2025/Documents/Claude-Agent/007_Resource_Library/Docs/Video_Editor/PUBLIC_DOMAIN_SOURCES_RATING.md]]
+**Source:** [[/Users/tonymacbook2025/Documents/Agent-OS/007_Resource_Library/Docs/Video_Editor/PUBLIC_DOMAIN_SOURCES_RATING.md]]
 
 ## Summary
 

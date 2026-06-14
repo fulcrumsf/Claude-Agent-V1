@@ -1,0 +1,46 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Glob|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f 001_Architecture/Graphify/REGISTRY.md ] && echo '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"graphify federation: read 001_Architecture/Graphify/REGISTRY.md to find the right per-domain graph, then run \\\"cd <domain> && graphify query <question>\\\" before grep/read.\"}}' || true"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "001_Architecture/Graphify/hooks/mark-dirty.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "001_Architecture/Graphify/hooks/recover-stale.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "001_Architecture/Graphify/hooks/rebuild-dirty.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -21,4 +21,8 @@ Six production methodologies covering most video output:
 **Cost rule:** kie.ai is the default — 30–70% cheaper than fal.ai. Escalate to fal.ai only when ultra-high resolution or specific Kling features are required. Each style has parameter presets (grain, DOF, color temp, particle density) documented in the source file.
 
 ## Related
+
 - [[Angular-Minimalist-Action-Style]]
+- [[Cinematic-Toon-Frame]]
+- [[Retro-Space-Animation-Style]]
+- [[Stylized-Action-Frame-Style]]

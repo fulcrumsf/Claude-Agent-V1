@@ -12,7 +12,7 @@ created: 2026-04-28
 
 # Workspace System Map
 
-**Root:** `/Users/tonymacbook2025/Documents/Claude-Agent/`
+**Root:** `/Users/tonymacbook2025/Documents/Agent-OS/`
 
 This is Tony's operating system. All agents (Claude Code, Codex, Antigravity, Warp terminal agents) share this workspace as the single source of truth. Every subfolder is a department. This map tells any agent where to look and where to put things.
 
@@ -33,6 +33,8 @@ This is Tony's operating system. All agents (Claude Code, Codex, Antigravity, Wa
 | `005_Ecommerce/` | E-commerce departments |
 | `006_Websites/` | Website projects by brand |
 | `007_Resource_Library/` | **Raw reference files** — source materials, bookmarks, API docs, tool docs, models, prompts |
+| `008_Investments/` | Investment research and portfolio tooling |
+| `009_AI_Jobs/` | AI job onboarding, contracts, and work references |
 
 ---
 
@@ -65,10 +67,11 @@ Synthesized knowledge pages created by agents during ingest. Not raw sources —
 | `Logs/` | Session logs — what was done each session |
 | `MCP/` | MCP server configs and docs |
 | `Memory/` | Conventions, tag systems, user preferences, workflow rules |
+| `Memory/ChatGPT_Profile/` | Second-brain profile notes distilled from the ChatGPT export |
 | `Obsidian/Templates/` | Obsidian Templater templates |
 | `Scripts/` | Utility scripts |
 | `Self_Learning_Loop/` | Periodic self-review and pattern recognition notes |
-| `Skills/` | Skill backup copies (authoritative copies live in `~/.claude/skills/`) |
+| `Skills/` | **Authoritative skill source.** `~/.claude/skills`, `~/.codex/skills`, `~/.gemini/skills` all symlink here. Add skills here; all agents pick them up automatically. |
 | `Tools/` | Tool documentation organized by type |
 | `Business-Strategy.md` | Business strategy overview |
 | `Ecosystem-Map.md` | Full business ecosystem map |
@@ -85,7 +88,7 @@ Synthesized knowledge pages created by agents during ingest. Not raw sources —
 | `Image-Generation/` | Image generation tool docs |
 | `Remotion/` | Remotion video framework docs |
 | `Text-To-Speech/` | TTS tool docs |
-| `Video-Generation/` | Video generation tool docs and model catalog |
+| `Video-Generation/` | Video generation tool docs, model catalog, **video-use** (agent editor), **hyperframes** (HTML renderer) |
 
 ---
 
@@ -118,6 +121,33 @@ Synthesized knowledge pages created by agents during ingest. Not raw sources —
 | Subfolder | Content |
 |-----------|---------|
 | `Roblox_Game/` | Roblox game — Luau scripting, Studio architecture |
+
+---
+
+## 005_Affiliate_Marketing/ — Affiliate Marketing Programs
+
+Multi-platform affiliate marketing operations. Each subfolder is a separate affiliate program or network.
+
+| Subfolder | Content |
+|-----------|---------|
+| `Amazon_Associates/` | Amazon Associates affiliate program |
+| `Impact_Affiliates/` | Impact affiliate network |
+| `TravelPayouts/` | TravelPayouts travel affiliate network |
+| `Expedia/` | Expedia affiliate program |
+| `Bookaway/` | Bookaway ground transport affiliate program |
+| `GetYourGuide/` | GetYourGuide tours and activities affiliate |
+| `Hostelworld/` | Hostelworld accommodation affiliate |
+| `JRPass/` | JR Pass Japan rail affiliate |
+| `Klooks/` | Klook travel experiences affiliate |
+| `SafetyWing/` | SafetyWing travel insurance affiliate |
+| `Stay22/` | Stay22 accommodation affiliate |
+| `Digistore24/` | Digistore24 digital products affiliate network |
+| `12Go/` | 12Go Asia transport affiliate |
+| `Higgsfield/` | Higgsfield AI video tool affiliate |
+| `Magnific/` | Magnific AI upscaler affiliate |
+| `Opusclip/` | OpusClip video clipping tool affiliate |
+| `VidIQ/` | VidIQ YouTube tool affiliate |
+| `Tiktok_Shop_Affiliate/` | TikTok Shop affiliate program |
 
 ---
 
@@ -158,14 +188,35 @@ Source materials, bookmarks, API docs, and references. Files land here after ing
 | `Docs/Video_Editor/Fal.ai_API/` | fal.ai API documentation |
 | `Docs/Video_Editor/Research_API/` | Research/data API docs |
 | `Docs/Video_Editor/Storytelling_Writing/` | Writing and storytelling references |
+| `Docs/Affiliate_Marketing/` | ToS, rules, and compliance docs for all affiliate programs |
 | `Docs/Admin/` | Admin and business documentation |
 | `Models/` | AI model specs, pricing, capabilities |
 | `Tools/` | Tool reference docs |
 | `Tutorials/` | Step-by-step tutorials |
 | `Prompts/` | Reusable prompt templates |
-| `Obsidian_Attachments/` | Images and attachments from Obsidian notes |
+| `Design_Inspiration/` | Visual inspiration references and aesthetic bookmarks |
+| `Personal/` | Personal-interest references and non-business captures |
+| `Project_Ideas/` | Raw project concepts and future idea seeds |
+| `Research/` | Competitive analysis, channel studies, benchmarks, and market/product research |
+| `Workflows/` | Process maps, flowcharts, and workflow references |
+| `Obsidian_Attachments/Visual_Assets/` | Raw screenshot files extracted by image ingest |
+| `Undetermined/` | Mistimed or blurry screenshots moved by image ingest |
 | `Archive/` | Archived items |
 | `Archive/Automation_Workflows/` | Old automation workflow files |
+| `OpenAI_history/` | Readable ChatGPT conversation history in `.md` form; links out to the visual asset library |
+| `OpenAI_history/Needs Ingestion/N8n-Screenshots/` | Filename-based bucket for raw N8n workflow screenshots that Tony can review or delete later |
+| `OpenAI_history/Needs Ingestion/Screenshots/` | General screenshot bucket for non-N8n raw images that are easy to recognize by filename |
+| `OpenAI_history/Needs Ingestion/Generated-Images/` | Raw generated image files that are clearly labeled in the filename |
+| `OpenAI_history/Needs Ingestion/Typography/` | Typography-related image captures and searches grouped by filename |
+| `OpenAI_history/Needs Ingestion/Framing/` | Framing example images grouped by filename |
+| `OpenAI_history/Needs Ingestion/Consular-Service-Assistant/` | Repeated consular assistant screenshots grouped by filename |
+| `OpenAI_history/Needs Ingestion/Pastel-Waves/` | Repeated pastel waves artwork grouped by filename |
+| `OpenAI_history/Needs Ingestion/DNS-Checker/` | DNS checker / propagation tool screenshots grouped by filename |
+| `OpenAI_history/Needs Ingestion/Summer-Flowers-Arrangement/` | Floral prompt/image assets grouped by filename |
+| `Obsidian_Attachments/` | Canonical attachment library for images and other linked assets |
+| `Obsidian_Attachments/OpenAI_Images/` | OpenAI image inputs and outputs plus their attachment indexes |
+| `Obsidian_Attachments/README.md` | Folder-level explainer for the attachment library |
+| `OpenAI_history/README.md` | Folder-level explainer for the conversation library |
 
 ---
 
@@ -187,4 +238,21 @@ This map is maintained by agents. When new folders are created:
 1. Add them to this map immediately
 2. Run `graphify update .` to update the knowledge graph
 
-**Last updated:** 2026-04-28
+## 008_Investments/ — Investment Department
+
+Tony's investment research and analytics department. Used for market research, portfolio tooling, watchlists, and active investment system work.
+
+| Subfolder | Content |
+|-----------|---------|
+| `CLAUDE.md` | Department playbook for investment analysis and sandboxed trading rules |
+
+## 009_AI_Jobs/ — AI Jobs Department
+
+Reference area for AI job onboarding, platform contracts, worker agreements, and work-specific legal/reference docs Tony may need to look up later.
+
+| Subfolder | Content |
+|-----------|---------|
+| `Mercor/` | Mercor onboarding contracts and worker reference set |
+| `CLAUDE.md` | Department playbook for AI job reference handling |
+
+**Last updated:** 2026-06-06

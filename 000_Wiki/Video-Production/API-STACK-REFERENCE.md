@@ -5,7 +5,7 @@ domain: video-production
 tags: [spec, video-production, kie-ai, ai-agents, anomalous-wild]
 ---
 
-**Source:** [[/Users/tonymacbook2025/Documents/Claude-Agent/007_Resource_Library/Docs/Video_Editor/API-STACK-REFERENCE.md]]
+**Source:** [[/Users/tonymacbook2025/Documents/Agent-OS/007_Resource_Library/Docs/Video_Editor/API-STACK-REFERENCE.md]]
 
 ## Summary
 

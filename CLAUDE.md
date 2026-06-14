@@ -17,6 +17,9 @@ tags: [config, architecture, doc]
 
 This is the root workspace for all of Tony's business operations and digital product development. Every subfolder is a department that builds, automates, or manages one part of the overall business.
 
+> [!NOTE]
+> **Legacy Workspace Rename:** The workspace was formerly called `Claude-Agent` (or jokingly `clogged-agent`). Any IDE configs, startup URIs, or CLI integrations that still advertise `/Users/tonymacbook2025/Documents/Claude-Agent` must always be translated to `/Users/tonymacbook2025/Documents/Agent-OS/` on startup.
+
 ---
 
 ## ⚡ BEFORE BUILDING ANYTHING
@@ -25,7 +28,7 @@ This is the root workspace for all of Tony's business operations and digital pro
 
 Tony has pre-installed tools, CLIs, MCPs, skills, and plugins. Before writing a Python script, shell script, or suggesting new code, check whether a pre-existing tool already handles it.
 
-**TOOLBOX location:** `/Users/tonymacbook2025/Documents/Claude-Agent/TOOLBOX.md`
+**TOOLBOX location:** `/Users/tonymacbook2025/Documents/Agent-OS/TOOLBOX.md`
 
 Common tasks and what tools exist:
 - **Web scraping** → Firecrawl (CLI, plugin, 8 skills)
@@ -48,19 +51,28 @@ Common tasks and what tools exist:
 A multi-stream digital business spanning content creation, e-commerce, affiliate marketing, digital products, and SaaS tools. The goal is systematic automation — each department builds toward replacing manual effort with reliable systems.
 
 **Owner:** Tony
-**Knowledge vault:** workspace root is the Obsidian vault (`/Users/tonymacbook2025/Documents/Claude-Agent/`) — accessible via Obsidian MCP
-**Graphify registry:** `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Graphify/REGISTRY.md`
+**Knowledge vault:** workspace root is the Obsidian vault (`/Users/tonymacbook2025/Documents/Agent-OS/`) — accessible via Obsidian MCP
+**Graphify registry:** `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Graphify/REGISTRY.md`
 
 ## Session Memory — Read First
 
 Before starting work, scan these folders for logs and past decisions so Tony never has to repeat himself:
-- **Logs:** `001_Architecture/Logs/` — session summaries, what was done, what changed
-- **Memory:** `001_Architecture/Memory/` — conventions, tag systems, user preferences, workflow rules
-- **Feedback Loop:** `001_Architecture/Feedback_Loop/` — captured corrections, preferences, and validated approaches
+- **Core Memory:** `001_Architecture/Memory/Core_Memory.md` — tiny bootstrap memory
+- **Memory Index:** `001_Architecture/Memory/Memory_Index.md` — routing layer for which memory to load
+- **Logs:** `001_Architecture/Logs/` — session summaries, read only when relevant
+- **Feedback Loop:** `001_Architecture/Feedback_Loop/` — captured corrections, preferences, and validated approaches, read only when relevant
 - **Self-Learning Loop:** `001_Architecture/Self_Learning_Loop/` — periodic insights and patterns from past work
-- **Claude memory:** `~/.claude/projects/-Users-tonymacbook2025-Documents-Claude-Agent/memory/MEMORY.md` — persistent cross-session memory (auto-written by Claude)
+- **Claude memory:** `~/.claude/projects/-Users-tonymacbook2025-Documents-Agent-OS/memory/MEMORY.md` — persistent cross-session memory (auto-written by Claude)
 
-If a file in Logs, Memory, Feedback, or Self-Learning covers the current topic, read it before asking Tony for clarification.
+Do not load every memory/log file by default. Use `claude-mem` for relevant memory injection/search, then targeted file reads based on `Memory_Index.md`.
+
+### Claude-Mem Dynamic Memory
+`claude-mem` is installed as the shared relevant-memory backend.
+- Worker status: `npx claude-mem status`
+- Start worker: `npx claude-mem start`
+- Viewer: `http://localhost:37701`
+- Search in Claude Code: `/mem-search`
+- Use `<private>...</private>` tags for sensitive material that should not be stored.
 
 ## Session Memory — Write Automatically
 
@@ -79,10 +91,13 @@ Compact record of what happened, not a transcript. One line per significant acti
 ### Self-Learning Loop (`001_Architecture/Self_Learning_Loop/`)
 At session close, review the day's work and identify patterns: what went wrong, what worked well, what keeps recurring, what could be automated. Be honest about mistakes. Write to: `YYYY-MM-DD_Self-Review.md`
 
-### Cross-Session Memory
+### Global Cross-Agent Memory
+Also update `001_Architecture/Memory/Global_Agent_Memory.md` with durable memories that should be shared across Claude Code, Codex, Antigravity, Gemini CLI, and other agents. This workspace is Tony's whole business operating system, so stable preferences, project decisions, recurring corrections, important tool paths, and workflow rules should live in workspace memory first. Keep this file curated and compact; let `claude-mem` handle episodic session memory and relevant injection.
+
+### Claude Cross-Session Memory
 Also update `~/.claude/.../memory/MEMORY.md` with the system — user preferences go to user feedback entries, project decisions go to project entries, external references go to reference entries.
 
-**Trigger:** When Tony says "I'm about to close this session" or similar, write all four. Also write incrementally throughout the session — don't batch everything at the end.
+**Trigger:** When Tony says "I'm about to close this session" or similar, write all four memory/log layers. Also, update all Workspace Maps, System Maps, TOOLBOX.md, and directory definitions to include any new folders, scripts, skills, or configurations. Write incrementally throughout the session — don't batch everything at the end.
 
 ---
 
@@ -115,7 +130,7 @@ Before asking the user for context:
 
 ### Read First
 
-Start every session by reading the federation registry at `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Graphify/REGISTRY.md` — it routes any lookup question to the correct domain graph.
+Start every session by reading the federation registry at `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Graphify/REGISTRY.md` — it routes any lookup question to the correct domain graph.
 
 ---
 
@@ -130,6 +145,8 @@ Start every session by reading the federation registry at `/Users/tonymacbook202
 | `005_Ecommerce/Digital_Products/` | Digital downloadable wall art Etsy store + guides, downloads, funnels. Distribution via Gumroad, own website (Next.js + Sanity + Lemon Squeezy), email marketing. | Planned |
 | `005_Ecommerce/KDP/` | Book publishing on Amazon Kindle Direct Publishing. | Active |
 | `005_Ecommerce/Amazon_Merch/` | T-shirt designs on Amazon Merch on Demand. | Planned |
+| `008_Investments/` | Investment research, analytics, portfolio tooling, sandboxed trading experiments. | Active |
+| `009_AI_Jobs/` | AI job onboarding contracts, worker agreements, and reference docs for platform work. | Active |
 | `003_Apps/Upkeeply/` | App project (purpose TBD per project CLAUDE.md). | In Development |
 | `003_Apps/AI_Character_Builder/` | AI character/avatar builder tool. | In Development |
 | `004_Games/Roblox_Game/` | Roblox game development. Luau scripting, Studio architecture, subagents for research/build/UI/design. | In Development |
@@ -210,9 +227,11 @@ When Tony asks about video production, case studies, or cinematic styles:
 
 ## graphify
 
-This project has a graphify knowledge graph at graphify-out/.
+Graphify is the workspace knowledge-graph system. The federation registry is the source of truth for which domain graph to use: `001_Architecture/Graphify/REGISTRY.md`.
 
 Rules:
-- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
-- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
-- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
+- Before answering architecture or codebase questions, read `001_Architecture/Graphify/REGISTRY.md`, identify the correct domain, and query that domain graph instead of reading raw files first.
+- For refreshes that are mostly code or AST driven, use `graphify update <domain-folder>`.
+- For docs-heavy or wiki-heavy domains, use the interactive `/graphify <domain> --update` flow so semantic extraction runs too.
+- Do not graphify `000_Ingest/`; it is a temporary staging area and only becomes a graph target after ingest routes files into durable folders.
+- The registry tracks each domain's build state and output path, so do not hardcode a workspace-root `graphify-out/` workflow here.

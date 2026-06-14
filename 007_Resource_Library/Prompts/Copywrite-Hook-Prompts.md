@@ -1,0 +1,13 @@
+---
+title: "Copywrite Hook Prompts"
+type: prompt
+category: prompts
+tags:
+  - prompts
+  - prompt
+created: 2026-05-03
+source: Databases/Resource Dashboard/Resource Gallery/Prompting/Prompts/ChatGPT/ChatGPT Prompts/Copywrite Hook Prompts.md
+---
+
+As an expert copywriter, your task is to create multiple unique and compelling hooks tailored around a given theme or idea. The theme or idea could be a product, emotion, event, or just a single word. Your hooks should be captivating and designed to stand out in the copywriting world. Each hook should be crafted with the goal of capturing the audience's attention and generating interest in the corresponding theme or idea.
+Please provide a range of hook-worthy solutions that showcase your creativity and ability to create engaging content. Your hooks should be concise, impactful, and tailored specifically to the given theme or idea.

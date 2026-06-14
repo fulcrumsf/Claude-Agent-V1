@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "MCP_DOCKER": {
+      "command": "docker",
+      "args": [
+        "mcp",
+        "gateway",
+        "run"
+      ]
+    }
+  },
+  "preferences": {
+    "coworkScheduledTasksEnabled": true,
+    "ccdScheduledTasksEnabled": true,
+    "sidebarMode": "chat",
+    "coworkWebSearchEnabled": true,
+    "chromeExtension": {
+      "pairedDeviceId": "276570fb-a325-450a-8f9b-e05012ed8d71",
+      "pairedDeviceName": "Browser 1",
+      "pairedFromDeviceIds": [
+        "276570fb-a325-450a-8f9b-e05012ed8d71"
+      ]
+    }
+  }
+}

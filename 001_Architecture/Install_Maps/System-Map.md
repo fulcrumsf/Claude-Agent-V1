@@ -6,11 +6,14 @@ tags: [system-map, install-map, tools, assets]
 
 # System Map
 
-> **Auto-generated:** 2026-04-29 00:04  
+> **Auto-generated:** 2026-05-01 13:03  
 > Do not edit manually. Refresh by running:
-> `python3 /Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Scripts/generate_system_map.py`
+> `python3 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/generate_system_map.py`
 
 **When Tony says 'look at the system map' — this is that file.**
+
+### ⚠️ Manual Environment Customizations
+- **Antigravity (VS Code fork):** We manually patched `/Applications/Antigravity.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.html` to load custom CSS for explorer row colors. **Note:** This causes Antigravity to display a "Your Antigravity installation appears to be corrupt. Please reinstall." warning. This is expected behavior when modifying core files and can be ignored or reverted later.
 
 ---
 
@@ -166,7 +169,7 @@ tags: [system-map, install-map, tools, assets]
 | BraveUpdater | 143.1.87.74 | `/Applications/Brave Browser.app/Contents/Frameworks/Brave Browser Framework.framework/Versions/145.1.87.192/Helpers/BraveUpdater.app` |
 | c4dpy | 2025.3 | `/Applications/Maxon Cinema 4D 2025/c4dpy.app` |
 | c4dpy | 2026.1 | `/Applications/Maxon Cinema 4D 2026/c4dpy.app` |
-| CapCut | 8.2.0 | `/Applications/CapCut.app` |
+| CapCut | 8.5.0 | `/Applications/CapCut.app` |
 | CapCut | 1.0.0 | `/Applications/CapCut.app/Contents/Frameworks/CapCut.app` |
 | CapCut Helper | — | `/Applications/CapCut.app/Contents/Frameworks/CapCut Helper.app` |
 | CapCut Helper (GPU) | — | `/Applications/CapCut.app/Contents/Frameworks/CapCut Helper (GPU).app` |
@@ -221,42 +224,41 @@ tags: [system-map, install-map, tools, assets]
 | CEPHtmlEngine Helper (Renderer) | 12.0.1.2 | `/Applications/Adobe Premiere Pro 2026/Adobe Premiere Pro 2026.app/Contents/MacOS/CEPHtmlEngine.app/Contents/Frameworks/CEPHtmlEngine Helper (Renderer).app` |
 | ChatGPT | 1.2026.104 | `/Applications/ChatGPT.app` |
 | ChatGPT Atlas | 1.2026.98.2 | `/Applications/ChatGPT Atlas.app` |
-| Chrome | 147.0.7727.117 | `/Applications/Google Chrome.app` |
-| Chrome Helper | 147.0.7727.103 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.103/Helpers/Google Chrome Helper.app` |
+| Chrome | 147.0.7727.138 | `/Applications/Google Chrome.app` |
 | Chrome Helper | 147.0.7727.117 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.117/Helpers/Google Chrome Helper.app` |
-| Chrome Helper (Alerts) | 147.0.7727.103 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.103/Helpers/Google Chrome Helper (Alerts).app` |
+| Chrome Helper | 147.0.7727.138 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.138/Helpers/Google Chrome Helper.app` |
 | Chrome Helper (Alerts) | 147.0.7727.117 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.117/Helpers/Google Chrome Helper (Alerts).app` |
-| Chrome Helper (GPU) | 147.0.7727.103 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.103/Helpers/Google Chrome Helper (GPU).app` |
+| Chrome Helper (Alerts) | 147.0.7727.138 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.138/Helpers/Google Chrome Helper (Alerts).app` |
 | Chrome Helper (GPU) | 147.0.7727.117 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.117/Helpers/Google Chrome Helper (GPU).app` |
-| Chrome Helper (Plugin) | 147.0.7727.103 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.103/Helpers/Google Chrome Helper (Plugin).app` |
+| Chrome Helper (GPU) | 147.0.7727.138 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.138/Helpers/Google Chrome Helper (GPU).app` |
 | Chrome Helper (Plugin) | 147.0.7727.117 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.117/Helpers/Google Chrome Helper (Plugin).app` |
-| Chrome Helper (Renderer) | 147.0.7727.103 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.103/Helpers/Google Chrome Helper (Renderer).app` |
+| Chrome Helper (Plugin) | 147.0.7727.138 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.138/Helpers/Google Chrome Helper (Plugin).app` |
 | Chrome Helper (Renderer) | 147.0.7727.117 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.117/Helpers/Google Chrome Helper (Renderer).app` |
+| Chrome Helper (Renderer) | 147.0.7727.138 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.138/Helpers/Google Chrome Helper (Renderer).app` |
 | Cinema 4D | 2025.3 | `/Applications/Maxon Cinema 4D 2025/Cinema 4D.app` |
 | Cinema 4D | 2026.1 | `/Applications/Maxon Cinema 4D 2026/Cinema 4D.app` |
 | Cinema 4D Team Render Client | 2025.3 | `/Applications/Maxon Cinema 4D 2025/Cinema 4D Team Render Client.app` |
 | Cinema 4D Team Render Client | 2026.1 | `/Applications/Maxon Cinema 4D 2026/Cinema 4D Team Render Client.app` |
 | Cinema 4D Team Render Server | 2025.3 | `/Applications/Maxon Cinema 4D 2025/Cinema 4D Team Render Server.app` |
 | Cinema 4D Team Render Server | 2026.1 | `/Applications/Maxon Cinema 4D 2026/Cinema 4D Team Render Server.app` |
-| Claude | 1.4758.0 | `/Applications/Claude.app` |
-| Claude | 1.4758.0 | `/Applications/Claude.app/Contents/Frameworks/Claude Helper.app` |
+| Claude | 1.5354.0 | `/Applications/Claude.app` |
+| Claude | 1.5354.0 | `/Applications/Claude.app/Contents/Frameworks/Claude Helper.app` |
 | Claude Code URL Handler | — | `/Users/tonymacbook2025/Applications/Claude Code URL Handler.app` |
-| Claude Helper (GPU) | 1.4758.0 | `/Applications/Claude.app/Contents/Frameworks/Claude Helper (GPU).app` |
-| Claude Helper (Plugin) | 1.4758.0 | `/Applications/Claude.app/Contents/Frameworks/Claude Helper (Plugin).app` |
-| Claude Helper (Renderer) | 1.4758.0 | `/Applications/Claude.app/Contents/Frameworks/Claude Helper (Renderer).app` |
-| Clocker - World Clock | 24.03 | `/Applications/Clocker.app` |
-| ClockerHelper | 1.0 | `/Applications/Clocker.app/Contents/Library/LoginItems/ClockerHelper.app` |
+| Claude Helper (GPU) | 1.5354.0 | `/Applications/Claude.app/Contents/Frameworks/Claude Helper (GPU).app` |
+| Claude Helper (Plugin) | 1.5354.0 | `/Applications/Claude.app/Contents/Frameworks/Claude Helper (Plugin).app` |
+| Claude Helper (Renderer) | 1.5354.0 | `/Applications/Claude.app/Contents/Frameworks/Claude Helper (Renderer).app` |
+| Clocker - World Clock | 26.7 | `/Applications/Clocker.app` |
 | Code | 1.115.0 | `/Applications/Visual Studio Code.app` |
 | Code Helper | — | `/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app` |
 | Code Helper (GPU) | — | `/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (GPU).app` |
 | Code Helper (Plugin) | — | `/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app` |
 | Code Helper (Renderer) | — | `/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Renderer).app` |
-| Codex | 26.422.30944 | `/Applications/Codex.app` |
-| Codex | 26.422.30944 | `/Applications/Codex.app/Contents/Frameworks/Codex Helper.app` |
+| Codex | 26.422.71525 | `/Applications/Codex.app` |
+| Codex | 26.422.71525 | `/Applications/Codex.app/Contents/Frameworks/Codex Helper.app` |
 | Codex Computer Use | 1.0 | `/Applications/Codex.app/Contents/Resources/plugins/openai-bundled/plugins/computer-use/Codex Computer Use.app` |
-| Codex Helper (GPU) | 26.422.30944 | `/Applications/Codex.app/Contents/Frameworks/Codex Helper (GPU).app` |
-| Codex Helper (Plugin) | 26.422.30944 | `/Applications/Codex.app/Contents/Frameworks/Codex Helper (Plugin).app` |
-| Codex Helper (Renderer) | 26.422.30944 | `/Applications/Codex.app/Contents/Frameworks/Codex Helper (Renderer).app` |
+| Codex Helper (GPU) | 26.422.71525 | `/Applications/Codex.app/Contents/Frameworks/Codex Helper (GPU).app` |
+| Codex Helper (Plugin) | 26.422.71525 | `/Applications/Codex.app/Contents/Frameworks/Codex Helper (Plugin).app` |
+| Codex Helper (Renderer) | 26.422.71525 | `/Applications/Codex.app/Contents/Frameworks/Codex Helper (Renderer).app` |
 | Comet | 145.2.7632.5934 | `/Applications/Comet.app` |
 | Comet Helper | 145.2.7632.4587 | `/Applications/Comet.app/Contents/Frameworks/Comet Framework.framework/Versions/145.2.7632.4587/Helpers/Comet Helper.app` |
 | Comet Helper | 145.2.7632.5934 | `/Applications/Comet.app/Contents/Frameworks/Comet Framework.framework/Versions/145.2.7632.5934/Helpers/Comet Helper.app` |
@@ -270,7 +272,7 @@ tags: [system-map, install-map, tools, assets]
 | CometSoftwareUpdateAgent | — | `/Applications/Comet.app/Contents/Frameworks/Comet Framework.framework/Versions/145.2.7632.5934/Helpers/CometUpdater.app/Contents/Helpers/CometSoftwareUpdate.bundle/Contents/Resources/CometSoftwareUpdateAgent.app` |
 | CometUpdater | 145.2.7632.4587 | `/Applications/Comet.app/Contents/Frameworks/Comet Framework.framework/Versions/145.2.7632.4587/Helpers/CometUpdater.app` |
 | CometUpdater | 145.2.7632.5934 | `/Applications/Comet.app/Contents/Frameworks/Comet Framework.framework/Versions/145.2.7632.5934/Helpers/CometUpdater.app` |
-| Commander One PRO | 3.16 | `/Applications/Commander One PRO.app` |
+| Commander One PRO | 3.17.2 | `/Applications/Commander One PRO.app` |
 | Commandline | 2025.3 | `/Applications/Maxon Cinema 4D 2025/Commandline.app` |
 | Commandline | 2026.1 | `/Applications/Maxon Cinema 4D 2026/Commandline.app` |
 | Contact Sheets | — | `/Applications/Adobe Illustrator 2026/Scripting.localized/Sample Scripts.localized/AppleScript.localized/Contact Sheet Demo.localized/Contact Sheets.app` |
@@ -370,7 +372,7 @@ tags: [system-map, install-map, tools, assets]
 | Figma Helper (Plugin) | — | `/Applications/Figma.app/Contents/Frameworks/Figma Helper (Plugin).app` |
 | Figma Helper (Renderer) | — | `/Applications/Figma.app/Contents/Frameworks/Figma Helper (Renderer).app` |
 | FigmaAgent | 126.2.9 | `/Applications/Figma.app/Contents/Library/FigmaAgent.app` |
-| FinderHelper | 123.0 | `/Applications/Google Drive.app/Contents/Applications/FinderHelper.app` |
+| FinderHelper | 124.0 | `/Applications/Google Drive.app/Contents/Applications/FinderHelper.app` |
 | FrameioHelper | 1.0 | `/Applications/Adobe After Effects 2026/Adobe After Effects 2026.app/Contents/Resources/com.adobe.frameio/bin/FrameioHelper.app` |
 | FrameioHelper | 1.0 | `/Applications/Adobe Premiere Pro (Beta)/Adobe Premiere Pro (Beta).app/Contents/CEP/extensions/com.adobe.frameio/bin/FrameioHelper.app` |
 | FrameioHelper | 1.0 | `/Applications/Adobe Premiere Pro 2026/Adobe Premiere Pro 2026.app/Contents/CEP/extensions/com.adobe.frameio/bin/FrameioHelper.app` |
@@ -379,18 +381,14 @@ tags: [system-map, install-map, tools, assets]
 | GitHub Desktop Helper (GPU) | 3.5.6 | `/Applications/GitHub Desktop.app/Contents/Frameworks/GitHub Desktop Helper (GPU).app` |
 | GitHub Desktop Helper (Plugin) | 3.5.6 | `/Applications/GitHub Desktop.app/Contents/Frameworks/GitHub Desktop Helper (Plugin).app` |
 | GitHub Desktop Helper (Renderer) | 3.5.6 | `/Applications/GitHub Desktop.app/Contents/Frameworks/GitHub Desktop Helper (Renderer).app` |
-| Google Docs | 123.0 | `/Applications/Google Docs.app` |
-| Google Drive | 123.0 | `/Applications/Google Drive.app` |
-| Google Drive Helper | 123.0 | `/Applications/Google Drive.app/Contents/Helpers/Google Drive Helper.app` |
-| Google Drive Helper (GPU) | 123.0 | `/Applications/Google Drive.app/Contents/Helpers/Google Drive Helper (GPU).app` |
-| Google Drive Helper (Plugin) | 123.0 | `/Applications/Google Drive.app/Contents/Helpers/Google Drive Helper (Plugin).app` |
-| Google Drive Helper (Renderer) | 123.0 | `/Applications/Google Drive.app/Contents/Helpers/Google Drive Helper (Renderer).app` |
-| Google Sheets | 123.0 | `/Applications/Google Sheets.app` |
-| Google Slides | 123.0 | `/Applications/Google Slides.app` |
-| GoogleSoftwareUpdateAgent | — | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.103/Helpers/GoogleUpdater.app/Contents/Helpers/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app` |
+| Google Docs | 124.0 | `/Applications/Google Docs.app` |
+| Google Drive | 124.0 | `/Applications/Google Drive.app` |
+| Google Sheets | 124.0 | `/Applications/Google Sheets.app` |
+| Google Slides | 124.0 | `/Applications/Google Slides.app` |
 | GoogleSoftwareUpdateAgent | — | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.117/Helpers/GoogleUpdater.app/Contents/Helpers/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app` |
-| GoogleUpdater | 147.0.7703.0 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.103/Helpers/GoogleUpdater.app` |
+| GoogleSoftwareUpdateAgent | — | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.138/Helpers/GoogleUpdater.app/Contents/Helpers/GoogleSoftwareUpdate.bundle/Contents/Resources/GoogleSoftwareUpdateAgent.app` |
 | GoogleUpdater | 147.0.7703.0 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.117/Helpers/GoogleUpdater.app` |
+| GoogleUpdater | 147.0.7703.0 | `/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/147.0.7727.138/Helpers/GoogleUpdater.app` |
 | HLCrashProcessor | — | `/Applications/Adobe Acrobat DC/Adobe Acrobat.app/Contents/Helpers/LogTransport2.app/Contents/MacOS/HLCrashProcessor.app` |
 | HLCrashProcessor | — | `/Applications/Adobe InDesign 2026/Adobe InDesign 2026.app/Contents/MacOS/Helpers/InDesignHelper.app/Contents/MacOS/LogTransport2.app/Contents/MacOS/HLCrashProcessor.app` |
 | HLCrashProcessor | — | `/Applications/Adobe InDesign 2026/Adobe InDesign 2026.app/Contents/MacOS/LogTransport2.app/Contents/MacOS/HLCrashProcessor.app` |
@@ -408,7 +406,7 @@ tags: [system-map, install-map, tools, assets]
 | KeepingYouAwake Launcher | 1.6.8 | `/Applications/KeepingYouAwake.app/Contents/Library/LoginItems/KeepingYouAwake Launcher.app` |
 | Keka | 1.5.0 | `/Applications/Keka.app` |
 | KeyboardCleanTool | 6 | `/Applications/KeyboardCleanTool.app` |
-| Keynote | 14.4 | `/Applications/Keynote.app` |
+| Keynote | 14.5 | `/Applications/Keynote.app` |
 | KnockKnock | 3.1.0 | `/Applications/KnockKnock.app` |
 | KnockKnock | 2.5.0 | `/Applications/Object See/KnockKnock.app` |
 | krisp | 3.11.4 | `/Users/tonymacbook2025/Applications/krisp.app` |
@@ -462,12 +460,12 @@ tags: [system-map, install-map, tools, assets]
 | Neon Wallet | 3.5.0 | `/Applications/Neon Wallet.app` |
 | Netiquette | 2.3.0 | `/Applications/LuLu.app/Contents/Resources/Netiquette.app` |
 | Netiquette | 2.2.0 | `/Applications/Object See/Netiquette.app` |
-| Notion | 7.12.0 | `/Applications/Notion.app` |
-| Notion | 7.12.0 | `/Applications/Notion.app/Contents/Frameworks/Notion Helper.app` |
-| Notion Helper (GPU) | 7.12.0 | `/Applications/Notion.app/Contents/Frameworks/Notion Helper (GPU).app` |
-| Notion Helper (Plugin) | 7.12.0 | `/Applications/Notion.app/Contents/Frameworks/Notion Helper (Plugin).app` |
-| Notion Helper (Renderer) | 7.12.0 | `/Applications/Notion.app/Contents/Frameworks/Notion Helper (Renderer).app` |
-| Numbers | 14.4 | `/Applications/Numbers.app` |
+| Notion | 7.14.0 | `/Applications/Notion.app` |
+| Notion | 7.14.0 | `/Applications/Notion.app/Contents/Frameworks/Notion Helper.app` |
+| Notion Helper (GPU) | 7.14.0 | `/Applications/Notion.app/Contents/Frameworks/Notion Helper (GPU).app` |
+| Notion Helper (Plugin) | 7.14.0 | `/Applications/Notion.app/Contents/Frameworks/Notion Helper (Plugin).app` |
+| Notion Helper (Renderer) | 7.14.0 | `/Applications/Notion.app/Contents/Frameworks/Notion Helper (Renderer).app` |
+| Numbers | 14.5 | `/Applications/Numbers.app` |
 | OBS | 32.0.4 | `/Applications/OBS.app` |
 | OBS Helper | — | `/Applications/OBS.app/Contents/Frameworks/OBS Helper.app` |
 | OBS Helper (GPU) | — | `/Applications/OBS.app/Contents/Frameworks/OBS Helper (GPU).app` |
@@ -495,7 +493,7 @@ tags: [system-map, install-map, tools, assets]
 | OverSight Installer | 2.3.0 | `/Applications/Object See/OverSight Installer.app` |
 | OverSight Installer | 2.3.0 | `/Applications/Object See/OverSight Installer.app/Contents/Resources/OverSight.app/Contents/Resources/OverSight Installer.app` |
 | OverSight Installer | 2.4.0 | `/Applications/OverSight.app/Contents/Resources/OverSight Installer.app` |
-| Pages | 14.4 | `/Applications/Pages.app` |
+| Pages | 14.5 | `/Applications/Pages.app` |
 | Photoshop 2026 | 27.5.0 | `/Applications/Adobe Photoshop 2026/Adobe Photoshop 2026.app` |
 | Pinokio | 3.8.0 | `/Applications/Pinokio.app` |
 | PlayerLocationCheck | 4.3.0.0 | `/Applications/PlayerLocationCheck.app` |
@@ -533,7 +531,7 @@ tags: [system-map, install-map, tools, assets]
 | ScreenPal Tray | 3 | `/Applications/ScreenPal.app/Contents/app/ScreenPalTray.app/Contents/app/ScreenPalTray.app` |
 | screenrec | — | `/Applications/screenrec/screenrec.app` |
 | screenrec | — | `/Applications/screenrec.app` |
-| Silicio | 3.7.0 | `/Applications/Silicio.app` |
+| Silicio | 3.7.2 | `/Applications/Silicio.app` |
 | SkyComputerUseClient | 1.0 | `/Applications/Codex.app/Contents/Resources/plugins/openai-bundled/plugins/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app` |
 | Slack | 4.46.101 | `/Applications/Slack.app` |
 | Slack | 4.46.101 | `/Applications/Slack.app/Contents/Frameworks/Slack Helper.app` |
@@ -590,18 +588,18 @@ tags: [system-map, install-map, tools, assets]
 | UVR | 0.0.0 | `/Applications/Ultimate Vocal Remover.app` |
 | VECrashHandler | 1.0.0 | `/Applications/CapCut.app/Contents/Frameworks/VECrashHandler.app` |
 | VEHelper | 1.0.0 | `/Applications/CapCut.app/Contents/Frameworks/VEHelper.app` |
-| Warp | 0.2026.04.22.08.46.03 | `/Applications/Warp.app` |
+| Warp | 0.2026.04.27.15.32.03 | `/Applications/Warp.app` |
 | Wave Link | 2.0.7 | `/Applications/Elgato Wave Link.app` |
 | Web Gallery | — | `/Applications/Adobe Illustrator 2026/Scripting.localized/Sample Scripts.localized/AppleScript.localized/Web Gallery.localized/Web Gallery.app` |
-| WhatsApp | 25.26.72 | `/Applications/WhatsApp.app` |
+| WhatsApp | 26.15.72 | `/Applications/WhatsApp.app` |
 | WireGuard | 1.0.16 | `/Applications/WireGuard.app` |
 | WireGuardLoginItemHelper | 1.0.16 | `/Applications/WireGuard.app/Contents/Library/LoginItems/WireGuardLoginItemHelper.app` |
-| Wispr Flow | 1.5.67 | `/Applications/Wispr Flow.app` |
-| Wispr Flow | 1.5.67 | `/Applications/Wispr Flow.app/Contents/Frameworks/Wispr Flow Helper.app` |
-| Wispr Flow | 1.5.48 | `/Applications/Wispr Flow.app/Contents/Resources/swift-helper-app-dist/Wispr Flow.app` |
-| Wispr Flow Helper (GPU) | 1.5.67 | `/Applications/Wispr Flow.app/Contents/Frameworks/Wispr Flow Helper (GPU).app` |
-| Wispr Flow Helper (Plugin) | 1.5.67 | `/Applications/Wispr Flow.app/Contents/Frameworks/Wispr Flow Helper (Plugin).app` |
-| Wispr Flow Helper (Renderer) | 1.5.67 | `/Applications/Wispr Flow.app/Contents/Frameworks/Wispr Flow Helper (Renderer).app` |
+| Wispr Flow | 1.5.85 | `/Applications/Wispr Flow.app` |
+| Wispr Flow | 1.5.85 | `/Applications/Wispr Flow.app/Contents/Frameworks/Wispr Flow Helper.app` |
+| Wispr Flow | 1.5.68 | `/Applications/Wispr Flow.app/Contents/Resources/swift-helper-app-dist/Wispr Flow.app` |
+| Wispr Flow Helper (GPU) | 1.5.85 | `/Applications/Wispr Flow.app/Contents/Frameworks/Wispr Flow Helper (GPU).app` |
+| Wispr Flow Helper (Plugin) | 1.5.85 | `/Applications/Wispr Flow.app/Contents/Frameworks/Wispr Flow Helper (Plugin).app` |
+| Wispr Flow Helper (Renderer) | 1.5.85 | `/Applications/Wispr Flow.app/Contents/Frameworks/Wispr Flow Helper (Renderer).app` |
 | XD | 60.0.12.4 | `/Applications/Adobe XD/Adobe XD.app` |
 | Xpiks | — | `/Applications/Xpiks.app` |
 | zCCIMeetingHost | 6.7.7 (76486) | `/Applications/zoom.us.app/Contents/Frameworks/zCCIMeetingHost.app` |
@@ -781,7 +779,7 @@ tags: [system-map, install-map, tools, assets]
 
 ### Python Installations
 
-- `python3` → `/opt/homebrew/opt/python@3.14/Frameworks/Python.framework/Versions/3.14/bin/python3` — Python 3.14.3
+- `python3` → `/opt/homebrew/bin/python3` — Python 3.14.3
 - `python3.11` → `/opt/homebrew/bin/python3.11` — Python 3.11.12
 - `python3.13` → `/opt/homebrew/bin/python3.13` — Python 3.13.3
 - `python3.10` → `/opt/homebrew/bin/python3.10` — Python 3.10.17
@@ -797,22 +795,22 @@ tags: [system-map, install-map, tools, assets]
 
 | Name | Image | Status | Ports |
 |---|---|---|---|
-| cloudflared | cloudflare/cloudflared:latest | Up 2 days |  |
-| comfyui | comfyui-cpu | Up 2 days | 0.0.0.0:8188->8188/tcp, [::]:8188->8188/tcp |
-| mmaudio | docker_config-mmaudio | Exited (137) 5 weeks ago |  |
-| n8n | n8n-custom:2.12.3 | Up 2 days | 127.0.0.1:5678->5678/tcp |
-| python-service | python:3.10-slim | Exited (137) 5 weeks ago |  |
-| saliency-api | docker_config-saliency-api | Up 2 days | 0.0.0.0:8001->8001/tcp, [::]:8001->8001/tcp |
-| kokoro-tts-cpu | ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.2 | Up 2 days | 0.0.0.0:8880->8880/tcp, [::]:8880->8880/tcp |
-| puppeteer | docker_config-puppeteer | Exited (0) 5 weeks ago |  |
-| flowise | flowiseai/flowise | Up 2 days | 127.0.0.1:3001->3001/tcp |
-| character-generator-app | docker_config-character-generator-app | Up 2 days | 0.0.0.0:8081->80/tcp, [::]:8081->80/tcp |
-| postgres | postgres:16-alpine | Up 2 days | 0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp |
-| baserow | baserow/baserow:latest | Up 8 hours (healthy) | 0.0.0.0:8000->80/tcp, [::]:8000->80/tcp |
-| nca-toolkit | nca-toolkit-arm | Up 2 days | 0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp |
-| open-webui | ghcr.io/open-webui/open-webui:main | Up 2 days (healthy) | 0.0.0.0:3000->8080/tcp, [::]:3000->8080/tcp |
-| minio | quay.io/minio/minio | Up 2 days | 0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp, 127.0.0.1:9001->9001/tcp |
-| qdrant | qdrant/qdrant | Up 2 days | 0.0.0.0:6333->6333/tcp, [::]:6333->6333/tcp |
+| cloudflared | cloudflare/cloudflared:latest | Up 4 days |  |
+| comfyui | comfyui-cpu | Up 4 days | 0.0.0.0:8188->8188/tcp, [::]:8188->8188/tcp |
+| mmaudio | docker_config-mmaudio | Exited (137) 6 weeks ago |  |
+| n8n | n8n-custom:2.12.3 | Up 4 days | 127.0.0.1:5678->5678/tcp |
+| python-service | python:3.10-slim | Exited (137) 6 weeks ago |  |
+| saliency-api | docker_config-saliency-api | Up 4 days | 0.0.0.0:8001->8001/tcp, [::]:8001->8001/tcp |
+| kokoro-tts-cpu | ghcr.io/remsky/kokoro-fastapi-cpu:v0.2.2 | Up 4 days | 0.0.0.0:8880->8880/tcp, [::]:8880->8880/tcp |
+| puppeteer | docker_config-puppeteer | Exited (0) 6 weeks ago |  |
+| flowise | flowiseai/flowise | Up 4 days | 127.0.0.1:3001->3001/tcp |
+| character-generator-app | docker_config-character-generator-app | Up 4 days | 0.0.0.0:8081->80/tcp, [::]:8081->80/tcp |
+| postgres | postgres:16-alpine | Up 4 days | 0.0.0.0:5432->5432/tcp, [::]:5432->5432/tcp |
+| baserow | baserow/baserow:latest | Up 3 hours (healthy) | 0.0.0.0:8000->80/tcp, [::]:8000->80/tcp |
+| nca-toolkit | nca-toolkit-arm | Up 4 days | 0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp |
+| open-webui | ghcr.io/open-webui/open-webui:main | Up 4 days (healthy) | 0.0.0.0:3000->8080/tcp, [::]:3000->8080/tcp |
+| minio | quay.io/minio/minio | Up 4 days | 0.0.0.0:9000->9000/tcp, [::]:9000->9000/tcp, 127.0.0.1:9001->9001/tcp |
+| qdrant | qdrant/qdrant | Up 4 days | 0.0.0.0:6333->6333/tcp, [::]:6333->6333/tcp |
 
 ### Images
 
@@ -889,22 +887,24 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `node` | v23.11.0 | `/opt/homebrew/bin/node` |
 | `npm` | 10.9.2 | `/opt/homebrew/bin/npm` |
 | `npx` | 10.9.2 | `/opt/homebrew/bin/npx` |
+| `bun` | 1.3.13 | `/Users/tonymacbook2025/.bun/bin/bun` |
 | `firecrawl` | 1.11.2 | `/opt/homebrew/bin/firecrawl` |
 | `docker` | Docker version 29.3.1, build c2be9cc | `/usr/local/bin/docker` |
 | `docker-compose` | Docker Compose version v5.1.1 | `/usr/local/bin/docker-compose` |
 | `ffmpeg` | — | `/opt/homebrew/bin/ffmpeg` |
 | `ffprobe` | — | `/opt/homebrew/bin/ffprobe` |
 | `graphify` | — | `/opt/homebrew/bin/graphify` |
-| `obsidian` | Obsidian CLI | `/Applications/Obsidian.app/Contents/MacOS/obsidian` |
-| `claude` | 2.1.119 (Claude Code) | `/opt/homebrew/bin/claude` |
-| `codex` | codex-cli 0.125.0 | `/opt/homebrew/bin/codex` |
+| `obsidian` | — | `/Applications/Obsidian.app/Contents/MacOS/obsidian` |
+| `claude` | 2.1.126 (Claude Code) | `/opt/homebrew/bin/claude` |
+| `codex` | codex-cli 0.128.0 | `/opt/homebrew/bin/codex` |
+| `gemini` | 0.40.0 | `/opt/homebrew/bin/gemini` |
 | `kubectl` | Client Version: v1.34.1 | `/usr/local/bin/kubectl` |
 | `jq` | jq-1.7.1-apple | `/usr/bin/jq` |
 | `fd` | fd 10.2.0 | `/opt/homebrew/bin/fd` |
 | `zsh` | zsh 5.9 (arm64-apple-darwin25.0) | `/bin/zsh` |
 | `bash` | GNU bash, version 3.2.57(1)-release (arm64-apple-darwin25) | `/bin/bash` |
 | `uv` | uv 0.10.12 (00d72dac7 2026-03-19 aarch64-apple-darwin) | `/Users/tonymacbook2025/.local/bin/uv` |
-| `pip3` | pip 26.0 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14) | `/opt/homebrew/opt/python@3.14/Frameworks/Python.framework/Versions/3.14/bin/pip3` |
+| `pip3` | pip 26.0 from /opt/homebrew/lib/python3.14/site-packages/pip (python 3.14) | `/opt/homebrew/bin/pip3` |
 | `pip` | pip 25.2 from /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ | `/Library/Frameworks/Python.framework/Versions/3.13/bin/pip` |
 | `yt-dlp` | 2026.03.17 | `/Library/Frameworks/Python.framework/Versions/3.13/bin/yt-dlp` |
 | `curl` | curl 8.7.1 (x86_64-apple-darwin25.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3. | `/usr/bin/curl` |
@@ -972,10 +972,10 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `05_SRT_to_TXT_Description_V5.1-LEGACY.py` | ✅ Apple Shortcut Compatibility | `/Users/tonymacbook2025/Documents/Automations/ShortsEditorAI/Archive Scripts/old_versions/05_SRT_to_TXT_Description_V5.1-LEGACY.py` |
 | `05_SRT_to_TXT_Description_V5.2-LEGACY.py` | Load environment variables | `/Users/tonymacbook2025/Documents/Automations/ShortsEditorAI/Archive Scripts/old_versions/05_SRT_to_TXT_Description_V5.2-LEGACY.py` |
 | `06_Extract_Keywords_From_SRT.py` | ✅ Environment setup for Apple Shortcuts compatibility | `/Users/tonymacbook2025/Documents/Automations/ShortsEditorAI/06_Extract_Keywords_From_SRT.py` |
-| `__init__.py` | Creative Content Engine - AI-powered visual content creation pipeline. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/__init__.py` |
-| `__init__.py` | Provider registry and routing for image generation. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/providers/__init__.py` |
-| `__init__.py` | Creative Content Engine - AI-powered visual content creation pipeline. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/__init__.py` |
-| `__init__.py` | Provider registry and routing for image generation. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/providers/__init__.py` |
+| `__init__.py` | Creative Content Engine - AI-powered visual content creation pipeline. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/__init__.py` |
+| `__init__.py` | Provider registry and routing for image generation. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/providers/__init__.py` |
+| `__init__.py` | Creative Content Engine - AI-powered visual content creation pipeline. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/__init__.py` |
+| `__init__.py` | Provider registry and routing for image generation. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/providers/__init__.py` |
 | `__init__.py` | Media feedback package | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/v1/media/feedback/__init__.py` |
 | `__init__.py` | Creative Content Engine - AI-powered visual content creation pipeline. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/__init__.py` |
 | `__init__.py` | Provider registry and routing for image generation. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/providers/__init__.py` |
@@ -983,9 +983,9 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `__init__.py` | Provider registry and routing for image generation. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/OLD/Blotato/tools/providers/__init__.py` |
 | `agent-with-ui.py` | First, prompt the AI with the latest user message | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/3-agent-ui/agent-with-ui.py` |
 | `agents.py` | (no description) | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/1-first-agent/agents.py` |
-| `airtable.py` | Airtable CRUD operations for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Tools/Airtable/airtable.py` |
-| `airtable.py` | Airtable CRUD operations for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/airtable.py` |
-| `airtable.py` | Airtable CRUD operations for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/airtable.py` |
+| `airtable.py` | Airtable CRUD operations for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Airtable/airtable.py` |
+| `airtable.py` | Airtable CRUD operations for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/airtable.py` |
+| `airtable.py` | Airtable CRUD operations for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/airtable.py` |
 | `airtable.py` | Airtable CRUD operations for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/OLD/Blotato/tools/airtable.py` |
 | `airtable.py` | Airtable CRUD operations for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/Obsidian-Vault/003_Tools/Airtable/airtable.py` |
 | `analyze_audio.py` | FFmpeg paths | `/Users/tonymacbook2025/Documents/Docker/audio_analyzer/python_scripts/analyze_audio.py` |
@@ -995,8 +995,8 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `asana_tools.py` | create an instance of the different Asana API classes | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/llm-agent-evaluation-framework/tools/asana_tools.py` |
 | `audio_mixing.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/audio_mixing.py` |
 | `audio_mixing.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/audio_mixing.py` |
-| `audio_tts.py` | tools/audio_tts.py | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Tools/Text-To-Speech/audio_tts.py` |
-| `audio_tts.py` | tools/audio_tts.py | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/audio_tts.py` |
+| `audio_tts.py` | tools/audio_tts.py | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Text-To-Speech/audio_tts.py` |
+| `audio_tts.py` | tools/audio_tts.py | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/audio_tts.py` |
 | `audio_tts.py` | tools/audio_tts.py | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/Obsidian-Vault/003_Tools/Text-To-Speech/audio_tts.py` |
 | `authenticate.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/authenticate.py` |
 | `authenticate.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/v1/toolkit/authenticate.py` |
@@ -1006,10 +1006,10 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `caption_video.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/v1/video/caption_video.py` |
 | `caption_video.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/caption_video.py` |
 | `caption_video.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/v1/video/caption_video.py` |
-| `case_study_generator.py` | Case Study Generator | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Skills/case_study_generator.py` |
-| `case_study_generator.py` | Case Study Generator | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/.agents/skills/case_study_generator.py` |
+| `case_study_generator.py` | Case Study Generator | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Skills/case_study_generator.py` |
+| `case_study_generator.py` | Case Study Generator | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/.agents/skills/case_study_generator.py` |
 | `case_study_generator.py` | Case Study Generator | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/Obsidian-Vault/000_Skills/case_study_generator.py` |
-| `check_pipeline_status.py` | Quick status check — shows which clips are done, pending, or missing video_looped.mp4. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/check_pipeline_status.py` |
+| `check_pipeline_status.py` | Quick status check — shows which clips are done, pending, or missing video_looped.mp4. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/check_pipeline_status.py` |
 | `check_pipeline_status.py` | Quick status check — shows which clips are done, pending, or missing video_looped.mp4. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/check_pipeline_status.py` |
 | `cloud_storage.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/cloud_storage.py` |
 | `combine_videos.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/combine_videos.py` |
@@ -1017,8 +1017,8 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `concatenate.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/v1/video/concatenate.py` |
 | `concatenate.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/v1/audio/concatenate.py` |
 | `concatenate.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/v1/video/concatenate.py` |
-| `config.py` | Configuration loader for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/config.py` |
-| `config.py` | Load from centralized secrets file in home directory | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/config.py` |
+| `config.py` | Configuration loader for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/config.py` |
+| `config.py` | Load from centralized secrets file in home directory | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/config.py` |
 | `config.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/config.py` |
 | `config.py` | Load from centralized secrets file in home directory | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/config.py` |
 | `config.py` | Configuration loader for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/OLD/Blotato/tools/config.py` |
@@ -1028,15 +1028,15 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `download.py` | (no description) | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/v1/media/download.py` |
 | `enrich-notion-bookmarks.py` | Notion Bookmark Enrichment Script (Hybrid Strategy) | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/007_Tools-Systems/tools/enrich-notion-bookmarks.py` |
 | `execute_python.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/v1/code/execute/execute_python.py` |
-| `export_fcpxml.py` | tools/export_fcpxml.py | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Tools/Remotion/export_fcpxml.py` |
-| `export_fcpxml.py` | tools/export_fcpxml.py | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/export_fcpxml.py` |
+| `export_fcpxml.py` | tools/export_fcpxml.py | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Remotion/export_fcpxml.py` |
+| `export_fcpxml.py` | tools/export_fcpxml.py | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/export_fcpxml.py` |
 | `export_fcpxml.py` | tools/export_fcpxml.py | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/Obsidian-Vault/003_Tools/Remotion/export_fcpxml.py` |
 | `extract_keyframes.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/extract_keyframes.py` |
 | `extract_keyframes.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/extract_keyframes.py` |
 | `feedback.py` | Ensure correct MIME types for Next.js assets | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/v1/media/feedback.py` |
 | `feedback.py` | Define the path to the static feedback site files | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/v1/media/feedback/feedback.py` |
-| `fetch_cc0_footage.py` | CC0/Public domain footage downloader for Anomalous Wild productions. | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Tools/Asset-Sourcing/fetch_cc0_footage.py` |
-| `fetch_cc0_footage.py` | CC0/Public domain footage downloader for Anomalous Wild productions. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/fetch_cc0_footage.py` |
+| `fetch_cc0_footage.py` | CC0/Public domain footage downloader for Anomalous Wild productions. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Asset-Sourcing/fetch_cc0_footage.py` |
+| `fetch_cc0_footage.py` | CC0/Public domain footage downloader for Anomalous Wild productions. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/fetch_cc0_footage.py` |
 | `fetch_cc0_footage.py` | CC0/Public domain footage downloader for Anomalous Wild productions. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/Obsidian-Vault/003_Tools/Asset-Sourcing/fetch_cc0_footage.py` |
 | `ffmpeg_compose.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/v1/ffmpeg/ffmpeg_compose.py` |
 | `ffmpeg_compose.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/v1/ffmpeg/ffmpeg_compose.py` |
@@ -1045,13 +1045,13 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `flask_crop_api.py` | Run multi_crop.py with arguments | `/Users/tonymacbook2025/Documents/Docker/scripts/flask_crop_api.py` |
 | `gcp_toolkit.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/gcp_toolkit.py` |
 | `gdrive_upload.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/gdrive_upload.py` |
-| `gemini_video_analysis.py` | 1. OVERALL STYLE & AESTHETIC | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Tools/AI-Analysis/gemini_video_analysis.py` |
-| `gemini_video_analysis.py` | 1. OVERALL STYLE & AESTHETIC | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/gemini_video_analysis.py` |
+| `gemini_video_analysis.py` | 1. OVERALL STYLE & AESTHETIC | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/AI-Analysis/gemini_video_analysis.py` |
+| `gemini_video_analysis.py` | 1. OVERALL STYLE & AESTHETIC | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/gemini_video_analysis.py` |
 | `gemini_video_analysis.py` | 1. OVERALL STYLE & AESTHETIC | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/Obsidian-Vault/003_Tools/AI-Analysis/gemini_video_analysis.py` |
 | `generate_docs.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/generate_docs.py` |
-| `generate_system_map.py` | generate_system_map.py | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Scripts/generate_system_map.py` |
-| `google.py` | Google AI Studio provider — image generation (Nano Banana / Nano Banana Pro) | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/providers/google.py` |
-| `google.py` | Google AI Studio provider — image generation (Nano Banana / Nano Banana Pro) | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/providers/google.py` |
+| `generate_system_map.py` | generate_system_map.py | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/generate_system_map.py` |
+| `google.py` | Google AI Studio provider — image generation (Nano Banana / Nano Banana Pro) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/providers/google.py` |
+| `google.py` | Google AI Studio provider — image generation (Nano Banana / Nano Banana Pro) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/providers/google.py` |
 | `google.py` | Google AI Studio provider — image generation (Nano Banana / Nano Banana Pro) | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/providers/google.py` |
 | `google.py` | Google AI Studio provider — image generation (Nano Banana / Nano Banana Pro) | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/OLD/Blotato/tools/providers/google.py` |
 | `google_drive_tools.py` | If there are no (valid) credentials available, let the user log in. | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/10-deploy-ai-agent-langserve/tools/google_drive_tools.py` |
@@ -1064,9 +1064,9 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `ikigai_thumbnail.py` | Make Thumbnails folder | `/Users/tonymacbook2025/Documents/Automations/IkigaiDigital/ikigai_thumbnail.py` |
 | `Ikigai_Video_Renderer.py` | First try with pyobjc to detect idle; otherwise fall back to UI-only flow | `/Users/tonymacbook2025/Documents/Automations/IkigaiDigital/ARCHIVE/BACKUPS/Ikigai_Video_Renderer.py` |
 | `Ikigai_Video_Renderer.py` | First try with pyobjc to detect idle; otherwise fall back to UI-only flow | `/Users/tonymacbook2025/Documents/Automations/IkigaiDigital/ARCHIVE/Ikigai_Video_Renderer.py` |
-| `image_gen.py` | Image generation module — multi-provider. | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Tools/Image-Generation/image_gen.py` |
-| `image_gen.py` | Image generation module — multi-provider. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/image_gen.py` |
-| `image_gen.py` | Image generation module — multi-provider. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/providers/image_gen.py` |
+| `image_gen.py` | Image generation module — multi-provider. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Image-Generation/image_gen.py` |
+| `image_gen.py` | Image generation module — multi-provider. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/image_gen.py` |
+| `image_gen.py` | Image generation module — multi-provider. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/providers/image_gen.py` |
 | `image_gen.py` | Image generation module — multi-provider. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/OLD/Blotato/tools/image_gen.py` |
 | `image_gen.py` | Image generation module — multi-provider. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/Obsidian-Vault/003_Tools/Image-Generation/image_gen.py` |
 | `image_to_video.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/image_to_video.py` |
@@ -1075,15 +1075,15 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `image_to_video.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/v1/image/convert/image_to_video.py` |
 | `job_status.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/v1/toolkit/job_status.py` |
 | `jobs_status.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/v1/toolkit/jobs_status.py` |
-| `kie_image_gen.py` | (no description) | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Tools/Image-Generation/kie_image_gen.py` |
-| `kie_image_gen.py` | (no description) | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/providers/kie_image_gen.py` |
+| `kie_image_gen.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Image-Generation/kie_image_gen.py` |
+| `kie_image_gen.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/providers/kie_image_gen.py` |
 | `kie_image_gen.py` | (no description) | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/Obsidian-Vault/003_Tools/Image-Generation/kie_image_gen.py` |
-| `kie_upload.py` | Kie AI file upload module. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/kie_upload.py` |
-| `kie_upload.py` | Kie AI file upload module. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/kie_upload.py` |
+| `kie_upload.py` | Kie AI file upload module. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/kie_upload.py` |
+| `kie_upload.py` | Kie AI file upload module. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/kie_upload.py` |
 | `kie_upload.py` | Kie AI file upload module. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/kie_upload.py` |
 | `kie_upload.py` | Kie AI file upload module. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/OLD/Blotato/tools/kie_upload.py` |
-| `kie_video_gen.py` | Map the generic slugs to Veo3 exact model name | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Tools/Video-Generation/kie_video_gen.py` |
-| `kie_video_gen.py` | Map the generic slugs to Veo3 exact model name | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/providers/kie_video_gen.py` |
+| `kie_video_gen.py` | Map the generic slugs to Veo3 exact model name | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/kie_video_gen.py` |
+| `kie_video_gen.py` | Map the generic slugs to Veo3 exact model name | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/providers/kie_video_gen.py` |
 | `kie_video_gen.py` | Map the generic slugs to Veo3 exact model name | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/Obsidian-Vault/003_Tools/Video-Generation/kie_video_gen.py` |
 | `korvus_rag.py` | Initialize collection | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/korvus-simple-rag/korvus_rag.py` |
 | `langchain-agent.py` | First, prompt the AI with the latest user message | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/2-langchain-agent/langchain-agent.py` |
@@ -1119,25 +1119,27 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `n8n-streamlit-agent-basic-auth.py` | Constants | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/n8n-streamlit-agent/n8n-streamlit-agent-basic-auth.py` |
 | `n8n-streamlit-agent.py` | Supabase setup | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/n8n-streamlit-agent/n8n-streamlit-agent.py` |
 | `n8n_pipe.py` | title: n8n Pipe Function | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/n8n_pipe.py` |
-| `new_video.py` | tools/new_video.py | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Tools/Video-Generation/new_video.py` |
-| `new_video.py` | tools/new_video.py | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/new_video.py` |
+| `new_video.py` | tools/new_video.py | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/new_video.py` |
+| `new_video.py` | tools/new_video.py | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/new_video.py` |
 | `new_video.py` | tools/new_video.py | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/Obsidian-Vault/003_Tools/Video-Generation/new_video.py` |
 | `o1-ai-agent.py` | create an instance of the different Asana API classes | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/o1-ai-agent/o1-ai-agent.py` |
-| `pipeline_supervisor.py` | Production Supervisor — bioluminescence_weapon video generation. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/pipeline_supervisor.py` |
+| `pipeline_supervisor.py` | Production Supervisor — bioluminescence_weapon video generation. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/pipeline_supervisor.py` |
 | `pipeline_supervisor.py` | Production Supervisor — bioluminescence_weapon video generation. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/pipeline_supervisor.py` |
-| `preloop_new_clips.py` | Creates video_looped.mp4 for any new clip folder that has video.mp4 but not video_looped.mp4. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/preloop_new_clips.py` |
+| `preloop_new_clips.py` | Creates video_looped.mp4 for any new clip folder that has video.mp4 but not video_looped.mp4. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/preloop_new_clips.py` |
 | `preloop_new_clips.py` | Creates video_looped.mp4 for any new clip folder that has video.mp4 but not video_looped.mp4. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/preloop_new_clips.py` |
 | `rag-document-loader.py` | Load the PDF or txt documents from the directory | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/6-rag-task-agent/rag-document-loader.py` |
 | `rag-task-agent.py` | create an instance of the different Asana API classes | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/6-rag-task-agent/rag-task-agent.py` |
 | `regenerate-bookmarks-perplexity.py` | Notion Bookmark Regeneration via Perplexity API (4-Step Pipeline) | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/007_Tools-Systems/tools/regenerate-bookmarks-perplexity.py` |
 | `Remove_Text_From_Image.py` | --- CONFIG --- | `/Users/tonymacbook2025/Documents/Automations/ShortsEditorAI/Archive Scripts/old_versions/Remove_Text_From_Image.py` |
+| `rename_screenshots.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/rename_screenshots.py` |
+| `process_notion_edit.py` | Heuristic offline batch processor for large Notion exports | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/process_notion_edit.py` |
 | `run.py` | print agent name in blue | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-swarm-agent/run.py` |
 | `run.py` | (no description) | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/sql-ai-agent/run.py` |
-| `run_new_clips_batch.py` | Batch generator for new_clips_prompts.json — handles both video (Kie.ai) and image (Fal.ai Flux Pro). | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/run_new_clips_batch.py` |
+| `run_new_clips_batch.py` | Batch generator for new_clips_prompts.json — handles both video (Kie.ai) and image (Fal.ai Flux Pro). | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/run_new_clips_batch.py` |
 | `run_new_clips_batch.py` | Batch generator for new_clips_prompts.json — handles both video (Kie.ai) and image (Fal.ai Flux Pro). | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/run_new_clips_batch.py` |
-| `run_tts_batch.py` | Batch TTS runner — reads narration_tts.json, generates ElevenLabs audio for each scene. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/run_tts_batch.py` |
+| `run_tts_batch.py` | Batch TTS runner — reads narration_tts.json, generates ElevenLabs audio for each scene. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/run_tts_batch.py` |
 | `run_tts_batch.py` | Batch TTS runner — reads narration_tts.json, generates ElevenLabs audio for each scene. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/run_tts_batch.py` |
-| `run_video_gen_batch.py` | Batch AI video generator — reads ai_prompts.json, generates Kling/Veo videos for each scene. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/run_video_gen_batch.py` |
+| `run_video_gen_batch.py` | Batch AI video generator — reads ai_prompts.json, generates Kling/Veo videos for each scene. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/run_video_gen_batch.py` |
 | `run_video_gen_batch.py` | Batch AI video generator — reads ai_prompts.json, generates Kling/Veo videos for each scene. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/run_video_gen_batch.py` |
 | `runnable.py` | from tools.google_drive_tools import available_drive_functions | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/10-deploy-ai-agent-langserve/runnable.py` |
 | `runnable.py` | Invoke the chatbot with the binded tools | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/7-langgraph-agent/runnable.py` |
@@ -1170,15 +1172,15 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `trim.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/v1/video/trim.py` |
 | `upload.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/routes/v1/s3/upload.py` |
 | `upload.py` | Copyright (c) 2025 Stephen G. Pope | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/services/v1/s3/upload.py` |
-| `utils.py` | Shared utilities for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/utils.py` |
-| `utils.py` | Shared utilities for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/utils.py` |
+| `utils.py` | Shared utilities for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/Blotato/tools/utils.py` |
+| `utils.py` | Shared utilities for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/utils.py` |
 | `utils.py` | Shared utilities for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/utils.py` |
 | `utils.py` | Shared utilities for Creative Content Engine. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/OLD/Blotato/tools/utils.py` |
 | `vector_db_tools.py` | Create the open-source embedding function | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/10-deploy-ai-agent-langserve/tools/vector_db_tools.py` |
 | `vector_db_tools.py` | Create the open-source embedding function | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/llm-agent-evaluation-framework/tools/vector_db_tools.py` |
 | `version.py` | (no description) | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/local-ai-packaged/no-code-architects-toolkit/version.py` |
-| `video_stitcher.py` | Sort scene directories | `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Tools/Video-Generation/video_stitcher.py` |
-| `video_stitcher.py` | Sort scene directories | `/Users/tonymacbook2025/Documents/Claude-Agent/002_Content-Creation/Video_Editor/004_Tools/providers/video_stitcher.py` |
+| `video_stitcher.py` | Sort scene directories | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/video_stitcher.py` |
+| `video_stitcher.py` | Sort scene directories | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/004_Tools/providers/video_stitcher.py` |
 | `video_stitcher.py` | Sort scene directories | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/Obsidian-Vault/003_Tools/Video-Generation/video_stitcher.py` |
 | `web_search_agent.py` | 'if-token-present' means nothing will be sent (and the example will work) if you don't have logfire configured | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/pydantic-ai/web_search_agent.py` |
 | `web_search_agent_streamlit.py` | 'if-token-present' means nothing will be sent (and the example will work) if you don't have logfire configured | `/Users/tonymacbook2025/Documents/Docker/AI-Stacks/ai-agents-masterclass/pydantic-ai/web_search_agent_streamlit.py` |
@@ -1217,9 +1219,10 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 **npm globals:**
 ```
 /opt/homebrew/lib
-├── @anthropic-ai/claude-code@2.1.119
+├── @anthropic-ai/claude-code@2.1.126
+├── @google/gemini-cli@0.40.0
 ├── @musistudio/claude-code-router@2.0.0
-├── @openai/codex@0.125.0
+├── @openai/codex@0.128.0
 ├── @playwright/cli@0.1.1
 ├── corepack@0.32.0
 ├── firecrawl-cli@1.11.2
@@ -1230,4 +1233,3 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 ├── uipro-cli@2.2.3
 └── vercel@50.34.3
 ```
-

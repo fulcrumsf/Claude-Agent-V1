@@ -5,7 +5,7 @@ domain: video-production
 tags: [guideline, video-production, kie-ai, video-generation, pricing]
 ---
 
-**Source:** [[/Users/tonymacbook2025/Documents/Claude-Agent/007_Resource_Library/Docs/Video_Editor/MODEL_SELECTOR.md]]
+**Source:** [[/Users/tonymacbook2025/Documents/Agent-OS/007_Resource_Library/Docs/Video_Editor/MODEL_SELECTOR.md]]
 
 ## Summary
 

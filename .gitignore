@@ -66,3 +66,10 @@ Notion-Edit/
 *.flac
 *.ogg
 *.m4a
+
+# Graphify generated output — rebuilds automatically, never commit
+graphify-out/
+001_Architecture/Graphify/Graphify-Out/
+
+# ChatGPT raw export data — too large, redownloadable from ChatGPT
+007_Resource_Library/OpenAI_History/Already Ingested/

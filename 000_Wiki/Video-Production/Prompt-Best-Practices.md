@@ -5,7 +5,7 @@ domain: video-production
 tags: [guideline, video-production, kie-ai, video-generation, ai-agents]
 ---
 
-**Source:** [[/Users/tonymacbook2025/Documents/Claude-Agent/007_Resource_Library/Docs/Video_Editor/Prompt-Best-Practices.md]]
+**Source:** [[/Users/tonymacbook2025/Documents/Agent-OS/007_Resource_Library/Docs/Video_Editor/Prompt-Best-Practices.md]]
 
 ## Summary
 
@@ -16,4 +16,9 @@ It then enumerates universal prompt principles followed by model-specific guidan
 Use this before writing any scene prompt: pick the model from the matrix, consult the channel's style file for visual rules, and apply the model-specific structural conventions in this guide to maximize output quality.
 
 ## Related
+
 - [[Angular-Minimalist-Action-Style]]
+- [[Annotation-Prompts]]
+- [[Blocky-Hero-Stance-Style]]
+- [[Flat-Neon-Cartoon-Style]]
+- [[Watercolor-Portrait-Illustration]]

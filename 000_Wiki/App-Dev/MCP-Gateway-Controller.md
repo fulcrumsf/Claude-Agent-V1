@@ -19,3 +19,6 @@ A local unified system for managing all MCP servers, plugins, and skills across 
 **Initial MCPs in scope:** blotato, stitch, remotion, n8n-mcp, elevenlabs, notion, perplexity, context7, playwright (lower priority — CLI preferred), and docker (kept separate as fallback). MCPs are organized by group (Publishing / Design / Video / Automation / Audio / Data / Research / Documentation / Browser / System) so users can toggle entire categories at once.
 
 Goal: stop hand-editing per-app MCP configs every time a new tool is added.
+
+## Related
+- [[Astro-Cloudflare-Website-Builder]]

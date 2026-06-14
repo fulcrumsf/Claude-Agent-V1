@@ -19,4 +19,9 @@ Applies to personal goals, deep research, book companion wikis, internal team kn
 
 ## Related
 
+
 - [[Graphify]] — the on-device knowledge graph engine used to map this wiki's cross-links
+- [[Claude-and-Obsidian-Full-AI-Operating-System]]
+- [[Obsidian-and-Gemini-CLI-One-AI-Brain-That-Works-With-Everything]]
+- [[Claude-And-Obsidian-Full-AI-Operating-System]]
+- [[Obsidian-And-Gemini-CLI-One-AI-Brain-That-Works-With-Everything]]

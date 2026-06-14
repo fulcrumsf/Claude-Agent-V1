@@ -9,7 +9,7 @@ type: user
 **How to apply:**
 - Tony uses Claude Code as his primary development environment
 - Python scripts are preferred for automation tasks
-- All projects live in `/Users/tonymacbook2025/Documents/Claude-Agent/`
+- All projects live in `/Users/tonymacbook2025/Documents/Agent-OS/`
 - Claude Code agents are dispatched from department folders within that workspace
 - Voice input is common — casual, flowing prompts that need structure pulled out
 - When Tony says "brainstorming" — think and talk, don't build

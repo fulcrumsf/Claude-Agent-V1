@@ -4,67 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "859368314169a4ac",
+        "id": "5aa5d59f7cfde62e",
         "type": "tabs",
         "children": [
           {
-            "id": "960fc20bdb50f4ff",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "terminal:terminal",
-              "state": {
-                "terminal:terminal": {
-                  "cwd": "/Users/tonymacbook2025/Documents/Claude-Agent",
-                  "focus": false,
-                  "profile": {
-                    "args": [
-                      "--login"
-                    ],
-                    "executable": "/bin/zsh",
-                    "followTheme": true,
-                    "name": "",
-                    "platforms": {
-                      "darwin": true
-                    },
-                    "pythonExecutable": "python3",
-                    "restoreHistory": false,
-                    "rightClickAction": "copyPaste",
-                    "successExitCodes": [
-                      "0",
-                      "SIGINT",
-                      "SIGTERM"
-                    ],
-                    "terminalOptions": {
-                      "documentOverride": null
-                    },
-                    "type": "integrated",
-                    "useWin32Conhost": true
-                  },
-                  "serial": null
-                }
-              },
-              "pinned": true,
-              "icon": "terminal",
-              "title": "Terminal: Claude-Agent"
-            }
-          },
-          {
-            "id": "165c6dc8277cbbba",
+            "id": "bd856812c70a1bb1",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "007_Resource_Library/Prompts/Angular-Retro-Cartoon-Style.md",
+                "file": "000_Ingest/Find Etsy Products Making $14,387+ Per Month (2026 NEW FEATURES).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Angular-Retro-Cartoon-Style"
+              "title": "Find Etsy Products Making $14,387+ Per Month (2026 NEW FEATURES)"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -84,7 +41,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -228,54 +185,54 @@
       "workspaces:Manage workspace layouts": false
     }
   },
-  "active": "165c6dc8277cbbba",
+  "active": "bd856812c70a1bb1",
   "lastOpenFiles": [
-    "001_Architecture/Self_Learning_Loop/2026-04-29_Self-Review.md",
-    "001_Architecture/Feedback_Loop/2026-04-29_Feedback.md",
-    "001_Architecture/Logs/2026-04-29_Session-Log.md",
-    "001_Architecture/Install_Maps/System-Map.md",
-    "001_Architecture/Install_Maps/system_map_data.json",
-    "001_Architecture/Scripts/generate_system_map.py",
-    "001_Architecture/Logs/2026-04-28_Ingest-System-Build.md",
-    "007_Resource_Library/Prompts/Angular-Minimalist-Action-Style.md",
-    "000_Wiki/Video-Production/Angular-Retro-Cartoon-Style.md",
-    "007_Resource_Library/Prompts/Angular-Retro-Cartoon-Style.md",
-    "001_Architecture/Install_Maps/Workspace-Map.md",
-    "000_Wiki/Video-Production/Angular-Minimalist-Action-Style.md",
-    "graphify-out/graph.html",
-    "graphify-out/graph.json",
-    "graphify-out/GRAPH_REPORT.md",
-    "graphify-out/cache/d0d0fd58c5f55001bf362db0390f797ac0936bf03446866ee6b6a11c5547c6f9.json",
-    "graphify-out/cache/1eb4068d1fbdb4557d9ccbe7e7ed2aad04c8387eb905c0b06704de99cc4ed6e2.json",
-    "graphify-out/cache/9695fc15d80276c385450d0cbeb5ba4bbeac6410d06df047e59f13a7f7b87d60.json",
-    "graphify-out/cache/b673f209fb5c254c7f1e8af30441154597ef1d551985669e1042e117699d1f2b.json",
-    "graphify-out/cache/55b379bd04f686939a36d68c96776046ca90e4b2130fb8116601cbee8615cc5b.json",
-    "graphify-out/cache/300483081174f9be05b4430abbc96ec06c59a3a7eea0cf65bba7babec9fb8033.json",
-    "000_Wiki/index.md",
-    "000_Wiki/log.md",
-    "000_Wiki/Architecture/Graphify.md",
-    "007_Resource_Library/Bookmarks/Graphify-On-Device-Knowledge-Graph-Engine.md",
-    "GEMINI.md",
-    "AGENTS.md",
-    "001_Architecture/Skills/Ingest.md",
-    "000_Ingest/Obsidian + Gemini CLI = One AI Brain That Works With EVERYTHING.md",
-    "000_Ingest/Notion-Edit/10_00064_Abstract_Loose_Shapes_THBN_ISO_A1_(23.4x33_Living_Room.jpg",
-    "000_Ingest/Notion-Edit/09_00070_Womans_Back_Line_Drawing_THBN_ISO_A1_(23.4x33_Living_Room.jpg",
-    "000_Ingest/Notion-Edit/01-Mockup.jpg",
-    "000_Ingest/Notion-Edit/01_Veo3_Gengis_4k_FreezeFrame.jpg",
-    "000_Ingest/Impeccable Just Fixed Claude Code's Biggest Problem.md",
-    "000_Ingest/Claude Code + Karpathy's System = $10,000 Skills.md",
-    "000_Ingest/Notion-Edit/ChatGPT_Image_Apr_29_2025_09_03_43_PM.png",
-    "000_Ingest/Notion-Edit/BDRM_Japandi_Beige_4x5 2.png",
-    "000_Ingest/Notion-Edit/BDRM_Japandi_Beige_4x5.png",
-    "000_Ingest/Notion-Edit/Bad_Hook.svg",
-    "000_Ingest/Notion-Edit/Banner.jpg",
-    "000_Ingest/Notion-Edit/Bad_Ending.svg",
-    "000_Ingest/Watercolor Portrait Illustration.md",
-    "000_Ingest/Notion-Edit/Notion/Private & Shared/Area Dashboard/Job Search Tracker/Finixio.md",
-    "000_Ingest/Notion-Edit/Notion/Private & Shared/Area Dashboard/Job Search Tracker/Dice (Robert Half).md",
-    "000_Ingest/Notion-Edit/Notion/Private & Shared/Area Dashboard/Job Search Tracker/Cambium.md",
-    "000_Ingest/Notion-Edit/Notion/Private & Shared/Area Dashboard/Job Search Tracker/Adaptly.md",
+    "000_Ingest/TikTok Shop — LIVE Growth Playbook.md",
+    "000_Ingest/Find Etsy Products Making $14,387+ Per Month (2026 NEW FEATURES).md",
+    "000_Ingest/The Pinterest Strategy That's Actually Working for Me in 2026.md",
+    "000_Ingest/Send This Email to Get More Interviews.md",
+    "000_Ingest/Seller Enforcement Policy.md",
+    "000_Ingest/Most YouTubers Use Claude Wrong. Do This Instead.md",
+    "000_Ingest/I Built a Claude Skill That Instantly WATCHES Any Video.md",
+    "000_Ingest/How to Connect Kit to Claude with the Kit MCP (Step-by-Step Tutorial).md",
+    "000_Ingest/Customer Service Policy.md",
+    "000_Ingest/Customer Review Requests Best Practices and FAQs.md",
+    "000_Ingest/Customer Order Cancellation, Return, and Refund Policy.md",
+    "000_Ingest/Connect Amazon and Pinterest.md",
+    "000_Ingest/Claude + Arcads = 100 Static Ads While You Sleep.md",
+    "000_Ingest/Captivate Your Audience with a Compelling Teaser Video.md",
+    "000_Ingest/ACE Your Shop _TikTok Shop Seller Playbook 2026 .pdf",
+    "000_Ingest/PDF/ACE Your Shop _TikTok Shop Seller Playbook 2026 .pdf",
+    "000_Ingest/PDF/TikTok Shop — LIVE Growth Playbook.pdf",
+    "000_Ingest/PDF/Claude Code + Meta Ads = A $10K Agency in One Plugin 🤯.pdf",
+    "000_Ingest/The $50,000+ Print on Demand Trend Taking Over Etsy and Social Media.md",
+    "000_Ingest/Stickman_Video_Pipeline/Master_Prompt.md",
+    "000_Ingest/Stickman_Video_Pipeline/Master_Prompt.txt",
+    "000_Ingest/Stickman_Video_Pipeline/updated master prompt.txt",
+    "000_Ingest/Claude Code (Free Plan) + YouTube = $77,000Month.md",
+    "000_Ingest/Stickman_Video_Pipeline/Claude Code (Free Plan) + YouTube = $77,000Month.md",
+    "000_Ingest/Stickman_Video_Pipeline",
+    "000_Ingest/untitled folder",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Solo_Creative_Agency_Higgsfield_ Claude.md",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/projects/liam-signature-boots/scenes/ad-04/renders",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/projects/liam-signature-boots/scenes/ad-04/prompt.md",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/projects/liam-signature-boots/scenes/ad-03/renders",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/projects/liam-signature-boots/scenes/ad-03/prompt.md",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/projects/liam-signature-boots/scenes/ad-02/prompt.md",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/projects/liam-signature-boots/scenes/ad-01/prompt.md",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/assets/references/characters/liam/face-front.png",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/assets/references/characters/liam/README.md",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/templates/project/brief.md",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/templates/scene/prompt.md",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/assets/brand/Liam Ottley - Logo Mark - Inked - Ironsand.png",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/Cowork-Workspace-Template/assets/brand/Liam Ottley - Logo Mark - Inked - Black.png",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/cowork-workspace-template/assets/references/characters/liam/face-front.png",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/cowork-workspace-template/assets/brand/Liam Ottley - Logo Mark - Inked - Ironsand.png",
+    "000_Ingest/Skills/Solo_Higgsfield_Agency/cowork-workspace-template/assets/brand/Liam Ottley - Logo Mark - Inked - Black.png",
+    "007_Resource_Library/Obsidian_Attachments/Visual_Assets/Lumentum-AI-Infrastructure-Investment-Analysis.png",
+    "007_Resource_Library/Obsidian_Attachments/Visual_Assets/Vertex-AI-Vision-Google-Cloud-Platform.jpg",
+    "007_Resource_Library/Obsidian_Attachments/Visual_Assets/Animatix-AI-Video-Production-Pipeline.jpg",
+    "007_Resource_Library/Obsidian_Attachments/Visual_Assets/How-To-Fire-Graphic-Designer-With-Claude-Code.png",
     "Untitled.canvas"
   ]
 }

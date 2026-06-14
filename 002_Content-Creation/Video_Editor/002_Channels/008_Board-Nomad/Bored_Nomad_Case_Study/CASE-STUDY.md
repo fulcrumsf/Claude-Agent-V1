@@ -1,3 +1,10 @@
+---
+title: "Bored Nomad — Website Redesign Case Study"
+type: case-study
+domain: content-creation
+tags: [case-study, content-creation, board-nomad]
+---
+
 # Bored Nomad — Website Redesign Case Study
 **Prepared:** March 31, 2026  
 **Site:** borednomad.com  

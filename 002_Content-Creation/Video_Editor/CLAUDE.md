@@ -11,7 +11,7 @@ tags: [config, video-production, content-creation, kie-ai, remotion]
 
 ## Knowledge Graph Access
 
-**Before starting work:** Read the federation registry at `/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Graphify/REGISTRY.md` and query the Video Editor graph for any lookup question:
+**Before starting work:** Read the federation registry at `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Graphify/REGISTRY.md` and query the Video Editor graph for any lookup question:
 
 ```bash
 cd 002_Content-Creation/Video_Editor && graphify query "your question"
@@ -23,8 +23,8 @@ This department's knowledge is wikified across:
 - **API specs (Kie.ai, Fal.ai):** `007_Resource_Library/Docs/Video_Editor/`
 - **Distilled wiki summaries:** `000_Wiki/Video-Production/`
 
-**Warehouse root:** `/Users/tonymacbook2025/Documents/Claude-Agent/`
-**TOOLBOX:** `/Users/tonymacbook2025/Documents/Claude-Agent/TOOLBOX.md`
+**Warehouse root:** `/Users/tonymacbook2025/Documents/Agent-OS/`
+**TOOLBOX:** `/Users/tonymacbook2025/Documents/Agent-OS/TOOLBOX.md`
 
 **Graph-first rule:** Query the graph before grepping or asking the user. If the graph returns nothing useful, ask a focused question instead of requesting extensive background.
 
@@ -36,7 +36,7 @@ This department's knowledge is wikified across:
 
 Tony has pre-installed tools for all common video production tasks. Never rebuild what already exists.
 
-**TOOLBOX location:** `/Users/tonymacbook2025/Documents/Claude-Agent/TOOLBOX.md`
+**TOOLBOX location:** `/Users/tonymacbook2025/Documents/Agent-OS/TOOLBOX.md`
 
 **Video-specific tools you should know about:**
 

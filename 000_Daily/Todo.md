@@ -1,6 +1,7 @@
 # Todo
 
 ## 🔴 P1 (High Priority)
+- [ ] Add missing API keys to `~/.env-secrets` — full reference in TOOLBOX.md → API Keys Reference table. Still needed: `META_GRAPH_API_KEY` (Facebook/Instagram Graph API). GitHub OAuth already done — verify `GITHUB_PERSONAL_ACCESS_TOKEN` is set correctly. PubMed: check if `PUBMED_API_KEY` is actually required by any active tool before adding.
 - [ ] 01-Beacons Link in Bio — Admin — Neon Parcel
 - [ ] 03-Shorts n8n Workflow — Automation — Ongoing
 - [ ] 05-n8n Viral Story Workflow — Automation
@@ -10,6 +11,12 @@
 - [ ] Create a Prompt Pack — Publish
 - [ ] Longform AI Characters — Automation
 - [ ] Vietnam Citizenship — Research
+
+- [x] Rename vault to `Agent-OS` — update all hardcoded paths in scripts, CLAUDE.md, TOOLBOX.md, memory files, and hooks
+- [ ] Build Agent-OS — transform the vault into a dashboard-driven OS in Obsidian: home dashboard → department views (Content Creation, Ecommerce, etc.), each with pipeline workflows and Blotato channel IDs per brand
+- [ ] Content Creation Pipeline — all-in-one video production dashboard: channel selector (pull-down), format checkboxes (YouTube Short, TikTok, Instagram Reel, Facebook Reel), concept → long-form video → auto-snip to vertical teasers, Blotato publish per channel's connected socials
+- [ ] Back up Agent-OS vault to GitHub — init repo, add .gitignore (exclude binaries/Visual_Assets images), push; set up routine commits going forward
+- [ ] ChatGPT export images — run vision ingest pipeline on 435 hash-named images in `007_Resource_Library/OpenAI_History/ChatGPT_Image_Generator/` (all named `file_000000...`), rename to Title-Case-With-Dashes semantic names, create paired asset notes in correct category folders. Command: `python3 001_Architecture/Scripts/process_image_ingest.py "007_Resource_Library/OpenAI_History/ChatGPT_Image_Generator"`
 
 ---
 
