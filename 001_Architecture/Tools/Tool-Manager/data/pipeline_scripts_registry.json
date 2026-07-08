@@ -1,0 +1,134 @@
+{
+  "_meta": {
+    "purpose": "Registry of channel video-pipeline scripts and their status (active/superseded/legacy), so 'what is this script for' questions get answered by reading this file instead of re-deriving from scratch each time.",
+    "last_updated": "2026-07-07"
+  },
+  "channels": {
+    "anomalous_wild": {
+      "note": "First video pipeline ever built in this workspace (predates Reimagined Realms). Early tooling (below) is fragmented across eras. A unifying orchestrator skill is now BUILT (2026-07-07/08): 001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md, invoke via /anomalous-wild. See 'new_pipeline_scripts' for its own scripts, built via subagent-driven-development with per-task review + a final whole-branch review.",
+      "new_pipeline_scripts": [
+        {
+          "name": "build_motion_graphics_profile.py",
+          "path": "001_Architecture/Tools/Tool-Manager/build_motion_graphics_profile.py",
+          "status": "active",
+          "purpose": "Builds data/motion_graphics_capabilities.json — research-backed capability profile (Remotion, video-use, Hyperframes, Manim), every entry cites a real source. Consulted by Tool-Manager for per-beat tool routing."
+        },
+        {
+          "name": "generate_narration_with_timestamps.py",
+          "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_narration_with_timestamps.py",
+          "status": "active",
+          "purpose": "Thin wrapper around Tools/Text-To-Speech/audio_tts.py's generate_voiceover_with_timestamps(). Reads Scripts/Narration.md, writes per-scene audio.mp3 + word-level beat_sheet.json."
+        },
+        {
+          "name": "build_beat_table.py",
+          "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/build_beat_table.py",
+          "status": "active",
+          "purpose": "Reads per-scene beat_sheet.json + Scene_Routing.json, writes Production/Beat_Table.json. Locks max_clip_s=8.0 for live_footage beats, max_static_s=5.0 for diagram beats."
+        },
+        {
+          "name": "diagram_research_and_illustrate.py",
+          "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/diagram_research_and_illustrate.py",
+          "status": "active",
+          "purpose": "Scientific Diagram sub-pipeline steps 1-2: Openverse reference search + clean no-text illustration via kie.ai GPT-Image-2 (gpt-image-2-text-to-image). Fixes the garbled-diagram-text problem from the Bioluminescence Weapon video."
+        },
+        {
+          "name": "detect_label_coordinates.py",
+          "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/detect_label_coordinates.py",
+          "status": "active",
+          "purpose": "Scientific Diagram sub-pipeline step 3: Gemini vision pass detects real per-image label coordinates. Structurally strips coordinates from not_found entries — never guesses a placement, code-enforced not just prompt-enforced."
+        },
+        {
+          "name": "generate_youtube_package.py",
+          "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_youtube_package.py",
+          "status": "active",
+          "purpose": "Adapts RR's title/description/thumbnail formulas to AW's science/nature framing. Generates 3 titles + description + actually generates/downloads 3 real thumbnail PNGs via kie.ai."
+        },
+        {
+          "name": "scaffold_new_production.py",
+          "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/scaffold_new_production.py",
+          "status": "active",
+          "purpose": "Going-forward folder scaffolder: 8 typed folders matching RR's pattern, hard-fails if the locked end_card_v3.mp4 (Brand_Assets/End_Card/) is missing."
+        }
+      ],
+      "new_pipeline_docs": [
+        {
+          "name": "upload_to_blotato.md",
+          "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/upload_to_blotato.md",
+          "status": "active",
+          "purpose": "Blotato upload procedure, mirrors RR Phase 12 locked defaults. Confirmed accountId 42514 (displayed as 'Anomalos Wild', a spelling variant — confirmed correct by Tony 2026-07-08)."
+        }
+      ],
+      "new_pipeline_remotion_components": [
+        {
+          "name": "DiagramLabels.tsx",
+          "path": "002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-components/DiagramLabels.tsx",
+          "status": "active",
+          "purpose": "Scientific Diagram sub-pipeline step 4: places labels/callout lines at detected coordinates. Registered via Zod schema= prop (diagramLabelsSchema), matching AIVideo/aiVideoSchema pattern, not a type-erasure cast. x_pct/y_pct optional so not_found labels don't crash the composition."
+        }
+      ],
+      "cross_cutting_bugs_fixed_2026_07_08": [
+        "detect_label_coordinates.py's not_found coordinate-stripping was rejected by DiagramLabels.tsx's original required-field Zod schema (would crash diagram assembly on the exact safety-path scenario) — fixed by making x_pct/y_pct optional + a hasCoordinates() type guard.",
+        "The 3-5s no-static-frame rule (max_static_s) was recorded in Beat_Table.json but never enforced anywhere — fixed by adding a mandatory per-beat static-hold check to Anomalous_Wild_Video_Pipeline/SKILL.md's Phase 7 (Assembly)."
+      ],
+      "scripts": [
+        {
+          "name": "pipeline_supervisor.py",
+          "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/pipeline_supervisor.py",
+          "status": "active_preferred",
+          "purpose": "Batch clip generator with real error-code classification (FATAL/CREDITS/SKIP/RATE/WAIT/RETRY/UNKNOWN), retries, macOS notifications, auto-preloop after each success.",
+          "kept_in_new_pipeline": true
+        },
+        {
+          "name": "run_new_clips_batch.py",
+          "path": "001_Architecture/Tools/Video-Generation/Generic_Tools/run_new_clips_batch.py",
+          "status": "superseded_not_deleted",
+          "purpose": "Simpler batch generator, same core job as pipeline_supervisor.py, only ever used for Bioluminescence Weapon despite living in Generic_Tools. Has a diagram-safety negative-prompt feature pipeline_supervisor.py lacks (see notes).",
+          "notes": "Auto-appends 'no text, no labels, no callout lines, no arrows, no annotation marks' for image entries marked is_diagram:true, added after the Video 001 Report Card caught garbled diagram text. Didn't fully work (negative prompts alone don't reliably stop text rendering). The idea carries forward into the new pipeline's Scientific Diagram sub-pipeline (reference research + vision-coordinate verification + Remotion labels), which is the actual fix. Left in place, unused going forward.",
+          "kept_in_new_pipeline": false
+        },
+        {
+          "name": "preloop_new_clips.py",
+          "path": "001_Architecture/Tools/Video-Generation/Generic_Tools/preloop_new_clips.py",
+          "status": "active",
+          "purpose": "Post-processes freshly generated clips into looped versions matching narration duration."
+        },
+        {
+          "name": "preloop_videos.sh",
+          "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/preloop_videos.sh",
+          "status": "active",
+          "purpose": "Same preloop job as preloop_new_clips.py, for the original 12 hero clips with hardcoded durations.",
+          "notes": "Needed bash 4+ for declare -A associative arrays; system bash was 3.2. Fixed 2026-07-07 via 'brew install bash' (5.3.15 installed at /opt/homebrew/bin/bash, ahead of /bin/bash in PATH, so plain 'bash' now resolves to it with no script changes). Verified working end-to-end."
+        },
+        {
+          "name": "pipeline_orchestrator.sh",
+          "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/pipeline_orchestrator.sh",
+          "status": "active",
+          "purpose": "6-stage wrapper chaining run_new_clips_batch.py -> preloop_new_clips.py -> preloop_videos.sh -> check_pipeline_status.py.",
+          "notes": "Was calling a 004_Tools/ path that stopped existing after a June 2026 reorg (scripts moved to 001_Architecture/Tools/Video-Generation/). Fixed 2026-07-07 to use absolute paths to the real locations."
+        },
+        {
+          "name": "check_pipeline_status.py",
+          "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/check_pipeline_status.py",
+          "status": "active",
+          "purpose": "Read-only progress report: which clips/images are done vs. pending."
+        }
+      ],
+      "remotion_components": [
+        {
+          "name": "BioluminescenceDoc.tsx",
+          "path": "002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-components/BioluminescenceDoc.tsx",
+          "status": "one_off_not_reusable",
+          "purpose": "The actual Remotion composition that assembles Bioluminescence Weapon. Hardcoded to that video's specific scenes/durations.",
+          "reference_copy": "002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0001_Bioluminescence_Weapon/Remotion/BioluminescenceDoc.tsx"
+        },
+        {
+          "name": "AnomalousWildEndCard.tsx",
+          "path": "002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-components/AnomalousWildEndCard.tsx",
+          "status": "active_but_not_the_actual_pipeline_path",
+          "purpose": "Channel-wide end card composition. In practice the pipeline appends the pre-rendered end_card_v3.mp4 via ffmpeg instead of re-rendering this per video (locked rule in DESIGN.md).",
+          "reference_copy": "002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Brand_Assets/End_Card/AnomalousWildEndCard.tsx"
+        }
+      ]
+    }
+  }
+}

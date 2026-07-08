@@ -1,0 +1,172 @@
+"""
+One-time (re-runnable) builder for the motion graphics tool capability profile.
+Every entry must cite a real source — a skill doc path or a dated session precedent.
+Re-run this whenever a tool's skill docs change materially.
+
+Sources actually read to build this profile (2026-07-07):
+- 001_Architecture/Skills/hyperframes/SKILL.md (full read)
+- 001_Architecture/Skills/hyperframes-cli/SKILL.md (full read)
+- 001_Architecture/Skills/remotion-best-practices/SKILL.md (full read)
+- 001_Architecture/Skills/video-use/SKILL.md (lines 1-115, 197-262 read)
+- 001_Architecture/Skills/video-use/skills/manim-video/SKILL.md (full read)
+- 002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-components/PhylogeneticTree.tsx
+  (session precedent: coordinate-array node placement for a labeled diagram)
+- 002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0001_Bioluminescence_Weapon/
+  _tests/scene06_test_with_overlays.mp4 (session precedent: Remotion colorkey overlay compositing)
+
+Known gap found during research: the `hyperframes-media` skill referenced by
+hyperframes/SKILL.md and hyperframes-cli/SKILL.md (for `tts`/`transcribe`/
+`remove-background`) does not exist as an installed skill in this workspace —
+only its description text exists inside the other two skills' frontmatter.
+This profile does not cite it as a source for that reason.
+"""
+import json
+from pathlib import Path
+
+PROFILE = {
+    "_meta": {
+        "purpose": "Capability profile for motion-graphics/composition tools, "
+                   "consulted by Tool-Manager when the orchestrator describes a "
+                   "scene need in plain language. Never guess capabilities not "
+                   "backed by a cited source.",
+        "last_built": "2026-07-07",
+    },
+    "tools": [
+        {
+            "name": "Remotion",
+            "strengths": [
+                "React-component video composition with frame-accurate props "
+                "and dynamic metadata (duration/dimensions computed from data)",
+                "Precise DOM/text measurement and coordinate placement for "
+                "labels and callout lines (measuring-text, measuring-dom-nodes rules)",
+                "Built-in chart and data-visualization patterns (bar, pie, line, stock)",
+                "Reusable parametrized components via a Zod props schema",
+                "Compositing images, video, and transparent overlays via Img/Video "
+                "components and transparent-video rendering",
+            ],
+            "best_for": [
+                "Labeled scientific/technical diagrams with exact coordinate-based "
+                "callout placement (verified in PhylogeneticTree.tsx: hand-placed "
+                "{x, y} node arrays driving label/line positions)",
+                "Data visualization (charts, counters, stat reveals)",
+                "Compositing illustrated overlays on top of generated or filmed "
+                "footage (verified in scene06_test_with_overlays.mp4 — colorkey "
+                "compositing precedent)",
+                "Reusable, parametrized video templates across many videos",
+            ],
+            "not_for": [
+                "Freeform conversational editing of existing raw footage — that's "
+                "video-use's job, not Remotion's",
+                "Generating original illustration/artwork from nothing — Remotion "
+                "composites and animates assets, it doesn't generate them; use an "
+                "image model first",
+            ],
+            "sources": [
+                "001_Architecture/Skills/remotion-best-practices/SKILL.md",
+                "002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-components/PhylogeneticTree.tsx "
+                "(session precedent, read 2026-07-07: coordinate-array node/label placement)",
+                "002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/"
+                "0001_Bioluminescence_Weapon/_tests/scene06_test_with_overlays.mp4 "
+                "(session precedent: creature-pair overlay compositing)",
+            ],
+        },
+        {
+            "name": "video-use",
+            "strengths": [
+                "Audio-first, transcript-driven cut editing of raw footage via "
+                "conversation (word-boundary-accurate cuts from Scribe ASR)",
+                "Hard production-correctness rules for compositing (subtitles "
+                "always last in the filter chain, PTS-shifted overlays, lossless "
+                "per-segment concat, 30ms audio fades)",
+                "Orchestrates short narration-synced overlay animations by "
+                "delegating each 'slot' to the engine that fits — HyperFrames, "
+                "Remotion, Manim, or plain PIL/ffmpeg — rather than authoring "
+                "graphics itself",
+            ],
+            "best_for": [
+                "Cutting real or generated footage to match narration timing, "
+                "trims, and transitions between actual video clips",
+                "Burning subtitles/captions onto an edited cut without breaking "
+                "overlay layering",
+                "Commissioning a narration-synced overlay card or small diagram "
+                "as part of an edit, when the actual drawing should be delegated "
+                "to HyperFrames/Remotion/Manim/PIL per the SKILL.md's per-slot "
+                "engine-selection guidance",
+            ],
+            "not_for": [
+                "Authoring animation/graphics directly — video-use is an editor "
+                "and orchestrator, not a rendering engine; it picks and spawns "
+                "HyperFrames, Remotion, Manim, or PIL sub-agents for each "
+                "animation slot rather than drawing scenes itself",
+            ],
+            "sources": [
+                "001_Architecture/Skills/video-use/SKILL.md (Hard Rules and "
+                "Animations sections)",
+            ],
+        },
+        {
+            "name": "Hyperframes",
+            "strengths": [
+                "Captions/subtitles synced to audio: tone-adaptive styling, "
+                "per-word timing, karaoke, word grouping (references/captions.md)",
+                "Audio-reactive visuals: maps frequency bands and amplitude to "
+                "GSAP properties for beat-synced glow/pulse (references/audio-reactive.md)",
+                "Animated text emphasis: marker sweeps, hand-drawn circles, burst "
+                "lines, scribble, sketchout (references/css-patterns.md)",
+                "Non-negotiable scene-transition rules (crossfades, wipes, "
+                "reveals, shader transitions) enforced by the skill itself",
+                "Deterministic, seekable, headless-Chrome-renderable HTML/CSS/GSAP "
+                "compositions with a lint/inspect/render dev loop",
+            ],
+            "best_for": [
+                "Caption burn-in synced to audio timing",
+                "Music-reactive visual moments",
+                "Animated text callouts and marker-style emphasis that don't "
+                "require precise per-pixel anatomical coordinates",
+                "Browser-native product UI motion, mockup-to-video captures, "
+                "and kinetic typography (per video-use's own engine-selection "
+                "guidance)",
+            ],
+            "not_for": [
+                "Precise anatomical/coordinate-based label placement — layout "
+                "is flex/padding-driven CSS, not the explicit {x, y} coordinate "
+                "arrays Remotion supports; use Remotion for that",
+            ],
+            "sources": [
+                "001_Architecture/Skills/hyperframes/SKILL.md",
+                "001_Architecture/Skills/hyperframes-cli/SKILL.md",
+            ],
+        },
+        {
+            "name": "Manim",
+            "strengths": [
+                "Purpose-built for mathematical/technical animation: geometric "
+                "and algebraic scenes, LaTeX equation rendering, algorithm and "
+                "graph/data-structure visualization",
+                "Strong opinionated visual-design conventions (opacity layering, "
+                "per-scene color/pacing variation, breathing-room pauses) aimed "
+                "at first-render-correct output",
+            ],
+            "best_for": [
+                "Pure equation/graph/algorithm visualizations, architecture "
+                "diagrams, and data stories drawn from scratch as vector scenes",
+                "3Blue1Brown-style concept explainers and derivations",
+            ],
+            "not_for": [
+                "Compositing over an arbitrary generated illustration image — "
+                "Manim's documented toolkit (mobjects, scenes, LaTeX) is for "
+                "drawing its own vector content; the SKILL.md describes no "
+                "raster-image import/overlay workflow, unlike Remotion's "
+                "Img/Video compositing",
+            ],
+            "sources": [
+                "001_Architecture/Skills/video-use/skills/manim-video/SKILL.md",
+            ],
+        },
+    ],
+}
+
+if __name__ == "__main__":
+    out_path = Path(__file__).parent / "data" / "motion_graphics_capabilities.json"
+    out_path.write_text(json.dumps(PROFILE, indent=2))
+    print(f"Wrote {out_path} — {len(PROFILE['tools'])} tools profiled")

@@ -15,7 +15,8 @@ This directory is the **unified brain** and **single source of truth** for all a
 *   **Scripts:** The global repository for all Python automation and helper scripts. Any script written to assist the user or an agent must be placed here.
 *   **Self_Learning_Loop:** Periodic review documents where agents synthesize patterns from recent sessions to improve future performance.
 *   **Skills:** The global repository for all AI agent capabilities. Whether you are Codex, Gemini, or Claude, any new skill (e.g., `gsd-plan-phase`, `video-ingest`) must be saved here. 
-*   **Tools:** Configuration files and settings for specific tool categories. 
-    *   *Subfolders include:* `Image-Generation` and `Video-Generation` (used for API configurations like fal.ai and kie.ai). Also holds UI modifications (e.g., custom CSS for Antigravity).
+*   **Tools:** All Python tools, scripts, and configurations organized by capability. Think of this as the OS toolchain — every tool lives here, not scattered across content folders.
+    *   *Subfolders include:* `AI-Analysis/`, `Airtable/`, `Asset-Sourcing/`, `Image-Generation/`, `Remotion/`, `Text-To-Speech/`, `Tool-Manager/`, `Video-Generation/`
+    *   `Video-Generation/` further contains: `Channels/` (per-channel scripts: Anomalous_Wild, Reimagined_Realms), `Generic_Tools/` (reusable batch scripts), `Pipeline_Docs/`, `Hyperframes/`, `Video-Use/`
 
 *(Note: If a new global capability is needed that doesn't fit these definitions, explicitly ask Tony before creating a new top-level folder in 001_Architecture.)*

@@ -1,1 +1,0 @@
-/Users/tonymacbook2025/Documents/Claude-Agent/001_Architecture/Tools/Image-Generation/kie_upload.py

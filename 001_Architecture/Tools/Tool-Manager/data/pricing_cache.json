@@ -1,0 +1,3135 @@
+{
+  "_meta": {
+    "description": "Pricing cache for all APIs in Tony's toolbox. Refreshed monthly via pricing_refresh.py. All prices fetched from live sources \u2014 never hardcoded.",
+    "last_updated": "2026-06-18T22:57:27.720408",
+    "next_refresh": "2026-07-18T15:48:18.041283",
+    "refresh_interval_days": 30,
+    "refresh_failures": {}
+  },
+  "apis": {
+    "openai": {
+      "display_name": "OpenAI",
+      "pricing_url": "https://openai.com/api/pricing",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T22:57:27.720408",
+      "services": {
+        "gpt-4o-input": {
+          "price": 2.5,
+          "unit": "per 1M tokens",
+          "note": "GPT-4o input"
+        },
+        "gpt-4o-output": {
+          "price": 10.0,
+          "unit": "per 1M tokens",
+          "note": "GPT-4o output"
+        },
+        "gpt-4o-mini-input": {
+          "price": 0.15,
+          "unit": "per 1M tokens",
+          "note": "GPT-4o mini input"
+        },
+        "gpt-4o-mini-output": {
+          "price": 0.6,
+          "unit": "per 1M tokens",
+          "note": "GPT-4o mini output"
+        },
+        "gpt-image-2": {
+          "price": 0.04,
+          "unit": "per image",
+          "note": "GPT-Image-2 standard 1024\u00d71024"
+        },
+        "gpt-image-1-5": {
+          "price": 0.04,
+          "unit": "per image",
+          "note": "GPT-Image-1.5 standard"
+        },
+        "whisper": {
+          "price": 0.006,
+          "unit": "per minute",
+          "note": "Whisper transcription"
+        },
+        "tts-1": {
+          "price": 15.0,
+          "unit": "per 1M chars",
+          "note": "TTS-1 standard voice"
+        },
+        "tts-1-hd": {
+          "price": 30.0,
+          "unit": "per 1M chars",
+          "note": "TTS-1 HD voice"
+        }
+      },
+      "raw_pricing_snapshot": "OpenAI API Pricing \\| OpenAI\n\n# API Pricing\n\n[Contact sales](https://openai.com/contact-sales/)\n\n## Flagship models\n\nOur frontier models are designed to spend more time thinking before producing a response, making them ideal for complex, multi-step problems.\n\nChoose your processing mode\n\nStandardBatch -50%Data residency +10%\n\n## GPT-5.5\n\nA new class of intelligence for coding and professional work.\n\n### Price\n\nInput:\n\n$5.00 / 1M tokens\n\nCached input:\n\n$0.50 / 1M tokens\n\nOutput:\n\n$30.00 / 1M tokens\n\n## GPT-5.4\n\nA more affordable model for coding and professional work.\n\n### Price\n\nInput:\n\n$2.50 / 1M tokens\n\nCached input:\n\n$0.25 / 1M tokens\n\nOutput:\n\n$15.00 / 1M tokens\n\n## GPT-5.4 mini\n\nOur strongest mini model yet for coding, computer use, and subagents.\n\n### Price\n\nInput:\n\n$0.75 / 1M tokens\n\nCached input:\n\n$0.075 / 1M tokens\n\nOutput:\n\n$4.50 / 1M tokens\n\nPricing above reflects standard processing rates for context lengths under 270K.\n\nLearn more about [Batch Processing\u2060(opens in a new window)](https://developers.openai.com/api/docs/guides/batch) and [Data residency & Regional Processing\u2060(opens in a new window)](https://developers.openai.com/api/docs/guides/your-data#how-does-data-residency-work)\n\n- [Explore detailed pricing(opens in a new window)](https://developers.openai.com/api/docs/pricing)\n\n### Multimodal models\n\nPower applications across text, image, and audio with models built for real-time interaction and rich media generation.\n\n## GPT-Realtime-2\n\nOur most capable model for realtime voice interactions.\n\n### Price\n\nAudio:\n\n$32.00 / 1M tokens for inputs\n\n$0.40 / 1M tokens for cached inputs\n\n$64.00 / 1M tokens for outputs\n\nText:\n\n$4.00 / 1M tokens for inputs\n\n$0.40 / 1M tokens for cached inputs\n\n$24.00 / 1M tokens for outputs\n\nImage:\n\n$5.00 / 1M tokens for inputs\n\n$0.50 / 1M tokens for cached inputs\n\n## GPT-Realtime-Translate\n\nA new live translation model that translates speech in real time and keeps pace with the speaker.\n\n### Price\n\n$0.034 per minute / $0.00057",
+      "fetch_note": "Live from platform.openai.com/docs/pricing"
+    },
+    "kie.ai": {
+      "display_name": "kie.ai",
+      "pricing_url": "https://kie.ai/pricing",
+      "fetch_method": "playwright",
+      "last_fetched": "2026-06-18T15:47:59.008078",
+      "services": {
+        "kling-3.0-turbo-image-to-video-1080p": {
+          "price": 0.1125,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.14",
+          "note": "kling 3.0 turbo, image-to-video, 1080P"
+        },
+        "kling-3.0-turbo-image-to-video-720p": {
+          "price": 0.09,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.112",
+          "note": "kling 3.0 turbo, image-to-video, 720P"
+        },
+        "kling-3.0-turbo-text-to-video-1080p": {
+          "price": 0.1125,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.14",
+          "note": "kling 3.0 turbo, text-to-video, 1080P"
+        },
+        "kling-3.0-turbo-text-to-video-720p": {
+          "price": 0.09,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.112",
+          "note": "kling 3.0 turbo, text-to-video, 720P"
+        },
+        "volcengine-lip-sync": {
+          "price": 0.04,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "volcengine , lip sync"
+        },
+        "omnihuman-1-5-lip-sync": {
+          "price": 0.135,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.16",
+          "note": "omnihuman-1-5, lip sync"
+        },
+        "bytedance-seedance-1.5-pro-without-audio-720p": {
+          "price": 0.0175,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.026",
+          "note": "bytedance/seedance-1.5-pro, without audio-720p"
+        },
+        "bytedance-seedance-1.5-pro-with-audio-1080p": {
+          "price": 0.075,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.12",
+          "note": "bytedance/seedance-1.5-pro, with audio-1080p"
+        },
+        "bytedance-seedance-1.5-pro-without-audio-1080p": {
+          "price": 0.0375,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.06",
+          "note": "bytedance/seedance-1.5-pro, without audio-1080p"
+        },
+        "bytedance-seedance-1.5-pro-with-audio-720p": {
+          "price": 0.035,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.052",
+          "note": "bytedance/seedance-1.5-pro, with audio-720p"
+        },
+        "kling-3.0-video-with-audio-4k": {
+          "price": 0.335,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.42",
+          "note": "Kling 3.0, video, with audio-4K"
+        },
+        "bytedance-seedance-1.5-pro-with-audio-480p": {
+          "price": 0.0175,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.025",
+          "note": "bytedance/seedance-1.5-pro, with audio-480p"
+        },
+        "bytedance-seedance-1.5-pro-without-audio-480p": {
+          "price": 0.00875,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.013",
+          "note": "bytedance/seedance-1.5-pro, without audio-480p"
+        },
+        "claude-fable-5-chat-output": {
+          "price": 20.0,
+          "unit": "per milion tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "",
+          "note": "Claude-fable-5 , chat, Output"
+        },
+        "claude-fable-5-chat-input": {
+          "price": 4.0,
+          "unit": "per milion tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "",
+          "note": "Claude-fable-5 , chat, Input"
+        },
+        "grok-imagine-video-1-5-preview-image-to-video-input-image": {
+          "price": 0.01,
+          "unit": "per image",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "grok-imagine-video-1-5-preview, image-to-video, Input Image"
+        },
+        "grok-imagine-video-1-5-preview-image-to-video-720p": {
+          "price": 0.125,
+          "unit": "per second",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "0.14",
+          "note": "grok-imagine-video-1-5-preview, image-to-video, 720p"
+        },
+        "grok-imagine-video-1-5-preview-image-to-video-480p": {
+          "price": 0.0725,
+          "unit": "per second",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "0.08",
+          "note": "grok-imagine-video-1-5-preview, image-to-video, 480p"
+        },
+        "claude-opus-4-8-chat-output": {
+          "price": 10.0,
+          "unit": "per milion tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "",
+          "note": "Claude-Opus-4-8, chat, Output"
+        },
+        "claude-opus-4-8-chat-input": {
+          "price": 2.0,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "",
+          "note": "Claude-Opus-4-8, chat, Input"
+        },
+        "gemini-3.5-flash-chat-output": {
+          "price": 2.7,
+          "unit": "per million",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "",
+          "note": "Gemini 3.5 Flash, chat, output"
+        },
+        "gemini-3.5-flash-chat-input": {
+          "price": 0.45,
+          "unit": "per million",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "",
+          "note": "Gemini 3.5 Flash, chat, input"
+        },
+        "gemini-omni-video-video-6s-4k-no-video-input": {
+          "price": 1.2,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 6s 4k no video input"
+        },
+        "gemini-omni-video-video-4k-with-video-input": {
+          "price": 1.8,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 4k with video input"
+        },
+        "gemini-omni-video-video-1080p-with-video-input": {
+          "price": 1.2,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 1080p with video input"
+        },
+        "gemini-omni-video-video-720p-with-video-input": {
+          "price": 1.2,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 720p with video input"
+        },
+        "gemini-omni-video-video-10s-4k-no-video-input": {
+          "price": 1.5,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 10s 4k no video input"
+        },
+        "gemini-omni-video-video-8s-4k-no-video-input": {
+          "price": 1.35,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 8s 4k no video input"
+        },
+        "gemini-omni-video-video-4s-4k-no-video-input": {
+          "price": 1.05,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 4s 4k no video input"
+        },
+        "gemini-omni-video-video-10s-1080p-no-video-input": {
+          "price": 0.9,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 10s 1080p no video input"
+        },
+        "gemini-omni-video-video-8s-1080p-no-video-input": {
+          "price": 0.75,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 8s 1080p no video input"
+        },
+        "gemini-omni-video-video-6s-1080p-no-video-input": {
+          "price": 0.6,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 6s 1080p no video input"
+        },
+        "gemini-omni-video-video-4s-1080p-no-video-input": {
+          "price": 0.45,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 4s 1080p no video input"
+        },
+        "gemini-omni-video-video-10s-720p-no-video-input": {
+          "price": 0.9,
+          "unit": "per vedio",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 10s 720p no video input"
+        },
+        "gemini-omni-video-video-8s-720p-no-video-input": {
+          "price": 0.75,
+          "unit": "per vedio",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 8s 720p no video input"
+        },
+        "gemini-omni-video-video-6s-720p-no-video-input": {
+          "price": 0.6,
+          "unit": "per vedio",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 6s 720p no video input"
+        },
+        "gemini-omni-video-video-4s-720p-no-video-input": {
+          "price": 0.45,
+          "unit": "per vedio",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "gemini-omni-video, video, 4s 720p no video input"
+        },
+        "claude-opus-4-7-chat-input": {
+          "price": 1.425,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "5",
+          "note": "Claude-Opus-4-7, chat, Input"
+        },
+        "claude-opus-4-7-chat-output": {
+          "price": 7.15,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "25",
+          "note": "Claude-Opus-4-7, chat, Output"
+        },
+        "happyhorse-1.0-reference-to-video-1080p": {
+          "price": 0.24,
+          "unit": "per second",
+          "provider": "Alibaba",
+          "interface_type": "video",
+          "official_fal_price": "0.28",
+          "note": "HappyHorse-1.0, reference-to-video, 1080p"
+        },
+        "happyhorse-1.0-reference-to-video-720p": {
+          "price": 0.14,
+          "unit": "per second",
+          "provider": "Alibaba",
+          "interface_type": "video",
+          "official_fal_price": "0.14",
+          "note": "HappyHorse-1.0, reference-to-video, 720p"
+        },
+        "happyhorse-1.0-video-edit-1080p": {
+          "price": 0.24,
+          "unit": "per second",
+          "provider": "Alibaba",
+          "interface_type": "video",
+          "official_fal_price": "0.28",
+          "note": "HappyHorse-1.0, video-edit, 1080p"
+        },
+        "happyhorse-1.0-video-edit-720p": {
+          "price": 0.14,
+          "unit": "per second",
+          "provider": "Alibaba",
+          "interface_type": "video",
+          "official_fal_price": "0.14",
+          "note": "HappyHorse-1.0, video-edit, 720p"
+        },
+        "happyhorse-1.0-image-to-video-1080p": {
+          "price": 0.24,
+          "unit": "per second",
+          "provider": "Alibaba",
+          "interface_type": "video",
+          "official_fal_price": "0.28",
+          "note": "HappyHorse-1.0, image-to-video, 1080p"
+        },
+        "happyhorse-1.0-image-to-video-720p": {
+          "price": 0.14,
+          "unit": "per second",
+          "provider": "Alibaba",
+          "interface_type": "video",
+          "official_fal_price": "0.14",
+          "note": "HappyHorse-1.0, image-to-video, 720p"
+        },
+        "happyhorse-1.0-text-to-video-1080p": {
+          "price": 0.24,
+          "unit": "per second",
+          "provider": "Alibaba",
+          "interface_type": "video",
+          "official_fal_price": "0.28",
+          "note": "HappyHorse-1.0, text-to-video, 1080p"
+        },
+        "happyhorse-1.0-text-to-video-720p": {
+          "price": 0.14,
+          "unit": "per second",
+          "provider": "Alibaba",
+          "interface_type": "video",
+          "official_fal_price": "0.14",
+          "note": "HappyHorse-1.0, text-to-video, 720p"
+        },
+        "gpt-5.5-chat-cached-input": {
+          "price": 0.14,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "0.5",
+          "note": "gpt-5.5, Chat, Cached Input"
+        },
+        "gpt-5.5-chat-output": {
+          "price": 8.4,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "30",
+          "note": "gpt-5.5, Chat, Output"
+        },
+        "gpt-5.5-chat-input": {
+          "price": 1.4,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "5",
+          "note": "gpt-5.5, Chat, Input"
+        },
+        "gpt-image-2-image-to-image-4k": {
+          "price": 0.08,
+          "unit": "per image",
+          "provider": "OpenAI",
+          "interface_type": "image",
+          "official_fal_price": "0.413",
+          "note": "gpt image 2, image-to-image, 4k"
+        },
+        "gpt-image-2-image-to-image-2k": {
+          "price": 0.05,
+          "unit": "per image",
+          "provider": "OpenAI",
+          "interface_type": "image",
+          "official_fal_price": "0.234",
+          "note": "gpt image 2, image-to-image, 2k"
+        },
+        "gpt-image-2-image-to-image-1k": {
+          "price": 0.03,
+          "unit": "per image",
+          "provider": "OpenAI",
+          "interface_type": "image",
+          "official_fal_price": "0.219",
+          "note": "gpt image 2, image-to-image, 1k"
+        },
+        "gpt-image-2-text-to-image-4k": {
+          "price": 0.08,
+          "unit": "per image",
+          "provider": "OpenAI",
+          "interface_type": "image",
+          "official_fal_price": "0.413",
+          "note": "gpt image 2, text-to-image, 4k"
+        },
+        "gpt-image-2-text-to-image-2k": {
+          "price": 0.05,
+          "unit": "per image",
+          "provider": "OpenAI",
+          "interface_type": "image",
+          "official_fal_price": "0.234",
+          "note": "gpt image 2, text-to-image, 2k"
+        },
+        "gpt-image-2-text-to-image-1k": {
+          "price": 0.03,
+          "unit": "per image",
+          "provider": "OpenAI",
+          "interface_type": "image",
+          "official_fal_price": "0.219",
+          "note": "gpt image 2, text-to-image, 1k"
+        },
+        "wan-2.7-video-videoedit-1080p": {
+          "price": 0.12,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.15",
+          "note": "wan 2.7 video, videoedit, 1080p"
+        },
+        "wan-2.7-video-videoedit-720p": {
+          "price": 0.08,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.1",
+          "note": "wan 2.7 video, videoedit, 720p"
+        },
+        "wan-2.7-video-r2v-1080p": {
+          "price": 0.12,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.15",
+          "note": "wan 2.7 video, r2v, 1080p"
+        },
+        "wan-2.7-video-r2v-720p": {
+          "price": 0.08,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.1",
+          "note": "wan 2.7 video, r2v, 720p"
+        },
+        "wan-2.7-video-image-to-video-1080p": {
+          "price": 0.12,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.15",
+          "note": "wan 2.7 video, image-to-video, 1080p"
+        },
+        "wan-2.7-video-image-to-video-720p": {
+          "price": 0.08,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.1",
+          "note": "wan 2.7 video, image-to-video, 720p"
+        },
+        "wan-2.7-video-text-to-video-1080p": {
+          "price": 0.12,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.15",
+          "note": "wan 2.7 video, text-to-video, 1080p"
+        },
+        "wan-2.7-video-text-to-video-720p": {
+          "price": 0.08,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.1",
+          "note": "wan 2.7 video, text-to-video, 720p"
+        },
+        "gemini-3.1-pro-openai-chat-output": {
+          "price": 3.5,
+          "unit": "per million",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "12",
+          "note": "Gemini 3.1 Pro- openai, chat, output"
+        },
+        "gemini-3.1-pro-openai-chat-input": {
+          "price": 0.5,
+          "unit": "per million",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "2",
+          "note": "Gemini 3.1 Pro- openai, chat, input"
+        },
+        "bytedance-seedance-2-fast-720p-no-video-input": {
+          "price": 0.165,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.2419",
+          "note": "bytedance/seedance-2 fast, 720p no video input"
+        },
+        "bytedance-seedance-2-fast-720p-with-video-input": {
+          "price": 0.1,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.1451",
+          "note": "bytedance/seedance-2 fast, 720p with video input"
+        },
+        "bytedance-seedance-2-fast-480p-no-video-input": {
+          "price": 0.0775,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.1125",
+          "note": "bytedance/seedance-2 fast, 480p no video input"
+        },
+        "bytedance-seedance-2-fast-480p-with-video-input": {
+          "price": 0.045,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.0675",
+          "note": "bytedance/seedance-2 fast, 480p with video input"
+        },
+        "bytedance-seedance-2-1080p-with-video-input": {
+          "price": 0.31,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.4082",
+          "note": "bytedance/seedance-2, 1080p with video input"
+        },
+        "bytedance-seedance-2-1080p-no-video-input": {
+          "price": 0.51,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.6804",
+          "note": "bytedance/seedance-2, 1080p no video input"
+        },
+        "bytedance-seedance-2-720p-no-video-input": {
+          "price": 0.205,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.3024",
+          "note": "bytedance/seedance-2, 720p no video input"
+        },
+        "bytedance-seedance-2-720p-with-video-input": {
+          "price": 0.125,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.1814",
+          "note": "bytedance/seedance-2, 720p with video input"
+        },
+        "bytedance-seedance-2-480p-no-video-input": {
+          "price": 0.095,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.1406",
+          "note": "bytedance/seedance-2, 480p no video input"
+        },
+        "bytedance-seedance-2-480p-with-video-input": {
+          "price": 0.057,
+          "unit": "per second",
+          "provider": "ByteDance",
+          "interface_type": "video",
+          "official_fal_price": "0.0844",
+          "note": "bytedance/seedance-2, 480p with video input"
+        },
+        "wan-2.7-image-pro": {
+          "price": 0.06,
+          "unit": "per image",
+          "provider": "Wan",
+          "interface_type": "image",
+          "official_fal_price": "0.075",
+          "note": "wan 2.7 image pro"
+        },
+        "wan-2.7-image": {
+          "price": 0.024,
+          "unit": "per image",
+          "provider": "Wan",
+          "interface_type": "image",
+          "official_fal_price": "0.03",
+          "note": "wan 2.7 image"
+        },
+        "grok-imagine-extend-10s-720p": {
+          "price": 0.15,
+          "unit": "",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "0.8",
+          "note": "grok-imagine/extend, 10s 720p"
+        },
+        "grok-imagine-extend-10s-480p": {
+          "price": 0.1,
+          "unit": "",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "0.6",
+          "note": "grok-imagine/extend, 10s 480p"
+        },
+        "grok-imagine-extend-6s-720p": {
+          "price": 0.1,
+          "unit": "",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "0.48",
+          "note": "grok-imagine/extend, 6s 720p"
+        },
+        "grok-imagine-extend-6s-480p": {
+          "price": 0.05,
+          "unit": "",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "0.36",
+          "note": "grok-imagine/extend, 6s 480p"
+        },
+        "claude-haiku-4-5-chat-output": {
+          "price": 1.425,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "5",
+          "note": "Claude-Haiku-4-5, chat, Output"
+        },
+        "claude-haiku-4-5-chat-input": {
+          "price": 0.275,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "1",
+          "note": "Claude-Haiku-4-5, chat, Input"
+        },
+        "claude-opus-4-6-chat-output": {
+          "price": 7.15,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "25",
+          "note": "Claude-Opus-4-6, chat, Output"
+        },
+        "claude-opus-4-6-chat-input": {
+          "price": 1.425,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "5",
+          "note": "Claude-Opus-4-6, chat, Input"
+        },
+        "claude-sonnet-4-6-chat-output": {
+          "price": 4.275,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "15",
+          "note": "Claude-Sonnet-4-6, chat, Output"
+        },
+        "claude-sonnet-4-6-chat-input": {
+          "price": 0.85,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "3",
+          "note": "Claude-Sonnet-4-6, chat, Input"
+        },
+        "claude-sonnet-4-5-chat-output": {
+          "price": 4.275,
+          "unit": "",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "15",
+          "note": "claude-sonnet-4-5, Chat, Output"
+        },
+        "claude-sonnet-4-5-chat-input": {
+          "price": 0.85,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "3",
+          "note": "claude-sonnet-4-5, Chat, Input"
+        },
+        "claude-opus-4-5-chat-output": {
+          "price": 7.15,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "25",
+          "note": "claude-opus-4-5, Chat, Output"
+        },
+        "claude-opus-4-5-chat-input": {
+          "price": 1.425,
+          "unit": "per million tokens",
+          "provider": "Anthropic",
+          "interface_type": "chat",
+          "official_fal_price": "5",
+          "note": "claude-opus-4-5, Chat, Input"
+        },
+        "seedream-4.5-image-to-image": {
+          "price": 0.0325,
+          "unit": "per image",
+          "provider": "ByteDance",
+          "interface_type": "image",
+          "official_fal_price": "0.04",
+          "note": "seedream 4.5, image-to-image"
+        },
+        "seedream-4.5-text-to-image": {
+          "price": 0.0325,
+          "unit": "per image",
+          "provider": "ByteDance",
+          "interface_type": "image",
+          "official_fal_price": "0.04",
+          "note": "seedream 4.5, text-to-image"
+        },
+        "qwen2-image-edit-text-to-image": {
+          "price": 0.028,
+          "unit": "per image",
+          "provider": "Qwen",
+          "interface_type": "image",
+          "official_fal_price": "0.035",
+          "note": "Qwen2 - Image edit, text-to-image"
+        },
+        "qwen2-image-edit-image-to-image": {
+          "price": 0.028,
+          "unit": "per image",
+          "provider": "Qwen",
+          "interface_type": "image",
+          "official_fal_price": "0.035",
+          "note": "Qwen2 - Image edit, image-to-image"
+        },
+        "gpt-5.4-codex-chat-output": {
+          "price": 5.6,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "15",
+          "note": "gpt-5.4-codex, Chat, Output"
+        },
+        "gpt-5.4-codex-chat-input": {
+          "price": 0.7,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "2.5",
+          "note": "gpt-5.4-codex, Chat, Input"
+        },
+        "gpt-5.4-chat-output": {
+          "price": 5.6,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "15",
+          "note": "gpt-5.4, Chat, Output"
+        },
+        "gpt-5.4-chat-input": {
+          "price": 0.7,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "2.5",
+          "note": "gpt-5.4, Chat, Input"
+        },
+        "kling-3.0-motion-control-video-to-video-1080p": {
+          "price": 0.135,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.168",
+          "note": "kling 3.0 motion control, video-to-video, 1080P"
+        },
+        "kling-3.0-motion-control-video-to-video-720p": {
+          "price": 0.1,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.126",
+          "note": "kling 3.0 motion control, video-to-video, 720P"
+        },
+        "gpt-5-codex-chat-output": {
+          "price": 4.0,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "10",
+          "note": "gpt-5-codex, Chat, Output"
+        },
+        "gpt-5-codex-chat-input": {
+          "price": 0.5,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "1.25",
+          "note": "gpt-5-codex, Chat, Input"
+        },
+        "gpt-5.2-codex-chat-output": {
+          "price": 5.6,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "14",
+          "note": "gpt-5.2-codex, Chat, Output"
+        },
+        "gpt-5.2-codex-chat-input": {
+          "price": 0.7,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "1.75",
+          "note": "gpt-5.2-codex, Chat, Input"
+        },
+        "gpt-5.3-codex-chat-output": {
+          "price": 5.6,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "14",
+          "note": "gpt-5.3-codex, Chat, Output"
+        },
+        "gpt-5.3-codex-chat-input": {
+          "price": 0.7,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "1.75",
+          "note": "gpt-5.3-codex, Chat, Input"
+        },
+        "gpt-5.1-codex-chat-output": {
+          "price": 4.0,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "10",
+          "note": "gpt-5.1-codex, Chat, Output"
+        },
+        "gpt-5.1-codex-chat-input": {
+          "price": 0.5,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "1.25",
+          "note": "gpt-5.1-codex, Chat, Input"
+        },
+        "google-nano-banana-2-4k": {
+          "price": 0.09,
+          "unit": "per image",
+          "provider": "Google",
+          "interface_type": "image",
+          "official_fal_price": "0.16",
+          "note": "Google nano banana 2, 4K"
+        },
+        "google-nano-banana-2-2k": {
+          "price": 0.06,
+          "unit": "per image",
+          "provider": "Google",
+          "interface_type": "image",
+          "official_fal_price": "0.12",
+          "note": "Google nano banana 2, 2K"
+        },
+        "google-nano-banana-2-1k": {
+          "price": 0.04,
+          "unit": "per image",
+          "provider": "Google",
+          "interface_type": "image",
+          "official_fal_price": "0.08",
+          "note": "Google nano banana 2, 1K"
+        },
+        "gpt-5-2-chat-input": {
+          "price": 0.44,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "1.75",
+          "note": "gpt-5-2, Chat, Input"
+        },
+        "gpt-5-2-chat-output": {
+          "price": 3.5,
+          "unit": "per million tokens",
+          "provider": "OpenAI",
+          "interface_type": "chat",
+          "official_fal_price": "14",
+          "note": "gpt-5-2, Chat, Output"
+        },
+        "seedream-5.0-lite-image-to-image": {
+          "price": 0.0275,
+          "unit": "per image",
+          "provider": "ByteDance",
+          "interface_type": "image",
+          "official_fal_price": "0.035",
+          "note": "seedream 5.0 Lite, image-to-image"
+        },
+        "seedream-5.0-lite-text-to-image": {
+          "price": 0.0275,
+          "unit": "per image",
+          "provider": "ByteDance",
+          "interface_type": "image",
+          "official_fal_price": "0.035",
+          "note": "seedream 5.0 Lite, text-to-image"
+        },
+        "kling-3.0-video-without-audio-4k": {
+          "price": 0.335,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.42",
+          "note": "Kling 3.0, video, without audio-4K"
+        },
+        "kling-3.0-video-with-audio-1080p": {
+          "price": 0.135,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.168",
+          "note": "Kling 3.0, video, with audio-1080P"
+        },
+        "kling-3.0-video-without-audio-1080p": {
+          "price": 0.09,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.112",
+          "note": "Kling 3.0, video, without audio-1080P"
+        },
+        "kling-3.0-video-with-audio-720p": {
+          "price": 0.1,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.126",
+          "note": "Kling 3.0, video, with audio-720P"
+        },
+        "kling-3.0-video-without-audio-720p": {
+          "price": 0.07,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.084",
+          "note": "Kling 3.0, video, without audio-720P"
+        },
+        "suno-boost-music-style-boost": {
+          "price": 0.002,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Boost Music Style Boost"
+        },
+        "recraft-remove-background-image-to-image": {
+          "price": 0.005,
+          "unit": "per image",
+          "provider": "Recraft",
+          "interface_type": "image",
+          "official_fal_price": "0.01",
+          "note": "Recraft Remove Background , image to image"
+        },
+        "elevenlabs-v3-text-to-dialogue": {
+          "price": 0.07,
+          "unit": "per 1000 characters",
+          "provider": "Elevenlabs",
+          "interface_type": "music",
+          "official_fal_price": "0.1",
+          "note": "Elevenlabs V3 , Text to dialogue"
+        },
+        "gemini-3-flash-chat-output": {
+          "price": 0.9,
+          "unit": "per million tokens",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "3",
+          "note": "Gemini 3 Flash, Chat, Output"
+        },
+        "gemini-3-flash-chat-input": {
+          "price": 0.15,
+          "unit": "per million tokens",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "0.5",
+          "note": "Gemini 3 Flash, Chat, Input"
+        },
+        "gemini-3-pro-chat-output": {
+          "price": 3.5,
+          "unit": "per million tokens",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "12",
+          "note": "Gemini 3 Pro, Chat, Output"
+        },
+        "gemini-3-pro-chat-input": {
+          "price": 0.5,
+          "unit": "per million tokens",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "2",
+          "note": "Gemini 3 Pro, Chat, Input"
+        },
+        "kling-2.6-text-to-video-with-audio-10.0s": {
+          "price": 1.1,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "1.4",
+          "note": "kling 2.6, text-to-video, with audio-10.0s"
+        },
+        "kling-2.6-text-to-video-without-audio-10.0s": {
+          "price": 0.55,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.7",
+          "note": "kling 2.6, text-to-video, without audio-10.0s"
+        },
+        "kling-2.6-text-to-video-without-audio-5.0s": {
+          "price": 0.275,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.35",
+          "note": "kling 2.6, text-to-video, without audio-5.0s"
+        },
+        "kling-2.6-text-to-video-with-audio-5.0s": {
+          "price": 0.55,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.7",
+          "note": "kling 2.6, text-to-video, with audio-5.0s"
+        },
+        "kling-2.6-image-to-video-without-audio-10.0s": {
+          "price": 0.55,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.7",
+          "note": "kling 2.6, image-to-video, without audio-10.0s"
+        },
+        "kling-2.6-image-to-video-with-audio-10.0s": {
+          "price": 1.1,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "1.4",
+          "note": "kling 2.6, image-to-video, with audio-10.0s"
+        },
+        "kling-2.6-image-to-video-with-audio-5.0s": {
+          "price": 0.55,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.7",
+          "note": "kling 2.6, image-to-video, with audio-5.0s"
+        },
+        "kling-2.6-image-to-video-without-audio-5.0s": {
+          "price": 0.275,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.35",
+          "note": "kling 2.6, image-to-video, without audio-5.0s"
+        },
+        "wan-2.6-video-to-video-15.0s-1080p": {
+          "price": 1.575,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "2.25",
+          "note": "wan 2.6, video-to-video, 15.0s-1080p"
+        },
+        "wan-2.6-video-to-video-5.0s-1080p": {
+          "price": 0.5225,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.75",
+          "note": "wan 2.6, video-to-video, 5.0s-1080p"
+        },
+        "wan-2.6-video-to-video-10.0s-1080p": {
+          "price": 1.0475,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.5",
+          "note": "wan 2.6, video-to-video, 10.0s-1080p"
+        },
+        "wan-2.6-video-to-video-10.0s-720p": {
+          "price": 0.7,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.0",
+          "note": "wan 2.6, video-to-video, 10.0s-720p"
+        },
+        "wan-2.6-video-to-video-15.0s-720p": {
+          "price": 1.05,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.5",
+          "note": "wan 2.6, video-to-video, 15.0s-720p"
+        },
+        "wan-2.6-image-to-video-10.0s-1080p": {
+          "price": 1.0475,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.5",
+          "note": "wan 2.6, image-to-video, 10.0s-1080p"
+        },
+        "wan-2.6-image-to-video-15.0s-1080p": {
+          "price": 1.575,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "2.25",
+          "note": "wan 2.6, image-to-video, 15.0s-1080p"
+        },
+        "wan-2.6-video-to-video-5.0s-720p": {
+          "price": 0.35,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.5",
+          "note": "wan 2.6, video-to-video, 5.0s-720p"
+        },
+        "wan-2.6-image-to-video-5.0s-1080p": {
+          "price": 0.5225,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.75",
+          "note": "wan 2.6, image-to-video, 5.0s-1080p"
+        },
+        "wan-2.6-image-to-video-5.0s-720p": {
+          "price": 0.35,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.5",
+          "note": "wan 2.6, image-to-video, 5.0s-720p"
+        },
+        "wan-2.6-image-to-video-10.0s-720p": {
+          "price": 0.7,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.0",
+          "note": "wan 2.6, image-to-video, 10.0s-720p"
+        },
+        "wan-2.6-image-to-video-15.0s-720p": {
+          "price": 1.05,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.5",
+          "note": "wan 2.6, image-to-video, 15.0s-720p"
+        },
+        "wan-2.6-text-to-video-5.0s-1080p": {
+          "price": 0.5225,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.75",
+          "note": "wan 2.6, text to video, 5.0s-1080p"
+        },
+        "wan-2.6-text-to-video-10.0s-1080p": {
+          "price": 1.0475,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.5",
+          "note": "wan 2.6, text to video, 10.0s-1080p"
+        },
+        "wan-2.6-text-to-video-15.0s-1080p": {
+          "price": 1.575,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "2.25",
+          "note": "wan 2.6, text to video, 15.0s-1080p"
+        },
+        "wan-2.6-text-to-video-15.0s-720p": {
+          "price": 1.05,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.5",
+          "note": "wan 2.6, text to video, 15.0s-720p"
+        },
+        "wan-2.6-text-to-video-10.0s-720p": {
+          "price": 0.7,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.0",
+          "note": "wan 2.6, text to video, 10.0s-720p"
+        },
+        "wan-2.6-text-to-video-5.0s-720p": {
+          "price": 0.35,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.5",
+          "note": "wan 2.6, text to video, 5.0s-720p"
+        },
+        "qwen-z-image-text-to-image-1.0s": {
+          "price": 0.004,
+          "unit": "per image",
+          "provider": "Qwen",
+          "interface_type": "image",
+          "official_fal_price": "0.005",
+          "note": "Qwen z-image, text-to-image, 1.0s"
+        },
+        "black-forest-labs-flux-2-flex-text-to-image-1.0s-1k": {
+          "price": 0.07,
+          "unit": "per image",
+          "provider": "Black Forest Labs",
+          "interface_type": "image",
+          "official_fal_price": "0.12",
+          "note": "Black Forest Labs Flux 2 Flex, text to image, 1.0s-1K"
+        },
+        "black-forest-labs-flux-2-flex-text-to-image-1.0s-2k": {
+          "price": 0.12,
+          "unit": "per image",
+          "provider": "Black Forest Labs",
+          "interface_type": "image",
+          "official_fal_price": "0.18",
+          "note": "Black Forest Labs Flux 2 Flex, text to image, 1.0s-2K"
+        },
+        "black-forest-labs-flux-2-flex-image-to-image-1.0s-2k": {
+          "price": 0.12,
+          "unit": "per image",
+          "provider": "Black Forest Labs",
+          "interface_type": "image",
+          "official_fal_price": "0.18",
+          "note": "Black Forest Labs Flux 2 Flex, image to image, 1.0s-2K"
+        },
+        "black-forest-labs-flux-2-pro-text-to-image-1.0s-2k": {
+          "price": 0.035,
+          "unit": "per image",
+          "provider": "Black Forest Labs",
+          "interface_type": "image",
+          "official_fal_price": "0.045",
+          "note": "Black Forest Labs flux-2 pro, text-to-image, 1.0s-2K"
+        },
+        "black-forest-labs-flux-2-flex-image-to-image-1.0s-1k": {
+          "price": 0.07,
+          "unit": "per image",
+          "provider": "Black Forest Labs",
+          "interface_type": "image",
+          "official_fal_price": "0.12",
+          "note": "Black Forest Labs Flux 2 Flex, image to image, 1.0s-1K"
+        },
+        "black-forest-labs-flux-2-pro-image-to-image-1.0s-2k": {
+          "price": 0.035,
+          "unit": "per image",
+          "provider": "Black Forest Labs",
+          "interface_type": "image",
+          "official_fal_price": "0.045",
+          "note": "Black Forest Labs flux-2 pro, image to image, 1.0s-2K"
+        },
+        "black-forest-labs-flux-2-pro-text-to-image-1.0s-1k": {
+          "price": 0.025,
+          "unit": "per image",
+          "provider": "Black Forest Labs",
+          "interface_type": "image",
+          "official_fal_price": "0.03",
+          "note": "Black Forest Labs flux-2 pro, text-to-image, 1.0s-1K"
+        },
+        "black-forest-labs-flux-2-pro-image-to-image-1.0s-1k": {
+          "price": 0.025,
+          "unit": "per image",
+          "provider": "Black Forest Labs",
+          "interface_type": "image",
+          "official_fal_price": "0.03",
+          "note": "Black Forest Labs flux-2 pro, image to image, 1.0s-1K"
+        },
+        "google-nano-banana-pro-1-2k": {
+          "price": 0.09,
+          "unit": "per image",
+          "provider": "Google",
+          "interface_type": "image",
+          "official_fal_price": "0.15",
+          "note": "Google nano banana pro, 1/2K"
+        },
+        "google-nano-banana-pro-4k": {
+          "price": 0.12,
+          "unit": "per image",
+          "provider": "Google",
+          "interface_type": "image",
+          "official_fal_price": "0.3",
+          "note": "Google nano banana pro, 4K"
+        },
+        "grok-imagine-text-to-image-quality": {
+          "price": 0.025,
+          "unit": "per 4 images",
+          "provider": "Grok",
+          "interface_type": "image",
+          "official_fal_price": "0.05",
+          "note": "grok-imagine, text-to-image(quality)"
+        },
+        "grok-imagine-image-to-video-720p": {
+          "price": 0.015,
+          "unit": "per second",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "0.07",
+          "note": "grok-imagine, image-to-video, 720p"
+        },
+        "grok-imagine-text-to-video-720p": {
+          "price": 0.015,
+          "unit": "per second",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "0.07",
+          "note": "grok-imagine, text-to-video, 720p"
+        },
+        "grok-imagine-image-to-video-480p": {
+          "price": 0.008,
+          "unit": "per second",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "0.05",
+          "note": "grok-imagine, image-to-video, 480p"
+        },
+        "grok-imagine-text-to-video-480p": {
+          "price": 0.008,
+          "unit": "per second",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "0.05",
+          "note": "grok-imagine, text-to-video, 480p"
+        },
+        "grok-imagine-image-to-image": {
+          "price": 0.02,
+          "unit": "per  image",
+          "provider": "Grok",
+          "interface_type": "image",
+          "official_fal_price": "0.022",
+          "note": "grok-imagine, image-to-image"
+        },
+        "grok-imagine-text-to-image": {
+          "price": 0.02,
+          "unit": "per 6 images",
+          "provider": "Grok",
+          "interface_type": "image",
+          "official_fal_price": "0.02",
+          "note": "grok-imagine, text-to-image"
+        },
+        "grok-imagine-upscale-360p\u2192720p": {
+          "price": 0.05,
+          "unit": "per upscale",
+          "provider": "Grok",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "grok-imagine, upscale, 360p\u2192720p"
+        },
+        "hailuo-2.3-image-to-video-pro-10.0s-768p": {
+          "price": 0.45,
+          "unit": "per video",
+          "provider": "Hailuo",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "hailuo 2.3, image-to-video, Pro-10.0s-768p"
+        },
+        "hailuo-2.3-image-to-video-pro-6.0s-1080p": {
+          "price": 0.4,
+          "unit": "per video",
+          "provider": "Hailuo",
+          "interface_type": "video",
+          "official_fal_price": "0.49",
+          "note": "hailuo 2.3, image-to-video, Pro-6.0s-1080p"
+        },
+        "hailuo-2.3-image-to-video-pro-6.0s-768p": {
+          "price": 0.225,
+          "unit": "per video",
+          "provider": "Hailuo",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "hailuo 2.3, image-to-video, Pro-6.0s-768p"
+        },
+        "hailuo-2.3-image-to-video-standard-6.0s-768p": {
+          "price": 0.15,
+          "unit": "per video",
+          "provider": "Hailuo",
+          "interface_type": "video",
+          "official_fal_price": "0.28",
+          "note": "hailuo 2.3, image-to-video, Standard-6.0s-768p"
+        },
+        "hailuo-2.3-image-to-video-standard-10.0s-768p": {
+          "price": 0.25,
+          "unit": "per video",
+          "provider": "Hailuo",
+          "interface_type": "video",
+          "official_fal_price": "0.56",
+          "note": "hailuo 2.3, image-to-video, Standard-10.0s-768p"
+        },
+        "hailuo-2.3-image-to-video-standard-6.0s-1080p": {
+          "price": 0.25,
+          "unit": "per video",
+          "provider": "Hailuo",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "hailuo 2.3, image-to-video, Standard-6.0s-1080p"
+        },
+        "google-veo-3.1-reference-to-video-lite-4k": {
+          "price": 0.75,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "4.8",
+          "note": "Google veo 3.1, reference-to-video, Lite-4k"
+        },
+        "google-veo-3.1-reference-to-video-lite-1080p": {
+          "price": 0.175,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "3.2",
+          "note": "Google veo 3.1, reference-to-video, Lite-1080p"
+        },
+        "google-veo-3.1-reference-to-video-lite-720p": {
+          "price": 0.15,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "3.2",
+          "note": "Google veo 3.1, reference-to-video, Lite-720p"
+        },
+        "google-veo-3.1-reference-to-video-fast-4k": {
+          "price": 0.9,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "1.2",
+          "note": "Google veo 3.1, reference-to-video, Fast-4k"
+        },
+        "google-veo-3.1-reference-to-video-fast-1080p": {
+          "price": 0.325,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "1.2",
+          "note": "Google veo 3.1, reference-to-video, Fast-1080p"
+        },
+        "google-veo-3.1-extend-lite": {
+          "price": 0.15,
+          "unit": "per vedio",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "3.2",
+          "note": "Google veo 3.1, Extend, Lite"
+        },
+        "google-veo-3.1-text-to-video-quality-4k": {
+          "price": 1.85,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "4.8",
+          "note": "Google veo 3.1, text-to-video, Quality-4K"
+        },
+        "google-veo-3.1-image-to-video-quality-4k": {
+          "price": 1.85,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "4.8",
+          "note": "Google veo 3.1, image-to-video, Quality-4K"
+        },
+        "google-veo-3.1-text-to-video-quality-1080p": {
+          "price": 1.275,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "3.2",
+          "note": "Google veo 3.1, text-to-video, Quality-1080p"
+        },
+        "google-veo-3.1-image-to-video-quality-1080p": {
+          "price": 1.275,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "3.2",
+          "note": "Google veo 3.1, image-to-video, Quality-1080p"
+        },
+        "google-veo-3.1-text-to-video-quality-720p": {
+          "price": 1.25,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "3.2",
+          "note": "Google veo 3.1, text-to-video, Quality-720p"
+        },
+        "google-veo-3.1-image-to-video-quality-720p": {
+          "price": 1.25,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "3.2",
+          "note": "Google veo 3.1, image-to-video, Quality-720p"
+        },
+        "google-veo-3.1-text-to-video-fast-4k": {
+          "price": 0.9,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "2.4",
+          "note": "Google veo 3.1, text-to-video, Fast-4K"
+        },
+        "google-veo-3.1-image-to-video-fast-4k": {
+          "price": 0.9,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "2.4",
+          "note": "Google veo 3.1, image-to-video, Fast-4K"
+        },
+        "google-veo-3.1-text-to-video-fast-1080p": {
+          "price": 0.325,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "1.2",
+          "note": "Google veo 3.1, text-to-video, Fast-1080p"
+        },
+        "google-veo-3.1-image-to-video-fast-1080p": {
+          "price": 0.325,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "1.2",
+          "note": "Google veo 3.1, image-to-video, Fast-1080p"
+        },
+        "google-veo-3.1-text-to-video-fast-720p": {
+          "price": 0.3,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "1.2",
+          "note": "Google veo 3.1, text-to-video, Fast-720p"
+        },
+        "google-veo-3.1-image-to-video-fast-720p": {
+          "price": 0.3,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "1.2",
+          "note": "Google veo 3.1, image-to-video, Fast-720p"
+        },
+        "google-veo-3.1-text-to-video-lite-4k": {
+          "price": 0.75,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "Google veo 3.1, text-to-video, Lite-4K"
+        },
+        "google-veo-3.1-image-to-video-lite-4k": {
+          "price": 0.15,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "Google veo 3.1, image-to-video, Lite-4K"
+        },
+        "google-veo-3.1-text-to-video-lite-1080p": {
+          "price": 0.175,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "0.64",
+          "note": "Google veo 3.1, text-to-video, Lite-1080p"
+        },
+        "google-veo-3.1-image-to-video-lite-1080p": {
+          "price": 0.175,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "0.64",
+          "note": "Google veo 3.1, image-to-video, Lite-1080p"
+        },
+        "google-veo-3.1-text-to-video-lite-720p": {
+          "price": 0.15,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "0.45",
+          "note": "Google veo 3.1, text-to-video, Lite-720p"
+        },
+        "google-veo-3.1-image-to-video-lite-720p": {
+          "price": 0.15,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "0.45",
+          "note": "Google veo 3.1, image-to-video, Lite-720p"
+        },
+        "google-veo-3.1-extend-quality": {
+          "price": 1.25,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "2.8",
+          "note": "Google veo 3.1, Extend, Quality"
+        },
+        "google-veo-3.1-extend-fast": {
+          "price": 0.3,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "3.5",
+          "note": "Google veo 3.1, Extend, Fast"
+        },
+        "google-veo-3.1-get-1080p-video": {
+          "price": 0.025,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "Google veo 3.1, Get 1080P Video"
+        },
+        "google-veo-3.1-get-4k-video": {
+          "price": 0.6,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "Google veo 3.1, Get 4K Video"
+        },
+        "google-veo-3.1-reference-to-video-fast-720p": {
+          "price": 0.3,
+          "unit": "per video",
+          "provider": "Google",
+          "interface_type": "video",
+          "official_fal_price": "1.2",
+          "note": "Google veo 3.1, reference-to-video, Fast-720p"
+        },
+        "openai-4o-image-text-to-image": {
+          "price": 0.03,
+          "unit": "per image",
+          "provider": "OpenAI 4o",
+          "interface_type": "image",
+          "official_fal_price": "",
+          "note": "OpenAI 4o image, text-to-image"
+        },
+        "black-forest-labs-flux1-kontext-text-to-image-pro": {
+          "price": 0.025,
+          "unit": "per image",
+          "provider": "Black Forest Labs",
+          "interface_type": "image",
+          "official_fal_price": "0.08",
+          "note": "Black Forest Labs flux1-kontext, text-to-image, Pro"
+        },
+        "black-forest-labs-flux1-kontext-text-to-image-max": {
+          "price": 0.05,
+          "unit": "per image",
+          "provider": "Black Forest Labs",
+          "interface_type": "image",
+          "official_fal_price": "0.08",
+          "note": "Black Forest Labs flux1-kontext, text-to-image, Max"
+        },
+        "kling-2.5-turbo-text-to-video-turbo-pro-10.0s": {
+          "price": 0.42,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.7",
+          "note": "kling 2.5 turbo , text-to-video, Turbo Pro-10.0s"
+        },
+        "kling-2.5-turbo-image-to-video-turbo-pro-5.0s": {
+          "price": 0.21,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.35",
+          "note": "kling 2.5 turbo , image-to-video, Turbo Pro-5.0s"
+        },
+        "kling-2.5-turbo-image-to-video-turbo-pro-10.0s": {
+          "price": 0.42,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.7",
+          "note": "kling 2.5 turbo , image-to-video, Turbo Pro-10.0s"
+        },
+        "kling-2.5-turbo-text-to-video-turbo-pro-5.0s": {
+          "price": 0.21,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.35",
+          "note": "kling 2.5 turbo , text-to-video, Turbo Pro-5.0s"
+        },
+        "wan-2.5-text-to-video-default-10.0s-720p": {
+          "price": 0.6,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.0",
+          "note": "wan 2.5, text-to-video, default-10.0s-720p"
+        },
+        "wan-2.5-text-to-video-default-5.0s-1080p": {
+          "price": 0.5,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.75",
+          "note": "wan 2.5, text-to-video, default-5.0s-1080p"
+        },
+        "wan-2.5-text-to-video-default-10.0s-1080p": {
+          "price": 1.0,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.5",
+          "note": "wan 2.5, text-to-video, default-10.0s-1080p"
+        },
+        "wan-2.5-image-to-video-default-10.0s-1080p": {
+          "price": 1.0,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.5",
+          "note": "wan 2.5, image-to-video, default-10.0s-1080p"
+        },
+        "wan-2.5-text-to-video-default-5.0s-720p": {
+          "price": 0.3,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.5",
+          "note": "wan 2.5, text-to-video, default-5.0s-720p"
+        },
+        "wan-2.5-image-to-video-default-10.0s-720p": {
+          "price": 0.6,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "1.0",
+          "note": "wan 2.5, image-to-video, default-10.0s-720p"
+        },
+        "wan-2.5-image-to-video-default-5.0s-1080p": {
+          "price": 0.5,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.75",
+          "note": "wan 2.5, image-to-video, default-5.0s-1080p"
+        },
+        "wan-2.5-image-to-video-default-5.0s-720p": {
+          "price": 0.3,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.5",
+          "note": "wan 2.5, image-to-video, default-5.0s-720p"
+        },
+        "wan-2.2-animate-2.2-animate-replace-1.0s-720p": {
+          "price": 0.0625,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.08",
+          "note": "wan 2.2 Animate, 2.2 Animate Replace, 1.0s-720p"
+        },
+        "wan-2.2-animate-2.2-animate-replace-1.0s-580p": {
+          "price": 0.0475,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.06",
+          "note": "wan 2.2 Animate, 2.2 Animate Replace, 1.0s-580p"
+        },
+        "wan-2.2-animate-2.2-animate-replace-1.0s-480p": {
+          "price": 0.03,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.04",
+          "note": "wan 2.2 Animate, 2.2 Animate Replace, 1.0s-480p"
+        },
+        "wan-2.2-image-to-video-5.0s-480p": {
+          "price": 0.2,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.25",
+          "note": "wan 2.2, image-to-video, 5.0s-480p"
+        },
+        "wan-2.2-image-to-video-5.0s-720p": {
+          "price": 0.4,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.5",
+          "note": "wan 2.2, image-to-video, 5.0s-720p"
+        },
+        "wan-2.2-image-to-video-5.0s-580p": {
+          "price": 0.3,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.375",
+          "note": "wan 2.2, image-to-video, 5.0s-580p"
+        },
+        "wan-2.2-text-to-video-5.0s-580p": {
+          "price": 0.3,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.375",
+          "note": "wan 2.2,  text-to-video, 5.0s-580p"
+        },
+        "wan-2.2-text-to-video-5.0s-480p": {
+          "price": 0.2,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.25",
+          "note": "wan 2.2,  text-to-video, 5.0s-480p"
+        },
+        "wan-2.2-text-to-video-5.0s-720p": {
+          "price": 0.4,
+          "unit": "per video",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.5",
+          "note": "wan 2.2,  text-to-video, 5.0s-720p"
+        },
+        "wan-2.2-animate-2.2-animate-move-1.0s-480p": {
+          "price": 0.03,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.04",
+          "note": "wan 2.2 Animate, 2.2 Animate Move, 1.0s-480p"
+        },
+        "wan-2.2-animate-2.2-animate-move-1.0s-580p": {
+          "price": 0.0475,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.06",
+          "note": "wan 2.2 Animate, 2.2 Animate Move, 1.0s-580p"
+        },
+        "wan-2.2-animate-2.2-animate-move-1.0s-720p": {
+          "price": 0.0625,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.08",
+          "note": "wan 2.2 Animate, 2.2 Animate Move, 1.0s-720p"
+        },
+        "hailuo-02-text-to-video-standard-10.0s-768p": {
+          "price": 0.25,
+          "unit": "per video",
+          "provider": "Other",
+          "interface_type": "video",
+          "official_fal_price": "0.45",
+          "note": "hailuo 02, text-to-video, Standard-10.0s-768p"
+        },
+        "hailuo-02-image-to-video-standard-10.0s-512p": {
+          "price": 0.1,
+          "unit": "per video",
+          "provider": "Other",
+          "interface_type": "video",
+          "official_fal_price": "0.17",
+          "note": "hailuo 02, image-to-video, Standard-10.0s-512p"
+        },
+        "hailuo-02-image-to-video-standard-10.0s-768p": {
+          "price": 0.25,
+          "unit": "per video",
+          "provider": "Other",
+          "interface_type": "video",
+          "official_fal_price": "0.45",
+          "note": "hailuo 02, image-to-video, Standard-10.0s-768p"
+        },
+        "hailuo-02-text-to-video-standard-6.0s-768p": {
+          "price": 0.15,
+          "unit": "per video",
+          "provider": "Other",
+          "interface_type": "video",
+          "official_fal_price": "0.27",
+          "note": "hailuo 02, text-to-video, Standard-6.0s-768p"
+        },
+        "hailuo-02-image-to-video-standard-6.0s-512p": {
+          "price": 0.06,
+          "unit": "per video",
+          "provider": "Other",
+          "interface_type": "video",
+          "official_fal_price": "0.102",
+          "note": "hailuo 02, image-to-video, Standard-6.0s-512p"
+        },
+        "hailuo-02-image-to-video-pro-6.0s-1080p": {
+          "price": 0.285,
+          "unit": "per video",
+          "provider": "Other",
+          "interface_type": "video",
+          "official_fal_price": "0.48",
+          "note": "hailuo 02, image-to-video, Pro-6.0s-1080p"
+        },
+        "hailuo-02-text-to-video-pro-6.0s-1080p": {
+          "price": 0.285,
+          "unit": "per video",
+          "provider": "Other",
+          "interface_type": "video",
+          "official_fal_price": "0.48",
+          "note": "hailuo 02, text-to-video, Pro-6.0s-1080p"
+        },
+        "topaz-video-upscaler-upscale-factor-4x": {
+          "price": 0.07,
+          "unit": "per second",
+          "provider": "Topaz",
+          "interface_type": "video",
+          "official_fal_price": "0.08",
+          "note": "Topaz Video Upscaler, upscale factor 4x"
+        },
+        "topaz-video-upscaler-upscale-factor-1x-2x": {
+          "price": 0.04,
+          "unit": "per second",
+          "provider": "Topaz",
+          "interface_type": "video",
+          "official_fal_price": "0.08",
+          "note": "Topaz Video Upscaler, upscale factor 1x/2x"
+        },
+        "kling-ai-avtar-lip-sync-standard-up-to-15-secondss-720p": {
+          "price": 0.04,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.0562",
+          "note": "Kling AI Avtar , lip sync, Standard-up to 15 secondss-720p"
+        },
+        "kling-ai-avtar-lip-sync-pro-up-to-15-secondss-1080p": {
+          "price": 0.08,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.115",
+          "note": "Kling AI Avtar , lip sync, Pro-up to 15 secondss-1080p"
+        },
+        "meigen-ai-infinitetalk-lip-sync-up-to-15-secondss-480p": {
+          "price": 0.015,
+          "unit": "per second",
+          "provider": "Other",
+          "interface_type": "video",
+          "official_fal_price": "0.2",
+          "note": "MeiGen-AI InfiniteTalk, lip sync, up to 15 secondss-480p"
+        },
+        "meigen-ai-infinitetalk-lip-sync-up-to-15-secondss-720p": {
+          "price": 0.06,
+          "unit": "per second",
+          "provider": "Other",
+          "interface_type": "video",
+          "official_fal_price": "0.4",
+          "note": "MeiGen-AI InfiniteTalk, lip sync, up to 15 secondss-720p"
+        },
+        "recraft-crisp-upscale-image-to-image": {
+          "price": 0.0025,
+          "unit": "per image",
+          "provider": "Recraft",
+          "interface_type": "image",
+          "official_fal_price": "0.004",
+          "note": "Recraft Crisp Upscale, image to image"
+        },
+        "ideogram-v3-remix-image-to-image-balanced": {
+          "price": 0.035,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.06",
+          "note": "ideogram v3-remix, image-to-image, BALANCED"
+        },
+        "ideogram-v3-remix-image-to-image-quality": {
+          "price": 0.05,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.09",
+          "note": "ideogram v3-remix, image-to-image, QUALITY"
+        },
+        "ideogram-v3-edit-image-to-image-quality": {
+          "price": 0.05,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.09",
+          "note": "ideogram v3-edit, image-to-image, QUALITY"
+        },
+        "ideogram-v3-remix-image-to-image-turbo": {
+          "price": 0.0175,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.03",
+          "note": "ideogram v3-remix, image-to-image, TURBO"
+        },
+        "ideogram-v3-edit-image-to-image-balanced": {
+          "price": 0.035,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.06",
+          "note": "ideogram v3-edit, image-to-image, BALANCED"
+        },
+        "ideogram-v3-edit-image-to-image-turbo": {
+          "price": 0.0175,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.03",
+          "note": "ideogram v3-edit, image-to-image, TURBO"
+        },
+        "ideogram-v3-reframe-image-to-image-quality": {
+          "price": 0.05,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.09",
+          "note": "Ideogram V3 Reframe, image to image, Quality"
+        },
+        "ideogram-v3-reframe-image-to-image-balanced": {
+          "price": 0.035,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.06",
+          "note": "Ideogram V3 Reframe, image to image, Balanced"
+        },
+        "ideogram-v3-reframe-image-to-image-turbo": {
+          "price": 0.0175,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.03",
+          "note": "Ideogram V3 Reframe, image to image, Turbo"
+        },
+        "elevenlabs-audio-isolation": {
+          "price": 0.001,
+          "unit": "per second",
+          "provider": "Elevenlabs",
+          "interface_type": "music",
+          "official_fal_price": "0.0016",
+          "note": "Elevenlabs Audio Isolation"
+        },
+        "elevenlabs-sound-effect-v2": {
+          "price": 0.0012,
+          "unit": "per second",
+          "provider": "Elevenlabs",
+          "interface_type": "music",
+          "official_fal_price": "0.002",
+          "note": "Elevenlabs Sound Effect V2"
+        },
+        "elevenlabs-text-to-speech-turbo-2.5": {
+          "price": 0.03,
+          "unit": "per 1000 characters",
+          "provider": "Elevenlabs",
+          "interface_type": "music",
+          "official_fal_price": "0.05",
+          "note": "Elevenlabs Text to Speech, turbo 2.5"
+        },
+        "elevenlabs-text-to-speech-multilingual-v2": {
+          "price": 0.06,
+          "unit": "per 1000 characters",
+          "provider": "Elevenlabs",
+          "interface_type": "music",
+          "official_fal_price": "0.1",
+          "note": "Elevenlabs Text to Speech, multilingual v2"
+        },
+        "wan-2.2-a14b-turbo-api-speech-to-video-480p": {
+          "price": 0.06,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.1",
+          "note": "Wan 2.2 A14B Turbo API Speech to Video, 480p"
+        },
+        "wan-2.2-a14b-turbo-api-speech-to-video-720p": {
+          "price": 0.12,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.2",
+          "note": "Wan 2.2 A14B Turbo API Speech to Video, 720p"
+        },
+        "wan-2.2-a14b-turbo-api-speech-to-video-580p": {
+          "price": 0.09,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.15",
+          "note": "Wan 2.2 A14B Turbo API Speech to Video, 580p"
+        },
+        "qwen-image-text-to-image": {
+          "price": 0.02,
+          "unit": "per megapixel",
+          "provider": "Qwen",
+          "interface_type": "image",
+          "official_fal_price": "0.03",
+          "note": "Qwen Image , text-to-image"
+        },
+        "qwen-image-image-to-image": {
+          "price": 0.02,
+          "unit": "per megapixel",
+          "provider": "Qwen",
+          "interface_type": "image",
+          "official_fal_price": "",
+          "note": "Qwen Image, image-to-image"
+        },
+        "google-imagen4-text-to-image-fast": {
+          "price": 0.02,
+          "unit": "per request",
+          "provider": "Google",
+          "interface_type": "image",
+          "official_fal_price": "",
+          "note": "google imagen4, text-to-image, Fast"
+        },
+        "google-imagen4-text-to-image-ultra": {
+          "price": 0.06,
+          "unit": "per image",
+          "provider": "Google",
+          "interface_type": "image",
+          "official_fal_price": "",
+          "note": "google imagen4, text-to-image, Ultra"
+        },
+        "google-nano-banana-edit-image-to-image": {
+          "price": 0.02,
+          "unit": "per image",
+          "provider": "Google",
+          "interface_type": "image",
+          "official_fal_price": "0.039",
+          "note": "Google nano banana edit, image-to-image"
+        },
+        "google-nano-banana-text-to-image": {
+          "price": 0.02,
+          "unit": "per image",
+          "provider": "Google",
+          "interface_type": "image",
+          "official_fal_price": "0.039",
+          "note": "Google nano banana, text-to-image"
+        },
+        "runway-aleph": {
+          "price": 0.55,
+          "unit": "per video",
+          "provider": "Runway",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "Runway Aleph"
+        },
+        "runway-text-to-video-5.0s-720p": {
+          "price": 0.06,
+          "unit": "per video",
+          "provider": "Runway",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "Runway, text-to-video, 5.0s-720p"
+        },
+        "runway-text-to-video-10.0s-720p": {
+          "price": 0.15,
+          "unit": "per video",
+          "provider": "Runway",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "Runway, text-to-video, 10.0s-720p"
+        },
+        "runway-text-to-video-5.0s-1080p": {
+          "price": 0.15,
+          "unit": "per video",
+          "provider": "Runway",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "Runway, text-to-video, 5.0s-1080p"
+        },
+        "runway-image-to-video-5.0s-720p": {
+          "price": 0.06,
+          "unit": "per video",
+          "provider": "Runway",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "Runway, image-to-video, 5.0s-720p"
+        },
+        "runway-image-to-video-10.0s-720p": {
+          "price": 0.15,
+          "unit": "per video",
+          "provider": "Runway",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "Runway, image-to-video, 10.0s-720p"
+        },
+        "runway-image-to-video-5.0s-1080p": {
+          "price": 0.15,
+          "unit": "per video",
+          "provider": "Runway",
+          "interface_type": "video",
+          "official_fal_price": "",
+          "note": "Runway, image-to-video, 5.0s-1080p"
+        },
+        "suno-timestamped-lyrics": {
+          "price": 0.0025,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, TimeStamped Lyrics"
+        },
+        "suno-cover-generate": {
+          "price": 0.0,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Cover Generate"
+        },
+        "suno-generate-persona": {
+          "price": 0.0,
+          "unit": "per request ",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Generate Persona"
+        },
+        "suno-generate-midi-from-audio": {
+          "price": 0.0,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Generate Midi From Audio"
+        },
+        "suno-generate-sounds": {
+          "price": 0.0125,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Generate sounds"
+        },
+        "suno-mashup": {
+          "price": 0.06,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Mashup"
+        },
+        "suno-replace-music-section": {
+          "price": 0.025,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Replace Music Section"
+        },
+        "suno-multi-stem-separation": {
+          "price": 0.25,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Multi-Stem Separation"
+        },
+        "suno-vocal-separation": {
+          "price": 0.05,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Vocal Separation"
+        },
+        "suno-convert-to-wav-format": {
+          "price": 0.002,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, convert-to-wav-format"
+        },
+        "suno-generate-lyrics": {
+          "price": 0.002,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Generate Lyrics"
+        },
+        "suno-upload-and-cover-audio": {
+          "price": 0.06,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, upload-and-cover-audio"
+        },
+        "suno-create-music-video": {
+          "price": 0.01,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, create-music-video"
+        },
+        "suno-upload-and-extend-audio": {
+          "price": 0.06,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, upload-and-extend-audio"
+        },
+        "suno-add-instrumental": {
+          "price": 0.06,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, add-instrumental"
+        },
+        "suno-generate-music": {
+          "price": 0.06,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Generate Music "
+        },
+        "suno-extend-music": {
+          "price": 0.06,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, Extend Music"
+        },
+        "suno-add-vocals": {
+          "price": 0.06,
+          "unit": "per request",
+          "provider": "Suno",
+          "interface_type": "music",
+          "official_fal_price": "",
+          "note": "Suno, add-vocals"
+        },
+        "qwen-image-edit-image-to-image": {
+          "price": 0.03,
+          "unit": "per megapixel",
+          "provider": "Qwen",
+          "interface_type": "image",
+          "official_fal_price": "0.035",
+          "note": "Qwen image-edit, image-to-image"
+        },
+        "ideogram-character-image-to-image-balanced": {
+          "price": 0.09,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.15",
+          "note": "ideogram character, image-to-image, BALANCED"
+        },
+        "ideogram-character-image-to-image-quality": {
+          "price": 0.12,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.2",
+          "note": "ideogram character, image-to-image, QUALITY"
+        },
+        "ideogram-character-remix-image-to-image-balanced": {
+          "price": 0.09,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.15",
+          "note": "ideogram character-remix, image-to-image, BALANCED"
+        },
+        "ideogram-character-remix-image-to-image-quality": {
+          "price": 0.12,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.2",
+          "note": "ideogram character-remix, image-to-image, QUALITY"
+        },
+        "ideogram-character-image-to-image-turbo": {
+          "price": 0.06,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.1",
+          "note": "ideogram character, image-to-image, TURBO"
+        },
+        "ideogram-character-remix-image-to-image-turbo": {
+          "price": 0.06,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.1",
+          "note": "ideogram character-remix, image-to-image, TURBO"
+        },
+        "ideogram-character-edit-image-to-image-quality": {
+          "price": 0.12,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.2",
+          "note": "ideogram character-edit, image-to-image, QUALITY"
+        },
+        "ideogram-character-edit-image-to-image-turbo": {
+          "price": 0.06,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.1",
+          "note": "ideogram character-edit, image-to-image, TURBO"
+        },
+        "ideogram-character-edit-image-to-image-balanced": {
+          "price": 0.09,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.15",
+          "note": "ideogram character-edit, image-to-image, BALANCED"
+        },
+        "kling-2.1-video-generation-pro-10.0s": {
+          "price": 0.5,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.9",
+          "note": "Kling 2.1, video-generation, Pro-10.0s"
+        },
+        "kling-2.1-text-to-video-master-5.0s": {
+          "price": 0.8,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "1.4",
+          "note": "Kling 2.1, text-to-video, Master-5.0s"
+        },
+        "kling-2.1-text-to-video-master-10.0s": {
+          "price": 1.6,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "2.8",
+          "note": "Kling 2.1, text-to-video, Master-10.0s"
+        },
+        "kling-2.1-video-generation-standard-5.0s": {
+          "price": 0.125,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.25",
+          "note": "Kling 2.1, video-generation, Standard-5.0s"
+        },
+        "kling-2.1-video-generation-standard-10.0s": {
+          "price": 0.25,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.5",
+          "note": "Kling 2.1, video-generation, Standard-10.0s"
+        },
+        "kling-2.1-video-generation-pro-5.0s": {
+          "price": 0.25,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.45",
+          "note": "Kling 2.1, video-generation, Pro-5.0s"
+        },
+        "kling-2.1-image-to-video-master-5.0s": {
+          "price": 0.8,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "1.4",
+          "note": "Kling 2.1, image-to-video, Master-5.0s"
+        },
+        "kling-2.1-image-to-video-master-10.0s": {
+          "price": 1.6,
+          "unit": "per video",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "2.8",
+          "note": "Kling 2.1, image-to-video, Master-10.0s"
+        },
+        "ideogram-v3-text-to-image-quality": {
+          "price": 0.05,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.09",
+          "note": "ideogram v3,  text-to-image, QUALITY"
+        },
+        "ideogram-v3-text-to-image-turbo": {
+          "price": 0.0175,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.03",
+          "note": "ideogram v3,  text-to-image, TURBO"
+        },
+        "ideogram-v3-text-to-image-balanced": {
+          "price": 0.035,
+          "unit": "per image",
+          "provider": "Ideogram",
+          "interface_type": "image",
+          "official_fal_price": "0.06",
+          "note": "ideogram v3,  text-to-image, BALANCED"
+        },
+        "topaz-image-upscaler-image-upscale-8k": {
+          "price": 0.2,
+          "unit": "per image",
+          "provider": "Topaz",
+          "interface_type": "image",
+          "official_fal_price": "0.32",
+          "note": "Topaz Image Upscaler, image-upscale, 8K"
+        },
+        "topaz-image-upscaler-image-upscale-4k": {
+          "price": 0.1,
+          "unit": "per image",
+          "provider": "Topaz",
+          "interface_type": "image",
+          "official_fal_price": "0.16",
+          "note": "Topaz Image Upscaler, image-upscale, 4K"
+        },
+        "topaz-image-upscaler-image-upscale-2k": {
+          "price": 0.05,
+          "unit": "per image",
+          "provider": "Topaz",
+          "interface_type": "image",
+          "official_fal_price": "0.08",
+          "note": "Topaz Image Upscaler, image-upscale, 2K"
+        },
+        "gemini-2.5-flash-chat-output": {
+          "price": 0.75,
+          "unit": "per million tokens",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "2.50",
+          "note": "Gemini 2.5 flash, Chat, Output"
+        },
+        "gemini-2.5-flash-chat-input": {
+          "price": 0.09,
+          "unit": "per million tokens",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "0.30",
+          "note": "Gemini 2.5 flash, Chat, Input"
+        },
+        "gemini-2.5-pro-chat-output": {
+          "price": 3.0,
+          "unit": "per million tokens",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "10",
+          "note": "Gemini 2.5 Pro, Chat, Output"
+        },
+        "gemini-2.5-pro-chat-input": {
+          "price": 0.38,
+          "unit": "per million tokens",
+          "provider": "Google",
+          "interface_type": "chat",
+          "official_fal_price": "1.25",
+          "note": "Gemini 2.5 Pro, Chat, Input"
+        },
+        "kling-2.6-motion-control-video-to-video-1080p": {
+          "price": 0.09,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.112",
+          "note": "kling 2.6 motion control, video to video, 1080P"
+        },
+        "kling-2.6-motion-control-video-to-video-720p": {
+          "price": 0.055,
+          "unit": "per second",
+          "provider": "Kling",
+          "interface_type": "video",
+          "official_fal_price": "0.07",
+          "note": "kling 2.6 motion control, video-to-video, 720P"
+        },
+        "gpt-image-1.5-image-to-image-high": {
+          "price": 0.11,
+          "unit": "per image",
+          "provider": "OpenAI",
+          "interface_type": "image",
+          "official_fal_price": "0.133",
+          "note": "gpt image 1.5, image-to-image, high"
+        },
+        "gpt-image-1.5-image-to-image-medium": {
+          "price": 0.02,
+          "unit": "per image",
+          "provider": "OpenAI",
+          "interface_type": "image",
+          "official_fal_price": "0.034",
+          "note": "gpt image 1.5, image-to-image, medium"
+        },
+        "gpt-image-1.5-text-to-image-high": {
+          "price": 0.11,
+          "unit": "per image",
+          "provider": "OpenAI",
+          "interface_type": "image",
+          "official_fal_price": "0.133",
+          "note": "gpt image 1.5, text-to-image, high"
+        },
+        "gpt-image-1.5-text-to-image-medium": {
+          "price": 0.02,
+          "unit": "per image",
+          "provider": "OpenAI",
+          "interface_type": "image",
+          "official_fal_price": "0.034",
+          "note": "gpt image 1.5, text-to-image, medium"
+        },
+        "google-imagen4-text-to-image-default": {
+          "price": 0.04,
+          "unit": "per request",
+          "provider": "Google",
+          "interface_type": "image",
+          "official_fal_price": "",
+          "note": "google imagen4, text-to-image, default"
+        }
+      },
+      "fetch_note": "Live API data from api.kie.ai/client/v1/model-pricing/page via Playwright"
+    },
+    "fal.ai": {
+      "display_name": "fal.ai",
+      "pricing_url": "https://fal.ai/pricing",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T22:57:27.720408",
+      "services": {
+        "wan-2.5": {
+          "price": 0.05,
+          "unit": "per second",
+          "note": "Wan 2.5 text-to-video"
+        },
+        "kling-2.5-turbo-pro": {
+          "price": 0.07,
+          "unit": "per second",
+          "note": "Kling 2.5 Turbo Pro image-to-video"
+        },
+        "veo-3": {
+          "price": 0.4,
+          "unit": "per second",
+          "note": "Veo 3 image-to-video"
+        },
+        "ovi": {
+          "price": 0.2,
+          "unit": "per video",
+          "note": "Ovi image-to-video (flat)"
+        },
+        "seedream-v4": {
+          "price": 0.03,
+          "unit": "per image",
+          "note": "Seedream V4 text-to-image"
+        },
+        "flux-kontext-pro": {
+          "price": 0.04,
+          "unit": "per image",
+          "note": "Flux Kontext Pro"
+        },
+        "nano-banana": {
+          "price": 0.0398,
+          "unit": "per image",
+          "note": "Nano Banana (fal.ai gateway)"
+        },
+        "qwen-image": {
+          "price": 0.02,
+          "unit": "per MP",
+          "note": "Qwen image (per megapixel)"
+        }
+      },
+      "raw_pricing_snapshot": "[fal Assets is now live!](https://fal.ai/assets)\n\nProducts\n\n[Model APIs](https://fal.ai/models) [Serverless](https://fal.ai/serverless) [Compute](https://fal.ai/docs/documentation/compute)\n\n[Model Gallery](https://fal.ai/models) [Documentation](https://docs.fal.ai/) [Pricing](https://fal.ai/pricing) [Enterprise](https://fal.ai/enterprise) Resources\n\n[Blog](https://blog.fal.ai/) [Learn](https://fal.ai/learn) [Events](https://fal.ai/events) [Research Grants](https://fal.ai/grants) [Careers](https://fal.ai/careers)\n\n[Get started](https://fal.ai/login) [Contact Sales](https://fal.ai/enterprise#contact-sales)\n\n![](https://fal.ai/landing/pricing/shape-1.svg)![](https://fal.ai/landing/pricing/bg.svg)![](https://fal.ai/landing/pricing/bg-2.svg)![](https://fal.ai/landing/pricing/shape-2.svg)\n\n# Fast, reliable, and  cost-efficient.\n\nfal adapts to your usage, ensuring you only pay for the computing power you consume. It's cost-effective scalability at its best.\n\n### Serverless & Compute Pricing\n\nCompetitive pricing for custom deployments.\n\nDeploy your own app on our competitively priced GPU fleet, as low as $1.89/hr for H100.\n\n[Start Building](https://fal.ai/dashboard) [Contact Sales](https://fal.ai/pricing#contact-sales)\n\n| GPU | VRAM | List Price | As low as |\n| --- | --- | --- | --- |\n| ![GPU B300 icon](https://fal.ai/landing/fal-gpu-icon-green.svg)B300 | 288GB | $8.50/h | $4.49/h |\n| ![GPU B200 icon](https://fal.ai/landing/fal-gpu-icon-blue.svg)B200 | 180GB | $6.25/h | $3.49/h |\n| ![GPU H200 icon](https://fal.ai/landing/fal-gpu-icon-dark-blue.svg)H200 | 141GB | $4.50/h | $2.10/h |\n| ![GPU H100 icon](https://fal.ai/landing/fal-gpu-icon-red.svg)H100 | 80GB | $3.99/h | $1.89/h |\n| ![GPU RTX PRO 6000 icon](https://fal.ai/landing/fal-gpu-icon-green.svg)RTX PRO 6000 | 96GB | $2.99/h | $1.10/h |\n\nCompetitive pricing for custom deployments \u2014 Contact [support@fal.ai](mailto:support@fal.ai) to get started.\n\n### Model APIs Pricing\n\n#### Video Models\n\nVideo models are billed by output",
+      "fetch_note": "Live from fal.ai/pricing"
+    },
+    "elevenlabs": {
+      "display_name": "ElevenLabs",
+      "pricing_url": "https://elevenlabs.io/pricing",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T15:48:01.021216",
+      "services": {
+        "tts-flash": {
+          "price": 0.05,
+          "unit": "per 1000 characters",
+          "note": "Flash/Turbo model \u2014 fastest"
+        },
+        "tts-multilingual-v2": {
+          "price": 0.1,
+          "unit": "per 1000 characters",
+          "note": "Multilingual v2/v3 \u2014 higher quality"
+        }
+      },
+      "raw_pricing_snapshot": "[Skip to content](https://elevenlabs.io/pricing#content)\n\n[Log in](https://elevenlabs.io/app/sign-in) [Sign up](https://elevenlabs.io/app/sign-up)\n\n[Contact sales](https://elevenlabs.io/contact-sales) [Log in](https://elevenlabs.io/app)\n\n[ElevenLabs](https://elevenlabs.io/)\n\n- [Sign up](https://elevenlabs.io/app/sign-up) [Sign up](https://elevenlabs.io/app/sign-up)\n\n# Flexible pricing for your needs\n\n[ElevenCreative](https://elevenlabs.io/pricing) [ElevenAgents](https://elevenlabs.io/pricing/agents) [ElevenAPI](https://elevenlabs.io/pricing/api)\n\n![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489beebc.png&w=3840&q=90)\n\n### Free\n\n$0per month\n\n[Build for free](https://elevenlabs.io/app/sign-up?redirect=%2Fapp%2Fsubscription)\n\n- Text to Speech\n\n- Speech to Text\n\n- Sound Effects\n\n- Voice Design\n\n- Music\n\n- Productions\n\n- Image & Video\n\n- 3 Projects in Studio\n\n\n10k creditsper month\n\n![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FStarter.b3e0fcd4.png&w=3840&q=90)\n\n### Starter\n\n$6per month\n\n[Choose Starter](https://elevenlabs.io/app/sign-up?redirect=%2Fapp%2Fsubscription)\n\nEverything in free, plus\n\n- Commercial License\n\n- Instant Voice Cloning\n\n- 20 Projects in Studio\n\n- Music commercial use\n\n- Dubbing Studio\n\n\n30k creditsper month\n\n![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FCreator.29fbee33.png&w=3840&q=90)\n\n### Creator\n\nPopular\n\n$22First month 50% off\n\n$11per month\n\n[Choose Creator](https://elevenlabs.io/app/sign-up?redirect=%2Fapp%2Fsubscription)\n\nEverything in Starter, plus\n\n- Professional Voice Cloning\n\n- Additional Credits\n\n\n121k creditsper month\n\n![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FPro.3448e827.png&w="
+    },
+    "firecrawl": {
+      "display_name": "Firecrawl",
+      "pricing_url": "https://firecrawl.dev/pricing",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T15:48:02.462948",
+      "services": {
+        "scrape": {
+          "price": 0.002,
+          "unit": "per page (Standard plan estimate)",
+          "note": "$199/mo for 100k pages. Hobby: $16/mo for 5k pages = $0.003/page."
+        }
+      },
+      "raw_pricing_snapshot": "Introducing Firecrawl Research Index, a specialized index for AI/ML research with SOTA recall. [Try it now \u2192](https://docs.firecrawl.dev/features/research?utm_source=firecrawl-web&utm_medium=banner&utm_campaign=research-index-launch)\n\n//\n\nTransparent\n\n//\n\n# Flexible pricing\n\nStart for free, then scale as you grow.\n\nMonthly credits\n\n1k\n\n5k\n\n6.5k\n\n8k\n\n100k\n\n130k\n\n160k\n\n500k\n\n650k\n\n1M\n\nCustom\n\n\ud83c\uddfa\ud83c\uddf8USD\n\n### Free Plan\n\nA lightweight way to get started.\n\nNo cost, no card, no hassle.\n\n1,000 credits / month\n\n$0123456789\n\n/month\n\nGet started\n\nScrape1,000pages\n\n2 concurrent requests\n\nLow rate limits\n\n### Hobby\n\nGreat for side projects and small tools.\n\nFast, simple, no overkill.\n\n5,000 credits / month\n\n$01234567890123456789\n\n/month\n\nBilled yearly\n\nSave $38\n\nSubscribe\n\nScrape5,000pages\n\n5 concurrent requests\n\nBasic support\n\n### Standard  Recommended\n\nPerfect for scaling with less effort.\n\nSimple, solid, dependable.\n\n100,000 credits / month\n\n$01234567890123456789\n\n/month\n\nBilled yearly\n\nSave $198\n\nSubscribe\n\nScrape100,000pages\n\n50 concurrent requests\n\nStandard support\n\n### Growth\n\nBuilt for high volume and speed.\n\nFirecrawl at full force.\n\n500,000 credits / month\n\n$012345678901234567890123456789\n\n/month\n\nBilled yearly\n\nSave $798\n\nSubscribe\n\nScrape500,000pages\n\n100 concurrent requests\n\nPriority support\n\n## Scale Plans\n\nHigh-volume plans for teams that need more power and dedicated support. Get access to higher rate limits, more concurrent browsers, and priority support.\n\n[Need more? Contact us](https://fk4bvu0n5qp.typeform.com/to/Ej6oydlg)\n\n### Scale\n\nFor teams scaling their data pipelines\n\n1,000,000 credits / month\n\n$599/monthly\n\nBilled yearly\n\nSave $1,798\n\nSubscribe\n\nScrape1,000,000pages\n\n150concurrent requests\n\nPriority support\n\n### Enterprise\n\nPower at your pace with custom solutions\n\nCustom credits\n\nCustom\n\n[Contact sales](https://fk4bvu0n5qp.typeform.com/to/Ej6oydlg)\n\nScrapeunlimitedpages\n\nCustomconcurrent requests\n\nDedicated support & SLA\n\nBulk discounts\n\nZero-data retentio"
+    },
+    "perplexity": {
+      "display_name": "Perplexity",
+      "pricing_url": "https://docs.perplexity.ai/guides/pricing",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T22:57:27.720408",
+      "services": {
+        "sonar-input": {
+          "price": 1.0,
+          "unit": "per 1M tokens",
+          "note": "Sonar input tokens"
+        },
+        "sonar-output": {
+          "price": 1.0,
+          "unit": "per 1M tokens",
+          "note": "Sonar output tokens"
+        },
+        "sonar-request-low": {
+          "price": 5.0,
+          "unit": "per 1K requests",
+          "note": "Sonar low-context search request fee"
+        },
+        "sonar-pro-input": {
+          "price": 3.0,
+          "unit": "per 1M tokens",
+          "note": "Sonar Pro input tokens"
+        },
+        "sonar-pro-output": {
+          "price": 15.0,
+          "unit": "per 1M tokens",
+          "note": "Sonar Pro output tokens"
+        },
+        "sonar-pro-request": {
+          "price": 6.0,
+          "unit": "per 1K requests",
+          "note": "Sonar Pro low-context search request fee"
+        },
+        "web-search": {
+          "price": 0.005,
+          "unit": "per call",
+          "note": "web_search tool per invocation"
+        }
+      },
+      "raw_pricing_snapshot": "> ## Documentation Index\n>\n> Fetch the complete documentation index at: [/llms.txt](https://docs.perplexity.ai/llms.txt)\n>\n> Use this file to discover all available pages before exploring further.\n\n[Skip to main content](https://docs.perplexity.ai/docs/getting-started/pricing#content-area)\n\nThis page shows **pricing information** to help you understand API costs.For **billing setup**, payment methods, and usage monitoring, visit the [Admin section](https://docs.perplexity.ai/docs/getting-started/api-groups). For **rate limits**, see the [Rate Limits & Usage Tiers](https://docs.perplexity.ai/docs/admin/rate-limits-usage-tiers) page.\n\n## [\u200b](https://docs.perplexity.ai/docs/getting-started/pricing\\#agent-api-pricing)  Agent API Pricing\n\nThe Agent API provides access to third-party models from OpenAI, Anthropic, Google, and xAI with **transparent, token-based pricing** at direct provider rates with no markup.\n\n### [\u200b](https://docs.perplexity.ai/docs/getting-started/pricing\\#model-pricing)  Model Pricing\n\nAgent API pricing varies by provider and model, with each provider offering multiple models at different price points.\n\n[**View Complete Third-Party Model Pricing**](https://docs.perplexity.ai/docs/agent-api/models)\n\n[See the full pricing breakdown for all available models from OpenAI, Anthropic, Google, and xAI, including cache rates and provider documentation links on the](https://docs.perplexity.ai/docs/agent-api/models) [Agent API Models page](https://docs.perplexity.ai/docs/agent-api/models).\n\n### [\u200b](https://docs.perplexity.ai/docs/getting-started/pricing\\#tool-pricing)  Tool Pricing\n\nWhen using tools with the Agent API:\n\n| Tool | Price | Description |\n| --- | --- | --- |\n| **`web_search`** | $0.005 per invocation | Performs web searches to retrieve current information |\n| **`fetch_url`** | $0.0005 per invocation | Fetches and extracts content from specific URLs |\n| **`people_search`** | $0.005 per invocation | Looks up professionals, employees, and people. $5 per",
+      "fetch_note": "Live from docs.perplexity.ai/docs/getting-started/pricing"
+    },
+    "cloudinary": {
+      "display_name": "Cloudinary",
+      "pricing_url": "https://cloudinary.com/pricing",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T22:57:27.720408",
+      "services": {
+        "storage": {
+          "price": 0.0,
+          "unit": "25 GB free",
+          "note": "Free tier: 25GB storage included"
+        },
+        "storage-paid": {
+          "price": 0.05,
+          "unit": "per GB/month",
+          "note": "Storage overage beyond free tier"
+        },
+        "bandwidth-paid": {
+          "price": 0.08,
+          "unit": "per GB",
+          "note": "Bandwidth overage beyond free tier"
+        },
+        "transformations": {
+          "price": 0.0,
+          "unit": "25 credits free",
+          "note": "Free tier: 25 monthly credits"
+        }
+      },
+      "raw_pricing_snapshot": "### Cloudinary Image and Video Platform offers AI-powered APIs to automate image and video management, transformation and optimized delivery at scale\n\n- [Image and Video APIs](https://cloudinary.com/pricing#pricing-content-1)\n- [Digital Asset Management](https://cloudinary.com/pricing#pricing-content-2)\n\nYearly\n\nMonthly\n\n#### Free\n\nStart exploring Image and Video APIs today.\n\n[Sign Up Free](https://cloudinary.com/users/register_free)\n\n[Features Include](https://cloudinary.com/pricing#collapseOne)\n\n- Upload widget, API, and search\n- Remote fetch, auto-backup, and revision tracking\n- Image and video transformations\n- Video transcoding and adaptive streaming\n- High performance delivery through a CDN\n- Support \u2014 forums, tickets, and email\n- Access to free add-ons\n\n$0\n\nFree forever\n\nNo credit card required\n\nNo cc required\n\n$0\n$0\n\nFree forever\n\nNo credit card required\n\nNo cc required\n\n3 Users / 1 Account\n\n25 [monthly credits](https://cloudinary.com/pricing#cld_pricing_calculator)\n\n#### **Features**\n\n- Upload widget, API, and search\n- Remote fetch, auto-backup, and revision tracking\n- Image and video transformations\n- Video transcoding and adaptive streaming\n- High performance delivery through a CDN\n- Support \u2014 forums, tickets, and email\n- Access to free add-ons\n- Access to MCP servers\n\n#### Plus  MOST POPULAR\n\nExtend your team\u2019s digital media capabilities for websites & apps.\n\n[Get Started](https://cloudinary.com/users/register_free?plan=plus)\n\n[Features Include](https://cloudinary.com/pricing#collapseTwo)\n\n- Backup to your own S3 bucket\n- Auto-tagging based search\n- Access to free and paid add-ons\n- Expedited support\n- Allowlist/Blocklist asset access\n- Video Bandwidth Boost 2:1\n- Role-based multi-user administration\n\nMonthly\n\nYearly\n\n$99\n\nPer month\n\n$89\n\nPer month\n\n3 Users / 2 Accounts\n\n225 [monthly credits](https://cloudinary.com/pricing#cld_pricing_calculator)\n\n#### **Features** (incl Free features)\n\n- Backup to your own S3 bucket\n- Auto-tagging based search\n- Access ",
+      "fetch_note": "Free tier: 25GB storage, 25 credits/mo. Paid overage scraped from cloudinary.com/pricing"
+    },
+    "airtable": {
+      "display_name": "Airtable",
+      "pricing_url": "https://airtable.com/pricing",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T15:48:14.542510",
+      "services": {
+        "pro_plan": {
+          "unit": "per_seat_per_month",
+          "price": null,
+          "currency": "USD"
+        }
+      },
+      "raw_pricing_snapshot": "# A plan for every organization's needs\n\nMost popular\n\n## Free\n\n## Team\n\n## Business\n\n## Enterprise Scale\n\nFor individuals or very small teams just getting started with Airtable\n\nFor teams building apps to collaborate on shared workflows\n\nFor teams and departments who need advanced features and basic administration\n\nFor organizations looking to build scalable, flexible apps with powerful governance and administration\n\nFree\n\n$20USD\n\nper seat/month\n\nbilled annually\n\n$45USD\n\nper seat/month\n\nbilled annually\n\nCustom pricing\n\n$24 billed monthly\n\n$54 billed monthly\n\n[Try for free](https://airtable.com/signup?utm_source=pricing-free)\n\n[Try for free](https://airtable.com/signup?utm_source=pricing-pro)\n\n[Purchase now](https://airtable.com/signup?utm_source=pricing-business-dtp&billingPlanId=plnbONqoR7CNyROuj)\n\nContact Sales\n\nor [purchase now](https://airtable.com/signup?utm_source=pricing-pro-dtp&billingPlanId=pln1QC6IGdxcburwd)\n\norcontact sales\n\n**Free** includes:\n\n500 AI credits per editor each month. Learn more\n\nUnlimited bases\n\n1,000 records per base\n\nUp to 5 editors\n\n1 GB of attachments per base\n\n100 automation runs\n\nInterface Designer\n\nEverything in Free, plus:\n\n15,000 AI credits per paid user each month. Learn more\n\n50,000 records per base\n\n25,000 automation runs\n\n20 GB of attachments per base\n\nStandard sync integrations\n\nExtensions\n\nGantt and timeline view\n\nExpanded color, formatting, and calendar options\n\nAvailable add-ons:\n\nPortals: Starting from $120 for 15 guests/month\n\nEverything in Team, plus:\n\n20,000 AI credits per paid user each month. Learn more\n\n125,000 records per base\n\n100,000 automation runs\n\n100 GB of attachments per base\n\nPremium sync integrations\n\nVerified data\n\nTwo-way sync\n\nAdmin panel\n\nSAML-based single sign-on\n\nApp Sandbox\n\nRoadmap view and Exec Summary cards\n\nAI Admin controls\n\nAvailable add-ons:\n\nPortals: Starting from $150 for 15 guests/month\n\nEverything in Business, plus:\n\n25,000 AI credits per paid user each month at list price. Learn more\n\n50"
+    },
+    "blotato": {
+      "display_name": "Blotato",
+      "pricing_url": "https://blotato.com/pricing",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T15:48:15.430784",
+      "services": {},
+      "raw_pricing_snapshot": "[Skip to main content](https://www.blotato.com/pricing#main)\n\n10 DAYS ONLY \u00b7 $500 VALUE**Top 100 Viral Hooks** + **Repurpose Engine**(Claude Skills)[Start free week \u2192](https://www.blotato.com/pricing)\n\nSIMPLE PRICING\n\n# Pick a plan. _Ship more content._\n\nFree 7-day trial on every plan. Cancel anytime. No per-post fees, no seat fees, no hidden tax on your soul.\n\n### Starter\n\n$29/mo\n\nSolo creators getting started.\n\n[Start Free Trial \u2192](https://my.blotato.com/signup?plan=starter-monthly)\n\n- 58 languages\n- Mobile friendly\n- Social media API\n- **Unlimited** threads\n- **Unlimited** sources\n- **Unlimited** AI writing\n- AI image generation\n- AI videos generation\n- AI voices & captions\n- Proven viral templates\n- **1,250** AI credits per month(AI images + videos)\n- ElevenLabs AI voiceovers\n- **20** social media accounts\n- 2025 social media guides\n- Proven AI writing prompts\n- n8n & Make official nodes\n- Up to 900 TikTok posts/month\n\nMOST POPULAR\n\n### Creator\n\n$97/mo\n\nOperators scaling to a real audience.\n\n[Start Free Trial \u2192](https://my.blotato.com/signup?plan=creator-monthly)\n\n- **Everything** in Starter\n- **5,000** AI credits per month(AI images, videos, voice)\n- Faster video processing\n- **40** social media accounts\n- **Unlimited** database of viral posts for inspiration\n- Support troubleshooting your n8n/Make automations\n\n### Agency\n\n$499/mo\n\nAgencies and teams running multiple brands.\n\n[Start Free Trial \u2192](https://my.blotato.com/signup?plan=agency-monthly)\n\n- **Everything** in Creator\n- **28,000** AI credits per month(AI images videos)\n- Dedicated video processing\n- Dedicated support channel\n- Dedicated support troubleshooting automations\n\nWhat's in your free trial\n\n- \u2713Access to **all features** \\- except the API\n- \u2713A **limited amount of AI credits** for image & video generation\n\n\u2713 7-day free trial\n\n\u2713 Cancel anytime\n\n\u2713 No per-post fees\n\n\u2713 10,000+ operators\n\nPRICING FAQ\n\n## Common _questions_ .\n\n01What happens after my free trial?\n\nYour trial runs for 7 days. We'll email "
+    },
+    "openrouter": {
+      "display_name": "OpenRouter",
+      "pricing_url": "https://openrouter.ai/models",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T22:57:27.720408",
+      "services": {
+        "google--gemini-2.5-flash-input": {
+          "price": 0.3,
+          "unit": "per 1M tokens",
+          "note": "google/gemini-2.5-flash input"
+        },
+        "google--gemini-2.5-flash-output": {
+          "price": 2.5,
+          "unit": "per 1M tokens",
+          "note": "google/gemini-2.5-flash output"
+        },
+        "google--gemini-2.5-pro-input": {
+          "price": 1.25,
+          "unit": "per 1M tokens",
+          "note": "google/gemini-2.5-pro input"
+        },
+        "google--gemini-2.5-pro-output": {
+          "price": 10.0,
+          "unit": "per 1M tokens",
+          "note": "google/gemini-2.5-pro output"
+        },
+        "deepseek--deepseek-r1-input": {
+          "price": 0.7,
+          "unit": "per 1M tokens",
+          "note": "deepseek/deepseek-r1 input"
+        },
+        "deepseek--deepseek-r1-output": {
+          "price": 2.5,
+          "unit": "per 1M tokens",
+          "note": "deepseek/deepseek-r1 output"
+        },
+        "meta-llama--llama-3.3-70b-instruct-input": {
+          "price": 0.1,
+          "unit": "per 1M tokens",
+          "note": "meta-llama/llama-3.3-70b-instruct input"
+        },
+        "meta-llama--llama-3.3-70b-instruct-output": {
+          "price": 0.32,
+          "unit": "per 1M tokens",
+          "note": "meta-llama/llama-3.3-70b-instruct output"
+        },
+        "openai--gpt-4o-mini-input": {
+          "price": 0.15,
+          "unit": "per 1M tokens",
+          "note": "openai/gpt-4o-mini input"
+        },
+        "openai--gpt-4o-mini-output": {
+          "price": 0.6,
+          "unit": "per 1M tokens",
+          "note": "openai/gpt-4o-mini output"
+        },
+        "openai--gpt-4o-input": {
+          "price": 2.5,
+          "unit": "per 1M tokens",
+          "note": "openai/gpt-4o input"
+        },
+        "openai--gpt-4o-output": {
+          "price": 10.0,
+          "unit": "per 1M tokens",
+          "note": "openai/gpt-4o output"
+        },
+        "mistralai--mistral-large-input": {
+          "price": 2.0,
+          "unit": "per 1M tokens",
+          "note": "mistralai/mistral-large input"
+        },
+        "mistralai--mistral-large-output": {
+          "price": 6.0,
+          "unit": "per 1M tokens",
+          "note": "mistralai/mistral-large output"
+        }
+      },
+      "raw_pricing_snapshot": "### Input Modalities\n\n[Text](https://openrouter.ai/models?input_modalities=text)\n\n[Image](https://openrouter.ai/models?input_modalities=image)\n\n[File](https://openrouter.ai/models?input_modalities=file)\n\n[Audio](https://openrouter.ai/models?input_modalities=audio)\n\n[Video](https://openrouter.ai/models?input_modalities=video)\n\n### Context length\n\n### Prompt pricing\n\n### Series\n\n### Categories\n\n### Supported Parameters\n\n### Distillable\n\n### Zero Data Retention\n\n### In-Region Routing\n\n### Providers\n\n### Model Authors\n\n### Inactive Models\n\n# Models\n\nNewest\n\n[Compare](https://openrouter.ai/compare)\n\nText0Image0Embeddings0Audio0Video0Rerank0Speech0Transcription0",
+      "fetch_note": "Live from openrouter.ai/api/v1/models \u2014 7 models"
+    },
+    "notion": {
+      "display_name": "Notion",
+      "pricing_url": "https://www.notion.so/pricing",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T15:48:16.846945",
+      "services": {},
+      "raw_pricing_snapshot": "# One tool to run your company.\n\nTrusted by teams at\n\n![OpenAI](https://www.notion.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fspoqsaf9291f%2FjWkCPMAAj0Av69704DQoB%2F84499b606028b276e0bf94c238f07097%2FOpenAI-black-wordmark-cropped.png&w=3840&q=75)![Figma](https://images.ctfassets.net/spoqsaf9291f/502ApiNcRHgIwrDU8XRYTQ/497492503acb3fa21bbd9dd1aec193c3/Figma-logo-color.svg)![Volvo](https://www.notion.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fspoqsaf9291f%2F4xtSoCGKxiZcTwsYPlBB5h%2F0fb7d4155e89ef5a852936099e014313%2Fvolvo.png&w=1920&q=75)![Ramp](https://www.notion.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fspoqsaf9291f%2F4eiEZBWL5gEClwB1IHi18I%2Fb9b86479965977121ceabd01f45567a7%2Framp.png&w=3840&q=75)![Cursor](https://www.notion.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fspoqsaf9291f%2F3CSWr4Z4uIvbfO7102KPY%2Fbbd97c8edd0673853ac8dae2887a638d%2Fcursor.png&w=1920&q=75)\n\n## Essentials for staying organized.\n\n### Free\n\n$0per member / month\n\nFor individuals to organize personal projects and life.\n\n[Sign up](https://www.notion.com/signup)\n\n**Includes:**\n\n- Trial AI capabilities like generating docs, or autofilling databases\n\n\n\n\n\nTrial of Notion AI\n\n- Capture, organize, and act on responses right inside Notion.\n\n\n\n\n\nBasic forms\n\n- Publish a Notion page to the web\n\n\n\n\n\nBasic sites\n\n- Connect multiple Calendars to manage work and time together.\n\n\n\n\n\nNotion Calendar\n\n- Connect your Gmail for an AI-powered, personalized inbox.\n\n\n\n\n\nNotion Mail (Syncs with Gmail)\n\n- Organize hundreds or thousands of items in one place, like projects or tasks\n\n\n\n\n\nDatabases including subtasks, dependencies, custom properties and more\n\n\n### Plus\n\n$10per member / month\n\nFor small teams and professionals to work together.\n\n[Get started](https://www.notion.com/signup?target=plans)\n\n**Everything in Free, and:**\n\n- Trial AI capabilities like generating docs, or autofilling databases\n\n\n\n\n\nTrial of Notion AI\n\n- Remove Notion branding from public form"
+    },
+    "n8n": {
+      "display_name": "n8n",
+      "pricing_url": "https://n8n.io/pricing",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T15:48:17.504682",
+      "services": {},
+      "raw_pricing_snapshot": "n8n Plans and Pricing - n8n.io\n\n![Background Image](https://n8n.io/images/pricing_page_bg.png)\n\nMonthly\n\nAnnually (Save 17%)\n\n### Starter\n\nGreat for getting started and seeing the power of n8n.\n\n$20/mo, billed annually\n\n2.5K\n\nworkflow executions with unlimited steps\n\n[Start free trial No credit card required](https://app.n8n.cloud/register?planId=starter&freeEnrolled=false)\n\nHosted by n8n\n\nThis plan includes:\n\n- 1 shared project\n- 5 concurrent executions\n- Unlimited users\n- 50 AI Workflow Builder credits\n- Forum support\n\n### Pro\n\nFor solo builders and small teams running workflows in production.\n\n$50/mo, billed annually\n\n10K\n\nworkflow executions with unlimited steps\n\n[Start free trial No credit card required](https://app.n8n.cloud/register?planId=pro&freeEnrolled=false)\n\nHosted by n8n\n\nEverything in Starter plan, plus:\n\n- 3 shared projects\n- 20 concurrent executions\n- 7 days of insights\n- 150 AI Workflow Builder credits\n- Admin roles\n- Global variables\n- Workflow history\n- Execution search\n\n### Business\n\nFor companies with < 100 employees needing collaboration and scale.\n\n667\u20ac/mo, billed annually\n\n40K\n\nworkflow executions with unlimited steps\n\nStart free trial\n\nSelf-hosted\n\nEverything in Pro plan, plus:\n\n- 6 shared projects\n- SSO, SAML and LDAP\n- 30 days of insights\n- AI Workflow Builder coming soon\n- Different environments\n- Scaling options\n- Version control using Git\n- Forum support\n\n### Enterprise\n\nFor organisations with strict compliance and governance needs.\n\nContact Sales\n\nCustom number of workflow executions\n\n[Contact sales](https://n8n-community.typeform.com/to/y9X2YuGa?planId=enterprise&freeEnrolled=false&ld_bookit_log_id=00DKB000000IOni2AG_1781765512984_7173512816592736)\n\nHosted by n8n  or Self-hosted\n\nEverything in Business plan, plus:\n\n- Unlimited shared projects\n- 200+ concurrent executions\n- 365 days of insights\n- 1000 AI Workflow Builder credits (only available on n8n cloud)\n- External secret store integration\n- Log streaming\n- Extended data retention"
+    },
+    "wavespeed": {
+      "display_name": "WaveSpeed",
+      "pricing_url": "https://wavespeed.ai/pricing",
+      "fetch_method": "firecrawl",
+      "last_fetched": "2026-06-18T15:48:18.041079",
+      "raw_pricing_snapshot": "# Simple and transparent pricing\n\nPay only for what you use. No hidden fees, no surprises. Scale from prototype to production with predictable costs.\n\n[Start building for free](https://wavespeed.ai/sign-in) [Contact Sales](https://wavespeed.ai/enterprise#contact-us)\n\nNo credit card required \u2022 Start with $1 free credits\n\n## Image & Video Models\n\nState-of-the-art generation with models from WaveSpeed, OpenAI, Google, and more.\n\n| Model | Unit | Price | Output per $1 |\n| --- | --- | --- | --- |\n| Nano Banana 2 | image | $0.07/image | 14 images |\n| Nano Banana Pro | image | $0.14/image | 7 images |\n| Seedream 4.5 | image | $0.04/image | 25 images |\n| Flux 2 Klein | image | $0.008/image | 125 images |\n| Z Image Turbo | image | $0.005/image | 200 images |\n| Seedance 2.0 Fast | second | $0.10/second | 10 seconds |\n| Wan 2.7 | second | $0.10/second | 10 seconds |\n| Wan 2.2 Ultra Fast | second | $0.01/second | 100 seconds |\n| Kling 3.0 Std | second | $0.084/second | 11.9 seconds |\n| Veo 3.1 Fast | second | $0.15/second | 6.6 seconds |\n| InfiniteTalk | second | $0.03/second | 33.3 seconds |\n| Wan 2.2 Animate | second | $0.04/second | 25 seconds |\n\nPrices may vary based on resolution and generation parameters. [See full pricing documentation](https://wavespeed.ai/docs)\n\n## Language Models\n\nAccess leading LLMs with OpenAI-compatible API. 1K tokens\u2248750 words.\n\n| Model | Context Window | Input Price | Output Price |\n| --- | --- | --- | --- |\n| Claude Opus 4.6 | 200K | $0.015/1K | $0.075/1K |\n| Claude Sonnet 4.6 | 200K | $0.003/1K | $0.015/1K |\n| GPT-5.4 | 128K | $0.010/1K | $0.030/1K |\n| GPT-5.4 Mini | 128K | $0.0004/1K | $0.0016/1K |\n| Gemini 3.1 Pro | 2M | $0.00125/1K | $0.005/1K |\n| Qwen3 Max | 128K | $0.0012/1K | $0.0048/1K |\n| DeepSeek V4 | 128K | $0.0007/1K | $0.0028/1K |\n\n## Serverless GPU\n\nRun your own models on enterprise-grade GPUs with pay-per-second billing.\n\n| Tier | GPU | VRAM | Hourly | Per Second |\n| --- | --- | --- | --- | --- |\n| B2 | B200 | 141 GB | $5.98/hr | ",
+      "services": {
+        "nano-banana-2": {
+          "price": 0.07,
+          "unit": "per image",
+          "note": "vs kie.ai $0.04 \u2014 kie.ai cheaper"
+        },
+        "nano-banana-pro": {
+          "price": 0.14,
+          "unit": "per image",
+          "note": null
+        },
+        "seedream-4.5": {
+          "price": 0.04,
+          "unit": "per image",
+          "note": null
+        },
+        "flux-2-klein": {
+          "price": 0.008,
+          "unit": "per image",
+          "note": "Very cheap, low quality tier"
+        },
+        "z-image-turbo": {
+          "price": 0.005,
+          "unit": "per image",
+          "note": "Cheapest image option on WaveSpeed"
+        },
+        "seedance-2.0-fast": {
+          "price": 0.1,
+          "unit": "per second",
+          "note": "vs kie.ai $0.057/sec \u2014 kie.ai cheaper"
+        },
+        "kling-3.0-std": {
+          "price": 0.084,
+          "unit": "per second",
+          "note": "vs kie.ai Kling 2.1 Pro $0.05/sec \u2014 kie.ai cheaper"
+        },
+        "veo-3.1-fast": {
+          "price": 0.15,
+          "unit": "per second",
+          "note": "vs kie.ai Veo 3 Fast $0.05/sec \u2014 kie.ai cheaper"
+        },
+        "wan-2.7": {
+          "price": 0.1,
+          "unit": "per second",
+          "note": null
+        },
+        "wan-2.2-ultra-fast": {
+          "price": 0.01,
+          "unit": "per second",
+          "note": "Budget option"
+        }
+      }
+    },
+    "google": {
+      "display_name": "Google (Gemini API)",
+      "pricing_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "fetch_method": "firecrawl",
+      "services": {
+        "gemini-3.5-flash-input": {
+          "price": 1.5,
+          "unit": "per 1M tokens",
+          "note": "Gemini 3.5 Flash input"
+        },
+        "gemini-3.5-flash-output": {
+          "price": 9.0,
+          "unit": "per 1M tokens",
+          "note": "Gemini 3.5 Flash output"
+        },
+        "gemini-2.5-pro-input": {
+          "price": 2.7,
+          "unit": "per 1M tokens",
+          "note": "Gemini 2.5 Pro input (>200K ctx)"
+        },
+        "gemini-2.5-pro-output": {
+          "price": 16.2,
+          "unit": "per 1M tokens",
+          "note": "Gemini 2.5 Pro output"
+        },
+        "gemini-2.5-flash-input": {
+          "price": 0.75,
+          "unit": "per 1M tokens",
+          "note": "Gemini 2.5 Flash input"
+        },
+        "gemini-2.5-flash-output": {
+          "price": 4.5,
+          "unit": "per 1M tokens",
+          "note": "Gemini 2.5 Flash output"
+        },
+        "gemini-2.5-flash-lite-input": {
+          "price": 0.1,
+          "unit": "per 1M tokens",
+          "note": "Gemini 2.5 Flash-Lite input"
+        },
+        "gemini-2.5-flash-lite-output": {
+          "price": 0.4,
+          "unit": "per 1M tokens",
+          "note": "Gemini 2.5 Flash-Lite output"
+        },
+        "imagen-4": {
+          "price": 0.04,
+          "unit": "per image",
+          "note": "Imagen 4 (Nano Banana 2) direct \u2014 1K res"
+        },
+        "imagen-4-ultra": {
+          "price": 0.08,
+          "unit": "per image",
+          "note": "Imagen 4 Ultra \u2014 higher res"
+        },
+        "veo-3.1-fast": {
+          "price": 0.35,
+          "unit": "per video",
+          "note": "Veo 3.1 Fast direct (8s clip)"
+        },
+        "veo-3.1-lite": {
+          "price": 0.175,
+          "unit": "per video",
+          "note": "Veo 3.1 Lite direct (8s clip)"
+        }
+      },
+      "last_fetched": "2026-06-18T22:57:27.720408",
+      "fetch_note": "Live from ai.google.dev/gemini-api/docs/pricing"
+    }
+  }
+}

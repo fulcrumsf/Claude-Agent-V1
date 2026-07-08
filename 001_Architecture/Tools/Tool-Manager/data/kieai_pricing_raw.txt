@@ -1,0 +1,1390 @@
+
+
+=== VIDEO MODELS ===
+
+Seedance 2.0 from ByteDance has officially landed on Kie! 🚀
+KIE AI
+Models Market
+Pricing
+API Keys
+Billing
+API Usage
+Logs
+Affiliate Program
+API Updates
+Document
+Settings
+English
+Login
+Pricing
+
+World-class Al models, incredibly affordable prices.
+
+All
+332
+Chat
+45
+Video
+191
+Image
+72
+Music
+24
+kling 3.0 turbo
+4 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+kling 3.0 turbo, image-to-video, 1080P
+video
+Kling
+	
+22.5
+per second
+	
+$0.1125
+	$0.14	
+−19.6%
+↓
+
+
+kling 3.0 turbo, image-to-video, 720P
+video
+Kling
+	
+18
+per second
+	
+$0.09
+	$0.112	
+−19.6%
+↓
+
+
+kling 3.0 turbo, text-to-video, 1080P
+video
+Kling
+	
+22.5
+per second
+	
+$0.1125
+	$0.14	
+−19.6%
+↓
+
+
+kling 3.0 turbo, text-to-video, 720P
+video
+Kling
+	
+18
+per second
+	
+$0.09
+	$0.112	
+−19.6%
+↓
+volcengine
+1 price
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+volcengine , lip sync
+video
+ByteDance
+	
+8
+per second
+	
+$0.04
+	N/A	N/A
+omnihuman-1-5
+1 price
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+omnihuman-1-5, lip sync
+video
+ByteDance
+	
+27
+per second
+	
+$0.135
+	$0.16	
+−15.6%
+↓
+bytedance/seedance-1.5-pro
+6 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+bytedance/seedance-1.5-pro, without audio-720p
+video
+ByteDance
+	
+3.5
+per second
+	
+$0.0175
+	$0.026	
+−32.7%
+↓
+
+
+bytedance/seedance-1.5-pro, with audio-1080p
+video
+ByteDance
+	
+15
+per second
+	
+$0.075
+	$0.12	
+−37.5%
+↓
+
+
+bytedance/seedance-1.5-pro, without audio-1080p
+video
+ByteDance
+	
+7.5
+per second
+	
+$0.0375
+	$0.06	
+−37.5%
+↓
+
+
+bytedance/seedance-1.5-pro, with audio-720p
+video
+ByteDance
+	
+7
+per second
+	
+$0.035
+	$0.052	
+−32.7%
+↓
+
+
+bytedance/seedance-1.5-pro, with audio-480p
+video
+ByteDance
+	
+3.5
+per second
+	
+$0.0175
+	$0.025	
+−30.0%
+↓
+
+
+bytedance/seedance-1.5-pro, without audio-480p
+video
+ByteDance
+	
+1.75
+per second
+	
+$0.00875
+	$0.013	
+−32.7%
+↓
+Kling 3.0
+1 price
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Kling 3.0, video, with audio-4K
+video
+Kling
+	
+67
+per second
+	
+$0.335
+	$0.42	
+−20.2%
+↓
+Claude-fable-5
+2 prices
+Billing for Anthropic Prompt Caching
+Our models are priced at a significant discount compared to official rates. We also fully support Anthropic's caching mechanics to help you save even more:
+• Cache Write (5 min): Billed at 1.25× the Base Input rate.
+• Cache Write (1 hour): Billed at 2.0× the Base Input rate.
+• Cache Read (Hit): Billed at just 0.10× the Base Input rate.
+How it works: You pay a premium to temporarily write data to the cache. However, if any subsequent requests reuse that same data within the chosen time window, it triggers a Cache Read—slashing the cost of those input tokens by 90%!
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Claude-fable-5 , chat, Output
+chat
+Anthropic
+	
+4000
+per milion tokens
+	
+$20
+	N/A	N/A
+
+Claude-fable-5 , chat, Input
+chat
+Anthropic
+	
+800
+per milion tokens
+	
+$4
+	N/A	N/A
+grok-imagine-video-1-5-preview
+3 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+grok-imagine-video-1-5-preview, image-to-video, Input Image
+video
+Grok
+	
+2
+per image
+	
+$0.01
+	N/A	N/A
+
+grok-imagine-video-1-5-preview, image-to-video, 720p
+video
+Grok
+	
+25
+per second
+	
+$0.125
+	$0.14	
+−10.7%
+↓
+
+
+grok-imagine-video-1-5-preview, image-to-video, 480p
+video
+Grok
+	
+14.5
+per second
+	
+$0.0725
+	$0.08	
+−9.4%
+↓
+Claude-Opus-4-8
+2 prices
+Billing for Anthropic Prompt Caching
+Our models are priced at a significant discount compared to official rates. We also fully support Anthropic's caching mechanics to help you save even more:
+• Cache Write (5 min): Billed at 1.25× the Base Input rate.
+• Cache Write (1 hour): Billed at 2.0× the Base Input rate.
+• Cache Read (Hit): Billed at just 0.10× the Base Input rate.
+How it works: You pay a premium to temporarily write data to the cache. However, if any subsequent requests reuse that same data within the chosen time window, it triggers a Cache Read—slashing the cost of those input tokens by 90%!
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Claude-Opus-4-8, chat, Output
+chat
+Anthropic
+	
+2000
+per milion tokens
+	
+$10
+	N/A	N/A
+
+Claude-Opus-4-8, chat, Input
+chat
+Anthropic
+	
+400
+per million tokens
+	
+$2
+	N/A	N/A
+Gemini 3.5 Flash
+2 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Gemini 3.5 Flash, chat, output
+chat
+Google
+	
+540
+per million
+	
+$2.7
+	N/A	N/A
+
+Gemini 3.5 Flash, chat, input
+chat
+Google
+	
+90
+per million
+	
+$0.45
+	N/A	N/A
+gemini-omni-video
+3 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+gemini-omni-video, video, 6s 4k no video input
+video
+Google
+	
+240
+per video
+	
+$1.2
+	N/A	N/A
+
+gemini-omni-video, video, 4k with video input
+video
+Google
+	
+360
+per video
+	
+$1.8
+	N/A	N/A
+
+gemini-omni-video, video, 1080p with video input
+video
+Google
+	
+240
+per video
+	
+$1.2
+	N/A	N/A
+Rows per page:
+10
+25
+50
+25
+1-25 of 332
+1
+1
+2
+3
+4
+5
+14
+
+=== IMAGE MODELS ===
+
+Seedance 2.0 from ByteDance has officially landed on Kie! 🚀
+KIE AI
+Models Market
+Pricing
+API Keys
+Billing
+API Usage
+Logs
+Affiliate Program
+API Updates
+Document
+Settings
+English
+Login
+Pricing
+
+World-class Al models, incredibly affordable prices.
+
+All
+332
+Chat
+45
+Video
+191
+Image
+72
+Music
+24
+kling 3.0 turbo
+4 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+kling 3.0 turbo, image-to-video, 1080P
+video
+Kling
+	
+22.5
+per second
+	
+$0.1125
+	$0.14	
+−19.6%
+↓
+
+
+kling 3.0 turbo, image-to-video, 720P
+video
+Kling
+	
+18
+per second
+	
+$0.09
+	$0.112	
+−19.6%
+↓
+
+
+kling 3.0 turbo, text-to-video, 1080P
+video
+Kling
+	
+22.5
+per second
+	
+$0.1125
+	$0.14	
+−19.6%
+↓
+
+
+kling 3.0 turbo, text-to-video, 720P
+video
+Kling
+	
+18
+per second
+	
+$0.09
+	$0.112	
+−19.6%
+↓
+volcengine
+1 price
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+volcengine , lip sync
+video
+ByteDance
+	
+8
+per second
+	
+$0.04
+	N/A	N/A
+omnihuman-1-5
+1 price
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+omnihuman-1-5, lip sync
+video
+ByteDance
+	
+27
+per second
+	
+$0.135
+	$0.16	
+−15.6%
+↓
+bytedance/seedance-1.5-pro
+6 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+bytedance/seedance-1.5-pro, without audio-720p
+video
+ByteDance
+	
+3.5
+per second
+	
+$0.0175
+	$0.026	
+−32.7%
+↓
+
+
+bytedance/seedance-1.5-pro, with audio-1080p
+video
+ByteDance
+	
+15
+per second
+	
+$0.075
+	$0.12	
+−37.5%
+↓
+
+
+bytedance/seedance-1.5-pro, without audio-1080p
+video
+ByteDance
+	
+7.5
+per second
+	
+$0.0375
+	$0.06	
+−37.5%
+↓
+
+
+bytedance/seedance-1.5-pro, with audio-720p
+video
+ByteDance
+	
+7
+per second
+	
+$0.035
+	$0.052	
+−32.7%
+↓
+
+
+bytedance/seedance-1.5-pro, with audio-480p
+video
+ByteDance
+	
+3.5
+per second
+	
+$0.0175
+	$0.025	
+−30.0%
+↓
+
+
+bytedance/seedance-1.5-pro, without audio-480p
+video
+ByteDance
+	
+1.75
+per second
+	
+$0.00875
+	$0.013	
+−32.7%
+↓
+Kling 3.0
+1 price
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Kling 3.0, video, with audio-4K
+video
+Kling
+	
+67
+per second
+	
+$0.335
+	$0.42	
+−20.2%
+↓
+Claude-fable-5
+2 prices
+Billing for Anthropic Prompt Caching
+Our models are priced at a significant discount compared to official rates. We also fully support Anthropic's caching mechanics to help you save even more:
+• Cache Write (5 min): Billed at 1.25× the Base Input rate.
+• Cache Write (1 hour): Billed at 2.0× the Base Input rate.
+• Cache Read (Hit): Billed at just 0.10× the Base Input rate.
+How it works: You pay a premium to temporarily write data to the cache. However, if any subsequent requests reuse that same data within the chosen time window, it triggers a Cache Read—slashing the cost of those input tokens by 90%!
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Claude-fable-5 , chat, Output
+chat
+Anthropic
+	
+4000
+per milion tokens
+	
+$20
+	N/A	N/A
+
+Claude-fable-5 , chat, Input
+chat
+Anthropic
+	
+800
+per milion tokens
+	
+$4
+	N/A	N/A
+grok-imagine-video-1-5-preview
+3 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+grok-imagine-video-1-5-preview, image-to-video, Input Image
+video
+Grok
+	
+2
+per image
+	
+$0.01
+	N/A	N/A
+
+grok-imagine-video-1-5-preview, image-to-video, 720p
+video
+Grok
+	
+25
+per second
+	
+$0.125
+	$0.14	
+−10.7%
+↓
+
+
+grok-imagine-video-1-5-preview, image-to-video, 480p
+video
+Grok
+	
+14.5
+per second
+	
+$0.0725
+	$0.08	
+−9.4%
+↓
+Claude-Opus-4-8
+2 prices
+Billing for Anthropic Prompt Caching
+Our models are priced at a significant discount compared to official rates. We also fully support Anthropic's caching mechanics to help you save even more:
+• Cache Write (5 min): Billed at 1.25× the Base Input rate.
+• Cache Write (1 hour): Billed at 2.0× the Base Input rate.
+• Cache Read (Hit): Billed at just 0.10× the Base Input rate.
+How it works: You pay a premium to temporarily write data to the cache. However, if any subsequent requests reuse that same data within the chosen time window, it triggers a Cache Read—slashing the cost of those input tokens by 90%!
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Claude-Opus-4-8, chat, Output
+chat
+Anthropic
+	
+2000
+per milion tokens
+	
+$10
+	N/A	N/A
+
+Claude-Opus-4-8, chat, Input
+chat
+Anthropic
+	
+400
+per million tokens
+	
+$2
+	N/A	N/A
+Gemini 3.5 Flash
+2 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Gemini 3.5 Flash, chat, output
+chat
+Google
+	
+540
+per million
+	
+$2.7
+	N/A	N/A
+
+Gemini 3.5 Flash, chat, input
+chat
+Google
+	
+90
+per million
+	
+$0.45
+	N/A	N/A
+gemini-omni-video
+3 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+gemini-omni-video, video, 6s 4k no video input
+video
+Google
+	
+240
+per video
+	
+$1.2
+	N/A	N/A
+
+gemini-omni-video, video, 4k with video input
+video
+Google
+	
+360
+per video
+	
+$1.8
+	N/A	N/A
+
+gemini-omni-video, video, 1080p with video input
+video
+Google
+	
+240
+per video
+	
+$1.2
+	N/A	N/A
+Rows per page:
+10
+25
+50
+25
+1-25 of 332
+1
+1
+2
+3
+4
+5
+14
+
+=== MUSIC MODELS ===
+
+Seedance 2.0 from ByteDance has officially landed on Kie! 🚀
+KIE AI
+Models Market
+Pricing
+API Keys
+Billing
+API Usage
+Logs
+Affiliate Program
+API Updates
+Document
+Settings
+English
+Login
+Pricing
+
+World-class Al models, incredibly affordable prices.
+
+All
+332
+Chat
+45
+Video
+191
+Image
+72
+Music
+24
+kling 3.0 turbo
+4 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+kling 3.0 turbo, image-to-video, 1080P
+video
+Kling
+	
+22.5
+per second
+	
+$0.1125
+	$0.14	
+−19.6%
+↓
+
+
+kling 3.0 turbo, image-to-video, 720P
+video
+Kling
+	
+18
+per second
+	
+$0.09
+	$0.112	
+−19.6%
+↓
+
+
+kling 3.0 turbo, text-to-video, 1080P
+video
+Kling
+	
+22.5
+per second
+	
+$0.1125
+	$0.14	
+−19.6%
+↓
+
+
+kling 3.0 turbo, text-to-video, 720P
+video
+Kling
+	
+18
+per second
+	
+$0.09
+	$0.112	
+−19.6%
+↓
+volcengine
+1 price
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+volcengine , lip sync
+video
+ByteDance
+	
+8
+per second
+	
+$0.04
+	N/A	N/A
+omnihuman-1-5
+1 price
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+omnihuman-1-5, lip sync
+video
+ByteDance
+	
+27
+per second
+	
+$0.135
+	$0.16	
+−15.6%
+↓
+bytedance/seedance-1.5-pro
+6 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+bytedance/seedance-1.5-pro, without audio-720p
+video
+ByteDance
+	
+3.5
+per second
+	
+$0.0175
+	$0.026	
+−32.7%
+↓
+
+
+bytedance/seedance-1.5-pro, with audio-1080p
+video
+ByteDance
+	
+15
+per second
+	
+$0.075
+	$0.12	
+−37.5%
+↓
+
+
+bytedance/seedance-1.5-pro, without audio-1080p
+video
+ByteDance
+	
+7.5
+per second
+	
+$0.0375
+	$0.06	
+−37.5%
+↓
+
+
+bytedance/seedance-1.5-pro, with audio-720p
+video
+ByteDance
+	
+7
+per second
+	
+$0.035
+	$0.052	
+−32.7%
+↓
+
+
+bytedance/seedance-1.5-pro, with audio-480p
+video
+ByteDance
+	
+3.5
+per second
+	
+$0.0175
+	$0.025	
+−30.0%
+↓
+
+
+bytedance/seedance-1.5-pro, without audio-480p
+video
+ByteDance
+	
+1.75
+per second
+	
+$0.00875
+	$0.013	
+−32.7%
+↓
+Kling 3.0
+1 price
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Kling 3.0, video, with audio-4K
+video
+Kling
+	
+67
+per second
+	
+$0.335
+	$0.42	
+−20.2%
+↓
+Claude-fable-5
+2 prices
+Billing for Anthropic Prompt Caching
+Our models are priced at a significant discount compared to official rates. We also fully support Anthropic's caching mechanics to help you save even more:
+• Cache Write (5 min): Billed at 1.25× the Base Input rate.
+• Cache Write (1 hour): Billed at 2.0× the Base Input rate.
+• Cache Read (Hit): Billed at just 0.10× the Base Input rate.
+How it works: You pay a premium to temporarily write data to the cache. However, if any subsequent requests reuse that same data within the chosen time window, it triggers a Cache Read—slashing the cost of those input tokens by 90%!
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Claude-fable-5 , chat, Output
+chat
+Anthropic
+	
+4000
+per milion tokens
+	
+$20
+	N/A	N/A
+
+Claude-fable-5 , chat, Input
+chat
+Anthropic
+	
+800
+per milion tokens
+	
+$4
+	N/A	N/A
+grok-imagine-video-1-5-preview
+3 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+grok-imagine-video-1-5-preview, image-to-video, Input Image
+video
+Grok
+	
+2
+per image
+	
+$0.01
+	N/A	N/A
+
+grok-imagine-video-1-5-preview, image-to-video, 720p
+video
+Grok
+	
+25
+per second
+	
+$0.125
+	$0.14	
+−10.7%
+↓
+
+
+grok-imagine-video-1-5-preview, image-to-video, 480p
+video
+Grok
+	
+14.5
+per second
+	
+$0.0725
+	$0.08	
+−9.4%
+↓
+Claude-Opus-4-8
+2 prices
+Billing for Anthropic Prompt Caching
+Our models are priced at a significant discount compared to official rates. We also fully support Anthropic's caching mechanics to help you save even more:
+• Cache Write (5 min): Billed at 1.25× the Base Input rate.
+• Cache Write (1 hour): Billed at 2.0× the Base Input rate.
+• Cache Read (Hit): Billed at just 0.10× the Base Input rate.
+How it works: You pay a premium to temporarily write data to the cache. However, if any subsequent requests reuse that same data within the chosen time window, it triggers a Cache Read—slashing the cost of those input tokens by 90%!
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Claude-Opus-4-8, chat, Output
+chat
+Anthropic
+	
+2000
+per milion tokens
+	
+$10
+	N/A	N/A
+
+Claude-Opus-4-8, chat, Input
+chat
+Anthropic
+	
+400
+per million tokens
+	
+$2
+	N/A	N/A
+Gemini 3.5 Flash
+2 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+Gemini 3.5 Flash, chat, output
+chat
+Google
+	
+540
+per million
+	
+$2.7
+	N/A	N/A
+
+Gemini 3.5 Flash, chat, input
+chat
+Google
+	
+90
+per million
+	
+$0.45
+	N/A	N/A
+gemini-omni-video
+3 prices
+Model & Modality
+	
+Credits / Gen
+	
+Our Price (USD)
+	
+Official / Fal Price (USD)
+	
+DISCOUNT
+
+
+gemini-omni-video, video, 6s 4k no video input
+video
+Google
+	
+240
+per video
+	
+$1.2
+	N/A	N/A
+
+gemini-omni-video, video, 4k with video input
+video
+Google
+	
+360
+per video
+	
+$1.8
+	N/A	N/A
+
+gemini-omni-video, video, 1080p with video input
+video
+Google
+	
+240
+per video
+	
+$1.2
+	N/A	N/A
+Rows per page:
+10
+25
+50
+25
+1-25 of 332
+1
+1
+2
+3
+4
+5
+14

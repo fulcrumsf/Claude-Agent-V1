@@ -1,0 +1,4 @@
+#!/bin/bash
+# Tool Manager wrapper — agents call this directly, no venv knowledge needed
+DIR="$(cd "$(dirname "$0")" && pwd)"
+exec "$DIR/.venv/bin/python" "$DIR/tool_manager.py" "$@"

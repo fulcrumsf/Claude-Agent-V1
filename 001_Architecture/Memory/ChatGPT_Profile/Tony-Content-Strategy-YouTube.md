@@ -17,6 +17,19 @@ date-synthesized: 2026-05-06
 - `Viral Username Generation Help` — Your Niche: Historical Events Reimagined Target Audience 1: Traditionalists Target Audience 2: Modern Innovators  Target Audience 1 Stance on Your Niche:  Positive Views: Tradit...
 - `YouTube SEO: Titles, Description,Tags` — # Prompt by AIPRM, Corp. - https://www.aiprm.com/prompts/seo/keywords/1793421520232775680/ Lines starting with # are only comments for humans You must add at the top of the resp...
 
+## Reimagined Realms — Channel Pivot (June 2026)
+
+> ⚠️ All earlier ChatGPT conversations about Reimagined Realms reflect the **old direction** (comedy POV/vlog, "What if history had a camera?"). That direction has been deprecated.
+
+**New direction as of June 2026:**
+- Historical and history-adjacent explainer videos — Brightside model
+- Tone: intelligent, curious, calm narrator
+- Hook formula: visual hook + audio hook + on-screen text hook in first 2 seconds
+- Jaw-drop comes from the FACT being surprising, not from comedy or reimagining
+- Topics: major historical events, lost crafts/techniques, artifacts, discoveries
+- NOT comedy, NOT POV vlogging, NOT satire, NOT "what if" alternate history
+- Model channel for style reference: Brightside
+
 ## Prompt Style Signals
 - Requests usually arrive with enough detail to act on directly.
 - Tony frequently trims, simplifies, or removes unwanted elements.

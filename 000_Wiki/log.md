@@ -2677,3 +2677,22 @@ Wiki/Asset Note: `000_Wiki/Architecture/PI-Harness-Pack.md`
 ## [2026-06-06] ingest | Pipeline Orchestration
 Source: `000_Ingest/pipeline_orchestration/` → `002_Content-Creation/Video_Editor/004_Tools/Pipeline-Orchestration/`
 Wiki/Asset Note: `000_Wiki/Video-Production/Pipeline-Orchestration.md`
+
+
+## [2026-06-17] ingest | Higgsfield AI Faceless YouTube Pipeline
+Source: `000_Ingest/Pipeline_Orchestration/Higgsfiled-YT-Pipeline/` (3 files) → `007_Resource_Library/Tutorials/Higgsfield_YT_Pipeline/`
+Wiki/Asset Note: `000_Wiki/Video-Production/Higgsfield-AI-Faceless-YouTube-Pipeline.md`
+
+## [2026-06-19] build | Agent-OS Validation System
+Source: Built directly this session (not from ingest)
+Wiki/Asset Note: `000_Wiki/Architecture/Agent-OS-Validation-System.md`
+
+## [2026-06-19] build | Reimagined Realms Video Pipeline Skill
+Source: Based on `007_Resource_Library/Tutorials/Higgsfield_YT_Pipeline/` + DAIPBR + Story-Ideation
+Wiki/Asset Note: `001_Architecture/Skills/Reimagined_Realms_Video_Pipeline/SKILL.md`
+
+## [2026-07-08] build | Anomalous Wild Video Pipeline Skill
+Source: Built directly this session via superpowers:subagent-driven-development (11-task plan, Task 10 skipped as already done manually)
+Wiki/Asset Note: `000_Wiki/Video-Production/Anomalous-Wild-Pipeline-Scripts.md`
+Skill: `001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md` (invoke via `/anomalous-wild`)
+Also fixed: identical malformed-YAML-frontmatter bug in `Reimagined_Realms_Video_Pipeline/SKILL.md` (was degrading its trigger-matching too)

@@ -1,0 +1,180 @@
+{
+  "_meta": {
+    "description": "Model capabilities database. Top-tier rankings set by Tony. All capability descriptions and benchmarks must be populated by the Tool Manager via live research \u2014 never hardcoded by an agent.",
+    "last_researched": null,
+    "research_tool": "perplexity",
+    "note": "Alternatives list is exploratory \u2014 Tony has not fully tested them. Research needed before recommending."
+  },
+  "image": {
+    "top_tier": [
+      "gpt-image-2",
+      "nano-banana-2"
+    ],
+    "alternatives": [],
+    "models": {
+      "gpt-image-2": {
+        "display_name": "GPT-Image-2",
+        "platform": "openai",
+        "tony_rank": 1,
+        "tier": "top",
+        "research_needed": false,
+        "pros": [],
+        "cons": [],
+        "benchmarks": {
+          "photorealism": null,
+          "prompt_adherence": null,
+          "character_consistency": null
+        },
+        "best_for": [],
+        "avoid_for": [],
+        "last_researched": "2026-06-17T23:41:02.709468",
+        "research_raw": "GPT-Image-2 is OpenAI\u2019s latest **image generation and editing** model; it does **not** generate video, only still images.[1][6][8] It focuses on high-quality, photorealistic images with strong **prompt adherence**, **text rendering**, and **editing** capabilities.[1][3][4]\n\n### (1) Pros (2\u20133 sentences)\n\n- **High photorealism and detail:** GPT-Image-2 produces natural-looking images with realistic lighting, materials, and textures, suitable for commercial and marketing use.[1][5][7]  \n- **Excellent prompt adherence and reasoning:** It integrates O\u2011series \u201cagentic\u201d reasoning to analyze prompts, plan compositions, and obey complex constraints, increasing first-try success on complex scenes.[3][4][8]  \n- **Industry-leading text and layout rendering:** It handles dense text, small fonts, UI mockups, infographics, and multilingual scripts (e.g., Japanese, Korean, Chinese, Hindi, Bengali) with high character-level accuracy.[1][3][5]\n\n### (2) Cons (2\u20133 sentences)\n\n- **No native video support:** GPT-Image-2 is limited to images and image editing; it does not generate or edit motion/video content, so separate video models are required for animation or temporal consistency.  \n- **Opaque and evolving benchmarks:** OpenAI has not published standardized quantitative benchmarks (e.g., FID, CLIP-score) for photorealism, motion, or character consistency, making rigorous comparison to other models harder.  \n- **Token-based cost model and complexity:** Pricing is tied to input/output tokens and higher resolutions, so complex, high-res prompts can become relatively expensive and may require prompt-engineering expertise to optimize.[3]\n\n### (3) Best use cases\n\n- **Text \u2192 image generation** where **photorealism**, **complex layouts**, or **precise text** are critical: marketing assets, posters, infographics, packaging, product shots, UI/UX mockups, and editorial/magazine-style images.[1][2][4][7]  \n- **High-fidelity image editing:** style transfers, product or furniture swaps, compositing, virtual try-ons, and inserting people into new scenes while preserving identity, composition, and lighting.[1][3]  \n- **Multi-image campaigns/illustrations requiring character or style consistency**, such as children\u2019s books, storyboards, and branding campaigns.[1]\n\n### (4) What to avoid using it for\n\n- **Any kind of video or motion generation:** it does not produce sequences or handle temporal dynamics, so it is unsuitable for animations, films, or motion graphics pipelines by itself.  \n- **Tasks requiring formal, published scientific metrics or regulatory evidence** (e.g., medical imaging validation), since standardized benchmarks and peer-reviewed evaluations are not publicly available.  \n- **"
+      },
+      "nano-banana-2": {
+        "display_name": "Nano Banana 2",
+        "platform": "kie.ai",
+        "tony_rank": 2,
+        "tier": "top",
+        "research_needed": false,
+        "pros": [],
+        "cons": [],
+        "benchmarks": {
+          "photorealism": null,
+          "prompt_adherence": null,
+          "character_consistency": null
+        },
+        "best_for": [],
+        "avoid_for": [],
+        "last_researched": "2026-06-17T23:41:09.061106",
+        "research_raw": "Nano Banana 2 is a **Google image-generation model (Gemini 3.1 Flash Image)** that is used inside various tools for fast, high\u2011quality image creation and editing, and can be paired with separate video models for image\u2011to\u2011video workflows.[3][2] There is **no public evidence** that \u201cNano Banana 2\u201d itself is a native video model; video functionality in Nano\u2011Banana\u2011branded sites comes from other integrated video models rather than Nano Banana 2 directly.[1][9]\n\n### (1) Pros (2\u20133 sentences)\n\n- **Speed and scale:** Nano Banana 2 is built on **Gemini 3.1 Flash Image**, designed for **\u201clightning\u2011fast generation at scale\u201d** with near\u2011instant image output, making it suitable for rapid iteration and batch workflows.[3]  \n- **Quality and control:** It supports resolutions **from 512 px up to 4K**, with **physics\u2011accurate lighting, native 2K rendering, and flawless text rendering**, giving high\u2011end visual quality and unusually strong text\u2011in\u2011image performance.[3]  \n- **Prompt adherence and structure:** The model \u201cplans scenes before rendering,\u201d which improves **semantic prompt adherence**, complex layouts, and **character consistency for up to 5 subjects and fidelity for up to 14 objects**, useful for complex compositions and consistent characters.[3]\n\n### (2) Cons (2\u20133 sentences)\n\n- **Not the absolute top\u2011tier quality model:** Higgsfield positions Nano Banana 2 as the **fast, Flash\u2011style model**, while **Nano Banana Pro (Gemini 3 Pro Image)** is marketed as the **\u201cstudio\u2011grade\u201d flagship** with a deeper \u201cthinking\u201d pass, implying slightly higher peak quality and reasoning at the cost of speed.[3]  \n- **Limited public technical transparency:** Beyond vendor claims, there is **no peer\u2011reviewed or standardized benchmarking** released publicly for Nano Banana 2, so comparisons to models like Sora, SD3, or DALL\u00b7E rely largely on qualitative demos and marketing.  \n- **Video confusion:** Some platforms brand \u201cNano Banana\u201d image\u2011to\u2011video services, but those rely on **separate video models (e.g., Veo 3.1, Seedance)** rather than Nano Banana 2 itself, which can make capabilities and limitations harder for users to understand.[9][1]\n\n### (3) What Nano Banana 2 is best used for\n\n- **Rapid high\u2011quality image generation:** Best for **rapid prototyping, batch generation, social content, and high\u2011volume creative work** where you want near\u2011Pro quality but much higher speed and lower cost.[3]  \n- **Product, marketing, and UGC visuals:** Strong 4K output, accurate text rendering, and scene planning make it well\u2011suited for **"
+      }
+    }
+  },
+  "video": {
+    "top_tier": [
+      "seedance-2.0",
+      "kling-3.0"
+    ],
+    "alternatives": [
+      "kling-omni",
+      "veo-3",
+      "veo-4",
+      "wan-latest",
+      "hailuo-latest"
+    ],
+    "models": {
+      "seedance-2.0": {
+        "display_name": "Seedance 2.0",
+        "platform": "kie.ai",
+        "tony_rank": 1,
+        "tier": "top",
+        "research_needed": false,
+        "pros": [],
+        "cons": [],
+        "benchmarks": {
+          "photorealism": null,
+          "motion_quality": null,
+          "prompt_adherence": null,
+          "character_consistency": null
+        },
+        "best_for": [],
+        "avoid_for": [],
+        "last_researched": "2026-06-17T23:41:15.512292",
+        "research_raw": "Seedance 2.0 is a **multimodal AI video generation model by ByteDance** focused on high\u2011quality 1080p clips with strong control over camera motion, references, and character/product identity.[1][2][6] It generates short cinematic videos from text, images, video, and audio, and is aimed at production\u2011style workflows rather than casual one\u2011off clips.[1][2][3][6]\n\n### (1) Pros (2\u20133 sentences)\n\n- Seedance 2.0 delivers **photorealistic 1080p output** with strong detail in textures, lighting, reflections, and complex environments, making many clips feel \u201cshot rather than generated.\u201d[1][6][7]  \n- It offers **true multimodal input** (text, image, video, audio) plus advanced features like camera controls, multi\u2011shot scene generation, lip sync, native audio, and an \u201cIdentity Lock\u201d system that maintains over **90% character/product consistency**.[1][2][3][4]  \n- The model is optimized for **repeatable, controllable production workflows**, especially e\u2011commerce/product videos, and can reduce such video production costs by up to **70%** versus traditional methods.[1][2]  \n\n### (2) Cons (2\u20133 sentences)\n\n- Output is still limited to **clip\u2011length, 1080p video**, so it is not yet suitable for native long\u2011form, high\u2011resolution (e.g., 4K+) studio\u2011grade content without stitching and upscaling.[3][6][8]  \n- It struggles more with **crowded, multi\u2011character scenes** and complex interactions; it performs best with one or two main subjects, and longer sequences may require careful stitching to avoid inconsistencies.[1][8]  \n- Reviewers note that it lacks the **legal reliability, resolution, and stability** required for top\u2011tier studio productions and is not fully or easily available in all regions (notably the U.S.), where access often requires third\u2011party platforms or workarounds.[3][5]  \n\n### (3) What it is best used for\n\n- Seedance 2.0 is best for **short, cinematic, product\u2011 or character\u2011focused clips**: e\u2011commerce product videos, social ads, marketing content, and visually polished \u201chero\u201d shots where you want strong photorealism and controllable camera motion.[1][2][6][7]  \n- It is also well\u2011suited for **multi\u2011shot short sequences** (e.g., 5\u201315s scenes), brand\u2011consistent content using image/video references, and scenarios where you need **high character/product consistency** across several clips for campaigns.[1][2][3]  \n\n### (4) What to avoid using it for\n\n- Avoid using Seedance 2.0 for"
+      },
+      "kling-3.0": {
+        "display_name": "Kling 3.0",
+        "platform": "kie.ai",
+        "tony_rank": 2,
+        "tier": "top",
+        "research_needed": false,
+        "pros": [],
+        "cons": [],
+        "benchmarks": {
+          "photorealism": null,
+          "motion_quality": null,
+          "prompt_adherence": null,
+          "character_consistency": null
+        },
+        "best_for": [],
+        "avoid_for": [],
+        "last_researched": "2026-06-17T23:41:21.759121",
+        "research_raw": "Kling 3.0 is a **multimodal AI video and image generation model** from Kuaishou with native **4K output**, 3\u201315s clips, and variants for both video and still images.[3][4] It uses a **Multi\u2011modal Visual Language (MVL)** architecture to handle text, images, audio, and video in one system and supports text\u2011to\u2011video, image\u2011to\u2011video, and reference\u2011based generation.[3][4]\n\n**(1) Pros (2\u20133 sentences)**  \n- Kling 3.0 delivers **native 4K video** (not upscaled) with up to **15\u2011second** clips and 30\u201360 fps, making it suitable for professional pipelines and cinematic motion.[3][4][1]  \n- It supports **multi-shot/story-style prompts**, reference-based workflows, and MVL architecture, which improve narrative continuity, camera movement realism, and character consistency across shots.[2][3][5]  \n- The model includes **built\u2011in multilingual, lip\u2011synced audio** (English, Chinese, Japanese, Korean, Spanish), plus a relatively generous free tier compared to competitors.[3][2]\n\n**(2) Cons (2\u20133 sentences)**  \n- Native 4K and longer clips can be **computationally expensive**, and the free tier is capped at **720p** with higher resolutions requiring paid plans.[3]  \n- Despite strong performance, character consistency and prompt adherence can still fail on complex, multi-character scenes or very long narratives, similar to other current\u2011gen models.[2][3]  \n- As a relatively new, primarily China\u2011developed model, direct integration and documentation in some Western tools and pipelines may lag behind models like Sora or Veo in certain ecosystems.[3]\n\n**(3) What it is best used for**  \n- **Short, high\u2011fidelity cinematic clips** (3\u201315s) such as commercials, product shots, social ads, trailers, and pre\u2011visualization that demand **native 4K** and smooth motion.[3][4]  \n- **Narrative snippets and multi-shot sequences** where you want consistent characters across a few shots, especially when you can provide reference images and detailed camera/lighting prompts.[2][3][5]  \n- **Multilingual talking-head or dialogue scenes** with synchronized voice and lip movements generated directly from text prompts.[2][3]\n\n**(4) What to avoid using it for**  \n- **Long-form content** beyond 15 seconds per clip or complex films requiring many minutes of perfectly consistent characters and environments, since Kling 3.0 is optimized for short sequences only.[3][4]  \n- Mission-critical applications that need **frame-perfect physical accuracy or error\u2011free continuity** (e.g., scientific visualization, safety-critical training), as it still exhibits typical"
+      },
+      "kling-omni": {
+        "display_name": "Kling Omni",
+        "platform": "kie.ai",
+        "tony_rank": null,
+        "tier": "alternative",
+        "research_needed": false,
+        "note": "Potentially newer than Kling 3.0 \u2014 unverified by Tony. Research required.",
+        "pros": [],
+        "cons": [],
+        "benchmarks": {},
+        "best_for": [],
+        "avoid_for": [],
+        "last_researched": "2026-06-17T23:41:25.855177",
+        "research_raw": "**Kling Omni** appears to be Kling AI\u2019s multimodal \u201call-in-one\u201d generation stack for **text, image, video, and audio**, with a strong emphasis on cinematic video creation, character/reference consistency, and multi-shot control.[1][2]\n\n- **Pros:** It supports native multimodal prompt parsing and integrated workflows, including image/video generation, audio, and multi-shot storytelling control.[1][2] Public-facing descriptions also emphasize improved texture, lighting, and reduced artifacts, plus strong consistency across complex transitions and reference-based character preservation.[1][2]\n- **Cons:** Public reviews note that it is **expensive** to iterate with, can be **slow** to render, and is weaker on **abstract, design-heavy, or illustration-style** visuals than on realistic footage.[4] I did not find independent benchmark data from a broadly recognized third-party evaluation source for Kling Omni specifically.[3][4]\n- **Best used for:** **Photorealistic video**, especially image-to-video, cinematic B-roll, social ads, pitch-deck visuals, and scenes where **character consistency** and shot-to-shot continuity matter.[4] It is also positioned for multi-shot narrative work and controlled performance cloning/reference-driven generation.[1][2]\n- **Avoid using it for:** Highly abstract motion graphics, illustration-first outputs, or workflows where very fast, low-cost iteration is the main priority.[4] If you need lightweight/simple image-to-video quickly, reviews suggest cheaper/faster alternatives may be better.[4]\n- **Benchmark scores:** I found **one third-party review** that scored Kling 3.0/Omni-adjacent video performance as **8.1/10 overall**, with sub-scores of **prompt adherence 8.1**, **motion quality 8.0**, **temporal consistency 8.0**, and **visual fidelity 8.4**.[6] I did **not** find reliable, independently published benchmark scores specifically for **photorealism**, **motion quality**, **prompt adherence**, and **character consistency** from a standard benchmark suite; the available scores are reviewer-assigned rather than official benchmark results.[3][6]"
+      },
+      "veo-3": {
+        "display_name": "Veo 3",
+        "platform": "kie.ai",
+        "tony_rank": null,
+        "tier": "alternative",
+        "research_needed": false,
+        "pros": [],
+        "cons": [],
+        "benchmarks": {},
+        "best_for": [],
+        "avoid_for": [],
+        "last_researched": "2026-06-17T23:41:32.559217",
+        "research_raw": "Veo 3 is Google DeepMind\u2019s **text/image\u2011to\u2011video** model that generates short, high\u2011quality clips (up to ~8 seconds) with synchronized dialogue, ambient sound, and music, and it is particularly strong for realistic human\u2011focused footage.[1][2][4] Public, numeric benchmarks are limited, but at least one third\u2011party lab (Curious Refuge) has published detailed scores for Veo 3.1 Quality across prompt adherence, motion/temporal consistency, and visual fidelity.[3]\n\n### (1) Pros (2\u20133 sentences)\n\n- Veo 3 produces **highly realistic human and talking\u2011head footage**, with strong lip\u2011sync, natural facial motion, and believable synchronized environmental sound and music, making some clips \u201cnearly indistinguishable from real footage.\u201d[1][2][4][7]  \n- It shows **strong prompt adherence** and supports a wide range of cinematic styles, with Veo 3.1 improving stability, character consistency, and upscaling to **1080p and 4K** for higher\u2011end use cases.[1][2][3]  \n- Integration into Google tools (e.g., **Google Flow** and **Whisk**) supports more professional workflows like sequencing multiple clips into longer scenes.[1][2]  \n\n### (2) Cons (2\u20133 sentences)\n\n- Veo 3 is currently limited to **very short clips (\u22488 seconds)**, has only a **16:9 aspect ratio**, and often requires several minutes (\u22483\u20135) per render, which constrains iterative workflows and long\u2011form storytelling.[1][3][4][5]  \n- Users report **frequent failures, visual glitches, and inconsistent object/character behavior**, especially in complex multi\u2011element or action scenes, with some reviewers describing failure rates near 75% and calling the product \u201cbeta\u2011quality\u201d at a premium price.[1][3][6]  \n- It can still exhibit an **\u201cAI look\u201d** and struggles with perfect temporal consistency and fine\u2011grained control compared with traditional VFX or more mature tools for product shots and precise branding.[1][3][6][7]  \n\n### (3) What Veo 3 is best used for\n\n- Best for **short, dialogue\u2011heavy human clips**: talking\u2011head videos, interview\u2011style shots, documentary\u2011like pieces, and social content where a person speaks directly to the camera with realistic speech, ambient sound, and background music.[1][3][4][7]  \n- Well\u2011suited for **concept previz, cinematic tests, and marketing prototypes** where strong prompt adherence and human realism matter more than perfect long\u2011term consistency or long duration.[1][2][3]  \n\n### (4) What to avoid using it for\n\n- Avoid relying on Veo 3 for **"
+      },
+      "veo-4": {
+        "display_name": "Veo 4 (possibly Omni)",
+        "platform": "kie.ai",
+        "tony_rank": null,
+        "tier": "alternative",
+        "research_needed": false,
+        "note": "Tony believes Veo 4 may be the Omni version \u2014 unverified. Research required.",
+        "pros": [],
+        "cons": [],
+        "benchmarks": {},
+        "best_for": [],
+        "avoid_for": [],
+        "last_researched": "2026-06-17T23:41:42.136711",
+        "research_raw": "Veo 4 is described in some secondary sources as Google DeepMind\u2019s next\u2011generation **text/image\u2011to\u2011video model**, but as of the latest public Google materials there is **no official Veo 4 or \u201cVeo 4 Omni\u201d release or technical report**; only Veo 3 and Imagen 4 are publicly documented.[5][2] Any details about Veo 4\u2019s exact capabilities, benchmarks, or \u201cOmni\u201d variant are therefore speculative or marketing claims rather than verified technical data.[2][1]\n\n### 1. Pros (based on available descriptions and reasonable extrapolation)\n\n- Secondary write\u2011ups describe **higher resolution (up to 4K), more realistic motion/physics, better scene and character consistency, and stronger prompt control** compared with earlier Veo versions.[1][2]  \n- Veo models in general already support **text\u2011to\u2011video, image\u2011to\u2011video, reference\u2011based generation, and integrated audio**, and Veo 4 is positioned as continuing and extending this multi\u2011modal toolset for more serious filmmaking and production workflows.[5][2][3]  \n\n### 2. Cons\n\n- Veo 4 is reported to have **high computational requirements, limited public availability (beta/early\u2011access only), and a high price point**, making it better suited to professional or enterprise users rather than casual hobbyists.[1]  \n- Because Google has not published an official Veo 4 spec or paper, **documentation, reproducible benchmarks, and clear usage guarantees are lacking**, which makes it hard to evaluate rigorously or compare fairly to models like Sora, Runway, or Pika.[2][5]  \n\n### 3. What it is best used for (given current positioning)\n\nBased on the described feature set and on how Veo 3 is used today, Veo 4 is best suited for **short, high\u2011end cinematic clips** where **video realism, smooth camera motion, and fine\u2011grained prompt/camera control** matter (e.g., ads, trailers, social content, explainer videos).[5][2][1] It is also positioned for **professional creative workflows**\u2014storyboarding, pre\u2011viz, marketing assets, and educational content\u2014where integration with Google\u2019s Flow/Vertex ecosystem and multi\u2011modal reference control are valuable.[5][2]  \n\n### 4. What to avoid using it for\n\n- Because there is no stable, generally available product yet, it is not appropriate for **mission\u2011critical, large\u2011scale production pipelines that require strict reproducibility, long\u2011term support, or regulatory documentation**.  \n- Given that even Veo 3 still exhibits typical generative\u2011video artifacts and hallucinations in some scenarios,[7][6] Veo 4 should not be relied on for **factually accurate depictions, safety\u2011critical simulations, or high\u2011"
+      },
+      "wan-latest": {
+        "display_name": "Wan (latest version)",
+        "platform": "kie.ai",
+        "tony_rank": null,
+        "tier": "alternative",
+        "research_needed": false,
+        "note": "Use latest available Wan version \u2014 verify current version number via research.",
+        "pros": [],
+        "cons": [],
+        "benchmarks": {},
+        "best_for": [],
+        "avoid_for": [],
+        "last_researched": "2026-06-17T23:41:49.060554",
+        "research_raw": "Wan is an open, large\u2011scale **video generative model suite** (plus related tools/apps) focused on high\u2011quality text\u2011to\u2011video and image\u2011to\u2011video generation; the latest core model advertised by the main project site is **Wan 2.7** as a state\u2011of\u2011the\u2011art instruction\u2011guided video editor and generator.[8][4]\n\n### (1) Pros \u2013 2\u20133 sentences  \n- Wan\u2019s large 14B diffusion\u2011transformer model is trained on **billions of images and videos**, and the technical report states it *consistently outperforms existing open\u2011source and commercial video models on multiple internal and external benchmarks*, indicating strong visual quality and motion realism.[4]  \n- The suite is **comprehensive**, supporting text\u2011to\u2011video, image\u2011to\u2011video, instruction\u2011guided editing, and personal video generation across up to eight tasks, while also offering a 1.3B model that runs on ~8.2 GB VRAM for consumer GPUs.[4]  \n- The project is **fully open\u2011sourced** (code and models) and is already integrated into third\u2011party platforms (Fal, ImagineArt, Higgsfield, etc.), making it relatively easy to access and experiment with.[4][1][2][5]\n\n### (2) Cons \u2013 2\u20133 sentences  \n- Despite being open, practical use still demands **substantial compute** for the larger models, and community tutorials reference GPUs with 24 GB VRAM for smooth local runs of Wan 2.1, which may limit accessibility for casual users.[6][4]  \n- Official, fine\u2011grained public benchmarks for **prompt adherence, character consistency, and detailed motion metrics** are not comprehensively exposed in the paper or public docs, so comparative claims are mostly aggregate (\u201coutperforms SOTA\u201d) rather than per\u2011dimension scores.[4]  \n- The ecosystem around Wan includes similarly named apps (e.g., Wan Frame) that explicitly state they are *not* officially affiliated with any specific model provider, which can cause brand and capability confusion.[3]\n\n### (3) What Wan is best used for  \n- Wan is best used for **high\u2011quality, general\u2011purpose video generation** from text or images where you want strong visuals, natural motion, and flexible editing\u2014e.g., cinematic clips, social media content, product/architecture demos, and character\u2011driven scenes.[4][1][2][5]  \n- Tools built on Wan (Fal\u2019s Wan\u20112.1 I2V, ImagineArt\u2019s Wan AI video generator, Higgsfield\u2019s Wan 2.5/2.7) highlight use cases such as turning still images into dynamic videos, multi\u2011shot short\u2011form storytelling, and instruction\u2011based edits of existing footage.[1][2][3][5][8]\n\n### ("
+      },
+      "hailuo-latest": {
+        "display_name": "Hailuo / MiniMax (Happy Horse)",
+        "platform": "kie.ai",
+        "tony_rank": null,
+        "tier": "alternative",
+        "research_needed": false,
+        "note": "Alibaba video generation model. Use latest available version.",
+        "pros": [],
+        "cons": [],
+        "benchmarks": {},
+        "best_for": [],
+        "avoid_for": [],
+        "last_researched": "2026-06-17T23:41:55.883088",
+        "research_raw": "Hailuo / MiniMax (\u201cHappy Horse\u201d) is a **short-form AI text/image-to-video model and platform** from Chinese company MiniMax, focused on cinematic clips with relatively smooth motion, good prompt adherence, and decent character consistency.[4][5][6] It is best understood as a *video suite* (Hailuo 2 / 2.3 / T2V-01-Director, etc.) rather than a single model, and is still evolving with beta-style constraints on length and resolution.[1][4][7]\n\n### (1) Pros (2\u20133 sentences)\n\n- Hailuo / MiniMax is strong on **prompt adherence and motion smoothness**: independent tests rank Hailuo 2.3 among the better models for following prompts,[7] and reviewers note \u201csmooth motion\u201d and \u201chigh-quality animation.\u201d[2][4][6]  \n- It offers **fast rendering and good value**, with reported pricing around **$0.28 per clip** and consumer plans near **$9.99/month**, making it relatively affordable for frequent use.[2][7][8]  \n- The platform emphasizes **natural micro\u2011expressions, realistic motion and character consistency across scenes**, and allows both text\u2011to\u2011video and image\u2011to\u2011video workflows with simple UI.[1][4][5][6]\n\n### (2) Cons (2\u20133 sentences)\n\n- Clips are **short and capped**: typical lengths are about **6 seconds** today (often 720p) with notes that ~10 seconds and higher resolutions are still roll-outs or limited, which constrains storytelling versus longer-form models.[1][4][7]  \n- Reviews highlight **weaker visual fidelity and cinematic realism** compared to top-tier models: Curious Refuge\u2019s lab testing finds realistic visuals and motion quality lag behind the best competitors despite solid prompt adherence.[2]  \n- Users and reviewers report **artifacts on fast motion, blur and distortions**, variable output quality depending on prompt complexity, and no built\u2011in audio generation, which limits use for production-ready, sound-synced content.[4][6][7]\n\n### (3) What it is best used for\n\n- Best for **short, cinematic-style clips (\u22486\u201310 seconds)** where you want **smooth motion, clear subject actions, and solid prompt following**, e.g., hero shots, b\u2011roll, social media snippets, product or character vignettes.[1][2][4][5][6]  \n- Well-suited to **image-to-video** (animating a still into a dynamic shot), **simple story beats**, realistic human motion, dance, or action moments that need consistent characters but not long narrative arcs.[1][3][4][6]  \n- A good choice for **iterative concepting and previsualization** by filmmakers or creators who need many fast, inexpensive drafts"
+      }
+    }
+  }
+}

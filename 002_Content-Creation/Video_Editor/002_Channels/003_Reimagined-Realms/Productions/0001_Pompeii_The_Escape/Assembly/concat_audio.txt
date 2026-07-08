@@ -1,0 +1,6 @@
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/0001_Pompeii_The_Escape/Narration_Audio/Scene_01.mp3'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/0001_Pompeii_The_Escape/Narration_Audio/Scene_02.mp3'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/0001_Pompeii_The_Escape/Narration_Audio/Scene_03.mp3'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/0001_Pompeii_The_Escape/Narration_Audio/Scene_04.mp3'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/0001_Pompeii_The_Escape/Narration_Audio/Scene_05.mp3'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/0001_Pompeii_The_Escape/Narration_Audio/Scene_06.mp3'

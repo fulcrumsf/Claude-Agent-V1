@@ -1,0 +1,1595 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "description": "Curated AI model catalog \u2014 25 production models across video, image, audio, video-to-audio. Per-second and per-image pricing matrix across platforms.",
+    "last_updated": "2026-07-01",
+    "next_refresh": "2026-08-01T03:00:00.541257",
+    "refresh_interval": "monthly",
+    "pricing_units": {
+      "video": "per 5-second 1080p clip (standard reference)",
+      "image": "per 1024x1024 (1K) image",
+      "audio_tts": "per 1000 characters",
+      "audio_sfx": "per second of output",
+      "audio_music": "per generation request",
+      "video_to_audio": "per 10-second video processed"
+    },
+    "platforms": [
+      "google_direct",
+      "elevenlabs_direct",
+      "openai_direct",
+      "kie_ai",
+      "wavespeed",
+      "fal_ai",
+      "openrouter"
+    ],
+    "routing_rule": "Use cheapest non-null platform. Prefer direct API (google_direct, elevenlabs_direct, openai_direct) when within 5% of cheapest aggregator.",
+    "rating_scale": "1-10 community consensus from Reddit, YouTube, Twitter. null = new or insufficient data.",
+    "subscription_notes": {
+      "elevenlabs_direct": "$5/mo Starter plan \u2014 30,000 chars/month included. Overage or pure API: $0.30/1K chars",
+      "google_direct": "$20/mo Google One AI Premium (consumer). Veo/Imagen API billed separately via Google Cloud pay-per-use.",
+      "openai_direct": "Pay-per-use API. No subscription required."
+    }
+  },
+  "models": [
+    {
+      "id": "seedance-2.0",
+      "name": "Seedance 2.0",
+      "provider": "ByteDance",
+      "type": "text-to-video",
+      "input_output": "text\u2192video | image\u2192video | video+audio reference\u2192video",
+      "description": "ByteDance flagship; cinematic quality with native audio-video sync, multimodal inputs, best-in-class motion",
+      "status": "active",
+      "rating": 9.2,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube",
+        "twitter"
+      ],
+      "rating_updated": null,
+      "notes": "Primary video model for Reimagined Realms pipeline. Never remove.",
+      "pricing": {
+        "reference_unit": "per 5s 1080p clip",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.31,
+          "unit": "per second (1080p i2v)",
+          "model_id": "bytedance-seedance-2-1080p-with-video-input"
+        },
+        "wavespeed": {
+          "price": 1.2,
+          "unit": "per 5s clip (720p)",
+          "model_id": "bytedance/seedance-2.0/image-to-video",
+          "note": "1080p=$3.00, 480p=$0.60 per 5s clip"
+        },
+        "fal_ai": {
+          "price": 0.014,
+          "unit": "units",
+          "model_id": "bytedance/seedance-2.0/image-to-video"
+        },
+        "openrouter": null,
+        "cheapest": "fal_ai",
+        "cheapest_price": 0.014,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "720p",
+          "resolution": "720p",
+          "audio": "Yes",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": 0.24,
+          "fal_ai": 0.302,
+          "openrouter": null,
+          "notes": "kie.ai has no 720p Seedance 2.0 SKU; fal.ai: token formula 1280\u00d7720\u00d724",
+          "cheapest": "wavespeed",
+          "cheapest_price": 0.24
+        },
+        {
+          "variant_id": "1080p",
+          "resolution": "1080p",
+          "audio": "Yes",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.31,
+          "wavespeed": 0.6,
+          "fal_ai": 0.682,
+          "openrouter": null,
+          "notes": "fal.ai: token formula 1920\u00d71080\u00d724 @ $0.014/1K tokens",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.31
+        }
+      ]
+    },
+    {
+      "id": "seedance-2.0-fast",
+      "name": "Seedance 2.0 Fast",
+      "provider": "ByteDance",
+      "type": "text-to-video",
+      "input_output": "text\u2192video | image\u2192video",
+      "description": "Fast variant of Seedance 2.0; cinematic quality at lower latency and cost, native audio",
+      "status": "active",
+      "rating": 8.8,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube"
+      ],
+      "rating_updated": null,
+      "notes": "Use for documentary/cinematic fast sequences. Primary Reimagined Realms workhorse.",
+      "pricing": {
+        "reference_unit": "per 5s 1080p clip",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.165,
+          "unit": "per second (720p max)",
+          "model_id": "bytedance-seedance-2-fast-720p-no-video-input"
+        },
+        "wavespeed": {
+          "price": 1.0,
+          "unit": "per 5s clip (720p)",
+          "model_id": "bytedance/seedance-2.0-fast/image-to-video",
+          "note": "1080p=$2.50, 480p=$0.50 per 5s clip"
+        },
+        "fal_ai": {
+          "price": 0.0112,
+          "unit": "units",
+          "model_id": "bytedance/seedance-2.0/fast/image-to-video"
+        },
+        "openrouter": null,
+        "cheapest": "fal_ai",
+        "cheapest_price": 0.0112,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "720p",
+          "resolution": "720p",
+          "audio": "Yes",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.165,
+          "wavespeed": 0.2,
+          "fal_ai": 0.242,
+          "openrouter": null,
+          "notes": "fal.ai max res is 720p for Fast tier",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.165
+        },
+        {
+          "variant_id": "1080p",
+          "resolution": "1080p",
+          "audio": "Yes",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": 0.5,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "fal.ai capped at 720p; kie.ai no 1080p Fast SKU confirmed",
+          "cheapest": "wavespeed",
+          "cheapest_price": 0.5
+        }
+      ]
+    },
+    {
+      "id": "seedance-1.5-pro",
+      "name": "Seedance 1.5 Pro",
+      "provider": "ByteDance",
+      "type": "text-to-video",
+      "input_output": "text\u2192video | image\u2192video",
+      "description": "Stable previous-gen Seedance; proven cinematic output, reliable fallback when 2.0 is unavailable",
+      "status": "active",
+      "rating": 8.5,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube"
+      ],
+      "rating_updated": null,
+      "notes": "Fallback when Seedance 2.0 is unavailable or over quota.",
+      "pricing": {
+        "reference_unit": "per 5s 1080p clip",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.075,
+          "unit": "per second (1080p w/audio)",
+          "model_id": "bytedance-seedance-1.5-pro-with-audio-1080p"
+        },
+        "wavespeed": {
+          "price": 0.26,
+          "unit": "per video (1080p i2v)",
+          "model_id": "bytedance/seedance-v1.5-pro/image-to-video"
+        },
+        "fal_ai": {
+          "price": 0.00017,
+          "unit": "compute seconds",
+          "model_id": "fal-ai/bytedance/seedance-1.5/image-to-video"
+        },
+        "openrouter": null,
+        "cheapest": "fal_ai",
+        "cheapest_price": 0.0008500000000000001,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "1080p",
+          "resolution": "1080p",
+          "audio": "Yes",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.075,
+          "wavespeed": 0.052,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "WaveSpeed: $0.26/5s; fal.ai billed in compute seconds (not output seconds)",
+          "cheapest": "wavespeed",
+          "cheapest_price": 0.052
+        }
+      ]
+    },
+    {
+      "id": "kling-3.0-pro",
+      "name": "Kling 3.0 Pro",
+      "provider": "Kuaishou",
+      "type": "text-to-video",
+      "input_output": "text\u2192video | image\u2192video | audio sync",
+      "description": "Kling flagship; 3\u201315s flexible duration, native multilingual audio, multi-shot storytelling, 1080p",
+      "status": "active",
+      "rating": 8.5,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube",
+        "twitter"
+      ],
+      "rating_updated": null,
+      "notes": "Standard workhorse video model. Good for character consistency.",
+      "pricing": {
+        "reference_unit": "per 5s 1080p clip",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.1125,
+          "unit": "per second",
+          "model_id": "kling-3.0-turbo-text-to-video-1080p",
+          "per_second": 0.1125
+        },
+        "wavespeed": {
+          "price": null,
+          "model_id": "kwaivgi/kling-v3/text-to-video",
+          "note": "needs pricing fetch"
+        },
+        "fal_ai": {
+          "model_id": "fal-ai/kling-video/v3/pro/image-to-video",
+          "price": 0.14,
+          "unit": "seconds"
+        },
+        "openrouter": null,
+        "cheapest": "kie_ai",
+        "cheapest_price": 0.5625,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "1080p",
+          "resolution": "1080p",
+          "audio": "No",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.1125,
+          "wavespeed": null,
+          "fal_ai": 0.14,
+          "openrouter": null,
+          "notes": "WaveSpeed Kling v3 pricing not yet fetched",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.1125
+        }
+      ]
+    },
+    {
+      "id": "kling-3.0-standard",
+      "name": "Kling 3.0 Standard",
+      "provider": "Kuaishou",
+      "type": "text-to-video",
+      "input_output": "text\u2192video | image\u2192video",
+      "description": "Budget tier Kling 3.0; lower resolution and cost, good for drafts and b-roll",
+      "status": "active",
+      "rating": 7.8,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit"
+      ],
+      "rating_updated": null,
+      "notes": "Use for draft passes and non-hero clips to save budget.",
+      "pricing": {
+        "reference_unit": "per 5s 720p clip",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.09,
+          "unit": "per second",
+          "model_id": "kling-3.0-turbo-text-to-video-720p",
+          "per_second": 0.09
+        },
+        "wavespeed": {
+          "price": 0.23,
+          "unit": "per video",
+          "model_id": "kwaivgi/kling-v1.6-t2v-standard",
+          "note": "v1.6 pricing, v3 TBD"
+        },
+        "fal_ai": {
+          "model_id": "fal-ai/kling-video/v3/standard/image-to-video",
+          "price": 0.14,
+          "unit": "seconds"
+        },
+        "openrouter": null,
+        "cheapest": "wavespeed",
+        "cheapest_price": 0.23,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "720p",
+          "resolution": "720p",
+          "audio": "No",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.09,
+          "wavespeed": 0.046,
+          "fal_ai": 0.14,
+          "openrouter": null,
+          "notes": "WaveSpeed: $0.23/5s (v1.6 proxy pricing; v3 TBD)",
+          "cheapest": "wavespeed",
+          "cheapest_price": 0.046
+        }
+      ]
+    },
+    {
+      "id": "veo-3.1-quality",
+      "name": "Veo 3.1 Quality",
+      "provider": "Google",
+      "type": "text-to-video",
+      "input_output": "text\u2192video | image\u2192video | reference\u2192video",
+      "description": "Google flagship video; hero cinematic sequences, highest fidelity, native audio sync",
+      "status": "active",
+      "rating": 8.8,
+      "rating_label": "scored",
+      "rating_sources": [
+        "youtube",
+        "reddit",
+        "twitter"
+      ],
+      "rating_updated": null,
+      "notes": "Use for hero/opening sequences. Direct Google API preferred \u2014 already have access.",
+      "pricing": {
+        "reference_unit": "per video (varies by length)",
+        "google_direct": {
+          "price": 0.35,
+          "unit": "per second via AI Studio",
+          "model_id": "models/veo-3.1-generate-preview",
+          "note": "Billed via Google Cloud"
+        },
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 1.275,
+          "unit": "per video 1080p",
+          "model_id": "google-veo-3.1-text-to-video-quality-1080p"
+        },
+        "wavespeed": {
+          "price": null,
+          "note": "Veo 3.1 quality not listed; extend only at $3.20"
+        },
+        "fal_ai": {
+          "model_id": "fal-ai/veo3",
+          "price": 0.4,
+          "unit": "seconds"
+        },
+        "openrouter": null,
+        "cheapest": "kie_ai",
+        "cheapest_price": 1.275,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "1080p",
+          "resolution": "1080p",
+          "audio": "No",
+          "price_unit": "$/s",
+          "google_direct": 0.35,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.159,
+          "wavespeed": null,
+          "fal_ai": 0.4,
+          "openrouter": null,
+          "notes": "kie.ai: $1.275 flat/video \u00f7 ~8s generation = $0.159/s (estimated)",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.159
+        }
+      ]
+    },
+    {
+      "id": "veo-3.1-fast",
+      "name": "Veo 3.1 Fast",
+      "provider": "Google",
+      "type": "text-to-video",
+      "input_output": "text\u2192video | image\u2192video",
+      "description": "Google fast video tier; lower latency and cost, still high quality, native 1080p audio",
+      "status": "active",
+      "rating": 8.3,
+      "rating_label": "scored",
+      "rating_sources": [
+        "youtube",
+        "reddit"
+      ],
+      "rating_updated": null,
+      "notes": "Budget cinematic. Direct Google API preferred.",
+      "pricing": {
+        "reference_unit": "per video (varies by length)",
+        "google_direct": {
+          "price": 0.15,
+          "unit": "per second via AI Studio",
+          "model_id": "models/veo-3.1-fast-generate-preview",
+          "note": "Billed via Google Cloud"
+        },
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.325,
+          "unit": "per video 1080p",
+          "model_id": "google-veo-3.1-text-to-video-fast-1080p"
+        },
+        "wavespeed": {
+          "price": 1.2,
+          "unit": "per video extend only",
+          "model_id": "google/veo3.1-fast/video-extend"
+        },
+        "fal_ai": {
+          "model_id": "fal-ai/veo3/fast",
+          "price": 0.15,
+          "unit": "seconds"
+        },
+        "openrouter": null,
+        "cheapest": "kie_ai",
+        "cheapest_price": 0.325,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "1080p",
+          "resolution": "1080p",
+          "audio": "No",
+          "price_unit": "$/s",
+          "google_direct": 0.15,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.041,
+          "wavespeed": null,
+          "fal_ai": 0.15,
+          "openrouter": null,
+          "notes": "kie.ai: $0.325 flat/video \u00f7 ~8s = $0.041/s (estimated); WaveSpeed extend-only",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.041
+        }
+      ]
+    },
+    {
+      "id": "wan-2.7",
+      "name": "Wan 2.7",
+      "provider": "Alibaba",
+      "type": "text-to-video",
+      "input_output": "text\u2192video | image\u2192video | video-edit",
+      "description": "Open-source budget video model; 480p\u20131080p, solid motion, best cost-per-clip for b-roll",
+      "status": "active",
+      "rating": 7.5,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit"
+      ],
+      "rating_updated": null,
+      "notes": "Use for non-hero b-roll to save budget. Also available as Wan 2.6 on kie.ai.",
+      "pricing": {
+        "reference_unit": "per 5s 1080p clip",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.12,
+          "unit": "per second",
+          "model_id": "wan-2.7-video-text-to-video-1080p",
+          "per_second": 0.12
+        },
+        "wavespeed": {
+          "price": 0.24,
+          "unit": "per image (Wan 2.7 image)",
+          "model_id": "wan-2.7-image",
+          "note": "Video pricing TBD"
+        },
+        "fal_ai": {
+          "model_id": "fal-ai/wan/v2.1/1.3b/text-to-video",
+          "price": 0.2,
+          "unit": "videos"
+        },
+        "openrouter": null,
+        "cheapest": "fal_ai",
+        "cheapest_price": 0.2,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "1080p",
+          "resolution": "1080p",
+          "audio": "No",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.12,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "fal.ai $0.20 flat/video (duration unknown); WaveSpeed WAN 2.7 is image-only",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.12
+        }
+      ]
+    },
+    {
+      "id": "ltx-2-pro",
+      "name": "LTX-2 Pro",
+      "provider": "Lightricks",
+      "type": "text-to-video",
+      "input_output": "text\u2192video | image\u2192video",
+      "description": "DiT-based foundation model with native synced audio and 1080p; good for video+audio in one pass",
+      "status": "active",
+      "rating": 7.8,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube"
+      ],
+      "rating_updated": null,
+      "notes": "Key advantage: native audio sync in one generation. Use when you need video+audio together.",
+      "pricing": {
+        "reference_unit": "per video",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": null,
+        "wavespeed": {
+          "price": 0.06,
+          "unit": "per video",
+          "model_id": "lightricks/ltx-2-pro/text-to-video"
+        },
+        "fal_ai": {
+          "model_id": "fal-ai/ltx-2.3/image-to-video",
+          "price": 0.08,
+          "unit": "seconds"
+        },
+        "openrouter": null,
+        "cheapest": "wavespeed",
+        "cheapest_price": 0.06,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "1080p",
+          "resolution": "1080p",
+          "audio": "Yes",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": 0.012,
+          "fal_ai": 0.08,
+          "openrouter": null,
+          "notes": "WaveSpeed: $0.06/5s; native audio at same price",
+          "cheapest": "wavespeed",
+          "cheapest_price": 0.012
+        }
+      ]
+    },
+    {
+      "id": "hailuo-2.3",
+      "name": "Hailuo v2.3",
+      "provider": "MiniMax",
+      "type": "text-to-video",
+      "input_output": "text\u2192video | image\u2192video",
+      "description": "Enhanced motion and expressions at 1080p; strong for character-driven video",
+      "status": "active",
+      "rating": 8.0,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube"
+      ],
+      "rating_updated": null,
+      "notes": "Good alt when Seedance/Kling are unavailable. Strong facial expressions.",
+      "pricing": {
+        "reference_unit": "per 6s clip",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.15,
+          "unit": "per video",
+          "model_id": "hailuo-2.3-image-to-video-standard-6.0s-768p"
+        },
+        "wavespeed": null,
+        "fal_ai": {
+          "model_id": "fal-ai/minimax/hailuo-2.3/pro/image-to-video",
+          "price": 0.49,
+          "unit": "units"
+        },
+        "openrouter": null,
+        "cheapest": "kie_ai",
+        "cheapest_price": 0.15,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "768p",
+          "resolution": "768p",
+          "audio": "No",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.025,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "kie.ai: $0.15/6s clip; fal.ai $0.49/unit (unit definition unclear)",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.025
+        }
+      ]
+    },
+    {
+      "id": "runway-aleph",
+      "name": "Runway Aleph",
+      "provider": "Runway",
+      "type": "video-to-video",
+      "input_output": "video\u2192video (AI-powered editing/transformation)",
+      "description": "Video-to-video transformation; restyle, relight, and edit existing footage with AI",
+      "status": "active",
+      "rating": 7.8,
+      "rating_label": "scored",
+      "rating_sources": [
+        "youtube",
+        "reddit"
+      ],
+      "rating_updated": null,
+      "notes": "Use for post-processing existing clips \u2014 not generation. Good for stylizing b-roll.",
+      "pricing": {
+        "reference_unit": "per video",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.55,
+          "unit": "per video",
+          "model_id": "runway-aleph"
+        },
+        "wavespeed": null,
+        "fal_ai": {
+          "model_id": "fal-ai/runway-gen3/image-to-video",
+          "price": 7e-05,
+          "unit": "compute seconds"
+        },
+        "openrouter": null,
+        "cheapest": "fal_ai",
+        "cheapest_price": 0.00034999999999999994,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "default",
+          "resolution": "N/A",
+          "audio": "N/A",
+          "price_unit": "$/video",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.55,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "Video-to-video transform; priced per clip not per second",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.55
+        }
+      ]
+    },
+    {
+      "id": "nano-banana-2",
+      "name": "Nano Banana 2 (Gemini 3.1 Flash Image)",
+      "provider": "Google",
+      "type": "text-to-image",
+      "input_output": "text\u2192image | image\u2192image | up to 14 reference images",
+      "description": "Google Gemini 3.1 Flash image model; cheapest per-image, 4K support, grounding, good text rendering",
+      "status": "active",
+      "rating": 7.8,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube"
+      ],
+      "rating_updated": null,
+      "notes": "Primary image model \u2014 cheapest and fastest. Use for b-roll stills and thumbnails.",
+      "pricing": {
+        "reference_unit": "per 1K image",
+        "google_direct": {
+          "price": 0.039,
+          "unit": "per image via AI Studio (Gemini 3.1 Flash)",
+          "model_id": "models/gemini-3.1-flash",
+          "note": "Image generation via Gemini API"
+        },
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.02,
+          "unit": "per image 1K",
+          "model_id": "google-nano-banana-text-to-image"
+        },
+        "wavespeed": {
+          "price": 0.04,
+          "unit": "per image 1K",
+          "model_id": "google/nano-banana-2/edit-fast"
+        },
+        "fal_ai": null,
+        "openrouter": null,
+        "cheapest": "kie_ai",
+        "cheapest_price": 0.02,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "1K",
+          "resolution": "1K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": 0.039,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.02,
+          "wavespeed": 0.04,
+          "fal_ai": null,
+          "openrouter": null,
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.02
+        },
+        {
+          "variant_id": "2K",
+          "resolution": "2K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "2K pricing not confirmed for Gemini Flash",
+          "cheapest": null,
+          "cheapest_price": null
+        },
+        {
+          "variant_id": "4K",
+          "resolution": "4K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "4K pricing not confirmed for Gemini Flash",
+          "cheapest": null,
+          "cheapest_price": null
+        }
+      ]
+    },
+    {
+      "id": "gpt-image-2",
+      "name": "GPT Image 2",
+      "provider": "OpenAI",
+      "type": "text-to-image",
+      "input_output": "text\u2192image | image\u2192image | up to 16 reference images",
+      "description": "OpenAI premium image model; high fidelity, excellent prompt adherence, strong text rendering",
+      "status": "active",
+      "rating": 8.5,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube",
+        "twitter"
+      ],
+      "rating_updated": null,
+      "notes": "Use for hero stills, thumbnails, and any image needing precise text or branding.",
+      "pricing": {
+        "reference_unit": "per 1K image",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": {
+          "price": 0.04,
+          "unit": "per image 1024x1024",
+          "model_id": "gpt-image-2",
+          "note": "Via OpenAI API"
+        },
+        "kie_ai": {
+          "price": 0.03,
+          "unit": "per image 1K",
+          "model_id": "gpt-image-2-text-to-image-1k"
+        },
+        "wavespeed": {
+          "price": 0.06,
+          "unit": "per image",
+          "model_id": "openai/gpt-image-2/text-to-image"
+        },
+        "fal_ai": null,
+        "openrouter": null,
+        "cheapest": "kie_ai",
+        "cheapest_price": 0.03,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "1K",
+          "resolution": "1K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": 0.04,
+          "kie_ai": 0.03,
+          "wavespeed": 0.06,
+          "fal_ai": null,
+          "openrouter": null,
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.03
+        },
+        {
+          "variant_id": "2K",
+          "resolution": "2K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": 0.08,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "OpenAI direct: 2048\u00d72048 = $0.08/img",
+          "cheapest": "openai_direct",
+          "cheapest_price": 0.08
+        },
+        {
+          "variant_id": "4K",
+          "resolution": "4K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": 0.16,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "OpenAI direct: 4096\u00d74096 = $0.16/img",
+          "cheapest": "openai_direct",
+          "cheapest_price": 0.16
+        }
+      ]
+    },
+    {
+      "id": "flux-kontext",
+      "name": "Flux Kontext",
+      "provider": "Black Forest Labs",
+      "type": "text-to-image",
+      "input_output": "text\u2192image | image editing | inpainting",
+      "description": "Flux model optimized for image editing and contextual understanding; strong inpainting and style transfer",
+      "status": "active",
+      "rating": 8.3,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube"
+      ],
+      "rating_updated": null,
+      "notes": "Use for image editing passes on existing stills. Replaces Flux Pro (deprecated).",
+      "pricing": {
+        "reference_unit": "per 1K image",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.025,
+          "unit": "per image Pro",
+          "model_id": "black-forest-labs-flux1-kontext-text-to-image-pro"
+        },
+        "wavespeed": null,
+        "fal_ai": {
+          "model_id": "fal-ai/flux-pro/kontext",
+          "price": 0.04,
+          "unit": "images"
+        },
+        "openrouter": null,
+        "cheapest": "kie_ai",
+        "cheapest_price": 0.025,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "1K",
+          "resolution": "1K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.025,
+          "wavespeed": null,
+          "fal_ai": 0.04,
+          "openrouter": null,
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.025
+        },
+        {
+          "variant_id": "2K",
+          "resolution": "2K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "Flux Kontext resolution-tiered pricing not confirmed",
+          "cheapest": null,
+          "cheapest_price": null
+        },
+        {
+          "variant_id": "4K",
+          "resolution": "4K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "cheapest": null,
+          "cheapest_price": null
+        }
+      ]
+    },
+    {
+      "id": "midjourney",
+      "name": "Midjourney",
+      "provider": "Midjourney",
+      "type": "text-to-image",
+      "input_output": "text\u2192image | image\u2192image | style reference | omni reference",
+      "description": "Highest aesthetic quality image generation; cinematic, artistic, and photorealistic styles",
+      "status": "active",
+      "rating": 9.0,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube",
+        "twitter"
+      ],
+      "rating_updated": null,
+      "notes": "Use when aesthetic quality is paramount. Available via kie.ai API wrapper.",
+      "pricing": {
+        "reference_unit": "per image",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": null,
+          "model_id": "midjourney_generate",
+          "note": "Pricing needs fetch from kie.ai"
+        },
+        "wavespeed": {
+          "price": 0.1,
+          "unit": "per image",
+          "model_id": "midjourney/text-to-image"
+        },
+        "fal_ai": null,
+        "openrouter": null,
+        "cheapest": "wavespeed",
+        "cheapest_price": 0.1,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "1K",
+          "resolution": "1K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": 0.1,
+          "fal_ai": null,
+          "openrouter": null,
+          "cheapest": "wavespeed",
+          "cheapest_price": 0.1
+        },
+        {
+          "variant_id": "2K",
+          "resolution": "2K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "WaveSpeed Midjourney higher-res pricing not confirmed",
+          "cheapest": null,
+          "cheapest_price": null
+        },
+        {
+          "variant_id": "4K",
+          "resolution": "4K",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "cheapest": null,
+          "cheapest_price": null
+        }
+      ]
+    },
+    {
+      "id": "suno-v5",
+      "name": "Suno V5",
+      "provider": "Suno",
+      "type": "text-to-music",
+      "input_output": "text\u2192music | lyrics\u2192music | instrumental",
+      "description": "AI music generation from mood, genre, or lyric descriptions; full tracks, radio-quality output",
+      "status": "active",
+      "rating": 8.5,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube"
+      ],
+      "rating_updated": null,
+      "notes": "Primary background music for all video pipelines. Call via kie.ai Suno API.",
+      "pricing": {
+        "reference_unit": "per generation request",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.06,
+          "unit": "per generation",
+          "model_id": "suno-generate-music"
+        },
+        "wavespeed": null,
+        "fal_ai": null,
+        "openrouter": null,
+        "cheapest": "kie_ai",
+        "cheapest_price": 0.06,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "default",
+          "resolution": "N/A",
+          "audio": "N/A",
+          "price_unit": "$/gen",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.06,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.06
+        }
+      ]
+    },
+    {
+      "id": "elevenlabs-tts",
+      "name": "ElevenLabs TTS",
+      "provider": "ElevenLabs",
+      "type": "text-to-speech",
+      "input_output": "text\u2192speech (word-level timestamps)",
+      "description": "Industry-best TTS; natural voice, word-level timestamps for caption sync, multilingual",
+      "status": "active",
+      "rating": 9.0,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube"
+      ],
+      "rating_updated": null,
+      "notes": "Always use direct API \u2014 already paying $5/mo subscription. kie.ai is redundant markup.",
+      "pricing": {
+        "reference_unit": "per 1000 characters",
+        "google_direct": null,
+        "elevenlabs_direct": {
+          "price": 0.0,
+          "unit": "included in $5/mo (30K chars/month)",
+          "model_id": "eleven_turbo_v2_5",
+          "overage": "$0.30/1K chars beyond 30K"
+        },
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.03,
+          "unit": "per 1K chars Turbo 2.5",
+          "model_id": "elevenlabs-text-to-speech-turbo-2.5"
+        },
+        "wavespeed": null,
+        "fal_ai": null,
+        "openrouter": null,
+        "cheapest": "elevenlabs_direct",
+        "cheapest_price": 0.0,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "default",
+          "resolution": "N/A",
+          "audio": "N/A",
+          "price_unit": "$/1K chars",
+          "google_direct": null,
+          "elevenlabs_direct": 0.0,
+          "openai_direct": null,
+          "kie_ai": 0.03,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "ElevenLabs direct: free within $5/mo (30K chars); $0.30/1K overage",
+          "cheapest": "elevenlabs_direct",
+          "cheapest_price": 0.0
+        }
+      ]
+    },
+    {
+      "id": "elevenlabs-sfx",
+      "name": "ElevenLabs Sound Effects",
+      "provider": "ElevenLabs",
+      "type": "text-to-sfx",
+      "input_output": "text\u2192sound effect",
+      "description": "Generate custom sound effects from text descriptions; high quality, short-form audio",
+      "status": "active",
+      "rating": 8.2,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit"
+      ],
+      "rating_updated": null,
+      "notes": "Use direct API where possible. kie.ai available as backup.",
+      "pricing": {
+        "reference_unit": "per second of output audio",
+        "google_direct": null,
+        "elevenlabs_direct": {
+          "price": 0.0,
+          "unit": "included in $5/mo quota",
+          "model_id": "eleven_sound_generation",
+          "note": "Uses character quota"
+        },
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.0012,
+          "unit": "per second",
+          "model_id": "elevenlabs-sound-effect-v2"
+        },
+        "wavespeed": null,
+        "fal_ai": null,
+        "openrouter": null,
+        "cheapest": "elevenlabs_direct",
+        "cheapest_price": 0.0,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "default",
+          "resolution": "N/A",
+          "audio": "N/A",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": 0.0,
+          "openai_direct": null,
+          "kie_ai": 0.0012,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "ElevenLabs direct: included in $5/mo quota",
+          "cheapest": "elevenlabs_direct",
+          "cheapest_price": 0.0
+        }
+      ]
+    },
+    {
+      "id": "elevenlabs-video-to-music",
+      "name": "ElevenLabs Video to Music",
+      "provider": "ElevenLabs",
+      "type": "video-to-music",
+      "input_output": "video or text prompt \u2192 music soundtrack",
+      "description": "Generate AI music soundtracks matched to video mood, pacing, and visual content via ElevenLabs Music API",
+      "status": "active",
+      "rating": null,
+      "rating_label": "no community data",
+      "rating_sources": [],
+      "rating_updated": "2026-07-01",
+      "notes": "Use for auto-generated background music synchronized to edit pacing. Complement Suno V5 (text-only).",
+      "pricing": {
+        "reference_unit": "per generation",
+        "google_direct": null,
+        "elevenlabs_direct": {
+          "price": 0.0,
+          "unit": "included in $5/mo quota",
+          "model_id": "eleven_music_v1",
+          "note": "Uses character/generation quota from subscription"
+        },
+        "openai_direct": null,
+        "kie_ai": null,
+        "wavespeed": null,
+        "fal_ai": null,
+        "openrouter": null,
+        "cheapest": "elevenlabs_direct",
+        "cheapest_price": 0.0,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "default",
+          "resolution": "N/A",
+          "audio": "N/A",
+          "price_unit": "$/gen",
+          "google_direct": null,
+          "elevenlabs_direct": 0.0,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "cheapest": "elevenlabs_direct",
+          "cheapest_price": 0.0,
+          "notes": "Free within $5/mo ElevenLabs subscription"
+        }
+      ]
+    },
+    {
+      "id": "topaz-upscale",
+      "name": "Topaz Upscale",
+      "provider": "Topaz Labs",
+      "type": "image-upscaling",
+      "input_output": "image\u2192upscaled image (1x\u20138x)",
+      "description": "Industry-standard AI upscaling; high-fidelity detail restoration, up to 20,000px output",
+      "status": "inactive",
+      "rating": 9.0,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit",
+        "youtube"
+      ],
+      "rating_updated": null,
+      "notes": "Removed from active catalog. Credit-based pricing not comparable. Use fal.ai endpoint when needed.",
+      "pricing": {
+        "reference_unit": "per image (\u22642K output)",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": null,
+          "unit": "credit-based: 10 credits \u22642K, 20 credits 4K",
+          "model_id": "topaz_upscale_image",
+          "note": "Credit pricing needs conversion"
+        },
+        "wavespeed": null,
+        "fal_ai": {
+          "model_id": "fal-ai/topaz/upscale",
+          "price": 0.00017,
+          "unit": "compute seconds"
+        },
+        "openrouter": null,
+        "cheapest": "fal_ai",
+        "cheapest_price": 0.0008500000000000001,
+        "last_compared": "2026-07-01"
+      },
+      "variants": []
+    },
+    {
+      "id": "recraft-remove-bg",
+      "name": "Recraft Remove Background",
+      "provider": "Recraft",
+      "type": "image-utility",
+      "input_output": "image\u2192image (background removed)",
+      "description": "AI background removal; clean cutouts for compositing, thumbnails, and overlays",
+      "status": "active",
+      "rating": 8.0,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit"
+      ],
+      "rating_updated": null,
+      "notes": "Utility model \u2014 use when compositing images over video.",
+      "pricing": {
+        "reference_unit": "per image",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": null,
+          "model_id": "recraft_remove_background",
+          "note": "Pricing needs fetch"
+        },
+        "wavespeed": null,
+        "fal_ai": null,
+        "openrouter": null,
+        "cheapest": "kie_ai",
+        "cheapest_price": null,
+        "last_compared": "2026-06-20"
+      },
+      "variants": [
+        {
+          "variant_id": "default",
+          "resolution": "N/A",
+          "audio": "N/A",
+          "price_unit": "$/img",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "Pricing needs fetch from kie.ai",
+          "cheapest": null,
+          "cheapest_price": null
+        }
+      ]
+    },
+    {
+      "id": "mirelo-sfx-v1.5",
+      "name": "Mirelo SFX v1.6",
+      "provider": "Mirelo AI",
+      "type": "video-to-audio",
+      "input_output": "video\u2192synced SFX audio track",
+      "description": "Generates synchronized sound effects for any video; similar to MMAudio, frame-accurate sync",
+      "status": "active",
+      "rating": null,
+      "rating_label": "no community data",
+      "rating_sources": [],
+      "rating_updated": "2026-07-01",
+      "notes": "Primary option for adding environment/SFX audio to existing video clips.",
+      "pricing": {
+        "reference_unit": "per 10s video processed",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": null,
+        "wavespeed": null,
+        "fal_ai": {
+          "price": 0.00125,
+          "unit": "compute seconds",
+          "model_id": "mirelo-ai/sfx1.6/video-to-video"
+        },
+        "openrouter": null,
+        "cheapest": "fal_ai",
+        "cheapest_price": 0.00625,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "default",
+          "resolution": "N/A",
+          "audio": "N/A",
+          "price_unit": "$/req",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "fal.ai billed in compute seconds (GPU time), not output time \u2014 not comparable",
+          "cheapest": null,
+          "cheapest_price": null
+        }
+      ]
+    },
+    {
+      "id": "kling-video-to-audio",
+      "name": "Kling Video-to-Audio",
+      "provider": "Kuaishou",
+      "type": "video-to-audio",
+      "input_output": "video\u2192synced audio track",
+      "description": "Kling-native audio generation from video; uses Kling's model understanding for accurate sync",
+      "status": "active",
+      "rating": 7.5,
+      "rating_label": "scored",
+      "rating_sources": [
+        "reddit"
+      ],
+      "rating_updated": "2026-06-21",
+      "notes": "Best choice if clip was originally generated with Kling \u2014 same model family, tighter sync.",
+      "pricing": {
+        "reference_unit": "per 10s video processed",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": null,
+        "wavespeed": {
+          "price": 0.035,
+          "unit": "per request",
+          "model_id": "kwaivgi/kling-text-to-audio"
+        },
+        "fal_ai": {
+          "price": 0.035,
+          "unit": "videos",
+          "model_id": "fal-ai/kling-video/video-to-audio"
+        },
+        "openrouter": null,
+        "cheapest": "wavespeed",
+        "cheapest_price": 0.035,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "default",
+          "resolution": "N/A",
+          "audio": "N/A",
+          "price_unit": "$/req",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": 0.035,
+          "fal_ai": 0.035,
+          "openrouter": null,
+          "cheapest": "wavespeed",
+          "cheapest_price": 0.035
+        }
+      ]
+    },
+    {
+      "id": "sonilo-v1.1",
+      "name": "Sonilo v1.1",
+      "provider": "Sonilo",
+      "type": "video-to-audio",
+      "input_output": "video\u2192frame-synced music soundtrack",
+      "description": "Analyzes video pacing, mood, and timing to generate a commercial-ready frame-synced music score",
+      "status": "new",
+      "rating": null,
+      "rating_label": "new \u2013 insufficient data",
+      "rating_sources": [],
+      "rating_updated": null,
+      "notes": "Unique: generates music that matches your edit's pacing \u2014 not just generic background music.",
+      "pricing": {
+        "reference_unit": "per video processed",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": null,
+        "wavespeed": null,
+        "fal_ai": {
+          "price": 0.009,
+          "unit": "seconds",
+          "model_id": "sonilo/v1.1/video-to-music"
+        },
+        "openrouter": null,
+        "cheapest": "fal_ai",
+        "cheapest_price": 0.045,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "default",
+          "resolution": "N/A",
+          "audio": "N/A",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": 0.009,
+          "openrouter": null,
+          "notes": "Billed per second of output video",
+          "cheapest": "fal_ai",
+          "cheapest_price": 0.009
+        }
+      ]
+    },
+    {
+      "id": "sam-audio-visual-separate",
+      "name": "SAM Audio Visual Separate",
+      "provider": "SAM Audio",
+      "type": "video-to-audio",
+      "input_output": "video\u2192isolated audio track (natural language target)",
+      "description": "Isolate any specific sound from a video using natural language \u2014 remove wind, isolate dialogue, extract music",
+      "status": "new",
+      "rating": null,
+      "rating_label": "new \u2013 insufficient data",
+      "rating_sources": [],
+      "rating_updated": null,
+      "notes": "Utility: use when you need to surgically remove or isolate a specific sound from existing footage.",
+      "pricing": {
+        "reference_unit": "per video processed",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": null,
+        "wavespeed": null,
+        "fal_ai": {
+          "price": 0.05,
+          "unit": "units",
+          "model_id": "fal-ai/sam-audio/visual-separate"
+        },
+        "openrouter": null,
+        "cheapest": "fal_ai",
+        "cheapest_price": 0.05,
+        "last_compared": "2026-07-01"
+      },
+      "variants": [
+        {
+          "variant_id": "default",
+          "resolution": "N/A",
+          "audio": "N/A",
+          "price_unit": "$/req",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": null,
+          "wavespeed": null,
+          "fal_ai": 0.05,
+          "openrouter": null,
+          "cheapest": "fal_ai",
+          "cheapest_price": 0.05
+        }
+      ]
+    }
+  ]
+}

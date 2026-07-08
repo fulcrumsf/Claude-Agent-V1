@@ -1,0 +1,2967 @@
+[
+  {
+    "scene_id": "scene_01",
+    "scene_title": "Hook",
+    "audio_file": "narration/scene_01.mp3",
+    "duration_s": 11.517,
+    "global_start_s": 0.0,
+    "global_end_s": 11.517,
+    "words": [
+      {
+        "word": "In",
+        "start_s": 0.0,
+        "end_s": 0.139,
+        "local_start_s": 0.0,
+        "local_end_s": 0.139
+      },
+      {
+        "word": "79",
+        "start_s": 0.209,
+        "end_s": 0.871,
+        "local_start_s": 0.209,
+        "local_end_s": 0.871
+      },
+      {
+        "word": "AD,",
+        "start_s": 0.917,
+        "end_s": 1.451,
+        "local_start_s": 0.917,
+        "local_end_s": 1.451
+      },
+      {
+        "word": "eighteen",
+        "start_s": 1.66,
+        "end_s": 2.101,
+        "local_start_s": 1.66,
+        "local_end_s": 2.101
+      },
+      {
+        "word": "thousand",
+        "start_s": 2.159,
+        "end_s": 2.531,
+        "local_start_s": 2.159,
+        "local_end_s": 2.531
+      },
+      {
+        "word": "people",
+        "start_s": 2.589,
+        "end_s": 2.902,
+        "local_start_s": 2.589,
+        "local_end_s": 2.902
+      },
+      {
+        "word": "called",
+        "start_s": 2.949,
+        "end_s": 3.193,
+        "local_start_s": 2.949,
+        "local_end_s": 3.193
+      },
+      {
+        "word": "Pompeii",
+        "start_s": 3.239,
+        "end_s": 3.704,
+        "local_start_s": 3.239,
+        "local_end_s": 3.704
+      },
+      {
+        "word": "home.",
+        "start_s": 3.762,
+        "end_s": 4.145,
+        "local_start_s": 3.762,
+        "local_end_s": 4.145
+      },
+      {
+        "word": "Archaeologists",
+        "start_s": 4.656,
+        "end_s": 5.48,
+        "local_start_s": 4.656,
+        "local_end_s": 5.48
+      },
+      {
+        "word": "have",
+        "start_s": 5.526,
+        "end_s": 5.654,
+        "local_start_s": 5.526,
+        "local_end_s": 5.654
+      },
+      {
+        "word": "found",
+        "start_s": 5.7,
+        "end_s": 5.933,
+        "local_start_s": 5.7,
+        "local_end_s": 5.933
+      },
+      {
+        "word": "the",
+        "start_s": 5.968,
+        "end_s": 6.037,
+        "local_start_s": 5.968,
+        "local_end_s": 6.037
+      },
+      {
+        "word": "remains",
+        "start_s": 6.095,
+        "end_s": 6.49,
+        "local_start_s": 6.095,
+        "local_end_s": 6.49
+      },
+      {
+        "word": "of",
+        "start_s": 6.536,
+        "end_s": 6.594,
+        "local_start_s": 6.536,
+        "local_end_s": 6.594
+      },
+      {
+        "word": "roughly",
+        "start_s": 6.664,
+        "end_s": 6.989,
+        "local_start_s": 6.664,
+        "local_end_s": 6.989
+      },
+      {
+        "word": "two",
+        "start_s": 7.036,
+        "end_s": 7.187,
+        "local_start_s": 7.036,
+        "local_end_s": 7.187
+      },
+      {
+        "word": "thousand.",
+        "start_s": 7.233,
+        "end_s": 7.744,
+        "local_start_s": 7.233,
+        "local_end_s": 7.744
+      },
+      {
+        "word": "No",
+        "start_s": 8.185,
+        "end_s": 8.324,
+        "local_start_s": 8.185,
+        "local_end_s": 8.324
+      },
+      {
+        "word": "one",
+        "start_s": 8.394,
+        "end_s": 8.51,
+        "local_start_s": 8.394,
+        "local_end_s": 8.51
+      },
+      {
+        "word": "has",
+        "start_s": 8.545,
+        "end_s": 8.649,
+        "local_start_s": 8.545,
+        "local_end_s": 8.649
+      },
+      {
+        "word": "ever",
+        "start_s": 8.719,
+        "end_s": 8.882,
+        "local_start_s": 8.719,
+        "local_end_s": 8.882
+      },
+      {
+        "word": "explained",
+        "start_s": 8.951,
+        "end_s": 9.462,
+        "local_start_s": 8.951,
+        "local_end_s": 9.462
+      },
+      {
+        "word": "where",
+        "start_s": 9.497,
+        "end_s": 9.648,
+        "local_start_s": 9.497,
+        "local_end_s": 9.648
+      },
+      {
+        "word": "the",
+        "start_s": 9.683,
+        "end_s": 9.752,
+        "local_start_s": 9.683,
+        "local_end_s": 9.752
+      },
+      {
+        "word": "other",
+        "start_s": 9.799,
+        "end_s": 9.985,
+        "local_start_s": 9.799,
+        "local_end_s": 9.985
+      },
+      {
+        "word": "sixteen",
+        "start_s": 10.043,
+        "end_s": 10.449,
+        "local_start_s": 10.043,
+        "local_end_s": 10.449
+      },
+      {
+        "word": "thousand",
+        "start_s": 10.495,
+        "end_s": 10.855,
+        "local_start_s": 10.495,
+        "local_end_s": 10.855
+      },
+      {
+        "word": "went.",
+        "start_s": 10.913,
+        "end_s": 11.517,
+        "local_start_s": 10.913,
+        "local_end_s": 11.517
+      }
+    ]
+  },
+  {
+    "scene_id": "scene_02",
+    "scene_title": "Rising Crisis",
+    "audio_file": "narration/scene_02.mp3",
+    "duration_s": 34.226,
+    "global_start_s": 11.517,
+    "global_end_s": 45.743,
+    "words": [
+      {
+        "word": "It",
+        "start_s": 11.517,
+        "end_s": 11.645,
+        "local_start_s": 0.0,
+        "local_end_s": 0.128
+      },
+      {
+        "word": "was",
+        "start_s": 11.691,
+        "end_s": 11.784,
+        "local_start_s": 0.174,
+        "local_end_s": 0.267
+      },
+      {
+        "word": "August",
+        "start_s": 11.865,
+        "end_s": 12.248,
+        "local_start_s": 0.348,
+        "local_end_s": 0.731
+      },
+      {
+        "word": "24th.",
+        "start_s": 12.283,
+        "end_s": 13.108,
+        "local_start_s": 0.766,
+        "local_end_s": 1.591
+      },
+      {
+        "word": "The",
+        "start_s": 13.433,
+        "end_s": 13.56,
+        "local_start_s": 1.916,
+        "local_end_s": 2.043
+      },
+      {
+        "word": "mountain",
+        "start_s": 13.63,
+        "end_s": 13.885,
+        "local_start_s": 2.113,
+        "local_end_s": 2.368
+      },
+      {
+        "word": "had",
+        "start_s": 13.92,
+        "end_s": 14.002,
+        "local_start_s": 2.403,
+        "local_end_s": 2.485
+      },
+      {
+        "word": "been",
+        "start_s": 14.036,
+        "end_s": 14.176,
+        "local_start_s": 2.519,
+        "local_end_s": 2.659
+      },
+      {
+        "word": "trembling",
+        "start_s": 14.211,
+        "end_s": 14.582,
+        "local_start_s": 2.694,
+        "local_end_s": 3.065
+      },
+      {
+        "word": "for",
+        "start_s": 14.64,
+        "end_s": 14.745,
+        "local_start_s": 3.123,
+        "local_end_s": 3.228
+      },
+      {
+        "word": "weeks",
+        "start_s": 14.826,
+        "end_s": 15.139,
+        "local_start_s": 3.309,
+        "local_end_s": 3.622
+      },
+      {
+        "word": "—",
+        "start_s": 15.313,
+        "end_s": 15.453,
+        "local_start_s": 3.796,
+        "local_end_s": 3.936
+      },
+      {
+        "word": "small,",
+        "start_s": 15.662,
+        "end_s": 16.161,
+        "local_start_s": 4.145,
+        "local_end_s": 4.644
+      },
+      {
+        "word": "rhythmic",
+        "start_s": 16.231,
+        "end_s": 16.614,
+        "local_start_s": 4.714,
+        "local_end_s": 5.097
+      },
+      {
+        "word": "shocks",
+        "start_s": 16.695,
+        "end_s": 17.078,
+        "local_start_s": 5.178,
+        "local_end_s": 5.561
+      },
+      {
+        "word": "the",
+        "start_s": 17.125,
+        "end_s": 17.194,
+        "local_start_s": 5.608,
+        "local_end_s": 5.677
+      },
+      {
+        "word": "locals",
+        "start_s": 17.276,
+        "end_s": 17.601,
+        "local_start_s": 5.759,
+        "local_end_s": 6.084
+      },
+      {
+        "word": "had",
+        "start_s": 17.635,
+        "end_s": 17.728,
+        "local_start_s": 6.118,
+        "local_end_s": 6.211
+      },
+      {
+        "word": "learned",
+        "start_s": 17.775,
+        "end_s": 17.995,
+        "local_start_s": 6.258,
+        "local_end_s": 6.478
+      },
+      {
+        "word": "to",
+        "start_s": 18.019,
+        "end_s": 18.077,
+        "local_start_s": 6.502,
+        "local_end_s": 6.56
+      },
+      {
+        "word": "ignore.",
+        "start_s": 18.158,
+        "end_s": 18.738,
+        "local_start_s": 6.641,
+        "local_end_s": 7.221
+      },
+      {
+        "word": "The",
+        "start_s": 19.122,
+        "end_s": 19.238,
+        "local_start_s": 7.605,
+        "local_end_s": 7.721
+      },
+      {
+        "word": "wells",
+        "start_s": 19.307,
+        "end_s": 19.551,
+        "local_start_s": 7.79,
+        "local_end_s": 8.034
+      },
+      {
+        "word": "had",
+        "start_s": 19.586,
+        "end_s": 19.667,
+        "local_start_s": 8.069,
+        "local_end_s": 8.15
+      },
+      {
+        "word": "gone",
+        "start_s": 19.725,
+        "end_s": 19.899,
+        "local_start_s": 8.208,
+        "local_end_s": 8.382
+      },
+      {
+        "word": "dry",
+        "start_s": 19.934,
+        "end_s": 20.155,
+        "local_start_s": 8.417,
+        "local_end_s": 8.638
+      },
+      {
+        "word": "days",
+        "start_s": 20.271,
+        "end_s": 20.55,
+        "local_start_s": 8.754,
+        "local_end_s": 9.033
+      },
+      {
+        "word": "earlier.",
+        "start_s": 20.596,
+        "end_s": 21.084,
+        "local_start_s": 9.079,
+        "local_end_s": 9.567
+      },
+      {
+        "word": "The",
+        "start_s": 21.235,
+        "end_s": 21.362,
+        "local_start_s": 9.718,
+        "local_end_s": 9.845
+      },
+      {
+        "word": "air",
+        "start_s": 21.432,
+        "end_s": 21.583,
+        "local_start_s": 9.915,
+        "local_end_s": 10.066
+      },
+      {
+        "word": "smelled",
+        "start_s": 21.664,
+        "end_s": 22.024,
+        "local_start_s": 10.147,
+        "local_end_s": 10.507
+      },
+      {
+        "word": "of",
+        "start_s": 22.059,
+        "end_s": 22.105,
+        "local_start_s": 10.542,
+        "local_end_s": 10.588
+      },
+      {
+        "word": "sulfur.",
+        "start_s": 22.175,
+        "end_s": 22.779,
+        "local_start_s": 10.658,
+        "local_end_s": 11.262
+      },
+      {
+        "word": "At",
+        "start_s": 23.22,
+        "end_s": 23.382,
+        "local_start_s": 11.703,
+        "local_end_s": 11.865
+      },
+      {
+        "word": "noon,",
+        "start_s": 23.475,
+        "end_s": 23.824,
+        "local_start_s": 11.958,
+        "local_end_s": 12.307
+      },
+      {
+        "word": "Vesuvius",
+        "start_s": 23.87,
+        "end_s": 24.404,
+        "local_start_s": 12.353,
+        "local_end_s": 12.887
+      },
+      {
+        "word": "opened.",
+        "start_s": 24.451,
+        "end_s": 24.938,
+        "local_start_s": 12.934,
+        "local_end_s": 13.421
+      },
+      {
+        "word": "A",
+        "start_s": 25.321,
+        "end_s": 25.391,
+        "local_start_s": 13.804,
+        "local_end_s": 13.874
+      },
+      {
+        "word": "column",
+        "start_s": 25.507,
+        "end_s": 25.809,
+        "local_start_s": 13.99,
+        "local_end_s": 14.292
+      },
+      {
+        "word": "of",
+        "start_s": 25.843,
+        "end_s": 25.89,
+        "local_start_s": 14.326,
+        "local_end_s": 14.373
+      },
+      {
+        "word": "rock",
+        "start_s": 25.983,
+        "end_s": 26.203,
+        "local_start_s": 14.466,
+        "local_end_s": 14.686
+      },
+      {
+        "word": "and",
+        "start_s": 26.25,
+        "end_s": 26.319,
+        "local_start_s": 14.733,
+        "local_end_s": 14.802
+      },
+      {
+        "word": "ash",
+        "start_s": 26.389,
+        "end_s": 26.586,
+        "local_start_s": 14.872,
+        "local_end_s": 15.069
+      },
+      {
+        "word": "rose",
+        "start_s": 26.656,
+        "end_s": 26.9,
+        "local_start_s": 15.139,
+        "local_end_s": 15.383
+      },
+      {
+        "word": "twenty",
+        "start_s": 26.935,
+        "end_s": 27.202,
+        "local_start_s": 15.418,
+        "local_end_s": 15.685
+      },
+      {
+        "word": "miles",
+        "start_s": 27.26,
+        "end_s": 27.573,
+        "local_start_s": 15.743,
+        "local_end_s": 16.056
+      },
+      {
+        "word": "into",
+        "start_s": 27.62,
+        "end_s": 27.736,
+        "local_start_s": 16.103,
+        "local_end_s": 16.219
+      },
+      {
+        "word": "the",
+        "start_s": 27.794,
+        "end_s": 27.864,
+        "local_start_s": 16.277,
+        "local_end_s": 16.347
+      },
+      {
+        "word": "sky.",
+        "start_s": 27.91,
+        "end_s": 28.421,
+        "local_start_s": 16.393,
+        "local_end_s": 16.904
+      },
+      {
+        "word": "It",
+        "start_s": 28.572,
+        "end_s": 28.723,
+        "local_start_s": 17.055,
+        "local_end_s": 17.206
+      },
+      {
+        "word": "blocked",
+        "start_s": 28.781,
+        "end_s": 29.106,
+        "local_start_s": 17.264,
+        "local_end_s": 17.589
+      },
+      {
+        "word": "the",
+        "start_s": 29.141,
+        "end_s": 29.21,
+        "local_start_s": 17.624,
+        "local_end_s": 17.693
+      },
+      {
+        "word": "sun.",
+        "start_s": 29.257,
+        "end_s": 29.733,
+        "local_start_s": 17.74,
+        "local_end_s": 18.216
+      },
+      {
+        "word": "By",
+        "start_s": 30.337,
+        "end_s": 30.522,
+        "local_start_s": 18.82,
+        "local_end_s": 19.005
+      },
+      {
+        "word": "mid-afternoon,",
+        "start_s": 30.604,
+        "end_s": 31.37,
+        "local_start_s": 19.087,
+        "local_end_s": 19.853
+      },
+      {
+        "word": "Pompeii",
+        "start_s": 31.451,
+        "end_s": 31.846,
+        "local_start_s": 19.934,
+        "local_end_s": 20.329
+      },
+      {
+        "word": "was",
+        "start_s": 31.904,
+        "end_s": 32.008,
+        "local_start_s": 20.387,
+        "local_end_s": 20.491
+      },
+      {
+        "word": "dark.",
+        "start_s": 32.078,
+        "end_s": 32.519,
+        "local_start_s": 20.561,
+        "local_end_s": 21.002
+      },
+      {
+        "word": "But",
+        "start_s": 32.67,
+        "end_s": 32.833,
+        "local_start_s": 21.153,
+        "local_end_s": 21.316
+      },
+      {
+        "word": "there",
+        "start_s": 32.867,
+        "end_s": 33.018,
+        "local_start_s": 21.35,
+        "local_end_s": 21.501
+      },
+      {
+        "word": "was",
+        "start_s": 33.053,
+        "end_s": 33.146,
+        "local_start_s": 21.536,
+        "local_end_s": 21.629
+      },
+      {
+        "word": "no",
+        "start_s": 33.227,
+        "end_s": 33.355,
+        "local_start_s": 21.71,
+        "local_end_s": 21.838
+      },
+      {
+        "word": "lava.",
+        "start_s": 33.448,
+        "end_s": 33.982,
+        "local_start_s": 21.931,
+        "local_end_s": 22.465
+      },
+      {
+        "word": "No",
+        "start_s": 34.226,
+        "end_s": 34.458,
+        "local_start_s": 22.709,
+        "local_end_s": 22.941
+      },
+      {
+        "word": "immediate",
+        "start_s": 34.551,
+        "end_s": 35.12,
+        "local_start_s": 23.034,
+        "local_end_s": 23.603
+      },
+      {
+        "word": "wave",
+        "start_s": 35.155,
+        "end_s": 35.375,
+        "local_start_s": 23.638,
+        "local_end_s": 23.858
+      },
+      {
+        "word": "of",
+        "start_s": 35.41,
+        "end_s": 35.457,
+        "local_start_s": 23.893,
+        "local_end_s": 23.94
+      },
+      {
+        "word": "destruction.",
+        "start_s": 35.515,
+        "end_s": 36.211,
+        "local_start_s": 23.998,
+        "local_end_s": 24.694
+      },
+      {
+        "word": "Just",
+        "start_s": 36.362,
+        "end_s": 36.583,
+        "local_start_s": 24.845,
+        "local_end_s": 25.066
+      },
+      {
+        "word": "falling",
+        "start_s": 36.652,
+        "end_s": 37.001,
+        "local_start_s": 25.135,
+        "local_end_s": 25.484
+      },
+      {
+        "word": "pumice,",
+        "start_s": 37.07,
+        "end_s": 37.674,
+        "local_start_s": 25.553,
+        "local_end_s": 26.157
+      },
+      {
+        "word": "a",
+        "start_s": 37.883,
+        "end_s": 37.941,
+        "local_start_s": 26.366,
+        "local_end_s": 26.424
+      },
+      {
+        "word": "sky",
+        "start_s": 38.057,
+        "end_s": 38.394,
+        "local_start_s": 26.54,
+        "local_end_s": 26.877
+      },
+      {
+        "word": "turning",
+        "start_s": 38.463,
+        "end_s": 38.754,
+        "local_start_s": 26.946,
+        "local_end_s": 27.237
+      },
+      {
+        "word": "black,",
+        "start_s": 38.812,
+        "end_s": 39.288,
+        "local_start_s": 27.295,
+        "local_end_s": 27.771
+      },
+      {
+        "word": "and",
+        "start_s": 39.439,
+        "end_s": 39.578,
+        "local_start_s": 27.922,
+        "local_end_s": 28.061
+      },
+      {
+        "word": "a",
+        "start_s": 39.636,
+        "end_s": 39.659,
+        "local_start_s": 28.119,
+        "local_end_s": 28.142
+      },
+      {
+        "word": "silence",
+        "start_s": 39.741,
+        "end_s": 40.17,
+        "local_start_s": 28.224,
+        "local_end_s": 28.653
+      },
+      {
+        "word": "between",
+        "start_s": 40.205,
+        "end_s": 40.518,
+        "local_start_s": 28.688,
+        "local_end_s": 29.001
+      },
+      {
+        "word": "tremors",
+        "start_s": 40.565,
+        "end_s": 40.971,
+        "local_start_s": 29.048,
+        "local_end_s": 29.454
+      },
+      {
+        "word": "that",
+        "start_s": 41.018,
+        "end_s": 41.145,
+        "local_start_s": 29.501,
+        "local_end_s": 29.628
+      },
+      {
+        "word": "felt",
+        "start_s": 41.203,
+        "end_s": 41.424,
+        "local_start_s": 29.686,
+        "local_end_s": 29.907
+      },
+      {
+        "word": "different",
+        "start_s": 41.494,
+        "end_s": 41.842,
+        "local_start_s": 29.977,
+        "local_end_s": 30.325
+      },
+      {
+        "word": "from",
+        "start_s": 41.877,
+        "end_s": 42.004,
+        "local_start_s": 30.36,
+        "local_end_s": 30.487
+      },
+      {
+        "word": "anything",
+        "start_s": 42.062,
+        "end_s": 42.388,
+        "local_start_s": 30.545,
+        "local_end_s": 30.871
+      },
+      {
+        "word": "before.",
+        "start_s": 42.446,
+        "end_s": 42.98,
+        "local_start_s": 30.929,
+        "local_end_s": 31.463
+      },
+      {
+        "word": "Some",
+        "start_s": 43.421,
+        "end_s": 43.63,
+        "local_start_s": 31.904,
+        "local_end_s": 32.113
+      },
+      {
+        "word": "people",
+        "start_s": 43.653,
+        "end_s": 43.92,
+        "local_start_s": 32.136,
+        "local_end_s": 32.403
+      },
+      {
+        "word": "recognized",
+        "start_s": 43.978,
+        "end_s": 44.593,
+        "local_start_s": 32.461,
+        "local_end_s": 33.076
+      },
+      {
+        "word": "it",
+        "start_s": 44.64,
+        "end_s": 44.698,
+        "local_start_s": 33.123,
+        "local_end_s": 33.181
+      },
+      {
+        "word": "for",
+        "start_s": 44.744,
+        "end_s": 44.826,
+        "local_start_s": 33.227,
+        "local_end_s": 33.309
+      },
+      {
+        "word": "what",
+        "start_s": 44.872,
+        "end_s": 45.0,
+        "local_start_s": 33.355,
+        "local_end_s": 33.483
+      },
+      {
+        "word": "it",
+        "start_s": 45.035,
+        "end_s": 45.093,
+        "local_start_s": 33.518,
+        "local_end_s": 33.576
+      },
+      {
+        "word": "was.",
+        "start_s": 45.139,
+        "end_s": 45.743,
+        "local_start_s": 33.622,
+        "local_end_s": 34.226
+      }
+    ]
+  },
+  {
+    "scene_id": "scene_03",
+    "scene_title": "Peak Crisis",
+    "audio_file": "narration/scene_03.mp3",
+    "duration_s": 60.186,
+    "global_start_s": 45.743,
+    "global_end_s": 105.929,
+    "words": [
+      {
+        "word": "They",
+        "start_s": 45.743,
+        "end_s": 45.917,
+        "local_start_s": 0.0,
+        "local_end_s": 0.174
+      },
+      {
+        "word": "moved",
+        "start_s": 45.975,
+        "end_s": 46.219,
+        "local_start_s": 0.232,
+        "local_end_s": 0.476
+      },
+      {
+        "word": "fast.",
+        "start_s": 46.277,
+        "end_s": 46.869,
+        "local_start_s": 0.534,
+        "local_end_s": 1.126
+      },
+      {
+        "word": "North",
+        "start_s": 47.078,
+        "end_s": 47.357,
+        "local_start_s": 1.335,
+        "local_end_s": 1.614
+      },
+      {
+        "word": "along",
+        "start_s": 47.403,
+        "end_s": 47.635,
+        "local_start_s": 1.66,
+        "local_end_s": 1.892
+      },
+      {
+        "word": "the",
+        "start_s": 47.682,
+        "end_s": 47.752,
+        "local_start_s": 1.939,
+        "local_end_s": 2.009
+      },
+      {
+        "word": "Via",
+        "start_s": 47.81,
+        "end_s": 48.007,
+        "local_start_s": 2.067,
+        "local_end_s": 2.264
+      },
+      {
+        "word": "Popilia",
+        "start_s": 48.065,
+        "end_s": 48.564,
+        "local_start_s": 2.322,
+        "local_end_s": 2.821
+      },
+      {
+        "word": "toward",
+        "start_s": 48.611,
+        "end_s": 48.866,
+        "local_start_s": 2.868,
+        "local_end_s": 3.123
+      },
+      {
+        "word": "Naples.",
+        "start_s": 48.936,
+        "end_s": 49.516,
+        "local_start_s": 3.193,
+        "local_end_s": 3.773
+      },
+      {
+        "word": "South",
+        "start_s": 49.644,
+        "end_s": 49.969,
+        "local_start_s": 3.901,
+        "local_end_s": 4.226
+      },
+      {
+        "word": "toward",
+        "start_s": 50.015,
+        "end_s": 50.236,
+        "local_start_s": 4.272,
+        "local_end_s": 4.493
+      },
+      {
+        "word": "the",
+        "start_s": 50.271,
+        "end_s": 50.341,
+        "local_start_s": 4.528,
+        "local_end_s": 4.598
+      },
+      {
+        "word": "harbor.",
+        "start_s": 50.387,
+        "end_s": 50.886,
+        "local_start_s": 4.644,
+        "local_end_s": 5.143
+      },
+      {
+        "word": "The",
+        "start_s": 51.165,
+        "end_s": 51.281,
+        "local_start_s": 5.422,
+        "local_end_s": 5.538
+      },
+      {
+        "word": "roads",
+        "start_s": 51.362,
+        "end_s": 51.641,
+        "local_start_s": 5.619,
+        "local_end_s": 5.898
+      },
+      {
+        "word": "outside",
+        "start_s": 51.676,
+        "end_s": 52.012,
+        "local_start_s": 5.933,
+        "local_end_s": 6.269
+      },
+      {
+        "word": "Pompeii",
+        "start_s": 52.047,
+        "end_s": 52.465,
+        "local_start_s": 6.304,
+        "local_end_s": 6.722
+      },
+      {
+        "word": "still",
+        "start_s": 52.535,
+        "end_s": 52.779,
+        "local_start_s": 6.792,
+        "local_end_s": 7.036
+      },
+      {
+        "word": "tell",
+        "start_s": 52.825,
+        "end_s": 52.976,
+        "local_start_s": 7.082,
+        "local_end_s": 7.233
+      },
+      {
+        "word": "the",
+        "start_s": 53.022,
+        "end_s": 53.092,
+        "local_start_s": 7.279,
+        "local_end_s": 7.349
+      },
+      {
+        "word": "story",
+        "start_s": 53.127,
+        "end_s": 53.522,
+        "local_start_s": 7.384,
+        "local_end_s": 7.779
+      },
+      {
+        "word": "—",
+        "start_s": 53.673,
+        "end_s": 53.87,
+        "local_start_s": 7.93,
+        "local_end_s": 8.127
+      },
+      {
+        "word": "archaeological",
+        "start_s": 54.021,
+        "end_s": 54.845,
+        "local_start_s": 8.278,
+        "local_end_s": 9.102
+      },
+      {
+        "word": "traces",
+        "start_s": 54.903,
+        "end_s": 55.321,
+        "local_start_s": 9.16,
+        "local_end_s": 9.578
+      },
+      {
+        "word": "of",
+        "start_s": 55.368,
+        "end_s": 55.414,
+        "local_start_s": 9.625,
+        "local_end_s": 9.671
+      },
+      {
+        "word": "abandoned",
+        "start_s": 55.472,
+        "end_s": 55.925,
+        "local_start_s": 9.729,
+        "local_end_s": 10.182
+      },
+      {
+        "word": "carts,",
+        "start_s": 55.983,
+        "end_s": 56.366,
+        "local_start_s": 10.24,
+        "local_end_s": 10.623
+      },
+      {
+        "word": "dropped",
+        "start_s": 56.447,
+        "end_s": 56.807,
+        "local_start_s": 10.704,
+        "local_end_s": 11.064
+      },
+      {
+        "word": "possessions,",
+        "start_s": 56.865,
+        "end_s": 57.574,
+        "local_start_s": 11.122,
+        "local_end_s": 11.831
+      },
+      {
+        "word": "furniture",
+        "start_s": 57.748,
+        "end_s": 58.177,
+        "local_start_s": 12.005,
+        "local_end_s": 12.434
+      },
+      {
+        "word": "left",
+        "start_s": 58.212,
+        "end_s": 58.421,
+        "local_start_s": 12.469,
+        "local_end_s": 12.678
+      },
+      {
+        "word": "mid-road",
+        "start_s": 58.502,
+        "end_s": 58.99,
+        "local_start_s": 12.759,
+        "local_end_s": 13.247
+      },
+      {
+        "word": "when",
+        "start_s": 59.025,
+        "end_s": 59.153,
+        "local_start_s": 13.282,
+        "local_end_s": 13.41
+      },
+      {
+        "word": "the",
+        "start_s": 59.188,
+        "end_s": 59.257,
+        "local_start_s": 13.445,
+        "local_end_s": 13.514
+      },
+      {
+        "word": "weight",
+        "start_s": 59.292,
+        "end_s": 59.49,
+        "local_start_s": 13.549,
+        "local_end_s": 13.747
+      },
+      {
+        "word": "became",
+        "start_s": 59.536,
+        "end_s": 59.838,
+        "local_start_s": 13.793,
+        "local_end_s": 14.095
+      },
+      {
+        "word": "too",
+        "start_s": 59.873,
+        "end_s": 60.024,
+        "local_start_s": 14.13,
+        "local_end_s": 14.281
+      },
+      {
+        "word": "much",
+        "start_s": 60.082,
+        "end_s": 60.267,
+        "local_start_s": 14.339,
+        "local_end_s": 14.524
+      },
+      {
+        "word": "to",
+        "start_s": 60.314,
+        "end_s": 60.372,
+        "local_start_s": 14.571,
+        "local_end_s": 14.629
+      },
+      {
+        "word": "carry.",
+        "start_s": 60.442,
+        "end_s": 60.952,
+        "local_start_s": 14.699,
+        "local_end_s": 15.209
+      },
+      {
+        "word": "They",
+        "start_s": 61.08,
+        "end_s": 61.231,
+        "local_start_s": 15.337,
+        "local_end_s": 15.488
+      },
+      {
+        "word": "had",
+        "start_s": 61.266,
+        "end_s": 61.37,
+        "local_start_s": 15.523,
+        "local_end_s": 15.627
+      },
+      {
+        "word": "hours.",
+        "start_s": 61.405,
+        "end_s": 62.055,
+        "local_start_s": 15.662,
+        "local_end_s": 16.312
+      },
+      {
+        "word": "The",
+        "start_s": 62.229,
+        "end_s": 62.346,
+        "local_start_s": 16.486,
+        "local_end_s": 16.603
+      },
+      {
+        "word": "first",
+        "start_s": 62.404,
+        "end_s": 62.624,
+        "local_start_s": 16.661,
+        "local_end_s": 16.881
+      },
+      {
+        "word": "phase",
+        "start_s": 62.682,
+        "end_s": 62.984,
+        "local_start_s": 16.939,
+        "local_end_s": 17.241
+      },
+      {
+        "word": "of",
+        "start_s": 63.019,
+        "end_s": 63.077,
+        "local_start_s": 17.276,
+        "local_end_s": 17.334
+      },
+      {
+        "word": "the",
+        "start_s": 63.123,
+        "end_s": 63.193,
+        "local_start_s": 17.38,
+        "local_end_s": 17.45
+      },
+      {
+        "word": "eruption",
+        "start_s": 63.251,
+        "end_s": 63.727,
+        "local_start_s": 17.508,
+        "local_end_s": 17.984
+      },
+      {
+        "word": "lasted",
+        "start_s": 63.808,
+        "end_s": 64.192,
+        "local_start_s": 18.065,
+        "local_end_s": 18.449
+      },
+      {
+        "word": "through",
+        "start_s": 64.215,
+        "end_s": 64.412,
+        "local_start_s": 18.472,
+        "local_end_s": 18.669
+      },
+      {
+        "word": "the",
+        "start_s": 64.447,
+        "end_s": 64.517,
+        "local_start_s": 18.704,
+        "local_end_s": 18.774
+      },
+      {
+        "word": "afternoon",
+        "start_s": 64.575,
+        "end_s": 65.109,
+        "local_start_s": 18.832,
+        "local_end_s": 19.366
+      },
+      {
+        "word": "and",
+        "start_s": 65.155,
+        "end_s": 65.225,
+        "local_start_s": 19.412,
+        "local_end_s": 19.482
+      },
+      {
+        "word": "into",
+        "start_s": 65.271,
+        "end_s": 65.434,
+        "local_start_s": 19.528,
+        "local_end_s": 19.691
+      },
+      {
+        "word": "the",
+        "start_s": 65.503,
+        "end_s": 65.573,
+        "local_start_s": 19.76,
+        "local_end_s": 19.83
+      },
+      {
+        "word": "evening.",
+        "start_s": 65.654,
+        "end_s": 66.084,
+        "local_start_s": 19.911,
+        "local_end_s": 20.341
+      },
+      {
+        "word": "But",
+        "start_s": 66.165,
+        "end_s": 66.339,
+        "local_start_s": 20.422,
+        "local_end_s": 20.596
+      },
+      {
+        "word": "Vesuvius",
+        "start_s": 66.386,
+        "end_s": 66.943,
+        "local_start_s": 20.643,
+        "local_end_s": 21.2
+      },
+      {
+        "word": "was",
+        "start_s": 67.001,
+        "end_s": 67.106,
+        "local_start_s": 21.258,
+        "local_end_s": 21.363
+      },
+      {
+        "word": "not",
+        "start_s": 67.187,
+        "end_s": 67.361,
+        "local_start_s": 21.444,
+        "local_end_s": 21.618
+      },
+      {
+        "word": "finished.",
+        "start_s": 67.431,
+        "end_s": 68.0,
+        "local_start_s": 21.688,
+        "local_end_s": 22.257
+      },
+      {
+        "word": "Around",
+        "start_s": 68.278,
+        "end_s": 68.65,
+        "local_start_s": 22.535,
+        "local_end_s": 22.907
+      },
+      {
+        "word": "midnight,",
+        "start_s": 68.743,
+        "end_s": 69.207,
+        "local_start_s": 23.0,
+        "local_end_s": 23.464
+      },
+      {
+        "word": "the",
+        "start_s": 69.242,
+        "end_s": 69.335,
+        "local_start_s": 23.499,
+        "local_end_s": 23.592
+      },
+      {
+        "word": "eruption",
+        "start_s": 69.393,
+        "end_s": 69.776,
+        "local_start_s": 23.65,
+        "local_end_s": 24.033
+      },
+      {
+        "word": "column",
+        "start_s": 69.846,
+        "end_s": 70.229,
+        "local_start_s": 24.103,
+        "local_end_s": 24.486
+      },
+      {
+        "word": "—",
+        "start_s": 70.252,
+        "end_s": 70.298,
+        "local_start_s": 24.509,
+        "local_end_s": 24.555
+      },
+      {
+        "word": "twenty",
+        "start_s": 70.345,
+        "end_s": 70.658,
+        "local_start_s": 24.602,
+        "local_end_s": 24.915
+      },
+      {
+        "word": "miles",
+        "start_s": 70.716,
+        "end_s": 71.03,
+        "local_start_s": 24.973,
+        "local_end_s": 25.287
+      },
+      {
+        "word": "high,",
+        "start_s": 71.099,
+        "end_s": 71.413,
+        "local_start_s": 25.356,
+        "local_end_s": 25.67
+      },
+      {
+        "word": "held",
+        "start_s": 71.459,
+        "end_s": 71.703,
+        "local_start_s": 25.716,
+        "local_end_s": 25.96
+      },
+      {
+        "word": "up",
+        "start_s": 71.761,
+        "end_s": 71.866,
+        "local_start_s": 26.018,
+        "local_end_s": 26.123
+      },
+      {
+        "word": "only",
+        "start_s": 71.947,
+        "end_s": 72.202,
+        "local_start_s": 26.204,
+        "local_end_s": 26.459
+      },
+      {
+        "word": "by",
+        "start_s": 72.26,
+        "end_s": 72.365,
+        "local_start_s": 26.517,
+        "local_end_s": 26.622
+      },
+      {
+        "word": "its",
+        "start_s": 72.423,
+        "end_s": 72.539,
+        "local_start_s": 26.68,
+        "local_end_s": 26.796
+      },
+      {
+        "word": "own",
+        "start_s": 72.585,
+        "end_s": 72.736,
+        "local_start_s": 26.842,
+        "local_end_s": 26.993
+      },
+      {
+        "word": "heat",
+        "start_s": 72.806,
+        "end_s": 73.061,
+        "local_start_s": 27.063,
+        "local_end_s": 27.318
+      },
+      {
+        "word": "—",
+        "start_s": 73.212,
+        "end_s": 73.305,
+        "local_start_s": 27.469,
+        "local_end_s": 27.562
+      },
+      {
+        "word": "collapsed.",
+        "start_s": 73.479,
+        "end_s": 74.234,
+        "local_start_s": 27.736,
+        "local_end_s": 28.491
+      },
+      {
+        "word": "What",
+        "start_s": 74.931,
+        "end_s": 75.128,
+        "local_start_s": 29.188,
+        "local_end_s": 29.385
+      },
+      {
+        "word": "followed",
+        "start_s": 75.198,
+        "end_s": 75.534,
+        "local_start_s": 29.455,
+        "local_end_s": 29.791
+      },
+      {
+        "word": "was",
+        "start_s": 75.569,
+        "end_s": 75.674,
+        "local_start_s": 29.826,
+        "local_end_s": 29.931
+      },
+      {
+        "word": "not",
+        "start_s": 75.743,
+        "end_s": 75.929,
+        "local_start_s": 30.0,
+        "local_end_s": 30.186
+      },
+      {
+        "word": "ash.",
+        "start_s": 76.01,
+        "end_s": 76.544,
+        "local_start_s": 30.267,
+        "local_end_s": 30.801
+      },
+      {
+        "word": "It",
+        "start_s": 76.753,
+        "end_s": 76.893,
+        "local_start_s": 31.01,
+        "local_end_s": 31.15
+      },
+      {
+        "word": "was",
+        "start_s": 76.939,
+        "end_s": 77.044,
+        "local_start_s": 31.196,
+        "local_end_s": 31.301
+      },
+      {
+        "word": "a",
+        "start_s": 77.102,
+        "end_s": 77.125,
+        "local_start_s": 31.359,
+        "local_end_s": 31.382
+      },
+      {
+        "word": "pyroclastic",
+        "start_s": 77.195,
+        "end_s": 78.147,
+        "local_start_s": 31.452,
+        "local_end_s": 32.404
+      },
+      {
+        "word": "surge.",
+        "start_s": 78.263,
+        "end_s": 78.901,
+        "local_start_s": 32.52,
+        "local_end_s": 33.158
+      },
+      {
+        "word": "A",
+        "start_s": 79.075,
+        "end_s": 79.145,
+        "local_start_s": 33.332,
+        "local_end_s": 33.402
+      },
+      {
+        "word": "wall",
+        "start_s": 79.296,
+        "end_s": 79.621,
+        "local_start_s": 33.553,
+        "local_end_s": 33.878
+      },
+      {
+        "word": "of",
+        "start_s": 79.714,
+        "end_s": 79.784,
+        "local_start_s": 33.971,
+        "local_end_s": 34.041
+      },
+      {
+        "word": "superheated",
+        "start_s": 79.9,
+        "end_s": 80.561,
+        "local_start_s": 34.157,
+        "local_end_s": 34.818
+      },
+      {
+        "word": "gas,",
+        "start_s": 80.62,
+        "end_s": 81.188,
+        "local_start_s": 34.877,
+        "local_end_s": 35.445
+      },
+      {
+        "word": "volcanic",
+        "start_s": 81.363,
+        "end_s": 81.897,
+        "local_start_s": 35.62,
+        "local_end_s": 36.154
+      },
+      {
+        "word": "rock,",
+        "start_s": 81.978,
+        "end_s": 82.338,
+        "local_start_s": 36.235,
+        "local_end_s": 36.595
+      },
+      {
+        "word": "and",
+        "start_s": 82.407,
+        "end_s": 82.57,
+        "local_start_s": 36.664,
+        "local_end_s": 36.827
+      },
+      {
+        "word": "toxic",
+        "start_s": 82.663,
+        "end_s": 83.209,
+        "local_start_s": 36.92,
+        "local_end_s": 37.466
+      },
+      {
+        "word": "debris",
+        "start_s": 83.29,
+        "end_s": 83.673,
+        "local_start_s": 37.547,
+        "local_end_s": 37.93
+      },
+      {
+        "word": "traveling",
+        "start_s": 83.731,
+        "end_s": 84.195,
+        "local_start_s": 37.988,
+        "local_end_s": 38.452
+      },
+      {
+        "word": "at",
+        "start_s": 84.242,
+        "end_s": 84.312,
+        "local_start_s": 38.499,
+        "local_end_s": 38.569
+      },
+      {
+        "word": "over",
+        "start_s": 84.37,
+        "end_s": 84.59,
+        "local_start_s": 38.627,
+        "local_end_s": 38.847
+      },
+      {
+        "word": "a",
+        "start_s": 84.66,
+        "end_s": 84.683,
+        "local_start_s": 38.917,
+        "local_end_s": 38.94
+      },
+      {
+        "word": "hundred",
+        "start_s": 84.764,
+        "end_s": 85.066,
+        "local_start_s": 39.021,
+        "local_end_s": 39.323
+      },
+      {
+        "word": "miles",
+        "start_s": 85.113,
+        "end_s": 85.368,
+        "local_start_s": 39.37,
+        "local_end_s": 39.625
+      },
+      {
+        "word": "per",
+        "start_s": 85.426,
+        "end_s": 85.565,
+        "local_start_s": 39.683,
+        "local_end_s": 39.822
+      },
+      {
+        "word": "hour.",
+        "start_s": 85.612,
+        "end_s": 86.03,
+        "local_start_s": 39.869,
+        "local_end_s": 40.287
+      },
+      {
+        "word": "Temperature:",
+        "start_s": 86.355,
+        "end_s": 87.086,
+        "local_start_s": 40.612,
+        "local_end_s": 41.343
+      },
+      {
+        "word": "more",
+        "start_s": 87.26,
+        "end_s": 87.423,
+        "local_start_s": 41.517,
+        "local_end_s": 41.68
+      },
+      {
+        "word": "than",
+        "start_s": 87.458,
+        "end_s": 87.586,
+        "local_start_s": 41.715,
+        "local_end_s": 41.843
+      },
+      {
+        "word": "five",
+        "start_s": 87.678,
+        "end_s": 87.992,
+        "local_start_s": 41.935,
+        "local_end_s": 42.249
+      },
+      {
+        "word": "hundred",
+        "start_s": 88.027,
+        "end_s": 88.305,
+        "local_start_s": 42.284,
+        "local_end_s": 42.562
+      },
+      {
+        "word": "degrees.",
+        "start_s": 88.352,
+        "end_s": 89.025,
+        "local_start_s": 42.609,
+        "local_end_s": 43.282
+      },
+      {
+        "word": "It",
+        "start_s": 89.269,
+        "end_s": 89.408,
+        "local_start_s": 43.526,
+        "local_end_s": 43.665
+      },
+      {
+        "word": "reached",
+        "start_s": 89.49,
+        "end_s": 89.733,
+        "local_start_s": 43.747,
+        "local_end_s": 43.99
+      },
+      {
+        "word": "Pompeii",
+        "start_s": 89.78,
+        "end_s": 90.209,
+        "local_start_s": 44.037,
+        "local_end_s": 44.466
+      },
+      {
+        "word": "in",
+        "start_s": 90.256,
+        "end_s": 90.314,
+        "local_start_s": 44.513,
+        "local_end_s": 44.571
+      },
+      {
+        "word": "under",
+        "start_s": 90.36,
+        "end_s": 90.534,
+        "local_start_s": 44.617,
+        "local_end_s": 44.791
+      },
+      {
+        "word": "four",
+        "start_s": 90.616,
+        "end_s": 90.848,
+        "local_start_s": 44.873,
+        "local_end_s": 45.105
+      },
+      {
+        "word": "minutes.",
+        "start_s": 90.918,
+        "end_s": 91.452,
+        "local_start_s": 45.175,
+        "local_end_s": 45.709
+      },
+      {
+        "word": "Therefore",
+        "start_s": 91.626,
+        "end_s": 92.09,
+        "local_start_s": 45.883,
+        "local_end_s": 46.347
+      },
+      {
+        "word": "everyone",
+        "start_s": 92.16,
+        "end_s": 92.613,
+        "local_start_s": 46.417,
+        "local_end_s": 46.87
+      },
+      {
+        "word": "who",
+        "start_s": 92.636,
+        "end_s": 92.717,
+        "local_start_s": 46.893,
+        "local_end_s": 46.974
+      },
+      {
+        "word": "had",
+        "start_s": 92.764,
+        "end_s": 92.856,
+        "local_start_s": 47.021,
+        "local_end_s": 47.113
+      },
+      {
+        "word": "remained",
+        "start_s": 92.926,
+        "end_s": 93.379,
+        "local_start_s": 47.183,
+        "local_end_s": 47.636
+      },
+      {
+        "word": "—",
+        "start_s": 93.46,
+        "end_s": 93.553,
+        "local_start_s": 47.717,
+        "local_end_s": 47.81
+      },
+      {
+        "word": "those",
+        "start_s": 93.681,
+        "end_s": 93.971,
+        "local_start_s": 47.938,
+        "local_end_s": 48.228
+      },
+      {
+        "word": "sheltering",
+        "start_s": 94.006,
+        "end_s": 94.47,
+        "local_start_s": 48.263,
+        "local_end_s": 48.727
+      },
+      {
+        "word": "indoors,",
+        "start_s": 94.528,
+        "end_s": 95.039,
+        "local_start_s": 48.785,
+        "local_end_s": 49.296
+      },
+      {
+        "word": "protecting",
+        "start_s": 95.074,
+        "end_s": 95.562,
+        "local_start_s": 49.331,
+        "local_end_s": 49.819
+      },
+      {
+        "word": "their",
+        "start_s": 95.596,
+        "end_s": 95.747,
+        "local_start_s": 49.853,
+        "local_end_s": 50.004
+      },
+      {
+        "word": "homes,",
+        "start_s": 95.794,
+        "end_s": 96.258,
+        "local_start_s": 50.051,
+        "local_end_s": 50.515
+      },
+      {
+        "word": "waiting",
+        "start_s": 96.374,
+        "end_s": 96.746,
+        "local_start_s": 50.631,
+        "local_end_s": 51.003
+      },
+      {
+        "word": "for",
+        "start_s": 96.804,
+        "end_s": 96.897,
+        "local_start_s": 51.061,
+        "local_end_s": 51.154
+      },
+      {
+        "word": "the",
+        "start_s": 96.943,
+        "end_s": 97.013,
+        "local_start_s": 51.2,
+        "local_end_s": 51.27
+      },
+      {
+        "word": "ash",
+        "start_s": 97.082,
+        "end_s": 97.338,
+        "local_start_s": 51.339,
+        "local_end_s": 51.595
+      },
+      {
+        "word": "to",
+        "start_s": 97.384,
+        "end_s": 97.454,
+        "local_start_s": 51.641,
+        "local_end_s": 51.711
+      },
+      {
+        "word": "stop",
+        "start_s": 97.524,
+        "end_s": 97.895,
+        "local_start_s": 51.781,
+        "local_end_s": 52.152
+      },
+      {
+        "word": "—",
+        "start_s": 98.011,
+        "end_s": 98.243,
+        "local_start_s": 52.268,
+        "local_end_s": 52.5
+      },
+      {
+        "word": "ceased",
+        "start_s": 98.452,
+        "end_s": 98.824,
+        "local_start_s": 52.709,
+        "local_end_s": 53.081
+      },
+      {
+        "word": "to",
+        "start_s": 98.859,
+        "end_s": 98.94,
+        "local_start_s": 53.116,
+        "local_end_s": 53.197
+      },
+      {
+        "word": "exist",
+        "start_s": 99.056,
+        "end_s": 99.462,
+        "local_start_s": 53.313,
+        "local_end_s": 53.719
+      },
+      {
+        "word": "in",
+        "start_s": 99.532,
+        "end_s": 99.613,
+        "local_start_s": 53.789,
+        "local_end_s": 53.87
+      },
+      {
+        "word": "a",
+        "start_s": 99.66,
+        "end_s": 99.683,
+        "local_start_s": 53.917,
+        "local_end_s": 53.94
+      },
+      {
+        "word": "moment",
+        "start_s": 99.764,
+        "end_s": 100.078,
+        "local_start_s": 54.021,
+        "local_end_s": 54.335
+      },
+      {
+        "word": "that",
+        "start_s": 100.113,
+        "end_s": 100.229,
+        "local_start_s": 54.37,
+        "local_end_s": 54.486
+      },
+      {
+        "word": "left",
+        "start_s": 100.287,
+        "end_s": 100.461,
+        "local_start_s": 54.544,
+        "local_end_s": 54.718
+      },
+      {
+        "word": "no",
+        "start_s": 100.554,
+        "end_s": 100.74,
+        "local_start_s": 54.811,
+        "local_end_s": 54.997
+      },
+      {
+        "word": "time",
+        "start_s": 100.821,
+        "end_s": 101.099,
+        "local_start_s": 55.078,
+        "local_end_s": 55.356
+      },
+      {
+        "word": "for",
+        "start_s": 101.146,
+        "end_s": 101.25,
+        "local_start_s": 55.403,
+        "local_end_s": 55.507
+      },
+      {
+        "word": "decisions.",
+        "start_s": 101.32,
+        "end_s": 102.04,
+        "local_start_s": 55.577,
+        "local_end_s": 56.297
+      },
+      {
+        "word": "The",
+        "start_s": 102.365,
+        "end_s": 102.504,
+        "local_start_s": 56.622,
+        "local_end_s": 56.761
+      },
+      {
+        "word": "city",
+        "start_s": 102.586,
+        "end_s": 102.876,
+        "local_start_s": 56.843,
+        "local_end_s": 57.133
+      },
+      {
+        "word": "was",
+        "start_s": 102.934,
+        "end_s": 103.05,
+        "local_start_s": 57.191,
+        "local_end_s": 57.307
+      },
+      {
+        "word": "buried",
+        "start_s": 103.143,
+        "end_s": 103.526,
+        "local_start_s": 57.4,
+        "local_end_s": 57.783
+      },
+      {
+        "word": "under",
+        "start_s": 103.596,
+        "end_s": 103.828,
+        "local_start_s": 57.853,
+        "local_end_s": 58.085
+      },
+      {
+        "word": "twenty",
+        "start_s": 103.897,
+        "end_s": 104.234,
+        "local_start_s": 58.154,
+        "local_end_s": 58.491
+      },
+      {
+        "word": "feet",
+        "start_s": 104.315,
+        "end_s": 104.559,
+        "local_start_s": 58.572,
+        "local_end_s": 58.816
+      },
+      {
+        "word": "of",
+        "start_s": 104.617,
+        "end_s": 104.664,
+        "local_start_s": 58.874,
+        "local_end_s": 58.921
+      },
+      {
+        "word": "volcanic",
+        "start_s": 104.745,
+        "end_s": 105.267,
+        "local_start_s": 59.002,
+        "local_end_s": 59.524
+      },
+      {
+        "word": "rock.",
+        "start_s": 105.337,
+        "end_s": 105.929,
+        "local_start_s": 59.594,
+        "local_end_s": 60.186
+      }
+    ]
+  },
+  {
+    "scene_id": "scene_04",
+    "scene_title": "Climax",
+    "audio_file": "narration/scene_04.mp3",
+    "duration_s": 21.92,
+    "global_start_s": 105.929,
+    "global_end_s": 127.849,
+    "words": [
+      {
+        "word": "The",
+        "start_s": 105.929,
+        "end_s": 106.068,
+        "local_start_s": 0.0,
+        "local_end_s": 0.139
+      },
+      {
+        "word": "sixteen",
+        "start_s": 106.15,
+        "end_s": 106.614,
+        "local_start_s": 0.221,
+        "local_end_s": 0.685
+      },
+      {
+        "word": "thousand",
+        "start_s": 106.684,
+        "end_s": 107.055,
+        "local_start_s": 0.755,
+        "local_end_s": 1.126
+      },
+      {
+        "word": "who",
+        "start_s": 107.09,
+        "end_s": 107.183,
+        "local_start_s": 1.161,
+        "local_end_s": 1.254
+      },
+      {
+        "word": "had",
+        "start_s": 107.218,
+        "end_s": 107.299,
+        "local_start_s": 1.289,
+        "local_end_s": 1.37
+      },
+      {
+        "word": "escaped",
+        "start_s": 107.345,
+        "end_s": 107.821,
+        "local_start_s": 1.416,
+        "local_end_s": 1.892
+      },
+      {
+        "word": "arrived",
+        "start_s": 107.868,
+        "end_s": 108.286,
+        "local_start_s": 1.939,
+        "local_end_s": 2.357
+      },
+      {
+        "word": "in",
+        "start_s": 108.321,
+        "end_s": 108.379,
+        "local_start_s": 2.392,
+        "local_end_s": 2.45
+      },
+      {
+        "word": "nearby",
+        "start_s": 108.437,
+        "end_s": 108.75,
+        "local_start_s": 2.508,
+        "local_end_s": 2.821
+      },
+      {
+        "word": "cities",
+        "start_s": 108.831,
+        "end_s": 109.168,
+        "local_start_s": 2.902,
+        "local_end_s": 3.239
+      },
+      {
+        "word": "as",
+        "start_s": 109.215,
+        "end_s": 109.308,
+        "local_start_s": 3.286,
+        "local_end_s": 3.379
+      },
+      {
+        "word": "something",
+        "start_s": 109.366,
+        "end_s": 109.667,
+        "local_start_s": 3.437,
+        "local_end_s": 3.738
+      },
+      {
+        "word": "Roman",
+        "start_s": 109.76,
+        "end_s": 110.039,
+        "local_start_s": 3.831,
+        "local_end_s": 4.11
+      },
+      {
+        "word": "society",
+        "start_s": 110.109,
+        "end_s": 110.596,
+        "local_start_s": 4.18,
+        "local_end_s": 4.667
+      },
+      {
+        "word": "had",
+        "start_s": 110.654,
+        "end_s": 110.794,
+        "local_start_s": 4.725,
+        "local_end_s": 4.865
+      },
+      {
+        "word": "no",
+        "start_s": 110.886,
+        "end_s": 111.072,
+        "local_start_s": 4.957,
+        "local_end_s": 5.143
+      },
+      {
+        "word": "word",
+        "start_s": 111.165,
+        "end_s": 111.397,
+        "local_start_s": 5.236,
+        "local_end_s": 5.468
+      },
+      {
+        "word": "for.",
+        "start_s": 111.467,
+        "end_s": 111.862,
+        "local_start_s": 5.538,
+        "local_end_s": 5.933
+      },
+      {
+        "word": "No",
+        "start_s": 112.373,
+        "end_s": 112.535,
+        "local_start_s": 6.444,
+        "local_end_s": 6.606
+      },
+      {
+        "word": "land.",
+        "start_s": 112.628,
+        "end_s": 113.116,
+        "local_start_s": 6.699,
+        "local_end_s": 7.187
+      },
+      {
+        "word": "No",
+        "start_s": 113.29,
+        "end_s": 113.441,
+        "local_start_s": 7.361,
+        "local_end_s": 7.512
+      },
+      {
+        "word": "property.",
+        "start_s": 113.522,
+        "end_s": 114.195,
+        "local_start_s": 7.593,
+        "local_end_s": 8.266
+      },
+      {
+        "word": "No",
+        "start_s": 114.52,
+        "end_s": 114.683,
+        "local_start_s": 8.591,
+        "local_end_s": 8.754
+      },
+      {
+        "word": "record",
+        "start_s": 114.799,
+        "end_s": 115.066,
+        "local_start_s": 8.87,
+        "local_end_s": 9.137
+      },
+      {
+        "word": "of",
+        "start_s": 115.101,
+        "end_s": 115.147,
+        "local_start_s": 9.172,
+        "local_end_s": 9.218
+      },
+      {
+        "word": "who",
+        "start_s": 115.194,
+        "end_s": 115.298,
+        "local_start_s": 9.265,
+        "local_end_s": 9.369
+      },
+      {
+        "word": "they",
+        "start_s": 115.356,
+        "end_s": 115.461,
+        "local_start_s": 9.427,
+        "local_end_s": 9.532
+      },
+      {
+        "word": "were.",
+        "start_s": 115.519,
+        "end_s": 115.925,
+        "local_start_s": 9.59,
+        "local_end_s": 9.996
+      },
+      {
+        "word": "Naples.",
+        "start_s": 116.308,
+        "end_s": 116.947,
+        "local_start_s": 10.379,
+        "local_end_s": 11.018
+      },
+      {
+        "word": "Capua.",
+        "start_s": 117.098,
+        "end_s": 117.806,
+        "local_start_s": 11.169,
+        "local_end_s": 11.877
+      },
+      {
+        "word": "Rome.",
+        "start_s": 118.015,
+        "end_s": 118.595,
+        "local_start_s": 12.086,
+        "local_end_s": 12.666
+      },
+      {
+        "word": "They",
+        "start_s": 118.921,
+        "end_s": 119.083,
+        "local_start_s": 12.992,
+        "local_end_s": 13.154
+      },
+      {
+        "word": "were",
+        "start_s": 119.13,
+        "end_s": 119.257,
+        "local_start_s": 13.201,
+        "local_end_s": 13.328
+      },
+      {
+        "word": "absorbed",
+        "start_s": 119.292,
+        "end_s": 119.722,
+        "local_start_s": 13.363,
+        "local_end_s": 13.793
+      },
+      {
+        "word": "silently",
+        "start_s": 119.803,
+        "end_s": 120.372,
+        "local_start_s": 13.874,
+        "local_end_s": 14.443
+      },
+      {
+        "word": "into",
+        "start_s": 120.43,
+        "end_s": 120.592,
+        "local_start_s": 14.501,
+        "local_end_s": 14.663
+      },
+      {
+        "word": "a",
+        "start_s": 120.685,
+        "end_s": 120.708,
+        "local_start_s": 14.756,
+        "local_end_s": 14.779
+      },
+      {
+        "word": "civilization",
+        "start_s": 120.778,
+        "end_s": 121.44,
+        "local_start_s": 14.849,
+        "local_end_s": 15.511
+      },
+      {
+        "word": "that",
+        "start_s": 121.475,
+        "end_s": 121.591,
+        "local_start_s": 15.546,
+        "local_end_s": 15.662
+      },
+      {
+        "word": "moved",
+        "start_s": 121.637,
+        "end_s": 121.87,
+        "local_start_s": 15.708,
+        "local_end_s": 15.941
+      },
+      {
+        "word": "on",
+        "start_s": 121.916,
+        "end_s": 122.009,
+        "local_start_s": 15.987,
+        "local_end_s": 16.08
+      },
+      {
+        "word": "without",
+        "start_s": 122.055,
+        "end_s": 122.357,
+        "local_start_s": 16.126,
+        "local_end_s": 16.428
+      },
+      {
+        "word": "them.",
+        "start_s": 122.392,
+        "end_s": 122.729,
+        "local_start_s": 16.463,
+        "local_end_s": 16.8
+      },
+      {
+        "word": "Not",
+        "start_s": 123.332,
+        "end_s": 123.541,
+        "local_start_s": 17.403,
+        "local_end_s": 17.612
+      },
+      {
+        "word": "one",
+        "start_s": 123.623,
+        "end_s": 123.808,
+        "local_start_s": 17.694,
+        "local_end_s": 17.879
+      },
+      {
+        "word": "survivor",
+        "start_s": 123.843,
+        "end_s": 124.319,
+        "local_start_s": 17.914,
+        "local_end_s": 18.39
+      },
+      {
+        "word": "ever",
+        "start_s": 124.389,
+        "end_s": 124.563,
+        "local_start_s": 18.46,
+        "local_end_s": 18.634
+      },
+      {
+        "word": "wrote",
+        "start_s": 124.61,
+        "end_s": 124.819,
+        "local_start_s": 18.681,
+        "local_end_s": 18.89
+      },
+      {
+        "word": "down",
+        "start_s": 124.842,
+        "end_s": 125.016,
+        "local_start_s": 18.913,
+        "local_end_s": 19.087
+      },
+      {
+        "word": "what",
+        "start_s": 125.051,
+        "end_s": 125.167,
+        "local_start_s": 19.122,
+        "local_end_s": 19.238
+      },
+      {
+        "word": "they",
+        "start_s": 125.202,
+        "end_s": 125.306,
+        "local_start_s": 19.273,
+        "local_end_s": 19.377
+      },
+      {
+        "word": "had",
+        "start_s": 125.353,
+        "end_s": 125.445,
+        "local_start_s": 19.424,
+        "local_end_s": 19.516
+      },
+      {
+        "word": "seen.",
+        "start_s": 125.492,
+        "end_s": 125.921,
+        "local_start_s": 19.563,
+        "local_end_s": 19.992
+      },
+      {
+        "word": "Not",
+        "start_s": 126.165,
+        "end_s": 126.316,
+        "local_start_s": 20.236,
+        "local_end_s": 20.387
+      },
+      {
+        "word": "a",
+        "start_s": 126.351,
+        "end_s": 126.374,
+        "local_start_s": 20.422,
+        "local_end_s": 20.445
+      },
+      {
+        "word": "single",
+        "start_s": 126.421,
+        "end_s": 126.723,
+        "local_start_s": 20.492,
+        "local_end_s": 20.794
+      },
+      {
+        "word": "account",
+        "start_s": 126.746,
+        "end_s": 127.059,
+        "local_start_s": 20.817,
+        "local_end_s": 21.13
+      },
+      {
+        "word": "exists.",
+        "start_s": 127.106,
+        "end_s": 127.849,
+        "local_start_s": 21.177,
+        "local_end_s": 21.92
+      }
+    ]
+  },
+  {
+    "scene_id": "scene_05",
+    "scene_title": "Resolution",
+    "audio_file": "narration/scene_05.mp3",
+    "duration_s": 21.037,
+    "global_start_s": 127.849,
+    "global_end_s": 148.886,
+    "words": [
+      {
+        "word": "We",
+        "start_s": 127.849,
+        "end_s": 128.035,
+        "local_start_s": 0.0,
+        "local_end_s": 0.186
+      },
+      {
+        "word": "know",
+        "start_s": 128.104,
+        "end_s": 128.29,
+        "local_start_s": 0.255,
+        "local_end_s": 0.441
+      },
+      {
+        "word": "Pompeii",
+        "start_s": 128.371,
+        "end_s": 128.882,
+        "local_start_s": 0.522,
+        "local_end_s": 1.033
+      },
+      {
+        "word": "through",
+        "start_s": 128.952,
+        "end_s": 129.196,
+        "local_start_s": 1.103,
+        "local_end_s": 1.347
+      },
+      {
+        "word": "its",
+        "start_s": 129.242,
+        "end_s": 129.358,
+        "local_start_s": 1.393,
+        "local_end_s": 1.509
+      },
+      {
+        "word": "dead",
+        "start_s": 129.44,
+        "end_s": 129.741,
+        "local_start_s": 1.591,
+        "local_end_s": 1.892
+      },
+      {
+        "word": "—",
+        "start_s": 129.892,
+        "end_s": 130.043,
+        "local_start_s": 2.043,
+        "local_end_s": 2.194
+      },
+      {
+        "word": "the",
+        "start_s": 130.252,
+        "end_s": 130.345,
+        "local_start_s": 2.403,
+        "local_end_s": 2.496
+      },
+      {
+        "word": "plaster",
+        "start_s": 130.426,
+        "end_s": 130.879,
+        "local_start_s": 2.577,
+        "local_end_s": 3.03
+      },
+      {
+        "word": "casts,",
+        "start_s": 130.949,
+        "end_s": 131.46,
+        "local_start_s": 3.1,
+        "local_end_s": 3.611
+      },
+      {
+        "word": "the",
+        "start_s": 131.541,
+        "end_s": 131.634,
+        "local_start_s": 3.692,
+        "local_end_s": 3.785
+      },
+      {
+        "word": "painted",
+        "start_s": 131.704,
+        "end_s": 132.075,
+        "local_start_s": 3.855,
+        "local_end_s": 4.226
+      },
+      {
+        "word": "walls,",
+        "start_s": 132.133,
+        "end_s": 132.505,
+        "local_start_s": 4.284,
+        "local_end_s": 4.656
+      },
+      {
+        "word": "the",
+        "start_s": 132.539,
+        "end_s": 132.609,
+        "local_start_s": 4.69,
+        "local_end_s": 4.76
+      },
+      {
+        "word": "bodies",
+        "start_s": 132.702,
+        "end_s": 133.097,
+        "local_start_s": 4.853,
+        "local_end_s": 5.248
+      },
+      {
+        "word": "frozen",
+        "start_s": 133.19,
+        "end_s": 133.677,
+        "local_start_s": 5.341,
+        "local_end_s": 5.828
+      },
+      {
+        "word": "mid-motion",
+        "start_s": 133.793,
+        "end_s": 134.443,
+        "local_start_s": 5.944,
+        "local_end_s": 6.594
+      },
+      {
+        "word": "in",
+        "start_s": 134.49,
+        "end_s": 134.548,
+        "local_start_s": 6.641,
+        "local_end_s": 6.699
+      },
+      {
+        "word": "volcanic",
+        "start_s": 134.641,
+        "end_s": 135.175,
+        "local_start_s": 6.792,
+        "local_end_s": 7.326
+      },
+      {
+        "word": "ash.",
+        "start_s": 135.256,
+        "end_s": 135.709,
+        "local_start_s": 7.407,
+        "local_end_s": 7.86
+      },
+      {
+        "word": "But",
+        "start_s": 136.092,
+        "end_s": 136.266,
+        "local_start_s": 8.243,
+        "local_end_s": 8.417
+      },
+      {
+        "word": "the",
+        "start_s": 136.301,
+        "end_s": 136.371,
+        "local_start_s": 8.452,
+        "local_end_s": 8.522
+      },
+      {
+        "word": "real",
+        "start_s": 136.487,
+        "end_s": 136.719,
+        "local_start_s": 8.638,
+        "local_end_s": 8.87
+      },
+      {
+        "word": "story",
+        "start_s": 136.777,
+        "end_s": 137.067,
+        "local_start_s": 8.928,
+        "local_end_s": 9.218
+      },
+      {
+        "word": "of",
+        "start_s": 137.114,
+        "end_s": 137.172,
+        "local_start_s": 9.265,
+        "local_end_s": 9.323
+      },
+      {
+        "word": "Pompeii",
+        "start_s": 137.241,
+        "end_s": 137.752,
+        "local_start_s": 9.392,
+        "local_end_s": 9.903
+      },
+      {
+        "word": "is",
+        "start_s": 137.822,
+        "end_s": 137.926,
+        "local_start_s": 9.973,
+        "local_end_s": 10.077
+      },
+      {
+        "word": "not",
+        "start_s": 138.019,
+        "end_s": 138.217,
+        "local_start_s": 10.17,
+        "local_end_s": 10.368
+      },
+      {
+        "word": "who",
+        "start_s": 138.252,
+        "end_s": 138.379,
+        "local_start_s": 10.403,
+        "local_end_s": 10.53
+      },
+      {
+        "word": "stayed.",
+        "start_s": 138.449,
+        "end_s": 138.995,
+        "local_start_s": 10.6,
+        "local_end_s": 11.146
+      },
+      {
+        "word": "It",
+        "start_s": 139.378,
+        "end_s": 139.529,
+        "local_start_s": 11.529,
+        "local_end_s": 11.68
+      },
+      {
+        "word": "is",
+        "start_s": 139.575,
+        "end_s": 139.645,
+        "local_start_s": 11.726,
+        "local_end_s": 11.796
+      },
+      {
+        "word": "the",
+        "start_s": 139.703,
+        "end_s": 139.772,
+        "local_start_s": 11.854,
+        "local_end_s": 11.923
+      },
+      {
+        "word": "people",
+        "start_s": 139.842,
+        "end_s": 140.167,
+        "local_start_s": 11.993,
+        "local_end_s": 12.318
+      },
+      {
+        "word": "who",
+        "start_s": 140.19,
+        "end_s": 140.307,
+        "local_start_s": 12.341,
+        "local_end_s": 12.458
+      },
+      {
+        "word": "read",
+        "start_s": 140.399,
+        "end_s": 140.597,
+        "local_start_s": 12.55,
+        "local_end_s": 12.748
+      },
+      {
+        "word": "the",
+        "start_s": 140.643,
+        "end_s": 140.713,
+        "local_start_s": 12.794,
+        "local_end_s": 12.864
+      },
+      {
+        "word": "mountain",
+        "start_s": 140.783,
+        "end_s": 141.108,
+        "local_start_s": 12.934,
+        "local_end_s": 13.259
+      },
+      {
+        "word": "correctly,",
+        "start_s": 141.177,
+        "end_s": 141.885,
+        "local_start_s": 13.328,
+        "local_end_s": 14.036
+      },
+      {
+        "word": "walked",
+        "start_s": 142.06,
+        "end_s": 142.42,
+        "local_start_s": 14.211,
+        "local_end_s": 14.571
+      },
+      {
+        "word": "away",
+        "start_s": 142.454,
+        "end_s": 142.663,
+        "local_start_s": 14.605,
+        "local_end_s": 14.814
+      },
+      {
+        "word": "from",
+        "start_s": 142.71,
+        "end_s": 142.861,
+        "local_start_s": 14.861,
+        "local_end_s": 15.012
+      },
+      {
+        "word": "everything",
+        "start_s": 142.942,
+        "end_s": 143.372,
+        "local_start_s": 15.093,
+        "local_end_s": 15.523
+      },
+      {
+        "word": "they",
+        "start_s": 143.418,
+        "end_s": 143.534,
+        "local_start_s": 15.569,
+        "local_end_s": 15.685
+      },
+      {
+        "word": "had",
+        "start_s": 143.581,
+        "end_s": 143.685,
+        "local_start_s": 15.732,
+        "local_end_s": 15.836
+      },
+      {
+        "word": "ever",
+        "start_s": 143.755,
+        "end_s": 143.975,
+        "local_start_s": 15.906,
+        "local_end_s": 16.126
+      },
+      {
+        "word": "owned,",
+        "start_s": 144.045,
+        "end_s": 144.463,
+        "local_start_s": 16.196,
+        "local_end_s": 16.614
+      },
+      {
+        "word": "and",
+        "start_s": 144.614,
+        "end_s": 144.765,
+        "local_start_s": 16.765,
+        "local_end_s": 16.916
+      },
+      {
+        "word": "disappeared",
+        "start_s": 144.835,
+        "end_s": 145.369,
+        "local_start_s": 16.986,
+        "local_end_s": 17.52
+      },
+      {
+        "word": "so",
+        "start_s": 145.427,
+        "end_s": 145.612,
+        "local_start_s": 17.578,
+        "local_end_s": 17.763
+      },
+      {
+        "word": "completely",
+        "start_s": 145.694,
+        "end_s": 146.216,
+        "local_start_s": 17.845,
+        "local_end_s": 18.367
+      },
+      {
+        "word": "into",
+        "start_s": 146.274,
+        "end_s": 146.413,
+        "local_start_s": 18.425,
+        "local_end_s": 18.564
+      },
+      {
+        "word": "history",
+        "start_s": 146.495,
+        "end_s": 146.866,
+        "local_start_s": 18.646,
+        "local_end_s": 19.017
+      },
+      {
+        "word": "that",
+        "start_s": 146.924,
+        "end_s": 147.052,
+        "local_start_s": 19.075,
+        "local_end_s": 19.203
+      },
+      {
+        "word": "we",
+        "start_s": 147.087,
+        "end_s": 147.168,
+        "local_start_s": 19.238,
+        "local_end_s": 19.319
+      },
+      {
+        "word": "still",
+        "start_s": 147.226,
+        "end_s": 147.47,
+        "local_start_s": 19.377,
+        "local_end_s": 19.621
+      },
+      {
+        "word": "do",
+        "start_s": 147.528,
+        "end_s": 147.609,
+        "local_start_s": 19.679,
+        "local_end_s": 19.76
+      },
+      {
+        "word": "not",
+        "start_s": 147.667,
+        "end_s": 147.795,
+        "local_start_s": 19.818,
+        "local_end_s": 19.946
+      },
+      {
+        "word": "know",
+        "start_s": 147.83,
+        "end_s": 147.969,
+        "local_start_s": 19.981,
+        "local_end_s": 20.12
+      },
+      {
+        "word": "their",
+        "start_s": 148.016,
+        "end_s": 148.167,
+        "local_start_s": 20.167,
+        "local_end_s": 20.318
+      },
+      {
+        "word": "names.",
+        "start_s": 148.213,
+        "end_s": 148.886,
+        "local_start_s": 20.364,
+        "local_end_s": 21.037
+      }
+    ]
+  },
+  {
+    "scene_id": "scene_06",
+    "scene_title": "Outro",
+    "audio_file": "narration/scene_06.mp3",
+    "duration_s": 3.622,
+    "global_start_s": 148.886,
+    "global_end_s": 152.508,
+    "words": [
+      {
+        "word": "Follow",
+        "start_s": 148.886,
+        "end_s": 149.258,
+        "local_start_s": 0.0,
+        "local_end_s": 0.372
+      },
+      {
+        "word": "Reimagined",
+        "start_s": 149.35,
+        "end_s": 149.908,
+        "local_start_s": 0.464,
+        "local_end_s": 1.022
+      },
+      {
+        "word": "Realms",
+        "start_s": 149.954,
+        "end_s": 150.221,
+        "local_start_s": 1.068,
+        "local_end_s": 1.335
+      },
+      {
+        "word": "for",
+        "start_s": 150.268,
+        "end_s": 150.372,
+        "local_start_s": 1.382,
+        "local_end_s": 1.486
+      },
+      {
+        "word": "more",
+        "start_s": 150.43,
+        "end_s": 150.604,
+        "local_start_s": 1.544,
+        "local_end_s": 1.718
+      },
+      {
+        "word": "stories",
+        "start_s": 150.639,
+        "end_s": 150.999,
+        "local_start_s": 1.753,
+        "local_end_s": 2.113
+      },
+      {
+        "word": "the",
+        "start_s": 151.034,
+        "end_s": 151.104,
+        "local_start_s": 2.148,
+        "local_end_s": 2.218
+      },
+      {
+        "word": "history",
+        "start_s": 151.162,
+        "end_s": 151.498,
+        "local_start_s": 2.276,
+        "local_end_s": 2.612
+      },
+      {
+        "word": "books",
+        "start_s": 151.545,
+        "end_s": 151.765,
+        "local_start_s": 2.659,
+        "local_end_s": 2.879
+      },
+      {
+        "word": "forgot.",
+        "start_s": 151.812,
+        "end_s": 152.508,
+        "local_start_s": 2.926,
+        "local_end_s": 3.622
+      }
+    ]
+  }
+]

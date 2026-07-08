@@ -90,9 +90,16 @@ When Claude usage quota is high, activate Conservation Mode: Codex becomes the p
 
 Tony wants screenshot renaming to use Gemini vision first, then OpenAI vision as fallback. OCR is not the default path and should only be used if Tony explicitly requests OCR or a dedicated OCR workflow.
 
-### 2026-05-03 — Single Shared Secrets File
+### 2026-05-03 — Single Shared Secrets File (HARD RULE — ALL AGENTS)
 
-Tony uses `~/.env-secrets` as the single shared secrets file. `~/.mcp-secrets.env` is stale and should not be referenced by active workspace instructions.
+`~/.env-secrets` is the ONE AND ONLY place any API key ever lives. This applies to Claude Code, Codex, Gemini CLI, VS Code, and every other agent or tool operating in Agent-OS.
+
+**Hard rules:**
+- Never hardcode a live API key in any file — not `.env`, not `.json`, not `.yaml`, not `.toml`, not shell scripts, nowhere
+- Never reference `~/.mcp-secrets.env` — it is stale and does not exist
+- Config files always use placeholder references like `${KEY_NAME}` — never real values
+- If a tool needs a key, it reads it from the environment after `source ~/.env-secrets` has been run via `~/.agent-bootstrap.sh`
+- Any agent that finds a hardcoded key in a file must replace it with a placeholder immediately and flag it to Tony
 
 ### 2026-05-03 — Shared Agent Bootstrap Draft
 
@@ -440,4 +447,279 @@ The sharp native module SIGKILL's the install without this flag.
 
 - `008_Investments/` is the active investment research and portfolio tooling department.
 - `009_AI_Jobs/` is the department for AI job onboarding contracts, worker agreements, and platform-specific work references such as Mercor.
+
+### 2026-06-14 — Git Repository Rules Hardened
+
+- `000_Ingest/` is a temporary processing queue — never commit it. Files only belong in the repo after being wikified and graphified via the ingest skill.
+- `graphify-out/` and `001_Architecture/Graphify/Graphify-Out/` are auto-generated output — never commit. Rebuilds automatically on `graphify update`.
+- Raw ChatGPT export files (`007_Resource_Library/OpenAI_History/Already Ingested/`) are excluded — too large, redownloadable.
+- All nested git repos inside Agent-OS must have their inner `.git` folders removed so GitHub sees them as plain folders in one unified repo.
+- Run an API key scan before every git commit. GitHub's secret scanner will block pushes with live keys.
+
+### 2026-06-14 — Universal Memory Write Rule (All Agents)
+
+When saving any durable memory, always write to `001_Architecture/Memory/Global_Agent_Memory.md` first. Agent-specific memory (`~/.claude/.../memory/`, `Codex_Memory.md`, etc.) is secondary. Hard rules that apply to all agents also go in `Core_Memory.md` so they are read every session by every agent.
+
+### 2026-06-14 — Agent Coverage Confirmed
+
+All active coding agents read `Core_Memory.md` at session start:
+- Claude Code Desktop + CLI → `CLAUDE.md`
+- Codex CLI → `AGENTS.md`
+- Gemini CLI → `GEMINI.md`
+- Antigravity IDE (Claude Code ext) → `CLAUDE.md`
+- Antigravity IDE (built-in Gemini agent) → auto-loads `Core_Memory.md`, `AGENTS.md`, `GEMINI.md`, and `claude-mem` context
+
+Warp is not used as a coding agent — no config needed.
 - Job-specific AI contracts should route into `009_AI_Jobs/[Platform]/` instead of the generic docs library.
+
+### 2026-06-17 — Tool Manager Agent Is Mandatory — Never Answer Tool Questions From Memory
+
+A dedicated Tool Manager skill exists at `001_Architecture/Skills/Tool-Manager/SKILL.md`. **All agents in all harnesses must invoke it automatically** whenever:
+- Starting any task that requires knowing what tools, APIs, scripts, or skills are available
+- Asked "do we have X?", "what can I use for Y?", "is there a skill for Z?"
+- About to claim a tool is unavailable or suspended
+- Building a pipeline that depends on specific APIs or models
+
+**Never answer tool availability questions from memory, stale CLAUDE.md notes, or internal catalogs.** These go stale within days. Tony confirmed this is a hard rule after repeated failures.
+
+**Invocation:** `Skill("Tool-Manager")` in Claude Code / Antigravity. Direct file read of `001_Architecture/Skills/Tool-Manager/SKILL.md` in Codex / Gemini CLI.
+
+**Update protocol:** Tool Manager is read-only. When it finds something new or stale, it flags it and delegates the write to the calling agent. The calling agent updates TOOLBOX.md.
+
+### 2026-06-17 — kie.ai Is The Full Media Stack (Not Just Video)
+
+kie.ai provides: video gen (Kling, Veo, Seedance 2.0, Seedance 2.0 Fast, Wan, Sora), image gen (Nano Banana 2, GPT-Image-1), AND Suno music generation API. It is the single gateway for all AI media generation. fal.ai is secondary — use only for models not on kie.ai.
+
+**Confirmed available on kie.ai as of Jun 2026:** Seedance 2.0, Seedance 2.0 Fast (NOT suspended — prior catalog entry was wrong), Suno API at https://kie.ai/suno-api.
+
+### 2026-06-19 — Validation Hook System Is Live in Claude Code
+
+Two hooks are now active in `~/.claude/settings.json`:
+- **PostToolUse (`agent-os-build-tracker.js`):** After every Write/Edit on a functional artifact (.py, .sh, SKILL.md, .json configs), injects `⚠️ VERIFY REQUIRED` into Claude's context and appends to `/tmp/agent_os_build_manifest.json`.
+- **Stop (`agent-os-stop-validator.js`):** Blocks Claude from finishing a turn (exit 2) if unverified artifacts remain in the manifest.
+- **Validation script:** `001_Architecture/Scripts/validate_build.py` — run it, it clears the manifest. Type-aware: Python syntax+help, SKILL frontmatter+index, JSON parse, shell syntax, data-fetch completeness.
+
+All agents should know: **Claude Code now enforces verification before task completion. This is not optional.**
+
+### 2026-06-19 — Reimagined Realms Video Pipeline Skill
+
+Full 10-phase faceless YouTube pipeline skill at `001_Architecture/Skills/Reimagined_Realms_Video_Pipeline/SKILL.md`. Invoke with `/reimagined-realms`. Replaces Higgsfield MCP — no subscription needed. Uses: Firecrawl (channel analysis), DAIPBR + 7-part Story Ideation (script), Tool Manager pricing cache (cost estimate), ElevenLabs `audio_tts.py` (voiceover + timestamps), beatmap from VO timing, per-clip shot list. ElevenLabs voice ID for this channel: `raMcNf2S8wCmuaBcyI6E`.
+
+### 2026-06-19 — Skills Directory Is a Symlink — Always Use 001_Architecture/Skills/
+
+`~/.claude/skills/` is a symlink to `001_Architecture/Skills/`. All skills created in `001_Architecture/Skills/[Skill_Name]/SKILL.md` are automatically available to Claude Code, Codex, and Gemini CLI. Never create skills anywhere else.
+
+### 2026-06-21 — Airtable Model Catalog Restructured — 34 Variant Rows
+
+The Model Catalog Airtable table (`Model Catalog` in base `appTQPmV4oWJHSfLX`, table `tblONvSjUufdAjZx3`) was rebuilt from 24 model rows to 34 variant rows (one per resolution/audio combination).
+
+**Key facts for all agents:**
+- Upsert key is now `Row ID` (e.g., `seedance-2.0_1080p`), NOT `Model ID`
+- All price columns show genuine $/s (video) or $/img (image) — never normalized per-clip values
+- Name field format: `Model (Resolution · Audio)` — e.g., `Seedance 2.0 (1080p · Audio)`
+- New Airtable fields: Row ID, Resolution, Audio, Variant, Price Unit
+- `catalog_refresh.py` generates rows from `model["variants"]` arrays in `model_catalog.json`
+- 25 models total (24 active, Topaz Upscale inactive); 34 variant rows
+
+**fal.ai Seedance 2.0 billing (confirmed):** Token-based at $0.014/1K tokens. Formula: `tokens = (height × width × duration × 24) / 1024`. Per-second rates: 720p=$0.302/s, 1080p=$0.682/s.
+
+**WaveSpeed resolution pricing formula:** `base_price × multiplier × duration / 5`. Multipliers: 480p×1, 720p×2, 1080p×5. Seedance 2.0: 720p=$0.24/s, 1080p=$0.60/s.
+
+**ElevenLabs Video-to-Music** added to catalog (id: `elevenlabs-video-to-music`). Topaz Upscale set to `inactive`.
+
+### 2026-06-21 — Hard Rules: Validation, Reporting, and Completion
+
+Three non-negotiable rules added to `Core_Memory.md` (all agents must follow):
+1. **Never declare done without proof** — run `validate_build.py` or equivalent before reporting completion on any functional artifact.
+2. **Multi-source fetches report everything** — list expected sources first, then report each as ✅ resolved or ❌ failed (with error + what Tony needs to do to fix it). Never present partial results as complete.
+3. **Multi-part instructions: address all parts** — enumerate them before starting. Flag any part you cannot complete before moving on. Never silently drop an instruction.
+
+### 2026-06-29 — Video Clip Generation Hard Rules (ALL Reimagined Realms Productions)
+
+These rules are permanent and apply to every future video production:
+
+1. **Never loop video clips** — looping is always visible to viewers and is never acceptable. If a clip is too short, re-generate it at the correct duration.
+2. **Always generate with padding** — `generate_s = max(4, ceil(target_final_s + 1))`. Min 4s (Seedance minimum). This ensures real footage exists at every frame.
+3. **Model selection by generated duration** — Seedance 1.5 Pro if `generate_s ≤ 12`, Seedance 2.0 if `generate_s > 12`.
+4. **Script reads beatmap — never hardcode duration** — `batch_generate_videos.py` reads `target_final_duration_s` per clip from `Beatmap.json`. No `DURATION = N` constant ever.
+5. **Max 8s final duration per clip** (hard rule) — viewers disengage beyond 8s. Ideal: 3–6s per clip.
+6. **Use `--overwrite` flag for reruns** — `batch_generate_videos.py` skips existing clips by default; add `--overwrite` to force regeneration.
+
+### 2026-06-29 — Pompeii Video Status (Reimagined Realms, Production 0001)
+
+- 21 clips generated but 16 are wrong duration (5s instead of 8–13s)
+- `batch_generate_videos.py` has been fixed with per-clip duration logic
+- **Next session: run regeneration command** (see `001_Architecture/Logs/2026-06-29_Next-Session-Handoff.md`)
+- After regen: stitch → audio stems → Suno music → final assembly
+- Audio approach: film composer model — stems (ambient drone + tension risers + impact hits + scene SFX) layered independently, not per-clip sequential audio
+
+### 2026-07-03 — Video Pipeline: Audio Stem Design Rules (ALL Productions)
+
+**Hard rule: Never design audio stems without Gemini second-by-second video analysis first.**
+
+The beatmap gives clip timing but not visual content. Stems timed from beatmap descriptions alone will be wrong — crowd sizes, animal presence, camera movement, and emotional intensity vary clip-by-clip in ways the beatmap cannot describe. The correct pipeline order is:
+
+1. Generate all clips at correct durations
+2. Stitch raw assembly (no audio)
+3. Run Gemini on the stitched video → get second-by-second scene description
+4. Build stem timing map from Gemini output (not from beatmap)
+5. Generate stems with precise fade-in/fade-out derived from actual visual content
+6. Suno music bed generated last, after stems are placed
+
+**Why Gemini, not image analysis:** Still images miss motion, pacing, and the cumulative feel of a scene. Video analysis gives the composer context needed for tonality, impact placement, and riser timing.
+
+**Stem categories (Reimagined Realms cinematic model):**
+- Continuous layers: atmospheric drone, wind/ambient environment
+- Act-timed layers: crowd presence, tension risers, seismic rumble
+- Scene-specific SFX: footsteps, hooves, cart wheels, harness — timed to actual visual content per Gemini analysis
+- Hit-point events: eruption booms, impact hits, silence drops — placed on exact frame
+- Late-video: emotional/mournful tones timed to specific visual moments
+- Music bed (Suno): generated last, underlies everything
+
+### 2026-07-03 — Seedance API Fixes and Clip Generation Updates
+
+1. **Seedance 2.0 correct kie.ai model slug** is `bytedance/seedance-2` (NOT `bytedance/seedance-2.0/image-to-video` — that returns 500 "model format incorrect")
+2. **Seedance 1.5 Pro can generate exactly 12s** — clips with 12s final target can use 1.5 at 12s with no padding buffer; this is acceptable and saves significant cost vs Seedance 2.0 ($0.0375/s vs $0.31/s at 1080p)
+3. **Always ffprobe-verify output duration** after generation — `batch_generate_videos.py` now checks actual clip duration vs target and flags any clip under target for Seedance 2.0 retry
+4. **Archive originals before overwriting** — before running `--overwrite` on clips that were generated at wrong durations, move originals to `Video_Clips/Archive_<reason>/` folder
+5. **Rule 3 update** (supersedes 2026-06-29 entry): Model selection is `Seedance 1.5 if generate_s ≤ 12, Seedance 2.0 if generate_s > 12`. Clips that need exactly 12s final duration should generate at 12s with 1.5 (no padding), not be forced to 2.0.
+
+### 2026-07-03 — Pompeii Video Status Update
+
+- C1–C7, C13–C19: regenerated at correct beatmap durations ✅
+- C8–C12: regenerated at 12s with Seedance 1.5 (in progress as of this writing)
+- Original 5s clips archived to `Video_Clips/Archive_5s_Originals/`
+- **Next steps**: stitch all 21 clips → Gemini video analysis → stem map → audio generation → Suno music → final assembly
+
+### 2026-06-29 — Airtable API Budget Fixed
+
+- `catalog_refresh.py` now uses batch upsert (10 records per PATCH) instead of per-record GET+PATCH
+- Monthly cron will use ~4–6 API calls instead of ~68
+
+### 2026-07-03 — Pompeii Video Fully Assembled (Session 2 Close)
+
+Full status of `0001_Pompeii_The_Escape` (Reimagined Realms):
+- All 21 clips at correct beatmap durations ✅
+- Raw stitch: `Assembly/raw_video.mp4` (152s, 232.6 MB) ✅
+- Gemini second-by-second scene analysis: `Assembly/gemini_scene_analysis.md` ✅
+- 13 audio stems generated (ElevenLabs SFX): `Audio_Stems/*.mp3` ✅
+- Two review videos delivered: `raw_with_stems.mp4`, `raw_with_stems_narration.mp4` ✅
+- `music.mp3` (Suno) blocked by kie.ai outage — retry next session with `python3 assemble.py --phase 4 --stop-phase 4`
+- `final.mp4` blocked on Suno — once music generates, run `render_outputs.py`
+- **Full handoff:** `001_Architecture/Logs/2026-07-03_Next-Session-Handoff.md`
+
+### 2026-07-03 — Audio Composer Architecture: Vision-First Per-Scene Clips
+
+**Current approach (stem map) is 65% quality. The correct architecture for all future Reimagined Realms productions:**
+
+1. **Extract 1fps screenshots** from raw_video.mp4 → `Assembly/Frames/frame_XXXX.jpg` (ffmpeg, 720p)
+2. **Gemini vision pass** — send all frames + `gemini_scene_analysis.md` + narration script simultaneously
+3. **Output: per-scene audio brief** (JSON) — one audio decision per scene, not broad thematic stems:
+   - Ambient layers (continuous beds: wind, room tone, rumble)
+   - Spot FX / event clips (discrete: impact hits, risers, whooshes, crowd burst, hooves)
+   - Timecode, duration, volume, fade-in/fade-out per clip
+   - Clip name that indicates scene and time: `C05_0020_eruption_boom.mp3`
+4. **Generate each clip individually** via ElevenLabs SFX (not one big generic stem)
+5. **Export FCPXML** placing all clips on Premiere timeline at exact timecodes on separate named tracks
+
+**Why this beats broad stems:**
+- Crowd audio can fade out exactly when crowd disperses ON SCREEN (not on a timer)
+- Impact hits land on the exact frame, not somewhere in a 30s stem window
+- No looping, no generic behavior — each clip is composed for that specific visual moment
+- Premiere import gives Tony full manual override on any clip
+
+**Key distinction:** Some audio IS true stems (continuous ambient wind) and some IS discrete spot FX (eruption boom at 0:20). Both are individual files kept separate — nothing pre-mixed.
+
+**Research requirement:** Before building `compose_audio.py`, run a documentary sound design research pass (Planet Earth II, Our Planet) and bake that knowledge into the Gemini composer prompt. The composer needs to know what risers, impact hits, transitions, and silence decisions look like in a real production.
+
+**Script to build:** `001_Architecture/Tools/Audio/compose_audio.py`
+
+### 2026-07-03 — Audio Level Standards (Locked In)
+
+- Narration: loudnorm -14 LUFS / -1 dBTP (YouTube standard, via ffmpeg loudnorm filter)
+- Ambient stems in final mix: 40% volume
+- Ambient stems in stems-only review: 85% volume
+- Spot FX event clips: set individually per clip in Premiere (no pre-set)
+- Music bed (Suno): 12% (heavily ducked under narration)
+- Per-stem volume override supported in `stem_map.json` via `"volume"` key
+
+### 2026-07-03 — Reusable Audio Pipeline Scripts (All Accept production_folder Arg)
+
+All scripts in `001_Architecture/Tools/Audio/` are production-agnostic:
+- `generate_stems.py` — reads `Data/stem_map.json`, generates each stem via ElevenLabs SFX, handles chunking for stems > 28s
+- `mix_stems.py` — reads stem_map.json, builds ffmpeg filter_complex with per-stem adelay + volume + fade + atrim
+- `render_outputs.py` — renders 3 outputs: stems-only review, stems+narration, final with Suno music
+- `compose_audio.py` — **TO BUILD** — vision-based composer (see entry above)
+- Airtable free tier: 1,000 calls/month; resets July 1
+
+### 2026-07-04 — Reimagined Realms Pipeline Fully Validated (Pompeii Test #1)
+
+Production 0001_Pompeii_The_Escape completed end-to-end. V8 is the final render (C20 fixed, Suno music, locked audio formula). Tony rated it 100%.
+
+**Locked pipeline rules (all agents must follow):**
+- Clip hard max: **8s** `target_final_duration_s` — never exceed, Seedance 1.5 max is 12s (4s buffer)
+- Script formula: `ceil(target_min × 163 × 1.15)` words — voice raMcNf2S8wCmuaBcyI6E at 163 WPM + 15% padding
+- TTS gate: after ElevenLabs generates narration.mp3, ffprobe duration — if >5% short of target, STOP and flag
+- Audio mix (locked): stems vol=0.88 → -23 LUFS; narration vol=3.09 → -14 LUFS; music vol=0.12 → -28 LUFS; sidechain duck threshold=0.015 ratio=4 attack=150ms release=800ms
+- Suno API: endpoint `https://api.kie.ai/api/v1/generate` — `callBackUrl` field required (use placeholder); response is array of URLs, pick longest by ffprobe duration
+- assemble.py is now universal: lives in `001_Architecture/Tools/Video-Generation/Channels/Reimagined_Realms/assemble.py`; reads `Production/assemble_config.json` per production
+
+**Thumbnail formula (composition-based, not palette-based):**
+Single human figure back-to-camera, lower third, deep vanishing point, human dwarfed by environment. Palette matches story emotion. No text. Generate 3 concepts per video, Tony picks one.
+
+**Title formula (3 options per video):**
+1. Primary: "[Number] [Subject] [Vanished/Did X]. [Unresolved tension statement]." — curiosity gap
+2. Secondary: "What Really Happened to the [Number] [People] Who [Survived/Escaped] [Event]" — discovery frame
+3. Tertiary: "[Place] Wasn't a [Expected]. It Was a [Reframe]." — pattern interrupt
+
+**Description formula:** First sentence = the exact question someone types into YouTube search. Description optimizes for search intent; title optimizes for curiosity hook. Never swap these roles.
+
+### 2026-07-04 — Blotato Upload Live + Full Pipeline Locked Through Phase 12
+
+First real Blotato YouTube upload completed: Pompeii ("18,000 People Lived in Pompeii...") published private to ReimaginedRealms channel (account id `30323`). Video: `https://www.youtube.com/watch?v=3Y8e8hOs7Ks`.
+
+**Newly locked rules (all agents must follow):**
+- **CTA / end-screen system**: every video ends with a fixed, non-negotiable 8-second hold on one continuous clip (no video cuts). Audio inside that hold = 1.5s silence gap (`CTA_GAP_SECONDS`) → static pre-rendered CTA audio (`Brand_Assets/CTA/cta_follow_reimagined_realms.mp3`, 3.76s, voice `raMcNf2S8wCmuaBcyI6E`, line: "Follow Reimagined Realms. History gets stranger every episode."). Story narration must never spill into this window — it is a dedicated final beat, not derived from VO timing. This is now coded into the universal `assemble.py`'s `phase_concat_narration()` (auto-appends gap+CTA every run) — never regenerate the CTA line/audio per production.
+- **Beatmap rule**: the last sub-beat of the final act is always a "CTA Hold" beat — single clip, `target_final_duration_s = 8.0` fixed (only beat in the pipeline with a hardcoded, non-derived duration), topically relevant to that episode, visually clean (YouTube end screen overlays on top of it).
+- **Script rule**: scripts no longer include a spoken CTA line (Phase 4) — CTA is 100% a post-production asset now.
+- **YouTube upload defaults via Blotato (locked, all RR videos)**: `isMadeForKids: false`, `containsSyntheticMedia: true`, `privacyStatus: private` on upload (manual review before going public), playlists NOT automated (Tony adds manually during scheduling for now).
+- **Blotato mechanics**: custom thumbnails must be ≤2MB (compress PNG→JPEG via ffmpeg if over); large local files need `blotato_create_presigned_upload_url` → `curl -X PUT --data-binary` → use the returned `publicUrl` in `create_post`. If Blotato errors "reconnect your YouTube account" for thumbnails, that's an OAuth scope issue fixed in the Blotato dashboard, not a script bug — already-uploaded media URLs don't need re-uploading after reconnect.
+- **Reimagined_Realms_Video_Pipeline skill is now a true 12-phase, start-to-finish orchestrator** (`001_Architecture/Skills/Reimagined_Realms_Video_Pipeline/SKILL.md`) — Phase 11 (media generation + assembly, one quality pause after test clip C1) and Phase 12 (Blotato upload, pause for title/thumbnail/privacy) replace the old "next steps — manual" list. Running `/reimagined-realms` now goes all the way to a live private YouTube upload, not just a package of files.
+
+### 2026-07-06 — Motion Graphics "Slop" Definition + Orchestrator Architecture Preference (Vox-Style Explainers)
+
+Reviewed Anomalous Wild's Bioluminescence Weapon video (phylogenetic tree scene, 1:38–2:14) with `gemini_scene_analysis.py` (now duplicated per-channel at `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/gemini_scene_analysis.py` — original at `Tools/AI-Analysis/gemini_scene_analysis.py` stays Reimagined-Realms-flavored/untouched; duplicate, never edit the original when a new channel needs its own copy).
+
+**"Slop" defined precisely (applies to all future Vox/Kurzgesagt-style explainer motion graphics):** abstract data-viz (dots, lines, charts, tree diagrams) is NOT itself the problem. The problem is when narration names a concrete subject (an animal, object, person) and the visual stays abstract instead of showing an illustrated overlay of that concrete subject tied to the data shape. Every named subject in narration needs a corresponding illustrated asset on screen, not just an abstract shape standing in for it.
+
+**Root cause pattern to watch for:** the failure traced back to the script's own VISUAL direction line under-specifying the treatment (it explicitly asked for "glowing dots on a tree," never asked for illustrated creature overlays) — not a model execution failure. When diagnosing a "slop" complaint, check the script's VISUAL line before assuming the generation/build step is at fault.
+
+**Standing architecture preference — orchestrator, not monolithic skill:** Tony does not want one skill responsible for directing a motion graphic AND generating its illustrated assets AND animating them ("I don't want the one skill to have too many tasks that it does shortcuts on"). Preferred shape for any future motion-graphics work: a director/orchestrator skill that identifies needed assets per scene and delegates actual asset creation to dedicated specialized agents, then handles composition/animation itself. This is the same discipline as the existing Reference-First Pipeline in `002_Content-Creation/Video_Editor/CLAUDE.md` (Nano Banana illustration → Figma/SVG labels → Remotion static asset) — apply it to Vox-style explainer scenes too, don't invent a separate pattern.
+
+**Case-Study-Analysis skill ≠ visual taste transfer:** confirmed the existing case-study skill (`001_Architecture/Skills/Case-Study-Analysis.md`) is a performance/growth framework (viral score, hooks, retention) with only a shallow "Visual Elements" checklist line — it was never wired to actually re-inject reference screenshots into context at generation time. Do not assume curated case-study screenshots alone will improve visual output; a real reference needs to be handed in-context at the moment of asset generation, not just cited in a written analysis doc.
+
+**DEFERRED — do not build yet:** one-off test proved illustrated motion-graphic opens beat bare abstract data-viz opens for scene intros, not just for the mid-scene creature-overlay fix above. Test: GPT Image 2 (kie.ai model id `gpt-image-2-text-to-image`) generated a static "tree of life" (bioluminescent tree, bacteria at roots, jellyfish/anglerfish/squid in branches), then Seedance 1.5 Pro (kie.ai model id `bytedance/seedance-1.5-pro`, image-to-video via `input_urls`, Cloudinary as the URL bridge) animated it into a 10s clip for scene_06's opening line ("What makes this more remarkable is..."). Tony confirmed this reads as far less boring than the original bare tree-draws-itself open. No script was created and no existing script (Reimagined Realms or otherwise) was touched — this was run as inline one-off Python, intentionally not formalized. When the Vox-style asset pipeline eventually gets locked in (see orchestrator note above), the storyboard/VISUAL-direction generator (compare Anomalous Wild's vs. Reimagined Realms' storyboard generation to see which already handles this better) should default to illustrated/narrative opens over abstract-only ones for scene/video openers. Artifacts kept at `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/001_Bioluminescence-Weapon/_tests/intro_tree_of_life/` for reference.
+
+### 2026-07-04 — Future Pipeline Plans (Context Only — Do Not Build Yet)
+
+- **Airtable-driven automation**: after 10 validated videos, intake questions become Airtable columns; agent reads row, generates video autonomously
+- **Idea generation cron**: daily job checks queue, generates 3–5 ideas if fewer than ~10 ungenerated ideas in Airtable; Tony approves/ignores each; never auto-generates without approval
+- **Short-form pipeline**: separate 9:16 mode, built after long-form is validated through 10 tests
+- ~~Blotato upload skill~~ — DONE 2026-07-04, see Phase 12 of Reimagined_Realms_Video_Pipeline skill
+- **Description chapter auto-generator**: still built manually (transcribed from Beatmap.json by hand each time) — a small script to auto-format chapters would remove this manual step, but is not blocking since Phase 12 works today
+- **Playlist automation**: Blotato's `playlistIds` field is available and account has 18 playlists mapped, but Tony wants this to stay manual for now
+
+### 2026-07-08 — Anomalous Wild Video Pipeline Built (11-task plan, Task 10 skipped) — `/anomalous-wild` now live
+
+Built via `superpowers:subagent-driven-development` (fresh implementer subagent per task, task-scoped reviewer with fix-and-re-review loops, final whole-branch review). Full write-up: `000_Wiki/Video-Production/Anomalous-Wild-Pipeline-Scripts.md`. Registry of new scripts: `001_Architecture/Tools/Tool-Manager/data/pipeline_scripts_registry.json` (`channels.anomalous_wild.new_pipeline_scripts`).
+
+**What it is:** Anomalous Wild's own start-to-finish orchestrator (`001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md`, invoke via `/anomalous-wild`), mirroring Reimagined Realms' automation level: word-level narration timestamps, per-beat Tool-Manager tool routing (never hardcoded), a full Scientific Diagram sub-pipeline (fixes the garbled-diagram-text "AI slop" bug from Bioluminescence Weapon), YouTube package generation (incl. real thumbnail generation), and Blotato upload.
+
+**Locked facts all agents should know:**
+- Blotato YouTube accountId for Anomalous Wild is `42514` — displayed in Blotato's own dashboard as "Anomalos Wild" (a typo from account setup, confirmed by Tony 2026-07-08 — do not "fix" this by assuming it's the wrong account). Do not confuse with Reimagined Realms' `30323`.
+- Scientific Diagram sub-pipeline pattern (the actual fix for garbled AI-generated diagram text): (1) research a real reference image via Openverse, (2) generate a clean illustration via kie.ai GPT-Image-2 with an explicit no-text/no-label negative prompt, (3) Gemini vision detects real per-image label coordinates — never guesses, structurally strips coordinates from any `not_found` entry, (4) Remotion (`DiagramLabels.tsx`) places labels at those exact detected coordinates. Apply this same 4-step pattern to any future channel that needs labeled scientific/technical diagrams — do not go back to asking an image model to draw labels directly.
+- `end_card_v3.mp4` (`Brand_Assets/End_Card/`) is a fixed, hardcoded asset for every Anomalous Wild video — `scaffold_new_production.py` hard-fails if it's missing, and it's always appended via ffmpeg concat, never regenerated or routed through Remotion.
+- **`validate_build.py`'s `check_skill()` does NOT parse YAML** — it only naively string-searches for `'name:'`. A SKILL.md can have genuinely broken frontmatter and still show `✅ PASS`. If a skill's own trigger-matching seems off, verify frontmatter with `python3 -c "import yaml; yaml.safe_load(open(path).read().split('---')[1])"` directly — this caught a real bug (a dangling unquoted second `<example>` block) that was degrading both `Anomalous_Wild_Video_Pipeline/SKILL.md` and `Reimagined_Realms_Video_Pipeline/SKILL.md`'s real trigger descriptions in the live skill list (both now fixed).
+- **Final whole-branch review is not optional for multi-task builds**, even when every individual task passed its own review — it caught 2 real integration bugs (a schema/data-shape contradiction between two separately-approved tasks, and a hard constraint recorded as data but never mechanically enforced anywhere) that no single task's review could see. Always run one after a multi-task subagent-driven-development build, on the most capable available model.
+
+**Pre-existing gaps flagged, not yet resolved:** no locked ElevenLabs voice ID for Anomalous Wild (orchestrator asks at runtime); `pipeline_supervisor.py` expects a `Production/new_clips_prompts.json` manifest with no script yet auto-building it from the new `Shot_List.md` format.

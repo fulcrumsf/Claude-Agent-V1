@@ -6,6 +6,7 @@ import { AIVideo, aiVideoSchema } from "./video-components/AIVideo";
 import { BioluminescenceDoc, BIOLUMINESCENCE_DURATION_FRAMES } from "./video-components/BioluminescenceDoc";
 import { CinematicTitleCard } from "./video-components/CinematicTitleCard";
 import { AnomalousWildEndCard } from "./video-components/AnomalousWildEndCard";
+import { DiagramLabels, diagramLabelsSchema } from "./video-components/DiagramLabels";
 import { NeonParcelTitleOverlay } from "./video-components/NeonParcelTitleOverlay";
 import { FPS, INTRO_DURATION } from "./video-lib/constants";
 import { getTimelinePath, loadTimelineFromFile } from "./video-lib/utils";
@@ -86,6 +87,22 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+
+      {/* Scientific Diagram Sub-Pipeline — coordinate-based label placement over illustrations */}
+      <Composition
+        id="DiagramLabelsPreview"
+        component={DiagramLabels}
+        durationInFrames={150}
+        fps={30}
+        width={1920}
+        height={1080}
+        schema={diagramLabelsSchema}
+        defaultProps={{
+          labels: [{ feature: "esca", x_pct: 62, y_pct: 38, confidence: "high" }],
+          labelStaggerS: 2,
+          displayNames: { esca: "Esca (light lure)" },
+        }}
       />
 
       {/* 0002 Neon Parcel Cats — title card overlay version */}

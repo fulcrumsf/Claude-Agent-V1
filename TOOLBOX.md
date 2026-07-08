@@ -7,7 +7,7 @@ tags: [guideline, architecture, doc]
 
 # TOOLBOX: Complete Tool & Capability Reference
 
-**Last updated:** 2026-04-30
+**Last updated:** 2026-06-19
 
 This is the single source of truth for all pre-installed tools, CLIs, MCPs, skills, and plugins.
 
@@ -125,29 +125,51 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 ## Video Generation
 
 ### kie.ai (Primary Platform)
-- **Python Tool:** `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Video-Generation/kie_video_gen.py` — unified API to all kie.ai video models
+- **Python Tool:** `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/kie_video_gen.py` — unified API to all kie.ai video models
   - Supports: **Veo 3.1**, **Kling 3.0**, **Wan 2.6**, **Sora 2**
-  - Usage: `python3 /Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Video-Generation/kie_video_gen.py "[PROMPT]" output.mp4 "veo3"`
+  - Usage: `python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/kie_video_gen.py "[PROMPT]" output.mp4 "veo3"`
 - **API Key:** `KIE_API_KEY`
 - **Pricing:** 30–70% cheaper than fal.ai for equivalent models
 - **When to use:** Always try kie.ai first for video generation
 
-### Blotato (Publishing)
-- **What it does:** Publish generated videos to YouTube and social media
-- **Python integration:** `kie_upload.py` for file uploads before publishing
-- **API Key:** `BLOTATO_API_KEY`
+### kie-cli (kie.ai CLI)
+- **Package:** `@felores/kie-cli` (npm global)
+- **Usage:** `kie-cli --help` — list all available models by category; `kie-cli [category]` to explore
+- **API Key:** `KIE_API_KEY`
+- **When to use:** Live model discovery on kie.ai without reading the website; pipe into scripts for programmatic model selection
+
+### WaveSpeed CLI
+- **Package:** `@wavespeed/cli` (npm global)
+- **Usage:** `wavespeed models "[query]"` — keyword search across 986 models; `wavespeed models` — full list
+- **API Key:** `WAVESPEED_API_KEY` (fixed from `WAVESPEED_AI_API_KEY` — old name was wrong)
+- **When to use:** Find WaveSpeed-specific models (Seedance, Wan, Kling variants) and their per-video flat pricing; only platform with live CLI model search
+
+### Autohand (OpenRouter Agent CLI)
+- **Installer:** autohand.ai — OpenRouter-backed CLI automation agent
+- **API Key:** `OPENROUTER_API_KEY`
+- **When to use:** OpenRouter-backed agent tasks from CLI; fallback for model routing when direct APIs unavailable
+
+### Blotato (Publishing) — MCP server, registered and active
+- **What it does:** Publish generated videos to YouTube and social media (Instagram, TikTok, Facebook, LinkedIn, Twitter, Pinterest, Threads, Bluesky)
+- **Access:** MCP server (HTTP transport, `https://mcp.blotato.com/mcp`), registered project-scoped for Agent-OS in `~/.claude.json` as of 2026-07-04. Tools available directly as `mcp__blotato__*` in Claude Code — prefer these over any manual API calls.
+- **Key tools:** `blotato_list_accounts` (get accountId + platform requirements), `blotato_create_presigned_upload_url` (local file → public URL, required before `create_post` for any local video/image), `blotato_create_post` (publish/schedule), `blotato_get_post_status` (poll after create_post for large media)
+- **Known connected YouTube accounts:** NeonParcel (id `25731`), ReimaginedRealms (id `30323`, 18 playlists mapped)
+- **Thumbnail constraint:** custom YouTube thumbnails must be ≤2MB JPEG/PNG — compress with ffmpeg first if over (`ffmpeg -i in.png -vf "scale=1920:-1" -q:v 5 out.jpg`)
+- **Gotcha:** if `create_post` errors "reconnect your YouTube account" for a custom thumbnail, that's an OAuth scope issue fixed in the Blotato dashboard (not a script/MCP bug) — already-uploaded media URLs don't need re-uploading after reconnect
+- **Python integration:** `kie_upload.py` for file uploads before publishing (legacy path — MCP's own presigned-upload flow is now preferred)
+- **API Key:** `BLOTATO_API_KEY` (used by the MCP server itself, not needed for direct calls from Claude Code)
 
 ---
 
 ## Image Generation
 
 ### kie.ai (Primary Platform)
-- **Python Tool:** `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Image-Generation/kie_image_gen.py` — Nano Banana 2 and Nano Banana Pro
-  - Usage: `python3 /Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Image-Generation/kie_image_gen.py "[PROMPT]" output.jpg --model nano-banana-2`
+- **Python Tool:** `001_Architecture/Tools/Image-Generation/kie_image_gen.py` — Nano Banana 2 and Nano Banana Pro
+  - Usage: `python3 001_Architecture/Tools/Image-Generation/kie_image_gen.py "[PROMPT]" output.jpg --model nano-banana-2`
 - **Skill:** `/nano-banana-pro-prompts-recommend-skill` — AI recommendations for image prompts
 
 ### fal.ai (Fallback)
-- **Python Tool:** `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Image-Generation/image_gen.py` — fallback to Google AI Studio (Gemini 2.5 Flash) or fal.ai
+- **Python Tool:** `001_Architecture/Tools/Image-Generation/image_gen.py` — fallback to Google AI Studio (Gemini 2.5 Flash) or fal.ai
 - **API Key:** `FAL.AI_API_KEY`
 - **When to use:** Only if kie.ai doesn't have the model you need
 
@@ -156,10 +178,10 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 ## Text-to-Speech
 
 ### ElevenLabs
-- **Python Tool:** `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Text-To-Speech/audio_tts.py`
+- **Python Tool:** `001_Architecture/Tools/Text-To-Speech/audio_tts.py`
   - Generates TTS with word-level timestamps
   - Outputs per-scene MP3 files and `beat_sheet.json`
-  - Usage: `python3 /Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Text-To-Speech/audio_tts.py <script.md> <output_dir> [--voice <id>]`
+  - Usage: `python3 001_Architecture/Tools/Text-To-Speech/audio_tts.py <script.md> <output_dir> [--voice <id>]`
 - **API Key:** `ELEVENLABS_API_KEY`
 - **Output:** Feeds into video beat sheet and Remotion composition
 
@@ -173,12 +195,12 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - **Invoked by:** `download-video` skill in Video Editor
 
 ### Gemini Video Analysis
-- **Python Tool:** `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/AI-Analysis/gemini_video_analysis.py` — analyze video style, camera work, humor, AI-prompt potential
-  - Usage: `python3 /Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/AI-Analysis/gemini_video_analysis.py "<URL>" -o output.md`
+- **Python Tool:** `001_Architecture/Tools/AI-Analysis/gemini_video_analysis.py` — analyze video style, camera work, humor, AI-prompt potential
+  - Usage: `python3 001_Architecture/Tools/AI-Analysis/gemini_video_analysis.py "<URL>" -o output.md`
 - **Skill:** `/analyze-video` — same functionality via skill interface
 
 ### Case Study Generator
-- **Python Tool:** `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/000_Skills/case_study_generator.py` — full automated case study pipeline
+- **Python Tool:** `001_Architecture/Tools/AI-Analysis/case_study_generator.py` — full automated case study pipeline
   - Fetches YouTube metadata via YouTube Data API
   - Runs Gemini 10-section analysis
   - Downloads video and extracts 3 screenshots
@@ -190,9 +212,9 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ## Video Editing & Composition
 
-### video-use (Agent-Driven Video Editor)
-- **Repo:** `001_Architecture/Tools/Video-Generation/video-use/`
-- **Skill:** `/video-use` — symlinked into `001_Architecture/Skills/video-use/`
+### Video-Use (Agent-Driven Video Editor)
+- **Repo:** `001_Architecture/Tools/Video-Generation/Video-Use/`
+- **Skill:** `/video-use` — symlinked into `001_Architecture/Skills/Video-Use/`
 - **What it does:** Drop raw footage + pre-recorded VO clips in a folder, agent cuts, trims silences, self-evaluates, outputs `final.mp4`. Audio-first: transcript drives cut decisions.
 - **Pipeline:** Transcribe (ElevenLabs Scribe) → Pack → LLM Reasons → EDL → Render → Self-Eval
 - **API key:** `ELEVENLABS_API_KEY` via `source ~/.env-secrets` (never stored in .env)
@@ -201,7 +223,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ### Hyperframes (HTML-Native Video Renderer)
 - **CLI:** `hyperframes` — globally installed via npm (v0.6.25)
-- **Repo:** `001_Architecture/Tools/Video-Generation/hyperframes/`
+- **Repo:** `001_Architecture/Tools/Video-Generation/Hyperframes/`
 - **Skills (all symlinked into `001_Architecture/Skills/`):**
   - `/hyperframes` — composition authoring, captions, TTS, audio-reactive animation
   - `/hyperframes-cli` — dev-loop: init, lint, preview, render, doctor
@@ -224,12 +246,12 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - **Use case:** Programmatically compose videos as React components
 
 ### Video Stitching
-- **Python Tool:** `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Video-Generation/video_stitcher.py` — stitch scenes (video.mp4 + audio.mp3) into final MP4
-  - Usage: `python3 /Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Video-Generation/video_stitcher.py scene_1/ scene_2/ ... -o final.mp4`
+- **Python Tool:** `001_Architecture/Tools/Video-Generation/Generic_Tools/video_stitcher.py` — stitch scenes (video.mp4 + audio.mp3) into final MP4
+  - Usage: `python3 001_Architecture/Tools/Video-Generation/Generic_Tools/video_stitcher.py scene_1/ scene_2/ ... -o final.mp4`
 
 ### Final Cut Pro XML Export
-- **Python Tool:** `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Remotion/export_fcpxml.py` — export timeline as FCPXML 1.9
-  - Usage: `python3 /Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Remotion/export_fcpxml.py --video-dir outputs/<project>`
+- **Python Tool:** `001_Architecture/Tools/Remotion/export_fcpxml.py` — export timeline as FCPXML 1.9
+  - Usage: `python3 001_Architecture/Tools/Remotion/export_fcpxml.py --video-dir outputs/<project>`
   - Allows importing into Final Cut Pro for further editing
 
 ---
@@ -243,19 +265,19 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - **API Key:** `NOTION_API_KEY`
 
 ### Notion Bookmark Enrichment
-- **Python Tool:** `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Notion/enrich-notion-bookmarks.py` — autonomous script
+- **Python Tool:** `001_Architecture/Tools/Notion/enrich-notion-bookmarks.py` — autonomous script
   - Processes all 14 bookmark databases
   - Scrapes URLs via Firecrawl
   - Generates AI summaries via Claude
   - Updates Notion descriptions
-  - Runs: `source ~/.env-secrets && python3 /Users/tonymacbook2025/Documents/App Building/Obsidian-Vault/003_Tools/Notion/enrich-notion-bookmarks.py`
+  - Runs: `source ~/.env-secrets && python3 001_Architecture/Tools/Notion/enrich-notion-bookmarks.py`
 
 ---
 
 ## Obsidian / Knowledge Vault
 
 ### Obsidian MCP
-- **Vault Location:** `/Users/tonymacbook2025/Documents/App Building/Obsidian-Vault`
+- **Vault Location:** `/Users/tonymacbook2025/Documents/Agent-OS`
 - **API Key:** `OBSIDIAN_API_KEY`
 - **What it does:** Read/write access to all 1,382+ markdown notes in the vault
 
@@ -361,11 +383,10 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ## Publishing & Social Scheduling
 
-### Blotato
+### Blotato — MCP server, registered and active (see full entry above under Publishing)
 - **What it does:** YouTube + social media (Instagram, TikTok, Facebook) publishing
-- **Invoked by:** `kie_upload.py` for file uploads
-- **API Key:** `BLOTATO_API_KEY`
-- **Integration:** Final step in Video Editor production pipeline
+- **Access:** MCP tools (`mcp__blotato__*`) — see "Blotato (Publishing)" entry above for tool list, connected accounts, and gotchas
+- **Integration:** Final step in Video Editor production pipeline — Phase 12 of the Reimagined Realms Video Pipeline skill automates this end-to-end
 
 ### Meta Graph API
 - **What it does:** Facebook/Instagram publishing and analytics
@@ -378,6 +399,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 ### Vercel Plugin
 - **Status:** Enabled
 - **What it does:** Deploy Next.js/full-stack apps, manage environments, domains, analytics
+- **Skills lock:** `001_Architecture/Skills/skills-lock.json` (tracks installed Claude Code skills, including `vercel-cli` from `vercel/vercel`)
 - **Commands:**
   - `/vercel:deploy` — Deploy to Vercel
   - `/vercel:env` — Manage environment variables
@@ -396,6 +418,27 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ---
 
+## Tool Manager (Cost Routing & Model Intelligence)
+
+### tm CLI
+- **What it does:** Live cost routing and model recommendation for all pipelines. Knows pricing for every API in the toolbox, researches model capabilities via Perplexity, and recommends the cheapest/best option before any pipeline runs.
+- **CLI:** `001_Architecture/Tools/Tool-Manager/tm [command]`
+- **Commands:**
+  - `tm status` — check if pricing cache and model DB are current
+  - `tm cost --pipeline "images:15,video:15,tts:3min,music:1track"` — estimate full pipeline cost
+  - `tm recommend --type image|video` — best model + backup for a task
+  - `tm research-models` — populate model capabilities DB via Perplexity
+  - `tm refresh` — scrape all pricing pages (auto-runs monthly via cron)
+  - `tm fal-search "<query>" [--pricing] [--limit N]` — search fal.ai model catalog via authenticated Platform API (`https://api.fal.ai/v1/models?q=`); add `--pricing` to fetch per-model pricing inline
+- **Data files:**
+  - `data/pricing_cache.json` — live pricing for all APIs (OpenAI, kie.ai, ElevenLabs, fal.ai, Firecrawl, etc.)
+  - `data/model_capabilities.json` — pros/cons/benchmarks/rankings for all image and video models
+- **Skill:** `tool-manager` — MANDATORY AUTO-INVOKE before any pipeline or tool decision
+- **Cron:** Monthly refresh on the 1st at 3am
+- **Note:** kie.ai pricing page is auth-gated — prices populated via Perplexity research. Run `tm refresh` after logging in manually if needed.
+
+---
+
 ## AI Research
 
 ### Perplexity
@@ -410,6 +453,38 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ### YouTube Transcript
 - **Skill:** `/youtube-transcript` — extract and analyze YouTube video transcripts
+
+---
+
+## Agent-OS Validation System (Checks & Balances)
+
+Built 2026-06-19. Ensures Claude never declares work done without proof.
+
+### Claude Code Hooks (`~/.claude/hooks/`)
+- **`agent-os-build-tracker.js`** — PostToolUse hook. Fires after every Write/Edit/MultiEdit. Detects functional artifacts (.py, .sh, .js, SKILL.md, tool configs, settings.json). Injects `⚠️ VERIFY REQUIRED` into Claude's context immediately. Appends file to build manifest.
+- **`agent-os-stop-validator.js`** — Stop hook. REMOVED (Jun 19, 2026) — fired after every turn and banner couldn't be suppressed. Tool-Manager workflow is the replacement guardrail.
+
+### Build Manifest
+- Location: `/tmp/agent_os_build_manifest.json` (session-scoped, auto-created)
+- Tracks: `unverified` (written, not yet checked) and `verified` (passed validation)
+- Stop hook clears block once all items move to verified
+
+### Validation Script
+- **File:** `001_Architecture/Scripts/validate_build.py`
+- **Usage:** `python3 001_Architecture/Scripts/validate_build.py --files "path1.py,path2/SKILL.md"`
+- **Type-aware checks:**
+  - `.py` → syntax (`py_compile`) + CLI `--help` smoke test + referenced path existence
+  - `SKILL.md` → frontmatter present, `name:` field, name registered in Skill-Index.md
+  - `.json` → valid JSON parse
+  - `.sh` → executable bit + bash syntax check
+  - `.js` → exists and non-empty
+- **Data fetch completeness:** `python3 validate_build.py --data-fetch --sources "kie.ai,fal.ai,openai" --got "kie.ai,openai"` — diffs expected vs. resolved, flags missing sources
+- When a file passes, it's moved from `unverified` → `verified` in the manifest, unblocking the Stop hook
+
+### Rules This System Enforces
+- Never declare a build done without running `validate_build.py` on it
+- Multi-source data fetches must report ALL sources (pass + fail with error + fix instructions)
+- Stop hook is a hard gate — Claude cannot finish a turn if functional artifacts are unverified
 
 ---
 
@@ -505,6 +580,89 @@ Multi-platform affiliate marketing operations. 18 programs tracked across travel
 - `/ai-footage-prompter` — Generate video/image prompts for AI generation
 - `/title-hook-generator` — Generate titles, hooks, descriptions for CTR
 
+### Reimagined Realms Video Pipeline Skill (Global — `001_Architecture/Skills/Reimagined_Realms_Video_Pipeline/`)
+- **Invoke:** `/reimagined-realms`
+- **Purpose:** Full 10-phase faceless YouTube video pipeline. Replaces Higgsfield MCP — no subscription needed.
+- **Workflow:** Channel analysis (Firecrawl) → Story ideation (DAIPBR + 7-part template) → Script → Beat table → Cost estimate (3 combos: GPT Image+Seedance, Nano Banana+Kling, Nano Banana+Veo 3.1) → ElevenLabs voiceover → Beatmap from VO timestamps → Shot list (per-clip image+video prompts) → YouTube package
+- **Output:** `Productions/[topic-slug]/` — 8 files: script, beat table, cost estimate, voiceover, timestamps, beatmap, shot list, YouTube package
+- **Tools used:** Firecrawl CLI, Tool Manager pricing cache, `001_Architecture/Tools/Text-To-Speech/audio_tts.py`, kie.ai (KIE_API_KEY), ElevenLabs (ELEVENLABS_API_KEY)
+- **Voice ID (Reimagined Realms):** `raMcNf2S8wCmuaBcyI6E` (ElevenLabs multilingual v2)
+- **Note:** `~/.claude/skills/` is a symlink to `001_Architecture/Skills/` — skill is global across Claude, Codex, and Gemini
+
+### Reimagined Realms — Batch Generation + Assembly Scripts (`001_Architecture/Tools/Video-Generation/Channels/Reimagined_Realms/`)
+- **batch_generate_images.py** — Generate all clip images via GPT Image 2 on kie.ai
+  - Usage: `python3 batch_generate_images.py <production_folder> [--clips C20 C21] [--overwrite]`
+  - Reads: `Data/Beatmap.json` + `Production/Shot_List.md` (Image prompts)
+  - Saves: `Images/C01_0.0s-3.8s.png ...`; skips existing — safe to re-run
+  - `--clips`: generate subset only; `--overwrite`: regenerate even if file exists
+- **batch_generate_videos.py** — Generate all clip videos via Seedance 1.5/2.0 on kie.ai (image-to-video)
+  - Usage: `python3 batch_generate_videos.py <production_folder> [--clips C20] [--overwrite] [--audio]`
+  - Reads: `Images/*.png` + `Production/Shot_List.md` (Video prompts) + `Data/Beatmap.json`
+  - Uploads images to Cloudinary → submits to kie.ai → polls → saves `Video_Clips/C01_0.0s-3.8s.mp4 ...`
+  - Model routing: Seedance 1.5 Pro (≤12s generate) / Seedance 2.0 (>12s); hard cap 8s final per clip
+  - Keys required: `KIE_API_KEY`, `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_Key`, `CLOUDINARY_API_Secret`
+- **assemble.py** — Universal assembly pipeline (trim → concat → narration → Suno → grade → caption)
+  - Usage: `python3 assemble.py <production_folder> [--phase N] [--stop-phase N] [--overwrite] [--clips C20,C21] [--skip-suno]`
+  - Reads: `Production/assemble_config.json` (suno_prompt, suno_tags, caption_line1, caption_line2)
+  - Reads: `Data/Beatmap.json`, `Video_Clips/`, `Narration_Audio/`
+  - Hard cap: 8s max final clip duration (enforced at trim phase regardless of beatmap value)
+  - Suno endpoint: `https://api.kie.ai/api/v1/generate` — requires `callBackUrl` field
+  - Output: `Assembly/raw_video.mp4`, `Assembly/narration.mp3`, `Assembly/music.mp3`, `Assembly/final.mp4`
+
+### Reimagined Realms — Audio Pipeline (`001_Architecture/Tools/Audio/`)
+- **compose_audio.py** — Vision-based per-scene audio composer
+  - Usage: `python3 compose_audio.py <production_folder> [--reanalyze] [--dry-run]`
+  - Reads: `Assembly/Frames/` (1fps frames) + `gemini_scene_analysis.md` + `Data/Beatmap.json`
+  - Outputs: `Data/audio_briefs.json`, `Data/per_scene_stem_map.json`
+- **generate_stems.py** — Generate per-scene SFX clips via ElevenLabs
+  - Usage: `python3 generate_stems.py <production_folder> [--stems-file Data/per_scene_stem_map.json] [--stems c20 c21] [--overwrite]`
+- **analyze_stems.py** — LUFS measurement and gain correction per stem
+  - Usage: `python3 analyze_stems.py <production_folder> [--stems-file Data/per_scene_stem_map.json]`
+  - Writes corrected `volume`, `measured_lufs`, `gain_db` back to stem map JSON
+- **mix_stems.py** — Mix all stems onto video timeline with S-curve (hsin) crossfades
+  - Usage: `python3 mix_stems.py <production_folder> [--stems-file Data/per_scene_stem_map.json] [--narration Assembly/narration.mp3]`
+  - Output: `Assembly/stems_mix.mp3`; optionally `Assembly/stems_narration_mix.mp3`
+- **render_video.py** — Versioned renderer — keeps all audio tracks separate, bakes into MP4
+  - Usage: `python3 render_video.py <production_folder> --stems Assembly/stems_mix.mp3 --narration Assembly/narration.mp3 [--music Assembly/music.mp3] --stems-vol 0.88 --narration-vol 3.09 --music-vol 0.12 --duck --note "description"`
+  - Locked formula: stems vol=0.88 (-23 LUFS), narration vol=3.09 (-14 LUFS), sidechain duck threshold=0.015 ratio=4 attack=150 release=800
+  - Each version saved to `Assembly/V1/`, `Assembly/V2/` ... with independent track copies + render_notes.md
+  - Updates `Assembly/RENDER_LOG.md`
+
+### Anomalous Wild — Batch Generation Scripts (`001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/` + `Generic_Tools/`)
+
+Full history/status write-up: [[000_Wiki/Video-Production/Anomalous-Wild-Pipeline-Scripts]]. Anomalous Wild is the *first* video pipeline ever built in this workspace (predates Reimagined Realms), so its early tooling is more fragmented — several scripts do overlapping jobs from different eras. **A unifying orchestrator skill is now built** (2026-07-07/08): `001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md` (invoke via `/anomalous-wild`), designed at `DESIGN.md` + `PLAN.md`. See the next section for the new pipeline's own scripts.
+
+- **pipeline_supervisor.py** (`Channels/Anomalous_Wild/`) — ✅ **ACTIVE / preferred generation script.** Batch clip generator with real error-code classification (FATAL/CREDITS/SKIP/RATE/WAIT/RETRY/UNKNOWN), automatic retries, macOS notifications, auto-preloops after each successful clip.
+  - Usage: `python3 pipeline_supervisor.py` (run from `002_Content-Creation/Video_Editor/`) or `--status`
+  - Reads: `Production/new_clips_prompts.json` (per-clip `output_folder`, now `Video_Clips/` — files keyed by `{scene_id}.mp4`, not a fixed `video.mp4` name)
+  - Kept in the new pipeline design as-is (Task list: "✅ Reused as-is")
+- **run_new_clips_batch.py** (`Generic_Tools/`) — ⚠️ **SUPERSEDED, not deleted.** Simpler batch generator, only ever used for Bioluminescence Weapon despite living in "Generic_Tools." Does the same job as `pipeline_supervisor.py` but without the retry/error-handling sophistication. Its one distinguishing feature — auto-appending a scientific no-text negative prompt for `is_diagram: true` image entries (added after the Video 001 Report Card caught garbled diagram text) — didn't reliably work, since negative prompts alone don't stop image models from occasionally rendering text anyway. That idea carries forward into the new pipeline's Scientific Diagram sub-pipeline (research reference → generate clean illustration → vision-verify → label in Remotion), which is the actual fix. Left in place, unused going forward once the new sub-pipeline is built.
+- **preloop_new_clips.py** (`Generic_Tools/`) — post-processes freshly generated clips into looped versions matching narration duration. Called by `pipeline_orchestrator.sh`.
+- **preloop_videos.sh** (`Channels/Anomalous_Wild/`) — same job as above but for the original 12 hand-picked hero clips (hardcoded durations). Needs bash 4+ for `declare -A`; the system bash 3.2 couldn't run it. Fixed 2026-07-07 via `brew install bash` (now 5.3.15, ahead of system bash in PATH — plain `bash` picks it up automatically, no script changes needed). Verified working end-to-end.
+- **pipeline_orchestrator.sh** (`Channels/Anomalous_Wild/`) — 6-stage wrapper chaining `run_new_clips_batch.py` → `preloop_new_clips.py` → `preloop_videos.sh` → `check_pipeline_status.py`. Fixed 2026-07-07 (was calling a `004_Tools/` path that stopped existing after a June reorg — pre-existing breakage, not caused by that day's folder retrofit).
+- **check_pipeline_status.py** (`Channels/Anomalous_Wild/`) — read-only progress report: which clips/images are done vs. pending.
+- **BioluminescenceDoc.tsx** (Remotion, `003_Remotion/src/remotion/video-components/`) — the actual Remotion composition that assembles Bioluminescence Weapon. One-off, hardcoded to that video's scenes/durations — not a reusable template. A reference copy lives at `Productions/0001_Bioluminescence_Weapon/Remotion/` for archival purposes; the live version stays in `003_Remotion` untouched.
+- **AnomalousWildEndCard.tsx** (Remotion) — channel-wide end card. In practice, the pipeline just appends the pre-rendered `end_card_v3.mp4` via ffmpeg (locked per DESIGN.md) rather than re-rendering this per video. A reference copy lives at `Brand_Assets/End_Card/` alongside the mp4 files; still registered live in `Root.tsx` too.
+
+### Anomalous Wild Pipeline — New Orchestrator (built 2026-07-07/08, `/anomalous-wild`)
+
+Built via the `superpowers:subagent-driven-development` workflow, one task per script, each with an independent code-review pass (several fix rounds), plus a final whole-branch review that caught 2 cross-cutting integration bugs the per-task reviews couldn't see. Full task history and every review finding: `.superpowers/sdd/progress.md` (session-scoped scratch ledger, not durable — see wiki for the durable write-up).
+
+- **build_motion_graphics_profile.py** + **data/motion_graphics_capabilities.json** (`001_Architecture/Tools/Tool-Manager/`) — Research-backed capability profile for Remotion / video-use / Hyperframes / Manim, every entry cites a real source (skill doc path or dated session precedent). Consulted by Tool-Manager when the Anomalous Wild orchestrator needs to route a beat's visual need to a tool — never a hardcoded lookup.
+- **generate_narration_with_timestamps.py** (`Channels/Anomalous_Wild/`) — thin wrapper around the existing `generate_voiceover_with_timestamps()` (`Tools/Text-To-Speech/audio_tts.py`). Reads `Scripts/Narration.md` (`## scene_id` sections), writes `Narration_Audio/<scene_id>.mp3` + `_beat_sheet.json` (word-level timestamps) per scene.
+- **build_beat_table.py** (`Channels/Anomalous_Wild/`) — reads `Narration_Audio/*_beat_sheet.json` + `Production/Scene_Routing.json`, writes `Production/Beat_Table.json`. Locks in `max_clip_s: 8.0` for `live_footage` beats, `max_static_s: 5.0` for diagram beats (no static frame >3-5s rule).
+- **diagram_research_and_illustrate.py** (`Channels/Anomalous_Wild/`) — Scientific Diagram sub-pipeline steps 1-2: searches Openverse for a real reference image, then generates a clean no-text illustration via kie.ai GPT-Image-2 (`gpt-image-2-text-to-image`) with an explicit no-text/no-label negative prompt. This is the actual fix for the garbled-diagram-text problem from the Bioluminescence Weapon video's anglerfish diagram.
+- **detect_label_coordinates.py** (`Channels/Anomalous_Wild/`) — Scientific Diagram sub-pipeline step 3: Gemini vision pass over the *actual* generated illustration, returns real `{feature, x_pct, y_pct, confidence}` coordinates. Structurally strips any coordinate attached to a `not_found` entry (never trusts the model to have omitted it) — the "never guess a label position" rule is code-enforced, not just a prompt instruction.
+- **DiagramLabels.tsx** (Remotion, `003_Remotion/src/remotion/video-components/`) — Scientific Diagram sub-pipeline step 4: places labels/callout lines at the detected coordinates, staggered fade-in. Registered in `Root.tsx` via a Zod `schema=` prop (`diagramLabelsSchema`, matching the existing `AIVideo`/`aiVideoSchema` pattern in the same file — not a type-erasure cast). `x_pct`/`y_pct` are optional in the schema specifically so a `not_found` label (no coordinates) doesn't crash the composition.
+- **generate_youtube_package.py** (`Channels/Anomalous_Wild/`) — adapts Reimagined Realms' title/description/thumbnail formulas to Anomalous Wild's science/nature framing. Generates 3 curiosity-gap titles (length-clamped), a search-intent description, and **actually generates and downloads 3 real thumbnail PNGs** via kie.ai (mood/palette variations), not just prompts.
+- **upload_to_blotato.md** (`Channels/Anomalous_Wild/`) — Blotato upload procedure doc mirroring RR's Phase 12 locked defaults. Confirmed Blotato YouTube `accountId: 42514` (displayed there as "Anomalos Wild," a spelling variant — confirmed correct by Tony 2026-07-08, not just inferred).
+- **scaffold_new_production.py** (`Channels/Anomalous_Wild/`) — going-forward folder scaffolder: creates the 8 typed folders (matching Reimagined Realms' pattern) and hard-fails if the locked `end_card_v3.mp4` (`Brand_Assets/End_Card/`) is missing.
+- **Anomalous_Wild_Video_Pipeline/SKILL.md** (`001_Architecture/Skills/`) — the orchestrator itself. Invoke via `/anomalous-wild`. 10 phases, mirrors Reimagined Realms' structure, explicit pause points (topic selection, live-footage cost estimate, first-clip quality check, title/thumbnail/privacy). Core principle: every beat's visual tool is chosen live via Tool-Manager, never hardcoded.
+
+**Known cross-cutting bugs caught only by the final whole-branch review (both fixed):** (1) `detect_label_coordinates.py`'s `not_found` coordinate-stripping was rejected by `DiagramLabels.tsx`'s original required-field Zod schema — would have crashed diagram assembly exactly when the "never guess" safety path triggered; fixed by making `x_pct`/`y_pct` optional + a `hasCoordinates()` type guard. (2) The 3-5s no-static-frame rule was recorded in `Beat_Table.json` but nothing actually enforced it; fixed by adding a mandatory per-beat static-hold check to the orchestrator's Phase 7 (Assembly).
+
+**Known pre-existing gaps flagged during this build, not yet resolved:** no locked ElevenLabs voice ID for Anomalous Wild (RR has one hardcoded, AW doesn't — orchestrator asks Tony/Tool-Manager at runtime); `pipeline_supervisor.py` expects a `Production/new_clips_prompts.json` manifest that no script yet auto-builds from the new `Shot_List.md` format (orchestrator treats this as an inline glue step).
+
 ---
 
 ## API Keys Reference
@@ -544,6 +702,8 @@ All keys stored in `~/.env-secrets`. When a tool requires a key, it's listed in 
 | `gemini` | `/opt/homebrew/bin/gemini` | Google Gemini CLI for terminal-based AI agent workflows |
 | `yt-dlp` | `/Library/Frameworks/Python.framework/Versions/3.13/bin/yt-dlp` | Download videos from YouTube and public sources |
 | `python3` | `/Library/Frameworks/Python.framework/Versions/3.13/bin/python3` | Python interpreter for all .py tools |
+| `kie-cli` | npm global (`@felores/kie-cli`) | Live kie.ai model discovery by category — needs `KIE_API_KEY` |
+| `wavespeed` | npm global (`@wavespeed/cli`) | Search 986 WaveSpeed models by keyword; per-video pricing — needs `WAVESPEED_API_KEY` |
 
 ---
 

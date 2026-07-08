@@ -58,9 +58,11 @@ Master catalog of all wiki pages by category. Updated on every ingest.
 - [[Architecture/Obsidian-And-Gemini-CLI-One-AI-Brain-That-Works-With-Everything]] — This is a walkthrough for Obsidian and Gemini CLI One AI Brain That Works With Everything, focused on setup, workflow, and practical use rather than abstract theory.
 - [[Architecture/The-4-Levels-Of-Obsidian]] — This is a walkthrough for The 4 Levels of Obsidian, focused on setup, workflow, and practical use rather than abstract theory.
 - [[Architecture/Obsidian-Agentic-Workspace-Design]] — This is a reference page for turning Obsidian into an agent-driven workspace with plugins, dashboards, and local automation.
+- [[Architecture/Agent-OS-Validation-System]] — PostToolUse + Stop hook system that blocks Claude from declaring builds done without verification. Includes validate_build.py for type-aware checks and data-fetch completeness reporting.
 
 ## Video Production
 
+- [[Video-Production/Higgsfield-AI-Faceless-YouTube-Pipeline]] — Fully automated faceless YouTube pipeline using Claude Fable 5 + Higgsfield MCP; generates complete documentary-style videos from a single prompt with auto-packaging for YouTube.
 - [[Video-Production/Angular-Minimalist-Action-Style]] — Angular minimalist action style is a promptable illustration direction for high-drama scenes where simple shapes, sharp silhouettes, flat cel shading, and restricted color do most of the storytelling. The reference uses Niji 6 to stage a lone swordsman against a giant desert beast, emphasizing scale and readable composition over texture-heavy realism.
 - [[Video-Production/Angular-Retro-Cartoon-Style]] — An image generation prompt for Niji 6 that produces a distinct retro-futuristic sci-fi look with blocky anatomy and clean cel shading.
 - [[Video-Production/Annotation-Prompts]] — Annotation prompts are visual instructions added directly onto a reference image, such as arrows, boxes, labels, or movement notes, so an AI image or video model can understand how objects should move or behave in a generated scene.

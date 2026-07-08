@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-06-14
+created: 2026-07-08
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-06-14T00:04:15-04:00
+Generated: 2026-07-08T08:33:36-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -32,7 +32,11 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | plugin-creator | Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, valid manifest defaults, and personal-marketplace entr… | `001_Architecture/Skills/.system/plugin-creator/SKILL.md` |
 | skill-creator | Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specializ… | `001_Architecture/Skills/.system/skill-creator/SKILL.md` |
 | skill-installer | Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skil… | `001_Architecture/Skills/.system/skill-installer/SKILL.md` |
+| Anomalous_Wild_Video_Pipeline | Invoke when Tony says /anomalous-wild, make an Anomalous Wild video, build me a video for the nature/science channel, run the Anomalous Wild pipeline, or start an AW production. O… | `001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md` |
+| Reimagined_Realms_Video_Pipeline | Invoke when Tony says /reimagined-realms, make a Reimagined Realms video, build me a video for the history channel, run the video pipeline, or start the RR pipeline. Orchestrates… | `001_Architecture/Skills/Reimagined_Realms_Video_Pipeline/SKILL.md` |
 | tiktok-shop-affiliate-video | Use when Tony has raw product footage and voiceover clips and wants to produce TikTok Shop or YouTube Shorts affiliate videos. Triggers on "create affiliate video", "edit product… | `001_Architecture/Skills/TikTok-Shop-Affiliate-Video/SKILL.md` |
+| tool-manager | > | `001_Architecture/Skills/Tool-Manager/SKILL.md` |
+| Tutorial-Builder | Turn a past multi-session build (pipeline, tool, workflow) into a replication blueprint and video-recording concept for the Roboto Gato YouTube channel and/or a sellable/free PDF.… | `001_Architecture/Skills/Tutorial-Builder/SKILL.md` |
 | ab-test-setup | When the user wants to plan, design, or implement an A/B test or experiment. Also use when the user mentions "A/B test," "split test," "experiment," "test this change," "variant c… | `001_Architecture/Skills/ab-test-setup/SKILL.md` |
 | ad-creative | When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — for any paid advertising platform. Also use when th… | `001_Architecture/Skills/ad-creative/SKILL.md` |
 | agent-development | This skill should be used when the user asks to "create an agent", "add an agent", "write a subagent", "agent frontmatter", "when to use description", "agent examples", "agent too… | `001_Architecture/Skills/agent-development/SKILL.md` |
@@ -205,6 +209,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | ux-heuristics | Evaluate and improve interface usability using heuristic analysis. Use when the user mentions "usability audit", "UX review", "users are confused", "heuristic evaluation", "form u… | `001_Architecture/Skills/ux-heuristics/SKILL.md` |
 | video-use | Edit any video by conversation. Transcribe, cut, color grade, generate overlay animations, burn subtitles — for talking heads, montages, tutorials, travel, interviews. No presets,… | `001_Architecture/Skills/video-use/SKILL.md` |
 | manim-video | Production pipeline for mathematical and technical animations using Manim Community Edition. Creates 3Blue1Brown-style explainer videos, algorithm visualizations, equation derivat… | `001_Architecture/Skills/video-use/skills/manim-video/SKILL.md` |
+| wavespeed | Generate or edit AI media (image, video, audio, 3D) by calling the wavespeed CLI on the user's machine. Use whenever the user asks to create, edit, animate, upscale, or transform… | `001_Architecture/Skills/wavespeed/SKILL.md` |
 | web-asset-generator | Generate web assets including favicons, app icons (PWA), and social media meta images (Open Graph) for Facebook, Twitter, WhatsApp, and LinkedIn. Use when users need icons, favico… | `001_Architecture/Skills/web-asset-generator/SKILL.md` |
 | web-typography | Select, pair, and implement typefaces for web projects. Use when the user mentions "font pairing", "which typeface", "line height", "responsive typography", "web font loading", or… | `001_Architecture/Skills/web-typography/SKILL.md` |
 | writing-hookify-rules | This skill should be used when the user asks to "create a hookify rule", "write a hook rule", "configure hookify", "add a hookify rule", or needs guidance on hookify rule syntax a… | `001_Architecture/Skills/writing-rules/SKILL.md` |

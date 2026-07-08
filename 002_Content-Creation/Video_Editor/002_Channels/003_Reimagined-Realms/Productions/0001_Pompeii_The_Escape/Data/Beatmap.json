@@ -1,0 +1,202 @@
+{
+  "topic": "Pompeii: The Escape",
+  "total_clips": 21,
+  "total_duration_ms": 152508,
+  "acts": [
+    {
+      "act": 1,
+      "label": "Hook",
+      "start_ms": 0,
+      "end_ms": 11517,
+      "sub_beats": [
+        {
+          "clip": "C1",
+          "start_ms": 0,
+          "end_ms": 3839,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 3.8
+        },
+        {
+          "clip": "C2",
+          "start_ms": 3839,
+          "end_ms": 7678,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 3.8
+        },
+        {
+          "clip": "C3",
+          "start_ms": 7678,
+          "end_ms": 11517,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 3.8
+        }
+      ]
+    },
+    {
+      "act": 2,
+      "label": "Rising Crisis",
+      "start_ms": 11517,
+      "end_ms": 45743,
+      "sub_beats": [
+        {
+          "clip": "C4",
+          "start_ms": 11517,
+          "end_ms": 20073,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 8.6
+        },
+        {
+          "clip": "C5",
+          "start_ms": 20073,
+          "end_ms": 28629,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 8.6
+        },
+        {
+          "clip": "C6",
+          "start_ms": 28629,
+          "end_ms": 37185,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 8.6
+        },
+        {
+          "clip": "C7",
+          "start_ms": 37185,
+          "end_ms": 45743,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 8.6
+        }
+      ]
+    },
+    {
+      "act": 3,
+      "label": "Peak Crisis",
+      "start_ms": 45743,
+      "end_ms": 105929,
+      "sub_beats": [
+        {
+          "clip": "C8",
+          "start_ms": 45743,
+          "end_ms": 57780,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 12.0
+        },
+        {
+          "clip": "C9",
+          "start_ms": 57780,
+          "end_ms": 69817,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 12.0
+        },
+        {
+          "clip": "C10",
+          "start_ms": 69817,
+          "end_ms": 81854,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 12.0
+        },
+        {
+          "clip": "C11",
+          "start_ms": 81854,
+          "end_ms": 93891,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 12.0
+        },
+        {
+          "clip": "C12",
+          "start_ms": 93891,
+          "end_ms": 105929,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 12.0
+        }
+      ]
+    },
+    {
+      "act": 4,
+      "label": "Climax",
+      "start_ms": 105929,
+      "end_ms": 127849,
+      "sub_beats": [
+        {
+          "clip": "C13",
+          "start_ms": 105929,
+          "end_ms": 111409,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 5.5
+        },
+        {
+          "clip": "C14",
+          "start_ms": 111409,
+          "end_ms": 116889,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 5.5
+        },
+        {
+          "clip": "C15",
+          "start_ms": 116889,
+          "end_ms": 122369,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 5.5
+        },
+        {
+          "clip": "C16",
+          "start_ms": 122369,
+          "end_ms": 127849,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 5.5
+        }
+      ]
+    },
+    {
+      "act": 5,
+      "label": "Resolution",
+      "start_ms": 127849,
+      "end_ms": 148886,
+      "sub_beats": [
+        {
+          "clip": "C17",
+          "start_ms": 127849,
+          "end_ms": 134861,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 7.0
+        },
+        {
+          "clip": "C18",
+          "start_ms": 134861,
+          "end_ms": 141873,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 7.0
+        },
+        {
+          "clip": "C19",
+          "start_ms": 141873,
+          "end_ms": 148886,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 7.0
+        }
+      ]
+    },
+    {
+      "act": 6,
+      "label": "Outro + CTA",
+      "start_ms": 148886,
+      "end_ms": 152508,
+      "sub_beats": [
+        {
+          "clip": "C20",
+          "start_ms": 148886,
+          "end_ms": 150697,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 1.8
+        },
+        {
+          "clip": "C21",
+          "start_ms": 150697,
+          "end_ms": 152508,
+          "target_generate_duration_s": 12,
+          "target_final_duration_s": 1.8
+        }
+      ]
+    }
+  ]
+}

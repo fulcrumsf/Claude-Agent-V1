@@ -38,7 +38,7 @@ The self-eval loop runs `timeline_view` at every cut boundary before showing you
 - Persists session memory in `project.md`
 
 ## Installation (Tony's Workspace)
-- **Repo:** `001_Architecture/Tools/Video-Generation/video-use/`
+- **Repo:** `001_Architecture/Tools/Video-Generation/Video-Use/`
 - **Skill:** `001_Architecture/Skills/video-use/` (symlinked)
 - **Dependencies:** Installed via `uv sync`
 - **API key needed:** `ELEVENLABS_API_KEY` — load via `source ~/.env-secrets` (never stored in .env)
@@ -63,4 +63,4 @@ video-use is the cutting engine for the TikTok Shop / YouTube Shorts affiliate v
 - [[Video-Production/Video-Production-Workflow]] — full production workflow
 - [[007_Resource_Library/Tutorials/Claude-Code-YouTube-Video-Editing/Claude-Code-Plus-YouTube-Video-Editing-20-000month-1.md]]
 - [[001_Architecture/Skills/TikTok-Shop-Affiliate-Video/SKILL.md]] — affiliate video skill
-- `001_Architecture/Tools/Video-Generation/video-use/` — installed repo
+- `001_Architecture/Tools/Video-Generation/Video-Use/` — installed repo

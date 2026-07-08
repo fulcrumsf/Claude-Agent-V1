@@ -1,0 +1,4 @@
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/001_Bioluminescence-Weapon/_tests/_v5_production/Assembly/video_parts/segA_scenes1-5.mp4'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/001_Bioluminescence-Weapon/_tests/_v5_production/Assembly/video_parts/segB_tree_of_life.mp4'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/001_Bioluminescence-Weapon/_tests/_v5_production/Assembly/video_parts/segC_scene06_overlays.mp4'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/001_Bioluminescence-Weapon/_tests/_v5_production/Assembly/video_parts/segD_scenes7-11.mp4'

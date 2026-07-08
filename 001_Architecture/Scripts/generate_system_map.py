@@ -174,6 +174,24 @@ def scan_mcps():
                     mcps[str(p)] = list(config["mcpServers"].keys())
             except Exception:
                 pass
+
+    # Claude Code CLI stores MCP registrations in ~/.claude.json — both a
+    # top-level mcpServers block and per-project entries (`claude mcp add`
+    # without --scope global lands under projects.<path>.mcpServers).
+    claude_json = HOME / ".claude.json"
+    if claude_json.exists():
+        try:
+            with open(claude_json) as f:
+                config = json.load(f)
+            if config.get("mcpServers"):
+                mcps[f"{claude_json} (global)"] = list(config["mcpServers"].keys())
+            for proj_path, proj_data in (config.get("projects") or {}).items():
+                servers = (proj_data or {}).get("mcpServers") or {}
+                if servers:
+                    mcps[f"{claude_json} (project: {proj_path})"] = list(servers.keys())
+        except Exception:
+            pass
+
     return mcps
 
 

@@ -1,9 +1,18 @@
 ---
 Created: 2025-03-15T11:35
+Deprecated: 2026-06-18
 tags:
   - Automation
   - Faceless
   - Video
+  - deprecated
+---
+
+> ⛔ **DEPRECATED — June 2026**
+> This file describes the old Reimagined Realms concept: comedy POV/vlog characters (Genghis Khan, Julius Caesar) in modern internet formats. That direction has been abandoned.
+> The channel has pivoted to historical/scientific explainer content (Brightside model).
+> See: `002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Reimaginedrealms_Content_System.md`
+
 ---
 #### Reimagined Realms Characters
 |![](https://www.notion.so/icons/font_gray.svg)Character Name|![](https://www.notion.so/icons/seed_gray.svg)Character Seed in Freepik|![](https://www.notion.so/icons/link_gray.svg)URL Link|

@@ -46,7 +46,7 @@ Hyperframes is fully open source. Remotion requires a paid license above small-t
 
 ## Installation (Tony's Workspace)
 - **CLI:** `hyperframes` — installed globally via npm (v0.6.25)
-- **Repo:** `001_Architecture/Tools/Video-Generation/hyperframes/` (cloned, LFS test files skipped)
+- **Repo:** `001_Architecture/Tools/Video-Generation/Hyperframes/` (cloned, LFS test files skipped)
 - **Skills installed and symlinked:**
   - `001_Architecture/Skills/hyperframes/` — composition authoring, captions, TTS, audio-reactive animation
   - `001_Architecture/Skills/hyperframes-cli/` — dev-loop: init, lint, preview, render, doctor
@@ -75,4 +75,4 @@ Hyperframes sits after video-use in the affiliate video pipeline. video-use cuts
 - [[Video-Production/Video-Use-Agent-Editor]] — the cutting layer that comes before Hyperframes
 - [[Video-Production/Short-Form-Video-Creation-Stack]] — stack context
 - [[007_Resource_Library/Tutorials/Claude-Hyperframes-V2-Video]] — BIT framework tutorial
-- `001_Architecture/Tools/Video-Generation/hyperframes/` — installed repo
+- `001_Architecture/Tools/Video-Generation/Hyperframes/` — installed repo

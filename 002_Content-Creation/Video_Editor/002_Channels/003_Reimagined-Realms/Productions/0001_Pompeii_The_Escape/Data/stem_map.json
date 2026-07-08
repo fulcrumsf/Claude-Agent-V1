@@ -1,0 +1,139 @@
+{
+  "production": "0001_Pompeii_The_Escape",
+  "channel": "Reimagined_Realms",
+  "total_duration_s": 152.5,
+  "source": "gemini_scene_analysis.md",
+  "stems": [
+    {
+      "id": "city_ambience",
+      "label": "City Ambience",
+      "description": "The low hum and crowd murmur of a bustling ancient city.",
+      "prompt": "A bustling ancient Roman city, distant crowd chatter and marketplace murmur, merchants calling out, general lively city ambience, warm and energetic",
+      "in_s": 0,
+      "out_s": 3,
+      "fade_in_s": 1,
+      "fade_out_s": 0
+    },
+    {
+      "id": "mournful_wind",
+      "label": "Mournful Wind",
+      "description": "A desolate lonely wind blowing through ancient stone ruins.",
+      "prompt": "A desolate lonely wind blowing through ancient stone ruins, haunting and empty, low howling gusts, fine dust and ash skittering across cobblestones, eerie silence broken only by wind",
+      "in_s": 3,
+      "out_s": 19,
+      "fade_in_s": 1,
+      "fade_out_s": 2
+    },
+    {
+      "id": "volcanic_rumble",
+      "label": "Volcanic Rumble",
+      "description": "Deep powerful continuous underground volcanic rumbling.",
+      "prompt": "Deep powerful continuous underground volcanic rumbling, low frequency earth tremors, ominous geological pressure building, distant subterranean booms, the earth itself groaning",
+      "in_s": 20,
+      "out_s": 57,
+      "fade_in_s": 3,
+      "fade_out_s": 2
+    },
+    {
+      "id": "ocean_and_boats",
+      "label": "Ocean & Boats",
+      "description": "Mediterranean sea waves, splashing oars, creaking wooden boats.",
+      "prompt": "Gentle Mediterranean sea waves lapping against a shore, wooden oars splashing rhythmically in calm water, creaking of wooden boat hulls, oarlocks squeaking, peaceful yet urgent",
+      "in_s": 20,
+      "out_s": 28,
+      "fade_in_s": 1,
+      "fade_out_s": 1
+    },
+    {
+      "id": "panicked_crowd",
+      "label": "Panicked Crowd",
+      "description": "Large crowd in terror — screaming, shouting, desperate cries.",
+      "prompt": "A large crowd of people in extreme panic and terror, screaming and shouting desperately, cries of fear, gasps, chaotic mass panic, hundreds of voices overlapping in desperation",
+      "in_s": 25,
+      "out_s": 38,
+      "fade_in_s": 1,
+      "fade_out_s": 5,
+      "volume": 0.55
+    },
+    {
+      "id": "falling_debris",
+      "label": "Falling Debris",
+      "description": "Volcanic lapilli raining down on cobblestone streets and rooftops.",
+      "prompt": "Small volcanic rocks and debris raining down, percussive impacts on cobblestone streets, clattering against terracotta rooftops, constant pelting of small stones falling from the sky",
+      "in_s": 29,
+      "out_s": 36,
+      "fade_in_s": 1,
+      "fade_out_s": 1
+    },
+    {
+      "id": "fleeing_sfx",
+      "label": "Fleeing SFX",
+      "description": "Mass exodus — footsteps, horse hooves, cart wheels, donkeys, harness.",
+      "prompt": "A mass exodus of people fleeing on cobblestone streets, dozens of heavy footsteps running, horse hooves clattering rhythmically on stone, wooden cart wheels rumbling and squeaking loudly, donkeys braying, leather harness jingling, urgent and chaotic",
+      "in_s": 37,
+      "out_s": 57,
+      "fade_in_s": 1,
+      "fade_out_s": 2
+    },
+    {
+      "id": "aftermath_wind",
+      "label": "Aftermath Wind",
+      "description": "Sad howling wind over desolate abandoned city after the eruption.",
+      "prompt": "A mournful howling wind sweeping through an abandoned desolate stone city, empty streets with wind gusting through stone corridors, faint distant clinking of pottery moved by the wind, haunting and sorrowful",
+      "in_s": 58,
+      "out_s": 69,
+      "fade_in_s": 2,
+      "fade_out_s": 1
+    },
+    {
+      "id": "eruption_roar",
+      "label": "Eruption Roar",
+      "description": "Deafening volcanic eruption — explosive booms, lightning cracks, lava hiss.",
+      "prompt": "A massive volcanic eruption at full intensity, deafening explosive booms, thunderous cracks of volcanic lightning, the hiss and roar of lava, apocalyptic natural destruction, ear-splitting and overwhelming",
+      "in_s": 70,
+      "out_s": 81,
+      "fade_in_s": 1,
+      "fade_out_s": 0
+    },
+    {
+      "id": "pyroclastic_flow",
+      "label": "Pyroclastic Flow",
+      "description": "Immense pyroclastic surge — jet engine roar, buildings obliterated.",
+      "prompt": "An immense pyroclastic flow, a continuous jet-engine-like roaring and rushing sound, superheated gas and ash moving at tremendous speed, fire crackling, the cracking and splintering of thousands of buildings being obliterated, unstoppable force",
+      "in_s": 82,
+      "out_s": 93,
+      "fade_in_s": 0,
+      "fade_out_s": 2
+    },
+    {
+      "id": "final_desolation",
+      "label": "Final Desolation",
+      "description": "Vast empty wind over landscape completely buried in ash.",
+      "prompt": "A vast empty wind blowing across an enormous landscape completely buried under volcanic ash, immense desolate silence except for long mournful gusts, the sound of utter emptiness and death, low and haunting",
+      "in_s": 94,
+      "out_s": 105,
+      "fade_in_s": 3,
+      "fade_out_s": 2
+    },
+    {
+      "id": "survivor_sfx",
+      "label": "Survivor SFX",
+      "description": "Ash-covered survivors — shuffling footsteps, labored breathing, coughing.",
+      "prompt": "Ash-covered exhausted survivors slowly shuffling through debris, labored pained breathing, weak coughing, shuffling footsteps in deep ash, faint quiet sobbing, traumatized and shell-shocked people moving slowly",
+      "in_s": 106,
+      "out_s": 121,
+      "fade_in_s": 1,
+      "fade_out_s": 2
+    },
+    {
+      "id": "quiet_ambience",
+      "label": "Quiet Ambience",
+      "description": "Ancient ruins at dusk — gentle breeze, crickets, serene and timeless.",
+      "prompt": "Ancient stone ruins at dusk, peaceful and still, a gentle warm breeze, distant crickets beginning to chirp in the evening, serene timeless atmosphere, the quiet of history, soft and contemplative",
+      "in_s": 122,
+      "out_s": 152,
+      "fade_in_s": 3,
+      "fade_out_s": 3
+    }
+  ]
+}

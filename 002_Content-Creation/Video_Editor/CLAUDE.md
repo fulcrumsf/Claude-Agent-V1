@@ -341,10 +341,20 @@ The video production pipeline uses **6 production methodologies** (cinematic sty
 
 **Model selection rules:**
 - **Default platform:** kie.ai (30–70% cheaper than fal.ai)
-- **Default image model:** Nano Banana 2 on kie.ai ($0.04–0.09 per image)
-- **Default video model:** Kling 2.1 Pro on kie.ai ($0.025–0.05/second)
-- **Hero sequences:** Veo 3 Quality on kie.ai ($0.25/second)
-- **NEVER use Seedance 2.0** (suspended March 15, 2026) — fallback to Veo 3 Quality or Kling 2.1 Pro
+- **Never hardcode model version numbers.** Run `tm recommend --type image` and `tm recommend --type video` before every pipeline — the Tool Manager tracks current versions and pricing.
+
+**Image preference order (use latest available version of each):**
+1. GPT-Image (latest) — OpenAI API direct key exists. Run `tm recommend --type image` to confirm cheapest route (direct vs kie.ai) and state the reason.
+2. Nano Banana (latest) — Google model; Google API key exists. Run `tm recommend --type image` to confirm cheapest route (Google direct vs kie.ai) and state the reason.
+3. Fallback: `tm recommend --type image` for next best option
+
+**Video preference order (use latest available version of each):**
+1. Seedance (latest) — via kie.ai (primary for documentary/cinematic)
+2. Kling (latest) — via kie.ai (secondary)
+3. Veo (latest) — via kie.ai (tertiary / hero sequences)
+4. Fallback: `tm recommend --type video` for next best option
+
+**Rule:** If unsure which version is current or which is cheapest, do not guess — run the Tool Manager.
 
 **Full documentation:**
 - **CINEMATIC_STYLE_GUIDE.md** — Complete guide to all 6 styles, visual identity, generation workflows, post-processing rules

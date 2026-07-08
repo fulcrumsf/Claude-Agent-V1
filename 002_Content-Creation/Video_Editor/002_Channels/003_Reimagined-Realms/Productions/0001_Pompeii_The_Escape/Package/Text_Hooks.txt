@@ -1,0 +1,5 @@
+# text_hooks.txt — Pompeii: The Escape
+# Duration: first 2–3 seconds of video only
+# Apply as caption overlay in video editor or FFmpeg — non-destructive, never baked into source footage
+
+18,000 people. 2,000 bodies. Where did the rest go?

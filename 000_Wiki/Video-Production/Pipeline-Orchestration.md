@@ -10,9 +10,9 @@ tags:
   - neon-parcel
 created: 2026-06-06
 source:
-  - [[../../002_Content-Creation/Video_Editor/004_Tools/Pipeline-Orchestration/DASIPBR_Video_Generation_System.md]]
-  - [[../../002_Content-Creation/Video_Editor/004_Tools/Pipeline-Orchestration/Knowledge_Product_Pipeline.md]]
-  - [[../../002_Content-Creation/Video_Editor/004_Tools/Pipeline-Orchestration/Neon-Parcel-Content_Gap_Video_Pipeline.md]]
+  - [[../../001_Architecture/Tools/Video-Generation/Pipeline_Docs/DASIPBR_Video_Generation_System.md]]
+  - [[../../001_Architecture/Tools/Video-Generation/Pipeline_Docs/Knowledge_Product_Pipeline.md]]
+  - [[../../001_Architecture/Tools/Video-Generation/Pipeline_Docs/Neon-Parcel-Content_Gap_Video_Pipeline.md]]
 ---
 
 # Pipeline Orchestration
@@ -28,10 +28,11 @@ This is a bundle of creator-side orchestration notes for building story-driven A
 - Channel-specific orchestration for Neon Parcel
 
 ## How Tony Uses This
-Use this as the reference page when Tony is building or refining video pipeline logic, especially for story structure, content-gap analysis, and channel-specific orchestration. The source notes stay together in `002_Content-Creation/Video_Editor/004_Tools/Pipeline-Orchestration/`.
+Use this as the reference page when Tony is building or refining video pipeline logic, especially for story structure, content-gap analysis, and channel-specific orchestration. The source notes stay together in `001_Architecture/Tools/Video-Generation/Pipeline_Docs/`.
 
 ## Related
 - [[Video-Production-Workflow]]
 - [[Prompt-Best-Practices]]
 - [[Video-Use-Agent-Editor]]
 - [[Short-Form-Video-Creation-Stack]]
+- [[Higgsfield-AI-Faceless-YouTube-Pipeline]]

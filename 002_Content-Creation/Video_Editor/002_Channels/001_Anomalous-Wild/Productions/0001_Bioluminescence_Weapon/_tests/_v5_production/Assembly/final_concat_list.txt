@@ -1,0 +1,2 @@
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/001_Bioluminescence-Weapon/_tests/_v5_production/Assembly/V1/_v5_production_V1.mp4'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/001_Bioluminescence-Weapon/_tests/_v5_production/Assembly/end_card_final.mp4'

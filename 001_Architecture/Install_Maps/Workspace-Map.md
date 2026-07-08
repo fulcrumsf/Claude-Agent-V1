@@ -88,7 +88,8 @@ Synthesized knowledge pages created by agents during ingest. Not raw sources —
 | `Image-Generation/` | Image generation tool docs |
 | `Remotion/` | Remotion video framework docs |
 | `Text-To-Speech/` | TTS tool docs |
-| `Video-Generation/` | Video generation tool docs, model catalog, **video-use** (agent editor), **hyperframes** (HTML renderer) |
+| `Tool-Manager/` | Cost-routing CLI (`tm`), model catalog, and monthly refresh script. Key files: `tool_manager.py` (tm CLI), `catalog_refresh.py` (monthly auto-refresh + Airtable sync), `data/model_catalog.json` (24-model cross-platform pricing matrix), `data/pricing_cache.json` (live API pricing cache) |
+| `Video-Generation/` | Video generation tool docs, model catalog. Subfolders: `Channels/` (per-channel scripts — Anomalous_Wild, Reimagined_Realms), `Generic_Tools/` (reusable batch scripts), `Pipeline_Docs/` (pipeline planning), `Hyperframes/` (HTML renderer), `Video-Use/` (agent editor). Key scripts in `Channels/Reimagined_Realms/`: `assemble.py` (universal assembly — takes `production_folder` arg, reads `Production/assemble_config.json`), `batch_generate_images.py` (GPT Image 2 batch, `--clips --overwrite` flags), `batch_generate_videos.py` (Seedance batch, beatmap-driven durations) |
 
 ---
 
@@ -100,7 +101,7 @@ Synthesized knowledge pages created by agents during ingest. Not raw sources —
 | `Video_Editor/001_Configuration/` | Channel configs, API keys references |
 | `Video_Editor/002_Channels/` | Per-channel content, styles, case studies |
 | `Video_Editor/003_Remotion/` | Remotion compositions |
-| `Video_Editor/004_Tools/` | Blotato and other publishing tools |
+| `Video_Editor/004_Tools/` | Blotato publishing tool only — all Python pipeline scripts moved to `001_Architecture/Tools/Video-Generation/` |
 | `Social_Media_Marketing/` | Pinterest and Instagram static content strategy |
 | `Whop_Clipping/` | Long-form → Shorts pipeline for client brands |
 
@@ -255,4 +256,4 @@ Reference area for AI job onboarding, platform contracts, worker agreements, and
 | `Mercor/` | Mercor onboarding contracts and worker reference set |
 | `CLAUDE.md` | Department playbook for AI job reference handling |
 
-**Last updated:** 2026-06-06
+**Last updated:** 2026-07-04
