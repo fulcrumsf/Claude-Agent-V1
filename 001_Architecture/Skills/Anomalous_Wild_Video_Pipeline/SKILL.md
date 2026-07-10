@@ -171,6 +171,8 @@ Feed `label_coordinates.json` into the `DiagramLabels` component at:
 ```
 Its Zod props schema (`diagramLabelsSchema`) takes `labels` (feature/x_pct/y_pct/confidence, where `x_pct`/`y_pct` are optional since a `not_found` entry legitimately omits them), `labelStaggerS` (seconds between each label appearing), and `displayNames` (feature key → human-readable label text). The component already filters out `not_found` entries from rendering and staggers each label's line-draw-in animation. Label entrances alone do not guarantee the beat's `max_static_s` rule is honored for its full duration — see Phase 7's mandatory static-hold check, which is where this is actually enforced.
 
+**Label/line color — check before finalizing any diagram beat.** `DiagramLabels.tsx` currently hardcodes its line/label color to the channel's brand green (`#8AFA47`) as a blanket default. Per `003_Remotion/src/skills/design-rules-learned.md` (Rule 1), that's correct only for channel-chrome graphics — an in-scene diagram overlaid on generated illustration content should generally use a color sampled from the illustration itself (or white-on-black for contrast) rather than the brand sheet by default. This is a known, flagged gap in the shipped component, not yet fixed — read that skill file before deciding whether to override the color for a given diagram beat.
+
 ---
 
 ## PHASE 7 — ASSEMBLY (existing Remotion engine, extended for new scene types)

@@ -422,3 +422,5 @@ Full API reference: `002_Channels/Docs/API-STACK-REFERENCE.md`
 Built in Next.js + Remotion. Two videos completed (1 vertical Short, 1 3-min Anomalos Wild long-form).
 Components: `003_Remotion/src/remotion/video-components/`
 Skill docs (sequencing, transitions, spring physics, typography): `003_Remotion/src/skills/`
+
+**Design judgment — read before styling any overlay/callout/diagram:** `003_Remotion/src/skills/design-rules-learned.md` is a growing, additive record of design corrections and confirmations Tony has given on real production work (color selection, label/text reveal animation style, etc.). It exists because brand sheets and existing components don't cover every styling judgment call — check it before assuming a channel brand color or a prior component's styling is automatically correct for new content. Add a new entry (never delete/rewrite a prior one) whenever Tony corrects or explicitly confirms a design choice.

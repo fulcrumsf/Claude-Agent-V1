@@ -2696,3 +2696,10 @@ Source: Built directly this session via superpowers:subagent-driven-development 
 Wiki/Asset Note: `000_Wiki/Video-Production/Anomalous-Wild-Pipeline-Scripts.md`
 Skill: `001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md` (invoke via `/anomalous-wild`)
 Also fixed: identical malformed-YAML-frontmatter bug in `Reimagined_Realms_Video_Pipeline/SKILL.md` (was degrading its trigger-matching too)
+
+## [2026-07-10] build | Motion-Graphics Skill + Design-Rules-Learned Ledger
+Source: Live correction cycle rebuilding the Anomalous Wild esca/bacteria callout clip (Bioluminescence Weapon, ~2:32) — four real corrections (color judgment, label placement, non-parallel radial leader lines, materialize/pulse reveal timing) generalized into durable knowledge via skill-creator.
+Wiki/Asset Note: `000_Wiki/Video-Production/Motion-Graphics-Design-Principles.md`
+Skill: `001_Architecture/Skills/Motion-Graphics/SKILL.md` (general composition/timing/terminology principles, authority-ordered beneath the ledger below)
+Ledger: `002_Content-Creation/Video_Editor/003_Remotion/src/skills/design-rules-learned.md` (growing, additive, production-corrected rules — ground truth; wired into the Remotion app's own AI skill-detection system)
+Also flagged, not fixed: `DiagramLabels.tsx` still hardcodes brand-green as its default diagram color, contradicting the new color-judgment rule — left alone since it's shipped `/anomalous-wild` pipeline code.

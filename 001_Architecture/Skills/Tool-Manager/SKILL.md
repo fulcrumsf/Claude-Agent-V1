@@ -246,6 +246,7 @@ don't assume it's undocumented forever.
 | Need | Skill to invoke |
 |---|---|
 | Video composition / animation | `remotion` |
+| Motion-graphics composition/design taste (callout placement, reveal timing, color judgment) — the "why," not the "how to code it" | `Motion-Graphics` (`001_Architecture/Skills/Motion-Graphics/SKILL.md`) |
 | Multi-frame video storytelling | `hyperframes` |
 | Faceless YouTube pipeline | `higgsfield-mcp-workflow` (in Video_Editor .agents/) |
 | Image generation workflow | `imagegen` |

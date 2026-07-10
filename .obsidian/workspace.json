@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "000_Ingest/Video-Use + Hyperframes + Remotion Raw Clips to Pro Videos (No Editing Skills Needed).md",
+                "file": "000_Ingest/I Made Vox-Style Motion Graphics Using Only Claude Code & Remotion.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Video-Use + Hyperframes + Remotion Raw Clips to Pro Videos (No Editing Skills Needed)"
+              "title": "I Made Vox-Style Motion Graphics Using Only Claude Code & Remotion"
             }
           }
         ]
@@ -187,9 +187,17 @@
   },
   "active": "bd856812c70a1bb1",
   "lastOpenFiles": [
-    "000_Ingest/Google Omni can make insane motion graphics - Here is how.md",
-    "000_Ingest/Video-Use + Hyperframes + Remotion Raw Clips to Pro Videos (No Editing Skills Needed).md",
+    "000_Ingest/I Made Vox-Style Motion Graphics Using Only Claude Code & Remotion 1.md",
     "000_Ingest/I Made Vox-Style Motion Graphics Using Only Claude Code & Remotion.md",
+    "000_Ingest/I Built a Claude Skill That Instantly WATCHES Any Video.md",
+    "000_Ingest/I Used Claude Fable 5 To Make Faceless TikTok Shop Videos 3 Easy Niches.md",
+    "001_Architecture/Skills/Motion-Graphics/references/treatment-styles.md",
+    "001_Architecture/Skills/Motion-Graphics/references/timing-and-easing.md",
+    "001_Architecture/Skills/Motion-Graphics/SKILL.md",
+    "001_Architecture/Skills/Motion-Graphics/references",
+    "001_Architecture/Skills/Motion-Graphics",
+    "000_Ingest/Video-Use + Hyperframes + Remotion Raw Clips to Pro Videos (No Editing Skills Needed).md",
+    "000_Ingest/Google Omni can make insane motion graphics - Here is how.md",
     "000_Ingest/Claude Replaced My Video Editor (It Does Everything Better Than Me).md",
     "000_Ingest/How to Go Insanely Viral (Almost) Every Time by Hacking Attention.md",
     "001_Architecture/graphify-out/cache/cd34ffe6fa1a7f693e999c72e2db1324bf7d686208f46dcd47474f58dc1401ad.json",
@@ -204,8 +212,6 @@
     "001_Architecture/Tools/Tool-Manager/package.json",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/ThirdPartyNotices.txt",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/index.d.ts",
-    "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/types/types.d.ts",
-    "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/types/structs.d.ts",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/README.md",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright/README.md",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/tools/cli-client/skill/references/video-recording.md",
@@ -217,21 +223,15 @@
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/tools/cli-client/skill/references/request-mocking.md",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/tools/cli-client/skill/references/running-code.md",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/tools/cli-client/skill/references/element-attributes.md",
-    "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/tools/cli-client/skill/references/playwright-tests.md",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/vite/dashboard/assets/safari-na3_-uQk.svg",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/vite/dashboard/assets/firefox-1bWoP6pv.svg",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/vite/dashboard/assets/firefox-nightly-Cp5nfeDT.svg",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/vite/dashboard/assets/firefox-beta-k3eOH_eK.svg",
-    "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/tools/cli-client/skill/SKILL.md",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/vite/traceViewer/playwright-logo.svg",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/vite/recorder/playwright-logo.svg",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/vite/dashboard/playwright-logo.svg",
-    "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/tools/trace/SKILL.md",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/tools/dashboard/appIcon.png",
     "001_Architecture/Tools/Tool-Manager/node_modules/playwright-core/lib/server/chromium/appIcon.png",
-    "001_Architecture/Tools/Tool-Manager/node_modules/playwright/lib/agents/playwright-test-planner.agent.md",
-    "001_Architecture/Tools/Tool-Manager/node_modules/playwright/lib/agents/playwright-test-plan.prompt.md",
-    "001_Architecture/Tools/Tool-Manager/node_modules/playwright/lib/agents/playwright-test-healer.agent.md",
     "001_Architecture/Tools/Video-Generation/Hyperframes/docs/logo/symbol-light.svg",
     "Untitled.canvas"
   ]

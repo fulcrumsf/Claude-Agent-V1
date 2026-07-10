@@ -115,5 +115,7 @@ Master catalog of all wiki pages by category. Updated on every ingest.
 - [[Video-Production/Short-Form-Video-Creation-Stack]] — This is a reference page for the short-form video stack across generation, clipping, captions, and monetization.
 - [[Video-Production/Video-Use-Agent-Editor]] — video-use is an installed open-source agent-driven video editor (browser-use). Drop raw footage + VO clips, get a clean cut back. Audio-first, transcript-driven. Primary engine for TikTok Shop affiliate video production.
 - [[Video-Production/Hyperframes-Video-Rendering]] — Hyperframes is an installed HTML-native video renderer by HeyGen. Write HTML compositions, render to MP4. Used for motion graphics, captions, text overlays, and card animations on top of already-cut footage.
+- [[Video-Production/Motion-Graphics-Design-Principles]] — Composition/design-taste knowledge for motion graphics (diagram callout placement, non-parallel radial leader lines, materialize-not-pop reveals, spring-pulse beats, color judgment). Points to the `Motion-Graphics` skill and the growing, production-corrected `design-rules-learned.md` ledger.
+- [[Video-Production/Anomalous-Wild-Pipeline-Scripts]] — Anomalous Wild's full pipeline script inventory (active/superseded), the `/anomalous-wild` orchestrator build, and the Scientific Diagram sub-pipeline (research → illustrate → detect coordinates → label).
 
 - [[AI-Agents/AI-Essentials-Foundational-Knowledge]] — Foundational primer on AI, ML, LLMs, Agentic AI, and the data-first vs AI-first mindset.

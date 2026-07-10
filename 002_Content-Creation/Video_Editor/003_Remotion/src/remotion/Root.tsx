@@ -7,6 +7,7 @@ import { BioluminescenceDoc, BIOLUMINESCENCE_DURATION_FRAMES } from "./video-com
 import { CinematicTitleCard } from "./video-components/CinematicTitleCard";
 import { AnomalousWildEndCard } from "./video-components/AnomalousWildEndCard";
 import { DiagramLabels, diagramLabelsSchema } from "./video-components/DiagramLabels";
+import { EscaBacteriaCallout, ESCA_CALLOUT_DURATION_FRAMES } from "./video-components/EscaBacteriaCallout";
 import { NeonParcelTitleOverlay } from "./video-components/NeonParcelTitleOverlay";
 import { FPS, INTRO_DURATION } from "./video-lib/constants";
 import { getTimelinePath, loadTimelineFromFile } from "./video-lib/utils";
@@ -52,6 +53,16 @@ export const RemotionRoot: React.FC = () => {
         id="BioluminescenceDoc"
         component={BioluminescenceDoc}
         durationInFrames={BIOLUMINESCENCE_DURATION_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* Bioluminescence Weapon — Esca/Bacteria callout insert (~2:32, standalone 5s clip for Premiere) */}
+      <Composition
+        id="EscaBacteriaCallout"
+        component={EscaBacteriaCallout}
+        durationInFrames={ESCA_CALLOUT_DURATION_FRAMES}
         fps={30}
         width={1920}
         height={1080}

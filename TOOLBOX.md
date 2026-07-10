@@ -242,7 +242,8 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - **Project:** `App Building/my-video/` (full Next.js + Remotion app)
 - **Video Editor:** `remotion-app/src/remotion/` — components and compositions
 - **MCP:** `npx @remotion/mcp@latest` (active in `~/.claude/.mcp.json`)
-- **Skill:** `/remotion-best-practices` — 30+ rules covering animations, audio, assets, 3D, captions, etc.
+- **Skill:** `/remotion-best-practices` — 30+ rules covering animations, audio, assets, 3D, captions, etc. (the "how to code it" reference)
+- **Skill:** `/Motion-Graphics` (`001_Architecture/Skills/Motion-Graphics/SKILL.md`, built 2026-07-10) — composition/design-taste companion to remotion-best-practices (the "what good looks like" reference): diagram/callout label placement, non-parallel radial leader lines, materialize-not-pop reveals, spring-overshoot pulse beats, color judgment (content vs. brand chrome), timing/easing guidance, and treatment-style craft notes (Kinetic Typography, Vox Documentary, Kurzgesagt Animated). Defers to the living, production-corrected rule ledger at `002_Content-Creation/Video_Editor/003_Remotion/src/skills/design-rules-learned.md` as ground truth over its own general principles.
 - **Use case:** Programmatically compose videos as React components
 
 ### Video Stitching
