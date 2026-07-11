@@ -108,6 +108,9 @@ def scan_video(video_path: Path, out_dir: Path) -> Path:
             json={"model": MODEL, "messages": [{"role": "user", "content": content}], "max_tokens": 600},
             timeout=60,
         )
+        if response.status_code != 200:
+            raise RuntimeError(f"OpenRouter API error {response.status_code}: {response.text[:200]}")
+
         response_text = response.json()["choices"][0]["message"]["content"]
 
     verdict = parse_verdict(response_text)
