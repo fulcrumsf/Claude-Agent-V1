@@ -18,6 +18,25 @@ Tony records audio separately and drops everything into one folder:
 
 The YouTube Shorts versions share the same visual cut as their TikTok counterparts — only the audio track differs. This means you cut 3 unique visual edits, then apply 2 audio tracks each → 6 total outputs.
 
+## Neon Parcel TikTok Shop Creator — Pre-Production Question
+
+Before starting any product, ask: **"Is this a TikTok Shop Creator video, or something else?"**
+
+This skill currently implements the TikTok Shop Creator path only:
+- Vertical (9:16) output, posted to the NeonParcel TikTok account
+- **3 distinct TikTok videos** from the shared footage pool — each with genuinely different cuts, beats, and pacing (not the same edit with swapped audio)
+- No YouTube pairing. If Tony wants an Amazon-affiliate version of a product, that requires separately-shot landscape footage and a different (not-yet-built) pipeline under `005_Affiliate_Marketing/Amazon_Associates/Videos/` — flag it back to Tony rather than attempting it here.
+
+This supersedes the "3 cuts × 2 audio = 6 outputs" model described below in Step 4/5 when the product is explicitly a Neon Parcel TikTok Shop Creator video — only produce the 3 TikTok outputs.
+
+Output routing for Neon Parcel TikTok Shop Creator products:
+```bash
+python3 001_Architecture/Skills/TikTok-Shop-Affiliate-Video/scripts/scaffold_product_folder.py \
+  "005_Affiliate_Marketing/Tiktok_Shop_Affiliate/Neon_Parcel_TikTok_Shop_Creator/Videos" \
+  <next_product_number> "<Product Name>" "<source ingest folder path>"
+```
+This creates `Videos/NNNN_Product-Slug/{Edit,Compliance/{Vision-Scan,Transcript-Scan},Package}/` — write the 3 rendered `TikTok_V1.mp4` / `V2` / `V3` into `Edit/`, not into the generic `edit/` folder used by the rest of this skill for other invocation contexts.
+
 ## Setup Check
 
 Before starting, run these in order:
@@ -205,6 +224,33 @@ ls -lh edit/*.mp4
 ```
 
 Ask Tony to spot-check 1–2 videos in QuickTime before treating the batch as done.
+
+## Compliance Gate (Neon Parcel TikTok Shop Creator only)
+
+Three phases, run in order, before any video in this pipeline is marked ready-to-post. Full detail: `001_Architecture/Superpowers/Specs/2026-07-11-Neon-Parcel-Tiktok-Shop-Creator-Pipeline-Design.md`.
+
+**Phase 1 — Ledger scan (every product, before editing starts).** Read `005_Affiliate_Marketing/Tiktok_Shop_Affiliate/Neon_Parcel_TikTok_Shop_Creator/Compliance-Ledger.md` and check the planned VO scripts against every rule. If the product is Health/Beauty/Skincare/Weight-Management, note that in `Intake.md` — it triggers mandatory Phase 2 below regardless of cadence.
+
+**Phase 2 — Live freshness check (cadence-gated).**
+```bash
+source ~/.env-secrets
+python3 001_Architecture/Skills/TikTok-Shop-Affiliate-Video/scripts/check_tos_freshness.py \
+  "005_Affiliate_Marketing/Tiktok_Shop_Affiliate/Neon_Parcel_TikTok_Shop_Creator" \
+  --category "<Health|Beauty|Weight-Management if applicable, else omit>"
+```
+Skips itself automatically if the ledger was verified within 14 days and the product isn't in an always-escalate category. If it prints `REVIEW NEEDED`, read `Compliance-Freshness-Log.md`, review the flagged snapshot diffs, and manually update the affected `Compliance-Ledger.md` entries (new dated entry, never silently overwrite) before proceeding.
+
+**Phase 3 — Post-build scans (every video, after rendering).** Run once per rendered TikTok_V1/V2/V3:
+```bash
+source ~/.env-secrets
+python3 001_Architecture/Skills/TikTok-Shop-Affiliate-Video/scripts/compliance_vision_scan.py \
+  "<product_folder>/Edit/TikTok_V1.mp4" "<product_folder>/Compliance/Vision-Scan"
+python3 001_Architecture/Skills/TikTok-Shop-Affiliate-Video/scripts/compliance_transcript_scan.py \
+  "<product_folder>/Edit/TikTok_V1.mp4" "<product_folder>/Compliance/Transcript-Scan"
+```
+Repeat for V2 and V3. Each writes a report ending in `Verdict: CLEAR` or `Verdict: FLAG`.
+
+**Final gate.** Before telling Tony a product is ready to post, present: Phase 1 summary (what was checked), Phase 2 result (skipped/clean/review-needed), and every Phase 3 report's verdict. If anything is FLAG, resolve or get explicit sign-off from Tony before moving files into `Package/`. Never auto-publish.
 
 ## Re-runs
 
