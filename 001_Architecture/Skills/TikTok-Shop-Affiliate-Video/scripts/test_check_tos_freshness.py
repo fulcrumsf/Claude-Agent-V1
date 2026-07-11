@@ -20,6 +20,13 @@ def test_should_refresh_true_for_always_escalate_category_even_if_recent():
     assert should_refresh(recent, category="weight-management") is True
 
 
+def test_should_refresh_true_for_category_substring_match():
+    from datetime import date, timedelta
+    recent = (date.today() - timedelta(days=1)).isoformat()
+    assert should_refresh(recent, category="Health & Wellness Supplements") is True
+    assert should_refresh(recent, category="Weight-Management Add-Ons") is True
+
+
 def test_should_refresh_true_when_no_prior_date():
     assert should_refresh(None, category=None) is True
 

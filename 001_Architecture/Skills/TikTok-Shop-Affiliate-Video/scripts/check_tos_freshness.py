@@ -24,8 +24,10 @@ DEFAULT_THRESHOLD_DAYS = 14
 
 
 def should_refresh(last_verified: str | None, category: str | None, threshold_days: int = DEFAULT_THRESHOLD_DAYS) -> bool:
-    if category and category.strip().lower() in ALWAYS_ESCALATE_CATEGORIES:
-        return True
+    if category:
+        normalized = category.strip().lower()
+        if any(keyword in normalized for keyword in ALWAYS_ESCALATE_CATEGORIES):
+            return True
     if not last_verified:
         return True
     last_date = datetime.fromisoformat(last_verified).date()
@@ -82,9 +84,16 @@ def main():
     snapshot_dir.mkdir(parents=True, exist_ok=True)
 
     changed = []
+    failed = []
     for knowledge_id, url in sources.items():
         print(f"Fetching {url} ...")
-        new_text = fetch_snapshot(url)
+        try:
+            new_text = fetch_snapshot(url)
+        except RuntimeError as e:
+            print(f"  FAILED: {e}")
+            failed.append((knowledge_id, url, str(e)))
+            continue
+
         new_path = snapshot_dir / f"{knowledge_id}.md"
         new_path.write_text(new_text)
 
@@ -98,17 +107,23 @@ def main():
 
     with open(freshness_log, "a") as f:
         f.write(f"\n## {date.today().isoformat()}\n")
-        f.write(f"Checked {len(sources)} source URL(s).\n")
+        f.write(f"Checked {len(sources)} source URL(s) ({len(sources) - len(failed)} succeeded, {len(failed)} failed).\n")
+        if failed:
+            f.write(f"**{len(failed)} source(s) failed to fetch — retry needed:**\n")
+            for knowledge_id, url, error in failed:
+                f.write(f"- `{knowledge_id}` ({url}): {error[:200]}\n")
         if changed:
             f.write(f"**{len(changed)} source(s) changed — review required before trusting the ledger for affected rules:**\n")
             for knowledge_id, url, diffs in changed:
                 f.write(f"- `{knowledge_id}` ({url}): {len(diffs)} changed line(s)\n")
-        else:
+        if not changed and not failed:
             f.write("No changes detected.\n")
 
+    if failed:
+        print(f"WARNING: {len(failed)} source(s) failed to fetch. See {freshness_log}")
     if changed:
         print(f"REVIEW NEEDED: {len(changed)} source(s) changed. See {freshness_log}")
-    else:
+    if not changed and not failed:
         print("No changes detected. Ledger confirmed current.")
 
 
