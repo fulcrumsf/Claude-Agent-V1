@@ -57,8 +57,8 @@ def load_last_verified(freshness_log_path: Path) -> str | None:
     if not freshness_log_path.exists():
         return None
     for line in reversed(freshness_log_path.read_text().splitlines()):
-        if line.startswith("## "):
-            return line[3:].strip()
+        if line.startswith("## ") and "VERIFIED" in line:
+            return line[3:].split(" — ")[0].strip()
     return None
 
 
@@ -105,9 +105,13 @@ def main():
             if diffs:
                 changed.append((knowledge_id, url, diffs))
 
+    succeeded_count = len(sources) - len(failed)
     with open(freshness_log, "a") as f:
-        f.write(f"\n## {date.today().isoformat()}\n")
-        f.write(f"Checked {len(sources)} source URL(s) ({len(sources) - len(failed)} succeeded, {len(failed)} failed).\n")
+        if succeeded_count > 0:
+            f.write(f"\n## {date.today().isoformat()} — VERIFIED\n")
+        else:
+            f.write(f"\n## {date.today().isoformat()} — ALL FETCHES FAILED\n")
+        f.write(f"Checked {len(sources)} source URL(s) ({succeeded_count} succeeded, {len(failed)} failed).\n")
         if failed:
             f.write(f"**{len(failed)} source(s) failed to fetch — retry needed:**\n")
             for knowledge_id, url, error in failed:

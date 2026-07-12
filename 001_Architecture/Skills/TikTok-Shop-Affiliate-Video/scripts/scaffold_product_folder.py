@@ -34,6 +34,20 @@ created: {created_date}
 - **Restricted category (Health/Beauty/Weight-Management)?:** TBD — confirm before Phase 1 compliance scan
 """
 
+LEDGER_SCAN_STUB = """---
+title: "{product_name} — Phase 1 Ledger Scan Results"
+type: compliance-scan
+created: {created_date}
+---
+
+# {product_name} — Phase 1 Ledger Scan
+
+Fill this in when running Phase 1 of the compliance gate (reading
+Compliance-Ledger.md against this product's planned VO scripts, before
+editing starts). Record: which rules were checked, any flags raised, and
+how they were resolved.
+"""
+
 
 def slugify(name: str) -> str:
     collapsed = re.sub(r"\s+", " ", name.strip())
@@ -54,6 +68,13 @@ def scaffold(base_dir: Path, product_number: int, product_name: str, ingest_fold
             product_name=product_name,
             created_date=date.today().isoformat(),
             ingest_folder=ingest_folder,
+        ))
+
+    ledger_scan_path = product_dir / "Compliance" / "Ledger-Scan-Results.md"
+    if not ledger_scan_path.exists():
+        ledger_scan_path.write_text(LEDGER_SCAN_STUB.format(
+            product_name=product_name,
+            created_date=date.today().isoformat(),
         ))
 
     return product_dir

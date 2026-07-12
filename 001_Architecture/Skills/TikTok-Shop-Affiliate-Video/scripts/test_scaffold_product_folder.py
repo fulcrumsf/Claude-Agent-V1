@@ -30,3 +30,10 @@ def test_scaffold_is_idempotent(tmp_path):
     scaffold(tmp_path, 1, "Colorsmart Pens")
     product_dir = scaffold(tmp_path, 1, "Colorsmart Pens")  # run twice, should not error
     assert product_dir.is_dir()
+
+
+def test_scaffold_writes_ledger_scan_stub(tmp_path):
+    product_dir = scaffold(tmp_path, 1, "Colorsmart Pens")
+    stub = product_dir / "Compliance" / "Ledger-Scan-Results.md"
+    assert stub.is_file()
+    assert "Colorsmart Pens" in stub.read_text()

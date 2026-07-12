@@ -41,3 +41,17 @@ def test_diff_snapshots_detects_changed_line():
 def test_diff_snapshots_empty_when_identical():
     text = "Rule: same text\n"
     assert diff_snapshots(text, text) == []
+
+
+def test_load_last_verified_ignores_all_failed_run(tmp_path):
+    from check_tos_freshness import load_last_verified
+    log = tmp_path / "log.md"
+    log.write_text("\n## 2026-07-12 — ALL FETCHES FAILED\nChecked 61 source URL(s) (0 succeeded, 61 failed).\n")
+    assert load_last_verified(log) is None
+
+
+def test_load_last_verified_recognizes_verified_run(tmp_path):
+    from check_tos_freshness import load_last_verified
+    log = tmp_path / "log.md"
+    log.write_text("\n## 2026-07-12 — VERIFIED\nChecked 61 source URL(s) (61 succeeded, 0 failed).\n")
+    assert load_last_verified(log) == "2026-07-12"

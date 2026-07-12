@@ -23,3 +23,13 @@ def test_scan_detects_multiple_distinct_violations():
     transcript = "Guaranteed to work, clinically proven, and it will cure your problems."
     violations = scan_transcript_for_violations(transcript, banned_phrase_patterns())
     assert len(violations) >= 3
+
+
+def test_scan_returns_empty_list_for_empty_transcript():
+    # An empty transcript has no violations by pure substring matching —
+    # scan_video's caller is responsible for treating "no transcript" as FLAG,
+    # not scan_transcript_for_violations itself (which correctly reports
+    # "no banned phrases found" for empty input, a different question than
+    # "was there content to check at all").
+    assert scan_transcript_for_violations("", banned_phrase_patterns()) == []
+    assert scan_transcript_for_violations("   ", banned_phrase_patterns()) == []

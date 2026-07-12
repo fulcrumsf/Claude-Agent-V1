@@ -43,10 +43,12 @@ def scan_transcript_for_violations(transcript_text: str, patterns: list) -> list
 
 
 def extract_audio(video_path: Path, out_path: Path) -> Path:
-    subprocess.run(
+    result = subprocess.run(
         ["ffmpeg", "-i", str(video_path), "-vn", "-acodec", "libmp3lame", str(out_path), "-y"],
         capture_output=True,
     )
+    if result.returncode != 0:
+        raise RuntimeError(f"ffmpeg audio extraction failed for {video_path}: {result.stderr.decode(errors='ignore')[:300]}")
     return out_path
 
 
@@ -71,14 +73,19 @@ def scan_video(video_path: Path, out_dir: Path) -> Path:
     audio_path = out_dir / f"{Path(video_path).stem}.mp3"
     extract_audio(Path(video_path), audio_path)
     transcript = transcribe_audio(audio_path)
-    violations = scan_transcript_for_violations(transcript, banned_phrase_patterns())
 
     report_path = out_dir / f"{Path(video_path).stem}-transcript-scan.md"
     lines = [f"# Transcript Scan — {Path(video_path).name}\n", f"## Transcript\n{transcript}\n"]
-    if violations:
-        lines.append(f"## Violations Found\n{', '.join(violations)}\n\nVerdict: FLAG\n")
+
+    if not transcript.strip():
+        lines.append("## Violations Found\nTranscript came back empty — cannot verify content is safe.\n\nVerdict: FLAG\n")
     else:
-        lines.append("## Violations Found\nNone.\n\nVerdict: CLEAR\n")
+        violations = scan_transcript_for_violations(transcript, banned_phrase_patterns())
+        if violations:
+            lines.append(f"## Violations Found\n{', '.join(violations)}\n\nVerdict: FLAG\n")
+        else:
+            lines.append("## Violations Found\nNone.\n\nVerdict: CLEAR\n")
+
     report_path.write_text("\n".join(lines))
     return report_path
 

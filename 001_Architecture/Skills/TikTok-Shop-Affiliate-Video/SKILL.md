@@ -250,6 +250,16 @@ python3 001_Architecture/Skills/TikTok-Shop-Affiliate-Video/scripts/compliance_t
 ```
 Repeat for V2 and V3. Each writes a report ending in `Verdict: CLEAR` or `Verdict: FLAG`.
 
+**What's machine-checked vs. human-only:**
+
+| Ledger Rule | Category | Automated? |
+|---|---|---|
+| RULE-001, RULE-002, RULE-003 | Visual/Branding, Content Originality | Yes — Phase 3 vision scan |
+| RULE-006 (partial) | Claims/Health (guarantee/cure language) | Yes — Phase 3 transcript scan (universal FTC phrase list only) |
+| RULE-004, RULE-005, RULE-007, RULE-008, RULE-009, RULE-010 | Prohibited Products, Discounts, Temporary-Effects, Disclosure, Reviews, Format | **No — Phase 1 manual read only** |
+
+RULE-008 (the #ad/#sponsored disclosure requirement) has no automated check — it's a required element that must be *present*, and the automated scans only detect banned content that's *present*, not required content that's *missing*. Do not treat a clean Phase 3 result as covering disclosure compliance.
+
 **Final gate.** Before telling Tony a product is ready to post, present: Phase 1 summary (what was checked), Phase 2 result (skipped/clean/review-needed), and every Phase 3 report's verdict. If anything is FLAG, resolve or get explicit sign-off from Tony before moving files into `Package/`. Never auto-publish.
 
 ## Re-runs
