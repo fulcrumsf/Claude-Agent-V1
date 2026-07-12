@@ -153,6 +153,23 @@ For each of the 3 visual versions:
 ffprobe -v quiet -show_entries format=duration -of csv=p=0 tiktok_v1.mp3
 ```
 
+**5a.5 — Normalize VO loudness (always run this, every video):**
+
+Raw VO recordings vary in level and, left unchecked, tend to land far too quiet
+for social platforms — measured real output from this pipeline came in around
+-34 to -35 LUFS integrated, well below TikTok's ~-14 LUFS target, with no
+clipping risk at all. Normalize before muxing, not after:
+
+```bash
+python3 001_Architecture/Skills/TikTok-Shop-Affiliate-Video/scripts/normalize_loudness.py \
+  tiktok_v1.mp3 tiktok_v1_normalized.wav
+```
+
+Uses two-pass EBU R128 loudnorm, targeting -14 LUFS integrated / -1.5 dBTP true
+peak by default (safe headroom, no clipping). Use the `_normalized` file (not
+the raw VO) in Step 5c below. Repeat for every audio variant used in this
+product (V1/V2/V3 VO, and YouTube Shorts VO if that pairing is ever produced).
+
 **5b. Build a concat list and render the visual:**
 ```bash
 # concat_v1.txt example:
@@ -177,26 +194,26 @@ ffmpeg -f concat -safe 0 -i concat_v1.txt \
 - **Drop it**: clean VO only — simpler, most affiliate videos work this way
 - **Keep ambient audio**: mix at low volume under VO (product sounds, ambient)
 
-For VO only:
+For VO only (use the `_normalized` file from Step 5a.5, not the raw VO):
 ```bash
-ffmpeg -i edit/visual_v1_silent.mp4 -i tiktok_v1.mp3 \
+ffmpeg -i edit/visual_v1_silent.mp4 -i tiktok_v1_normalized.wav \
   -map 0:v -map 1:a \
   -c:v copy -c:a aac -shortest \
   edit/TikTok_V1.mp4
 ```
 
-For mixed audio (ambient at 15% + VO at full):
+For mixed audio (ambient at 15% + normalized VO at full):
 ```bash
-ffmpeg -i edit/visual_v1_silent.mp4 -i tiktok_v1.mp3 -i original_audio.mp3 \
+ffmpeg -i edit/visual_v1_silent.mp4 -i tiktok_v1_normalized.wav -i original_audio.mp3 \
   -filter_complex "[2:a]volume=0.15[amb];[1:a]volume=1.0[vo];[amb][vo]amix=inputs=2[aout]" \
   -map 0:v -map "[aout]" \
   -c:v copy -c:a aac -shortest \
   edit/TikTok_V1.mp4
 ```
 
-**5d. Apply the YouTube Shorts audio to the same visual:**
+**5d. Apply the YouTube Shorts audio to the same visual (normalize this VO too):**
 ```bash
-ffmpeg -i edit/visual_v1_silent.mp4 -i youtube_v1.mp3 \
+ffmpeg -i edit/visual_v1_silent.mp4 -i youtube_v1_normalized.wav \
   -map 0:v -map 1:a \
   -c:v copy -c:a aac -shortest \
   edit/YT_Shorts_V1.mp4
