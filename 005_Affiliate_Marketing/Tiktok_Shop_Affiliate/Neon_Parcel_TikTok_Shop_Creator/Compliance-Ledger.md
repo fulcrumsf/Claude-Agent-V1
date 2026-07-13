@@ -54,6 +54,19 @@ Rule: Creators must disclose paid promotions per FTC Guides Concerning Endorseme
 Source: CREATOR CAMPAIGN TERMS AND CONDITIONS FOR TIKTOK SHOP US.md (§2.2.3 line 56, §3.1.1 line 65, §4.1.1 line 75, §6.1.6 line 96)
 Verified: 2026-07-11
 
+ADDENDUM (2026-07-12, Tony's direct platform observation — not a citation from the local
+TOS bundle, which doesn't document this mechanic): when a TikTok Shop product link is
+attached to a post, TikTok automatically adds a "Creator earns commission" tag to the
+video — this is TikTok's own in-app disclosure for shoppable/affiliate content
+specifically. Tony has observed that other TikTok Shop affiliate creators do not use
+#ad/#sponsored in captions, consistent with the auto-tag serving as the disclosure for
+this content type. Going forward for Neon Parcel TikTok Shop Creator videos with a
+product link attached: rely on the auto "Creator earns commission" tag for disclosure,
+do not add #ad/#sponsored in the caption. Use ~3 relevant hashtags at the end instead.
+This addendum is based on live platform behavior, not a document citation — if the TOS
+bundle is ever refreshed (Phase 2) and contradicts it, or if the auto-tag behavior
+changes, revisit this note rather than trusting it indefinitely.
+
 RULE-009 | Reviews | HARD BLOCK
 Rule: Do not offer money, discounts, gifts, or refunds in exchange for a review. Do not ask for only positive reviews or suggest a star rating. Review requests must be neutral, optional, and applied fairly to all customers, not just satisfied buyers.
 Source: Customer Review Requests Best Practices and FAQs.md (lines 9, 17-30)

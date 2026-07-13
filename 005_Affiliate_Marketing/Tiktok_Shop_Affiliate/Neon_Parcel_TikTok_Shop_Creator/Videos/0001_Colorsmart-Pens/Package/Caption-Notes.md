@@ -4,16 +4,35 @@ type: posting-notes
 created: 2026-07-12
 ---
 
-# TikTok_V1/V2/V3.mp4 — Ready to Post (pending caption)
+# TikTok_V1/V2/V3.mp4 — Posting Status
 
-**Required before posting, all 3 videos:** Add `#ad` or `#sponsored` to the
-caption/on-screen text (RULE-008 disclosure — not embedded in the video
-itself, see Compliance/Ledger-Scan-Results.md — none of the 3 scripts
-include a spoken disclosure).
+**V1 — posted to Blotato as a TikTok draft (2026-07-12), confirmed by Tony
+landed in his TikTok drafts inbox.** Caption used: `#ad Chips Gone In One
+Coat 🚗 #touchuppaint`. Still needs the product link attached manually
+in-app before publishing (Blotato has no field for TikTok Shop product
+tagging — confirmed by checking the live `blotato_create_post` tool schema).
+Post settings: accountId 27763 (neonparcel), privacyLevel
+PUBLIC_TO_EVERYONE, isDraft true, isBrandedContent false (this is an
+affiliate/commission arrangement, not a brand-paid partnership — see
+Compliance-Ledger.md RULE-008 addendum), isYourBrand false, isAiGenerated
+false, comments/duet/stitch left enabled.
 
-**Also required at posting time, all 3 videos:** Attach the closed-loop
+**V2 and V3 — Tony is posting these manually, not through Blotato.**
+Approved captions, ready to use:
+- **V2:** `Not Factory Perfect But Works 🔧 #cardetailing #carhacks #tiktokfinds`
+- **V3:** `Cleared My Hood Up Nicely 👍 #touchuppaint #carrepair #worthit`
+
+**Disclosure approach — updated 2026-07-12 (see Compliance-Ledger.md RULE-008
+addendum):** Tony confirmed via direct platform observation that attaching a
+TikTok Shop product link auto-adds a "Creator earns commission" tag, which
+serves as the disclosure for this content type — other TikTok Shop affiliate
+creators don't use #ad in captions either. V1 already has #ad baked into its
+posted draft (left as-is, not worth re-editing). **V2 and V3 do NOT need
+#ad** — use 3 relevant hashtags at the end instead, as shown above.
+
+**Still required at posting time, all 3 videos:** Attach the closed-loop
 TikTok Shop product anchor link (RULE-010 — a platform posting step, not a
-video-file concern).
+video-file concern). This is also what triggers the auto-disclosure tag.
 
 ## Compliance gate results
 
