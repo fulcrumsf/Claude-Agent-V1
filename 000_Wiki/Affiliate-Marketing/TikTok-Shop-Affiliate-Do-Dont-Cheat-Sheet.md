@@ -15,7 +15,7 @@ source: 005_Affiliate_Marketing/Tiktok_Shop_Affiliate/TikTok-TOS
 # TikTok Shop Affiliate Do / Don't Cheat Sheet
 
 ## Do
-- Do disclose the relationship clearly with `#ad`, `#sponsored`, or another required disclosure when the campaign or law requires it.
+- Do disclose the relationship clearly with `#ad`, `#sponsored`, or another required disclosure when the campaign or law requires it — **for TikTok Shop Creator/affiliate videos specifically**, TikTok's own auto "Creator earns commission" tag (added when a Shop product link is attached) serves as this disclosure; use hashtags relevant to the content instead, not `#ad`.
 - Do keep product claims aligned with the product detail page, product packaging, and official product information.
 - Do use the product the way it was intended and only claim what you have evidence to support.
 - Do keep short videos and livestreams focused on TikTok Shop products and closed-loop purchase flows.

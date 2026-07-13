@@ -49,9 +49,9 @@ So the idea behind `run_new_clips_batch.py`'s negative-prompt trick carries forw
 ## Remotion Components
 
 - **`BioluminescenceDoc.tsx`** — the actual composition that renders Bioluminescence Weapon. Hardcoded to that video's specific scenes and durations; not a reusable template. A reference copy lives at `Productions/0001_Bioluminescence_Weapon/Remotion/BioluminescenceDoc.tsx`; the live, working version stays in `003_Remotion/src/remotion/video-components/` untouched.
-- **`AnomalousWildEndCard.tsx`** — the channel's end card composition. In practice, the pipeline doesn't re-render this per video — it just appends the pre-rendered `end_card_v3.mp4` via ffmpeg (locked rule, see DESIGN.md). A reference copy lives at `Brand_Assets/End_Card/AnomalousWildEndCard.tsx` next to the actual mp4 files; still registered live in `Root.tsx` too.
+- **`AnomalousWildEndCard.tsx`** — the channel's end card composition. In practice, the pipeline doesn't re-render this per video — it just appends the pre-rendered `Anomalos_Wild_End-Card_Hero.mp4` via ffmpeg (locked rule, see DESIGN.md). A reference copy lives at `Brand_Assets/End_Card/AnomalousWildEndCard.tsx` next to the actual mp4 files; still registered live in `Root.tsx` too. Superseded end-card renders (`end_card.mp4`, `end_card_v2.mp4`, `end_card_v3.mp4`) live in `Brand_Assets/End_Card/Archive/`.
 
-## Folder Structure (as of 2026-07-07)
+## Folder Structure (as of 2026-07-11)
 
 Anomalous Wild's channel and production folder structure was reorganized to match Reimagined Realms' pattern:
 - Channel level: `Brand_Assets/` (End_Card, Branding), `Case_Studies/`, `Productions/`

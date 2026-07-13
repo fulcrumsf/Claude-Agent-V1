@@ -153,7 +153,10 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - **What it does:** Publish generated videos to YouTube and social media (Instagram, TikTok, Facebook, LinkedIn, Twitter, Pinterest, Threads, Bluesky)
 - **Access:** MCP server (HTTP transport, `https://mcp.blotato.com/mcp`), registered project-scoped for Agent-OS in `~/.claude.json` as of 2026-07-04. Tools available directly as `mcp__blotato__*` in Claude Code — prefer these over any manual API calls.
 - **Key tools:** `blotato_list_accounts` (get accountId + platform requirements), `blotato_create_presigned_upload_url` (local file → public URL, required before `create_post` for any local video/image), `blotato_create_post` (publish/schedule), `blotato_get_post_status` (poll after create_post for large media)
-- **Known connected YouTube accounts:** NeonParcel (id `25731`), ReimaginedRealms (id `30323`, 18 playlists mapped)
+- **Known connected YouTube accounts:** NeonParcel (id `25731`), ReimaginedRealms (id `30323`, 18 playlists mapped), Anomalous Wild (id `42514`, displayed as "Anomalos Wild" — a spelling variant, confirmed correct 2026-07-08)
+- **Known connected TikTok accounts:** neonparcel (id `27763`), reimaginedrealms (id `33717`). TikTok posts require `privacyLevel` + `disabledComments`/`disabledDuet`/`disabledStitch`/`isBrandedContent`/`isYourBrand`/`isAiGenerated` all present, or `create_post` 400s.
+- **TikTok `isDraft: true`** saves to the TikTok app's drafts inbox (confirmed working 2026-07-12) — useful for TikTok Shop Creator videos since Blotato has **no field to attach/tag a TikTok Shop product** (checked the live `blotato_create_post` schema directly — no such field exists on any platform). Product tagging must be done manually in the TikTok app after the draft lands. Blotato's post-status API also has no distinct "draft" status value (only `in-progress → published | scheduled | failed`) — a draft submission still reports back as `"published"`; always have Tony confirm in-app that it actually landed in drafts, don't trust the API status alone for draft posts.
+- **`isBrandedContent` ≠ affiliate/commission content.** This flag is specifically for direct brand-paid partnerships with brand-dictated content guidelines — set `false` for TikTok Shop Creator/affiliate videos (commission-based, GMV-tied fees, no brand paying for that specific video/no brand creative direction).
 - **Thumbnail constraint:** custom YouTube thumbnails must be ≤2MB JPEG/PNG — compress with ffmpeg first if over (`ffmpeg -i in.png -vf "scale=1920:-1" -q:v 5 out.jpg`)
 - **Gotcha:** if `create_post` errors "reconnect your YouTube account" for a custom thumbnail, that's an OAuth scope issue fixed in the Blotato dashboard (not a script/MCP bug) — already-uploaded media URLs don't need re-uploading after reconnect
 - **Python integration:** `kie_upload.py` for file uploads before publishing (legacy path — MCP's own presigned-upload flow is now preferred)
@@ -562,10 +565,21 @@ Multi-platform affiliate marketing operations. 18 programs tracked across travel
 
 ### TikTok Shop Affiliate Video
 - **Skill:** `/tiktok-shop-affiliate-video` — `001_Architecture/Skills/TikTok-Shop-Affiliate-Video/`
-- **Script:** `scripts/analyze_clips.py` — FFmpeg scene detection → Qwen-VL (OpenRouter) → `clip_analysis.md`
-- **What it does:** Produces 6 TikTok/YouTube Shorts affiliate videos (9:16) from raw product footage + pre-recorded VO clips. Audio-first: VO drives the cut. 3 visual edits × 2 audio tracks = 6 outputs.
-- **API keys:** `OPENROUTER_API_KEY` (vision analysis) + `ELEVENLABS_API_KEY` (transcription) via `source ~/.env-secrets`
+- **General mode:** raw footage + pre-recorded VO clips → 3 visual edits × 2 audio tracks (TikTok + YouTube Shorts) = 6 outputs. Audio-first: VO drives the cut.
+- **Neon Parcel TikTok Shop Creator mode** (locked in 2026-07-12, validated on Colorsmart Pens): a distinct invocation context within the same skill — 3 genuinely different vertical cuts (different beats/pacing per video, not shared-cut-swapped-audio), no YouTube pairing, output routed to `005_Affiliate_Marketing/Tiktok_Shop_Affiliate/Neon_Parcel_TikTok_Shop_Creator/Videos/NNNN_Product-Slug/`. Full design spec: `001_Architecture/Superpowers/Specs/2026-07-11-Neon-Parcel-Tiktok-Shop-Creator-Pipeline-Design.md`.
+- **Scripts** (all in `scripts/`):
+  - `analyze_clips.py` — FFmpeg scene-change keyframes → Qwen-VL (OpenRouter) → `clip_analysis.md`. For narration-driven shot matching (validated workflow), also transcribe the VO with ElevenLabs Scribe word-level timestamps first, then run denser frame sampling (every ~4s, not just scene-change) across raw clips to match real footage moments to what's being said — scene-change detection alone is often only 1 frame for long continuous handheld shots.
+  - `scaffold_product_folder.py` — per-product folder scaffolder (Edit/, Compliance/{Vision-Scan,Transcript-Scan,Ledger-Scan-Results.md}, Package/)
+  - `extract_compliance_sources.py` — pulls real TikTok Seller University URLs embedded in the TOS bundle (never invents URLs)
+  - `validate_compliance_ledger.py` — structural validator for `Compliance-Ledger.md`
+  - `check_tos_freshness.py` — Firecrawl-based live policy freshness check (14-day/always-escalate cadence). **Known limitation:** Firecrawl currently refuses to scrape `seller-us.tiktok.com` entirely ("we do not support this site") — confirmed not an auth/rate-limit issue. This phase is correctly wired but provides zero real drift-detection value until resolved.
+  - `compliance_vision_scan.py` — post-build logo/watermark scan, fails safe to FLAG on ambiguous response. Reliably flags the product's own label/logo (correct behavior — always needs human resolution to distinguish "own product" from real third-party branding).
+  - `compliance_transcript_scan.py` — post-build banned-phrase scan (guarantee/cure/medical-outcome language), fails safe to FLAG on empty/failed transcription
+  - `normalize_loudness.py` — two-pass EBU R128 loudness normalization (default target -14 LUFS / -1.5 dBTP), run on VO before muxing (SKILL.md Step 5a.5). Added because raw VO measured -34 to -35 LUFS with no normalization step previously.
+- **Compliance ledger:** `005_Affiliate_Marketing/Tiktok_Shop_Affiliate/Neon_Parcel_TikTok_Shop_Creator/Compliance-Ledger.md` — 10 citation-backed rules. RULE-008 (disclosure) has a real-world addendum (2026-07-12): TikTok auto-adds a "Creator earns commission" tag when a Shop product link is attached, which serves as the disclosure for affiliate content — do not add `#ad`/`#sponsored` for Neon Parcel TikTok Shop Creator videos with a product link; use ~3 relevant hashtags instead.
+- **API keys:** `OPENROUTER_API_KEY` (vision), `ELEVENLABS_API_KEY` (transcription/TTS), `FIRECRAWL_API_KEY` (freshness check) via `source ~/.env-secrets`
 - **Trigger:** "create affiliate video", "edit product footage for TikTok", "make shop video"
+- **Video output policy:** never commit rendered `.mp4` files from this (or any) pipeline to GitHub — only commit scripts/skill/compliance-doc changes (`.gitignore` already excludes `*.mp4`)
 
 ### Video Editor Skills (in Video-Editor `.agents/skills/` and Obsidian Vault)
 - `/download-video` — Download YouTube videos at 720p

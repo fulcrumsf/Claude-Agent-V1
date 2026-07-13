@@ -9,6 +9,7 @@ Master catalog of all wiki pages by category. Updated on every ingest.
 - [[Affiliate-Marketing/Affiliate-Marketing-Agent-System]] — Master coordinator agent for 18+ affiliate programs. Handles compliance, interview-driven content creation, link injection, and performance tracking.
 - [[Affiliate-Marketing/TikTok-Shop-Affiliate-Compliance]] — TikTok Shop creator campaign terms, promotional content rules, and affiliate compliance reference.
 - [[Affiliate-Marketing/TikTok-Shop-Affiliate-Do-Dont-Cheat-Sheet]] — Quick do/don't reference for TikTok Shop affiliate content.
+- [[Video-Production/Neon-Parcel-TikTok-Shop-Creator-Pipeline]] — Compliance-gated TikTok Shop Creator affiliate video pipeline (3-phase compliance gate, shot-matching workflow, loudness normalization), validated on Colorsmart Pens.
 
 ---
 

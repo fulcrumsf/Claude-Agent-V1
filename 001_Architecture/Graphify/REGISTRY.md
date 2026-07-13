@@ -24,16 +24,17 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | pending build | — |
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
 | Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 75 | pending build | — |
-| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 1620 | built | 2026-07-10T04:41Z|
+| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 1700 | built (fast AST refresh — new wiki/prose content from 2026-07-12 not yet semantically indexed, needs full `/graphify --update` pass) | 2026-07-13T03:00Z|
 | Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 83 | pending build | — |
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | pending build | — |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | pending build | — |
 | Apps | `003_Apps/` | `003_Apps/graphify-out/` | 8 | pending build | — |
 | Games | `004_Games/` | `004_Games/graphify-out/` | 2 | pending build | — |
 | Ecommerce | `005_Ecommerce/` | `005_Ecommerce/graphify-out/` | 4 | pending build | — |
+| Affiliate Marketing | `005_Affiliate_Marketing/` | `005_Affiliate_Marketing/graphify-out/` | — | not yet tracked — added 2026-07-12 after the Neon Parcel TikTok Shop Creator pipeline build; needs a full domain build in its own session | — |
 | Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 25 | pending build | — |
 
-Total: 11 graphs covering 214 Markdown files.
+Total: 12 domains tracked (11 with graphs built or pending, 1 newly added and not yet graphed).
 
 > **Status legend:**
 > - `pending build` — domain has YAML frontmatter, but graph hasn't been built yet

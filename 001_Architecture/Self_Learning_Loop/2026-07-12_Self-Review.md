@@ -1,0 +1,24 @@
+---
+title: "Self-Review — 2026-07-12"
+type: rationale
+domain: content-creation
+tags: [self-review, tiktok-shop, neon-parcel, compliance, quality-control]
+---
+
+# 2026-07-12 Self-Review
+
+## What went well
+- Verified the actual TOS bundle exists (18 files, real content) when a reviewer subagent incorrectly claimed it didn't — didn't take the reviewer's word for a factual claim I could trivially check myself with `ls`. A false "Important" finding could have triggered an unnecessary fix cycle if I'd trusted it blindly.
+- Measured real audio loudness with ffmpeg's `loudnorm` filter instead of answering Tony's "is loudness checked?" question from the pipeline's design intent alone — the real numbers (-34 to -35 LUFS) were the actual finding, not a hypothetical gap. Answering with real measurement rather than "no, we don't have that" turned a yes/no question into a concrete, actionable fix.
+- When a vision scan flagged the product's own label as a possible third-party logo, resolved it by reasoning through what RULE-001 actually targets (unrelated third-party branding, not the product being sold) rather than either dismissing the flag reflexively or blocking on it — this is exactly the human-judgment role the fail-safe design expects, and it recurred correctly on 2 more scans without needing to re-litigate.
+- Caught my own overreach when I framed the `#ad` placement as a "risk tolerance" decision Tony had to accept — the TOS text was actually unambiguous ("at the beginning of a post"), so there was no real ambiguity to defer. When Tony pushed back ("why are you saying there is a TOS risk tolerance?"), I corrected the framing immediately instead of defending the original phrasing.
+- Checked Blotato's actual live tool schema (not TOOLBOX.md, not memory) before answering "can Blotato tag a TikTok Shop product" — found no such field, then separately verified `isDraft` genuinely works and confirmed the *result* in-app with Tony rather than trusting the API's own status field (which reported "published" with no distinct "draft" state).
+
+## What went wrong / recurring pattern
+- The V1 shot-matching first pass used a plausible-looking clip (car-washing footage) for the "silver doesn't perfectly match" beat instead of confirming it actually showed the painted result — the single-frame vision analysis said "cleaned area of the car hood," which sounded right but wasn't verified against what the footage actually needed to prove (a visible paint-color mismatch, not just cleanliness). Tony caught this, not me. Next time: when a beat's narration makes a specific visual claim (here: a color mismatch), verify the candidate shot actually shows that specific thing, not just a generically plausible "after" moment.
+- Wasted two failed ffmpeg concat attempts (mismatched paths, then mixing raw MOV footage with a pre-rendered mp4 via the concat demuxer, which silently truncated output instead of erroring) before switching to the more robust pattern of normalizing every segment to identical codec/fps/pix_fmt first. The failure mode was silent (no error, just short output) rather than loud, which cost an extra debugging round. Worth remembering: concat demuxer is fragile with mixed-format inputs; normalize-then-concat is the safe default, not a fallback to reach for only after a failure.
+- Initially assumed `isBrandedContent: true` was the right disclosure mechanism for TikTok Shop affiliate content — Tony's correction (branded content = direct brand-paid partnership, different from commission-based affiliate work) was a real gap in my own understanding of TikTok's platform terminology, not something ambiguous in the docs. I should have checked what that specific field actually gates before proposing it, rather than pattern-matching "paid promotion → branded content flag."
+
+## What could be automated / systematized
+- The image-fallback + slow-zoom pattern (when no clip shows a narrated outcome) worked well and is now documented in the wiki and TOOLBOX, but the zoom-target coordinate math was done ad hoc in this session (manually estimating pixel fractions from a cropped preview). A small reusable helper (given an image + a rough description of the target region, compute the zoompan `x`/`y` fractional expressions) would make this faster and less error-prone next time it's needed.
+- RULE-008's real-world addendum (auto commission-tag disclosure) is currently a single dated note in the ledger. If this pipeline produces many more products, it may be worth promoting platform-observed rules (vs. TOS-bundle-cited rules) into their own visually distinct section of the ledger, so a future reader can tell at a glance which rules are "verified against the actual document" vs. "verified against live platform behavior" — the current addendum format works but doesn't scale cleanly past one or two such notes.

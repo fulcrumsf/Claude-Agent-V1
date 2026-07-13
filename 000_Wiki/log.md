@@ -2703,3 +2703,19 @@ Wiki/Asset Note: `000_Wiki/Video-Production/Motion-Graphics-Design-Principles.md
 Skill: `001_Architecture/Skills/Motion-Graphics/SKILL.md` (general composition/timing/terminology principles, authority-ordered beneath the ledger below)
 Ledger: `002_Content-Creation/Video_Editor/003_Remotion/src/skills/design-rules-learned.md` (growing, additive, production-corrected rules — ground truth; wired into the Remotion app's own AI skill-detection system)
 Also flagged, not fixed: `DiagramLabels.tsx` still hardcodes brand-green as its default diagram color, contradicting the new color-judgment rule — left alone since it's shipped `/anomalous-wild` pipeline code.
+
+## [2026-07-11] ingest | TikTok Shop TOS Bundle Refresh
+Source: 000_Ingest/Tiktok-TOS/ (6 files) → 005_Affiliate_Marketing/Tiktok_Shop_Affiliate/TikTok-TOS/
+Files: Customer Order Cancellation Return and Refund Policy, Customer Review Requests Best Practices and FAQs, Customer Service Policy, How To avoid Nudity and Sexualized Content Guide, Seller Enforcement Policy, TikTok Shop — LIVE Growth Playbook
+Skipped: "How to Avoid Promoting Prohibited Products.md" (byte-identical duplicate already in destination) — deleted from ingest
+Wiki updated: `000_Wiki/Affiliate-Marketing/TikTok-Shop-Affiliate-Compliance.md` (Key Concepts extended with new policy areas)
+Note: 000_Ingest/Tiktok-TOS/ folder kept in place (empty) as Tony's recurring drop zone for future TikTok TOS updates
+
+## [2026-07-12] build | Neon Parcel TikTok Shop Creator Pipeline + Colorsmart Pens Production
+Source: 8-task subagent-driven-development build (spec + plan in 001_Architecture/Superpowers/Specs|Plans/) + real production run
+Skill extended: 001_Architecture/Skills/TikTok-Shop-Affiliate-Video/SKILL.md (pre-production question, 3-distinct-cuts output model, 3-phase compliance gate, loudness normalization step)
+New scripts: scaffold_product_folder.py, extract_compliance_sources.py, validate_compliance_ledger.py, check_tos_freshness.py, compliance_vision_scan.py, compliance_transcript_scan.py, normalize_loudness.py
+New compliance ledger: 005_Affiliate_Marketing/Tiktok_Shop_Affiliate/Neon_Parcel_TikTok_Shop_Creator/Compliance-Ledger.md (10 citation-backed rules, RULE-008 addendum added 2026-07-12 re: TikTok's auto commission-tag disclosure)
+Wiki: new 000_Wiki/Video-Production/Neon-Parcel-TikTok-Shop-Creator-Pipeline.md; updated TikTok-Shop-Affiliate-Compliance.md and -Do-Dont-Cheat-Sheet.md with the RULE-008 addendum
+First production: Colorsmart Pens (V1/V2/V3), V1 posted to Blotato as a TikTok draft (accountId 27763, neonparcel)
+Known limitation flagged, not resolved: Firecrawl cannot scrape seller-us.tiktok.com — Phase 2 live freshness check is correctly wired but provides no real drift-detection value yet
