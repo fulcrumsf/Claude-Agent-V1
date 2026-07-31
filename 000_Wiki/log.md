@@ -2719,3 +2719,12 @@ New compliance ledger: 005_Affiliate_Marketing/Tiktok_Shop_Affiliate/Neon_Parcel
 Wiki: new 000_Wiki/Video-Production/Neon-Parcel-TikTok-Shop-Creator-Pipeline.md; updated TikTok-Shop-Affiliate-Compliance.md and -Do-Dont-Cheat-Sheet.md with the RULE-008 addendum
 First production: Colorsmart Pens (V1/V2/V3), V1 posted to Blotato as a TikTok draft (accountId 27763, neonparcel)
 Known limitation flagged, not resolved: Firecrawl cannot scrape seller-us.tiktok.com — Phase 2 live freshness check is correctly wired but provides no real drift-detection value yet
+
+## [2026-07-31] build | Glass Guard Production + VO Pause-Trim Fix Made Permanent
+Source: real production run, product #0002 (Qifor Glass Guard), single-video mode
+New script: trim_vo_pauses.py (120ms safety padding + 15ms fades at every join — fixes clicks/pops and clipped words from naive hard-cut pause trimming)
+Skill updated: 001_Architecture/Skills/TikTok-Shop-Affiliate-Video/SKILL.md new Step 5a.4 (pause trim, always before loudness normalization)
+Wiki updated: 000_Wiki/Video-Production/Neon-Parcel-TikTok-Shop-Creator-Pipeline.md (pause-trim fix, Qwen-VL batching caps, clean/invisible-surface footage misread pattern, single-video mode)
+Production: Glass Guard V1 posted to Blotato as a TikTok draft (accountId 27763, neonparcel), pending manual product-link attach in-app
+Compliance: Phase 1 pass, Phase 2 skipped (Firecrawl still can't reach tiktok.com — same known limitation as 2026-07-12), Phase 3 CLEAR on final render (vision scan false-positive on own-product logo resolved manually, same pattern as Colorsmart Pens)
+Known gap flagged, not resolved: compliance_vision_scan.py's prompt still isn't tightened to exclude the promoted product's own branding — now confirmed 2/2 productions, worth fixing at the script level next time this pipeline is touched

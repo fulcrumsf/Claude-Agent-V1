@@ -153,22 +153,51 @@ For each of the 3 visual versions:
 ffprobe -v quiet -show_entries format=duration -of csv=p=0 tiktok_v1.mp3
 ```
 
+**5a.4 — Trim overlong VO pauses (always run this, every video, BEFORE normalizing):**
+
+Raw VO recordings routinely have several-second dead-air gaps between
+sentences. Do not hard-cut these yourself with a manual ffmpeg concat — a
+naive cut at a silence boundary produces two failure modes: audible clicks/pops
+at every join (sample discontinuity with no crossfade), and clipped words
+(ffmpeg's silencedetect boundary can land a few ms inside a trailing/leading
+consonant, since soft "t"/"s"/"sh" sounds are quiet enough to trigger a -30dB
+threshold before the word actually ends). Both were caught and fixed in the
+Neon Parcel Glass Guard production (2026-07-31) — use the script, not a
+manual cut:
+
+```bash
+python3 001_Architecture/Skills/TikTok-Shop-Affiliate-Video/scripts/trim_vo_pauses.py \
+  tiktok_v1.mp3 tiktok_v1_trimmed.wav
+```
+
+Shrinks every pause longer than 0.5s down to a natural ~0.35s, while keeping a
+120ms safety margin of real audio on both sides of every cut (no word
+clipping) and applying a 15ms fade at every join (no clicks). Use the
+`_trimmed` file as the input to Step 5a.5 below — trim first, then normalize.
+
+**Verify before trusting the output on a new source:** re-transcribe the
+trimmed file (`whisper <file> --model small --output_format srt`) and confirm
+every sentence is still complete against the original transcript. A quick
+click check: decode to raw PCM and scan for sample-to-sample jumps > 8000
+(16-bit range) — should be zero.
+
 **5a.5 — Normalize VO loudness (always run this, every video):**
 
 Raw VO recordings vary in level and, left unchecked, tend to land far too quiet
 for social platforms — measured real output from this pipeline came in around
 -34 to -35 LUFS integrated, well below TikTok's ~-14 LUFS target, with no
-clipping risk at all. Normalize before muxing, not after:
+clipping risk at all. Normalize the *trimmed* file (from 5a.4) before muxing:
 
 ```bash
 python3 001_Architecture/Skills/TikTok-Shop-Affiliate-Video/scripts/normalize_loudness.py \
-  tiktok_v1.mp3 tiktok_v1_normalized.wav
+  tiktok_v1_trimmed.wav tiktok_v1_normalized.wav
 ```
 
 Uses two-pass EBU R128 loudnorm, targeting -14 LUFS integrated / -1.5 dBTP true
 peak by default (safe headroom, no clipping). Use the `_normalized` file (not
-the raw VO) in Step 5c below. Repeat for every audio variant used in this
-product (V1/V2/V3 VO, and YouTube Shorts VO if that pairing is ever produced).
+the raw VO) in Step 5c below. Repeat both 5a.4 and 5a.5 for every audio variant
+used in this product (V1/V2/V3 VO, and YouTube Shorts VO if that pairing is
+ever produced).
 
 **5b. Build a concat list and render the visual:**
 ```bash

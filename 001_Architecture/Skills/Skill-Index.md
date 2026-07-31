@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-07-12
+created: 2026-07-31
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-07-12T23:02:36-04:00
+Generated: 2026-07-31T12:57:39-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 

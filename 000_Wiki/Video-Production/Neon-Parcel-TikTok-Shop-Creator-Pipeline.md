@@ -36,8 +36,16 @@ Built via `superpowers:subagent-driven-development` (8-task plan, fresh implemen
 
 **Shot-matching workflow** (validated on Colorsmart Pens, Tony's explicit approval): transcribe the VO with word-level timestamps (ElevenLabs Scribe) → build an exact narration beat map → run dense keyframe vision analysis (every ~4s, not just scene-change detection, since long continuous handheld clips often produce only 1 scene-change frame) → match real footage moments to what's being narrated → when no clip actually shows the narrated outcome, a still image with a slow Ken Burns zoom on the relevant detail is an acceptable, Tony-endorsed substitute (reusing the same static asset across all product variants for that one beat is fine, not a duplication problem, as long as overall beat count/pacing/shot selection differs per video).
 
+**Dense vision analysis caps** (found on Glass Guard, 2026-07-31): Qwen-VL via OpenRouter hard-caps at 16 images per call and errors on context length above ~10 full-resolution frames — batch at ≤8 frames per call, and downscale each frame to ~640px width before sending, to stay well under both limits on long clips.
+
+**Clean/invisible-surface footage looks like an empty shot — it isn't.** A product that makes glass (or any surface) genuinely transparent/spotless will produce footage that reads as "nothing here, camera pointed at ceiling/background" to both a vision model and a quick human glance — because there's nothing left to see. Found on Glass Guard's "result" clip (IMG_9184, shot straight through cleaned shower glass at the ceiling): don't assume a clip with no visible subject is a misfire — confirm with the person who shot it before dropping it from the edit.
+
+**VO pause trimming** (`trim_vo_pauses.py`, SKILL.md Step 5a.4, added 2026-07-31): always run before loudness normalization. A naive hard-cut trim at silence boundaries causes two audible defects — clicks/pops (no crossfade at the cut) and clipped words (the silence detector's threshold can trigger inside a trailing/leading consonant). Fixed with 120ms safety padding kept on both sides of every cut plus a 15ms fade at every join. Verify on any new source: re-transcribe the trimmed file and confirm no words were lost, and scan raw PCM for sample-to-sample jumps >8000 (16-bit range) — should be zero.
+
+**Single-video mode:** the pipeline also supports producing just one TikTok video instead of the standard 3-variant A/B set, when Tony explicitly says so for a given product (used on Glass Guard, product #0002) — don't default to 3 without confirming.
+
 ## How Tony Uses This
-Invoke the `TikTok-Shop-Affiliate-Video` skill for any new TikTok Shop Creator product. First real production: Colorsmart Pens (3 videos, V1 posted to Blotato as a TikTok draft 2026-07-12 — Blotato has no TikTok Shop product-tagging field, confirmed via live tool schema, so the product link must be attached manually in the TikTok app after the draft lands).
+Invoke the `TikTok-Shop-Affiliate-Video` skill for any new TikTok Shop Creator product. First real production: Colorsmart Pens (3 videos, V1 posted to Blotato as a TikTok draft 2026-07-12 — Blotato has no TikTok Shop product-tagging field, confirmed via live tool schema, so the product link must be attached manually in the TikTok app after the draft lands). Second production: Glass Guard (single video, product #0002, posted 2026-07-31) — surfaced the pause-trim and dense-vision-cap fixes above.
 
 ## Related
 - [[../Affiliate-Marketing/TikTok-Shop-Affiliate-Compliance]]
