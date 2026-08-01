@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 
 NEGATIVE_PROMPT_CLOSER = "- No dialogue, no spoken words, no voiceover, no lip sync, no music, no on-screen text."
 
@@ -51,3 +52,25 @@ def build_video_prompt(scene_description: str, sound_events: str, camera_fixed: 
         f"Sound: {sound_events}. "
         f"{NEGATIVE_PROMPT_CLOSER}"
     )
+
+
+def write_shot_list(out_dir: Path, shots: list[dict]) -> Path:
+    out_dir = Path(out_dir)
+    production_dir = out_dir / "Production"
+    production_dir.mkdir(parents=True, exist_ok=True)
+
+    lines = []
+    for shot in shots:
+        video_prompt = build_video_prompt(
+            shot["scene_description"], shot["sound_events"], shot["camera_fixed"]
+        )
+        lines.append(f"## Shot {shot['index']}")
+        lines.append("")
+        lines.append(f"**Image prompt:** {shot['image_prompt']}")
+        lines.append("")
+        lines.append(f"**Video prompt:** {video_prompt}")
+        lines.append("")
+
+    shot_list_path = production_dir / "Shot_List.md"
+    shot_list_path.write_text("\n".join(lines))
+    return shot_list_path

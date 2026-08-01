@@ -1,5 +1,5 @@
 import pytest
-from shot_list_builder import build_video_prompt
+from shot_list_builder import build_video_prompt, write_shot_list
 
 NEGATIVE_CLOSER = "- No dialogue, no spoken words, no voiceover, no lip sync, no music, no on-screen text."
 
@@ -140,3 +140,33 @@ def test_build_video_prompt_raises_on_straight_single_quoted_dialogue_with_inter
             sound_events="a voice murmurs 'I'm scared' nearby",
             camera_fixed=True,
         )
+
+
+def test_write_shot_list_creates_production_folder_and_markdown(tmp_path):
+    shots = [
+        {
+            "index": 1,
+            "image_prompt": "POV first-person shot of hands resting on a coarse blanket in a dim medieval hut at dawn",
+            "scene_description": "Waking up in a rustic hut, dawn light",
+            "sound_events": "crackling fire, a groggy sigh",
+            "camera_fixed": True,
+        },
+        {
+            "index": 2,
+            "image_prompt": "POV hands carrying a wooden water bucket down a muddy medieval dirt road",
+            "scene_description": "Walking down a dirt road carrying a water bucket",
+            "sound_events": "water sloshing, footsteps on packed dirt, distant birds",
+            "camera_fixed": False,
+        },
+    ]
+
+    result_path = write_shot_list(tmp_path, shots)
+
+    assert result_path == tmp_path / "Production" / "Shot_List.md"
+    content = result_path.read_text()
+
+    assert "## Shot 1" in content
+    assert "## Shot 2" in content
+    assert "POV first-person shot of hands resting on a coarse blanket" in content
+    assert "Waking up in a rustic hut, dawn light, static camera, fixed position." in content
+    assert "- No dialogue, no spoken words, no voiceover, no lip sync, no music, no on-screen text." in content
