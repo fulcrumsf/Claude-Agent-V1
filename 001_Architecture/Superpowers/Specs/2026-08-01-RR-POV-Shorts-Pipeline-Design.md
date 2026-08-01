@@ -19,10 +19,10 @@ Two reference videos supplied by Tony (medieval peasant POV, pyramid builder POV
 ## Video specs
 
 - Aspect ratio: 9:16
-- Resolution: 1080p (Seedance 1.5 Pro, no-audio variant)
+- Resolution: 1080p, Seedance 1.5 Pro (or newer per live Tool-Manager check), **`generate_audio=true`** — native audio replaces the earlier separate-Foley-model design (see Sound Design below for the full decision trail)
 - Minimum total duration: 65 seconds
-- Scene length: ~5 seconds each
-- No dialogue anywhere in the video
+- Scene length: ~5 seconds each. If a generated clip comes back longer than 5s, trim to the best 5-second window (not a default 0-5s cut) — find the sweet spot, don't just truncate.
+- No dialogue anywhere in the video — enforced at the prompt level per `Seedance-Prompting-Guide` (never write quoted spoken lines; every prompt ends with a negative-prompt closer excluding dialogue/voiceover/lip-sync/music/on-screen text)
 
 ## Padding logic
 
@@ -32,36 +32,32 @@ Padding happens at the **beat-planning stage**, before any generation:
 
 ## Per-video phases
 
-1. **Intake** — subject definition: era + role (e.g. "medieval peasant," "pyramid builder"). Historical-accuracy notes gathered here to seed prompt generation later.
+1. **Intake** — two paths, Tony picks one at the start of every run:
+   - **Named topic:** Tony gives the era + role directly (e.g. "medieval peasant," "pyramid builder"). Historical-accuracy notes gathered here to seed prompt generation later.
+   - **Idea research:** Tony gives only a vague direction (or none) and asks for suggestions. Pipeline researches what's currently working in the POV/historical-immersion Shorts format broadly across YouTube (not limited to our 2 reference videos) via the YouTube Data API + Firecrawl, scoped to **videos published in the last 30 days** (strict — freshly trending, not older videos with recent momentum). Ranks candidates by views/comments/engagement velocity, presents the top 3-5 with a hook + score rationale each (matching the existing Reimagined Realms long-form pipeline's Phase 3 ideation pattern), and Tony picks one. Goal is explicitly virality/monetization-oriented — this research step exists to chase views and comments, not just topic novelty.
 2. **Beat planning** — day-in-life scene list, ~5s/scene, padded per the logic above until ≥65s total. Opens with a waking-up beat per the style guide's convention.
-3. **Shot list** — per-scene image prompt (GPT-Image-2) + video motion prompt (Seedance), POV framing, historical-accuracy details baked into prompts (not left to the model to invent).
+3. **Shot list** — per-scene image prompt (GPT-Image-2) + video motion prompt (Seedance, following `Seedance-Prompting-Guide` conventions: 4-layer structure, no quoted dialogue, named foley/ambient sound events, negative-prompt closer, `camera_fixed` set per shot per the style guide's camera conventions), POV framing, historical-accuracy details baked into prompts (not left to the model to invent).
 4. **Cost estimate pause** — single locked combo (see Cost section below), presented for approval before any spend.
 5. **Image generation** — GPT-Image-2 via kie.ai, one image per scene.
-6. **Video generation** — Seedance 1.5 Pro, 1080p, image-to-video, per-scene ≤8s cap (matches existing Reimagined Realms convention).
-7. **Sound design** (see Sound Design section below).
-8. **Assembly** — concatenate scene clips into `Video_Stitched.mp4` (silent), mix in foley + music per the locked sound design.
+6. **Video generation** — Seedance 1.5 Pro (or newer, live-checked), 1080p, image-to-video, `generate_audio=true`. Each clip trimmed to its best 5-second window if generated longer.
+7. **Music generation** — Suno, one cohesive themed track for the full ~65s runtime in a single pass (unchanged from the earlier design — see Sound Design below).
+8. **Assembly** — concatenate scene clips (each already carrying its own native foley/ambient audio) into `Video_Stitched.mp4`, mix in the Suno music track, normalize the final mix to **YouTube-standard loudness (-14 LUFS integrated, true peak ≤ -1 dBTP)** — measured via `ffmpeg loudnorm`, gain calculated from the actual measurement, never a static guess (same method already locked for the long-form pipeline's audio mix formula).
 9. **Text overlay** — Remotion pass applies the "Waking up as a ___" caption template per the style guide's placement/sizing/drop-shadow conventions. Produces `Final_v1.mp4` (see Versioning).
 10. **YouTube Shorts package** — title/description/tags generated per existing Reimagined Realms conventions, adapted for Shorts.
 11. **Blotato upload** — publishes to the Reimagined Realms channel (existing Blotato account, id 30323 per prior session notes — verify live before first use).
 
 ## Sound design
 
-No dialogue means no ducking is needed — foley and music simply need to be LUFS-consistent with each other, not balanced against narration.
+**Decision history:** the original design used a dedicated per-clip Foley model (Mirelo SFX or Sonilo SFX on WaveSpeed, both purpose-built for video-synced Foley) generated separately from silent Seedance video. That standalone Foley generator was fully built and tested (`001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/generate_foley.py`, swappable via `foley_config.py`). A live three-way comparison — Mirelo Foley, Sonilo Foley, and Seedance 1.5 Pro's own native `generate_audio` — was judged directly by Tony, and **Seedance's native audio won**. MMAudio v2 and Sonilo's *video-to-video-sfx* endpoint were separately ruled out earlier for cost/consistency reasons (see git history for the full comparison table) and never re-entered contention.
 
-**Foley/ambient — per clip.** Each generated Seedance clip is run through a video-to-audio Foley model. Two candidates identified via Tool Manager research on fal.ai/WaveSpeed:
-- **Mirelo SFX** (v1/v1.6, video-to-audio) — purpose-built for video-synced Foley
-- **Sonilo SFX** (`v1/video-to-sfx`, `v1.1/video-to-sound-effects`) — also video-synced Foley
+**Current approach — native audio, no separate Foley step:**
+- Each Seedance clip generates with `generate_audio=true`, producing synced foley/ambient audio in the same call as the video — no separate model, no separate API call, no separate cost line for foley.
+- Prompting must follow `Seedance-Prompting-Guide`'s conventions exactly: never write quoted spoken dialogue (that's the model's literal dialogue trigger), name specific foley/ambient sound events concretely in the prompt (footsteps, sloshing, birds, wind — not vague mood words), and end every prompt with a negative-prompt closer: `- No dialogue, no spoken words, no voiceover, no lip sync, no music, no on-screen text.` The "no music" clause specifically prevents Seedance's native audio from competing with the separate Suno track below.
+- The standalone Foley generator (Mirelo/Sonilo) remains built and available as a fallback/alternative tool if Seedance's native audio quality regresses in a future version, or for a future format that needs it — it is not deleted, just not wired into this pipeline's default flow.
 
-MMAudio v2 was considered and rejected — it blends in its own ambient/music elements, which would create jarring tonal shifts scene-to-scene across ~13 short clips. Sonilo's *video-to-video-sfx* endpoint (as opposed to its dedicated SFX endpoints above) was also rejected for per-clip use — confirmed 15-second minimum + 200-credit minimum charge per generation, making it ~3x the sticker price for our 5s clips.
+No dialogue anywhere means no ducking is needed — the native foley/ambient track and the music track simply need to sit at correct relative levels within an overall YouTube-standard loudness target (see Assembly phase), not balanced against narration.
 
-**A/B test protocol (first production only):**
-1. Produce a full video with Mirelo SFX foley only (no music) → `Final_v1_mirelo_test.mp4` or equivalent test naming
-2. Produce a full video with Sonilo SFX foley only (no music) → equivalent test naming
-3. Tony judges both, picks a winner
-4. Winner is locked in as the default Foley model for all future POV productions
-5. Generate Suno music for the winning video, produce a third full video (locked foley + music) → this becomes the final locked reference and `Final_v1.mp4`
-
-**Music — once per video.** Suno (existing, proven, already integrated in the long-form Reimagined Realms `assemble.py`) generates one cohesive themed track for the full ~65s runtime in a single pass — not per-clip — avoiding tonal whiplash across short scenes.
+**Music — once per video, unchanged.** Suno (existing, proven, already integrated in the long-form Reimagined Realms `assemble.py`) generates one cohesive themed track for the full ~65s runtime in a single pass — not per-clip — avoiding tonal whiplash across short scenes.
 
 ## Deliverables / asset packaging
 
@@ -72,10 +68,10 @@ Productions/000X_Title/
 ├── Final_v1.mp4                     ← baked master (versioned: v1, v2, v3... per iteration)
 └── Assets/
     ├── Images/                      ← per-scene GPT-Image-2 stills
-    ├── Video_Clips/                 ← individual Seedance clips, one per scene
-    ├── Foley_Audio/                 ← individual per-scene Foley audio (Mirelo/Sonilo)
-    ├── Video_Stitched.mp4           ← all clips concatenated, silent (pre-audio, pre-text)
-    ├── SFX_Full.mp3                 ← all Foley clips stitched into one track
+    ├── Video_Clips/                 ← individual Seedance clips as generated, one per scene (native audio embedded, as-is source of truth)
+    ├── Clip_Audio/                  ← native audio extracted from each Seedance clip into its own file, one per scene
+    ├── Video_Stitched.mp4           ← all clips concatenated, video-only/silent (audio stripped, pre-text)
+    ├── Ambient_Foley_Full.mp3       ← all per-clip extracted native audio stitched into one track
     └── Music_Full.mp3               ← Suno track, full length
 ```
 
@@ -83,17 +79,16 @@ Productions/000X_Title/
 
 ## Cost estimate (single locked combo)
 
-For a 65s video, 13 scenes at ~5s each:
+For a 65s video, 13 scenes at ~5s each. Updated after the Seedance-native-audio decision (with-audio pricing replaces the earlier no-audio + separate Foley line items):
 
 | Item | Model | Cost |
 |---|---|---|
 | Images | GPT-Image-2 (kie.ai, 1K), 13× | $0.39 |
-| Video | Seedance 1.5 Pro, 1080p, no-audio, 65s | $2.44 |
-| Foley | Mirelo or Sonilo SFX, ~13 clips | ~$0.10 |
+| Video (with native audio) | Seedance 1.5 Pro, 1080p, `generate_audio=true`, 65s | $4.88 (at $0.075/s per kie.ai's confirmed with-audio rate — verify live via Tool-Manager before each production, pricing shifts) |
 | Music | Suno, 1 track | $0.06 |
-| **Total** | | **~$2.96/video** |
+| **Total** | | **~$5.33/video** |
 
-Cost is not the deciding factor for any model choice in this pipeline — quality is.
+Cost is not the deciding factor for any model choice in this pipeline — quality is. (Note: this is higher than the earlier no-audio+Foley estimate of ~$2.96, but Tony's direct A/B judgment on quality overrides the cost difference — both are trivial amounts either way.)
 
 ## Explicitly out of scope
 
