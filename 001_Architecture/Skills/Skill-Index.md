@@ -13,7 +13,7 @@ generated_by: sync_skill_index.py
 
 # Skill Index
 
-Generated: 2026-08-01T00:53:03-04:00
+Generated: 2026-08-01T14:52:38-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -34,6 +34,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | skill-installer | Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skil… | `001_Architecture/Skills/.system/skill-installer/SKILL.md` |
 | Anomalous_Wild_Video_Pipeline | Invoke when Tony says /anomalous-wild, make an Anomalous Wild video, build me a video for the nature/science channel, run the Anomalous Wild pipeline, or start an AW production. O… | `001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md` |
 | Motion-Graphics | Use whenever building, reviewing, or planning ANY motion graphic — animated diagram/callout labels, kinetic typography, chart/data reveals, title cards, lower-thirds, or any Remot… | `001_Architecture/Skills/Motion-Graphics/SKILL.md` |
+| reimagined-realms-pov-shorts-pipeline | Use when building Reimagined Realms POV Shorts (vertical historical "day in the life" videos with no dialogue). This skill folder currently contains the Foley/SFX generator sub-co… | `001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/SKILL.md` |
 | Reimagined_Realms_Video_Pipeline | Invoke when Tony says /reimagined-realms, make a Reimagined Realms video, build me a video for the history channel, run the video pipeline, or start the RR pipeline. Orchestrates… | `001_Architecture/Skills/Reimagined_Realms_Video_Pipeline/SKILL.md` |
 | tiktok-shop-affiliate-video | Use when Tony has raw product footage and voiceover clips and wants to produce TikTok Shop or YouTube Shorts affiliate videos. Triggers on "create affiliate video", "edit product… | `001_Architecture/Skills/TikTok-Shop-Affiliate-Video/SKILL.md` |
 | tool-manager | > | `001_Architecture/Skills/Tool-Manager/SKILL.md` |
