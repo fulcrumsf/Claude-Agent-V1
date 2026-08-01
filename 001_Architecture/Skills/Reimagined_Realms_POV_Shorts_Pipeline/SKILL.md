@@ -1,6 +1,6 @@
 ---
 name: reimagined-realms-pov-shorts-pipeline
-description: Use when building Reimagined Realms POV Shorts (vertical historical "day in the life" videos with no dialogue). This skill folder currently contains the Foley/SFX generator sub-component only — beat planning, image/video generation, assembly, and publishing are separate, later plans. Foley invocation — python3 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/generate_foley.py <video_path> --out <audio_output_path> [--prompt "text hint"] [--model mirelo|sonilo]
+description: Use when building Reimagined Realms POV Shorts (vertical historical "day in the life" videos with no dialogue), planning beats/scenes, or generating a shot list. This skill folder currently has the Foley/SFX generator, beat planning (scenes_needed_for_floor, write_beat_table), and shot list generation (build_video_prompt, write_shot_list) built — image/video generation, assembly, text overlay, YouTube package, and Blotato upload are separate, later plans. Foley invocation — python3 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/generate_foley.py <video_path> --out <audio_output_path> [--prompt "text hint"] [--model mirelo|sonilo]
 ---
 
 # Reimagined Realms POV Shorts Pipeline
