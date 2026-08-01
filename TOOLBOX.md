@@ -605,6 +605,16 @@ Multi-platform affiliate marketing operations. 18 programs tracked across travel
 - **Voice ID (Reimagined Realms):** `raMcNf2S8wCmuaBcyI6E` (ElevenLabs multilingual v2)
 - **Note:** `~/.claude/skills/` is a symlink to `001_Architecture/Skills/` — skill is global across Claude, Codex, and Gemini
 
+### Seedance Prompting Guide (Global — `001_Architecture/Skills/Seedance-Prompting-Guide/`)
+- **Purpose:** Living reference for prompting any ByteDance Seedance version (1.5 Pro, 2.0, 2.0 Fast, future) — dialogue vs. ambient/foley-only audio control, camera movement/cinematic shot language, negative-prompt conventions. Update in place as new versions ship; never fork a per-version copy.
+- **Key facts:** quoted speech in the prompt triggers lip-synced dialogue (omit quotes for no-dialogue); `generate_audio` boolean controls native audio generation; negative prompts are a single dash-led closing line naming forbidden elements (e.g. `- No dialogue, no music, no text on screen.`).
+- **When to use:** Any time a prompt is being written for Seedance video generation, for any pipeline/channel.
+
+### Reimagined Realms — POV Shorts Pipeline (`001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/`)
+- **Purpose:** Vertical (9:16), historical "day in the life" POV Shorts for Reimagined Realms — no dialogue, Seedance native audio (foley/ambient) + Suno music. Separate from the long-form Reimagined Realms pipeline above.
+- **Status:** `POV_Style_Guide.md` (distilled from 2 analyzed reference videos) and a standalone Foley/SFX generator (`generate_foley.py`, swappable Mirelo/Sonilo via `foley_config.py`) are built. Beat planning, image/video generation, assembly, and publishing are separate, later plans — see `001_Architecture/Superpowers/Specs/2026-08-01-RR-POV-Shorts-Pipeline-Design.md`.
+- **Design note:** initial plan used a dedicated Foley model per clip; a live A/B test (Mirelo/Sonilo Foley vs. Seedance's own native `generate_audio`) showed Seedance's native audio was the better match — see the design spec for the full decision trail. The Foley generator is still built and available as a fallback/alternative.
+
 ### Reimagined Realms — Batch Generation + Assembly Scripts (`001_Architecture/Tools/Video-Generation/Channels/Reimagined_Realms/`)
 - **batch_generate_images.py** — Generate all clip images via GPT Image 2 on kie.ai
   - Usage: `python3 batch_generate_images.py <production_folder> [--clips C20 C21] [--overwrite]`

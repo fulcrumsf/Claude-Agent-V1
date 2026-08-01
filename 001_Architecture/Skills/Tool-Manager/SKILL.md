@@ -260,6 +260,7 @@ don't assume it's undocumented forever.
 | Obsidian vault ops | `obsidian`, `obsidian-cli`, `obsidian-markdown` |
 | Three-brain routing | `three-brain` |
 | Google Veo via kie.ai | `google_veo_kie_api` |
+| Seedance prompting (any version — dialogue, audio, camera movement, negative prompts) | `Seedance-Prompting-Guide` (`001_Architecture/Skills/Seedance-Prompting-Guide/SKILL.md`) — living reference, update in place as new Seedance versions ship |
 
 Full skill list: read `001_Architecture/Skills/Skill-Index.md`
 
