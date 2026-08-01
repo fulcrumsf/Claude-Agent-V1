@@ -73,3 +73,6 @@ graphify-out/
 
 # ChatGPT raw export data — too large, redownloadable from ChatGPT
 007_Resource_Library/OpenAI_History/Already Ingested/
+
+# Subagent-driven-development scratch workspaces (per-plan, deleted when plan finishes)
+.superpowers/
