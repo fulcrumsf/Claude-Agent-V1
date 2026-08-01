@@ -17,8 +17,14 @@ _CURLY_SINGLE_QUOTE_DIALOGUE_PATTERN = re.compile(r'‘[^‘’]{3,}’')
 # quote is preceded by whitespace/start-of-string and the closing quote is
 # followed by whitespace/punctuation/end-of-string — a bare contraction's
 # apostrophe never satisfies both sides of that boundary requirement.
+#
+# The content class deliberately allows internal apostrophes (contractions
+# inside quoted dialogue, e.g. 'don't go', 'I'm scared') rather than
+# excluding '. Combined with the non-greedy {3,}?, the engine walks past
+# a contraction's apostrophe (which fails the closing-boundary lookahead)
+# and keeps extending until it finds the real closing quote.
 _STRAIGHT_SINGLE_QUOTE_DIALOGUE_PATTERN = re.compile(
-    r"(?:^|(?<=\s))'([^']{3,})'(?=[\s.,!?;:]|$)"
+    r"(?:^|(?<=\s))'([^\n]{3,}?)'(?=[\s.,!?;:]|$)"
 )
 
 

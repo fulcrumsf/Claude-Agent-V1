@@ -122,3 +122,21 @@ def test_build_video_prompt_allows_multiple_contractions_without_false_positive(
         camera_fixed=True,
     )
     assert result.endswith(NEGATIVE_CLOSER)
+
+
+def test_build_video_prompt_raises_on_straight_single_quoted_dialogue_with_internal_contraction():
+    with pytest.raises(ValueError, match="quoted dialogue"):
+        build_video_prompt(
+            scene_description="she said 'don't go'",
+            sound_events="birds chirping",
+            camera_fixed=True,
+        )
+
+
+def test_build_video_prompt_raises_on_straight_single_quoted_dialogue_with_internal_contraction_in_sound_events():
+    with pytest.raises(ValueError, match="quoted dialogue"):
+        build_video_prompt(
+            scene_description="POV sitting by a fire",
+            sound_events="a voice murmurs 'I'm scared' nearby",
+            camera_fixed=True,
+        )
