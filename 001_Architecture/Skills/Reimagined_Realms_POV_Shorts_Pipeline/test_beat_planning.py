@@ -1,3 +1,5 @@
+import pytest
+
 from beat_planning import scenes_needed_for_floor
 
 def test_scenes_needed_for_floor_returns_zero_when_already_at_floor():
@@ -15,3 +17,7 @@ def test_scenes_needed_for_floor_returns_positive_count_when_below_floor():
 def test_scenes_needed_for_floor_respects_custom_params():
     # 10 scenes * 4s = 40s, floor 50s -> need 3 more scenes (13*4=52s >= 50s)
     assert scenes_needed_for_floor(10, seconds_per_scene=4.0, floor_seconds=50.0) == 3
+
+def test_scenes_needed_for_floor_raises_on_non_positive_seconds_per_scene():
+    with pytest.raises(ValueError):
+        scenes_needed_for_floor(10, seconds_per_scene=0)
