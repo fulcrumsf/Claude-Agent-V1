@@ -22,6 +22,18 @@ def generate_foley(video_path: Path, output_path: Path, prompt: str = "", model:
     cmd += ["--download", str(output_path)]
 
     subprocess.run(cmd, check=True, capture_output=True, text=True)
+
+    if not output_path.exists():
+        # Some models (e.g. Mirelo) return multiple candidate outputs; wavespeed
+        # then suffixes the filename with "-{index}" instead of writing the exact
+        # path requested. Take the first candidate and normalize it to output_path.
+        candidates = sorted(output_path.parent.glob(f"{output_path.stem}-*{output_path.suffix}"))
+        if not candidates:
+            raise FileNotFoundError(f"wavespeed did not produce expected output at {output_path}")
+        candidates[0].rename(output_path)
+        for extra in candidates[1:]:
+            extra.unlink()
+
     return output_path
 
 

@@ -32,6 +32,7 @@ def test_generate_foley_uploads_then_runs_model_and_downloads_output(tmp_path):
     with patch("generate_foley.upload_video", return_value="https://example.com/clip.mp4") as mock_upload, \
          patch("generate_foley.subprocess.run", return_value=mock_run_result) as mock_run:
 
+        output_path.touch()  # simulate wavespeed writing the exact requested path
         result = generate_foley(video_path, output_path, prompt="footsteps on straw")
 
     mock_upload.assert_called_once_with(video_path)
@@ -55,11 +56,54 @@ def test_generate_foley_respects_model_override(tmp_path):
     with patch("generate_foley.upload_video", return_value="https://example.com/clip.mp4"), \
          patch("generate_foley.subprocess.run", return_value=MagicMock(returncode=0)) as mock_run:
 
+        output_path.touch()  # simulate wavespeed writing the exact requested path
         generate_foley(video_path, output_path, model="sonilo")
 
     called_cmd = mock_run.call_args[0][0]
     assert "sonilo/v1/video-to-sfx" in called_cmd
     assert "prompt=" not in " ".join(called_cmd)
+
+
+def test_generate_foley_normalizes_multi_output_download(tmp_path):
+    # Models like Mirelo can return multiple candidate outputs; wavespeed then
+    # writes "{stem}-1{suffix}", "{stem}-2{suffix}", ... instead of the exact
+    # path passed to --download. generate_foley must recover by taking the
+    # first candidate and renaming it to the requested output_path, cleaning
+    # up the rest.
+    video_path = tmp_path / "clip.mp4"
+    video_path.touch()
+    output_path = tmp_path / "clip_foley.wav"
+
+    def fake_run(cmd, **kwargs):
+        (tmp_path / "clip_foley-1.wav").write_bytes(b"first")
+        (tmp_path / "clip_foley-2.wav").write_bytes(b"second")
+        return MagicMock(returncode=0)
+
+    with patch("generate_foley.upload_video", return_value="https://example.com/clip.mp4"), \
+         patch("generate_foley.subprocess.run", side_effect=fake_run):
+
+        result = generate_foley(video_path, output_path, model="mirelo")
+
+    assert result == output_path
+    assert output_path.exists()
+    assert output_path.read_bytes() == b"first"
+    assert not (tmp_path / "clip_foley-1.wav").exists()
+    assert not (tmp_path / "clip_foley-2.wav").exists()
+
+
+def test_generate_foley_raises_when_no_output_found(tmp_path):
+    video_path = tmp_path / "clip.mp4"
+    video_path.touch()
+    output_path = tmp_path / "clip_foley.wav"
+
+    with patch("generate_foley.upload_video", return_value="https://example.com/clip.mp4"), \
+         patch("generate_foley.subprocess.run", return_value=MagicMock(returncode=0)):
+
+        try:
+            generate_foley(video_path, output_path, model="mirelo")
+            assert False, "expected FileNotFoundError"
+        except FileNotFoundError:
+            pass
 
 
 def test_main_wires_generate_foley(tmp_path):
