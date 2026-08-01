@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-07-31
+created: 2026-08-01
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-07-31T12:57:39-04:00
+Generated: 2026-08-01T00:53:03-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -38,6 +38,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | tiktok-shop-affiliate-video | Use when Tony has raw product footage and voiceover clips and wants to produce TikTok Shop or YouTube Shorts affiliate videos. Triggers on "create affiliate video", "edit product… | `001_Architecture/Skills/TikTok-Shop-Affiliate-Video/SKILL.md` |
 | tool-manager | > | `001_Architecture/Skills/Tool-Manager/SKILL.md` |
 | Tutorial-Builder | Turn a past multi-session build (pipeline, tool, workflow) into a replication blueprint and video-recording concept for the Roboto Gato YouTube channel and/or a sellable/free PDF.… | `001_Architecture/Skills/Tutorial-Builder/SKILL.md` |
+| video-analyzer | Use when Tony wants to reverse-engineer the style, pacing, editing, or narrative content of any reference video for any channel or project. Triggers on "analyze this video", "brea… | `001_Architecture/Skills/Video-Analyzer/SKILL.md` |
 | ab-test-setup | When the user wants to plan, design, or implement an A/B test or experiment. Also use when the user mentions "A/B test," "split test," "experiment," "test this change," "variant c… | `001_Architecture/Skills/ab-test-setup/SKILL.md` |
 | ad-creative | When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — for any paid advertising platform. Also use when th… | `001_Architecture/Skills/ad-creative/SKILL.md` |
 | agent-development | This skill should be used when the user asks to "create an agent", "add an agent", "write a subagent", "agent frontmatter", "when to use description", "agent examples", "agent too… | `001_Architecture/Skills/agent-development/SKILL.md` |
