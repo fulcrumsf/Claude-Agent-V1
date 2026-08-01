@@ -81,15 +81,16 @@ def analyze_video_narrative(video_path: Path, scenes: list[tuple[float, float]])
             types.Part(text=prompt),
         ]),
     )
-    return response.text
+    return response.text or ""
 
 def write_analysis_md(out_dir: Path, scenes: list[tuple[float, float]], gemini_output: str) -> Path:
     out_dir = Path(out_dir)
-    lines = []
-    for i, (start, end) in enumerate(scenes, start=1):
-        lines.append(f"## Scene {i} [{start}s-{end}s]")
-    lines.append("")
-    lines.append(gemini_output)
+    lines = [
+        f"_ffmpeg detected {len(scenes)} raw scene cuts; "
+        f"see Gemini's narrative breakdown below for the actual scene structure._",
+        "",
+        gemini_output,
+    ]
 
     analysis_path = out_dir / "ANALYSIS.md"
     analysis_path.write_text("\n".join(lines))

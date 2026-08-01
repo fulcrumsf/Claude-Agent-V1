@@ -58,6 +58,32 @@ def test_analyze_video_narrative_uploads_file_and_prompts_with_scene_list(tmp_pa
     assert "0.0s-3.1s" in str(call_kwargs["contents"])
     assert "3.1s-7.8s" in str(call_kwargs["contents"])
 
+def test_analyze_video_narrative_polls_while_processing_then_active(tmp_path):
+    video_path = tmp_path / "Video.mp4"
+    video_path.touch()
+    scenes = [(0.0, 3.1)]
+
+    processing_file = MagicMock(name="uploaded_file_processing")
+    processing_file.state.name = "PROCESSING"
+
+    active_file = MagicMock(name="uploaded_file_active")
+    active_file.state.name = "ACTIVE"
+
+    mock_response = MagicMock(text="## Scene 1\nWaking up...")
+
+    with patch("analyze_reference_video.genai.Client") as MockClient, \
+         patch("analyze_reference_video.time.sleep") as mock_sleep:
+        client_instance = MockClient.return_value
+        client_instance.files.upload.return_value = processing_file
+        client_instance.files.get.return_value = active_file
+        client_instance.models.generate_content.return_value = mock_response
+
+        result = analyze_video_narrative(video_path, scenes)
+
+    assert result == mock_response.text
+    client_instance.files.get.assert_called_once_with(name=processing_file.name)
+    mock_sleep.assert_called_once()
+
 def test_analyze_video_narrative_raises_on_failed_upload_state(tmp_path):
     video_path = tmp_path / "Video.mp4"
     video_path.touch()
@@ -75,17 +101,24 @@ def test_analyze_video_narrative_raises_on_failed_upload_state(tmp_path):
 
     client_instance.models.generate_content.assert_not_called()
 
-def test_write_analysis_md_writes_scene_headers_and_content(tmp_path):
+def test_write_analysis_md_writes_summary_line_and_gemini_output(tmp_path):
     scenes = [(0.0, 3.1), (3.1, 7.8)]
-    gemini_output = "Scene 1 text here.\n\nScene 2 text here."
+    gemini_output = "## Scene 1 [0.0s-3.1s]\nScene 1 text here.\n\n## Scene 2 [3.1s-7.8s]\nScene 2 text here."
 
     result_path = write_analysis_md(tmp_path, scenes, gemini_output)
 
     assert result_path == tmp_path / "ANALYSIS.md"
     content = result_path.read_text()
-    assert "## Scene 1 [0.0s-3.1s]" in content
-    assert "## Scene 2 [3.1s-7.8s]" in content
+    assert "ffmpeg detected 2 raw scene cuts" in content
     assert gemini_output in content
+
+    # No fabricated index headers should be written beyond what gemini_output
+    # itself contains — every "## Scene" header present must come from
+    # gemini_output's own text, not a duplicate header block written by
+    # write_analysis_md.
+    header_lines = [line for line in content.splitlines() if line.startswith("## Scene")]
+    gemini_header_lines = [line for line in gemini_output.splitlines() if line.startswith("## Scene")]
+    assert header_lines == gemini_header_lines
 
 
 def test_main_wires_download_detect_analyze_and_write(tmp_path):

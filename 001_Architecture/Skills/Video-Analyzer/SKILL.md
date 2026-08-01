@@ -1,6 +1,6 @@
 ---
 name: video-analyzer
-description: Use when Tony wants to reverse-engineer the style, pacing, editing, or narrative content of any reference video for any channel or project. Triggers on "analyze this video", "break down this video's style", "what's happening in this video scene by scene", or any request to understand a reference video before building something styled after it. Command: /video-analyzer <youtube_url> --out <folder>
+description: Use when Tony wants to reverse-engineer the style, pacing, editing, or narrative content of any reference video for any channel or project. Triggers on "analyze this video", "break down this video's style", "what's happening in this video scene by scene", or any request to understand a reference video before building something styled after it. Invocation: python3 001_Architecture/Skills/Video-Analyzer/analyze_reference_video.py <youtube_url> --out <folder>
 ---
 
 # Video-Analyzer
@@ -17,9 +17,11 @@ Writes `<folder>/Video.mp4` and `<folder>/ANALYSIS.md`.
 
 ## Output format
 
-`ANALYSIS.md` has one section per detected scene:
+`ANALYSIS.md` starts with one summary line noting how many raw scene cuts ffmpeg detected, followed directly by Gemini's own narrative breakdown (which has its own `## Scene N [start-end]` headers per the analysis prompt — these do not necessarily line up 1:1 with ffmpeg's raw cut count, since Gemini groups by narrative beat rather than raw cut):
 
 ```markdown
+_ffmpeg detected 7 raw scene cuts; see Gemini's narrative breakdown below for the actual scene structure._
+
 ## Scene 1 [0.0s-4.2s]
 [Gemini's narrative/visual/context/sound/camera description for this scene]
 
