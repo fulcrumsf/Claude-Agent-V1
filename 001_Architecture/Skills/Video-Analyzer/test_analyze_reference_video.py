@@ -1,6 +1,7 @@
 # test_analyze_reference_video.py
 from pathlib import Path
 from unittest.mock import patch, MagicMock
+import pytest
 from analyze_reference_video import download_video, detect_scenes, analyze_video_narrative
 
 def test_download_video_calls_yt_dlp_and_returns_path(tmp_path):
@@ -56,3 +57,20 @@ def test_analyze_video_narrative_uploads_file_and_prompts_with_scene_list(tmp_pa
     call_kwargs = client_instance.models.generate_content.call_args.kwargs
     assert "0.0s-3.1s" in str(call_kwargs["contents"])
     assert "3.1s-7.8s" in str(call_kwargs["contents"])
+
+def test_analyze_video_narrative_raises_on_failed_upload_state(tmp_path):
+    video_path = tmp_path / "Video.mp4"
+    video_path.touch()
+    scenes = [(0.0, 3.1)]
+
+    mock_file = MagicMock(name="uploaded_file", state=MagicMock(name="FAILED"), error="quota exceeded")
+    mock_file.state.name = "FAILED"
+
+    with patch("analyze_reference_video.genai.Client") as MockClient:
+        client_instance = MockClient.return_value
+        client_instance.files.upload.return_value = mock_file
+
+        with pytest.raises(RuntimeError, match="Gemini file upload failed"):
+            analyze_video_narrative(video_path, scenes)
+
+    client_instance.models.generate_content.assert_not_called()

@@ -49,12 +49,27 @@ def detect_scenes(video_path: Path, threshold: float = 0.3) -> list[tuple[float,
     boundaries = [0.0] + sorted(cut_points) + [duration]
     return [(boundaries[i], boundaries[i + 1]) for i in range(len(boundaries) - 1)]
 
+MAX_UPLOAD_POLL_ATTEMPTS = 30
+UPLOAD_POLL_INTERVAL_SECONDS = 2
+
 def analyze_video_narrative(video_path: Path, scenes: list[tuple[float, float]]) -> str:
     client = genai.Client(api_key=GEMINI_API_KEY)
     uploaded = client.files.upload(file=str(video_path))
+
+    attempts = 0
     while uploaded.state.name == "PROCESSING":
-        time.sleep(2)
+        attempts += 1
+        if attempts > MAX_UPLOAD_POLL_ATTEMPTS:
+            raise TimeoutError(
+                f"Gemini file upload did not become ACTIVE within "
+                f"{MAX_UPLOAD_POLL_ATTEMPTS * UPLOAD_POLL_INTERVAL_SECONDS}s "
+                f"(last state: {uploaded.state.name})"
+            )
+        time.sleep(UPLOAD_POLL_INTERVAL_SECONDS)
         uploaded = client.files.get(name=uploaded.name)
+
+    if uploaded.state.name == "FAILED":
+        raise RuntimeError(f"Gemini file upload failed: {getattr(uploaded, 'error', uploaded)}")
 
     scene_ranges = ", ".join(f"{start}s-{end}s" for start, end in scenes)
     prompt = NARRATIVE_PROMPT_TEMPLATE.format(scene_ranges=scene_ranges)
