@@ -2,11 +2,32 @@ import re
 
 NEGATIVE_PROMPT_CLOSER = "- No dialogue, no spoken words, no voiceover, no lip sync, no music, no on-screen text."
 
-_QUOTED_DIALOGUE_PATTERN = re.compile(r'"[^"]{3,}"')
+# Straight and smart/curly double quotes as interchangeable pair delimiters
+# (word processors and some LLM output emit “ ” or the low/reversed variants
+# „ ‟ instead of ASCII ").
+_DOUBLE_QUOTE_DIALOGUE_PATTERN = re.compile(r'["“„‟][^"“”„‟]{3,}["”„‟]')
+
+# Curly single quotes (‘ ’) are unambiguous pair delimiters — unlike the
+# straight apostrophe, ‘ is never used to render a contraction, so no
+# word-boundary heuristic is needed here.
+_CURLY_SINGLE_QUOTE_DIALOGUE_PATTERN = re.compile(r'‘[^‘’]{3,}’')
+
+# Straight single quote (') is ambiguous with the apostrophe in contractions
+# ("don't", "it's"). Only treat it as a dialogue-quote pair when the opening
+# quote is preceded by whitespace/start-of-string and the closing quote is
+# followed by whitespace/punctuation/end-of-string — a bare contraction's
+# apostrophe never satisfies both sides of that boundary requirement.
+_STRAIGHT_SINGLE_QUOTE_DIALOGUE_PATTERN = re.compile(
+    r"(?:^|(?<=\s))'([^']{3,})'(?=[\s.,!?;:]|$)"
+)
 
 
 def _raise_if_quoted_dialogue(text: str) -> None:
-    if _QUOTED_DIALOGUE_PATTERN.search(text):
+    if (
+        _DOUBLE_QUOTE_DIALOGUE_PATTERN.search(text)
+        or _CURLY_SINGLE_QUOTE_DIALOGUE_PATTERN.search(text)
+        or _STRAIGHT_SINGLE_QUOTE_DIALOGUE_PATTERN.search(text)
+    ):
         raise ValueError(
             f"Detected quoted dialogue in prompt text — this triggers Seedance's lip-sync mechanism, "
             f"which is forbidden for this no-dialogue format: {text!r}"

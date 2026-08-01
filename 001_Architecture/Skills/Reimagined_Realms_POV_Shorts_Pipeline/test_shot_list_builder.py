@@ -41,3 +41,84 @@ def test_build_video_prompt_allows_short_quoted_fragments_that_are_not_dialogue(
         camera_fixed=True,
     )
     assert result.endswith(NEGATIVE_CLOSER)
+
+
+def test_build_video_prompt_raises_on_smart_quoted_dialogue_in_scene_description():
+    with pytest.raises(ValueError, match="quoted dialogue"):
+        build_video_prompt(
+            scene_description="A peasant says, “Good morning” to a passerby",
+            sound_events="birds chirping",
+            camera_fixed=True,
+        )
+
+
+def test_build_video_prompt_raises_on_smart_quoted_dialogue_in_sound_events():
+    with pytest.raises(ValueError, match="quoted dialogue"):
+        build_video_prompt(
+            scene_description="POV sitting by a fire",
+            sound_events="someone whispers “stay warm” nearby",
+            camera_fixed=True,
+        )
+
+
+def test_build_video_prompt_raises_on_low_and_reversed_smart_quote_variants():
+    with pytest.raises(ValueError, match="quoted dialogue"):
+        build_video_prompt(
+            scene_description="A peasant says, „Good morning‟ to a passerby",
+            sound_events="birds chirping",
+            camera_fixed=True,
+        )
+
+
+def test_build_video_prompt_raises_on_curly_single_quoted_dialogue():
+    with pytest.raises(ValueError, match="quoted dialogue"):
+        build_video_prompt(
+            scene_description="A peasant says, ‘Good morning’ to a passerby",
+            sound_events="birds chirping",
+            camera_fixed=True,
+        )
+
+
+def test_build_video_prompt_raises_on_straight_single_quoted_dialogue():
+    with pytest.raises(ValueError, match="quoted dialogue"):
+        build_video_prompt(
+            scene_description="'Good morning,' said the traveler",
+            sound_events="birds chirping",
+            camera_fixed=True,
+        )
+
+
+def test_build_video_prompt_raises_on_straight_single_quoted_dialogue_in_sound_events():
+    with pytest.raises(ValueError, match="quoted dialogue"):
+        build_video_prompt(
+            scene_description="POV sitting by a fire",
+            sound_events="a voice murmurs 'stay warm' nearby",
+            camera_fixed=True,
+        )
+
+
+def test_build_video_prompt_allows_contraction_doesnt_without_false_positive():
+    result = build_video_prompt(
+        scene_description="The peasant walks, doesn't stop to look back",
+        sound_events="footsteps on gravel",
+        camera_fixed=False,
+    )
+    assert result.endswith(NEGATIVE_CLOSER)
+
+
+def test_build_video_prompt_allows_contraction_its_without_false_positive():
+    result = build_video_prompt(
+        scene_description="It's a cold morning",
+        sound_events="wind whistling",
+        camera_fixed=True,
+    )
+    assert result.endswith(NEGATIVE_CLOSER)
+
+
+def test_build_video_prompt_allows_multiple_contractions_without_false_positive():
+    result = build_video_prompt(
+        scene_description="The peasant doesn't know it's late, wasn't told",
+        sound_events="crickets",
+        camera_fixed=True,
+    )
+    assert result.endswith(NEGATIVE_CLOSER)
