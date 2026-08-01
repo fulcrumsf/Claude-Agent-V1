@@ -2,7 +2,7 @@
 from pathlib import Path
 from unittest.mock import patch, MagicMock
 import pytest
-from analyze_reference_video import download_video, detect_scenes, analyze_video_narrative
+from analyze_reference_video import download_video, detect_scenes, analyze_video_narrative, write_analysis_md, main
 
 def test_download_video_calls_yt_dlp_and_returns_path(tmp_path):
     with patch("analyze_reference_video.subprocess.run") as mock_run:
@@ -74,3 +74,34 @@ def test_analyze_video_narrative_raises_on_failed_upload_state(tmp_path):
             analyze_video_narrative(video_path, scenes)
 
     client_instance.models.generate_content.assert_not_called()
+
+def test_write_analysis_md_writes_scene_headers_and_content(tmp_path):
+    scenes = [(0.0, 3.1), (3.1, 7.8)]
+    gemini_output = "Scene 1 text here.\n\nScene 2 text here."
+
+    result_path = write_analysis_md(tmp_path, scenes, gemini_output)
+
+    assert result_path == tmp_path / "ANALYSIS.md"
+    content = result_path.read_text()
+    assert "## Scene 1 [0.0s-3.1s]" in content
+    assert "## Scene 2 [3.1s-7.8s]" in content
+    assert gemini_output in content
+
+
+def test_main_wires_download_detect_analyze_and_write(tmp_path):
+    with patch("analyze_reference_video.download_video") as mock_download, \
+         patch("analyze_reference_video.detect_scenes") as mock_detect, \
+         patch("analyze_reference_video.analyze_video_narrative") as mock_analyze, \
+         patch("analyze_reference_video.write_analysis_md") as mock_write:
+
+        mock_download.return_value = tmp_path / "Video.mp4"
+        mock_detect.return_value = [(0.0, 5.0)]
+        mock_analyze.return_value = "analysis text"
+        mock_write.return_value = tmp_path / "ANALYSIS.md"
+
+        main("https://youtube.com/shorts/abc123", str(tmp_path))
+
+    mock_download.assert_called_once_with("https://youtube.com/shorts/abc123", tmp_path)
+    mock_detect.assert_called_once_with(tmp_path / "Video.mp4")
+    mock_analyze.assert_called_once_with(tmp_path / "Video.mp4", [(0.0, 5.0)])
+    mock_write.assert_called_once_with(tmp_path, [(0.0, 5.0)], "analysis text")

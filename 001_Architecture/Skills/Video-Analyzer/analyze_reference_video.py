@@ -82,3 +82,31 @@ def analyze_video_narrative(video_path: Path, scenes: list[tuple[float, float]])
         ]),
     )
     return response.text
+
+def write_analysis_md(out_dir: Path, scenes: list[tuple[float, float]], gemini_output: str) -> Path:
+    out_dir = Path(out_dir)
+    lines = []
+    for i, (start, end) in enumerate(scenes, start=1):
+        lines.append(f"## Scene {i} [{start}s-{end}s]")
+    lines.append("")
+    lines.append(gemini_output)
+
+    analysis_path = out_dir / "ANALYSIS.md"
+    analysis_path.write_text("\n".join(lines))
+    return analysis_path
+
+
+def main(url: str, out: str) -> None:
+    out_dir = Path(out)
+    video_path = download_video(url, out_dir)
+    scenes = detect_scenes(video_path)
+    gemini_output = analyze_video_narrative(video_path, scenes)
+    write_analysis_md(out_dir, scenes, gemini_output)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Analyze a reference video's style, pacing, and narrative context.")
+    parser.add_argument("url", help="YouTube URL to analyze")
+    parser.add_argument("--out", required=True, help="Output folder for Video.mp4 and ANALYSIS.md")
+    args = parser.parse_args()
+    main(args.url, args.out)
