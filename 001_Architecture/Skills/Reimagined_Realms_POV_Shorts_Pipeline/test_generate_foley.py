@@ -59,6 +59,7 @@ def test_generate_foley_respects_model_override(tmp_path):
 
     called_cmd = mock_run.call_args[0][0]
     assert "sonilo/v1/video-to-sfx" in called_cmd
+    assert "prompt=" not in " ".join(called_cmd)
 
 
 def test_main_wires_generate_foley(tmp_path):
