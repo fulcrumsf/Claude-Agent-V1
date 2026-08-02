@@ -34,9 +34,13 @@ def poll_image_task(task_id: str, poll_interval_seconds: float = 15.0, max_attem
         data = json.loads(result.stdout)
         status = data.get("status")
 
-        if status == "completed":
+        # kie-cli's --json output surfaces the raw upstream API state ("success" /
+        # "waiting" / "fail") for gpt-image-2 tasks, not the normalized
+        # "completed"/"failed" strings used elsewhere in its own docs/tests. Accept
+        # both vocabularies so this doesn't silently time out against the real CLI.
+        if status in ("completed", "success"):
             return data["result_urls"][0]
-        if status == "failed":
+        if status in ("failed", "fail"):
             raise RuntimeError(f"Image generation task {task_id} failed: {data.get('error')}")
 
     raise TimeoutError(f"Image generation task {task_id} did not complete within {max_attempts} attempts")

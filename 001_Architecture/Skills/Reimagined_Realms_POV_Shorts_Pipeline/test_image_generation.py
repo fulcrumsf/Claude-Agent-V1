@@ -52,6 +52,37 @@ def test_poll_image_task_returns_url_on_completion():
     assert result == "https://example.com/image.png"
 
 
+def test_poll_image_task_returns_url_on_real_kie_cli_success_status():
+    # Real kie-cli --json output for gpt-image-2 tasks surfaces the raw upstream
+    # API state ("success"/"fail"/"waiting"), not the normalized "completed"/
+    # "failed" strings the CLI's own docs suggest. Regression coverage for the
+    # 2026-08-02 smoke test where poll_image_task timed out against a task that
+    # had actually already completed successfully.
+    success_result = MagicMock(
+        returncode=0,
+        stdout=json.dumps({"status": "success", "result_urls": ["https://example.com/image.png"]}),
+    )
+
+    with patch("image_generation.subprocess.run", return_value=success_result), \
+         patch("image_generation.time.sleep") as mock_sleep:
+        result = poll_image_task("abc123", poll_interval_seconds=15.0, max_attempts=12)
+
+    mock_sleep.assert_not_called()
+    assert result == "https://example.com/image.png"
+
+
+def test_poll_image_task_raises_on_real_kie_cli_fail_status():
+    fail_result = MagicMock(
+        returncode=0,
+        stdout=json.dumps({"status": "fail", "result_urls": [], "error": "content policy violation"}),
+    )
+
+    with patch("image_generation.subprocess.run", return_value=fail_result), \
+         patch("image_generation.time.sleep"):
+        with pytest.raises(RuntimeError, match="content policy violation"):
+            poll_image_task("abc123", poll_interval_seconds=15.0, max_attempts=12)
+
+
 def test_poll_image_task_polls_while_generating_then_completes():
     generating_result = MagicMock(returncode=0, stdout=json.dumps({"status": "generating", "result_urls": []}))
     completed_result = MagicMock(
