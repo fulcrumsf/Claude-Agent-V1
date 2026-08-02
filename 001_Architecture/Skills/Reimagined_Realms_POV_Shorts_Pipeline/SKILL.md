@@ -1,6 +1,6 @@
 ---
 name: reimagined-realms-pov-shorts-pipeline
-description: Use when building Reimagined Realms POV Shorts (vertical historical "day in the life" videos with no dialogue), planning beats/scenes, generating a shot list, or generating/trimming scene images and video clips. This skill folder currently has the Foley/SFX generator, beat planning (scenes_needed_for_floor, write_beat_table), shot list generation (build_video_prompt, write_shot_list), image generation (generate_image via GPT-Image-2), video generation (generate_video via Seedance 1.5 Pro with native audio), and clip trimming (trim_to_best_window) built — YouTube trend-research ideation, assembly/sound design beyond Foley, text overlay, YouTube package, and Blotato upload are separate, later plans. Foley invocation — python3 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/generate_foley.py <video_path> --out <audio_output_path> [--prompt "text hint"] [--model mirelo|sonilo]
+description: Use when building Reimagined Realms POV Shorts (vertical historical "day in the life" videos with no dialogue), planning beats/scenes, generating a shot list, generating/trimming scene images and video clips, or assembling the final cut. This skill folder currently has the Foley/SFX generator, beat planning (scenes_needed_for_floor, write_beat_table), shot list generation (build_video_prompt, write_shot_list), image generation (generate_image via GPT-Image-2), video generation (generate_video via Seedance 1.5 Pro with native audio), clip trimming (trim_to_best_window), and assembly (concatenate_videos, audio extraction/stitching, music generation via Suno, LUFS mix/normalize, and versioned final mux via get_next_version/mux_final) built — YouTube trend-research ideation, text overlay, YouTube package, and Blotato upload are separate, later plans. Foley invocation — python3 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/generate_foley.py <video_path> --out <audio_output_path> [--prompt "text hint"] [--model mirelo|sonilo]
 ---
 
 # Reimagined Realms POV Shorts Pipeline
@@ -36,6 +36,18 @@ python3 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/generate_f
 
 **Clip trimming:** `trim_to_best_window(video_path, output_path, target_seconds=5.0)` in the same module — if a generated clip exceeds the target length, trims to the middle window (a heuristic, not motion-aware; a future improvement could pick a genuinely-best window via scene/motion detection). Call this after every `generate_video()` call before using the clip downstream.
 
+## Assembly (built)
+
+**Video concatenation:** `concatenate_videos(video_paths, output_path)` in `assembly.py` — concatenates per-scene clips (video-only, audio stripped) into `Video_Stitched.mp4`.
+
+**Audio extraction:** `extract_audio(video_path, output_path)` and `stitch_audio_files(audio_paths, output_path)` in `audio_extraction.py` — pulls each clip's native Seedance audio into `Clip_Audio/`, then stitches into `Ambient_Foley_Full.mp3`.
+
+**Music:** `generate_music(prompt, output_path)` in `music_generation.py` — Suno via kie-cli (note: real status strings are case-varying, e.g. `"SUCCESS"` vs image generation's `"success"` — comparisons are case-insensitive). `fit_music_to_duration(music_path, output_path, target_seconds)` trims (if longer) or loops (if shorter) the track to the video's exact runtime.
+
+**Mix + normalize:** `measure_lufs`, `calculate_gain`, `mix_and_normalize` in `assembly.py` — measures foley and music LUFS via `ffmpeg loudnorm`, calculates each track's gain to hit -14 LUFS (foley) / -23 LUFS (music, ~9dB under foley per the style guide's bed convention), mixes via `amix`.
+
+**Final mux:** `get_next_version` and `mux_final` in `assembly.py` — muxes the silent stitched video with the mixed audio into a versioned `Final_vN.mp4` (never overwrites a prior version).
+
 ## Not yet built (updated)
 
-YouTube trend-research ideation, sound design/assembly beyond what's built, text overlay, YouTube package, and Blotato upload — each is a separate implementation plan.
+YouTube trend-research ideation, text overlay (Remotion), YouTube package, and Blotato upload — each is a separate implementation plan.

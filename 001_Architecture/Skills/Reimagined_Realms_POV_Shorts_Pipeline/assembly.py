@@ -63,3 +63,36 @@ def mix_and_normalize(foley_path: Path, music_path: Path, output_path: Path, tar
         check=True, capture_output=True, text=True,
     )
     return output_path
+
+
+def get_next_version(production_dir: Path) -> int:
+    production_dir = Path(production_dir)
+    existing = list(production_dir.glob("Final_v*.mp4"))
+    if not existing:
+        return 1
+
+    versions = []
+    for path in existing:
+        match = re.search(r"Final_v(\d+)\.mp4", path.name)
+        if match:
+            versions.append(int(match.group(1)))
+
+    return max(versions, default=0) + 1
+
+
+def mux_final(video_path: Path, audio_path: Path, production_dir: Path) -> Path:
+    production_dir = Path(production_dir)
+    version = get_next_version(production_dir)
+    output_path = production_dir / f"Final_v{version}.mp4"
+
+    subprocess.run(
+        [
+            "ffmpeg", "-y",
+            "-i", str(video_path), "-i", str(audio_path),
+            "-map", "0:v:0", "-map", "1:a:0",
+            "-c:v", "copy", "-c:a", "aac", "-shortest",
+            str(output_path),
+        ],
+        check=True, capture_output=True, text=True,
+    )
+    return output_path

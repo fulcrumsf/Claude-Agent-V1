@@ -3,7 +3,7 @@ import subprocess
 import pytest
 from pathlib import Path
 from unittest.mock import patch, MagicMock
-from assembly import concatenate_videos, measure_lufs, calculate_gain, mix_and_normalize
+from assembly import concatenate_videos, measure_lufs, calculate_gain, mix_and_normalize, get_next_version, mux_final
 
 def test_concatenate_videos_writes_filelist_and_calls_ffmpeg_concat(tmp_path):
     clip1 = tmp_path / "C01.mp4"
@@ -143,3 +143,30 @@ def test_mix_and_normalize_measures_both_tracks_and_mixes_with_calculated_gains(
     assert str(foley_path) in ffmpeg_call
     assert str(music_path) in ffmpeg_call
     assert "amix" in " ".join(ffmpeg_call)
+
+
+def test_get_next_version_returns_1_when_no_existing_finals(tmp_path):
+    assert get_next_version(tmp_path) == 1
+
+
+def test_get_next_version_returns_next_after_existing_finals(tmp_path):
+    (tmp_path / "Final_v1.mp4").touch()
+    (tmp_path / "Final_v2.mp4").touch()
+    assert get_next_version(tmp_path) == 3
+
+
+def test_mux_final_writes_versioned_output(tmp_path):
+    video_path = tmp_path / "Video_Stitched.mp4"
+    audio_path = tmp_path / "Final_Audio.mp3"
+    video_path.touch()
+    audio_path.touch()
+
+    with patch("assembly.subprocess.run", return_value=MagicMock(returncode=0)) as mock_run:
+        result = mux_final(video_path, audio_path, tmp_path)
+
+    assert result == tmp_path / "Final_v1.mp4"
+    ffmpeg_call = mock_run.call_args[0][0]
+    assert ffmpeg_call[0] == "ffmpeg"
+    assert str(video_path) in ffmpeg_call
+    assert str(audio_path) in ffmpeg_call
+    assert str(tmp_path / "Final_v1.mp4") in ffmpeg_call
