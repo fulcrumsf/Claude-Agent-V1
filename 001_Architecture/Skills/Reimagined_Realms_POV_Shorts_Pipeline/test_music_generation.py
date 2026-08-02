@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 from unittest.mock import patch, MagicMock
-from music_generation import submit_music_task, poll_music_task, download_music, generate_music
+from music_generation import submit_music_task, poll_music_task, download_music, generate_music, fit_music_to_duration
 
 def test_submit_music_task_calls_kie_cli_and_returns_task_id():
     mock_result = MagicMock(
@@ -97,3 +97,63 @@ def test_generate_music_wires_submit_poll_download(tmp_path):
     mock_poll.assert_called_once_with("music123")
     mock_download.assert_called_once_with("https://example.com/track1.mp3", output_path)
     assert result == output_path
+
+
+def test_fit_music_to_duration_copies_unchanged_when_already_short_enough(tmp_path):
+    music_path = tmp_path / "Music_Full.mp3"
+    music_path.write_bytes(b"fake-mp3-data")
+    output_path = tmp_path / "Music_Fitted.mp3"
+
+    probe_result = MagicMock(returncode=0, stdout="65.0\n", stderr="")  # duration exactly equals target_seconds
+
+    with patch("music_generation.subprocess.run", return_value=probe_result) as mock_run:
+        result = fit_music_to_duration(music_path, output_path, target_seconds=65.0)
+
+    assert result == output_path
+    assert output_path.read_bytes() == b"fake-mp3-data"
+    assert mock_run.call_count == 1
+    assert mock_run.call_args[0][0][0] == "ffprobe"
+
+
+def test_fit_music_to_duration_trims_when_longer(tmp_path):
+    music_path = tmp_path / "Music_Full.mp3"
+    output_path = tmp_path / "Music_Fitted.mp3"
+
+    probe_result = MagicMock(returncode=0, stdout="200.0\n", stderr="")
+
+    def fake_subprocess_run(cmd, **kwargs):
+        if cmd[0] == "ffprobe":
+            return probe_result
+        output_path.touch()
+        return MagicMock(returncode=0)
+
+    with patch("music_generation.subprocess.run", side_effect=fake_subprocess_run) as mock_run:
+        result = fit_music_to_duration(music_path, output_path, target_seconds=65.0)
+
+    assert result == output_path
+    ffmpeg_call = mock_run.call_args_list[1][0][0]
+    assert ffmpeg_call[0] == "ffmpeg"
+    assert "-t" in ffmpeg_call and ffmpeg_call[ffmpeg_call.index("-t") + 1] == "65.0"
+    assert "-stream_loop" not in ffmpeg_call
+
+
+def test_fit_music_to_duration_loops_when_shorter(tmp_path):
+    music_path = tmp_path / "Music_Full.mp3"
+    output_path = tmp_path / "Music_Fitted.mp3"
+
+    probe_result = MagicMock(returncode=0, stdout="30.0\n", stderr="")
+
+    def fake_subprocess_run(cmd, **kwargs):
+        if cmd[0] == "ffprobe":
+            return probe_result
+        output_path.touch()
+        return MagicMock(returncode=0)
+
+    with patch("music_generation.subprocess.run", side_effect=fake_subprocess_run) as mock_run:
+        result = fit_music_to_duration(music_path, output_path, target_seconds=65.0)
+
+    assert result == output_path
+    ffmpeg_call = mock_run.call_args_list[1][0][0]
+    assert ffmpeg_call[0] == "ffmpeg"
+    assert "-stream_loop" in ffmpeg_call
+    assert "-t" in ffmpeg_call and ffmpeg_call[ffmpeg_call.index("-t") + 1] == "65.0"

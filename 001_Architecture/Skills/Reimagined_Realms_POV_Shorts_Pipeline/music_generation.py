@@ -1,4 +1,5 @@
 import json
+import shutil
 import subprocess
 import time
 import requests
@@ -53,3 +54,34 @@ def generate_music(prompt: str, output_path: Path, instrumental: bool = True, mo
     task_id = submit_music_task(prompt, instrumental, model)
     music_url = poll_music_task(task_id)
     return download_music(music_url, Path(output_path))
+
+
+def fit_music_to_duration(music_path: Path, output_path: Path, target_seconds: float) -> Path:
+    music_path = Path(music_path)
+    output_path = Path(output_path)
+
+    duration_result = subprocess.run(
+        ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+         "-of", "default=noprint_wrappers=1:nokey=1", str(music_path)],
+        check=True, capture_output=True, text=True,
+    )
+    duration = float(duration_result.stdout.strip())
+
+    if duration == target_seconds:
+        shutil.copy(music_path, output_path)
+        return output_path
+
+    if duration > target_seconds:
+        subprocess.run(
+            ["ffmpeg", "-y", "-i", str(music_path), "-t", str(target_seconds), "-c", "copy", str(output_path)],
+            check=True, capture_output=True, text=True,
+        )
+        return output_path
+
+    # duration < target_seconds: loop the track to cover the target, then trim to the exact length
+    subprocess.run(
+        ["ffmpeg", "-y", "-stream_loop", "-1", "-i", str(music_path), "-t", str(target_seconds),
+         "-c:a", "libmp3lame", str(output_path)],
+        check=True, capture_output=True, text=True,
+    )
+    return output_path
