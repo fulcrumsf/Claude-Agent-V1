@@ -1,7 +1,7 @@
 from pathlib import Path
 from unittest.mock import patch, MagicMock
 import pytest
-from video_generation import generate_video
+from video_generation import generate_video, trim_to_best_window
 
 
 def test_generate_video_calls_wavespeed_with_seedance_params(tmp_path):
@@ -57,3 +57,45 @@ def test_generate_video_raises_when_no_output_found(tmp_path):
     with patch("video_generation.subprocess.run", return_value=MagicMock(returncode=0)):
         with pytest.raises(FileNotFoundError):
             generate_video("https://example.com/scene1.png", "a prompt", output_path)
+
+
+def test_trim_to_best_window_copies_unchanged_when_already_short_enough(tmp_path):
+    video_path = tmp_path / "scene1.mp4"
+    video_path.write_bytes(b"fake-video-data")
+    output_path = tmp_path / "scene1_trimmed.mp4"
+
+    probe_result = MagicMock(returncode=0, stdout="4.5\n", stderr="")
+
+    with patch("video_generation.subprocess.run", return_value=probe_result) as mock_run:
+        result = trim_to_best_window(video_path, output_path, target_seconds=5.0)
+
+    assert result == output_path
+    assert output_path.read_bytes() == b"fake-video-data"
+    # Only ffprobe was called (to check duration) — no ffmpeg trim needed since 4.5s <= 5.0s
+    assert mock_run.call_count == 1
+    assert mock_run.call_args[0][0][0] == "ffprobe"
+
+
+def test_trim_to_best_window_trims_middle_window_when_longer(tmp_path):
+    video_path = tmp_path / "scene1.mp4"
+    output_path = tmp_path / "scene1_trimmed.mp4"
+
+    probe_result = MagicMock(returncode=0, stdout="9.0\n", stderr="")
+
+    def fake_subprocess_run(cmd, **kwargs):
+        if cmd[0] == "ffprobe":
+            return probe_result
+        # cmd[0] == "ffmpeg": simulate it writing the trimmed output file
+        output_path.touch()
+        return MagicMock(returncode=0)
+
+    with patch("video_generation.subprocess.run", side_effect=fake_subprocess_run) as mock_run:
+        result = trim_to_best_window(video_path, output_path, target_seconds=5.0)
+
+    assert result == output_path
+    assert mock_run.call_count == 2
+    ffmpeg_call = mock_run.call_args_list[1][0][0]
+    assert ffmpeg_call[0] == "ffmpeg"
+    # duration=9.0, target=5.0 -> middle window starts at (9.0-5.0)/2 = 2.0s
+    assert "-ss" in ffmpeg_call and ffmpeg_call[ffmpeg_call.index("-ss") + 1] == "2.0"
+    assert "-t" in ffmpeg_call and ffmpeg_call[ffmpeg_call.index("-t") + 1] == "5.0"

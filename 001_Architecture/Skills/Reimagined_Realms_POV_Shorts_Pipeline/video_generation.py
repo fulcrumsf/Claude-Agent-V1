@@ -1,3 +1,4 @@
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -36,6 +37,33 @@ def generate_video(
         for extra in candidates[1:]:
             extra.unlink()
 
+    return output_path
+
+
+def trim_to_best_window(video_path: Path, output_path: Path, target_seconds: float = 5.0) -> Path:
+    video_path = Path(video_path)
+    output_path = Path(output_path)
+
+    duration_result = subprocess.run(
+        ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+         "-of", "default=noprint_wrappers=1:nokey=1", str(video_path)],
+        check=True, capture_output=True, text=True,
+    )
+    duration = float(duration_result.stdout.strip())
+
+    if duration <= target_seconds:
+        shutil.copy(video_path, output_path)
+        return output_path
+
+    # Heuristic: take the middle window, skipping likely slow-start/slow-end motion
+    # at the clip's edges. This is not motion-aware — a future improvement could use
+    # scene/motion detection to pick a genuinely "best" window instead of the geometric middle.
+    start_time = round((duration - target_seconds) / 2, 1)
+    subprocess.run(
+        ["ffmpeg", "-y", "-i", str(video_path), "-ss", str(start_time), "-t", str(target_seconds),
+         "-c:v", "libx264", "-c:a", "aac", str(output_path)],
+        check=True, capture_output=True, text=True,
+    )
     return output_path
 
 
