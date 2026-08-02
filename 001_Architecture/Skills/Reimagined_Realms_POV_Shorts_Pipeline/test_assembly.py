@@ -1,3 +1,5 @@
+import subprocess
+
 import pytest
 from pathlib import Path
 from unittest.mock import patch, MagicMock
@@ -84,6 +86,35 @@ def test_measure_lufs_parses_input_i_from_loudnorm_json(tmp_path):
     assert called_cmd[0] == "ffmpeg"
     assert "loudnorm=I=-16:LRA=11:TP=-1.5:print_format=json" in " ".join(called_cmd)
     assert result == -21.86
+
+
+def test_measure_lufs_propagates_called_process_error_on_ffmpeg_failure(tmp_path):
+    audio_path = tmp_path / "track.mp3"
+    audio_path.touch()
+
+    with patch(
+        "assembly.subprocess.run",
+        side_effect=subprocess.CalledProcessError(1, ["ffmpeg"]),
+    ):
+        with pytest.raises(subprocess.CalledProcessError):
+            measure_lufs(audio_path)
+
+
+def test_measure_lufs_raises_clear_runtime_error_when_input_i_missing(tmp_path):
+    audio_path = tmp_path / "track.mp3"
+    audio_path.touch()
+
+    mock_result = MagicMock(
+        returncode=0,
+        stdout="",
+        stderr="some unexpected ffmpeg log lines with no loudnorm json field",
+    )
+
+    with patch("assembly.subprocess.run", return_value=mock_result):
+        with pytest.raises(RuntimeError) as exc_info:
+            measure_lufs(audio_path)
+
+    assert "input_i" in str(exc_info.value)
 
 
 def test_calculate_gain_returns_correct_linear_multiplier():

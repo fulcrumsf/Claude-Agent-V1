@@ -25,9 +25,15 @@ def concatenate_videos(video_paths: list[Path], output_path: Path) -> Path:
 def measure_lufs(audio_path: Path) -> float:
     result = subprocess.run(
         ["ffmpeg", "-i", str(audio_path), "-af", "loudnorm=I=-16:LRA=11:TP=-1.5:print_format=json", "-f", "null", "-"],
-        capture_output=True, text=True,
+        check=True, capture_output=True, text=True,
     )
     match = re.search(r'"input_i"\s*:\s*"(-?[\d.]+)"', result.stderr)
+    if match is None:
+        raise RuntimeError(
+            "measure_lufs: failed to parse 'input_i' from ffmpeg loudnorm output. "
+            f"ffmpeg exited successfully but its stderr did not contain the expected "
+            f"loudnorm JSON field. stderr excerpt: {result.stderr[:500]!r}"
+        )
     return float(match.group(1))
 
 
