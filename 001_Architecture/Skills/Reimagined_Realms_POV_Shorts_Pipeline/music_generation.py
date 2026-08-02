@@ -67,7 +67,7 @@ def fit_music_to_duration(music_path: Path, output_path: Path, target_seconds: f
     )
     duration = float(duration_result.stdout.strip())
 
-    if duration == target_seconds:
+    if abs(duration - target_seconds) < 0.5:
         shutil.copy(music_path, output_path)
         return output_path
 
