@@ -1,6 +1,6 @@
 ---
 name: reimagined-realms-pov-shorts-pipeline
-description: Use when building Reimagined Realms POV Shorts (vertical historical "day in the life" videos with no dialogue), planning beats/scenes, generating a shot list, generating/trimming scene images and video clips, or assembling the final cut. This skill folder currently has the Foley/SFX generator, beat planning (scenes_needed_for_floor, write_beat_table), shot list generation (build_video_prompt, write_shot_list), image generation (generate_image via GPT-Image-2), video generation (generate_video via Seedance 1.5 Pro with native audio), clip trimming (trim_to_best_window), and assembly (concatenate_videos, audio extraction/stitching, music generation via Suno, LUFS mix/normalize, and versioned final mux via get_next_version/mux_final) built — YouTube trend-research ideation, text overlay, YouTube package, and Blotato upload are separate, later plans. Foley invocation — python3 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/generate_foley.py <video_path> --out <audio_output_path> [--prompt "text hint"] [--model mirelo|sonilo]
+description: Use when building Reimagined Realms POV Shorts (vertical historical "day in the life" videos with no dialogue), planning beats/scenes, generating a shot list, generating/trimming scene images and video clips, assembling the final cut, or compositing text-overlay captions onto the assembled video. This skill folder currently has the Foley/SFX generator, beat planning (scenes_needed_for_floor, write_beat_table), shot list generation (build_video_prompt, write_shot_list), image generation (generate_image via GPT-Image-2), video generation (generate_video via Seedance 1.5 Pro with native audio), clip trimming (trim_to_best_window), assembly (concatenate_videos, audio extraction/stitching, music generation via Suno, LUFS mix/normalize, and versioned final mux via get_next_version/mux_final), and text overlay (build_caption_props, write_props_file, ensure_public_symlink, render_text_overlay via the Remotion POVShort composition) built — YouTube trend-research ideation, YouTube package, and Blotato upload are separate, later plans. Foley invocation — python3 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/generate_foley.py <video_path> --out <audio_output_path> [--prompt "text hint"] [--model mirelo|sonilo]
 ---
 
 # Reimagined Realms POV Shorts Pipeline
@@ -48,6 +48,14 @@ python3 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/generate_f
 
 **Final mux:** `get_next_version` and `mux_final` in `assembly.py` — muxes the silent stitched video with the mixed audio into a versioned `Final_vN.mp4` (never overwrites a prior version).
 
+## Text Overlay (built)
+
+Composites per-scene captions onto an assembled `Final_vN.mp4` using the Remotion project at `002_Content-Creation/Video_Editor/003_Remotion/` (component: `POVCaption.tsx`, composition: `POVShort.tsx`, registered in `Root.tsx`).
+
+**Python wrapper** (`text_overlay.py`): `build_caption_props(background_video_file, captions, fps=24)` converts snake_case caption dicts (`text`/`start_s`/`duration_s`/`variant`) into the camelCase props shape the Remotion composition expects, `write_props_file(props, output_path)` writes them to disk, `ensure_public_symlink(production_dir, symlink_name)` creates the `003_Remotion/public/<name>` symlink the composition reads its background video from (matching the existing `render_bioluminescence.sh` convention), `render_text_overlay(props_path, output_path)` invokes `npx remotion render POVShort ...` via subprocess.
+
+Caption text/timing is decided by the orchestrating Claude session at runtime per scene (same pattern as beat planning and shot list generation) — this module only handles the mechanical props/symlink/render plumbing, never the creative wording.
+
 ## Not yet built (updated)
 
-YouTube trend-research ideation, text overlay (Remotion), YouTube package, and Blotato upload — each is a separate implementation plan.
+YouTube trend-research ideation, YouTube package, and Blotato upload — each is a separate implementation plan.
