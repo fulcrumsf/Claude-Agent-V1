@@ -9,6 +9,7 @@ import { AnomalousWildEndCard } from "./video-components/AnomalousWildEndCard";
 import { DiagramLabels, diagramLabelsSchema } from "./video-components/DiagramLabels";
 import { EscaBacteriaCallout, ESCA_CALLOUT_DURATION_FRAMES } from "./video-components/EscaBacteriaCallout";
 import { NeonParcelTitleOverlay } from "./video-components/NeonParcelTitleOverlay";
+import { POVShort } from "./video-components/POVShort";
 import { FPS, INTRO_DURATION } from "./video-lib/constants";
 import { getTimelinePath, loadTimelineFromFile } from "./video-lib/utils";
 
@@ -124,6 +125,22 @@ export const RemotionRoot: React.FC = () => {
         fps={24}
         width={1080}
         height={1920}
+      />
+
+      {/* Reimagined Realms POV Shorts — text overlay pass over an assembled Final_vN.mp4 */}
+      <Composition
+        id="POVShort"
+        component={POVShort}
+        durationInFrames={1560}
+        fps={24}
+        width={1080}
+        height={1920}
+        defaultProps={{
+          backgroundVideoFile: "Final_v1.mp4",
+          captions: [
+            { text: "POV: WAKING UP AS A ___", startS: 0, durationS: 4, variant: "title" as const },
+          ],
+        }}
       />
 
       {/* Prompt to Video — AI-generated stories with images + voiceover */}
