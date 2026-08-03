@@ -57,7 +57,7 @@ def mix_and_normalize(foley_path: Path, music_path: Path, output_path: Path, tar
             "ffmpeg", "-y",
             "-i", str(foley_path), "-i", str(music_path),
             "-filter_complex",
-            f"[0:a]volume={foley_gain}[a0];[1:a]volume={music_gain}[a1];[a0][a1]amix=inputs=2:duration=longest[aout]",
+            f"[0:a]volume={foley_gain}[a0];[1:a]volume={music_gain}[a1];[a0][a1]amix=inputs=2:duration=longest:normalize=0[aout]",
             "-map", "[aout]", str(output_path),
         ],
         check=True, capture_output=True, text=True,

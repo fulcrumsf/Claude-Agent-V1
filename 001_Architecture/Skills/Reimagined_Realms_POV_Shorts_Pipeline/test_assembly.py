@@ -143,6 +143,9 @@ def test_mix_and_normalize_measures_both_tracks_and_mixes_with_calculated_gains(
     assert str(foley_path) in ffmpeg_call
     assert str(music_path) in ffmpeg_call
     assert "amix" in " ".join(ffmpeg_call)
+    # amix defaults to normalize=1, which rescales inputs and silently
+    # defeats the calculated LUFS gains above — must be explicitly disabled.
+    assert "normalize=0" in " ".join(ffmpeg_call)
 
 
 def test_get_next_version_returns_1_when_no_existing_finals(tmp_path):
