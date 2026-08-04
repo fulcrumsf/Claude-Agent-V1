@@ -25,7 +25,7 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
 | Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 75 | pending build | — |
 | Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 1849 | built | 2026-08-03T02:13Z|
-| Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 83 | pending build | — |
+| Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 82 | built | 2026-08-03 |
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | pending build | — |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | pending build | — |
 | Apps | `003_Apps/` | `003_Apps/graphify-out/` | 8 | pending build | — |
