@@ -17,12 +17,27 @@ function useCaptionVisibility(startS: number, durationS: number) {
   const startFrame = Math.round(startS * fps);
   const endFrame = Math.round((startS + durationS) * fps);
 
-  const opacity = interpolate(
-    frame,
-    [startFrame, startFrame + FADE_FRAMES, endFrame - FADE_FRAMES, endFrame],
-    [0, 1, 1, 0],
-    { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
-  );
+  // A caption starting at frame 0 must be fully opaque on frame 0 — YouTube
+  // Shorts grabs an early frame as the auto-thumbnail, so the opening title
+  // can't be mid-fade when that frame is captured. Every other caption keeps
+  // the fade-in for a smooth on-screen transition. (interpolate() requires
+  // strictly increasing breakpoints, so a 0-length fade-in needs its own
+  // two-point range rather than a duplicated [0, 0] breakpoint.)
+  const startsAtFrameZero = startFrame === 0;
+
+  const opacity = startsAtFrameZero
+    ? interpolate(
+        frame,
+        [endFrame - FADE_FRAMES, endFrame],
+        [1, 0],
+        { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+      )
+    : interpolate(
+        frame,
+        [startFrame, startFrame + FADE_FRAMES, endFrame - FADE_FRAMES, endFrame],
+        [0, 1, 1, 0],
+        { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+      );
 
   return { opacity, visible: frame >= startFrame && frame < endFrame };
 }
