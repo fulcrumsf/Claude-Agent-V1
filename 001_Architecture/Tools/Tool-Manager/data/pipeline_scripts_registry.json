@@ -1,9 +1,92 @@
 {
   "_meta": {
     "purpose": "Registry of channel video-pipeline scripts and their status (active/superseded/legacy), so 'what is this script for' questions get answered by reading this file instead of re-deriving from scratch each time.",
-    "last_updated": "2026-07-07"
+    "last_updated": "2026-08-03"
   },
   "channels": {
+    "reimagined_realms_pov_shorts": {
+      "note": "Sibling pipeline to the existing long-form Reimagined Realms pipeline — vertical (9:16) historical 'day in the life' POV YouTube Shorts, no dialogue, min 60-65s. Skill: 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/SKILL.md. Built via subagent-driven-development across 6 plans (Video-Analyzer, Foley-Generator+Seedance-Guide, Beat-Planning/Shot-List, Image/Video-Generation, Assembly, Text-Overlay). First real end-to-end production ('Pyramid Builder I. Deep', 0003) completed and published 2026-08-03 to YouTube/TikTok/Instagram/Facebook via Blotato.",
+      "new_pipeline_scripts": [
+        {
+          "name": "beat_planning.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/beat_planning.py",
+          "status": "active",
+          "purpose": "scenes_needed_for_floor() pads scene count to the 65s floor at seconds_per_scene; write_beat_table() writes Data/Beat_Table.json."
+        },
+        {
+          "name": "shot_list_builder.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/shot_list_builder.py",
+          "status": "active",
+          "purpose": "build_video_prompt() assembles the Seedance prompt and auto-appends the locked negative-prompt closer; raises ValueError on any quoted dialogue detected (safety-critical — dialogue triggers Seedance lip-sync). write_shot_list() writes Production/Shot_List.md."
+        },
+        {
+          "name": "image_generation.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/image_generation.py",
+          "status": "active",
+          "purpose": "generate_image() via kie-cli gpt_image_2 (GPT-Image-2), 9:16. Case-insensitive status polling for kie-cli's raw upstream states."
+        },
+        {
+          "name": "video_generation.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/video_generation.py",
+          "status": "active",
+          "purpose": "generate_video() via WaveSpeed bytedance/seedance-v1.5-pro/image-to-video with generate_audio=true (native synced foley/ambient, chosen over dedicated Foley models after a live A/B test). Reference image must be uploaded to a public URL first via 'wavespeed upload <path> --json'. trim_to_best_window() clips to a target duration."
+        },
+        {
+          "name": "assembly.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/assembly.py",
+          "status": "active",
+          "purpose": "concatenate_videos(), measure_lufs()/calculate_gain()/mix_and_normalize() (locked -14 LUFS formula, amix requires explicit normalize=0 or it silently re-attenuates both tracks), get_next_version()/mux_final() for versioned Final_vN.mp4."
+        },
+        {
+          "name": "audio_extraction.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/audio_extraction.py",
+          "status": "active",
+          "purpose": "extract_audio() pulls each clip's native Seedance audio; stitch_audio_files() concatenates into Ambient_Foley_Full.mp3."
+        },
+        {
+          "name": "music_generation.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/music_generation.py",
+          "status": "active",
+          "purpose": "generate_music() via kie-cli Suno; fit_music_to_duration() trims or loops-then-trims to the exact target runtime."
+        },
+        {
+          "name": "text_overlay.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/text_overlay.py",
+          "status": "active",
+          "purpose": "build_caption_props()/write_props_file() build the Remotion POVShort props (snake_case -> camelCase). ensure_public_symlink() links the production folder into 003_Remotion/public/ so staticFile() resolves. render_text_overlay() invokes 'npx remotion render POVShort'."
+        },
+        {
+          "name": "generate_foley.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/generate_foley.py",
+          "status": "built_not_wired_in",
+          "purpose": "Swappable Mirelo/Sonilo Foley/SFX generator, built and tested but superseded in the main pipeline by Seedance's native generate_audio=true after a live A/B test. Kept as a fallback tool, not called by the default flow."
+        }
+      ],
+      "new_pipeline_remotion_components": [
+        {
+          "name": "POVCaption.tsx",
+          "path": "002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-components/POVCaption.tsx",
+          "status": "active",
+          "purpose": "TimedCaption component: white/centered/drop-shadow text, top-18% safe zone (locked after Tony's critique of the Pyramid Builder v1 render), fade in/out except captions starting at frame 0 (opening title), which render at full opacity immediately since YouTube Shorts auto-grabs an early frame as the thumbnail."
+        },
+        {
+          "name": "POVShort.tsx",
+          "path": "002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-components/POVShort.tsx",
+          "status": "active",
+          "purpose": "Composition combining OffthreadVideo background + mapped POVCaption elements from a captions[] prop. Registered in Root.tsx. Note: durationInFrames is currently a hardcoded 1560-frame (65s) placeholder, not yet wired to actual clip duration — fine when the production's real runtime is exactly 65s (as Pyramid Builder I. Deep's 13x5s shot list is), freeze-frames on the last video frame otherwise."
+        }
+      ],
+      "distribution": {
+        "note": "Publishing is manual (Blotato MCP tool calls), not yet a dedicated script/skill module. Locked as of 2026-08-03: every finished POV Short posts to all four — YouTube, TikTok, Instagram, Facebook.",
+        "blotato_accounts": {
+          "youtube": "30323 (ReimaginedRealms channel; has topical playlists as subaccounts, e.g. 'Ancient Egypt History Reimagined')",
+          "tiktok": "33717 (@reimaginedrealms)",
+          "instagram": "35548 (@reimagined.realms)",
+          "facebook": "18651 / pageId 407939555731086 (Reimagined Realms page, a subaccount of Tony's personal Facebook account)"
+        },
+        "ai_disclosure_fields": "YouTube has containsSyntheticMedia (bool); TikTok has isAiGenerated (bool). Instagram and Facebook have no equivalent field in the blotato_create_post schema as of 2026-08-03 — cannot be set programmatically."
+      }
+    },
     "anomalous_wild": {
       "note": "First video pipeline ever built in this workspace (predates Reimagined Realms). Early tooling (below) is fragmented across eras. A unifying orchestrator skill is now BUILT (2026-07-07/08): 001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md, invoke via /anomalous-wild. See 'new_pipeline_scripts' for its own scripts, built via subagent-driven-development with per-task review + a final whole-branch review.",
       "new_pipeline_scripts": [

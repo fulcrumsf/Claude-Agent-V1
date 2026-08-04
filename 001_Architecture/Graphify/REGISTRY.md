@@ -24,7 +24,7 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | pending build | — |
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
 | Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 75 | pending build | — |
-| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 1700 | built (fast AST refresh — new wiki/prose content from 2026-07-12 not yet semantically indexed, needs full `/graphify --update` pass) | 2026-07-13T03:00Z|
+| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 1849 | built | 2026-08-03T02:13Z|
 | Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 83 | pending build | — |
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | pending build | — |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | pending build | — |
@@ -93,4 +93,4 @@ If a question spans domains, query each relevant graph separately and merge find
 - This registry: `001_Architecture/Graphify/REGISTRY.md`
 - Federation hooks: `001_Architecture/Graphify/hooks/`
 - Per-domain graphs: `<domain>/graphify-out/`
-- Workspace ignore rules: `.graphify/.graphifyignore`
+- Workspace ignore rules: `.graphifyignore` at the repo root (and any ancestor directory up to the `.git` boundary — the tool reads `.graphifyignore` files directly, not a `.graphify/` subfolder; `.graphify/.graphifyignore` is not read by the tool despite the old naming). Includes a global media exclusion (`*.mp4`, `*.png`, etc., added 2026-08-03) — graphify is scoped to text/code for the architecture "second brain," never video transcription or image vision-extraction.

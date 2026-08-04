@@ -1,0 +1,92 @@
+[
+  {
+    "index": 1,
+    "label": "Waking",
+    "description": "Waking at dawn on a reed mat in a mudbrick worker's house",
+    "duration_s": 5
+  },
+  {
+    "index": 2,
+    "label": "Title Card",
+    "description": "POV: You Wake Up As A ___",
+    "duration_s": 3
+  },
+  {
+    "index": 3,
+    "label": "Location Card",
+    "description": "Giza, Egypt \u2014 c. 2560 BC, Reign of Khufu",
+    "duration_s": 3
+  },
+  {
+    "index": 4,
+    "label": "Breakfast",
+    "description": "Eating bread and beer for breakfast, sitting up on the mat",
+    "duration_s": 5
+  },
+  {
+    "index": 5,
+    "label": "Dressing",
+    "description": "Wrapping a linen kilt, tying leather sandals, picking up a copper chisel and wooden mallet",
+    "duration_s": 5
+  },
+  {
+    "index": 6,
+    "label": "Walk to Site",
+    "description": "Walking out through the workers' village toward the pyramid at sunrise",
+    "duration_s": 5
+  },
+  {
+    "index": 7,
+    "label": "Arrival",
+    "description": "Arriving at the base of the pyramid where a limestone block sits roped to a wooden sledge",
+    "duration_s": 5
+  },
+  {
+    "index": 8,
+    "label": "Hauling",
+    "description": "Hauling the limestone block on ropes alongside a team, straining against the weight",
+    "duration_s": 5
+  },
+  {
+    "index": 9,
+    "label": "Shaping Stone",
+    "description": "Chiseling and shaping a limestone block with a copper chisel and wooden mallet",
+    "duration_s": 5
+  },
+  {
+    "index": 10,
+    "label": "Water Break",
+    "description": "A clay water jug passed hand to hand, drinking during a short break",
+    "duration_s": 5
+  },
+  {
+    "index": 11,
+    "label": "Midday Meal",
+    "description": "Eating bread, dried fish, and onions in the shade of a rock overhang with other workers",
+    "duration_s": 5
+  },
+  {
+    "index": 12,
+    "label": "Levering",
+    "description": "Levering a stone block up an earthen construction ramp with wooden poles",
+    "duration_s": 5
+  },
+  {
+    "index": 13,
+    "label": "Rations Tally",
+    "description": "A scribe marking rations and labor counts on a papyrus scroll nearby",
+    "duration_s": 5
+  },
+  {
+    "index": 14,
+    "label": "Walk Home",
+    "description": "Walking home at dusk, exhausted, the half-built pyramid silhouetted behind",
+    "duration_s": 5
+  },
+  {
+    "index": 15,
+    "label": "Rest",
+    "description": "Lying back down on the reed mat at day's end, the pyramid visible through the doorway in moonlight",
+    "duration_s": 5
+  }
+]
