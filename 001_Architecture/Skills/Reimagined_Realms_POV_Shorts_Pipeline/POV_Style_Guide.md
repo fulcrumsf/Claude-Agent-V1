@@ -17,7 +17,7 @@ First-person POV of someone waking up as a specific historical/situational perso
 
 - First shot: static POV, eyes-just-opened framing (lying in bed/cot, hands/body visible in frame, environment established around the edges).
 - Audio: a groggy sigh/yawn as the very first sound — this is the "waking up" signifier every reference video used.
-- Text overlay: appears within the first ~2-4 seconds, white text, centered, establishing the premise ("POV: You Wake Up As A ___"), then a second text beat naming era/location/date ("Medieval England, 1250 AD" / "Alcatraz — 1934, Execution Day").
+- Text overlay: appears within the first second (frame 0), white text, centered, establishing the premise **with the actual subject filled in** — never a literal blank ("POV: You Wake Up As An Egyptian Pyramid Builder", not "POV: You Wake Up As A ___"). This is locked: YouTube Shorts auto-grabs an early frame as the thumbnail, so the premise text must be legible and complete from the first frame, not a fill-in-the-blank the viewer never sees resolved. A second text beat then names era/location/date ("Medieval England, 1250 AD" / "Alcatraz — 1934, Execution Day").
 
 ## Pacing
 
@@ -50,6 +50,7 @@ First-person POV of someone waking up as a specific historical/situational perso
 ## Text overlay conventions
 
 - White text, centered on screen.
+- **Vertical position: top ~18% of frame (upper safe zone), for both title and per-vignette label captions** — locked after Tony's critique of the Pyramid Builder v1 render. This is the zone the eye is drawn to first on Shorts/Reels/TikTok, and it stays clear of the platform UI (caption/description/interaction buttons) that overlays the bottom of the screen. Do not default to mid-screen or bottom placement.
 - Drop shadow present (explicitly confirmed in Video 2; assume it's standard even though Video 1's analysis didn't call it out separately — Video 1's font was described as serif while Video 2's wasn't specified as different, so treat font choice as a per-video creative decision, not a locked rule, but centered-white-with-drop-shadow as the locked placement/legibility baseline).
 - One caption per vignette, appears at that vignette's cut, stays for the vignette's duration.
 - Opening premise text is larger/more prominent than per-vignette labels (a title moment vs. a caption moment).

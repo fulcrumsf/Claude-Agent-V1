@@ -42,8 +42,7 @@ export const POVCaption: React.FC<{
     <div
       style={{
         position: "absolute",
-        top: isTitle ? "42%" : undefined,
-        bottom: isTitle ? undefined : 140,
+        top: "18%",
         left: "50%",
         transform: "translateX(-50%)",
         opacity,
