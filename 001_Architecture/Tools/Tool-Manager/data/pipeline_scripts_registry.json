@@ -5,7 +5,7 @@
   },
   "channels": {
     "reimagined_realms_pov_shorts": {
-      "note": "Sibling pipeline to the existing long-form Reimagined Realms pipeline — vertical (9:16) historical 'day in the life' POV YouTube Shorts, no dialogue, min 60-65s. Skill: 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/SKILL.md. Built via subagent-driven-development across 6 plans (Video-Analyzer, Foley-Generator+Seedance-Guide, Beat-Planning/Shot-List, Image/Video-Generation, Assembly, Text-Overlay). First real end-to-end production ('Pyramid Builder I. Deep', 0003) completed and published 2026-08-03 to YouTube/TikTok/Instagram/Facebook via Blotato.",
+      "note": "Sibling pipeline to the existing long-form Reimagined Realms pipeline \u2014 vertical (9:16) historical 'day in the life' POV YouTube Shorts, no dialogue, min 60-65s. Skill: 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/SKILL.md. Built via subagent-driven-development across 6 plans (Video-Analyzer, Foley-Generator+Seedance-Guide, Beat-Planning/Shot-List, Image/Video-Generation, Assembly, Text-Overlay). First real end-to-end production ('Pyramid Builder I. Deep', 0003) completed and published 2026-08-03 to YouTube/TikTok/Instagram/Facebook via Blotato.",
       "new_pipeline_scripts": [
         {
           "name": "beat_planning.py",
@@ -17,7 +17,7 @@
           "name": "shot_list_builder.py",
           "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/shot_list_builder.py",
           "status": "active",
-          "purpose": "build_video_prompt() assembles the Seedance prompt and auto-appends the locked negative-prompt closer; raises ValueError on any quoted dialogue detected (safety-critical — dialogue triggers Seedance lip-sync). write_shot_list() writes Production/Shot_List.md."
+          "purpose": "build_video_prompt() assembles the Seedance prompt and auto-appends the locked negative-prompt closer; raises ValueError on any quoted dialogue detected (safety-critical \u2014 dialogue triggers Seedance lip-sync). write_shot_list() writes Production/Shot_List.md."
         },
         {
           "name": "image_generation.py",
@@ -73,18 +73,18 @@
           "name": "POVShort.tsx",
           "path": "002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-components/POVShort.tsx",
           "status": "active",
-          "purpose": "Composition combining OffthreadVideo background + mapped POVCaption elements from a captions[] prop. Registered in Root.tsx. Note: durationInFrames is currently a hardcoded 1560-frame (65s) placeholder, not yet wired to actual clip duration — fine when the production's real runtime is exactly 65s (as Pyramid Builder I. Deep's 13x5s shot list is), freeze-frames on the last video frame otherwise."
+          "purpose": "Composition combining OffthreadVideo background + mapped POVCaption elements from a captions[] prop. Registered in Root.tsx. Note: durationInFrames is currently a hardcoded 1560-frame (65s) placeholder, not yet wired to actual clip duration \u2014 fine when the production's real runtime is exactly 65s (as Pyramid Builder I. Deep's 13x5s shot list is), freeze-frames on the last video frame otherwise."
         }
       ],
       "distribution": {
-        "note": "Publishing is manual (Blotato MCP tool calls), not yet a dedicated script/skill module. Locked as of 2026-08-03: every finished POV Short posts to all four — YouTube, TikTok, Instagram, Facebook.",
+        "note": "Publishing is manual (Blotato MCP tool calls), not yet a dedicated script/skill module. Locked as of 2026-08-03: every finished POV Short posts to all four \u2014 YouTube, TikTok, Instagram, Facebook.",
         "blotato_accounts": {
           "youtube": "30323 (ReimaginedRealms channel; has topical playlists as subaccounts, e.g. 'Ancient Egypt History Reimagined')",
           "tiktok": "33717 (@reimaginedrealms)",
           "instagram": "35548 (@reimagined.realms)",
           "facebook": "18651 / pageId 407939555731086 (Reimagined Realms page, a subaccount of Tony's personal Facebook account)"
         },
-        "ai_disclosure_fields": "YouTube has containsSyntheticMedia (bool); TikTok has isAiGenerated (bool). Instagram and Facebook have no equivalent field in the blotato_create_post schema as of 2026-08-03 — cannot be set programmatically."
+        "ai_disclosure_fields": "YouTube has containsSyntheticMedia (bool); TikTok has isAiGenerated (bool). Instagram and Facebook have no equivalent field in the blotato_create_post schema as of 2026-08-03 \u2014 cannot be set programmatically."
       }
     },
     "anomalous_wild": {
@@ -94,7 +94,7 @@
           "name": "build_motion_graphics_profile.py",
           "path": "001_Architecture/Tools/Tool-Manager/build_motion_graphics_profile.py",
           "status": "active",
-          "purpose": "Builds data/motion_graphics_capabilities.json — research-backed capability profile (Remotion, video-use, Hyperframes, Manim), every entry cites a real source. Consulted by Tool-Manager for per-beat tool routing."
+          "purpose": "Builds data/motion_graphics_capabilities.json \u2014 research-backed capability profile (Remotion, video-use, Hyperframes, Manim), every entry cites a real source. Consulted by Tool-Manager for per-beat tool routing."
         },
         {
           "name": "generate_narration_with_timestamps.py",
@@ -118,7 +118,7 @@
           "name": "detect_label_coordinates.py",
           "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/detect_label_coordinates.py",
           "status": "active",
-          "purpose": "Scientific Diagram sub-pipeline step 3: Gemini vision pass detects real per-image label coordinates. Structurally strips coordinates from not_found entries — never guesses a placement, code-enforced not just prompt-enforced."
+          "purpose": "Scientific Diagram sub-pipeline step 3: Gemini vision pass detects real per-image label coordinates. Structurally strips coordinates from not_found entries \u2014 never guesses a placement, code-enforced not just prompt-enforced."
         },
         {
           "name": "generate_youtube_package.py",
@@ -138,7 +138,7 @@
           "name": "upload_to_blotato.md",
           "path": "001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/upload_to_blotato.md",
           "status": "active",
-          "purpose": "Blotato upload procedure, mirrors RR Phase 12 locked defaults. Confirmed accountId 42514 (displayed as 'Anomalos Wild', a spelling variant — confirmed correct by Tony 2026-07-08)."
+          "purpose": "Blotato upload procedure, mirrors RR Phase 12 locked defaults. Confirmed accountId 42514 (displayed as 'Anomalos Wild', a spelling variant \u2014 confirmed correct by Tony 2026-07-08)."
         }
       ],
       "new_pipeline_remotion_components": [
@@ -150,8 +150,8 @@
         }
       ],
       "cross_cutting_bugs_fixed_2026_07_08": [
-        "detect_label_coordinates.py's not_found coordinate-stripping was rejected by DiagramLabels.tsx's original required-field Zod schema (would crash diagram assembly on the exact safety-path scenario) — fixed by making x_pct/y_pct optional + a hasCoordinates() type guard.",
-        "The 3-5s no-static-frame rule (max_static_s) was recorded in Beat_Table.json but never enforced anywhere — fixed by adding a mandatory per-beat static-hold check to Anomalous_Wild_Video_Pipeline/SKILL.md's Phase 7 (Assembly)."
+        "detect_label_coordinates.py's not_found coordinate-stripping was rejected by DiagramLabels.tsx's original required-field Zod schema (would crash diagram assembly on the exact safety-path scenario) \u2014 fixed by making x_pct/y_pct optional + a hasCoordinates() type guard.",
+        "The 3-5s no-static-frame rule (max_static_s) was recorded in Beat_Table.json but never enforced anywhere \u2014 fixed by adding a mandatory per-beat static-hold check to Anomalous_Wild_Video_Pipeline/SKILL.md's Phase 7 (Assembly)."
       ],
       "scripts": [
         {
@@ -210,6 +210,83 @@
           "status": "active_but_not_the_actual_pipeline_path",
           "purpose": "Channel-wide end card composition. In practice the pipeline appends the pre-rendered end_card_v3.mp4 via ffmpeg instead of re-rendering this per video (locked rule in DESIGN.md).",
           "reference_copy": "002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Brand_Assets/End_Card/AnomalousWildEndCard.tsx"
+        }
+      ]
+    },
+    "reimagined_realms_pov_shorts_v2": {
+      "note": "Versioned duplicate of reimagined_realms_pov_shorts (v1), created 2026-08-04 to fix identity-drift via Seedance 2.0's multi-reference conditioning. Locked and production-proven as of 2026-08-09 (no longer a POC) \u2014 sheet-driven architecture (character/prop/environment sheets), first_frame_url-only video generation, 126/126 tests passing. Skill: 001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/SKILL.md. Two full productions published end-to-end: Roman Gladiator (0005), Titanic Stoker (0004, shots 2/9/13 regenerated).",
+      "new_pipeline_scripts": [
+        {
+          "name": "character_sheet_generation.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/character_sheet_generation.py",
+          "status": "active",
+          "purpose": "generate_character_sheet(character_description, output_path, role=\"the main character\", ...) \u2014 one 3x3-grid reference sheet per distinct character via GPT-Image-2. Role is always freeform text, never a hardcoded title set."
+        },
+        {
+          "name": "prop_sheet_generation.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/prop_sheet_generation.py",
+          "status": "active",
+          "purpose": "generate_prop_sheet(props, output_path, ...) \u2014 front/back/held_left/held_right panels per prop, hand-specific (never a generic single held panel \u2014 caused a real thumb-orientation bug)."
+        },
+        {
+          "name": "environment_sheet_generation.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/environment_sheet_generation.py",
+          "status": "active",
+          "purpose": "generate_environment_sheet(location_name, scene_angles, output_path, ...) \u2014 one sheet per location, one panel per scene, strictly people-less, never merged/reused."
+        },
+        {
+          "name": "storyboard_generation.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/storyboard_generation.py",
+          "status": "active",
+          "purpose": "generate_storyboard(beats, output_dir, ...) \u2014 one individually-generated POV-locked 9:16 panel per beat, written to output_dir/Scenes/ (enforced subfolder convention); compose_contact_sheet() composites captions via PIL, never AI-generated."
+        },
+        {
+          "name": "shot_list_builder.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/shot_list_builder.py",
+          "status": "active",
+          "purpose": "build_video_prompt(scene_description, sound_events, camera_fixed, character_roles=None) \u2014 auto-prepends POV_LOCK_CLAUSE, auto-appends negative-prompt closer, blocks quoted dialogue. character_roles/@Image tagging only valid in the reference_image_urls fallback path, never alongside first_frame_url."
+        },
+        {
+          "name": "video_generation.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/video_generation.py",
+          "status": "active",
+          "purpose": "generate_video(video_prompt, output_path, first_frame_url=None, reference_image_urls=None, ...) \u2014 Seedance 2.0 via kie.ai. first_frame_url and reference_image_urls are mutually exclusive on the live endpoint (confirmed 2026-08-08) \u2014 raises ValueError if both passed. Normal path: first_frame_url alone."
+        },
+        {
+          "name": "image_generation.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/image_generation.py",
+          "status": "active",
+          "purpose": "generate_image(prompt, output_path, aspect_ratio, resolution, input_urls=None) \u2014 GPT-Image-2 via kie.ai, up to 16 reference images."
+        },
+        {
+          "name": "beat_planning.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/beat_planning.py",
+          "status": "active",
+          "purpose": "Same as v1 \u2014 scenes_needed_for_floor()/write_beat_table(), unchanged."
+        },
+        {
+          "name": "assembly.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/assembly.py",
+          "status": "active",
+          "purpose": "Same as v1 \u2014 concatenate_videos/mix_and_normalize/mux_final, unchanged."
+        },
+        {
+          "name": "audio_extraction.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/audio_extraction.py",
+          "status": "active",
+          "purpose": "Same as v1 \u2014 extract_audio/stitch_audio_files, unchanged."
+        },
+        {
+          "name": "music_generation.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/music_generation.py",
+          "status": "active",
+          "purpose": "generate_music/fit_music_to_duration via Suno \u2014 non-custom mode caps --prompt at 500 chars (confirmed 2026-08-09, a long descriptive prompt fails outright)."
+        },
+        {
+          "name": "text_overlay.py",
+          "path": "001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/text_overlay.py",
+          "status": "active",
+          "purpose": "build_caption_props/write_props_file/ensure_public_symlink/render_text_overlay \u2014 now also measure_video_duration_seconds() + duration_in_frames passthrough, fixing a real Remotion truncation bug (POVShort composition had a hardcoded durationInFrames)."
         }
       ]
     }
