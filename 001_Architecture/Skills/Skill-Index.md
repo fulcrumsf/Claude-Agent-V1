@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-08-03
+created: 2026-08-09
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-08-03T23:36:37-04:00
+Generated: 2026-08-09T17:33:33-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -35,6 +35,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | Anomalous_Wild_Video_Pipeline | Invoke when Tony says /anomalous-wild, make an Anomalous Wild video, build me a video for the nature/science channel, run the Anomalous Wild pipeline, or start an AW production. O… | `001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md` |
 | Motion-Graphics | Use whenever building, reviewing, or planning ANY motion graphic — animated diagram/callout labels, kinetic typography, chart/data reveals, title cards, lower-thirds, or any Remot… | `001_Architecture/Skills/Motion-Graphics/SKILL.md` |
 | reimagined-realms-pov-shorts-pipeline | Use when building Reimagined Realms POV Shorts (vertical historical "day in the life" videos with no dialogue), planning beats/scenes, generating a shot list, generating/trimming… | `001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/SKILL.md` |
+| reimagined-realms-pov-shorts-pipeline-v2 | Use when building Reimagined Realms POV Shorts on the v2 (Seedance 2.0 / character-sheet + environment-sheet) architecture — a versioned duplicate of Reimagined_Realms_POV_Shorts_… | `001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/SKILL.md` |
 | Reimagined_Realms_Video_Pipeline | Invoke when Tony says /reimagined-realms, make a Reimagined Realms video, build me a video for the history channel, run the video pipeline, or start the RR pipeline. Orchestrates… | `001_Architecture/Skills/Reimagined_Realms_Video_Pipeline/SKILL.md` |
 | seedance-prompting-guide | Use whenever writing or reviewing a prompt for ByteDance Seedance (any version — 1.5 Pro, 2.0, 2.0 Fast, and future releases) — image-to-video or text-to-video generation via kie.… | `001_Architecture/Skills/Seedance-Prompting-Guide/SKILL.md` |
 | tiktok-shop-affiliate-video | Use when Tony has raw product footage and voiceover clips and wants to produce TikTok Shop or YouTube Shorts affiliate videos. Triggers on "create affiliate video", "edit product… | `001_Architecture/Skills/TikTok-Shop-Affiliate-Video/SKILL.md` |

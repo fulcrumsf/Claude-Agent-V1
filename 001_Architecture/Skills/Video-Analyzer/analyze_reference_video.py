@@ -18,7 +18,9 @@ For each scene, describe (as one markdown section per scene, headed "## Scene N 
 - What is actually happening — narrative and historical/contextual meaning (era, role, activity — e.g. "POV of a shackled pyramid worker eating porridge," not just "person eating")
 - Camera type and motion (e.g. static, handheld POV, tracking)
 - Sound design cues audible or implied (foley, ambient, music, dialogue presence)
+- Full verbatim transcript of any spoken narration, dialogue, or voiceover in this scene, word for word (write "no speech" if none) — this matters most for tutorial/instructional videos where the spoken explanation IS the content
 - Any on-screen text or overlay style (placement, sizing, drop shadow, timing)
+- Continuity and physics anomalies: character identity/appearance morphing mid-shot (face, build, clothing, or props changing inconsistently), directionally impossible or contradictory motion (e.g. a subject appearing to walk backwards relative to the direction the shot establishes, or reversing travel direction without cause), limb/object warping or duplication, and any other physically implausible movement. Call out the specific timestamp within the scene where each anomaly occurs, and describe exactly what looks wrong.
 """
 
 def download_video(url: str, out_dir: Path) -> Path:
@@ -80,7 +82,17 @@ def analyze_video_narrative(video_path: Path, scenes: list[tuple[float, float]])
             types.Part(file_data=types.FileData(file_uri=str(uploaded.uri), mime_type=str(uploaded.mime_type))),
             types.Part(text=prompt),
         ]),
+        config=types.GenerateContentConfig(max_output_tokens=65536),
     )
+
+    finish_reason = response.candidates[0].finish_reason if response.candidates else None
+    if finish_reason is not None and finish_reason.name == "MAX_TOKENS":
+        print(
+            f"⚠️  Gemini response was truncated (hit MAX_TOKENS at 65536). "
+            f"Analysis is incomplete — raise --threshold to reduce scene count, "
+            f"or split the video into shorter segments.",
+        )
+
     return response.text or ""
 
 def write_analysis_md(out_dir: Path, scenes: list[tuple[float, float]], gemini_output: str) -> Path:
@@ -97,10 +109,10 @@ def write_analysis_md(out_dir: Path, scenes: list[tuple[float, float]], gemini_o
     return analysis_path
 
 
-def main(url: str, out: str) -> None:
+def main(url: str, out: str, threshold: float = 0.3) -> None:
     out_dir = Path(out)
     video_path = download_video(url, out_dir)
-    scenes = detect_scenes(video_path)
+    scenes = detect_scenes(video_path, threshold)
     gemini_output = analyze_video_narrative(video_path, scenes)
     write_analysis_md(out_dir, scenes, gemini_output)
 
@@ -109,5 +121,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Analyze a reference video's style, pacing, and narrative context.")
     parser.add_argument("url", help="YouTube URL to analyze")
     parser.add_argument("--out", required=True, help="Output folder for Video.mp4 and ANALYSIS.md")
+    parser.add_argument(
+        "--threshold", type=float, default=0.3,
+        help="ffmpeg scene-cut sensitivity (0-1). Lower = more cuts detected. "
+             "Default 0.3 works for edited footage; raise to ~0.45-0.6 for screen "
+             "recordings/tutorials with lots of small UI/cursor changes that aren't real cuts, "
+             "to avoid an oversized scene list that can truncate Gemini's response.",
+    )
     args = parser.parse_args()
-    main(args.url, args.out)
+    main(args.url, args.out, args.threshold)

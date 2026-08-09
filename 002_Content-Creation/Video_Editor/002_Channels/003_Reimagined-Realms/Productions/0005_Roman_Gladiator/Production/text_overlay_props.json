@@ -1,0 +1,84 @@
+{
+  "backgroundVideoFile": "0005_roman_gladiator/Production/Final_v1.mp4",
+  "captions": [
+    {
+      "text": "POV: You Wake Up As A Roman Gladiator",
+      "startS": 0.0,
+      "durationS": 5.06195,
+      "variant": "title"
+    },
+    {
+      "text": "Rome, Circa 80 AD \u2014 The Colosseum",
+      "startS": 5.06195,
+      "durationS": 5.06195,
+      "variant": "title"
+    },
+    {
+      "text": "To The Training Yard",
+      "startS": 10.1239,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "Opening The Armory",
+      "startS": 15.185850000000002,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "Taurus Hands Him His Gear",
+      "startS": 20.2478,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "A Handshake With Brutus",
+      "startS": 25.30975,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "The Pre-Fight Oath",
+      "startS": 30.371700000000004,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "Into The Arena Tunnel",
+      "startS": 35.43365,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "The Arena Revealed",
+      "startS": 40.4956,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "Facing Cassius",
+      "startS": 45.557550000000006,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "The Clash Begins",
+      "startS": 50.6195,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "Standing Over Cassius",
+      "startS": 55.681450000000005,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "Victorious",
+      "startS": 60.74340000000001,
+      "durationS": 5.06195,
+      "variant": "label"
+    }
+  ],
+  "durationInFrames": 1579
+}

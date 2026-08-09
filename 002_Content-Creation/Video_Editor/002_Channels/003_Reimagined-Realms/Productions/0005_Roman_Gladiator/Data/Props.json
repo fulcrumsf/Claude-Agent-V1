@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Gladius Sword",
+    "front": "a Roman gladius short sword, double-edged straight steel blade with a central fuller, bone/ivory cylindrical grip, bronze pommel and crossguard, weathered well-used steel",
+    "held_right": "gripped upright in a right fist, right thumb wrapping naturally over the fingers, blade angled slightly forward, matching the POV character's hand and forearm exactly as shown in the attached Main Character Sheet reference"
+  },
+  {
+    "name": "Scutum Shield",
+    "front": "a large curved rectangular Roman legionary shield, deep red field with a gold-leaf eagle-wing and lightning-bolt motif, central bronze boss with rivets, bronze trim along the edges, weathered paint",
+    "back": "the shield's unpainted wooden interior, a horizontal wooden grip bar at the boss's inner point, a leather forearm strap threaded through iron brackets, visible plank construction and leather backing",
+    "held_left": "gripped by a left forearm threaded through the leather strap, the left hand's palm and fingers wrapped fully around the thick horizontal wooden grip bar itself (not the thin leather strap beside it), left thumb wrapping over the top of the bar, seen from directly behind/inside the shield exactly as the person carrying it would see it, matching the POV character's hand and forearm exactly as shown in the attached Main Character Sheet reference"
+  },
+  {
+    "name": "Manica Arm Guard",
+    "front": "a segmented bronze laminated arm guard with overlapping horizontal plates, leather backing and buckle straps, worn on the sword-fighting forearm",
+    "held_right": "worn strapped onto the POV character's own right forearm, seen looking straight down at it from true first-person, buckles and overlapping plates visible, matching the attached Main Character Sheet reference"
+  }
+]

@@ -10,10 +10,12 @@ Downloads a YouTube video, detects scene boundaries, and runs Gemini native vide
 ## Usage
 
 ```bash
-python3 001_Architecture/Skills/Video-Analyzer/analyze_reference_video.py "<youtube_url>" --out "<folder>"
+python3 001_Architecture/Skills/Video-Analyzer/analyze_reference_video.py "<youtube_url>" --out "<folder>" [--threshold 0.3]
 ```
 
 Writes `<folder>/Video.mp4` and `<folder>/ANALYSIS.md`.
+
+`--threshold` (default `0.3`) controls ffmpeg's scene-cut sensitivity — lower detects more cuts. The default suits normally-edited footage. For screen recordings/tutorials with lots of small UI/cursor changes that aren't real cuts, raise it to ~0.45-0.6, or ffmpeg over-detects cuts, which can make the per-scene prompt to Gemini large enough that its response hits the token cap and gets truncated before covering the whole video (confirmed happening on an 11-minute tutorial at the 0.3 default — 287 raw cuts detected, response truncated at the 6:34 mark). If `ANALYSIS.md` still looks cut off after raising the threshold, the script also now sets `max_output_tokens=65536` and prints a `⚠️ Gemini response was truncated` warning to stdout when it hits that cap — the next fix if this happens again is splitting the video into shorter segments.
 
 ## Output format
 

@@ -127,7 +127,14 @@ export const RemotionRoot: React.FC = () => {
         height={1920}
       />
 
-      {/* Reimagined Realms POV Shorts — text overlay pass over an assembled Final_vN.mp4 */}
+      {/* Reimagined Realms POV Shorts — text overlay pass over an assembled Final_vN.mp4.
+          durationInFrames must match the actual background video's length — every production's
+          runtime differs (65s here, longer/shorter elsewhere), so the caller passes the real
+          value via props.durationInFrames (computed from ffprobe in text_overlay.py) rather than
+          relying on a hardcoded default. Confirmed failure 2026-08-09: the old hardcoded 1560
+          (65.0s @ 24fps) silently truncated a 65.785s render by ~19 frames, cutting off the
+          final caption and the true ending. Falls back to the static durationInFrames below only
+          if the caller doesn't supply one. */}
       <Composition
         id="POVShort"
         component={POVShort}
@@ -140,6 +147,10 @@ export const RemotionRoot: React.FC = () => {
           captions: [
             { text: "POV: WAKING UP AS A ___", startS: 0, durationS: 4, variant: "title" as const },
           ],
+        }}
+        calculateMetadata={({ props }) => {
+          const durationInFrames = (props as { durationInFrames?: number }).durationInFrames;
+          return durationInFrames ? { durationInFrames } : {};
         }}
       />
 

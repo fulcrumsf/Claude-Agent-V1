@@ -1,0 +1,84 @@
+{
+  "backgroundVideoFile": "0004_titanic_stoker/Production/Final_v1.mp4",
+  "captions": [
+    {
+      "text": "POV: You Wake Up As A Titanic Coal Stoker",
+      "startS": 0.0,
+      "durationS": 2.530975,
+      "variant": "title"
+    },
+    {
+      "text": "RMS Titanic, April 14 1912, 8:00 PM Watch",
+      "startS": 2.530975,
+      "durationS": 2.530975,
+      "variant": "title"
+    },
+    {
+      "text": "DRESSING",
+      "startS": 5.06195,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "DOWN TO THE BOILER ROOMS",
+      "startS": 10.1239,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "BEGINNING THE WATCH",
+      "startS": 15.185850000000002,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "FEEDING THE FURNACES",
+      "startS": 20.2478,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "THE HEAT NEVER LETS UP",
+      "startS": 25.30975,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "ANOTHER SHOVELFUL",
+      "startS": 30.371700000000004,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "11:40 PM",
+      "startS": 35.43365,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "SOMETHING IS WRONG",
+      "startS": 40.4956,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "DRAW THE FIRES",
+      "startS": 45.557550000000006,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "GET OUT",
+      "startS": 50.6195,
+      "durationS": 5.06195,
+      "variant": "label"
+    },
+    {
+      "text": "THE BOAT DECK",
+      "startS": 55.681450000000005,
+      "durationS": 5.06195,
+      "variant": "label"
+    }
+  ],
+  "durationInFrames": 1579
+}

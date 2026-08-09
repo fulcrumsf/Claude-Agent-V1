@@ -132,9 +132,9 @@ def test_main_wires_download_detect_analyze_and_write(tmp_path):
         mock_analyze.return_value = "analysis text"
         mock_write.return_value = tmp_path / "ANALYSIS.md"
 
-        main("https://youtube.com/shorts/abc123", str(tmp_path))
+        main("https://youtube.com/shorts/abc123", str(tmp_path), 0.45)
 
     mock_download.assert_called_once_with("https://youtube.com/shorts/abc123", tmp_path)
-    mock_detect.assert_called_once_with(tmp_path / "Video.mp4")
+    mock_detect.assert_called_once_with(tmp_path / "Video.mp4", 0.45)
     mock_analyze.assert_called_once_with(tmp_path / "Video.mp4", [(0.0, 5.0)])
     mock_write.assert_called_once_with(tmp_path, [(0.0, 5.0)], "analysis text")

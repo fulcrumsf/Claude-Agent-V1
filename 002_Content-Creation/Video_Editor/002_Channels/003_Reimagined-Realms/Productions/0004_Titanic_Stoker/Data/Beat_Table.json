@@ -1,0 +1,80 @@
+[
+  {
+    "index": 1,
+    "description": "POV lying in a narrow crew bunk, waking with a groggy sigh. Coal-stained singlet and dungarees hang on a hook nearby. Text overlay: 'POV: You Wake Up As A Titanic Coal Stoker' then 'RMS Titanic, April 14 1912, 8:00 PM Watch'.",
+    "camera_fixed": true,
+    "text_overlay": "POV: You Wake Up As A Titanic Coal Stoker / RMS Titanic, April 14 1912, 8:00 PM Watch"
+  },
+  {
+    "index": 2,
+    "description": "POV seated on the edge of a bunk, hands lacing up a worn leather boot, the other boot already on. Text overlay: 'DRESSING'.",
+    "camera_fixed": true,
+    "text_overlay": "DRESSING"
+  },
+  {
+    "index": 3,
+    "description": "Walking through a narrow crew corridor toward the boiler rooms, other stokers ahead in silhouette. Text overlay: 'DOWN TO THE BOILER ROOMS'.",
+    "camera_fixed": false,
+    "text_overlay": "DOWN TO THE BOILER ROOMS"
+  },
+  {
+    "index": 4,
+    "description": "Pushing open a heavy iron watertight door into the boiler room, a wave of heat, orange furnace glow, and drifting coal dust haze rolling out to meet the camera as the door swings open. Text overlay: 'BEGINNING THE WATCH'.",
+    "camera_fixed": false,
+    "text_overlay": "BEGINNING THE WATCH"
+  },
+  {
+    "index": 5,
+    "description": "Shoveling coal from the deck into a glowing open furnace door, rhythmic and repetitive. Text overlay: 'FEEDING THE FURNACES'.",
+    "camera_fixed": true,
+    "text_overlay": "FEEDING THE FURNACES"
+  },
+  {
+    "index": 6,
+    "description": "A brief pause, wiping sweat from a soot-streaked brow with a forearm, chest heaving from exertion in the intense heat. Text overlay: 'THE HEAT NEVER LETS UP'.",
+    "camera_fixed": true,
+    "text_overlay": "THE HEAT NEVER LETS UP"
+  },
+  {
+    "index": 7,
+    "description": "Back to shoveling, coal chute rattling down more coal, slice bar raking the furnace bed. Text overlay: 'ANOTHER SHOVELFUL'.",
+    "camera_fixed": true,
+    "text_overlay": "ANOTHER SHOVELFUL"
+  },
+  {
+    "index": 8,
+    "description": "A sudden violent shudder runs through the whole room, tools rattle off hooks, coal dust shakes loose from the pipework overhead. Text overlay: '11:40 PM'.",
+    "camera_fixed": true,
+    "text_overlay": "11:40 PM"
+  },
+  {
+    "index": 9,
+    "description": "Wide-eyed POV looking up at three fellow stokers gathered close, each visibly distinct from one another — one heavyset and older with a grey beard, one lean and young with a narrow face, one broad-shouldered with a scarred cheek — exchanging alarmed glances as a distant klaxon sounds, everyone frozen mid-motion. Text overlay: 'SOMETHING IS WRONG'.",
+    "camera_fixed": true,
+    "text_overlay": "SOMETHING IS WRONG"
+  },
+  {
+    "index": 10,
+    "description": "An engineer shouts an order down the boiler room, other stokers scrambling to draw the fires, chaos and urgency breaking the room's rhythm. Text overlay: 'DRAW THE FIRES'.",
+    "camera_fixed": false,
+    "text_overlay": "DRAW THE FIRES"
+  },
+  {
+    "index": 11,
+    "description": "Shaky handheld sprint through ankle-deep water down a flooding lower corridor toward an open watertight door ahead, other crew pushing past in the same direction. Text overlay: 'GET OUT'.",
+    "camera_fixed": false,
+    "text_overlay": "GET OUT"
+  },
+  {
+    "index": 12,
+    "description": "Emerging onto an open deck into cold night air and chaos, passengers and crew moving toward lifeboats under electric deck lights. Text overlay: 'THE BOAT DECK'.",
+    "camera_fixed": false,
+    "text_overlay": "THE BOAT DECK"
+  },
+  {
+    "index": 13,
+    "description": "Static POV seated on a crowded open lifeboat packed with other survivors wrapped in coats and blankets, oars resting in dark water, looking back across the water at the RMS Titanic in the distance, her stern rising as she sinks, lights still glowing on her decks against the night sky. Text overlay: no caption \u2014 hold on the image.",
+    "camera_fixed": true,
+    "text_overlay": null
+  }
+]
