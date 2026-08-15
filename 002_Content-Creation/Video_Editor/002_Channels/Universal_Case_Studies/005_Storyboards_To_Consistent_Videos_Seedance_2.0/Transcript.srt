@@ -1,0 +1,1296 @@
+1
+00:00:00,000 --> 00:00:03,440
+In this video I'm going to show you how to create a character sheet like this,
+
+2
+00:00:03,440 --> 00:00:09,200
+as well as a location one, so that you can put these image references into C-Dance 2.0,
+
+3
+00:00:09,200 --> 00:00:13,680
+along with your storyboard, which will help you achieve a much higher level of consistency
+
+4
+00:00:13,680 --> 00:00:15,920
+in your videos to create something like this.
+
+5
+00:00:15,920 --> 00:00:34,160
+So in this video I'm basically going to be going through some of the videos that I've posted on my
+
+6
+00:00:34,160 --> 00:00:39,440
+Instagram using character location sheet storyboard. Just walk you through like the process of
+
+7
+00:00:39,440 --> 00:00:43,680
+what I've been experimenting with, and then at the end of the video I'm going to just go through
+
+8
+00:00:43,680 --> 00:00:49,360
+like how exactly I would do it in the moment live, so you can look at the process and take some
+
+9
+00:00:49,360 --> 00:00:53,920
+pieces from it and go out and do it yourself. Right, so to start with I'm going to be just looking
+
+10
+00:00:53,920 --> 00:00:59,840
+at this video here, so this is purely just a storyboard into C-Dance 2.0.
+
+11
+00:01:14,080 --> 00:01:18,880
+So if we just look at the prompt here, it's just create a 4x4 storyboard and then kind of
+
+12
+00:01:18,880 --> 00:01:24,080
+describing the theme and then it's coming up with the shots here and it creates something like this
+
+13
+00:01:24,080 --> 00:01:29,280
+and then to create the video literally just putting it into C-Dance 2.0, use the storyboard
+
+14
+00:01:29,280 --> 00:01:34,960
+image one as a reference image to make 4 arcane style, I'm prompting like nothing here to achieve
+
+15
+00:01:34,960 --> 00:01:42,720
+this. Using C-Dance 2.0 720p 15 seconds, you can also use C-Dance fast, I found does pretty decent
+
+16
+00:01:42,720 --> 00:01:48,480
+job. I do it at 720p, I think that's just the best of like both in terms of decent enough quality
+
+17
+00:01:48,480 --> 00:01:54,000
+and saving credits and if we just look at like whether it's adhering to the storyboard, it does a
+
+18
+00:01:54,000 --> 00:01:59,760
+pretty decent job like that's them dropping in, the backdrop is obviously different but it's them
+
+19
+00:01:59,840 --> 00:02:12,960
+dropping in, skateboard there, then him, then her, then all three, then him, then it's gone back to him
+
+20
+00:02:12,960 --> 00:02:19,280
+so it hasn't, it's missed this here, I would say that it's probably that bit there, something around
+
+21
+00:02:19,600 --> 00:02:26,720
+there, so it's kind of, actually you know that bit was, that's that there, then it's gone to three there
+
+22
+00:02:31,680 --> 00:02:37,280
+and so you can see it's about, it's adhered to it like 70-80% which I think is pretty solid
+
+23
+00:02:37,280 --> 00:02:41,360
+basically uploading a storyboard like this, like I'm pretty impressed with this and to make the
+
+24
+00:02:41,360 --> 00:02:46,320
+final video and what I've discovered is you do kind of need to piece them together a little bit
+
+25
+00:02:46,320 --> 00:02:51,760
+so what I done is is generated four or five versions which is usually what I do and kind of
+
+26
+00:02:51,760 --> 00:02:58,080
+piece them together like I put the ending like from that one with it but the problem that I found
+
+27
+00:02:58,080 --> 00:03:02,080
+with this one because this was kind of the beginning of the process is that there was no
+
+28
+00:03:02,080 --> 00:03:07,120
+character sheet, no location sheet because the whole generation is not perfect and I want to piece
+
+29
+00:03:07,120 --> 00:03:13,040
+things together, I need each sort of separate generation that I've done here to be as consistent
+
+30
+00:03:13,680 --> 00:03:19,760
+as possible, so I started thinking about like creating character sheets and location sheets for
+
+31
+00:03:19,760 --> 00:03:24,320
+a different video but I'm just going to walk through some of my findings with character sheets
+
+32
+00:03:24,320 --> 00:03:29,680
+and how to do those, but firstly in terms of like finding characters I find mid-journey is by far
+
+33
+00:03:29,680 --> 00:03:34,720
+the best, like you can pay for a subscription for $10 to get access to like the explore page here
+
+34
+00:03:34,720 --> 00:03:40,480
+because you can simply just go on like guy, find a character, there are just so many just ways to
+
+35
+00:03:40,480 --> 00:03:46,560
+find characters on mid-journey and it's just easy you can see the prompt and what I do is find a
+
+36
+00:03:46,560 --> 00:03:52,720
+character, either use the prompt or remix the prompt, regenerate in mid-journey or take over to like
+
+37
+00:03:52,720 --> 00:03:57,680
+nanobanana 2 or GPT to then edit the image, mid-journey is not very good at editing, it's good at
+
+38
+00:03:57,680 --> 00:04:02,000
+generating characters but then maybe I want like the character to be you know the close to be
+
+39
+00:04:02,000 --> 00:04:06,240
+different color or something slightly different and I'll use other models but if I've just got the
+
+40
+00:04:06,240 --> 00:04:12,720
+reference image like that it's easy for me to take that into GPT and nanobanana to fix it
+
+41
+00:04:12,720 --> 00:04:17,920
+and so the next video I'm looking at is this one here so this has got like a character sheet,
+
+42
+00:04:17,920 --> 00:04:23,360
+didn't have a location sheet because at this point I hadn't just really needed to use a location
+
+43
+00:04:23,360 --> 00:04:27,840
+sheet even though I just said that I needed one because I'm talking retrospectively because the
+
+44
+00:04:27,840 --> 00:04:34,240
+thing is with this one in terms of location because every shot is there moving in one location
+
+45
+00:04:34,240 --> 00:04:40,720
+but it's moving through different shots it means that like you can get away with not having
+
+46
+00:04:40,720 --> 00:04:45,760
+a location sheet and the thing it was kind of the same for this one so this is using a character
+
+47
+00:04:45,760 --> 00:04:50,560
+sheet and then it's actually just using a prompt rather than a storyboard which I'm going to show
+
+48
+00:04:50,560 --> 00:04:55,840
+at the end you can do either or it doesn't really matter and I'll talk about why you might do one or
+
+49
+00:04:56,000 --> 00:05:19,280
+the other so again this is the character sheet for this one so this is kind of like what I developed
+
+50
+00:05:19,280 --> 00:05:23,120
+off the back of these ones here because the thing is about these ones this was for a completely
+
+51
+00:05:23,120 --> 00:05:27,440
+different video is when we look at a character sheet like this this was just what a GPT image 2.0
+
+52
+00:05:27,440 --> 00:05:31,920
+is producing but like you don't need all of these images so I discovered is this like what is the
+
+53
+00:05:31,920 --> 00:05:37,760
+point of having like that image and that image lonely basically doing the same job and I had seen
+
+54
+00:05:37,760 --> 00:05:42,240
+people generating character sheets like this on Instagram so just naturally went for one like this
+
+55
+00:05:42,240 --> 00:05:46,800
+but then you have to ask yourself the question is everything on this needed is this writing needed
+
+56
+00:05:46,800 --> 00:05:51,600
+here no and so is it just wasted space and just would it be better to have a more condensed
+
+57
+00:05:51,600 --> 00:05:55,920
+character sheet which will go through later on in the video not to say that it doesn't work a
+
+58
+00:05:55,920 --> 00:06:01,120
+character sheet like this it absolutely does I think this is just more for just looking pretty if
+
+59
+00:06:01,120 --> 00:06:06,320
+I'm honest rather than actually being the best character sheet to achieve the best level of
+
+60
+00:06:06,320 --> 00:06:11,760
+consistency but if we look here this so the I uploaded the character sheet here and then this is
+
+61
+00:06:11,760 --> 00:06:17,120
+the prompt here so this is now not using basically a storyboard uploaded this is just using a description
+
+62
+00:06:17,200 --> 00:06:22,000
+of the shot which works kind of the same anyway because if I wanted to just turn this into storyboard
+
+63
+00:06:22,000 --> 00:06:27,680
+I'll just take this into chat GPT and ask it to create me a storyboard image and it did a
+
+64
+00:06:27,680 --> 00:06:34,560
+pretty this is the original shot that I use really like this opening shot the problem I had
+
+65
+00:06:34,560 --> 00:06:44,800
+looked his headphones are gone straight away and this was the video where I basically realised
+
+66
+00:06:44,880 --> 00:06:52,160
+need location sheets because like I was having to regenerate the video with that sort of prompt
+
+67
+00:06:52,160 --> 00:06:58,480
+because it didn't have a storyboard I feel like the model then really struggled to really understand
+
+68
+00:06:59,360 --> 00:07:05,920
+like the location or he understood the location but wasn't able to maintain it so not having
+
+69
+00:07:05,920 --> 00:07:09,520
+just using a character sheet not having a storyboard not having a location sheet
+
+70
+00:07:10,080 --> 00:07:18,640
+was able to keep character consistency relatively well and it kind of adhere to the shots that I was
+
+71
+00:07:18,640 --> 00:07:24,400
+describing as you can see here so I did take this shot as well because I felt like I could match
+
+72
+00:07:24,400 --> 00:07:32,320
+that in and then I pieced them together as well from about two or three video generations but
+
+73
+00:07:32,320 --> 00:07:38,720
+what I originally was doing was like as you can see here taking the character sheet the original
+
+74
+00:07:38,800 --> 00:07:43,920
+starting image some shots like in between the video as well which you could do instead of a
+
+75
+00:07:43,920 --> 00:07:48,560
+location sheet like if you generate one video and you like the location then just take some
+
+76
+00:07:48,560 --> 00:07:54,240
+screenshots from that video and then upload them as reference images because if you look here that's
+
+77
+00:07:54,240 --> 00:08:01,520
+very similar to the original one there and that that's a different generation and then there we
+
+78
+00:08:01,520 --> 00:08:11,920
+go we've got this part here it's a bit all over the place but as you can see the location is
+
+79
+00:08:11,920 --> 00:08:16,560
+fairly similar to what I had before and so yeah basically after this video I was like okay just
+
+80
+00:08:16,560 --> 00:08:21,360
+having a character sheet doesn't work on the basis that these videos don't one shot multiple
+
+81
+00:08:21,360 --> 00:08:26,000
+generations going to be need to be produced so you need a character sheet a location sheet
+
+82
+00:08:26,000 --> 00:08:31,120
+potentially a storyboard but maybe not necessarily a storyboard because you can just prompt the
+
+83
+00:08:31,120 --> 00:08:35,200
+shots and it just still does a good job so the next video where kind of this all kind of fit
+
+84
+00:08:35,200 --> 00:08:39,920
+it together to some degree and was developing then the character sheet and location sheet was this video
+
+85
+00:08:40,000 --> 00:08:48,000
+here
+
+86
+00:08:57,520 --> 00:09:03,280
+so this is using a character sheet a location sheet no storyboard because I wanted to basically see
+
+87
+00:09:03,280 --> 00:09:09,040
+whether I could achieve like good results you know without the storyboard this time having understood
+
+88
+00:09:09,200 --> 00:09:12,960
+actually maybe it can just be done with the character sheet a location sheet so this was the
+
+89
+00:09:12,960 --> 00:09:18,560
+character sheet here still a bit too much going on in my opinion more condensed than the other one
+
+90
+00:09:18,560 --> 00:09:24,320
+but at this point like I was starting to realize like again is this necessary I don't think so
+
+91
+00:09:24,320 --> 00:09:29,760
+just looks good but isn't actually necessarily needed and so then this is the location sheet again
+
+92
+00:09:29,760 --> 00:09:34,800
+too much going on here retrospectively saying this like just because I was just prompting
+
+93
+00:09:34,880 --> 00:09:40,000
+GPT and M2.0 to create a location sheet and I think this is maybe what like a traditional location
+
+94
+00:09:40,000 --> 00:09:44,080
+sheet looks like I'm not like a film there I don't have no experience in this but like is this
+
+95
+00:09:44,080 --> 00:09:47,920
+necessary for the model is it reading this text probably not does it need to know these colors
+
+96
+00:09:47,920 --> 00:09:53,360
+probably not but anyhow just went forward with using like character sheet and location sheet
+
+97
+00:09:53,360 --> 00:10:02,560
+and it still does like a decent job weird shit happens as you can see there but each generation is
+
+98
+00:10:03,120 --> 00:10:09,520
+like fairly consistent in the shots that I'm asking for in the prompt so if I just go
+
+99
+00:10:09,520 --> 00:10:13,600
+into the prompt here so if you can see here this one's a bit difficult to read but you see like
+
+100
+00:10:13,600 --> 00:10:18,880
+shot one one to two seconds two to four so it's describing each of the shots at the different
+
+101
+00:10:18,880 --> 00:10:23,840
+seconds and you'll find that every generation is going to be doing that and so like I was going
+
+102
+00:10:23,840 --> 00:10:29,600
+to say this later but this is why I also run them at 720 because I'm just trying to understand
+
+103
+00:10:29,600 --> 00:10:37,840
+whether the prompts delivering shots that I want and then what I'll do is basically so like it's
+
+104
+00:10:37,840 --> 00:10:44,960
+always producing this shot in every video and that shot and then this running sequence that's a nice
+
+105
+00:10:44,960 --> 00:10:50,880
+shot so then what I end up doing is basically cutting loads of them together so it's like
+
+106
+00:10:51,520 --> 00:10:59,440
+I find different jumping shots you'll see here right but like when I put the music on the timeline
+
+107
+00:10:59,440 --> 00:11:04,480
+I was like I want more shots in the beginning like you see of his sort of like cape thing and so all
+
+108
+00:11:04,480 --> 00:11:09,520
+I basically then went and done was essentially just changed the prompt and was like I'd go back
+
+109
+00:11:09,520 --> 00:11:15,680
+into the chat GPT and say I need more like close cutting prompts in the beginning it produced all
+
+110
+00:11:15,680 --> 00:11:21,760
+these ones here which then just gave me a few extra shots to add at the beginning
+
+111
+00:11:23,360 --> 00:11:27,840
+and then all these shots here like these will be from different video so like this one that one
+
+112
+00:11:27,840 --> 00:11:33,920
+that one this is the same video that's a different video that's a different video so because I've
+
+113
+00:11:33,920 --> 00:11:38,560
+got the character sheet and location sheet I'm able to cut from different videos and it looked
+
+114
+00:11:38,560 --> 00:11:43,120
+pretty good and I said like I don't like these character location sheets in terms of their fanciiness
+
+115
+00:11:43,120 --> 00:11:49,200
+but they still do the job right I haven't tested extensively enough to know how this is a good
+
+116
+00:11:49,200 --> 00:11:55,040
+example actually of like the video not here into the the sheet like the rope here look goes from
+
+117
+00:11:55,040 --> 00:11:59,600
+here to here with this little arc thing here that arc thing there the ropes coming there but the
+
+118
+00:11:59,600 --> 00:12:04,000
+video is happening so quick you you never have noticed that like until I've just pointed out
+
+119
+00:12:04,960 --> 00:12:09,760
+and it's doing it across that it was doing it across all of the generations anyway so I wasn't too
+
+120
+00:12:09,840 --> 00:12:17,120
+bothered even though you could probably look at the roof here and see that like actually the different
+
+121
+00:12:17,120 --> 00:12:23,680
+generations have slightly different roof very very small details but as I said when you're
+
+122
+00:12:23,680 --> 00:12:28,480
+quick cutting a video doesn't make a difference but this kind of was what opened my eyes up to maybe
+
+123
+00:12:28,480 --> 00:12:33,440
+I needing a better location sheet essentially like that is not good enough location sheet because
+
+124
+00:12:33,440 --> 00:12:38,960
+it's just not enough details which led me to sort of experimenting and trying to find like again
+
+125
+00:12:38,960 --> 00:12:44,560
+a more stripped down location sheet like this and then this was also the character sheet that
+
+126
+00:12:44,560 --> 00:12:49,440
+I had basically gone okay how can we create a new character sheet get sort of all the fluff in
+
+127
+00:12:49,440 --> 00:12:55,760
+its front side back face shot clothing I think that's probably all you need in my opinion in most
+
+128
+00:12:55,760 --> 00:13:00,000
+cases and then I was trying to do something similar with a location sheet but it wasn't it just
+
+129
+00:13:00,000 --> 00:13:03,680
+wasn't prompts weren't listening to I wanted like as you can see like that shot and that shot is
+
+130
+00:13:03,680 --> 00:13:08,080
+the same pointless pointless pointless pointless and even when I was trying to get it to prompt to
+
+131
+00:13:08,320 --> 00:13:12,400
+not do that I was still doing you might say actually just that might be good enough I also
+
+132
+00:13:12,400 --> 00:13:16,640
+don't know whether it's better this is not realistic it's in this weird style is it better to do
+
+133
+00:13:16,640 --> 00:13:21,600
+it in a realistic style but then does it cause it the model to do weird stuff this one here a bit
+
+134
+00:13:21,600 --> 00:13:26,000
+more complex but like is that needed is that needed is that needed is that needed probably not I'm
+
+135
+00:13:26,000 --> 00:13:32,240
+still trying to figure out what's the best location sheet to have like wide view top down view maybe
+
+136
+00:13:32,240 --> 00:13:36,880
+some close angles I think it depends on the video you're making but one thing I've learned is the
+
+137
+00:13:36,880 --> 00:13:42,000
+more complex your location is the harder it is to maintain continuity and as I was talking about
+
+138
+00:13:42,000 --> 00:13:47,680
+earlier you know I was talking about this video here this is progressing through a city so I can
+
+139
+00:13:47,680 --> 00:13:55,040
+cut the shot easily this is progressing through a city this is in one location it's not progressing
+
+140
+00:13:55,040 --> 00:14:02,240
+through somewhere so you understand every shot needs to basically look like it's from the same
+
+141
+00:14:02,240 --> 00:14:07,200
+building and then the last example that I'm just going to go through before we go how to do it
+
+142
+00:14:07,200 --> 00:14:09,360
+is this site basketball this was quite difficult
+
+143
+00:14:20,320 --> 00:14:25,360
+so this was using storyboard, character sheet and location sheet so a little bit different than
+
+144
+00:14:25,360 --> 00:14:30,000
+the last one just showing you that you know this could work as well and for this one we're just
+
+145
+00:14:30,000 --> 00:14:35,600
+going for like a really stripped down character sheet like not even front back sides but actually
+
+146
+00:14:35,600 --> 00:14:41,440
+found it to be a pretty good job here still worked really really well location sheet was difficult
+
+147
+00:14:41,440 --> 00:14:47,360
+because the basketball lines and in the video it was really struggling with just maintaining
+
+148
+00:14:47,360 --> 00:14:52,800
+the location sheet continuity haven't figured out location sheet continuity yet so anyone has
+
+149
+00:14:52,800 --> 00:14:58,240
+any suggestions please suggest them storyboard similar style did pretty good job but like adhering to
+
+150
+00:14:58,320 --> 00:15:02,560
+like opening shot then close together then sort of joling against each other whatever you want to
+
+151
+00:15:02,560 --> 00:15:06,960
+call it and then some shots at the end and this was again just piecing together the different
+
+152
+00:15:06,960 --> 00:15:12,320
+videos here as you can see done that like close in shot there they are
+
+153
+00:15:17,120 --> 00:15:21,680
+but then it was doing lots of kind of weird shit like this and so this one was like I just
+
+154
+00:15:21,680 --> 00:15:25,840
+show you what it actually looks like all the time man this was very much like piecing together
+
+155
+00:15:28,080 --> 00:15:31,440
+like some some shots I liked or some such I just made shorter
+
+156
+00:15:35,200 --> 00:15:39,920
+so like if I just extend you some of these clips right you'll see like that's the original
+
+157
+00:15:45,760 --> 00:15:50,400
+so all I've done is take that original one cut it to here if I show you this one this will be
+
+158
+00:15:50,400 --> 00:16:00,000
+completely different as well again look doing weird shit so I'm just taking the best moments
+
+159
+00:16:00,000 --> 00:16:04,480
+I'll show you this one as well so it's across like I found on average you need about four or five
+
+160
+00:16:04,480 --> 00:16:12,800
+generations like that love that didn't like that bit again weird shit there but again it's just
+
+161
+00:16:13,520 --> 00:16:18,560
+I can make this look good by just cutting the best shots from each of the generations
+
+162
+00:16:19,120 --> 00:16:27,200
+and then I played around with just the music here like boom boom boom boom at this point I'm using
+
+163
+00:16:27,200 --> 00:16:32,960
+the music as well to like figure out what cuts I want to do how long to make the video
+
+164
+00:16:36,880 --> 00:16:41,520
+and and that's kind of the kind of the theme across all the generations is cutting them together
+
+165
+00:16:41,520 --> 00:16:46,000
+on the timeline and using the best shots if I actually just look at the prompt for this one
+
+166
+00:16:46,080 --> 00:16:52,160
+again no prompt here so just simply creating the video from the sequence of shots which it does
+
+167
+00:16:52,160 --> 00:16:55,840
+a good job you know you can watch the video and see you know even this is a slightly different
+
+168
+00:16:55,840 --> 00:17:01,360
+storyboard starting shot then facing together then then battling each other then some shots in
+
+169
+00:17:01,360 --> 00:17:07,200
+hoop so like I'm giving the video a clear direction that it does follow every time it will just
+
+170
+00:17:07,200 --> 00:17:12,400
+mess up a number of different shots but there every generation I found has shots that are usable
+
+171
+00:17:12,400 --> 00:17:16,640
+it's just then you taste making and picking the ones that fit together so the storyboard method
+
+172
+00:17:16,640 --> 00:17:21,280
+is really good I could probably take this storyboard and actually just write it as a prompt as well
+
+173
+00:17:21,280 --> 00:17:26,560
+if I wanted to I could actually take all of these like text bit here and write as a prompt and not
+
+174
+00:17:26,560 --> 00:17:31,600
+use a storyboard I just find that the storyboard gives you a method gives you a good visual of like
+
+175
+00:17:31,600 --> 00:17:36,800
+what you're getting where you can't see on the prompts and so if you wanted to like save credit
+
+176
+00:17:36,800 --> 00:17:42,240
+on the video I would always probably generate the storyboard because then you can go yes that is
+
+177
+00:17:42,240 --> 00:17:46,960
+what I want you might actually look at the story and go you go shot three four five six seven eight
+
+178
+00:17:46,960 --> 00:17:52,640
+all kind of look the same do I want to put in some different shots in there like a wider one you know
+
+179
+00:17:52,640 --> 00:17:57,920
+and so you can better plan the shots with the storyboard because you can visually see them
+
+180
+00:17:57,920 --> 00:18:03,680
+and then you can then alter the image prompt to then regenerate the storyboard to hopefully save
+
+181
+00:18:03,680 --> 00:18:08,320
+your credits and get you exactly what you want or let's say you generate the video and you're
+
+182
+00:18:08,400 --> 00:18:12,880
+like actually I need like more of this type of shot like I talked about with this example here
+
+183
+00:18:15,040 --> 00:18:19,280
+I didn't use a storyboard but I used that same principle of like watching the video and go well I
+
+184
+00:18:19,280 --> 00:18:23,120
+want more shots at the beginning so I'm going to prompt for more shots at the beginning again it
+
+185
+00:18:23,120 --> 00:18:28,800
+doesn't matter whether you use prompt or a storyboard both methods work as I have shown throughout
+
+186
+00:18:28,800 --> 00:18:34,080
+this video so it's really just up to you to decide which method you want to use and so now
+
+187
+00:18:34,080 --> 00:18:39,440
+just going to go through how I would go about coming up with ideas for this this is live in the
+
+188
+00:18:39,440 --> 00:18:44,400
+flesh so it the idea could be shit I'm just going to put my hands up I'm not going to just like I
+
+189
+00:18:44,400 --> 00:18:49,200
+have not pre-generated anything here this is just doing it raw and so what we're going to do I'm
+
+190
+00:18:49,200 --> 00:18:53,680
+going to go into the explore page on mid journey so we're going to pick one I've used this character
+
+191
+00:18:53,680 --> 00:18:58,720
+recently let's just take this character for example and I'm going to show you a process for coming
+
+192
+00:18:58,720 --> 00:19:03,600
+up with ideas that hopefully will just open your eyes up to a different way to do it so I'm going
+
+193
+00:19:03,600 --> 00:19:08,480
+to check GPT you can use chat GPT you can use claw doesn't matter we're going to drag in the image
+
+194
+00:19:08,480 --> 00:19:13,440
+reference and what I'm going to do here is I'm going to describe what I'm trying to do and this is
+
+195
+00:19:13,440 --> 00:19:17,520
+why prompts don't really matter because if you understand the process you understand the intention
+
+196
+00:19:17,520 --> 00:19:21,360
+behind what you're doing and you can describe it you don't need prompts like chat GPTing Club
+
+197
+00:19:21,360 --> 00:19:26,000
+very good at coming up with prompts so I need some help coming up with some ideas for a video I'm
+
+198
+00:19:26,000 --> 00:19:33,440
+trying to create a quick cutting 15 second video using cdance 2.0 this is the character that I
+
+199
+00:19:33,440 --> 00:19:41,040
+want to use please can you give me 10 different like little synopsis that's not a word of different
+
+200
+00:19:41,040 --> 00:19:47,680
+scene stories for me to review so then I can then go forth with this idea that is the shittiest
+
+201
+00:19:47,680 --> 00:19:53,920
+voiced prompt I've ever done in my life I'm just going to show you like how easy this is to do
+
+202
+00:19:54,000 --> 00:19:59,440
+so now we've got 10 ideas here we've got world's tricks instructor inspection coffee incident
+
+203
+00:19:59,440 --> 00:20:03,280
+everyone freezes because someone spilled coffee in the academy hallway so now yeah it's it's giving
+
+204
+00:20:03,280 --> 00:20:07,280
+me the monster students panic as a giant monster tell the academy everyone runs except him you
+
+205
+00:20:07,280 --> 00:20:11,200
+try and be sure to close the whistle once and the monsters immediately line up be all right let's
+
+206
+00:20:11,200 --> 00:20:14,880
+just try this one right so I'm going to copy this I don't know how ever this is going to work because
+
+207
+00:20:14,880 --> 00:20:19,440
+the monsters are all going to be different but we'll just go with this one anyway because I'm just
+
+208
+00:20:19,440 --> 00:20:24,960
+showing you the process so I want to go with number six the monster academy please can you
+
+209
+00:20:24,960 --> 00:20:31,920
+build me out a detailed image prompt that's going to generate a storyboard for this it should be
+
+210
+00:20:31,920 --> 00:20:38,560
+four by four it's going to be a 15 second video so they're obviously going to be roughly 12 to
+
+211
+00:20:38,560 --> 00:20:42,560
+16 shots in there and let me know if you've got any questions all right so this is actually just
+
+212
+00:20:42,560 --> 00:20:46,800
+giving me the image from that I didn't want that I wanted to prompt but we'll check the image anyway
+
+213
+00:20:46,800 --> 00:20:51,120
+all right so this is actually that's actually not done too but I just want to say can you see how
+
+214
+00:20:51,120 --> 00:20:56,080
+just kind of rough around the edges that works but actually do you know what let's just let's just
+
+215
+00:20:56,080 --> 00:21:02,400
+take this image like I'm happy with that the storyboard there I'm now going to create the character
+
+216
+00:21:02,400 --> 00:21:08,080
+sheet and location sheet it obviously has created the location there I could create the location sheet
+
+217
+00:21:08,080 --> 00:21:13,760
+before I do the storyboard if I've got a specific idea in mind or I just use the storyboard to come
+
+218
+00:21:13,840 --> 00:21:19,280
+up with the location which it's done here you can do either or it's all depends on like what
+
+219
+00:21:19,280 --> 00:21:25,520
+your starting idea is if you're like actually I know where exactly I want this monster thing to happen
+
+220
+00:21:25,520 --> 00:21:30,560
+and I've already got an existing image reference then use that as said you can do the storyboard
+
+221
+00:21:30,560 --> 00:21:34,000
+first you can do the location sheet first you can do the character sheet first it doesn't matter
+
+222
+00:21:34,000 --> 00:21:39,200
+but let's just go forth with that and I am going to ask for the location sheet I would just
+
+223
+00:21:39,200 --> 00:21:43,200
+upload this is image reference but I don't think I'd need to see as I'm in here please can you use
+
+224
+00:21:43,200 --> 00:21:50,560
+this image as a reference image and now create a location sheet of this area top down shot front
+
+225
+00:21:50,560 --> 00:21:56,320
+side back any details that are needed for the location to maintain continuity very ship problem
+
+226
+00:21:56,320 --> 00:22:01,680
+again I want to just show you how easy it is for you to just figure this out yourself in terms
+
+227
+00:22:01,680 --> 00:22:06,960
+of what prompts to use because as I've shown to all of my examples like the videos still work with
+
+228
+00:22:06,960 --> 00:22:12,640
+all sorts of different character sheets location sheets and it's really just about you know
+
+229
+00:22:12,720 --> 00:22:17,840
+the idea and you piecing it together in in the final part because I've made I think all of my
+
+230
+00:22:17,840 --> 00:22:24,000
+videos pretty decent by just picking the right shots and the right music and them coming out good
+
+231
+00:22:24,000 --> 00:22:29,520
+right okay here is the location sheet that's actually not too bad I'm happy with that again
+
+232
+00:22:29,520 --> 00:22:35,600
+there are some unnecessary details here so like in an ideal world you develop your own location
+
+233
+00:22:35,600 --> 00:22:40,320
+prompt that works for you rather than doing it the messy way like I'm doing it because I don't
+
+234
+00:22:40,320 --> 00:22:45,680
+know whether we need color palette architectural style but if we look at that image and compare it
+
+235
+00:22:45,680 --> 00:22:50,000
+to what it's done off this I think it's done a pretty good job there of using that as an image
+
+236
+00:22:50,000 --> 00:22:53,760
+reference so we'll take that and then last but not least we're going to create a character sheet
+
+237
+00:22:53,760 --> 00:22:59,040
+please can you create me a character sheet of this character front side back close up the face
+
+238
+00:22:59,040 --> 00:23:03,520
+and the clothing right looking at the character sheet what is this done for me pretty good see like
+
+239
+00:23:03,520 --> 00:23:08,320
+this is this will be good enough I'm actually very happy that's a very good job there just looking
+
+240
+00:23:08,320 --> 00:23:12,800
+at continuity here trials look good boots look good I don't know what this is here but we'll take
+
+241
+00:23:12,800 --> 00:23:16,480
+you anything in your clothing where it has small details is usually where you're going to get
+
+242
+00:23:16,480 --> 00:23:21,680
+problems so like this here I would definitely want a shot like that on the character sheet because
+
+243
+00:23:21,680 --> 00:23:26,960
+otherwise it will get that wrong that is kind of too far away I in my opinion on the sheet for
+
+244
+00:23:26,960 --> 00:23:32,720
+it to know what that is but honestly I think we are good to go now and so I'm just going to use
+
+245
+00:23:33,360 --> 00:23:38,640
+runway because I've got some credits to use so we're going to go c launch 2.0 I'm going to go
+
+246
+00:23:38,640 --> 00:23:45,440
+fast because it's cheaper 16 by 9 15 seconds if you want to save more credits you can also go down
+
+247
+00:23:45,440 --> 00:23:51,040
+to 480 I've been absolutely rinsing credits or I've been actually generating at 480 because for
+
+248
+00:23:51,040 --> 00:23:55,920
+me and my use case all I'm doing is putting the video here a lot of people have said on my
+
+249
+00:23:55,920 --> 00:24:02,400
+Instagram are the differences between 480 and 720 and 1080 and 4K are all different but here's the
+
+250
+00:24:02,400 --> 00:24:07,680
+thing it doesn't matter what res model you're using if you're using a storyboard it is still going
+
+251
+00:24:07,680 --> 00:24:14,560
+to follow the storyboard yes the output might not be as good but you might just use it as a test so
+
+252
+00:24:14,560 --> 00:24:20,400
+I might just say I'm going to generate this storyboard in 480 because I simply just want to see
+
+253
+00:24:20,400 --> 00:24:25,840
+how the shots look like together how does the idea feel in a video okay this looks good I'm happy
+
+254
+00:24:25,840 --> 00:24:30,560
+with it I'm maybe now going to go to 720 and when I'm going to go to 1080 because I'm confident
+
+255
+00:24:30,560 --> 00:24:34,880
+these are the shots that I want if I'm like hmm I don't like this shot I don't like this shot or
+
+256
+00:24:34,880 --> 00:24:39,280
+do you know what this idea just doesn't work right so if we go back into here we're going to now
+
+257
+00:24:39,280 --> 00:24:48,160
+upload all of my image references in here so we've got image 1 character sheet image 2 the location
+
+258
+00:24:48,160 --> 00:24:53,680
+sheet image 3 the storyboard and I am just going to put in the most basic ask prompt here just to
+
+259
+00:24:53,680 --> 00:25:03,200
+show you that anybody can do it use image 1 which is the character sheet and image 2 which is
+
+260
+00:25:03,200 --> 00:25:11,920
+the location sheet to generate the storyboard in image 3 and I'm going to generate this I'm going
+
+261
+00:25:11,920 --> 00:25:17,200
+to generate a few of these just just to save time just to see how each of them changes so I've
+
+262
+00:25:17,200 --> 00:25:21,920
+generated 3 or 4 here you know I wouldn't do this if it was the first time I'm doing it and also
+
+263
+00:25:21,920 --> 00:25:26,800
+if you're conscious of credits again just generate the one idea but for sake of just this video
+
+264
+00:25:26,800 --> 00:25:33,440
+because 47 minutes in to recording this fuck my life I'm going to have to wait for these
+
+265
+00:25:33,440 --> 00:25:38,960
+generate and so while I wait for these to generate just in terms of like credit usage I use a number
+
+266
+00:25:38,960 --> 00:25:46,400
+of different platforms because I'll just be transparent I have part and access to to car long
+
+267
+00:25:46,480 --> 00:25:52,400
+social I get free credits across runway, artless, magnificent, it's still not actually paid for because
+
+268
+00:25:52,400 --> 00:25:58,320
+it was cheap I've got a good deal in terms of like which do I think is the best honestly they're all
+
+269
+00:25:58,320 --> 00:26:06,880
+very similar they all are just aggregators they all are just using the same models that have APIs
+
+270
+00:26:06,880 --> 00:26:12,560
+and pulling in those models some platforms sort of have fancier features but then they don't really
+
+271
+00:26:12,560 --> 00:26:18,080
+work that well and so if all you need access to is the image models and the video models you can
+
+272
+00:26:18,080 --> 00:26:24,080
+really use any platform to be honest they will all do the same job in that respect and so I would
+
+273
+00:26:24,080 --> 00:26:28,800
+recommend just go and looking at the pricing of all of them and just seeing whether they've got
+
+274
+00:26:28,800 --> 00:26:36,880
+any deals and just evaluating how much do image generations and video generations cost across
+
+275
+00:26:36,880 --> 00:26:42,000
+the different platforms I this is a whole different video in itself but that's what I would do you're
+
+276
+00:26:42,000 --> 00:26:48,560
+not really getting more for your money aside from how much it costs per video image when it comes to
+
+277
+00:26:48,560 --> 00:26:53,440
+like the other other platforms features some might people might disagree with that but as someone
+
+278
+00:26:53,440 --> 00:26:58,960
+that just purely does image and video generation if you want node based included in that
+
+279
+00:26:58,960 --> 00:27:04,560
+magnificent has that or you might want to use a separate one for that like weevee runway also has
+
+280
+00:27:04,560 --> 00:27:09,760
+a node based system and so like you know there are there are small nuance differences between each
+
+281
+00:27:09,760 --> 00:27:15,280
+platform but in my opinion as somebody that uses you know a number of different platforms just
+
+282
+00:27:15,280 --> 00:27:20,480
+look at the pricing and then just go for the what that is most affordable for you right so these
+
+283
+00:27:20,480 --> 00:27:25,120
+videos are starting to generate okay what are these going to look like so just off the bat here
+
+284
+00:27:25,120 --> 00:27:29,600
+not too bad continuity between each of the buildings let's just watch this one first
+
+285
+00:27:39,920 --> 00:27:53,920
+hey I don't think that that's too bad we've got the same we've got like multiple versions of the same
+
+286
+00:27:53,920 --> 00:28:00,160
+guy which I guess is a I might sort of would go back into the prompt and I would maybe just add
+
+287
+00:28:00,320 --> 00:28:02,160
+something into the prompt here to
+
+288
+00:28:11,520 --> 00:28:16,400
+um you can you see how like easy it was to generate a video like that like pretty decent
+
+289
+00:28:16,400 --> 00:28:20,720
+let's just look at the other ones now just for content how well is it like maintained what I've
+
+290
+00:28:20,720 --> 00:28:22,720
+asked for
+
+291
+00:28:35,840 --> 00:28:41,280
+so I love some shots from this one okay see like that part was sick
+
+292
+00:28:41,440 --> 00:28:51,600
+so I would 100% take that into the final video so like this video here I would probably take
+
+293
+00:28:51,600 --> 00:29:00,000
+that establishing shot I think it's better this one is good that one is good this one is decent
+
+294
+00:29:00,000 --> 00:29:10,400
+is let if we switch there to there and then switch to this one boom I like that one that's a good
+
+295
+00:29:10,400 --> 00:29:15,920
+final one so it's really about you just watching the videos and picking the best shots like
+
+296
+00:29:15,920 --> 00:29:21,840
+and and making sure like you maintain see like that weirdness head that shot that part is going
+
+297
+00:29:27,040 --> 00:29:31,520
+but in terms of location and how it's handled like the cut that the him is the main character
+
+298
+00:29:31,520 --> 00:29:33,920
+is great as you you can see that like
+
+299
+00:29:34,880 --> 00:29:41,760
+the actual people are all the same here so again I might try and prompt that to get rid of that but
+
+300
+00:29:43,600 --> 00:29:48,960
+I'm pretty happy with how that's come out and you can see it literally took no time for me to do
+
+301
+00:29:48,960 --> 00:29:53,440
+that I had my character and I could have picked any of these ideas you know and and I might go
+
+302
+00:29:53,440 --> 00:29:57,600
+back through these and go actually I want to do this or if I don't like any of these ideas I say
+
+303
+00:29:57,600 --> 00:30:02,320
+give me 10 more or if I've actually got an idea that would probably help and so you can really
+
+304
+00:30:02,400 --> 00:30:07,840
+just start with something or you can start with nothing you just need the character and I really
+
+305
+00:30:07,840 --> 00:30:14,080
+am happy that came out how it did because this is the bare bones most basic way of doing it and it's
+
+306
+00:30:14,080 --> 00:30:19,840
+still did as an alright result in my opinion if I wanted to make this better I would start with
+
+307
+00:30:19,840 --> 00:30:24,960
+my character and already have an idea and describe that idea in as much detail as possible get more
+
+308
+00:30:24,960 --> 00:30:30,320
+detail here I would probably spend more time on this storyboard here you can see here look that
+
+309
+00:30:30,320 --> 00:30:34,960
+the characters are different here and here but not really so I would maybe you just go back and
+
+310
+00:30:34,960 --> 00:30:39,280
+try and work on that the monsters are also a little bit different might want to put in a
+
+311
+00:30:39,280 --> 00:30:44,400
+actual monster character sheet as well that would probably make sense if they all look the same
+
+312
+00:30:44,400 --> 00:30:48,320
+so I would get the continuity could probably generate an image of all different people like
+
+313
+00:30:48,320 --> 00:30:53,040
+generate like an image with like 50 different peak faces on and it would probably do better and
+
+314
+00:30:53,040 --> 00:30:57,840
+that way you could get all of the continuity working before you've even gone through the video
+
+315
+00:30:57,920 --> 00:31:03,280
+location sheet the area looks bigger in the video but it's it's nailed all of this pretty well
+
+316
+00:31:03,280 --> 00:31:08,960
+so that I think is the video wrapped up this has been a long one but I really wanted to go into
+
+317
+00:31:08,960 --> 00:31:13,920
+depth and just show you the the process that I've been going through just be super transparent
+
+318
+00:31:13,920 --> 00:31:18,320
+with it just so that you can see actually it's not as difficult as you might think there are
+
+319
+00:31:18,320 --> 00:31:23,600
+loads of different methods and ways of of doing it but actually getting the end result all just
+
+320
+00:31:23,600 --> 00:31:29,600
+relies on you cherry picking and taste making the right shots from your video generation so that
+
+321
+00:31:29,600 --> 00:31:34,880
+you've got good consistency and continuity across them and then finding just good music to match
+
+322
+00:31:34,880 --> 00:31:38,880
+the vibe I hope it's been valuable if you have any questions drop in the comments more than happy
+
+323
+00:31:38,880 --> 00:31:43,680
+to do some more follow up videos on this but if not have a nice week and I'll see you in the next
+
+324
+00:31:43,680 --> 00:31:48,160
+video
+

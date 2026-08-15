@@ -1,0 +1,828 @@
+1
+00:00:00,000 --> 00:00:07,400
+Characters, we all love them, and while without them, we'd be just looking at pretty locations with no one in them, that's a screensaver.
+
+2
+00:00:07,400 --> 00:00:14,400
+And if you've been around the AI image and video space for a while, you'll know that consistent characters used to be quite a struggle.
+
+3
+00:00:14,400 --> 00:00:21,000
+Thankfully, those days are behind us, and now we've moved on to what's the best workflow for consistent characters.
+
+4
+00:00:21,000 --> 00:00:29,900
+There are a few of them that have been swirling around, so I thought that we would take today to look at some of the recent techniques to find out what's working and what's wasting your credits.
+
+5
+00:00:29,900 --> 00:00:34,900
+Alright, everyone, find your inner motivation, and three, two, one, scene.
+
+6
+00:00:34,900 --> 00:00:41,900
+You know, it's funny. Just a few years ago, it was basically witchcraft, to manage to get the same character in two generations.
+
+7
+00:00:41,900 --> 00:00:49,400
+We'd have to lock seeds, we had all kinds of face-swapping tricks, prompts both positive and negative, and even then it was a dice roll.
+
+8
+00:00:49,400 --> 00:00:55,400
+But of course, now we have character sheets, and banana, and gpt image 2, and a whole host of other tools available.
+
+9
+00:00:55,900 --> 00:01:05,400
+And now, of course, we can all have an endless library of characters at the ready, which of course does bring us to the topic of which character sheet is the best, or is there a best?
+
+10
+00:01:05,400 --> 00:01:12,400
+So as a quick note, today's video is sponsored by Recraft in as much that we will be working on Recraft today.
+
+11
+00:01:12,400 --> 00:01:17,400
+But as an important note, as always, anything that you pick up here can be done elsewhere.
+
+12
+00:01:17,400 --> 00:01:24,400
+Although I'll point out a few like Recraft specific things along the way, and of course we'll take a look at the wider platform at some point in the video.
+
+13
+00:01:24,400 --> 00:01:29,400
+I mean, they are sponsoring the video after all, but I like Recraft, and I think you will too.
+
+14
+00:01:29,400 --> 00:01:36,400
+So the first thing that you're going to want to do is come up to the corner here, and just make sure that you go down to theme, and turn this onto dark mode.
+
+15
+00:01:36,400 --> 00:01:41,400
+Because if there's anything to take away from this video, it's that only psychopaths use light mode.
+
+16
+00:01:41,400 --> 00:01:47,400
+So today, we're actually going to build up a new character, Flamethrower Girlfans, don't worry, she will make an appearance.
+
+17
+00:01:47,400 --> 00:01:55,400
+You know, over on Recraft, we have the usual suspects. We got Nana Banana Pro to GPT Image 2 as well.
+
+18
+00:01:55,400 --> 00:02:00,400
+And then, you know, fluxes down here. We have ideogram, Krea, C dream.
+
+19
+00:02:00,400 --> 00:02:03,400
+You know, yeah, again, all the usual suspects.
+
+20
+00:02:03,400 --> 00:02:08,400
+We'll check out Recraft V4.1, because actually is a pretty good image model.
+
+21
+00:02:08,400 --> 00:02:13,400
+And I'm not just saying that because they're sponsoring this video. I mean, it really is a good image model.
+
+22
+00:02:13,400 --> 00:02:19,400
+And I really do think that an important thing to think about is everyone starts using the same image models.
+
+23
+00:02:19,400 --> 00:02:23,400
+It's kind of a good, it's always a good idea to branch out and test other models.
+
+24
+00:02:23,400 --> 00:02:32,400
+And overall, I think it's just very important that since, you know, everything is now starting to get to the point where it filters into the top two or three video models.
+
+25
+00:02:32,400 --> 00:02:37,400
+Starting off with a different, more original base is probably a good idea.
+
+26
+00:02:37,400 --> 00:02:43,400
+So yeah, I'm playing around a little bit with Recraft V4.1. We started off with kind of a riff on Sniper Woman.
+
+27
+00:02:43,400 --> 00:02:51,400
+I wasn't completely in love with that. So then started moving into kind of like this, you know, apocalyptic, you know, punk rock kind of look.
+
+28
+00:02:51,400 --> 00:02:58,400
+Just sort of playing around and seeing what was going to catch my eye. At some point clearly, I decided that she was a redhead.
+
+29
+00:02:58,400 --> 00:03:06,400
+You know, we kind of kept going sort of in like a Mad Maxi and, you know, doomsday kind of scenario thing.
+
+30
+00:03:06,400 --> 00:03:11,400
+Until I started to land on like images like this as I was kind of playing around with props.
+
+31
+00:03:11,400 --> 00:03:19,400
+And then that started to hone us in into this character who I kind of ended up liking kind of the vampire monster hunter archetype.
+
+32
+00:03:19,400 --> 00:03:24,400
+We haven't really done that one before. I got to admit, I forgot how much fun it is to go splunking for characters.
+
+33
+00:03:24,400 --> 00:03:30,400
+This is iterating on visual ideas until something pops out at you and then your head just can't help but fill up with story ideas.
+
+34
+00:03:30,400 --> 00:03:37,400
+So in this case, presenting Mercy, named after Mercy Brown, a bit of niche vampire history.
+
+35
+00:03:37,400 --> 00:03:45,400
+As again, there was a real Mercy Brown who died of tuberculosis in 1892. But apparently the Rhode Island village that she was living in,
+
+36
+00:03:45,400 --> 00:03:50,400
+well, a bunch of people were dying of tuberculosis. So of course they concluded vampires.
+
+37
+00:03:50,400 --> 00:03:56,400
+I don't know how Mercy ended up getting blamed for this whole thing, but yeah, they ended up digging her up and then burning her heart and liver.
+
+38
+00:03:56,400 --> 00:04:04,400
+Oddly did not solve the tuberculosis problem. But apparently the story got to Brian Stoker and that's why we have the whole like stakes through the heart thing.
+
+39
+00:04:04,400 --> 00:04:11,400
+So thanks, Mercy. Anyhow, going back to our Mercy, of course, you know, we have this head on view of her.
+
+40
+00:04:11,400 --> 00:04:18,400
+And we can, you know, use Nana Banana or GPT image to create, you know, a back view and a three quarter view as well.
+
+41
+00:04:19,400 --> 00:04:28,400
+But one older trick that I do think is worth revisiting is if you head into video over up here, we have Grock, we still have Sora still in here.
+
+42
+00:04:28,400 --> 00:04:36,400
+Seedance, of course, is in here 2.0. You know, Highloo, you know, when, I mean, happy horse, anything that you want to use.
+
+43
+00:04:36,400 --> 00:04:41,400
+But basically, you know, you pick a video model and then the prompt is really just like the character turns around.
+
+44
+00:04:41,400 --> 00:04:45,400
+And we end up with, well, in Seedance here, I mean, we can call this perfect. It's actually like she's just rotating around.
+
+45
+00:04:45,400 --> 00:04:51,400
+We get some hair, like kind of blown in the wind there. But I think the important part here is that we are getting like this 360.
+
+46
+00:04:51,400 --> 00:04:58,400
+So the idea is, is to just, all you have to do is like screenshot, you know, various angles that you need.
+
+47
+00:04:58,400 --> 00:05:08,400
+I've always had this running theory that this method will actually get you more consistent outputs because, you know, essentially it's the model making up what's, you know, the various angles there.
+
+48
+00:05:08,400 --> 00:05:13,400
+And it's doing so for the model itself. So it knows what it knows.
+
+49
+00:05:13,400 --> 00:05:28,400
+At the end of the day, I do think that both methods work fine. Just, you know, you might want to keep that in your back pocket in case you're running into issues with things like, I mean, what commonly will happen, like, you know, mercy swords on her back, you know, move to the wrong side when you're trying to rotate around or anything like that.
+
+50
+00:05:28,400 --> 00:05:37,400
+So, you know, again, just something for your back pocket. And then if you are going the image edit route, this is the nano banana version of her, of course, base image here.
+
+51
+00:05:37,400 --> 00:05:44,400
+Very natural, you know, prompts here, just, you know, give me a show me the back angle of her, show me a three quarter angle.
+
+52
+00:05:44,400 --> 00:05:52,400
+I think this was like, show me another three quarter angle. And then for her close up, it was like literally just like, just show me a close up angle of the character's face.
+
+53
+00:05:52,400 --> 00:05:57,400
+From here, once you have, you know, sort of your, the versions, a couple of different angles on her.
+
+54
+00:05:57,400 --> 00:06:02,400
+Really, I mean, like, again, all you have to really do is just like screenshot it. And there's your character model.
+
+55
+00:06:02,400 --> 00:06:09,400
+Now, lately there has been kind of a new technique, I guess that basically says that what you should do is
+
+56
+00:06:09,400 --> 00:06:16,400
+block out the face of your character in your reference sheets, only have one face available.
+
+57
+00:06:16,400 --> 00:06:21,400
+So, actually, this being on Recraft actually makes it super easy since you've got these like tools over here.
+
+58
+00:06:21,400 --> 00:06:29,400
+So, we're just going to go ahead and lip sees each of them out. So, the idea being that you only have one face in your image.
+
+59
+00:06:29,400 --> 00:06:34,400
+And that whoops. And that helps, you don't want to, you don't want to block all of it out.
+
+60
+00:06:34,400 --> 00:06:41,400
+And that helps the model basically recognize that one face. Essentially, if you have multiple versions of the face in there,
+
+61
+00:06:41,400 --> 00:06:45,400
+that, you know, your video generator is going to get confused like whom I'm looking at.
+
+62
+00:06:45,400 --> 00:06:52,400
+So, let's screenshot this as well. And then now, so let's take both of these and roll them back to back.
+
+63
+00:06:52,400 --> 00:06:55,400
+So, the first one is with the non ovals.
+
+64
+00:07:10,400 --> 00:07:15,400
+I do love how all of the background characters in this shot are following the unwritten public transportation rule of
+
+65
+00:07:15,400 --> 00:07:19,400
+never make eye contact with anyone holding a sword.
+
+66
+00:07:19,400 --> 00:07:23,400
+Overall, though, I mean, pretty solid shot here, rock solid character consistency.
+
+67
+00:07:23,400 --> 00:07:26,400
+I did prompt in for that 360 for this reason.
+
+68
+00:07:26,400 --> 00:07:29,400
+And, I mean, we had a little bit of like hair blowing there at the end.
+
+69
+00:07:29,400 --> 00:07:32,400
+I don't know what that's just like seed ants being seed ants.
+
+70
+00:07:32,400 --> 00:07:38,400
+So, now taking our blocked out additional faces, image ref out for a shot, we end up same prompt again.
+
+71
+00:07:38,400 --> 00:07:40,400
+We end up with this.
+
+72
+00:07:49,400 --> 00:07:57,400
+See, I mean, overall, I don't know, personally, I don't see it.
+
+73
+00:07:57,400 --> 00:08:01,400
+Definitely let me know if you guys see any kind of discrepancy in the character.
+
+74
+00:08:01,400 --> 00:08:06,400
+Of course, we do get, you know, some changes in the actual like set itself and the camera movement.
+
+75
+00:08:06,400 --> 00:08:09,400
+You know, I think the 360 in the first version was a little better,
+
+76
+00:08:09,400 --> 00:08:15,400
+but that doesn't have anything to do with the character sheet that's, you know, that's just, again, seed ants being seed ants.
+
+77
+00:08:15,400 --> 00:08:21,400
+Now, that's not to say that the technique is not useful, you know, particularly in a case where you have like two characters, you know,
+
+78
+00:08:21,400 --> 00:08:26,400
+that possibly could cut down on like, you know, model bleed, essentially.
+
+79
+00:08:26,400 --> 00:08:30,400
+So, for example, here's an example that actually where it does work.
+
+80
+00:08:30,400 --> 00:08:33,400
+So, you're the new girl. What do you have there, swords?
+
+81
+00:08:33,400 --> 00:08:38,400
+I call them my instruments. Why? What do you use? Instruments.
+
+82
+00:08:38,400 --> 00:08:44,400
+We should start a band.
+
+83
+00:08:44,400 --> 00:08:47,400
+So, again, while I didn't have to deal with it in this particular output,
+
+84
+00:08:47,400 --> 00:08:51,400
+this is something where if we throw Flamethrower Girl in and Mercy in,
+
+85
+00:08:51,400 --> 00:08:56,400
+and you're starting to notice that the faces are kind of, the identities are getting flipped back and forth a little bit,
+
+86
+00:08:56,400 --> 00:09:01,400
+like that is where you might want to use sort of the blacked out oval technique.
+
+87
+00:09:01,400 --> 00:09:04,400
+So, the really interesting part that I wanted to explore here,
+
+88
+00:09:04,400 --> 00:09:08,400
+this is partially inspired by Zach London, aka Gossip Goblin,
+
+89
+00:09:08,400 --> 00:09:11,400
+his workflow that we looked at a few videos back,
+
+90
+00:09:11,400 --> 00:09:15,400
+and that's mostly by going first frame versus using Omni models.
+
+91
+00:09:15,400 --> 00:09:19,400
+And when you combine that with some of the reference ideas that we were looking at a minute ago,
+
+92
+00:09:19,400 --> 00:09:21,400
+the results are actually kind of surprising.
+
+93
+00:09:21,400 --> 00:09:25,400
+Let's hop into that before we do, let's set the stage with exploring a little on Recraft.
+
+94
+00:09:25,400 --> 00:09:28,400
+Now, I'll say if you have been following the channel for a bit,
+
+95
+00:09:28,400 --> 00:09:31,400
+you know that I am a pretty big fan of Recraft,
+
+96
+00:09:32,400 --> 00:09:37,400
+you know, I tend to think of Recraft as more of an image and design platform first,
+
+97
+00:09:37,400 --> 00:09:42,400
+although obviously as we have seen video elements have recently been added there.
+
+98
+00:09:42,400 --> 00:09:46,400
+But to me, its strength has always been in image and design exploration.
+
+99
+00:09:46,400 --> 00:09:52,400
+There are looks here, particularly with like the styles and obviously the ability to create your own styles,
+
+100
+00:09:52,400 --> 00:09:56,400
+that would be very difficult to prompt for basically anywhere else.
+
+101
+00:09:56,400 --> 00:10:00,400
+There are of course a number of like templates here that you will probably find very helpful,
+
+102
+00:10:00,400 --> 00:10:03,400
+especially if you're sort of in the like branding space.
+
+103
+00:10:03,400 --> 00:10:06,400
+And honestly, they've always been a very affordable platform.
+
+104
+00:10:06,400 --> 00:10:10,400
+I've been on the mid tier, I guess the $16 plan here, like forever now.
+
+105
+00:10:10,400 --> 00:10:15,400
+Recraft has always remained a back pocket tool for me.
+
+106
+00:10:15,400 --> 00:10:20,400
+And it's funny actually going back all the way to like my earliest generations on Recraft.
+
+107
+00:10:20,400 --> 00:10:24,400
+Yeah, this is funny, do not microwave fish.
+
+108
+00:10:24,400 --> 00:10:27,400
+I don't even remember generating that, but yes, don't microwave fish.
+
+109
+00:10:27,400 --> 00:10:31,400
+That's from two years ago, it still holds true, don't microwave fish.
+
+110
+00:10:31,400 --> 00:10:35,400
+But you know, one of the things that like a very early example here.
+
+111
+00:10:35,400 --> 00:10:39,400
+So it does, it does do like these illustrating, I don't know where our Vikings came from.
+
+112
+00:10:39,400 --> 00:10:42,400
+But it does do like these illustrating styles still very well.
+
+113
+00:10:42,400 --> 00:10:50,400
+But the one like I think big secret, secret kind of with Recraft is the fact that you can vectorize everything.
+
+114
+00:10:50,400 --> 00:10:56,400
+So this is more for like the illustrator folks out there and people that you know work with,
+
+115
+00:10:56,400 --> 00:10:58,400
+with vector graphics.
+
+116
+00:10:58,400 --> 00:11:03,400
+But yeah, I mean that is as famously as I every time that I cover this on Recraft,
+
+117
+00:11:03,400 --> 00:11:07,400
+I am awful with illustrator and vector graphics.
+
+118
+00:11:07,400 --> 00:11:13,400
+But to those that are very good at it, I mean this is a pretty big deal.
+
+119
+00:11:13,400 --> 00:11:16,400
+Now again, on the video side, is this going to be your all-in-one platform?
+
+120
+00:11:16,400 --> 00:11:18,400
+It is definitely not.
+
+121
+00:11:18,400 --> 00:11:21,400
+You know, if your video focused like a lot of us are, I think of this.
+
+122
+00:11:21,400 --> 00:11:25,400
+Like Recraft is a great secondary platform again to have in your back pocket.
+
+123
+00:11:25,400 --> 00:11:27,400
+On that note, sales pitch is done.
+
+124
+00:11:27,400 --> 00:11:30,400
+The link is down in the description if you want to check them out.
+
+125
+00:11:30,400 --> 00:11:33,400
+I mean, I encourage you to give him a shot for a month to see how it goes.
+
+126
+00:11:33,400 --> 00:11:34,400
+I like Recraft.
+
+127
+00:11:34,400 --> 00:11:39,400
+So as mentioned a few videos ago going over Zach Linden, aka Gossip Goblin's workflow,
+
+128
+00:11:39,400 --> 00:11:43,400
+he said that he doesn't use Omni models, which I thought was pretty interesting.
+
+129
+00:11:43,400 --> 00:11:49,400
+Instead, and again, if I got this correctly, they'll use like the four turnarounds of a character
+
+130
+00:11:49,400 --> 00:11:52,400
+and place them into scenes via nano-banana.
+
+131
+00:11:52,400 --> 00:11:58,400
+So for example, if we have a shot of like Mercy walking on a city street from behind,
+
+132
+00:11:58,400 --> 00:12:02,400
+what we use for the character reference there is the behind shot.
+
+133
+00:12:02,400 --> 00:12:05,400
+And then that shot is then animated via a video generator.
+
+134
+00:12:05,400 --> 00:12:08,400
+And in this case, because again, we're not using an Omni model,
+
+135
+00:12:08,400 --> 00:12:12,400
+the video generator has no idea of what that character's face looks like.
+
+136
+00:12:12,400 --> 00:12:15,400
+So we can't really, you know, have the camera do a 360.
+
+137
+00:12:15,400 --> 00:12:18,400
+Otherwise, it's going to be a completely different character.
+
+138
+00:12:18,400 --> 00:12:22,400
+So I thought it'd be interesting to see how that would all play with our characters.
+
+139
+00:12:22,400 --> 00:12:31,400
+By first generating up this kind of like, you know, street market, walled city kind of thing up in Recraft 4.1.
+
+140
+00:12:31,400 --> 00:12:39,400
+And then using GPT actually image 2 to place our character in, you know, via prompts.
+
+141
+00:12:39,400 --> 00:12:41,400
+And well, actually a brand new character as well.
+
+142
+00:12:41,400 --> 00:12:43,400
+And then just see how all of this came together.
+
+143
+00:12:43,400 --> 00:12:47,400
+So this is like a little short sequence created with, you know,
+
+144
+00:12:47,400 --> 00:12:50,400
+with no Omni reference.
+
+145
+00:12:59,400 --> 00:13:02,400
+You're not the first tonight.
+
+146
+00:13:04,400 --> 00:13:08,400
+Something took a girl. I need to find it.
+
+147
+00:13:08,400 --> 00:13:10,400
+Again, you're not the first tonight.
+
+148
+00:13:10,400 --> 00:13:15,400
+But I think you might be the one that will bring her home.
+
+149
+00:13:15,400 --> 00:13:17,400
+You'll need this.
+
+150
+00:13:17,400 --> 00:13:21,400
+You'll know why when it is time.
+
+151
+00:13:21,400 --> 00:13:24,400
+How much?
+
+152
+00:13:24,400 --> 00:13:28,400
+You'll pay on the way back.
+
+153
+00:13:28,400 --> 00:13:32,400
+Down the alley to the right.
+
+154
+00:13:32,400 --> 00:13:34,400
+Don't take the cross off.
+
+155
+00:13:34,400 --> 00:13:38,400
+So definitely a lot more work than doing it with an Omni mode.
+
+156
+00:13:38,400 --> 00:13:39,400
+I will say that.
+
+157
+00:13:39,400 --> 00:13:42,400
+But, you know, to be honest, I'm more pleased with the results.
+
+158
+00:13:42,400 --> 00:13:46,400
+You know, taking that sequence and running it in Omni.
+
+159
+00:13:52,400 --> 00:13:54,400
+You're standing in my light.
+
+160
+00:13:54,400 --> 00:13:56,400
+You're not the first tonight.
+
+161
+00:13:56,400 --> 00:13:59,400
+Something took a girl.
+
+162
+00:13:59,400 --> 00:14:01,400
+I need to find it.
+
+163
+00:14:01,400 --> 00:14:05,400
+Again, you're not the first tonight.
+
+164
+00:14:05,400 --> 00:14:10,400
+But I think you might be the one that will bring her home.
+
+165
+00:14:10,400 --> 00:14:12,400
+You'll need this.
+
+166
+00:14:12,400 --> 00:14:15,400
+You'll know why when it is time.
+
+167
+00:14:18,400 --> 00:14:19,400
+How much?
+
+168
+00:14:19,400 --> 00:14:22,400
+You'll pay on the way back.
+
+169
+00:14:22,400 --> 00:14:24,400
+Down the alley to the right.
+
+170
+00:14:24,400 --> 00:14:27,400
+Don't take the cross off.
+
+171
+00:14:31,400 --> 00:14:33,400
+And like, look, I'm not saying that that's bad.
+
+172
+00:14:33,400 --> 00:14:35,400
+I actually do think that that's okay as well.
+
+173
+00:14:35,400 --> 00:14:38,400
+You know, again, I think it's just you take a little more pride in the one that you
+
+174
+00:14:38,400 --> 00:14:41,400
+individually, you know, set up each shot for.
+
+175
+00:14:41,400 --> 00:14:45,400
+Now, I probably should note that there are some slight variations, in my opinion,
+
+176
+00:14:45,400 --> 00:14:51,400
+in the Omni Reft version of Mercy versus the single, like, the first frame version of her.
+
+177
+00:14:51,400 --> 00:14:55,400
+So that is something that you might want to consider as well.
+
+178
+00:14:55,400 --> 00:14:59,400
+So again, if you're interested in giving this technique a shot, you know,
+
+179
+00:14:59,400 --> 00:15:03,400
+where you're actually legitimately going through and, you know, creating all of your frames,
+
+180
+00:15:03,400 --> 00:15:06,400
+I get, you know, recrafts a great place to give a shot.
+
+181
+00:15:06,400 --> 00:15:09,400
+There is video here as well, as we saw earlier.
+
+182
+00:15:09,400 --> 00:15:14,400
+You know, the, let's say, all of your requisite, you know, video models are here.
+
+183
+00:15:14,400 --> 00:15:19,400
+So you can do it on platform here, or you can just use it, essentially, as, again,
+
+184
+00:15:19,400 --> 00:15:23,400
+as your image, you know, workshop, essentially.
+
+185
+00:15:23,400 --> 00:15:26,400
+To make matters a little bit easier, because I will say, again,
+
+186
+00:15:26,400 --> 00:15:29,400
+setting up all of your shots can take a little bit of time.
+
+187
+00:15:29,400 --> 00:15:33,400
+They do have their agentic chat over here as well.
+
+188
+00:15:33,400 --> 00:15:36,400
+So that, you know, utilize that if, if you need.
+
+189
+00:15:36,400 --> 00:15:40,400
+I mean, I definitely take advantage of it, especially when your project starts
+
+190
+00:15:40,400 --> 00:15:42,400
+sprawling out to a lot of images.
+
+191
+00:15:42,400 --> 00:15:45,400
+There's just a lot of testing throughout the course of this.
+
+192
+00:15:45,400 --> 00:15:49,400
+Ultimately, at the end of the day, as far as like the question at the beginning of this video,
+
+193
+00:15:49,400 --> 00:15:52,400
+which, you know, character or model sheet should you use.
+
+194
+00:15:52,400 --> 00:15:56,400
+I mean, to be honest, it kind of seems like they all kind of work.
+
+195
+00:15:56,400 --> 00:16:00,400
+Seedance is smart enough to know what you're asking for.
+
+196
+00:16:00,400 --> 00:16:04,400
+Really, at the end of the day, I mean, the challenge is not what model sheet to use.
+
+197
+00:16:04,400 --> 00:16:06,400
+It's like, just make interesting characters.
+
+198
+00:16:06,400 --> 00:16:09,400
+For example, Mercy here might not be your complete cup of tea,
+
+199
+00:16:09,400 --> 00:16:12,400
+but I really can't wait to find out what's going on with this wooden goblet.
+
+200
+00:16:12,400 --> 00:16:14,400
+There is definitely a story there.
+
+201
+00:16:14,400 --> 00:16:17,400
+So we'll definitely be seeing more of her to find out.
+
+202
+00:16:17,400 --> 00:16:21,400
+Hey, my thanks to Recraft for sponsoring today's experiment and video.
+
+203
+00:16:21,400 --> 00:16:23,400
+Again, link to Recraft is down below.
+
+204
+00:16:23,400 --> 00:16:25,400
+I've been with them for two years.
+
+205
+00:16:25,400 --> 00:16:27,400
+You know, give them a shot for a month.
+
+206
+00:16:27,400 --> 00:16:28,400
+See what ends up happening.
+
+207
+00:16:28,400 --> 00:16:31,400
+As always, I thank you for watching. My name is Tim.
+

@@ -38,8 +38,11 @@ from image_generation import generate_image
 
 POV_LOCK_CLAUSE = (
     "Strict first-person POV: the camera IS the character's own eyes, exactly like a body-worn "
-    "camera — the character's own face must never be visible in frame. Only their hands, forearms, "
-    "and body from the chest down are visible, matching what they themselves would actually see."
+    "camera. Never show what is physically impossible for the character's own eyes to see: their "
+    "own face, the back of their own head, their own shoulder, or their own back. Whether hands, "
+    "forearms, or legs are visible depends entirely on what this specific scene's action and gaze "
+    "direction actually show — describe exactly what the character would see doing this specific "
+    "action, never a fixed default set of body parts."
 )
 
 

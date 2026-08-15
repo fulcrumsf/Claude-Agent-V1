@@ -1,0 +1,296 @@
+1
+00:00:00,000 --> 00:00:07,520
+this video got 11 million views and 30,000 followers in three days and today I'm breaking down
+
+2
+00:00:07,520 --> 00:00:13,280
+exactly how I made it hi I'm Karima and today I'm finally giving you guys the tutorial you've
+
+3
+00:00:13,280 --> 00:00:21,200
+been asking for by the end of this video you will be able to create your own viral ideas too
+
+4
+00:00:21,200 --> 00:00:25,760
+one thing before I start though I'm not handing you a script to go copy word for word
+
+5
+00:00:25,760 --> 00:00:30,960
+that's not the point I want to bring you with me into my creative space and show you the
+
+6
+00:00:30,960 --> 00:00:36,400
+fundamentals so you can build your own version with your own creative idea okay this is all time
+
+7
+00:00:36,400 --> 00:00:41,520
+here's the whole shape of it for steps so step one this is a part people skip when they picture
+
+8
+00:00:41,520 --> 00:00:47,760
+AI videos there's actually a real physically filmed moment underneath the whole thing all you have
+
+9
+00:00:47,760 --> 00:00:53,600
+to do is just pick up your phone and record yourself opening the door and you stepping out of it
+
+10
+00:00:53,600 --> 00:00:58,720
+we need a real video because we'll be generating video to video I'll explain later what that
+
+11
+00:00:58,720 --> 00:01:03,280
+means one thing to keep in mind is that it is important for the lighting to be sufficient so your
+
+12
+00:01:03,280 --> 00:01:08,320
+face and body are fully visible step two now we have to look for the world or aesthetic we want
+
+13
+00:01:08,320 --> 00:01:15,280
+to teleport into honestly I get most of my inspirations from Pinterest I absolutely love this up so
+
+14
+00:01:15,280 --> 00:01:25,360
+I just search up let's say fantasy world or dream core world and here are some of the references
+
+15
+00:01:25,360 --> 00:01:31,200
+I found well I chose this one it felt like the most magical one among them and now that we have
+
+16
+00:01:31,200 --> 00:01:36,400
+a real footage and an inspiration we can finally move on to the prompting part step three writing
+
+17
+00:01:36,400 --> 00:01:41,280
+the prompt and here's the part that's so simple it feels like cheating I never write my prompts
+
+18
+00:01:42,080 --> 00:01:49,360
+we all have AI chatbots on our phones so I just go to clod you can use chat jpd Gemini whatever
+
+19
+00:01:49,360 --> 00:01:57,200
+drop in the reference image and basically say I've got a video of me opening a door in my house
+
+20
+00:01:57,200 --> 00:02:08,480
+plus a separate photo of a location that photo should show up on the other side of the door
+
+21
+00:02:09,440 --> 00:02:18,480
+don't change anything about the original video right when the door opens show the location from
+
+22
+00:02:18,480 --> 00:02:28,320
+the photo on the other side like the door is portal and that's the moment I step through and start
+
+23
+00:02:29,280 --> 00:02:38,960
+hmm running around add a little breeze add a light breeze right as a door opens to
+
+24
+00:02:39,840 --> 00:02:50,480
+just enough to move my hair and clothes a bit plus some soft sunlight coming through
+
+25
+00:02:50,480 --> 00:02:55,680
+this is a prompt cloud replied with it gave me a detailed breakdown of each scene starting from
+
+26
+00:02:55,680 --> 00:03:01,200
+the moment when I stand in the doorway how the door opens and what happens in the background
+
+27
+00:03:01,200 --> 00:03:06,160
+and this is the habit that actually matters I don't just say she walks through a door into a fantasy
+
+28
+00:03:06,160 --> 00:03:13,280
+world I go scene by scene door opens show the location then she steps through I even describe how
+
+29
+00:03:13,280 --> 00:03:18,640
+the camera should behave and write all of that talking to clod in plain simple sentences the way
+
+30
+00:03:18,640 --> 00:03:24,080
+I normally would talk as you can see it even gave me a negative prompt a negative prompt is basically
+
+31
+00:03:24,080 --> 00:03:29,680
+what the video should not look like and what it should not generate if you want my specific prompts
+
+32
+00:03:29,680 --> 00:03:34,640
+no problem I will attach the notion guide in the description below now that we have the prompt we
+
+33
+00:03:34,640 --> 00:03:40,560
+can finally proceed with actually creating the video with AI so step four video generation if you
+
+34
+00:03:40,560 --> 00:03:46,080
+follow me on instagram you might have noticed that I used Hicksfield AI in most of my works I will leave
+
+35
+00:03:46,080 --> 00:03:50,720
+the link in the description below sign up if you don't have an account it may seem a little bit
+
+36
+00:03:50,720 --> 00:03:56,080
+confusing in the beginning but I promise you it's actually very simple in the top part there are
+
+37
+00:03:56,080 --> 00:04:01,920
+a bunch of different tools but since we're going to generate a video click on video right here
+
+38
+00:04:01,920 --> 00:04:05,840
+the first thing you should do is input your assets that we have prepared just a while ago
+
+39
+00:04:05,840 --> 00:04:12,640
+it is your original footage and your location reference so you click on a put media right here
+
+40
+00:04:13,360 --> 00:04:18,400
+input your assets and wait for a couple of seconds while it passes it through eligibility check
+
+41
+00:04:18,480 --> 00:04:25,520
+okay after it was accepted tap on it then go back to God copy and paste your prompts into the
+
+42
+00:04:25,520 --> 00:04:31,520
+prompt box right here quick practical stuff before we move on there's a sound effect toggle so
+
+43
+00:04:31,520 --> 00:04:37,200
+make sure to use it these are the actual sound effects you can also pick your aspect ratio
+
+44
+00:04:37,760 --> 00:04:45,600
+critical or horizontal depending on what platform you need and for quality 180 works fine but
+
+45
+00:04:45,600 --> 00:04:52,240
+I always work with 4k it's just worth it if you can right below you can choose which model to
+
+46
+00:04:52,240 --> 00:04:58,560
+generate with I went for CDNZ 2.0 for this one for a pretty specific reason it's considered to
+
+47
+00:04:58,560 --> 00:05:04,880
+be the best model out there for video generation really good at understanding capture emotions
+
+48
+00:05:04,880 --> 00:05:11,280
+and camera movement and great capturing the overall feel you're going for plus you can input
+
+49
+00:05:11,440 --> 00:05:17,440
+full raw footage directly so as I've mentioned before we're generating video to video which means
+
+50
+00:05:17,440 --> 00:05:24,640
+we add AI generations on top of raw footage and CDNZ 2.0 is the perfect choice for this case okay hit
+
+51
+00:05:24,640 --> 00:05:30,880
+the generate button right here and while we wait a few things I learned the hard way that I wish
+
+52
+00:05:30,880 --> 00:05:36,960
+someone told me earlier don't batch a huge pile of generations right away batching just means
+
+53
+00:05:36,960 --> 00:05:43,200
+running multiple generations at once generate one first actually take a look at it if the camera
+
+54
+00:05:43,200 --> 00:05:49,280
+move feels right if the way your characters actions feel right then batch a few generations not
+
+55
+00:05:49,280 --> 00:05:55,600
+before it for example in my case the result I got from my first pond felt a bit off because my hair
+
+56
+00:05:55,600 --> 00:06:00,480
+didn't feel like it was moving naturally I wanted it to feel like there was a certain breeze at
+
+57
+00:06:00,480 --> 00:06:06,560
+the other side of the door and I also realized that CDNZ added a bit of a zoom in so what I did
+
+58
+00:06:06,640 --> 00:06:13,200
+is I go back to caught and ask it to edit my previous prompt a bit so here's what I said
+
+59
+00:06:13,200 --> 00:06:23,600
+know what I need is when she opens the door there should be a breeze so that her hair sways and the
+
+60
+00:06:23,600 --> 00:06:35,040
+camera must be static no zoons I need it so that when she opens the door a light breeze blows and
+
+61
+00:06:35,040 --> 00:06:47,040
+there are sun rays it needs to be really realistic send okay that gave me a new prompt so I go back
+
+62
+00:06:47,040 --> 00:06:52,800
+to hex hold paste it and hit generate while we wait for it to finish generating here's to think
+
+63
+00:06:52,800 --> 00:06:58,640
+people get wrong about AI and creativity they think using AI means you're handing over the creative
+
+64
+00:06:58,640 --> 00:07:03,680
+part AI is not taking over the role of being the artist it didn't come up with idea it is only
+
+65
+00:07:03,680 --> 00:07:10,720
+tool I use to bring my creative ideas to life just like a paintbrush in an artist's hand okay
+
+66
+00:07:10,720 --> 00:07:20,240
+let's watch this one more time
+
+67
+00:07:27,360 --> 00:07:33,360
+now that I have no more comments to make regarding the prompt I can batch a couple more times
+
+68
+00:07:33,360 --> 00:07:38,880
+and choose the version which I think is the best also here are some other styles I have recreated
+
+69
+00:07:38,880 --> 00:07:46,320
+with this idea feel free to experiment and create your own unique versions now you know it's a real
+
+70
+00:07:46,320 --> 00:07:52,640
+door a real phone footage a Pinterest image and one conversation with clot 11 million people
+
+71
+00:07:52,640 --> 00:07:58,560
+watch that and had no idea it was that simple blank and my prompts I'll attach them in the description
+
+72
+00:07:58,560 --> 00:08:03,840
+of this video you can easily make any of your ideas come true feel free to experiment in tag
+
+73
+00:08:03,840 --> 00:08:09,280
+menu works if there's a specific video on my Instagram you can want to broken down like this
+
+74
+00:08:09,280 --> 00:08:15,360
+let me know in the comments below and if you want more tutorials safe like and subscribe for more
+

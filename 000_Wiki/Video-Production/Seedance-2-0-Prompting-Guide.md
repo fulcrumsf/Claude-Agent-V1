@@ -33,6 +33,9 @@ Use this as the main prompt-writing reference when Tony is building cinematic AI
 - [[Prompt-Best-Practices]]
 - [[Cinematic-Styles]]
 - [[Video-Production-Workflow]]
+- [[Seedance-Character-Environment-Consistency-Workflows]] — reference-sheet + hallucination-fix workflows for Seedance 2.0/2.5
+- [[Storyboards-To-Consistent-Videos-Using-Seedance-2.0]] — storyboard + character/location sheet consistency workflow
+- [[The-Secret-To-AI-Character-Sheets]] — comparison of character-sheet consistency methods
 - [[007_Resource_Library/Tutorials/Higgsfield-Video-Pipeline/Higgsfield-Video-Pipeline.md]]
 - [[007_Resource_Library/Prompts/Seedance-2-0-Complete-Prompting-Guide-Full-Prompt-Library.md]]
 - [[007_Resource_Library/Prompts/Seedance-2-0-Complete-Prompting-Master-Guide.md]]

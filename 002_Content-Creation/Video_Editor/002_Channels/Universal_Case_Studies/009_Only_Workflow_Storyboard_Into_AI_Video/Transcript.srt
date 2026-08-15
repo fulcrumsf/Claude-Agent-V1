@@ -1,0 +1,752 @@
+1
+00:00:00,000 --> 00:00:04,000
+This entire AI animation sequence came from one image.
+
+2
+00:00:04,000 --> 00:00:10,000
+You can now take a single storyboard and use AI to transform it into an entire video.
+
+3
+00:00:10,000 --> 00:00:17,000
+Forget about generating every shot separately, tweaking dozens of prompts or burning true credits.
+
+4
+00:00:17,000 --> 00:00:19,000
+Here's the thing, nobody tells you.
+
+5
+00:00:19,000 --> 00:00:23,000
+Storyboards aren't required to make good AI videos.
+
+6
+00:00:23,000 --> 00:00:27,000
+So, why do I use one for every single film I make?
+
+7
+00:00:27,000 --> 00:00:31,000
+Because a storyboard is the cheapest preview that exists.
+
+8
+00:00:31,000 --> 00:00:41,000
+One image shows you exactly how your video will translate and look like, composition, characters, flow, before you spend a single video generation credit.
+
+9
+00:00:41,000 --> 00:00:47,000
+And used correctly, this completely changes the speed at which you can prototype ideas.
+
+10
+00:00:47,000 --> 00:00:51,000
+Create short terms, product ads and social media content.
+
+11
+00:00:51,000 --> 00:00:54,000
+I made my last 15 AI films this way.
+
+12
+00:00:54,000 --> 00:00:57,000
+In this video, I will teach you the entire workflow.
+
+13
+00:00:57,000 --> 00:01:00,000
+How to generate storyboards AI actually understands.
+
+14
+00:01:00,000 --> 00:01:03,000
+The skill file that runs it, free in the description.
+
+15
+00:01:03,000 --> 00:01:08,000
+And at the end, how I made the most painful part of this workflow disappear.
+
+16
+00:01:08,000 --> 00:01:14,000
+By training an AI agent to do it for me, this AI animation is called the Hell Library.
+
+17
+00:01:14,000 --> 00:01:18,000
+Idea is the Hell is a giant, large, massive library.
+
+18
+00:01:18,000 --> 00:01:23,000
+And your task, when you die, is to find the book of your life logs.
+
+19
+00:01:23,000 --> 00:01:28,000
+And there are billions of books, so it is a hellish job to find your own book.
+
+20
+00:01:28,000 --> 00:01:34,000
+And there are many different books with just gibberish on them, so it is a difficult task.
+
+21
+00:01:34,000 --> 00:01:36,000
+And this is the background of the story.
+
+22
+00:01:36,000 --> 00:01:38,000
+And here are the characters.
+
+23
+00:01:38,000 --> 00:01:41,000
+For Wayfairer character, I actually use my own face.
+
+24
+00:01:41,000 --> 00:01:44,000
+This prompt creates fantastic character sheets.
+
+25
+00:01:44,000 --> 00:01:49,000
+In the style of a concept art, like a high-end AAA game production design board.
+
+26
+00:01:49,000 --> 00:01:53,000
+And for the main monster, I have this character, it's called Codex.
+
+27
+00:01:53,000 --> 00:01:57,000
+And I have some location references for Hell Library.
+
+28
+00:01:57,000 --> 00:02:03,000
+Then I have a very rough script, few notes that it was in my mind just to ensure that
+
+29
+00:02:03,000 --> 00:02:08,000
+I have a clear understanding of the flow and what I'm building basically.
+
+30
+00:02:08,000 --> 00:02:11,000
+This PDF file you see on screen is called Bible.
+
+31
+00:02:11,000 --> 00:02:14,000
+This is an AI filmmaking visual guide.
+
+32
+00:02:14,000 --> 00:02:17,000
+It has details about my production workflow.
+
+33
+00:02:17,000 --> 00:02:21,000
+I'm particularly interested in a certain production workflow.
+
+34
+00:02:21,000 --> 00:02:25,000
+I create character sheets, then I create a cinematic storyboard grid,
+
+35
+00:02:25,000 --> 00:02:28,000
+and then I generate videos using C-Dance 2.
+
+36
+00:02:28,000 --> 00:02:31,000
+And this is the workflow I want agents to follow.
+
+37
+00:02:31,000 --> 00:02:33,000
+And that's why this Bible is really important.
+
+38
+00:02:33,000 --> 00:02:37,000
+What it does is it contains my whole prompting style.
+
+39
+00:02:37,000 --> 00:02:40,000
+For example, how to create a reference sheet, right?
+
+40
+00:02:40,000 --> 00:02:43,000
+You have here a very detailed prompt template.
+
+41
+00:02:43,000 --> 00:02:47,000
+And let's say you want to create a cinematic storyboard grid.
+
+42
+00:02:47,000 --> 00:02:52,000
+It can be used for Nanobanana Pro, GPT-Much2, a variety of different models.
+
+43
+00:02:52,000 --> 00:02:59,000
+And our output here will be a cinematic storyboard that we will use in the creation of our AI animation.
+
+44
+00:02:59,000 --> 00:03:02,000
+I have a very specific annotation strip format.
+
+45
+00:03:02,000 --> 00:03:08,000
+So in every grid I have camera movements, subjects action, or movement of subject,
+
+46
+00:03:08,000 --> 00:03:10,000
+and overall mood of the frame.
+
+47
+00:03:10,000 --> 00:03:14,000
+These are really important for AI filmmaking and AI animation making.
+
+48
+00:03:14,000 --> 00:03:18,000
+So all of my grids will include strong annotation striplets.
+
+49
+00:03:18,000 --> 00:03:21,000
+And this is also part of the Bible already.
+
+50
+00:03:21,000 --> 00:03:27,000
+And this is what you see on the screen is the full template to create a storyboard sheet in 3x3 grid format.
+
+51
+00:03:27,000 --> 00:03:32,000
+Total 9 panels and we have all the details like character descriptions,
+
+52
+00:03:32,000 --> 00:03:36,000
+the style, and of course detailed description of every panel.
+
+53
+00:03:36,000 --> 00:03:39,000
+It's an overarching format that we want agents to use.
+
+54
+00:03:39,000 --> 00:03:44,000
+Of course, we want to fill this up every single time while we are creating our AI animation.
+
+55
+00:03:44,000 --> 00:03:46,000
+This will be agent's job.
+
+56
+00:03:46,000 --> 00:03:49,000
+And additionally, I have very detailed CDANCE 2 templates.
+
+57
+00:03:49,000 --> 00:03:54,000
+I may start with a simple variant where it's just a text to video, right?
+
+58
+00:03:54,000 --> 00:03:59,000
+And we can of course add character sheets here and directly start from there.
+
+59
+00:03:59,000 --> 00:04:04,000
+Or as I will show you in this video, you can start with a storyboard grid as a main reference.
+
+60
+00:04:04,000 --> 00:04:10,000
+And then we can just say use the provided cinematic storyboard grid as the main visual and motion reference,
+
+61
+00:04:10,000 --> 00:04:13,000
+create a 15 second cinematic sequence, right?
+
+62
+00:04:13,000 --> 00:04:21,000
+Many people ask me here, okay, Jihan, this is good that I use my storyboard as a main reference on CDANCE 2.
+
+63
+00:04:21,000 --> 00:04:27,000
+But output in the end, how my characters look, they look really pixelated and they don't look really consistent
+
+64
+00:04:27,000 --> 00:04:30,000
+because when you think about it, it's a cinematic storyboard.
+
+65
+00:04:30,000 --> 00:04:34,000
+You have the character there, but it's a small panel, it's a very small frame.
+
+66
+00:04:34,000 --> 00:04:37,000
+So details of the character is not really visible.
+
+67
+00:04:37,000 --> 00:04:42,000
+For this problem, I recommend using character sheets and storyboard grid together.
+
+68
+00:04:42,000 --> 00:04:48,000
+So as you can see, first job, we add mesh in our character sheet and character one is locked.
+
+69
+00:04:48,000 --> 00:04:53,000
+Then we do the same thing for character two or three, doesn't matter how many characters we have.
+
+70
+00:04:53,000 --> 00:05:00,000
+In the end, we still add our storyboard to our CDANCE 2 prompts, but we have the consistent character already locked.
+
+71
+00:05:00,000 --> 00:05:07,000
+So CDANCE 2 uses storyboard just for the storyflow and for characters, it actually uses still the character sheets.
+
+72
+00:05:07,000 --> 00:05:10,000
+Now I'm going to show you the core workflow.
+
+73
+00:05:10,000 --> 00:05:14,000
+This AI animation was made using in video agent one.
+
+74
+00:05:14,000 --> 00:05:17,000
+This is the first complete AI production system.
+
+75
+00:05:17,000 --> 00:05:24,000
+It's not a fragmented tool, it's a single workflow where you can directly talk to your agent in the creation process.
+
+76
+00:05:24,000 --> 00:05:31,000
+We saw similar examples before in the ecosystem already, but this is some cool advantages.
+
+77
+00:05:31,000 --> 00:05:36,000
+So we switch to agent mode, I just say I want to create an animation.
+
+78
+00:05:36,000 --> 00:05:39,000
+Really simple, high-level start.
+
+79
+00:05:39,000 --> 00:05:44,000
+I will create a new project, let's say animation, hit create project.
+
+80
+00:05:44,000 --> 00:05:47,000
+Now here our agent is created.
+
+81
+00:05:47,000 --> 00:05:52,000
+I will give our agent a simple name, you are animation maker agent.
+
+82
+00:05:52,000 --> 00:05:58,000
+So this whole workflow I just walked you through, GPT image storyboard, the CDANCE shots.
+
+83
+00:05:58,000 --> 00:06:05,000
+There's one part I really don't like and that's retyping same character description into every single prompt.
+
+84
+00:06:05,000 --> 00:06:10,000
+I want to keep the same world, same character, same look over and over consistent.
+
+85
+00:06:10,000 --> 00:06:15,000
+I don't want to reattach the same references over and over again to every prompt.
+
+86
+00:06:15,000 --> 00:06:18,000
+So that's why in video agent one is really powerful.
+
+87
+00:06:18,000 --> 00:06:21,000
+What is different here is you don't really prompt stuff.
+
+88
+00:06:21,000 --> 00:06:24,000
+You train the agent and agent prompt stuff for you.
+
+89
+00:06:24,000 --> 00:06:31,000
+So I'm dropping this Bible, the AI filmmaking Bible directly into agent one.
+
+90
+00:06:31,000 --> 00:06:38,000
+I'm simply saying, first of all, I'm adding a Bible, I want you to read and understand my prompting style for these tools.
+
+91
+00:06:38,000 --> 00:06:41,000
+I'm training the agent, that's a different workflow.
+
+92
+00:06:41,000 --> 00:06:47,000
+It says my visual language, my animation style and my prompting techniques into something called context.
+
+93
+00:06:47,000 --> 00:06:51,000
+Then it asks, give me the story and characters when you are ready.
+
+94
+00:06:51,000 --> 00:06:57,000
+Now I'm gonna give my character sheets and I will attach here directly into agent one.
+
+95
+00:06:57,000 --> 00:07:02,000
+Then I add the story background, what's happening in the story and this becomes the source of truth.
+
+96
+00:07:02,000 --> 00:07:07,000
+Now until the end of project, I don't need to attach my character reference ever again.
+
+97
+00:07:07,000 --> 00:07:12,000
+After understanding my characters, then it asks me a very specific question.
+
+98
+00:07:12,000 --> 00:07:17,000
+The style register, it wants to lock the consistent style and this is really important.
+
+99
+00:07:17,000 --> 00:07:21,000
+It asks me, are you thinking more of a 3D or 2D style?
+
+100
+00:07:21,000 --> 00:07:26,000
+I attached here a bunch of style references to improve the context further.
+
+101
+00:07:26,000 --> 00:07:30,000
+So agent one understands my animation style much better.
+
+102
+00:07:30,000 --> 00:07:35,000
+Keep in mind that you can add these visual reference styles directly into your Bible as well.
+
+103
+00:07:35,000 --> 00:07:38,000
+So then you don't need to attach it later again.
+
+104
+00:07:38,000 --> 00:07:42,000
+Now it memorizes my style and what I need.
+
+105
+00:07:42,000 --> 00:07:50,000
+Then it asks, hey, do you want me to start with the whole arc seen by scene or jump straight into codex fight as proof of concept?
+
+106
+00:07:50,000 --> 00:07:55,000
+I can first generate the fight scene because that's like the climax of this mini short story.
+
+107
+00:07:55,000 --> 00:08:00,000
+Then if I'm happy with it, I can generate beginning of the story and end of the story.
+
+108
+00:08:00,000 --> 00:08:05,000
+So I say let's start on the fight scene and I want long continuous proof of concept.
+
+109
+00:08:05,000 --> 00:08:10,000
+I want not just one grid, I want three storyboards, I want a long fight sequence.
+
+110
+00:08:10,000 --> 00:08:13,000
+It understands and creates the task for me.
+
+111
+00:08:13,000 --> 00:08:18,000
+Three storyboard grid for this fight scene we are waiting from the agent one.
+
+112
+00:08:18,000 --> 00:08:23,000
+And it separates fight sequence into smaller arcs like a really smart filmmaker.
+
+113
+00:08:23,000 --> 00:08:30,000
+From this point on, it understands what I need exactly and starts generating my storyboards.
+
+114
+00:08:30,000 --> 00:08:33,000
+It generated this first storyboard and that's the cool thing.
+
+115
+00:08:33,000 --> 00:08:38,000
+You can also see all the assets on the right side of the chat so it's highly visual.
+
+116
+00:08:38,000 --> 00:08:41,000
+I look at the storyboard and the flow of the story.
+
+117
+00:08:41,000 --> 00:08:48,000
+If I'm not happy, I can ask model to change certain frames, maybe change position of the character or action,
+
+118
+00:08:48,000 --> 00:08:51,000
+which is happening in the frame, which is really conversational.
+
+119
+00:08:51,000 --> 00:08:56,000
+As you can see, it perfectly understood my style of storyboarding.
+
+120
+00:08:56,000 --> 00:09:01,000
+It has camera work, character movement and style under every frame, which is really cool.
+
+121
+00:09:01,000 --> 00:09:06,000
+When you look at the storyboard prompt, it perfectly copy-pasted my prompting style.
+
+122
+00:09:06,000 --> 00:09:16,000
+It took directly from the Bible I provided and not just that, but it also attached the character references I asked model to remember.
+
+123
+00:09:16,000 --> 00:09:18,000
+Highly intelligent model.
+
+124
+00:09:18,000 --> 00:09:23,000
+After generating all storyboards, I'm happy with the result and flow of the fight sequence.
+
+125
+00:09:23,000 --> 00:09:31,000
+Now I didn't waste any cdans to credit so far and I have an oversight of what kind of sequence this will look like.
+
+126
+00:09:31,000 --> 00:09:36,000
+I can finally say start generating videos and you know my cdans to prompting style.
+
+127
+00:09:36,000 --> 00:09:45,000
+Since model knows my cdans to prompting style, here I don't need to actually write or copy paste any prompting template from anywhere.
+
+128
+00:09:45,000 --> 00:09:54,000
+So it jumps into video production, it produces this first video of the fight scene and if we go into the details here,
+
+129
+00:09:54,000 --> 00:10:00,000
+you can see that it really took my prompting structure from the Bible directly.
+
+130
+00:10:00,000 --> 00:10:08,000
+It generated this 15 seconds video and attached both the character sheets and the storyboard that I created.
+
+131
+00:10:08,000 --> 00:10:15,000
+It's directly attached here and not just attached, but also it mentions in a smart way.
+
+132
+00:10:15,000 --> 00:10:20,000
+And it generated all videos of the fight sequence using cdans too.
+
+133
+00:10:20,000 --> 00:10:23,000
+And this is really cool part about this agent.
+
+134
+00:10:23,000 --> 00:10:33,000
+It generated something called slate, which means it stitched all together all of the fight sequences and generated one final complete fight sequence.
+
+135
+00:10:33,000 --> 00:10:36,000
+It's called codex fight full card.
+
+136
+00:10:36,000 --> 00:10:40,000
+Here you can see the full slate total generated three videos.
+
+137
+00:10:40,000 --> 00:10:45,000
+They are stitched together nicely completing the full fight sequence.
+
+138
+00:10:45,000 --> 00:10:51,000
+I really like this slate feature. It's a really smart, really cool feature and it saves tons of time.
+
+139
+00:10:51,000 --> 00:10:59,000
+Now, I can simply directly download this and my fight sequence is ready, right? I don't need to do anything else.
+
+140
+00:10:59,000 --> 00:11:01,000
+It's a pretty strong feature.
+
+141
+00:11:01,000 --> 00:11:06,000
+Now, fight scene is done. I asked model, can you now start working on the beginning of the storyline?
+
+142
+00:11:06,000 --> 00:11:08,000
+What happened before the fight sequence?
+
+143
+00:11:08,000 --> 00:11:12,000
+Since I provided the rough script at the beginning of this conversation,
+
+144
+00:11:12,000 --> 00:11:18,000
+it knows that the scene starts with Helgardians actually carry me to the Hel library.
+
+145
+00:11:18,000 --> 00:11:24,000
+But it asks a very smart question here. I haven't unknown the Helgardians how they look like
+
+146
+00:11:24,000 --> 00:11:30,000
+because you provided wayfarer and codex characters character sheet, but I didn't provide the Helgardians, right?
+
+147
+00:11:30,000 --> 00:11:36,000
+It asks me, do you want me to design the Helgardians or do you want to actually provide the character sheet?
+
+148
+00:11:36,000 --> 00:11:41,000
+This is a really fantastic feature. I ask you design the Helgardians.
+
+149
+00:11:41,000 --> 00:11:49,000
+And it comes up with this particular style, which looks really, really consistent to my original design of the codex character.
+
+150
+00:11:49,000 --> 00:11:55,000
+You can immediately realize that for character sheet design, it went back to a game Bible
+
+151
+00:11:55,000 --> 00:12:05,000
+and extracted my prompting stuff for character sheets, which is 8 total frames, 4 clothes up and 4 full body, different angles, and it generated this.
+
+152
+00:12:05,000 --> 00:12:14,000
+I'm happy with this result. So I ask model to proceed and then it creates now three more additional storyboards.
+
+153
+00:12:14,000 --> 00:12:22,000
+Storyboard 1, where I'm being carried basically the Helgardian character sheet is automatically attached,
+
+154
+00:12:22,000 --> 00:12:28,000
+as well as my original wayfarer character sheet is attached. So it looks like this.
+
+155
+00:12:28,000 --> 00:12:34,000
+And then it generates two more additional storyboards for the search and reveal parts.
+
+156
+00:12:34,000 --> 00:12:40,000
+And then I'm happy with the result. So I ask model to generate CDANS2 video based on the storyboard.
+
+157
+00:12:40,000 --> 00:12:49,000
+And I do same for other scenes like reveal and this search sequence as well is automatically generated.
+
+158
+00:12:49,000 --> 00:12:55,000
+And again, the slate feature works and it creates this full opening sequence for 45 seconds,
+
+159
+00:12:55,000 --> 00:12:59,000
+stitching all the videos I generated using CDANS2.
+
+160
+00:12:59,000 --> 00:13:08,000
+There are additional things I can do. I can start a new agent. Let's call this agent monster design explorer agent.
+
+161
+00:13:08,000 --> 00:13:14,000
+Let's create it. Now it's created here as a new agent and most important thing.
+
+162
+00:13:14,000 --> 00:13:22,000
+It has the same context of what I already provided. It knows the story, it knows existing monster design.
+
+163
+00:13:22,000 --> 00:13:31,000
+So I can simply ask model to explore new monster designs using same exact context in the same exact universe which we already created.
+
+164
+00:13:31,000 --> 00:13:40,000
+So I simply say I want you to create concept design and character sheet explorations for codex.
+
+165
+00:13:40,000 --> 00:13:46,000
+I didn't say who codex is. I didn't say why codex is important in this storyline.
+
+166
+00:13:46,000 --> 00:13:54,000
+It simply knows the codex because it's basically looking into same Bible, same context, the same universe we just built.
+
+167
+00:13:54,000 --> 00:14:02,000
+Now it remembers, okay, existing codex character is present. I know the design or concept design of this character already.
+
+168
+00:14:02,000 --> 00:14:11,000
+So let me create a new ones. It starts working on it. And while it's working on it, let's go crazy and create another parallel agent for fun.
+
+169
+00:14:11,000 --> 00:14:24,000
+We call this costume designer agent, okay. Now using this parallel agent, I'm going to explore some new outfits for the fairer character.
+
+170
+00:14:24,000 --> 00:14:35,000
+So I want you to explore visually new costumes for the fairer character. All right.
+
+171
+00:14:35,000 --> 00:14:45,000
+So it asks me a question. How far should I push from the current codex variations on the book column or fresh reinterpretations of the whole creature.
+
+172
+00:14:45,000 --> 00:14:54,000
+So I'm deciding on how far we want to go. I want a complete reinterpretation. And let's see what agent one will do with it.
+
+173
+00:14:54,000 --> 00:15:03,000
+Now going back to the fairer costume designer. It's already working on it. And while it's working on it, I can show you this option.
+
+174
+00:15:03,000 --> 00:15:11,000
+So on agent one, you have three options. You can always allow generations directly without asking for permission.
+
+175
+00:15:11,000 --> 00:15:18,000
+You can ask agent one to ask you before generating videos or you can make it a little bit more restricted.
+
+176
+00:15:18,000 --> 00:15:28,000
+Then in this case, it asks everything before generating. So even images and other things, it will ask every detail to you before generating.
+
+177
+00:15:28,000 --> 00:15:37,000
+So it's up to you how much permission or how much space you want to give to agent one. It came up with different interpretations of the same character.
+
+178
+00:15:37,000 --> 00:15:47,000
+I have this one, which looks pretty cool. Another one and the last one. I think I like this one the most looks pretty badass.
+
+179
+00:15:47,000 --> 00:15:56,000
+So now I can ask agent one to recast my main character and generate all assets from scratch again using this new character design.
+
+180
+00:15:56,000 --> 00:16:02,000
+Meanwhile, wafer costume designer agent is working in parallax. I mean, how cool this is.
+
+181
+00:16:02,000 --> 00:16:12,000
+Now wafer costume designer agent explored some new costumes for my character. Pay attention that it kept my character's face consistent.
+
+182
+00:16:12,000 --> 00:16:22,000
+I didn't reattach my character's character sheet, right? It knows the context from project already. So it generated some different outfits.
+
+183
+00:16:22,000 --> 00:16:32,000
+This is generated using GPT M2. This is also using GPT M2. I really like this outfit. And this one generated using number banana pro.
+
+184
+00:16:32,000 --> 00:16:43,000
+I can ask model to generate with only one tool or since in my Bible multiple tools are mentioned, it actually gave me exploration with multiple tools.
+
+185
+00:16:43,000 --> 00:16:54,000
+But I think I like this the most. And from this point on, I can simply swap the costume of my character and continue building storyline from this point on with this new outfit.
+
+186
+00:16:54,000 --> 00:17:07,000
+If you are making actual films with AI, not like one of random clips for hobbyists, this is built for you. I'm very happy with this product. I'm using it every day in video agent link is in the description.
+
+187
+00:17:07,000 --> 00:17:14,000
+Go train your first agent, create your own Bibles and create your own stories. I highly recommend this tool.
+
+188
+00:17:14,000 --> 00:17:24,000
+Hopefully this video was truly helpful for you. Don't forget to give it a thumbs up and subscribe for more in depth tutorials. If you want to learn more about future of AI storytelling, click here.
+

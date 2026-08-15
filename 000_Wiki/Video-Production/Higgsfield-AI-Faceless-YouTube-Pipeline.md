@@ -51,3 +51,5 @@ Directly applicable to Tony's 12-channel YouTube operation. This pipeline elimin
 - [[Higgsfield-Video-Pipeline]] — Claude skills for Higgsfield prompt optimization (separate but complementary)
 - [[Pipeline-Orchestration]] — broader video pipeline orchestration architecture
 - [[Video_Pipeline_PDR]] — internal video pipeline design reference
+- [[How-I-Got-11M-Views-30K-Subscribers-AI-Workflow]] — viral video-to-video workflow using Higgsfield + Seedance 2.0
+- [[Create-Seamless-AI-Films-Of-Any-Length]] — Higgsfield storyboard row-cropping technique for long-form video

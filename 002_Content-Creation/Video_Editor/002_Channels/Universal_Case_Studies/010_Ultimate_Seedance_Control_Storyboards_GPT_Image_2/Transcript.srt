@@ -1,0 +1,408 @@
+1
+00:00:30,000 --> 00:00:42,560
+Now in case you were wondering, that video was made using GPT Image 2 and Cdance 2.0.
+
+2
+00:00:42,560 --> 00:00:47,040
+In this video we're going to be talking about a new feature in top view called Storyboard
+
+3
+00:00:47,040 --> 00:00:51,760
+that's powered by GPT Image 2 and we're going to see everything that it's capable of,
+
+4
+00:00:51,760 --> 00:00:55,200
+everything that it's not. By the end I'll tell you what I love about it,
+
+5
+00:00:55,200 --> 00:00:59,440
+what I don't love about it and if you stick around to the end I'll give you some tips on how to get
+
+6
+00:00:59,440 --> 00:01:04,160
+better results of GPT Image 2. I'd like to thank the sponsor of today's video Top View. They've
+
+7
+00:01:04,160 --> 00:01:08,800
+given me access to the Storyboard's feature which is it's going to save you quite a bit of money
+
+8
+00:01:08,800 --> 00:01:14,560
+when it comes to generating Cdance 2.0 videos and I'll show you why. Now if we go into the storyboards
+
+9
+00:01:14,560 --> 00:01:19,760
+you'll see that we have a couple of examples here to show us exactly what this is capable of.
+
+10
+00:01:19,760 --> 00:01:25,520
+So all you have to do is give it an image and a short story doesn't have to be too long. Then the AI
+
+11
+00:01:25,600 --> 00:01:30,640
+will select the best moments from that story in order to create a compelling final piece.
+
+12
+00:01:30,640 --> 00:01:35,760
+So we have a couple of different use cases in order to give us an idea of what the prompts
+
+13
+00:01:35,760 --> 00:01:40,800
+actually need to look like and it doesn't matter the style that you give it because as you can see
+
+14
+00:01:40,800 --> 00:01:46,080
+here they gave it an anime sort of style for the starting image and they didn't even mention
+
+15
+00:01:46,080 --> 00:01:51,680
+anime in the story but it just knows it picks up exactly what it looks like and it kept the style
+
+16
+00:01:51,680 --> 00:01:56,960
+even for the backgrounds looks amazing so as you can see in the final video it really held up to
+
+17
+00:01:56,960 --> 00:02:01,840
+the original image and the story itself. So with Storyboards it actually gives us the ability to add
+
+18
+00:02:01,840 --> 00:02:06,240
+16 reference images. So what we're going to do is actually add a couple of reference images to the
+
+19
+00:02:06,240 --> 00:02:10,480
+story that I want to create now. So I've added my character the character's van and the marauders
+
+20
+00:02:10,480 --> 00:02:15,520
+that is going to be escaping. So just describe what happens the AI will pick the best moments to draw
+
+21
+00:02:15,920 --> 00:02:21,600
+from. A futuristic car driver races tunnels and storms pursuing a relentless robotic hunter.
+
+22
+00:02:21,600 --> 00:02:26,160
+So let's go with something a little bit simple like that. So what we've got is a ranger drives a
+
+23
+00:02:26,160 --> 00:02:31,040
+hovering van through the desert to escape motorcycle marauders driving through a sandstorm they
+
+24
+00:02:31,040 --> 00:02:35,120
+can't survive. We've got a little bit of conflict there. It's something a little compelling that
+
+25
+00:02:35,120 --> 00:02:39,520
+the AI can pull from. So we're going to go 16 by 9. The great thing is that if you're doing
+
+26
+00:02:39,520 --> 00:02:47,120
+social media you can also do 9 by 16 and we need GPT image 2. We can select either 2k or 4k.
+
+27
+00:02:47,120 --> 00:02:53,280
+I really wouldn't go with 1k unless you're using the 4 moments selection. I'd go with 9 and just
+
+28
+00:02:53,280 --> 00:02:58,320
+2k or 4k. In this case we're going to go 4k because I feel like that way we'll get a lot more
+
+29
+00:02:58,320 --> 00:03:03,760
+information in there. So as you can see to generate the board it's only 1.4 credits so it's not not a
+
+30
+00:03:03,760 --> 00:03:08,480
+lot at all. So let's generate that. Okay so let's have a look at what we got. So we've got the driver
+
+31
+00:03:08,480 --> 00:03:13,440
+then we establish a scene. We see the marauders coming in and they start chasing him. Heads
+
+32
+00:03:13,440 --> 00:03:18,800
+towards the storm which is great. I love the way it just took over the entire sky. Drives in and
+
+33
+00:03:18,800 --> 00:03:22,960
+they get destroyed and he drives out. It's perfect. It's exactly what we needed. So we have two options
+
+34
+00:03:22,960 --> 00:03:28,320
+from here. We can either generate the video directly from here which I'll actually start that
+
+35
+00:03:28,320 --> 00:03:34,320
+process now. And that way we'll see what the difference is between doing it this way or going
+
+36
+00:03:34,320 --> 00:03:40,080
+into the agent V2 that way we get a little bit more detail in the prompts themselves. So let's
+
+37
+00:03:40,080 --> 00:03:45,040
+start with this. Generate the video directly as it is. And as you can see it'll send this straight
+
+38
+00:03:45,040 --> 00:03:51,920
+to cdance 2.0. It'll give us like a basic prompt generator video based on the storyboards in this.
+
+39
+00:03:51,920 --> 00:03:56,800
+It's basically the same prompt that we gave it before. It gives us 15 seconds and we can actually
+
+40
+00:03:56,800 --> 00:04:03,520
+choose to cue this into priority mode for instant start. So then that way we can start it straight
+
+41
+00:04:03,920 --> 00:04:07,120
+away. And by the time we're done with the rest of it this should be done. But what I'm going to do
+
+42
+00:04:07,120 --> 00:04:13,840
+is I'm actually going to go to agent V2. Now once we're in here we can add all our bits and pieces. So
+
+43
+00:04:13,840 --> 00:04:18,160
+what we have is this reference image that we've got a storyboard there and we can add some references
+
+44
+00:04:18,160 --> 00:04:22,800
+as well. So I had the exact same references that I added before. That way we have all the references
+
+45
+00:04:22,800 --> 00:04:27,280
+to the character, the van, the marauders and everything. So the agent has given me these three
+
+46
+00:04:27,280 --> 00:04:32,800
+sections which will go for 10 seconds each and we have a wide angle low shot with the van driven
+
+47
+00:04:32,960 --> 00:04:38,240
+by the ranger speeds across the vast desert plains kicking up a whole bunch of dust and it's been
+
+48
+00:04:38,240 --> 00:04:42,880
+chased by the marauders. Yeah everything looks pretty cool. And sometimes what's actually a good
+
+49
+00:04:42,880 --> 00:04:47,920
+idea is to come in here and select what you want from all of these. So I usually go with cinematic
+
+50
+00:04:47,920 --> 00:04:52,960
+story. You can actually go anime if you do an anime something like that. But I will go with
+
+51
+00:04:52,960 --> 00:04:58,720
+cinematic story and confirm and then I'll enhance it. That way it'll actually use details like
+
+52
+00:04:58,720 --> 00:05:03,760
+descriptive details of the actual scene that you wouldn't have thought of otherwise. And that
+
+53
+00:05:03,760 --> 00:05:09,440
+usually doesn't take too long which is great. The one thing that I will say is before you click generate
+
+54
+00:05:09,440 --> 00:05:14,880
+make sure to get rid of anything that you don't want. So in my case I don't want a dialogue voice
+
+55
+00:05:14,880 --> 00:05:21,120
+over. So let's get rid of that. So it does tend to add dialogue or sometimes voice overs so we
+
+56
+00:05:21,120 --> 00:05:25,520
+don't really need that sort of thing in there while that's generating. And this is what it gave us
+
+57
+00:05:25,520 --> 00:05:32,240
+for this shot. That look of surprise. Now all in all even though we didn't use Agent V2 for
+
+58
+00:05:32,240 --> 00:05:36,880
+this specific one for a 15 second shot it actually did really well. I would have liked to see
+
+59
+00:05:36,880 --> 00:05:41,760
+a little bit more destruction when it comes to the bikers but all in all I think it's actually
+
+60
+00:05:41,760 --> 00:05:47,120
+pretty amazing what it's able to do. That's so good. I love it. Now the great thing about top view
+
+61
+00:05:47,120 --> 00:05:52,240
+is that it'll give you access to a whole bunch of AI image and video tools at a rather affordable price
+
+62
+00:05:52,240 --> 00:05:57,120
+which if you're a filmmaker or content creator that needs to be generated videos consistently
+
+63
+00:05:57,120 --> 00:06:00,960
+I really think this is the way to go. Be sure to check out the new ultra plan they have. Now the
+
+64
+00:06:00,960 --> 00:06:06,960
+issue that I've had with CDANCE 2.0 video generating it takes up a lot of credit when it comes to
+
+65
+00:06:06,960 --> 00:06:12,880
+generating these videos. So unless you have the 365 unlimited plan it tends to eat away your credits
+
+66
+00:06:12,880 --> 00:06:17,040
+very quickly. In the past I've told everyone that they should definitely check out the business
+
+67
+00:06:17,040 --> 00:06:22,640
+plan in top view because the price was pretty good but now they have the ultra plan and with
+
+68
+00:06:22,640 --> 00:06:27,200
+the ultra plan it actually reduces how much the CDANCE generation's cost. It will give you the
+
+69
+00:06:27,200 --> 00:06:34,240
+365 days of unlimited generations using CDANCE 2.0 and now GBT image too as well but it'll cost
+
+70
+00:06:34,240 --> 00:06:38,720
+less than it did with the business plan which is great because then when you're not using the
+
+71
+00:06:38,720 --> 00:06:42,560
+unlimited plan and you're actually wanting to do things much quicker with the priority mode
+
+72
+00:06:42,640 --> 00:06:47,840
+it's going to cost much less. I think it equates to 10 cents per second. One other thing that I forgot
+
+73
+00:06:47,840 --> 00:06:54,080
+to speak about in the other videos was concurrent tasks and the great thing about using top views
+
+74
+00:06:54,080 --> 00:06:59,040
+plans is that you're able to set up more tasks concurrently using the unlimited feature. If you
+
+75
+00:06:59,040 --> 00:07:04,160
+would get the base ultra you'd be able to set up 12 concurrent tasks which is great because then
+
+76
+00:07:04,160 --> 00:07:08,080
+that means that you can set up a whole bunch of tasks the night before wake up in the morning
+
+77
+00:07:08,080 --> 00:07:12,400
+and you'd be ready to go. Now one thing that I have been asking a couple of other videos is
+
+78
+00:07:12,480 --> 00:07:17,600
+how long does it take for the unlimited and really it varies depending whether it's peak off
+
+79
+00:07:17,600 --> 00:07:23,920
+peak hours. I've gotten some videos as quickly as two hours and some that have taken up to seven
+
+80
+00:07:23,920 --> 00:07:27,760
+hours. It just really depends on how much the server's been used at that moment. So what we're
+
+81
+00:07:27,760 --> 00:07:34,240
+able to do is actually open this up in the image edit and using GBT image too. We can fit our storyboards
+
+82
+00:07:34,240 --> 00:07:38,480
+and marauders and also our van because we don't need anything else for this specific image and
+
+83
+00:07:38,480 --> 00:07:44,240
+say edit only image for motorbikes approaching the van from behind and change nothing else.
+
+84
+00:07:44,240 --> 00:07:49,840
+Then we can generate that. As you can see it changes only image for which is great because then
+
+85
+00:07:49,840 --> 00:07:54,720
+that way it means that you can go into each individual storyboard and make modifications in order
+
+86
+00:07:54,720 --> 00:08:01,360
+to actually have more control over the final video. Okay so the issue that we had with agent V2 is that
+
+87
+00:08:01,360 --> 00:08:07,040
+because we didn't split up the images it replicated the storyboard through each of the videos. So
+
+88
+00:08:07,040 --> 00:08:13,440
+you can actually see in all three of the 10 second clips it uses images from the entire storyboard.
+
+89
+00:08:13,440 --> 00:08:20,480
+He's driving into the storm in each one whereas when we go back to the other one 15 second one
+
+90
+00:08:20,480 --> 00:08:26,480
+that we created just one clip from it aside from the ridiculous expression at the start of it my
+
+91
+00:08:26,480 --> 00:08:31,840
+shock and horror you'll see that it follows each of the shots perfectly and it worked exactly how
+
+92
+00:08:31,840 --> 00:08:36,960
+we needed to. Now one of the things that I would probably say to do is to trim each of the images
+
+93
+00:08:37,280 --> 00:08:42,560
+so they will be independent that way you'd be able to feed each of the shots to agent V2 exactly
+
+94
+00:08:42,560 --> 00:08:47,200
+what they need to be as opposed to reusing them through the entire thing. That's the only issue
+
+95
+00:08:47,200 --> 00:08:51,680
+that I had other than that. The idea of being able to use storyboards is actually extremely handy.
+
+96
+00:08:51,680 --> 00:08:56,000
+Let me know in the comments down below if this is a sort of tool that would really come in handy
+
+97
+00:08:56,000 --> 00:09:00,960
+with your workflow. I believe in order to save credits and save time I'm going to be using this
+
+98
+00:09:00,960 --> 00:09:05,600
+quite a bit. So if you like this video don't forget to click like and subscribe to the channel it
+
+99
+00:09:05,600 --> 00:09:09,360
+really helps boost the channel's visibility and I really appreciate it. If you're interested
+
+100
+00:09:09,360 --> 00:09:12,960
+in playing around with storyboards you should definitely check out top view there's going to be a
+
+101
+00:09:12,960 --> 00:09:17,280
+link in the description and if you enjoyed watching this video I think you'll like these two as well.
+
+102
+00:09:17,280 --> 00:09:19,200
+I'll see you guys next time.
+

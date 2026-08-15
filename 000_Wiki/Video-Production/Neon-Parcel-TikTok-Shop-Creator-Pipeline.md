@@ -50,3 +50,4 @@ Invoke the `TikTok-Shop-Affiliate-Video` skill for any new TikTok Shop Creator p
 ## Related
 - [[../Affiliate-Marketing/TikTok-Shop-Affiliate-Compliance]]
 - [[../Affiliate-Marketing/TikTok-Shop-Affiliate-Do-Dont-Cheat-Sheet]]
+- [[She-Isnt-Real-Definitive-AI-Influencer-Pipeline]] — Seedance 2 UGC/multi-reference mode, voice cloning + lip sync, product-holding AI influencer workflow (potential future extension)

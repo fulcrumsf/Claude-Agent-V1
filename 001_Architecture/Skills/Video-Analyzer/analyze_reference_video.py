@@ -33,6 +33,61 @@ def download_video(url: str, out_dir: Path) -> Path:
     )
     return video_path
 
+def extract_keyframes(video_path: Path, out_dir: Path, threshold: float = 0.3) -> Path:
+    """Extracts one full-resolution still per detected scene change, for reading
+    on-screen text (prompts, settings panels, toggles) that Gemini's native video
+    understanding often can't read reliably at its default sampling rate/resolution."""
+    keyframes_dir = Path(out_dir) / "Keyframes"
+    keyframes_dir.mkdir(parents=True, exist_ok=True)
+    subprocess.run(
+        ["ffmpeg", "-y", "-i", str(video_path),
+         "-vf", f"select='gt(scene,{threshold})'",
+         "-vsync", "vfr",
+         str(keyframes_dir / "%03d.jpg")],
+        capture_output=True,
+    )
+    if not list(keyframes_dir.glob("*.jpg")):
+        subprocess.run(
+            ["ffmpeg", "-y", "-i", str(video_path), "-vframes", "1",
+             str(keyframes_dir / "001.jpg")],
+            capture_output=True,
+        )
+    return keyframes_dir
+
+def extract_dense_keyframes(video_path: Path, out_dir: Path, interval_s: float = 0.5) -> Path:
+    """Extracts one full-resolution still every `interval_s` seconds, regardless of whether
+    ffmpeg detects a scene change. extract_keyframes() (scene-cut-based) is built for grabbing
+    one representative frame per scene to read on-screen text/prompts — it misses anything that
+    drifts gradually WITHIN a single continuous shot (no hard cut for ffmpeg to detect), which is
+    exactly how a POV camera can drift into a third-person view mid-generation without ever
+    producing a "scene change." Use this mode specifically for continuity/fault auditing — walking
+    every ~0.5-1s of a shot to catch a drift a scene-cut sample would fall right through the gaps of.
+    Written to a separate Dense_Keyframes/ folder so it doesn't collide with the scene-cut set."""
+    dense_dir = Path(out_dir) / "Dense_Keyframes"
+    dense_dir.mkdir(parents=True, exist_ok=True)
+    subprocess.run(
+        ["ffmpeg", "-y", "-i", str(video_path),
+         "-vf", f"fps=1/{interval_s}",
+         str(dense_dir / "%04d.jpg")],
+        capture_output=True,
+    )
+    return dense_dir
+
+def transcribe_with_whisper(video_path: Path, out_dir: Path) -> Path:
+    """Runs local Whisper transcription (free, no API cost) as an accurate,
+    independent word-for-word transcript alongside Gemini's own audio interpretation."""
+    out_dir = Path(out_dir)
+    subprocess.run(
+        ["whisper", str(video_path), "--model", "base",
+         "--output_format", "srt", "--output_dir", str(out_dir)],
+        capture_output=True,
+    )
+    srt_output = out_dir / f"{video_path.stem}.srt"
+    transcript_path = out_dir / "Transcript.srt"
+    if srt_output.exists():
+        srt_output.rename(transcript_path)
+    return transcript_path
+
 def detect_scenes(video_path: Path, threshold: float = 0.3) -> list[tuple[float, float]]:
     duration_result = subprocess.run(
         ["ffprobe", "-v", "error", "-show_entries", "format=duration",
@@ -109,12 +164,16 @@ def write_analysis_md(out_dir: Path, scenes: list[tuple[float, float]], gemini_o
     return analysis_path
 
 
-def main(url: str, out: str, threshold: float = 0.3) -> None:
+def main(url: str, out: str, threshold: float = 0.3, dense_interval: float | None = None) -> None:
     out_dir = Path(out)
     video_path = download_video(url, out_dir)
     scenes = detect_scenes(video_path, threshold)
     gemini_output = analyze_video_narrative(video_path, scenes)
     write_analysis_md(out_dir, scenes, gemini_output)
+    extract_keyframes(video_path, out_dir, threshold)
+    transcribe_with_whisper(video_path, out_dir)
+    if dense_interval is not None:
+        extract_dense_keyframes(video_path, out_dir, dense_interval)
 
 
 if __name__ == "__main__":
@@ -128,5 +187,13 @@ if __name__ == "__main__":
              "recordings/tutorials with lots of small UI/cursor changes that aren't real cuts, "
              "to avoid an oversized scene list that can truncate Gemini's response.",
     )
+    parser.add_argument(
+        "--dense-interval", type=float, default=None,
+        help="If set, also extracts a full-resolution frame every N seconds (regardless of scene "
+             "cuts) into Dense_Keyframes/, for continuity/fault auditing where a defect can drift "
+             "gradually within a single continuous shot and fall through the gaps between "
+             "scene-cut keyframes. Off by default (adds significant frame count/review time) — "
+             "e.g. 0.5-1.0 for a thorough per-second audit.",
+    )
     args = parser.parse_args()
-    main(args.url, args.out, args.threshold)
+    main(args.url, args.out, args.threshold, args.dense_interval)

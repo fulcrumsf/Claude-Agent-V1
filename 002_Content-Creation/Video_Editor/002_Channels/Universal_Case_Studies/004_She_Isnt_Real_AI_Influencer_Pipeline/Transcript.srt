@@ -1,0 +1,972 @@
+1
+00:00:00,000 --> 00:00:07,000
+Welcome, friend. Today I'll show you the new and best way of creating consistent AI influencers that not only look real
+
+2
+00:00:07,000 --> 00:00:11,040
+But also can hold your product and lip sync to your voice. Take a look at these
+
+3
+00:00:11,040 --> 00:00:16,440
+So I'm gonna try one of these David protein bars and this thing has 20 grams of protein
+
+4
+00:00:16,440 --> 00:00:23,640
+I'm not even kidding. This is probably one of the better protein bars. I've seen this is an in-depth tutorial for those who want to create
+
+5
+00:00:23,640 --> 00:00:28,040
+Contents for their brand or their clients the only YouTube tutorial you'll ever need
+
+6
+00:00:28,040 --> 00:00:33,760
+I'm going to show you an entirely new pipeline and you are going to walk away with a few things today
+
+7
+00:00:33,920 --> 00:00:37,400
+One, you'll know exactly how to create AI influencers or characters
+
+8
+00:00:37,400 --> 00:00:40,240
+Two, you will learn how to have them hold any product
+
+9
+00:00:40,440 --> 00:00:43,720
+Three, you'll learn how to clone their voice and keep it consistent
+
+10
+00:00:44,080 --> 00:00:49,720
+Four, you'll learn how to generate infinitely long talking videos that go beyond 15 second mark
+
+11
+00:00:49,720 --> 00:00:55,880
+Five, you learn how to place your influencers into specific environments, so let's get started creating your influencer
+
+12
+00:00:55,880 --> 00:01:03,040
+There are two ways of creating your influencer. Number one, you use yourself for an existing human with real IP
+
+13
+00:01:03,040 --> 00:01:09,720
+And number two, you create an influencer from scratch that does not exist and you create that IP
+
+14
+00:01:09,720 --> 00:01:12,920
+So let's start with number one so that you can understand the flow
+
+15
+00:01:12,920 --> 00:01:18,560
+I want to have myself sell product online and I want to create a bunch of ads
+
+16
+00:01:18,560 --> 00:01:25,240
+So I want to scale my own creative output in my company and I want to be the spokesperson for the brand
+
+17
+00:01:25,240 --> 00:01:30,320
+I'm going to use this image of myself and inside nano banana two
+
+18
+00:01:30,320 --> 00:01:35,360
+I'll generate five new shots almost like a live book or a character sheet
+
+19
+00:01:35,360 --> 00:01:41,600
+So we're going to head over to image editor inside enhancer and make sure that we are using nano banana two
+
+20
+00:01:41,600 --> 00:01:48,560
+We're going to select 2k resolution which is more than enough and we're going to choose 16 by 9 aspect ratio
+
+21
+00:01:48,560 --> 00:01:53,760
+This is important. We are creating a character rotation sheets and to do that
+
+22
+00:01:53,760 --> 00:01:59,240
+We will use this prompt that you are seeing on the screen. You can screenshot that
+
+23
+00:02:00,120 --> 00:02:05,680
+Essentially what this prompt does is that it takes the uploaded image as the main identity reference
+
+24
+00:02:05,680 --> 00:02:08,960
+And it tells the model to keep the the person's core look consistent
+
+25
+00:02:08,960 --> 00:02:15,080
+Meaning that the phase of proportions of body to shape the hair that the overall vibe should still feel like the same person
+
+26
+00:02:15,080 --> 00:02:22,960
+Then the prompt asks the model to reformat that into something that looks like a professional design board on a white background
+
+27
+00:02:23,360 --> 00:02:27,640
+Instead of a normal portrait so rather than generating one random new image
+
+28
+00:02:27,640 --> 00:02:32,920
+It's going to build a structured sheet that shows the character from multiple angles
+
+29
+00:02:32,920 --> 00:02:36,040
+This is very important especially on what we're going to be doing today
+
+30
+00:02:36,040 --> 00:02:39,760
+So this is the prompt can take your time to read through it
+
+31
+00:02:39,760 --> 00:02:43,000
+You can also find this prompt in the guide in the link in the description
+
+32
+00:02:43,000 --> 00:02:49,840
+So we're going to base a prompt inside nano banana two make sure that we have uploaded your reference image and hit generate and this is what we get
+
+33
+00:02:49,840 --> 00:02:55,240
+This is our base image. Okay, so this is a source reference, and this is what it showed me
+
+34
+00:02:55,520 --> 00:02:58,560
+Essentially, it's me through different views. It's pretty cool
+
+35
+00:02:58,840 --> 00:03:03,280
+We will download this and we're going to generate four more shots
+
+36
+00:03:03,520 --> 00:03:12,240
+But first we will create a duplicate of this image and crop it so it only focuses on the front the side and the back view
+
+37
+00:03:12,240 --> 00:03:16,600
+So these three views that you are seeing on screen you can either screenshot it or you can
+
+38
+00:03:17,000 --> 00:03:22,960
+Crop it to match the framing accordingly and once you have this frame that you're seeing right now
+
+39
+00:03:22,960 --> 00:03:26,800
+We're going to head over again into nano banana. We're going to replace our source image
+
+40
+00:03:26,800 --> 00:03:34,520
+Which was this one originally we're going to upload our new cropped shot and we're going to ask it to give you a close-up of the character's
+
+41
+00:03:34,760 --> 00:03:39,440
+Features very simple will say give me a close-up of this man
+
+42
+00:03:40,000 --> 00:03:45,320
+Focusing on his facial features. So almost like a headshot. We're going to hit generate
+
+43
+00:03:45,320 --> 00:03:51,800
+We're going to keep everything as is and boom. This is our image number two. Crazy. It looks like me
+
+44
+00:03:51,800 --> 00:03:56,840
+So we're going to download this and we're going to save that now onto image number three
+
+45
+00:03:56,840 --> 00:03:58,560
+We need a full body shot
+
+46
+00:03:58,560 --> 00:04:05,680
+We're going to keep the same reference image and we will change the prompt and ask nano banana to give us a full body shot instead
+
+47
+00:04:05,680 --> 00:04:13,040
+So I will say give me a full body shot and make sure that the face is clear very simple nothing complicated here
+
+48
+00:04:13,040 --> 00:04:17,280
+We don't have to write like all these extremely long detail prompts. You do not need that
+
+49
+00:04:17,280 --> 00:04:22,800
+So we're going to hit generate and boom. This is what we get this is our image number three image number four
+
+50
+00:04:22,800 --> 00:04:29,760
+Using the same references before nothing is changing. We will generate a close-up shot of the side profile
+
+51
+00:04:30,000 --> 00:04:36,720
+So we will say give me a close-up shot of his site profile left and right that's it
+
+52
+00:04:36,720 --> 00:04:41,840
+That's the prompt don't ever think that hit generate look at the consistency look at the details here and last
+
+53
+00:04:42,480 --> 00:04:45,360
+We need an extreme close-up of the features
+
+54
+00:04:45,600 --> 00:04:52,040
+So now we're going to be using this images our source reference and we will ask nano banana to
+
+55
+00:04:52,560 --> 00:04:59,740
+Give me a grid of close-up shots of the men's feature such as the eyes the lips the nose the lashes the brow
+
+56
+00:05:00,640 --> 00:05:04,560
+Okay, this is the prompt and again make sure to replace the source reference accordingly
+
+57
+00:05:04,720 --> 00:05:11,440
+This is our new source reference for image number five our last image hit generate and boom. This is what we get
+
+58
+00:05:11,680 --> 00:05:14,080
+This is very very impressive now
+
+59
+00:05:14,080 --> 00:05:21,280
+Let's zoom out we have five pictures of the character in this case myself and we will use this for the rest of this tutorial
+
+60
+00:05:21,360 --> 00:05:26,560
+This is step number one creating the data set for your character and in this case the character is me a real human
+
+61
+00:05:26,640 --> 00:05:32,800
+Now you can do the same exact thing for your AI influencer that does not exist except that there's an extra step at the beginning
+
+62
+00:05:32,880 --> 00:05:37,040
+So generating that base image the rest of the steps remain unchanged
+
+63
+00:05:37,280 --> 00:05:43,920
+So here's what I like to do to generate my character because I believe that this is the most realistic way of generating results
+
+64
+00:05:43,920 --> 00:05:50,000
+That look real source image is extremely important and right now it's more important than prompting to do that
+
+65
+00:05:50,160 --> 00:05:52,880
+I'm going to head over into kora over here
+
+66
+00:05:53,040 --> 00:05:59,280
+And I'm going to select kora reality which is a fine tuned version of z image that's passing through
+
+67
+00:05:59,520 --> 00:06:04,000
+Just recently when 2.7 was just released a few days ago with
+
+68
+00:06:04,560 --> 00:06:07,680
+Laura's this is too technical if you're not building with AI
+
+69
+00:06:07,760 --> 00:06:09,360
+You don't really have to worry about it
+
+70
+00:06:09,360 --> 00:06:16,480
+I want you to paste this prompt and change it accordingly to your character specifications
+
+71
+00:06:17,120 --> 00:06:21,280
+You can change the input the values such as the age the style of the frame in the background etc
+
+72
+00:06:21,280 --> 00:06:27,440
+So this is the problem that you're seeing on the screen. We're going to select the 9 by 16 as our aspect ratio
+
+73
+00:06:27,680 --> 00:06:31,280
+The age that you find and we're going to hit generate boom
+
+74
+00:06:31,280 --> 00:06:35,760
+This is what we got look at this hyper realistic base image of the influencer
+
+75
+00:06:35,920 --> 00:06:41,440
+I can edit this with nano banana 2 if I wish or our own full access and henser editing model
+
+76
+00:06:41,600 --> 00:06:46,080
+For now, I'll keep this as is I like it and now that we have our base image
+
+77
+00:06:46,160 --> 00:06:50,160
+We can repeat the other steps that we mentioned before to create the character sheet
+
+78
+00:06:50,160 --> 00:06:54,720
+So this is our base image and this is the entire character sheet that I've created with it
+
+79
+00:06:54,720 --> 00:06:58,000
+I don't want to be repetitive great now. Let the fun begin
+
+80
+00:06:58,080 --> 00:07:00,560
+It's time to bring our AI influencer to live
+
+81
+00:07:01,040 --> 00:07:05,120
+Let's give her her name. I'm going to call her Sam and in order to bring Sam to life
+
+82
+00:07:05,200 --> 00:07:14,240
+We have to head over to video generator and we're going to select cdense 2 and we can use either our multi reference feature or our
+
+83
+00:07:14,560 --> 00:07:19,920
+UGC feature the UGC feature allows you to generate a UGC style video based on
+
+84
+00:07:20,240 --> 00:07:23,520
+One influencer image only one while the multi reference mode
+
+85
+00:07:24,160 --> 00:07:26,720
+allows you to to upload multiple images first
+
+86
+00:07:27,360 --> 00:07:31,520
+Let's create our UGC ad. We're going to head over to UGC and in here
+
+87
+00:07:31,680 --> 00:07:35,280
+We will upload one character image and you can even be the first image
+
+88
+00:07:36,000 --> 00:07:41,120
+That we generated with kora if you prefer and we will upload our product image though
+
+89
+00:07:41,200 --> 00:07:45,600
+This one over here and we're going to write a simple prompt to test us out
+
+90
+00:07:45,680 --> 00:07:50,400
+You can check out this other tutorial to learn more about how to prompt for different UGC use cases
+
+91
+00:07:50,560 --> 00:07:53,760
+Or again, you can check out the guide that's attached in the comments
+
+92
+00:07:53,920 --> 00:07:57,200
+So this is the prompt that I'm going to be using
+
+93
+00:07:57,200 --> 00:08:02,560
+Can read this you can screenshot it. I want to use my influencer to hold the protein bar
+
+94
+00:08:02,800 --> 00:08:06,800
+I'm not affiliated with David protein bar. I wish they can sponsor me
+
+95
+00:08:07,040 --> 00:08:08,720
+I've never tried it to be honest with you
+
+96
+00:08:08,720 --> 00:08:11,280
+But I think that it looks very cool the branding is nice
+
+97
+00:08:11,360 --> 00:08:17,600
+Now let's make sure that in the prompt you are adding what you want your influencer to say
+
+98
+00:08:17,600 --> 00:08:22,320
+This is very important. So this part. This is what my influencer is saying and after pacing the prompt
+
+99
+00:08:22,320 --> 00:08:25,280
+Select 9x16 aspect ratio and hit
+
+100
+00:08:25,920 --> 00:08:30,400
+Generates boom. This is what we get. Look at this. I'm not even kidding
+
+101
+00:08:30,480 --> 00:08:33,840
+This is probably one of the better protein bars. I've seen
+
+102
+00:08:34,080 --> 00:08:36,080
+28 grams of protein
+
+103
+00:08:36,240 --> 00:08:40,960
+150 calories and zero sugar. That's actually kind of ridiculous
+
+104
+00:08:41,280 --> 00:08:46,320
+And chocolate chip cookie dough. Yeah, I'd eat this again. Okay, wait this actually shocked me
+
+105
+00:08:46,720 --> 00:08:52,560
+This has 28 grams of protein only 150 calories and zero sugar
+
+106
+00:08:53,040 --> 00:08:59,280
+Like how is that even real and it's chocolate chip cookie dough flavored too. I'm sorry. This is kind of insane
+
+107
+00:08:59,680 --> 00:09:04,240
+Wait, this is actually wild. This bar has 28 grams of protein
+
+108
+00:09:04,960 --> 00:09:12,000
+Only 150 calories and zero grams of sugar and it's it's chocolate chip cookie dough flavored
+
+109
+00:09:12,880 --> 00:09:20,240
+That's honestly kind of insane. I love it look at the details and look at the text rendering look at the emotional delivery
+
+110
+00:09:20,320 --> 00:09:24,880
+Now there's a reason that we generated the character sheet
+
+111
+00:09:25,280 --> 00:09:30,560
+Okay, and you might be asking why the hell did we do this in the first place if we are not even using it
+
+112
+00:09:31,200 --> 00:09:32,560
+We will do it right now
+
+113
+00:09:32,960 --> 00:09:37,120
+The ugc case is different from what let's say cinematic commercials
+
+114
+00:09:37,360 --> 00:09:40,800
+Maybe you don't want to create a ugc type video you want to create a cool commercial
+
+115
+00:09:41,600 --> 00:09:44,960
+And this is where our character sheet comes in you need multiple inputs
+
+116
+00:09:44,960 --> 00:09:50,160
+So cDens can understand your character three dimensionally and to do that instead of using the ugc
+
+117
+00:09:50,160 --> 00:09:53,520
+Feature we're going to head over to the multi-reference feature
+
+118
+00:09:53,760 --> 00:09:57,200
+And we will upload our five images of our character and
+
+119
+00:09:57,760 --> 00:10:00,640
+One product image and we're going to drop it in this prompt
+
+120
+00:10:00,960 --> 00:10:04,960
+I really want to get a cool short commercial about this protein bar
+
+121
+00:10:05,200 --> 00:10:09,680
+I go over the prompt formula in this guide and I'm going to do so in the next video
+
+122
+00:10:09,840 --> 00:10:16,960
+All you have to worry about right now is copy the prompt and maybe go to clawed or gbt to adapt it based on your use case
+
+123
+00:10:17,120 --> 00:10:25,200
+It's the easiest thing that you can do we're going to select 16 by 9 aspect ratio the pro model 15 seconds and we're going to hit generate boom
+
+124
+00:10:25,680 --> 00:10:27,680
+This is what we get watch
+
+125
+00:10:34,800 --> 00:10:38,160
+In the cold only the strong remain
+
+126
+00:10:39,520 --> 00:10:41,520
+David
+
+127
+00:10:46,640 --> 00:10:49,520
+Long night sharp choice David
+
+128
+00:10:56,160 --> 00:11:02,160
+When pressure hits this is what holds David very
+
+129
+00:11:02,560 --> 00:11:08,560
+Impressive this would have cost thousands of dollars traditionally look at the consistency. It's nothing like I've ever seen
+
+130
+00:11:08,720 --> 00:11:12,720
+Honestly a grade we have a character that's holding the product consistent and all that
+
+131
+00:11:13,840 --> 00:11:18,240
+How do we keep the voice right? That's one of the questions that everyone asks
+
+132
+00:11:18,800 --> 00:11:24,800
+They're simple instead of using my AI influencer. I'm going to use my character now as a reference
+
+133
+00:11:25,200 --> 00:11:27,520
+So I'm going to use this all these five images
+
+134
+00:11:28,080 --> 00:11:32,480
+Still in the multi-reference feature. We're going to upload myself and
+
+135
+00:11:33,200 --> 00:11:39,040
+We're going to upload this is important a sixth second high quality audio of yourself speaking
+
+136
+00:11:39,040 --> 00:11:40,560
+This is my audio and wait for it
+
+137
+00:11:40,560 --> 00:11:46,000
+You can use your own voice and have the actor lip sync and drive the entire generation around your words
+
+138
+00:11:46,080 --> 00:11:49,520
+And after uploading that we need to do two things
+
+139
+00:11:49,520 --> 00:11:52,880
+We need to make sure that whenever c-dens generates a footage
+
+140
+00:11:52,960 --> 00:11:55,920
+It references our voice and it clones it
+
+141
+00:11:55,920 --> 00:12:02,560
+And also we have to make sure that we are writing what we are saying in the video two crucial aspects of this
+
+142
+00:12:02,640 --> 00:12:03,440
+Okay
+
+143
+00:12:03,440 --> 00:12:07,360
+So to do that we need to paste in this line at the beginning
+
+144
+00:12:08,000 --> 00:12:11,920
+And at the end of our prompts always and in the middle
+
+145
+00:12:11,920 --> 00:12:18,160
+We're going to put in our main description and make sure that we have a lip syncing line or multiple lip syncing lines
+
+146
+00:12:18,320 --> 00:12:22,400
+Where we say exactly what the character will be speaking
+
+147
+00:12:22,400 --> 00:12:28,080
+But this is the final prompt can copy this here are all the source references that we have uploaded
+
+148
+00:12:28,080 --> 00:12:34,720
+We have our five images of our character we have our audio and then we have our product and we're going to hit generate
+
+149
+00:12:34,800 --> 00:12:35,440
+Look at this
+
+150
+00:12:35,440 --> 00:12:40,720
+So I'm going to try one of these David protein bars and this thing has 20 grams of protein
+
+151
+00:12:41,200 --> 00:12:48,400
+And it is so good like guys you should try this out before they sell out because I don't know how long they're going to last
+
+152
+00:12:48,480 --> 00:12:49,440
+It sounds like me right
+
+153
+00:12:49,440 --> 00:12:50,480
+It's very impressive guys
+
+154
+00:12:50,480 --> 00:12:52,640
+Here are some more examples hey stop stop
+
+155
+00:12:53,360 --> 00:12:54,880
+Hey, hey man
+
+156
+00:12:55,200 --> 00:12:57,680
+I'm I'm sorry. I'm sorry about this
+
+157
+00:12:57,680 --> 00:13:04,720
+But I would really love for you to tell me how the hell you're keeping up with all these AI tools because this is insane
+
+158
+00:13:04,720 --> 00:13:07,760
+Now how do we actually make the video
+
+159
+00:13:08,480 --> 00:13:12,800
+Longer while keeping the same voice and style simple we're going to use the same method
+
+160
+00:13:12,800 --> 00:13:17,920
+But this time we will use only one reference image instead of an entire concept sheet
+
+161
+00:13:17,920 --> 00:13:23,360
+So we're going to grab our last frame of this video like right we want to extend this video
+
+162
+00:13:23,440 --> 00:13:27,920
+And we're going to use this free site that I've built so you can extract your last frame
+
+163
+00:13:28,080 --> 00:13:32,320
+So upload your video click on extract frames and get your last frame downloaded
+
+164
+00:13:32,400 --> 00:13:34,480
+Head over to multi reference mode again
+
+165
+00:13:34,480 --> 00:13:38,080
+We are using multi reference here to to make the video longer
+
+166
+00:13:38,080 --> 00:13:40,080
+And we need to paste in these lines
+
+167
+00:13:40,160 --> 00:13:43,200
+First line about the audio that we've talked about
+
+168
+00:13:43,280 --> 00:13:49,280
+And second align about how it should reference the exact image and background as our source
+
+169
+00:13:49,280 --> 00:13:52,320
+So it should be exactly the same as this one
+
+170
+00:13:52,320 --> 00:13:57,360
+That's the line that we're going to use this is to help multi reference not hallucinate because usually in multi reference
+
+171
+00:13:57,360 --> 00:14:02,400
+What happens is that you upload a source and it's going to think about that reference in different contexts
+
+172
+00:14:02,400 --> 00:14:09,200
+Not necessarily use that as the first frame so the likelihood of your character being in different environments
+
+173
+00:14:09,680 --> 00:14:15,920
+Is high now you might ask why not just use image to video right is going to keep our first frame consistent
+
+174
+00:14:15,920 --> 00:14:17,760
+And then we can start expanding from there
+
+175
+00:14:17,760 --> 00:14:21,120
+Well, if you do so fortunately you cannot upload audio reference
+
+176
+00:14:21,120 --> 00:14:26,320
+Therefore, it's not going to work now this for now is the best way that you can do it
+
+177
+00:14:26,320 --> 00:14:30,640
+And will probably change the next few weeks but for now this is what we got
+
+178
+00:14:30,640 --> 00:14:35,120
+We're going to hit generate and boom look at that and I swear this is not sponsored
+
+179
+00:14:35,120 --> 00:14:37,600
+I wish David sponsored me for all this free marketing
+
+180
+00:14:37,600 --> 00:14:39,600
+But hey, you can't always win
+
+181
+00:14:39,600 --> 00:14:47,200
+So I'm going to try one of these David protein bars and this thing has 20 grams of protein and it is so good
+
+182
+00:14:47,200 --> 00:14:52,640
+Like guys you should try this out before they sell out because I don't know how long they're going to last
+
+183
+00:14:52,640 --> 00:14:54,240
+And I swear this is not sponsored
+
+184
+00:14:54,240 --> 00:14:56,720
+I wish David sponsored me for all this free marketing
+
+185
+00:14:56,720 --> 00:14:58,720
+But hey, you can't always win
+
+186
+00:14:58,720 --> 00:15:00,720
+Now it might not flow very well
+
+187
+00:15:00,720 --> 00:15:04,640
+But as we know cuts are part of content creation as a format
+
+188
+00:15:04,640 --> 00:15:07,040
+Perfect, so we'll learn how to create our influencers
+
+189
+00:15:07,040 --> 00:15:09,520
+How to have them speak insistently
+
+190
+00:15:09,520 --> 00:15:14,640
+But how do we add this influencer into a particular scene
+
+191
+00:15:14,640 --> 00:15:23,200
+Following the same logic the only thing that we need to do here now is add a background image as a reference
+
+192
+00:15:23,200 --> 00:15:25,920
+And we're going to reference that background in our prompt
+
+193
+00:15:25,920 --> 00:15:28,080
+For example, this is Joe Robins background
+
+194
+00:15:28,080 --> 00:15:34,400
+And I want to generate a podcast talking video of my character as a guest there
+
+195
+00:15:34,400 --> 00:15:38,640
+And all I have to do is describe the setting and ask it to reference and place the actor
+
+196
+00:15:38,640 --> 00:15:42,240
+In the background shown by mentioning the file in the prompt
+
+197
+00:15:42,240 --> 00:15:44,800
+All you do is add and your image number
+
+198
+00:15:44,800 --> 00:15:48,400
+Now you can also go ahead and you can describe the background if needed
+
+199
+00:15:48,400 --> 00:15:51,440
+But this is my prompt you can screenshot that
+
+200
+00:15:51,440 --> 00:15:53,600
+We're going to hit generate boom
+
+201
+00:15:53,600 --> 00:15:54,160
+David
+
+202
+00:15:57,760 --> 00:15:59,920
+This is the David protein bar
+
+203
+00:15:59,920 --> 00:16:02,160
+It has 28 grams of protein
+
+204
+00:16:02,240 --> 00:16:04,480
+My friend this is only the tip of the iceberg
+
+205
+00:16:04,480 --> 00:16:06,640
+There's so much more that you can do
+
+206
+00:16:06,640 --> 00:16:10,400
+And in the next video I'll show you how to create cinematic commercials
+
+207
+00:16:10,400 --> 00:16:13,360
+Like this one that I've created from one single prompt
+
+208
+00:16:13,360 --> 00:16:14,800
+We'll go over the problem, the structure
+
+209
+00:16:14,800 --> 00:16:15,920
+How to build it yourself
+
+210
+00:16:15,920 --> 00:16:17,760
+So turn on the notifications
+
+211
+00:16:17,760 --> 00:16:20,560
+Hit that like and subscribe button because it helps not only me
+
+212
+00:16:20,560 --> 00:16:23,200
+But also other people find this type of content
+
+213
+00:16:23,200 --> 00:16:26,960
+Everything that you saw today is available right now inside enhancer
+
+214
+00:16:26,960 --> 00:16:28,400
+Available everywhere
+
+215
+00:16:28,400 --> 00:16:30,960
+With more updates and features coming soon for you to try
+
+216
+00:16:31,040 --> 00:16:34,400
+If you want more prompt formulas like the ones that I showed you today
+
+217
+00:16:34,400 --> 00:16:37,520
+And if you want to learn more about how to actually build a product
+
+218
+00:16:37,520 --> 00:16:42,320
+Like the agent or the UGC on top of cDense2 for your own clients
+
+219
+00:16:42,320 --> 00:16:44,320
+Come join my free community it's called public AI
+
+220
+00:16:44,320 --> 00:16:45,920
+The link is in the description as well
+
+221
+00:16:45,920 --> 00:16:47,360
+It is completely free
+
+222
+00:16:47,360 --> 00:16:50,720
+And again here's a part I'm most excited to tell you
+
+223
+00:16:50,720 --> 00:16:53,440
+Because right now inside public AI we are running a pilot
+
+224
+00:16:53,440 --> 00:16:57,680
+Where my team is helping five students build five real SAS apps
+
+225
+00:16:57,760 --> 00:17:00,960
+Full-time AI, stack engineers working on projects
+
+226
+00:17:00,960 --> 00:17:02,240
+Four, three
+
+227
+00:17:03,120 --> 00:17:05,440
+We literally assign engineers to your ideas
+
+228
+00:17:05,440 --> 00:17:07,840
+And we help you build it even if it's from scratch
+
+229
+00:17:07,840 --> 00:17:09,840
+We draw every month there's a real interest
+
+230
+00:17:09,840 --> 00:17:12,320
+And if you have an idea and you just want to throw your name in
+
+231
+00:17:12,320 --> 00:17:13,360
+Join in the community
+
+232
+00:17:13,360 --> 00:17:14,160
+Apply
+
+233
+00:17:14,160 --> 00:17:17,120
+Worst case you will learn a ton from everyone else building in there
+
+234
+00:17:17,120 --> 00:17:20,560
+And the best case my team will build the product for you
+
+235
+00:17:20,560 --> 00:17:22,240
+If this video was useful to you
+
+236
+00:17:22,240 --> 00:17:23,120
+Hit that like button
+
+237
+00:17:23,120 --> 00:17:26,960
+It sounds small but it genuinely helps other people find this kind of content
+
+238
+00:17:27,040 --> 00:17:28,800
+And that means a lot to me
+
+239
+00:17:28,800 --> 00:17:31,440
+Now links for everything are in the description
+
+240
+00:17:31,440 --> 00:17:33,040
+I'm going to see you in the next one
+
+241
+00:17:33,040 --> 00:17:36,080
+And do not forget my friend create without limits
+
+242
+00:17:36,080 --> 00:17:37,280
+Because you can
+
+243
+00:17:37,280 --> 00:17:38,080
+This is Syria
+

@@ -118,5 +118,14 @@ Master catalog of all wiki pages by category. Updated on every ingest.
 - [[Video-Production/Hyperframes-Video-Rendering]] — Hyperframes is an installed HTML-native video renderer by HeyGen. Write HTML compositions, render to MP4. Used for motion graphics, captions, text overlays, and card animations on top of already-cut footage.
 - [[Video-Production/Motion-Graphics-Design-Principles]] — Composition/design-taste knowledge for motion graphics (diagram callout placement, non-parallel radial leader lines, materialize-not-pop reveals, spring-pulse beats, color judgment). Points to the `Motion-Graphics` skill and the growing, production-corrected `design-rules-learned.md` ledger.
 - [[Video-Production/Anomalous-Wild-Pipeline-Scripts]] — Anomalous Wild's full pipeline script inventory (active/superseded), the `/anomalous-wild` orchestrator build, and the Scientific Diagram sub-pipeline (research → illustrate → detect coordinates → label).
+- [[Video-Production/Seedance-Character-Environment-Consistency-Workflows]] — Reference-sheet generation, hallucination-fix-without-regenerating, and face-block-bypass techniques for Seedance 2.0/2.5.
+- [[Video-Production/Storyboards-To-Consistent-Videos-Using-Seedance-2.0]] — A creator's multi-week evolution of storyboard + character/location sheet consistency techniques, with concrete "less is more" lessons on reference sheet design.
+- [[Video-Production/The-Secret-To-AI-Character-Sheets]] — Head-to-head test of character-sheet consistency methods: 360° video turnaround, blacked-out-faces trick, first-frame vs. Omni-reference.
+- [[Video-Production/She-Isnt-Real-Definitive-AI-Influencer-Pipeline]] — AI influencer pipeline: 5-image character sheets, Seedance 2 UGC/multi-reference modes, voice cloning + lip sync, infinite video extension.
+- [[Video-Production/Create-Seamless-AI-Films-Of-Any-Length]] — Chaining unlimited-length AI video from one storyboard via row-cropping and last-frame-passing between generations.
+- [[Video-Production/How-I-Got-11M-Views-30K-Subscribers-AI-Workflow]] — Viral video-to-video Seedance 2.0 workflow starting from real phone-filmed footage.
+- [[Video-Production/The-Only-Workflow-To-Turn-A-Storyboard-Into-An-AI-Video]] — Storyboard-first AI filmmaking via a persistent "Bible" prompting-style reference document read once by an AI agent.
+- [[Video-Production/Ultimate-Seedance-Control-Storyboards-With-GPT-Image-2]] — TopView storyboard-to-Seedance workflow, including a single-panel-only edit trick and direct-vs-agent-split generation tradeoffs.
+- [[Video-Production/Seedance-2.0-Entire-Storyboard-Test-Results]] — Honest test of single-prompt whole-storyboard-to-video generation across 5 projects, GPT Image 2 vs. Nano Banana 2 comparison.
 
 - [[AI-Agents/AI-Essentials-Foundational-Knowledge]] — Foundational primer on AI, ML, LLMs, Agentic AI, and the data-first vs AI-first mindset.

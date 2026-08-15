@@ -24,13 +24,33 @@ Do every step in order. Never skip steps.
 
 ---
 
+## Scope Question (Ask Before Processing)
+
+When the user triggers ingest generically ("ingest", "process ingest", "process the ingest folder", "what's in ingest") without already specifying a scope, ask a multiple-choice question before touching any files:
+
+**Question:** "What should I ingest from `000_Ingest/`?"
+
+1. **Top-level only** — just files sitting directly in `000_Ingest/`, skip every subfolder (default/recommended)
+2. **Everything, including subfolders** — recurse into all subfolders and process everything found
+3. **A specific subfolder** — Tony names it (e.g. "PDF", "Tiktok-TOS"), only that one gets processed
+4. **Let me choose files** — list what's in ingest (top-level + subfolder contents, grouped by folder) and Tony picks individual files
+5. **Other (describe it)** — Tony explains in plain language what he wants ingested and why; parse that into a targeted ingest run instead of picking from the list above
+
+Skip this question if the user's trigger message already specifies scope (e.g. "ingest the PDF subfolder", "ingest file X", "ingest everything including subfolders", or a freeform description matching Option 5).
+
+**Do not run Option 4's file list or Option 5 through markitdown/classification until Tony confirms the final set of files.**
+
+---
+
 ## Subfolder Recursion
 
-By default, recurse into ALL subfolders within `000_Ingest/`. Process every file found, regardless of nesting depth.
+**Default behavior is now top-level only (Option 1 above) unless the Scope Question or the user's trigger message says otherwise.** Subfolders within `000_Ingest/` are never auto-recursed into on a plain "ingest" trigger.
 
-**Exception:** If the user says "top-level only", "don't recurse", or specifies a single file — limit to what was specified.
+**Exception:** If the user selects Option 2 ("everything, including subfolders"), Option 3 (names a specific subfolder), or their trigger message already specifies recursion — process accordingly.
 
 **Notion database exports:** When recursing into a Notion export folder structure (deeply nested folders with individual record `.md` files), skip top-level database container `.md` files that contain only Notion metadata and no real content. Treat each individual record `.md` file as a standalone file to classify and ingest normally.
+
+**Never delete subfolders inside `000_Ingest/` (non-negotiable):** Ingest processing moves/routes the *files* inside a subfolder to their destinations, but the subfolder itself always stays — even if it ends up empty after processing. Do not `rmdir`, `rm -rf`, or otherwise remove any subfolder under `000_Ingest/` for any reason, including "cleanup" at the end of a batch. Tony deliberately keeps these subfolders as standing drop zones (e.g. `Tiktok-TOS/`, `PDF/`, `Screenshots/`) because he re-uses the same folder structure for future ingests and organizes drops into them in a specific way. Only Tony deletes an ingest subfolder himself, manually, when he decides it's no longer needed. This applies to every subfolder at every nesting depth, not just top-level ones.
 
 ---
 

@@ -1,0 +1,244 @@
+1
+00:00:00,000 --> 00:00:10,000
+I gave an AI a single storyboard and said make me move no scene by scene generation, no wasting time and credit, just a simple prompt and this is a result.
+
+2
+00:00:10,000 --> 00:00:21,000
+In this video you will learn how to create a storyboard, how to put yourself as the main character in a storyboard, should you use nano banana 2 or gppm2 and what is good for and what is bad for solid suite.
+
+3
+00:00:21,000 --> 00:00:51,000
+In order to create a storyboard, I like to use cloth, you can use chagypti or any other lm, so with a simple prompt, I need a prompt for gppm2, make me a storyboard of 5x5 panels, you can make 3x3 or 5x3 or 3x5 or whatever you want, then just a simple prompt, astronaut is waking up in a cryopod alone in a space station trying to send a signal to an earth, make me a short story out of it and this is the prompt that cloth created, it made up the story completely according to my reference, but
+
+4
+00:00:51,000 --> 00:00:58,000
+in case you need a specific story, just type it in your own words and cloth will create a prompt for making a storyboard out of that.
+
+5
+00:00:58,000 --> 00:01:07,000
+Now that we have a prompt, let's put it into nano banana 2, I will choose 16x9 aspect ratio, 4k, also I will generate another image using gppm2.
+
+6
+00:01:07,000 --> 00:01:16,000
+And this is the result of nano banana 2, we have 10 panels and it looks a little bit cartoonish, but if this is what you're looking for, it's okay.
+
+7
+00:01:16,000 --> 00:01:27,000
+But with the same prompt, we are getting this as a result of gppm2 a little bit more realistic, so I like gppm2 better over nano banana 2 because it gives me a little bit better results.
+
+8
+00:01:27,000 --> 00:01:36,000
+You will see later in the next storyboards that we will create the difference of gppm2 and nano banana 2, and let me know down in the comments which you prefer.
+
+9
+00:01:36,000 --> 00:01:39,000
+But here for this example, this is good enough.
+
+10
+00:01:39,000 --> 00:01:46,000
+And now I want, instead of this guy, some random guy, I want to put myself as the main character here, so how to do it?
+
+11
+00:01:46,000 --> 00:01:51,000
+It's really simple, you just need to create a character sheet of yourself in an astronaut suit from different angles.
+
+12
+00:01:51,000 --> 00:01:59,000
+And to do that, just take a photo of yourself from different angles like side, front, and maybe different facial expressions.
+
+13
+00:01:59,000 --> 00:02:09,000
+And use that photo, put it into a cloud and say cloud, make me a prompt for character sheet of an astronaut in an astronaut suit with a helmet without helmet, whatever you want.
+
+14
+00:02:09,000 --> 00:02:18,000
+I choose without helmet, and it will give you a prompt, put that prompt into an nano banana 2 or gppm2, and you will get this as a final result.
+
+15
+00:02:18,000 --> 00:02:26,000
+Now you just need to use that photo, what I did, I just drag it and drop it into a cloud, and also pasted the prompt that cloud gave me for creating this storyboard.
+
+16
+00:02:26,000 --> 00:02:30,000
+And just said, giving the same storyboard, but with this character that I have attached.
+
+17
+00:02:30,000 --> 00:02:38,000
+And then I got almost exactly the same prompt, then I put it this into nano banana 2 and gppm2, and these are the results.
+
+18
+00:02:38,000 --> 00:02:43,000
+This is the result from nano banana 2, it's not bad, we have all the frames that we need.
+
+19
+00:02:43,000 --> 00:02:50,000
+And this is the result of gppm2, that for this example I prefer better, or nano banana 2, maybe you like nano banana 2 better.
+
+20
+00:02:50,000 --> 00:02:55,000
+I don't know, it's personal preference, just let me know down there in the comments, which version do you prefer better?
+
+21
+00:02:56,000 --> 00:03:03,000
+In exactly the same way I created all other storyboards, with the difference that I didn't put myself as a main character, so it was even easier.
+
+22
+00:03:03,000 --> 00:03:11,000
+And this is the storyboard for Nike commercial, this is nano banana 2, you can see the main character is unboxing the shoes,
+
+23
+00:03:11,000 --> 00:03:21,000
+titing the laces here, and then he suddenly transforming into a stadium, and then he starts to run, and he wins, and then just a pack shot of Nike does do it.
+
+24
+00:03:21,000 --> 00:03:25,000
+It's not bad, but let's look the gppm2 storyboard.
+
+25
+00:03:25,000 --> 00:03:29,000
+You can see this is much better moralistic, at least in my taste.
+
+26
+00:03:29,000 --> 00:03:36,000
+Also the pair of storyboards, it's in a Pixar style, the pair are just flying around the New York City and coming back home.
+
+27
+00:03:36,000 --> 00:03:43,000
+So this is as you are guessing now, this is nano banana 2, and this is gppm2.
+
+28
+00:03:43,000 --> 00:03:50,000
+And as you can see, gppm2 has a little bit more detail, it's more contrasty, more saturated, more punchy look.
+
+29
+00:03:50,000 --> 00:03:57,000
+So whichever you prefer, and we have another storyboard here, it's a manga style of Sherlock Holmes.
+
+30
+00:03:57,000 --> 00:04:09,000
+So the detective is coming to the crime scene, investigating seeing the murder, then we see his tinking process, and he realized that there is somebody behind the curtain, and so on and so forth.
+
+31
+00:04:09,000 --> 00:04:16,000
+And this is actually gppm2, and this is a nano banana version of exactly the same prompt, same story, you can see the difference.
+
+32
+00:04:16,000 --> 00:04:32,000
+And we have the last storyboard for today, this is a young man doing a parkour, flying over the buildings and running all around the streets, and he saw the beautiful girl and just the distraction, and he just crashes into the wall.
+
+33
+00:04:32,000 --> 00:04:35,000
+So this is not a banana 2 version, as you guessed, probably.
+
+34
+00:04:35,000 --> 00:04:39,000
+And this is gppm2 version of exactly the same story and exactly the same prompt.
+
+35
+00:04:39,000 --> 00:04:47,000
+Now let's turn these storyboards into short movies, and let me show you what is good for, what is bad for, and actually how simple it is to create movie out of this.
+
+36
+00:04:47,000 --> 00:04:52,000
+So for this, I'm using sedans2.0, currently on Hicksville, but you can use it wherever you want.
+
+37
+00:04:52,000 --> 00:05:00,000
+And I will go with 14 seconds for this, 16x9, and also 720p, it's good for this example.
+
+38
+00:05:00,000 --> 00:05:10,000
+Also I'm feeding this with two images, the storyboard image and the image of myself as a character sheet of an astronaut, and the prompt is really simple.
+
+39
+00:05:10,000 --> 00:05:24,000
+Generate a photo-realistic cinematic video following the attached storyboard, I tagged the storyboard just in case, paneled by panel using the attached character sheet to maintain the character consistency, and I said no music just sound effects, and generate.
+
+40
+00:05:30,000 --> 00:05:49,000
+As you can see, it's followed the storyboard pretty nicely, we have all the frames except the last panel, where the character is looking through the window, but it doesn't matter, I'm pretty satisfied with that.
+
+41
+00:05:49,000 --> 00:05:53,000
+Now let's go and generate all other storyboards.
+
+42
+00:05:53,000 --> 00:05:58,000
+So the next one is Nike commercial, and I will use the GPT image 2 version of the storyboard.
+
+43
+00:05:58,000 --> 00:06:02,000
+Okay, this is how it looks, and the prompt is even simpler.
+
+44
+00:06:02,000 --> 00:06:08,000
+Generate a photo-realistic cinematic video for Nike following the attached storyboard panel by panel.
+
+45
+00:06:08,000 --> 00:06:11,000
+This is it, 12 seconds for this, let's generate.
+
+46
+00:06:11,000 --> 00:06:36,000
+Okay, it's not bad, we have all the elements from the storyboard generated panel by panel, I don't like to measure transition from the living room to the stadium, it's a little bit too fast, but everything else looks pretty decent, so let's regenerate it.
+
+47
+00:06:36,000 --> 00:07:05,000
+Okay, this one it's much better regarding to the transition from the living room to the stadium, but at the end you can see we have some glitch from where he's crossing the finish line, but it's pretty much okay, let's do another generation.
+
+48
+00:07:05,000 --> 00:07:30,000
+And this is probably my favorite one, but it has a little bit of glitches which are really easy fixable in video editing, we will do that later, so let's go to another storyboard.
+
+49
+00:07:35,000 --> 00:08:00,000
+This one is so cute and beautiful, and I really like it, I will not regenerate another version, I have an idea how to fix it in post-production in editing process later, I will show you that in a moment, and everything else is really nice and cute, so this is good.
+
+50
+00:08:05,000 --> 00:08:19,000
+Okay, this is not bad, it has a funny side on it, but I will do an hydrogenation.
+
+51
+00:08:35,000 --> 00:08:45,000
+On this one I like the beginning, the action and how it moves, but then after the middle of the video I don't like it that much, so let's do another generation, hopefully it will be much better.
+
+52
+00:08:45,000 --> 00:09:13,000
+Okay, here we have two of these guys when it's crashing over the wall and two women in a red dress, which is not good enough, but I will use one portion of previous video and one portion of this video.
+
+53
+00:09:13,000 --> 00:09:16,000
+Let's mix it in video editing.
+
+54
+00:09:27,000 --> 00:09:36,000
+The detective one is not bad, it's like a teaser for some longer video format, and now let me show what I would do in editing part to improve some videos.
+
+55
+00:09:36,000 --> 00:09:58,000
+Okay, let me show you what I did with the parrot, so this is how it looks, but then the parrot is coming through this window and then going already inside, and through another window which doesn't make sense, and this is cool, so yeah, and I just cut it, this part when he's coming here and cut it, everything else, and this is the result.
+
+56
+00:10:06,000 --> 00:10:21,000
+Now for the parkour guy, I took the beginning from one video and then I took a few scenes from another video and mixed everything together and let me play everything as a new video.
+
+57
+00:10:21,000 --> 00:10:47,000
+So what is method of creating a storyboard and turning into video is good for first, is good for saving time and credits, because you will definitely spend less credits to create a movie, then generating frame by frame.
+
+58
+00:10:47,000 --> 00:11:03,000
+Also you will have just one generation, so you will just spend less time doing it. It's good for proofing, for seeing the concept of something, for sending a client of concept of maybe a future commercial or short video that you want to make for whatever you want, and so on and so forth.
+
+59
+00:11:03,000 --> 00:11:27,000
+This kind of thing is really, really nice, but if you want to have more control and then make it a little bit better and to have specific transitions between frames, then the matter of generating frame by frame or just using two or three images for one video, one portion of the video is still, in my opinion, a bit better because you have more control over it.
+
+60
+00:11:27,000 --> 00:11:36,000
+Yes, it's more time consuming and you will use more credits, but you will have better output. So let me know what do you think about turning the storyboards into a video as a workflow.
+
+61
+00:11:36,000 --> 00:11:43,000
+And also if you want to learn how to create cinematic commercials using AI, check out this video right here. See you next time. Bye bye.
+

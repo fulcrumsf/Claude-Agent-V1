@@ -2728,3 +2728,21 @@ Wiki updated: 000_Wiki/Video-Production/Neon-Parcel-TikTok-Shop-Creator-Pipeline
 Production: Glass Guard V1 posted to Blotato as a TikTok draft (accountId 27763, neonparcel), pending manual product-link attach in-app
 Compliance: Phase 1 pass, Phase 2 skipped (Firecrawl still can't reach tiktok.com — same known limitation as 2026-07-12), Phase 3 CLEAR on final render (vision scan false-positive on own-product logo resolved manually, same pattern as Colorsmart Pens)
 Known gap flagged, not resolved: compliance_vision_scan.py's prompt still isn't tightened to exclude the promoted product's own branding — now confirmed 2/2 productions, worth fixing at the script level next time this pipeline is touched
+
+## [2026-08-10] ingest | Seedance Case Study Pipeline — Phase 1 Batch (11 files)
+Source: 000_Ingest/ (11 top-level YouTube tutorial transcripts about Seedance consistency/storyboard workflows, Claude-Code-agnostic to platform)
+Destinations:
+- `007_Resource_Library/Tutorials/Seedance-2.0-GPT-Image-2-Character-Environment-Consistency-Tutorial.md`
+- `007_Resource_Library/Tutorials/Seedance-2.5-Character-Environment-Consistency-Tutorial.md`
+- `007_Resource_Library/Tutorials/She-Isnt-Real-Definitive-AI-Influencer-Pipeline.md`
+- `007_Resource_Library/Tutorials/Storyboards-To-Consistent-Videos-Using-Seedance-2.0.md`
+- `007_Resource_Library/Tutorials/The-Secret-To-AI-Character-Sheets.md`
+- `007_Resource_Library/Tutorials/Create-Seamless-AI-Films-Of-Any-Length-GPT-Image-2-Seedance-2.0.md`
+- `007_Resource_Library/Tutorials/How-I-Got-11M-Views-30K-Subscribers-AI-Workflow.md`
+- `007_Resource_Library/Tutorials/The-Only-Workflow-To-Turn-A-Storyboard-Into-An-AI-Video.md`
+- `007_Resource_Library/Tutorials/Ultimate-Seedance-Control-Storyboards-With-GPT-Image-2.md`
+- `007_Resource_Library/Tutorials/Seedance-2.0-Entire-Storyboard-Test-Results.md`
+- `007_Resource_Library/Tools/Kie-Ai-CLI-MCP-Server-Agent-Skill.md` (tool-doc, no wiki page per Step 4 rule)
+Wiki pages created: 9 new pages in `000_Wiki/Video-Production/` (Seedance-Character-Environment-Consistency-Workflows, Storyboards-To-Consistent-Videos-Using-Seedance-2.0, The-Secret-To-AI-Character-Sheets, She-Isnt-Real-Definitive-AI-Influencer-Pipeline, Create-Seamless-AI-Films-Of-Any-Length, How-I-Got-11M-Views-30K-Subscribers-AI-Workflow, The-Only-Workflow-To-Turn-A-Storyboard-Into-An-AI-Video, Ultimate-Seedance-Control-Storyboards-With-GPT-Image-2, Seedance-2.0-Entire-Storyboard-Test-Results)
+Cross-linked: Seedance-2-0-Prompting-Guide.md, Higgsfield-AI-Faceless-YouTube-Pipeline.md, Neon-Parcel-TikTok-Shop-Creator-Pipeline.md — Related sections updated
+Context: Phase 1 of the Seedance Case Study Pipeline (see Claude memory `project_seedance_case_study_pipeline.md`). Phase 2 (Video-Analyzer case studies into `Universal_Case_Studies/`) and Phase 3 (extract outliers into `Seedance-Prompting-Guide` skill) not yet started.

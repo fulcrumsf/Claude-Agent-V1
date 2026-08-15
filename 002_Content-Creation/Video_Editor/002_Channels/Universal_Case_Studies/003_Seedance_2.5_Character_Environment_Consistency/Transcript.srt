@@ -1,0 +1,896 @@
+1
+00:00:00,000 --> 00:00:07,800
+Seedence 2.5 is finally here, it brings some massive jump in motion realism, 30 seconds generations and up to 50 references.
+
+2
+00:00:07,800 --> 00:00:13,160
+Today, we're mastering character and environment consistency so a video will look like one complete story.
+
+3
+00:00:13,160 --> 00:00:20,520
+I'll walk you through a step by step workflow to fix any broken scene, and I'm giving away my exact prompt templates for free and the cloth skill.
+
+4
+00:00:20,520 --> 00:00:21,600
+Let's get into it.
+
+5
+00:00:21,600 --> 00:00:25,240
+We will have a total of 4 steps and I'll show them to you one by one.
+
+6
+00:00:25,240 --> 00:00:29,680
+We can start with the first step, which is building consistent reference sheets.
+
+7
+00:00:29,760 --> 00:00:32,960
+We're starting inside the cloud and there are 2 ways to craft these.
+
+8
+00:00:32,960 --> 00:00:37,200
+The first way is to simply copy the templates and attach your base images.
+
+9
+00:00:37,200 --> 00:00:41,840
+The second way is to use a custom cloth skill, so let's start with the first method.
+
+10
+00:00:41,840 --> 00:00:48,040
+Find the character templates in the provided document, copy it, go back into the cloud and paste the prompt.
+
+11
+00:00:48,040 --> 00:00:51,440
+Click to add files and upload your character base image.
+
+12
+00:00:51,440 --> 00:00:57,480
+At the very end of the prompt, it instructs the AI to fill the prompt using the attached character image.
+
+13
+00:00:57,520 --> 00:00:59,520
+And then press send the prompt.
+
+14
+00:00:59,520 --> 00:01:03,920
+Now, I'll open a second window and do the exact same thing for the environment.
+
+15
+00:01:03,920 --> 00:01:07,400
+Go back into the document and find the exterior environment template.
+
+16
+00:01:07,400 --> 00:01:10,320
+Copy the template, go back into the cloud and paste it.
+
+17
+00:01:10,320 --> 00:01:14,640
+At the very end, it's saying, fill in this prompt using the attached image.
+
+18
+00:01:14,640 --> 00:01:18,800
+Attach your environment base image alongside with the prompt and send it.
+
+19
+00:01:18,800 --> 00:01:22,920
+Now, copy the new character prompt that the clothes are generated.
+
+20
+00:01:22,920 --> 00:01:25,720
+Open JGBT and click create an image.
+
+21
+00:01:25,720 --> 00:01:32,480
+Paste the prompt you just copied and the most important part here is to actually attach your base image of the character alongside with the text.
+
+22
+00:01:32,480 --> 00:01:38,560
+At the very end of the prompt, I will add an extraction for a 16 by 9 aspect ratio and just click generate.
+
+23
+00:01:38,560 --> 00:01:41,200
+We have to do the exact same thing for our environment.
+
+24
+00:01:41,200 --> 00:01:48,240
+Go back and copy the generated environment prompt from the cloud, paste into JGBT and add your environment base image.
+
+25
+00:01:48,280 --> 00:01:53,280
+Write in 16 by 9 aspect creation instruction at the very end and send the prompt.
+
+26
+00:01:53,280 --> 00:01:58,040
+As you can see, our environment and our character reference sheets has been successfully generated.
+
+27
+00:01:58,040 --> 00:02:04,520
+This is the exact same process for all your subjects, whether they are vehicles, environments, characters or props,
+
+28
+00:02:04,520 --> 00:02:06,520
+the workflow is exactly the same for all those.
+
+29
+00:02:06,520 --> 00:02:08,720
+Now, I'll show you a second method.
+
+30
+00:02:08,720 --> 00:02:12,880
+The second way to craft this consistent character sheets is by using CloudSkill.
+
+31
+00:02:12,880 --> 00:02:17,480
+I made my own CloudSkill to speed up this process, which will link in the description below.
+
+32
+00:02:17,520 --> 00:02:23,560
+Alongside with the document containing templates, click the plus icon and upload all of your reference images at once.
+
+33
+00:02:23,560 --> 00:02:26,240
+I have two exterior environments and one character uploaded.
+
+34
+00:02:26,240 --> 00:02:31,680
+Click plus, go to your skills and select concept sheet builder skill and press generate.
+
+35
+00:02:31,680 --> 00:02:37,760
+The skill will automatically analyze all the references and depending on what each one is, it uses the matching template.
+
+36
+00:02:37,760 --> 00:02:42,880
+As you can see, it created one exterior template based on the first image, which is labeled E1.
+
+37
+00:02:42,920 --> 00:02:47,960
+If we scroll down, we can see the second exterior template, which matches image E2.
+
+38
+00:02:47,960 --> 00:02:50,720
+If we scroll down further, we can see the character template.
+
+39
+00:02:50,720 --> 00:02:52,920
+From here, it is the exact same process.
+
+40
+00:02:52,920 --> 00:02:57,600
+You just copy these prompts into tragedyBT, click create an image and attach the base images.
+
+41
+00:02:57,600 --> 00:03:00,920
+You will get the exact same output as the previous manual way.
+
+42
+00:03:00,920 --> 00:03:03,320
+The skill is just here to speed your process up.
+
+43
+00:03:03,320 --> 00:03:09,360
+If you do not want the CloudSkills, the manual method works just as well and provides completely identical results.
+
+44
+00:03:09,360 --> 00:03:12,240
+One more important thing for when you save your reference images.
+
+45
+00:03:12,280 --> 00:03:17,480
+When you don't want an image, like this seller, make sure to name the actual file clearly.
+
+46
+00:03:17,480 --> 00:03:20,680
+Save it as seller or give the character a specific name.
+
+47
+00:03:20,680 --> 00:03:22,880
+This makes it much easier to work with later.
+
+48
+00:03:22,880 --> 00:03:27,400
+It keeps your taking consistent route the entire workflow and simplifies everything later.
+
+49
+00:03:27,400 --> 00:03:29,880
+Make sure to name every character with a proper title.
+
+50
+00:03:29,880 --> 00:03:34,080
+If you have multiple environments, named in specifically like Stoll or Street,
+
+51
+00:03:34,080 --> 00:03:37,320
+this will make the entire process much simpler later on.
+
+52
+00:03:37,320 --> 00:03:39,120
+And that covers the first step.
+
+53
+00:03:39,120 --> 00:03:45,160
+And now, we are moving over to step 2, which is writing a story and generating CDN 2.5 videos.
+
+54
+00:03:45,160 --> 00:03:48,480
+The first thing we need to do inside the Cloud is write a short story.
+
+55
+00:03:48,480 --> 00:03:52,000
+And roughly describe what we want to make using the reference images we have.
+
+56
+00:03:52,000 --> 00:03:55,440
+As you can see here, I already prepared a full prompt and story.
+
+57
+00:03:55,440 --> 00:04:01,200
+I wrote in the very top of a plot that reference images and here is a story for CDN 2.5 video generator.
+
+58
+00:04:01,200 --> 00:04:02,960
+And now, we will pull the references.
+
+59
+00:04:02,960 --> 00:04:05,200
+After the story, I instructed Cloud 2.
+
+60
+00:04:05,200 --> 00:04:10,000
+Use this template to craft a single, complete 32nd CDN 2.5 prompt.
+
+61
+00:04:10,000 --> 00:04:11,120
+The generator is one clip.
+
+62
+00:04:11,120 --> 00:04:13,760
+Tag references exactly as uploaded files are named.
+
+63
+00:04:13,760 --> 00:04:15,760
+Example, Simon.
+
+64
+00:04:15,760 --> 00:04:18,000
+Never generic place orders like image 1.
+
+65
+00:04:18,000 --> 00:04:20,680
+Use the exact names everywhere RF appears.
+
+66
+00:04:20,680 --> 00:04:23,840
+As you can see, I specified using the exact names.
+
+67
+00:04:23,840 --> 00:04:26,280
+If I click on the seller here, it is named seller.
+
+68
+00:04:26,280 --> 00:04:28,880
+If I click on the character, his name Simon.
+
+69
+00:04:28,880 --> 00:04:30,120
+This one is named revolver.
+
+70
+00:04:30,120 --> 00:04:33,320
+It is set up like that for everything to make the process simpler.
+
+71
+00:04:33,320 --> 00:04:35,080
+Here is a CDN video prompt template.
+
+72
+00:04:35,120 --> 00:04:36,760
+And now, we will generate a story.
+
+73
+00:04:36,760 --> 00:04:37,840
+Just press generate.
+
+74
+00:04:37,840 --> 00:04:40,240
+This is the first video prompt we received.
+
+75
+00:04:40,240 --> 00:04:43,400
+You do not have to accept the first result in returns, obviously.
+
+76
+00:04:43,400 --> 00:04:47,360
+You can iterate, go where each shot and choose what you want to keep or change.
+
+77
+00:04:47,360 --> 00:04:51,040
+Once the process is done, copy the video prompt and head over to Dramina.
+
+78
+00:04:51,040 --> 00:04:52,680
+Paste the video in the text box.
+
+79
+00:04:52,680 --> 00:04:57,600
+Select CDN 2.5, choose Omni reference and adjust the time setting to 30 seconds.
+
+80
+00:04:57,600 --> 00:04:59,880
+Now, upload all of your images.
+
+81
+00:04:59,880 --> 00:05:01,920
+I have uploaded all of my images here.
+
+82
+00:05:01,920 --> 00:05:04,240
+Next, we need to tag all the references.
+
+83
+00:05:04,240 --> 00:05:06,200
+Scroll down the prompt and tag everything.
+
+84
+00:05:06,200 --> 00:05:12,160
+As you can see, we tag Simon, add Simon, seller and go down the prompt tagging every reference.
+
+85
+00:05:12,160 --> 00:05:13,920
+One that is done, press generate.
+
+86
+00:05:13,920 --> 00:05:17,400
+I already generated the first clip, so now I'll show you the next step.
+
+87
+00:05:17,400 --> 00:05:20,160
+Now that we did that, we generated our first video.
+
+88
+00:05:20,160 --> 00:05:22,480
+And spot all the things that went from in the video.
+
+89
+00:05:22,480 --> 00:05:26,000
+For example, as you can see here, the seller is not standing at a stall.
+
+90
+00:05:26,000 --> 00:05:29,520
+If we move further along, the background here is still not standing at a stall.
+
+91
+00:05:29,520 --> 00:05:33,480
+What we need to do for those shots is take the prompt, go back into cloth
+
+92
+00:05:33,520 --> 00:05:34,800
+and specify the changes.
+
+93
+00:05:34,800 --> 00:05:40,240
+For example, write, short 3, seller should be the stall, or copy a specific section,
+
+94
+00:05:40,240 --> 00:05:43,600
+like a close-up shot and change the detail you want to adjust.
+
+95
+00:05:43,600 --> 00:05:48,640
+Specify the timestamps, like short 6 to 8 seconds or short 10 to 12 seconds
+
+96
+00:05:48,640 --> 00:05:50,640
+and prompt cloth to rewrite those parts.
+
+97
+00:05:50,640 --> 00:05:53,040
+Once you do that, cloth will write a new prompt.
+
+98
+00:05:53,040 --> 00:05:56,280
+Copy the new prompt, go back into Dramina and generate again.
+
+99
+00:05:56,280 --> 00:05:58,080
+As you can see, I did just that.
+
+100
+00:05:58,080 --> 00:05:59,640
+First, I took my original video.
+
+101
+00:05:59,640 --> 00:06:02,960
+Then I generated a second one to try and redo the shots.
+
+102
+00:06:03,000 --> 00:06:04,440
+Then I generated a third one.
+
+103
+00:06:04,440 --> 00:06:08,120
+I ran this exact process three times, reiterating every student went from.
+
+104
+00:06:08,120 --> 00:06:12,320
+However, you notice that some details just not happened, even if you split the prompt for them.
+
+105
+00:06:12,320 --> 00:06:16,000
+For example, at some points, getting the seller to stand at a stall
+
+106
+00:06:16,000 --> 00:06:19,360
+just did not happen in the way I wanted because they hallucinated.
+
+107
+00:06:19,360 --> 00:06:21,560
+I will show you how to fix that in the next step.
+
+108
+00:06:21,560 --> 00:06:24,600
+Once you have your three video variations, check them one last time
+
+109
+00:06:24,600 --> 00:06:28,560
+for instance that you like, but it is missing a detail or did not turn as planned.
+
+110
+00:06:28,560 --> 00:06:32,400
+I will show you how to fix those specific scenes in step three.
+
+111
+00:06:32,440 --> 00:06:35,840
+Moving on to the next step, which is fixing a broken scene.
+
+112
+00:06:35,840 --> 00:06:37,840
+The way to do this is actually pretty simple.
+
+113
+00:06:37,840 --> 00:06:40,720
+For this video here, the seller ended up missing from the shot.
+
+114
+00:06:40,720 --> 00:06:43,480
+And it's fine, because I'll show you how to fix it right now.
+
+115
+00:06:43,480 --> 00:06:45,360
+He is actually missing from two shots.
+
+116
+00:06:45,360 --> 00:06:49,520
+The first shot, and here at the 7th mark, we're going to fix the second one.
+
+117
+00:06:49,520 --> 00:06:50,680
+And I'm going to show you how.
+
+118
+00:06:50,680 --> 00:06:53,880
+This is the exact same process for two, so this scene was good,
+
+119
+00:06:53,880 --> 00:06:55,800
+but it was missing a character to stall.
+
+120
+00:06:55,800 --> 00:06:58,720
+I will take the whole 30 second video here and download it.
+
+121
+00:06:58,720 --> 00:07:00,400
+Then I will open my Aitor.
+
+122
+00:07:00,400 --> 00:07:02,200
+I use Adobe Premiere Pro for this.
+
+123
+00:07:02,240 --> 00:07:04,680
+But any other Aitor works for this trick as well.
+
+124
+00:07:04,680 --> 00:07:07,000
+I will cut five seconds containing two shots.
+
+125
+00:07:07,000 --> 00:07:08,960
+One where the seller is clearly visible.
+
+126
+00:07:08,960 --> 00:07:10,600
+And another shot we need to fix.
+
+127
+00:07:10,600 --> 00:07:11,680
+We're going to do that now.
+
+128
+00:07:11,680 --> 00:07:13,800
+We will not cut the first shot from here.
+
+129
+00:07:13,800 --> 00:07:16,000
+I'm going to cut where the seller appears.
+
+130
+00:07:16,000 --> 00:07:18,200
+Then cut where the second shot ends.
+
+131
+00:07:18,200 --> 00:07:21,640
+Press I and O on your keyboard to set your in and out points.
+
+132
+00:07:21,640 --> 00:07:23,960
+Select these five seconds and export them.
+
+133
+00:07:23,960 --> 00:07:27,120
+Then, upload a five second clip back into Dramina.
+
+134
+00:07:27,120 --> 00:07:29,320
+When you do that, write your prompt.
+
+135
+00:07:29,320 --> 00:07:31,160
+Keep the video at video one.
+
+136
+00:07:31,160 --> 00:07:33,440
+Exactly as it is in shot two.
+
+137
+00:07:33,440 --> 00:07:35,200
+Only add at seller.
+
+138
+00:07:35,200 --> 00:07:37,240
+The man already seen in shot one.
+
+139
+00:07:37,240 --> 00:07:39,480
+Standing behind a stall counter working.
+
+140
+00:07:39,480 --> 00:07:41,040
+Turning his head left and right.
+
+141
+00:07:41,040 --> 00:07:41,960
+Change nothing.
+
+142
+00:07:41,960 --> 00:07:44,600
+I uploaded my video and the seller reference image.
+
+143
+00:07:44,600 --> 00:07:46,160
+And now let's see the video.
+
+144
+00:07:51,160 --> 00:07:52,960
+As you can see, it worked pretty well.
+
+145
+00:07:52,960 --> 00:07:54,600
+It added a seller who was missing.
+
+146
+00:07:54,600 --> 00:07:56,560
+And now this video is a usable shot.
+
+147
+00:07:56,560 --> 00:07:59,440
+Why they cut five seconds instead of two or three seconds?
+
+148
+00:07:59,440 --> 00:08:02,080
+Because this gives CDN 2.5 more data
+
+149
+00:08:02,080 --> 00:08:04,000
+on how the character looks in the environment
+
+150
+00:08:04,000 --> 00:08:05,360
+when he is standing at a shot.
+
+151
+00:08:05,360 --> 00:08:07,520
+Appalling the seller reference makes it easier
+
+152
+00:08:07,520 --> 00:08:09,040
+for the AI to map him out.
+
+153
+00:08:09,040 --> 00:08:10,720
+Depending on what you're trying to fix,
+
+154
+00:08:10,720 --> 00:08:12,680
+you can use less or more than five seconds.
+
+155
+00:08:12,680 --> 00:08:14,680
+It simply comes down to what you're fixing.
+
+156
+00:08:14,680 --> 00:08:16,560
+And now that we know how to fix a scene
+
+157
+00:08:16,560 --> 00:08:18,680
+and you have all our scenes and videos ready,
+
+158
+00:08:18,680 --> 00:08:20,840
+we can move on to the next and final step.
+
+159
+00:08:20,840 --> 00:08:23,920
+Step four, which is choosing the right shots and editing.
+
+160
+00:08:23,920 --> 00:08:26,040
+What we have to do now is know the video
+
+161
+00:08:26,040 --> 00:08:27,680
+that we fixed in step three,
+
+162
+00:08:27,680 --> 00:08:30,320
+along with the first three original videos we generated.
+
+163
+00:08:30,320 --> 00:08:31,600
+Then we'll go into the editor.
+
+164
+00:08:31,600 --> 00:08:33,320
+This is the video that I already ate it.
+
+165
+00:08:33,320 --> 00:08:35,440
+So how do you choose all the shots?
+
+166
+00:08:35,440 --> 00:08:36,640
+I took all the videos,
+
+167
+00:08:36,640 --> 00:08:38,560
+video one, video two, and video three.
+
+168
+00:08:38,560 --> 00:08:40,440
+And the fixed one from step three.
+
+169
+00:08:40,440 --> 00:08:41,760
+I went over each video.
+
+170
+00:08:41,760 --> 00:08:43,840
+I looked at every shot to see what I like
+
+171
+00:08:43,840 --> 00:08:44,800
+and what I didn't like.
+
+172
+00:08:44,800 --> 00:08:47,200
+For example, I didn't like this shot as much.
+
+173
+00:08:47,200 --> 00:08:48,640
+It is the same for the video two.
+
+174
+00:08:48,640 --> 00:08:51,920
+This shot was okay, but it was missing the seller in the stall.
+
+175
+00:08:51,960 --> 00:08:52,960
+Instead of fixing that,
+
+176
+00:08:52,960 --> 00:08:54,720
+I choose the shots from the video three
+
+177
+00:08:54,720 --> 00:08:56,240
+because it's more cinematic,
+
+178
+00:08:56,240 --> 00:08:57,520
+the first shot I'm talking about.
+
+179
+00:08:57,520 --> 00:08:58,600
+I like it way better.
+
+180
+00:08:58,600 --> 00:09:00,640
+So I did not even bother fixing the other one
+
+181
+00:09:00,640 --> 00:09:01,480
+for a second shot.
+
+182
+00:09:01,480 --> 00:09:02,480
+I like this one.
+
+183
+00:09:02,480 --> 00:09:03,720
+I'm going to fix the scene.
+
+184
+00:09:03,720 --> 00:09:05,960
+So I use this third scene for the shot three.
+
+185
+00:09:05,960 --> 00:09:08,680
+I went over each shot and choose the shots that I like
+
+186
+00:09:08,680 --> 00:09:10,640
+and discarded the one that I didn't like.
+
+187
+00:09:10,640 --> 00:09:12,320
+Because all of these have the same environment,
+
+188
+00:09:12,320 --> 00:09:14,360
+the same character and the same subjects,
+
+189
+00:09:14,360 --> 00:09:16,160
+they use the same reference throughout.
+
+190
+00:09:16,160 --> 00:09:17,200
+So it's pretty consistent.
+
+191
+00:09:17,200 --> 00:09:18,320
+And as you can see here,
+
+192
+00:09:18,320 --> 00:09:20,360
+I choose the first shots from the video three.
+
+193
+00:09:20,360 --> 00:09:21,680
+Then for a second shot,
+
+194
+00:09:21,680 --> 00:09:22,720
+I use the video two.
+
+195
+00:09:22,720 --> 00:09:25,720
+Then this is the scene we fixed from a step three.
+
+196
+00:09:25,720 --> 00:09:26,480
+As you can see,
+
+197
+00:09:26,480 --> 00:09:28,520
+now there is a person standing at the stall.
+
+198
+00:09:28,520 --> 00:09:30,640
+After that, it goes back to video two.
+
+199
+00:09:30,640 --> 00:09:32,360
+Then changes to video three.
+
+200
+00:09:32,360 --> 00:09:34,480
+What they did here is either an effect
+
+201
+00:09:34,480 --> 00:09:35,840
+like a fade out sound effect.
+
+202
+00:09:35,840 --> 00:09:37,600
+So it can blend the sound between the two.
+
+203
+00:09:37,600 --> 00:09:39,520
+I like the video three all the way to the end.
+
+204
+00:09:39,520 --> 00:09:41,640
+When I put these shots on top of each other,
+
+205
+00:09:41,640 --> 00:09:43,080
+I try to blend the sounds
+
+206
+00:09:43,080 --> 00:09:46,320
+so it can sound better and more natural when the video is played.
+
+207
+00:09:46,320 --> 00:09:48,840
+In the very end, as you can see here, there is music.
+
+208
+00:09:48,840 --> 00:09:50,200
+How did I generate this music?
+
+209
+00:09:50,200 --> 00:09:51,880
+After generating all the scenes,
+
+210
+00:09:51,880 --> 00:09:53,000
+I simply ask Lord,
+
+211
+00:09:53,000 --> 00:09:55,720
+what music would feed this 30-second short film?
+
+212
+00:09:55,720 --> 00:09:58,480
+And I generated that music with elaborate music too.
+
+213
+00:09:58,480 --> 00:10:01,360
+You can also generate using Google Lira 3 or sooner.
+
+214
+00:10:01,360 --> 00:10:02,200
+It doesn't matter.
+
+215
+00:10:02,200 --> 00:10:04,840
+You can simply prompt for that and ask Lord to do it.
+
+216
+00:10:04,840 --> 00:10:06,040
+After I chose the sequence,
+
+217
+00:10:06,040 --> 00:10:07,280
+I sported it with music
+
+218
+00:10:07,280 --> 00:10:08,720
+and the final version is ready.
+
+219
+00:10:08,720 --> 00:10:11,160
+Now, let's see the final result with sound.
+
+220
+00:10:20,200 --> 00:10:42,520
+That's how you make a complete story in four steps.
+
+221
+00:10:42,520 --> 00:10:43,880
+And the final version is ready.
+
+222
+00:10:43,880 --> 00:10:44,920
+Thank you for watching.
+
+223
+00:10:44,920 --> 00:10:46,720
+If you like this video, consider subscribing
+
+224
+00:10:46,720 --> 00:10:48,000
+and I'll see you in the next one.
+

@@ -55,7 +55,7 @@ def test_build_video_prompt_prepends_pov_lock_clause():
         camera_fixed=True,
     )
     assert result.startswith(POV_LOCK_CLAUSE)
-    assert "the character's own face must never be visible in frame" in result
+    assert "their own face, the back of their own head, their own shoulder, or their own back" in result
 
 
 def test_build_video_prompt_raises_on_quoted_dialogue_in_scene_description():

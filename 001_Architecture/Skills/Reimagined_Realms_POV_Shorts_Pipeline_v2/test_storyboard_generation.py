@@ -34,7 +34,7 @@ def test_build_reference_sheet_note_empty_when_no_labels():
 def test_build_panel_prompt_includes_pov_lock_by_default():
     prompt = build_panel_prompt("Worker wakes up in a mud-brick hut")
 
-    assert "the character's own face must never be visible in frame" in prompt
+    assert "their own face, the back of their own head, their own shoulder, or their own back" in prompt
     assert "Worker wakes up in a mud-brick hut" in prompt
     assert "No text, no numbers, no labels, no captions" in prompt
 
@@ -42,7 +42,7 @@ def test_build_panel_prompt_includes_pov_lock_by_default():
 def test_build_panel_prompt_omits_pov_lock_when_disabled():
     prompt = build_panel_prompt("A detective enters a foggy crime scene", pov_lock=False)
 
-    assert "the character's own face must never be visible in frame" not in prompt
+    assert "their own face, the back of their own head, their own shoulder, or their own back" not in prompt
     assert "A detective enters a foggy crime scene" in prompt
 
 
