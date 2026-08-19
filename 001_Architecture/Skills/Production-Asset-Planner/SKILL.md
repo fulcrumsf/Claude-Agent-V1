@@ -1,0 +1,116 @@
+---
+name: Production-Asset-Planner
+description: "Invoke once a production's shot list/beat breakdown exists, on ANY channel — reads the script and beats in one combined pass to decide (1) which conditional image assets (prop/environment/background-character sheets) are actually needed, and (2) per beat, whether real Pexels B-roll already covers it or it needs to be generated. Triggers on: a pipeline reaching its shot-list/beat-breakdown phase, 'what assets does this production need', 'where should B-roll go', 'does this scene need a sheet', or any point deciding conditional asset generation vs. reuse of existing research footage. Channel-agnostic — used by Anomalous Wild, Reimagined Realms, Kingdom and Conquerors, Glifry, Polyoculus, and any future channel. Depends on Production-Research-Agent having already run for this production. <example>User: (Anomalous Wild pipeline, Shot_List.md just written) Assistant: invokes Production-Asset-Planner to decide which sheets are needed and which beats can use existing Pexels footage instead of generation</example>"
+trigger: A pipeline has a written script + beat breakdown and needs to decide conditional asset generation AND B-roll-vs-generation placement, in one combined pass
+---
+
+# Production-Asset-Planner
+
+One combined analysis pass over a production's script/beats that answers two questions together, not as two separate systems: **which conditional image assets does this production actually need**, and **which beats can use real, already-researched footage instead of being generated at all.** Channel-agnostic — any pipeline invokes this the same way, once its shot list/beat breakdown exists.
+
+**Prerequisite:** `Production-Research-Agent` must have already run for this production — this skill reads `Research/Pexels_Inventory.json` and `Research/Reference_Images/` from that skill's output. If they don't exist, stop and invoke Production-Research-Agent first.
+
+**Design principle — write scenes with full creative freedom first, never for asset reuse.** The calling pipeline's scriptwriting step should never be constrained by "let's make this reusable" — that produces repetitive, less-engaging scripts. This skill runs strictly *after* the script and beats already exist, and only builds sheets / assigns B-roll for what turns out to be genuinely recurring or genuinely covered by real footage — reuse is discovered, never engineered into the writing.
+
+---
+
+## Step 1 — Identify recurring subjects (semantic, not keyword matching)
+
+Read the full shot list / beat breakdown the same way a human storyboard artist would. Identify which creatures, props, and locations recur across more than one scene.
+
+**Be semantically smart, not string-matching.** Two scenes both mentioning "burrow" does not automatically mean the same burrow — judge from narrative context whether the script intends the same specific location/prop, or just another generic instance of that location type.
+
+**Species/creature realism:** do not assume a documentary follows one single named individual across the whole video. Nature documentaries commonly follow "a" member of a species in a general sense — the subject may migrate, use different locations, and reasonably be depicted as several different individuals across scenes. Only assume a single continuous individual when the story is specifically about one identifiable individual (see the "specific individual" case below).
+
+**Variation is intentional, not a bug to prevent.** Comfortably plan for **multiple character sheets per production** when it makes sense:
+- A main character sheet for the primary subject.
+- Additional variant sheets for other individuals of the same species used for variety (e.g. "Mantis Shrimp Character 1," "Mantis Shrimp Character 2" — real color/pattern variation).
+- Background/secondary character sheets for other species that recur incidentally (e.g. a shark, a clownfish).
+- Not meant to be excessive — natural variety, not maximizing sheet count.
+
+**Documentary-realism constraint on variant sheets:** any variant must be grounded in real reference photography from `Research/Reference_Images/` (or fresh search if not already covered) showing color/pattern/lighting variation that actually occurs in that species in real life. Never invent a fictional variant that wouldn't exist in nature.
+
+**The real reason these sheets matter:** without a reference sheet, the video generation model is free to invent anatomically wrong details (an extra claw, a tail that species doesn't have). That's the actual failure mode being prevented — not "the identical individual in every single frame." Character sheets are more critical in story-driven productions (a specific character must look consistent across a narrative) and still important, but somewhat less critical, in documentary-style productions.
+
+**Identity-consistency scope — precise, not a license for drift:**
+- **Within one scene/beat, including all its split sub-parts** (e.g. `205a`, `205b` if `205` itself splits) — identity consistency IS required. Whichever character sheet a scene draws from, every sub-part of that scene must look like that same individual throughout.
+- **Across different scenes/beats** (e.g. scene `205` vs. scene `206`) — variety is allowed. A later scene may assign a different character sheet (a different individual) or real B-roll instead — production's choice.
+- **If a scene assigns a different character sheet than a prior scene, that new individual must then stay consistent throughout all of that scene's own sub-parts** — the continuity rule reapplied to whichever sheet that scene is drawing from. Variety is a per-scene assignment, never permission for the subject to drift mid-scene.
+
+Write `Production/Recurring_Subjects.json`:
+```json
+{
+  "creatures": {"main": ["@mantis_shrimp_main"], "variants": ["@mantis_shrimp_02"], "background": ["@clownfish_bg"]},
+  "props": [],
+  "environments": ["@reef_burrow"]
+}
+```
+
+**Judgment call on environments:** if a production stays in one distinct, recognizable location across several scenes, that location gets a sheet. If the subject moves through many one-off environments, none of them need one — nothing recurring to keep consistent. When genuinely unsure, skip the sheet and revisit only if a continuity check flags drift after generation.
+
+## Step 2 — Build the sheets
+
+Using the dedicated skill for each asset type — never the general image-prompting guide directly:
+- Recurring creature/character → [`Character-Sheet-Generation`](../Character-Sheet-Generation/SKILL.md)
+- Recurring prop → [`Prop-Sheet-Generation`](../Prop-Sheet-Generation/SKILL.md)
+- Recurring environment → [`Environment-Sheet-Generation`](../Environment-Sheet-Generation/SKILL.md)
+
+Ground every sheet in `Research/Reference_Images/` from Production-Research-Agent's output where available. Save to the calling pipeline's standard sheet folders.
+
+## Step 3 — B-roll vs. generation, per beat (the "smart editor" decision)
+
+For each beat, check it against `Research/Pexels_Inventory.json` (built by Production-Research-Agent): **does existing real footage already cover the specific action this beat describes** (e.g. "a mantis shrimp digging a burrow in the sand")?
+
+- **Yes** → use that footage as B-roll. Skip generation for that beat entirely.
+- **No** → generate it, using that scene's character/prop/environment sheet(s) + storyboard to keep the generated portion visually consistent.
+
+**Creature-specific vs. generic boundary — governed by one question, not a rigid rule: is this story about one specific, identifiable individual, or the subject/species in general?**
+- **Specific individual** (rare — a real, known, named subject the story is actually about): real footage of that actual individual is fair game to use for beats specifically about them, because it genuinely is them, not a stand-in. The story may still cut to generic footage of the species when the narration broadens beyond that individual.
+- **General subject/species** (the common case): there is no single continuous individual being followed. Real B-roll of the species doing the described action is a legitimate substitute for generation whenever it exists, even though it's technically a different individual — that's how real documentaries already work. The character sheet's job here is continuity for the parts that DO have to be generated, not enforcing "same individual" across the whole video.
+
+**Hard cap (locked 2026-08-18): B-roll is capped at a maximum of 5 seconds of real stock footage per clip.** Beyond that, the remainder of the clip should be (or return to being) generated rather than leaning further on stock footage.
+
+**Training goal — build real editorial judgment, not a fixed rule.** This decision should work the way a real documentary editor reasons about a cut, not "insert B-roll every N seconds." If example documentary footage is available, run it through a denser Video-Analyzer pass (near-per-second screenshotting) to build that judgment from real examples over time.
+
+Write the combined result — asset assignments AND B-roll/generation decisions — to `Production/Asset_Plan.json`:
+```json
+{
+  "beat_id": "205a",
+  "character_sheet": "@mantis_shrimp_main",
+  "environment_sheet": "@reef_burrow",
+  "source": "b_roll",
+  "b_roll_clip": "Research/Pexels_Downloads/Mantis_Shrimp_Burrow_02.mp4",
+  "b_roll_trim_s": [3.2, 6.8],
+  "generation_needed": false
+}
+```
+
+## Step 4 — Trim selected B-roll (non-destructive)
+
+For any beat assigned real footage: **never trim the original download.** Trim from a copy, producing a new, separate clip file — the original in `Research/Pexels_Downloads/` stays untouched so it can be re-trimmed differently later if needed.
+
+Save trimmed segments to their own dedicated folder, separate from the original downloads folder:
+```
+[production_folder]/B_Roll/<Scene_ID>.mp4
+```
+e.g. `B_Roll/Scene_02A.mp4` — descriptive, scene-tied naming, matching this workspace's naming convention. Never a generic name like `clip.mp4`.
+
+## Step 5 — Storyboards
+
+Build one storyboard per scene via [`Storyboard-Generation`](../Storyboard-Generation/SKILL.md), using the calling channel's own visual style and the scene's real duration (frame count derived from actual duration, never guessed). Follow that skill's own shot-variety and anatomical-precision rules as documented there.
+
+## Step 6 — Start/end frames (per split clip, not per scene)
+
+For every split sub-clip of a scene (e.g. `C04a`, `C04b`, `C04c`), generate a **dedicated start frame and end frame** via GPT-Image-2, grounded by that scene's character/prop/environment sheet(s) **and** its storyboard panel(s) — not a single shared pair for the whole scene. This is what prevents the subject from drifting/morphing across a long implied span; each sub-clip gets its own tight anchor at both ends.
+
+Generate this full asset set — sheets, storyboard, start frame, end frame — **regardless of which video-generation model the production ends up using.** Images are cheap relative to video generation; having the assets on hand means a scene can be redone with a different model later without regenerating references from scratch.
+
+---
+
+## Reference combination at generation time
+
+Per the `Seedance-Prompting-Guide` skill's confirmed mechanism, a beat's generation call can carry storyboard, character/prop sheet(s), and environment sheet together in one `reference_image_urls` array with `@ImageN` ordinal tags — but this exact combination is architecturally confirmed, not yet tested end-to-end. Pilot on one isolated shot before relying on it for a full batch.
+
+## Scope
+
+Channel-agnostic. Any pipeline in this workspace invokes this skill the same way, once its shot list exists. Do not fork a per-channel copy — channel-specific style/tone rules belong in the calling pipeline's own skill, not here.

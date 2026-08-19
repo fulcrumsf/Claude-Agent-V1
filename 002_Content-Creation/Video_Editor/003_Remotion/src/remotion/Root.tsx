@@ -10,6 +10,7 @@ import { DiagramLabels, diagramLabelsSchema } from "./video-components/DiagramLa
 import { EscaBacteriaCallout, ESCA_CALLOUT_DURATION_FRAMES } from "./video-components/EscaBacteriaCallout";
 import { NeonParcelTitleOverlay } from "./video-components/NeonParcelTitleOverlay";
 import { POVShort } from "./video-components/POVShort";
+import { Scene02DiagramTest } from "./video-components/Scene02DiagramTest";
 import { FPS, INTRO_DURATION } from "./video-lib/constants";
 import { getTimelinePath, loadTimelineFromFile } from "./video-lib/utils";
 
@@ -115,6 +116,16 @@ export const RemotionRoot: React.FC = () => {
           labelStaggerS: 2,
           displayNames: { esca: "Esca (light lure)" },
         }}
+      />
+
+      {/* Scene 02 diagram animation — Approach B component-asset test (2026-08-18), vs. the Seedance 1.5 Pro start/end-frame test which hallucinated on this same beat */}
+      <Composition
+        id="Scene02DiagramTest"
+        component={Scene02DiagramTest}
+        durationInFrames={315}
+        fps={30}
+        width={1920}
+        height={1080}
       />
 
       {/* 0002 Neon Parcel Cats — title card overlay version */}

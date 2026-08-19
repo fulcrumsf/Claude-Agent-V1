@@ -1,0 +1,105 @@
+{
+  "scene_id": "scene_06",
+  "words": [
+    {
+      "word": "But",
+      "start_s": 0.0,
+      "end_s": 0.174
+    },
+    {
+      "word": "the",
+      "start_s": 0.209,
+      "end_s": 0.29
+    },
+    {
+      "word": "eyes",
+      "start_s": 0.383,
+      "end_s": 0.743
+    },
+    {
+      "word": "are",
+      "start_s": 0.801,
+      "end_s": 0.94
+    },
+    {
+      "word": "not",
+      "start_s": 0.975,
+      "end_s": 1.103
+    },
+    {
+      "word": "even",
+      "start_s": 1.161,
+      "end_s": 1.358
+    },
+    {
+      "word": "the",
+      "start_s": 1.393,
+      "end_s": 1.463
+    },
+    {
+      "word": "most",
+      "start_s": 1.521,
+      "end_s": 1.741
+    },
+    {
+      "word": "anomalous",
+      "start_s": 1.823,
+      "end_s": 2.473
+    },
+    {
+      "word": "part",
+      "start_s": 2.543,
+      "end_s": 2.833
+    },
+    {
+      "word": "of",
+      "start_s": 2.891,
+      "end_s": 2.949
+    },
+    {
+      "word": "this",
+      "start_s": 2.995,
+      "end_s": 3.135
+    },
+    {
+      "word": "animal.",
+      "start_s": 3.193,
+      "end_s": 3.669
+    },
+    {
+      "word": "What",
+      "start_s": 4.18,
+      "end_s": 4.365
+    },
+    {
+      "word": "they",
+      "start_s": 4.389,
+      "end_s": 4.493
+    },
+    {
+      "word": "are",
+      "start_s": 4.528,
+      "end_s": 4.621
+    },
+    {
+      "word": "built",
+      "start_s": 4.644,
+      "end_s": 4.853
+    },
+    {
+      "word": "to",
+      "start_s": 4.888,
+      "end_s": 4.946
+    },
+    {
+      "word": "track",
+      "start_s": 5.004,
+      "end_s": 5.294
+    },
+    {
+      "word": "is.",
+      "start_s": 5.375,
+      "end_s": 5.898
+    }
+  ]
+}

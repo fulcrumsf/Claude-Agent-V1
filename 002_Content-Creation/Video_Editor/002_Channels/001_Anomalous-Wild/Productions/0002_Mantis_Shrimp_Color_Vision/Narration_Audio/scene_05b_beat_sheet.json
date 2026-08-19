@@ -1,0 +1,145 @@
+{
+  "scene_id": "scene_05b",
+  "words": [
+    {
+      "word": "Researchers",
+      "start_s": 0.0,
+      "end_s": 0.592
+    },
+    {
+      "word": "believe",
+      "start_s": 0.662,
+      "end_s": 0.975
+    },
+    {
+      "word": "some",
+      "start_s": 1.01,
+      "end_s": 1.219
+    },
+    {
+      "word": "mantis",
+      "start_s": 1.277,
+      "end_s": 1.683
+    },
+    {
+      "word": "shrimp",
+      "start_s": 1.741,
+      "end_s": 2.101
+    },
+    {
+      "word": "use",
+      "start_s": 2.194,
+      "end_s": 2.473
+    },
+    {
+      "word": "this",
+      "start_s": 2.519,
+      "end_s": 2.694
+    },
+    {
+      "word": "hidden",
+      "start_s": 2.763,
+      "end_s": 3.053
+    },
+    {
+      "word": "channel",
+      "start_s": 3.111,
+      "end_s": 3.495
+    },
+    {
+      "word": "to",
+      "start_s": 3.704,
+      "end_s": 3.831
+    },
+    {
+      "word": "signal",
+      "start_s": 3.913,
+      "end_s": 4.261
+    },
+    {
+      "word": "to",
+      "start_s": 4.331,
+      "end_s": 4.4
+    },
+    {
+      "word": "each",
+      "start_s": 4.481,
+      "end_s": 4.632
+    },
+    {
+      "word": "other",
+      "start_s": 4.679,
+      "end_s": 4.853
+    },
+    {
+      "word": "in",
+      "start_s": 4.923,
+      "end_s": 5.004
+    },
+    {
+      "word": "a",
+      "start_s": 5.05,
+      "end_s": 5.085
+    },
+    {
+      "word": "code",
+      "start_s": 5.155,
+      "end_s": 5.584
+    },
+    {
+      "word": "no",
+      "start_s": 5.759,
+      "end_s": 5.968
+    },
+    {
+      "word": "predator",
+      "start_s": 6.06,
+      "end_s": 6.56
+    },
+    {
+      "word": "can",
+      "start_s": 6.618,
+      "end_s": 6.757
+    },
+    {
+      "word": "read,",
+      "start_s": 6.838,
+      "end_s": 7.233
+    },
+    {
+      "word": "because",
+      "start_s": 7.442,
+      "end_s": 7.744
+    },
+    {
+      "word": "no",
+      "start_s": 7.79,
+      "end_s": 7.906
+    },
+    {
+      "word": "predator's",
+      "start_s": 7.988,
+      "end_s": 8.522
+    },
+    {
+      "word": "eyes",
+      "start_s": 8.591,
+      "end_s": 8.986
+    },
+    {
+      "word": "can",
+      "start_s": 9.056,
+      "end_s": 9.218
+    },
+    {
+      "word": "see",
+      "start_s": 9.276,
+      "end_s": 9.462
+    },
+    {
+      "word": "it.",
+      "start_s": 9.52,
+      "end_s": 9.938
+    }
+  ]
+}

@@ -120,6 +120,14 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - **Tier system:** Query priority and fallback logic for each asset type (footage, photos, audio, maps, etc.)
 - **Use case:** Documentary research skill uses this to decide which sources to query in which order
 
+### Pexels API (Creative Commons Photos/Videos — wired up 2026-08-18)
+- **What it does:** Search/download real Creative Commons photos and video footage — this workspace uses it for real B-roll to reduce AI generation cost, and for grounding reference images
+- **API Key:** `PEXELS_API_KEY` in `~/.env-secrets` (fixed 2026-08-18 — was previously invalid shell syntax)
+- **Full reference (auth, endpoints, rate limits, attribution rules):** `001_Architecture/Tools/Tool-Manager/data/Pexels_API_Reference.md`
+- **Attribution:** legally optional per Pexels' own license, but this workspace attributes anyway — YouTube description only (Markdown, hyperlinked to contributor's Pexels profile), no on-screen burn-in
+- **Download filter:** 1080p resolution, 16:9 aspect ratio only
+- **Used by:** `Production-Research-Agent` skill (search/download/analyze/inventory), `Production-Asset-Planner` skill (per-beat B-roll-vs-generation decision, max 5s B-roll per clip)
+
 ---
 
 ## Video Generation
@@ -133,10 +141,17 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - **When to use:** Always try kie.ai first for video generation
 
 ### kie-cli (kie.ai CLI)
-- **Package:** `@felores/kie-cli` (npm global)
+- **Package:** `@felores/kie-cli` (npm global) — **pinned at 0.2.0**, do not upgrade without checking first. 0.4.0 was tried 2026-08-17 and silently dropped the `bytedance_seedance_video` `--mode standard/fast` selector (defaults to Seedance 2.5 only) without adding the Mini/upscale support it was tried for — reverted.
 - **Usage:** `kie-cli --help` — list all available models by category; `kie-cli [category]` to explore
 - **API Key:** `KIE_API_KEY`
 - **When to use:** Live model discovery on kie.ai without reading the website; pipe into scripts for programmatic model selection
+
+### kie_market_api.py — gap-fill wrapper for models kie-cli doesn't cover
+- **Python Tool:** `001_Architecture/Tools/Video-Generation/Generic_Tools/kie_market_api.py`
+- **What it's for:** kie.ai has ~441 models on its Market API; kie-cli only wraps a subset. This is a thin wrapper around the unified `/api/v1/jobs/createTask` + `/api/v1/jobs/recordInfo` endpoints for models kie-cli doesn't expose (confirmed gaps as of 2026-08-17: `bytedance/seedance-2-mini`, `topaz/video-upscale`).
+- **Not a kie-cli replacement** — kie-cli stays the default for anything it already covers. Extend this file one function at a time as new gaps are found, per Tony's explicit direction (2026-08-17) — do not build a full custom CLI.
+- **Usage:** `python3 kie_market_api.py seedance_mini "<prompt>" output.mp4 --resolution 480p` or `python3 kie_market_api.py grok_upscale <task_id> output.mp4`
+- **API Key:** `KIE_API_KEY`
 
 ### WaveSpeed CLI
 - **Package:** `@wavespeed/cli` (npm global)
@@ -608,6 +623,30 @@ Multi-platform affiliate marketing operations. 18 programs tracked across travel
 - **Tools used:** Firecrawl CLI, Tool Manager pricing cache, `001_Architecture/Tools/Text-To-Speech/audio_tts.py`, kie.ai (KIE_API_KEY), ElevenLabs (ELEVENLABS_API_KEY)
 - **Voice ID (Reimagined Realms):** `raMcNf2S8wCmuaBcyI6E` (ElevenLabs multilingual v2)
 - **Note:** `~/.claude/skills/` is a symlink to `001_Architecture/Skills/` — skill is global across Claude, Codex, and Gemini
+
+### Production-Research-Agent (Global, channel-agnostic — `001_Architecture/Skills/Production-Research-Agent/`, added 2026-08-18)
+- **Purpose:** Invoked right after any production's topic is chosen — deep topic research, real reference images (capped 20, grounding only, never used directly in final video), and Pexels B-roll video search/download (capped 10 clips, 1080p 16:9 only), then analyzes each clip and writes `Research/Pexels_Inventory.json` with full attribution fields captured at download time.
+- **Used by:** Anomalous Wild (Phase 1, Step A3); designed to be reusable by any channel — Reimagined Realms, Kingdom and Conquerors, Glifry, Polyoculus.
+- **Depends on:** `001_Architecture/Tools/Tool-Manager/data/Pexels_API_Reference.md` for the Pexels integration details.
+
+### Production-Asset-Planner (Global, channel-agnostic — `001_Architecture/Skills/Production-Asset-Planner/`, added 2026-08-18)
+- **Purpose:** Invoked once a production's shot list exists — one combined pass that decides which conditional sheets (prop/environment/background-character) are needed, generates storyboards + per-split-clip start/end frames, and decides per beat whether real Pexels B-roll (from Production-Asset-Planner's Research Agent inventory) already covers it vs. needs AI generation. Max 5s of B-roll per clip; non-destructive trimming into `B_Roll/<Scene_ID>.mp4`.
+- **Used by:** Anomalous Wild (Phase 5B, replacing the previous inline logic); channel-agnostic by design.
+- **Depends on:** `Production-Research-Agent` having already run for that production.
+
+### Motion-Graphics-Compositing (Global, channel-agnostic — `001_Architecture/Skills/Motion-Graphics-Compositing/`, added 2026-08-18)
+- **Purpose:** How to build animated diagrams, infographics, data-viz, and collage-style motion graphics — generate isolated component assets (transparent bg or chroma-screen + AI matting), composite/animate them in Remotion via reusable keyframe presets, instead of asking Seedance to animate the content (confirmed to hallucinate hard on abstract/diagram material — worse than its known creature-drift issue).
+- **Origin:** Anomalous Wild Scene 02 (photoreceptor diagram) — Tony-graded "A+" against the failed Seedance alternative.
+- **Reusable Remotion lib:** `002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-lib/motion_graphics_presets.ts` — `kf()` keyframe helper + named presets (`crossfade`, `pushZoom`, `pullBackReveal`, `sideBySideHold`, `explodedAssembly`; `lineTraceReveal` stubbed, not yet implemented).
+- **Asset matting:** `kie-cli recraft_remove_background` (Recraft AI background removal, confirmed true RGBA output) — see also Pexels-style note below on the platform routing rule for GPT-Image-2.
+- **Asset library:** per-production `Production/Motion_Graphics_Asset_Library.json` + cross-production master index at `000_Wiki/Video-Production/Motion-Graphics-Asset-Library.md` (graphified for retrieval).
+- **Audio:** reuses `generate_foley.py`/`foley_config.py` (Mirelo/Sonilo video-to-SFX) — no new audio tool built.
+- **`Diagram-Generation` skill's Approach B now delegates its asset-isolation + compositing mechanics here.**
+
+### Tool-Manager capability-parity field (added 2026-08-18)
+- **What changed:** `model_catalog.json` model entries can now carry a `capabilities` block (feature/platform parity, not just price) — populated so far on the `gpt-image-2` entry: kie.ai's wrapper exposes no transparent-background parameter; direct OpenAI does (`background: "transparent"`, not yet live-confirmed against our account).
+- **New routing rule:** check `capabilities` BEFORE applying the cheapest-price rule — price only decides among platforms that already support the required capability. kie.ai is cheaper for GPT-Image-2 ($0.03 vs $0.04/image) but that's irrelevant if the job needs transparency output it doesn't expose.
+- **Standing process rule:** consult Tool-Manager before defaulting to any platform/endpoint, unprompted. If Tool-Manager's data doesn't cover the actual question, tell Tool-Manager to research and update its own data via its Update Protocol — don't surface an unresearched question back to Tony.
 
 ### Seedance Prompting Guide (Global — `001_Architecture/Skills/Seedance-Prompting-Guide/`)
 - **Purpose:** Living reference for prompting any ByteDance Seedance version (1.5 Pro, 2.0, 2.0 Fast, future) — dialogue vs. ambient/foley-only audio control, camera movement/cinematic shot language, negative-prompt conventions. Update in place as new versions ship; never fork a per-version copy.

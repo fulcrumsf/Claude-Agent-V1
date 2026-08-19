@@ -1,0 +1,54 @@
+{
+  "production": "0002_Mantis_Shrimp_Color_Vision",
+  "channel": "Anomalous Wild",
+  "assets": [
+    {
+      "asset_id": "Mantis_Eye_External",
+      "scene_id": "scene_02",
+      "subject": "Mantis shrimp compound eye, external view, rainbow-faceted",
+      "mode": "unified_illustration",
+      "style_lock_reference": "Images/Diagrams/Scene_02_Diagram.png",
+      "matte_method": "recraft_ai_matte_near_black_bg",
+      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) — built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
+      "flat_path": "Images/Diagrams/Scene_02_Components/Mantis_Eye_External.png",
+      "alpha_path": "Images/Diagrams/Scene_02_Components/Alpha/Mantis_Eye_External.png",
+      "used_in": ["D02_remotion_component_test_v3.mp4"]
+    },
+    {
+      "asset_id": "Human_Eye_External",
+      "scene_id": "scene_02",
+      "subject": "Human eye, external close-up, green iris",
+      "mode": "unified_illustration",
+      "style_lock_reference": "Images/Diagrams/Scene_02_Diagram.png",
+      "matte_method": "recraft_ai_matte_near_black_bg",
+      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) — built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
+      "flat_path": "Images/Diagrams/Scene_02_Components/Human_Eye_External.png",
+      "alpha_path": "Images/Diagrams/Scene_02_Components/Alpha/Human_Eye_External.png",
+      "used_in": ["D02_remotion_component_test_v3.mp4"]
+    },
+    {
+      "asset_id": "Human_Eye_CrossSection",
+      "scene_id": "scene_02",
+      "subject": "Human eyeball anatomical cutaway (cornea, lens, retina, optic nerve)",
+      "mode": "unified_illustration",
+      "style_lock_reference": "Images/Diagrams/Scene_02_Diagram.png",
+      "matte_method": "recraft_ai_matte_near_black_bg",
+      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) — built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
+      "flat_path": "Images/Diagrams/Scene_02_Components/Human_Eye_CrossSection.png",
+      "alpha_path": "Images/Diagrams/Scene_02_Components/Alpha/Human_Eye_CrossSection.png",
+      "used_in": ["D02_remotion_component_test_v3.mp4"]
+    },
+    {
+      "asset_id": "Mantis_Receptor_Fan",
+      "scene_id": "scene_02",
+      "subject": "Mantis shrimp 16-photoreceptor fan cross-section with nerve root",
+      "mode": "unified_illustration",
+      "style_lock_reference": "Images/Diagrams/Scene_02_Diagram.png",
+      "matte_method": "recraft_ai_matte_near_black_bg",
+      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) — built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
+      "flat_path": "Images/Diagrams/Scene_02_Components/Mantis_Receptor_Fan.png",
+      "alpha_path": "Images/Diagrams/Scene_02_Components/Alpha/Mantis_Receptor_Fan.png",
+      "used_in": ["D02_remotion_component_test_v3.mp4"]
+    }
+  ]
+}

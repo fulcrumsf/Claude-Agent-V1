@@ -38,6 +38,22 @@ This runs the interactive questionnaire and Perplexity-backed topic research for
 
 Store: `chosen_topic`, `subject` (short noun phrase for the YouTube package generator), `hook_fact`.
 
+### Step A2 — Video model selection (moved to intake, locked 2026-08-18)
+
+Immediately after Tony picks the topic, ask which video model family to use for this production's live-footage beats — **do not defer this to Phase 6A.** Present it simply, two families, not four hardcoded SKUs:
+- **Seedance, 1080p — default: Seedance 1.5 Pro.** (Flipped from this channel's prior default of Seedance 2.0 — see reasoning below.)
+- **Veo, 1080p** — whichever current Veo version Tool-Manager identifies as the reasonably-priced 1080p option (currently Veo 3.1 Fast/Quality per `model_catalog.json` — confirm live via Tool-Manager rather than hardcoding a version number here, since this changes over time).
+
+If Tony doesn't answer, default to **Seedance 1.5 Pro** without asking again.
+
+**Why the default flipped from Seedance 2.0 to 1.5 Pro (2026-08-18):** cost-driven — 1.5 Pro is ~4x cheaper per second than 2.0. Getting the pipeline running autonomously end-to-end is the current priority over per-scene quality optimization; Tony will revert specific scenes to Seedance 2.0 manually after reviewing real batch results, not pre-empt it with a complexity judgment call. The prior test that suggested 1.5 Pro drifts into unrecognizable creatures used the wrong reference setup (character sheet + storyboard, not start+end frame) — the real quality comparison under the correct setup (see Phase 6A) hasn't been run yet.
+
+Store `video_model_family` (`seedance` or `veo`) — every later phase reads this instead of asking again.
+
+### Step A3 — Kick off Production-Research-Agent (new, 2026-08-18)
+
+Immediately after the topic is picked (in parallel with Step A2), invoke the [`Production-Research-Agent`](../Production-Research-Agent/SKILL.md) skill with `chosen_topic` and `production_folder`. It gathers topic facts, reference images (capped 20), and Pexels B-roll footage (capped 10 clips, 1080p 16:9 only, analyzed and inventoried) — all before scriptwriting starts, so Phase 5B/Production-Asset-Planner has real material to check against once beats exist. Do not proceed to Step B until this completes.
+
 ### Step B — Script (existing skill, reused as-is)
 
 Write the full narration script using the `Anomalous-Wild-Scriptwriter.md` skill/voice at:
@@ -58,7 +74,7 @@ python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/scaffold
   "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/[NNNN]_[Title_Case_Slug]"
 ```
 
-Creates the 8 typed folders (`Scripts/`, `Production/`, `Images/`, `Video_Clips/`, `Narration_Audio/`, `Audio_Stems/`, `Assembly/`, `Package/`) and writes `Production/end_card_reference.txt` pointing at the locked end-card asset. This script hard-fails if `end_card_v3.mp4` is missing — that's intentional, treat a failure here as a stop-the-pipeline error, not something to route around.
+Creates the 8 typed folders (`Scripts/`, `Production/`, `Images/`, `Video_Clips/`, `Narration_Audio/`, `Audio_Stems/`, `Assembly/`, `Package/`) and writes `Production/end_card_reference.txt` pointing at the locked end-card asset. This script hard-fails if `Anomalos_Wild_End-Card_Hero.mp4` is missing — that's intentional, treat a failure here as a stop-the-pipeline error, not something to route around.
 
 Move/save `Script.md` and `Narration.md` from Step B into this folder's `Scripts/` subfolder. Store the full path as `production_folder`.
 
@@ -126,13 +142,54 @@ Write the per-beat routing decisions and Tool-Manager's reasoning to `Production
 
 ---
 
+## PHASE 5B — ASSET PLANNING + B-ROLL PLACEMENT (automated, conditional — delegates to Production-Asset-Planner)
+
+**Rebuilt 2026-08-18 — this phase now delegates its core logic to the channel-agnostic [`Production-Asset-Planner`](../Production-Asset-Planner/SKILL.md) skill**, rather than deriving sheet-need and storyboard logic inline. Invoke it with `production_folder` once `Production/Shot_List.md` exists — it requires `Production-Research-Agent` to have already run (Phase 1, Step A3). It performs, in one combined pass:
+- Recurring-subject identification (creatures/props/environments) and conditional sheet generation, including multiple character-sheet variants for natural variety, semantic (not keyword) reuse detection, and identity-consistency scoping (strict within a scene's sub-parts, flexible across different scenes).
+- Storyboard generation per scene.
+- Start/end frame generation **per split sub-clip** (e.g. `C04a`/`C04b`/`C04c` each get their own pair, not one pair for the whole scene) — grounded by that scene's sheets + storyboard via GPT-Image-2, built regardless of which video model ends up used.
+- Per-beat B-roll-vs-generation decision against `Research/Pexels_Inventory.json`, including the creature-specific-vs-generic boundary logic and the 5-second-per-clip B-roll cap.
+- Non-destructive B-roll trimming into `B_Roll/<Scene_ID>.mp4`.
+
+Read that skill's own SKILL.md for the full mechanism — this section only documents Anomalous-Wild-specific overrides layered on top of it.
+
+**Anomalous-Wild-specific storyboard style (locked 2026-08-17, still applies):** pass this channel's own `visual_style` (dark neon nature-documentary palette) into Production-Asset-Planner's Step 5 storyboard call. Apply the channel's shot-variety and anatomical-precision rules on top of Storyboard-Generation's defaults: even a scene narrating a creature's specific anatomy (e.g. its eyes) should mix in establishing/b-roll frames — the creature moving through its environment, wide shots of habitat — not just close-ups of whatever the narration is currently describing. Shot composition must change dramatically at least every ~3 seconds — a real subject/framing change, not a tighter zoom on the same thing — and no single anatomical feature should dominate more than roughly half a scene's frames even when the narration talks about it the whole time. Since Anomalous Wild's subjects are near-always creatures with paired/repeated features (two eyestalks, multiple limbs, etc.), every `frame_actions` line must state how many of that feature are visible, never rely on singular language ("the eye") to imply "one of several, others still present." Run the mandatory character-sheet count-check on every generated storyboard before presenting it to Tony, per Storyboard-Generation's own requirement.
+
+**Anomalous-Wild-specific chaining decision (still applies, layered on top of Production-Asset-Planner's per-beat output):** when a scene's narration needs more than one 8s-capped clip (per the visual-duration check in `Anomalous-Wild-Scriptwriter.md`), decide: **is this a single continuous action meant to read as unbroken, or a montage of distinct quick cuts (matching the channel's default glitch-cut aesthetic)?**
+- **Unbroken action** → chain the clips using `Seedance-Prompting-Guide`'s "last-frame-passing" technique — each clip's exact last frame becomes the next clip's starting reference.
+- **Montage of quick cuts** → no chaining needed — the default, and what every beat in this pipeline has assumed so far.
+When genuinely unsure, default to no chaining and revisit only if the cut reads as jarring in review.
+
+**Diagram beats (Phase 6B) are exempt from the character-sheet requirement by default** — same as before: a diagram beat does not get a character sheet unless it's specifically illustrating that character's already-sheeted anatomy. Diagram beats instead get their framing stated explicitly in the prompt so the image model stylizes it as a diagram, not a scene — this is already how `diagram_research_and_illustrate.py` operates.
+
+---
+
 ## PHASE 6 — ASSET GENERATION (automated → ⏸ pauses as noted)
 
 Split by the Phase 5 routing decision. A production will typically have both kinds of beats.
 
 ### 6A — Live-footage beats (existing tools, reused as-is)
 
-⏸ **PAUSE — cost estimate.** Before running any billed generation, compute an estimate the same way RR does (read current prices from `001_Architecture/Tools/Tool-Manager/data/pricing_cache.json`, look up actual kie.ai model IDs in `001_Architecture/Tools/Tool-Manager/data/kieai_pricing_api.json` by `modelDescription` — never probe the live API to discover model names). Present the estimate for the live-footage clip count × model choice and wait for Tony's approval before generating. Skip this pause entirely if the production has zero `live_footage`-routed beats.
+**Video model is already decided (Phase 1, Step A2, locked 2026-08-18) — do not re-ask here.** `video_model_family` was set at intake: `seedance` defaults to **Seedance 1.5 Pro** (flipped from this channel's prior Seedance 2.0 default — see Step A2's reasoning), `veo` resolves to whichever current Veo version Tool-Manager identifies as the reasonably-priced 1080p option (currently Veo 3.1 Fast/Quality). Live per-second 1080p pricing: `001_Architecture/Tools/Tool-Manager/data/model_catalog.json`.
+- **Seedance 1.5 Pro** — ~$0.075/s at 1080p (kie.ai). Native audio, cheaper.
+- **Seedance 2.0** — ~$0.31/s at 1080p (kie.ai). Native audio, best motion quality (9.2 rating). No longer the default; available as a manual per-scene override after reviewing batch results.
+- **Veo 3.1 (Fast or Quality)** — no native audio. Fast ~$0.041/s, Quality ~$0.159/s at 1080p (kie.ai, estimated from flat per-video pricing).
+
+**Resolution defaults to 1080p** — a cheaper 480p-then-upscale path was investigated 2026-08-16 and explicitly rejected for now: no confirmed working video upscaler exists in this workspace (Topaz Upscale is image-only and inactive; `grok_imagine`'s "upscale" mode is unconfirmed for video). Do not build or assume a 480p+upscale path without first confirming a real video upscale tool and its actual price — revisit as a research item, not a default.
+
+**Which references get passed, per model (locked 2026-08-18):**
+
+| Model | References passed |
+|---|---|
+| **Seedance 1.5 Pro** | Start frame + end frame **only** — no multi-reference field; a second image is a last-frame target, not a style/consistency reference. Continuity comes from GPT-Image-2 having grounded those two frames in the sheets + storyboard at Phase 5B. |
+| **Seedance 2.0** | Start frame + end frame + character sheet + prop sheet + environment sheet + storyboard — whichever exist for that shot, via `reference_image_urls` with `@ImageN` ordinal tagging (Seedance-Prompting-Guide's confirmed mechanism — pilot on one isolated shot before a full batch). |
+| **Veo** | Start + end frame at minimum; confirm current multi-reference support with Tool-Manager before assuming Seedance 2.0's reference pattern applies. |
+
+**B-roll insertion:** for any beat Production-Asset-Planner (Phase 5B) assigned real footage instead of generation, pull the trimmed clip from `B_Roll/<Scene_ID>.mp4` directly into the assembly timeline (Phase 7) — skip generation for that beat entirely. Max 5 seconds of B-roll per clip, per Phase 5B's cap.
+
+**Known issue — do not run `tm refresh` to freshen this pricing.** There's a known problem with the refresh pipeline (believed to involve Playwright failing to reach fal.ai/kie.ai for live prices) — the cached `model_catalog.json` (last compared 2026-07-01) is what's actually usable right now. Use it as-is rather than trying to refresh first.
+
+⏸ **PAUSE — cost estimate.** Before running any billed generation, compute an estimate the same way RR does (read current prices from `001_Architecture/Tools/Tool-Manager/data/pricing_cache.json`, look up actual kie.ai model IDs in `001_Architecture/Tools/Tool-Manager/data/kieai_pricing_api.json` by `modelDescription` — never probe the live API to discover model names). Present the estimate for the live-footage clip count × the model chosen above and wait for Tony's approval before generating. Skip this pause entirely if the production has zero `live_footage`-routed beats.
 
 ```bash
 source /Users/tonymacbook2025/.env-secrets
@@ -145,6 +202,8 @@ bash    001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/preloop_
 These are the channel's existing, working batch-generation stack: `pipeline_supervisor.py` handles error-code-aware retries and the three-layer audio check, `pipeline_orchestrator.sh` sequences priority-tiered generation + preloop stages, `check_pipeline_status.py` reports progress. They currently expect a `Production/new_clips_prompts.json` prompt manifest (confirmed by their error output on an empty folder) — build that manifest from the Phase 5 Shot_List.md live-footage entries before invoking them.
 
 ⏸ **PAUSE — first live-footage clip quality check.** Generate one clip, show it to Tony, and wait for approval before committing to the full batch — same reasoning as RR: catch a bad model/prompt combo on 1 clip, not the whole set.
+
+**Native audio sourcing when the beat's model supports it (locked 2026-08-16).** If Tool-Manager selects a Seedance 2.0+ model for a beat (the model family that supports the `generate_audio` parameter — see `Seedance-Prompting-Guide`), set `generate_audio=true` on that clip's generation call so the audio is generated natively, synced to what's actually happening on screen, instead of guessed separately after the fact. After the clip downloads, extract its embedded audio track (`ffmpeg -i clip.mp4 -vn -acodec libmp3lame Audio_Stems/<stem_id>.mp3`) directly into that scene's stem slot, using the exact filename `generate_stems.py` would have produced for that stem. **This means `mix_stems.py` and everything downstream needs zero changes** — it just finds the stem file already sitting there, sourced from the clip itself rather than from a separate ElevenLabs SFX generation call. For any beat routed to a model without native audio (a hero shot on Veo, a fallback model, etc.), the existing `generate_stems.py` ElevenLabs path runs unchanged for that beat's stem. A single production can mix both sourcing methods scene-to-scene — the stem map doesn't care where a given stem file came from.
 
 ### 6B — Diagram/data-viz beats (Scientific Diagram sub-pipeline — new this session)
 
@@ -171,6 +230,8 @@ Feed `label_coordinates.json` into the `DiagramLabels` component at:
 ```
 Its Zod props schema (`diagramLabelsSchema`) takes `labels` (feature/x_pct/y_pct/confidence, where `x_pct`/`y_pct` are optional since a `not_found` entry legitimately omits them), `labelStaggerS` (seconds between each label appearing), and `displayNames` (feature key → human-readable label text). The component already filters out `not_found` entries from rendering and staggers each label's line-draw-in animation. Label entrances alone do not guarantee the beat's `max_static_s` rule is honored for its full duration — see Phase 7's mandatory static-hold check, which is where this is actually enforced.
 
+**Step 5 — plan the animation (do not leave the diagram static, locked 2026-08-16; method locked 2026-08-18).** Invoke [`Diagram-Generation`](../Diagram-Generation/SKILL.md) to decide the animation approach for this beat, tied to the scene's real word-level timestamps. **Default to Approach B (component assets), not Approach A (single-call blocking plan) — a real test on Scene_02 found Approach A's underlying mechanism (Seedance animating one baked illustration via start/end frame) hallucinates badly on diagram content.** The working, Tony-approved method: decompose into isolated component assets, then invoke [`Motion-Graphics-Compositing`](../Motion-Graphics-Compositing/SKILL.md) for the actual asset-isolation + Remotion-compositing mechanics — confirmed working on Scene_02 (human-eye content revealed 0.0–7.0s, mantis-shrimp content revealed 7.5–10.5s, matching the actual narration, zero drift, pixel-exact against the storyboard at every beat boundary). Approach A remains available for diagrams simple enough not to need independent per-element control, but is no longer the default assumption.
+
 **Label/line color — check before finalizing any diagram beat.** `DiagramLabels.tsx` currently hardcodes its line/label color to the channel's brand green (`#8AFA47`) as a blanket default. Per `003_Remotion/src/skills/design-rules-learned.md` (Rule 1), that's correct only for channel-chrome graphics — an in-scene diagram overlaid on generated illustration content should generally use a color sampled from the illustration itself (or white-on-black for contrast) rather than the brand sheet by default. This is a known, flagged gap in the shipped component, not yet fixed — read that skill file before deciding whether to override the color for a given diagram beat.
 
 ---
@@ -186,15 +247,15 @@ Assembly runs through the channel's real engine — never raw ffmpeg concatenati
 For each production, create a Remotion composition following the `BioluminescenceDoc.tsx` pattern (confirmed precedent at `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0001_Bioluminescence_Weapon/Remotion/BioluminescenceDoc.tsx`), extended to include `DiagramLabels` scenes for any Phase 6B beats. Do not bypass this engine with a manual ffmpeg concat, even for a "quick" assembly — that was a mistake corrected earlier this session.
 
 **Mandatory check — diagram beat static-hold enforcement (no exceptions):**
-`DiagramLabels.tsx` deliberately owns nothing beyond staggered label entrances — it has no pan/zoom/reframe capability, and camera motion is a per-video Remotion composition decision, not something to hardcode into the component. That means `max_static_s` (written per diagram beat in `Beat_Table.json` by Phase 3's `build_beat_table.py`) is NOT self-enforcing. Before finalizing any diagram beat's composition in this phase, the orchestrating agent must mechanically check it:
-1. Compute the beat's label-entrance coverage: `labelStaggerS × (num_labels - 1) + fade_duration`.
-2. Compute the remaining static hold: `beat_duration − label_entrance_coverage`.
-3. If that remaining hold exceeds the beat's `max_static_s` (from `Beat_Table.json`, default 5.0), the composition MUST add a real motion element to cover the remainder — a slow Ken-Burns-style scale/pan on the illustration image, a camera reframe, or an additional visual beat (a second label, callout, or annotation appearing later in the timeline). Something must always be changing; a beat that passes this check by accident (label coverage already exceeds `max_static_s`) needs no extra motion, but every diagram beat gets the calculation, not just the ones that look long.
+`DiagramLabels.tsx` deliberately owns nothing beyond staggered label entrances — it has no pan/zoom/reframe capability, and camera motion is a per-video Remotion composition decision, not something to hardcode into the component. That means `max_static_s` (written per diagram beat in `Beat_Table.json` by Phase 3's `build_beat_table.py`) is NOT self-enforcing. This is now solved properly rather than patched with a generic pan: every diagram beat gets a real camera/reveal blocking plan from [`Diagram-Generation`](../Diagram-Generation/SKILL.md) (Phase 6B, Step 5), timed to real narration word timestamps — implement that plan as the Remotion composition's actual crop/zoom/opacity keyframes for the beat, driven by the same timestamps, never a fresh AI regeneration of the diagram content. A beat with a real blocking plan naturally satisfies `max_static_s` because something is always changing by design; still run the arithmetic check as a safety net:
+1. Compute the beat's covered motion: label-entrance coverage (`labelStaggerS × (num_labels - 1) + fade_duration`) plus the blocking plan's camera-move coverage.
+2. Compute the remaining static hold: `beat_duration − covered motion`.
+3. If any hold still exceeds `max_static_s` (default 5.0), the blocking plan is incomplete — go back to Diagram-Generation and add a frame/transition to cover the gap, don't bolt on an ad hoc pan as a patch.
 This is a mandatory per-beat check during assembly, not optional polish — the plan's Global Constraints state the "no static frame longer than 3–5 seconds" rule with no exceptions.
 
 **End card — locked, always appended, never regenerated:**
 ```
-002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Brand_Assets/End_Card/end_card_v3.mp4
+002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Brand_Assets/End_Card/Anomalos_Wild_End-Card_Hero.mp4
 ```
 This asset is fixed for every Anomalous Wild video. Append it via ffmpeg concat at the end of the assembled Remotion render — do not regenerate it, do not route it through Remotion, do not let a per-video prompt touch it. `Production/end_card_reference.txt` (written by `scaffold_new_production.py` in Phase 1) points at this exact path; read from there rather than hardcoding the path a second time in assembly code.
 
@@ -217,11 +278,17 @@ python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/render_o
 ```
 
 - `compose_audio.py` — vision-based per-scene audio brief from `Assembly/` frames + `Beatmap`/`Narration.md`, writes `Data/audio_briefs.json` and `Data/per_scene_stem_map.json`. (This script's own docstring header still says "Reimagined Realms productions" — it's this session's Anomalous-Wild duplicate of the RR original, not yet fully re-worded; functionally it operates on whatever `production_folder` you pass it.)
-- `generate_stems.py` — generates the SFX stems from `Data/stem_map.json` via ElevenLabs.
-- `analyze_stems.py` — measures LUFS per stem and writes corrected gain values back into the stem map (locked targets: stems -23 LUFS / vol≈0.88, narration -14 LUFS / vol≈3.09).
-- `mix_stems.py` — mixes `Audio_Stems/` onto the timeline using the corrected stem map.
+- `generate_stems.py` — generates the SFX stems from `Data/stem_map.json` via ElevenLabs, **for any beat that didn't already get its stem via native Seedance audio extraction in Phase 6A.** Check `Audio_Stems/` for an existing file matching a stem's ID before generating — a beat with a native-extracted stem already sitting there skips ElevenLabs entirely for that stem.
+- `analyze_stems.py` — measures LUFS per stem and writes corrected gain values back into the stem map. Runs identically regardless of whether a stem came from ElevenLabs or native extraction — LUFS is measured off the audio itself, not its source.
+- `mix_stems.py` — mixes `Audio_Stems/` onto the timeline using the corrected stem map, **crossfading scene-to-scene stems the same way** whether they're ElevenLabs-generated or native-extracted (the crossfade logic reads the stem map, not the stem's origin).
 - `generate_suno_music.py` — generates the full-length instrumental score.
 - `render_outputs.py` — final versioned render with all audio tracks kept separate (stems-only, stems+narration, and full final with sidechain-ducked music: `sidechaincompress threshold=0.015 ratio=4 attack=150 release=800`), producing `Assembly/<prod>_final.mp4`.
+
+**Standard levels — locked as a universal target, regardless of stem source (confirmed 2026-08-16 as common professional mixing practice, matching what Reimagined Realms already standardized on):**
+- **Narration:** -14 LUFS integrated, -1 dBTP ceiling — the standard streaming/YouTube loudness target.
+- **Music bed:** -26 LUFS in the mix, ~12dB below narration — standard heavy ducking so score never competes with the voice.
+- **Ambient/SFX (stems):** -20 LUFS in the mix, ~6dB below narration — standard supporting-layer level, audible but subordinate to narration.
+- These three targets apply identically no matter which pipeline generated the underlying audio (ElevenLabs stems, native Seedance clip audio, or Suno music) — the mix stage normalizes everything to the same standard, not per-source.
 
 `render_video.py` is the lower-level versioned renderer `render_outputs.py` calls into for each of its 3 output variants — invoke it directly only if a single variant needs a targeted redo (`--phase`/`--version`/`--note` flags), not for the normal full run.
 
@@ -238,6 +305,14 @@ python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate
 Adapts RR's Phase 10 formulas (curiosity-gap titles, search-intent description, no-text emotion-matched thumbnail) to this channel's science/nature-documentary framing. This single call does more than RR's shot-list-based thumbnail prompt step — it directly generates and downloads 3 real thumbnail concepts via kie.ai GPT-Image-2 (not just prompts for Tony to run later), across 3 mood/palette variations (intrigued/cool-blue-green, alarmed/warm-amber-red, awed/deep-purple-teal). Writes:
 - `Package/YouTube_Package.md` — 3 titles + description
 - `Package/Thumbnails/concept_1.png`, `concept_2.png`, `concept_3.png` — real rendered thumbnails, ready to present to Tony
+
+**Pexels attribution section (locked 2026-08-18, description-only, no on-screen burn-in):** if any beat in `Production/Asset_Plan.json` (Phase 5B) used real Pexels B-roll, append a Markdown "Attributions:" section to the end of the YouTube description — one bullet per Pexels asset actually used in the final cut (not every downloaded clip), pulling `photographer`/`photographer_url` from `Research/Pexels_Inventory.json`:
+```
+Attributions:
+- Mantis shrimp in the sand footage from [@username](https://www.pexels.com/@username) from Pexels
+- Mantis shrimp punching footage from [@username2](https://www.pexels.com/@username2) from Pexels
+```
+Full attribution reference: `001_Architecture/Tools/Tool-Manager/data/Pexels_API_Reference.md`. Skip this section entirely if the production used no Pexels footage.
 
 ---
 
@@ -306,10 +381,16 @@ Remaining manual step: review the private upload, then flip privacy status and a
 | Scientific Diagram sub-pipeline (step 4: label placement, Remotion) | `002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-components/DiagramLabels.tsx` |
 | Live-footage batch generation (existing) | `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/pipeline_supervisor.py`, `pipeline_orchestrator.sh`, `preloop_videos.sh`, `check_pipeline_status.py` |
 | Remotion assembly engine pattern (existing) | `002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-components/BioluminescenceDoc.tsx` (precedent: `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0001_Bioluminescence_Weapon/Remotion/BioluminescenceDoc.tsx`) |
-| Locked end-card asset | `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Brand_Assets/End_Card/end_card_v3.mp4` |
+| Locked end-card asset | `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Brand_Assets/End_Card/Anomalos_Wild_End-Card_Hero.mp4` |
 | Audio pipeline (this session, AW copies of RR originals) | `compose_audio.py`, `generate_stems.py`, `analyze_stems.py`, `mix_stems.py`, `render_video.py`, `render_outputs.py`, `generate_suno_music.py` — all in `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/` |
 | YouTube package generator (titles/description/thumbnails) | `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_youtube_package.py` |
 | Blotato upload procedure | `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/upload_to_blotato.md` |
 | Blotato YouTube account ID (Anomalous Wild) | `42514` (do not confuse with `30323`, Reimagined Realms) |
 | Production folder root | `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/` |
 | Channel content system | `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Anomalos_Wild_Content_system.md` |
+| Research + reference images + Pexels B-roll (channel-agnostic, added 2026-08-18) | `001_Architecture/Skills/Production-Research-Agent/SKILL.md` |
+| Asset need planning + B-roll placement (channel-agnostic, added 2026-08-18) | `001_Architecture/Skills/Production-Asset-Planner/SKILL.md` |
+| Animated diagram/motion-graphics compositing (channel-agnostic, added 2026-08-18 — default method for diagram beats) | `001_Architecture/Skills/Motion-Graphics-Compositing/SKILL.md` |
+| Reusable Remotion keyframe helper + animation presets | `002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-lib/motion_graphics_presets.ts` |
+| Pexels API + attribution reference | `001_Architecture/Tools/Tool-Manager/data/Pexels_API_Reference.md` |
+| Pexels API key | `~/.env-secrets` as `PEXELS_API_KEY` |

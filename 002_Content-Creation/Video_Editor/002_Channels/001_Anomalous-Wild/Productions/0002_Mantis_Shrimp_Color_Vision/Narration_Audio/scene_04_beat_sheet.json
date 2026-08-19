@@ -1,0 +1,265 @@
+{
+  "scene_id": "scene_04",
+  "words": [
+    {
+      "word": "What's",
+      "start_s": 0.0,
+      "end_s": 0.418
+    },
+    {
+      "word": "extraordinary",
+      "start_s": 0.476,
+      "end_s": 1.196
+    },
+    {
+      "word": "is",
+      "start_s": 1.405,
+      "end_s": 1.556
+    },
+    {
+      "word": "that",
+      "start_s": 1.591,
+      "end_s": 1.718
+    },
+    {
+      "word": "this",
+      "start_s": 1.753,
+      "end_s": 1.892
+    },
+    {
+      "word": "system",
+      "start_s": 1.939,
+      "end_s": 2.31
+    },
+    {
+      "word": "should",
+      "start_s": 2.38,
+      "end_s": 2.577
+    },
+    {
+      "word": "not",
+      "start_s": 2.612,
+      "end_s": 2.752
+    },
+    {
+      "word": "work",
+      "start_s": 2.81,
+      "end_s": 3.065
+    },
+    {
+      "word": "as",
+      "start_s": 3.123,
+      "end_s": 3.204
+    },
+    {
+      "word": "well",
+      "start_s": 3.262,
+      "end_s": 3.437
+    },
+    {
+      "word": "as",
+      "start_s": 3.483,
+      "end_s": 3.553
+    },
+    {
+      "word": "it",
+      "start_s": 3.611,
+      "end_s": 3.692
+    },
+    {
+      "word": "does.",
+      "start_s": 3.738,
+      "end_s": 4.249
+    },
+    {
+      "word": "Science",
+      "start_s": 4.76,
+      "end_s": 5.201
+    },
+    {
+      "word": "has",
+      "start_s": 5.236,
+      "end_s": 5.341
+    },
+    {
+      "word": "only",
+      "start_s": 5.399,
+      "end_s": 5.596
+    },
+    {
+      "word": "recently",
+      "start_s": 5.677,
+      "end_s": 6.165
+    },
+    {
+      "word": "discovered",
+      "start_s": 6.223,
+      "end_s": 6.769
+    },
+    {
+      "word": "why",
+      "start_s": 6.943,
+      "end_s": 7.245
+    },
+    {
+      "word": "an",
+      "start_s": 7.314,
+      "end_s": 7.384
+    },
+    {
+      "word": "animal",
+      "start_s": 7.43,
+      "end_s": 7.767
+    },
+    {
+      "word": "would",
+      "start_s": 7.825,
+      "end_s": 7.999
+    },
+    {
+      "word": "need",
+      "start_s": 8.046,
+      "end_s": 8.278
+    },
+    {
+      "word": "to",
+      "start_s": 8.336,
+      "end_s": 8.406
+    },
+    {
+      "word": "see",
+      "start_s": 8.487,
+      "end_s": 8.789
+    },
+    {
+      "word": "this",
+      "start_s": 8.847,
+      "end_s": 9.021
+    },
+    {
+      "word": "much",
+      "start_s": 9.102,
+      "end_s": 9.381
+    },
+    {
+      "word": "of",
+      "start_s": 9.451,
+      "end_s": 9.509
+    },
+    {
+      "word": "the",
+      "start_s": 9.555,
+      "end_s": 9.625
+    },
+    {
+      "word": "color",
+      "start_s": 9.671,
+      "end_s": 9.903
+    },
+    {
+      "word": "spectrum",
+      "start_s": 9.938,
+      "end_s": 10.403
+    },
+    {
+      "word": "in",
+      "start_s": 10.612,
+      "end_s": 10.751
+    },
+    {
+      "word": "the",
+      "start_s": 10.797,
+      "end_s": 10.867
+    },
+    {
+      "word": "first",
+      "start_s": 10.913,
+      "end_s": 11.169
+    },
+    {
+      "word": "place.",
+      "start_s": 11.215,
+      "end_s": 11.656
+    },
+    {
+      "word": "We'll",
+      "start_s": 12.167,
+      "end_s": 12.365
+    },
+    {
+      "word": "come",
+      "start_s": 12.411,
+      "end_s": 12.562
+    },
+    {
+      "word": "back",
+      "start_s": 12.585,
+      "end_s": 12.771
+    },
+    {
+      "word": "to",
+      "start_s": 12.829,
+      "end_s": 12.887
+    },
+    {
+      "word": "that",
+      "start_s": 12.957,
+      "end_s": 13.189
+    },
+    {
+      "word": "\u2014",
+      "start_s": 13.363,
+      "end_s": 13.514
+    },
+    {
+      "word": "but",
+      "start_s": 13.955,
+      "end_s": 14.118
+    },
+    {
+      "word": "first,",
+      "start_s": 14.199,
+      "end_s": 14.768
+    },
+    {
+      "word": "there",
+      "start_s": 14.919,
+      "end_s": 15.116
+    },
+    {
+      "word": "is",
+      "start_s": 15.163,
+      "end_s": 15.255
+    },
+    {
+      "word": "a",
+      "start_s": 15.325,
+      "end_s": 15.36
+    },
+    {
+      "word": "stranger",
+      "start_s": 15.441,
+      "end_s": 15.964
+    },
+    {
+      "word": "version",
+      "start_s": 16.045,
+      "end_s": 16.451
+    },
+    {
+      "word": "of",
+      "start_s": 16.521,
+      "end_s": 16.591
+    },
+    {
+      "word": "this",
+      "start_s": 16.649,
+      "end_s": 16.823
+    },
+    {
+      "word": "eye.",
+      "start_s": 16.904,
+      "end_s": 17.972
+    }
+  ]
+}

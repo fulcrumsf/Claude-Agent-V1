@@ -1,0 +1,81 @@
+{
+  "production": "0002_Mantis_Shrimp_Color_Vision",
+  "channel": "Anomalous Wild",
+  "assets": [
+    {
+      "asset_id": "narration_scenes_01-08",
+      "asset_type": "voiceover",
+      "model": "eleven_multilingual_v2",
+      "platform": "elevenlabs",
+      "voice_id": "KYhuk3Y57IlkV1ZjtDAt",
+      "iteration_count": 2,
+      "issues": [
+        {
+          "severity": "major",
+          "description": "First attempt failed with a 400 unsupported_model error. Root cause: shared tool 001_Architecture/Tools/Text-To-Speech/audio_tts.py hardcoded a deprecated model (eleven_monolingual_v1) that ElevenLabs no longer serves. This is a shared-infra bug, not a prompt/voice issue — fixed by updating _TTS_MODEL to eleven_multilingual_v2, matching the channel's documented voice settings. This bug would have blocked every future Anomalous Wild production until run for real."
+        }
+      ],
+      "self_grade": "B — correct on the second pass, but the underlying bug had been sitting unexercised since the pipeline was built; should have been caught by a dry-run/smoke test before now",
+      "scene_count": 8
+    },
+    {
+      "asset_id": "Mantis_Shrimp_Main_Character_Sheet",
+      "asset_type": "character_sheet",
+      "model": "gpt-image-2-text-to-image",
+      "platform": "kie.ai",
+      "iteration_count": 1,
+      "issues": [
+        {
+          "severity": "major",
+          "description": "Tooling bug (not a prompt issue): image_generation.py's poll_image_task() checked for status=='completed' and a singular result_url field, but kie-cli's real response uses status=='success' and a result_urls list. Caused a false 3-minute timeout on a task that had actually completed server-side in 67 seconds. Fixed in image_generation.py (propagated to all 3 sheet-generation skills) and confirmed working against the real completed task before re-running anything."
+        },
+        {
+          "severity": "minor",
+          "description": "Generated image has thin white grid border lines between panels despite the prompt explicitly saying 'no panel borders.' Cosmetic, not disqualifying, but the model didn't fully follow the constraint."
+        },
+        {
+          "severity": "major",
+          "description": "Generated without a real reference photo (no Openverse-sourced Odontodactylus scyllarus image passed via input_urls) — breaks from this channel's own established reference-first rule (created specifically after production 0001's anglerfish anatomical-hallucination failure). Result is a reasonable likeness on visual inspection but is not verified against a real photo. Should be redone with a real reference image before being trusted as the production's locked character sheet."
+        },
+        {
+          "severity": "major",
+          "description": "Layout issue: fixed 1:1 aspect ratio + rigid 3x3 grid clipped the full-body panels (top row) — a square cell isn't wide/tall enough to fit an elongated subject's whole body. Tony caught this on review and approved the sheet as good enough for this test run only, with an explicit correction for all future generations: default to 16:9, and panels do not need to be uniform sized — a full-body panel should get more room than a tight close-up. Fixed in Character-Sheet-Generation's script + SKILL.md (locked default going forward, applies to every future sheet on any channel)."
+        }
+      ],
+      "self_grade": "C+ — internally consistent across all 9 panels (coloring/claw/eyes match throughout), but skipped the channel's own reference-first requirement and had a layout defect (full-body clipping) that Tony had to catch. Approved by Tony for this test run only, not as the production's final locked sheet.",
+      "tony_review": "Approved for this test run (2026-08-16). Explicit correction given for all future character sheets: always 16:9, panels don't need to be uniform/square, full-body panels need enough room to avoid clipping.",
+      "output_path": "Images/Character_Sheets/Mantis_Shrimp_Main_Character_Sheet.png"
+    },
+    {
+      "asset_id": "storyboards_6_scenes",
+      "asset_type": "storyboard",
+      "model": "gpt-image-2-text-to-image",
+      "platform": "kie.ai",
+      "iteration_count": 1,
+      "scenes": ["scene_01", "scene_03", "scene_04", "scene_06", "scene_07", "scene_08"],
+      "issues": [
+        {
+          "severity": "major",
+          "description": "Tooling bug (not a prompt issue): kie-cli's --input_urls requires real public HTTPS URLs, not local file paths — the character sheet reference failed with a Zod 'Invalid url' validation error on first attempt. Fixed by adding auto-upload-to-Cloudinary in image_generation.py's _resolve_to_public_url() (documented workspace pattern per TOOLBOX.md), propagated to all 3 sheet-generation skills, confirmed working before re-running."
+        },
+        {
+          "severity": "major",
+          "description": "scene_04 panel 1: the mantis shrimp's two eyes render inconsistently with each other in the same panel — one has correct detailed ommatidia texture, the other renders as a smooth flat sphere. Anatomical inconsistency, not caught until visual review."
+        },
+        {
+          "severity": "minor",
+          "description": "scene_04 panel 3: the 'Anomaly Level' meter UI graphic got baked into the image as pixels. Acceptable for a storyboard planning reference, but must NOT carry into the actual live-footage generation prompt — that graphic is a separate Remotion channel-chrome overlay per the shot list, not part of the generated shot itself."
+        },
+        {
+          "severity": "minor",
+          "description": "scene_06 was requested as a single panel (matches its 1-clip shot-list entry) but the model generated 2 panels anyway (a reasonable interpretation of 'rack focus' needing a before/after, but a deviation from the explicit instruction given)."
+        }
+      ],
+      "self_grade": "B — 5 of 6 storyboards matched the shot list cleanly with consistent character rendering; scene_04 has a real anatomical inconsistency (mismatched eyes) that needs a redo before being trusted, and scene_06 over-delivered panels beyond what was asked.",
+      "output_paths": [
+        "Images/Storyboards/scene_01.png", "Images/Storyboards/scene_03.png", "Images/Storyboards/scene_04.png",
+        "Images/Storyboards/scene_06.png", "Images/Storyboards/scene_07.png", "Images/Storyboards/scene_08.png"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,385 @@
+{
+  "scene_id": "scene_05",
+  "words": [
+    {
+      "word": "Most",
+      "start_s": 0.0,
+      "end_s": 0.43
+    },
+    {
+      "word": "animals,",
+      "start_s": 0.488,
+      "end_s": 1.022
+    },
+    {
+      "word": "including",
+      "start_s": 1.103,
+      "end_s": 1.602
+    },
+    {
+      "word": "humans,",
+      "start_s": 1.672,
+      "end_s": 2.264
+    },
+    {
+      "word": "see",
+      "start_s": 2.438,
+      "end_s": 2.635
+    },
+    {
+      "word": "light",
+      "start_s": 2.705,
+      "end_s": 2.984
+    },
+    {
+      "word": "only",
+      "start_s": 3.135,
+      "end_s": 3.541
+    },
+    {
+      "word": "as",
+      "start_s": 3.657,
+      "end_s": 3.855
+    },
+    {
+      "word": "color.",
+      "start_s": 3.936,
+      "end_s": 4.458
+    },
+    {
+      "word": "The",
+      "start_s": 5.062,
+      "end_s": 5.178
+    },
+    {
+      "word": "mantis",
+      "start_s": 5.236,
+      "end_s": 5.642
+    },
+    {
+      "word": "shrimp",
+      "start_s": 5.712,
+      "end_s": 6.084
+    },
+    {
+      "word": "also",
+      "start_s": 6.409,
+      "end_s": 6.815
+    },
+    {
+      "word": "sees",
+      "start_s": 6.908,
+      "end_s": 7.198
+    },
+    {
+      "word": "the",
+      "start_s": 7.268,
+      "end_s": 7.349
+    },
+    {
+      "word": "angle",
+      "start_s": 7.43,
+      "end_s": 7.755
+    },
+    {
+      "word": "light",
+      "start_s": 7.79,
+      "end_s": 8.011
+    },
+    {
+      "word": "waves",
+      "start_s": 8.057,
+      "end_s": 8.464
+    },
+    {
+      "word": "twist",
+      "start_s": 8.638,
+      "end_s": 8.963
+    },
+    {
+      "word": "through",
+      "start_s": 9.009,
+      "end_s": 9.334
+    },
+    {
+      "word": "\u2014",
+      "start_s": 9.451,
+      "end_s": 9.532
+    },
+    {
+      "word": "a",
+      "start_s": 9.683,
+      "end_s": 9.741
+    },
+    {
+      "word": "property",
+      "start_s": 9.81,
+      "end_s": 10.275
+    },
+    {
+      "word": "called",
+      "start_s": 10.391,
+      "end_s": 10.774
+    },
+    {
+      "word": "polarization,",
+      "start_s": 10.983,
+      "end_s": 12.156
+    },
+    {
+      "word": "invisible",
+      "start_s": 12.365,
+      "end_s": 12.945
+    },
+    {
+      "word": "to",
+      "start_s": 12.992,
+      "end_s": 13.084
+    },
+    {
+      "word": "nearly",
+      "start_s": 13.154,
+      "end_s": 13.444
+    },
+    {
+      "word": "every",
+      "start_s": 13.526,
+      "end_s": 13.781
+    },
+    {
+      "word": "other",
+      "start_s": 13.851,
+      "end_s": 14.071
+    },
+    {
+      "word": "eye",
+      "start_s": 14.153,
+      "end_s": 14.42
+    },
+    {
+      "word": "on",
+      "start_s": 14.466,
+      "end_s": 14.559
+    },
+    {
+      "word": "Earth.",
+      "start_s": 14.629,
+      "end_s": 15.07
+    },
+    {
+      "word": "Of",
+      "start_s": 15.673,
+      "end_s": 15.801
+    },
+    {
+      "word": "all",
+      "start_s": 15.859,
+      "end_s": 16.022
+    },
+    {
+      "word": "the",
+      "start_s": 16.08,
+      "end_s": 16.149
+    },
+    {
+      "word": "creatures",
+      "start_s": 16.196,
+      "end_s": 16.614
+    },
+    {
+      "word": "on",
+      "start_s": 16.672,
+      "end_s": 16.765
+    },
+    {
+      "word": "Earth,",
+      "start_s": 16.846,
+      "end_s": 17.276
+    },
+    {
+      "word": "only",
+      "start_s": 17.45,
+      "end_s": 17.729
+    },
+    {
+      "word": "a",
+      "start_s": 17.798,
+      "end_s": 17.822
+    },
+    {
+      "word": "small",
+      "start_s": 17.891,
+      "end_s": 18.228
+    },
+    {
+      "word": "handful",
+      "start_s": 18.298,
+      "end_s": 18.82
+    },
+    {
+      "word": "can",
+      "start_s": 18.936,
+      "end_s": 19.122
+    },
+    {
+      "word": "detect",
+      "start_s": 19.18,
+      "end_s": 19.528
+    },
+    {
+      "word": "this",
+      "start_s": 19.563,
+      "end_s": 19.749
+    },
+    {
+      "word": "directly.",
+      "start_s": 19.842,
+      "end_s": 20.631
+    },
+    {
+      "word": "The",
+      "start_s": 21.072,
+      "end_s": 21.2
+    },
+    {
+      "word": "mantis",
+      "start_s": 21.258,
+      "end_s": 21.688
+    },
+    {
+      "word": "shrimp",
+      "start_s": 21.746,
+      "end_s": 22.129
+    },
+    {
+      "word": "is",
+      "start_s": 22.338,
+      "end_s": 22.535
+    },
+    {
+      "word": "the",
+      "start_s": 22.593,
+      "end_s": 22.686
+    },
+    {
+      "word": "only",
+      "start_s": 22.779,
+      "end_s": 23.127
+    },
+    {
+      "word": "one",
+      "start_s": 23.197,
+      "end_s": 23.406
+    },
+    {
+      "word": "known",
+      "start_s": 23.441,
+      "end_s": 23.696
+    },
+    {
+      "word": "to",
+      "start_s": 23.754,
+      "end_s": 23.835
+    },
+    {
+      "word": "detect",
+      "start_s": 23.917,
+      "end_s": 24.393
+    },
+    {
+      "word": "circular",
+      "start_s": 24.509,
+      "end_s": 25.02
+    },
+    {
+      "word": "polarization",
+      "start_s": 25.066,
+      "end_s": 25.925
+    },
+    {
+      "word": "\u2014",
+      "start_s": 26.099,
+      "end_s": 26.157
+    },
+    {
+      "word": "a",
+      "start_s": 26.541,
+      "end_s": 26.61
+    },
+    {
+      "word": "twisting",
+      "start_s": 26.692,
+      "end_s": 27.191
+    },
+    {
+      "word": "pattern",
+      "start_s": 27.284,
+      "end_s": 27.702
+    },
+    {
+      "word": "of",
+      "start_s": 27.748,
+      "end_s": 27.806
+    },
+    {
+      "word": "light",
+      "start_s": 27.922,
+      "end_s": 28.212
+    },
+    {
+      "word": "that",
+      "start_s": 28.387,
+      "end_s": 28.561
+    },
+    {
+      "word": "does",
+      "start_s": 28.596,
+      "end_s": 28.758
+    },
+    {
+      "word": "not",
+      "start_s": 28.816,
+      "end_s": 28.979
+    },
+    {
+      "word": "occur",
+      "start_s": 29.025,
+      "end_s": 29.304
+    },
+    {
+      "word": "naturally",
+      "start_s": 29.373,
+      "end_s": 29.896
+    },
+    {
+      "word": "anywhere",
+      "start_s": 29.989,
+      "end_s": 30.465
+    },
+    {
+      "word": "else",
+      "start_s": 30.511,
+      "end_s": 30.883
+    },
+    {
+      "word": "in",
+      "start_s": 30.976,
+      "end_s": 31.115
+    },
+    {
+      "word": "the",
+      "start_s": 31.161,
+      "end_s": 31.243
+    },
+    {
+      "word": "animal",
+      "start_s": 31.312,
+      "end_s": 31.672
+    },
+    {
+      "word": "kingdom.",
+      "start_s": 31.742,
+      "end_s": 32.787
+    }
+  ]
+}

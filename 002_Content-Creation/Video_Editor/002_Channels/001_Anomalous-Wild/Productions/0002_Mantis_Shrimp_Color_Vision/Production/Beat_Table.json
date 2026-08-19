@@ -1,0 +1,76 @@
+{
+  "beats": [
+    {
+      "scene_id": "scene_01",
+      "start_s": 0.0,
+      "end_s": 7.477,
+      "routing": "live_footage",
+      "max_clip_s": 8.0,
+      "max_static_s": null
+    },
+    {
+      "scene_id": "scene_02",
+      "start_s": 0.0,
+      "end_s": 10.542,
+      "routing": "diagram",
+      "max_clip_s": null,
+      "max_static_s": 5.0
+    },
+    {
+      "scene_id": "scene_03",
+      "start_s": 0.0,
+      "end_s": 12.492,
+      "routing": "live_footage",
+      "max_clip_s": 8.0,
+      "max_static_s": null
+    },
+    {
+      "scene_id": "scene_04",
+      "start_s": 0.0,
+      "end_s": 17.972,
+      "routing": "live_footage",
+      "max_clip_s": 8.0,
+      "max_static_s": null
+    },
+    {
+      "scene_id": "scene_05",
+      "start_s": 0.0,
+      "end_s": 32.787,
+      "routing": "diagram",
+      "max_clip_s": null,
+      "max_static_s": 5.0
+    },
+    {
+      "scene_id": "scene_05b",
+      "start_s": 0.0,
+      "end_s": 9.938,
+      "routing": "diagram",
+      "max_clip_s": null,
+      "max_static_s": 5.0
+    },
+    {
+      "scene_id": "scene_06",
+      "start_s": 0.0,
+      "end_s": 5.898,
+      "routing": "live_footage",
+      "max_clip_s": 8.0,
+      "max_static_s": null
+    },
+    {
+      "scene_id": "scene_07",
+      "start_s": 0.0,
+      "end_s": 28.329,
+      "routing": "live_footage",
+      "max_clip_s": 8.0,
+      "max_static_s": null
+    },
+    {
+      "scene_id": "scene_08",
+      "start_s": 0.0,
+      "end_s": 16.997,
+      "routing": "live_footage",
+      "max_clip_s": 8.0,
+      "max_static_s": null
+    }
+  ]
+}
