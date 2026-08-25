@@ -258,6 +258,8 @@ This is a mandatory per-beat check during assembly, not optional polish — the 
 ```
 This asset is fixed for every Anomalous Wild video. Append it via ffmpeg concat at the end of the assembled Remotion render — do not regenerate it, do not route it through Remotion, do not let a per-video prompt touch it. `Production/end_card_reference.txt` (written by `scaffold_new_production.py` in Phase 1) points at this exact path; read from there rather than hardcoding the path a second time in assembly code.
 
+**End card CTA voiceover — standard step (locked 2026-08-24), not optional polish.** The end card visually says "Like, Comment" but has no spoken call to action and, left unaddressed, plays under complete audio silence (confirmed on 0002_Mantis_Shrimp_Color_Vision — the narration/music mix stops right at the end-card boundary with nothing filling the remaining ~10s). Generate a short line ("Follow for more content like this," "Subscribe for more content like this," or similar) via ElevenLabs using the same `voice_id` as the production's narration (check `Data/Generation_Log.json` for the voice_id already used), and mix it into the end-card audio starting ~1-1.5s in (after the card's own text has begun animating), with its own short tail fade so it doesn't clip. Verify duration fits inside the end card's own runtime before finalizing.
+
 Render the Remotion composition to `Assembly/raw_video.mp4`, then append the end card to produce the pre-audio-mix cut. Audio (Phase 8) mixes onto this.
 
 ---
