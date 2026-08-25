@@ -237,13 +237,13 @@ Its Zod props schema (`diagramLabelsSchema`) takes `labels` (feature/x_pct/y_pct
 
 ## PHASE 7 — ASSEMBLY (existing Remotion engine, extended for new scene types)
 
-Assembly runs through the channel's real engine — never raw ffmpeg concatenation. The pattern is `BioluminescenceDoc.tsx`-style: a Remotion composition per production that pulls in generated clips, illustrated diagrams with `DiagramLabels` overlays, and title/end cards as React components, not a hand-stitched video file.
+**No single tool is the mandatory final assembler (revised 2026-08-25).** Remotion, ffmpeg, video-use, and HyperFrames are all available — whichever tool actually suits a given job does that job. A live-footage-heavy production may assemble cleanly via direct ffmpeg concat; a diagram-heavy scene may be built independently as component assets (Phase 6B, Motion-Graphics-Compositing) and stitched in afterward; Remotion remains the right choice when a scene genuinely needs React-composed overlays (e.g. `DiagramLabels`). Decide per production, and per scene within a production, rather than defaulting to one engine for everything.
 
+When a Remotion composition is the right call for a given production, follow the `BioluminescenceDoc.tsx` pattern (precedent: `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0001_Bioluminescence_Weapon/Remotion/BioluminescenceDoc.tsx`), saved to:
 ```
 002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/[NNNN]_[Title_Case_Slug]/Remotion/
 ```
-
-For each production, create a Remotion composition following the `BioluminescenceDoc.tsx` pattern (confirmed precedent at `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0001_Bioluminescence_Weapon/Remotion/BioluminescenceDoc.tsx`), extended to include `DiagramLabels` scenes for any Phase 6B beats. Do not bypass this engine with a manual ffmpeg concat, even for a "quick" assembly — that was a mistake corrected earlier this session.
+extended to include `DiagramLabels` scenes for any Phase 6B beats still using that method. When ffmpeg or another tool is the right call instead, no `Remotion/` folder is required for that production — do not treat its absence as an error.
 
 **Mandatory check — diagram beat static-hold enforcement (no exceptions):**
 `DiagramLabels.tsx` deliberately owns nothing beyond staggered label entrances — it has no pan/zoom/reframe capability, and camera motion is a per-video Remotion composition decision, not something to hardcode into the component. That means `max_static_s` (written per diagram beat in `Beat_Table.json` by Phase 3's `build_beat_table.py`) is NOT self-enforcing. This is now solved properly rather than patched with a generic pan: every diagram beat gets a real camera/reveal blocking plan from [`Diagram-Generation`](../Diagram-Generation/SKILL.md) (Phase 6B, Step 5), timed to real narration word timestamps — implement that plan as the Remotion composition's actual crop/zoom/opacity keyframes for the beat, driven by the same timestamps, never a fresh AI regeneration of the diagram content. A beat with a real blocking plan naturally satisfies `max_static_s` because something is always changing by design; still run the arithmetic check as a safety net:
@@ -348,8 +348,8 @@ Production folder: [full path]
 ├── Images/, Video_Clips/  ✓ live-footage clips + diagram illustrations
 │                            (each diagram beat also has illustration.png,
 │                            reference_image.jpg, label_coordinates.json)
-├── Remotion/               ✓ BioluminescenceDoc.tsx-style composition,
-│                            incl. DiagramLabels overlays for diagram beats
+├── Remotion/               ✓ (if used for this production) BioluminescenceDoc.tsx-style
+│                            composition, incl. DiagramLabels overlays for diagram beats
 ├── Assembly/               ✓ raw_video.mp4, stems_mix.mp3, narration.mp3,
 │                            music.mp3, <prod>_final.mp4 (end card appended,
 │                            never regenerated)
