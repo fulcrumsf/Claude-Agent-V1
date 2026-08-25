@@ -69,8 +69,11 @@ This catalog covers 24 production models across video, image, audio, and video-t
 - `cheapest` — the platform with the lowest normalized price
 - `rating` — community consensus 1–10 (Reddit/YouTube/Twitter), `null` = new or no data
 - `status` — `active` | `deprecated` | `new`
+- `capabilities` (added 2026-08-18, populated per-model as gaps are found — not yet backfilled for every model) — feature/capability parity across platforms, e.g. whether a platform's wrapper actually exposes a parameter the underlying model supports. **Check this BEFORE applying the price-based routing rule below** — the cheapest platform is only the right answer among platforms that actually support the capability the job needs. Confirmed real gap (2026-08-18): kie.ai's GPT-Image-2 wrapper is cheaper than direct OpenAI but exposes no transparent-background parameter at all — a job needing alpha-transparent output must route to direct OpenAI regardless of price. See `capabilities` block on the `gpt-image-2` entry for the documented example.
 
-**Routing rule:** Use `cheapest` platform. Prefer direct API (google_direct, elevenlabs_direct, openai_direct) when within 5% of cheapest aggregator. Never route ElevenLabs through kie.ai — already on $5/mo subscription.
+**Routing rule:** First, filter to platforms whose `capabilities` support what the job actually needs (if the catalog doesn't have a `capabilities` entry for the relevant feature yet, that's a signal to research it now, not assume parity). Among those, use `cheapest` platform; prefer direct API (google_direct, elevenlabs_direct, openai_direct) when within 5% of cheapest aggregator. Never route ElevenLabs through kie.ai — already on $5/mo subscription.
+
+**Standing rule (2026-08-18): consult this catalog before defaulting to any specific platform/endpoint for a generation call — unprompted, not only when asked.** If this catalog doesn't answer the actual question (price gaps are usually covered; capability gaps often aren't yet), that means Tool-Manager needs to research and update its own data via the Update Protocol below — the calling agent should not surface an unresearched platform/capability question back to Tony as if it were his job to already know the answer.
 
 **On-demand capability search** (for models not in catalog, e.g. "video-to-audio options"):
 ```bash
@@ -260,7 +263,10 @@ don't assume it's undocumented forever.
 | Obsidian vault ops | `obsidian`, `obsidian-cli`, `obsidian-markdown` |
 | Three-brain routing | `three-brain` |
 | Google Veo via kie.ai | `google_veo_kie_api` |
-| Seedance prompting (any version — dialogue, audio, camera movement, negative prompts) | `Seedance-Prompting-Guide` (`001_Architecture/Skills/Seedance-Prompting-Guide/SKILL.md`) — living reference, update in place as new Seedance versions ship |
+| Seedance prompting (any version — dialogue, audio, camera movement, negative prompts) | `Seedance-Prompting-Guide` (`001_Architecture/Skills/Seedance-Prompting-Guide/SKILL.md`) — living reference, update in place as new Seedance versions ship. **Always check this before writing ANY Seedance reference-image call, on any channel/pipeline** — 1.5 Pro and 2.0 have fundamentally different reference-image mechanisms (1.5 Pro's second image is a last-frame target, not a style reference; 2.0 has a real multi-reference field). Passing a second image to 1.5 Pro expecting a consistency reference will make the video morph into that image as its literal ending — confirmed live 2026-08-17/18, see the skill's version-parameters warning callout. |
+| Topic research + reference images + Pexels B-roll (channel-agnostic, added 2026-08-18) | `Production-Research-Agent` (`001_Architecture/Skills/Production-Research-Agent/SKILL.md`) |
+| Conditional sheet planning + B-roll-vs-generation placement (channel-agnostic, added 2026-08-18) | `Production-Asset-Planner` (`001_Architecture/Skills/Production-Asset-Planner/SKILL.md`) |
+| Pexels API — auth, endpoints, rate limits, attribution requirements | **Always check `001_Architecture/Tools/Tool-Manager/data/Pexels_API_Reference.md` before any Pexels integration or "do we need attribution" question** — confirmed directly from Pexels' own License/FAQ pages 2026-08-18. Attribution is legally optional but this workspace attributes anyway (YouTube description only, hyperlinked, no on-screen burn-in — exact format in that doc). |
 
 Full skill list: read `001_Architecture/Skills/Skill-Index.md`
 

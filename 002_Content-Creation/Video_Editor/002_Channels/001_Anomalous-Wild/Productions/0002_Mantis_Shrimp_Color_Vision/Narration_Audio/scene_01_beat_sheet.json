@@ -1,0 +1,125 @@
+{
+  "scene_id": "scene_01",
+  "words": [
+    {
+      "word": "This",
+      "start_s": 0.0,
+      "end_s": 0.221
+    },
+    {
+      "word": "animal",
+      "start_s": 0.29,
+      "end_s": 0.662
+    },
+    {
+      "word": "sees",
+      "start_s": 0.836,
+      "end_s": 1.091
+    },
+    {
+      "word": "colors",
+      "start_s": 1.149,
+      "end_s": 1.498
+    },
+    {
+      "word": "that",
+      "start_s": 1.533,
+      "end_s": 1.649
+    },
+    {
+      "word": "do",
+      "start_s": 1.695,
+      "end_s": 1.776
+    },
+    {
+      "word": "not",
+      "start_s": 1.858,
+      "end_s": 1.997
+    },
+    {
+      "word": "have",
+      "start_s": 2.043,
+      "end_s": 2.206
+    },
+    {
+      "word": "names.",
+      "start_s": 2.252,
+      "end_s": 2.821
+    },
+    {
+      "word": "Not",
+      "start_s": 3.204,
+      "end_s": 3.379
+    },
+    {
+      "word": "because",
+      "start_s": 3.425,
+      "end_s": 3.68
+    },
+    {
+      "word": "no",
+      "start_s": 3.715,
+      "end_s": 3.808
+    },
+    {
+      "word": "one",
+      "start_s": 3.878,
+      "end_s": 3.994
+    },
+    {
+      "word": "has",
+      "start_s": 4.017,
+      "end_s": 4.122
+    },
+    {
+      "word": "looked.",
+      "start_s": 4.168,
+      "end_s": 4.54
+    },
+    {
+      "word": "Because",
+      "start_s": 4.714,
+      "end_s": 5.062
+    },
+    {
+      "word": "human",
+      "start_s": 5.097,
+      "end_s": 5.399
+    },
+    {
+      "word": "eyes",
+      "start_s": 5.468,
+      "end_s": 5.782
+    },
+    {
+      "word": "are",
+      "start_s": 5.851,
+      "end_s": 6.049
+    },
+    {
+      "word": "not",
+      "start_s": 6.084,
+      "end_s": 6.211
+    },
+    {
+      "word": "built",
+      "start_s": 6.269,
+      "end_s": 6.502
+    },
+    {
+      "word": "to",
+      "start_s": 6.536,
+      "end_s": 6.606
+    },
+    {
+      "word": "receive",
+      "start_s": 6.676,
+      "end_s": 7.001
+    },
+    {
+      "word": "them.",
+      "start_s": 7.036,
+      "end_s": 7.477
+    }
+  ]
+}

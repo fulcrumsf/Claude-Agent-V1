@@ -1,0 +1,16 @@
+{
+  "scene_01": "live_footage",
+  "scene_02": "diagram",
+  "scene_03": "live_footage",
+  "scene_04": "live_footage",
+  "scene_05": "diagram",
+  "scene_05b": "diagram",
+  "scene_06": "live_footage",
+  "scene_07": "live_footage",
+  "scene_08": "live_footage",
+  "_routing_notes": {
+    "scene_02": "3-vs-16 photoreceptor comparison graphic — labeled, coordinate-based, matches Remotion's best_for per motion_graphics_capabilities.json",
+    "scene_05": "polarized/circular light-wave mechanism render — falls to the Scientific Diagram sub-pipeline (illustrate + label), not a live-action shot",
+    "scene_07": "high-speed strike is a motion/action sequence (cavitation collapse + light flash), not a labeled chart — routes to live-footage video generation, not the diagram sub-pipeline, despite being a 'mechanism'"
+  }
+}

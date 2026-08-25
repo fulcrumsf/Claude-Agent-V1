@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-08-15
+created: 2026-08-19
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-08-15T14:35:49-04:00
+Generated: 2026-08-19T08:20:07-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -33,11 +33,20 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | skill-creator | Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specializ… | `001_Architecture/Skills/.system/skill-creator/SKILL.md` |
 | skill-installer | Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skil… | `001_Architecture/Skills/.system/skill-installer/SKILL.md` |
 | Anomalous_Wild_Video_Pipeline | Invoke when Tony says /anomalous-wild, make an Anomalous Wild video, build me a video for the nature/science channel, run the Anomalous Wild pipeline, or start an AW production. O… | `001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md` |
+| character-sheet-generation | Use whenever a video production has a recurring character or creature that appears in more than one scene and needs to look identical every time — "build a character sheet", "crea… | `001_Architecture/Skills/Character-Sheet-Generation/SKILL.md` |
+| diagram-generation | Use whenever a video production needs a labeled scientific/technical diagram — "build a diagram", "generate a scientific illustration", "animate this diagram", or any beat compari… | `001_Architecture/Skills/Diagram-Generation/SKILL.md` |
+| environment-sheet-generation | Use whenever a video production has a location that appears in more than one scene and needs to look identical every time — "build an environment sheet", "location reference sheet… | `001_Architecture/Skills/Environment-Sheet-Generation/SKILL.md` |
+| gpt-image-2-prompting-guide | Use whenever writing or reviewing a prompt for OpenAI's GPT-Image-2 (image generation/editing) via kie.ai or the OpenAI API directly. Triggers on "write a GPT-Image-2 prompt", "ge… | `001_Architecture/Skills/GPT-Image-2-Prompting-Guide/SKILL.md` |
 | Motion-Graphics | Use whenever building, reviewing, or planning ANY motion graphic — animated diagram/callout labels, kinetic typography, chart/data reveals, title cards, lower-thirds, or any Remot… | `001_Architecture/Skills/Motion-Graphics/SKILL.md` |
+| Motion-Graphics-Compositing | Use whenever a beat needs an animated diagram, infographic, data-viz, or collage-style motion graphic — never ask a video-generation model (Seedance or otherwise) to animate this… | `001_Architecture/Skills/Motion-Graphics-Compositing/SKILL.md` |
+| Production-Asset-Planner | Invoke once a production's shot list/beat breakdown exists, on ANY channel — reads the script and beats in one combined pass to decide (1) which conditional image assets (prop/env… | `001_Architecture/Skills/Production-Asset-Planner/SKILL.md` |
+| Production-Research-Agent | Invoke right after a video production's topic/subject is chosen, on ANY channel — gathers real-world facts, reference images, and Pexels B-roll footage for that subject before scr… | `001_Architecture/Skills/Production-Research-Agent/SKILL.md` |
+| prop-sheet-generation | Use whenever a video production has a recurring handheld/worn object that appears in more than one scene and needs to look and orient identically every time — "build a prop sheet"… | `001_Architecture/Skills/Prop-Sheet-Generation/SKILL.md` |
 | reimagined-realms-pov-shorts-pipeline | Use when building Reimagined Realms POV Shorts (vertical historical "day in the life" videos with no dialogue), planning beats/scenes, generating a shot list, generating/trimming… | `001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/SKILL.md` |
 | reimagined-realms-pov-shorts-pipeline-v2 | Use when building Reimagined Realms POV Shorts on the v2 (Seedance 2.0 / character-sheet + environment-sheet) architecture — a versioned duplicate of Reimagined_Realms_POV_Shorts_… | `001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/SKILL.md` |
 | Reimagined_Realms_Video_Pipeline | Invoke when Tony says /reimagined-realms, make a Reimagined Realms video, build me a video for the history channel, run the video pipeline, or start the RR pipeline. Orchestrates… | `001_Architecture/Skills/Reimagined_Realms_Video_Pipeline/SKILL.md` |
 | seedance-prompting-guide | Use whenever writing or reviewing a prompt for ByteDance Seedance (any version — 1.5 Pro, 2.0, 2.0 Fast, and future releases) — image-to-video or text-to-video generation via kie.… | `001_Architecture/Skills/Seedance-Prompting-Guide/SKILL.md` |
+| storyboard-generation | Use whenever a video production needs a per-scene storyboard — a single image showing 6-12 sequential frames of a shot's progression, used to plan shot composition and camera move… | `001_Architecture/Skills/Storyboard-Generation/SKILL.md` |
 | tiktok-shop-affiliate-video | Use when Tony has raw product footage and voiceover clips and wants to produce TikTok Shop or YouTube Shorts affiliate videos. Triggers on "create affiliate video", "edit product… | `001_Architecture/Skills/TikTok-Shop-Affiliate-Video/SKILL.md` |
 | tool-manager | > | `001_Architecture/Skills/Tool-Manager/SKILL.md` |
 | Tutorial-Builder | Turn a past multi-session build (pipeline, tool, workflow) into a replication blueprint and video-recording concept for the Roboto Gato YouTube channel and/or a sellable/free PDF.… | `001_Architecture/Skills/Tutorial-Builder/SKILL.md` |

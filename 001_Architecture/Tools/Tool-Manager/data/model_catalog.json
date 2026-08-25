@@ -911,7 +911,26 @@
           "cheapest": "openai_direct",
           "cheapest_price": 0.16
         }
-      ]
+      ],
+      "capabilities": {
+        "_note": "Feature/capability parity across platforms for this model \u2014 added 2026-08-18 after a real gap: kie.ai wrapper was defaulted to for a job that needed transparent-background output, which its CLI schema does not expose. Price alone (see pricing.cheapest) is not sufficient for platform selection when a specific capability is required \u2014 check this block first, then price among platforms that support it.",
+        "transparent_background_output": {
+          "openai_direct": {
+            "supported": true,
+            "param": "background=\"transparent\"",
+            "confirmed_live": false,
+            "note": "Documented in OpenAI API reference. Not yet confirmed live against our own account/usage \u2014 first real test scheduled for the next Anomalous Wild diagram beat (~2026-08-19), see 2026-08-18-Motion-Graphics-Compositing-Skill-Spec.md."
+          },
+          "kie_ai": {
+            "supported": false,
+            "note": "kie-cli gpt_image_2 --help exposes no background/transparency parameter (only prompt, input_urls, aspect_ratio, resolution, callBackUrl) \u2014 confirmed 2026-08-18."
+          },
+          "wavespeed": {
+            "supported": null,
+            "note": "Not checked yet."
+          }
+        }
+      }
     },
     {
       "id": "flux-kontext",

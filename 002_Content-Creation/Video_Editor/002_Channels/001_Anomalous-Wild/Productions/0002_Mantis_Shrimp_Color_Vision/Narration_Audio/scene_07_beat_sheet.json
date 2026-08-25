@@ -1,0 +1,360 @@
+{
+  "scene_id": "scene_07",
+  "words": [
+    {
+      "word": "The",
+      "start_s": 0.0,
+      "end_s": 0.244
+    },
+    {
+      "word": "mantis",
+      "start_s": 0.302,
+      "end_s": 0.673
+    },
+    {
+      "word": "shrimp's",
+      "start_s": 0.72,
+      "end_s": 1.057
+    },
+    {
+      "word": "strike",
+      "start_s": 1.091,
+      "end_s": 1.683
+    },
+    {
+      "word": "is",
+      "start_s": 1.858,
+      "end_s": 2.043
+    },
+    {
+      "word": "one",
+      "start_s": 2.101,
+      "end_s": 2.229
+    },
+    {
+      "word": "of",
+      "start_s": 2.264,
+      "end_s": 2.322
+    },
+    {
+      "word": "the",
+      "start_s": 2.368,
+      "end_s": 2.438
+    },
+    {
+      "word": "fastest",
+      "start_s": 2.496,
+      "end_s": 3.019
+    },
+    {
+      "word": "movements",
+      "start_s": 3.1,
+      "end_s": 3.576
+    },
+    {
+      "word": "in",
+      "start_s": 3.622,
+      "end_s": 3.692
+    },
+    {
+      "word": "the",
+      "start_s": 3.738,
+      "end_s": 3.808
+    },
+    {
+      "word": "animal",
+      "start_s": 3.878,
+      "end_s": 4.203
+    },
+    {
+      "word": "kingdom,",
+      "start_s": 4.272,
+      "end_s": 4.865
+    },
+    {
+      "word": "accelerating",
+      "start_s": 5.108,
+      "end_s": 5.875
+    },
+    {
+      "word": "so",
+      "start_s": 5.944,
+      "end_s": 6.072
+    },
+    {
+      "word": "quickly",
+      "start_s": 6.142,
+      "end_s": 6.548
+    },
+    {
+      "word": "it",
+      "start_s": 6.757,
+      "end_s": 6.931
+    },
+    {
+      "word": "boils",
+      "start_s": 6.989,
+      "end_s": 7.384
+    },
+    {
+      "word": "the",
+      "start_s": 7.442,
+      "end_s": 7.512
+    },
+    {
+      "word": "water",
+      "start_s": 7.558,
+      "end_s": 7.883
+    },
+    {
+      "word": "in",
+      "start_s": 7.941,
+      "end_s": 8.011
+    },
+    {
+      "word": "front",
+      "start_s": 8.069,
+      "end_s": 8.278
+    },
+    {
+      "word": "of",
+      "start_s": 8.324,
+      "end_s": 8.382
+    },
+    {
+      "word": "it",
+      "start_s": 8.44,
+      "end_s": 8.591
+    },
+    {
+      "word": "for",
+      "start_s": 8.766,
+      "end_s": 8.928
+    },
+    {
+      "word": "a",
+      "start_s": 8.975,
+      "end_s": 9.009
+    },
+    {
+      "word": "fraction",
+      "start_s": 9.067,
+      "end_s": 9.451
+    },
+    {
+      "word": "of",
+      "start_s": 9.497,
+      "end_s": 9.555
+    },
+    {
+      "word": "a",
+      "start_s": 9.601,
+      "end_s": 9.636
+    },
+    {
+      "word": "second,",
+      "start_s": 9.683,
+      "end_s": 10.31
+    },
+    {
+      "word": "producing",
+      "start_s": 10.484,
+      "end_s": 11.029
+    },
+    {
+      "word": "a",
+      "start_s": 11.099,
+      "end_s": 11.134
+    },
+    {
+      "word": "flash",
+      "start_s": 11.192,
+      "end_s": 11.471
+    },
+    {
+      "word": "of",
+      "start_s": 11.517,
+      "end_s": 11.575
+    },
+    {
+      "word": "light",
+      "start_s": 11.656,
+      "end_s": 11.947
+    },
+    {
+      "word": "from",
+      "start_s": 12.098,
+      "end_s": 12.283
+    },
+    {
+      "word": "the",
+      "start_s": 12.33,
+      "end_s": 12.399
+    },
+    {
+      "word": "collapsing",
+      "start_s": 12.446,
+      "end_s": 12.957
+    },
+    {
+      "word": "bubble",
+      "start_s": 13.038,
+      "end_s": 13.468
+    },
+    {
+      "word": "alone.",
+      "start_s": 13.526,
+      "end_s": 14.246
+    },
+    {
+      "word": "And",
+      "start_s": 15.198,
+      "end_s": 15.372
+    },
+    {
+      "word": "its",
+      "start_s": 15.441,
+      "end_s": 15.581
+    },
+    {
+      "word": "eyes",
+      "start_s": 15.65,
+      "end_s": 16.115
+    },
+    {
+      "word": "\u2014",
+      "start_s": 16.289,
+      "end_s": 16.359
+    },
+    {
+      "word": "the",
+      "start_s": 16.8,
+      "end_s": 16.916
+    },
+    {
+      "word": "same",
+      "start_s": 16.974,
+      "end_s": 17.508
+    },
+    {
+      "word": "sixteen-receptor,",
+      "start_s": 17.717,
+      "end_s": 19.168
+    },
+    {
+      "word": "polarization-reading",
+      "start_s": 19.226,
+      "end_s": 20.654
+    },
+    {
+      "word": "eyes",
+      "start_s": 20.736,
+      "end_s": 21.084
+    },
+    {
+      "word": "\u2014",
+      "start_s": 21.212,
+      "end_s": 21.316
+    },
+    {
+      "word": "are",
+      "start_s": 21.467,
+      "end_s": 21.641
+    },
+    {
+      "word": "fast",
+      "start_s": 21.688,
+      "end_s": 21.978
+    },
+    {
+      "word": "enough",
+      "start_s": 22.048,
+      "end_s": 22.291
+    },
+    {
+      "word": "to",
+      "start_s": 22.326,
+      "end_s": 22.384
+    },
+    {
+      "word": "track",
+      "start_s": 22.442,
+      "end_s": 22.709
+    },
+    {
+      "word": "the",
+      "start_s": 22.767,
+      "end_s": 22.849
+    },
+    {
+      "word": "entire",
+      "start_s": 22.907,
+      "end_s": 23.406
+    },
+    {
+      "word": "event",
+      "start_s": 23.476,
+      "end_s": 23.835
+    },
+    {
+      "word": "in",
+      "start_s": 23.894,
+      "end_s": 23.975
+    },
+    {
+      "word": "real",
+      "start_s": 24.056,
+      "end_s": 24.312
+    },
+    {
+      "word": "time,",
+      "start_s": 24.381,
+      "end_s": 24.915
+    },
+    {
+      "word": "while",
+      "start_s": 25.066,
+      "end_s": 25.298
+    },
+    {
+      "word": "every",
+      "start_s": 25.333,
+      "end_s": 25.542
+    },
+    {
+      "word": "other",
+      "start_s": 25.612,
+      "end_s": 25.856
+    },
+    {
+      "word": "eye",
+      "start_s": 25.925,
+      "end_s": 26.088
+    },
+    {
+      "word": "nearby",
+      "start_s": 26.123,
+      "end_s": 26.622
+    },
+    {
+      "word": "only",
+      "start_s": 26.773,
+      "end_s": 27.086
+    },
+    {
+      "word": "sees",
+      "start_s": 27.144,
+      "end_s": 27.411
+    },
+    {
+      "word": "a",
+      "start_s": 27.469,
+      "end_s": 27.504
+    },
+    {
+      "word": "blur.",
+      "start_s": 27.562,
+      "end_s": 28.329
+    }
+  ]
+}
