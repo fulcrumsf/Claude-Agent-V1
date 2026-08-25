@@ -2,9 +2,11 @@
 """
 tools/new_video.py
 
-Entry point for every new video. Runs a terminal questionnaire,
-researches viral ideas via Perplexity (using channel case studies for context),
-lets you pick one idea, then scaffolds the project folder.
+Entry point for a new Anomalous Wild video. Runs a short terminal
+questionnaire (format + duration only — narration, voice, music mood,
+Suno, and CTA are all locked defaults, not asked), researches viral
+ideas via Perplexity (using channel case studies for context), lets you
+pick one idea, then scaffolds the project folder.
 
 Usage:
   python3 tools/new_video.py
@@ -29,6 +31,7 @@ What it creates:
 from __future__ import annotations
 import json
 import os
+import random
 import re
 import sys
 from pathlib import Path
@@ -66,22 +69,12 @@ CHANNELS = [
     {"id": "012_business_origin_stories",  "name": "Business Origin Stories",  "default_format": "long",  "niche": "startup stories, founder journeys, brand history"},
 ]
 
-MUSIC_MOODS = [
-    "tense / thriller",
-    "epic / orchestral",
-    "ambient / atmospheric",
-    "lo-fi / relaxed",
-    "dramatic / emotional",
-    "upbeat / energetic",
-    "mysterious / eerie",
-    "cinematic / documentary",
-]
+VOICE_ID = "KYhuk3Y57IlkV1ZjtDAt"  # locked Anomalous Wild ElevenLabs voice — change only by editing this constant directly, never per-run
 
-VOICEOVER_TONES = [
-    "dramatic — slow, powerful, pauses for effect",
-    "calm — measured, authoritative, BBC-style",
-    "curious — warm, wondering, slightly playful",
-    "urgent — fast, breathless, high stakes",
+CTA_LINES = [
+    "Subscribe for more wild animal facts.",
+    "Follow along for more strange creatures like this one.",
+    "Hit subscribe — nature gets weirder from here.",
 ]
 
 DURATION_OPTIONS_LONG  = ["3–5 min", "5–8 min", "8–12 min"]
@@ -413,9 +406,9 @@ def scaffold_project(
         "aspect_ratio": "9:16" if "short" in format_label.lower() else "16:9",
         "resolution": "1080x1920" if "short" in format_label.lower() else "1920x1080",
         "duration_estimate": answers.get("duration", ""),
-        "voiceover": answers.get("voiceover", True),
-        "voiceover_tone": answers.get("voiceover_tone", ""),
-        "music_mood": answers.get("music_mood", []),
+        "voiceover": True,
+        "voice_id": VOICE_ID,
+        "music_mood": [],  # derived from script tone during editing, not asked at intake
         "suno_score_enabled": suno_enabled,
         "suno_prompt": "",
         "cta": cta,
@@ -437,28 +430,13 @@ def run() -> None:
     print("  NEW VIDEO — Production Setup")
     print("═" * 60 + "\n")
 
-    # ── 1. Channel ─────────────────────────────────────────────────────────
-    channel_choices = [f"{c['id']} — {c['name']}" for c in CHANNELS]
-    channel_answer  = questionary.select(
-        "Which channel is this video for?",
-        choices=channel_choices,
-    ).ask()
-    if not channel_answer:
-        sys.exit(0)
-
-    channel = next(c for c in CHANNELS if channel_answer.startswith(c["id"]))
+    # ── 1. Channel (locked — this tool is Anomalous Wild only) ──────────────
+    channel = next(c for c in CHANNELS if c["id"] == "001_anomalous_wild")
     print(f"\n  ✓ Channel: {channel['name']} ({channel['id']})")
 
     # ── 2. Format ──────────────────────────────────────────────────────────
-    if channel["default_format"] == "long":
-        fmt_default = "Long-form (16:9 horizontal)"
-        fmt_choices = ["Long-form (16:9 horizontal)", "Short (9:16 vertical)"]
-    elif channel["default_format"] == "short":
-        fmt_default = "Short (9:16 vertical)"
-        fmt_choices = ["Short (9:16 vertical)", "Long-form (16:9 horizontal)"]
-    else:
-        fmt_default = "Long-form (16:9 horizontal)"
-        fmt_choices = ["Long-form (16:9 horizontal)", "Short (9:16 vertical)"]
+    fmt_default = "Long-form (16:9 horizontal)"
+    fmt_choices = ["Long-form (16:9 horizontal)", "Short (9:16 vertical)"]
 
     format_answer = questionary.select(
         f"Format?  [default: {fmt_default}]",
@@ -480,38 +458,12 @@ def run() -> None:
     if not duration:
         sys.exit(0)
 
-    # ── 4. Voiceover ───────────────────────────────────────────────────────
-    has_vo = questionary.confirm("Include voiceover narration?", default=True).ask()
+    # ── 4. Narration, voice, music mood, Suno — all locked, never asked ─────
+    suno_enabled  = True
 
-    vo_tone = ""
-    if has_vo:
-        vo_tone = questionary.select(
-            "Voiceover tone?",
-            choices=VOICEOVER_TONES,
-        ).ask()
-        if not vo_tone:
-            sys.exit(0)
-
-    # ── 5. Music mood ──────────────────────────────────────────────────────
-    music_moods = questionary.checkbox(
-        "Music mood? (select all that apply)",
-        choices=MUSIC_MOODS,
-    ).ask()
-    if music_moods is None:
-        sys.exit(0)
-
-    # ── 6. Suno score ──────────────────────────────────────────────────────
-    suno_enabled = questionary.confirm(
-        "Generate a Suno score for this video?", default=True
-    ).ask()
-
-    # ── 7. CTA ────────────────────────────────────────────────────────────
-    cta = questionary.text(
-        "What should viewers do at the end? (CTA)",
-        default="Subscribe for more wild animal facts",
-    ).ask()
-    if cta is None:
-        sys.exit(0)
+    # ── 5. CTA — picked at random from the locked rotation, never typed ─────
+    cta = random.choice(CTA_LINES)
+    print(f"  ✓ CTA (auto-picked): {cta}")
 
     # ── Research phase ─────────────────────────────────────────────────────
     print("\n" + "─" * 60)
@@ -573,11 +525,8 @@ def run() -> None:
 
     # ── Build ──────────────────────────────────────────────────────────────
     answers = {
-        "format":        format_label,
-        "duration":      duration,
-        "voiceover":     has_vo,
-        "voiceover_tone": vo_tone,
-        "music_mood":    music_moods,
+        "format":   format_label,
+        "duration": duration,
     }
 
     project_dir = scaffold_project(
