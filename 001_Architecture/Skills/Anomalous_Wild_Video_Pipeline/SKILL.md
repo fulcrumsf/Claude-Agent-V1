@@ -93,10 +93,10 @@ Generate per-scene voiceover with word-level timestamps.
 source /Users/tonymacbook2025/.env-secrets
 python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_narration_with_timestamps.py \
   "[production_folder]" \
-  "<voice_id>"
+  "KYhuk3Y57IlkV1ZjtDAt"
 ```
 
-Confirm the correct Anomalous Wild ElevenLabs voice ID with Tool-Manager or Tony before running — do not reuse Reimagined Realms' voice ID (`raMcNf2S8wCmuaBcyI6E`) by default; that voice belongs to RR's narrator persona, not this channel's.
+**Locked voice (2026-08-25): `KYhuk3Y57IlkV1ZjtDAt`** — this is the permanent Anomalous Wild voice for every video, same treatment as Reimagined Realms' hardcoded voice. Do not confirm/ask each run. Do not reuse Reimagined Realms' voice ID (`raMcNf2S8wCmuaBcyI6E`) — that belongs to RR's narrator persona. To change the AW voice in the future, edit this constant directly (and `new_video.py`'s `VOICE_ID`, Task 1) rather than asking per-run.
 
 Reads `Scripts/Narration.md` (the `## scene_id` sections written in Phase 1). Writes, per scene:
 - `Narration_Audio/<scene_id>.mp3`
