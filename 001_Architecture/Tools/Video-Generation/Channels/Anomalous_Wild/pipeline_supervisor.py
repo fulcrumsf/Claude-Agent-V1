@@ -287,6 +287,61 @@ def generate_kling(entry: dict) -> dict:
     return {"ok": True, "url": url} if url else {"ok": False, "error_category": "RETRY", "reason": "No URL in completed response"}
 
 
+def generate_seedance(entry: dict) -> dict:
+    """Submit Seedance 1.5 Pro job via kie.ai createTask. Returns {ok, url, error_category} or {ok:False, reason, error_category}."""
+    try:
+        resp = requests.post(
+            "https://api.kie.ai/api/v1/jobs/createTask",
+            headers=kie_headers(),
+            json={
+                "model": "bytedance/seedance-1.5-pro",
+                "input": {
+                    "prompt": entry["video_prompt"],
+                    # kie.ai's bytedance/seedance-1.5-pro exposes first/last frame as a single
+                    # input_urls array: element 0 = first frame, element 1 = last frame.
+                    # Confirmed live 2026-08-17/18 (see Seedance-Prompting-Guide SKILL.md).
+                    "input_urls": [
+                        url for url in [
+                            entry.get("first_frame_url"),
+                            entry.get("last_frame_url"),
+                        ] if url
+                    ],
+                    "resolution": "1080p",
+                    "duration": str(entry.get("duration_s", 8)),
+                    "aspect_ratio": entry.get("aspect_ratio", "16:9"),
+                    "generate_audio": entry.get("generate_audio", True),
+                },
+            },
+            timeout=30,
+        )
+    except requests.exceptions.ConnectionError as e:
+        return {"ok": False, "error_category": "RETRY", "reason": f"Network error: {e}"}
+    except requests.exceptions.Timeout:
+        return {"ok": False, "error_category": "RETRY", "reason": "Request timed out"}
+
+    try:
+        body = resp.json()
+    except Exception:
+        body = {}
+
+    category, reason = _classify_kie_response(resp.status_code, body)
+    if category != "OK":
+        return {"ok": False, "error_category": category, "reason": reason}
+
+    nested  = body.get("data") or {}
+    task_id = body.get("taskId") or nested.get("taskId")
+    if not task_id:
+        return {"ok": False, "error_category": "UNKNOWN", "reason": f"No taskId in response: {str(body)[:200]}"}
+
+    log(f"  Seedance task: {task_id}")
+    result = kie_poll(task_id, "/api/v1/jobs/recordInfo")
+    if not result["ok"]:
+        return result
+
+    url = extract_video_url(result["data"])
+    return {"ok": True, "url": url} if url else {"ok": False, "error_category": "RETRY", "reason": "No URL in completed response"}
+
+
 def generate_flux_image(entry: dict) -> dict:
     """Submit Flux Pro image job. Returns {ok, url} or {ok:False, reason}."""
     size_map = {"16:9": "landscape_16_9", "9:16": "portrait_16_9", "1:1": "square_hd"}
@@ -533,8 +588,10 @@ def run():
         folder   = Path(entry["output_folder"])
         raw_path = folder / f"{scene_id}.mp4"
         lp_path  = folder / f"{scene_id}_looped.mp4"
-        model    = entry.get("model", "kling_v2")
-        is_veo   = "veo" in model.lower()
+        model       = entry.get("model", "bytedance/seedance-1.5-pro")
+        model_lower = model.lower()
+        is_veo      = "veo" in model_lower
+        is_seedance = "seedance" in model_lower or "bytedance" in model_lower
 
         # Already fully done
         if lp_path.exists():
@@ -555,7 +612,12 @@ def run():
             else:
                 log(f"  → {scene_id} [{entry.get('priority')}] attempt {attempts}/{MAX_CLIP_RETRIES} ({model})")
 
-                result = generate_veo3(entry) if is_veo else generate_kling(entry)
+                if is_veo:
+                    result = generate_veo3(entry)
+                elif is_seedance:
+                    result = generate_seedance(entry)
+                else:
+                    result = generate_kling(entry)
 
                 if not result["ok"]:
                     reason   = result.get("reason", "unknown")
