@@ -591,7 +591,7 @@ def run():
         model       = entry.get("model", "bytedance/seedance-1.5-pro")
         model_lower = model.lower()
         is_veo      = "veo" in model_lower
-        is_seedance = "seedance" in model_lower or "bytedance" in model_lower
+        is_seedance = "seedance" in model_lower
 
         # Already fully done
         if lp_path.exists():
