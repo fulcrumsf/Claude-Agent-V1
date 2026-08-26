@@ -49,9 +49,13 @@ Store: `chosen_topic`, `subject` (short noun phrase for the YouTube package gene
 
 Store `video_model_family = "seedance"` unconditionally at this step — every later phase reads this instead of asking again.
 
-### Step A3 — Kick off Production-Research-Agent (new, 2026-08-18)
+### Step A3 — Kick off Production-Research-Agent + NotebookLM (Production-Research-Agent added 2026-08-18, NotebookLM added 2026-08-25)
 
-Immediately after the topic is picked (in parallel with Step A2), invoke the [`Production-Research-Agent`](../Production-Research-Agent/SKILL.md) skill with `chosen_topic` and `production_folder`. It gathers topic facts, reference images (capped 20), and Pexels B-roll footage (capped 10 clips, 1080p 16:9 only, analyzed and inventoried) — all before scriptwriting starts, so Phase 5B/Production-Asset-Planner has real material to check against once beats exist. Do not proceed to Step B until this completes.
+Immediately after the topic is picked (in parallel with Step A2), invoke the [`Production-Research-Agent`](../Production-Research-Agent/SKILL.md) skill with `chosen_topic` and `production_folder`. It gathers topic facts, reference images (capped 20), and Pexels B-roll footage (capped 10 clips, 1080p 16:9 only, analyzed and inventoried) — all before scriptwriting starts, so Phase 5B/Production-Asset-Planner has real material to check against once beats exist.
+
+Also invoke the `notebooklm` skill on the same topic, once the Production-Research-Agent's gathered sources are available to feed it: generate a report (`notebooklm generate report --format briefing-doc`) synthesizing the topic facts into a structured briefing doc, and save its output to `Research/NotebookLM_Briefing.md`. This adds grounding material on top of Topic_Facts.md, not a replacement for it — more real, varied reference material up front produces better downstream shot/script/diagram quality (the same principle behind Task 9's visual-variety mechanism and the character-sheet-variety decision). This step is not mandatory-forced on every production if NotebookLM is unavailable/rate-limited that session — skip and proceed with Production-Research-Agent's output alone if it fails, log the skip, don't block the pipeline on it.
+
+Do not proceed to Step B until Production-Research-Agent completes (NotebookLM's report may still be finishing in the background if it's a longer-running artifact type — do not block on it specifically, only on Production-Research-Agent).
 
 ### Step B — Script (existing skill, reused as-is)
 
