@@ -22,10 +22,10 @@ Usage:
   python3 analyze_stems.py <production_folder> --stems-file Data/per_scene_stem_map.json
   python3 analyze_stems.py <production_folder> --target-lufs -20 --dry-run
 
-Target LUFS reference:
+Target LUFS reference (matches the locked standard in Anomalous_Wild_Video_Pipeline/SKILL.md Phase 8):
   SFX bed base:   -20 LUFS  (leaves headroom for narration)
   Narration:      -14 LUFS  (YouTube standard — sits clearly on top)
-  Music bed:      -28 LUFS  (ambient, never competes)
+  Music bed:      -26 LUFS  (~12dB below narration, never competes)
 """
 
 import argparse

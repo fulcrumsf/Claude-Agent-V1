@@ -13,7 +13,7 @@ generated_by: sync_skill_index.py
 
 # Skill Index
 
-Generated: 2026-08-25T22:14:04-04:00
+Generated: 2026-08-25T22:39:30-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 

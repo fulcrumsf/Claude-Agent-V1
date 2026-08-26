@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-compose_audio.py — Vision-based per-scene audio composer for Reimagined Realms productions.
+compose_audio.py — Vision-based per-scene audio composer for Anomalous Wild productions.
 
 Reads:
   Data/Beatmap.json                    per-clip timing (acts, clips, durations)
