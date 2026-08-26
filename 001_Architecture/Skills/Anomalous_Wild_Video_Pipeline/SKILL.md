@@ -154,6 +154,22 @@ Read that skill's own SKILL.md for the full mechanism — this section only docu
 
 **Anomalous-Wild-specific storyboard style (locked 2026-08-17, still applies):** pass this channel's own `visual_style` (dark neon nature-documentary palette) into Production-Asset-Planner's Step 5 storyboard call. Apply the channel's shot-variety and anatomical-precision rules on top of Storyboard-Generation's defaults: even a scene narrating a creature's specific anatomy (e.g. its eyes) should mix in establishing/b-roll frames — the creature moving through its environment, wide shots of habitat — not just close-ups of whatever the narration is currently describing. Shot composition must change dramatically at least every ~3 seconds — a real subject/framing change, not a tighter zoom on the same thing — and no single anatomical feature should dominate more than roughly half a scene's frames even when the narration talks about it the whole time. Since Anomalous Wild's subjects are near-always creatures with paired/repeated features (two eyestalks, multiple limbs, etc.), every `frame_actions` line must state how many of that feature are visible, never rely on singular language ("the eye") to imply "one of several, others still present." Run the mandatory character-sheet count-check on every generated storyboard before presenting it to Tony, per Storyboard-Generation's own requirement.
 
+**Visual variety mechanism (locked 2026-08-25) — the director role.** The agent planning shot composition for this channel acts as the director/cinematographer — BBC-style nature documentary, in the tradition of the channel's own case studies (`Case_Studies/`) and the Cinematic Style Guide's "Wildlife" methodology (`002_Content-Creation/Video_Editor/002_Channels/Styles/CINEMATIC_STYLE_GUIDE.md`) — making shot-variety calls independently, not deferring them to Tony. Tony reviews finished videos to refine this judgment over iterations; he does not hand-pick variety per shot.
+
+Two-tier mechanism, applied when building each scene's storyboard:
+
+1. **Fixed universal pool — rotate every shot, don't repeat the same combo back-to-back:**
+   - Camera angle / shot type: wide, close-up, medium shot, low angle, high angle, macro.
+   - Framing/composition: centered/symmetrical, rule-of-thirds off-center, negative-space-heavy, tight/filled frame, depth-layered foreground.
+2. **Director's own research-driven judgment — NOT a fixed list, decided per-production from real research, not arbitrary randomization:**
+   - Environment specifics (region/reef/habitat — driven by where the real subject actually lives, sourced from Production-Research-Agent's Phase 1 Step A3 output).
+   - Lighting/weather/time-of-day (driven by what's realistic for that environment).
+   - Subject natural variation (real color/pattern variation within the species, if factually accurate).
+
+**Explicitly pull from case studies and the Cinematic Style Guide for this, not just at topic-ideation time (Phase 1).** Case studies teach craft — how good documentaries tell a story through shot selection and pacing — they are inspiration, never a template to copy. Read `CINEMATIC_STYLE_GUIDE.md`'s Wildlife style (shallow DOF, warm grading, "beauty shot" rule) as a direct input to shot planning at this step, not a separately-maintained doc the AW pipeline never opens.
+
+Do NOT achieve variety by recoloring the creature/character itself — no biological basis for that. Vary the environment, lighting, and camera treatment around it instead.
+
 **Anomalous-Wild-specific chaining decision (still applies, layered on top of Production-Asset-Planner's per-beat output):** when a scene's narration needs more than one 8s-capped clip (per the visual-duration check in `Anomalous-Wild-Scriptwriter.md`), decide: **is this a single continuous action meant to read as unbroken, or a montage of distinct quick cuts (matching the channel's default glitch-cut aesthetic)?**
 - **Unbroken action** → chain the clips using `Seedance-Prompting-Guide`'s "last-frame-passing" technique — each clip's exact last frame becomes the next clip's starting reference.
 - **Montage of quick cuts** → no chaining needed — the default, and what every beat in this pipeline has assumed so far.
