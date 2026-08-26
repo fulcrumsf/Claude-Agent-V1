@@ -1,0 +1,182 @@
+{
+  "videos": [
+    {
+      "filename": "Reef_Fish_Sandy_Bottom_01.mp4",
+      "pexels_id": 8823457,
+      "pexels_url": "https://www.pexels.com/video/a-fish-swimming-underwater-8823457/",
+      "duration_s": 8.47,
+      "resolution": "1920x1080",
+      "aspect_ratio": "16:9",
+      "photographer": "Kindel Media",
+      "photographer_url": "https://www.pexels.com/@kindelmedia",
+      "photographer_id": 10715715,
+      "assigned_to": "Scene_03B (0002_Mantis_Shrimp_Color_Vision)",
+      "analysis": {
+        "actions_depicted": ["single fish swimming low over sandy seafloor", "sand ripple texture visible below"],
+        "notes": "muted teal/green natural-light underwater grade, close to channel's dark neon palette; single fish (not a school), matches storyboard panel 4's 'small reef fish swimming nearby'"
+      }
+    },
+    {
+      "filename": "Small_Cleaner_Shrimp_Reef_01.mp4",
+      "pexels_id": 855468,
+      "pexels_url": "https://www.pexels.com/video/footage-of-shrimp-underwater-855468/",
+      "duration_s": 19.8,
+      "resolution": "1920x1080",
+      "aspect_ratio": "16:9",
+      "photographer": "Pixabay",
+      "photographer_url": "https://www.pexels.com/@pixabay",
+      "photographer_id": 2659,
+      "assigned_to": "Scene_03D (0002_Mantis_Shrimp_Color_Vision)",
+      "analysis": {
+        "actions_depicted": ["small cleaner shrimp perched on dark reef rock", "long antennae moving, mostly stationary"],
+        "notes": "dark rocky reef background, single shrimp subject, visually distinct from the hero mantis shrimp species (no risk of subject confusion); matches storyboard panel 7's 'small shrimp on the sand'"
+      }
+    },
+    {
+      "filename": "Mantis_Shrimp_Exploring_Coral_Reef_01.mp4",
+      "pexels_id": 34724251,
+      "pexels_url": "https://www.pexels.com/video/vibrant-mantis-shrimp-exploring-coral-reef-34724251/",
+      "duration_s": 9,
+      "resolution": "1920x1080",
+      "aspect_ratio": "16:9",
+      "photographer": "JUN HO LEE",
+      "photographer_url": "https://www.pexels.com/@divesaipan3076",
+      "photographer_id": 3205991,
+      "assigned_to": null,
+      "analysis": {
+        "actions_depicted": ["mantis shrimp walking away from camera over rocky/algae-covered substrate", "close chase-style POV, telephoto framing"],
+        "notes": "genuinely distinct shot from the other 4 JUN HO LEE clips below — different substrate (purple/brown algae rock, not the brain-coral spot), different framing distance"
+      }
+    },
+    {
+      "filename": "Mantis_Shrimp_Underwater_Exploration_01.mp4",
+      "pexels_id": 34385404,
+      "pexels_url": "https://www.pexels.com/video/mantis-shrimp-underwater-exploration-footage-34385404/",
+      "duration_s": 9,
+      "resolution": "1920x1080",
+      "aspect_ratio": "16:9",
+      "photographer": "JUN HO LEE",
+      "photographer_url": "https://www.pexels.com/@divesaipan3076",
+      "photographer_id": 3205991,
+      "assigned_to": null,
+      "analysis": {
+        "actions_depicted": ["mantis shrimp in profile near sandy patch, walking toward large brain-coral head", "diver-following angle, slightly above and behind subject"],
+        "notes": "NEAR-DUPLICATE: same dive, same individual, same brain-coral landmark, and same camera path as Mantis_Shrimp_Exploring_Coral_Reef_02, Mantis_Shrimp_Underwater_Footage_01, and Mantis_Shrimp_Colorful_Coral_Reef_01 below — Pexels appears to have this single continuous dive shot split into 4 separate listings by this contributor. Keep only one of these four in the final edit unless genuinely different trim points are needed."
+      }
+    },
+    {
+      "filename": "Mantis_Shrimp_Exploring_Coral_Reef_02.mp4",
+      "pexels_id": 35266543,
+      "pexels_url": "https://www.pexels.com/video/vibrant-mantis-shrimp-exploring-coral-reef-35266543/",
+      "duration_s": 7,
+      "resolution": "1920x1080",
+      "aspect_ratio": "16:9",
+      "photographer": "JUN HO LEE",
+      "photographer_url": "https://www.pexels.com/@divesaipan3076",
+      "photographer_id": 3205991,
+      "assigned_to": null,
+      "analysis": {
+        "actions_depicted": ["mantis shrimp in profile near sandy patch, walking toward brain-coral head"],
+        "notes": "NEAR-DUPLICATE of Mantis_Shrimp_Underwater_Exploration_01 — same dive/subject/landmark, different trim/cut of the same source footage"
+      }
+    },
+    {
+      "filename": "Mantis_Shrimp_Underwater_Footage_01.mp4",
+      "pexels_id": 35266540,
+      "pexels_url": "https://www.pexels.com/video/vibrant-underwater-footage-of-mantis-shrimp-35266540/",
+      "duration_s": 7,
+      "resolution": "1920x1080",
+      "aspect_ratio": "16:9",
+      "photographer": "JUN HO LEE",
+      "photographer_url": "https://www.pexels.com/@divesaipan3076",
+      "photographer_id": 3205991,
+      "assigned_to": null,
+      "analysis": {
+        "actions_depicted": ["mantis shrimp from behind, walking toward brain-coral head, slightly wider framing showing another coral boulder at right"],
+        "notes": "NEAR-DUPLICATE of Mantis_Shrimp_Underwater_Exploration_01 — same dive/subject/landmark, different trim/cut of the same source footage"
+      }
+    },
+    {
+      "filename": "Mantis_Shrimp_Exploring_Coral_Reef_03_Long.mp4",
+      "pexels_id": 32997249,
+      "pexels_url": "https://www.pexels.com/video/mantis-shrimp-exploring-coral-reef-underwater-32997249/",
+      "duration_s": 15,
+      "resolution": "1920x1080",
+      "aspect_ratio": "16:9",
+      "photographer": "JUN HO LEE",
+      "photographer_url": "https://www.pexels.com/@divesaipan3076",
+      "photographer_id": 3205991,
+      "assigned_to": null,
+      "analysis": {
+        "actions_depicted": ["wide establishing shot: full reef environment with sandy bottom, scattered coral heads, blue open water above, small fish swimming in background, mantis shrimp visible mid-ground in profile"],
+        "notes": "genuinely distinct and the strongest wide/establishing option of the set — longest clip (15s), only one with visible open-water background and other fish for scale/context. Recommended pick if only one JUN HO LEE clip is used."
+      }
+    },
+    {
+      "filename": "Mantis_Shrimp_Colorful_Coral_Reef_01.mp4",
+      "pexels_id": 34385407,
+      "pexels_url": "https://www.pexels.com/video/colorful-mantis-shrimp-exploring-ocean-coral-reef-34385407/",
+      "duration_s": 9,
+      "resolution": "1920x1080",
+      "aspect_ratio": "16:9",
+      "photographer": "JUN HO LEE",
+      "photographer_url": "https://www.pexels.com/@divesaipan3076",
+      "photographer_id": 3205991,
+      "assigned_to": null,
+      "analysis": {
+        "actions_depicted": ["mantis shrimp from behind, walking toward brain-coral head"],
+        "notes": "NEAR-DUPLICATE of Mantis_Shrimp_Underwater_Exploration_01 — same dive/subject/landmark, different trim/cut of the same source footage"
+      }
+    }
+  ],
+  "reference_images": [
+    {
+      "filename": "Peacock_Mantis_Shrimp_Coloration_01.jpg",
+      "pexels_id": 19693270,
+      "pexels_url": "https://www.pexels.com/photo/exotic-peacock-mantis-shrimp-19693270/",
+      "photographer": "William Warby",
+      "photographer_url": "https://www.pexels.com/@wwarby",
+      "notes": "full-body color/pattern reference, natural lighting"
+    },
+    {
+      "filename": "Peacock_Mantis_Shrimp_Face_Closeup_01.jpg",
+      "pexels_id": 19715964,
+      "pexels_url": "https://www.pexels.com/photo/clown-mantis-shrimp-in-close-up-19715964/",
+      "photographer": "William Warby",
+      "photographer_url": "https://www.pexels.com/@wwarby",
+      "notes": "close-up on eyes/face — useful grounding for the eye/color-vision beats specifically"
+    },
+    {
+      "filename": "Peacock_Mantis_Shrimp_Closeup_02.jpg",
+      "pexels_id": 19984425,
+      "pexels_url": "https://www.pexels.com/photo/close-up-of-a-peacock-mantis-shrimp-19984425/",
+      "photographer": "JUN HO LEE",
+      "photographer_url": "https://www.pexels.com/@divesaipan3076",
+      "notes": "close-up anatomy/coloration reference"
+    },
+    {
+      "filename": "Mantis_Shrimp_Colorful_Underwater_01.jpg",
+      "pexels_id": 19673928,
+      "pexels_url": "https://www.pexels.com/photo/colorful-shrimp-underwater-19673928/",
+      "photographer": "William Warby",
+      "photographer_url": "https://www.pexels.com/@wwarby",
+      "notes": "full-body coloration reference, different individual/angle than the other Warby photo"
+    },
+    {
+      "filename": "Banded_Mantis_Shrimp_Sand_01.jpg",
+      "pexels_id": 38600551,
+      "pexels_url": "https://www.pexels.com/photo/close-up-of-banded-mantis-shrimp-in-dauin-sand-38600551/",
+      "photographer": "Chris Spain",
+      "photographer_url": "https://www.pexels.com/@chris-spain-943675",
+      "notes": "different banding pattern variant, sandy substrate context"
+    },
+    {
+      "filename": "Eye_Anatomy_Scientific_Diagram_01.png",
+      "source": "Wikimedia Commons",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Polarization_anatomy_of_a_mantis_shrimp_eye.png",
+      "license": "CC BY-SA 4.0",
+      "artist": "Martin How (background in panels e/f adapted from a photo by R. Caldwell)",
+      "notes": "scientific diagram of stomatopod eye/rhabdom structure and microvilli orientation — directly grounds the color-vision/polarization diagram beats (Scene 02/05/05B); this is a labeled scientific figure, so treat as anatomy/structure reference only, not a style reference for the final generated diagram art"
+    }
+  ]
+}

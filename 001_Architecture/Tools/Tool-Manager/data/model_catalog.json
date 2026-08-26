@@ -919,7 +919,7 @@
             "supported": true,
             "param": "background=\"transparent\"",
             "confirmed_live": false,
-            "note": "Documented in OpenAI API reference. Not yet confirmed live against our own account/usage \u2014 first real test scheduled for the next Anomalous Wild diagram beat (~2026-08-19), see 2026-08-18-Motion-Graphics-Compositing-Skill-Spec.md."
+            "note": "Documented in OpenAI API reference. First real test attempted 2026-08-21 on Anomalous Wild Scene 05 (polarization diagram) \u2014 blocked by account state, not capability: direct OpenAI API returned 429 insufficient_quota / credit_balance_exhausted on every call. Fell back to kie.ai chroma-screen + Recraft matting (Step 3 method 2) for that beat. Capability itself still unconfirmed live \u2014 retest once the OpenAI account has credits."
           },
           "kie_ai": {
             "supported": false,

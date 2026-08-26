@@ -10,10 +10,17 @@ Downloads a YouTube video and builds a complete, three-source understanding of i
 ## Usage
 
 ```bash
-python3 001_Architecture/Skills/Video-Analyzer/analyze_reference_video.py "<youtube_url>" --out "<folder>" [--threshold 0.3] [--dense-interval 0.5]
+python3 001_Architecture/Skills/Video-Analyzer/analyze_reference_video.py "<youtube_url>" --out "<folder>" [--threshold 0.3] [--dense-interval 0.5] [--profile standard|production]
 ```
 
 Writes `<folder>/Video.mp4`, `<folder>/ANALYSIS.md`, `<folder>/Transcript.srt`, and `<folder>/Keyframes/001.jpg, 002.jpg, ...`. If `--dense-interval` is set, also writes `<folder>/Dense_Keyframes/0001.jpg, 0002.jpg, ...`.
+
+`--profile production` is an optional global analysis mode for video-production
+case studies. It preserves the same files and workflow, but asks Gemini to
+add clip-boundary confidence, editorial beats, humor mechanics, dialogue
+placement and speaker direction, music and sound-effect details, retention
+patterns, reusable abstractions, and originality boundaries. The default
+`standard` profile is unchanged for existing projects.
 
 **`--dense-interval` — for continuity/fault auditing, not general use.** The default `Keyframes/` set only captures ffmpeg-detected scene *cuts* — it's built for reading on-screen text within each distinct scene, and it has a real blind spot: a defect that drifts gradually *within* one continuous shot (no hard cut) falls straight through the gap between two scene-cut keyframes. Confirmed case: a POV camera that started correctly first-person and drifted into a third-person view partway through a single uncut shot was invisible in the scene-cut `Keyframes/` set, but obvious once every ~1 second of that shot was pulled via `--dense-interval 0.5`. Use this flag when auditing a render for continuity/POV-lock/identity-drift faults specifically — leave it off for a normal case-study run (it adds a large number of frames and proportionally more review time).
 

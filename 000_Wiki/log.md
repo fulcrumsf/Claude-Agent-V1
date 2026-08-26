@@ -2746,3 +2746,9 @@ Destinations:
 Wiki pages created: 9 new pages in `000_Wiki/Video-Production/` (Seedance-Character-Environment-Consistency-Workflows, Storyboards-To-Consistent-Videos-Using-Seedance-2.0, The-Secret-To-AI-Character-Sheets, She-Isnt-Real-Definitive-AI-Influencer-Pipeline, Create-Seamless-AI-Films-Of-Any-Length, How-I-Got-11M-Views-30K-Subscribers-AI-Workflow, The-Only-Workflow-To-Turn-A-Storyboard-Into-An-AI-Video, Ultimate-Seedance-Control-Storyboards-With-GPT-Image-2, Seedance-2.0-Entire-Storyboard-Test-Results)
 Cross-linked: Seedance-2-0-Prompting-Guide.md, Higgsfield-AI-Faceless-YouTube-Pipeline.md, Neon-Parcel-TikTok-Shop-Creator-Pipeline.md — Related sections updated
 Context: Phase 1 of the Seedance Case Study Pipeline (see Claude memory `project_seedance_case_study_pipeline.md`). Phase 2 (Video-Analyzer case studies into `Universal_Case_Studies/`) and Phase 3 (extract outliers into `Seedance-Prompting-Guide` skill) not yet started.
+
+## [2026-08-24] ingest | Screenshots Batch
+Source: `000_Ingest/screenshots/` → `007_Resource_Library/` category folders, `Obsidian_Attachments/Visual_Assets/`, and `Videos/`
+Asset Notes: 194 image notes created across Tools, Tutorials, Docs, Models, Investments, Research, Personal, and other category folders; 3 low-context images routed to `Undetermined/`
+Video Package: `007_Resource_Library/Videos/Short-Video-Long-Caption-Repeat-Views-Engagement-Strategy/`
+Preservation: `000_Ingest/screenshots/` retained as a reusable drop-zone; `.DS_Store` left untouched.

@@ -1,0 +1,89 @@
+{
+  "backgroundVideoFile": "0003_pyramid_builder_i_deep/Final_v1.mp4",
+  "captions": [
+    {
+      "text": "POV: You Wake Up As An Egyptian Pyramid Builder",
+      "startS": 0,
+      "durationS": 3,
+      "variant": "title"
+    },
+    {
+      "text": "Giza, Egypt \u2014 c. 2560 BC, Reign of Khufu",
+      "startS": 3,
+      "durationS": 2,
+      "variant": "title"
+    },
+    {
+      "text": "BREAKFAST",
+      "startS": 5,
+      "durationS": 5,
+      "variant": "label"
+    },
+    {
+      "text": "DRESSING",
+      "startS": 10,
+      "durationS": 5,
+      "variant": "label"
+    },
+    {
+      "text": "WALK TO SITE",
+      "startS": 15,
+      "durationS": 5,
+      "variant": "label"
+    },
+    {
+      "text": "ARRIVAL",
+      "startS": 20,
+      "durationS": 5,
+      "variant": "label"
+    },
+    {
+      "text": "HAULING",
+      "startS": 25,
+      "durationS": 5,
+      "variant": "label"
+    },
+    {
+      "text": "SHAPING STONE",
+      "startS": 30,
+      "durationS": 5,
+      "variant": "label"
+    },
+    {
+      "text": "WATER BREAK",
+      "startS": 35,
+      "durationS": 5,
+      "variant": "label"
+    },
+    {
+      "text": "MIDDAY MEAL",
+      "startS": 40,
+      "durationS": 5,
+      "variant": "label"
+    },
+    {
+      "text": "LEVERING",
+      "startS": 45,
+      "durationS": 5,
+      "variant": "label"
+    },
+    {
+      "text": "RATIONS TALLY",
+      "startS": 50,
+      "durationS": 5,
+      "variant": "label"
+    },
+    {
+      "text": "WALK HOME",
+      "startS": 55,
+      "durationS": 5,
+      "variant": "label"
+    },
+    {
+      "text": "REST",
+      "startS": 60,
+      "durationS": 5,
+      "variant": "label"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "labels": [
+    {
+      "feature": "wave_crest_rightmost_visible",
+      "x_pct": 93.1,
+      "y_pct": 38.0,
+      "confidence": "high"
+    },
+    {
+      "feature": "oscillation_plane_center",
+      "x_pct": 50.0,
+      "y_pct": 50.0,
+      "confidence": "high"
+    }
+  ]
+}

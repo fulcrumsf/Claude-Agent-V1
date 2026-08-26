@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-08-19
+created: 2026-08-25
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-08-19T08:20:07-04:00
+Generated: 2026-08-25T22:14:04-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -28,9 +28,10 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | Skill | Summary | Path |
 | --- | --- | --- |
 | imagegen | Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts.… | `001_Architecture/Skills/.system/imagegen/SKILL.md` |
-| openai-docs | Use when the user asks how to build with OpenAI products or APIs, asks about Codex itself or choosing Codex surfaces, needs up-to-date official documentation with citations, help… | `001_Architecture/Skills/.system/openai-docs/SKILL.md` |
+| openai-docs | Use for Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, customization, automations, and self-knowledge—including 'you,' 'your,' 'this app,' or 'th… | `001_Architecture/Skills/.system/openai-docs/SKILL.md` |
 | plugin-creator | Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, valid manifest defaults, and personal-marketplace entr… | `001_Architecture/Skills/.system/plugin-creator/SKILL.md` |
-| skill-creator | Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Codex's capabilities with specializ… | `001_Architecture/Skills/.system/skill-creator/SKILL.md` |
+| review-agent | Perform a read-only, defect-first review of a specified code change and return every actionable finding. Use when another agent delegates review of uncommitted changes, a base-bra… | `001_Architecture/Skills/.system/review-agent/SKILL.md` |
+| skill-creator | Create or update a Codex skill with appropriately scoped instructions and any needed supporting resources. | `001_Architecture/Skills/.system/skill-creator/SKILL.md` |
 | skill-installer | Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skil… | `001_Architecture/Skills/.system/skill-installer/SKILL.md` |
 | Anomalous_Wild_Video_Pipeline | Invoke when Tony says /anomalous-wild, make an Anomalous Wild video, build me a video for the nature/science channel, run the Anomalous Wild pipeline, or start an AW production. O… | `001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md` |
 | character-sheet-generation | Use whenever a video production has a recurring character or creature that appears in more than one scene and needs to look identical every time — "build a character sheet", "crea… | `001_Architecture/Skills/Character-Sheet-Generation/SKILL.md` |
@@ -39,6 +40,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | gpt-image-2-prompting-guide | Use whenever writing or reviewing a prompt for OpenAI's GPT-Image-2 (image generation/editing) via kie.ai or the OpenAI API directly. Triggers on "write a GPT-Image-2 prompt", "ge… | `001_Architecture/Skills/GPT-Image-2-Prompting-Guide/SKILL.md` |
 | Motion-Graphics | Use whenever building, reviewing, or planning ANY motion graphic — animated diagram/callout labels, kinetic typography, chart/data reveals, title cards, lower-thirds, or any Remot… | `001_Architecture/Skills/Motion-Graphics/SKILL.md` |
 | Motion-Graphics-Compositing | Use whenever a beat needs an animated diagram, infographic, data-viz, or collage-style motion graphic — never ask a video-generation model (Seedance or otherwise) to animate this… | `001_Architecture/Skills/Motion-Graphics-Compositing/SKILL.md` |
+| neon-parcel-longform-compilation | Use when Tony asks to create a Neon Parcel long-form animal compilation, analyze reference animal videos for Neon Parcel, or generate Shorts from a Neon Parcel long-form compilati… | `001_Architecture/Skills/Neon_Parcel_Longform_Compilation/SKILL.md` |
 | Production-Asset-Planner | Invoke once a production's shot list/beat breakdown exists, on ANY channel — reads the script and beats in one combined pass to decide (1) which conditional image assets (prop/env… | `001_Architecture/Skills/Production-Asset-Planner/SKILL.md` |
 | Production-Research-Agent | Invoke right after a video production's topic/subject is chosen, on ANY channel — gathers real-world facts, reference images, and Pexels B-roll footage for that subject before scr… | `001_Architecture/Skills/Production-Research-Agent/SKILL.md` |
 | prop-sheet-generation | Use whenever a video production has a recurring handheld/worn object that appears in more than one scene and needs to look and orient identically every time — "build a prop sheet"… | `001_Architecture/Skills/Prop-Sheet-Generation/SKILL.md` |

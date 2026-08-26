@@ -117,6 +117,8 @@ Sources: [OpenAI Developer Community — image generation struggles with left/ri
 
 ## Character consistency across shots (storyboards, character sheets, reference images)
 
+**Decide this BEFORE the image-generation stage, not after — which Seedance version a pipeline targets changes what reference assets are worth building at all.** A pipeline built around 1.5 Pro gets no benefit from a rich multi-angle character sheet passed at video-generation time (it has nowhere to put a second reference image except as a last-frame target — see the version-parameters warning above) — for 1.5 Pro, consistency has to be solved earlier, either by compositing the character sheet directly into each shot's single starting image (at the image-generation stage, before Seedance ever runs) or by reusing one anchor image across every call. A pipeline built around 2.0 can instead carry a real character sheet, environment sheet, and storyboard panel all the way into the video call itself via `reference_image_urls`. **Switching which Seedance version a pipeline uses is not a drop-in swap — it changes how many reference images to build, what each one should contain, and at which pipeline stage identity consistency actually gets solved.**
+
 **The problem this section solves:** when a production is built from many separate Seedance generations (e.g. a 13-shot POV sequence), each call has no memory of any other call. Without an explicit anchor, the model re-imagines the character's identity (skin tone, hand/build proportions, clothing) independently each time — this is "identity drift," a known model-level limitation, not a one-off bug. Confirmed on our own production: Gemini's Video-Analyzer flagged hand/skin-tone/proportion drift in nearly every scene of Reimagined Realms 0003 (Pyramid Builder I. Deep), plus a background pyramid changing shape (Great Pyramid → step pyramid) between the opening and closing shots.
 
 **Capability differs sharply by version — verified live, 2026-08-04:**
@@ -174,6 +176,8 @@ Even though POV shots rarely show a face, identity drift shows up in **hands, fo
 
 Environment identity drifts across separate generations the same way character identity does — and more visually complex locations drift more (a plain room holds together across cuts better than an ornate palace or a crowded market). Our pipeline already avoids most of this by never handing Seedance an open-ended prompt: the environment sheet and character sheet get composited into one fully-realized starting frame via GPT Image 2 *before* Seedance ever runs, so Seedance is animating a locked composition, not improvising the scene itself. **This pre-composition step is the correct mitigation — keep it as standard practice.** The only new consideration: budget extra reference detail specifically for locations that are inherently complex, since even a well-built environment sheet won't fully cancel out that extra drift risk. (Source: "How to Turn Storyboards into Consistent Videos Using Seedance 2.0," `Universal_Case_Studies/005_Storyboards_To_Consistent_Videos_Seedance_2.0/ANALYSIS.md`)
 
+**Alternative confirmed 2026-08-15: environment sheet as its own tagged reference, passed directly into Seedance.** ByteDance's own "Storyboard + subject reference" worked example (see below) tags a *separate* environment image as `@Image2` alongside character references — meaning environment consistency doesn't strictly require the GPT-Image-2 pre-compositing step above; it can also be handed to Seedance directly as its own ordinal-tagged reference in the same call as the character sheet(s) and storyboard. Both paths are now sourced; pre-compositing remains the safer default (locks the composition before Seedance runs at all), while direct environment-reference-tagging is the newer, less-tested option worth piloting alongside the single-panel storyboard test below.
+
 ### Storyboard-to-video (one multi-panel image + a character sheet, in a single generation call)
 
 **Seedance never generates the storyboard image itself — that's an image-generation model's job (GPT Image 2, Nano Banana, or Midjourney), not Seedance's.** Seedance's role only starts once a storyboard (or any other static image) already exists; it turns static images into moving video, it doesn't draw them. Keep storyboard-construction conventions (panel count, annotation style, layout) in whichever skill governs image-generation prompting — not duplicated here. This section is specifically about feeding an already-built storyboard image into Seedance as an option worth testing, alongside the per-shot method our pipeline uses today.
@@ -193,6 +197,17 @@ Environment identity drifts across separate generations the same way character i
 - **(b)** the storyboard+character-sheet merged-image method above, generating multi-beat clips in fewer, longer calls (faster/cheaper, but per the creator's own admission, less controllable and likely to carry its own small artifacts).
 Both require kie.ai (not WaveSpeed) for the reference-image capability, and neither has been tested on our own production yet — **do not implement either into the live pipeline without Tony's go-ahead; the next step there is a versioned pipeline duplicate (v2), not an in-place edit.**
 
+### A third option — single-panel storyboard + character sheet(s) combined in one normal-length shot (confirmed 2026-08-15, untested by anyone)
+
+Distinct from option (b) above, which always covers a *multi*-panel storyboard in one long multi-beat clip. This is the same underlying mechanism applied to a *single* shot (5–8s, matching our per-beat clip structure) instead.
+
+**Confirmed directly from ByteDance's own BytePlus ModelArk docs** (`docs.byteplus.com/en/docs/ModelArk/2607689`): ByteDance names and documents a task type called **"Storyboard + subject reference"** as a supported combination in one request, with a worked example tagging five reference images by distinct role in a single call: `@Image1` = storyboard/composition, `@Image2` = environment, `@Image3`/`@Image4` = characters, `@Image5` = object. The request schema places every reference image under the same generic field (`"role": "reference_image"` — no per-item type distinction), so nothing in the schema blocks a single-panel version; the composition-vs-identity split is done entirely by the `@ImageN` ordinal tags in the prompt text.
+
+**What this means for a normal shot like a per-beat live-footage clip:** one call can plausibly carry a small single-panel composition/blocking reference (what the shot looks like, how the camera moves) PLUS one or more character/environment identity sheets, e.g.:
+`@Image1` = this shot's storyboard panel (composition + camera move), `@Image2` = the shark's character sheet, `@Image3` = the environment sheet — one `reference_image_urls` array, one prompt distinguishing each role by ordinal tag.
+
+**The honest caveat:** every worked example ByteDance publishes for "Storyboard + subject reference" is multi-panel → multi-shot. Nobody — not ByteDance, not any third-party guide found, not us — has published or confirmed a working single-panel + single-shot version. The mechanism is architecturally supported and not contradicted anywhere; it is simply untested. Treat it as a promising, sourced hypothesis to pilot on one isolated shot before relying on it for a full production, same as every other technique in this section that hasn't run on our own pipeline yet.
+
 ## Chaining multiple generations into one continuous scene
 
 Seedance has a hard per-call duration cap (well under a minute even on 2.5). For anything longer, or for a multi-panel storyboard too large to cover in one call, don't force it into a single generation — chain several generations together instead.
@@ -207,21 +222,47 @@ Seedance has a hard per-call duration cap (well under a minute even on 2.5). For
 
 **Confirm which version this build targets before writing the prompt or picking parameters — capabilities differ meaningfully between 1.5 Pro, 2.0/2.0 Fast, and 2.5. Never apply a newer version's capabilities (e.g. 2.5's 50-reference/30-second capacity) to a 1.5 or 2.0 build, or vice versa.**
 
-**Seedance 1.5 Pro** (confirmed live via `wavespeed schema bytedance/seedance-v1.5-pro/image-to-video`, 2026-08-01):
+> ⚠️ **THE #1 MISTAKE TO NOT REPEAT — read this before passing more than one reference image to ANY Seedance call.**
+> - **1.5 Pro has NO style/consistency reference mechanism at all.** Its only image inputs are `image` (first-frame) and `last_image` (last-frame interpolation target) — on kie.ai these are exposed as a single `input_urls` array, where **element 0 = first frame, element 1 = last frame, full stop.** Passing a character sheet as a second image does NOT give the model "extra context for consistency" — it makes the video literally morph into and end on that image. Confirmed live 2026-08-17/18 on a real production call: a character sheet passed as `input_urls[1]` became the video's literal final frame (a static shot of the multi-panel reference grid), reproduced identically on a second attempt with different prompt wording — this is parameter behavior, not something prompt text can override. **For 1.5 Pro: pass exactly ONE image (whatever single frame should open the shot). If you need identity consistency across separate 1.5 Pro calls, the only workaround is reusing that same single image as `image` on every call — there is no second reference slot.**
+> - **Seedance 2.0/2.0 Fast is different: it has a genuine, separate multi-reference field, `reference_image_urls` (up to 9 images)** — but it is **mutually exclusive with `first_frame_url`/`last_frame_url`** on kie.ai's endpoint (the API rejects a call using both — see 2026-08-08 entry in `Global_Agent_Memory.md`). If you want a specific starting composition (e.g. a storyboard panel) AND separate identity/anatomy references (e.g. a character sheet) in one 2.0 call, put ALL of them into `reference_image_urls` together and assign each one's role with `@Image1`/`@Image2` ordinal tags in the prompt text (see "Multi-character scenes" below) — do not try to split them across `first_frame_url` + `reference_image_urls`.
+> - **Bottom line: "how many images, and what do they mean" is answered entirely by which version and which parameter you're using — never assume a second image is a safe way to add "extra context" without checking this section first.**
+
+**Seedance 1.5 Pro** (confirmed live via `wavespeed schema bytedance/seedance-v1.5-pro/image-to-video`, 2026-08-01; kie.ai's `input_urls` first/last-frame behavior confirmed live 2026-08-17/18):
 
 | Field | Type | Notes |
 |---|---|---|
 | `prompt` | string | required |
-| `image` | string | required — first-frame reference (image-to-video mode) |
-| `last_image` | string | optional — last-frame reference for interpolation |
+| `image` | string | required — first-frame reference (image-to-video mode). On kie.ai, exposed as `input_urls[0]`. |
+| `last_image` | string | optional — last-frame reference for interpolation. On kie.ai, exposed as `input_urls[1]`. **Not a style/consistency reference slot — see warning above.** |
 | `aspect_ratio` | enum | `21:9`, `16:9`, `4:3`, `1:1`, `3:4`, `9:16` |
 | `duration` | integer | default 5, range 4-12 (seconds) |
 | `resolution` | enum | `480p`, `720p` (default), `1080p` |
-| `generate_audio` | boolean | default `true` |
+| `generate_audio` | boolean | default `true`. **Even with explicit negative-prompt language against dialogue/narration, a documentary-style prompt (e.g. "National Geographic documentary lighting") can still bias the model toward generating a narrator voiceover** — confirmed live 2026-08-17/18, reproduced twice with different negative-prompt phrasing before it actually resolved. Fix that worked: keep the prompt's sound section to concrete named foley/ambient events only (no genre-signaling language like "documentary") plus this guide's exact dash-led negative-prompt closer — see "Ambient / foley-only sound" and "Negative prompts" sections above. |
 | `camera_fixed` | boolean | default `false` |
 | `seed` | integer | `-1` = random |
 
-**Seedance 2.0 / 2.0 Fast:** same core prompting philosophy (4-layer structure, quote-triggered dialogue, dash-led negative-prompt closer) — check the live schema (`wavespeed schema <model-id>`, or `kie-cli --help` / the platform's own docs) for exact parameter names/ranges before each new integration, since ByteDance has been shipping frequent version updates and defaults can shift. **Never hardcode assumed parameter values from this table into new code without a live schema check first** — this table is a snapshot, not a guarantee.
+**Seedance 2.0 / 2.0 Fast** (confirmed live via kie.ai `docs.kie.ai/market/bytedance/seedance-2.md`, 2026-08-18):
+
+| Field | Type | Notes |
+|---|---|---|
+| `prompt` | string | required |
+| `first_frame_url` | string | optional — mutually exclusive with `reference_image_urls` |
+| `last_frame_url` | string | optional — requires `first_frame_url`, mutually exclusive with `reference_image_urls` |
+| `reference_image_urls` | array | optional, up to 9 images — genuine multi-reference field, distinct from first/last frame. Use `@Image1`/`@Image2` ordinal tags in the prompt to assign each one's role. |
+| `reference_video_urls` | array | optional, up to 3 |
+| `reference_audio_urls` | array | optional, up to 3 |
+| `generate_audio` | boolean | default `true` |
+| `resolution` | enum | `480p`, `720p` (default), `1080p`, `4k` |
+| `aspect_ratio` | enum | e.g. `16:9` |
+| `duration` | integer | default 5, range 4-15 (seconds) |
+
+Same core prompting philosophy applies (4-layer structure, quote-triggered dialogue, dash-led negative-prompt closer). **Never hardcode assumed parameter values from these tables into new code without a live schema check first** (`docs.kie.ai/market/bytedance/<model>.md`, or `wavespeed schema <model-id>`) — these tables are a snapshot, not a guarantee, and ByteDance ships frequent version updates.
+
+### Start and end frame must be visually distinct (locked 2026-08-19)
+
+Any call using both a first-frame and a last-frame reference (`image`/`last_image` on 1.5 Pro, `first_frame_url`/`last_frame_url` on 2.0) needs the two frames to actually differ — same subject pose, same framing, only minor differences gives the model almost no delta to interpolate motion from, and produces a flat, low-motion, or near-static result. This isn't a prompt-wording problem; it's a reference-image selection problem. Caught on a real production: a scene's storyboard opened and closed on the same wide, full-body framing of the subject (different narrative moment, same composition) — using panel 1 and the final panel as a single clip's start/end pair would have handed the model almost nothing to animate between.
+
+**Choose start/end frame pairs with a real compositional difference** — wide vs. close, a different subject position, a different framing angle — not just a different narrative beat that happens to render the same way visually. When splitting a storyboard into sub-clips (see [`Production-Asset-Planner`](../Production-Asset-Planner/SKILL.md) Step 6), this is one more reason a span with too little visual change from start to end should be folded into an adjacent clip or re-split, rather than generated as-is.
 
 ## Related but distinct tool: Seed Audio 1.0
 

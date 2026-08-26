@@ -89,19 +89,27 @@ Write the combined result — asset assignments AND B-roll/generation decisions 
 
 For any beat assigned real footage: **never trim the original download.** Trim from a copy, producing a new, separate clip file — the original in `Research/Pexels_Downloads/` stays untouched so it can be re-trimmed differently later if needed.
 
-Save trimmed segments to their own dedicated folder, separate from the original downloads folder:
+**Save the trimmed clip directly into that scene's own clip folder (locked 2026-08-19, supersedes the earlier separate-`B_Roll/`-folder convention):**
 ```
-[production_folder]/B_Roll/<Scene_ID>.mp4
+[production_folder]/Video_Clips/<Scene_ID>/Scene_<NN><Letter>_BRoll_<short-descriptor>.mp4
 ```
-e.g. `B_Roll/Scene_02A.mp4` — descriptive, scene-tied naming, matching this workspace's naming convention. Never a generic name like `clip.mp4`.
+e.g. `Video_Clips/Scene_03/Scene_03B_BRoll_ReefFish.mp4`. B-roll and generated clips for a scene live side by side in the same folder, sharing one continuous lettered sequence (see Step 6) — so assembly can read one ordered file list per scene without cross-referencing a separate B-roll directory. `<short-descriptor>` is a plain-language tag for what the footage shows (e.g. `ReefFish`, `SmallShrimp`) — never a generic name like `clip.mp4`.
 
 ## Step 5 — Storyboards
 
 Build one storyboard per scene via [`Storyboard-Generation`](../Storyboard-Generation/SKILL.md), using the calling channel's own visual style and the scene's real duration (frame count derived from actual duration, never guessed). Follow that skill's own shot-variety and anatomical-precision rules as documented there.
 
-## Step 6 — Start/end frames (per split clip, not per scene)
+## Step 6 — Clip boundaries, then start/end frames (per split clip, not per scene)
 
-For every split sub-clip of a scene (e.g. `C04a`, `C04b`, `C04c`), generate a **dedicated start frame and end frame** via GPT-Image-2, grounded by that scene's character/prop/environment sheet(s) **and** its storyboard panel(s) — not a single shared pair for the whole scene. This is what prevents the subject from drifting/morphing across a long implied span; each sub-clip gets its own tight anchor at both ends.
+**Clip-boundary decision rule (locked 2026-08-19):** a scene's storyboard panels do not split into sub-clips by fixed duration (e.g. "always halve a scene"). Instead, for each candidate span of the storyboard ask: **can one prompt, one start frame, and one end frame plausibly produce this action, in no more than ~8 seconds?** Shorter is fine — a 2-second beat doesn't need padding to hit 8s. If a span is too visually complex or discontinuous for one prompt/frame-pair to carry (e.g. it contains a hard subject change, or several unrelated actions), split it into more, shorter clips rather than forcing one generation to cover too much. A storyboard panel showing a wholly different, non-recurring subject (a background creature, a generic environment cutaway) is usually a sign that span should be **B-roll instead of a generated clip** (see Step 3), not a generation-boundary problem.
+
+**Sequential lettering spans the whole scene, not just generated clips (locked 2026-08-19):** every segment in a scene's timeline — generated clip or B-roll insert alike — gets one letter in chronological order: `Scene_03A`, `Scene_03B`, `Scene_03C`, `Scene_03D`, `Scene_03E`, etc. A scene that resolves to generate → B-roll → generate → B-roll → generate is lettered straight through (A/B/C/D/E) regardless of which segments are generated vs. stock — this keeps one readable ordered sequence per scene instead of two separately-numbered tracks.
+
+For every generated sub-clip (e.g. `Scene_03A`, `Scene_03C`), generate a **dedicated start frame and end frame** via GPT-Image-2, grounded by that scene's character/prop/environment sheet(s) **and** its storyboard panel(s) — not a single shared pair for the whole scene. This is what prevents the subject from drifting/morphing across a long implied span; each sub-clip gets its own tight anchor at both ends.
+
+**Generate the end frame using the start frame as a reference, not independently (locked 2026-08-19).** Generating a sub-clip's two frames from their storyboard panel crops alone, with no shared reference between them, lets each generation invent its own environment — different rock/terrain arrangement, different background density, different color grade — even when the storyboard panels themselves only differ because one is a close-up (little background visible) and the other is a wide shot (more background revealed). Seedance then has to interpolate between two genuinely different locations across the clip, producing a visible background shift mid-motion. Caught on a real production: Scene_03E's close-up start frame showed a near-empty dark void behind the subject, its independently-generated wide end frame invented a dense, brighter boulder field — different lighting, different rock scale, different density — and the resulting clip visibly changed environment partway through. Fix: when generating a sub-clip's end frame, pass the already-generated start frame as an additional input image (alongside the character sheet and storyboard panel) with explicit prompt language that the environment/seafloor/lighting must match the reference start frame — this is the same location revealed further, not a cut to a new one.
+
+**Start and end frame must be visually distinct — never near-duplicate framing/composition (locked 2026-08-19).** If a sub-clip's start and end frame read as virtually the same shot to the human eye (same subject pose, same framing, only minor differences), the video model has almost no delta to interpolate motion from and produces a poor/static result. Choose start/end frame pairs from storyboard panels with a real compositional difference (wide vs. close, different subject position, different framing) — full mechanism and the confirmed failure case documented in [`Seedance-Prompting-Guide`](../Seedance-Prompting-Guide/SKILL.md).
 
 Generate this full asset set — sheets, storyboard, start frame, end frame — **regardless of which video-generation model the production ends up using.** Images are cheap relative to video generation; having the assets on hand means a scene can be redone with a different model later without regenerating references from scratch.
 

@@ -1,0 +1,22 @@
+{
+  "labels": [
+    {
+      "feature": "filter_disc_center",
+      "x_pct": 50.0,
+      "y_pct": 50.0,
+      "confidence": "high"
+    },
+    {
+      "feature": "transmission_axis_top",
+      "x_pct": 42.1,
+      "y_pct": 21.0,
+      "confidence": "high"
+    },
+    {
+      "feature": "transmission_axis_bottom",
+      "x_pct": 57.9,
+      "y_pct": 79.0,
+      "confidence": "high"
+    }
+  ]
+}

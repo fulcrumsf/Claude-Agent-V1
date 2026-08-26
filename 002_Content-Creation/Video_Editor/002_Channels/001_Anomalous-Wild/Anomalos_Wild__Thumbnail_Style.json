@@ -1,36 +1,61 @@
 {
-  "template_name": "Anomalos Wild Thumbnail Template v1",
-  "purpose": "Reusable YouTube thumbnail template for mystery-driven animal videos. Swap the subject, headline text, and arrow target while preserving the same visual style.",
+  "template_name": "Anomalos Wild Thumbnail Template v2",
+  "template_version": "2026-08-24",
+  "locked_by": "Tony, 2026-08-24, after 0002_Mantis_Shrimp_Color_Vision thumbnail iteration",
+  "purpose": "Reusable YouTube thumbnail template for mystery-driven animal videos. Swap the subject, headline text, and arrow target while preserving the same visual style. v2 replaces the flat-gradient background from v1 with a darkened real photo background — validated look, do not regress to v1's solid-gradient approach.",
   "canvas": {
     "aspect_ratio": "16:9",
     "recommended_size": "1280x720",
-    "safe_margin_percent": 5
+    "safe_margin_percent": 8
   },
   "style_identity": {
     "overall_look": "clean, bold, mysterious, high-contrast, modern",
-    "reference_style": "minimal composition with one realistic subject, simple large text, bright arrow, and glowing cutout on a deep purple background",
-    "brand_feel": "curious, slightly eerie, educational, visually simple"
+    "reference_style": "photoreal close-up subject on its own darkened real environment, simple large lowercase text, bright red arrow, neon glow rim-light cutout separating subject from background",
+    "brand_feel": "curious, slightly eerie, educational, visually simple",
+    "changed_from_v1": "v1 used a flat purple gradient background (no real scene). v2 keeps the actual photoreal environment from the base thumbnail generation but darkens it ~50%, so the scene is still recognizable/textured but dim enough that the subject and text pop. Tony explicitly preferred this over a flat gradient — 2026-08-24."
+  },
+  "generation_pipeline": {
+    "stage_1_base_concept": {
+      "model": "gpt-image-2-text-to-image (kie.ai)",
+      "purpose": "Generate the photoreal, textless, full-brightness close-up of the subject in its real environment. This is the same as v1's base generation — no text, no darkening, no glow yet.",
+      "prompt_template": "Close-up of {subject}, {palette} palette matching a {emotion} mood, dramatic lighting, deep vanishing point, photorealistic, cinematic, no text, no captions"
+    },
+    "stage_2_treatment_edit": {
+      "model": "gpt-image-2-image-to-image (kie.ai)",
+      "purpose": "Single edit pass applied to the stage-1 image: darken background, add glow, add headline text, add arrow. This is the stage that must run on every production going forward — a base concept alone is not a finished thumbnail.",
+      "requires": "Base image must be uploaded to Cloudinary first to get a public image_url for the image_urls input field (kie.ai requires a public URL, not a local file).",
+      "prompt_template": "Edit this photorealistic thumbnail image. Keep the exact same subject, pose, framing, and background scene/composition — do not replace the background with a solid color or gradient, and do not change what is depicted in it. Apply these edits on top:\n1. Darken the background only by roughly 50% (reduce its brightness/exposure) so it reads as noticeably dimmer and less busy, while its original detail, colors, and composition are still faintly visible underneath. Keep the animal subject itself bright, sharp, and in full clear focus — do not darken the subject.\n2. Add a soft {glow_color} neon glow rim-light around the subject's silhouette, separating it cleanly from the darkened background, like dramatic wildlife-documentary thumbnail lighting.\n3. Add bold, rounded, all-lowercase white headline text reading exactly '{headline_text}' — large and highly readable, with a soft dark drop shadow. Place it in the top-left area of the frame with generous padding from the top and left edges (at least 8% of the frame), and make sure the text does not overlap or cover any part of the animal subject.\n4. Add one single thick, bold red curved arrow that starts near the bottom of the headline text and curves clearly to point directly at {arrow_target} — the arrow must not cross through or overlap the headline text, and its tip must land precisely on the target feature, not on empty background or another body part.\nNo other text, no captions, no watermarks, no logos, no extra graphics anywhere in the image including the corners. Clean, bold, mobile-readable composition."
+    },
+    "per_concept_variation": {
+      "count": 3,
+      "varies": ["emotion/palette in stage 1 (intrigued/cool, alarmed/warm, awed/purple)", "glow_color in stage 2"],
+      "stays_fixed_across_all_3": ["darkening percentage", "headline placement/style", "arrow style/color/rules", "overall structural composition"],
+      "rationale": "Tony wants per-video/per-concept color variety (feels alive, not stamped-out) but a consistent structural template (darkened bg + glow cutout + red arrow + lowercase top-left text) so the channel is recognizable at a glance in a crowded YouTube feed — 2026-08-24."
+    },
+    "glow_color_examples": [
+      "cool cyan-teal",
+      "warm amber-orange",
+      "vivid magenta-violet",
+      "neon green (reserve for bioluminescent/venomous subjects where green reads as the 'natural' glow, per 0001_Bioluminescence_Weapon)"
+    ]
   },
   "background": {
-    "type": "smooth gradient",
-    "primary_color": "#612DD8",
-    "secondary_color": "#2B0B5A",
-    "direction": "top-left to bottom-right",
-    "texture": "very subtle haze or soft grain only",
+    "type": "real photoreal environment from stage-1 generation, darkened ~50% in stage-2 edit",
+    "darken_percent": 50,
+    "preserve_original_detail": true,
+    "texture": "whatever the real environment naturally has — reef, rock, burrow, etc. — just dimmed, never flattened to a solid color or gradient",
     "allowed_effects": [
       "soft glow bloom behind subject",
       "faint vignette",
       "subtle light falloff"
     ],
     "avoid": [
-      "busy scenery",
-      "complex environmental details",
-      "multiple colors fighting for attention",
-      "hard patterns"
+      "replacing the background with a flat gradient or solid color (this was v1's approach — deprecated)",
+      "darkening the subject itself",
+      "busy scenery that is brighter than the subject"
     ]
   },
   "headline": {
-    "text": "why echidnas are aliens",
     "case_style": "lowercase",
     "font_style": "bold rounded sans-serif",
     "color": "#FFFFFF",
@@ -47,9 +72,9 @@
     "max_lines": 2,
     "placement": {
       "anchor": "top-left",
-      "x_percent": 4,
-      "y_percent": 5,
-      "width_percent": 42
+      "x_percent": 8,
+      "y_percent": 8,
+      "width_percent": 36
     },
     "alignment": "left",
     "line_spacing": 0.9,
@@ -57,28 +82,43 @@
       "keep wording short and easy to read",
       "use 2 to 6 words when possible",
       "do not let text overlap the subject",
-      "text should occupy the upper-left quadrant"
+      "do not let text overlap the arrow",
+      "text should occupy the upper-left quadrant with at least 8% padding from the top and left edges — never let it bleed close to the frame border",
+      "text box width should not exceed ~36% of frame width so there is always a clear gap before the subject/arrow zone"
+    ]
+  },
+  "headline_generation": {
+    "automatic": true,
+    "who_writes_it": "Claude generates the headline automatically as part of Phase 9 — no longer a manual/Tony-reviewed step by default (Tony confirmed 2026-08-24 he trusts the auto-generated copy after reviewing the Mantis Shrimp batch).",
+    "source_material": "the video's subject and hook_fact (same inputs already passed to generate_youtube_package.py)",
+    "rules": [
+      "2 to 6 words",
+      "all lowercase",
+      "short, simple, but catchy and attention-grabbing",
+      "must create a curiosity gap — make someone want to click to find out more, not state the full answer",
+      "tie directly to the actual hook fact of the video, not a generic statement about the species",
+      "one distinct headline per concept variation (3 concepts = 3 different headline angles on the same hook, not 3 copies of the same line)"
+    ],
+    "validated_examples_2026_08_24": [
+      "colors we can't see",
+      "these eyes shouldn't work",
+      "it sees 16 colors"
     ]
   },
   "subject": {
     "type": "single realistic animal cutout",
-    "example": "echidna",
     "placement": {
       "anchor": "right-center",
-      "x_percent": 58,
-      "y_percent": 20,
-      "width_percent": 38,
-      "height_percent": 62
+      "x_percent": 55,
+      "y_percent": 15,
+      "width_percent": 45,
+      "height_percent": 70
     },
-    "orientation": "facing right or slightly toward frame edge",
+    "orientation": "facing camera or slightly toward frame edge",
     "render_style": "photorealistic or highly realistic",
-    "cutout": {
-      "enabled": true,
-      "edge_quality": "clean, crisp"
-    },
     "glow": {
       "enabled": true,
-      "color": "#8AFA47",
+      "color": "varies per concept — see generation_pipeline.glow_color_examples",
       "intensity": "medium",
       "spread": "medium"
     },
@@ -91,7 +131,8 @@
       "subject must be the only main object",
       "subject should fill a large part of the frame",
       "subject anatomy must remain readable at small size",
-      "keep the pose clear enough to show the unusual feature"
+      "keep the pose clear enough to show the unusual feature",
+      "subject stays at full brightness/clarity even though the background is darkened"
     ]
   },
   "arrow": {
@@ -102,75 +143,58 @@
     },
     "style": "thick curved arrow",
     "placement": {
-      "start_anchor": "left-center",
-      "start_x_percent": 15,
-      "start_y_percent": 52,
+      "start_anchor": "bottom of headline text block",
       "end_target": "subject_feature"
     },
-    "target_feature_description": "hind leg",
+    "target_feature_description": "the specific unusual anatomy tied to the video's hook fact (e.g. the eyes for a vision video, the lure for a bioluminescence video) — never a generic point on the subject",
     "rules": [
       "arrow should clearly point to the unusual anatomy or mystery detail",
       "only use one arrow",
-      "arrow should not block the main subject",
+      "arrow tip must land precisely on the target feature itself, not on a neighboring joint/limb/neck or empty background",
+      "arrow must not cross through or overlap the headline text",
       "arrow should visually connect text area to subject area"
     ]
   },
   "composition": {
-    "layout_type": "text left, subject right, arrow bridging toward key feature",
+    "layout_type": "text top-left, subject right-of-center, arrow bridging toward key feature",
     "visual_hierarchy": [
       "headline",
       "subject",
       "arrow",
-      "background"
+      "darkened background"
     ],
     "negative_space": "leave open space around text and around subject silhouette",
     "balance_rule": "frame should feel uncluttered and instantly readable on mobile"
   },
   "color_palette": {
-    "background_primary": "#612DD8",
-    "background_secondary": "#2B0B5A",
-    "subject_glow": "#8AFA47",
     "headline": "#FFFFFF",
     "arrow": "#FF2A2A",
-    "shadow": "rgba(0,0,0,0.45)"
+    "shadow": "rgba(0,0,0,0.45)",
+    "glow": "per-concept, see generation_pipeline.glow_color_examples"
   },
   "thumbnail_logic": {
     "story_function": "Show one strange creature and direct attention to the weird body part without overexplaining.",
-    "curiosity_trigger": "The viewer sees a realistic animal, a provocative title, and a pointer to an unusual feature.",
-    "click_reason": "The thumbnail implies a hidden biological oddity that the video explains."
-  },
-  "replaceable_fields": {
-    "headline_text": "why echidnas are aliens",
-    "subject_name": "echidna",
-    "subject_description": "realistic echidna with visible hind legs",
-    "arrow_target": "hind leg",
-    "subject_position": "right-center",
-    "headline_position": "top-left",
-    "background_primary_color": "#612DD8",
-    "subject_glow_color": "#8AFA47"
-  },
-  "prompt_template": {
-    "base_prompt": "Create a clean YouTube thumbnail in a 16:9 layout with a deep purple gradient background. Place bold lowercase white text in the top-left reading '{headline_text}' with a soft dark shadow. On the right side, place one highly realistic cutout of a {subject_description}. Add a soft neon green glow around the subject. Include one thick curved red arrow starting from the left side and pointing to the subject's {arrow_target}. Keep the composition simple, bold, mysterious, and readable on mobile. No clutter, no extra objects, no busy scenery.",
-    "example_values": {
-      "headline_text": "why echidnas are aliens",
-      "subject_description": "realistic echidna with clearly visible backward-looking hind legs",
-      "arrow_target": "hind leg"
-    }
+    "curiosity_trigger": "The viewer sees a realistic animal in its real habitat (darkened for focus), a provocative title, and a pointer to an unusual feature.",
+    "click_reason": "The thumbnail implies a hidden biological oddity that the video explains.",
+    "brand_recognition_goal": "Structural consistency (darkened real bg + glow cutout + red arrow + lowercase top-left text) should make any Anomalous Wild thumbnail recognizable at a glance even in a crowded feed, even though glow color and headline vary per video — Tony's explicit goal, 2026-08-24."
   },
   "do": [
-    "use one realistic animal",
-    "use short bold white text",
-    "use deep purple as the main background color",
-    "use neon green glow around the subject",
-    "use one red arrow to point at the weird feature",
-    "keep the frame clean and easy to read"
+    "use one realistic animal in its real (darkened) environment",
+    "use short bold lowercase white text, top-left, with generous edge padding",
+    "darken the background ~50% while preserving its real detail",
+    "use a neon glow color suited to the individual video/mood around the subject",
+    "use one red arrow, precisely targeted at the specific unusual feature",
+    "keep the frame clean and easy to read",
+    "auto-generate the headline from subject + hook_fact, no manual step required"
   ],
   "dont": [
     "do not add multiple animals",
     "do not use long explanatory text",
-    "do not make the background busy",
+    "do not flatten the background to a solid gradient (v1 approach, deprecated)",
     "do not use more than one arrow",
     "do not hide the key anatomy",
-    "do not overcrowd the frame"
+    "do not overcrowd the frame",
+    "do not let the arrow or text overlap each other or the subject",
+    "do not leave any watermark, logo, or stray icon anywhere in the frame, including corners"
   ]
 }

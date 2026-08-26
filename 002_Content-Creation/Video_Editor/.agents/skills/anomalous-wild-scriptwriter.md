@@ -40,12 +40,31 @@ SCENE [N] — [SECTION NAME] — [TIMESTAMP RANGE]
 NARRATION:
 "[Exact spoken text. Every sentence on its own line for TTS pacing.]"
 
-VISUAL: [Shot type + what the camera sees]
+VISUAL:
+1. [0–Xs] [Shot type + what the camera sees]
+2. [X–Ys] [Shot type + what the camera sees]
+   (one numbered visual per line, each with its own second range —
+   never a single VISUAL line covering the whole scene)
 SOUND: [Ambient audio / music cue / stingers]
 ON-SCREEN TEXT: [Animated callout text if any]
 TRANSITION: [Hard cut / glitch cut / slow-mo freeze / none]
 ---
 ```
+
+---
+
+## Mandatory Visual-Duration Check (required before a script is considered finished)
+
+Every scene's numbered visuals must have explicit second ranges that sum to the scene's total narration length — never leave a visual's duration unstated.
+
+**Hard limits, no exceptions:**
+- No single visual may exceed **5 seconds** before a cut, angle change, zoom, dolly, or pan (Tony's standing pacing rule).
+- No individual live-footage clip may exceed **8.0 seconds** (`max_clip_s` in `Beat_Table.json` — this is also the real generation ceiling for the video models in this pipeline; Seedance 2.0/2.0 Fast and Veo3 cannot generate a single continuous clip anywhere close to longer than this).
+- No diagram/static beat may hold a single unchanging frame longer than **5 seconds** (`max_static_s`) without a new label, camera reframe, or added motion element.
+
+**When to check:** while writing the script, before Phase 3 (voiceover generation) runs — not after audio comes back and duration is discovered by accident. If a scene's narration is long enough that hitting these limits would require more than 3–4 visuals, split the scene into multiple scenes (own `SCENE` block, own cut) rather than cramming more visuals into one block.
+
+**After voiceover generation:** cross-check the numbered visual plan against the real word-level `*_beat_sheet.json` timestamps for that scene. Word-level timing is exact — there is no reason a visual segment should ever be discovered to exceed these limits after the fact.
 
 ---
 

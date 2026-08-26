@@ -23,6 +23,45 @@ For each scene, describe (as one markdown section per scene, headed "## Scene N 
 - Continuity and physics anomalies: character identity/appearance morphing mid-shot (face, build, clothing, or props changing inconsistently), directionally impossible or contradictory motion (e.g. a subject appearing to walk backwards relative to the direction the shot establishes, or reversing travel direction without cause), limb/object warping or duplication, and any other physically implausible movement. Call out the specific timestamp within the scene where each anomaly occurs, and describe exactly what looks wrong.
 """
 
+PRODUCTION_ANALYSIS_APPENDIX = """
+
+This is a production-analysis request for a reference video. In addition to the
+scene description above, analyze it as an editor studying material for an
+original production. Do not recommend copying the source. Extract reusable,
+abstract patterns only.
+
+For every detected scene, also include:
+- Exact clip boundary confidence: high, medium, or low, and why
+- Editorial beat: setup, action, payoff, reaction, transition, or other
+- What makes the moment entertaining, including mismatch, surprise, timing,
+  escalation, facial-expression irony, physical failure, or social context
+- Whether the moment works without narration; if not, what editorial context
+  would help without merely describing the obvious
+- Whether there is in-scene dialogue; distinguish on-camera, off-camera,
+  background, camera-holder, and narrator speech
+- If dialogue is present, describe approximate speaker age, vocal tone,
+  energy, accent/dialect when audible, emotional attitude, and the exact line
+- Music analysis: presence/absence, genre, instruments, tempo, mood, structure,
+  transitions, and how the music supports the visual joke or payoff
+- Sound-effect analysis: impact hits, whooshes, stings, bass interrupts,
+  comedic accents, sound bridges, silence, and their approximate timestamps
+- Retention mechanics: hook, pattern interrupts, cut rhythm, escalation,
+  curiosity gaps, and payoff placement
+- A concise reusable pattern stated abstractly, without copying the source's
+  animal, setting, wording, choreography, or distinctive expression
+
+After the scene sections, add these sections:
+## Production Summary
+## Editorial Beat Map
+## Music and Sound Design Profile
+## Reusable Humor and Retention Patterns
+## Originality Boundaries
+
+The Originality Boundaries section must list what should change when using this
+video only as inspiration. Do not treat the source video's exact dialogue,
+sequence, framing, soundtrack, or choreography as reusable.
+"""
+
 def download_video(url: str, out_dir: Path) -> Path:
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -109,7 +148,11 @@ def detect_scenes(video_path: Path, threshold: float = 0.3) -> list[tuple[float,
 MAX_UPLOAD_POLL_ATTEMPTS = 30
 UPLOAD_POLL_INTERVAL_SECONDS = 2
 
-def analyze_video_narrative(video_path: Path, scenes: list[tuple[float, float]]) -> str:
+def analyze_video_narrative(
+    video_path: Path,
+    scenes: list[tuple[float, float]],
+    profile: str = "standard",
+) -> str:
     client = genai.Client(api_key=GEMINI_API_KEY)
     uploaded = client.files.upload(file=str(video_path))
 
@@ -130,6 +173,10 @@ def analyze_video_narrative(video_path: Path, scenes: list[tuple[float, float]])
 
     scene_ranges = ", ".join(f"{start}s-{end}s" for start, end in scenes)
     prompt = NARRATIVE_PROMPT_TEMPLATE.format(scene_ranges=scene_ranges)
+    if profile == "production":
+        prompt += PRODUCTION_ANALYSIS_APPENDIX
+    elif profile != "standard":
+        raise ValueError(f"Unknown analysis profile: {profile}")
 
     response = client.models.generate_content(
         model="gemini-2.5-pro",
@@ -164,11 +211,22 @@ def write_analysis_md(out_dir: Path, scenes: list[tuple[float, float]], gemini_o
     return analysis_path
 
 
-def main(url: str, out: str, threshold: float = 0.3, dense_interval: float | None = None) -> None:
+def main(
+    url: str,
+    out: str,
+    threshold: float = 0.3,
+    dense_interval: float | None = None,
+    profile: str = "standard",
+) -> None:
     out_dir = Path(out)
     video_path = download_video(url, out_dir)
     scenes = detect_scenes(video_path, threshold)
-    gemini_output = analyze_video_narrative(video_path, scenes)
+    # Preserve the original call shape for the default profile so existing
+    # integrations and tests remain compatible.
+    if profile == "standard":
+        gemini_output = analyze_video_narrative(video_path, scenes)
+    else:
+        gemini_output = analyze_video_narrative(video_path, scenes, profile)
     write_analysis_md(out_dir, scenes, gemini_output)
     extract_keyframes(video_path, out_dir, threshold)
     transcribe_with_whisper(video_path, out_dir)
@@ -195,5 +253,10 @@ if __name__ == "__main__":
              "scene-cut keyframes. Off by default (adds significant frame count/review time) — "
              "e.g. 0.5-1.0 for a thorough per-second audit.",
     )
+    parser.add_argument(
+        "--profile", choices=("standard", "production"), default="standard",
+        help="Analysis depth. 'production' adds editorial beat, music, sound-effect, "
+             "dialogue, retention, and originality-boundary analysis.",
+    )
     args = parser.parse_args()
-    main(args.url, args.out, args.threshold, args.dense_interval)
+    main(args.url, args.out, args.threshold, args.dense_interval, args.profile)

@@ -190,6 +190,8 @@ NNNN_Title_Case_Slug/
 ├── Data/
 │   ├── Beatmap.json           ← VO-aligned clip timecodes for editing software
 │   ├── Beat_Sheet.json        ← raw ElevenLabs word-level timestamps
+│   ├── Generation_Log.json    ← per-asset model/prompt/iteration/severity log (see Video_Editor/CLAUDE.md "Data Folder")
+│   ├── Report_Card.md         ← Tony's grade + critique, rolled up from Generation_Log.json
 │   └── (future: FCPXML, OTIO, DaVinci XML exports)
 └── Package/
     ├── YouTube_Package.md
@@ -204,7 +206,31 @@ mkdir -p "$PRODUCTIONS/$FOLDER/Video_Clips"
 mkdir -p "$PRODUCTIONS/$FOLDER/Production"
 mkdir -p "$PRODUCTIONS/$FOLDER/Data"
 mkdir -p "$PRODUCTIONS/$FOLDER/Package"
+echo '{"production": "'"$FOLDER"'", "channel": "Reimagined Realms", "assets": []}' > "$PRODUCTIONS/$FOLDER/Data/Generation_Log.json"
+cat > "$PRODUCTIONS/$FOLDER/Data/Report_Card.md" << 'EOF'
+---
+title: "Video Report Card"
+type: report
+domain: video-production
+tags: [report, video-production, content-creation, reimagined-realms]
+---
+
+# Video Report Card
+**Channel:** Reimagined Realms
+**Video:**
+**Grade:**
+**Previous Grade:**
+**Review Date:**
+
+---
+
+## Critique Notes
+
+(Filled in after Tony reviews the finished video.)
+EOF
 ```
+
+**Live logging rule:** As each asset is generated in Phase 9+ (image, video clip, VO take, SFX, music cue), append an entry to `Data/Generation_Log.json` with model + version, platform, the prompt used (and any rewrites + why), iteration count, and any issue found tagged by severity (🔴 Critical / 🟠 Major / 🟡 Minor). Grade issues as soon as something looks off — starting at the reference-image stage, not just at final render.
 
 **Script model:** Use `script_model` chosen in Phase 1.
 - If `script_model = "claude-opus-4-8"`: invoke Claude Opus 4.8 for script generation (use `/fast` mode or spawn as subagent if available in the current environment)

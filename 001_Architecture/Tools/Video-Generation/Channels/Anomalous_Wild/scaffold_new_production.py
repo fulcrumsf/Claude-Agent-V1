@@ -7,8 +7,8 @@ disk 2026-07-06): Scripts/, Production/, Images/, Video_Clips/, Narration_Audio/
 Audio_Stems/, Assembly/ (versions live INSIDE Assembly as V1/, V2/... not as
 a sibling folder), Package/.
 
-end_card_v3.mp4 is a FIXED, hardcoded asset for every Anomalous Wild video —
-never generated or chosen per-video.
+Anomalos_Wild_End-Card_Hero.mp4 is a FIXED, hardcoded asset for every
+Anomalous Wild video — never generated or chosen per-video.
 
 Usage:
   python3 scaffold_new_production.py <new_production_folder>
@@ -18,13 +18,41 @@ from pathlib import Path
 
 END_CARD_PATH = Path(
     "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/"
-    "002_Channels/001_Anomalous-Wild/Brand_Assets/End_Card/end_card_v3.mp4"
+    "002_Channels/001_Anomalous-Wild/Brand_Assets/End_Card/Anomalos_Wild_End-Card_Hero.mp4"
 )
 
 TYPED_FOLDERS = [
     "Scripts", "Production", "Images", "Video_Clips",
-    "Narration_Audio", "Audio_Stems", "Assembly", "Package",
+    "Narration_Audio", "Audio_Stems", "Assembly", "Package", "Data",
 ]
+
+GENERATION_LOG_TEMPLATE = """{
+  "production": "",
+  "channel": "Anomalous Wild",
+  "assets": []
+}
+"""
+
+REPORT_CARD_TEMPLATE = """---
+title: "Video Report Card"
+type: report
+domain: video-production
+tags: [report, video-production, content-creation]
+---
+
+# Video Report Card
+**Channel:**
+**Video:**
+**Grade:**
+**Previous Grade:**
+**Review Date:**
+
+---
+
+## Critique Notes
+
+(Filled in after Tony reviews the finished video.)
+"""
 
 
 def scaffold(production_root: Path):
@@ -34,6 +62,13 @@ def scaffold(production_root: Path):
     for folder in TYPED_FOLDERS:
         (production_root / folder).mkdir(exist_ok=True)
     (production_root / "Production" / "end_card_reference.txt").write_text(str(END_CARD_PATH))
+    data_dir = production_root / "Data"
+    generation_log = data_dir / "Generation_Log.json"
+    if not generation_log.exists():
+        generation_log.write_text(GENERATION_LOG_TEMPLATE)
+    report_card = data_dir / "Report_Card.md"
+    if not report_card.exists():
+        report_card.write_text(REPORT_CARD_TEMPLATE)
 
 
 def main():

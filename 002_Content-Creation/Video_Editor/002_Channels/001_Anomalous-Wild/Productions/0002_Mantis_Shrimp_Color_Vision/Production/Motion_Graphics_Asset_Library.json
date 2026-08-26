@@ -9,10 +9,12 @@
       "mode": "unified_illustration",
       "style_lock_reference": "Images/Diagrams/Scene_02_Diagram.png",
       "matte_method": "recraft_ai_matte_near_black_bg",
-      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) — built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
+      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) \u2014 built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
       "flat_path": "Images/Diagrams/Scene_02_Components/Mantis_Eye_External.png",
       "alpha_path": "Images/Diagrams/Scene_02_Components/Alpha/Mantis_Eye_External.png",
-      "used_in": ["D02_remotion_component_test_v3.mp4"]
+      "used_in": [
+        "D02_remotion_component_test_v3.mp4"
+      ]
     },
     {
       "asset_id": "Human_Eye_External",
@@ -21,10 +23,12 @@
       "mode": "unified_illustration",
       "style_lock_reference": "Images/Diagrams/Scene_02_Diagram.png",
       "matte_method": "recraft_ai_matte_near_black_bg",
-      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) — built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
+      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) \u2014 built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
       "flat_path": "Images/Diagrams/Scene_02_Components/Human_Eye_External.png",
       "alpha_path": "Images/Diagrams/Scene_02_Components/Alpha/Human_Eye_External.png",
-      "used_in": ["D02_remotion_component_test_v3.mp4"]
+      "used_in": [
+        "D02_remotion_component_test_v3.mp4"
+      ]
     },
     {
       "asset_id": "Human_Eye_CrossSection",
@@ -33,10 +37,12 @@
       "mode": "unified_illustration",
       "style_lock_reference": "Images/Diagrams/Scene_02_Diagram.png",
       "matte_method": "recraft_ai_matte_near_black_bg",
-      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) — built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
+      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) \u2014 built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
       "flat_path": "Images/Diagrams/Scene_02_Components/Human_Eye_CrossSection.png",
       "alpha_path": "Images/Diagrams/Scene_02_Components/Alpha/Human_Eye_CrossSection.png",
-      "used_in": ["D02_remotion_component_test_v3.mp4"]
+      "used_in": [
+        "D02_remotion_component_test_v3.mp4"
+      ]
     },
     {
       "asset_id": "Mantis_Receptor_Fan",
@@ -45,10 +51,92 @@
       "mode": "unified_illustration",
       "style_lock_reference": "Images/Diagrams/Scene_02_Diagram.png",
       "matte_method": "recraft_ai_matte_near_black_bg",
-      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) — built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
+      "matte_method_note": "Last-resort method per Motion-Graphics-Compositing skill (Step 3, method 3) \u2014 built before the chroma-screen/native-transparent method order was locked. Left as-is, looks correct.",
       "flat_path": "Images/Diagrams/Scene_02_Components/Mantis_Receptor_Fan.png",
       "alpha_path": "Images/Diagrams/Scene_02_Components/Alpha/Mantis_Receptor_Fan.png",
-      "used_in": ["D02_remotion_component_test_v3.mp4"]
+      "used_in": [
+        "D02_remotion_component_test_v3.mp4"
+      ]
+    },
+    {
+      "asset_id": "Wave_Plain_Linear",
+      "scene_id": "scene_05",
+      "subject": "Single flat amber-gold light wave, no twist \u2014 represents ordinary color-only light perception",
+      "mode": "unified_illustration",
+      "style_lock_reference": "Images/Diagrams/Scene_05_Diagram.png",
+      "matte_method": "recraft_ai_matte_near_black_bg",
+      "matte_method_note": "Chroma-green attempted first (Step 3 method 2) but caused visible green color-spill contamination on this translucent/glowing subject (amber read as yellow-green) \u2014 regenerated on near-black instead, confirmed clean. See Motion-Graphics-Compositing SKILL.md's 2026-08-21 finding: chroma-green is unreliable for translucent/glowing components, use near-black for those specifically.",
+      "flat_path": "Images/Diagrams/Scene_05_Components/Wave_Plain_Linear.png",
+      "alpha_path": "Images/Diagrams/Scene_05_Components/Alpha/Wave_Plain_Linear.png",
+      "used_in": [
+        "D05_remotion_component_v1.mp4"
+      ]
+    },
+    {
+      "asset_id": "Wave_Polarized_Twist",
+      "scene_id": "scene_05",
+      "subject": "Twisting double-helix teal/amber light wave \u2014 represents circularly polarized light",
+      "mode": "unified_illustration",
+      "style_lock_reference": "Images/Diagrams/Scene_05_Diagram.png",
+      "matte_method": "recraft_ai_matte_near_black_bg",
+      "matte_method_note": "Same green-spill issue and fix as Wave_Plain_Linear \u2014 regenerated on near-black, confirmed clean.",
+      "flat_path": "Images/Diagrams/Scene_05_Components/Wave_Polarized_Twist.png",
+      "alpha_path": "Images/Diagrams/Scene_05_Components/Alpha/Wave_Polarized_Twist.png",
+      "used_in": [
+        "D05_remotion_component_v1.mp4"
+      ]
+    },
+    {
+      "asset_id": "Polarization_Filter",
+      "scene_id": "scene_05",
+      "subject": "Circular teal-glass optical filter disc with radial grated pattern",
+      "mode": "unified_illustration",
+      "style_lock_reference": "Images/Diagrams/Scene_05_Diagram.png",
+      "matte_method": "recraft_ai_matte_chroma_green_bg",
+      "matte_method_note": "Opaque/solid subject \u2014 chroma-green matted cleanly, no contamination.",
+      "flat_path": "Images/Diagrams/Scene_05_Components/Polarization_Filter.png",
+      "alpha_path": "Images/Diagrams/Scene_05_Components/Alpha/Polarization_Filter.png",
+      "used_in": [
+        "D05_remotion_component_v1.mp4"
+      ]
+    },
+    {
+      "asset_id": "Eye_CrossSection",
+      "scene_id": "scene_05",
+      "subject": "Eyeball anatomical cross-section receiving the light wave",
+      "mode": "unified_illustration",
+      "style_lock_reference": "Images/Diagrams/Scene_05_Diagram.png",
+      "matte_method": "recraft_ai_matte_chroma_green_bg",
+      "matte_method_note": "Opaque/solid subject \u2014 chroma-green matted cleanly, no contamination.",
+      "flat_path": "Images/Diagrams/Scene_05_Components/Eye_CrossSection.png",
+      "alpha_path": "Images/Diagrams/Scene_05_Components/Alpha/Eye_CrossSection.png",
+      "used_in": [
+        "D05_remotion_component_v1.mp4"
+      ]
+    },
+    {
+      "asset_id": "Mantis_Pair_FacingOff",
+      "scene_id": "scene_05b",
+      "subject": "Two mantis shrimp facing each other in profile, both eyestalks visible on each",
+      "mode": "unified_illustration",
+      "style_lock_reference": "Images/Diagrams/Scene_05B_Diagram.png",
+      "matte_method": "recraft_ai_matte_chroma_green_bg",
+      "matte_method_note": "Opaque/solid subject — chroma-green matted cleanly, no contamination.",
+      "flat_path": "Images/Diagrams/Scene_05B_Components/Mantis_Pair_FacingOff.png",
+      "alpha_path": "Images/Diagrams/Scene_05B_Components/Alpha/Mantis_Pair_FacingOff.png",
+      "used_in": ["D05B_remotion_component_v1.mp4"]
+    },
+    {
+      "asset_id": "Signal_Code_Pattern",
+      "scene_id": "scene_05b",
+      "subject": "Abstract glowing vertical grid of dash/dot signal code, teal-cyan and amber-gold",
+      "mode": "unified_illustration",
+      "style_lock_reference": "Images/Diagrams/Scene_05B_Diagram.png",
+      "matte_method": "recraft_ai_matte_near_black_bg",
+      "matte_method_note": "Translucent/glowing subject — used near-black per the Scene 05 finding (chroma-green causes color-spill contamination on this type of element). Confirmed clean.",
+      "flat_path": "Images/Diagrams/Scene_05B_Components/Signal_Code_Pattern.png",
+      "alpha_path": "Images/Diagrams/Scene_05B_Components/Alpha/Signal_Code_Pattern.png",
+      "used_in": ["D05B_remotion_component_v1.mp4"]
     }
   ]
 }

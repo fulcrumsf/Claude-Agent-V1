@@ -1,0 +1,10 @@
+{
+  "production": "0004_Titanic_Stoker",
+  "channel": "Reimagined Realms",
+  "backfill_note": "Per-shot model choice was never stored in a structured file for this production \u2014 Shot_List.md contains prose prompts only, and the model used per shot was selected live via Tool-Manager at generation time and not logged. Iteration counts and issue severity were also not tracked historically. Nothing below is fabricated; fields that can't be reconstructed read null / not-tracked. All logging from this point forward is live.",
+  "known_shot_count": 13,
+  "existing_data_files_at_backfill": [
+    "Beat_Table.json"
+  ],
+  "assets": []
+}

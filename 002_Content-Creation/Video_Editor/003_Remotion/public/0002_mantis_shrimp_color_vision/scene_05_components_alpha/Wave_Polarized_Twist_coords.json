@@ -1,0 +1,16 @@
+{
+  "labels": [
+    {
+      "feature": "twist_crest_rightmost_visible",
+      "x_pct": 96.4,
+      "y_pct": 50.0,
+      "confidence": "high"
+    },
+    {
+      "feature": "helix_center",
+      "x_pct": 50.0,
+      "y_pct": 50.0,
+      "confidence": "high"
+    }
+  ]
+}

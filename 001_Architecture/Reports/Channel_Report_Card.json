@@ -1,0 +1,111 @@
+{
+  "generated": "2026-08-15",
+  "formula_note": "autonomy_readiness = (phases_locked_pct * 0.5) + (avg_video_grade_as_100pt * 0.5). Bar cannot read >=95 unless phases_locked_pct >= 95 AND avg_video_grade >= B+ (87). This is a progress bar of pipeline+satisfaction, not a quality score.",
+  "channels": [
+    {
+      "name": "Anomalous Wild",
+      "autonomy_readiness": 94,
+      "readiness_inputs": {
+        "phases_locked_pct": 100,
+        "phases_total": 10,
+        "avg_video_grade": "B+",
+        "avg_video_grade_100pt": 87,
+        "graded_video_count": 1,
+        "caveat": "Grade average is based on a single graded production — thin sample, will move a lot per new grade."
+      },
+      "output": {
+        "productions_completed": 1,
+        "productions_published": "unconfirmed — no Blotato upload record found for this production"
+      },
+      "known_issues": [
+        {
+          "severity": "critical",
+          "status": "fixed",
+          "description": "AI-generated scientific diagrams contained hallucinated/garbled text labels. Fixed 2026-07-11 per Scientific Diagram sub-pipeline update."
+        },
+        {
+          "severity": "major",
+          "status": "unconfirmed",
+          "description": "2026-03-29 Report Card listed 12 required workflow changes (beat map from word-timestamps, 3-layer audio mix, title card rebuild, anatomical reference-first pipeline, etc.). Only the diagram-text fix is independently confirmed done — the rest have not been re-verified against the current pipeline."
+        }
+      ],
+      "last_activity": "2026-07-11",
+      "videos": [
+        {
+          "production_id": "0001_Bioluminescence_Weapon",
+          "models_used": ["veo3_fast", "kling_v2", "elevenlabs (eleven_multilingual_v2)"],
+          "grade": "B+",
+          "previous_grade": "C-",
+          "review_date": "2026-03-29",
+          "status": "graded_needs_reverify",
+          "data_file": "002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0001_Bioluminescence_Weapon/Data/Report_Card.md"
+        }
+      ]
+    },
+    {
+      "name": "Reimagined Realms",
+      "autonomy_readiness": 50,
+      "readiness_inputs": {
+        "phases_locked_pct": 100,
+        "phases_total": 12,
+        "avg_video_grade": null,
+        "avg_video_grade_100pt": 0,
+        "graded_video_count": 0,
+        "caveat": "Pipeline (POV Pipeline v2) is mechanically complete and locked — 126/126 tests passing as of 2026-08-15. The 50% is not a quality problem, it's an ungraded backlog: 5 productions have been built and none have a grade logged in the new Data/Report_Card.md system yet."
+      },
+      "output": {
+        "productions_completed": 5,
+        "productions_published": "Roman Gladiator + Titanic Stoker confirmed published (commit 481f540). Pompeii is live but private (V8). Pyramid Builder and POV Smoke Test: no publish record found."
+      },
+      "known_issues": [
+        {
+          "severity": "critical",
+          "status": "root_cause_fixed",
+          "surface_to_tony": false,
+          "audience": "internal_feedback_loop_only",
+          "description": "POV camera drift to third-person found in Pyramid Builder's opening shot and continuity breaks in Roman Gladiator, both predating the 2026-08-15 fix. The POV_LOCK_CLAUSE root cause was rewritten that day (126/126 tests passing). Full history kept here for the self-learning loop (prompt/guardrail quality), not as a review request — Tony personally flagged and accepted these at the time each video was published, and published work is not revisited. Do not raise this in chat as something for Tony to check; it's a signal for improving future prompting/guardrails only."
+        },
+        {
+          "severity": "minor",
+          "status": "open",
+          "surface_to_tony": true,
+          "audience": "tony_actionable",
+          "description": "No video in this channel has been graded under the new Data/Report_Card.md system yet. Autonomy meter can't reflect real satisfaction until Tony grades at least one."
+        }
+      ],
+      "last_activity": "2026-08-15",
+      "videos": [
+        {
+          "production_id": "0001_Pompeii_The_Escape",
+          "grade": null,
+          "status": "published_private_ungraded",
+          "data_file": "002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/0001_Pompeii_The_Escape/Data/Report_Card.md"
+        },
+        {
+          "production_id": "0002_POV_Smoke_Test",
+          "grade": null,
+          "status": "test_production_ungraded",
+          "data_file": "002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/0002_POV_Smoke_Test/Data/Report_Card.md"
+        },
+        {
+          "production_id": "0003_Pyramid_Builder_I_Deep",
+          "grade": null,
+          "status": "completed_ungraded_known_pov_drift",
+          "data_file": "002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/0003_Pyramid_Builder_I_Deep/Data/Report_Card.md"
+        },
+        {
+          "production_id": "0004_Titanic_Stoker",
+          "grade": null,
+          "status": "published_ungraded",
+          "data_file": "002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/0004_Titanic_Stoker/Data/Report_Card.md"
+        },
+        {
+          "production_id": "0005_Roman_Gladiator",
+          "grade": null,
+          "status": "published_ungraded",
+          "data_file": "002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/0005_Roman_Gladiator/Data/Report_Card.md"
+        }
+      ]
+    }
+  ]
+}

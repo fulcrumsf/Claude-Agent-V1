@@ -58,6 +58,26 @@ def test_analyze_video_narrative_uploads_file_and_prompts_with_scene_list(tmp_pa
     assert "0.0s-3.1s" in str(call_kwargs["contents"])
     assert "3.1s-7.8s" in str(call_kwargs["contents"])
 
+def test_production_profile_requests_editorial_audio_and_originality_analysis(tmp_path):
+    video_path = tmp_path / "Video.mp4"
+    video_path.touch()
+    mock_file = MagicMock(name="uploaded_file", state=MagicMock(name="ACTIVE"))
+    mock_file.state.name = "ACTIVE"
+    mock_response = MagicMock(text="production analysis")
+
+    with patch("analyze_reference_video.genai.Client") as MockClient:
+        client_instance = MockClient.return_value
+        client_instance.files.upload.return_value = mock_file
+        client_instance.models.generate_content.return_value = mock_response
+
+        result = analyze_video_narrative(video_path, [(0.0, 5.0)], "production")
+
+    assert result == mock_response.text
+    prompt_text = str(client_instance.models.generate_content.call_args.kwargs["contents"])
+    assert "Music and Sound Design Profile" in prompt_text
+    assert "Originality Boundaries" in prompt_text
+    assert "reusable, abstract patterns only" in prompt_text
+
 def test_analyze_video_narrative_polls_while_processing_then_active(tmp_path):
     video_path = tmp_path / "Video.mp4"
     video_path.touch()

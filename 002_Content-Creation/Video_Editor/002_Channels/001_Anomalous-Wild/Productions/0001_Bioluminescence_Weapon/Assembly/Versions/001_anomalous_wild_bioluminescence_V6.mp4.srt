@@ -1,0 +1,492 @@
+﻿1
+00:00:00,066 --> 00:00:03,600
+In the deepest part of the ocean,
+there is no light.
+
+2
+00:00:03,800 --> 00:00:04,900
+None.
+
+3
+00:00:04,900 --> 00:00:09,600
+Not a single photon from
+the sun has ever reached this far.
+
+4
+00:00:10,133 --> 00:00:14,000
+So where is that glow coming from?
+
+5
+00:00:16,933 --> 00:00:18,800
+Below 200m.
+
+6
+00:00:18,800 --> 00:00:19,600
+Sunlight.
+
+7
+00:00:19,600 --> 00:00:23,600
+Disappears completely below 1000m.
+
+8
+00:00:23,633 --> 00:00:25,900
+It has never existed.
+
+9
+00:00:25,900 --> 00:00:30,300
+The deep ocean covers
+more than half the surface of our planet.
+
+10
+00:00:30,300 --> 00:00:33,633
+And remarkably,
+nearly three quarters of everything
+
+11
+00:00:33,633 --> 00:00:36,733
+that lives there produces its own light.
+
+12
+00:00:36,800 --> 00:00:40,000
+We think of the deep ocean as empty,
+
+13
+00:00:40,266 --> 00:00:43,266
+silent, dead.
+
+14
+00:00:43,533 --> 00:00:46,500
+What science has only recently confirmed
+is that it
+
+15
+00:00:46,500 --> 00:00:51,733
+may be the most illuminated
+environment on Earth, just not by the sun.
+
+16
+00:00:52,200 --> 00:00:58,000
+Every flash you see in these
+waters is alive and it is doing something.
+
+17
+00:00:58,000 --> 00:01:02,400
+The mechanism is called bioluminescence,
+and the chemistry behind
+
+18
+00:01:02,400 --> 00:01:06,333
+it sounds less like biology
+and more like alchemy.
+
+19
+00:01:06,800 --> 00:01:12,533
+Every bioluminescent organism on Earth
+uses a reaction between two molecules,
+
+20
+00:01:12,600 --> 00:01:18,000
+a protein called luciferase,
+and a compound called luciferin.
+
+21
+00:01:18,866 --> 00:01:21,266
+When oxygen is introduced, the reaction
+
+22
+00:01:21,266 --> 00:01:24,700
+releases energy, not as heat as light.
+
+23
+00:01:24,733 --> 00:01:26,233
+Cold light.
+
+24
+00:01:26,233 --> 00:01:30,300
+Pure light with almost zero energy wasted.
+
+25
+00:01:30,333 --> 00:01:34,133
+It is, by every engineering
+standard, more efficient
+
+26
+00:01:34,133 --> 00:01:37,466
+than any light source
+humans have ever built.
+
+27
+00:01:37,900 --> 00:01:42,100
+What makes this more remarkable
+is what evolution did with it.
+
+28
+00:01:42,133 --> 00:01:45,433
+Bioluminescence did not appear once
+
+29
+00:01:45,433 --> 00:01:48,433
+spread across the tree of life
+and diversify.
+
+30
+00:01:48,466 --> 00:01:51,666
+It evolved independently in completely
+
+31
+00:01:51,666 --> 00:01:55,833
+unrelated lineages
+more than 40 separate times.
+
+32
+00:01:55,866 --> 00:01:58,833
+Fish that share no ancestor with squid.
+
+33
+00:01:58,833 --> 00:02:01,600
+Jellyfish with no connection to fungi.
+
+34
+00:02:01,600 --> 00:02:04,600
+Beetles with no relationship to bacteria.
+
+35
+00:02:04,866 --> 00:02:07,666
+Each one arrived at the same solution.
+
+36
+00:02:07,666 --> 00:02:09,333
+The same chemistry.
+
+37
+00:02:09,333 --> 00:02:11,533
+The same cold light.
+
+38
+00:02:11,533 --> 00:02:14,633
+Evolution apparently has a favorite trick.
+
+39
+00:02:14,666 --> 00:02:18,300
+The anglerfish is
+perhaps the most famous example.
+
+40
+00:02:18,500 --> 00:02:21,500
+That glow is called the esca,
+
+41
+00:02:21,833 --> 00:02:24,900
+a modified spine on the top of its head.
+
+42
+00:02:25,100 --> 00:02:28,100
+But here is what's extraordinary about it.
+
+43
+00:02:28,100 --> 00:02:33,333
+The anglerfish did not evolve the ability
+to produce that light itself.
+
+44
+00:02:33,533 --> 00:02:37,666
+The esca glows
+because it is filled with living bacteria,
+
+45
+00:02:37,700 --> 00:02:43,533
+bioluminescent microbes that colonize the
+lure during the fish's early development.
+
+46
+00:02:43,833 --> 00:02:47,000
+The fish and the bacteria exist
+in a relationship
+
+47
+00:02:47,000 --> 00:02:50,600
+so precise that neither can survive
+without the other,
+
+48
+00:02:50,600 --> 00:02:56,233
+and the angler fish controls the light,
+dimming it, brightening
+
+49
+00:02:56,233 --> 00:03:01,933
+it, pulsing it in rhythms to attract
+specific prey at specific depths.
+
+50
+00:03:02,066 --> 00:03:03,600
+It does not hunt.
+
+51
+00:03:03,600 --> 00:03:07,700
+It waits, and the light does the work.
+
+52
+00:03:07,866 --> 00:03:12,100
+But not all
+bioluminescence is designed to attract.
+
+53
+00:03:12,100 --> 00:03:15,100
+Some of it is designed to vanish.
+
+54
+00:03:15,300 --> 00:03:19,400
+The Hawaiian bobtail
+squid lives in shallow coastal water,
+
+55
+00:03:19,400 --> 00:03:23,900
+where moonlight creates
+a faint glow on the ocean surface.
+
+56
+00:03:24,000 --> 00:03:27,700
+Any creature swimming below
+it would cast a shadow,
+
+57
+00:03:27,933 --> 00:03:32,100
+a silhouette visible to predators
+looking up.
+
+58
+00:03:32,800 --> 00:03:37,500
+So the squid solved this problem
+with an organ on its underside,
+
+59
+00:03:37,500 --> 00:03:42,200
+filled with bioluminescent
+bacteria, calibrated every night
+
+60
+00:03:42,233 --> 00:03:46,433
+to match the exact brightness
+and color of the moon above.
+
+61
+00:03:46,933 --> 00:03:49,700
+No shadow, no silhouette.
+
+62
+00:03:49,700 --> 00:03:52,700
+The squid effectively disappears.
+
+63
+00:03:53,066 --> 00:03:56,533
+This technique is called
+counter illumination,
+
+64
+00:03:56,533 --> 00:04:02,300
+and it has evolved independently
+in at least a dozen separate lineages.
+
+65
+00:04:02,700 --> 00:04:05,466
+Counter illumination is defensive.
+
+66
+00:04:05,466 --> 00:04:09,433
+What comes next is not deep
+in the midnight
+
+67
+00:04:09,466 --> 00:04:12,933
+zone lives an animal called
+the dragon fish.
+
+68
+00:04:13,333 --> 00:04:17,000
+It has evolved something that,
+until recently, scientists
+
+69
+00:04:17,000 --> 00:04:20,833
+believed was physically impossible
+for biological tissue.
+
+70
+00:04:21,066 --> 00:04:26,266
+The dragon fish can produce
+and see red light.
+
+71
+00:04:26,900 --> 00:04:28,733
+This matters because red light
+
+72
+00:04:28,733 --> 00:04:32,300
+does not penetrate below
+a few hundred meters of ocean.
+
+73
+00:04:32,633 --> 00:04:35,700
+Every other creature in the deep,
+every predator,
+
+74
+00:04:35,700 --> 00:04:39,500
+every prey is effectively blind to it.
+
+75
+00:04:40,033 --> 00:04:43,000
+The dragon fish moves
+through a frequency of light
+
+76
+00:04:43,000 --> 00:04:46,333
+that no other animal
+in that environment can perceive.
+
+77
+00:04:46,666 --> 00:04:50,833
+It is hunting with a flashlight
+that its prey cannot see.
+
+78
+00:04:50,866 --> 00:04:53,900
+It is not alone in weaponizing light.
+
+79
+00:04:54,066 --> 00:04:59,466
+The firefly squid coordinates
+thousands of photophores across its body,
+
+80
+00:04:59,600 --> 00:05:04,700
+not to hide, but to create patterns
+that disorient and confuse prey.
+
+81
+00:05:05,033 --> 00:05:07,833
+The siphon offer a colonial organism
+
+82
+00:05:07,833 --> 00:05:11,133
+that can reach 40m in length, pulses
+
+83
+00:05:11,133 --> 00:05:14,466
+cascading waves of bioluminescence
+
+84
+00:05:14,466 --> 00:05:18,066
+along its body to herd prey into range.
+
+85
+00:05:18,233 --> 00:05:22,100
+And some species of deep sea jellyfish,
+when threatened,
+
+86
+00:05:22,133 --> 00:05:25,133
+release glowing particles into the water.
+
+87
+00:05:25,400 --> 00:05:29,000
+A decoy cloud of light
+that attracts a predators.
+
+88
+00:05:29,000 --> 00:05:30,500
+Predators.
+
+89
+00:05:30,500 --> 00:05:33,066
+They use light the way other animals
+
+90
+00:05:33,066 --> 00:05:37,666
+use sound, smell, or venom as a tool.
+
+91
+00:05:37,833 --> 00:05:39,866
+As a weapon.
+
+92
+00:05:39,866 --> 00:05:43,933
+Evolution invented this solution
+more than 40 times
+
+93
+00:05:43,966 --> 00:05:47,066
+in fish, in squid, in fungi,
+
+94
+00:05:47,133 --> 00:05:50,366
+in bacteria, in worms, in beetles.
+
+95
+00:05:50,400 --> 00:05:56,133
+Each time arriving at the same chemistry,
+the same reaction, the same cold light.
+
+96
+00:05:56,433 --> 00:06:01,066
+There is a principle in biology
+called convergent evolution.
+
+97
+00:06:01,233 --> 00:06:05,133
+When unrelated species
+independently developed the same solution
+
+98
+00:06:05,133 --> 00:06:08,500
+to the same problem, wings evolved
+
+99
+00:06:08,500 --> 00:06:11,933
+four times, eyes evolved 40 times.
+
+100
+00:06:11,933 --> 00:06:15,866
+Bioluminescence
+evolved more than 40 times.
+
+101
+00:06:15,866 --> 00:06:17,600
+What that tells us is this.
+
+102
+00:06:17,600 --> 00:06:22,333
+Wherever life encounters darkness,
+it finds a way to make light,
+
+103
+00:06:22,900 --> 00:06:25,000
+not just on Earth.
+
+104
+00:06:25,000 --> 00:06:30,033
+The deep ocean is the closest environment
+we have to the conditions of Europa.
+
+105
+00:06:30,266 --> 00:06:34,866
+Jupiter's moon with a liquid ocean
+beneath miles of ice.
+
+106
+00:06:35,100 --> 00:06:38,700
+If life exists there, science now believes
+
+107
+00:06:38,700 --> 00:06:43,266
+it is almost certainly bioluminescent
+in the dark.
+
+108
+00:06:43,300 --> 00:06:45,266
+Life lights itself.
+
+109
+00:06:45,266 --> 00:06:47,600
+It has no other choice.

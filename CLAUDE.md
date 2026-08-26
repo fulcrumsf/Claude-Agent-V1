@@ -180,12 +180,11 @@ The video engine is the top of the funnel.
 
 ## File Naming Convention
 
-**Apply this rule to every new file or directory created in this workspace.**
+**Default rule: always name new files and folders in Title_Case_With_Underscores, unless doing so would break something.**
 
 - **No spaces** — use `_` or `-` as word separators
 - **Capitalize the first letter of every word**: `Video_Pipeline_PDR.md` (not `video_pipeline_pdr.md`)
 - **Acronyms stay fully uppercase**: `MCP_Gateway_Controller`, `Video_Pipeline_PDR`, `AI_Footage_Prompter`
-- **Python scripts (`.py`) are exempt** — do not rename them, as other scripts may reference them by their current name
 
 **Examples:**
 
@@ -195,6 +194,14 @@ The video engine is the top of the funnel.
 | `Kling 2.6_Image_to_Video.md` | `Kling_2.6_Image_to_Video.md` |
 | `anomalous-wild-hybrid.md` | `Anomalous-Wild-Hybrid.md` |
 | `case-study.md` | `Case-Study.md` |
+
+**The only exception is when a different name is required for something to work** — i.e. a tool, script, package manager, or platform convention references the file by its exact existing name, and renaming it would break that reference. Common cases:
+
+- Python scripts (`.py`) — often imported/called by exact current name
+- Claude Code skill directory names under `Skills/` — invoked by exact name via the Skill tool, conventionally lowercase-kebab-case
+- Config/dotfiles and their directories (`.claude/`, `.codex/`, `.graphify/`, `package.json`, etc.)
+
+This is a "would it break" test, not a blanket category exemption — when in doubt, default to Title_Case and only deviate if there's a concrete reason a rename would cause a failure.
 
 ---
 

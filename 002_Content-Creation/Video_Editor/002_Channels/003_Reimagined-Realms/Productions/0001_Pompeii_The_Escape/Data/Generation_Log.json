@@ -1,0 +1,15 @@
+{
+  "production": "0001_Pompeii_The_Escape",
+  "channel": "Reimagined Realms",
+  "backfill_note": "Per-shot model choice was never stored in a structured file for this production \u2014 Shot_List.md contains prose prompts only, and the model used per shot was selected live via Tool-Manager at generation time and not logged. Iteration counts and issue severity were also not tracked historically. Nothing below is fabricated; fields that can't be reconstructed read null / not-tracked. All logging from this point forward is live.",
+  "known_shot_count": 0,
+  "existing_data_files_at_backfill": [
+    "Beatmap.json",
+    "stem_map.json",
+    "per_scene_stem_map.json",
+    "Beat_Sheet.json",
+    "fcpxml_placement.json",
+    "audio_briefs.json"
+  ],
+  "assets": []
+}

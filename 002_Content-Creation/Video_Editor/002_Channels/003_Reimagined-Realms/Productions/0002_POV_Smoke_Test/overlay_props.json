@@ -1,0 +1,17 @@
+{
+  "backgroundVideoFile": "0002_pov_smoke_test/scene_video_raw.mp4",
+  "captions": [
+    {
+      "text": "POV: YOU WAKE UP AS A ___",
+      "startS": 0,
+      "durationS": 3,
+      "variant": "title"
+    },
+    {
+      "text": "FETCHING WATER FROM THE WELL",
+      "startS": 3,
+      "durationS": 2,
+      "variant": "label"
+    }
+  ]
+}

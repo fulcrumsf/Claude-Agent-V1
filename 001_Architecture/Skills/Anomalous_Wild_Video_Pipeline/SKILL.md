@@ -147,9 +147,9 @@ Write the per-beat routing decisions and Tool-Manager's reasoning to `Production
 **Rebuilt 2026-08-18 — this phase now delegates its core logic to the channel-agnostic [`Production-Asset-Planner`](../Production-Asset-Planner/SKILL.md) skill**, rather than deriving sheet-need and storyboard logic inline. Invoke it with `production_folder` once `Production/Shot_List.md` exists — it requires `Production-Research-Agent` to have already run (Phase 1, Step A3). It performs, in one combined pass:
 - Recurring-subject identification (creatures/props/environments) and conditional sheet generation, including multiple character-sheet variants for natural variety, semantic (not keyword) reuse detection, and identity-consistency scoping (strict within a scene's sub-parts, flexible across different scenes).
 - Storyboard generation per scene.
-- Start/end frame generation **per split sub-clip** (e.g. `C04a`/`C04b`/`C04c` each get their own pair, not one pair for the whole scene) — grounded by that scene's sheets + storyboard via GPT-Image-2, built regardless of which video model ends up used.
+- Clip-boundary decision per scene (locked 2026-08-19: "can one prompt + one start frame + one end frame plausibly produce this, in ≤~8s?" — not a fixed duration split) and start/end frame generation **per split sub-clip**, sequentially lettered across the whole scene regardless of source (e.g. `Scene_03A`/`Scene_03B`/`Scene_03C` — generated and B-roll segments share one A/B/C/D sequence, not separate numbering) — grounded by that scene's sheets + storyboard via GPT-Image-2, built regardless of which video model ends up used.
 - Per-beat B-roll-vs-generation decision against `Research/Pexels_Inventory.json`, including the creature-specific-vs-generic boundary logic and the 5-second-per-clip B-roll cap.
-- Non-destructive B-roll trimming into `B_Roll/<Scene_ID>.mp4`.
+- Non-destructive B-roll trimming, saved directly into `Video_Clips/<Scene_ID>/Scene_<NN><Letter>_BRoll_<descriptor>.mp4` — alongside that scene's generated clips (locked 2026-08-19, supersedes the earlier separate `B_Roll/` folder).
 
 Read that skill's own SKILL.md for the full mechanism — this section only documents Anomalous-Wild-specific overrides layered on top of it.
 
@@ -185,7 +185,7 @@ Split by the Phase 5 routing decision. A production will typically have both kin
 | **Seedance 2.0** | Start frame + end frame + character sheet + prop sheet + environment sheet + storyboard — whichever exist for that shot, via `reference_image_urls` with `@ImageN` ordinal tagging (Seedance-Prompting-Guide's confirmed mechanism — pilot on one isolated shot before a full batch). |
 | **Veo** | Start + end frame at minimum; confirm current multi-reference support with Tool-Manager before assuming Seedance 2.0's reference pattern applies. |
 
-**B-roll insertion:** for any beat Production-Asset-Planner (Phase 5B) assigned real footage instead of generation, pull the trimmed clip from `B_Roll/<Scene_ID>.mp4` directly into the assembly timeline (Phase 7) — skip generation for that beat entirely. Max 5 seconds of B-roll per clip, per Phase 5B's cap.
+**B-roll insertion:** for any beat Production-Asset-Planner (Phase 5B) assigned real footage instead of generation, pull the trimmed clip from `Video_Clips/<Scene_ID>/Scene_<NN><Letter>_BRoll_<descriptor>.mp4` directly into the assembly timeline (Phase 7) — skip generation for that beat entirely. Max 5 seconds of B-roll per clip, per Phase 5B's cap.
 
 **Known issue — do not run `tm refresh` to freshen this pricing.** There's a known problem with the refresh pipeline (believed to involve Playwright failing to reach fal.ai/kie.ai for live prices) — the cached `model_catalog.json` (last compared 2026-07-01) is what's actually usable right now. Use it as-is rather than trying to refresh first.
 
@@ -259,6 +259,8 @@ This is a mandatory per-beat check during assembly, not optional polish — the 
 ```
 This asset is fixed for every Anomalous Wild video. Append it via ffmpeg concat at the end of the assembled Remotion render — do not regenerate it, do not route it through Remotion, do not let a per-video prompt touch it. `Production/end_card_reference.txt` (written by `scaffold_new_production.py` in Phase 1) points at this exact path; read from there rather than hardcoding the path a second time in assembly code.
 
+**End card CTA voiceover — standard step (locked 2026-08-24), not optional polish.** The end card visually says "Like, Comment" but has no spoken call to action and, left unaddressed, plays under complete audio silence (confirmed on 0002_Mantis_Shrimp_Color_Vision — the narration/music mix stops right at the end-card boundary with nothing filling the remaining ~10s). Generate a short line ("Follow for more content like this," "Subscribe for more content like this," or similar) via ElevenLabs using the same `voice_id` as the production's narration (check `Data/Generation_Log.json` for the voice_id already used), and mix it into the end-card audio starting ~1-1.5s in (after the card's own text has begun animating), with its own short tail fade so it doesn't clip. Verify duration fits inside the end card's own runtime before finalizing.
+
 Render the Remotion composition to `Assembly/raw_video.mp4`, then append the end card to produce the pre-audio-mix cut. Audio (Phase 8) mixes onto this.
 
 ---
@@ -292,19 +294,34 @@ python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/render_o
 
 `render_video.py` is the lower-level versioned renderer `render_outputs.py` calls into for each of its 3 output variants — invoke it directly only if a single variant needs a targeted redo (`--phase`/`--version`/`--note` flags), not for the normal full run.
 
+**Mandatory pre-delivery audio-continuity scan (locked 2026-08-24) — do this before presenting any cut as finished, not only when something sounds off.** An abrupt audio cutoff at a scene boundary (music/narration stopping dead instead of fading, or a scene transition landing on total silence) does not reliably show up from a code/logic review — it was caught on 0002_Mantis_Shrimp_Color_Vision only by directly measuring waveform amplitude, and an earlier attempt to check it via `ffmpeg -af astats` piped through a shell grep gave silently wrong (suspiciously identical) readings across different timestamps. **Use this reliable method instead:** extract short raw-PCM WAV segments at each point of interest (`ffmpeg -ss <t> -t 0.2-0.3 -vn -c:a pcm_s16le`) and compute RMS directly in Python/numpy (`np.sqrt(np.mean(data.astype(float)**2))`) — never trust `astats` log output parsed via shell text tools for this kind of check. Scan across every scene splice point and the tail of the final mix; confirm any intentional silence (e.g. under a card with no VO) is actually intentional and not a leftover cutoff, and confirm every audio-to-silence transition uses a real fade (`afade`) rather than a hard stop. When mixing multiple audio sources (e.g. a narration/music bed plus a short VO insert) in one `amix` filter chain, verify each source's actual sample format/rate/channel layout first and normalize with `aformat` before mixing — and remember filter order matters: an `afade` applied after an `adelay` targets the delayed (silent-then-audio) timeline, not the original clip's own timeline, and will fade the wrong span if not reordered.
+
 ---
 
 ## PHASE 9 — YOUTUBE PACKAGE (automated)
 
+Before calling the script, draft the thumbnail copy yourself — do not rely on the script's built-in templates for this part, they produce weak curiosity copy (proven on 0002_Mantis_Shrimp_Color_Vision, required a manual rewrite):
+1. Write 3 short (2–6 word), all-lowercase, curiosity-gap headlines tied to the video's actual hook fact — one per thumbnail concept, each a different angle on the same hook (not 3 copies of the same line). No Tony review needed by default (confirmed 2026-08-24) — just make them good.
+2. Identify the one specific anatomy/feature the arrow should point to (e.g. "the eyes" for a vision video, "the lure" for a bioluminescence video) — never a generic "the subject."
+
 ```bash
 source /Users/tonymacbook2025/.env-secrets
 python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_youtube_package.py \
-  "[production_folder]" "<subject>" "<hook_fact>"
+  "[production_folder]" "<subject>" "<hook_fact>" \
+  --headlines "headline one|headline two|headline three" \
+  --arrow-target "<specific anatomy description>"
 ```
 
-Adapts RR's Phase 10 formulas (curiosity-gap titles, search-intent description, no-text emotion-matched thumbnail) to this channel's science/nature-documentary framing. This single call does more than RR's shot-list-based thumbnail prompt step — it directly generates and downloads 3 real thumbnail concepts via kie.ai GPT-Image-2 (not just prompts for Tony to run later), across 3 mood/palette variations (intrigued/cool-blue-green, alarmed/warm-amber-red, awed/deep-purple-teal). Writes:
+Adapts RR's Phase 10 formulas (curiosity-gap titles, search-intent description) to this channel's science/nature-documentary framing. Thumbnail generation follows the **locked template v2** (`002_Channels/001_Anomalous-Wild/Anomalos_Wild__Thumbnail_Style.json`, locked 2026-08-24) — a mandatory two-stage pipeline, not a single generation call:
+- **Stage 1 (base concept):** kie.ai GPT-Image-2 text-to-image generates a textless, full-brightness photoreal close-up of the subject, across 3 mood/palette variations (intrigued/cool-blue-green, alarmed/warm-amber-red, awed/deep-purple-teal). Saved as `concept_1.png`–`concept_3.png`.
+- **Stage 2 (treatment edit):** each base image is uploaded to Cloudinary (kie.ai image-to-image needs a public URL) and edited in one pass via kie.ai GPT-Image-2 image-to-image: darken the background ~50% (real scene detail stays visible — never flatten it to a solid gradient, that was the deprecated v1 look), add a neon glow rim-light around the subject (color varies per concept: cool cyan-teal / warm amber-orange / vivid magenta-violet, unless the subject is bioluminescent/venomous, in which case green reads as more natural per `0001_Bioluminescence_Weapon`), and bake in the headline text + red curved arrow. Saved as `concept_1_text.png`–`concept_3_text.png` — **these, not the stage-1 base images, are what go to Tony.**
+
+The script handles both stages automatically per call. Writes:
 - `Package/YouTube_Package.md` — 3 titles + description
-- `Package/Thumbnails/concept_1.png`, `concept_2.png`, `concept_3.png` — real rendered thumbnails, ready to present to Tony
+- `Package/Thumbnails/concept_1.png`–`concept_3.png` — stage-1 base concepts (textless, intermediate only)
+- `Package/Thumbnails/concept_1_text.png`–`concept_3_text.png` — finished thumbnails with headline + arrow baked in, ready to present to Tony
+
+After generation, visually inspect all three finished thumbnails yourself (zoom into corners for stray watermark/logo artifacts, confirm the arrow tip lands precisely on the named feature and never crosses the headline text) before presenting — don't just glance at them, actually check for overlap. If a stray logo artifact appears in a corner (kie.ai's image-to-image occasionally adds one), regenerate just that concept with an explicit "no logo, no watermark, no icon, especially not in the corners" instruction appended to the treatment prompt.
 
 **Pexels attribution section (locked 2026-08-18, description-only, no on-screen burn-in):** if any beat in `Production/Asset_Plan.json` (Phase 5B) used real Pexels B-roll, append a Markdown "Attributions:" section to the end of the YouTube description — one bullet per Pexels asset actually used in the final cut (not every downloaded clip), pulling `photographer`/`photographer_url` from `Research/Pexels_Inventory.json`:
 ```

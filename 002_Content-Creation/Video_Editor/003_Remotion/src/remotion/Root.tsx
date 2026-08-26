@@ -11,6 +11,8 @@ import { EscaBacteriaCallout, ESCA_CALLOUT_DURATION_FRAMES } from "./video-compo
 import { NeonParcelTitleOverlay } from "./video-components/NeonParcelTitleOverlay";
 import { POVShort } from "./video-components/POVShort";
 import { Scene02DiagramTest } from "./video-components/Scene02DiagramTest";
+import { Scene05DiagramAnimation } from "./video-components/Scene05DiagramAnimation";
+import { Scene05BDiagramAnimation } from "./video-components/Scene05BDiagramAnimation";
 import { FPS, INTRO_DURATION } from "./video-lib/constants";
 import { getTimelinePath, loadTimelineFromFile } from "./video-lib/utils";
 
@@ -123,6 +125,26 @@ export const RemotionRoot: React.FC = () => {
         id="Scene02DiagramTest"
         component={Scene02DiagramTest}
         durationInFrames={315}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* Scene 05 diagram animation (polarization) — Approach B component-asset reveal, tied to real scene_05_beat_sheet.json narration timestamps */}
+      <Composition
+        id="Scene05DiagramAnimation"
+        component={Scene05DiagramAnimation}
+        durationInFrames={615}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* Scene 05B diagram animation (hidden signal code) — Approach B component-asset reveal, tied to real scene_05b_beat_sheet.json narration timestamps */}
+      <Composition
+        id="Scene05BDiagramAnimation"
+        component={Scene05BDiagramAnimation}
+        durationInFrames={298}
         fps={30}
         width={1920}
         height={1080}

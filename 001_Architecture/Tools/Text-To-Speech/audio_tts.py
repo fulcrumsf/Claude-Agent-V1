@@ -51,8 +51,10 @@ import requests
 
 from config import ELEVENLABS_API_KEY
 
-# ElevenLabs model that returns word-level alignment
-_TTS_MODEL = "eleven_monolingual_v1"
+# ElevenLabs model that returns word-level alignment.
+# eleven_monolingual_v1 / eleven_multilingual_v1 were deprecated by ElevenLabs
+# and now hard-fail with a 400 unsupported_model error — do not revert to those.
+_TTS_MODEL = "eleven_multilingual_v2"
 _DEFAULT_VOICE = "kdmDKE6EkgrWrrykO9Qt"  # Brian
 
 

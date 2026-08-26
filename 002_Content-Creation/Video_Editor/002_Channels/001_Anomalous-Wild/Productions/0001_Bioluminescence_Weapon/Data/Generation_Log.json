@@ -1,0 +1,1032 @@
+{
+  "production": "0001_Bioluminescence_Weapon",
+  "channel": "Anomalous Wild",
+  "backfill_note": "Assets and models below were reconstructed from existing Production/*.json prompt files on 2026-08-15. Iteration counts and issue severity were never logged historically for this production and are NOT fabricated here \u2014 they read null/not-tracked. All logging from this point forward is live.",
+  "assets": [
+    {
+      "asset_id": "scene_01",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "Extreme macro close-up of an anglerfish esca (bioluminescent lure), floating in absolute black deep-sea water, cold blue-white self-illuminated glow with soft corona halo, no other light source visible, teal and black color palette, 8K photorealistic underwater photography, shallow depth of field, subsurface biological glow effect, National Geographic macro style, no text no watermark",
+        "video_prompt": "Extreme macro close-up of an anglerfish bioluminescent esca lure pulsing slowly with cold blue-white glow, hovering in absolute black deep-sea water, no other light except the self-illuminated lure with a soft corona, camera holds static with microscopic drift, photorealistic 8K, National Geographic underwater macro cinematography, 5 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_03",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "Underwater descent through ocean depth zones, surface sunlight fading to twilight to absolute black, scattered bioluminescent organisms glowing blue-green in the deep darkness, cinematic anamorphic lens, deep teal to black gradient, volumetric light shafts near surface fading completely by midframe, photorealistic 8K, BBC Earth underwater cinematography style, no text no watermark",
+        "video_prompt": "Slow camera descent through ocean water column from sunlit surface through twilight zone into absolute midnight zone darkness, sunlight fades completely, scattered bioluminescent organisms begin to glow blue-green as darkness increases, slow downward camera movement, volumetric god rays near surface, photorealistic 8K, BBC Earth style underwater cinematography, 7 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_05",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "Scientific molecular diagram illustration of bioluminescence chemical reaction, luciferase enzyme and luciferin molecule binding with oxygen molecule, releasing a photon of neon green-white light, clean minimalist Kurzgesagt-style flat design, dark background near black, neon green molecular bonds, white molecular labels, the photon shown as a starburst of cold light, educational animation frame, no photograph, stylized infographic",
+        "video_prompt": "Animated molecular diagram showing luciferase enzyme molecule approaching luciferin molecule in dark space, oxygen molecule enters the reaction, molecules bond and transform, a burst of cold neon green-white light is released as a photon, Kurzgesagt minimalist flat animation style, dark background, neon green accents, smooth animation, 6 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_06",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "Animated phylogenetic tree of life illustration, branches spread across dark background, multiple scattered glowing neon green points appearing on unrelated branches representing independent bioluminescence evolution events, 40+ separate glowing nodes, deep space dark background, Kurzgesagt-style scientific infographic, neon green and teal accent colors, no text overlay, stylized educational diagram",
+        "video_prompt": "Animated phylogenetic tree of life on dark background, branches light up one by one with neon green glow as bioluminescence evolves independently 40+ times across unrelated lineages, camera slowly pulls back to reveal full tree covered in scattered glowing points, Kurzgesagt-style flat animation, dark navy to black background, neon green glow nodes, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_07",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "Extreme macro photograph of anglerfish face and bioluminescent esca lure in absolute deep-sea darkness, the esca glowing cold blue-white with visible bacteria colonies inside the light organ, the fish's face partially lit by its own lure showing alien teeth and skin texture, photorealistic 8K, National Geographic deep-sea macro photography, shallow depth of field, no other light source, no text no watermark",
+        "video_prompt": "Extreme macro close-up of anglerfish bioluminescent esca lure in absolute black deep-sea water, camera slowly pushes toward the glowing esca tip, lure pulses in rhythmic pattern, anglerfish face partially visible lit only by its own lure glow, photorealistic 8K, National Geographic underwater macro cinematography, slow push-in camera move, 7 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_08_overhead",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "Overhead shot looking down at a Hawaiian bobtail squid Euprymna scolopes in shallow moonlit coastal water, the squid swimming below the surface with moonlight filtering down, photorealistic 8K, underwater macro photography, soft blue-green moonlit water ambience, the squid's body visible with photophore organs on underside, National Geographic style, no text no watermark",
+        "video_prompt": "Overhead camera shot looking down through shallow coastal water at a Hawaiian bobtail squid swimming below the moonlit surface, camera transitions to POV shot from below looking up at the squid against the moonlit ocean surface, the squid's bioluminescent underside gradually lights up and its silhouette disappears as it matches the background brightness, photorealistic 8K, National Geographic underwater cinematography, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_09",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "POV shot from behind a loosejaw dragonfish Malacosteus niger hunting in absolute deep-sea darkness, the entire scene lit in deep red bioluminescent light emanating from the fish's sub-orbital photophores, prey fish visible in the red-illuminated water unaware and unresponsive, extreme red color cast on everything, otherworldly deep-sea environment, photorealistic 8K, cinematic POV perspective, wide angle slight distortion, no text no watermark",
+        "video_prompt": "POV first-person perspective from behind a dragonfish hunting in the deep ocean, the world visible only in deep red bioluminescent light emitted by the dragonfish's photophores, prey fish swim nearby completely unaware of the predator, red light illuminates the water revealing prey that cannot detect this wavelength, slow forward camera drift through the red-illuminated darkness, photorealistic 8K, wide angle lens, cinematic, 7 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_10a",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "Extreme macro of a firefly squid Watasenia scintillans with thousands of photophores active across its mantle and tentacles, bioluminescent patterns of blue and purple light firing across its body, dark ocean background, photorealistic 8K, underwater macro photography, National Geographic style, shallow depth of field, no text no watermark",
+        "video_prompt": "Extreme macro close-up of a firefly squid Watasenia scintillans with thousands of photophores firing coordinated patterns of blue and purple bioluminescent light across its mantle and tentacles, dark ocean background, the light patterns shift and ripple, camera holds static macro, photorealistic 8K, National Geographic underwater macro, 4 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_10b",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "Wide shot of a siphonophore Praya dubia in deep black ocean water, the colonial organism stretching across the frame with cascading waves of blue-white bioluminescence pulsing along its entire 40-metre length, photorealistic 8K, MBARI deep-sea footage style, dark black background, the bioluminescent pulse illuminates the surrounding water briefly, no text no watermark",
+        "video_prompt": "Wide shot of a massive siphonophore in absolute deep-sea darkness, cascading waves of blue-white bioluminescence pulse along its enormous colonial body from one end to the other in rhythmic waves, dark black background, the organism stretches beyond frame edges, photorealistic 8K, MBARI deep-sea documentary style, static camera, 4 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_10c",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "Deep-sea jellyfish releasing a cloud of bioluminescent glowing particles as a defensive decoy, the particles drifting and glowing blue-green in absolute black water, the jellyfish itself partially visible with bioluminescent bell edges, photorealistic 8K, MBARI deep-sea style underwater photography, cinematic, no text no watermark",
+        "video_prompt": "Deep-sea jellyfish releasing a dispersing cloud of glowing blue-green bioluminescent particles into absolute black deep-sea water as a defensive response, the glowing particle cloud drifts and expands, jellyfish pulls away in the background, photorealistic 8K, MBARI deep-sea documentary style, static camera, 4 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_11",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "Epic pull-back shot through deep ocean bioluminescent creatures, through the ocean surface, to Earth from space, to Jupiter system showing Europa moon in the foreground, a single tiny blue-white bioluminescent glow point visible in Europa's dark ocean beneath its ice crust, cinematic space photography, photorealistic 8K, dramatic cosmic scale, no text no watermark",
+        "video_prompt": "Cinematic camera pull-back beginning with macro bioluminescent sea creatures in deep ocean darkness, camera continuously pulls back through the ocean past glowing creatures, through ocean surface, atmosphere, into space showing Earth, continues pulling to Jupiter system, Europa moon fills frame, one microscopic blue-white bioluminescent light point pulses in the darkness of Europa's subsurface ocean, photorealistic 8K, cinematic epic scale, continuous camera move, 12 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_04",
+      "asset_type": "image+video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "image_prompt": "Wide underwater shot of thousands of bioluminescent dinoflagellates Noctiluca scintillans glowing blue-green in dark ocean water, each tiny organism illuminated when disturbed by camera movement, massive living cloud of organic bioluminescent light, photorealistic 8K, BBC Earth underwater cinematography style, deep black background with scattered blue-green glowing points, no text no watermark",
+        "video_prompt": "Wide camera drifting slowly through a massive cloud of bioluminescent dinoflagellates in dark ocean water, each tiny organism flares blue-green when disturbed by the camera, thousands of living glowing points fill the dark water, the camera movement creates ripples of light through the cloud, photorealistic 8K, BBC Earth underwater cinematography, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/ai_prompts.json"
+    },
+    {
+      "asset_id": "scene_01b",
+      "asset_type": "video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Slow pull-back from extreme macro of anglerfish bioluminescent esca lure to reveal the anglerfish face \u2014 alien teeth, translucent skin, pale grey-white flesh dimly lit only by its own lure glow, the face emerging from absolute black deep-sea darkness, cold blue-white light from the lure casting sharp shadows on its jaw, photorealistic 8K, National Geographic deep-sea macro cinematography, slow camera push-back, no other light source"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_01c",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Anglerfish bioluminescent esca lure slowly dims from cold blue-white glow to near-total darkness in absolute black deep-sea water, the light fading in a slow pulse until only the faintest ghost of glow remains, then complete black, photorealistic 8K, National Geographic underwater macro, static camera, no music, eerie silence implied, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_03b",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Underwater shot looking upward at bright sunlit tropical ocean surface, golden-green light filtering down through clear water, camera begins a slow downward descent from the surface, light shimmering and refracting, warm blues and greens, photorealistic 8K, BBC Earth underwater cinematography style, smooth slow descending camera movement, no creatures visible yet, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_03c",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Twilight zone underwater 200 metres deep, ocean water shifting from dim blue-green to deep blue-black, sunlight completely gone, scattered small bioluminescent organisms beginning to glow faintly as soft blue-green points in the darkness, camera continues slow descent, volumetric water haze, photorealistic 8K, BBC Earth cinematography, slow downward camera movement, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_03d",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Midnight zone deep ocean 1000 metres plus, absolute black water, camera drifting slowly downward, scattered bioluminescent organisms glowing cold blue and blue-green as the only light sources, no sunlight whatsoever, creatures of various sizes leaving faint trails of light as they drift past, haunting and beautiful, photorealistic 8K, MBARI deep-sea documentary style, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_03e",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Dense aggregation of bioluminescent deep-sea organisms in absolute black water, hundreds of small glowing creatures drifting, pulsing soft blue and teal light, some leaving trails, camera holds static watching them drift past, like stars in motion, cold and alien, photorealistic 8K, MBARI deep-sea cinematography, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_04b",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Nighttime beach with waves breaking in brilliant electric blue bioluminescence, each wave crest exploding in vivid blue-green light as it crashes on dark sand, long exposure photography style, dark sky with faint stars, the bioluminescence the only light source on the beach, wide cinematic shot, photorealistic 8K, National Geographic beach photography style, camera holds still as waves break, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_04c",
+      "asset_type": "video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Close-up of a single wave breaking at night, the water exploding in brilliant electric blue bioluminescent light on impact with the shore, individual droplets of glowing water catching the light, slow motion if possible, each water particle glowing independently, photorealistic 8K cinematic macro, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_04d",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Macro underwater shot of dinoflagellate organisms flaring blue-green bioluminescence individually when disturbed by water movement, each tiny single-celled organism glowing briefly on contact, dozens of individual flares happening across the frame in quick succession, dark water background, photorealistic 8K, BBC Earth underwater macro, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_04e",
+      "asset_type": "image",
+      "model": "flux-pro",
+      "platform": "fal_ai",
+      "prompts": {},
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_05b",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Wide deep-sea shot of a glowing ctenophore comb jelly pulsing rainbow bioluminescent light along its comb rows, drifting in absolute black deep-sea water, the creature's internal structure dimly visible through its transparent body, cold and alien beauty, photorealistic 8K, MBARI deep-sea cinematography, static camera, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_05c",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Extreme macro close-up of a bioluminescent light organ inside a deep-sea creature, the organ glowing cold blue-white from within, internal biological structure visible, complex cellular architecture surrounding the light-producing cells, photorealistic 8K, macro biological photography, shallow depth of field, dark background, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_05d",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Split-screen cinematic shot: left side shows a traditional incandescent light bulb glowing warm orange with visible heat distortion and filament glow, right side shows a deep-sea creature with cold blue-white bioluminescent glow, stark contrast between hot inefficient light and cold efficient biological light, dramatic studio lighting on left, absolute black on right, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_05e",
+      "asset_type": "image",
+      "model": "flux-pro",
+      "platform": "fal_ai",
+      "prompts": {},
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_05f",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Wide underwater shot of deep ocean darkness with multiple different species of bioluminescent creatures glowing simultaneously \u2014 jellyfish, small fish, plankton \u2014 each a different colour and pattern of light, an entire living light show in absolute black water, camera holds static watching the spectacle, photorealistic 8K, MBARI documentary style, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_07b",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Wide shot of a deep-sea anglerfish Melanocetus johnsonii hovering completely motionless in absolute black deep-sea water, the only light is the faint cold blue-white glow from its esca lure, the fish barely visible as a dark silhouette with the glowing lure as the focal point, eerie stillness, photorealistic 8K, MBARI deep-sea documentary, static camera, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_07c",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Close-up of anglerfish esca bioluminescent lure pulsing with a rhythmic slow heartbeat-like rhythm, brightening and dimming in a regular cycle, cold blue-white glow with a soft corona halo, in absolute black deep-sea water, the pulse looks almost like breathing, photorealistic 8K, macro underwater photography, static camera, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_07d",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Deep-sea small fish swimming in absolute black water, completely unaware, approaching a distant faint blue-white light source just visible in the background \u2014 the anglerfish lure \u2014 the prey fish swims casually toward the light with no sense of danger, photorealistic 8K, MBARI documentary style, wide shot, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_07e",
+      "asset_type": "image",
+      "model": "flux-pro",
+      "platform": "fal_ai",
+      "prompts": {},
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_07f",
+      "asset_type": "video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Extreme close-up of anglerfish esca lure in absolute black water, the light dims slowly to almost nothing then brightens back to full cold blue-white glow in a controlled cycle, suggesting the bacteria within are turning on and off, intimate and biological, like a heartbeat, photorealistic 8K, National Geographic macro, static camera, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_07g",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Deep-sea small fish swimming closer to the anglerfish lure, the prey fish now significantly closer to the glowing esca, still completely unaware of danger, the lure visible in frame glowing steady cold blue-white, the prey fish investigating the light with curiosity, tension building, photorealistic 8K, wide cinematic shot, MBARI documentary, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_07h",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Macro close-up of anglerfish jaw from the side, translucent teeth visible, the jaw partially open, textured alien skin illuminated by the faint glow of the lure above, absolute black background, the teeth look like glass needles, the mouth is a trap waiting, photorealistic 8K, National Geographic macro underwater photography, static camera, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_07i",
+      "asset_type": "video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Maximum tension shot: prey fish is now directly adjacent to the anglerfish esca lure, the lure glowing cold blue-white, the anglerfish body dimly visible in background shadow, prey fish hovers centimetres from the lure completely unaware, absolute stillness, the moment before, photorealistic 8K, National Geographic macro, static camera, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_07j",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Sudden cut to near-total darkness in deep-sea water, the anglerfish esca lure still faintly glowing cold blue-white as the only light source, everything else black, the glow pulses once slowly then dims slightly, aftermath of something that just happened, eerie silence, photorealistic 8K, static camera, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_07k",
+      "asset_type": "image",
+      "model": "flux-pro",
+      "platform": "fal_ai",
+      "prompts": {},
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_08b",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Overhead cinematic shot looking straight down through shallow tropical coastal water at night, moonlight filtering through the water surface creating shifting caustic patterns on the sandy bottom, calm and beautiful, no creatures visible yet, camera holds static overhead perspective, photorealistic 8K, BBC Earth underwater cinematography, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_08c",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Underwater POV shot looking up toward the ocean surface at night, moonlight visible as a bright circle above, a Hawaiian bobtail squid Euprymna scolopes swimming between the camera and the moon, its body silhouetted against the moonlit surface, visible as a dark shape against the light, photorealistic 8K, BBC Earth underwater cinematography, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_08d",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Close-up underwater shot of Hawaiian bobtail squid underside, the photophore light organs on its ventral surface activating and beginning to glow cold blue-white, the squid hovering in dark water as the photophores spread illumination across its belly, matching the brightness of the moonlit surface above it, photorealistic 8K, macro underwater photography, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_08e",
+      "asset_type": "video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "POV shot from below looking up at the ocean surface at night with moonlight, Hawaiian bobtail squid swims into frame as a visible silhouette, then its photophores activate and its shadow gradually disappears as its belly brightness matches the moonlit surface above it, the squid becomes invisible \u2014 it blends perfectly into the moonlight, then it swims out of frame undetected, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_08f",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Predator fish POV shot in shallow coastal water at night, looking upward toward moonlit surface, searching for prey, water surface visible above, no squid present or detectable \u2014 the water appears empty from below despite the squid being there, the predator drifts and turns finding nothing, photorealistic 8K, underwater cinematography, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_08g",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Hawaiian bobtail squid swimming freely in shallow coastal water at night, lit by scattered moonlight, moving through open water undetected and safe, graceful swimming motion, photorealistic 8K, underwater macro, the squid alive and free, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_08h",
+      "asset_type": "image",
+      "model": "flux-pro",
+      "platform": "fal_ai",
+      "prompts": {},
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_08i",
+      "asset_type": "image",
+      "model": "flux-pro",
+      "platform": "fal_ai",
+      "prompts": {},
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_09b",
+      "asset_type": "video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Absolute pitch black deep-sea water, complete darkness for 2 seconds, then a single thin line of deep red bioluminescent light begins to move slowly across the dark frame, the red light is the only thing visible in total black, eerie and alien, the red light sweeps slowly like a searchlight in darkness, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_09c",
+      "asset_type": "video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Side profile of a loosejaw dragonfish Malacosteus niger in near-total deep-sea darkness, its deep red sub-orbital photophores glowing intensely, the red light illuminating its elongated jaw and teeth, alien and terrifying, the red photophores are the dominant light source casting red shadows on its own body, photorealistic 8K, macro deep-sea photography, static camera, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_09d",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Normal deep-sea small fish swimming in dark water, lit by faint blue bioluminescence, completely unaware of any threat, swimming casually, the fish appears relaxed and undetected \u2014 it cannot see any red light, it behaves as if alone in the ocean, photorealistic 8K, documentary style, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_09e",
+      "asset_type": "image",
+      "model": "flux-pro",
+      "platform": "fal_ai",
+      "prompts": {},
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_09f",
+      "asset_type": "image",
+      "model": "flux-pro",
+      "platform": "fal_ai",
+      "prompts": {},
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_09g",
+      "asset_type": "video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Full first-person POV from behind and slightly above a hunting dragonfish moving slowly through deep-sea water, the entire world visible only in deep red bioluminescent light cast by the dragonfish's photophores, prey fish visible in the red-illuminated water completely unaware and unresponsive to the red light, the dragonfish approaches slowly and deliberately, the red light reveals what nothing else can see, photorealistic 8K, wide angle cinematic, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_09h",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Deep-sea fish in dark water, suddenly illuminated in a flash of deep red light from off-camera, the fish startles and attempts to flee but the red flash overwhelms its ability to process the threat \u2014 it escapes into darkness, the red light fades leaving only black water, fast dramatic motion, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_09i",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Dragonfish side profile slowly fading into absolute black deep-sea darkness, its red photophores dimming gradually as the fish retreats into darkness, the red light fading until only the faintest red pulse remains then nothing, complete black, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_10a2",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Wide underwater shot at night of a vast aggregation of thousands of firefly squid Watasenia scintillans near the ocean surface, each small squid covered in glowing blue-purple photophores creating a living light show, the aggregation fills the frame and extends to the horizon, spawning season display, photorealistic 8K, BBC Earth underwater, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_10a3",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Medium underwater shot of several firefly squid Watasenia scintillans with coordinated photophore patterns rippling across their bodies in complex light displays \u2014 patterns of blue, purple, and white light firing in synchronized waves, dark ocean background, photorealistic 8K, macro underwater photography, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_10a4",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Close-up macro of a single firefly squid Watasenia scintillans with all photophores firing in a complex coordinated pattern of deep blue and violet bioluminescent light, intricate biological light show across its mantle and tentacles, dark background, extreme macro, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_10b2",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Wide shot of a massive siphonophore in absolute deep-sea darkness, the colonial organism stretching across the full width of the frame with a bioluminescent pulse wave traveling along its full length from one end to the other, blue-white light traveling like electricity along a wire, photorealistic 8K, MBARI deep-sea documentary style, static camera, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_10b3",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Close-up of siphonophore colonial structure in dark water, individual zooid units visible \u2014 each a specialized organism performing a specific function for the colony, some glowing bioluminescent, photorealistic 8K, MBARI deep-sea macro, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_10b4",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Wide shot of the full siphonophore organism in absolute black deep-sea water, its enormous length extending beyond the frame in both directions, multiple bioluminescent pulses traveling simultaneously, an alien entity of unimaginable scale in total darkness, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_10c2",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Deep-sea jellyfish drifting calmly in absolute black water, its bell pulsing slowly, bioluminescent edges of the bell glowing with soft blue-white light as it moves, peaceful and alien, photorealistic 8K, MBARI documentary style, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_10c3",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "A deep-sea predator fish approaching a jellyfish in dark water, the predator moving toward the jellyfish from distance, the jellyfish detects the threat and begins to respond, both animals visible, tension building, photorealistic 8K, MBARI documentary, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_10c4",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Deep-sea jellyfish escaping into absolute black water after releasing its bioluminescent particle cloud decoy, the predator fish left behind confused and distracted by the glowing cloud of blue-green particles still drifting and glowing, the jellyfish retreating safely into darkness, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_11b",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Quick montage callback shot: anglerfish face emerging from darkness, its esca lure glowing cold blue-white, the iconic deep-sea predator as a reminder of what we have learned, photorealistic 8K, wide shot, dark, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_11c",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Quick montage callback: bioluminescent wave crashing on dark beach, electric blue explosion of Noctiluca scintillans dinoflagellates on impact, vivid blue and black, wide shot, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_11d",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Quick montage callback: Hawaiian bobtail squid vanishing against moonlit water surface from below, the squid's photophores matching the moonlight perfectly, the silhouette disappearing, counter-illumination, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_11e",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Quick montage callback: red bioluminescent light sweeping through deep-sea darkness, the dragonfish's weapon, deep crimson light moving through absolute black water, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_11f",
+      "asset_type": "video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Epic wide shot of deep ocean with bioluminescent creatures glowing in every direction, anglerfish, jellyfish, squid, plankton \u2014 an entire world of living light visible in every part of the frame, the ocean alive with self-made light, spectacular and humbling, photorealistic 8K, MBARI / BBC Earth style, static camera, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_11g",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Cinematic camera looking upward from deep ocean, slowly rising through dark deep water toward a faintly lit surface far above, bioluminescent creatures drifting past as the camera rises, heading toward the light, the surface visible as a distant shimmer, photorealistic 8K, BBC Earth underwater, slow upward camera drift, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_11h",
+      "asset_type": "video",
+      "model": "kling_v2",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Cinematic shot of camera breaking through the ocean surface from below, water drops falling back into the ocean, atmosphere visible above, rising from ocean into sky, the vast blue ocean spreading in all directions, pulling back to reveal the curvature of the Earth, photorealistic 8K, cinematic, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_11i",
+      "asset_type": "image",
+      "model": "flux-pro",
+      "platform": "fal_ai",
+      "prompts": {},
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_11j",
+      "asset_type": "image",
+      "model": "flux-pro",
+      "platform": "fal_ai",
+      "prompts": {},
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_11k",
+      "asset_type": "image",
+      "model": "flux-pro",
+      "platform": "fal_ai",
+      "prompts": {},
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "scene_11m",
+      "asset_type": "video",
+      "model": "veo3_fast",
+      "platform": "kie_ai",
+      "prompts": {
+        "video_prompt": "Absolute pitch black, total darkness, then a single tiny cold blue-white bioluminescent pulse of light appears in the center of the frame, glows for a moment \u2014 circular, soft, biological \u2014 then slowly fades back to absolute black, the last light in the universe, photorealistic 8K, 8 seconds"
+      },
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/new_clips_prompts.json"
+    },
+    {
+      "asset_id": "narration_full",
+      "asset_type": "voiceover",
+      "model": "eleven_multilingual_v2",
+      "platform": "elevenlabs",
+      "voice_id": "KYhuk3Y57IlkV1ZjtDAt",
+      "scene_count": 11,
+      "prompt_revisions": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "iteration_count": null,
+      "issues": "not tracked historically \u2014 logging begins with next asset generated in this production",
+      "self_grade": null,
+      "source_file": "Production/narration_tts.json"
+    }
+  ]
+}

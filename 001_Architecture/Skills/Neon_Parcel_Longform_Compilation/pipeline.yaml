@@ -1,0 +1,97 @@
+name: neon-parcel-longform-compilation
+version: 0.1.0
+scope: neon-parcel-youtube-animal-compilations
+
+defaults:
+  generation_mode: image-first
+  aspect_ratio: 16:9
+  longform_target_minutes: [6, 8]
+  shorts_target_seconds: 60
+  shorts_target_is_soft: true
+  shorts_overlay_frames: [1, 30]
+  shorts_overlay_fps: 30
+  music_provider: suno
+  narrator_provider: elevenlabs
+  publishing_provider: blotato
+
+approval_policy:
+  candidate_selection: manual
+  shot_list: required
+  first_clip: required
+  clips_two_through_five: required
+  remaining_clip_batch: explicit_release
+  narration_pass: required
+  final_package: required
+  publishing: explicit_release
+  learned_patterns: manual_approval_before_activation
+
+stages:
+  - id: intake
+    produces: [concept, generation_mode, reference_mode]
+  - id: reference_candidates
+    optional: true
+    produces: [five_ranked_candidates, opportunity_badges]
+  - id: case_study
+    optional: true
+    produces: [reference_video, transcript, keyframes, clip_boundaries, production_analysis]
+  - id: learning_proposal
+    optional: true
+    produces: [proposed_humor_patterns, proposed_editing_patterns, negative_examples]
+  - id: shot_list
+    produces: [brief, variable_duration_shot_list, diversity_ledger_seed]
+  - id: clip_generation
+    produces: [clip_versions, clip_approvals, diversity_ledger]
+  - id: rough_cut
+    produces: [approved_rough_cut, clip_timeline]
+  - id: editorial_narration
+    produces: [narration_decisions, narration_script, narrator_audio]
+  - id: music_and_sound
+    produces: [music_prompt, music_audio, sound_design_notes]
+  - id: master_render
+    produces: [master_version]
+  - id: shorts_derivatives
+    produces: [short_versions, short_boundaries, overlay_specifications]
+  - id: packaging
+    produces: [title, description, thumbnail, shorts_package, report_cards]
+  - id: publish
+    gated_by: final_package_approval
+    produces: [blotato_publish_receipt]
+
+artifact_rules:
+  case_study_root: 002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Case_Studies
+  production_root: 002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Production
+  preserve_reference_video: true
+  preserve_all_versions: true
+  overwrite_approved_files: false
+  longform_part_titles: false
+  shorts_part_titles: true
+
+editorial_rules:
+  narration_is_optional_per_clip: true
+  narration_written_after_rough_cut: true
+  narration_must_stay_within_clip: true
+  narrator_adds_perspective_not_obvious_description: true
+  in_scene_dialogue_is_optional: true
+  distinguish_in_camera_off_camera_and_background_voice: true
+  no_payoff_under_short_overlay: true
+
+diversity_ledger:
+  compare_before_each_prompt: true
+  dimensions:
+    - animal_appearance
+    - species_or_breed
+    - location
+    - camera_and_lens
+    - framing_and_motion
+    - lighting
+    - action_and_props
+    - in_scene_voice
+    - prompt_phrasing
+
+quality_gates:
+  - no_unapproved_paid_generation
+  - no_clip_boundary_narration_cuts
+  - no_short_mid_clip_cuts
+  - no_unlicensed_source_reuse
+  - no_automatic_learning_activation
+  - no_blotato_publish_without_approval

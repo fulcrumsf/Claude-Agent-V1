@@ -6,9 +6,12 @@
  *
  * Elements:
  *   - "THANK YOU / FOR WATCHING" — spring drop-in, staggered lines
- *   - Subscribe button — bubble pop-in, top-right, bouncy spring
  *   - "LIKE, COMMENT" CTA — fades up from below
  *   - Master fade-out at end
+ *
+ * Layout: all content anchored to the bottom of the frame (with padding) so
+ * YouTube Studio's end-screen recommended-video elements have clear space up top,
+ * and the platform's own subscribe icon doesn't overlap the title text.
  *
  * All animations: useCurrentFrame() + interpolate/spring — no CSS transitions.
  */
@@ -31,7 +34,6 @@ const C = {
   purple: "#6B35FF",
   lime: "#8AFA47",
   white: "#FFFFFF",
-  redYT: "#FF0000",
   fbBlue: "#1877F2",
 };
 
@@ -48,12 +50,15 @@ const Background: React.FC<{ frame: number }> = ({ frame }) => {
 
   return (
     <div style={{ position: "absolute", inset: 0, opacity: fadeIn }}>
-      {/* AI-generated animal background — full bleed */}
+      {/* AI-generated animal background — shifted down so the top of frame
+          is clear brand-dark space for YouTube Studio's end-screen elements */}
       <Img
         src={staticFile("anomalous_wild_bg.jpg")}
         style={{
           position: "absolute",
-          inset: 0,
+          top: "22%",
+          left: 0,
+          right: 0,
           width: "100%",
           height: "100%",
           objectFit: "cover",
@@ -83,18 +88,6 @@ const Background: React.FC<{ frame: number }> = ({ frame }) => {
           right: 0,
           height: 180,
           background: `linear-gradient(to top, rgba(5,2,16,0.85) 0%, transparent 100%)`,
-        }}
-      />
-
-      {/* Top dark bar — grounds the subscribe button */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 160,
-          background: `linear-gradient(to bottom, rgba(5,2,16,0.8) 0%, transparent 100%)`,
         }}
       />
 
@@ -138,7 +131,7 @@ const AnimatedTitle: React.FC<{ frame: number; fps: number }> = ({ frame, fps })
   const titleBase: React.CSSProperties = {
     fontFamily: "'Bebas Neue', Impact, 'Arial Black', sans-serif",
     fontWeight: 900,
-    fontSize: 110,
+    fontSize: 64,
     color: C.white,
     letterSpacing: "0.05em",
     lineHeight: 1.05,
@@ -154,84 +147,6 @@ const AnimatedTitle: React.FC<{ frame: number; fps: number }> = ({ frame, fps })
       </div>
       <div style={{ ...titleBase, opacity: line2O, transform: `translateY(${line2Y}px)` }}>
         FOR WATCHING
-      </div>
-    </div>
-  );
-};
-
-// ─── Subscribe button (top-right, bubble pop-in) ───────────────────────────────
-const SubscribeButton: React.FC<{ frame: number; fps: number }> = ({ frame, fps }) => {
-  const popSpring = spring({
-    frame: frame - 15,
-    fps,
-    config: { damping: 7, stiffness: 220 },
-  });
-  const scale = interpolate(popSpring, [0, 1], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-
-  // Bell jiggle on entry
-  const jiggle =
-    frame > 55
-      ? Math.sin((frame - 55) * 0.22) * 12 * Math.max(0, 1 - (frame - 55) / 30)
-      : 0;
-
-  // Continuous glow pulse
-  const glowPulse = 0.3 + Math.sin(frame * 0.12) * 0.15;
-
-  return (
-    <div
-      style={{
-        transformOrigin: "center",
-        transform: `scale(${scale})`,
-        position: "relative",
-      }}
-    >
-      {/* Glow halo */}
-      <div
-        style={{
-          position: "absolute",
-          inset: -7,
-          borderRadius: 9,
-          background: `rgba(255,0,0,${(glowPulse * 0.35).toFixed(2)})`,
-          filter: "blur(10px)",
-        }}
-      />
-
-      {/* Button — 30% smaller than original */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 7,
-          backgroundColor: C.redYT,
-          borderRadius: 7,
-          padding: "13px 24px",
-          position: "relative",
-          boxShadow: `0 3px 16px rgba(255,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.22)`,
-        }}
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="white"
-          style={{ transform: `rotate(${jiggle}deg)`, transformOrigin: "top center" }}
-        >
-          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6V11c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
-        </svg>
-        <span
-          style={{
-            fontSize: 25,
-            fontFamily: "'Bebas Neue', Impact, 'Arial Black', sans-serif",
-            fontWeight: 700,
-            color: C.white,
-            letterSpacing: "0.14em",
-          }}
-        >
-          SUBSCRIBE
-        </span>
       </div>
     </div>
   );
@@ -341,12 +256,11 @@ export const AnomalousWildEndCard: React.FC = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
-          gap: 60,
-          padding: "100px 120px 90px",
+          justifyContent: "flex-end",
+          gap: 36,
+          padding: "0 120px 90px",
         }}
       >
-        <SubscribeButton frame={frame} fps={fps} />
         <AnimatedTitle frame={frame} fps={fps} />
         <LikeCommentCTA frame={frame} />
       </AbsoluteFill>
