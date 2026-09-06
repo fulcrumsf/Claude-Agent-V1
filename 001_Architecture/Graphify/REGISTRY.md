@@ -32,7 +32,7 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | pending build | — |
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
 | Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 75 | pending build | — |
-| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 3723 | built | 2026-09-06T00:21Z|
+| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 3726 | built | 2026-09-06T00:38Z|
 | Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 2952 | built | 2026-09-05T22:55Z|
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | pending build | — |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | pending build | — |
@@ -40,9 +40,20 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Games | `004_Games/` | `004_Games/graphify-out/` | 2 | pending build | — |
 | Ecommerce | `005_Ecommerce/` | `005_Ecommerce/graphify-out/` | 4 | pending build | — |
 | Affiliate Marketing | `005_Affiliate_Marketing/` | `005_Affiliate_Marketing/graphify-out/` | — | not yet tracked — added 2026-07-12 after the Neon Parcel TikTok Shop Creator pipeline build; needs a full domain build in its own session | — |
-| Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 25 | pending build | — |
+| Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 3548 | built (weak — see note) | 2026-09-05T20:54Z |
 
 Total: 12 domains tracked (11 with graphs built or pending, 1 newly added and not yet graphed).
+
+> **Resource Library build note (2026-09-05):** first build ran on 3,548 docs via Gemini
+> ($1.46). Result is **weak**: 1,066 nodes / 293 edges / 49 real communities + 729 thin
+> orphan communities. **2,653 of 3,549 files (75%) produced zero nodes** — the corpus is
+> mostly thin "URL + one-line" bookmarks and old image-stub notes that have no extractable
+> relationship structure. Queries on the ~900 content-rich notes work (digital products,
+> Claude tooling, AI video workflows all cluster sensibly); everything else is sparse.
+> **Fix path:** the deferred frontmatter enrichment pass (`form:`/`summary:` + re-vision
+> the image stubs with the hardened prompt) then a `graphify extract --force` rebuild, OR
+> per-subfolder `graphify extract` + `graphify merge-graphs` to fix the node-ID collisions
+> (Higgsfield AI / Seedance 2.0 / Claude Code minted by multiple files, losers dropped).
 
 > **Status legend:**
 > - `pending build` — domain has YAML frontmatter, but graph hasn't been built yet

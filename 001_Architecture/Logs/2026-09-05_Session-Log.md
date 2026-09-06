@@ -253,3 +253,33 @@
   `db84fab20ad9d9514aea10cf5fb762af`.
 - Final 1080p output is not available yet; the recovery script now reuses the
   existing Topaz task ID if resumed, preventing duplicate upscale charges.
+
+## Neon Parcel narration review cut
+
+- Created `Scripts/Narration-v1.md` with 13 short Herbie narration beats and
+  preserved the rule that original in-clip speech remains audible.
+- Generated separate ElevenLabs MP3s with word-level timing in
+  `Narration_Audio/v1`; total narration is 52.9 seconds.
+- Added the missing shared TTS `config.py` loader so the existing utility reads
+  `~/.env-secrets` without embedding credentials.
+- Assembled all 12 selected final clips with original audio plus VO. The first
+  render exposed a short audio-stream issue; corrected v3 pads the original
+  audio and verifies video/audio both reach 129.7 seconds.
+- Review cut:
+  `Assembly/Versions/v3/Neon-Parcel-Grandma-And-Bear-Compilation-VO-Review-v3.mp4`.
+  No music, branding, captions, or publishing steps were added.
+
+## Resource Library graph build — Option A ran, result weak
+
+- `graphify extract .` via Gemini: 3,548 docs, $1.46, ~15 min. OpenAI_History + media
+  correctly excluded.
+- Result: 1,066 nodes / 293 edges / 778 communities (49 real + 729 thin orphans).
+- **75% of files (2,653/3,549) produced zero nodes** — thin bookmark notes + image
+  stubs have no extractable structure. Confirms the corpus, not the tool, is the
+  ceiling. The ~900 content-rich notes cluster fine (queried digital-products and
+  Claude-tooling — both returned coherent results w/ real edges).
+- Node-ID collisions logged (Higgsfield AI, Seedance 2.0, Claude Code minted by
+  multiple files → losers dropped). graphify recommends per-subfolder extract + merge.
+- REGISTRY.md updated with the honest build note. graphify-out/ gitignored (not committed).
+- DECISION PENDING: keep as v1 + enrich later, or invest now in per-subfolder rebuild /
+  frontmatter enrichment pass.
