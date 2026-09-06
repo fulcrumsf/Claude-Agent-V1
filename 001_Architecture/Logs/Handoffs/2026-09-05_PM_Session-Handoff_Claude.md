@@ -164,7 +164,15 @@ Currently FFmpeg keyframes + local Whisper `base` only; scaffold hand-filled.
 - **Blocker:** do NOT upgrade `google-genai` until Shot 11 is done — Neon Parcel's
   `gemini_video_inspection.py` depends on current SDK behavior.
 
-### F. Git — STILL NEED TO COMMIT to GitHub AFTER we run the Graphify + Wiki process
+### F. Git — DONE 2026-09-05 PM
+
+Committed + merged to `main` + pushed to GitHub as **`anomalous-wild-pipeline-v4-2026-09-05`**
+(merge commit `c5b3e93`, checkpoint `3670030`). 470 files. Branch
+`glass-frog-0003-revision-round1` merged (not deleted). The graph builds (Resource
+Library, Wiki) will get their own later commit. Original plan text below for record:
+
+---
+**(was) STILL NEED TO COMMIT to GitHub AFTER we run the Graphify + Wiki process**
 
 Branch `glass-frog-0003-revision-round1` holds: the entire Glass Frog 0003 arc,
 tonight's graphify infra fixes, the frontmatter-contract changes, the archived
