@@ -2,13 +2,19 @@
 title: "Unomas0795 3d Animation Pixar Style Ar 43 V 6"
 type: design-inspiration
 category: design-inspiration
+form: other
+summary: "A close-up of a stylized, cartoonish green lizard with massive eyes and an expressive open-mouthed smile, rendered in high-quality 3D animation style."
 tags:
   - design-inspiration
+  - lizard-character
+  - 3d-animation-style
+  - fantasy-concept-art
+  - character-design
 created: 2026-05-03
-source: unomas0795_3d_animation_pixar_style_--ar_43_--v_6.1_f441148a-0bc0-4c2b-9abc-e588afb90b1d_0.png
+enriched: 2026-09-05
 ---
 
 ![[Unomas0795-3d-Animation-Pixar-Style-Ar-43-V-6.png]]
 
-## AI Analysis
-Image reference from Notion export: unomas0795_3d_animation_pixar_style_--ar_43_--v_6.1_f441148a-0bc0-4c2b-9abc-e588afb90b1d_0.
+## Summary
+A close-up of a stylized, cartoonish green lizard with massive eyes and an expressive open-mouthed smile, rendered in high-quality 3D animation style.

@@ -1,17 +1,28 @@
 ---
 title: "Blueprint For Creator App"
-type: extracted-knowledge
+type: tool-doc
 category: tools
+form: saas-tool
+summary: "A screenshot of the App Store product page for 'Blueprint for Creators', a mobile app in the Utilities category. The app claims to help creators 'Create Analyze Grow Fast' and features marketing visuals demonstrating video idea extraction from TikTok and content calendar building."
+search_for: "Blueprint for Creators app creator"
 tags:
   - content-creation
   - productivity-app
   - video-planning
   - creator-tools
+  - content-calendar
+  - app-store
+  - video-production
+  - needs-enrichment
 original_filename: "IMG_9977.PNG"
 created: 2026-08-24
+enriched: 2026-09-05
 ---
 
 ![[Blueprint-For-Creator-App.png]]
 
-## AI Analysis
-A mobile application called Blueprint designed for content creators to organize video ideas and manage production calendars. The app focuses on capturing inspiration, analyzing trends, and streamlining the workflow from idea generation to scheduling content.
+## Summary
+A screenshot of the App Store product page for 'Blueprint for Creators', a mobile app in the Utilities category. The app claims to help creators 'Create Analyze Grow Fast' and features marketing visuals demonstrating video idea extraction from TikTok and content calendar building.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Blueprint for Creators app creator`

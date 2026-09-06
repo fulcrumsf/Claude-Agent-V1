@@ -1,6 +1,19 @@
 ---
-URL: https://www.enhancor.ai/
-Description: Transform AI-generated skin textures into photorealistic results with Enhancor. Our advanced AI technology makes synthetic skin indistinguishable from real human skin.
-Tag:
-  - Automation
+title: "Enhancor"
+type: tool-doc
+form: saas-tool
+summary: "Enhancor AI is a creative AI suite that generates and perfects photorealistic images and videos, specifically addressing the 'AI plastic skin problem'. It uses its proprietary Kora engine and specialized Skin Editor tool to add realistic textures, pores, and details to synthetic skin, making it indistinguishable from real human skin. The platform also functions as an AI image upscaler, preserving identity while enhancing detail for professional-grade visuals."
+url: "https://www.enhancor.ai/"
+verified: true
+tags:
+  - ai-image-enhancement
+  - photorealism
+  - skin-texture
+  - ai-upscaling
+  - generative-ai
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Enhancor AI is a creative AI suite that generates and perfects photorealistic images and videos, specifically addressing the 'AI plastic skin problem'. It uses its proprietary Kora engine and specialized Skin Editor tool to add realistic textures, pores, and details to synthetic skin, making it indistinguishable from real human skin. The platform also functions as an AI image upscaler, preserving identity while enhancing detail for professional-grade visuals.

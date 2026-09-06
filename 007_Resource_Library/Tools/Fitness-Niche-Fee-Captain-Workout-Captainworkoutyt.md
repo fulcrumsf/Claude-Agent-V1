@@ -1,16 +1,23 @@
 ---
 title: "Fitness Niche Fee Captain Workout Captainworkoutyt"
-type: tool-doc
+type: reference
 category: content-strategy
+form: tiktok
+summary: "A TikTok video featuring YouTuber Caleb Boxx rating the 'Fitness Niche' for faceless YouTube channels, giving it a score of 9/10. The content includes a screen capture of the popular fitness channel 'Captain Workout', highlighting its 325K subscriber count and specific high-performing video topics like neck training and calisthenics comparisons as examples."
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Fitness Niche Fee Captain Workout Captainworkoutyt with readable text about fitness niche."
+  - youtube-niches
+  - faceless-channels
+  - fitness-marketing
+  - captain-workout
+  - niche-research
 original_filename: "IMG_8737.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Fitness-Niche-Fee-Captain-Workout-Captainworkoutyt.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Fitness Niche Fee Captain Workout Captainworkoutyt with visible text about fitness niche. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A TikTok video featuring YouTuber Caleb Boxx rating the 'Fitness Niche' for faceless YouTube channels, giving it a score of 9/10. The content includes a screen capture of the popular fitness channel 'Captain Workout', highlighting its 325K subscriber count and specific high-performing video topics like neck training and calisthenics comparisons as examples.

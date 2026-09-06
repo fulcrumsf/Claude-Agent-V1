@@ -2,15 +2,22 @@
 title: "Google Side Shift Short Sideshift Https"
 type: tool-doc
 category: content-strategy
+form: saas-tool
+summary: "A mobile browser search result for SideShift, a platform designed to recruit UGC (User Generated Content) creators and manage campaigns. The visible description highlights features such as tracking results and automatic payments within one operating system."
+url: "https://sideshift.app"
 tags:
   - screenshot
   - video
-ai_description: "Screenshot of Google Side Shift Short Sideshift Https with readable text about google."
+  - side-shift
+  - ugc-platform
+  - creator-management
+  - marketing-tools
 original_filename: "IMG_9331.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Google-Side-Shift-Short-Sideshift-Https.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Google Side Shift Short Sideshift Https with visible text about google. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A mobile browser search result for SideShift, a platform designed to recruit UGC (User Generated Content) creators and manage campaigns. The visible description highlights features such as tracking results and automatic payments within one operating system.

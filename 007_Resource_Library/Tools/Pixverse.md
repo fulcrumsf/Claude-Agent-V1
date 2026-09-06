@@ -1,7 +1,19 @@
 ---
-URL: https://app.pixverse.ai/
-Description: PixVerse is an AI video generator for creating short videos from text prompts and images. It’s commonly used for fast social content creation, stylized motion effects, and quick iterations.
-Tag:
-  - Automation
-  - Video
+title: "Pixverse"
+type: tool-doc
+form: saas-tool
+summary: "PixVerse is an AI video generator that enables users to create short videos from text prompts and images. It offers features like text-to-video, image-to-video, AI video modification, and various AI-powered effects for social content creation and cinematic productions."
+url: "https://app.pixverse.ai/"
+verified: true
+tags:
+  - ai-video-generation
+  - text-to-video
+  - image-to-video
+  - social-media-content
+  - video-editing-tool
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+PixVerse is an AI video generator that enables users to create short videos from text prompts and images. It offers features like text-to-video, image-to-video, AI video modification, and various AI-powered effects for social content creation and cinematic productions.

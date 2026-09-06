@@ -1,7 +1,19 @@
 ---
-URL: https://readdy.ai/
-Category: Tools
-Description: Readdy is an AI website builder that turns written descriptions into a designed, published website. It’s geared toward quickly generating professional landing pages without needing to code or manage complex design tools.
-Tag:
-  - Webdesign
+title: "Readdy"
+type: tool-doc
+form: saas-tool
+summary: "Readdy AI is an online website builder that uses artificial intelligence to generate complete websites from natural language prompts, templates, or URLs. It creates layouts, content, images, and SEO settings, offering a no-code visual editor for customization. Users can publish their sites directly or export the generated code."
+url: "https://readdy.ai/"
+verified: true
+tags:
+  - ai-website-builder
+  - no-code
+  - web-development
+  - landing-page-generator
+  - ai-design
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Readdy AI is an online website builder that uses artificial intelligence to generate complete websites from natural language prompts, templates, or URLs. It creates layouts, content, images, and SEO settings, offering a no-code visual editor for customization. Users can publish their sites directly or export the generated code.

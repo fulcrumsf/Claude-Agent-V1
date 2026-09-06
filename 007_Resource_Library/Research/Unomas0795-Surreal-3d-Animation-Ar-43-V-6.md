@@ -1,14 +1,25 @@
 ---
 title: "Unomas0795 Surreal 3d Animation Ar 43 V 6"
-type: research
+type: design-inspiration
 category: research
+form: other
+summary: "A 3D rendered digital art piece featuring an anthropomorphic mushroom character with a face beneath a mossy cap. The image showcases a fantasy aesthetic with miniature toadstools, butterflies, and detailed textures like moss and wood grain."
+search_for: "mushroom character fantasy 3d art illustration"
 tags:
   - research
+  - 3d-art
+  - character-design
+  - fantasy-art
+  - illustration
+  - needs-enrichment
 created: 2026-05-03
-source: unomas0795_surreal_3d_animation_--ar_43_--v_6.1_25db951c-c6e1-4bca-9d79-72e78f9a9ad0_2.png
+enriched: 2026-09-05
 ---
 
 ![[Unomas0795-Surreal-3d-Animation-Ar-43-V-6.png]]
 
-## AI Analysis
-Image reference from Notion export: unomas0795_surreal_3d_animation_--ar_43_--v_6.1_25db951c-c6e1-4bca-9d79-72e78f9a9ad0_2.
+## Summary
+A 3D rendered digital art piece featuring an anthropomorphic mushroom character with a face beneath a mossy cap. The image showcases a fantasy aesthetic with miniature toadstools, butterflies, and detailed textures like moss and wood grain.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `mushroom character fantasy 3d art illustration`

@@ -1,7 +1,20 @@
 ---
-URL: https://meetglimpse.com/
-Description: Glimpse is a trends discovery tool that surfaces fast-growing topics across the internet. Use it to spot early trend signals for SEO/content planning and to prioritize keywords before they become saturated.
-Category: Tool
+title: "Glimpse"
+type: tool-doc
+form: saas-tool
+summary: "Glimpse is a trends discovery tool available as a Chrome extension that enhances Google Trends by providing absolute search volume, growth rates, and forecasting for keywords. It helps users identify fast-growing topics and early trend signals for SEO, content planning, and market research."
+url: "https://meetglimpse.com/"
+verified: true
 tags:
   - SEO
+  - trend-discovery
+  - seo
+  - keyword-research
+  - market-research
+  - google-trends
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Glimpse is a trends discovery tool available as a Chrome extension that enhances Google Trends by providing absolute search volume, growth rates, and forecasting for keywords. It helps users identify fast-growing topics and early trend signals for SEO, content planning, and market research.

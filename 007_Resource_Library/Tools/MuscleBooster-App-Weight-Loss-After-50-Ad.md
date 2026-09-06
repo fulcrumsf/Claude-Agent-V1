@@ -1,16 +1,28 @@
 ---
 title: "MuscleBooster App Weight Loss After 50 Ad"
-type: extracted-knowledge
+type: tool-doc
 category: tools
+form: social-thread
+summary: "An Instagram post or ad from the brand 'musclebooster_app' featuring a speaker (likely Dr. Robert Goulet, known as the 'Longevity Doc') discussing health benefits for men over 50. The text overlay claims the product supports weight loss in that demographic."
+search_for: "musclebooster app supplement reviews"
 tags:
   - fitness-app
   - weight-loss
   - product-ad
+  - supplements
+  - mens-health
+  - musclebooster
+  - marketing
+  - needs-enrichment
 original_filename: "IMG_9869.PNG"
 created: 2026-08-24
+enriched: 2026-09-05
 ---
 
 ![[MuscleBooster-App-Weight-Loss-After-50-Ad.png]]
 
-## AI Analysis
-Instagram advertisement for the MuscleBooster fitness app, showing a man speaking into a microphone with the claim that the app supports weight loss even after age 50. Saved as a product/app reference for possible later research.
+## Summary
+An Instagram post or ad from the brand 'musclebooster_app' featuring a speaker (likely Dr. Robert Goulet, known as the 'Longevity Doc') discussing health benefits for men over 50. The text overlay claims the product supports weight loss in that demographic.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `musclebooster app supplement reviews`

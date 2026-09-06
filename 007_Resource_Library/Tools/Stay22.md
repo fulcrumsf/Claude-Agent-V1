@@ -1,6 +1,19 @@
 ---
-URL: https://www.stay22.com/
-Category: Marketplace
-Description: Stay22 is an affiliate monetization platform for travel creators and publishers. It turns content into interactive maps and booking widgets, helping audiences find places to stay and generating revenue from affiliate links.
-Link: https://www.stay22.com/
+title: "Stay22"
+type: tool-doc
+form: saas-tool
+summary: "Stay22 is an affiliate monetization platform that helps travel creators and publishers earn revenue by integrating accommodation and travel booking links into their content. It provides tools such as interactive maps, direct hotel links, and an AI-driven pop-up to convert audience travel intent into bookings. The platform also recently expanded its services to include retail monetization."
+url: "https://www.stay22.com/"
+verified: true
+tags:
+  - affiliate-marketing
+  - travel-tech
+  - content-monetization
+  - saas
+  - creator-economy
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Stay22 is an affiliate monetization platform that helps travel creators and publishers earn revenue by integrating accommodation and travel booking links into their content. It provides tools such as interactive maps, direct hotel links, and an AI-driven pop-up to convert audience travel intent into bookings. The platform also recently expanded its services to include retail monetization.

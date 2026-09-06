@@ -1,18 +1,28 @@
 ---
 title: "PluginPlay After Effects Plugins"
-type: extracted-knowledge
+type: tool-doc
 category: tools
+form: browser-extension
+summary: "The image features a business card for PluginPlay, a vendor offering plugins and scripts for Adobe After Effects. The central logo and text clearly identify the service as a provider of creative tools specifically designed to enhance the After Effects workflow."
+search_for: "PluginPlay after effects"
 tags:
   - after-effects
   - video-editing
   - plugins
   - motion-graphics
   - software-tools
+  - motion-design
+  - adobe
+  - needs-enrichment
 original_filename: "Open-Source-AI-Tools-And-Investments-04.jpg"
 created: 2026-05-09
+enriched: 2026-09-05
 ---
 
 ![[PluginPlay-After-Effects-Plugins.jpg]]
 
-## AI Analysis
-A promotional card for PluginPlay, a platform offering premium plugins and scripts for Adobe After Effects. The image highlights a resource hub designed for motion graphics artists and video editors looking to streamline their creative workflow.
+## Summary
+The image features a business card for PluginPlay, a vendor offering plugins and scripts for Adobe After Effects. The central logo and text clearly identify the service as a provider of creative tools specifically designed to enhance the After Effects workflow.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `PluginPlay after effects`

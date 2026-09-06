@@ -1,7 +1,19 @@
 ---
-URL: https://yoodli.ai/
-Category: Tools
-Description: Yoodli is an AI communication coach that gives feedback on speaking and presentations. It’s used to practice interviews, sales calls, and public speaking with analytics like filler words, pacing, and clarity.
-Tag:
-  - Audio
+title: "Yoodli"
+type: tool-doc
+form: saas-tool
+summary: "Yoodli is an AI speech coaching platform that records and analyzes verbal communication to improve speaking and presentation skills. It provides detailed feedback on metrics such as filler word frequency, pacing, eye contact, and vocabulary. Users can practice for interviews, sales calls, and public speaking engagements to refine their communication habits."
+url: "https://yoodli.ai/"
+verified: true
+tags:
+  - ai-speech-coach
+  - communication-skills
+  - public-speaking
+  - presentation-practice
+  - interview-preparation
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Yoodli is an AI speech coaching platform that records and analyzes verbal communication to improve speaking and presentation skills. It provides detailed feedback on metrics such as filler word frequency, pacing, eye contact, and vocabulary. Users can practice for interviews, sales calls, and public speaking engagements to refine their communication habits.

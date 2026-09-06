@@ -1,6 +1,20 @@
 ---
-URL: https://chrismoran.link
-Description: Chris Moran’s After Effects Text Animations is a collection of free AE presets and project files. Use it to add high-quality text animation to your videos and to speed up motion design workflows.
+title: "Chris Morman After Effects Text Animations"
+type: tool-doc
+form: saas-tool
+summary: "Chris Moran's website, chrismoran.link, offers a collection of free After Effects presets and project files. These resources are designed to help creators add high-quality text animations to their videos and accelerate motion design workflows."
+url: "https://chrismoran.link"
+verified: true
 tags:
   - Tools
+  - after-effects
+  - motion-design
+  - video-editing
+  - animation-presets
+  - project-files
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Chris Moran's website, chrismoran.link, offers a collection of free After Effects presets and project files. These resources are designed to help creators add high-quality text animations to their videos and accelerate motion design workflows.

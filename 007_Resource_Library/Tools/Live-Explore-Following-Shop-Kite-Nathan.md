@@ -2,15 +2,27 @@
 title: "Live Explore Following Shop Kite Nathan"
 type: tool-doc
 category: content-strategy
+form: tiktok
+summary: "A TikTok video featuring Nathan Hodgson introducing 'Kite', an AI tool that converts screen recordings into polished product videos. The image displays the Kite logo and branding alongside a description of its core functionality for automated video editing."
+search_for: "kite ai screen recording to video"
 tags:
   - screenshot
   - video
-ai_description: "Screenshot of Live Explore Following Shop Kite Nathan with readable text about live."
+  - kite-ai
+  - video-editing
+  - automation
+  - screencast
+  - product-tour
+  - needs-enrichment
 original_filename: "IMG_8917.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Live-Explore-Following-Shop-Kite-Nathan.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Live Explore Following Shop Kite Nathan with visible text about live. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A TikTok video featuring Nathan Hodgson introducing 'Kite', an AI tool that converts screen recordings into polished product videos. The image displays the Kite logo and branding alongside a description of its core functionality for automated video editing.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `kite ai screen recording to video`

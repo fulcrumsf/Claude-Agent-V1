@@ -1,16 +1,27 @@
 ---
 title: "Selling Daily Ranking Loopy Goes Ries"
-type: tool-doc
+type: tutorial
 category: content-strategy
+form: tiktok
+summary: "A screen recording of a computer display showing an Instagram profile named 'tatiana.makes.mu'. The profile bio and captions explicitly describe building an AI Influencer account to generate money online without using a face. Comments on the overlay discuss getting access to AICA (AI Cash Academy) and request to share the IG handle."
+search_for: "tatiana.makes.mu"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Selling Daily Ranking Loopy Goes Ries with readable text about selling."
+  - ai-influencer
+  - social-media-marketing
+  - passive-income
+  - instagram-strategy
+  - needs-enrichment
 original_filename: "IMG_8019.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Selling-Daily-Ranking-Loopy-Goes-Ries.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Selling Daily Ranking Loopy Goes Ries with visible text about selling. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A screen recording of a computer display showing an Instagram profile named 'tatiana.makes.mu'. The profile bio and captions explicitly describe building an AI Influencer account to generate money online without using a face. Comments on the overlay discuss getting access to AICA (AI Cash Academy) and request to share the IG handle.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `tatiana.makes.mu`

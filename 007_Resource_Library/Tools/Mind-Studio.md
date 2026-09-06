@@ -1,5 +1,19 @@
 ---
-URL: https://www.mindstudio.ai/
-Category: Tools
-Description: MindStudio is a platform for building, testing, and deploying AI agents and AI-powered applications. It provides tools for workflows, plugins/skills, and operations so you can ship agent-based products without building the entire stack from scratch.
+title: "Mind Studio"
+type: tool-doc
+form: saas-tool
+summary: "MindStudio is a no-code/low-code platform designed for building, testing, and deploying AI agents and AI-powered applications. It enables users to create intelligent agents that automate tasks, analyze data, and generate content through visual workflows and integrations with over 200 AI models. The platform aims to make AI accessible for individuals and enterprises to develop custom AI solutions without extensive coding expertise."
+url: "https://www.mindstudio.ai/"
+verified: true
+tags:
+  - ai-agent-builder
+  - no-code-ai
+  - workflow-automation
+  - ai-development-platform
+  - low-code-ai
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+MindStudio is a no-code/low-code platform designed for building, testing, and deploying AI agents and AI-powered applications. It enables users to create intelligent agents that automate tasks, analyze data, and generate content through visual workflows and integrations with over 200 AI models. The platform aims to make AI accessible for individuals and enterprises to develop custom AI solutions without extensive coding expertise.

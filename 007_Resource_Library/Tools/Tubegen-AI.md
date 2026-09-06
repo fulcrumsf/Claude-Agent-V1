@@ -1,6 +1,20 @@
 ---
-URL: https://tubegen.ai/product
-Description: TubeGen AI is a tool for automating parts of YouTube video creation, such as scripting and production workflows. Use it to speed up content generation and pipeline steps for long-form or shorts content.
+title: "Tubegen AI"
+type: tool-doc
+form: saas-tool
+summary: "TubeGen AI is an AI-powered platform designed to automate the creation of YouTube videos, particularly for faceless channels. It generates scripts, AI voiceovers, scene visuals, thumbnails, and complete, ready-to-upload videos. The tool aims to streamline the entire content production workflow for creators."
+url: "https://tubegen.ai/product"
+verified: true
 tags:
   - Tools
+  - youtube-automation
+  - ai-video-generation
+  - content-creation
+  - faceless-youtube
+  - video-production
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+TubeGen AI is an AI-powered platform designed to automate the creation of YouTube videos, particularly for faceless channels. It generates scripts, AI voiceovers, scene visuals, thumbnails, and complete, ready-to-upload videos. The tool aims to streamline the entire content production workflow for creators.

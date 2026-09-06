@@ -1,7 +1,18 @@
 ---
-URL: https://hailuoai.video/
-Category: Tools
-Description: Turn text &amp; images into great videos with Hailuo AI&#x27;s video maker. Our tool also includes an AI image generator to create stunning posts, memes &amp; more in seconds.
-Tag:
-  - Video
+title: "Hailuoai"
+type: tool-doc
+form: saas-tool
+summary: "Hailuo AI is an AI-powered video generation platform developed by MiniMax. It allows users to create short, high-quality videos from text prompts or still images, animating realistic motions."
+url: "https://hailuoai.video/"
+verified: true
+tags:
+  - ai-video-generator
+  - text-to-video
+  - image-to-video
+  - ai-image-generator
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Hailuo AI is an AI-powered video generation platform developed by MiniMax. It allows users to create short, high-quality videos from text prompts or still images, animating realistic motions.

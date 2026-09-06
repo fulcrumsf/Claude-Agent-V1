@@ -294,6 +294,35 @@
   is clean. Remaining production work is final music/branding/package review,
   not pipeline hardening.
 
+## Neon Parcel music and end-screen review master
+
+- Tony selected CTA option 2: “Subscribe to Neon Parcel. You never know what
+  is next.” Generated with Herbie at 3.6 seconds, inside the seven-second end
+  screen.
+- Generated and preserved both Suno instrumental variants using the approved
+  quirky, whimsical, family-friendly home-video prompt; the longest variant
+  was used for the review master.
+- Appended the verified horizontal end screen and mixed music under the
+  narration/original audio using the hardened 48 kHz workflow.
+- Review master:
+  `Assembly/Versions/v5/Neon-Parcel-Grandma-And-Bear-Compilation-Music-Endscreen-Review-v1.mp4`.
+  Duration is 136.775 seconds; video and audio endpoints match.
+- Status: awaiting Tony's review of music, CTA, and end-screen presentation;
+  no publishing or Shorts generation performed.
+
+## Neon Parcel compilation status and package phase
+
+- Tony approved the music/end-screen review master and graded the compilation
+  **B**.
+- Tony set the Neon Parcel Compilation pipeline at **65% autonomy-ready**, with
+  a **95%** threshold for mostly autonomous scheduled operation.
+- Updated the production manifest, checkpoint state, report card, Neon Parcel
+  skill, feedback loop, and shared memory. Current status is
+  `package_creation_pending`; publishing remains blocked.
+- Confirmed the existing skills: `title-hook-generator` covers title options
+  and descriptions; `youtube-thumbnail-design` covers thumbnail creation and
+  validation. Both should be used with the Neon Parcel pipeline skill.
+
 ## Resource Library graph build — Option A ran, result weak
 
 - `graphify extract .` via Gemini: 3,548 docs, $1.46, ~15 min. OpenAI_History + media
@@ -308,3 +337,125 @@
 - REGISTRY.md updated with the honest build note. graphify-out/ gitignored (not committed).
 - DECISION PENDING: keep as v1 + enrich later, or invest now in per-subfolder rebuild /
   frontmatter enrichment pass.
+
+## Neon Parcel thumbnail tutorial case study
+
+- Ingested only `How To Make Viral Thumbnails (99% Do This Wrong).md` from
+  `000_Ingest/`, routing it to `007_Resource_Library/Tutorials/` with the
+  visible YouTube URL `https://www.youtube.com/watch?v=jOcztYdF0fc`.
+- YouTube media downloads returned 403s for available streams, so the public URL
+  was analyzed directly through Gemini's supported YouTube input path rather
+  than using cookies or repeated failed downloads.
+- Upgraded the installed `google-genai` SDK from 1.68.0 to 2.22.0 because the
+  current Interactions API rejected the legacy schema. Gemini 3.8 Flash agentic
+  analysis completed with processing trace confirmation.
+- Saved the raw analysis and a Neon Parcel case study under
+  `002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Case_Studies/How-To-Make-Viral-Thumbnails-99-Do-This-Wrong/`.
+- The report recommends additive thumbnail-architecture planning, modular asset
+  decisions, one-change refinements, text/safe-zone planning, and mobile-size
+  validation. The existing thumbnail skill was not changed pending Tony's
+  approval of these recommendations.
+
+## YouTube thumbnail skill optional add-on
+
+- Added an optional `Architecture-First Thumbnail Pass` to
+  `001_Architecture/Skills/youtube-thumbnail-design/SKILL.md` without changing
+  existing Quick Start, pattern, checklist, safe-zone, or A/B-test logic.
+- The add-on requires a one-sentence visual promise, focal hierarchy brief,
+  modular-asset decision, one-variable refinement passes, non-destructive
+  versioning, and mobile/safe-zone validation.
+- It explicitly treats CTR/virality as a testable hypothesis, not a guarantee.
+
+## Compilation thumbnail architecture examples
+
+- Applied the optional Architecture-First Thumbnail Pass to the approved
+  `0001_Grandma-And-Bear-Compilation` production.
+- Saved three non-paid, non-destructive thumbnail architecture examples and
+  complete image prompts in the production `Package/` folder: Direct Faceoff,
+  Unexpected Pattern, and Caught-On-Camera Reaction.
+- No image-generation credits were spent. Next decision is Tony's selection of
+  an option for an actual thumbnail generation pass.
+
+## Thumbnail candidates and metadata
+
+- Generated three separate GPT Image 2 candidates through the established
+  `kie.ai` route after correcting the live model ID mismatch.
+- Preserved the 3840x2160 PNG source renders and created separate 1280x720 JPEG
+  delivery files for YouTube; no existing asset was overwritten.
+- Saved three title options and one shared description in the production
+  package. Metadata remains draft pending Tony's selection and final review.
+
+## Video-Analyzer agentic routing hardening
+
+- Updated `001_Architecture/Skills/Video-Analyzer/` to default to Gemini 3.8
+  Flash and explicitly select agentic or static processing by analysis category.
+- Added routing categories: case-study, tutorial, continuity, physics,
+  screen-text, and hybrid. Continuity/physics routes automatically request
+  dense 0.5-second keyframes for frame-sensitive QA, including limb deformation,
+  morphing, duplicate subjects, broken connections, and impossible causality.
+- Agentic calls now use the Gemini Interactions API and record whether the
+  response contains processing trace steps. Updated tests and documentation.
+- Verification: Python compilation and route assertions pass; full pytest could
+  not run because `pytest` is not installed in the active Python environment.
+
+## Evening 2 — claude-mem → Gemini + Resource Library stub enrichment
+
+### claude-mem observer moved off Claude
+- Was `CLAUDE_MEM_PROVIDER=claude` (model claude-sonnet-4-6, CLI subscription auth) —
+  the memory worker was burning the same Claude usage allowance as interactive
+  sessions; that allowance hit its cap 2026-09-05T17:47Z ("inference allowance
+  exhausted").
+- Switched to `gemini` (`gemini-2.5-flash-lite`), tier-routing disabled so nothing
+  falls back to haiku. Confirmed live: worker log `Generator auto-starting ... using Gemini`.
+- Key handling: Gemini key NOT copied into settings.json. Added alias
+  `export CLAUDE_MEM_GEMINI_API_KEY="$GEMINI_API_KEY"` at `~/.env-secrets:225`;
+  settings.json field left "". (Correction logged — Claude first wrote the literal
+  key into settings.json, Tony flagged it as a security risk, remediated.)
+- `npx claude-mem install --provider gemini` non-interactively opens a cmem.ai
+  login page — don't use it; plain `worker restart` picks up settings.json fine.
+
+### Resource Library stub enrichment (graph-day batch A, part 1)
+- Goal: fatten the ~2,000 near-empty notes that made the RL graph weak, before rebuild.
+- New scripts in `001_Architecture/Scripts/`:
+  - `resource_library_stub_triage.py` — classifies stubs → `_Stub_Triage.json`/`.md`.
+    Buckets: bucket1_revision (has screenshot), bucket2_url_enrich (has URL),
+    bucket3_dead (garbled/missing-image/no-signal).
+  - `revision_stub_notes.py` — re-runs hardened vision prompt on bucket-1 images,
+    rewrites the note IN PLACE (filename/embed preserved), sets form/summary/url/
+    search_for/tags + `enriched:` marker (resumable). `--shard I/N` for parallelism.
+  - `enrich_url_stub_notes.py` — Gemini (google_search grounding) visits bucket-2
+    URLs, writes summary/form/verified. `--shard I/N`.
+  - `apply_dead_stub_graphignore.py` — writes bucket-3 paths into root
+    `.graphifyignore` between AUTO markers (idempotent). NOT YET APPLIED.
+- Triage counts (2026-09-05): 362 revision / 558 url-enrich / 1028 dead.
+- `process_image_ingest.py` — added certifi SSL_CERT_FILE guard (macOS framework
+  Python had no CA bundle → urllib SSL failures).
+- Backup of all 939 mutated notes: scratchpad `stub_notes_backup_pre_enrich.tar.gz`.
+  007_Resource_Library is git-tracked (5571 files) so git is the other safety net.
+- Runs launched in parallel (12 revision shards + 5 enrich shards). PENDING at
+  handoff: wait for completion → re-run triage → apply_dead_stub_graphignore →
+  `graphify extract --force` rebuild → spot-check.
+
+### RL graph rebuild — v2 (crossed into 2026-09-06)
+- Whole-corpus `graphify extract --force` after enrichment: STILL 1684/2507 files
+  produced zero nodes (67%) — Gemini omits files from large chunk responses. New graph
+  978 < old 1066 → graphify shrink-guard refused the overwrite (v1 preserved).
+- Diagnosis: the omission is a chunk-size problem, not (only) a corpus problem.
+  Docs test folder with `--token-budget 18000`: 67% → 8% omitted.
+- Fix applied: `scratchpad/rl_per_subfolder.sh` — per-subfolder
+  `graphify extract --force --token-budget 16000` on all 13 subfolders →
+  `graphify merge-graphs` → `cluster-only` → `label`.
+- Result: **3036 nodes / 1182 edges / 1897 communities**, ~$2.40 Gemini. v1 was 1066/293.
+  Sub-graphs live at `007_Resource_Library/<subfolder>/graphify-out/`.
+- Big folders still lose ~24% (Tools 275/1143, Research 111/554, Prompts 54/227) — a
+  `--token-budget 8000` re-run on just those 3 would recover most. Logged in REGISTRY note.
+- Test queries ("AI video generation tools", "n8n automation") return relevant,
+  well-clustered results.
+- REGISTRY.md row + build note updated to v2.
+
+### RL graph v2.1 — big-folder re-extract at token-budget 8000
+- Prompts test: budget 16000→8000 cut omission 24%→3%, nodes 219→339. Applied to Research + Tools.
+- Research: 523→700 nodes (omit 20%→7%). Tools: 1334→1687 (omit 24%→12%). +$1.90 Gemini.
+- Re-merged 13 subgraphs → cluster → label: **3686 nodes / 1622 edges / 2146 communities (392 labeled)**.
+- `scratchpad/rl_bigfolders.sh`. REGISTRY v2.1 note added with the token-budget rule.
+- Queries verified (POD/etsy, AI video, n8n) — relevant + well-clustered.

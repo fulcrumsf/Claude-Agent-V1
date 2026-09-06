@@ -2,15 +2,27 @@
 title: "Oul Captain Auto Editor Auto Editor Watch"
 type: tool-doc
 category: content-strategy
+form: saas-tool
+summary: "Mobile landing page for AI Ai, Captain, an AI-powered auto-editor plugin designed for Adobe Premiere Pro and DaVinci Resolve Studio. The tool claims to automatically edit vlogs, b-roll, and podcasts by intelligently analyzing footage to revolutionize video production."
+search_for: "aiaicaptain.ai github"
 tags:
   - screenshot
   - video
-ai_description: "Screenshot of Oul Captain Auto Editor Auto Editor Watch with readable text about oul."
+  - video-editing
+  - adobe-premiere
+  - davinci-resolve
+  - ai-plugin
+  - automation
+  - needs-enrichment
 original_filename: "IMG_7910.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Oul-Captain-Auto-Editor-Auto-Editor-Watch.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Oul Captain Auto Editor Auto Editor Watch with visible text about oul. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+Mobile landing page for AI Ai, Captain, an AI-powered auto-editor plugin designed for Adobe Premiere Pro and DaVinci Resolve Studio. The tool claims to automatically edit vlogs, b-roll, and podcasts by intelligently analyzing footage to revolutionize video production.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `aiaicaptain.ai github`

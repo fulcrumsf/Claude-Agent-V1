@@ -1,5 +1,19 @@
 ---
-URL: https://codepen.io/
-Description: CodePen is an online playground for front-end development (HTML, CSS, and JavaScript). It’s useful for prototyping UI components, sharing small demos, and testing ideas quickly in the browser.
-Category: Development
+title: "Codepen"
+type: tool-doc
+form: saas-tool
+summary: "CodePen is an online code editor and social development environment for front-end web technologies (HTML, CSS, and JavaScript). It enables developers to write, test, and showcase code snippets in the browser with real-time results, facilitating rapid prototyping, learning, and collaboration."
+url: "https://codepen.io/"
+verified: true
+tags:
+  - front-end-development
+  - code-editor
+  - web-development
+  - prototyping
+  - online-community
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+CodePen is an online code editor and social development environment for front-end web technologies (HTML, CSS, and JavaScript). It enables developers to write, test, and showcase code snippets in the browser with real-time results, facilitating rapid prototyping, learning, and collaboration.

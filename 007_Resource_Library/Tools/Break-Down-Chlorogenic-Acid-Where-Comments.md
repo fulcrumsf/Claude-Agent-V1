@@ -1,16 +1,28 @@
 ---
 title: "Break Down Chlorogenic Acid Where Comments"
-type: tool-doc
+type: reference
 category: content-strategy
+form: social-thread
+summary: "A screenshot of a YouTube comment section discussing sources and dietary impacts of chlorogenic acid. Visible comments identify black coffee, green tea, yerba mate, and unroasted green beans as high sources of the compound, with clarification that these beverages do not break a fast."
+search_for: "Chlorogenic Acid Foods List Health Benefits"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Break Down Chlorogenic Acid Where Comments with readable text about break down."
+  - chlorogenic-acid
+  - coffee
+  - nutrition
+  - fasting
+  - yerba-mate
+  - needs-enrichment
 original_filename: "IMG_8630.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Break-Down-Chlorogenic-Acid-Where-Comments.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Break Down Chlorogenic Acid Where Comments with visible text about break down. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A screenshot of a YouTube comment section discussing sources and dietary impacts of chlorogenic acid. Visible comments identify black coffee, green tea, yerba mate, and unroasted green beans as high sources of the compound, with clarification that these beverages do not break a fast.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Chlorogenic Acid Foods List Health Benefits`

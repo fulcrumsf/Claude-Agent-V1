@@ -1,6 +1,20 @@
 ---
-URL: https://blkmarket.com/
-Description: BLKMARKET is a design asset marketplace with templates, brushes, textures, and creative resources. Use it to source ready-made assets and speed up production for graphics, branding, and digital products.
+title: "Blkmarket"
+type: tool-doc
+form: saas-tool
+summary: "BLKMARKET is an online marketplace that offers a variety of design assets, including templates, brushes, textures, and other creative resources for graphic designers. It provides ready-made assets to help users accelerate the production of graphics, branding, and digital products. While the main blkmarket.com website is currently in a transitional phase, its associated beta site provides access to these resources."
+url: "https://blkmarket.com/"
+verified: true
 tags:
   - Marketplace
+  - design-assets
+  - graphic-design
+  - creative-resources
+  - marketplace
+  - digital-products
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+BLKMARKET is an online marketplace that offers a variety of design assets, including templates, brushes, textures, and other creative resources for graphic designers. It provides ready-made assets to help users accelerate the production of graphics, branding, and digital products. While the main blkmarket.com website is currently in a transitional phase, its associated beta site provides access to these resources.

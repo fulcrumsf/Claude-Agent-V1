@@ -1,16 +1,28 @@
 ---
 title: "Live Explore Following Shop Uvluiliitinaly Viutus"
-type: tool-doc
+type: tutorial
 category: content-strategy
+form: tiktok
+summary: "A TikTok tutorial video by Boss Media Tech demonstrating how to create 3D documentary style videos using AI tools. The content highlights a 'Sora2 Extend' template, likely within a platform like V0 or similar generative video tools, to generate unlimited duration clips without multi-shot segmentation."
+search_for: "Boss Media Tech Sora2 extend template v0"
 tags:
   - screenshot
   - tools
-ai_description: "Screenshot of Live Explore Following Shop Uvluiliitinaly Viutus with readable text about live."
+  - ai-video-generation
+  - sora-clone
+  - 3d-animation
+  - tutorials
+  - v0-web-design
+  - needs-enrichment
 original_filename: "IMG_8716.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Live-Explore-Following-Shop-Uvluiliitinaly-Viutus.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Live Explore Following Shop Uvluiliitinaly Viutus with visible text about live. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A TikTok tutorial video by Boss Media Tech demonstrating how to create 3D documentary style videos using AI tools. The content highlights a 'Sora2 Extend' template, likely within a platform like V0 or similar generative video tools, to generate unlimited duration clips without multi-shot segmentation.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Boss Media Tech Sora2 extend template v0`

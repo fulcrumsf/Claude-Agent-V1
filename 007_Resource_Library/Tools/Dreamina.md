@@ -1,10 +1,19 @@
 ---
-URL: https://dreamina.capcut.com/
-Category: Tools
-Description: Dreamina (CapCut) is an AI creative suite for generating images and videos from prompts. It’s geared toward quick social-ready assets and creative iteration inside the CapCut ecosystem.
-Tag:
-  - 3D
-  - Avatars
-  - Image
-  - Video
+title: "Dreamina"
+type: tool-doc
+form: saas-tool
+summary: "Dreamina (CapCut) is an AI creative suite that generates images and videos from text prompts or existing images. It offers features like text-to-video, image animation, and advanced controls for motion and composition. The tool is integrated with CapCut and provides daily free tokens for users."
+url: "https://dreamina.capcut.com/"
+verified: true
+tags:
+  - ai-image-generation
+  - ai-video-generation
+  - capcut
+  - creative-suite
+  - text-to-video
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Dreamina (CapCut) is an AI creative suite that generates images and videos from text prompts or existing images. It offers features like text-to-video, image animation, and advanced controls for motion and composition. The tool is integrated with CapCut and provides daily free tokens for users.

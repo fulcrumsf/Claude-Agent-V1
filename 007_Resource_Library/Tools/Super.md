@@ -1,5 +1,19 @@
 ---
-URL: https://super.so/
-Description: Create a custom website in less than a minute with instant page loads, SEO optimization, and customized theming. All your content is kept and managed in Notion so you can focus on creating while Super handles the rest.
-Category: Tool
+title: "Super"
+type: tool-doc
+form: saas-tool
+summary: "Super.so is a no-code platform that transforms Notion pages into fast, customizable, and SEO-optimized websites. It allows users to manage all website content directly within their Notion workspace, handling the technical aspects of web development such as hosting and performance optimization."
+url: "https://super.so/"
+verified: true
+tags:
+  - notion-website-builder
+  - no-code
+  - website-creation
+  - seo-optimization
+  - custom-domains
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Super.so is a no-code platform that transforms Notion pages into fast, customizable, and SEO-optimized websites. It allows users to manage all website content directly within their Notion workspace, handling the technical aspects of web development such as hosting and performance optimization.

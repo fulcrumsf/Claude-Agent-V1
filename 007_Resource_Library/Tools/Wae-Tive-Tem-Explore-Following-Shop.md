@@ -1,16 +1,28 @@
 ---
 title: "Wae Tive Tem Explore Following Shop"
-type: tool-doc
+type: tutorial
 category: content-strategy
+form: tiktok
+summary: "A screen recording demonstrating an AI automation workflow where video files are retrieved and automatically uploaded to Google Drive. The visible nodes include 'Get Video' and 'Upload to Google Drive', along with configuration text for setting up a public folder."
+search_for: "Marcin AI automation google drive upload tutorial"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Wae Tive Tem Explore Following Shop with readable text about wae."
+  - automation
+  - google-drive
+  - workflow
+  - video-upload
+  - aiprompts
+  - needs-enrichment
 original_filename: "IMG_8657.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Wae-Tive-Tem-Explore-Following-Shop.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Wae Tive Tem Explore Following Shop with visible text about wae. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A screen recording demonstrating an AI automation workflow where video files are retrieved and automatically uploaded to Google Drive. The visible nodes include 'Get Video' and 'Upload to Google Drive', along with configuration text for setting up a public folder.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Marcin AI automation google drive upload tutorial`

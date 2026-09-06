@@ -1,7 +1,19 @@
 ---
-URL: https://www.bardeen.ai/
-Category: Tools
-Description: Bardeen is an AI automation tool that helps you automate repetitive web and workflow tasks. It’s often used for scraping data, enriching leads, and connecting tools like CRMs/spreadsheets so workflows run with minimal manual work.
-Tag:
-  - Automation
+title: "Bardeen"
+type: tool-doc
+form: saas-tool
+summary: "Bardeen AI is a browser-based AI automation tool, primarily a Chrome extension, that helps users automate repetitive web and workflow tasks without code. It excels at data scraping, enriching CRM records, and moving information between over 100 applications like Google Sheets, Slack, and HubSpot, often utilizing AI agents and pre-built 'playbooks'."
+url: "https://www.bardeen.ai/"
+verified: true
+tags:
+  - ai-automation
+  - workflow-automation
+  - data-scraping
+  - no-code
+  - browser-extension
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Bardeen AI is a browser-based AI automation tool, primarily a Chrome extension, that helps users automate repetitive web and workflow tasks without code. It excels at data scraping, enriching CRM records, and moving information between over 100 applications like Google Sheets, Slack, and HubSpot, often utilizing AI agents and pre-built 'playbooks'.

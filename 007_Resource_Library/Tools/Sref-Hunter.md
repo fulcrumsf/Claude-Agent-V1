@@ -1,7 +1,19 @@
 ---
-URL: https://srefhunter.top/
-Category: Directory
-Description: SREF Hunter appears to be a niche web tool hosted at http://srefhunter.top. If you intended it as an AI tool bookmark, you may want to verify the site’s purpose and safety before using it; once confirmed, summarize what it does and the primary use case in 2–3 sentences.
-Tag:
-  - Midjourney
+title: "Sref Hunter"
+type: tool-doc
+form: saas-tool
+summary: "SREF Hunter is a community-driven online platform that catalogs and shares Midjourney SREF codes and creative prompts. It provides a searchable library of style reference codes, enabling users to discover, collect, and apply specific aesthetic effects in their Midjourney AI image generation projects. The platform also allows users to contribute their own SREF codes and save favorites for future use."
+url: "https://srefhunter.top/"
+verified: true
+tags:
+  - midjourney
+  - sref-codes
+  - ai-image-generation
+  - style-library
+  - creative-prompts
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+SREF Hunter is a community-driven online platform that catalogs and shares Midjourney SREF codes and creative prompts. It provides a searchable library of style reference codes, enabling users to discover, collect, and apply specific aesthetic effects in their Midjourney AI image generation projects. The platform also allows users to contribute their own SREF codes and save favorites for future use.

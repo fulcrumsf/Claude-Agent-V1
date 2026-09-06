@@ -2,13 +2,19 @@
 title: "01 Mockup"
 type: design-inspiration
 category: design-inspiration
+form: design-reference
+summary: "An abstract artwork featuring overlapping geometric and organic shapes in a palette of terracotta, slate blue, mustard yellow, and black. The piece utilizes semi-transparent layering techniques to create depth and visual interest, set within a light wood frame."
 tags:
   - design-inspiration
+  - abstract-art
+  - geometric-design
+  - color-palette
+  - art-inspiration
 created: 2026-05-03
-source: 01-Mockup.jpg
+enriched: 2026-09-05
 ---
 
 ![[01-Mockup.jpg]]
 
-## AI Analysis
-Image reference from Notion export: 01-Mockup.
+## Summary
+An abstract artwork featuring overlapping geometric and organic shapes in a palette of terracotta, slate blue, mustard yellow, and black. The piece utilizes semi-transparent layering techniques to create depth and visual interest, set within a light wood frame.

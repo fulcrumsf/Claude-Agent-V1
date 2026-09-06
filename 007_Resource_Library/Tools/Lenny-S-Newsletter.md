@@ -1,5 +1,19 @@
 ---
-URL: https://www.lennysnewsletter.com/
-Category: Education
-Description: Lenny’s Newsletter is a product and growth newsletter (and podcast) featuring deeply researched advice and interviews. Use it as a learning resource for building products, improving growth strategy, and leveling up as a builder.
+title: "Lenny S Newsletter"
+type: tool-doc
+form: saas-tool
+summary: "Lenny's Newsletter is a Substack publication and podcast by Lenny Rachitsky, offering deeply researched advice on product, growth, and career for product leaders, founders, and ambitious builders. It provides a free and paid subscription model, with paid tiers granting access to an archive, a private Slack community, and a 'Product Pass' featuring curated AI and product tools."
+url: "https://www.lennysnewsletter.com/"
+verified: true
+tags:
+  - product-management
+  - growth-strategy
+  - career-development
+  - saas-tools
+  - newsletter
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Lenny's Newsletter is a Substack publication and podcast by Lenny Rachitsky, offering deeply researched advice on product, growth, and career for product leaders, founders, and ambitious builders. It provides a free and paid subscription model, with paid tiers granting access to an archive, a private Slack community, and a 'Product Pass' featuring curated AI and product tools.

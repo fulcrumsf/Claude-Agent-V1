@@ -1,14 +1,21 @@
 ---
 title: "Unomas0795 Spokesperson Realistic Ar 43 V 6"
-type: research
+type: reference
 category: research
+form: design-reference
+summary: "A high-fidelity portrait of a young woman with long reddish-brown hair, freckles, and green eyes. She is wearing a black blazer over a white collared shirt against a plain gray background. The image appears to be an AI-generated or highly edited reference for realistic character rendering."
 tags:
   - research
+  - portrait
+  - business-wear
+  - character-design
+  - realistic-illustration
+  - professional
 created: 2026-05-03
-source: unomas0795_spokesperson_realistic_--ar_43_--v_6.1_70f8d96a-2916-4982-8676-189313666bfe_0.png
+enriched: 2026-09-05
 ---
 
 ![[Unomas0795-Spokesperson-Realistic-Ar-43-V-6.png]]
 
-## AI Analysis
-Image reference from Notion export: unomas0795_spokesperson_realistic_--ar_43_--v_6.1_70f8d96a-2916-4982-8676-189313666bfe_0.
+## Summary
+A high-fidelity portrait of a young woman with long reddish-brown hair, freckles, and green eyes. She is wearing a black blazer over a white collared shirt against a plain gray background. The image appears to be an AI-generated or highly edited reference for realistic character rendering.

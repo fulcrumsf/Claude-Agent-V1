@@ -1,9 +1,22 @@
 ---
-Description: Merch Informer is a niche and keyword research tool for Merch by Amazon and POD sellers. Use it to research profitable designs/keywords, validate competition, and find product opportunities before publishing.
-Category: Tool
-URL: https://merchinformer.com/
+title: "Merch Informer"
+type: tool-doc
+form: saas-tool
+summary: "Merch Informer is a SaaS research and analytics platform designed for Merch by Amazon and other print-on-demand sellers. It offers tools for keyword research, niche discovery, trademark checking, and listing optimization. The platform helps sellers identify profitable design opportunities and improve their product sales."
+url: "https://merchinformer.com/"
+verified: true
 tags:
   - Etsy
   - Merch
   - Tiktok-Shop
+  - merch-by-amazon
+  - print-on-demand
+  - keyword-research
+  - niche-research
+  - ecommerce-tools
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Merch Informer is a SaaS research and analytics platform designed for Merch by Amazon and other print-on-demand sellers. It offers tools for keyword research, niche discovery, trademark checking, and listing optimization. The platform helps sellers identify profitable design opportunities and improve their product sales.

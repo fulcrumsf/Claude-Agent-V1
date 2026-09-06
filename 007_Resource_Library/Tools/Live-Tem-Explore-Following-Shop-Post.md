@@ -1,17 +1,29 @@
 ---
 title: "Live Tem Explore Following Shop Post"
-type: tool-doc
+type: tutorial
 category: app-dev
+form: tiktok
+summary: "A TikTok tutorial by Leo Grundström advising creators to post longer videos and featuring the 'Auto Wheels' YouTube channel as an example case. The video discusses doubling content length and provides a free automation guide via comment keyword."
+search_for: "Leo Grundstrom YouTube Automation Guide"
 tags:
   - screenshot
   - youtube
   - video
-ai_description: "Screenshot of Live Tem Explore Following Shop Post with readable text about live."
+  - youtube-growth
+  - video-strategy
+  - long-form-content
+  - creator-economy
+  - auto-wheels
+  - needs-enrichment
 original_filename: "IMG_8813.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Live-Tem-Explore-Following-Shop-Post.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Live Tem Explore Following Shop Post with visible text about live. It is most likely useful as content research or platform inspiration for Tony’s marketing workflows.
+## Summary
+A TikTok tutorial by Leo Grundström advising creators to post longer videos and featuring the 'Auto Wheels' YouTube channel as an example case. The video discusses doubling content length and provides a free automation guide via comment keyword.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Leo Grundstrom YouTube Automation Guide`

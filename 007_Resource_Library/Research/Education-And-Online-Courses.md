@@ -1,13 +1,21 @@
 ---
 title: "Education And Online Courses"
-type: research
+type: tutorial
 category: research
+form: article
+summary: "This is the personal blog of Maxime Labonne, a Machine Learning Scientist and LLM Developer. It features articles and notebooks on Large Language Models, data science, and machine learning, serving as a resource for his projects, publications, and educational content related to LLMs."
+url: "https://mlabonne.github.io/blog/"
+verified: true
 tags:
   - research
+  - machine-learning
+  - large-language-models
+  - data-science
+  - llm-engineering
+  - artificial-intelligence
 created: 2026-05-03
-source: Databases/Resource Dashboard/Resource Gallery/Education & Online Courses.md
+enriched: 2026-09-05
 ---
 
-> [!info] Articles – Maxime Labonne  
-> Technical articles about graph neural networks, large language models, and convex optimization.  
-> [https://mlabonne.github.io/blog/](https://mlabonne.github.io/blog/)
+## Summary
+This is the personal blog of Maxime Labonne, a Machine Learning Scientist and LLM Developer. It features articles and notebooks on Large Language Models, data science, and machine learning, serving as a resource for his projects, publications, and educational content related to LLMs.

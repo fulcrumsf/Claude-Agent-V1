@@ -1,17 +1,23 @@
 ---
 title: "QR Code Digital Link Asset"
-type: extracted-knowledge
+type: tool-doc
 category: tools
+form: other
+summary: "A raw QR code image intended for scanning. The specific destination URL or content cannot be determined without decoding the matrix pattern. This serves as a bridge to access external resources, websites, or documents."
 tags:
   - qr-code
   - scannable
   - digital-utility
   - link
+  - link-capture
+  - barcode
+  - scan-me
 original_filename: "Forms-And-Models-12.png"
 created: 2026-05-09
+enriched: 2026-09-05
 ---
 
 ![[QR-Code-Digital-Link-Asset.png]]
 
-## AI Analysis
-A scannable QR matrix barcode used to encode data or web links for quick digital access. It serves as a universal utility to bypass manual typing for URLs, contact cards, or Wi-Fi passwords.
+## Summary
+A raw QR code image intended for scanning. The specific destination URL or content cannot be determined without decoding the matrix pattern. This serves as a bridge to access external resources, websites, or documents.

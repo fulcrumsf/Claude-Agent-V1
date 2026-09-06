@@ -1,7 +1,19 @@
 ---
-URL: https://www.kaiber.ai/
-Category: Tools
-Description: Kaiber is an AI video creation tool for generating animated videos from text prompts, images, or existing footage. It’s popular with creators for music videos, stylized motion graphics, and rapid visual iteration.
-Tag:
-  - Video
+title: "Kaiber"
+type: tool-doc
+form: saas-tool
+summary: "Kaiber AI is an advanced generative AI platform that enables users to create stylized videos and animations from text prompts, images, or audio. It is widely used by artists, musicians, and content creators for generating music videos, animated album art, and various visual content. The platform offers features like audio reactivity, style customization, and 4K upscaling."
+url: "https://www.kaiber.ai/"
+verified: true
+tags:
+  - ai-video-generation
+  - animation
+  - music-videos
+  - generative-ai
+  - creative-tool
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Kaiber AI is an advanced generative AI platform that enables users to create stylized videos and animations from text prompts, images, or audio. It is widely used by artists, musicians, and content creators for generating music videos, animated album art, and various visual content. The platform offers features like audio reactivity, style customization, and 4K upscaling.

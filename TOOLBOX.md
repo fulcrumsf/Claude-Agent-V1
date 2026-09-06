@@ -46,6 +46,13 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - Run: `python3 001_Architecture/Scripts/resource_library_dedup.py` — safe to re-run any time (e.g. after an ingest batch)
 - Run this BEFORE any Resource Library graphify build — don't graph the same source twice
 
+**Resource Library stub enrichment (3 scripts):** run in order before a graphify rebuild
+- `001_Architecture/Scripts/resource_library_stub_triage.py` — classifies every near-empty note into `bucket1_revision` (has screenshot), `bucket2_url_enrich` (has URL), `bucket3_dead` (garbled / missing image / no signal). Writes `007_Resource_Library/_Stub_Triage.json` + `.md`. Safe to re-run.
+- `001_Architecture/Scripts/revision_stub_notes.py` — re-runs the hardened vision prompt on bucket-1 images and rewrites each note IN PLACE (filename + `![[embed]]` preserved). Adds `form:`/`summary:`/`url:`/`search_for:`/`enriched:`. `--shard I/N` for parallelism, `--dry-run`, `--limit`. Resumable (skips notes with `enriched:`). Needs `OPENROUTER_API_KEY`.
+- `001_Architecture/Scripts/enrich_url_stub_notes.py` — Gemini (Google Search grounding) visits bucket-2 URLs and writes `summary:`/`form:`/`verified:`. Same flags. Needs `GEMINI_API_KEY`.
+- `001_Architecture/Scripts/apply_dead_stub_graphignore.py` — writes bucket-3 paths into root `.graphifyignore` between `AUTO` markers (idempotent). Files stay in the vault; only excluded from the graph.
+- First run 2026-09-05: ~890 notes enriched, 1046 dead notes graph-ignored.
+
 **Skill registry sync script:** `001_Architecture/Scripts/sync_skill_index.py`
 - Regenerates `001_Architecture/Skills/Skill-Index.md` from every `SKILL.md` in the skills tree
 - Designed to run from Claude/Gemini hooks after skill edits so Gemini can discover new or changed skills automatically
@@ -238,6 +245,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
   - Generates TTS with word-level timestamps
   - Outputs per-scene MP3 files and `beat_sheet.json`
   - Usage: `python3 001_Architecture/Tools/Text-To-Speech/audio_tts.py <script.md> <output_dir> [--voice <id>]`
+- **Runtime config:** `001_Architecture/Tools/Text-To-Speech/config.py` loads `ELEVENLABS_API_KEY` from `~/.env-secrets`; credentials are never stored in the tool folder.
 - **API Key:** `ELEVENLABS_API_KEY`
 - **Output:** Feeds into video beat sheet and Remotion composition
 
@@ -258,6 +266,10 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - **Fallback:** `.../Anomalous_Wild/generate_stems.py` — ElevenLabs text-to-SFX
   (`v1/sound-generation`, 28s chunk cap) from `Data/stem_map.json`. Use only if
   video-to-audio is unavailable or a segment repeatedly fails.
+
+### Neon Parcel End Screen
+- **Horizontal asset:** `002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Assets/Neon_Parcel_Endscreen_Horizontal_1080.mp4`
+- **Rule:** Append to every approved Neon Parcel long-form master as a dedicated seven-second final segment; keep CTA audio inside that window.
 
 ---
 

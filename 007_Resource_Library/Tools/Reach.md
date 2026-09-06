@@ -1,6 +1,20 @@
 ---
-URL: https://reach.social/
-Description: Reach.Social Reach.Social has wound down Thank you to everyone who was part of the Reach.Social community. We truly appreciate your support and participation. If you have any questions, please reach out to support@reach.social
+title: "Reach"
+type: tool-doc
+form: saas-tool
+summary: "Reach.Social was a platform designed to connect brands with creators for viral marketing campaigns. It enabled brands to launch campaigns and creators to get paid for producing content, with payouts processed instantly using Solana-based cryptocurrencies. The platform has since wound down its operations."
+url: "https://reach.social/"
+verified: true
 tags:
   - Tools
+  - influencer-marketing
+  - creator-economy
+  - web3
+  - marketing-platform
+  - social-media-tool
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Reach.Social was a platform designed to connect brands with creators for viral marketing campaigns. It enabled brands to launch campaigns and creators to get paid for producing content, with payouts processed instantly using Solana-based cryptocurrencies. The platform has since wound down its operations.

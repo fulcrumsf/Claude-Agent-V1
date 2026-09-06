@@ -1,5 +1,19 @@
 ---
-URL: https://acquire.com/
-Description: http://Acquire.com is a marketplace for buying and selling online businesses, especially SaaS companies. It helps founders list businesses, find qualified buyers, and manage the acquisition process with tools for valuation, diligence, and deal flow.
-Category: Marketplace
+title: "Acquire"
+type: tool-doc
+form: saas-tool
+summary: "Acquire.com is an online marketplace that facilitates the buying and selling of online businesses, particularly SaaS companies. It connects founders with qualified buyers and offers tools and support to manage the acquisition process, including valuation, due diligence, and deal flow. The platform aims to simplify and expedite the sale of startups by providing a direct, broker-free environment."
+url: "https://acquire.com/"
+verified: true
+tags:
+  - online-business-marketplace
+  - saas-acquisition
+  - startup-exit
+  - business-brokerage
+  - mergers-acquisitions
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Acquire.com is an online marketplace that facilitates the buying and selling of online businesses, particularly SaaS companies. It connects founders with qualified buyers and offers tools and support to manage the acquisition process, including valuation, due diligence, and deal flow. The platform aims to simplify and expedite the sale of startups by providing a direct, broker-free environment.

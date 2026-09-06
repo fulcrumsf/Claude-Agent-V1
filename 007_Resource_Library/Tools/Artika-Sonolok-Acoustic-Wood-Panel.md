@@ -1,17 +1,29 @@
 ---
 title: "Artika Sonolok Acoustic Wood Panel"
-type: extracted-knowledge
+type: tool-doc
 category: tools
+form: saas-tool
+summary: "A product display for the Artika Sonolok slatted acoustic wood wall panel at Costco. The packaging highlights features such as a walnut finish, composite wood (MDF) with veneer and felt construction, and sound-absorbing properties."
+search_for: "Artika Sonolok wall panel Costco acoustic wood"
 tags:
   - acoustic-panel
   - wall-decor
   - soundproofing
   - home-improvement
+  - sonolok
+  - artika
+  - costco-product
+  - home-decor
+  - needs-enrichment
 original_filename: "IMG_0218.PNG"
 created: 2026-08-24
+enriched: 2026-09-05
 ---
 
 ![[Artika-Sonolok-Acoustic-Wood-Panel.png]]
 
-## AI Analysis
-A close-up of the Artika Sonolok acoustic wood wall panel packaging, featuring a walnut finish with slatted MDF composite design. The image highlights sound-absorbing properties and provides material specifications for interior soundproofing applications.
+## Summary
+A product display for the Artika Sonolok slatted acoustic wood wall panel at Costco. The packaging highlights features such as a walnut finish, composite wood (MDF) with veneer and felt construction, and sound-absorbing properties.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Artika Sonolok wall panel Costco acoustic wood`

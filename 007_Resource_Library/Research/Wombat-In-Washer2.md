@@ -1,14 +1,20 @@
 ---
 title: "Wombat In Washer2"
-type: research
+type: personal
 category: research
+form: other
+summary: "A close-up photograph of a wombat sitting inside the drum of an open Haier washing machine. The animal is holding and eating an orange carrot with its claws."
 tags:
   - research
+  - wombat
+  - animals-funny
+  - carrot
+  - laundry
 created: 2026-05-03
-source: Wombat__in_washer2.png
+enriched: 2026-09-05
 ---
 
 ![[Wombat-in-washer2.png]]
 
-## AI Analysis
-Image reference from Notion export: Wombat__in_washer2.
+## Summary
+A close-up photograph of a wombat sitting inside the drum of an open Haier washing machine. The animal is holding and eating an orange carrot with its claws.

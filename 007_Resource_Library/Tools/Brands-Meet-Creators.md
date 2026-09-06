@@ -1,5 +1,19 @@
 ---
-URL: https://app.brandsmeetcreators.com/
-Description: Brands Meet Creators is a marketplace for connecting brands with creators, with a focus on TikTok Shop partnerships. Use it to find collaboration opportunities, negotiate commission/cash deals, and manage UGC-style campaigns.
-Category: Work
+title: "Brands Meet Creators"
+type: tool-doc
+form: saas-tool
+summary: "Brands Meet Creators is a marketplace platform designed to connect brands with content creators, primarily for TikTok Shop partnerships. It facilitates collaboration opportunities, commission and cash deal negotiations, and the management of user-generated content (UGC) campaigns. The platform also provides creators with tools for trending product research, AI-powered script generation, and performance tracking."
+url: "https://app.brandsmeetcreators.com/"
+verified: true
+tags:
+  - creator-marketplace
+  - tiktok-shop
+  - ugc-campaigns
+  - brand-collaborations
+  - influencer-marketing
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Brands Meet Creators is a marketplace platform designed to connect brands with content creators, primarily for TikTok Shop partnerships. It facilitates collaboration opportunities, commission and cash deal negotiations, and the management of user-generated content (UGC) campaigns. The platform also provides creators with tools for trending product research, AI-powered script generation, and performance tracking.

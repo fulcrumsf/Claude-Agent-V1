@@ -1,7 +1,19 @@
 ---
-URL: https://www.3dtuning.com/en-US/
-Description: "3DTuning is a photorealistic 3D car configurator + game: customize cars, trucks, and bikes with parts, paint/materials, wheels, stance/suspension, and decals—then save builds, browse the gallery, and join challenges with other tuning fans."
-Tag:
-  - 3D
-  - Image
+title: "3dtuning"
+type: tool-doc
+form: saas-tool
+summary: "3DTuning.com is a free online 3D car configurator and game that allows users to customize hundreds of cars, trucks, and bikes with photorealistic detail. Users can modify vehicles with various parts, paint, wheels, and suspension, then save their builds, browse a gallery of other designs, and participate in tuning challenges."
+url: "https://www.3dtuning.com/en-US/"
+verified: true
+tags:
+  - car-customization
+  - 3d-configurator
+  - vehicle-tuning
+  - automotive-design
+  - online-game
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+3DTuning.com is a free online 3D car configurator and game that allows users to customize hundreds of cars, trucks, and bikes with photorealistic detail. Users can modify vehicles with various parts, paint, wheels, and suspension, then save their builds, browse a gallery of other designs, and participate in tuning challenges.

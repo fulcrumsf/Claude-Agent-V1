@@ -1,18 +1,28 @@
 ---
 title: "CapCut Template Creator Program Process"
-type: extracted-knowledge
+type: tutorial
 category: tutorials
+form: youtube-video
+summary: "A YouTube Short tutorial by @LittleMxHoney explaining the process of becoming a CapCut template creator. The video provides specific instructions on downloading the app and entering the registration code 4rUbErz to apply for the partner program."
+search_for: "@LittleMxHoney youtube capcut templates"
 tags:
   - capcut
   - video-editing
   - content-creation
   - monetization
   - tutorial
+  - template-creator
+  - shorts
+  - needs-enrichment
 original_filename: "IMG_9775.PNG"
 created: 2026-08-24
+enriched: 2026-09-05
 ---
 
 ![[CapCut-Template-Creator-Program-Process.png]]
 
-## AI Analysis
-A step-by-step tutorial guide on how to become a CapCut template creator. The image displays the application process, including downloading the app and using a specific invitation code (4rUbErz) to unlock the program.
+## Summary
+A YouTube Short tutorial by @LittleMxHoney explaining the process of becoming a CapCut template creator. The video provides specific instructions on downloading the app and entering the registration code 4rUbErz to apply for the partner program.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `@LittleMxHoney youtube capcut templates`

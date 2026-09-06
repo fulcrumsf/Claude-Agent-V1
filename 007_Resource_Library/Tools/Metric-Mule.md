@@ -1,5 +1,19 @@
 ---
-URL: https://metricsmule.com/
-Category: Directory
-Description: MetricsMule is a marketing/prompt resource site that aggregates prompt packs, SEO prompts, and related templates. It’s aimed at creators and marketers who want ready-to-use prompt libraries and bundles for faster content production.
+title: "Metric Mule"
+type: tool-doc
+form: saas-tool
+summary: "MetricsMule is a resource site that offers prompt generators, prompt databases, and educational content for various AI tools like ChatGPT, Claude, Midjourney, and Stable Diffusion. It provides ready-to-use prompt libraries and bundles to assist creators and marketers with faster content production, including AI video and image generation, and prompt engineering."
+url: "https://metricsmule.com/"
+verified: true
+tags:
+  - ai-prompts
+  - content-creation
+  - seo-marketing
+  - prompt-engineering
+  - ai-tools
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+MetricsMule is a resource site that offers prompt generators, prompt databases, and educational content for various AI tools like ChatGPT, Claude, Midjourney, and Stable Diffusion. It provides ready-to-use prompt libraries and bundles to assist creators and marketers with faster content production, including AI video and image generation, and prompt engineering.

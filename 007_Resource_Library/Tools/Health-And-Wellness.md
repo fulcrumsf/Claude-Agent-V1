@@ -1,14 +1,19 @@
 ---
-Description: Health & Wellness Brands to Promote with affiliate marketing.
+title: "Health And Wellness"
+type: tool-doc
+form: saas-tool
+summary: "Digistore24 is an all-in-one online sales and affiliate marketing platform that functions as a merchant of record. It provides tools for vendors to sell digital and selected physical products, handling payment processing, tax, and invoicing. The platform also offers an international marketplace for affiliates to promote products and earn commissions."
+url: "https://www.digistore24.com/"
+verified: true
+tags:
+  - affiliate-marketing
+  - e-commerce
+  - sales-platform
+  - payment-processing
+  - digital-products
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-> [!info] Digistore24  
-> More Sales.  
-> [https://www.digistore24.com/](https://www.digistore24.com/)  
 
-> [!info] Comprehensive Daily Nutrition | Save Up to 31% On Our Site  
-> Grüns fills the nutrition gaps you and 92% of people have.  
-> [https://gruns.co/](https://gruns.co/)  
-
-> [!info] Partners  
-> Join NeuroGum partnership program!  
-> [https://neurogum.com/pages/collab](https://neurogum.com/pages/collab)
+## Summary
+Digistore24 is an all-in-one online sales and affiliate marketing platform that functions as a merchant of record. It provides tools for vendors to sell digital and selected physical products, handling payment processing, tax, and invoicing. The platform also offers an international marketplace for affiliates to promote products and earn commissions.

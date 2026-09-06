@@ -1,7 +1,19 @@
 ---
-URL: https://boolv.video/
-Category: Tools
-Description: "Elevate your content with Boolvideo: Turn your resources into engaging videos easily! Drive leads, boost sales, amplify reach with the AI Video Generator."
-Tag:
-  - Product
+title: "Boolv Video"
+type: tool-doc
+form: saas-tool
+summary: "Boolvideo is an AI-powered online platform that generates videos from various inputs such as text, scripts, or product information, eliminating the need for manual video editing. It provides tools for creating promotional videos, enhancing images, and assisting with copywriting."
+url: "https://boolv.video/"
+verified: true
+tags:
+  - ai-video-generator
+  - content-creation
+  - marketing-tools
+  - video-production
+  - saas
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Boolvideo is an AI-powered online platform that generates videos from various inputs such as text, scripts, or product information, eliminating the need for manual video editing. It provides tools for creating promotional videos, enhancing images, and assisting with copywriting.

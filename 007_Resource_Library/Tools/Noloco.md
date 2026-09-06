@@ -1,5 +1,19 @@
 ---
-URL: https://noloco.io/
-Description: Noloco is a no-code platform for building internal tools and client-facing portals on top of your data. It lets teams create custom back-office apps (CRM, operations, project tracking) with permissions, automations, and a branded UI.
-Category: Development
+title: "Noloco"
+type: tool-doc
+form: saas-tool
+summary: "Noloco is a no-code platform designed for building internal tools, client portals, and custom web applications. It enables teams to create tailored apps with features like permissions, automations, and branded UIs, integrating with various data sources or using its internal database. The platform aims to help businesses streamline operations and move beyond spreadsheets without writing code."
+url: "https://noloco.io/"
+verified: true
+tags:
+  - no-code
+  - internal-tools
+  - client-portals
+  - web-app-builder
+  - data-integration
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Noloco is a no-code platform designed for building internal tools, client portals, and custom web applications. It enables teams to create tailored apps with features like permissions, automations, and branded UIs, integrating with various data sources or using its internal database. The platform aims to help businesses streamline operations and move beyond spreadsheets without writing code.

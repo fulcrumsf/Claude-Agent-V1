@@ -1,6 +1,19 @@
 ---
-URL: https://vetted.ai/
-Category: Research
-Description: Vetted enables shoppers to effortlessly discover the brands and products most recommended for their needs – based on reviews from trusted sources on platforms such as Reddit, YouTube, and other reputable expert sites.
-Link: https://vetted.ai/
+title: "Vetted"
+type: tool-doc
+form: saas-tool
+summary: "Vetted AI is an artificial intelligence-powered shopping assistant that helps users discover products, summarize reviews from trusted sources like Reddit and YouTube, and compare prices. It aims to simplify product research and assist in making informed purchasing decisions."
+url: "https://vetted.ai/"
+verified: true
+tags:
+  - ai-shopping-assistant
+  - product-research
+  - review-summarization
+  - price-comparison
+  - e-commerce-tool
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Vetted AI is an artificial intelligence-powered shopping assistant that helps users discover products, summarize reviews from trusted sources like Reddit and YouTube, and compare prices. It aims to simplify product research and assist in making informed purchasing decisions.

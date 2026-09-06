@@ -1,7 +1,19 @@
 ---
-URL: https://generalagents.com/ace/
-Category: Tools
-Description: ACE (by General Agents) is a computer-using AI agent concept focused on automating real tasks on your behalf. It’s aimed at letting an agent operate software and workflows end-to-end with minimal human intervention.
-Tag:
-  - AI Agents
+title: "Ace For General Agents"
+type: tool-doc
+form: saas-tool
+summary: "Ace by General Agents is an AI-powered desktop automation agent that performs tasks by simulating human-like interactions using mouse and keyboard inputs. It is designed to execute complex workflows across various software applications with minimal human intervention, aiming to automate repetitive desktop tasks."
+url: "https://generalagents.com/ace/"
+verified: true
+tags:
+  - ai-agent
+  - desktop-automation
+  - task-automation
+  - workflow-automation
+  - computer-vision
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Ace by General Agents is an AI-powered desktop automation agent that performs tasks by simulating human-like interactions using mouse and keyboard inputs. It is designed to execute complex workflows across various software applications with minimal human intervention, aiming to automate repetitive desktop tasks.

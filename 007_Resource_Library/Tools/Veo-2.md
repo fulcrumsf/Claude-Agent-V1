@@ -1,8 +1,19 @@
 ---
-URL: https://deepmind.google/technologies/veo/veo-2/
-Category: Tools
-Description: Veo 2 is Google DeepMind’s generative video model for creating high-quality video from text and other inputs. It’s positioned for cinematic, controllable video generation and advanced creative workflows.
-Tag:
-  - Faceless
-  - Video
+title: "Veo 2"
+type: tool-doc
+form: saas-tool
+summary: "Veo 2 is Google DeepMind's advanced generative AI model for creating high-quality, cinematic videos from text and other inputs. It offers improved realism, understanding of physics, and fine-grained control over cinematic elements, capable of generating videos up to 4K resolution and extended durations."
+url: "https://deepmind.google/technologies/veo/veo-2/"
+verified: true
+tags:
+  - generative-ai
+  - video-generation
+  - deepmind
+  - ai-model
+  - cinematic-video
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Veo 2 is Google DeepMind's advanced generative AI model for creating high-quality, cinematic videos from text and other inputs. It offers improved realism, understanding of physics, and fine-grained control over cinematic elements, capable of generating videos up to 4K resolution and extended durations.

@@ -1,17 +1,21 @@
 ---
 title: "Comfyui"
-type: tutorial
+type: personal
 category: tutorials
+form: youtube-video
+summary: "This YouTube video is from TheMightyBA channel and features content related to the creator's experiences, including interactions at 'Streamer University' with other streamers like Kai Cenat, Fanum, and Walton."
+url: "https://youtu.be/tgMINfiJTbA?si=2eOJ2MggKbpy6nn_"
+verified: true
 tags:
   - tutorials
+  - streamer-vlog
+  - streamer-university
+  - content-creation
+  - youtube-creator
+  - personal-experience
 created: 2026-05-03
-source: Databases/Resource Dashboard/Resource Gallery/Video Tutorials/Tutorial Library/Faceless Channels/Gallery Collection/ComfyUI.md
+enriched: 2026-09-05
 ---
 
-**High Priority**
-[https://youtu.be/tgMINfiJTbA?si=2eOJ2MggKbpy6nn_](https://youtu.be/tgMINfiJTbA?si=2eOJ2MggKbpy6nn_)
-**Medium Priority**
-  
-**Low Priority**
-  
-**ComfyUI+Inpaint Detection**
+## Summary
+This YouTube video is from TheMightyBA channel and features content related to the creator's experiences, including interactions at 'Streamer University' with other streamers like Kai Cenat, Fanum, and Walton.

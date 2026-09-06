@@ -2,15 +2,28 @@
 title: "Combinator Open Source Browseros Al Powered Browser"
 type: tool-doc
 category: content-strategy
+form: github-repo
+summary: "This image displays a landing page for BrowserOS, described as an open-source, AI-powered agentic browser backed by Y Combinator. The tool is designed to execute web tasks based on plain language descriptions. The screenshot highlights GitHub integration with a 'Star on GitHub' button and download options."
+search_for: "BrowserOS github repo"
 tags:
+  - github-repo
   - screenshot
   - reference
-ai_description: "Screenshot of Combinator Open Source Browseros Al Powered Browser with readable text about combinator."
+  - browseros
+  - agentic-browser
+  - open-source
+  - ai
+  - y-combinator
+  - needs-enrichment
 original_filename: "IMG_8669.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Combinator-Open-Source-Browseros-Al-Powered-Browser.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Combinator Open Source Browseros Al Powered Browser with visible text about combinator. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+This image displays a landing page for BrowserOS, described as an open-source, AI-powered agentic browser backed by Y Combinator. The tool is designed to execute web tasks based on plain language descriptions. The screenshot highlights GitHub integration with a 'Star on GitHub' button and download options.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `BrowserOS github repo`

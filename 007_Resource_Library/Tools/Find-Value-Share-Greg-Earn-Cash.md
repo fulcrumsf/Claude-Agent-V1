@@ -2,15 +2,27 @@
 title: "Find Value Share Greg Earn Cash"
 type: tool-doc
 category: content-strategy
+form: tiktok
+summary: "A TikTok video by Greg promoting Anyspark.io, a platform described as 'a new Supabase' that allows creators to earn cash while creating content. The visual features overlay text reading 'FIND VALUE IN', suggesting the video provides advice or insights on finding value through this tool."
+search_for: "Anyspark.io github"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Find Value Share Greg Earn Cash with readable text about find value."
+  - social-media-monetization
+  - creator-tools
+  - supabase-alternative
+  - tiktok-ad
+  - content-creation
+  - needs-enrichment
 original_filename: "IMG_8751.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Find-Value-Share-Greg-Earn-Cash.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Find Value Share Greg Earn Cash with visible text about find value. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A TikTok video by Greg promoting Anyspark.io, a platform described as 'a new Supabase' that allows creators to earn cash while creating content. The visual features overlay text reading 'FIND VALUE IN', suggesting the video provides advice or insights on finding value through this tool.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Anyspark.io github`

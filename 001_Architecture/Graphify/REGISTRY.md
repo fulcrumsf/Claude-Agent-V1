@@ -32,7 +32,7 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | pending build | — |
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
 | Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 75 | pending build | — |
-| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 3731 | built | 2026-09-06T00:55Z|
+| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 3826 | built | 2026-09-06T05:16Z|
 | Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 2952 | built | 2026-09-05T22:55Z|
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | pending build | — |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | pending build | — |
@@ -40,20 +40,31 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Games | `004_Games/` | `004_Games/graphify-out/` | 2 | pending build | — |
 | Ecommerce | `005_Ecommerce/` | `005_Ecommerce/graphify-out/` | 4 | pending build | — |
 | Affiliate Marketing | `005_Affiliate_Marketing/` | `005_Affiliate_Marketing/graphify-out/` | — | not yet tracked — added 2026-07-12 after the Neon Parcel TikTok Shop Creator pipeline build; needs a full domain build in its own session | — |
-| Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 3548 | built (weak — see note) | 2026-09-05T20:54Z |
+| Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 2507 | built (v2.1 — see note) | 2026-09-06T01:30Z |
 
 Total: 12 domains tracked (11 with graphs built or pending, 1 newly added and not yet graphed).
 
-> **Resource Library build note (2026-09-05):** first build ran on 3,548 docs via Gemini
-> ($1.46). Result is **weak**: 1,066 nodes / 293 edges / 49 real communities + 729 thin
-> orphan communities. **2,653 of 3,549 files (75%) produced zero nodes** — the corpus is
-> mostly thin "URL + one-line" bookmarks and old image-stub notes that have no extractable
-> relationship structure. Queries on the ~900 content-rich notes work (digital products,
-> Claude tooling, AI video workflows all cluster sensibly); everything else is sparse.
-> **Fix path:** the deferred frontmatter enrichment pass (`form:`/`summary:` + re-vision
-> the image stubs with the hardened prompt) then a `graphify extract --force` rebuild, OR
-> per-subfolder `graphify extract` + `graphify merge-graphs` to fix the node-ID collisions
-> (Higgsfield AI / Seedance 2.0 / Claude Code minted by multiple files, losers dropped).
+> **Resource Library build note — v2 (2026-09-06):** rebuilt after the stub-enrichment
+> pass. **3,036 nodes / 1,182 edges / 1,897 communities (184 substantive)** — ~3x nodes,
+> ~4x edges vs the weak v1 (1,066 / 293). Method: (1) enriched ~890 near-empty notes in
+> place — `revision_stub_notes.py` re-visioned 300 screenshots, `enrich_url_stub_notes.py`
+> ran Gemini web-grounded summaries on 525 links; (2) `apply_dead_stub_graphignore.py`
+> excluded 1,046 hopeless stubs (garbled OCR / missing image / no signal) — still in the
+> vault, just not graphed; (3) **per-subfolder `graphify extract --force --token-budget
+> 16000` on all 13 subfolders, then `graphify merge-graphs`, `cluster-only`, `label`**
+> (~$2.40 Gemini). The small token budget was the key fix — the whole-corpus run had
+> Gemini silently omitting 67% of files from its chunk responses; per-subfolder dropped
+> that to ~8–25% (still ~24% on the 3 big folders: Tools, Research, Prompts).
+> Per-subfolder also fixed the v1 node-ID collisions. Sub-graphs kept at
+> `007_Resource_Library/<subfolder>/graphify-out/`.
+>
+> **v2.1 (2026-09-06):** re-ran the 3 big folders at `--token-budget 8000` (halved from
+> 16000). Omission dropped hard — Prompts 24%→3% (219→339 nodes), Research 20%→7%
+> (523→700), Tools 24%→12% (1334→1687). Re-merged all 13 → **3,686 nodes / 1,622 edges /
+> 2,146 communities (392 labeled)**. +$1.90 Gemini (project total ~$4.80). Tools still omits
+> ~12% (mostly gumroad-mirror / `*-GITHUB` stub dupes) — acceptable, diminishing returns.
+> **Rule learned:** for a docs-heavy folder, `--token-budget 8000` per-subfolder is the
+> sweet spot; the 60000 default makes Gemini silently drop most files.
 
 > **Status legend:**
 > - `pending build` — domain has YAML frontmatter, but graph hasn't been built yet

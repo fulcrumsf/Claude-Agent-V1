@@ -1,14 +1,20 @@
 ---
 title: "Robotto Gato Youtube Banner"
-type: research
+type: reference
 category: research
+form: design-reference
+summary: "A digital artwork featuring an anime-style character with cat-eared headphones standing in a futuristic city street. The scene is characterized by neon signage, wet pavement reflections, and high-tech vehicles, creating a strong cyberpunk aesthetic."
 tags:
   - research
+  - cyberpunk
+  - character-design
+  - city-ambience
+  - neon-aesthetic
 created: 2026-05-03
-source: Robotto_Gato_Youtube_Banner.png
+enriched: 2026-09-05
 ---
 
 ![[Robotto-Gato-Youtube-Banner.png]]
 
-## AI Analysis
-Image reference from Notion export: Robotto_Gato_Youtube_Banner.
+## Summary
+A digital artwork featuring an anime-style character with cat-eared headphones standing in a futuristic city street. The scene is characterized by neon signage, wet pavement reflections, and high-tech vehicles, creating a strong cyberpunk aesthetic.

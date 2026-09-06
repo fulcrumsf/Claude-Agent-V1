@@ -1,7 +1,19 @@
 ---
-URL: https://coverlettergpt.xyz/
-Category: Tools
-Description: Create Unique Cover Letters Based on Your Skills using GPT. Supercharge Your Job Search with Cover Letter GPT.
-Tag:
-  - Writing
+title: "Cover Letter"
+type: tool-doc
+form: saas-tool
+summary: "CoverLetterGPT.xyz is an AI-powered web application that generates unique cover letters. Users upload their CV/resume and a job description, and the tool creates tailored cover letters using the OpenAI API. It also provides features for managing multiple job applications and offers controls to adjust the creativity of the AI-generated output."
+url: "https://coverlettergpt.xyz/"
+verified: true
+tags:
+  - ai-tool
+  - cover-letter-generator
+  - job-search
+  - resume-builder
+  - saas
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+CoverLetterGPT.xyz is an AI-powered web application that generates unique cover letters. Users upload their CV/resume and a job description, and the tool creates tailored cover letters using the OpenAI API. It also provides features for managing multiple job applications and offers controls to adjust the creativity of the AI-generated output.

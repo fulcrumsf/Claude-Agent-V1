@@ -1,7 +1,19 @@
 ---
-URL: https://apify.com/
-Category: Directory
-Description: Apify is a web scraping and automation platform with a marketplace of ready-made scrapers (“Actors”). It’s useful for extracting structured data from websites, running crawlers at scale, and connecting results to other tools via integrations and APIs.
-Tag:
-  - API
+title: "Apify"
+type: tool-doc
+form: saas-tool
+summary: "Apify is a cloud-based web scraping and automation platform that provides a marketplace of pre-built scrapers, called 'Actors,' for extracting structured data from websites. It enables users to run web crawlers at scale and integrate the extracted data with other tools and AI workflows."
+url: "https://apify.com/"
+verified: true
+tags:
+  - web-scraping
+  - data-extraction
+  - automation
+  - ai-tools
+  - cloud-platform
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Apify is a cloud-based web scraping and automation platform that provides a marketplace of pre-built scrapers, called 'Actors,' for extracting structured data from websites. It enables users to run web crawlers at scale and integrate the extracted data with other tools and AI workflows.

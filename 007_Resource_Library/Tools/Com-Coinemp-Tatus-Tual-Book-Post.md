@@ -1,16 +1,27 @@
 ---
 title: "Com Coinemp Tatus Tual Book Post"
-type: tool-doc
+type: social-thread
 category: content-strategy
+form: article
+summary: "A tweet by Vana from Coinpress summarizing a Base livestream announcement. The visible content lists key product updates for the Base platform, including the transition to a standalone Base app, an integrated social feed with Farcaster, mini-apps support, and reduced blocktime."
+search_for: "Vana coinpress base livestream summary"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Com Coinemp Tatus Tual Book Post with readable text about com coinemp."
+  - base-coinbase
+  - web3-news
+  - farcaster
+  - crypto-update
+  - needs-enrichment
 original_filename: "IMG_8640.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Com-Coinemp-Tatus-Tual-Book-Post.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Com Coinemp Tatus Tual Book Post with visible text about com coinemp. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A tweet by Vana from Coinpress summarizing a Base livestream announcement. The visible content lists key product updates for the Base platform, including the transition to a standalone Base app, an integrated social feed with Farcaster, mini-apps support, and reduced blocktime.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Vana coinpress base livestream summary`

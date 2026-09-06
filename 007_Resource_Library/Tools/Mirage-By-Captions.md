@@ -1,9 +1,18 @@
 ---
-URL: https://www.captions.ai/mirage
-Category: Tools
-Description: Mirage (by Captions) is an AI video product focused on generating and editing videos from natural-language instructions. It’s part of the Captions ecosystem and targets fast, high-quality video creation for creators and teams.
-Tag:
-  - Ad Creative
-  - UGC
-  - Video
+title: "Mirage By Captions"
+type: tool-doc
+form: saas-tool
+summary: "Mirage by Captions is an AI-powered video generation and editing tool. It enables users to create and edit videos using natural-language instructions, aiming for fast and high-quality content production for creators and teams."
+url: "https://www.captions.ai/mirage"
+verified: true
+tags:
+  - ai-video-editing
+  - video-generation
+  - natural-language-processing
+  - creator-tools
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Mirage by Captions is an AI-powered video generation and editing tool. It enables users to create and edit videos using natural-language instructions, aiming for fast and high-quality content production for creators and teams.

@@ -2,15 +2,26 @@
 title: "Following Shop Gec Payouts Mbox Ceostacks"
 type: tool-doc
 category: content-strategy
+form: social-thread
+summary: "Screenshot of the TikTok profile for Danzel Wright, known as _ceostacks (CEO Stacks), a brand and business mentor. The content highlights his narrative of transitioning from DoorDash to earning six figures through digital products, offering a monetization class via a Stan Store link."
+search_for: "Danzel Wright CEO Stacks stan store"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Following Shop Gec Payouts Mbox Ceostacks with readable text about following shop."
+  - digital-marketing
+  - brand-mentorship
+  - stan-store
+  - ceo-stacks
+  - needs-enrichment
 original_filename: "IMG_8741.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Following-Shop-Gec-Payouts-Mbox-Ceostacks.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Following Shop Gec Payouts Mbox Ceostacks with visible text about following shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+Screenshot of the TikTok profile for Danzel Wright, known as _ceostacks (CEO Stacks), a brand and business mentor. The content highlights his narrative of transitioning from DoorDash to earning six figures through digital products, offering a monetization class via a Stan Store link.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Danzel Wright CEO Stacks stan store`

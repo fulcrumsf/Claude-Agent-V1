@@ -1,16 +1,28 @@
 ---
 title: "Etsy Best Practices"
-type: doc
+type: tutorial
 category: ecommerce
+form: article
+summary: "A guide outlining Etsy's stated best practices for writing product titles and tags to optimize search ranking. It details a strategy of filling the full title space with multi-word keyword phrases covering three categories: what the item is, who it is for, and the occasion. The content emphasizes using exact match research from the Etsy search bar without third-party tools."
+search_for: "Etsy SEO Title Best Practices Guide fill entire title space multi-word keyword phrases"
 tags:
   - screenshot
   - ecommerce
-ai_description: "Screenshot of Etsy Best Practices, likely a saved reference for Tony’s research or workflow library."
+  - etsy-seo
+  - ecommerce-tutorial
+  - listing-optimization
+  - shopify
+  - keyword-research
+  - needs-enrichment
 original_filename: "Etsy Best Practices-2.JPG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Etsy-Best-Practices.JPG]]
 
-## AI Analysis
-This appears to be a screenshot of Etsy Best Practices. It is useful as a reference for product, store, or merchandising decisions.
+## Summary
+A guide outlining Etsy's stated best practices for writing product titles and tags to optimize search ranking. It details a strategy of filling the full title space with multi-word keyword phrases covering three categories: what the item is, who it is for, and the occasion. The content emphasizes using exact match research from the Etsy search bar without third-party tools.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Etsy SEO Title Best Practices Guide fill entire title space multi-word keyword phrases`

@@ -1,9 +1,19 @@
 ---
-URL: https://www.polymet.ai/
-Description: Polymet helps product teams to create production-ready designs and front-end code. They explain what they want or provide an image, and Polymet designs and implements the interface.
+title: "Polymet"
+type: tool-doc
+form: saas-tool
+summary: "Polymet is an AI-powered web application that helps product teams create production-ready designs and front-end code. It allows users to generate interface designs and corresponding code, such as React, by providing descriptions or images. The tool aims to accelerate the product development workflow by enabling rapid prototyping and design iteration."
+url: "https://www.polymet.ai/"
+verified: true
 tags:
   - Tool
+  - ai-design
+  - front-end-code-generation
+  - product-development
+  - ui-ux-prototyping
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-> [!info] The Most Powerful AI Design Tool You're Not Using Yet  
-> I’ve got a full 2 hour tutorial on this tool coming to my free Skool group in mid May.  
-> [https://youtu.be/Q6nfrmbx5Gw?si=7JI3_73mDcNcVF3O](https://youtu.be/Q6nfrmbx5Gw?si=7JI3_73mDcNcVF3O)
+
+## Summary
+Polymet is an AI-powered web application that helps product teams create production-ready designs and front-end code. It allows users to generate interface designs and corresponding code, such as React, by providing descriptions or images. The tool aims to accelerate the product development workflow by enabling rapid prototyping and design iteration.

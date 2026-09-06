@@ -1,7 +1,19 @@
 ---
-URL: https://www.buildwithai.io/braindumper
-Description: http://Buildwithai.io (Braindumper) is an AI planning tool that turns app ideas into structured build plans. Use it to clarify requirements, break features into steps, and generate an actionable implementation outline before you start coding.
+title: "Buildwithai"
+type: tool-doc
+form: saas-tool
+summary: "Braindumper is a free AI-powered wizard by BuildWithAI that transforms app ideas into detailed, platform-specific code prompts. It helps users clarify requirements and break down features into actionable implementation outlines before coding."
+url: "https://www.buildwithai.io/braindumper"
+verified: true
+tags:
+  - ai-app-planning
+  - app-development
+  - requirements-gathering
+  - software-design
+  - no-code-development
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-> [!info] How I Build Profitable Apps SOLO (No Code / with AI)  
-> 👇 LINKS & RESOURCES:  
-> [https://youtu.be/Y1mZ7EzTFwo?si=LF-FjJVrqtpiFcoN](https://youtu.be/Y1mZ7EzTFwo?si=LF-FjJVrqtpiFcoN)
+
+## Summary
+Braindumper is a free AI-powered wizard by BuildWithAI that transforms app ideas into detailed, platform-specific code prompts. It helps users clarify requirements and break down features into actionable implementation outlines before coding.

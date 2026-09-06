@@ -1,7 +1,19 @@
 ---
-URL: https://app.artflow.ai/
-Category: Tools
-Description: Artflow is an AI storytelling platform for creating characters and scenes, then generating images and video-style story content. It’s useful for making consistent visuals for comics, shorts, and character-driven narratives without advanced design skills.
-Tag:
-  - Avatars
+title: "Artflow"
+type: tool-doc
+form: saas-tool
+summary: "Artflow AI is an innovative AI-powered platform designed for digital artists, storytellers, and content creators. It enables users to generate AI-driven characters, create unique animations, and craft engaging narratives by generating images and video-style story content. The platform allows for consistent visuals for comics, shorts, and character-driven narratives without advanced design skills."
+url: "https://app.artflow.ai/"
+verified: true
+tags:
+  - ai-storytelling
+  - character-creation
+  - video-generation
+  - image-generation
+  - content-creation
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Artflow AI is an innovative AI-powered platform designed for digital artists, storytellers, and content creators. It enables users to generate AI-driven characters, create unique animations, and craft engaging narratives by generating images and video-style story content. The platform allows for consistent visuals for comics, shorts, and character-driven narratives without advanced design skills.

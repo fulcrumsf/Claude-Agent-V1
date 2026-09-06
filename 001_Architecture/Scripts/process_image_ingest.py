@@ -10,6 +10,13 @@ import time
 import shutil
 from datetime import datetime
 
+try:  # macOS framework Python frequently ships without a usable CA bundle for urllib
+    import certifi
+    os.environ.setdefault("SSL_CERT_FILE", certifi.where())
+    os.environ.setdefault("REQUESTS_CA_BUNDLE", certifi.where())
+except ImportError:
+    pass
+
 OPENROUTER_KEY = os.environ.get("OPENROUTER_API_KEY")
 OPENROUTER_MODEL = os.environ.get("OPENROUTER_VISION_MODEL", "qwen/qwen3.5-flash-02-23")
 OPENAI_KEY = os.environ.get("OPENAI_API_KEY")

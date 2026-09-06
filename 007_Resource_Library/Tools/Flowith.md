@@ -1,6 +1,19 @@
 ---
-URL: https://flowith.io
-Description: An agentic AI workspace that connects your knowledge, creation, and execution in a single flow.
-Tag:
-  - AI Agents
+title: "Flowith"
+type: tool-doc
+form: saas-tool
+summary: "Flowith is an AI creation workspace that utilizes an infinite canvas and AI agents for multi-model work, knowledge management, and complex task execution. It enables users to manage multi-threaded tasks and integrate various AI models within a single interface for research and content generation."
+url: "https://flowith.io"
+verified: true
+tags:
+  - ai-workspace
+  - agentic-ai
+  - knowledge-management
+  - content-creation
+  - task-automation
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Flowith is an AI creation workspace that utilizes an infinite canvas and AI agents for multi-model work, knowledge management, and complex task execution. It enables users to manage multi-threaded tasks and integrate various AI models within a single interface for research and content generation.

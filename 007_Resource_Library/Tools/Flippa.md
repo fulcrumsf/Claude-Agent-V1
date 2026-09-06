@@ -1,5 +1,19 @@
 ---
-URL: https://flippa.com/
-Description: Flippa is a marketplace for buying and selling online businesses, domains, and apps. It’s useful for researching acquisitions, valuing digital assets, and listing a project if you decide to sell.
-Category: Marketplace
+title: "Flippa"
+type: tool-doc
+form: saas-tool
+summary: "Flippa is an online marketplace for buying and selling digital assets and businesses, including SaaS, e-commerce stores, mobile applications, and domains. It provides a platform for entrepreneurs and investors to transact, offering services like business valuation, brokerage, and legal support. The platform facilitates thousands of business sales monthly, ranging from small projects to multi-million dollar exits."
+url: "https://flippa.com/"
+verified: true
+tags:
+  - online-business-marketplace
+  - digital-asset-acquisition
+  - saas-brokerage
+  - domain-trading
+  - business-valuation
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Flippa is an online marketplace for buying and selling digital assets and businesses, including SaaS, e-commerce stores, mobile applications, and domains. It provides a platform for entrepreneurs and investors to transact, offering services like business valuation, brokerage, and legal support. The platform facilitates thousands of business sales monthly, ranging from small projects to multi-million dollar exits.

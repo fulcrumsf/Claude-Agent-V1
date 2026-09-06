@@ -1,6 +1,22 @@
 ---
-URL: https://rube.app/
-Description: Rube (Composio) is a cross‑app AI agent interface that can carry out tasks in connected tools (e.g., email, docs, project apps) by turning natural‑language requests into actions.
-Tag:
-  - Automation
+title: "Rube"
+type: tool-doc
+form: saas-tool
+summary: "Rube (Composio) was a Model Context Protocol (MCP) server designed to connect AI agents with over 500 applications, enabling them to execute tasks using natural language. It functioned as a universal connector for AI assistants to interact with various digital tools. The service was discontinued on May 16, 2026."
+url: "https://rube.app/"
+verified: false
+tags:
+  - ai-agent
+  - automation
+  - integrations
+  - model-context-protocol
+  - productivity
+  - unverified-link
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Rube (Composio) was a Model Context Protocol (MCP) server designed to connect AI agents with over 500 applications, enabling them to execute tasks using natural language. It functioned as a universal connector for AI assistants to interact with various digital tools. The service was discontinued on May 16, 2026.
+
+> [!warning] Link not verified by search — summary is inferred from the URL.

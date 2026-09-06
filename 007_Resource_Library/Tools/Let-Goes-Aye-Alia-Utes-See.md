@@ -2,15 +2,26 @@
 title: "Let Goes Aye Alia Utes See"
 type: tool-doc
 category: content-strategy
+form: tiktok
+summary: "A promoted Instagram Reel featuring the tool 'AI Apply', which claims to streamline job applications by reducing weeks of work to minutes. The video overlay invites users to check how it goes, and a green CTA button links to details for the application automation service."
+search_for: "aiapply.io job application tool"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Let Goes Aye Alia Utes See with readable text about let."
+  - career-tech
+  - job-search-automation
+  - sponsored-content
+  - productivity-tool
+  - needs-enrichment
 original_filename: "IMG_8932.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Let-Goes-Aye-Alia-Utes-See.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Let Goes Aye Alia Utes See with visible text about let. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A promoted Instagram Reel featuring the tool 'AI Apply', which claims to streamline job applications by reducing weeks of work to minutes. The video overlay invites users to check how it goes, and a green CTA button links to details for the application automation service.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `aiapply.io job application tool`

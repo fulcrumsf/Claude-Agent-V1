@@ -1,21 +1,19 @@
 ---
-Category: frame TV
-Composition: Image_Only
-Files & media:
-  - "[[/Example 2.jpg|Example 2.jpg]]"
-Model: Nano Pro
-Orientation: 2:3 Ratio Portrait
-Phase 2: Set
-Score: "82"
-Status: Done
-Style_Token:
-  - "[[Minimalist_Geometric]]"
-Style_Token_Text: Minimalist_Geometric
-Visual_Modifiers:
-  - Geometric_Balance
-  - Muted_Palette
-  - Organic_Flow
-  - Printmaking_Effect
-  - Uneven_Brush_Strokes
-url: https://www.etsy.com/search?q=wabi+sabi+frame+art&sort_by=best_selling
+title: "Nordic Botanical Abstract"
+type: tool-doc
+form: saas-tool
+summary: "This link is an Etsy search results page displaying various 'wabi sabi frame art' items. It showcases products from independent sellers on the Etsy e-commerce platform, sorted by best-selling."
+url: "https://www.etsy.com/search?q=wabi+sabi+frame+art&sort_by=best_selling"
+verified: true
+tags:
+  - e-commerce
+  - art
+  - wabi-sabi
+  - home-decor
+  - marketplace
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+This link is an Etsy search results page displaying various 'wabi sabi frame art' items. It showcases products from independent sellers on the Etsy e-commerce platform, sorted by best-selling.

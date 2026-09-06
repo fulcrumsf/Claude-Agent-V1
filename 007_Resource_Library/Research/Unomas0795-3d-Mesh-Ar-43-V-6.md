@@ -1,14 +1,26 @@
 ---
 title: "Unomas0795 3d Mesh Ar 43 V 6"
-type: research
+type: model-doc
 category: research
+form: other
+summary: "A 3D wireframe model visualization of a human female bust featuring facial features and a wide-brimmed hat. The geometry is displayed with red grid lines against a grey background, demonstrating high-density topology suitable for character modeling or digital sculpting workflows."
+search_for: "3d wireframe human portrait hat tutorial"
 tags:
   - research
+  - 3d-modeling
+  - wireframe
+  - human-head
+  - character-design
+  - geometry
+  - needs-enrichment
 created: 2026-05-03
-source: unomas0795_3d_mesh_--ar_43_--v_6.1_d36d9ecd-d0d5-46fb-86ca-1cca5f2314eb_2.png
+enriched: 2026-09-05
 ---
 
 ![[Unomas0795-3d-Mesh-Ar-43-V-6.png]]
 
-## AI Analysis
-Image reference from Notion export: unomas0795_3d_mesh_--ar_43_--v_6.1_d36d9ecd-d0d5-46fb-86ca-1cca5f2314eb_2.
+## Summary
+A 3D wireframe model visualization of a human female bust featuring facial features and a wide-brimmed hat. The geometry is displayed with red grid lines against a grey background, demonstrating high-density topology suitable for character modeling or digital sculpting workflows.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `3d wireframe human portrait hat tutorial`

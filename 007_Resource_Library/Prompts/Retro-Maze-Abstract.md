@@ -1,6 +1,19 @@
 ---
-Phase 2: Set
-Score: "42"
-Status: Not started
-url: https://www.etsy.com/search?q=black+and+white+folk+art&sort_by=best_selling
+title: "Retro Maze Abstract"
+type: tool-doc
+form: saas-tool
+summary: "This link leads to an Etsy search results page displaying various 'black and white folk art' items, sorted by best-selling. Etsy is an e-commerce platform specializing in handmade, vintage, and craft supplies."
+url: "https://www.etsy.com/search?q=black+and+white+folk+art&sort_by=best_selling"
+verified: true
+tags:
+  - etsy
+  - folk-art
+  - black-and-white
+  - e-commerce
+  - handmade
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+This link leads to an Etsy search results page displaying various 'black and white folk art' items, sorted by best-selling. Etsy is an e-commerce platform specializing in handmade, vintage, and craft supplies.

@@ -1,16 +1,28 @@
 ---
 title: "Ares Chi Mene Eee Pustiato Ago"
-type: tool-doc
+type: research
 category: content-strategy
+form: channel-study
+summary: "A screen recording of a laptop display showing a detailed football analytics interface with key matchup statistics for teams (CLE vs CHI). The visual includes projected scores, win probabilities, and comparative metrics like EPA and pressure rates. This is a content example from the TikTok account 'data_by_faro' showcasing sports data visualization."
+search_for: "data_by_faro github"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Ares Chi Mene Eee Pustiato Ago with readable text about ares."
+  - nfl-analytics
+  - football-data
+  - sports-viz
+  - matchup-analysis
+  - cle-vs-chi
+  - needs-enrichment
 original_filename: "IMG_8715.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Ares-Chi-Mene-Eee-Pustiato-Ago.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Ares Chi Mene Eee Pustiato Ago with visible text about ares. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A screen recording of a laptop display showing a detailed football analytics interface with key matchup statistics for teams (CLE vs CHI). The visual includes projected scores, win probabilities, and comparative metrics like EPA and pressure rates. This is a content example from the TikTok account 'data_by_faro' showcasing sports data visualization.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `data_by_faro github`

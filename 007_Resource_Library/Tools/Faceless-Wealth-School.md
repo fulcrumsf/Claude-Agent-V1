@@ -1,12 +1,19 @@
 ---
-URL: https://www.skool.com/facelesswealth/about
-Description: Faceless Wealth School is a Skool community centered on “faceless” content and monetization strategies. Use it for community learning, frameworks, and accountability around building income streams without being on camera.
-Category: Research
+title: "Faceless Wealth School"
+type: tool-doc
+form: saas-tool
+summary: "Faceless Wealth School is an online community hosted on the Skool platform that provides courses, frameworks, and accountability for building income streams through 'faceless' content creation and digital marketing strategies. It teaches members how to create viral content and monetize online without appearing on camera."
+url: "https://www.skool.com/facelesswealth/about"
+verified: true
+tags:
+  - faceless-content
+  - online-business
+  - digital-marketing
+  - monetization-strategies
+  - community-learning
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-> [!info] Get your free Faceless Wealth training!  
-> Learn how complete beginners are turning faceless videos into $5,000/month.  
-> [https://www.facelesswealth.ai/startnow](https://www.facelesswealth.ai/startnow)  
 
-> [!info] Philosophy Pulse (check bio) on TikTok  
-> @philosophy.  
-> [https://www.tiktok.com/@philosophy.pulse](https://www.tiktok.com/@philosophy.pulse)
+## Summary
+Faceless Wealth School is an online community hosted on the Skool platform that provides courses, frameworks, and accountability for building income streams through 'faceless' content creation and digital marketing strategies. It teaches members how to create viral content and monetize online without appearing on camera.

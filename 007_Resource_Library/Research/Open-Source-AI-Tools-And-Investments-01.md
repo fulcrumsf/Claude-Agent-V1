@@ -1,18 +1,29 @@
 ---
 title: "Open Source AI Tools And Investments 01"
-type: research
+type: tool-doc
 category: research
+form: saas-tool
+summary: "A physical promotional sign for Tarion offering a 20% discount. The card features a QR code and a specific promo code 'NABSHOW26' likely associated with an industry trade show, along with the URL www.tarion.eu."
+search_for: "Tarion NAB SHOW26 promo code site:tarion.eu"
 tags:
   - open-source
   - ai-tools
   - investment-research
   - market-scan
-ai_description: "Mixed screenshots of open-source AI tools and investment-related references."
+  - promo-code
+  - nab-show-2026
+  - tarion
+  - saas-discount
+  - needs-enrichment
 original_filename: "open-source-ai-tools-and-investments-01.jpg"
 created: 2026-05-03
+enriched: 2026-09-05
 ---
 
 ![[Open-Source-AI-Tools-And-Investments-01.jpg]]
 
-## AI Analysis
-This batch mixes tool discovery with investment-style research, so research is the least misleading destination.
+## Summary
+A physical promotional sign for Tarion offering a 20% discount. The card features a QR code and a specific promo code 'NABSHOW26' likely associated with an industry trade show, along with the URL www.tarion.eu.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Tarion NAB SHOW26 promo code site:tarion.eu`

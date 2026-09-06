@@ -1,16 +1,28 @@
 ---
 title: "Selling League Live Camera See Skounh"
-type: tool-doc
+type: tutorial
 category: content-strategy
+form: article
+summary: "A tutorial walkthrough on the OpenArt platform titled 'AI Creator Academy,' specifically focusing on 'Tier 2 Training' for AI Avatar creation. The screen displays course modules like 'AI Avatar Lab' and instructions for training a base image to customize character avatars using the OpenArt interface."
+search_for: "OpenArt AI Creator Academy Tier 2 Training"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Selling League Live Camera See Skounh with readable text about selling."
+  - openart
+  - ai-avatar
+  - tutorial
+  - creator-academy
+  - character-training
+  - needs-enrichment
 original_filename: "IMG_8024.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Selling-League-Live-Camera-See-Skounh.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Selling League Live Camera See Skounh with visible text about selling. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A tutorial walkthrough on the OpenArt platform titled 'AI Creator Academy,' specifically focusing on 'Tier 2 Training' for AI Avatar creation. The screen displays course modules like 'AI Avatar Lab' and instructions for training a base image to customize character avatars using the OpenArt interface.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `OpenArt AI Creator Academy Tier 2 Training`

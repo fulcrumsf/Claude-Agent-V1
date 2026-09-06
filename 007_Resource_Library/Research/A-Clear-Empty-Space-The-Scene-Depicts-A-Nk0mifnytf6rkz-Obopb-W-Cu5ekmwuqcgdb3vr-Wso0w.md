@@ -1,14 +1,25 @@
 ---
 title: "A Clear Empty Space The Scene Depicts A Nk0mifnytf6rkz Obopb W Cu5ekmwuqcgdb3vr Wso0w"
-type: research
+type: design-reference
 category: research
+form: design-reference
+summary: "A minimalist bedroom interior design mockup featuring a framed art print with placeholder text reading 'iso-ratio art print mockup' mounted above a bed. The room displays a neutral color palette with beige curtains, textured linens, and modern mushroom-shaped lamps."
+search_for: "iso-ratio art print mockup design reference"
 tags:
   - research
+  - interior-design
+  - minimalist-decor
+  - mockup-template
+  - bedroom-aesthetic
+  - needs-enrichment
 created: 2026-05-03
-source: a-clear-empty-space-the-scene-depicts-a-_nk0mifnyTf6rkz_OBopB_w_cU5EKMWuQcGdb3VR-Wso0w.png
+enriched: 2026-09-05
 ---
 
 ![[A-Clear-Empty-Space-The-Scene-Depicts-A-Nk0mifnyTf6rkz-OBopB-W-CU5EKMWuQcGdb3VR-Wso0w.png]]
 
-## AI Analysis
-Image reference from Notion export: a-clear-empty-space-the-scene-depicts-a-_nk0mifnyTf6rkz_OBopB_w_cU5EKMWuQcGdb3VR-Wso0w.
+## Summary
+A minimalist bedroom interior design mockup featuring a framed art print with placeholder text reading 'iso-ratio art print mockup' mounted above a bed. The room displays a neutral color palette with beige curtains, textured linens, and modern mushroom-shaped lamps.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `iso-ratio art print mockup design reference`

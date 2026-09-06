@@ -1,7 +1,19 @@
 ---
-URL: https://tubemagic.com/
-Category: Tools
-Description: TubeMagic is an AI tool for YouTube creators that helps generate video ideas, outlines, and scripts optimized for retention. It’s designed to speed up scripting and content planning so you can publish more consistently.
-Tag:
-  - Youtube
+title: "Tubemagic"
+type: tool-doc
+form: saas-tool
+summary: "TubeMagic is an AI-powered platform designed for YouTube content creators. It assists with generating video ideas, writing scripts, and optimizing videos with AI-generated titles, descriptions, and tags to enhance channel growth and content planning."
+url: "https://tubemagic.com/"
+verified: true
+tags:
+  - youtube-seo
+  - ai-tool
+  - content-creation
+  - video-optimization
+  - script-generation
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+TubeMagic is an AI-powered platform designed for YouTube content creators. It assists with generating video ideas, writing scripts, and optimizing videos with AI-generated titles, descriptions, and tags to enhance channel growth and content planning.

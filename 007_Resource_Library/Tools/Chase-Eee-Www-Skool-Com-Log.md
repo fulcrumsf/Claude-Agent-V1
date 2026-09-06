@@ -2,15 +2,23 @@
 title: "Chase Eee Www Skool Com Log"
 type: tool-doc
 category: content-strategy
+form: saas-tool
+summary: "This image displays the landing page for Chase AI+, a subscription-based educational platform on Skool hosted by Chase Han. The tool provides an AI agency training program, featuring specific resources such as 50+ AI Agent templates used to generate $40k/month revenue, and a 90-day roadmap for building an AI business. It includes details on membership pricing ($95/month), member count (543), and access to live coaching."
+url: "https://skool.com/chase-ai-plus"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Chase Eee Www Skool Com Log with readable text about chase."
+  - ai-agency
+  - business-training
+  - skool-community
+  - chase-han
+  - ai-automation
 original_filename: "IMG_8681.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Chase-Eee-Www-Skool-Com-Log.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Chase Eee Www Skool Com Log with visible text about chase. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+This image displays the landing page for Chase AI+, a subscription-based educational platform on Skool hosted by Chase Han. The tool provides an AI agency training program, featuring specific resources such as 50+ AI Agent templates used to generate $40k/month revenue, and a 90-day roadmap for building an AI business. It includes details on membership pricing ($95/month), member count (543), and access to live coaching.

@@ -1,5 +1,19 @@
 ---
-Created: 2025-03-10T23:38
+title: "Tutorials"
+type: tutorial
+form: youtube-video
+summary: "The video is 'Celebrate Recovery Lesson 5 Turn' from Valley Real Life Celebrate Recovery. It discusses the concept of repentance, turning away from past behaviors, and embracing a new life through faith and trust in God."
+url: "https://youtu.be/Cr-RV5mtGEc?si=KJDd66jZg2KCsUad"
+verified: true
+tags:
+  - celebrate-recovery
+  - spiritual-growth
+  - repentance
+  - faith
+  - personal-development
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-[![](https://images.unsplash.com/photo-1542039375-28138150cc31?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb)](https://images.unsplash.com/photo-1542039375-28138150cc31?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb)
-[https://youtu.be/Cr-RV5mtGEc?si=KJDd66jZg2KCsUad](https://youtu.be/Cr-RV5mtGEc?si=KJDd66jZg2KCsUad)
+
+## Summary
+The video is 'Celebrate Recovery Lesson 5 Turn' from Valley Real Life Celebrate Recovery. It discusses the concept of repentance, turning away from past behaviors, and embracing a new life through faith and trust in God.
