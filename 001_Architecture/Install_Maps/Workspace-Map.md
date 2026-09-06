@@ -60,6 +60,7 @@ Synthesized knowledge pages created by agents during ingest. Not raw sources —
 | Subfolder | Content |
 |-----------|---------|
 | `Automation/` | Automation scripts and workflow configs |
+| `Audit_Reports/` | Architecture audits, reusable audit prompts, and system review reports |
 | `Feedback_Loop/` | Daily feedback logs (corrections, preferences, validated approaches) |
 | `Graphify/` | Graphify config, hooks, registry |
 | `Install_Maps/` | **This file and other workspace maps** — always check here before exploring blind |

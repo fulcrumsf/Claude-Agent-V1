@@ -1,0 +1,22 @@
+{
+  "labels": [
+    {
+      "feature": "liver",
+      "x_pct": 51.5,
+      "y_pct": 42.5,
+      "confidence": "high"
+    },
+    {
+      "feature": "mirrored_surface",
+      "x_pct": 40.0,
+      "y_pct": 28.0,
+      "confidence": "high"
+    },
+    {
+      "feature": "red_blood_cells",
+      "x_pct": 43.1,
+      "y_pct": 53.2,
+      "confidence": "high"
+    }
+  ]
+}

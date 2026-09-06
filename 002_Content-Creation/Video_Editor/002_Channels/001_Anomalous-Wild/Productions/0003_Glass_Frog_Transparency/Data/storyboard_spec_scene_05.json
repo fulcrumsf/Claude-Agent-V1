@@ -1,0 +1,59 @@
+{
+  "scene_id": "Scene_05",
+  "scene_duration_s": 73.004,
+  "frame_count": 12,
+  "scene_description": "Tease #2 (diagram-routed scene): the 2022 AMNH discovery that glass frogs pull ~90% of red blood cells into the liver while sleeping, becoming 2-3x more transparent, without clotting -- shown through internal 3D-render cutaways, a human-vs-frog contrast beat, and a photoacoustic-imaging insert. NOTE: frames 2,3,4,7,8,10 are diagram/lab-pipeline content; only the whole-frog panels (1,5,6,9,11,12) need the character sheet's exact likeness.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; backgrounds trend toward a dark #2B0B5A-to-#0B0F1A gradient feel outside of natural daylight/night forest scenes. National Geographic-quality lighting on real/photoreal shots; clean scientific-diagram aesthetic (no gore, no viscera) on any internal-anatomy render. Glitch-distortion cuts used only at anomaly-reveal/hook moments.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Wide shot, the frog asleep on a leaf, calm and undisturbed, quiet night ambience."
+    },
+    {
+      "frame": 2,
+      "action": "3D-render cutaway inset, red blood cells shown flowing at normal density through a vessel while the frog is awake, stylized not graphic."
+    },
+    {
+      "frame": 3,
+      "action": "3D-render cutaway, the same vessel now shown draining, red cells migrating out of general circulation toward the liver."
+    },
+    {
+      "frame": 4,
+      "action": "3D-render macro, the liver organ visibly filling with concentrated red cells, its mirrored pouch scattering the color so it stays camouflaged."
+    },
+    {
+      "frame": 5,
+      "action": "Side-by-side comparison, split frame: an awake frog (more visible) on one side, a sleeping frog (near-invisible) on the other, same leaf and angle."
+    },
+    {
+      "frame": 6,
+      "action": "Wide shot, the sleeping frog held in near-silence, a deliberate pause before the escalation line."
+    },
+    {
+      "frame": 7,
+      "action": "3D-render, a stylized vessel cross-section showing dense red-cell concentration building visible tension, clean scientific-diagram look, no gore."
+    },
+    {
+      "frame": 8,
+      "action": "Contrast cut, a stylized human vascular cross-section shown for one beat, illustrating the clotting risk this concentration would normally cause."
+    },
+    {
+      "frame": 9,
+      "action": "Cut back to the frog, calm and unaffected, sleeping peacefully on its leaf."
+    },
+    {
+      "frame": 10,
+      "action": "Lab/equipment insert, a photoacoustic imaging device visualized as gentle light-pulse ripples passing over the frog's body."
+    },
+    {
+      "frame": 11,
+      "action": "Extreme close-up, the frog's eye with a light-pulse ripple crossing over its face, undisturbed."
+    },
+    {
+      "frame": 12,
+      "action": "Wide hold, the frog still asleep, ripples fading, closing the sequence calmly."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel must show the same subject with identical coloring, markings, and proportions, as if part of one continuous shot. Use clean composition and precise detail. The sequence should read as one continuous event from start to finish."
+}

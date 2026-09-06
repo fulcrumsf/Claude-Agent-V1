@@ -1,0 +1,504 @@
+1
+00:00:00,000 --> 00:00:02,400
+At GBT made this whole video with one image.
+
+2
+00:00:10,240 --> 00:00:12,080
+Here's exactly how step-by-step.
+
+3
+00:00:12,080 --> 00:00:15,760
+All right, so step one we're going to go into chat GBT and we're going to pick work,
+
+4
+00:00:15,760 --> 00:00:16,960
+not regular chat.
+
+5
+00:00:16,960 --> 00:00:22,240
+Reason why is because chat GBT work allows us to use our files and apps just a lot easier.
+
+6
+00:00:22,240 --> 00:00:24,960
+Now the second step we need is to create a main character.
+
+7
+00:00:24,960 --> 00:00:27,120
+So my main character is named Mani.
+
+8
+00:00:27,120 --> 00:00:32,960
+I made him early 30s, he's over six foot, he's Hispanic, he has a kind of a swag to him,
+
+9
+00:00:32,960 --> 00:00:34,720
+light skin, curly, all of that.
+
+10
+00:00:34,720 --> 00:00:37,360
+Now for your character, try to go as in detail as you can.
+
+11
+00:00:37,360 --> 00:00:46,160
+I'm talking about gender, race, age, height, what color he's wearing the far as his clothes,
+
+12
+00:00:46,160 --> 00:00:48,080
+all the details that you need, right?
+
+13
+00:00:48,080 --> 00:00:52,480
+I got a prompt for you to help you with that as well as going to create a character sheet for you.
+
+14
+00:00:52,480 --> 00:00:56,000
+The prompts and the step-by-step guide is going to be in the link in the description
+
+15
+00:00:56,000 --> 00:00:58,400
+as well on the QR code as about the pop-up.
+
+16
+00:00:58,400 --> 00:01:01,680
+Now that we have our main character, let's go into creating this video.
+
+17
+00:01:01,680 --> 00:01:07,040
+Now next thing we're going to do is upload our character sheet into chat GBT work if it's not
+
+18
+00:01:07,040 --> 00:01:08,960
+already created inside of there.
+
+19
+00:01:08,960 --> 00:01:11,840
+And we're just going to do kind of like a dead a dump, right?
+
+20
+00:01:11,840 --> 00:01:17,200
+I literally said I want to create a story and a storyboard image for an idea I have.
+
+21
+00:01:17,200 --> 00:01:22,080
+And I just kind of went no true structured prompt or anything like that.
+
+22
+00:01:22,080 --> 00:01:25,200
+I just went off the top of my dome and just was like, okay,
+
+23
+00:01:25,920 --> 00:01:27,920
+this is the story that I wanted.
+
+24
+00:01:27,920 --> 00:01:28,720
+Quick back story.
+
+25
+00:01:28,720 --> 00:01:31,360
+This is the second video that we did with Manny.
+
+26
+00:01:31,360 --> 00:01:36,560
+The first one we used to see Dan's 2.0 where he went to a rehab center to pick up his mom
+
+27
+00:01:36,560 --> 00:01:37,840
+and the mom wasn't there.
+
+28
+00:01:37,840 --> 00:01:39,680
+So this is the second part to it.
+
+29
+00:01:39,680 --> 00:01:42,960
+If you didn't see that video, I'll put it in the description as well and it'll pop up.
+
+30
+00:01:42,960 --> 00:01:44,560
+But this is a continuation.
+
+31
+00:01:44,560 --> 00:01:48,800
+So the brain dump was me explaining what the story was going to be
+
+32
+00:01:48,880 --> 00:01:52,560
+and that I needed character sheets on the two supporting characters.
+
+33
+00:01:52,560 --> 00:01:56,880
+I needed to create Manny's mom and I needed to create the street pharmacists.
+
+34
+00:01:56,880 --> 00:02:00,880
+So the brain dump was that the first scene was Manny kicking down the door.
+
+35
+00:02:00,880 --> 00:02:03,600
+The street pharmacist is right there kind of startled saying,
+
+36
+00:02:03,600 --> 00:02:06,080
+yo, this is not exactly what you think.
+
+37
+00:02:06,080 --> 00:02:09,200
+And then it shows the room where his mom is at.
+
+38
+00:02:09,200 --> 00:02:14,480
+There has a water and some pills and the mom looking kind of depressed.
+
+39
+00:02:14,480 --> 00:02:15,520
+And then Manny comes in.
+
+40
+00:02:15,520 --> 00:02:16,880
+So that was the data dump.
+
+41
+00:02:16,880 --> 00:02:21,680
+So once I press enter on the data dump, it made my storyboard exactly how I wanted it,
+
+42
+00:02:21,680 --> 00:02:25,360
+right? And always check the storyboard because if there's something messed up,
+
+43
+00:02:25,360 --> 00:02:26,880
+it will be messed up in your video.
+
+44
+00:02:26,880 --> 00:02:29,040
+So always get the storyboard first.
+
+45
+00:02:29,600 --> 00:02:34,640
+As well as it created the character sheets of Manny's mom and the street pharmacists.
+
+46
+00:02:34,640 --> 00:02:38,320
+And I created that because I'm going to need them for another video later on.
+
+47
+00:02:38,320 --> 00:02:40,640
+Be as detailed as you can with your story.
+
+48
+00:02:40,640 --> 00:02:43,920
+So ChatTBT doesn't kind of have to fill in the blanks because
+
+49
+00:02:43,920 --> 00:02:47,760
+we don't want to rely on AI to make the story for us just to help us.
+
+50
+00:02:47,760 --> 00:02:51,600
+Now, the next thing we're going to do is go into plugin and find HiggsField
+
+51
+00:02:51,600 --> 00:02:56,080
+because this is the tool that is going to give us the video right inside of ChatTBT.
+
+52
+00:02:56,080 --> 00:02:58,400
+Once you connect the plugin to ChatTBT,
+
+53
+00:02:58,400 --> 00:03:02,400
+it's going to ask you to log into your HiggsField account and then you're good to go.
+
+54
+00:03:02,400 --> 00:03:05,600
+Once we connect HiggsField, now it's time to take that storyboard
+
+55
+00:03:05,600 --> 00:03:07,440
+and turn it into a video.
+
+56
+00:03:07,440 --> 00:03:12,960
+So it's going to ask you to upload the character references and the storyboard.
+
+57
+00:03:13,040 --> 00:03:14,720
+If it doesn't automatically do that.
+
+58
+00:03:14,720 --> 00:03:16,720
+So I got a widget for it.
+
+59
+00:03:16,720 --> 00:03:19,280
+I uploaded it and then it started its process.
+
+60
+00:03:19,280 --> 00:03:20,000
+Now, quick tip.
+
+61
+00:03:20,000 --> 00:03:24,000
+Be very specific with what model you want and how many credits it's going to take.
+
+62
+00:03:24,000 --> 00:03:26,960
+For this example, we use cdance 2.5.
+
+63
+00:03:26,960 --> 00:03:31,600
+And once I asked it how many credits it's going to take, it said 98.
+
+64
+00:03:31,600 --> 00:03:33,440
+And it's good to ask because as you can see,
+
+65
+00:03:33,440 --> 00:03:38,000
+it originally wanted to do 30 seconds for 195 credits.
+
+66
+00:03:38,000 --> 00:03:41,440
+And I know I only wanted to make this into a 15 seconds one,
+
+67
+00:03:41,520 --> 00:03:43,920
+which was only going to take 98 credits.
+
+68
+00:03:43,920 --> 00:03:47,040
+Once we sorted all of that out, we got our first draft.
+
+69
+00:03:47,040 --> 00:03:47,840
+Let's play it.
+
+70
+00:04:02,640 --> 00:04:04,080
+All right, that's not bad.
+
+71
+00:04:04,080 --> 00:04:05,280
+Now, I had an issue with it.
+
+72
+00:04:05,280 --> 00:04:08,640
+If you saw the first couple of seconds, when he kicked the door, he kicked the door
+
+73
+00:04:08,800 --> 00:04:09,760
+the opposite way.
+
+74
+00:04:10,560 --> 00:04:13,120
+I would think you would kick the door in, not kick.
+
+75
+00:04:13,120 --> 00:04:14,080
+And then it comes out.
+
+76
+00:04:14,080 --> 00:04:14,880
+But that's just me.
+
+77
+00:04:14,880 --> 00:04:18,000
+And this is the last step of making the video inside of Chatchee BT,
+
+78
+00:04:18,000 --> 00:04:19,920
+which is tweak until you like it.
+
+79
+00:04:19,920 --> 00:04:22,560
+Now, as you can see in my conversations,
+
+80
+00:04:22,560 --> 00:04:25,360
+I don't talk to it like a prop structure.
+
+81
+00:04:25,360 --> 00:04:28,320
+I talk to it like a full-blown conversation.
+
+82
+00:04:28,320 --> 00:04:32,960
+And so there's going to be some tweaks that I'm going to make until I get it exactly.
+
+83
+00:04:32,960 --> 00:04:37,120
+And I realized that I had to be intentional
+
+84
+00:04:37,200 --> 00:04:40,160
+with the picture of the first frame because if not,
+
+85
+00:04:40,160 --> 00:04:41,920
+it's going to mess up the whole thing.
+
+86
+00:04:41,920 --> 00:04:46,160
+So let me go find where I actually got it right,
+
+87
+00:04:46,960 --> 00:04:54,000
+where boom, I actually had to make him like kick the door,
+
+88
+00:04:54,000 --> 00:04:54,960
+almost kick the door.
+
+89
+00:04:54,960 --> 00:04:58,400
+Not fully kicked the door, almost kicked the door,
+
+90
+00:04:58,400 --> 00:05:01,360
+door knob, all of that be very detailed with it.
+
+91
+00:05:01,360 --> 00:05:03,600
+And now we have the final product.
+
+92
+00:05:04,160 --> 00:05:05,040
+So let me know what you think.
+
+93
+00:05:07,760 --> 00:05:10,960
+Oh, hold on, Maddie, this isn't what you think it is.
+
+94
+00:05:10,960 --> 00:05:11,440
+Where is she?
+
+95
+00:05:14,640 --> 00:05:15,200
+Where is she?
+
+96
+00:05:16,160 --> 00:05:16,720
+Where is she?
+
+97
+00:05:20,240 --> 00:05:22,560
+Now, that was the process of how I made that video.
+
+98
+00:05:22,560 --> 00:05:25,200
+We went from creating a main character,
+
+99
+00:05:25,200 --> 00:05:27,280
+having a character sheet for that,
+
+100
+00:05:27,280 --> 00:05:30,080
+data dumping inside a Chatchee BT work,
+
+101
+00:05:30,080 --> 00:05:32,480
+creating not only the storyboard,
+
+102
+00:05:32,480 --> 00:05:36,720
+but also the character sheets of the supporting characters,
+
+103
+00:05:36,720 --> 00:05:39,120
+then we plugged in Higgsville,
+
+104
+00:05:39,120 --> 00:05:43,200
+and then we made the video tweaked it to finally get the final result.
+
+105
+00:05:43,200 --> 00:05:46,160
+Now, one of the sleeper tips that I don't know if you caught on to
+
+106
+00:05:46,160 --> 00:05:49,600
+is make sure you have your images right before it goes to video.
+
+107
+00:05:49,600 --> 00:05:52,160
+Never go from a data dump to just video.
+
+108
+00:05:52,160 --> 00:05:55,360
+Even though the video was created by that main storyboard,
+
+109
+00:05:55,360 --> 00:05:57,280
+you still want those character sheets.
+
+110
+00:05:57,280 --> 00:06:00,400
+You even still want to have maybe a separate picture
+
+111
+00:06:00,400 --> 00:06:04,160
+for the first frame if it doesn't go exactly the way you want it.
+
+112
+00:06:04,240 --> 00:06:07,680
+Now, one thing that I didn't show was a skill that I had already had
+
+113
+00:06:07,680 --> 00:06:11,440
+inside a Chatchee BT, which is a seed dance prompt skill.
+
+114
+00:06:11,440 --> 00:06:13,200
+This is going to help you take your data dump,
+
+115
+00:06:13,920 --> 00:06:17,200
+take the storyboard, and turn it into a seed dance prompt
+
+116
+00:06:17,200 --> 00:06:18,800
+that is read by Higgsville.
+
+117
+00:06:18,800 --> 00:06:22,400
+Now, my personal Chatchee BT skill that I use to make this video
+
+118
+00:06:22,400 --> 00:06:24,400
+is exclusively inside Alliance Behavior,
+
+119
+00:06:24,400 --> 00:06:27,200
+which is my private community, which link in the description.
+
+120
+00:06:27,200 --> 00:06:29,760
+But if you go back to that guy that I gave you,
+
+121
+00:06:29,760 --> 00:06:32,560
+there's going to be a prompt that will turn that data dump
+
+122
+00:06:32,640 --> 00:06:36,720
+into a seed dance ready prompt that will make your video.
+
+123
+00:06:36,720 --> 00:06:39,520
+You've probably been wondering what to do with Chatchee BT work.
+
+124
+00:06:39,520 --> 00:06:40,960
+Well, here's a great use case.
+
+125
+00:06:40,960 --> 00:06:42,560
+Let me know if you're going to use it.
+
+126
+00:06:42,560 --> 00:06:45,760
+And if you need another video about it, check it out here.
+

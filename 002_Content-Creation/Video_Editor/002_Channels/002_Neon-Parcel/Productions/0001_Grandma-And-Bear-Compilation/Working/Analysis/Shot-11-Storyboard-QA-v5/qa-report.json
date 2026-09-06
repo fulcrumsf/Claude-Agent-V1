@@ -1,0 +1,14 @@
+{
+  "status": "pass",
+  "review_mode": "manual_approved_plus_contract_backcheck",
+  "findings": [],
+  "checks": [
+    "subject_origin",
+    "spatial_geometry",
+    "chronology",
+    "eyeline_tracking",
+    "camera_continuity",
+    "physics",
+    "caption_layout"
+  ]
+}

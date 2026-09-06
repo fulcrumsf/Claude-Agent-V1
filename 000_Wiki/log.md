@@ -2752,3 +2752,14 @@ Source: `000_Ingest/screenshots/` → `007_Resource_Library/` category folders, 
 Asset Notes: 194 image notes created across Tools, Tutorials, Docs, Models, Investments, Research, Personal, and other category folders; 3 low-context images routed to `Undetermined/`
 Video Package: `007_Resource_Library/Videos/Short-Video-Long-Caption-Repeat-Views-Engagement-Strategy/`
 Preservation: `000_Ingest/screenshots/` retained as a reusable drop-zone; `.DS_Store` left untouched.
+
+## [2026-08-29] ingest | Seedance Video-Analyzed Sources
+Source: five unique analyzed top-level `000_Ingest/` tutorial notes
+Destinations:
+- `007_Resource_Library/Tutorials/Claude-Replaced-Higgsfield-with-This-FREE-MCP.md`
+- `007_Resource_Library/Tutorials/Create-Seamless-AI-Films-of-ANY-Length-GPT-Image-2-Seedance-2.0.md`
+- `007_Resource_Library/Tutorials/How-to-Turn-Images-into-Motion-Graphics-using-Seedance-2.0.md`
+- `007_Resource_Library/Tutorials/How-to-Turn-Storyboards-into-AI-Videos-with-GPT-Image-2-Seedance-2.0.md`
+- `007_Resource_Library/Tutorials/I-Can't-Believe-ChatGPT-Work-Made-This-Whole-Video-From-One-Image.md`
+Case-study analyses retained in `002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Case_Studies/Seedance-Reference-Analysis/`.
+Duplicate removal: explicitly deleted `000_Ingest/Claude Replaced Higgsfield with This FREE MCP 1.md` after confirming it duplicated the `IUV8QzwIb6g` source.

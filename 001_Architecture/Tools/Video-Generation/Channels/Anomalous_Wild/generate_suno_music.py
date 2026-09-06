@@ -8,9 +8,18 @@ Realms assemble.py itself is untouched.
 
 Usage:
   python3 generate_suno_music.py <output_mp3_path> "<prompt>" "<style_tags>"
+
+Suno returns ~2 tracks per generation. BOTH are saved next to <output_mp3_path>
+as <stem>_v1.mp3 / <stem>_v2.mp3 (in API order), and <output_mp3_path> itself is
+written as a copy of the longest one. A <stem>_suno.json sidecar records the
+prompt, style tags, taskId, and per-track metadata — so the generation is always
+reproducible / auditable (2026-09-03: Tony — always save both, always save the
+prompt).
 """
 
+import json
 import os
+import shutil
 import subprocess
 import sys
 import time
@@ -75,20 +84,57 @@ def generate_suno_music(prompt, style_tags, out_music: Path, title="Anomalous Wi
             suno_data = (block.get("response") or {}).get("sunoData", [])
             if not suno_data:
                 sys.exit(f"ERROR: SUCCESS but no sunoData: {block}")
-            # Pick the longest of the (usually 2) generated tracks
-            best = max(suno_data, key=lambda t: t.get("duration", 0))
-            url = best.get("audioUrl")
-            if not url:
-                sys.exit(f"ERROR: No audioUrl in result: {block}")
 
-            print(f"  Downloading from {url}")
-            r = requests.get(url, stream=True, timeout=120)
-            r.raise_for_status()
+            out_music = Path(out_music)
             out_music.parent.mkdir(parents=True, exist_ok=True)
-            with open(out_music, "wb") as f:
-                for chunk in r.iter_content(8192):
-                    f.write(chunk)
-            print(f"  Saved {out_music} ({out_music.stat().st_size / 1_000_000:.1f} MB)")
+            stem = out_music.with_suffix("")
+
+            # Save EVERY track Suno returned (usually 2), in API order.
+            saved = []
+            for i, track in enumerate(suno_data, start=1):
+                url = track.get("audioUrl")
+                if not url:
+                    print(f"  ⚠ track {i} has no audioUrl, skipping")
+                    continue
+                dest = Path(f"{stem}_v{i}.mp3")
+                print(f"  Downloading track {i} ({track.get('duration', '?')}s) → {dest.name}")
+                r = requests.get(url, stream=True, timeout=120)
+                r.raise_for_status()
+                with open(dest, "wb") as f:
+                    for chunk in r.iter_content(8192):
+                        f.write(chunk)
+                saved.append((dest, track))
+
+            if not saved:
+                sys.exit(f"ERROR: no downloadable tracks in result: {block}")
+
+            # out_music itself = a copy of the longest track (the default pick).
+            best_dest, _ = max(saved, key=lambda st: st[1].get("duration", 0))
+            shutil.copyfile(best_dest, out_music)
+
+            # Sidecar: prompt + style + taskId + per-track metadata — always saved.
+            sidecar = Path(f"{stem}_suno.json")
+            sidecar.write_text(json.dumps({
+                "prompt": prompt,
+                "style_tags": style_tags,
+                "title": title,
+                "negative_tags": "vocals, lyrics, singing, speech",
+                "model": "V4",
+                "task_id": task_id,
+                "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+                "default_pick": best_dest.name,
+                "tracks": [
+                    {"file": d.name, "suno_id": t.get("id"),
+                     "duration_s": t.get("duration"), "audio_url": t.get("audioUrl"),
+                     "title": t.get("title")}
+                    for d, t in saved
+                ],
+            }, indent=2))
+
+            for d, t in saved:
+                print(f"  ✓ {d.name} ({d.stat().st_size / 1_000_000:.1f} MB, {t.get('duration', '?')}s)")
+            print(f"  ✓ {out_music.name} = copy of {best_dest.name} (longest)")
+            print(f"  ✓ {sidecar.name} (prompt + metadata)")
             return
         elif status == "FAILED":
             sys.exit(f"ERROR: Suno generation failed: {block}")

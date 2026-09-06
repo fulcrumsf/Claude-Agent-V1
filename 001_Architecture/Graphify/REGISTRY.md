@@ -17,6 +17,14 @@ Single source of truth for Tony's federated knowledge graphs. Each domain has it
 
 Each graph query is ~70x cheaper than raw grep/file reads.
 
+## Tooling version
+
+- **CLI package:** `graphifyy` (double-y) — **0.9.55** as of 2026-09-05, installed on Framework Python 3.13 at `/Library/Frameworks/Python.framework/Versions/3.13/bin/graphify`. This is now the only `graphify` on PATH (a stale Homebrew 0.4.23 shadow was removed).
+- **Skill copies** (`~/.claude/skills/graphify`, `~/.codex/skills/graphify`) refreshed to 0.9.55 via `graphify install --platform <claude|codex>`. Marker: `001_Architecture/Skills/graphify/.graphify_version`.
+- **Resolves the prior mismatch:** the old 0.4.2 CLI had no `graphify update` / `add` / `extract` subcommands, which is why the documented refresh flow failed. 0.9.55 has the full command set — `extract`, `update`, `check-update`, `path`, `explain`, `query`, `add`, `watch`, `merge-graphs`.
+- **Command model in 0.9.55:** `graphify extract <path>` = headless full extraction (AST + semantic LLM, `--force` / `--mode deep`); `graphify update <path>` = fast AST-only incremental re-extract, no LLM; `graphify check-update <path>` = cron-safe pending-work check; `/graphify . --update` (skill) = incremental semantic re-extract.
+- **Node-ID scheme:** the Architecture and Video Editor graphs were built on the pre-#1504 scheme. A future `graphify extract --force` rebuild gets path-qualified node IDs (fixes same-name-file collisions). Not urgent — queries work fine as-is.
+
 ## Registry table
 
 | Domain | Path | Graph location | MD files | Status | Last built |
@@ -24,8 +32,8 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | pending build | — |
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
 | Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 75 | pending build | — |
-| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 2213 | built | 2026-08-25T12:45Z|
-| Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 404 | built | 2026-08-25T02:41Z|
+| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 3723 | built | 2026-09-06T00:21Z|
+| Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 2952 | built | 2026-09-05T22:55Z|
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | pending build | — |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | pending build | — |
 | Apps | `003_Apps/` | `003_Apps/graphify-out/` | 8 | pending build | — |

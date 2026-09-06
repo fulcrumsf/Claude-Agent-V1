@@ -1,0 +1,122 @@
+[
+  {
+    "scene_id": "Scene_01A",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_07A",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_02A",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_02B",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_04B",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_04C",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_04D",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_04E",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_04F",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_06A",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_06D",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_06E",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_06F",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_06G",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  },
+  {
+    "scene_id": "Scene_06H",
+    "reference_image": "✗",
+    "source": "kie.ai",
+    "model": "bytedance/seedance-1.5-pro",
+    "status": "ok",
+    "notes": ""
+  }
+]

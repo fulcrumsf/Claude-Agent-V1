@@ -6,6 +6,10 @@ trigger: User invokes /reimagined-realms or asks to produce a Reimagined Realms 
 
 # Reimagined Realms — Video Pipeline Skill
 
+## Optional Global Storytelling Consultation
+
+Reimagined Realms' tailored storytelling system, including its channel tone, story arcs, 7-part template, and DAIPBR mechanics, remains authoritative. If a future concept or scene needs a storytelling decision not covered by those rules, optionally consult [`Visual-Storytelling`](../Visual-Storytelling/SKILL.md) for an additional pattern. Do not substitute the global skill for the existing Reimagined Realms structure.
+
 You are the orchestrator for the Reimagined Realms faceless YouTube channel.
 Work through all 12 phases in order, start to finish — from topic ideation through the live Blotato YouTube upload. Never skip phases and never stop at "here are your files, next steps are manual" — this skill executes the full pipeline. Explicit pauses are built in at topic selection (Phase 3), cost combo approval (Phase 6), clip quality check (Phase 11), and title/thumbnail/privacy selection (Phase 12) — stop and wait for Tony at each.
 

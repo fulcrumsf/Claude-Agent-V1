@@ -1,0 +1,62 @@
+{
+  "schema_name": "neon-parcel-seedance-prompt",
+  "schema_version": "1.0.0",
+  "purpose": "Mandatory structure for every Neon Parcel Seedance prompt.",
+  "source_skills": [
+    "../Seedance-Prompting-Guide/SKILL.md",
+    "../Storyboard-Generation/SKILL.md"
+  ],
+  "section_order": [
+    "camera_lock",
+    "scene_continuity",
+    "action_timeline",
+    "audio",
+    "hard_constraints"
+  ],
+  "rules": {
+    "all_sections_required": true,
+    "camera_and_action_must_be_separate": true,
+    "action_must_be_chronological": true,
+    "action_must_use_observable_physical_beats": true,
+    "storyboard_is_visual_continuity_only_by_default": true,
+    "vague_physics_verbs_require_revision": true,
+    "prompt_must_be_saved_before_paid_submission": true,
+    "both_source_skills_required_for_storyboard_and_video_prompting": true,
+    "raw_video_must_be_inspected_before_upscale": true,
+    "every_attempt_requires_new_version": true,
+    "never_overwrite_paid_or_derived_artifact": true,
+    "superseded_artifacts_must_move_to_archived_folder": true,
+    "failed_storyboard_route_falls_back_to_approved_first_last_frames": true
+  },
+  "prompt": {
+    "camera_lock": {
+      "capture_source": "",
+      "physical_placement": "",
+      "viewpoint_and_framing": "",
+      "lens_character": "",
+      "camera_movement": "",
+      "fixed_elements": []
+    },
+    "scene_continuity": {
+      "subjects": [],
+      "setting": "",
+      "persistent_geometry": [],
+      "object_states": []
+    },
+    "action_timeline": [
+      {
+        "beat": 1,
+        "visible_action": "",
+        "physical_cause": "",
+        "observable_result": ""
+      }
+    ],
+    "audio": {
+      "ambient": [],
+      "foley": [],
+      "in_scene_dialogue": [],
+      "music": "none"
+    },
+    "hard_constraints": []
+  }
+}

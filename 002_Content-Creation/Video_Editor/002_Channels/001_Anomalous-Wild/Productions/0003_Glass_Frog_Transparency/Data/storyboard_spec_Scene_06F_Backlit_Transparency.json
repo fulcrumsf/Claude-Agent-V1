@@ -1,0 +1,35 @@
+{
+  "scene_id": "Scene_06F_Backlit_Transparency",
+  "scene_duration_s": 8.07,
+  "frame_count": 6,
+  "scene_description": "Warm backlight. A side-angle shot of the glass frog on the underside of a glowing leaf, its body becoming transparent and blending into the leaf. This is the 'camouflage trick' beat \u2014 DISTINCT from the wide shot and the upside-down close that follow it. Anatomy check: in every panel the glass frog has all four legs attached to its body and both eyes present and correctly placed \u2014 never a missing or detached limb, never a single-eyed frog.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; National Geographic-quality lighting on real/photoreal shots; no gore, no viscera. Photoreal, shallow depth of field.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Side-angle medium shot, the glass frog clinging to the underside of a broad green leaf lit from behind so the leaf glows, all four legs splayed and gripping, both eyes closed, body pressed flat."
+    },
+    {
+      "frame": 2,
+      "action": "Push in to a medium close-up on the frog's translucent belly against the backlit leaf, a faint suggestion of mirrored internal organs, skin taking on the leaf's green."
+    },
+    {
+      "frame": 3,
+      "action": "Close-up, the frog's outline beginning to blend into the leaf, the edges of its legs becoming hard to separate from the leaf surface."
+    },
+    {
+      "frame": 4,
+      "action": "Extreme close-up on the skin surface, light passing through it, the boundary between frog and leaf almost gone."
+    },
+    {
+      "frame": 5,
+      "action": "Slow pull back to medium, the frog now reads almost entirely as part of the leaf, only the faint shadow of its spine giving it away."
+    },
+    {
+      "frame": 6,
+      "action": "Medium side shot held, the frog nearly invisible against the glowing leaf, a single water droplet rolling off the leaf edge, shallow depth of field."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel shows the SAME glass frog with identical coloring, markings and proportions, as one continuous shot. Anatomy check: in every panel the glass frog has all four legs attached to its body and both eyes present and correctly placed \u2014 never a missing or detached limb, never a single-eyed frog."
+}

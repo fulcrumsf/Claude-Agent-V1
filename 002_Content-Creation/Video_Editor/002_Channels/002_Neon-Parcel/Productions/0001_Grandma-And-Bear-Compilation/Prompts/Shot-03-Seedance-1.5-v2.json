@@ -1,0 +1,10 @@
+{
+  "shot_id": "Shot-03",
+  "version": "v2",
+  "model": "bytedance/seedance-1.5-pro",
+  "generation_resolution": "1080p",
+  "duration_seconds": 10,
+  "reference_assets": ["Images/Shot-03-Start-Frame-v1.png"],
+  "endpoint_decision": "start_frame_only",
+  "prompt": "Realistic handheld smartphone video filmed by a passenger inside a bus, aimed through the bus window with slight reflections and a little bus interior visible. One older Russian woman drives one ordinary convertible through a cold snowy town with one large polar bear seated safely in the passenger seat. Keep the passenger's phone viewpoint, natural handheld steadiness, muted winter light, believable road motion, and one continuous passing event. The car drives completely through frame and exits; after it exits, do not introduce another car, another bear, or a replacement vehicle. Use natural bus and street audio, with only a brief quiet off-camera reaction if needed. Do not add captions, title cards, labels, emojis, watermarks, or other graphics."
+}

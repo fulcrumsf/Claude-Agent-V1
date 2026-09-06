@@ -20,6 +20,16 @@ This is Tony's operating system — a unified workspace for all business operati
 
 Do not trash or destructively delete source files during ingest or cleanup. Preserve originals unless the routing decision is explicit and points to an existing destination. If something is no longer active, move it only when Tony has approved the destination; otherwise leave it in place and ask. Nothing should be thrown in the trash as part of normal workspace operations.
 
+### Iteration Archive Rule
+
+This preservation rule applies to every project artifact, including images,
+prompts, scripts, shot lists, storyboards, metadata, audio, video, and renders.
+When an iteration is denied or superseded, move the prior version into the
+matching project `Archived/` folder rather than deleting or overwriting it.
+Preserve its original version number and assign the replacement the next
+version number. Active folders should contain only current working or approved
+artifacts.
+
 ---
 
 ## Rule 1: Read the Workspace and System Maps First
@@ -40,6 +50,12 @@ Before exploring any folder or asking Tony for context:
 ## Rule 2.5: Check the Skill Index Before Choosing a Skill
 
 The canonical cross-agent skill registry is `001_Architecture/Skills/Skill-Index.md`. Read it first when deciding which skill to use, then open the matching `SKILL.md` file for the full instructions.
+
+## Rule 2.6: Use the Codex Agent-OS Hardening Skill
+
+When operating as Codex or any OpenAI-compatible agent in Agent-OS, use `001_Architecture/Skills/codex-agent-os-hardening/SKILL.md` as the operating checklist for startup orientation, folder routing, recommendation approval boundaries, preservation rules, feedback-loop writes, memory updates, session logs, and closeout behavior. This skill exists so Codex mirrors Claude Code's Agent-OS discipline instead of making Tony repeat core working rules.
+
+For broad onboarding or "understand this system" requests, prioritize the numbered departments: `001_Architecture` first, `002_Content-Creation` second, `007_Resource_Library` third. Usually skip `000_Ingest` unless the task is specifically about ingesting or organizing raw intake.
 
 ---
 

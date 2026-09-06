@@ -7,6 +7,7 @@ This directory is the **unified brain** and **single source of truth** for all a
 ## Folder Layout & Descriptions
 
 *   **Automation:** Reserved for exporting and studying `n8n` workflow JSONs. These workflows are analyzed here before being deployed into isolated Docker containers for uninterrupted, background execution.
+*   **Audit_Reports:** Architecture audits, reusable audit prompts, and system review reports. Use this for inspection-only analysis of Agent-OS structure, context efficiency, memory systems, toolchains, and cross-agent operating rules.
 *   **Feedback_Loop:** Contains daily learning logs where agents record Tony's preferences, corrections, and successful approaches to avoid repeating mistakes.
 *   **Graphify:** Configuration and output for the workspace graphing/mapping system.
 *   **Install_Maps:** Holds `System-Map.md` (the registry of all installed tools/apps) and `Workspace-Map.md` (the overarching folder layout).

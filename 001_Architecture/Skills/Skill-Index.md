@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-08-25
+created: 2026-09-05
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-08-25T22:39:30-04:00
+Generated: 2026-09-05T20:20:26-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -36,6 +36,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | Anomalous_Wild_Video_Pipeline | Invoke when Tony says /anomalous-wild, make an Anomalous Wild video, build me a video for the nature/science channel, run the Anomalous Wild pipeline, or start an AW production. O… | `001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md` |
 | character-sheet-generation | Use whenever a video production has a recurring character or creature that appears in more than one scene and needs to look identical every time — "build a character sheet", "crea… | `001_Architecture/Skills/Character-Sheet-Generation/SKILL.md` |
 | diagram-generation | Use whenever a video production needs a labeled scientific/technical diagram — "build a diagram", "generate a scientific illustration", "animate this diagram", or any beat compari… | `001_Architecture/Skills/Diagram-Generation/SKILL.md` |
+| director-packet-framework | Use when a complex cinematic, episodic, or long-form scene needs coordinated character, wardrobe, prop, environment, spatial camera, and storyboard references before video generat… | `001_Architecture/Skills/Director-Packet-Framework/SKILL.md` |
 | environment-sheet-generation | Use whenever a video production has a location that appears in more than one scene and needs to look identical every time — "build an environment sheet", "location reference sheet… | `001_Architecture/Skills/Environment-Sheet-Generation/SKILL.md` |
 | gpt-image-2-prompting-guide | Use whenever writing or reviewing a prompt for OpenAI's GPT-Image-2 (image generation/editing) via kie.ai or the OpenAI API directly. Triggers on "write a GPT-Image-2 prompt", "ge… | `001_Architecture/Skills/GPT-Image-2-Prompting-Guide/SKILL.md` |
 | Motion-Graphics | Use whenever building, reviewing, or planning ANY motion graphic — animated diagram/callout labels, kinetic typography, chart/data reveals, title cards, lower-thirds, or any Remot… | `001_Architecture/Skills/Motion-Graphics/SKILL.md` |
@@ -53,6 +54,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | tool-manager | > | `001_Architecture/Skills/Tool-Manager/SKILL.md` |
 | Tutorial-Builder | Turn a past multi-session build (pipeline, tool, workflow) into a replication blueprint and video-recording concept for the Roboto Gato YouTube channel and/or a sellable/free PDF.… | `001_Architecture/Skills/Tutorial-Builder/SKILL.md` |
 | video-analyzer | Use when Tony wants to reverse-engineer the style, pacing, editing, or narrative content of any reference video for any channel or project. Triggers on "analyze this video", "brea… | `001_Architecture/Skills/Video-Analyzer/SKILL.md` |
+| visual-storytelling | Use whenever planning, evaluating, or revising a visual story, video concept, shot list, storyboard, scene, clip sequence, narration structure, compilation, or episodic series. Se… | `001_Architecture/Skills/Visual-Storytelling/SKILL.md` |
 | ab-test-setup | When the user wants to plan, design, or implement an A/B test or experiment. Also use when the user mentions "A/B test," "split test," "experiment," "test this change," "variant c… | `001_Architecture/Skills/ab-test-setup/SKILL.md` |
 | ad-creative | When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — for any paid advertising platform. Also use when th… | `001_Architecture/Skills/ad-creative/SKILL.md` |
 | agent-development | This skill should be used when the user asks to "create an agent", "add an agent", "write a subagent", "agent frontmatter", "when to use description", "agent examples", "agent too… | `001_Architecture/Skills/agent-development/SKILL.md` |
@@ -65,6 +67,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | claude-md-improver | Audit and improve CLAUDE.md files in repositories. Use when user asks to check, audit, update, improve, or fix CLAUDE.md files. Scans for all CLAUDE.md files, evaluates quality ag… | `001_Architecture/Skills/claude-md-improver/SKILL.md` |
 | clean-architecture | Structure software around the Dependency Rule: source code dependencies point inward from frameworks to use cases to entities. Use when the user mentions "architecture layers", "d… | `001_Architecture/Skills/clean-architecture/SKILL.md` |
 | clean-code | Write readable, maintainable code through disciplined naming, small functions, and clean error handling. Use when the user mentions "code review", "naming conventions", "function… | `001_Architecture/Skills/clean-code/SKILL.md` |
+| codex-agent-os-hardening | Use this skill whenever Codex or any OpenAI-compatible agent starts work in Agent-OS, when Tony says Codex is missing Claude Code habits, when a task touches memory/logs/feedback/… | `001_Architecture/Skills/codex-agent-os-hardening/SKILL.md` |
 | cold-email | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting emails, cold email campaigns, sales development… | `001_Architecture/Skills/cold-email/SKILL.md` |
 | command-development | This skill should be used when the user asks to "create a slash command", "add a command", "write a custom command", "define command arguments", "use command frontmatter", "organi… | `001_Architecture/Skills/command-development/SKILL.md` |
 | competitor-alternatives | When the user wants to create competitor comparison or alternative pages for SEO and sales enablement. Also use when the user mentions 'alternative page,' 'vs page,' 'competitor c… | `001_Architecture/Skills/competitor-alternatives/SKILL.md` |
@@ -90,7 +93,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | frontend-design | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates cre… | `001_Architecture/Skills/frontend-design/SKILL.md` |
 | gemini-api-dev | Use this skill when building applications with Gemini models, Gemini API, working with multimodal content (text, images, audio, video), implementing function calling, using struct… | `001_Architecture/Skills/gemini-api-dev/SKILL.md` |
 | google_veo_kie_api | Best practices for using Google Veo 3, Kling, Runway, and Kie AI APIs for video and image generation. | `001_Architecture/Skills/google_veo_kie_api/SKILL.md` |
-| graphify | any input (code, docs, papers, images) - knowledge graph - clustered communities - HTML + JSON + audit report | `001_Architecture/Skills/graphify/SKILL.md` |
+| graphify | Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ exists, where the question should be treated as a g… | `001_Architecture/Skills/graphify/SKILL.md` |
 | gsap | GSAP animation reference for HyperFrames. Covers gsap.to(), from(), fromTo(), easing, stagger, defaults, timelines (gsap.timeline(), position parameter, labels, nesting, playback)… | `001_Architecture/Skills/gsap/SKILL.md` |
 | gsd-add-backlog | Add an idea to the backlog parking lot (999.x numbering) | `001_Architecture/Skills/gsd-add-backlog/SKILL.md` |
 | gsd-add-phase | Add phase to end of current milestone in roadmap | `001_Architecture/Skills/gsd-add-phase/SKILL.md` |

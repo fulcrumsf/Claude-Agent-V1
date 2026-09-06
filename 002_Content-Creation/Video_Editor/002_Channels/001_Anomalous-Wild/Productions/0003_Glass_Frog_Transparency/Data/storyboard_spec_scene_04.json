@@ -1,0 +1,59 @@
+{
+  "scene_id": "Scene_04",
+  "scene_duration_s": 35.526,
+  "frame_count": 12,
+  "scene_description": "Context loop: an animated range map establishes the ~150 glass frog species across Central/South America, then real cloud-forest-stream footage shows nocturnal ambush hunting, daytime leaf-sleeping, and the frog nearly disappearing against a backlit leaf, zooming out to the full canopy. NOTE: frame 1 (the range map) is a Remotion data-graphic, not part of this production's photoreal/character-sheet continuity.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; backgrounds trend toward a dark #2B0B5A-to-#0B0F1A gradient feel outside of natural daylight/night forest scenes. National Geographic-quality lighting on real/photoreal shots; clean scientific-diagram aesthetic (no gore, no viscera) on any internal-anatomy render. Glitch-distortion cuts used only at anomaly-reveal/hook moments.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Animated range map graphic, tracing a path from southern Mexico through Central America into the Andes and Amazon basin, clean geographic-outline style."
+    },
+    {
+      "frame": 2,
+      "action": "Overhead/God view, cloud-forest canopy over a mountain stream, mist visible, cutting from the map into real footage."
+    },
+    {
+      "frame": 3,
+      "action": "Medium shot, the frog perched on a leaf at night, alert and motionless in ambush posture."
+    },
+    {
+      "frame": 4,
+      "action": "Close-up, the frog's tongue flicking out in a fast strike toward an insect just out of frame."
+    },
+    {
+      "frame": 5,
+      "action": "Extreme close-up, the insect caught, tongue retracting, the frog settling back into stillness."
+    },
+    {
+      "frame": 6,
+      "action": "Macro real-footage style, the frog motionless on a leaf underside by daylight, sleeping."
+    },
+    {
+      "frame": 7,
+      "action": "Wide shot from below/side, the frog pressed flat against a backlit leaf, its edges blending into the leaf's own translucency."
+    },
+    {
+      "frame": 8,
+      "action": "Extreme close-up, the frog's outline nearly disappearing into the leaf's backlit glow."
+    },
+    {
+      "frame": 9,
+      "action": "Medium wide, camera pulling back slightly, the leaf and frog now smaller within the frame."
+    },
+    {
+      "frame": 10,
+      "action": "Wide, cloud-forest canopy filling most of the frame, the leaf now a small detail within it."
+    },
+    {
+      "frame": 11,
+      "action": "Extreme wide, the slow zoom out continuing, the frog barely distinguishable within the canopy."
+    },
+    {
+      "frame": 12,
+      "action": "Full wide hold, the entire leaf canopy in frame, the frog imperceptible, closing the scene."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel must show the same subject with identical coloring, markings, and proportions, as if part of one continuous shot. Use clean composition and precise detail. The sequence should read as one continuous event from start to finish."
+}

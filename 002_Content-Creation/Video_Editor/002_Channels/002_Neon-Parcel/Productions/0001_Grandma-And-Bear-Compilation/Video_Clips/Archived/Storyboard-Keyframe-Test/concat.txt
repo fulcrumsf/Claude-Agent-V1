@@ -1,0 +1,5 @@
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Video_Clips/Archived/Storyboard-Keyframe-Test/Clip-1.mp4'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Video_Clips/Archived/Storyboard-Keyframe-Test/Clip-2.mp4'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Video_Clips/Archived/Storyboard-Keyframe-Test/Clip-3.mp4'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Video_Clips/Archived/Storyboard-Keyframe-Test/Clip-4.mp4'
+file '/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Video_Clips/Archived/Storyboard-Keyframe-Test/Clip-5.mp4'

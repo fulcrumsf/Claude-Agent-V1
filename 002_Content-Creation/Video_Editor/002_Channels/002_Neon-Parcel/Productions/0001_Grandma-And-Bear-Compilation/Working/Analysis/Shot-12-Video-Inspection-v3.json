@@ -1,0 +1,34 @@
+{
+  "provider": "gemini_direct",
+  "model": "gemini-3.7-flash",
+  "processing_mode": "static",
+  "sampling_fps": 3.0,
+  "video": "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Shot-12-Seedance-2-Mini-480p-v3.mp4",
+  "report": {
+    "summary": "Surveillance view of a backyard at night where a person in white outerwear approaches a trampoline occupied by multiple bear cubs.",
+    "overall_confidence": 0.72,
+    "findings": [
+      {
+        "timestamp": "00:00.000",
+        "category": "subject count and identity continuity",
+        "severity": "note",
+        "observation": "Multiple bear cubs remain positioned on the trampoline with very minimal movement throughout the sequence.",
+        "confidence": 0.75
+      },
+      {
+        "timestamp": "00:05.333",
+        "category": "spatial geometry, entrances, exits, paths, barriers, contact, scale, and physically possible movement",
+        "severity": "note",
+        "observation": "Figure in white suit walks from the wooden perimeter fence inward across the lawn toward the trampoline.",
+        "confidence": 0.78
+      },
+      {
+        "timestamp": "00:09.333",
+        "category": "spatial geometry, entrances, exits, paths, barriers, contact, scale, and physically possible movement",
+        "severity": "note",
+        "observation": "Figure reaches the edge of the trampoline and leans down near the border stones and frame.",
+        "confidence": 0.74
+      }
+    ]
+  }
+}

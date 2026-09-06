@@ -1,0 +1,184 @@
+[
+  {
+    "filename": "Generic_Frog_Eating_Firefly_01.mp4",
+    "duration_s": 10.99,
+    "resolution": "1920x1080",
+    "aspect_ratio": "16:9",
+    "photographer": "Dave Clarke",
+    "photographer_url": "https://www.pexels.com/@dave-clarke-1000000",
+    "photographer_id": "322373",
+    "species_note": "NOT a glass frog \u2014 generic pond frog species (supplement footage)",
+    "analysis": {
+      "actions_depicted": [
+        "frog perched at pond surface under lily pads",
+        "firefly/insect flies close to frog",
+        "frog lunges and strikes at insect on water surface, creating a splash",
+        "ripples spread across pond surface after the strike",
+        "frog settles back at rest near lily pads"
+      ],
+      "notes": "Single continuous shot, static wide/macro camera, natural pond lighting with lily pad canopy overhead. Strong predation/ambush-strike action \u2014 useful for illustrating insectivorous ambush-predator behavior described in Topic_Facts.md, though this is a generic pond frog, not a glass frog."
+    }
+  },
+  {
+    "filename": "Generic_Frog_In_Mossy_Forest_02.mp4",
+    "duration_s": 25.32,
+    "resolution": "1920x1080",
+    "aspect_ratio": "16:9",
+    "photographer": "Magda Ehlers",
+    "photographer_url": "https://www.pexels.com/@magda-ehlers-photography",
+    "photographer_id": "102775",
+    "species_note": "NOT a glass frog \u2014 frog camouflaged in mossy log/forest habitat (supplement footage)",
+    "analysis": {
+      "actions_depicted": [
+        "static extreme close-up of a moss- and lichen-covered log/rock surface",
+        "a small frog (partially visible, well camouflaged) rests motionless among the moss",
+        "water droplets visible on moss texture",
+        "no frog movement across the entire 25s duration"
+      ],
+      "notes": "Very static, textural forest/moss habitat shot with pink/red flowers softly out of focus in background. Good generic rainforest-floor texture/habitat B-roll, but the frog itself is small and hard to see \u2014 best used as an ambient habitat cutaway rather than a hero frog shot."
+    }
+  },
+  {
+    "filename": "Generic_Green_Tree_Frog_On_Leaf_Closeup_03.mp4",
+    "duration_s": 13.26,
+    "resolution": "1920x1080",
+    "aspect_ratio": "16:9",
+    "photographer": "Chris F",
+    "photographer_url": "https://www.pexels.com/@chris-f-1519753",
+    "photographer_id": "38966",
+    "species_note": "NOT a glass frog \u2014 pale green tree frog species with dark eye-mask marking (supplement footage)",
+    "analysis": {
+      "actions_depicted": [
+        "small green-and-white tree frog resting motionless on a broad leaf",
+        "shot in slow motion (240fps capture) showing subtle breathing/throat movement",
+        "soft-focus purple/green foliage bokeh background"
+      ],
+      "notes": "Clean, well-lit macro shot with shallow depth of field \u2014 good generic 'frog resting on leaf' cutaway. High frame rate source gives smooth slow-motion option in edit. Not visually similar to glass frogs (opaque white belly, dark eye mask) but usable as a general tree-frog behavior beat."
+    }
+  },
+  {
+    "filename": "Generic_Frog_On_Leaves_At_Night_04.mp4",
+    "duration_s": 5.13,
+    "resolution": "1920x1080",
+    "aspect_ratio": "16:9",
+    "photographer": "Arun M",
+    "photographer_url": "https://www.pexels.com/@arun-m-3641944",
+    "photographer_id": "2156620670",
+    "species_note": "NOT a glass frog \u2014 small reddish/orange nocturnal frog on foliage (supplement footage)",
+    "analysis": {
+      "actions_depicted": [
+        "small frog perched on a leaf tip amid dense tropical foliage, shot at night with flash/spot lighting",
+        "frog remains still, camera holds a static composition",
+        "leaves catch light and glisten (post-rain sheen)"
+      ],
+      "notes": "Strong nocturnal-rainforest mood shot \u2014 genuinely useful because glass frogs are nocturnal and this clip's lighting/foliage-density visually matches the 'sleeping frog hidden in leaves at night' beat described in the script's hook. Not a glass frog species but a strong stand-in silhouette/mood shot."
+    }
+  },
+  {
+    "filename": "Generic_Frog_Swimming_In_Pond_05.mp4",
+    "duration_s": 8.06,
+    "resolution": "1920x1080",
+    "aspect_ratio": "16:9",
+    "photographer": "Petr Ganaj",
+    "photographer_url": "https://www.pexels.com/@petr-ganaj-2648516",
+    "photographer_id": "2392193",
+    "species_note": "NOT a glass frog \u2014 mottled green/brown pond frog, e.g. common frog type (supplement footage)",
+    "analysis": {
+      "actions_depicted": [
+        "frog floats at the water surface with head and eyes above waterline",
+        "frog holds position for the full 8s, minor ripple movement around it",
+        "murky pond water with debris/reflections"
+      ],
+      "notes": "Classic 'frog at water surface' establishing shot \u2014 useful for stream/breeding-habitat cutaways referenced in Topic_Facts.md's mating/stream section, though glass frogs are arboreal and this pond composition doesn't match their canopy/leaf habitat as closely as clip 04 or 09."
+    }
+  },
+  {
+    "filename": "Generic_Green_Frog_Rana_Verde_06.mp4",
+    "duration_s": 24.17,
+    "resolution": "1920x1080",
+    "aspect_ratio": "16:9",
+    "photographer": "Javier Casta\u00f1\u00f3n Barbero",
+    "photographer_url": "https://www.pexels.com/@javier-castanon-barbero-2088813",
+    "photographer_id": "781250308",
+    "species_note": "NOT a glass frog \u2014 green pond frog partially submerged (supplement footage)",
+    "analysis": {
+      "actions_depicted": [
+        "green mottled frog sits mostly submerged at pond's edge, head and back above water",
+        "frog remains stationary for the full clip, occasional slight head turn",
+        "shallow depth of field, soft green/brown water bokeh background"
+      ],
+      "notes": "Long static hold (24s) of a frog at rest \u2014 good for a slow narration pause or as a loopable ambient background plate. Species and setting don't match glass frog biology closely (pond vs. rainforest canopy) so best used sparingly as generic amphibian filler."
+    }
+  },
+  {
+    "filename": "Generic_Blue_Poison_Dart_Frog_Macro_07.mp4",
+    "duration_s": 8.41,
+    "resolution": "1920x1080",
+    "aspect_ratio": "16:9",
+    "photographer": "Frank Litschel",
+    "photographer_url": "https://www.pexels.com/@frank-litschel-1806011",
+    "photographer_id": "1668603141",
+    "species_note": "NOT a glass frog \u2014 blue poison dart frog (Dendrobates tinctorius or similar), a different rainforest amphibian family (supplement footage)",
+    "analysis": {
+      "actions_depicted": [
+        "vividly colored blue-and-black poison dart frog climbs/walks across a mossy rainforest log",
+        "frog moves with characteristic small hopping/crawling steps toward camera-left",
+        "rich saturated rainforest-floor greens and ambers in background"
+      ],
+      "notes": "Excellent genuine Central/South American rainforest-amphibian macro footage \u2014 visually strong and colorful, useful as a 'meet the rainforest's other amazing frogs' cutaway or general amphibian-diversity beat, but is a distinctly different, non-transparent species from glass frogs and should be clearly captioned/contextualized if used, not implied to be a glass frog."
+    }
+  },
+  {
+    "filename": "Generic_Frog_Eggs_Closeup_08.mp4",
+    "duration_s": 6.83,
+    "resolution": "1920x1080",
+    "aspect_ratio": "16:9",
+    "photographer": "Luis Quintero",
+    "photographer_url": "https://www.pexels.com/@luis-quintero-1770254",
+    "photographer_id": "447123",
+    "species_note": "UNCERTAIN CONTENT \u2014 flagged below",
+    "analysis": {
+      "actions_depicted": [
+        "extreme macro shot of a pale, bumpy, elongated cluster on a white mesh/fabric background",
+        "backlit, static camera, subtle shadow movement from mesh pattern"
+      ],
+      "notes": "CONTENT WARNING: on frame-by-frame review this does NOT clearly resemble a typical gelatinous frog egg clutch (which is usually a translucent globular mass). It reads more like an insect larval case, seed pod, or cocoon shot against window screen/mesh fabric \u2014 the Pexels title 'frogs-eggs-in-white-background' may be a mislabel by the original uploader. Recommend treating this clip as UNVERIFIED for the egg-clutch/parental-care beat \u2014 do not caption it as glass frog eggs without further visual confirmation, or substitute a verified reference image instead for that beat."
+    }
+  },
+  {
+    "filename": "Generic_Tiny_Frog_On_Leaf_09.mp4",
+    "duration_s": 20.69,
+    "resolution": "1920x1080",
+    "aspect_ratio": "16:9",
+    "photographer": "Brixiv",
+    "photographer_url": "https://www.pexels.com/@brixiv",
+    "photographer_id": "1582692",
+    "species_note": "NOT a glass frog \u2014 small pale/tan frog on foliage, plausible rainforest understory species (supplement footage)",
+    "analysis": {
+      "actions_depicted": [
+        "very small frog perched on the edge of a long blade-like leaf, seen through foreground leaf blur",
+        "frog stays still for nearly the whole clip; camera holds static rack-focus composition",
+        "blue sky and reddish foliage visible softly out of focus behind the frog"
+      ],
+      "notes": "Attractive shallow-DOF composition with foreground leaves framing a small, still frog \u2014 closest visual match in this batch to a glass frog's typical 'tiny frog resting on a narrow leaf' pose, useful as a stand-in silhouette shot for a glass-frog-on-a-leaf beat even though the species/coloring differs."
+    }
+  },
+  {
+    "filename": "Generic_Tadpoles_Swimming_10.mp4",
+    "duration_s": 15.42,
+    "resolution": "1920x1080",
+    "aspect_ratio": "16:9",
+    "photographer": "Pixabay",
+    "photographer_url": "https://www.pexels.com/@pixabay",
+    "photographer_id": "2659",
+    "species_note": "NOT glass frog tadpoles \u2014 generic tadpole swarm, species unidentified (supplement footage)",
+    "analysis": {
+      "actions_depicted": [
+        "top-down view of dozens of dark tadpoles swimming and schooling in shallow, silty water",
+        "constant swarming movement throughout, occasional grouping/dispersing",
+        "a single blade of grass breaks the water surface in-frame"
+      ],
+      "notes": "Useful life-cycle/'after the eggs hatch and drop into the stream' cutaway to pair with the parental-care and reproduction beats in Topic_Facts.md \u2014 glass frog tadpoles specifically hatch from leaf-laid eggs and fall into streams, and this generic tadpole-swarm footage can illustrate that general concept even though it isn't the species itself."
+    }
+  }
+]

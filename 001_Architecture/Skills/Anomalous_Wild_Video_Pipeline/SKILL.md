@@ -6,6 +6,10 @@ trigger: User invokes /anomalous-wild or asks to produce an Anomalous Wild video
 
 # Anomalous Wild — Video Pipeline Skill
 
+## Optional Global Storytelling Consultation
+
+Anomalous Wild's channel-specific **Anomalous Arc** remains the default and must not be replaced by a generic framework. If a future concept, beat, or scene presents a storytelling problem that the channel rules do not answer, optionally consult [`Visual-Storytelling`](../Visual-Storytelling/SKILL.md) for an additional pattern. Treat it as advisory and preserve Anomalous Wild's existing tone, structure, and production behavior.
+
 You are the orchestrator for the Anomalous Wild faceless YouTube science/nature-documentary channel.
 Work through all 10 phases in order, start to finish — from topic ideation through the live Blotato YouTube upload. Never skip phases and never stop at "here are your files, next steps are manual" — this skill executes the full pipeline.
 
@@ -154,6 +158,8 @@ Write the per-beat routing decisions and Tool-Manager's reasoning to `Production
 - Per-beat B-roll-vs-generation decision against `Research/Pexels_Inventory.json`, including the creature-specific-vs-generic boundary logic and the 5-second-per-clip B-roll cap.
 - Non-destructive B-roll trimming, saved directly into `Video_Clips/<Scene_ID>/Scene_<NN><Letter>_BRoll_<descriptor>.mp4` — alongside that scene's generated clips (locked 2026-08-19, supersedes the earlier separate `B_Roll/` folder).
 
+- **Geography beats need a real map asset.** Any beat naming a place, region, route, migration, or species range is flagged `needs_map_asset` — Production-Research-Agent (Phase 1 Step A3) should have sourced a real basemap (Natural Earth is public domain), styled to the channel and used as a base layer with the animated route drawn over it tracing the real geography (Diagram-Generation's map/geography type). Never ship a path-only squiggle on black — this was a real defect on 0003 Glass Frog (Notes 9–10); reference impl `RangeMapAnimation` in that production's `GlassFrogDoc.tsx`.
+
 Read that skill's own SKILL.md for the full mechanism — this section only documents Anomalous-Wild-specific overrides layered on top of it.
 
 **Anomalous-Wild-specific storyboard style (locked 2026-08-17, still applies):** pass this channel's own `visual_style` (dark neon nature-documentary palette) into Production-Asset-Planner's Step 5 storyboard call. Apply the channel's shot-variety and anatomical-precision rules on top of Storyboard-Generation's defaults: even a scene narrating a creature's specific anatomy (e.g. its eyes) should mix in establishing/b-roll frames — the creature moving through its environment, wide shots of habitat — not just close-ups of whatever the narration is currently describing. Shot composition must change dramatically at least every ~3 seconds — a real subject/framing change, not a tighter zoom on the same thing — and no single anatomical feature should dominate more than roughly half a scene's frames even when the narration talks about it the whole time. Since Anomalous Wild's subjects are near-always creatures with paired/repeated features (two eyestalks, multiple limbs, etc.), every `frame_actions` line must state how many of that feature are visible, never rely on singular language ("the eye") to imply "one of several, others still present." Run the mandatory character-sheet count-check on every generated storyboard before presenting it to Tony, per Storyboard-Generation's own requirement.
@@ -220,6 +226,10 @@ bash    001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/preloop_
 
 These are the channel's existing, working batch-generation stack: `pipeline_supervisor.py` handles error-code-aware retries and the three-layer audio check, `pipeline_orchestrator.sh` sequences priority-tiered generation + preloop stages, `check_pipeline_status.py` reports progress. They currently expect a `Production/new_clips_prompts.json` prompt manifest (confirmed by their error output on an empty folder) — build that manifest from the Phase 5 Shot_List.md live-footage entries before invoking them.
 
+**Every video entry in `new_clips_prompts.json` MUST carry `target_duration_s`** — the beat's real on-screen duration in seconds (from `beat_sheet.json` / `Clip_Plan.json`'s `target_duration_s`). Do **not** put a `duration_s` (API request length) field in the manifest — `pipeline_supervisor.py` computes the padded, integer, model-clamped API `duration` itself via `clip_durations.request_duration` (`ceil(target) + 1s`, clamped to the model's `[4, max]`), and after each clip downloads it head-trims the file to exactly `target_duration_s`. The supervisor **refuses to start** if any video entry lacks `target_duration_s`.
+
+This is the enforcement point for the 0003_Glass_Frog_Transparency loop-flash bug (clip declared longer than its real footage → Remotion `OffthreadVideo` loops to frame 0). The padding is sized so a clip essentially always comes back at least as long as its beat. In the rare case one still comes up short, the pipeline **does NOT regenerate** (Tony, 2026-08-30 — padding should get it right the first time; paying to re-roll is not the fallback) and **NEVER loops**: the clip is kept at its real length, `clip_manifest.json` records it as `ok_short` with `real_generated_s` / `final_trimmed_s` / a `shortfall`, a notification fires, and **assembly holds the clip's last frame across the gap with a slow dissolve** (`VideoSegFilled` in the Remotion composition — plays the clip, then `<Freeze>`-holds its final frame, easing out of motion). `clip_manifest.json`'s `target_duration_s` / `real_generated_s` / `final_trimmed_s` per clip are the audit trail assembly reads to know which clips need a freeze-fill.
+
 ⏸ **PAUSE — first live-footage clip quality check.** Generate one clip, show it to Tony, and wait for approval before committing to the full batch — same reasoning as RR: catch a bad model/prompt combo on 1 clip, not the whole set.
 
 **Native audio sourcing when the beat's model supports it (locked 2026-08-16).** If Tool-Manager selects any Seedance model for a beat (1.5 Pro included — `generate_audio` defaults to `true` in `generate_seedance()`, the model family that supports the `generate_audio` parameter — see `Seedance-Prompting-Guide`), set `generate_audio=true` on that clip's generation call so the audio is generated natively, synced to what's actually happening on screen, instead of guessed separately after the fact. After the clip downloads, extract its embedded audio track (`ffmpeg -i clip.mp4 -vn -acodec libmp3lame Audio_Stems/<stem_id>.mp3`) directly into that scene's stem slot, using the exact filename `generate_stems.py` would have produced for that stem. **This means `mix_stems.py` and everything downstream needs zero changes** — it just finds the stem file already sitting there, sourced from the clip itself rather than from a separate ElevenLabs SFX generation call. For any beat routed to a model without native audio (a hero shot on Veo, a fallback model, etc.), the existing `generate_stems.py` ElevenLabs path runs unchanged for that beat's stem. A single production can mix both sourcing methods scene-to-scene — the stem map doesn't care where a given stem file came from.
@@ -274,6 +284,28 @@ extended to include `DiagramLabels` scenes for any Phase 6B beats still using th
 3. If any hold still exceeds `max_static_s` (default 5.0), the blocking plan is incomplete — go back to Diagram-Generation and add a frame/transition to cover the gap, don't bolt on an ad hoc pan as a patch.
 This is a mandatory per-beat check during assembly, not optional polish — the plan's Global Constraints state the "no static frame longer than 3–5 seconds" rule with no exceptions.
 
+**Mandatory rule — video clip durations come from ffprobe, never from `Clip_Plan.json` (locked 2026-08-30):**
+When laying a generated video clip into the timeline (a Remotion `VideoSeg`/`OffthreadVideo`, an ffmpeg segment, any tool), its on-timeline duration MUST be the clip's real measured length — `ffprobe -v error -show_entries format=duration -of csv=p=0 <file>` — never the planned `target_duration_s` from `Clip_Plan.json`. Seedance output rarely lands exactly on the requested duration (typically ±0.1–0.5s). If a clip's declared duration exceeds its real length, Remotion's `OffthreadVideo` does **not** freeze on the last frame — it loops back to frame 0, producing a jarring flash-cut. Lay clips out in whole frames using `floor(realDuration × fps)` so a clip can never run past its own content, and absorb any leftover slack in a synthetic segment (title card, range map, diagram pan) so the scene total stays locked to the narration audio length. As of 2026-08-30 `pipeline_supervisor.py` head-trims every generated clip to exactly `target_duration_s` before it reaches assembly (see Phase 6A), so `real ffprobe` should already equal the beat target — but still measure and floor-to-frames here rather than trusting it. Incident: 0003_Glass_Frog_Transparency shipped with this bug on 13 clips (Phase 7 used planned durations directly, and those clips bypassed the supervisor); found and fixed 2026-08-30 in post-delivery review — see that production's `Production/RESUME_NOTES.md`.
+
+**Mandatory rule — no background/black frames anywhere in the finished composition (locked 2026-08-30):**
+Every scene's visual layer must be continuous from frame 0 to the scene's narration-audio length, with nothing but the background fill ever showing. Two failure modes, both found on 0003:
+- **Gaps between segments** — diagram/camera-move segments placed at their narration timestamps but not butted together, leaving 0.2–0.8s holes where only the dark `#0B0F1A` fill renders (reads as black flashes). Fix: chain segments so each runs until the next begins (the last runs to scene end) — a held final camera position is fine, a gap is not. In a Remotion composition this is `renderDiagramChain(segs, sceneEndS)`; in any other tool, the equivalent "extend each segment to the next one's start".
+- **A clip shorter than its beat** — never loop it, never regenerate it (see Phase 6A). Play it, then hold its last frame across the remaining time with a slow eased dissolve. The held frame must **keep moving** — a very slow Ken Burns push + drift over the hold — so it never reads as a dead freeze; the zoom stays large enough to cover the pan so no frame edge (black) is ever revealed. Remotion: `VideoSegFilled({fromS, targetS, realS, file})` wraps both the fading clip and the `<Freeze>` in a shared `KenBurns` (no pre-extracted still). The same principle applies to a held diagram/camera segment (`renderDiagramChain` appends a gentle continuation keyframe so the camera keeps breathing through the gap).
+Run a black-frame scan on the assembled render before Phase 8: `ffmpeg -i <render> -vf "blackdetect=d=0.01:pix_th=0.03" -an -f null -` should report **nothing**. A generous pass (`pix_th=0.10`) will also flag legitimately dark *content* (a moody cinematic open, a sparse stylized graphic) — eyeball those, don't auto-"fix" them. Three real causes seen on 0003, all fixed and worth checking for on any composition:
+- **raw `<img>` instead of Remotion's `<Img>`** in a camera/pan component — Remotion does not wait for a raw `<img>` to decode, so a new illustration flashes the background for 1–3 frames at every segment boundary. Always use `<Img>` / `<OffthreadVideo>`.
+- **summing seconds then rounding** — `s(a)+s(b-a) ≠ s(b)`. Accumulate scene starts and segment spans in whole frames so segment N ends on exactly the frame N+1 begins.
+- **a nested sub-sequence ending one frame short of its parent scene** — the last clip's `durationInFrames` must reach the scene's exact frame count, not `s(sceneLen − offset)` which can round down.
+
+**Mandatory rule — transitions default to a ~0.5s cross-dissolve, not a hard cut (locked 2026-09-01, Tony — applies to every channel):**
+Every cut — scene boundary AND every internal shot change (image swap, b-roll clip change, diagram illustration change) — is a **~0.5s cross-dissolve** unless there's a deliberate reason for a hard cut (a shock cut, a match cut, the glitch-distortion anomaly-reveal cut). Mechanics: the incoming shot fades in on top while the outgoing shot stays fully opaque underneath (a video clip's outgoing tail must FREEZE its last frame for the dissolve — extending playback would loop past real footage); never fade both toward the background or it darkens. Narration/VO still joins **hard** with only a ~3-frame edge fade to kill clicks — only the picture cross-dissolves. Remotion reference impl on 0003: `DiagramScene` (within-scene image changes), `SceneVisual`/`SceneFade` (scene boundaries), `NarrationTrack` (hard VO track). Also lock into `Reimagined_Realms_Video_Pipeline` + its `assemble.py` and `Diagram-Generation`.
+
+**Mandatory rule — diagram camera holds STILL while a label is on screen; labels match the reference aesthetic (locked 2026-09-01, Tony-approved on 0003):**
+- A run of consecutive shots on the **same illustration** is ONE shot with ONE continuous eased camera path — never separate hard-cut segments of the same image (that "remount jump" reads as the subject teleporting). Merge them; author the camera as waypoints, each with a `holdS` dwell.
+- All camera moves ease **in and out** (no linear/abrupt motion). The blocking pattern per feature beat is **ease to feature → settle (full stop) → label fades in → image DEAD STILL for the whole label window → label fades out → ease to next feature**. Insert identical-value "dwell" keyframe pairs bracketing each label's visible window.
+- Labels (`DiagramLabels`): large bold white sans-serif term; a parenthetical qualifier auto-split onto its own line in a subject-derived accent colour; a thin white leader line that draws on with one right-angle bend + an end dot; a soft glowing target ring at the feature; a black outline/glow for contrast (no backing box); collision avoidance so stacked labels keep a minimum vertical gap (offset the text block, not the leader target); optional short description line; `labelHoldS` fade-out so the camera can move on. Reference + anti-examples: `001_Architecture/Skills/Diagram-Generation/Reference_Examples/`.
+- Brand-coloured `callout`/lower-third overlays over busy or coloured imagery get a **50%-black backing plate** (`rgba(0,0,0,0.5)`), small even padding, easing in/out with the text.
+See `Diagram-Generation/SKILL.md` and `002_Content-Creation/Video_Editor/003_Remotion/src/skills/design-rules-learned.md` for the full rules; incident/approval trail in `Productions/0003_Glass_Frog_Transparency/Production/Revision_Notes_Round1.md`.
+
 **End card — locked, always appended, never regenerated:**
 ```
 002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Brand_Assets/End_Card/Anomalos_Wild_End-Card_Hero.mp4
@@ -287,6 +319,8 @@ This asset is fixed for every Anomalous Wild video. Append it via ffmpeg concat 
 
 Generate that stored `cta` line via ElevenLabs using the locked voice `KYhuk3Y57IlkV1ZjtDAt` (Phase 3), and mix it into the end-card audio starting ~1-1.5s in (after the card's own text has begun animating), with its own short tail fade so it doesn't clip. All 3 lines are well under 10s spoken (~2.5-3.5s each at 150 wpm) — verify duration still fits inside the end card's own runtime before finalizing.
 
+**CTA VO level — match the body narration, measured, not eyeballed (locked 2026-09-04, Glass Frog 0003).** The CTA voiceover must be the SAME perceived loudness as the main video's narration. On 0003 the first CTA render sat ~6 dB below the body VO (raw −19.8 LUFS vs the body's −14) and Tony caught it immediately on the finished cut. Procedure: normalize the CTA VO with the exact same filter the mix applies to the body narration — `loudnorm=I=-14:TP=-1:LRA=7` — then build the end card as `Anomalos_Wild_End-Card_Hero.mp4` video + that normalized CTA (`adelay` ~1380ms, `apad` to the card's full length). Do NOT reuse a pre-baked `end_card_with_cta.mp4` from an earlier run without re-checking its level. Verify: extract the CTA speech span and the body-VO, run `ebur128` on each, confirm integrated LUFS within ~1 dB.
+
 Render the assembled composition (whichever tool Phase 7 selected for this production) to `Assembly/raw_video.mp4`, then append the end card to produce the pre-audio-mix cut. Audio (Phase 8) mixes onto this.
 
 ---
@@ -297,7 +331,10 @@ Run in this order (matches the locked LUFS/sidechain-duck formula from this sess
 
 ```bash
 python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/compose_audio.py "[production_folder]"
-python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_stems.py "[production_folder]"
+# SFX/ambience — DEFAULT is video-to-audio (motion-conditioned), fallback is ElevenLabs:
+python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_stems_v2a.py "[production_folder]" \
+  --source "[picture_locked_render]"            # DEFAULT — fal.ai Mirelo SFX v1.6
+# python3 .../generate_stems.py "[production_folder]"   # FALLBACK — ElevenLabs text->SFX
 python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/analyze_stems.py "[production_folder]"
 python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/mix_stems.py "[production_folder]"
 python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_suno_music.py \
@@ -306,36 +343,86 @@ python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/render_o
 ```
 
 - `compose_audio.py` — vision-based per-scene audio brief from `Assembly/` frames + `Beatmap`/`Narration.md`, writes `Data/audio_briefs.json` and `Data/per_scene_stem_map.json`.
-- `generate_stems.py` — generates the SFX stems from `Data/stem_map.json` via ElevenLabs, **for any beat that didn't already get its stem via native Seedance audio extraction in Phase 6A.** Check `Audio_Stems/` for an existing file matching a stem's ID before generating — a beat with a native-extracted stem already sitting there skips ElevenLabs entirely for that stem.
+- **`generate_stems_v2a.py` — DEFAULT SFX/ambience generator (locked 2026-09-04, Glass Frog 0003, Tony graded the result A).** Feeds actual picture-locked video segments through a **video-to-audio model** (fal.ai Mirelo SFX v1.6, `mirelo-ai/sfx1.6/video-to-video`, ≤60s/segment, billed in cheap GPU compute-seconds) so the Foley/ambience is conditioned on real on-screen motion, then crossfade-concatenates per-segment audio into one bed matched to the timeline. Reads `Data/v2a_segment_map.json` (segments cut on scene boundaries, ≤60s, scene-appropriate prompts; diagram-heavy stretches get deliberately near-silent prompts). Non-destructive — only reads the source render. **Gotcha (cost us ~1h on 0003):** the internal segment cut MUST be downscaled + bitrate-capped (the script does `scale=1280:-2 -maxrate 4M`) — a full-res or all-intra segment is ~50× larger and stalls the fal upload. Output `Assembly/V2A/v2a_bed.mp3`, then hand to `render_outputs.py` as the stems input.
+- `generate_stems.py` — **FALLBACK** SFX generator (use if v2a is unavailable, a segment repeatedly fails, or Tony asks). Generates SFX stems from `Data/stem_map.json` via ElevenLabs text-to-SFX, **for any beat that didn't already get its stem via native Seedance audio extraction in Phase 6A.** Check `Audio_Stems/` for an existing file matching a stem's ID before generating — a beat with a native-extracted stem already sitting there skips ElevenLabs entirely for that stem.
 - `analyze_stems.py` — measures LUFS per stem and writes corrected gain values back into the stem map. Runs identically regardless of whether a stem came from ElevenLabs or native extraction — LUFS is measured off the audio itself, not its source.
 - `mix_stems.py` — mixes `Audio_Stems/` onto the timeline using the corrected stem map, **crossfading scene-to-scene stems the same way** whether they're ElevenLabs-generated or native-extracted (the crossfade logic reads the stem map, not the stem's origin).
-- `generate_suno_music.py` — generates the full-length instrumental score.
-- `render_outputs.py` — final versioned render with all audio tracks kept separate (stems-only, stems+narration, and full final with sidechain-ducked music: `sidechaincompress threshold=0.015 ratio=4 attack=150 release=800`), producing `Assembly/<prod>_final.mp4`.
+- `generate_suno_music.py` — generates the score. **Saves BOTH tracks the Suno API returns** (`<stem>_v1.mp3` / `_v2.mp3`), copies the longest to the requested path, and writes a `<stem>_suno.json` sidecar with the prompt + style + taskId + per-track metadata (2026-09-03: always save both + the prompt — the 0003 prompt was lost because the old script kept neither). **Score direction for this channel:** modern science-documentary — curious/clear-headed, gentle forward rhythmic pulse (arpeggiated synth + marimba/mallets), warm string pad, hopeful resolution; NOT solo-piano, NOT dark/"mystery-trailer". Suno V4 tracks run ~2 min — loop with an `acrossfade` seam + tail fade to reach the body length.
+- `render_outputs.py` — final versioned render, all audio tracks kept separate. **Uses loudnorm per layer, NOT static volume multipliers** (a fixed multiplier drifts 5-11 dB off target when the source LUFS differs from calibration — confirmed on 0003).
 
-**Standard levels — locked as a universal target, regardless of stem source (confirmed 2026-08-16 as common professional mixing practice, matching what Reimagined Realms already standardized on):**
-- **Narration:** -14 LUFS integrated, -1 dBTP ceiling — the standard streaming/YouTube loudness target.
-- **Music bed:** -26 LUFS in the mix, ~12dB below narration — standard heavy ducking so score never competes with the voice.
-- **Ambient/SFX (stems):** -20 LUFS in the mix, ~6dB below narration — standard supporting-layer level, audible but subordinate to narration.
+**Locked mix values (`render_outputs.py`, updated 2026-09-03 — Tony A/B'd by ear on 0003):**
+- **Narration:** `loudnorm=I=-14:TP=-1:LRA=7` — YouTube/streaming standard. Unchanged.
+- **Music bed:** `loudnorm=I=-22:TP=-4:LRA=11` — ~8 dB below narration. Raised from -26 (score was too quiet).
+- **Sidechain duck:** `sidechaincompress=threshold=0.045:ratio=2.5:attack=300:release=600` — softened from `0.015:4:150:800` (old one clamped the score shut on every syllable and "ducked in abruptly"). Higher threshold → only sustained speech ducks; lower ratio → ~4-5 dB duck; slower attack → eases in.
+- **Ambient/SFX stems:** `loudnorm=I=-25:TP=-4:LRA=11` + a gentle duck under narration (`sidechaincompress=threshold=0.06:ratio=2:attack=350:release=700`) — **a hair below the music bed** (Tony, 2026-09-04, on the 0003 v2a ambience: "should be maybe a hair lower in volume than the soundtrack"). Was `-20` with no duck; that sat the ambience above the score. If the SFX are the sparse ElevenLabs fallback stems rather than a dense v2a bed, `-22` with the same duck is also acceptable — judge by ear against the score.
+- **Final limiter:** `alimiter=limit=0.8128:attack=5:release=50` — brickwall on the summed mix (`amix normalize=0` has no ceiling; individually-safe layers can sum past 0 dBFS).
 - These three targets apply identically no matter which pipeline generated the underlying audio (ElevenLabs stems, native Seedance clip audio, or Suno music) — the mix stage normalizes everything to the same standard, not per-source.
 
 `render_video.py` is the lower-level versioned renderer `render_outputs.py` calls into for each of its 3 output variants — invoke it directly only if a single variant needs a targeted redo (`--phase`/`--version`/`--note` flags), not for the normal full run.
 
 **Mandatory pre-delivery audio-continuity scan (locked 2026-08-24) — do this before presenting any cut as finished, not only when something sounds off.** An abrupt audio cutoff at a scene boundary (music/narration stopping dead instead of fading, or a scene transition landing on total silence) does not reliably show up from a code/logic review — it was caught on 0002_Mantis_Shrimp_Color_Vision only by directly measuring waveform amplitude, and an earlier attempt to check it via `ffmpeg -af astats` piped through a shell grep gave silently wrong (suspiciously identical) readings across different timestamps. **Use this reliable method instead:** extract short raw-PCM WAV segments at each point of interest (`ffmpeg -ss <t> -t 0.2-0.3 -vn -c:a pcm_s16le`) and compute RMS directly in Python/numpy (`np.sqrt(np.mean(data.astype(float)**2))`) — never trust `astats` log output parsed via shell text tools for this kind of check. Scan across every scene splice point and the tail of the final mix; confirm any intentional silence (e.g. under a card with no VO) is actually intentional and not a leftover cutoff, and confirm every audio-to-silence transition uses a real fade (`afade`) rather than a hard stop. When mixing multiple audio sources (e.g. a narration/music bed plus a short VO insert) in one `amix` filter chain, verify each source's actual sample format/rate/channel layout first and normalize with `aformat` before mixing — and remember filter order matters: an `afade` applied after an `adelay` targets the delayed (silent-then-audio) timeline, not the original clip's own timeline, and will fade the wrong span if not reordered.
 
+**No hard audio concat anywhere in the pipeline (locked 2026-09-02, Glass Frog 0003 Block C / P6).** Every place per-segment audio is joined end-to-end — per-scene narration mp3s, VO pause trims, beat stems, native clip audio — gets a fade at the join, never a raw `ffmpeg -f concat -c copy` bitstream splice (mp3 encoder delay/padding at the splice pops audibly — measured Δ up to 0.77 full-scale on the 0003 Aug-29 mix). Use a **fade-out/fade-in pair** (default 20ms each), not a crossfade, so each segment keeps its exact length and downstream timing that assumes `narration length == sum(scene lengths)` still holds. `mix_stems.py` / `compose_audio.py` already fade every stem join correctly; the narration concat was the hole — fixed in `Reimagined_Realms/assemble.py::build_narration_concat_filter` (`phase_concat_narration`), which the AW pipeline calls for `Assembly/narration.mp3`. When a cut is rendered Remotion-side instead (`NarrationTrack`), the whole-scene mp3s already carry a 3-frame edge fade — same rule, different layer.
+
+**Mandatory gate — run `audio_pop_scan.py` on every render before it goes to Tony (locked 2026-09-02).** This is the automated enforcement of the rule above, so a splice pop can never reach a review again:
+```
+python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/audio_pop_scan.py \
+    "<Assembly/<prod>_final.mp4 or the Remotion render>" --production "<production_folder>"
+```
+It decodes the audio to raw PCM and fails (exit 1) on any silence-bounded hard step, any step beyond what natural audio produces, or any discontinuity at a narration scene-join. Exit 0 = clean. Pass extra clip-cut boundaries with `--joins t1,t2,...` when checking a stems/native-audio mix. If it fails, fix the offending join's fade — do not ship or present the render.
+
+---
+
+## PRE-REVIEW GATE — run ALL of this before ANY cut goes to Tony (locked 2026-09-04)
+
+Consolidated from the checks scattered above. **Glass Frog 0003 reached its grade-A
+final only after ~6 review rounds *past* the "it's done" call** — every one of those
+rounds was a class of defect that a check here would have caught before Tony ever saw
+it. Do not present a cut until every line passes. Re-run the whole gate after every
+re-render, not just the part you changed.
+
+1. **Black / white frame scan** — `blackdetect` strict (nothing) + generous
+   `pix_th=0.10` (eyeball dark content); white-flash scan. (Phase 7 rule above.)
+2. **Audio-pop gate** — `audio_pop_scan.py`, exit 0. (above)
+3. **Audio-continuity scan** — raw-PCM + numpy RMS at every scene splice and the
+   final tail; every audio→silence transition is a real `afade`. (above)
+4. **Per-cut transition check** — confirm EVERY shot change (scene boundary and
+   internal) is the 0.5s cross-dissolve, not a hard cut. Extract the frames at each
+   boundary ±0.5s and verify the dissolve is present and tear-free (no two live
+   `OffthreadVideo`s overlapping). 0003 cost 3 rounds on missed / torn transitions.
+5. **Clip-vs-VO beat check** — for each generated clip, confirm what's on screen
+   matches what the narration says at that timestamp (0003 shipped a heart shot
+   under tongue-flick VO). 
+6. **Generated-clip anatomy pass** — step through each generated creature clip a few
+   frames at a time; check limb/digit/feature counts stay constant and plausible
+   across the whole clip (0003's 06F toe-count morph at ~3:32 was missed). Flag to
+   `Production/Continuity_Flags.md` per the Phase 5B cost-control rule — surface, do
+   not auto-regen.
+7. **CTA-VO level check** — extract the CTA speech span and the body narration, run
+   `ebur128` on each, confirm integrated LUFS within ~1 dB. (Phase 7 end-card rule.)
+8. **Duration / frame-floor check** — every on-timeline clip laid out at
+   `floor(real ffprobe seconds × fps)`; scene totals still lock to narration length.
+9. **Ambience vs. score balance** — SFX bed sits a hair *under* the music bed
+   (Phase 8 locked values).
+
 ---
 
 ## PHASE 9 — YOUTUBE PACKAGE (automated)
 
-Before calling the script, draft the thumbnail copy yourself — do not rely on the script's built-in templates for this part, they produce weak curiosity copy (proven on 0002_Mantis_Shrimp_Color_Vision, required a manual rewrite):
+Before calling the script, draft the thumbnail copy AND the chapters yourself — do not rely on the script's built-in templates for either, they produce weak/placeholder output:
 1. Write 3 short (2–6 word), all-lowercase, curiosity-gap headlines tied to the video's actual hook fact — one per thumbnail concept, each a different angle on the same hook (not 3 copies of the same line). No Tony review needed by default (confirmed 2026-08-24) — just make them good.
 2. Identify the one specific anatomy/feature the arrow should point to (e.g. "the eyes" for a vision video, "the lure" for a bioluminescence video) — never a generic "the subject."
+3. **Write real chapter titles (locked 2026-09-04, Glass Frog 0003 — the shipped video had gone out with a single placeholder "0:00 Hook" chapter until Tony caught it).** Read the scene starts from `Production/Beat_Table.json` and, for each, a title that actually describes what that scene covers (from `Scripts/Script.md`/`Narration.md`) — never "Part N," never leave the script's own generic fallback in the final description. YouTube requires the first chapter at `0:00`, at least 3 chapters total, and every chapter ≥10s apart — merge any scene under 10s into the chapter before it rather than dropping it. Pass as `--chapters "0:00|Title One;0:18|Title Two;..."`. If `--chapters` is omitted, the script falls back to `Beat_Table.json` scene boundaries with generic "Part N" labels (better than nothing, but do not ship that as the final chapters — it's a safety net, not the intended output).
+4. **Write YouTube Studio tags (locked 2026-09-04).** Comma-separated, relevant terms + common misspellings of the subject's name, ≤500 characters total (YouTube's per-video limit — per YouTube's own guidance, tags mostly help when the subject is commonly misspelled; otherwise they do little). Pass as `--tags "term one, term two, ..."`. **These are for Tony to paste into YouTube Studio's own Tags field by hand — they are NEVER part of the description and NEVER passed to Blotato** (Blotato's `create_post` has no tags field at all). The script writes them to their own `# Tags` section in `YouTube_Package.md`, structurally separate from `# Description` — see the Phase 10 note below before uploading.
 
 ```bash
 source /Users/tonymacbook2025/.env-secrets
 python3 001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_youtube_package.py \
   "[production_folder]" "<subject>" "<hook_fact>" \
   --headlines "headline one|headline two|headline three" \
-  --arrow-target "<specific anatomy description>"
+  --arrow-target "<specific anatomy description>" \
+  --chapters "0:00|Title One;0:18|Title Two;1:09|Title Three;..." \
+  --tags "term one, term two, common misspelling, ..."
 ```
 
 Adapts RR's Phase 10 formulas (curiosity-gap titles, search-intent description) to this channel's science/nature-documentary framing. Thumbnail generation follows the **locked template v2** (`002_Channels/001_Anomalous-Wild/Anomalos_Wild__Thumbnail_Style.json`, locked 2026-08-24) — a mandatory two-stage pipeline, not a single generation call:
@@ -370,6 +457,7 @@ Summary:
 
 ⏸ **PAUSE — present Tony the final video (duration/size), the 3 titles from `Package/YouTube_Package.md`, the 3 thumbnail concepts from `Package/Thumbnails/`, and a privacy status choice (private/unlisted/public). Wait for his picks before uploading**, even if a previous production's answers seem like an obvious default.
 
+- **Tags never go to Blotato (locked 2026-09-04).** `YouTube_Package.md` may carry a trailing `# Tags` section — read ONLY `# Description` as the Blotato post `text`. Tags are surfaced to Tony to paste into YouTube Studio's own Tags field by hand.
 - Compress the chosen thumbnail if over 2MB: `ffmpeg -y -i input.png -vf "scale=1920:-1" -q:v 5 output.jpg`
 - Get presigned upload URLs via `mcp__blotato__blotato_create_presigned_upload_url` for the final video and thumbnail, `curl -X PUT --data-binary` each.
 - Call `mcp__blotato__blotato_create_post` with `accountId: "42514"` (Anomalous Wild's confirmed Blotato YouTube account — displayed there as "Anomalos Wild," a spelling variant of the same channel; do not confuse with `30323`, which is Reimagined Realms), Tony's chosen title/description/thumbnail/privacy, and the locked defaults: `isMadeForKids: false`, `containsSyntheticMedia: true`, `shouldNotifySubscribers: false`, `playlistIds` omitted (Tony adds these manually during scheduling).
@@ -426,6 +514,7 @@ Remaining manual step: review the private upload, then flip privacy status and a
 | Remotion assembly engine pattern (existing) | `002_Content-Creation/Video_Editor/003_Remotion/src/remotion/video-components/BioluminescenceDoc.tsx` (precedent: `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0001_Bioluminescence_Weapon/Remotion/BioluminescenceDoc.tsx`) |
 | Locked end-card asset | `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Brand_Assets/End_Card/Anomalos_Wild_End-Card_Hero.mp4` |
 | Audio pipeline (this session, AW copies of RR originals) | `compose_audio.py`, `generate_stems.py`, `analyze_stems.py`, `mix_stems.py`, `render_video.py`, `render_outputs.py`, `generate_suno_music.py` — all in `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/` |
+| Audio splice-pop gate (Phase 8, mandatory before every review) | `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/audio_pop_scan.py` (+ `test_audio_pop_scan.py`) |
 | YouTube package generator (titles/description/thumbnails) | `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_youtube_package.py` |
 | Blotato upload procedure | `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/upload_to_blotato.md` |
 | Blotato YouTube account ID (Anomalous Wild) | `42514` (do not confuse with `30323`, Reimagined Realms) |

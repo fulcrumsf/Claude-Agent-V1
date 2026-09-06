@@ -11,12 +11,15 @@ Docs: https://docs.kie.ai/market/quickstart.md
 """
 import json
 import os
+import re
+import sys
 import time
 from pathlib import Path
 
 import requests
 
 BASE_URL = "https://api.kie.ai/api/v1"
+VERSIONED_OUTPUT = re.compile(r"(?:^|[-_])v\d+(?:[-_.]|$)", re.IGNORECASE)
 
 
 def _headers() -> dict:
@@ -26,8 +29,24 @@ def _headers() -> dict:
     return {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
 
+def _validate_seedance_input(model: str, input_params: dict) -> None:
+    """Prevent reference/frame role confusion before a provider request."""
+    if model != "bytedance/seedance-2-mini":
+        return
+    first_frame = input_params.get("first_frame_url")
+    last_frame = input_params.get("last_frame_url")
+    references = input_params.get("reference_image_urls")
+    if first_frame and references:
+        raise ValueError("Seedance Mini cannot receive first_frame_url and reference_image_urls together")
+    if last_frame and references:
+        raise ValueError("Seedance Mini cannot receive last_frame_url and reference_image_urls together")
+    if isinstance(first_frame, str) and _looks_like_storyboard(first_frame):
+        raise ValueError("A storyboard must be sent as reference_image_urls, never as first_frame_url")
+
+
 def create_task(model: str, input_params: dict, callback_url: str | None = None) -> str:
     """Submits a task to the unified Market createTask endpoint. Returns taskId."""
+    _validate_seedance_input(model, input_params)
     payload = {"model": model, "input": input_params}
     if callback_url:
         payload["callBackUrl"] = callback_url
@@ -44,6 +63,41 @@ def create_task(model: str, input_params: dict, callback_url: str | None = None)
     task_id = (body.get("data") or {}).get("taskId")
     if not task_id:
         raise RuntimeError(f"createTask returned no taskId for model={model}: {body}")
+    return task_id
+
+
+def create_guarded_task(
+    model: str,
+    input_params: dict,
+    *,
+    generation_log: Path,
+    shot_id: str,
+    version: str,
+    prompt_file: Path,
+    retry_reason: str | None = None,
+    callback_url: str | None = None,
+) -> str:
+    """Reserve a production task before calling Kie, then submit exactly once."""
+    guard_dir = Path(__file__).resolve().parents[1] / "Channels" / "Neon_Parcel"
+    sys.path.insert(0, str(guard_dir))
+    from generation_guard import reserve
+
+    reservation = reserve(generation_log, shot_id, version, prompt_file, model, retry_reason)
+    log = json.loads(generation_log.read_text(encoding="utf-8"))
+    try:
+        task_id = create_task(model, input_params, callback_url)
+    except Exception as exc:
+        for item in log.get("assets", []):
+            if item.get("prompt_sha256") == reservation["prompt_sha256"] and item.get("status") == "reserved":
+                item.update({"status": "failed", "failure_reason": "provider_failed", "error": str(exc)})
+                break
+        generation_log.write_text(json.dumps(log, indent=2) + "\n", encoding="utf-8")
+        raise
+    for item in log.get("assets", []):
+        if item.get("prompt_sha256") == reservation["prompt_sha256"] and item.get("status") == "reserved":
+            item.update({"status": "submitted", "task_id": task_id, "submitted_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())})
+            break
+    generation_log.write_text(json.dumps(log, indent=2) + "\n", encoding="utf-8")
     return task_id
 
 
@@ -68,6 +122,10 @@ def poll_task(task_id: str, poll_interval_s: float = 5.0, max_wait_s: float = 90
 
 
 def download(url: str, output_path: Path) -> Path:
+    if not VERSIONED_OUTPUT.search(Path(output_path).stem):
+        raise ValueError(f"provider output path must contain an explicit version: {output_path}")
+    if Path(output_path).exists():
+        raise FileExistsError(f"refusing to overwrite existing provider output: {output_path}")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     resp = requests.get(url, stream=True, timeout=60)
     resp.raise_for_status()
@@ -79,25 +137,88 @@ def download(url: str, output_path: Path) -> Path:
 
 # ---- Gap-model functions (add one per model as new gaps show up) ----
 
-def generate_seedance_mini(
+def _looks_like_storyboard(value: str) -> bool:
+    """Catch the common routing error before a paid request is submitted."""
+    lowered = value.lower()
+    return any(token in lowered for token in ("storyboard", "story-board", "contact-sheet"))
+
+
+def build_seedance_mini_input(
     prompt: str,
-    output_path: Path,
+    *,
     first_frame_url: str | None = None,
+    reference_image_urls: list[str] | None = None,
+    last_frame_url: str | None = None,
     resolution: str = "480p",
+    aspect_ratio: str = "16:9",
     duration: int = 5,
     generate_audio: bool = False,
-) -> Path:
-    """bytedance/seedance-2-mini -- not wrapped by kie-cli as of 2026-08-17."""
+) -> dict:
+    """Build a Mini payload while keeping reference images distinct from frames.
+
+    ``first_frame_url`` is a temporal starting state. ``reference_image_urls``
+    is contextual conditioning, such as a storyboard. They must never be
+    silently substituted for one another.
+    """
+    if (first_frame_url or last_frame_url) and reference_image_urls:
+        raise ValueError("Seedance Mini cannot receive first_frame_url and reference_image_urls together")
+    if first_frame_url and _looks_like_storyboard(first_frame_url):
+        raise ValueError("A storyboard must be sent as reference_image_urls, never as first_frame_url")
+    if reference_image_urls is not None:
+        if not reference_image_urls or any(not isinstance(url, str) or not url.strip() for url in reference_image_urls):
+            raise ValueError("reference_image_urls must contain at least one non-empty URL")
+
     input_params = {
         "prompt": prompt,
         "resolution": resolution,
+        "aspect_ratio": aspect_ratio,
         "duration": duration,
         "generate_audio": generate_audio,
     }
     if first_frame_url:
         input_params["first_frame_url"] = first_frame_url
+    if last_frame_url:
+        input_params["last_frame_url"] = last_frame_url
+    if reference_image_urls:
+        input_params["reference_image_urls"] = reference_image_urls
+    return input_params
 
-    task_id = create_task("bytedance/seedance-2-mini", input_params)
+def generate_seedance_mini(
+    prompt: str,
+    output_path: Path,
+    first_frame_url: str | None = None,
+    resolution: str = "480p",
+    aspect_ratio: str = "16:9",
+    duration: int = 5,
+    generate_audio: bool = False,
+    generation_log: Path | None = None,
+    shot_id: str | None = None,
+    version: str = "v1",
+    prompt_file: Path | None = None,
+    retry_reason: str | None = None,
+    reference_image_urls: list[str] | None = None,
+    last_frame_url: str | None = None,
+) -> Path:
+    """bytedance/seedance-2-mini -- not wrapped by kie-cli as of 2026-08-17."""
+    input_params = build_seedance_mini_input(
+        prompt,
+        first_frame_url=first_frame_url,
+        last_frame_url=last_frame_url,
+        reference_image_urls=reference_image_urls,
+        resolution=resolution,
+        aspect_ratio=aspect_ratio,
+        duration=duration,
+        generate_audio=generate_audio,
+    )
+
+    if generation_log and shot_id and prompt_file:
+        task_id = create_guarded_task(
+            "bytedance/seedance-2-mini", input_params,
+            generation_log=generation_log, shot_id=shot_id, version=version,
+            prompt_file=prompt_file, retry_reason=retry_reason,
+        )
+    else:
+        task_id = create_task("bytedance/seedance-2-mini", input_params)
     result = poll_task(task_id)
     urls = result.get("resultUrls") or []
     if not urls:
@@ -143,9 +264,16 @@ if __name__ == "__main__":
     p_mini.add_argument("prompt")
     p_mini.add_argument("output")
     p_mini.add_argument("--first_frame_url", default=None)
+    p_mini.add_argument("--last_frame_url", default=None)
+    p_mini.add_argument("--reference-image-url", action="append", dest="reference_image_urls", default=None)
     p_mini.add_argument("--resolution", default="480p", choices=["480p", "720p"])
     p_mini.add_argument("--duration", type=int, default=5)
     p_mini.add_argument("--generate_audio", action="store_true")
+    p_mini.add_argument("--generation-log", type=Path)
+    p_mini.add_argument("--shot-id")
+    p_mini.add_argument("--version", default="v1")
+    p_mini.add_argument("--prompt-file", type=Path)
+    p_mini.add_argument("--retry-reason")
 
     p_upscale = sub.add_parser("grok_upscale", help="Upscale any Kie AI-generated video via grok-imagine/upscale")
     p_upscale.add_argument("task_id")
@@ -155,7 +283,10 @@ if __name__ == "__main__":
 
     if args.command == "seedance_mini":
         out = generate_seedance_mini(
-            args.prompt, Path(args.output), args.first_frame_url, args.resolution, args.duration, args.generate_audio
+            args.prompt, Path(args.output), args.first_frame_url, args.resolution, args.duration, args.generate_audio,
+            args.generation_log, args.shot_id, args.version, args.prompt_file, args.retry_reason,
+            args.reference_image_urls,
+            args.last_frame_url,
         )
         print(f"Saved {out}")
     elif args.command == "grok_upscale":

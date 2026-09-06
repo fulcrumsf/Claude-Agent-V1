@@ -39,9 +39,12 @@ def generate_image(prompt, output_file, model="nano-banana-2"):
         sys.exit(1)
         
     data = response.json()
-    task_id = data.get("taskId") or data.get("data", {}).get("taskId")
+    nested_data = data.get("data") if isinstance(data, dict) else None
+    if not isinstance(nested_data, dict):
+        nested_data = {}
+    task_id = data.get("taskId") or nested_data.get("taskId")
     if not task_id:
-        print(f"Failed to extract taskId. Response: {data}")
+        print(f"Failed to extract taskId. Response: {json.dumps(data, ensure_ascii=True)}")
         sys.exit(1)
         
     print(f"Polling task ID {task_id} with exponential backoff...", flush=True)

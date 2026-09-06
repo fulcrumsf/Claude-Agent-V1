@@ -1,9 +1,9 @@
 {
   "_meta": {
     "version": "1.0",
-    "description": "Curated AI model catalog \u2014 25 production models across video, image, audio, video-to-audio. Per-second and per-image pricing matrix across platforms.",
-    "last_updated": "2026-07-01",
-    "next_refresh": "2026-08-01T03:00:00.541257",
+    "description": "Curated AI model catalog \u2014 27 production models across video, image, audio, video-to-audio. Per-second and per-image pricing matrix across platforms.",
+    "last_updated": "2026-09-01",
+    "next_refresh": "2026-10-01T03:00:00.173078",
     "refresh_interval": "monthly",
     "pricing_units": {
       "video": "per 5-second 1080p clip (standard reference)",
@@ -48,6 +48,84 @@
       ],
       "rating_updated": null,
       "notes": "Primary video model for Reimagined Realms pipeline. Never remove.",
+      "capabilities": {
+        "multi_reference_images": {
+          "kie_ai": {
+            "supported": true,
+            "max": 9,
+            "confirmed_live": true,
+            "note": "Separate reference_image_urls input."
+          },
+          "wavespeed": {
+            "supported": false,
+            "confirmed_live": true,
+            "note": "Recorded WaveSpeed schema exposes image/last_image, not a reference array."
+          },
+          "fal_ai": {
+            "supported": null,
+            "confirmed_live": false,
+            "note": "Provider-specific capability requires live endpoint verification."
+          }
+        },
+        "first_last_frames": {
+          "kie_ai": {
+            "supported": true,
+            "confirmed_live": true
+          },
+          "wavespeed": {
+            "supported": true,
+            "confirmed_live": true,
+            "note": "image/last_image route."
+          },
+          "fal_ai": {
+            "supported": null,
+            "confirmed_live": false
+          }
+        },
+        "native_1080p": {
+          "kie_ai": {
+            "supported": true,
+            "confirmed_live": true
+          },
+          "wavespeed": {
+            "supported": true,
+            "confirmed_live": true
+          },
+          "fal_ai": {
+            "supported": null,
+            "confirmed_live": false
+          }
+        },
+        "native_audio": {
+          "kie_ai": {
+            "supported": true,
+            "confirmed_live": true
+          },
+          "wavespeed": {
+            "supported": null,
+            "confirmed_live": false
+          },
+          "fal_ai": {
+            "supported": null,
+            "confirmed_live": false
+          }
+        },
+        "storyboard_timeline": {
+          "kie_ai": {
+            "supported": true,
+            "confirmed_live": true,
+            "note": "Prompt-level technique; use with reference images."
+          },
+          "wavespeed": {
+            "supported": null,
+            "confirmed_live": false
+          },
+          "fal_ai": {
+            "supported": null,
+            "confirmed_live": false
+          }
+        }
+      },
       "pricing": {
         "reference_unit": "per 5s 1080p clip",
         "google_direct": null,
@@ -72,7 +150,7 @@
         "openrouter": null,
         "cheapest": "fal_ai",
         "cheapest_price": 0.014,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -131,8 +209,8 @@
         "elevenlabs_direct": null,
         "openai_direct": null,
         "kie_ai": {
-          "price": 0.165,
-          "unit": "per second (720p max)",
+          "price": 0.124,
+          "unit": "per second",
           "model_id": "bytedance-seedance-2-fast-720p-no-video-input"
         },
         "wavespeed": {
@@ -149,7 +227,7 @@
         "openrouter": null,
         "cheapest": "fal_ai",
         "cheapest_price": 0.0112,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -187,6 +265,107 @@
       ]
     },
     {
+      "id": "seedance-2-mini",
+      "name": "Seedance 2 Mini",
+      "provider": "ByteDance",
+      "type": "image-to-video",
+      "input_output": "text\u2192video | image\u2192video | storyboard/reference\u2192video",
+      "description": "Lower-cost Seedance variant with storyboard/reference-image support for complex physical actions and multi-beat motion.",
+      "status": "active",
+      "rating": null,
+      "rating_label": "no community data",
+      "rating_sources": [],
+      "rating_updated": "2026-09-01",
+      "notes": "Kie.ai model bytedance/seedance-2-mini. Use 480p for the complex-shot route, then Topaz 2x and FFmpeg normalization to 1920x1080.",
+      "capabilities": {
+        "multi_reference_images": {
+          "kie_ai": {
+            "supported": true,
+            "max": 9,
+            "confirmed_live": true,
+            "note": "Storyboard/reference-image route."
+          }
+        },
+        "first_last_frames": {
+          "kie_ai": {
+            "supported": true,
+            "confirmed_live": true
+          }
+        },
+        "native_1080p": {
+          "kie_ai": {
+            "supported": false,
+            "confirmed_live": true,
+            "note": "Neon Parcel route uses 480p followed by Topaz 2x and FFmpeg normalization."
+          }
+        },
+        "native_audio": {
+          "kie_ai": {
+            "supported": true,
+            "confirmed_live": true
+          }
+        },
+        "storyboard_timeline": {
+          "kie_ai": {
+            "supported": true,
+            "confirmed_live": true,
+            "note": "Prompt-level technique; storyboard/reference image supported."
+          }
+        }
+      },
+      "pricing": {
+        "reference_unit": "per second of output",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.019,
+          "unit": "per second (480p, no video input)",
+          "model_id": "bytedance-seedance-2-mini-480p-no-video"
+        },
+        "wavespeed": null,
+        "fal_ai": null,
+        "openrouter": null,
+        "cheapest": "kie_ai",
+        "cheapest_price": 0.095,
+        "last_compared": "2026-09-01"
+      },
+      "variants": [
+        {
+          "variant_id": "480p-no-video",
+          "resolution": "480p",
+          "audio": "No",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.019,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "Kie.ai current listed price. Use for storyboard/reference-image complex shots.",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.019
+        },
+        {
+          "variant_id": "720p-no-video",
+          "resolution": "720p",
+          "audio": "No",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.041,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "Kie.ai current listed price.",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.041
+        }
+      ]
+    },
+    {
       "id": "seedance-1.5-pro",
       "name": "Seedance 1.5 Pro",
       "provider": "ByteDance",
@@ -202,6 +381,80 @@
       ],
       "rating_updated": null,
       "notes": "Fallback when Seedance 2.0 is unavailable or over quota.",
+      "capabilities": {
+        "multi_reference_images": {
+          "kie_ai": {
+            "supported": false,
+            "confirmed_live": true,
+            "note": "No dedicated multi-reference field."
+          },
+          "wavespeed": {
+            "supported": false,
+            "confirmed_live": true,
+            "note": "Recorded route exposes image/last_image only."
+          },
+          "fal_ai": {
+            "supported": null,
+            "confirmed_live": false
+          }
+        },
+        "first_last_frames": {
+          "kie_ai": {
+            "supported": true,
+            "confirmed_live": true
+          },
+          "wavespeed": {
+            "supported": true,
+            "confirmed_live": true
+          },
+          "fal_ai": {
+            "supported": null,
+            "confirmed_live": false
+          }
+        },
+        "native_1080p": {
+          "kie_ai": {
+            "supported": true,
+            "confirmed_live": true
+          },
+          "wavespeed": {
+            "supported": true,
+            "confirmed_live": true
+          },
+          "fal_ai": {
+            "supported": null,
+            "confirmed_live": false
+          }
+        },
+        "native_audio": {
+          "kie_ai": {
+            "supported": true,
+            "confirmed_live": true
+          },
+          "wavespeed": {
+            "supported": null,
+            "confirmed_live": false
+          },
+          "fal_ai": {
+            "supported": null,
+            "confirmed_live": false
+          }
+        },
+        "storyboard_timeline": {
+          "kie_ai": {
+            "supported": null,
+            "confirmed_live": false
+          },
+          "wavespeed": {
+            "supported": null,
+            "confirmed_live": false
+          },
+          "fal_ai": {
+            "supported": null,
+            "confirmed_live": false
+          }
+        }
+      },
       "pricing": {
         "reference_unit": "per 5s 1080p clip",
         "google_direct": null,
@@ -225,7 +478,7 @@
         "openrouter": null,
         "cheapest": "fal_ai",
         "cheapest_price": 0.0008500000000000001,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -287,7 +540,7 @@
         "openrouter": null,
         "cheapest": "kie_ai",
         "cheapest_price": 0.5625,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -348,7 +601,7 @@
         "openrouter": null,
         "cheapest": "wavespeed",
         "cheapest_price": 0.23,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -413,7 +666,7 @@
         "openrouter": null,
         "cheapest": "kie_ai",
         "cheapest_price": 1.275,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -478,7 +731,7 @@
         "openrouter": null,
         "cheapest": "kie_ai",
         "cheapest_price": 0.325,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -539,7 +792,7 @@
         "openrouter": null,
         "cheapest": "fal_ai",
         "cheapest_price": 0.2,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -595,7 +848,7 @@
         "openrouter": null,
         "cheapest": "wavespeed",
         "cheapest_price": 0.06,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -651,7 +904,7 @@
         "openrouter": null,
         "cheapest": "kie_ai",
         "cheapest_price": 0.15,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -707,7 +960,7 @@
         "openrouter": null,
         "cheapest": "fal_ai",
         "cheapest_price": 0.00034999999999999994,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -768,7 +1021,7 @@
         "openrouter": null,
         "cheapest": "kie_ai",
         "cheapest_price": 0.02,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -861,7 +1114,7 @@
         "openrouter": null,
         "cheapest": "kie_ai",
         "cheapest_price": 0.03,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -967,7 +1220,7 @@
         "openrouter": null,
         "cheapest": "kie_ai",
         "cheapest_price": 0.025,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -1054,7 +1307,7 @@
         "openrouter": null,
         "cheapest": "wavespeed",
         "cheapest_price": 0.1,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -1136,7 +1389,7 @@
         "openrouter": null,
         "cheapest": "kie_ai",
         "cheapest_price": 0.06,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -1192,7 +1445,7 @@
         "openrouter": null,
         "cheapest": "elevenlabs_direct",
         "cheapest_price": 0.0,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -1248,7 +1501,7 @@
         "openrouter": null,
         "cheapest": "elevenlabs_direct",
         "cheapest_price": 0.0,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -1280,7 +1533,7 @@
       "rating": null,
       "rating_label": "no community data",
       "rating_sources": [],
-      "rating_updated": "2026-07-01",
+      "rating_updated": "2026-09-01",
       "notes": "Use for auto-generated background music synchronized to edit pacing. Complement Suno V5 (text-only).",
       "pricing": {
         "reference_unit": "per generation",
@@ -1298,7 +1551,7 @@
         "openrouter": null,
         "cheapest": "elevenlabs_direct",
         "cheapest_price": 0.0,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -1316,6 +1569,70 @@
           "cheapest": "elevenlabs_direct",
           "cheapest_price": 0.0,
           "notes": "Free within $5/mo ElevenLabs subscription"
+        }
+      ]
+    },
+    {
+      "id": "topaz-video-upscale",
+      "name": "Topaz Video Upscaler",
+      "provider": "Topaz Labs",
+      "type": "video-upscaling",
+      "input_output": "video\u2192upscaled video (1x/2x/4x)",
+      "description": "Kie.ai video upscaling endpoint for improving generated video resolution before final FFmpeg normalization.",
+      "status": "active",
+      "rating": null,
+      "rating_label": "no community data",
+      "rating_sources": [],
+      "rating_updated": "2026-09-01",
+      "notes": "For the Neon Parcel complex-shot route, use upscale factor 2x after Seedance 2 Mini 480p. Final dimensions are set by FFmpeg.",
+      "pricing": {
+        "reference_unit": "per second of input video",
+        "google_direct": null,
+        "elevenlabs_direct": null,
+        "openai_direct": null,
+        "kie_ai": {
+          "price": 0.04,
+          "unit": "per second (1x/2x)",
+          "model_id": "topaz-video-upscaler-upscale-factor-1x-2x"
+        },
+        "wavespeed": null,
+        "fal_ai": null,
+        "openrouter": null,
+        "cheapest": "kie_ai",
+        "cheapest_price": 0.2,
+        "last_compared": "2026-09-01"
+      },
+      "variants": [
+        {
+          "variant_id": "2x",
+          "resolution": "2x input dimensions",
+          "audio": "Preserved",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "openai_direct": null,
+          "kie_ai": 0.04,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "Kie.ai current listed price; use after Mini 480p.",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.04
+        },
+        {
+          "variant_id": "4x",
+          "resolution": "4x input dimensions",
+          "audio": "Preserved",
+          "price_unit": "$/s",
+          "google_direct": null,
+          "elevenlabs_direct": null,
+          "kie_ai": 0.07,
+          "wavespeed": null,
+          "fal_ai": null,
+          "openrouter": null,
+          "notes": "Kie.ai current listed price.",
+          "cheapest": "kie_ai",
+          "cheapest_price": 0.07
         }
       ]
     },
@@ -1355,7 +1672,7 @@
         "openrouter": null,
         "cheapest": "fal_ai",
         "cheapest_price": 0.0008500000000000001,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": []
     },
@@ -1421,7 +1738,7 @@
       "rating": null,
       "rating_label": "no community data",
       "rating_sources": [],
-      "rating_updated": "2026-07-01",
+      "rating_updated": "2026-09-01",
       "notes": "Primary option for adding environment/SFX audio to existing video clips.",
       "pricing": {
         "reference_unit": "per 10s video processed",
@@ -1438,7 +1755,7 @@
         "openrouter": null,
         "cheapest": "fal_ai",
         "cheapest_price": 0.00625,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -1493,7 +1810,7 @@
         "openrouter": null,
         "cheapest": "wavespeed",
         "cheapest_price": 0.035,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -1541,7 +1858,7 @@
         "openrouter": null,
         "cheapest": "fal_ai",
         "cheapest_price": 0.045,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {
@@ -1590,7 +1907,7 @@
         "openrouter": null,
         "cheapest": "fal_ai",
         "cheapest_price": 0.05,
-        "last_compared": "2026-07-01"
+        "last_compared": "2026-09-01"
       },
       "variants": [
         {

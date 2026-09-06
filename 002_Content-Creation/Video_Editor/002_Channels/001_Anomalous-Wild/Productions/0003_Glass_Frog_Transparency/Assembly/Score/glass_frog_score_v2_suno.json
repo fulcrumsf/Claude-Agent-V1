@@ -1,0 +1,28 @@
+{
+  "prompt": "Instrumental score for a modern science documentary. Curious and clear-headed, a sense of discovery, not mystery or dread. A steady gentle rhythmic pulse: soft muted synth arpeggios and light marimba and mallet patterns moving forward at a calm walking tempo. Warm sustained strings and a soft synth pad underneath for depth. Occasional bright bell or glass-like accents. Builds gradually through the middle, resolves warm and hopeful. Minimal and spacious, always leaves room for a narrator. No solo piano melody, not somber, not dark, no ambient drone, no dominant drums, no vocals.",
+  "style_tags": "documentary, science, curious, hopeful, minimal, arpeggiated synth, marimba, warm strings, underscore, instrumental, mid-tempo",
+  "title": "Anomalous Wild Score",
+  "negative_tags": "vocals, lyrics, singing, speech",
+  "model": "V4",
+  "task_id": "15912601c5f69d13fa9ed3caa7366ba4",
+  "generated_at": "2026-09-03T16:52:40-0400",
+  "default_pick": "glass_frog_score_v2_v1.mp3",
+  "tracks": [
+    {
+      "file": "glass_frog_score_v2_v1.mp3",
+      "suno_id": "a646a87a-6bae-4f2f-9139-bf15bfc0185d",
+      "duration_s": 129.32,
+      "audio_url": "https://tempfile.aiquickdraw.com/r/a646a87a-6bae-4f2f-9139-bf15bfc0185d.mp3",
+      "title": "Anomalous Wild Score"
+    },
+    {
+      "file": "glass_frog_score_v2_v2.mp3",
+      "suno_id": "45f31240-a924-4aa2-81f5-8a68f4aea488",
+      "duration_s": 107.0,
+      "audio_url": "https://tempfile.aiquickdraw.com/r/45f31240-a924-4aa2-81f5-8a68f4aea488.mp3",
+      "title": "Anomalous Wild Score"
+    }
+  ],
+  "tony_chose": "glass_frog_score_v2_v2.mp3  (track 2 / '_v2') \u2014 confirmed by ear 2026-09-03, mix FULL13_final_v3b",
+  "chosen_body_file": "glass_frog_score_CHOSEN_track2_body_232s.mp3 (track2 looped 3x w/ 3s acrossfade seams + 2s tail fade \u2192 232.917s)"
+}

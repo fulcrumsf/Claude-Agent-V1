@@ -1,0 +1,44 @@
+{
+  "production": "Glass Frog Transparency",
+  "source_render": "Renders/FULL13_RevisionRound1_R2_xfades.mp4",
+  "timeline_fps": 30,
+  "note": "Scene boundaries (s): 01 0-3.855 | 02 -18.251 | 03 -69.149 | 04 -104.676 | 05 -177.679 | 06 -228.113 | 07 -232.850. Segments <=60s for Mirelo, cut on scene boundaries where possible. Diagram-heavy segments (s2_diagram, s4_diagram) intentionally get near-silent prompts.",
+  "segments": [
+    {
+      "id": "s1_hook_establish",
+      "start_s": 0.0,
+      "end_s": 18.251,
+      "prompt": "Nighttime tropical cloud-forest ambience: gentle flowing stream, soft chorus of night insects and distant tree frogs, faint breeze through wet leaves. A brief hard digital glitch stinger at the very start, then quiet. A subtle slow heartbeat pulse felt under the extreme macro shots of translucent skin. Understated, natural, no music."
+    },
+    {
+      "id": "s2_diagram_anatomy",
+      "start_s": 18.251,
+      "end_s": 69.149,
+      "prompt": "Very quiet ambient bed: deep low-frequency room tone, a faint airy crystalline shimmer, distant muffled cloud-forest insects far in the background almost below hearing. Clinical, hushed, no foreground sounds, no music."
+    },
+    {
+      "id": "s3_range_broll",
+      "start_s": 69.149,
+      "end_s": 104.676,
+      "prompt": "Daytime tropical cloud-forest ambience: layered birdsong, insect buzz, light wind moving the canopy, an occasional single moth or insect wingbeat, a soft quick tongue-snap and small leaf rustle as the frog feeds. Lively but not loud, natural, no music."
+    },
+    {
+      "id": "s4_diagram_blood",
+      "start_s": 104.676,
+      "end_s": 160.0,
+      "prompt": "Near-silent abstract ambient texture: a low sustained hum, a subtle slow pulsing blood-flow whoosh, faint high shimmer. No environmental sound, no music, very subdued."
+    },
+    {
+      "id": "s5_reward_canopy",
+      "start_s": 160.0,
+      "end_s": 210.0,
+      "prompt": "Tropical cloud-forest at dawn: soft ambient forest tone, gentle insects, a faint waterfall far in the distance, and a slow steady heartbeat pulse rising under the extreme macro shots of the sleeping frog. Warm, calm, no music."
+    },
+    {
+      "id": "s6_vanish_hook",
+      "start_s": 210.0,
+      "end_s": 232.85,
+      "prompt": "Quiet cloud-forest ambience, soft leaf rustle and a light breeze, gentle insects settling to a hushed low tone, then a brief hard digital glitch burst at the very end. No music."
+    }
+  ]
+}

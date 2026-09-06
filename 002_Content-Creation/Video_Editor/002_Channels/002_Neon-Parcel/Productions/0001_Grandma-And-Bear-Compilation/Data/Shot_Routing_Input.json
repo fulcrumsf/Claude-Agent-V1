@@ -1,0 +1,83 @@
+[
+  {
+    "shot_id": "Shot-01",
+    "description": "An officer approaches a porch and warns Grandma that the bear is wild; Grandma calmly says it refuses dry food.",
+    "route_override": "force_simple",
+    "semantic_assessment": {
+      "action_count": 1,
+      "physics": 0,
+      "object_continuity": 0,
+      "precision": 0,
+      "character_interaction": 1,
+      "spatial_continuity": 1,
+      "timing_precision": 1,
+      "dialogue_sync": 1,
+      "failure_risk": 0,
+      "storyboard_value": 0
+    }
+  },
+  {
+    "shot_id": "Shot-02",
+    "description": "Grandma sweeps near a rural porch while an alligator approaches from the waterline; a bear notices, moves between them, and drives the alligator back toward the swamp.",
+    "semantic_assessment": {
+      "action_count": 2,
+      "physics": 2,
+      "object_continuity": 0,
+      "precision": 1,
+      "character_interaction": 2,
+      "spatial_continuity": 2,
+      "timing_precision": 1,
+      "dialogue_sync": 0,
+      "failure_risk": 2,
+      "storyboard_value": 2
+    }
+  },
+  {
+    "shot_id": "Shot-03",
+    "description": "A passenger films through a bus window as an older woman drives a convertible in snow with a large bear sitting in the passenger seat.",
+    "semantic_assessment": {
+      "action_count": 1,
+      "physics": 0,
+      "object_continuity": 0,
+      "precision": 0,
+      "character_interaction": 0,
+      "spatial_continuity": 1,
+      "timing_precision": 0,
+      "dialogue_sync": 1,
+      "failure_risk": 0,
+      "storyboard_value": 0
+    }
+  },
+  {
+    "shot_id": "Shot-04",
+    "description": "A bear waits on a porch while Grandma opens the door with a plate, gives it one portion, closes the door, and the bear waits for the next portion.",
+    "semantic_assessment": {
+      "action_count": 2,
+      "physics": 1,
+      "object_continuity": 1,
+      "precision": 1,
+      "character_interaction": 1,
+      "spatial_continuity": 1,
+      "timing_precision": 1,
+      "dialogue_sync": 0,
+      "failure_risk": 1,
+      "storyboard_value": 1
+    }
+  },
+  {
+    "shot_id": "Shot-05",
+    "description": "Grandma opens the driver's-side door, pulls the seat belt from the shoulder anchor across the bear's chest and lap, inserts the latch plate into the fixed receiver beside the bear's hip, closes the door, and walks away.",
+    "semantic_assessment": {
+      "action_count": 2,
+      "physics": 2,
+      "object_continuity": 2,
+      "precision": 2,
+      "character_interaction": 1,
+      "spatial_continuity": 2,
+      "timing_precision": 2,
+      "dialogue_sync": 0,
+      "failure_risk": 2,
+      "storyboard_value": 2
+    }
+  }
+]

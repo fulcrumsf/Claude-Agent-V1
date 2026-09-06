@@ -1,0 +1,175 @@
+[
+  {
+    "id": "end_01A",
+    "prompt": "Extreme macro shot, the glass frog's translucent belly seen from directly below, backlit, the beating heart clearly visible pulsing through the skin, a thin hard-glitch digital distortion beginning to overlay the frame. Corresponds to storyboard frame 6.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_01A_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_01_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_01A_End.png"
+  },
+  {
+    "id": "end_02A",
+    "prompt": "Extreme close-up, camera now beneath the leaf looking up at the frog's translucent ventral belly, backlit from below, the pale internal forms of the liver and lungs just beginning to resolve. Corresponds to storyboard frame 6.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02A_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_02_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02A_End.png"
+  },
+  {
+    "id": "end_02B",
+    "prompt": "Wide shot, camera pulled back to a medium view of the whole glass frog resting calmly on the leaf above the stream, settling the sequence. Corresponds to storyboard frame 12.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02B_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_02_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02B_End.png"
+  },
+  {
+    "id": "end_04B",
+    "prompt": "Closer overhead view, camera descended lower and nearer toward the stream, mist thinner, canopy detail more resolved, no creatures in frame.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04B_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_04_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04B_End.png"
+  },
+  {
+    "id": "end_04C",
+    "prompt": "Close-up, the insect just caught, the frog's tongue retracting back into its mouth, settling back into stillness. Corresponds to storyboard frame 5.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04C_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_04_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04C_End.png"
+  },
+  {
+    "id": "end_04D",
+    "prompt": "Extreme macro push-in, camera now very close on the frog's pale ventral skin texture, soft daylight diffusing through, only a portion of the body visible in frame.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04D_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_04_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04D_End.png"
+  },
+  {
+    "id": "end_04E",
+    "prompt": "Extreme close-up, the frog's outline now nearly disappearing into the leaf's own backlit translucent glow, edges barely distinguishable. Corresponds to storyboard frame 8.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04E_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_04_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04E_End.png"
+  },
+  {
+    "id": "end_04F",
+    "prompt": "Full wide hold, the entire cloud-forest leaf canopy filling the frame, the glass frog now imperceptible within it. Corresponds to storyboard frame 12.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04F_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_04_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04F_End.png"
+  },
+  {
+    "id": "end_06A",
+    "prompt": "Wide cinematic shot, camera pulled back further, the frog and leaf now smaller within a wider view of the surrounding forest.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06A_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_06_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06A_End.png"
+  },
+  {
+    "id": "end_06D",
+    "prompt": "Closer medium shot, camera pushed in slightly nearer to the sleeping frog, beginning to isolate its torso, preparing for a macro push.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06D_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_06_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06D_End.png"
+  },
+  {
+    "id": "end_06E",
+    "prompt": "Extreme macro, the beating heart alone filling almost the entire frame, slow and steady, no other body parts visible. Corresponds to storyboard frame 6.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06E_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_06_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06E_End.png"
+  },
+  {
+    "id": "end_06F",
+    "prompt": "Wide shot, the same canopy view now transitioning toward daylight, mist lifting, warmer light beginning to filter through. Corresponds to storyboard frame 8.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06F_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_06_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06F_End.png"
+  },
+  {
+    "id": "end_06G",
+    "prompt": "Wide final hold, the glass frog nearly vanishing into the leaf's own backlit glow, frame softening slightly at the edges as if fading. Corresponds to storyboard frame 12.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06G_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_06_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06G_End.png"
+  },
+  {
+    "id": "end_07A",
+    "prompt": "Extreme close-up fragment, one unidentifiable anatomical detail of a different, unnamed creature glimpsed amid hard glitch-distortion, deliberately unclear. Corresponds to storyboard frame 4.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nCRITICAL CONTINUITY INSTRUCTION: the first attached reference image is the START frame of this same short clip. This END frame must be the SAME physical location and lighting setup revealed further along the camera's motion -- the same leaf/rock/foliage arrangement, the same density and color of background, the same time-of-day light quality -- NOT a cut to a different location. Do not invent a new environment, new rock arrangement, or different background density than what the start frame reference shows.\n\nAT THE SAME TIME, this end frame's COMPOSITION must be clearly, visibly distinct from the start frame -- a genuinely different framing (wide vs. close, different camera height/angle, different subject position in frame), never a near-duplicate of the start frame's shot. Use the character/environment/storyboard reference images to keep the subject's anatomy and the location's appearance consistent with those established references. Output ONE full-frame 16:9 image only, not a grid or sheet.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_07A_Start.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_07_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_07A_End.png"
+  }
+]

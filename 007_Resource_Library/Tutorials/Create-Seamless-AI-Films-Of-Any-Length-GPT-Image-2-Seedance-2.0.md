@@ -1,14 +1,13 @@
 ---
-title: "Create Seamless AI Films of Any Length - GPT Image 2 + Seedance 2.0"
+title: "Create Seamless AI Films of ANY Length"
 type: tutorial
 category: video-production
 tags:
   - seedance
-  - storyboard
-  - character-consistency
-  - long-form-ai-video
   - gpt-image-2
-created: 2026-08-10
+  - ai-video
+  - character-consistency
+created: 2026-08-29
 source: https://www.youtube.com/watch?v=KxRR8uiex_s
 ---
 

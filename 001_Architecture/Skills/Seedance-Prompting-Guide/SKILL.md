@@ -25,6 +25,77 @@ Seedance wants **cinematic direction, not image-generation keywords**. Write the
 
 Source: [Seedance 2.0 Prompting Guide (fal.ai)](https://fal.ai/learn/tools/seedance-2-0-prompting-guide), [How to Use Seedance 2.0 Like a Pro (fal.ai)](https://fal.ai/learn/tools/how-to-use-seedance-2-0)
 
+## Neon Parcel real-life capture lock
+
+For Neon Parcel compilation videos, the default tone is unplanned real-life neighbor footage, not a commercial, staged scene, cinematic short, or professionally operated production. Prompts must explicitly define the capture style: ordinary consumer smartphone, natural exposure, imperfect everyday framing, and subtle human handheld movement when the shot is not intentionally locked off. Do not imply a tripod, cinema rig, dramatic grade, advertising polish, or designed camera coverage unless the shot contract explicitly requires it.
+
+The tone and capture-style fields belong in the structured storyboard contract and must be rendered into both the storyboard-generation prompt and the Seedance handoff prompt. A shot-specific camera lock may override handheld movement, but it must not override the real-life, non-commercial tone. For audio, name concrete environmental and physical foley events and close with explicit exclusions for music, commercial soundtrack, dramatic scoring, promotional audio, voiceover, dialogue, and synthetic sound effects when the shot is intended to be silent or ambient.
+
+### Version-scope every technique
+
+Tutorials often use "Seedance" as a loose label for several different model
+versions or platform wrappers. Before adopting a technique, record the exact
+model version and provider endpoint that demonstrated it. Do not transfer a
+Seedance 2.0 or 2.5 capability to 1.5 Pro without confirming that version's
+live schema and behavior. In particular, multi-reference inputs, reference
+image tagging, duration limits, resolution tiers, and storyboard workflows are
+version- and platform-dependent.
+
+### Reference Images Are Not Start Frames
+
+Keep temporal frames and contextual references separate at the API boundary.
+`first_frame_url` means the visual state at time zero; a storyboard or contact
+sheet is contextual conditioning and must use the endpoint's dedicated
+`reference_image_urls` field when that field exists. Never pass a storyboard
+as a first frame merely because it is an image. A wrapper should reject that
+combination before submission, and a pipeline should stop when its provider
+does not expose distinct fields rather than silently changing the meaning of
+the asset.
+
+### Explicit Reference-Image Tags
+
+When a provider exposes ordered image references to the prompt, bind every file
+by upload order using that provider's literal tag syntax. Kie's Seedance Mini
+playground example uses the spaced, capitalized form: the first uploaded image
+is `@Image 1`, the second is `@Image 2`, and so on. State the mapping before the
+action prompt, for example: `@Image 1 = storyboard; @Image 2 = character sheet;
+@Image 3 = environment sheet; @Image 4 = prop sheet.` Preserve the upload order
+and role mapping in the generation manifest so the prompt and payload can be
+audited together. Do not substitute `@Image1` or `@image_1` when testing the Kie
+playground syntax unless the provider's actual input surface explicitly
+requires that variant.
+
+## Primary route and temporal fallback
+
+For complex Neon Parcel shots, the default planning route is a validated
+storyboard, but the default video-conditioning route is Seedance Mini with
+approved clean temporal anchors. Do not send a composite storyboard sheet in
+`reference_image_urls` for Kie Seedance Mini unless a provider-specific adapter
+has been live-tested against sheet reproduction. After the raw clip returns,
+inspect motion, chronology, subject/object counts, identity continuity,
+morphing, camera continuity, and physical plausibility. A failing or
+low-confidence result must never be upscaled. The fallback route uses an
+approved `first_frame_url` plus an approved `last_frame_url`; the storyboard
+may inform the text prompt and QA report but must not be sent as a composite
+image reference. Reinspect the raw clip for storyboard-sheet reproduction,
+grid seams, captions, repeated panel layouts, and other layout contamination,
+then apply the same checks and pause for manual approval when the active policy
+requires it.
+
+Every paid attempt is append-only and versioned. Never reuse an output path,
+never overwrite a prior generation or derivative, and archive superseded
+assets in the matching `Archived/` directory. The shared Neon Parcel
+`artifact_preservation.py` helper and Kie download guard fail closed on output
+collisions; a false-positive automated inspection must not destroy the prior
+asset.
+
+For continuity-critical motion, the prompt must preserve the storyboard's
+visible origins and routes: state where each moving subject starts, the
+continuous path it takes, and the physical result. Do not ask Seedance to
+invent an entrance, infer a hidden doorway, wrap a path around an unseen
+structure, or resolve an obstacle that the storyboard has not made visible.
+Simplify the scene geometry before generation when a route is ambiguous.
+
 ## Which production style is this?
 
 Confirm this before picking a reference-image strategy or writing the prompt — it changes which sections below actually apply.
@@ -95,6 +166,14 @@ Example (from fal.ai's own guide):
 
 Source: [Seedance 2.0 Prompting Guide (fal.ai)](https://fal.ai/learn/tools/seedance-2-0-prompting-guide)
 
+### Action-only iteration
+
+When rerolling a shot, keep the subject identity, reference roles, camera lock,
+lighting, style, and hard constraints unchanged unless one of those elements is
+the specific problem under review. Change only the action timeline or the one
+failed instruction being tested. This isolates the variable, reduces prompt
+drift, and makes the result easier to compare with the previous generation.
+
 ## Hand/limb laterality in POV and multi-character shots (applies beyond Seedance — any first-person image or video model, including GPT-Image-2)
 
 **The problem:** in any shot with two people's hands interacting (handshake, object hand-off, a hand placed on the POV character), image/video models frequently get left/right hand wrong relative to which arm it's attached to, and get the pairing wrong (e.g. a left hand shaking a right hand, which isn't how people actually shake hands). Confirmed failure on Reimagined Realms 0005 (Roman Gladiator), Scene 6: prompt said only "Brutus grips the POV character's forearm in a handshake," with no hand specified on either side — the model rendered the POV character's own left arm ending in a hand with a right hand's thumb orientation (the wrist twist didn't match the arm it was on), and paired it with Brutus's hand in a left-to-right grip, which people don't naturally do (handshakes are same-side: right-to-right, or left-to-left if both are left-handed).
@@ -143,6 +222,37 @@ This is a non-issue for POV shots — a first-person camera never orbits itself.
 
 **Named-tag alternative to pure ordinal numbers, confirmed in two independent tutorials:** name reference files descriptively (e.g. `brutus.png`, `forest_man.png`, `seller.png`) and reference that same name directly in the prompt text, instead of "image one." This is the naming convention Tony already uses for character sheets — extend it to every reference passed in a multi-reference call, not just the file on disk. **Caution when passing several references in one call:** more than a couple of references the model can't clearly tell apart from each other causes real confusion — every additional reference needs to be clearly named/tagged, not just added in bulk. Fewer, well-labeled references beat more, ambiguous ones. (Source: "Seedance 2.5 - How to Fix Character & Environment Consistency," `Universal_Case_Studies/003_Seedance_2.5_Character_Environment_Consistency/ANALYSIS.md`; "Create Seamless AI Films of Any Length," `Universal_Case_Studies/007_Create_Seamless_AI_Films_Of_Any_Length/ANALYSIS.md`)
 
+### Timestamped action blocks for multi-reference shots
+
+When a Seedance 2.0 or later shot uses a storyboard plus separate subject or environment references, structure the motion direction as a short chronological timeline. Use one primary visible action per block and give each block an approximate start and end time. This is especially useful for complex shots and multi-beat storyboard segments because it tells the model when an action should occur instead of presenting several actions as an undifferentiated paragraph.
+
+Example pattern:
+
+```text
+Reference roles:
+@Image1 = the robot character sheet
+@Image2 = the 16:9 storyboard segment
+
+Action timeline:
+[00:00-00:04] The scientist stands still beside the robot at the edge of the forest.
+[00:04-00:08] The robot turns its body toward the forest and gestures forward, indicating the path ahead.
+[00:08-00:12] The scientist nods and follows the robot along the narrow forest path.
+```
+
+Keep the timeline grounded in what the storyboard actually shows. Do not use timestamps to force extra events into a shot, and do not describe every storyboard panel as a literal freeze-frame. Add camera, audio, and continuity constraints separately after the action timeline. Preserve the starting state, subject count, environment geometry, and camera language unless the shot explicitly changes them.
+
+This format is a prompting improvement, not a new API mode. It can be adapted to any provider that accepts free-text prompts, but the reference syntax and available input fields remain provider- and version-specific.
+
+### Reference-mode compatibility by platform
+
+The Higgsfield demonstration shows a workflow that may combine separate reference images, ordinal tags such as `@Image1` and `@Image2`, and timestamped action blocks. Treat that as a platform-specific workflow until the exact endpoint schema is verified.
+
+- **Kie.ai:** Seedance 2.0 multi-reference inputs support ordinal image tags, but `reference_image_urls` cannot be combined with `first_frame_url` or `last_frame_url` on the confirmed endpoint. Choose multi-reference mode or first/last-frame mode for each call.
+- **Higgsfield:** The demonstrated interface appears to support separate reference images and timestamped prompting. API compatibility, parameter names, and whether first/last frames can be combined with those references require a live schema check before use.
+- **WaveSpeed:** The currently recorded Seedance 2.0 schema exposes `image` and `last_image`, but does not confirm a separate multi-reference array. Do not assume the Higgsfield/Kie multi-reference workflow works there until the live WaveSpeed schema verifies it.
+
+Never generalize a platform's reference behavior to another provider just because both advertise the same Seedance model version.
+
 ### Preventing face-bleed between two characters in one shot — a second technique alongside `@Image` tagging
 
 Even with correct ordinal/named tagging, two characters sharing a shot can still have their identities "bleed" into each other (features swapping, faces blending). A second, complementary technique observed: mask/black out all but one face across a multi-image reference sheet before passing it in, so the model only has one clear face to lock onto per reference. Tested finding from the source: no measurable difference for single-character shots, but a real reduction in identity-swap errors specifically for multi-character shots. Worth trying alongside `@Image` tagging (not instead of it) if Titanic-Stoker-style face duplication/bleed shows up again. (Source: "The Secret to AI Character Sheets," `Universal_Case_Studies/006_The_Secret_To_AI_Character_Sheets/ANALYSIS.md`)
@@ -182,6 +292,18 @@ Environment identity drifts across separate generations the same way character i
 
 **Seedance never generates the storyboard image itself — that's an image-generation model's job (GPT Image 2, Nano Banana, or Midjourney), not Seedance's.** Seedance's role only starts once a storyboard (or any other static image) already exists; it turns static images into moving video, it doesn't draw them. Keep storyboard-construction conventions (panel count, annotation style, layout) in whichever skill governs image-generation prompting — not duplicated here. This section is specifically about feeding an already-built storyboard image into Seedance as an option worth testing, alongside the per-shot method our pipeline uses today.
 
+**Storyboard preflight comes before video generation.** Inspect the storyboard for
+repeated panels, impossible state changes, ambiguous object positions, and camera
+angles that do not support the intended action. Correct those problems in the
+image-generation stage before spending video credits. A storyboard is a visual
+continuity reference, not a literal panel layout for Seedance to reproduce.
+
+**Do not send an oversized unsplit storyboard when panel-by-panel progression is
+required.** Split it into smaller sequential sections, generally three or four
+panels at a time, and assign each section a clear beginning and ending state.
+The exact panel count is production-specific; this is a control safeguard, not
+a universal fixed grid size.
+
 **Confirmed workflow, transcribed word-for-word off a real demo** (Video-Analyzer run with full transcription against [this tutorial](https://www.youtube.com/watch?v=7qBYe_VX_lE), full ANALYSIS.md saved at `Case_Studies/004_Seedance_Storyboard_Character_Consistency_Tutorial/` under Reimagined Realms — Tony pre-screened the video before this was run). This is the actual mechanism, not a guess:
 
 1. **Build the storyboard image**: write a story/panel-count prompt in an LLM (he used Claude — "make me a prompt for GPT Image 2, a storyboard of 5x5 panels"), then generate ONE image containing all N panels via an image model (compared Nano Banana 2 vs. GPT Image 2 side by side; preferred GPT Image 2's more realistic/contrasty look for this use).
@@ -207,6 +329,53 @@ Distinct from option (b) above, which always covers a *multi*-panel storyboard i
 `@Image1` = this shot's storyboard panel (composition + camera move), `@Image2` = the shark's character sheet, `@Image3` = the environment sheet — one `reference_image_urls` array, one prompt distinguishing each role by ordinal tag.
 
 **The honest caveat:** every worked example ByteDance publishes for "Storyboard + subject reference" is multi-panel → multi-shot. Nobody — not ByteDance, not any third-party guide found, not us — has published or confirmed a working single-panel + single-shot version. The mechanism is architecturally supported and not contradicted anywhere; it is simply untested. Treat it as a promising, sourced hypothesis to pilot on one isolated shot before relying on it for a full production, same as every other technique in this section that hasn't run on our own pipeline yet.
+
+## Complex action shots: storyboard and camera lock
+
+Use this structure whenever a shot requires several physical steps, precise
+object interaction, or continuity that Seedance 1.5 is likely to mishandle:
+
+**Cost-aware fallback:** when the shot is too complex for reliable Seedance 1.5
+start/end-frame interpolation, use Kie.ai's Seedance 2 Mini at 480p or 720p
+with storyboard/reference guidance. The current Kie.ai catalog lists Mini at
+`$0.019/second` for 480p without video input and `$0.041/second` for 720p
+without video input. For the approved 480p workflow, use Topaz Video Upscaler
+2x at `$0.04/second`, then use FFmpeg to normalize the final output to
+1920x1080. This is a fallback for complex shots, not a universal replacement
+for Seedance 1.5.
+
+1. **Lock the capture source first.** State the exact camera owner/source and
+   physical placement: for example, "a high-mounted fixed gas-station security
+   camera, above the vehicle, looking down at a 20-degree angle." Include lens
+   character such as "wide-angle security lens with mild fisheye/barrel
+   distortion" when that look matters.
+2. **Lock what must not change.** Name the single subject count, vehicle/room,
+   horizon, framing, camera height, lens distortion, lighting, and visible
+   geometry. Explicitly preserve doors, windows, anchors, handles, and fixed
+   receivers involved in the action.
+3. **Translate the storyboard into ordered states.** Describe one visible
+   state per beat: initial state, contact, object movement, completed
+   interaction, and natural exit. Use concrete physical relationships rather
+   than shorthand such as "buckles it" or "handles the belt."
+4. **Describe object physics.** Identify where an object begins, what it is
+   attached to, the path it follows, where it ends, and what confirms success.
+   For a seat belt: retracted shoulder anchor -> pulled latch plate -> belt
+   across chest/lap -> fixed hip-level receiver -> audible click.
+5. **Keep the camera instruction separate from the action.** Say "the camera
+   remains fixed; no reframing, zoom, tracking, or eye-level viewpoint" before
+   the action sequence. Do not use contradictory movement language.
+6. **Use positive constraints in the relevant sentence and a short negative
+   closer.** Repeat only the details that must survive the motion. End with
+   concrete failure exclusions: no duplicate people/animals, no skipped states,
+   no object appearing from the ground, no disappearing geometry, no camera
+   movement, and no cuts unless requested.
+
+For a multi-panel storyboard, treat the panels as ordered visual checkpoints,
+not decorative inspiration. If the model starts copying the grid, repeating
+panels, or drifting the camera, split the action into fewer panels per call or
+use adjacent start/end frames instead. A storyboard does not guarantee correct
+physics; review the complete generated clip for state order, object continuity,
+camera drift, and geometry changes before accepting it.
 
 ## Chaining multiple generations into one continuous scene
 
@@ -258,11 +427,43 @@ Seedance has a hard per-call duration cap (well under a minute even on 2.5). For
 
 Same core prompting philosophy applies (4-layer structure, quote-triggered dialogue, dash-led negative-prompt closer). **Never hardcode assumed parameter values from these tables into new code without a live schema check first** (`docs.kie.ai/market/bytedance/<model>.md`, or `wavespeed schema <model-id>`) — these tables are a snapshot, not a guarantee, and ByteDance ships frequent version updates.
 
+### Evaluate resolution and motion separately
+
+When comparing Seedance variants, score at least these dimensions separately:
+motion and physics, subject/identity continuity, camera continuity, visual
+detail and text clarity, and audio quality. A higher-resolution result is not
+automatically better at motion or physical behavior, and a cheaper variant
+may be the better production choice when its motion passes while the premium
+variant only improves detail. Record the model version, platform wrapper,
+resolution, and prompt/reference configuration for each comparison so the
+result is not generalized across versions.
+
+### Minimum duration is a hard floor — generate at the floor, then trim (locked 2026-08-28)
+
+Both duration ranges above have a **minimum**, not just a maximum: 1.5 Pro won't accept anything under 4 seconds, 2.0/2.0 Fast won't accept anything under 4 seconds either (only the max differs, 12 vs. 15). This is easy to miss because most attention goes to the upper cap (the 8s live-footage ceiling this pipeline enforces) — but a real beat can legitimately need *less* than 4 seconds (a quick glitch-cut hook, a single flash-frame tease), and submitting that duration directly to the API fails.
+
+**Confirmed live 2026-08-28** on an Anomalous Wild production: a hook beat's real narration duration was 3.855s. Submitting `duration_s: 3.855` (or even `4` as a float-truncated string) to `bytedance/seedance-1.5-pro` failed twice before the fix was found — the API requires an **integer** at or above the floor.
+
+**The fix, as a standing rule for any pipeline building a Seedance manifest:** the generation-time duration and the beat's real on-screen duration are two different numbers, and the pipeline stage that plans clip boundaries should record **only** the real one (`target_duration_s`, from narration timestamps). The stage that builds the API call derives the request duration from it: **`ceil(target) + 1s`, clamped to the model's `[4, max]` range, as an integer** — never submit a sub-minimum or non-integer duration, and never stretch/slow the beat's real timing to fill the generated length. Then **trim the rendered clip back down to `target_duration_s`** (head-trim — keep the first `target_s`). The +1s pad matters because Seedance undershoots the requested integer by ~0.1–0.9s; a clip that ends up shorter than its beat causes a loop-back flash-cut in Remotion assembly (incident 0003_Glass_Frog_Transparency, 2026-08-30). A clip that still comes back shorter than target is regenerated, never looped. In the Anomalous Wild pipeline this is all enforced in `clip_durations.py` + `pipeline_supervisor.py` — the manifest carries `target_duration_s` only.
+
 ### Start and end frame must be visually distinct (locked 2026-08-19)
 
 Any call using both a first-frame and a last-frame reference (`image`/`last_image` on 1.5 Pro, `first_frame_url`/`last_frame_url` on 2.0) needs the two frames to actually differ — same subject pose, same framing, only minor differences gives the model almost no delta to interpolate motion from, and produces a flat, low-motion, or near-static result. This isn't a prompt-wording problem; it's a reference-image selection problem. Caught on a real production: a scene's storyboard opened and closed on the same wide, full-body framing of the subject (different narrative moment, same composition) — using panel 1 and the final panel as a single clip's start/end pair would have handed the model almost nothing to animate between.
 
 **Choose start/end frame pairs with a real compositional difference** — wide vs. close, a different subject position, a different framing angle — not just a different narrative beat that happens to render the same way visually. When splitting a storyboard into sub-clips (see [`Production-Asset-Planner`](../Production-Asset-Planner/SKILL.md) Step 6), this is one more reason a span with too little visual change from start to end should be folded into an adjacent clip or re-split, rather than generated as-is.
+
+### Validated storyboard handoff
+
+For Neon Parcel storyboard-route shots, Seedance prompt construction must occur
+only after the selected storyboard has passed the structured visual-QA and
+three-candidate regeneration gates. The handoff adapter is
+`001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/storyboard_handoff.py`.
+It converts the validated frame sequence into chronological physical beats and
+preserves the five-layer prompt order. The storyboard remains a contextual
+`reference_image_urls` input; a clean temporal start image, when needed, stays
+in `first_frame_url`. Never construct a Seedance prompt from the original shot
+idea alone after storyboard QA, because that can reintroduce assumptions the
+accepted storyboard disproved.
 
 ## Related but distinct tool: Seed Audio 1.0
 
@@ -307,3 +508,18 @@ Real filmed footage stays completely unchanged — same face, clothes, movement,
 (Source: "How I Got 11M Views and 30K Subscribers," `Universal_Case_Studies/008_How_I_Got_11M_Views_30K_Subscribers/Keyframes/013.jpg`)
 
 **Not currently used by any pipeline** — documented here for when a channel wants this format.
+
+## Un-reviewed reference material (ingested 2026-08-29, not yet case-studied)
+
+5 YouTube tutorials on Seedance 2.0/2.5 + GPT-Image-2 workflows were ingested but only
+raw-captured (description/links), not yet distilled into technique the way
+`Universal_Case_Studies/` entries above are. They live in
+`007_Resource_Library/Tutorials/`:
+`Claude-Replaced-Higgsfield-with-This-FREE-MCP.md`,
+`How-to-Turn-Images-into-Motion-Graphics-using-Seedance-2.0.md`,
+`How-to-Turn-Storyboards-into-AI-Videos-with-GPT-Image-2-Seedance-2.0.md`,
+`I-Can't-Believe-ChatGPT-Work-Made-This-Whole-Video-From-One-Image.md`,
+`Create-Seamless-AI-Films-of-ANY-Length-GPT-Image-2-Seedance-2.0.md`.
+Worth a real case-study pass (watch + extract technique, per the Case Study Pipeline
+pattern) before treating anything in them as validated — flagging here so they
+don't get forgotten as just links.

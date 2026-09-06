@@ -87,6 +87,49 @@ def build_titles(subject: str, hook_fact: str) -> list[str]:
     return [t[:MAX_TITLE_LEN] for t in titles]
 
 
+def _fmt_ts(seconds: float) -> str:
+    m, s = divmod(int(seconds), 60)
+    h, m = divmod(m, 60)
+    return f"{h}:{m:02d}:{s:02d}" if h else f"{m}:{s:02d}"
+
+
+def build_chapters_from_beat_table(production_root: Path) -> list[tuple[str, str]]:
+    """Default chapter list from Production/Beat_Table.json scene boundaries.
+
+    YouTube requires the first chapter at 0:00, at least 3 chapters, and every
+    chapter >=10s apart — so scenes shorter than that get folded into the
+    following chapter rather than dropped silently. Titles here are generic
+    scene labels; the orchestrating Claude session should pass real,
+    content-aware titles via --chapters instead (same reasoning as
+    --headlines: a template can find the timestamps, only someone who read
+    the script can write a title worth clicking).
+    """
+    beat_table_path = production_root / "Production" / "Beat_Table.json"
+    if not beat_table_path.exists():
+        return [("0:00", "Hook")]
+
+    beats = json.loads(beat_table_path.read_text()).get("beats", [])
+    if not beats:
+        return [("0:00", "Hook")]
+
+    cumulative_s = 0.0
+    raw_starts = []
+    for beat in beats:
+        raw_starts.append(cumulative_s)
+        cumulative_s += beat["end_s"] - beat["start_s"]
+
+    MIN_GAP_S = 10.0
+    kept_starts = [raw_starts[0]]
+    for start in raw_starts[1:]:
+        if start - kept_starts[-1] >= MIN_GAP_S:
+            kept_starts.append(start)
+    # if too few chapters survive the merge, YouTube requires >=3 — fall back
+    if len(kept_starts) < 3:
+        return [("0:00", "Hook")]
+
+    return [(_fmt_ts(s), f"Part {i+1}") for i, s in enumerate(kept_starts)]
+
+
 def build_description(subject: str, chapters: list[tuple[str, str]]) -> str:
     chapter_lines = "\n".join(f"{ts} {label}" for ts, label in chapters)
     return f"""How does {subject} actually work?
@@ -310,6 +353,29 @@ def main():
         "(e.g. 'the mantis shrimp's two eyestalks/eyes'). Falls back to a "
         "generic 'the subject' target if omitted.",
     )
+    parser.add_argument(
+        "--tags",
+        help="YouTube Studio tags, comma-separated, authored by the orchestrating "
+        "Claude session (relevant terms + common misspellings of the subject's "
+        "name — YouTube's own guidance: tags mainly help when content is "
+        "commonly misspelled, otherwise they do little). Total must be <=500 "
+        "characters (YouTube's limit). Written to a separate '# Tags' section "
+        "in YouTube_Package.md for Tony to paste into YouTube Studio's Tags "
+        "field by hand — NEVER included in `description` and NEVER passed to "
+        "Blotato's create_post; Blotato's YouTube post has no tags field and "
+        "the upload step must not try to smuggle them into the description.",
+    )
+    parser.add_argument(
+        "--chapters",
+        help="Real YouTube chapters, semicolon-separated 'MM:SS|Title' pairs "
+        "(e.g. '0:00|Hook;0:18|How It Hides Its Organs'). The orchestrating "
+        "Claude session should author these from the actual script/beat "
+        "content — same reasoning as --headlines: a template can locate the "
+        "timestamps but can't write a title worth clicking. Falls back to "
+        "generic 'Part N' labels at each Beat_Table.json scene boundary "
+        "(merged to satisfy YouTube's 10s-minimum gap) if omitted, and to a "
+        "single '0:00 Hook' placeholder if Beat_Table.json doesn't exist yet.",
+    )
     args = parser.parse_args()
 
     production_root = Path(args.production_folder).resolve()
@@ -320,14 +386,37 @@ def main():
         sys.exit(f"--headlines must contain exactly 3 entries separated by '|', got {len(headlines)}")
     arrow_target = args.arrow_target or f"the {subject}'s most unusual feature"
 
+    if args.chapters:
+        chapters = []
+        for pair in args.chapters.split(";"):
+            ts, _, label = pair.partition("|")
+            chapters.append((ts.strip(), label.strip()))
+        if chapters[0][0] != "0:00":
+            sys.exit(f"--chapters must start at 0:00 (YouTube requirement), got {chapters[0][0]!r}")
+    else:
+        chapters = build_chapters_from_beat_table(production_root)
+
     titles = build_titles(subject, hook_fact)
-    description = build_description(subject, chapters=[("0:00", "Hook")])
+    # `description` is what the Blotato upload step reads verbatim — tags are
+    # deliberately kept out of this variable entirely, never appended to it,
+    # so there's no code path where they could leak into the YouTube post body.
+    description = build_description(subject, chapters=chapters)
+
+    tags_section = ""
+    if args.tags:
+        tags = args.tags.strip()
+        if len(tags) > 500:
+            sys.exit(f"--tags must be <=500 characters (YouTube's limit), got {len(tags)}")
+        tags_section = (
+            "\n\n# Tags (YouTube Studio only — paste into the Tags field by hand; "
+            "do NOT include in the description or the Blotato upload)\n\n" + tags
+        )
 
     package_dir = production_root / "Package"
     package_dir.mkdir(parents=True, exist_ok=True)
     (package_dir / "YouTube_Package.md").write_text(
         "# Title Options\n\n" + "\n".join(f"{i+1}. {t}" for i, t in enumerate(titles)) +
-        "\n\n# Description\n\n" + description
+        "\n\n# Description\n\n" + description + tags_section
     )
     print(f"Wrote {package_dir / 'YouTube_Package.md'}")
 

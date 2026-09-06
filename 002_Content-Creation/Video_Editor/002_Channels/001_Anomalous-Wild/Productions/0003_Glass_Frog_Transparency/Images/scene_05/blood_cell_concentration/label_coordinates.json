@@ -1,0 +1,20 @@
+{
+  "labels": [
+    {
+      "feature": "red_blood_cells_awake",
+      "x_pct": 25.1,
+      "y_pct": 50.1,
+      "confidence": "high"
+    },
+    {
+      "feature": "red_blood_cells_asleep",
+      "x_pct": 75.3,
+      "y_pct": 50.5,
+      "confidence": "high"
+    },
+    {
+      "feature": "liver",
+      "confidence": "not_found"
+    }
+  ]
+}

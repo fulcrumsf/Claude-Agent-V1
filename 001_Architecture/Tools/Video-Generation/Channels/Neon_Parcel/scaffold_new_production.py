@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from datetime import date
 from pathlib import Path
@@ -14,14 +15,19 @@ CHANNEL_ROOT = Path(
     "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel"
 )
 END_SCREEN_HORIZONTAL = CHANNEL_ROOT / "Assets" / "Neon_Parcel_Endscreen_Horizontal_1080.mp4"
+PRODUCTIONS_ROOT = CHANNEL_ROOT / "Productions"
 
 FOLDERS = (
     "References",
     "Research",
     "Scripts",
+    "Prompts",
     "Production",
     "Images",
     "Video_Clips",
+    "Video_Clips/Archived",
+    "Working",
+    "Intermediate",
     "Narration_Audio",
     "Audio_Stems",
     "Assembly/Versions",
@@ -37,8 +43,24 @@ def _write_if_missing(path: Path, content: str) -> None:
         path.write_text(content, encoding="utf-8")
 
 
+def _numbered_production_root(requested_root: Path) -> Path:
+    """Assign the next four-digit production number unless one was supplied."""
+    requested_root = Path(requested_root).resolve()
+    if re.match(r"^\d{4}_", requested_root.name):
+        return requested_root
+
+    productions_root = requested_root.parent
+    existing_numbers = []
+    for child in productions_root.iterdir() if productions_root.exists() else ():
+        match = re.match(r"^(\d{4})_", child.name)
+        if match:
+            existing_numbers.append(int(match.group(1)))
+    next_number = max(existing_numbers, default=0) + 1
+    return productions_root / f"{next_number:04d}_{requested_root.name}"
+
+
 def scaffold(production_root: Path) -> Path:
-    production_root = Path(production_root).resolve()
+    production_root = _numbered_production_root(production_root)
     production_root.mkdir(parents=True, exist_ok=True)
 
     for relative in FOLDERS:

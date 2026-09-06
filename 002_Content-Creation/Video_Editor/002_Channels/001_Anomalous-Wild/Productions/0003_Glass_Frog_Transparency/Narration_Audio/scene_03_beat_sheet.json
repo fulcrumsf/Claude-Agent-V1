@@ -1,0 +1,570 @@
+{
+  "scene_id": "scene_03",
+  "words": [
+    {
+      "word": "Through",
+      "start_s": 0.0,
+      "end_s": 0.348
+    },
+    {
+      "word": "that",
+      "start_s": 0.395,
+      "end_s": 0.557
+    },
+    {
+      "word": "skin,",
+      "start_s": 0.639,
+      "end_s": 1.242
+    },
+    {
+      "word": "you",
+      "start_s": 1.405,
+      "end_s": 1.509
+    },
+    {
+      "word": "can",
+      "start_s": 1.556,
+      "end_s": 1.695
+    },
+    {
+      "word": "see",
+      "start_s": 1.765,
+      "end_s": 1.95
+    },
+    {
+      "word": "its",
+      "start_s": 1.997,
+      "end_s": 2.125
+    },
+    {
+      "word": "heart,",
+      "start_s": 2.206,
+      "end_s": 2.74
+    },
+    {
+      "word": "beating",
+      "start_s": 2.879,
+      "end_s": 3.413
+    },
+    {
+      "word": "in",
+      "start_s": 3.564,
+      "end_s": 3.738
+    },
+    {
+      "word": "real",
+      "start_s": 3.855,
+      "end_s": 4.145
+    },
+    {
+      "word": "time.",
+      "start_s": 4.226,
+      "end_s": 4.725
+    },
+    {
+      "word": "Its",
+      "start_s": 4.795,
+      "end_s": 5.004
+    },
+    {
+      "word": "liver.",
+      "start_s": 5.074,
+      "end_s": 5.526
+    },
+    {
+      "word": "Its",
+      "start_s": 5.573,
+      "end_s": 5.793
+    },
+    {
+      "word": "lungs.",
+      "start_s": 5.875,
+      "end_s": 6.56
+    },
+    {
+      "word": "The",
+      "start_s": 6.885,
+      "end_s": 6.989
+    },
+    {
+      "word": "coiled",
+      "start_s": 7.059,
+      "end_s": 7.5
+    },
+    {
+      "word": "loops",
+      "start_s": 7.57,
+      "end_s": 7.988
+    },
+    {
+      "word": "of",
+      "start_s": 8.057,
+      "end_s": 8.139
+    },
+    {
+      "word": "its",
+      "start_s": 8.197,
+      "end_s": 8.313
+    },
+    {
+      "word": "intestines.",
+      "start_s": 8.371,
+      "end_s": 9.242
+    },
+    {
+      "word": "No",
+      "start_s": 9.52,
+      "end_s": 9.706
+    },
+    {
+      "word": "dissection.",
+      "start_s": 9.787,
+      "end_s": 10.646
+    },
+    {
+      "word": "No",
+      "start_s": 10.82,
+      "end_s": 10.995
+    },
+    {
+      "word": "X-ray.",
+      "start_s": 11.064,
+      "end_s": 11.749
+    },
+    {
+      "word": "Just",
+      "start_s": 12.028,
+      "end_s": 12.249
+    },
+    {
+      "word": "daylight",
+      "start_s": 12.318,
+      "end_s": 12.817
+    },
+    {
+      "word": "passing",
+      "start_s": 12.934,
+      "end_s": 13.351
+    },
+    {
+      "word": "through",
+      "start_s": 13.41,
+      "end_s": 13.642
+    },
+    {
+      "word": "living",
+      "start_s": 13.7,
+      "end_s": 13.99
+    },
+    {
+      "word": "tissue.",
+      "start_s": 14.071,
+      "end_s": 14.687
+    },
+    {
+      "word": "Seeing",
+      "start_s": 15.488,
+      "end_s": 15.848
+    },
+    {
+      "word": "the",
+      "start_s": 15.917,
+      "end_s": 15.987
+    },
+    {
+      "word": "heart",
+      "start_s": 16.068,
+      "end_s": 16.405
+    },
+    {
+      "word": "this",
+      "start_s": 16.463,
+      "end_s": 16.649
+    },
+    {
+      "word": "clearly",
+      "start_s": 16.718,
+      "end_s": 17.16
+    },
+    {
+      "word": "is",
+      "start_s": 17.299,
+      "end_s": 17.496
+    },
+    {
+      "word": "rare,",
+      "start_s": 17.613,
+      "end_s": 18.147
+    },
+    {
+      "word": "even",
+      "start_s": 18.309,
+      "end_s": 18.623
+    },
+    {
+      "word": "among",
+      "start_s": 18.681,
+      "end_s": 18.913
+    },
+    {
+      "word": "glass",
+      "start_s": 18.983,
+      "end_s": 19.284
+    },
+    {
+      "word": "frogs",
+      "start_s": 19.342,
+      "end_s": 19.772
+    },
+    {
+      "word": "\u2014",
+      "start_s": 19.876,
+      "end_s": 19.935
+    },
+    {
+      "word": "some",
+      "start_s": 20.178,
+      "end_s": 20.469
+    },
+    {
+      "word": "species",
+      "start_s": 20.515,
+      "end_s": 21.061
+    },
+    {
+      "word": "only",
+      "start_s": 21.177,
+      "end_s": 21.548
+    },
+    {
+      "word": "show",
+      "start_s": 21.618,
+      "end_s": 21.873
+    },
+    {
+      "word": "you",
+      "start_s": 21.966,
+      "end_s": 22.117
+    },
+    {
+      "word": "bone,",
+      "start_s": 22.245,
+      "end_s": 22.837
+    },
+    {
+      "word": "or",
+      "start_s": 22.988,
+      "end_s": 23.127
+    },
+    {
+      "word": "the",
+      "start_s": 23.174,
+      "end_s": 23.243
+    },
+    {
+      "word": "outline",
+      "start_s": 23.301,
+      "end_s": 23.766
+    },
+    {
+      "word": "of",
+      "start_s": 23.801,
+      "end_s": 23.859
+    },
+    {
+      "word": "the",
+      "start_s": 23.905,
+      "end_s": 23.975
+    },
+    {
+      "word": "gut.",
+      "start_s": 24.033,
+      "end_s": 24.486
+    },
+    {
+      "word": "But",
+      "start_s": 25.182,
+      "end_s": 25.345
+    },
+    {
+      "word": "here's",
+      "start_s": 25.403,
+      "end_s": 25.844
+    },
+    {
+      "word": "what",
+      "start_s": 25.96,
+      "end_s": 26.157
+    },
+    {
+      "word": "should",
+      "start_s": 26.192,
+      "end_s": 26.413
+    },
+    {
+      "word": "be",
+      "start_s": 26.448,
+      "end_s": 26.541
+    },
+    {
+      "word": "impossible:",
+      "start_s": 26.587,
+      "end_s": 27.365
+    },
+    {
+      "word": "none",
+      "start_s": 28.178,
+      "end_s": 28.538
+    },
+    {
+      "word": "of",
+      "start_s": 28.596,
+      "end_s": 28.677
+    },
+    {
+      "word": "those",
+      "start_s": 28.735,
+      "end_s": 29.002
+    },
+    {
+      "word": "organs",
+      "start_s": 29.06,
+      "end_s": 29.548
+    },
+    {
+      "word": "look",
+      "start_s": 29.606,
+      "end_s": 29.78
+    },
+    {
+      "word": "like",
+      "start_s": 29.838,
+      "end_s": 30.0
+    },
+    {
+      "word": "a",
+      "start_s": 30.035,
+      "end_s": 30.07
+    },
+    {
+      "word": "dark",
+      "start_s": 30.151,
+      "end_s": 30.5
+    },
+    {
+      "word": "red",
+      "start_s": 30.592,
+      "end_s": 30.825
+    },
+    {
+      "word": "blob",
+      "start_s": 30.894,
+      "end_s": 31.277
+    },
+    {
+      "word": "under",
+      "start_s": 31.428,
+      "end_s": 31.742
+    },
+    {
+      "word": "the",
+      "start_s": 31.8,
+      "end_s": 31.87
+    },
+    {
+      "word": "skin.",
+      "start_s": 31.928,
+      "end_s": 32.508
+    },
+    {
+      "word": "They're",
+      "start_s": 33.205,
+      "end_s": 33.449
+    },
+    {
+      "word": "tucked",
+      "start_s": 33.472,
+      "end_s": 33.774
+    },
+    {
+      "word": "inside",
+      "start_s": 33.82,
+      "end_s": 34.284
+    },
+    {
+      "word": "tiny",
+      "start_s": 34.331,
+      "end_s": 34.76
+    },
+    {
+      "word": "mirrored",
+      "start_s": 34.853,
+      "end_s": 35.237
+    },
+    {
+      "word": "pouches,",
+      "start_s": 35.306,
+      "end_s": 36.003
+    },
+    {
+      "word": "lined",
+      "start_s": 36.154,
+      "end_s": 36.537
+    },
+    {
+      "word": "with",
+      "start_s": 36.572,
+      "end_s": 36.711
+    },
+    {
+      "word": "reflective",
+      "start_s": 36.769,
+      "end_s": 37.28
+    },
+    {
+      "word": "crystal,",
+      "start_s": 37.327,
+      "end_s": 37.872
+    },
+    {
+      "word": "that",
+      "start_s": 38.023,
+      "end_s": 38.197
+    },
+    {
+      "word": "bounce",
+      "start_s": 38.279,
+      "end_s": 38.673
+    },
+    {
+      "word": "light",
+      "start_s": 38.743,
+      "end_s": 39.045
+    },
+    {
+      "word": "around",
+      "start_s": 39.103,
+      "end_s": 39.405
+    },
+    {
+      "word": "them",
+      "start_s": 39.451,
+      "end_s": 39.614
+    },
+    {
+      "word": "instead",
+      "start_s": 39.823,
+      "end_s": 40.218
+    },
+    {
+      "word": "of",
+      "start_s": 40.264,
+      "end_s": 40.334
+    },
+    {
+      "word": "absorbing",
+      "start_s": 40.392,
+      "end_s": 40.902
+    },
+    {
+      "word": "it.",
+      "start_s": 40.972,
+      "end_s": 41.239
+    },
+    {
+      "word": "The",
+      "start_s": 41.936,
+      "end_s": 42.063
+    },
+    {
+      "word": "frog",
+      "start_s": 42.122,
+      "end_s": 42.528
+    },
+    {
+      "word": "isn't",
+      "start_s": 42.737,
+      "end_s": 43.062
+    },
+    {
+      "word": "just",
+      "start_s": 43.143,
+      "end_s": 43.492
+    },
+    {
+      "word": "transparent.",
+      "start_s": 43.55,
+      "end_s": 44.478
+    },
+    {
+      "word": "It's",
+      "start_s": 44.722,
+      "end_s": 44.966
+    },
+    {
+      "word": "actively",
+      "start_s": 45.059,
+      "end_s": 45.616
+    },
+    {
+      "word": "camouflaging",
+      "start_s": 45.674,
+      "end_s": 46.382
+    },
+    {
+      "word": "its",
+      "start_s": 46.44,
+      "end_s": 46.568
+    },
+    {
+      "word": "own",
+      "start_s": 46.615,
+      "end_s": 46.754
+    },
+    {
+      "word": "insides.",
+      "start_s": 46.812,
+      "end_s": 47.648
+    },
+    {
+      "word": "And",
+      "start_s": 47.857,
+      "end_s": 48.019
+    },
+    {
+      "word": "that's",
+      "start_s": 48.066,
+      "end_s": 48.275
+    },
+    {
+      "word": "still",
+      "start_s": 48.298,
+      "end_s": 48.588
+    },
+    {
+      "word": "not",
+      "start_s": 48.681,
+      "end_s": 48.89
+    },
+    {
+      "word": "the",
+      "start_s": 48.96,
+      "end_s": 49.053
+    },
+    {
+      "word": "most",
+      "start_s": 49.111,
+      "end_s": 49.459
+    },
+    {
+      "word": "anomalous",
+      "start_s": 49.575,
+      "end_s": 50.202
+    },
+    {
+      "word": "part.",
+      "start_s": 50.26,
+      "end_s": 50.899
+    }
+  ]
+}

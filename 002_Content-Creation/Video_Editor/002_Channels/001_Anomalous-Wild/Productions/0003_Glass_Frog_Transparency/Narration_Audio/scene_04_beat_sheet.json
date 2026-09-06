@@ -1,0 +1,430 @@
+{
+  "scene_id": "scene_04",
+  "words": [
+    {
+      "word": "There",
+      "start_s": 0.0,
+      "end_s": 0.221
+    },
+    {
+      "word": "are",
+      "start_s": 0.267,
+      "end_s": 0.488
+    },
+    {
+      "word": "around",
+      "start_s": 0.522,
+      "end_s": 0.871
+    },
+    {
+      "word": "a",
+      "start_s": 0.917,
+      "end_s": 0.94
+    },
+    {
+      "word": "hundred",
+      "start_s": 1.033,
+      "end_s": 1.393
+    },
+    {
+      "word": "and",
+      "start_s": 1.428,
+      "end_s": 1.498
+    },
+    {
+      "word": "fifty",
+      "start_s": 1.556,
+      "end_s": 1.846
+    },
+    {
+      "word": "species",
+      "start_s": 1.916,
+      "end_s": 2.45
+    },
+    {
+      "word": "of",
+      "start_s": 2.508,
+      "end_s": 2.577
+    },
+    {
+      "word": "glass",
+      "start_s": 2.647,
+      "end_s": 2.961
+    },
+    {
+      "word": "frog,",
+      "start_s": 3.03,
+      "end_s": 3.541
+    },
+    {
+      "word": "spread",
+      "start_s": 3.715,
+      "end_s": 4.052
+    },
+    {
+      "word": "from",
+      "start_s": 4.098,
+      "end_s": 4.249
+    },
+    {
+      "word": "southern",
+      "start_s": 4.331,
+      "end_s": 4.644
+    },
+    {
+      "word": "Mexico",
+      "start_s": 4.679,
+      "end_s": 5.201
+    },
+    {
+      "word": "down",
+      "start_s": 5.445,
+      "end_s": 5.724
+    },
+    {
+      "word": "through",
+      "start_s": 5.77,
+      "end_s": 6.002
+    },
+    {
+      "word": "the",
+      "start_s": 6.026,
+      "end_s": 6.095
+    },
+    {
+      "word": "Andes",
+      "start_s": 6.165,
+      "end_s": 6.606
+    },
+    {
+      "word": "and",
+      "start_s": 6.699,
+      "end_s": 6.896
+    },
+    {
+      "word": "into",
+      "start_s": 6.978,
+      "end_s": 7.175
+    },
+    {
+      "word": "the",
+      "start_s": 7.245,
+      "end_s": 7.314
+    },
+    {
+      "word": "Amazon",
+      "start_s": 7.384,
+      "end_s": 7.755
+    },
+    {
+      "word": "basin.",
+      "start_s": 7.825,
+      "end_s": 8.44
+    },
+    {
+      "word": "They",
+      "start_s": 8.882,
+      "end_s": 9.044
+    },
+    {
+      "word": "live",
+      "start_s": 9.091,
+      "end_s": 9.23
+    },
+    {
+      "word": "in",
+      "start_s": 9.253,
+      "end_s": 9.311
+    },
+    {
+      "word": "the",
+      "start_s": 9.346,
+      "end_s": 9.416
+    },
+    {
+      "word": "trees",
+      "start_s": 9.462,
+      "end_s": 9.961
+    },
+    {
+      "word": "overhanging",
+      "start_s": 10.136,
+      "end_s": 10.716
+    },
+    {
+      "word": "mountain",
+      "start_s": 10.774,
+      "end_s": 11.134
+    },
+    {
+      "word": "streams,",
+      "start_s": 11.192,
+      "end_s": 11.842
+    },
+    {
+      "word": "in",
+      "start_s": 11.935,
+      "end_s": 12.074
+    },
+    {
+      "word": "cloud",
+      "start_s": 12.144,
+      "end_s": 12.516
+    },
+    {
+      "word": "forests",
+      "start_s": 12.597,
+      "end_s": 13.166
+    },
+    {
+      "word": "thick",
+      "start_s": 13.34,
+      "end_s": 13.63
+    },
+    {
+      "word": "with",
+      "start_s": 13.7,
+      "end_s": 13.851
+    },
+    {
+      "word": "mist.",
+      "start_s": 13.92,
+      "end_s": 14.466
+    },
+    {
+      "word": "By",
+      "start_s": 15.163,
+      "end_s": 15.325
+    },
+    {
+      "word": "night,",
+      "start_s": 15.406,
+      "end_s": 15.917
+    },
+    {
+      "word": "they're",
+      "start_s": 16.126,
+      "end_s": 16.37
+    },
+    {
+      "word": "ambush",
+      "start_s": 16.416,
+      "end_s": 16.869
+    },
+    {
+      "word": "hunters",
+      "start_s": 16.904,
+      "end_s": 17.322
+    },
+    {
+      "word": "\u2014",
+      "start_s": 17.531,
+      "end_s": 17.577
+    },
+    {
+      "word": "sitting",
+      "start_s": 17.693,
+      "end_s": 18.03
+    },
+    {
+      "word": "motionless,",
+      "start_s": 18.1,
+      "end_s": 18.831
+    },
+    {
+      "word": "then",
+      "start_s": 18.947,
+      "end_s": 19.133
+    },
+    {
+      "word": "snapping",
+      "start_s": 19.249,
+      "end_s": 19.667
+    },
+    {
+      "word": "up",
+      "start_s": 19.714,
+      "end_s": 19.806
+    },
+    {
+      "word": "insects",
+      "start_s": 19.876,
+      "end_s": 20.375
+    },
+    {
+      "word": "with",
+      "start_s": 20.526,
+      "end_s": 20.712
+    },
+    {
+      "word": "a",
+      "start_s": 20.747,
+      "end_s": 20.782
+    },
+    {
+      "word": "single",
+      "start_s": 20.851,
+      "end_s": 21.211
+    },
+    {
+      "word": "flick",
+      "start_s": 21.269,
+      "end_s": 21.525
+    },
+    {
+      "word": "of",
+      "start_s": 21.583,
+      "end_s": 21.629
+    },
+    {
+      "word": "the",
+      "start_s": 21.676,
+      "end_s": 21.745
+    },
+    {
+      "word": "tongue.",
+      "start_s": 21.803,
+      "end_s": 22.314
+    },
+    {
+      "word": "By",
+      "start_s": 22.918,
+      "end_s": 23.115
+    },
+    {
+      "word": "day,",
+      "start_s": 23.197,
+      "end_s": 23.707
+    },
+    {
+      "word": "they",
+      "start_s": 23.824,
+      "end_s": 23.998
+    },
+    {
+      "word": "sleep",
+      "start_s": 24.079,
+      "end_s": 24.427
+    },
+    {
+      "word": "hanging",
+      "start_s": 24.752,
+      "end_s": 25.159
+    },
+    {
+      "word": "beneath",
+      "start_s": 25.24,
+      "end_s": 25.53
+    },
+    {
+      "word": "a",
+      "start_s": 25.577,
+      "end_s": 25.611
+    },
+    {
+      "word": "leaf,",
+      "start_s": 25.669,
+      "end_s": 26.111
+    },
+    {
+      "word": "pressed",
+      "start_s": 26.285,
+      "end_s": 26.645
+    },
+    {
+      "word": "flat,",
+      "start_s": 26.703,
+      "end_s": 27.202
+    },
+    {
+      "word": "pale",
+      "start_s": 27.353,
+      "end_s": 27.922
+    },
+    {
+      "word": "and",
+      "start_s": 28.015,
+      "end_s": 28.212
+    },
+    {
+      "word": "nearly",
+      "start_s": 28.293,
+      "end_s": 28.618
+    },
+    {
+      "word": "shadowless.",
+      "start_s": 28.676,
+      "end_s": 29.466
+    },
+    {
+      "word": "Seen",
+      "start_s": 30.279,
+      "end_s": 30.65
+    },
+    {
+      "word": "from",
+      "start_s": 30.72,
+      "end_s": 30.871
+    },
+    {
+      "word": "the",
+      "start_s": 30.917,
+      "end_s": 30.987
+    },
+    {
+      "word": "side,",
+      "start_s": 31.057,
+      "end_s": 31.451
+    },
+    {
+      "word": "against",
+      "start_s": 31.474,
+      "end_s": 31.811
+    },
+    {
+      "word": "that",
+      "start_s": 31.858,
+      "end_s": 32.009
+    },
+    {
+      "word": "leaf,",
+      "start_s": 32.078,
+      "end_s": 32.496
+    },
+    {
+      "word": "there's",
+      "start_s": 32.705,
+      "end_s": 32.937
+    },
+    {
+      "word": "almost",
+      "start_s": 32.984,
+      "end_s": 33.309
+    },
+    {
+      "word": "nothing",
+      "start_s": 33.379,
+      "end_s": 33.68
+    },
+    {
+      "word": "to",
+      "start_s": 33.738,
+      "end_s": 33.796
+    },
+    {
+      "word": "see",
+      "start_s": 33.878,
+      "end_s": 34.11
+    },
+    {
+      "word": "at",
+      "start_s": 34.156,
+      "end_s": 34.249
+    },
+    {
+      "word": "all.",
+      "start_s": 34.307,
+      "end_s": 35.526
+    }
+  ]
+}

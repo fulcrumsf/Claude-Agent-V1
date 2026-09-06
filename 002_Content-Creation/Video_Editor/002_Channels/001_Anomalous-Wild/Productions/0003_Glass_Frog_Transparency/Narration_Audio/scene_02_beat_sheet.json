@@ -1,0 +1,195 @@
+{
+  "scene_id": "scene_02",
+  "words": [
+    {
+      "word": "From",
+      "start_s": 0.0,
+      "end_s": 0.221
+    },
+    {
+      "word": "above,",
+      "start_s": 0.279,
+      "end_s": 0.627
+    },
+    {
+      "word": "this",
+      "start_s": 0.65,
+      "end_s": 0.789
+    },
+    {
+      "word": "is",
+      "start_s": 0.848,
+      "end_s": 0.929
+    },
+    {
+      "word": "just",
+      "start_s": 0.998,
+      "end_s": 1.207
+    },
+    {
+      "word": "another",
+      "start_s": 1.265,
+      "end_s": 1.637
+    },
+    {
+      "word": "green",
+      "start_s": 1.73,
+      "end_s": 2.02
+    },
+    {
+      "word": "frog",
+      "start_s": 2.101,
+      "end_s": 2.438
+    },
+    {
+      "word": "in",
+      "start_s": 2.508,
+      "end_s": 2.577
+    },
+    {
+      "word": "the",
+      "start_s": 2.624,
+      "end_s": 2.694
+    },
+    {
+      "word": "rainforest",
+      "start_s": 2.74,
+      "end_s": 3.297
+    },
+    {
+      "word": "canopy.",
+      "start_s": 3.344,
+      "end_s": 3.878
+    },
+    {
+      "word": "But",
+      "start_s": 4.029,
+      "end_s": 4.191
+    },
+    {
+      "word": "flip",
+      "start_s": 4.249,
+      "end_s": 4.481
+    },
+    {
+      "word": "it",
+      "start_s": 4.528,
+      "end_s": 4.598
+    },
+    {
+      "word": "over,",
+      "start_s": 4.656,
+      "end_s": 5.074
+    },
+    {
+      "word": "and",
+      "start_s": 5.132,
+      "end_s": 5.271
+    },
+    {
+      "word": "the",
+      "start_s": 5.317,
+      "end_s": 5.387
+    },
+    {
+      "word": "illusion",
+      "start_s": 5.445,
+      "end_s": 5.828
+    },
+    {
+      "word": "breaks",
+      "start_s": 5.898,
+      "end_s": 6.211
+    },
+    {
+      "word": "completely.",
+      "start_s": 6.269,
+      "end_s": 7.012
+    },
+    {
+      "word": "Its",
+      "start_s": 7.396,
+      "end_s": 7.593
+    },
+    {
+      "word": "underside",
+      "start_s": 7.651,
+      "end_s": 8.208
+    },
+    {
+      "word": "is",
+      "start_s": 8.243,
+      "end_s": 8.336
+    },
+    {
+      "word": "almost",
+      "start_s": 8.394,
+      "end_s": 8.696
+    },
+    {
+      "word": "completely",
+      "start_s": 8.742,
+      "end_s": 9.288
+    },
+    {
+      "word": "see-through.",
+      "start_s": 9.346,
+      "end_s": 10.043
+    },
+    {
+      "word": "You're",
+      "start_s": 10.484,
+      "end_s": 10.704
+    },
+    {
+      "word": "not",
+      "start_s": 10.739,
+      "end_s": 10.867
+    },
+    {
+      "word": "looking",
+      "start_s": 10.925,
+      "end_s": 11.227
+    },
+    {
+      "word": "at",
+      "start_s": 11.285,
+      "end_s": 11.355
+    },
+    {
+      "word": "skin",
+      "start_s": 11.401,
+      "end_s": 11.633
+    },
+    {
+      "word": "anymore.",
+      "start_s": 11.691,
+      "end_s": 12.318
+    },
+    {
+      "word": "You're",
+      "start_s": 12.643,
+      "end_s": 12.864
+    },
+    {
+      "word": "looking",
+      "start_s": 12.887,
+      "end_s": 13.177
+    },
+    {
+      "word": "straight",
+      "start_s": 13.27,
+      "end_s": 13.607
+    },
+    {
+      "word": "through",
+      "start_s": 13.653,
+      "end_s": 13.909
+    },
+    {
+      "word": "it.",
+      "start_s": 13.955,
+      "end_s": 14.396
+    }
+  ]
+}

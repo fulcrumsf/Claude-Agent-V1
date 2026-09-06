@@ -1,0 +1,35 @@
+{
+  "scene_id": "Scene_06H_Final_Upside_Down",
+  "scene_duration_s": 5.07,
+  "frame_count": 6,
+  "scene_description": "The final, intimate closing image of the video: a close shot of the glass frog hanging UPSIDE-DOWN beneath a leaf, asleep, slowly becoming invisible against it. DISTINCT from the two shots before it \u2014 this one is close, quiet, and still. Anatomy check: in every panel the glass frog has all four legs attached to its body and both eyes present and correctly placed \u2014 never a missing or detached limb, never a single-eyed frog.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; National Geographic-quality lighting on real/photoreal shots; no gore, no viscera. Photoreal, shallow depth of field.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Close-up, the glass frog hanging upside-down beneath a leaf, all four legs spread and gripping the leaf edge, body pressed flat against it, both eyes closed, pale and almost shadowless."
+    },
+    {
+      "frame": 2,
+      "action": "Very slow push in, tighter close-up on the frog's flattened translucent body, the leaf's veins visible through it."
+    },
+    {
+      "frame": 3,
+      "action": "Extreme close-up on the frog's face and one front foot, utterly still."
+    },
+    {
+      "frame": 4,
+      "action": "Slow pull back to close-up, the frog's pale form beginning to merge with the pale underside of the leaf."
+    },
+    {
+      "frame": 5,
+      "action": "Medium close-up, the frog now barely distinguishable from the leaf, the whole frame soft and low-contrast."
+    },
+    {
+      "frame": 6,
+      "action": "Final held frame, the leaf and the frog reading as one, the frog effectively invisible, upside-down, asleep."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel shows the SAME glass frog with identical coloring, markings and proportions, as one continuous shot. Anatomy check: in every panel the glass frog has all four legs attached to its body and both eyes present and correctly placed \u2014 never a missing or detached limb, never a single-eyed frog."
+}

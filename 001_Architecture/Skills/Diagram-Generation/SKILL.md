@@ -52,6 +52,10 @@ Beyond camera-push-in-with-dimming, other legitimate techniques for a given diag
 
 Pick per-diagram based on what the content is actually trying to communicate — comparison, structure, mechanism, or sequence each suit a different technique.
 
+### Map / geography type (locked 2026-09-02, Glass Frog 0003 Notes 9–10)
+
+A beat about a **location, region, route, migration, or species range** is a map diagram: a **real map base layer** (a genuine basemap styled to the channel — Natural Earth shaded relief is public domain and crops to any region; or a stylized map generated from a real reference, never hand-drawn from memory), with the **animated path/route drawn on top tracing the actual geography on that base**. Never a path-only "squiggle on black", and never a route that ignores the real coastlines/mountains under it. The path draws on (`strokeDashoffset`, `pathLength={1}`) with a glow, ending on a pulsing location dot; the basemap can fade in and get a slow push toward the destination. If on-screen attribution is required by the map's license, put it bottom-right. Reference impl: `RangeMapAnimation` in `0003_Glass_Frog_Transparency`'s `GlassFrogDoc.tsx` + `Images/scene_04_range_map/SOURCE.md`.
+
 ## Steps 4-5 — Label detection and placement
 
 Gemini vision detects real label coordinates on the actual generated illustration (never a template guess); Remotion places labels/callouts on top at render time, staggered per the animation plan from Step 3. See Anomalous Wild's Phase 6B for the existing implementation — `detect_label_coordinates.py` and `DiagramLabels.tsx`.
@@ -64,6 +68,34 @@ Gemini vision detects real label coordinates on the actual generated illustratio
 4. **Fast-iterate the layout with a static mockup before spending a Remotion render cycle.** Draw the proposed label positions directly onto an already-extracted real frame (PIL/any image lib) and get sign-off on the layout before touching the Remotion component. This is dramatically cheaper than round-tripping full renders for a positioning tweak, and was the difference between a multi-render iteration loop and a fast one. Only rebuild the real component once the static mockup is approved — then do one more real-render QC pass per point 3 above, since a static mockup can miss render-specific issues (like the leader-line-gap above) that only appear once real animation/rendering enters the picture.
 
 **Using an existing reference asset as the generation input, not a verbal description of it.** If a diagram element already exists as an asset and needs to be extended, restyled, or reused (e.g. "make this same signal-pattern graphic full-bleed"), pass the actual asset file as an image-to-image reference to the generation call — never redescribe it in words and regenerate from text alone. A real miss on this production: an existing abstract glyph-grid asset got reinterpreted as literal binary-digit typography ("zeros and ones") from a verbal description of it, producing a visually different, wrong result that then had to be redone once the actual reference image was used instead. If the user describes an existing asset in casual/approximate terms, treat that as their explanation of what's already there, not a spec to generate fresh — go find and use the real file.
+
+## Label / callout aesthetic + camera behaviour (locked 2026-09-01, Tony-approved on 0003 Glass Frog)
+
+Reference sheet + anti-examples: [`Reference_Examples/`](Reference_Examples/) in this
+skill folder (`Label_Aesthetic_Red_Blood_Cells.png` = the target).
+
+- **Label look:** large bold **white** sans-serif term; parenthetical qualifier
+  auto-split onto its own line in a **subject-derived accent colour** (not brand
+  green); thin **white** leader line that draws on with one right-angle bend + end
+  dot; a soft **glowing target ring** at the feature; contrast from size + weight +
+  a black outline/glow (no box on the label); stacked-label collision avoidance
+  (min vertical gap, offset the text block not the target); optional short
+  description; each label fades out after its window (`labelHoldS`).
+- **Camera under labels:** holds **completely still** whenever a label is on
+  screen. Per feature beat: **ease to feature → settle → label in → DEAD STILL →
+  label out → ease to next.** All moves ease in/out. Author the camera as
+  waypoints with `holdS` dwells bracketing each label window.
+- **Same illustration across consecutive shots = ONE shot, one continuous eased
+  path.** Never separate hard-cut segments of the same image (the "remount jump" —
+  reads as the subject teleporting).
+- **Brand-coloured callout / lower-third over busy imagery:** 50%-black backing
+  plate (`rgba(0,0,0,0.5)`), small even padding, eases in/out with the text.
+- **Transitions default to a ~0.5s cross-dissolve, not a hard cut** (image
+  changes within a scene, and scene boundaries). Hard cut only when deliberate.
+
+Full rules + rationale: `002_Content-Creation/Video_Editor/003_Remotion/src/skills/design-rules-learned.md`
+(Rules 5 & 6). Reference impl: `GlassFrogDoc.tsx` (`DiagramScene`, `DiagramLabels`,
+`SceneVisual`), `SceneOverlay.tsx` (`callout` plate).
 
 ## Composing with other skills
 

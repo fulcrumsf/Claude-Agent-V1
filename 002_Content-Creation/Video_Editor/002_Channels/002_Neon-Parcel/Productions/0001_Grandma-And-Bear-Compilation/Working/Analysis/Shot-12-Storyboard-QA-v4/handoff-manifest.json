@@ -1,0 +1,22 @@
+{
+  "shot_id": "Shot-12",
+  "status": "pass",
+  "selected_attempt": 1,
+  "active_storyboard_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Images/Shot-12-Storyboard-v4.png",
+  "contract_path": "/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/shot_12_storyboard_spec_v4.json",
+  "qa_report_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Analysis/Shot-12-Storyboard-QA-v4/qa-report.json",
+  "attempt_state_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Analysis/Shot-12-Storyboard-QA-v4/attempt-state.json",
+  "storyboard_reference_url": "https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Shot-12-Storyboard-v4.png",
+  "reference_role": "storyboard_reference",
+  "reference_order": [
+    {
+      "upload_index": 1,
+      "role": "approved eight-panel storyboard v4"
+    }
+  ],
+  "manual_review_approved": true,
+  "storyboard_sha256": "868a785078f4c09e287cda28608bbf96ca11aaecf0e24e07fd5839f3e74275f6",
+  "contract_sha256": "16ae82fbb883fab58cb9357c8d3c25abf982efa6aaa4f553eb3ed7e2e7013970",
+  "qa_report_sha256": "4bba5981f52d96df574fb6bbe6d14546409ea3988d4ed502e589c240f6ca782d",
+  "approval_note": "Tony approved Shot 12 storyboard v4 with Grandma following the continuous route to the trampoline; frame 5 is camera-facing with a slight counterclockwise turn toward the steps."
+}

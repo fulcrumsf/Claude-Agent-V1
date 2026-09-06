@@ -1,0 +1,17 @@
+{
+  "scene_id": "Shot-03",
+  "scene_duration_s": 10,
+  "frame_count": 6,
+  "scene_description": "A passenger on an ordinary city bus films through the side window on a cold snowy day. A weathered burgundy convertible passes on the street with an older Russian woman driving and one large polar bear sitting in the passenger seat.",
+  "visual_style": "Authentic handheld passenger-phone footage through a real bus window, slight glass reflections, a little bus interior and yellow pole visible, muted gray winter light, ordinary phone exposure, modest digital noise, imperfect framing, documentary realism, never polished or commercial.",
+  "panel_convention": "six separate 16:9 landscape image panels in a clean horizontal storyboard sheet, each panel has a clean white caption band beneath the image for its frame number and one-sentence description; numbers and descriptions must remain in the white bands and never inside the image areas; no dialogue text or graphics in the image areas",
+  "frames": [
+    {"frame": 1, "action": "Wide passenger-phone view through the bus window shows the snowy street and apartment buildings before the unusual car enters."},
+    {"frame": 2, "action": "The front of one weathered burgundy convertible enters the frame from the side, seen through the bus glass."},
+    {"frame": 3, "action": "The convertible passes beside the bus; the older Russian woman is visibly driving and one large polar bear is clearly seated in the passenger seat."},
+    {"frame": 4, "action": "The passenger steadies the phone as the car reaches the center of the view; the bear remains seated inside the same car and the snowy street stays continuous."},
+    {"frame": 5, "action": "The rear of the same convertible moves toward the edge of the frame while the driver and bear remain part of that single vehicle."},
+    {"frame": 6, "action": "The one convertible has completely passed out of view, leaving only the snowy street and the bus window reflection; no second car appears."}
+  ],
+  "consistency_directive": "This is a planning storyboard for visual continuity, not a comic strip and not a layout to reproduce in the video. Keep one passenger-phone viewpoint, one convertible, one driver, one polar bear, the same snowy street, and one continuous passing event. The final panel must show the car gone so there is no ambiguity about a second vehicle. Keep numbers and descriptions only in the white caption bands."
+}

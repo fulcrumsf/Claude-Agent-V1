@@ -1,0 +1,27 @@
+{
+  "provider": "gemini_direct",
+  "model": "gemini-3.7-flash",
+  "processing_mode": "static",
+  "sampling_fps": 3.0,
+  "video": "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Shot-11-Seedance-2-Mini-480p-v5.mp4",
+  "report": {
+    "summary": "Evaluation of video showing a bear approaching a yard sprinkler and an elderly woman exiting a house to scare it away. Identified minor causality inconsistency regarding sprinkler activation.",
+    "overall_confidence": 0.68,
+    "findings": [
+      {
+        "timestamp": "00:02",
+        "category": "causality",
+        "severity": "warning",
+        "observation": "Sprinkler begins spraying water automatically without visible activation of the spigot.",
+        "confidence": 0.72
+      },
+      {
+        "timestamp": "00:06",
+        "category": "character eyelines and gestures",
+        "severity": "note",
+        "observation": "Woman exits door and gestures directly toward the bear, triggering its retreat.",
+        "confidence": 0.68
+      }
+    ]
+  }
+}

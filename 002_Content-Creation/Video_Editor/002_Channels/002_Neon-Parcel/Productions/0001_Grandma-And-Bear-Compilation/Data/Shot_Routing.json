@@ -1,0 +1,147 @@
+{
+  "shots": [
+    {
+      "shot_id": "Shot-01",
+      "route": "seedance_1_5_start_end",
+      "status": "overridden",
+      "complexity_score": 5,
+      "complexity_scale": "0-20",
+      "dimension_scores": {
+        "action_count": 1,
+        "physics": 0,
+        "object_continuity": 0,
+        "precision": 0,
+        "character_interaction": 1,
+        "spatial_continuity": 1,
+        "timing_precision": 1,
+        "dialogue_sync": 1,
+        "failure_risk": 0,
+        "storyboard_value": 0
+      },
+      "reasons": [
+        "low interaction and continuity burden"
+      ],
+      "hard_triggered": false,
+      "assessment_source": "semantic_assessment",
+      "human_override": "force_simple",
+      "generation_policy": "Use start and end frames; preserve natural duration."
+    },
+    {
+      "shot_id": "Shot-02",
+      "route": "seedance_2_mini_storyboard",
+      "status": "auto",
+      "complexity_score": 14,
+      "complexity_scale": "0-20",
+      "dimension_scores": {
+        "action_count": 2,
+        "physics": 2,
+        "object_continuity": 0,
+        "precision": 1,
+        "character_interaction": 2,
+        "spatial_continuity": 2,
+        "timing_precision": 1,
+        "dialogue_sync": 0,
+        "failure_risk": 2,
+        "storyboard_value": 2
+      },
+      "reasons": [
+        "action count",
+        "physics",
+        "character interaction",
+        "spatial continuity",
+        "failure risk",
+        "storyboard value"
+      ],
+      "hard_triggered": false,
+      "assessment_source": "semantic_assessment",
+      "human_override": null,
+      "generation_policy": "Use a storyboard/reference image and preserve ordered visual states; upscale after generation if needed."
+    },
+    {
+      "shot_id": "Shot-03",
+      "route": "seedance_1_5_start_end",
+      "status": "auto",
+      "complexity_score": 3,
+      "complexity_scale": "0-20",
+      "dimension_scores": {
+        "action_count": 1,
+        "physics": 0,
+        "object_continuity": 0,
+        "precision": 0,
+        "character_interaction": 0,
+        "spatial_continuity": 1,
+        "timing_precision": 0,
+        "dialogue_sync": 1,
+        "failure_risk": 0,
+        "storyboard_value": 0
+      },
+      "reasons": [
+        "low interaction and continuity burden"
+      ],
+      "hard_triggered": false,
+      "assessment_source": "semantic_assessment",
+      "human_override": null,
+      "generation_policy": "Use start and end frames; preserve natural duration."
+    },
+    {
+      "shot_id": "Shot-04",
+      "route": "seedance_2_mini_storyboard",
+      "status": "auto",
+      "complexity_score": 10,
+      "complexity_scale": "0-20",
+      "dimension_scores": {
+        "action_count": 2,
+        "physics": 1,
+        "object_continuity": 1,
+        "precision": 1,
+        "character_interaction": 1,
+        "spatial_continuity": 1,
+        "timing_precision": 1,
+        "dialogue_sync": 0,
+        "failure_risk": 1,
+        "storyboard_value": 1
+      },
+      "reasons": [
+        "action count"
+      ],
+      "hard_triggered": false,
+      "assessment_source": "semantic_assessment",
+      "human_override": null,
+      "generation_policy": "Use a storyboard/reference image and preserve ordered visual states; upscale after generation if needed."
+    },
+    {
+      "shot_id": "Shot-05",
+      "route": "seedance_2_mini_storyboard",
+      "status": "auto",
+      "complexity_score": 17,
+      "complexity_scale": "0-20",
+      "dimension_scores": {
+        "action_count": 2,
+        "physics": 2,
+        "object_continuity": 2,
+        "precision": 2,
+        "character_interaction": 1,
+        "spatial_continuity": 2,
+        "timing_precision": 2,
+        "dialogue_sync": 0,
+        "failure_risk": 2,
+        "storyboard_value": 2
+      },
+      "reasons": [
+        "action count",
+        "physics",
+        "object continuity",
+        "precision",
+        "spatial continuity",
+        "timing precision",
+        "failure risk",
+        "storyboard value",
+        "hard physics/ordered-action trigger"
+      ],
+      "hard_triggered": true,
+      "assessment_source": "semantic_assessment",
+      "human_override": null,
+      "generation_policy": "Use a storyboard/reference image and preserve ordered visual states; upscale after generation if needed."
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "title": "Grandma And Bear Compilation Reference Set",
+  "channel": "NeonParcel",
+  "concept": "A realistic-looking compilation of distinct grandma-and-bear scenarios",
+  "visual_anchor": {
+    "reference_number": 1,
+    "weight": "primary",
+    "reason": "Use for surveillance-camera authenticity, static framing, timestamp treatment, low-fi realism, and diegetic audio." 
+  },
+  "editorial_references": {
+    "weight": "equal",
+    "reference_numbers": [1, 2, 3, 4, 5],
+    "use_for": [
+      "setup-action-payoff timing",
+      "scenario variety",
+      "authority-versus-grandma dialogue",
+      "anthropomorphic or reframing voice choices",
+      "reversal and escalation",
+      "sound-effect punctuation",
+      "single-take and found-footage conventions"
+    ]
+  },
+  "references": [
+    {
+      "number": 1,
+      "title": "Grandma feeding a wild bear again",
+      "video_id": "yOGVkOlJPOY",
+      "url": "https://www.youtube.com/watch?v=yOGVkOlJPOY",
+      "views_at_selection": 1120922,
+      "folder": "01_Grandma-Feeding-A-Wild-Bear-Again",
+      "role": "visual_anchor"
+    },
+    {
+      "number": 2,
+      "title": "Granny feeds wild bear by hand",
+      "video_id": "SLuaXL2upIU",
+      "url": "https://www.youtube.com/watch?v=SLuaXL2upIU",
+      "views_at_selection": 292774,
+      "folder": "02_Granny-Feeds-Wild-Bear-By-Hand",
+      "role": "editorial_reference"
+    },
+    {
+      "number": 3,
+      "title": "Grandma feeding a bear",
+      "video_id": "kCKiWaUA3k8",
+      "url": "https://www.youtube.com/watch?v=kCKiWaUA3k8",
+      "views_at_selection": 200386,
+      "folder": "03_Grandma-Feeding-A-Bear",
+      "role": "editorial_reference"
+    },
+    {
+      "number": 4,
+      "title": "Granny cannot stop feeding the local bear",
+      "video_id": "8mjKbaWPgQM",
+      "url": "https://www.youtube.com/watch?v=8mjKbaWPgQM",
+      "views_at_selection": 83583,
+      "folder": "04-Granny-Cant-Stop-Feeding-The-Local-Bear",
+      "role": "editorial_reference"
+    },
+    {
+      "number": 5,
+      "title": "Polar Bear gets too close to Grandma",
+      "video_id": "Fs3WsTcY2l4",
+      "url": "https://www.youtube.com/watch?v=Fs3WsTcY2l4",
+      "views_at_selection": 41328,
+      "folder": "05-Polar-Bear-Gets-Too-Close-To-Grandma",
+      "role": "editorial_reference"
+    }
+  ],
+  "source_policy": {
+    "retain_downloads": true,
+    "copy_source_pixels_or_audio": false,
+    "copy_source_dialogue_or_sequence": false,
+    "generate_distinct_characters_locations_cameras_and_actions": true
+  },
+  "status": "analysis_complete_shot_list_pending",
+  "compilation_structure_reference": {
+    "reference_number": 6,
+    "title": "TOP 10 BENNY AND GRANDMA MOMENTS!",
+    "video_id": "Wdcv4N_USKs",
+    "url": "https://www.youtube.com/shorts/Wdcv4N_USKs",
+    "folder": "06_Compilation-Reference",
+    "role": "compilation_structure_reference",
+    "use_for": [
+      "multi-clip sequencing",
+      "ranking or list-style framing",
+      "micro-payoff density",
+      "transition rhythm",
+      "how short scenarios are packaged into one vertical compilation"
+    ],
+    "do_not_copy": [
+      "source clips",
+      "source dialogue",
+      "source order",
+      "source title or branding",
+      "source audio"
+    ]
+  }
+}

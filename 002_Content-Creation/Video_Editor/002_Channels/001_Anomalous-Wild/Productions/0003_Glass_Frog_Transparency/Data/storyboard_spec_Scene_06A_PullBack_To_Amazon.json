@@ -1,0 +1,35 @@
+{
+  "scene_id": "Scene_06A_PullBack_To_Amazon",
+  "scene_duration_s": 6.3,
+  "frame_count": 6,
+  "scene_description": "Daytime cloud-forest. One single unbroken camera pull-back that starts close on a glass frog resting on a leaf and ends on a sweeping wide of the Amazon basin. NO internal cut, NO scene change \u2014 one continuous move start to finish. Anatomy check: in every panel the glass frog has all four legs attached to its body and both eyes present and correctly placed \u2014 never a missing or detached limb, never a single-eyed frog.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; National Geographic-quality lighting on real/photoreal shots; no gore, no viscera. Photoreal, shallow depth of field.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Close-up, the glass frog resting on a large rain-wet leaf in a misty cloud-forest, all four legs tucked under its body, both eyes open, soft daylight, a mountain stream just visible behind."
+    },
+    {
+      "frame": 2,
+      "action": "The camera begins a smooth continuous pull-back \u2014 medium shot now, the whole frog and its leaf in frame with more of the mossy stream bank around it."
+    },
+    {
+      "frame": 3,
+      "action": "The same unbroken pull-back continues, medium-wide, the frog now small on its leaf, foliage and the stream filling more of the frame."
+    },
+    {
+      "frame": 4,
+      "action": "Still the same continuous move, wide shot, the frog a tiny pale speck on one leaf among dense green rainforest, the stream widening below."
+    },
+    {
+      "frame": 5,
+      "action": "The pull-back continues to a sweeping wide, the cloud-forest opening toward a broad river valley, mist over the canopy, the frog's leaf no longer distinguishable."
+    },
+    {
+      "frame": 6,
+      "action": "Final frame of the same unbroken shot: an expansive aerial-style wide of the Amazon basin, a huge river winding through unbroken rainforest to the horizon."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel shows the SAME glass frog with identical coloring, markings and proportions, as one continuous shot. Anatomy check: in every panel the glass frog has all four legs attached to its body and both eyes present and correctly placed \u2014 never a missing or detached limb, never a single-eyed frog."
+}

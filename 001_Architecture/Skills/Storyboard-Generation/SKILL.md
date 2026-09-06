@@ -12,6 +12,12 @@ Generates one storyboard sheet per scene: a grid of 6-12 sequential frames showi
 ## Before using this skill
 
 Read [`GPT-Image-2-Prompting-Guide`](../GPT-Image-2-Prompting-Guide/SKILL.md) first for the underlying model's prompting conventions. Read [`Character-Sheet-Generation`](../Character-Sheet-Generation/SKILL.md) if the scene has a recurring subject — that sheet gets passed as a reference image here.
+For any storyboard that will feed a Seedance video call, also read
+[`Seedance-Prompting-Guide`](../Seedance-Prompting-Guide/SKILL.md) before
+writing the storyboard contract. The storyboard must describe states and
+transitions that the selected Seedance endpoint can receive and animate; do
+not design a visually attractive but temporally or physically ambiguous sheet
+and defer compatibility decisions until video generation.
 
 ## What's locked vs. what's always caller-supplied
 
@@ -71,4 +77,65 @@ Everywhere else in this pipeline (scientific diagrams, character sheets), text/l
 
 ## Feeding the storyboard forward
 
-Pass the finished storyboard sheet as a reference image alongside the character sheet on the actual shot-generation call — see [`Seedance-Prompting-Guide`](../Seedance-Prompting-Guide/SKILL.md)'s "Storyboard + subject reference" section for how a storyboard and character sheet combine in one Seedance call via `@Image1`/`@Image2` ordinal tags.
+For a provider-verified storyboard-reference route, preserve upload order and
+bind each asset explicitly in the video prompt. Kie's Seedance Mini playground
+uses `@Image 1`, `@Image 2`, and so forth; the prompt must declare each role and
+say to follow the storyboard sequentially as one continuous shot. Do not rely
+on "the attached image." If the provider has not been verified to interpret a
+composite sheet as temporal guidance, keep the sheet for planning and QA and
+use separately approved clean temporal frames instead.
+
+When multiple visual references are uploaded, every image must receive an
+explicit role before the action prompt: storyboard, character sheet,
+environment sheet, prop sheet, or another named purpose. The tags are assigned
+by upload order, never by filename: first upload `@Image 1`, second upload
+`@Image 2`, third upload `@Image 3`, and so forth.
+
+## Structured QA-ready contracts
+
+Channel pipelines that need pre-video storyboard QA should represent the sheet
+as a structured frame contract before rendering the image prompt. For Neon
+Parcel, use `001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/storyboard_contract.py`.
+Each frame must state its visible subjects, object states, spatial
+relationships, action/state, and exact caption. The rendered sheet remains a
+single image generation, but the explicit contract gives a later vision
+checker concrete frame-level claims to verify instead of comparing against a
+vague scene summary.
+
+## Handoff and preservation policy
+
+The storyboard route is only the primary video-generation attempt. Its raw
+video must be checked for motion, chronology, duplicate or missing subjects,
+object continuity, morphing, camera continuity, and physics before any
+upscale. If that inspection fails, the pipeline may create a new version on
+the first/last-frame fallback route using separately approved temporal anchor
+images; it must not overwrite the failed raw clip. Every storyboard, video,
+upscale, and normalized derivative receives a new version, and superseded
+files move to the matching `Archived/` folder. Existing paths and archive
+collisions are hard failures, never replacement opportunities.
+
+## Subject-origin and route lock
+
+For every moving subject or object, the storyboard must show its starting
+location before the action begins, then show a continuous physically readable
+route to the action and outcome. For every character entrance, show the actual
+doorway, threshold, opening, or other origin before the character moves. Audit
+the topology of the environment itself: doors, paths, decks, railings, stairs,
+docks, walls, and shoreline edges must form a continuous route with no hidden
+corner or implied opening. If the route is not visually legible in the sheet,
+simplify the architecture before writing the Seedance prompt. Do not rely on
+Seedance to infer where a subject came from or how it crossed an obstacle.
+
+## Real-life capture tone is mandatory for Neon Parcel
+
+Neon Parcel storyboard contracts must include explicit `tone`, `capture_style`, `visual_realism`, `audio_policy`, and `audio_exclusions` fields. The default is unplanned consumer-smartphone footage: ordinary, observational, imperfect, and non-commercial, with subtle human handheld movement unless the shot specifically requires a locked-off camera. Do not allow a polished cinematic storyboard, professional rig, advertising grade, vehicle obstruction, or music-forward audio assumption to silently become the video direction. These fields are rendered into both the storyboard prompt and the Seedance handoff so future prompt builders cannot omit them.
+
+## Reusable examples
+
+Reference storyboards live in [`Examples/Storyboards`](Examples/Storyboards/). Use them to study panel structure, continuity, camera consistency, and concise action descriptions. They are examples to consult when useful, not mandatory layouts to copy; the active project's storyboard template and subject requirements always take precedence.
+
+Two ingested-but-not-yet-case-studied tutorials on storyboard→Seedance workflows
+(`007_Resource_Library/Tutorials/How-to-Turn-Storyboards-into-AI-Videos-with-GPT-Image-2-Seedance-2.0.md`,
+`I-Can't-Believe-ChatGPT-Work-Made-This-Whole-Video-From-One-Image.md`) — see
+[`Seedance-Prompting-Guide`](../Seedance-Prompting-Guide/SKILL.md)'s "Un-reviewed
+reference material" section before treating either as validated technique.

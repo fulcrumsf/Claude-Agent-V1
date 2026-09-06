@@ -1,0 +1,200 @@
+1
+00:00:00,000 --> 00:00:03,240
+prompt where the artwork is constructed from nothing into the final
+
+2
+00:00:03,240 --> 00:00:06,720
+composition. So basically what I'm essentially telling the model to do
+
+3
+00:00:06,720 --> 00:00:10,960
+at LGBT is analyze this image that I've generated and just create the video
+
+4
+00:00:10,960 --> 00:00:16,280
+prompt for me. You could also use this generic one here that I've generated
+
+5
+00:00:16,280 --> 00:00:21,400
+which essentially is just describing to do similar thing in terms of anime
+
+6
+00:00:21,400 --> 00:00:25,600
+all the layers. It's just not being specific to the image. You can try both. I've
+
+7
+00:00:25,600 --> 00:00:29,800
+had good results with just a generic template and also had good results
+
+8
+00:00:29,800 --> 00:00:33,880
+with specific prompt templates. So as you can see here it's now crafting this
+
+9
+00:00:33,880 --> 00:00:39,160
+and it will be obviously referencing specific things in terms of how to animate
+
+10
+00:00:39,160 --> 00:00:43,480
+them which sometimes it adheres to it. Sometimes it doesn't. My god look at the
+
+11
+00:00:43,480 --> 00:00:47,000
+size of this prompt. Oh my god. So now we're just going to copy this. I'm going to
+
+12
+00:00:47,000 --> 00:00:51,880
+go into artless, go to video, see that. I'm going to use fast just because it's
+
+13
+00:00:51,880 --> 00:00:58,480
+cheaper. You can use fast mini and 2.0. I found the results are like every
+
+14
+00:00:58,480 --> 00:01:02,680
+generation looks different but I wouldn't say 2.0 looks necessarily any better
+
+15
+00:01:02,680 --> 00:01:07,520
+than fast. Like some generations I've had fast looks really good. Some mini looks
+
+16
+00:01:07,520 --> 00:01:13,000
+okay. Some 2.0 looks okay. And so I would always go with fast and also say it to
+
+17
+00:01:13,000 --> 00:01:18,800
+7.20. Five seconds is I found pretty good. You can go shorter. You can go longer.
+
+18
+00:01:18,800 --> 00:01:22,520
+I'm going to upload the image reference in here and then I'm going to copy and
+
+19
+00:01:22,520 --> 00:01:26,440
+paste in my prompt. Okay that's saying it's over the 5,000 world limit. No problem.
+
+20
+00:01:26,440 --> 00:01:32,280
+I'm just going to say reduce this to under 5,000 characters and not a problem.
+
+21
+00:01:32,280 --> 00:01:36,120
+That should just condense it down. I'll be honest. I've used this before and I've
+
+22
+00:01:36,120 --> 00:01:40,240
+never had one that long but that's not a problem. I don't think it's too far over.
+
+23
+00:01:40,240 --> 00:01:46,240
+So we just copy that, paste that in, generate. What I'll do is I'll generate a few
+
+24
+00:01:46,240 --> 00:01:51,400
+of these on each of the different models just so you can see the difference in
+
+25
+00:01:51,400 --> 00:01:58,160
+output. Let's go 7.80, generate and let's finally go cdance 2.0 which is
+
+26
+00:01:58,160 --> 00:02:02,520
+going to burn all my credits. Definitely don't 4k. Oh my god. Don't use 4k on
+
+27
+00:02:02,520 --> 00:02:09,640
+cdance. It's like $10.15 for like 10.15 seconds. 720. Very happy at 720. I have
+
+28
+00:02:09,640 --> 00:02:14,520
+actually just uploaded the wrong image for all of those as well. I have
+
+29
+00:02:14,520 --> 00:02:20,600
+uploaded the 9x16 and I'm asking for 16x9. Not a problem. Let's actually just
+
+30
+00:02:20,600 --> 00:02:26,240
+change this to 9x16 for all of them and just see what happens here because I
+
+31
+00:02:26,240 --> 00:02:31,040
+actually don't know how that's going to turn out. I've put the 9x16
+
+32
+00:02:31,040 --> 00:02:36,740
+image in and asked for 16x9 output which is fine. Let's just change that to 9x16
+
+33
+00:02:36,740 --> 00:02:41,560
+and then finally on the fast model. This one is a set to auto. Those are the
+
+34
+00:02:41,560 --> 00:02:46,000
+ones that weren't. Some reason didn't set to auto. So generating 6 here. We've
+
+35
+00:02:46,000 --> 00:02:50,400
+got 16x9 ones. Maybe this one actually isn't 9x16. Right. So these have
+
+36
+00:02:50,400 --> 00:02:54,840
+almost generated. Just waiting for this one here. That's fine. This one is the
+
+37
+00:02:54,840 --> 00:03:04,680
+cdance 2.0 fast. Not too bad. I love that includes the sound effects. If you don't
+
+38
+00:03:04,680 --> 00:03:07,480
+want the sound effects and you don't want the music you can just prompt at the
+
+39
+00:03:07,480 --> 00:03:12,680
+end like no music or no SFX. I personally like having the SFX music. You
+
+40
+00:03:12,680 --> 00:03:17,600
+could probably get rid of. You just prompt it to say get rid of the music. But
+
+41
+00:03:17,600 --> 00:03:21,120
+that's pretty good. The only part I don't like is that bit there. It's a bit
+
+42
+00:03:21,120 --> 00:03:25,520
+strange but overall as you can see fairly easy to do and get a quite a nice
+
+43
+00:03:25,520 --> 00:03:30,960
+flowing animation. Let's look at this next one. Okay this is the 16x9 one. This is
+
+44
+00:03:30,960 --> 00:03:36,240
+the cdance 2.0 mini model. Perhaps this is because it's 16x9 or perhaps it's the
+
+45
+00:03:36,240 --> 00:03:41,560
+mini model and it's just too difficult. See that's that shit. That's not very
+
+46
+00:03:41,560 --> 00:03:46,320
+good. We'll have a look at the other mini model one as well and see whether it
+
+47
+00:03:46,320 --> 00:03:50,440
+also does bad of which case I would rule out using the mini model for this one.
+
+48
+00:03:50,440 --> 00:03:54,120
+I said I have used the mini model before and it's done all right job but in my
+
+49
+00:03:54,120 --> 00:03:59,080
+opinion fast is the most optimum model for these in terms of credits and also
+
+50
+00:03:59,080 --> 00:04:01,800
+doing a decent.
+

@@ -1,0 +1,3 @@
+# Shot 09 — Sprinkler Play
+
+Create a clean 16:9 landscape storyboard reference for realistic neighbor-filmed smartphone footage. Show four chronological visual panels with a white caption band beneath each panel. The panels show: an older woman already tending an ordinary suburban flower garden; one bear entering from off-frame; an automatic lawn sprinkler activating; the bear playfully pawing at the water stream while the woman notices from a safe distance and does not approach. Medium-wide observational framing, slight handheld imperfection, bright summer afternoon, natural quirky documentary tone. The storyboard is for visual continuity only. No text inside image panels, no extra people or animals, no exaggerated animal stunts, no forced reaction beat.

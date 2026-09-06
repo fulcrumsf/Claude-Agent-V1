@@ -1,0 +1,22 @@
+{
+  "labels": [
+    {
+      "feature": "clot_formation",
+      "x_pct": 36.9,
+      "y_pct": 49.3,
+      "confidence": "high"
+    },
+    {
+      "feature": "platelets",
+      "x_pct": 35.0,
+      "y_pct": 44.1,
+      "confidence": "high"
+    },
+    {
+      "feature": "normal_blood_flow",
+      "x_pct": 75.6,
+      "y_pct": 59.8,
+      "confidence": "high"
+    }
+  ]
+}

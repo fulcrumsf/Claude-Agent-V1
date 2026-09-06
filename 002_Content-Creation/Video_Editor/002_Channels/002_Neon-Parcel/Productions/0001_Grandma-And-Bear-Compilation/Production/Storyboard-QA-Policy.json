@@ -1,0 +1,5 @@
+{
+  "manual_review_required": true,
+  "require_provider_agreement": true,
+  "notes": "Keep manual review enabled during the storyboard trust-building period. Human approval is required before regeneration or Seedance handoff."
+}

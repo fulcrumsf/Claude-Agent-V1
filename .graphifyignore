@@ -10,16 +10,65 @@ __pycache__/
 006_Websites/
 Tools/Video-Generation/Hyperframes/
 
+# 007_Resource_Library scoping (Tony, 2026-09-04): a full ChatGPT conversation-
+# history export landed here (2,058 doc files) that isn't curated Resource
+# Library content in the sense the domain graph is meant to cover. Excluded
+# until it's properly routed/organized; re-add once that happens.
+OpenAI_History/
+
 # Graphify is for the text/code "second brain" (architecture, how things
 # connect) - never for transcribing video or vision-extracting images.
 # Locked in 2026-08-03 after the Video Editor domain build attempt hit
 # 979 files / 7.8M words, almost entirely binary production media.
-*.mp4
-*.mov
-*.mp3
-*.wav
-*.png
-*.jpg
-*.jpeg
-*.webp
-*.gif
+# Re-confirmed 2026-09-04 (Tony): images and video are NEVER graphified —
+# any extension, any filename, any letter-case — no exceptions.
+#
+# CASE-INSENSITIVE ON PURPOSE: graphify's own `_is_ignored()` uses Python's
+# fnmatch, which is case-SENSITIVE on macOS/Linux (fnmatch only case-folds on
+# Windows) — a plain `*.png` line does NOT match `photo.PNG`. Confirmed live
+# 2026-09-04: 007_Resource_Library's corpus detect() returned 784 "image"
+# files despite `*.png`/`*.jpg` being listed, because nearly all of them were
+# `.PNG`. Every extension below uses a [xX] bracket per letter so it matches
+# any case combination (.png/.PNG/.Png/...), not just an explicit uppercase
+# twin — more robust than listing both cases by hand.
+
+# Images (any case)
+*.[pP][nN][gG]
+*.[jJ][pP][gG]
+*.[jJ][pP][eE][gG]
+*.[gG][iI][fF]
+*.[wW][eE][bB][pP]
+*.[bB][mM][pP]
+*.[tT][iI][fF]
+*.[tT][iI][fF][fF]
+*.[sS][vV][gG]
+*.[hH][eE][iI][cC]
+*.[hH][eE][iI][fF]
+*.[iI][cC][oO]
+*.[aA][vV][iI][fF]
+
+# Video (any case)
+*.[mM][pP]4
+*.[mM][oO][vV]
+*.[aA][vV][iI]
+*.[mM][kK][vV]
+*.[wW][eE][bB][mM]
+*.[mM]4[vV]
+*.[wW][mM][vV]
+*.[fF][lL][vV]
+*.[mM][pP][gG]
+*.[mM][pP][eE][gG]
+*.3[gG][pP]
+
+# Audio (any case) — kept from the original list, extended for consistency
+*.[mM][pP]3
+*.[wW][aA][vV]
+*.[mM]4[aA]
+*.[aA][aA][cC]
+*.[fF][lL][aA][cC]
+*.[oO][gG][gG]
+
+# Generated review reports (regenerable, not knowledge)
+_Dedup_Review.md
+_Dedup_Review.json
+_Dedup_Actions.md

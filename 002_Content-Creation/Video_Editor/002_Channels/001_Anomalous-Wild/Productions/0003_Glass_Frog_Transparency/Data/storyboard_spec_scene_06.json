@@ -1,0 +1,59 @@
+{
+  "scene_id": "Scene_06",
+  "scene_duration_s": 50.434,
+  "frame_count": 12,
+  "scene_description": "Reward scene: the clotting-vs-transparency contradiction is framed as a lead for human cardiovascular research, mixing cinematic frog shots with a human-circulatory infographic and a lab/photoacoustic insert, closing on a slow push-in on the frog's belly and a pull-back into the canopy at dawn. NOTE: frames 2 and 3 are diagram/lab-pipeline content; frames 1,4,5,6,7,8,9,10,11,12 are the frog/environment continuity.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; backgrounds trend toward a dark #2B0B5A-to-#0B0F1A gradient feel outside of natural daylight/night forest scenes. National Geographic-quality lighting on real/photoreal shots; clean scientific-diagram aesthetic (no gore, no viscera) on any internal-anatomy render. Glitch-distortion cuts used only at anomaly-reveal/hook moments.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Wide cinematic, the frog on its leaf, forest around it, camera slowly pulling back."
+    },
+    {
+      "frame": 2,
+      "action": "3D-render, an abstract human circulatory system illustration, clean scientific-infographic style, showing the clotting/bleeding balance."
+    },
+    {
+      "frame": 3,
+      "action": "Lab-context insert, a photoacoustic imaging visualization overlay, non-identifiable researcher context."
+    },
+    {
+      "frame": 4,
+      "action": "Medium shot, back on the frog, calm and sleeping, held steady."
+    },
+    {
+      "frame": 5,
+      "action": "Macro push-in, the frog's transparent belly again, the heart still visible, organs at rest."
+    },
+    {
+      "frame": 6,
+      "action": "Extreme macro, the beating heart alone filling the frame, slow and steady."
+    },
+    {
+      "frame": 7,
+      "action": "Overhead/God view, pulling back from the leaf into the wider cloud-forest canopy."
+    },
+    {
+      "frame": 8,
+      "action": "Wide, the canopy transitioning from night toward day, mist beginning to lift."
+    },
+    {
+      "frame": 9,
+      "action": "Extreme wide, the whole cloud-forest scene now visible, the leaf a small detail within it."
+    },
+    {
+      "frame": 10,
+      "action": "Medium-wide, camera settling on the leaf and frog one last time as the light shifts."
+    },
+    {
+      "frame": 11,
+      "action": "Wide final hold, the frog nearly vanishing into the leaf's own backlit glow."
+    },
+    {
+      "frame": 12,
+      "action": "Fade frame, the wide hold softening at the edges as the frame fades toward the next scene."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel must show the same subject with identical coloring, markings, and proportions, as if part of one continuous shot. Use clean composition and precise detail. The sequence should read as one continuous event from start to finish."
+}

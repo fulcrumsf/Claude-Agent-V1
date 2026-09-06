@@ -154,3 +154,55 @@ it directly contradicts Tony's reference image and this rule.
 **How to apply:** whenever 2+ leader lines originate from one feature/area,
 give each a clearly different angle (radiate outward like spokes), not
 mirrored/parallel directions, even if they don't technically cross.
+
+## Rule 5 — Diagram label / callout aesthetic (locked 2026-09-01, Tony-approved on 0003 Glass Frog)
+
+Reference + anti-examples live in
+`001_Architecture/Skills/Diagram-Generation/Reference_Examples/`
+(`Label_Aesthetic_Red_Blood_Cells.png` is the target; two `Anti_Example_*` sheets
+show what to avoid — tiny cramped labels, coloured text with no plate over busy
+imagery).
+
+**The label look:**
+- Term: large, clean, **bold white** sans-serif. On 0003 the old 20px labels were
+  ~1.5–2x too small; the working size is a ~40px base with a `scale` prop.
+- A parenthetical qualifier ("(Asleep)", "(awake)") auto-splits onto its own line
+  in a **subject-derived accent colour** (e.g. red for blood) — not the channel
+  brand green.
+- Thin **white** leader line that **draws on** from the feature outward, one
+  right-angle bend, small dot at the label end.
+- A soft **glowing target ring** at the feature end (bloom, not a hard dot).
+- Contrast comes from **size + weight + a black outline/glow** — no backing box on
+  the label itself.
+- **Collision avoidance:** stacked labels keep a minimum vertical gap; offset the
+  text block, never the leader-line target.
+- Optional 2–3 line white description under the term.
+- `labelHoldS` — each label fades out after its window so the camera can move on.
+
+**Camera under labels (Rule 5b):** the diagram camera holds **completely still**
+whenever a label is on screen. Blocking pattern per feature beat:
+**ease to feature → settle → label fades in → DEAD STILL for the label window →
+label fades out → ease to next feature.** All camera moves ease in and out.
+A run of shots on the *same illustration* is ONE shot with ONE continuous eased
+path — never separate hard-cut segments of the same image ("remount jump").
+
+**Coloured callout / lower-third over busy imagery (Rule 5c):** gets a
+**50%-black backing plate** (`rgba(0,0,0,0.5)`), small even padding, easing
+in/out with the text.
+
+**Taught by:** the 0003 Glass Frog edit review (2026-08-31 / 09-01). Full note
+trail: `Productions/0003_Glass_Frog_Transparency/Production/Revision_Notes_Round1.md`.
+
+## Rule 6 — Default transition is a ~0.5s cross-dissolve, not a hard cut (locked 2026-09-01, Tony — global)
+
+Every cut (scene boundary AND internal shot change) is a ~0.5s cross-dissolve
+unless a hard cut is deliberate (shock cut, match cut, the anomaly-reveal glitch
+cut). Mechanics: incoming shot fades in on top; outgoing shot stays fully opaque
+underneath (a video clip's tail FREEZES its last frame — extending playback loops
+past real footage); never fade both toward the background (it darkens the
+dissolve). Narration/VO joins **hard** with a ~3-frame edge fade only. Applies to
+every channel — also lock into `Reimagined_Realms_Video_Pipeline` + `assemble.py`.
+
+**Taught by:** 0003 Glass Frog block-A review — Tony: "rather than doing hard cuts
+by default the 0.5 cross dissolve works really well ... this should be like a
+global thing."

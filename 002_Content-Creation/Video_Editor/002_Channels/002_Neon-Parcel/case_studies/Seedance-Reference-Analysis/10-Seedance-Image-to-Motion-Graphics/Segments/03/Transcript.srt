@@ -1,0 +1,160 @@
+1
+00:00:00,000 --> 00:00:07,200
+drop this one here is the cdance 2.01 so this is obviously going to be the most expensive generation
+
+2
+00:00:11,440 --> 00:00:18,320
+nice okay this one is good I like that sound effects at the end I don't like
+
+3
+00:00:20,320 --> 00:00:26,240
+like this part here that's unrealistic but there's so much happening here it doesn't really matter
+
+4
+00:00:26,240 --> 00:00:31,040
+too much in my opinion but I don't love that one and then we just are waiting for this one to
+
+5
+00:00:31,040 --> 00:00:37,840
+generate like this is cdance mini okay mini is just not working here that one is not working we
+
+6
+00:00:37,840 --> 00:00:42,400
+could include mini doesn't work for this this one is probably the fast one I would imagine
+
+7
+00:00:42,960 --> 00:00:45,920
+yet so this is fast in the correct dimensions
+
+8
+00:00:49,840 --> 00:00:53,200
+okay this one's nice because this is probably the best one so far all the layers are
+
+9
+00:00:53,200 --> 00:00:57,600
+animating nicely this animation is changing obviously different each time and you could
+
+10
+00:00:57,600 --> 00:01:02,080
+probably go back into the prompt and just describe this if you wanted to like if you've got an idea
+
+11
+00:01:03,520 --> 00:01:07,920
+I don't mind that to be fair it doesn't have to be super realistic it kind of just has to look
+
+12
+00:01:07,920 --> 00:01:16,720
+cool the sound effects be good but yeah as you can see like easy peasy works pretty well happy
+
+13
+00:01:16,720 --> 00:01:23,120
+with that I will say the only caveat to generating at 720p is you do lose some of the details
+
+14
+00:01:23,120 --> 00:01:28,800
+of the text here you can fix this with 1080 or you basically potentially generate an image that
+
+15
+00:01:28,800 --> 00:01:33,760
+doesn't really have tiny text and you're going to get that problem across any video model not just
+
+16
+00:01:33,760 --> 00:01:39,520
+like this specific example of collage animations like if I have text that small on an image and
+
+17
+00:01:39,520 --> 00:01:43,760
+it goes into a video model they will all struggle to do that unless you're generating like on the
+
+18
+00:01:43,760 --> 00:01:50,880
+cdance 4k model which is expensive so I would use that if you really really have to you know maybe
+
+19
+00:01:50,880 --> 00:01:55,920
+it's like something going on client work or it's like you know you need the top top top quality
+
+20
+00:01:55,920 --> 00:01:59,600
+then use 4k but the only problem is is then you'll get you'll get a different generation it
+
+21
+00:01:59,600 --> 00:02:04,720
+might not be the one that you want actually fuck it I'll generate one in 4k if I've got enough
+
+22
+00:02:04,720 --> 00:02:09,440
+credits I'm running out of credits how many I don't know how many credits that equals 4k 5 so
+
+23
+00:02:09,440 --> 00:02:15,520
+not too much cdance 2.0 4k now generate the 4k one and see how all that comes out it's probably
+
+24
+00:02:15,520 --> 00:02:21,200
+going to take a while it don't take sort of a couple of minutes as for sure it takes a few minutes
+
+25
+00:02:21,200 --> 00:02:30,080
+right so these are both generated right now this is the cdance 2.0 720 quality nice
+
+26
+00:02:33,120 --> 00:02:39,040
+not too bad but you see the animation that don't like that so kind of worked but again if we compare
+
+27
+00:02:39,040 --> 00:02:45,840
+that to the fast version no better than the fast version in my opinion and then finally now
+
+28
+00:02:45,840 --> 00:02:50,400
+we've got the 4k one don't recommend this don't know how many because 6000 credits I don't know
+
+29
+00:02:50,400 --> 00:03:00,080
+how much that costs I know it's usually like one dollar a second nice animation is nice
+
+30
+00:03:03,040 --> 00:03:07,360
+it's just the clarity I'm just gonna download this and just show you the like clarity of the
+
+31
+00:03:07,360 --> 00:03:13,520
+text this is the only reason why I would probably use this model is if I need the text clarity because
+
+32
+00:03:13,520 --> 00:03:22,400
+it does just look if we look here like it's actually held the clarity of the text there like look how
+
+33
+00:03:22,400 --> 00:03:28,800
+small that text is designed in California QC pass inspected that look how that date there look like
+
+34
+00:03:28,800 --> 00:03:37,040
+you cannot get that on any other model do I think the animation is much better than the others
+
+35
+00:03:37,040 --> 00:03:43,360
+not at all not at all to be honest all of the like the start of them are all very similar in terms
+
+36
+00:03:43,360 --> 00:03:48,240
+of they do the job of putting that on and then they've all done the animation kind of different but
+
+37
+00:03:48,240 --> 00:03:55,280
+the 4k does look nice it does look nice but super expensive to run but overall I think this is
+
+38
+00:03:55,280 --> 00:04:00,800
+really fun and easy to do if you have any questions or you discover anything new or have your own
+
+39
+00:04:00,800 --> 00:04:04,560
+really good prompt that you'd like to share then drop them in the comments but other than that have
+
+40
+00:04:04,560 --> 00:04:06,560
+a nice week and I'll see you in the next video
+

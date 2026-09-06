@@ -1,0 +1,28 @@
+{
+  "labels": [
+    {
+      "feature": "heart",
+      "x_pct": 50.2,
+      "y_pct": 39.5,
+      "confidence": "high"
+    },
+    {
+      "feature": "liver",
+      "x_pct": 50.1,
+      "y_pct": 47.3,
+      "confidence": "high"
+    },
+    {
+      "feature": "lungs",
+      "x_pct": 43.4,
+      "y_pct": 41.0,
+      "confidence": "high"
+    },
+    {
+      "feature": "intestines",
+      "x_pct": 50.1,
+      "y_pct": 62.0,
+      "confidence": "high"
+    }
+  ]
+}

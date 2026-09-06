@@ -1,0 +1,161 @@
+[
+  {
+    "id": "start_01A",
+    "prompt": "Wide establishing shot, night rainforest canopy seen from a distance, a single leaf lit faintly by moonlight, camera about to push forward. Corresponds to storyboard frame 1.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_01_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_01A_Start.png"
+  },
+  {
+    "id": "start_02A",
+    "prompt": "Wide overhead God-view shot, the glass frog perched on a broad leaf above a cloud-forest stream, opaque green dorsal camouflage blending into the foliage around it. Corresponds to storyboard frame 1.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_02_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02A_Start.png"
+  },
+  {
+    "id": "start_02B",
+    "prompt": "Extreme close-up, split composition: opaque green dorsal skin texture on one side of frame, translucent pale ventral skin texture on the other side. Corresponds to storyboard frame 7.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_02_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02B_Start.png"
+  },
+  {
+    "id": "start_04B",
+    "prompt": "Extreme wide overhead/God view, cloud-forest canopy over a mountain stream seen from a distance, mist hanging between the trees, no creatures in frame. Corresponds to storyboard frame 2.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_04_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04B_Start.png"
+  },
+  {
+    "id": "start_04C",
+    "prompt": "Medium shot, the glass frog perched on a leaf at night, alert and motionless in ambush posture, eyes wide open. Corresponds to storyboard frame 3.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_04_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04C_Start.png"
+  },
+  {
+    "id": "start_04D",
+    "prompt": "Macro real-footage style, the glass frog motionless on a leaf underside by daylight, medium framing showing the whole frog and the leaf around it. Corresponds to storyboard frame 6.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_04_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04D_Start.png"
+  },
+  {
+    "id": "start_04E",
+    "prompt": "Wide shot from below/side, the glass frog pressed flat against a large backlit leaf, its body outline still clearly distinguishable against the leaf. Corresponds to storyboard frame 7.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_04_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04E_Start.png"
+  },
+  {
+    "id": "start_04F",
+    "prompt": "Medium-wide shot, camera pulling back, the backlit leaf and the glass frog now smaller within the frame, surrounded by more forest. Corresponds to storyboard frame 9.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_04_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04F_Start.png"
+  },
+  {
+    "id": "start_06A",
+    "prompt": "Wide cinematic shot, the glass frog on its leaf above the stream, forest close around it, camera close and steady. Corresponds to storyboard frame 1.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_06_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06A_Start.png"
+  },
+  {
+    "id": "start_06D",
+    "prompt": "Medium shot, the glass frog calm and sleeping on its leaf, held steady, soft ambient light. Corresponds to storyboard frame 4.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_06_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06D_Start.png"
+  },
+  {
+    "id": "start_06E",
+    "prompt": "Macro push-in, the glass frog's transparent belly in frame, the heart visible and organs at rest, moderate framing. Corresponds to storyboard frame 5.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_06_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06E_Start.png"
+  },
+  {
+    "id": "start_06F",
+    "prompt": "Overhead/God-view shot, pulling back from the leaf into the wider cloud-forest canopy, still nighttime, mist visible. Corresponds to storyboard frame 7.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_06_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06F_Start.png"
+  },
+  {
+    "id": "start_06G",
+    "prompt": "Extreme wide shot, the whole cloud-forest scene visible in daylight, the leaf with the frog a small detail within it. Corresponds to storyboard frame 9.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_06_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06G_Start.png"
+  },
+  {
+    "id": "start_07A",
+    "prompt": "Near-total darkness, a single indistinct shape beginning to resolve at the edge of frame -- deliberately unidentifiable, NOT a glass frog. Corresponds to storyboard frame 1.\n\nVisual style: Anomalous Wild dark neon nature-documentary hybrid style: cinematic macro wildlife photography, National Geographic-quality lighting, deep teal/forest-green/amber palette, photoreal, 8K detail, no text, no watermark, no on-screen graphics.\n\nUse the attached character/environment/storyboard reference images to keep the subject's anatomy, coloration and the location's appearance exactly consistent with those references. This is a single start-frame still for a short video-generation clip, not a grid or sheet -- output ONE full-frame 16:9 image only.",
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "input_urls": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Storyboards/Scene_07_Storyboard.png"
+    ],
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_07A_Start.png"
+  }
+]

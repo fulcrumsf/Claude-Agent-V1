@@ -1,0 +1,17 @@
+{
+  "shot_id": "Shot-12",
+  "status": "pass",
+  "selected_attempt": 2,
+  "active_storyboard_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Images/Shot-12-Storyboard-v2.png",
+  "contract_path": "/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/shot_12_storyboard_spec_v2.json",
+  "qa_report_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Analysis/Shot-12-Storyboard-QA-v2/qa-report.json",
+  "attempt_state_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Analysis/Shot-12-Storyboard-QA-v2/attempt-state.json",
+  "review_policy_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Production/Storyboard-QA-Policy.json",
+  "manual_review_approved": true,
+  "storyboard_reference_url": "https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Shot-12-Storyboard-v2.png",
+  "reference_role": "storyboard_reference",
+  "storyboard_sha256": "64fc6eec4c25231ab5d087f7dfbd58ffc86981969360cd899985ab7bc7dbd025",
+  "contract_sha256": "2a49ab7127890e325ed76a1087ba5641915ba4d04bb433d739b46d5afcb258df",
+  "qa_report_sha256": "ef0a4a6ff8a315b2b503b13811c748f8d2283a61e4f42e0020cb7921bd89c99b",
+  "approval_note": "Tony approved the Shot 12 storyboard direction showing Grandma climbing the steps at natural scale."
+}

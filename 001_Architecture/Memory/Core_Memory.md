@@ -53,6 +53,7 @@ Small always-read memory for every agent in this workspace. Keep this file short
 - If you cannot complete part of a request (blocked, no access, missing dependency), say so explicitly before moving on.
 - Do not deliver partial work without clearly labeling which parts are incomplete and why.
 - If something was corrected in a prior session and you find yourself doing it again, stop and acknowledge the repeat before proceeding.
+- When Tony asks for a recommendation, suggestion, options, or where something should go, answer with the recommendation and wait for approval before creating directories, scaffolding, files, or moving anything. Recommendation is not implementation unless Tony explicitly asks to proceed.
 
 ### API Keys
 - `~/.env-secrets` is the ONE AND ONLY place any API key ever lives. No exceptions.

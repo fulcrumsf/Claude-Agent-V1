@@ -1,0 +1,15 @@
+{
+  "creatures": {
+    "main": ["@glass_frog_main"],
+    "variants": [],
+    "background": []
+  },
+  "props": [],
+  "environments": ["@cloud_forest_stream"],
+  "notes": {
+    "species_topic_type": "general_species_documentary — not one identifiable individual. Centrolenidae has ~150-160 species; script focuses narratively on Hyalinobatrachium fleischmanni (Fleischmann's glass frog), the actual species studied in the 2022 AMNH transparency paper. Main character sheet is grounded in that species' reference photos so every 'hero' shot of the frog throughout the video (scenes 01,02,04,05,06,07) reads as one consistent, correctly-proportioned individual.",
+    "why_no_variant_sheets": "Considered per the skill's variety guidance (2026-08-XX judgment call): the only place multiple species genuinely need to appear side-by-side is Scene_03 visual 4's one-off 'quick 3-frame species comparison cut' (bone-only vs full-organ-visibility across different real species). That beat is a single non-recurring shot, not a recurring subject needing consistency across multiple future generations — Character-Sheet-Generation's own scope is 'a subject appearing in more than one scene.' Building a full variant sheet for a shot used exactly once would be sheet-count inflation the skill explicitly warns against ('not meant to be excessive'). Decision: that one shot is generated directly from the real reference photos already in Research/Reference_Images/ (Cochran's, Emerald, Euknemos, Granular, Granulosa, Little, Spinosa, Dusty species files) as input_urls, no dedicated sheet.",
+    "why_environment_sheet": "Cloud-forest stream / leaf-over-water setting recurs across Scene_02 (leaf perch establishing), Scene_04 (wide canopy-over-stream + mist), and Scene_06 (cinematic pull-back/push-in on the same leaf, canopy-to-day transition) — three non-adjacent scenes sharing one distinct, recognizable location. Meets the skill's recurrence bar; built as @cloud_forest_stream with one panel per occurring scene, frog excluded from the sheet itself (pure location reference) since the character sheet supplies the frog and the two composite at generation time.",
+    "scene_07_exception": "Scene_07's single visual is an unnamed, deliberately unexplained 'future anomalous creature' teaser flash — explicitly NOT the glass frog. It gets its own one-off generation with no character-sheet grounding (nothing recurs from it; it exists to tease a future, undecided video)."
+  }
+}

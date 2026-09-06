@@ -1,0 +1,16 @@
+{
+  "tone": "Unplanned real-life neighbor footage: ordinary, observational, awkward, and believable, never cinematic, staged, polished, promotional, or commercial.",
+  "capture_style": "Consumer smartphone recording by an ordinary person, with natural exposure, imperfect framing, and subtle human handheld movement unless the shot explicitly requires a locked-off camera. No tripod or professional camera rig by default.",
+  "visual_realism": "Real-world documentary observation with natural light, ordinary locations, realistic motion, and no professional color grade or advertising polish.",
+  "audio_policy": "Atmospheric location sound and physical foley only: sounds must come from the real environment or visible actions.",
+  "audio_exclusions": [
+    "music",
+    "commercial soundtrack",
+    "dramatic scoring",
+    "promotional audio",
+    "voiceover",
+    "dialogue",
+    "synthetic sound effects"
+  ],
+  "default_camera_behavior": "Subtle natural handheld movement from a person studying a phone camera; use a locked-off camera only when the shot contract explicitly requires it."
+}

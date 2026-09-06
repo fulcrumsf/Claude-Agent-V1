@@ -1,0 +1,10 @@
+{
+  "shot_id": "Shot-02",
+  "version": "v2",
+  "model": "bytedance/seedance-2-mini",
+  "generation_resolution": "480p",
+  "duration_seconds": 12,
+  "reference_assets": ["Images/Shot-02-Storyboard-v1.png"],
+  "postprocess": {"topaz_factor": "2x", "final_normalization": "1920x1080"},
+  "prompt": "Use the attached 16:9 storyboard only as visual continuity checkpoints, not as a visible multi-panel layout and not as a literal six-frame composition. Preserve its fixed elevated rural security-camera angle, wide lens character, horizon, lighting, house geometry, and consistent subject identities throughout one continuous shot. Animate the ordered event naturally: an older grandmother calmly sweeps near the porch; one alligator approaches slowly from the waterline; one black bear already near the porch notices the alligator and moves between them, driving it back toward the swamp; the grandmother looks up only after the danger has passed. Keep the action physically readable, one bear and one alligator only, with natural ambient and action audio. Do not add captions, title cards, labels, emojis, watermarks, or other graphics."
+}

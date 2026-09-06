@@ -1,7 +1,8 @@
 """
-Production Supervisor — bioluminescence_weapon video generation.
+Production Supervisor — Anomalous Wild live-footage video generation.
 
 This is the production manager. It does not stop until every clip is done.
+Generic across productions: pass the production directory as the first CLI arg.
 
 Behavior:
   - Works through every clip in new_clips_prompts.json one at a time
@@ -27,8 +28,8 @@ API docs:  Obsidian Vault /003_Tools/docs/kie.ai_api/
   Veo3:    Veo3.1_Video.md      → POST /api/v1/veo/generate
 
 Usage:
-  python3 -u 004_Tools/pipeline_supervisor.py          # run (blocks — use nohup &)
-  python3 -u 004_Tools/pipeline_supervisor.py --status # print status and exit
+  python3 -u pipeline_supervisor.py <production_dir>          # run (blocks — use nohup &)
+  python3 -u pipeline_supervisor.py <production_dir> --status # print status and exit
 """
 
 import os
@@ -41,6 +42,8 @@ from pathlib import Path
 from datetime import datetime
 from dotenv import load_dotenv
 
+import clip_durations  # request_duration() padding + trim_to_target() short-footage guard
+
 HOME_SECRETS = Path.home() / ".env-secrets"
 load_dotenv(HOME_SECRETS)
 
@@ -49,11 +52,17 @@ KIE_API_KEY = os.getenv("KIE_API_KEY")
 FAL_API_KEY = os.getenv("FAL.AI_API_KEY")
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
-BASE           = Path("002_Channels/001_Anomalous-Wild/Productions/0001_Bioluminescence_Weapon")
+# BASE is the production directory this supervisor runs against. Pass it as the
+# first CLI arg (e.g. .../Productions/0007_Mantis_Shrimp); defaults to the
+# original bioluminescence_weapon production for backward compatibility.
+BASE = Path(sys.argv[1]) if len(sys.argv) > 1 and not sys.argv[1].startswith("--") \
+    else Path("002_Channels/001_Anomalous-Wild/Productions/0001_Bioluminescence_Weapon")
 PROMPTS_FILE   = BASE / "Production" / "new_clips_prompts.json"
-DONE_FILE      = Path("/tmp/biolum_pipeline_done.txt")
-SUPERVISOR_LOG = Path("/tmp/biolum_supervisor.log")
-FAILURES_FILE  = Path("/tmp/biolum_failures.json")
+STATE_DIR      = BASE / "Production" / "_supervisor_state"
+DONE_FILE      = STATE_DIR / "pipeline_done.txt"
+SUPERVISOR_LOG = STATE_DIR / "supervisor.log"
+FAILURES_FILE  = STATE_DIR / "failures.json"
+STATE_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── Tuning ────────────────────────────────────────────────────────────────────
 MAX_CLIP_RETRIES  = 4     # give up on a specific clip after this many failures
@@ -198,6 +207,26 @@ def _classify_kie_response(http_status: int, body: dict) -> tuple:
     return (category, reason)
 
 
+def gen_request_duration(entry: dict) -> int:
+    """Integer `duration` to send to the video API for this clip.
+
+    Padded from the beat's real on-screen target (`target_duration_s`) via
+    clip_durations.request_duration — ceil(target)+1, clamped to the model's
+    range. Falls back to a legacy `duration_s` field, then 8, only for
+    older manifests; run() refuses to start a production whose video entries
+    lack `target_duration_s`, so the fallbacks should never fire in practice.
+    """
+    model = entry.get("model", "bytedance/seedance-1.5-pro")
+    target = entry.get("target_duration_s")
+    if target is not None:
+        return clip_durations.request_duration(float(target), model)
+    legacy = entry.get("duration_s", 8)
+    try:
+        return clip_durations.request_duration(float(legacy), model)
+    except (TypeError, ValueError):
+        return 8
+
+
 def generate_veo3(entry: dict) -> dict:
     """Submit Veo3 job. Returns {ok, url, error_category} or {ok:False, reason, error_category}."""
     try:
@@ -251,7 +280,7 @@ def generate_kling(entry: dict) -> dict:
                 "input": {
                     "prompt": entry["video_prompt"],
                     "sound": False,
-                    "duration": str(entry.get("duration_s", 8)),
+                    "duration": str(gen_request_duration(entry)),
                     "aspect_ratio": entry.get("aspect_ratio", "16:9"),
                     "mode": "pro",
                     "multi_shots": False,
@@ -307,7 +336,7 @@ def generate_seedance(entry: dict) -> dict:
                         ] if url
                     ],
                     "resolution": "1080p",
-                    "duration": str(entry.get("duration_s", 8)),
+                    "duration": str(gen_request_duration(entry)),
                     "aspect_ratio": entry.get("aspect_ratio", "16:9"),
                     "generate_audio": entry.get("generate_audio", True),
                 },
@@ -389,7 +418,9 @@ def _load_manifest() -> list:
     return []
 
 
-def write_clip_manifest_entry(entry: dict, status: str, notes: str = "") -> None:
+def write_clip_manifest_entry(entry: dict, status: str, notes: str = "",
+                              real_s: float | None = None,
+                              final_s: float | None = None) -> None:
     """
     Append or update one entry in clip_manifest.json after generation.
 
@@ -417,6 +448,12 @@ def write_clip_manifest_entry(entry: dict, status: str, notes: str = "") -> None
         "status": status,
         "notes": notes,
     }
+    if entry.get("target_duration_s") is not None:
+        record["target_duration_s"] = float(entry["target_duration_s"])
+    if real_s is not None:
+        record["real_generated_s"] = round(float(real_s), 3)
+    if final_s is not None:
+        record["final_trimmed_s"] = round(float(final_s), 3)
 
     # Update existing or append
     for i, existing in enumerate(manifest):
@@ -474,8 +511,23 @@ def check_audio_layers() -> None:
 
 # ── Preloop ───────────────────────────────────────────────────────────────────
 
-def preloop(src: Path, dst: Path) -> bool:
-    """Re-encode src → dst with clean keyframes. Duration = natural clip length."""
+def preloop(src: Path, dst: Path, target_s: float | None = None) -> dict:
+    """Re-encode src → dst, video-only, clean keyframes.
+
+    With `target_s` (the beat's real on-screen duration): head-trim to exactly
+    that length via clip_durations.trim_to_target, and REFUSE — no output file,
+    ok=False, reason INSUFFICIENT_FOOTAGE — when the generated clip is shorter
+    than the beat needs. Such a clip must be regenerated, never stretched or
+    looped to fit (that's the 0003_Glass_Frog_Transparency flash-cut bug).
+
+    Without `target_s` (legacy manifests with no target_duration_s): keep the
+    clip's natural length, as before.
+
+    Returns {"ok": bool, "real_s": float, "final_s": float, "reason": str}.
+    """
+    if target_s is not None:
+        return clip_durations.trim_to_target(src, dst, float(target_s))
+
     result = subprocess.run(
         ["ffprobe", "-v", "quiet", "-show_entries", "format=duration",
          "-of", "csv=p=0", str(src)],
@@ -494,7 +546,8 @@ def preloop(src: Path, dst: Path) -> bool:
         "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-an",
         str(dst), "-loglevel", "error",
     ])
-    return r.returncode == 0
+    return {"ok": r.returncode == 0, "real_s": duration, "final_s": duration,
+            "reason": "" if r.returncode == 0 else f"FFMPEG_PRELOOP_FAILED (exit {r.returncode})"}
 
 
 def preloop_originals():
@@ -561,7 +614,7 @@ def print_status():
 
 def run():
     log("=" * 56)
-    log("PRODUCTION SUPERVISOR — bioluminescence_weapon v4")
+    log(f"PRODUCTION SUPERVISOR — {BASE.name}")
     log("=" * 56)
     notify("🎬 Production Supervisor", "Starting — will not stop until all clips are done.")
 
@@ -570,6 +623,24 @@ def run():
     entries     = json.loads(PROMPTS_FILE.read_text())
     vid_entries = [e for e in entries if e.get("generation_type") == "video"]
     img_entries = [e for e in entries if e.get("generation_type") == "image"]
+
+    # Every video entry MUST carry target_duration_s — the beat's real on-screen
+    # duration from beat_sheet.json. The supervisor derives the padded API
+    # `duration` from it and trims each clip back to it afterward. Without it the
+    # 0003_Glass_Frog_Transparency loop-flash bug can recur (clip declared longer
+    # than its real footage). Refuse to start rather than guess.
+    missing_target = [e["scene_id"] for e in vid_entries if e.get("target_duration_s") is None]
+    if missing_target:
+        log("✗ FATAL: these video entries in new_clips_prompts.json have no "
+            "'target_duration_s':")
+        for sid in missing_target:
+            log(f"    - {sid}")
+        log("  Add target_duration_s (real beat duration, seconds) to each — copy "
+            "it from Production/Clip_Plan.json's target_duration_s. Then re-run.")
+        notify("🚨 SUPERVISOR STOPPED",
+               f"{len(missing_target)} clip(s) missing target_duration_s in the manifest.",
+               sound="Basso")
+        sys.exit(1)
 
     # Sort: critical → high → medium
     priority_order = {"critical": 0, "high": 1, "medium": 2}
@@ -602,6 +673,7 @@ def run():
         folder.mkdir(parents=True, exist_ok=True)
         attempts = 0
         success  = False
+        short_reason = ""   # last INSUFFICIENT_FOOTAGE reason, if any
 
         while attempts < MAX_CLIP_RETRIES:
             attempts += 1
@@ -693,12 +765,33 @@ def run():
                 mb = raw_path.stat().st_size / 1024 / 1024
                 log(f"  ✓ {scene_id} downloaded ({mb:.1f} MB)")
 
-            # Preloop immediately after download
+            # Preloop / trim immediately after download
             log(f"  → {scene_id} prelooping...")
-            if preloop(raw_path, lp_path):
+            pl = preloop(raw_path, lp_path, entry.get("target_duration_s"))
+            if pl["ok"]:
                 mb = lp_path.stat().st_size / 1024 / 1024
-                log(f"  ✓ {scene_id} looped ({mb:.1f} MB)")
-                write_clip_manifest_entry(entry, "ok")
+                if pl.get("needs_fill"):
+                    # Generated clip is physically shorter than the beat. We do NOT
+                    # regenerate (cost) and NEVER loop (the 0003 flash-cut bug) —
+                    # the clip is kept at its real length and assembly holds its
+                    # last frame for the gap (VideoSegFilled). Surface it so Tony
+                    # knows a freeze-fill will happen.
+                    short_reason = (f"short by {pl['shortfall_s']:.3f}s "
+                                    f"(generated {pl['real_s']:.3f}s vs target "
+                                    f"{entry['target_duration_s']:.3f}s) — assembly will freeze-fill")
+                    log(f"  ⚠ {scene_id} {short_reason}")
+                    notify("⚠️ Clip short", f"{scene_id} {short_reason}", sound="Basso")
+                    write_clip_manifest_entry(entry, "ok_short", short_reason,
+                                              real_s=pl.get("real_s"), final_s=pl.get("final_s"))
+                elif entry.get("target_duration_s") is not None:
+                    log(f"  ✓ {scene_id} trimmed to {pl['final_s']:.3f}s "
+                        f"(generated {pl['real_s']:.3f}s), looped ({mb:.1f} MB)")
+                    write_clip_manifest_entry(entry, "ok",
+                                              real_s=pl.get("real_s"), final_s=pl.get("final_s"))
+                else:
+                    log(f"  ✓ {scene_id} looped ({mb:.1f} MB)")
+                    write_clip_manifest_entry(entry, "ok",
+                                              real_s=pl.get("real_s"), final_s=pl.get("final_s"))
                 success = True
                 completed += 1
 
@@ -708,12 +801,12 @@ def run():
                     notify("📹 Progress Update", f"{completed}/{total_vid} clips done. ~{remaining} remaining.")
                 break
             else:
-                log(f"  ✗ {scene_id} preloop failed — retrying generation")
+                log(f"  ✗ {scene_id} preloop failed ({pl.get('reason','')}) — retrying generation")
                 raw_path.unlink(missing_ok=True)
                 lp_path.unlink(missing_ok=True)
 
         if not success:
-            reason = f"Failed after {MAX_CLIP_RETRIES} attempts"
+            reason = short_reason or f"Failed after {MAX_CLIP_RETRIES} attempts"
             log(f"  ✗✗ {scene_id} PERMANENTLY FAILED: {reason}")
             failures[scene_id] = reason
             FAILURES_FILE.write_text(json.dumps(failures, indent=2))

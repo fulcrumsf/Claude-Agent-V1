@@ -20,6 +20,18 @@ Do not load this file by default once it grows large. Agents should always read 
 
 ## Memory Entries
 
+### 2026-09-04 — Recommendation Requests Require Approval Before Acting
+
+When Tony asks for a recommendation, suggestion, options, or where something should be saved, agents must provide the recommendation and wait for Tony's reply before creating directories, scaffolding, files, or moving anything. Do not interpret "give me a suggestion" as permission to implement. This is a cross-agent rule for Claude Code, Codex, Gemini, and other Agent-OS agents.
+
+### 2026-09-04 — Codex Has an Agent-OS Hardening Skill
+
+Codex should use `001_Architecture/Skills/codex-agent-os-hardening/SKILL.md` whenever operating in Agent-OS. The skill mirrors Claude Code's Agent-OS operating discipline: read the core manuals and maps, check skills/tools first, respect recommendation approval boundaries, preserve files, update feedback/logs/memory, and close sessions cleanly.
+
+### 2026-09-04 — Agent-OS Onboarding Priority
+
+When getting oriented in Agent-OS, prioritize the numbered top-level folders (`NNN_...`) as the main operating departments. Tony's hierarchy is: `001_Architecture` first, `002_Content-Creation` second, `007_Resource_Library` third. `000_Ingest` can usually be skipped unless the task is specifically about ingesting or organizing raw intake.
+
 ### 2026-04-30 — This Workspace Is the Whole Business OS
 
 Tony treats `/Users/tonymacbook2025/Documents/Agent-OS/` as one project folder for the entire business. All agents should assume this workspace contains business operations, content creation, e-commerce, app development, game development, tools, logs, memory, and resource libraries. Memory should be global across this workspace unless it is clearly department-specific.
@@ -937,3 +949,145 @@ Same-day follow-on, after the Report Card/close-out entry above. Tony asked for 
 **Pipeline is now actually wired, not just documented:** `generate_youtube_package.py` rewritten to run both stages automatically per call (base concept generation → Cloudinary upload → image-to-image treatment edit), taking `--headlines` (3, pipe-separated) and `--arrow-target` as required-quality CLI inputs. `Anomalous_Wild_Video_Pipeline` SKILL.md Phase 9 updated to instruct drafting those inputs before calling the script, and to visually inspect corners for stray watermark artifacts (kie.ai's image-to-image occasionally adds one — happened once this session, fixed by regenerating with an explicit "no logo/watermark" instruction appended).
 
 **Meta-note reinforcing the standing pattern above:** Tony framed this explicitly as a self-learning-loop test case — "this is the kind of thing I'm hoping your self-learning abilities are able to do for me in the future... if everything could be executed as well as this process, that would be great." The mechanism that made this actually stick: locked the finding into the JSON template *and* the generator script *and* the SKILL.md, not just this memory file — so the next Anomalous Wild production gets the treatment automatically rather than needing this same conversation to happen again.
+
+### 2026-08-25 — Anomalous Wild Pipeline v3: Full Retrospective → Plan → Implementation → Live Merge (0002 Mantis Shrimp arc closes out)
+
+Tony ran a structured, question-by-question retrospective (brainstorming skill, retrospective-only mode) on the whole 0002_Mantis_Shrimp_Color_Vision production, working through the 36-item iteration/manual-override log built earlier this session (`Anomalous_Wild_Video_Pipeline/Mantis_Shrimp_Iteration_Log.md`) to decide, per item, what should become a locked pipeline standard vs. stay a one-off. This is the closing chapter of the Mantis Shrimp arc documented in the entries above.
+
+**Decisions locked (now live in `Anomalous_Wild_Video_Pipeline/SKILL.md` and code, tagged `anomalous-wild-pipeline-v3-2026-08-25` on `main`):**
+- **Intake questionnaire reduced from 8 questions to 2** (Format, Duration only). Channel selection, narration on/off, voiceover tone, music mood, Suno toggle, and CTA text are all now locked defaults in `new_video.py`, never asked.
+- **ElevenLabs voice `KYhuk3Y57IlkV1ZjtDAt` formally locked** as the permanent Anomalous Wild voice (was being reused across productions but never actually declared locked in docs — same treatment as Reimagined Realms' hardcoded voice now).
+- **CTA reduced to 3 fixed rotating lines**, picked at random per production, never typed fresh: "Subscribe for more wild animal facts." / "Follow along for more strange creatures like this one." / "Hit subscribe — nature gets weirder from here."
+- **Seedance 1.5 Pro (1080p, kie.ai) is the real locked default** — was documented as default but `pipeline_supervisor.py` had zero Seedance code path (silently fell through to Kling for any Seedance-labeled beat). `generate_seedance()` now added, mirroring `generate_veo3`/`generate_kling`'s structure exactly. No fixed backup chain — switch models per-beat as needed, not via a pre-set fallback order.
+- **No single assembly tool is mandatory.** Remotion, ffmpeg, video-use, HyperFrames — whichever suits a given job does that job; diagram scenes can be built independently (component assets + Motion-Graphics-Compositing) and stitched in regardless of what assembled the rest. This directly resolves the "final assembly used direct ffmpeg, not documented Remotion" gap noted in the 2026-08-22 entry above — Tony's answer was to formally drop the Remotion-mandatory rule rather than force every production through it.
+- **Visual variety mechanism added**, addressing the "AI slop" repetitive-shot feeling Tony flagged: fixed universal pool (camera angle: wide/close-up/medium/low/high/macro; framing: centered/rule-of-thirds/negative-space/tight/depth-layered) rotates every shot; environment/lighting/subject-variation is NOT a fixed list, decided per-production by the director from real research (Production-Research-Agent), explicitly wired to Case Studies + the Cinematic Style Guide as craft inspiration (not a template to copy). The director persona (BBC-style nature-documentary) is meant to make these calls autonomously — Tony reviews finished videos to refine the "eye," not per-shot choices.
+- **NotebookLM added as an optional research-phase step** (briefing-doc report, not diagram generation — that capability doesn't exist in NotebookLM, was a misremembering) — skip-and-proceed if unavailable, never blocks the pipeline.
+- **Continuity/anatomy-flag cost control:** when a review flags a possible issue, do NOT auto-regenerate via Seedance/Veo (real cost risk on possibly-nonexistent issues — flagging itself proved unreliable this session, a flagged claw-continuity error turned out not to be visible on review). Log to `Production/Continuity_Flags.md`, defer to Tony. Explicit training-phase framing: expect to review flags like this for roughly the next 15 productions, then relax as the pipeline proves reliable — same "review now, earn autonomy later" principle as the mockup-review step logged in the 2026-08-23/24 entry above.
+
+**Process notes worth remembering for future large implementation passes:**
+- Isolated worktree + subagent-driven-development (11 tasks, each independently reviewed) + a final whole-branch review on the most capable model caught real cross-task issues no single task's scoped review could see — most notably a real cost bug (native audio generated and paid for on every Seedance clip, but the doc still gated the extraction step on "Seedance 2.0+" so it never actually got used, while ElevenLabs ran redundantly for the same stem).
+- `main` had 312 uncommitted files (spanning the whole workspace) and a pre-existing `anomalous-wild-pipeline-v1` git tag from 2026-07-08 (original pipeline build) that was nearly overwritten. Resolved: committed everything on `main` as its own checkpoint first (Tony's call — preserve, don't discard), tagged pre/post-update state as `v2-2026-08-25`/`v3-2026-08-25` to avoid the collision, merged, pushed both commits and tags to GitHub. One real merge conflict (the CTA paragraph) resolved by keeping the fully-reviewed branch version.
+- **Open/deferred, not part of this update:** `pipeline_supervisor.py` has pre-existing hardcoded `/tmp/biolum_*` paths (cloned from the bioluminescence-weapon script), flagged by `validate_build.py`, out of scope for this plan. Tony asked to be reminded of this at the start of the next session.
+
+### 2026-08-26 — Cross-Iteration Learning Rule
+
+Tony expects repeated positive and corrective feedback to be generalized
+proactively into reusable skills, contracts, prompts, checks, or routing logic.
+Do not leave detailed lessons isolated in a case study or reduce them to
+generic guidance. Connect iteration results to the governing reusable artifact
+without waiting for an additional reminder.
+## Iteration Archive Convention
+
+- Tony wants all superseded or denied project artifacts preserved, not deleted.
+- This applies to images, prompts, scripts, shot lists, storyboards, metadata,
+  audio, video, and renders. Move the old version into the matching project
+  `Archived/` folder, preserve its original version number, and assign the
+  replacement the next version number. Active folders contain current working
+  or approved artifacts only.
+### Neon Parcel Default Video Route (2026-08-28)
+
+Tony approved the Neon Parcel default route after direct comparison testing:
+use a Neon Parcel storyboard as the visual-continuity reference, generate with
+Seedance 2 Mini at 480p, upscale with Topaz 2x, and normalize with FFmpeg to
+1920x1080. Tony provisionally graded this route 89 (B+) and the previous mixed
+route C-. This applies to Neon Parcel only; Seedance 1.5 remains an explicit
+fallback/comparison route, not an automatic choice.
+### Active Production Output Audit
+
+Before reporting status on any video production, agents must inspect the
+active output folder. Keep only the current version of each shot active;
+archive older, superseded, rejected, and test artifacts in the matching
+`Archived/` folder, preserving files and version numbers. This audit is
+mandatory after generation, revisions, and batch completion.
+
+### Seedance Reference-Role Contract (2026-08-30)
+
+A storyboard/contact sheet is contextual visual-continuity input, not a
+temporal start frame. On Seedance Mini calls, send it through
+`reference_image_urls`; reserve `first_frame_url` for a clean single-scene
+starting state. The shared Kie wrapper and Neon Parcel pre-video gate reject a
+storyboard in the frame field or a combined frame/reference payload before a
+paid request. Shot 8's bad v1 was caused by this exact routing error and must
+not be reused as a valid test.
+
+## 2026-08-28/29/30 — Anomalous Wild 0003 (Glass Frog) full autonomous pipeline run + Remotion edit review (in progress)
+
+Tony ran the Anomalous_Wild_Video_Pipeline fully autonomously end-to-end (his explicit instruction, a deliberate capability test — no per-phase approval). Video is live **private** on YouTube: https://www.youtube.com/watch?v=LiJcg5aUu6I. Full technical detail, current status, and next steps: `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Production/RESUME_NOTES.md` — **read that file before touching this production further.**
+
+Durable outputs from this run, relevant workspace-wide:
+- New channel-level cost-tracking file: `002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Production_Cost_Log.md`. kie.ai credit-to-USD rate confirmed live: **1 credit = $0.005**. Methodology (window-matching real file timestamps against kie.ai usage-export CSVs) documented inside — reusable for any future channel/production cost reconciliation.
+- Real bugs found and fixed at the source (not just patched for this one production): `render_outputs.py` was missing a final limiter after `amix()`, letting individually-safe audio layers sum to clipping (+0.1 dBTP against a -1 dBTP target) — fixed for all future AW renders. Seedance's real 4s minimum duration floor is now a documented standing rule in `Seedance-Prompting-Guide` and `Production-Asset-Planner` skills (generate at floor, trim to real target downstream). `pipeline_supervisor.py`'s hardcoded paths were fixed (now takes production folder as CLI arg 1). NotebookLM CLI upgraded 0.3.4→0.8.1 (old version had a session-cookie-recovery bug, `teng-lin/notebooklm-py#865`).
+- Systemic finding **now resolved (2026-08-30)**: Remotion's `OffthreadVideo` loops back to a source video's frame 0 (not a frozen last frame) when a Sequence's `durationInFrames` exceeds the source's real length — jarring flash-cuts. Root cause: Phase 7 used planned clip durations instead of real ffprobe-measured ones. Fixed in two layers: (1) GlassFrogDoc.tsx — all scene_04/scene_06 clips relaid in whole frames at `floor(real ffprobe)` via an `F()` helper, synthetic segs absorb slack, scene totals stay locked to audio; verified frame-by-frame. (2) Pipeline enforcement so it can't recur: NEW `.../Channels/Anomalous_Wild/clip_durations.py` — `request_duration(target,model)` = `ceil(target)+1` clamped to model `[4,max]`, `trim_to_target()` head-trims each generated clip to its real beat target and refuses (INSUFFICIENT_FOOTAGE, no output) when the clip is physically shorter than the beat. Wired into `pipeline_supervisor.py`: it now derives the API `duration` itself, trims every clip post-download, records target/real/final per clip in `clip_manifest.json`, and **aborts if any `new_clips_prompts.json` video entry lacks `target_duration_s`**. Planners (Production-Asset-Planner Step 6) now record `target_duration_s` only — no hand-set `generation_duration_s`. 17 tests. Lesson (also in Feedback_Loop 2026-08-30): a "locked" rule that lives only as prose for an agent to follow is not actually locked — move it into a code chokepoint with tests and a hard refuse-to-run.
+- Verification discipline reinforced hard this run: caught a subagent silently exceeding its approved scope (generated 9 clips instead of an approved 1-clip pilot), a mislabeled "audio bug" that was actually correct-by-design, and the Remotion loop-back root cause above — all found by extracting and inspecting real frames/files directly rather than trusting agent self-reports. See [[feedback_verify_before_presenting]] in Claude cross-session memory.
+
+### Neon Parcel Storyboard QA Resume Boundary (2026-08-31)
+
+The structured storyboard contract, fail-closed QA evaluator, three-attempt
+controller, and validated Seedance handoff are implemented locally and tested,
+but the real vision-provider adapter and GPT-Image generation wiring are still
+pending. When resuming, first run a no-generation dry run against Shot 6's
+existing storyboard v1 and verify that it catches missing subjects, incorrect
+gate state, broken chronology, and implausible physics. Do not touch the active
+flagged shot outputs or spend generation credits before that check. The eventual
+Seedance handoff must preserve verified visual observations from the accepted
+ storyboard, not merely restate the original contract.
+
+- Permanent video preservation rule: never overwrite a paid generation or any derivative, even after automated inspection. Assign every new generation, upscale, and normalized output a new version (`v3`, `v4`, etc.) and archive superseded assets in the matching `Archived/` folder so false-positive inspections never destroy recoverable work.
+- Storyboard generation must be routed through the structured per-frame contract and QA controller; direct ad hoc image prompts are not valid because they bypass subject-origin, spatial-geometry, chronology, and physics checks. Do not present or hand off a storyboard until its generated image has been checked against the original contract.
+
+### Cross-agent closeout and learning propagation (2026-09-04)
+
+- Feedback files and session logs capture episodic decisions, but durable workflow lessons must also be propagated into the governing skill, pipeline configuration, `TOOLBOX.md`, and executable guards/tests when applicable.
+- For Neon Parcel, vision inspection is advisory evidence only. The agent must report concrete storyboard/video findings and ask Tony for the decision; it must never auto-clear or auto-reject, spend the next paid-generation step, or upscale based only on provider output.
+- Shot 11 v5 is the current resume boundary: final 1080p output exists and awaits Tony's manual review. Do not advance or process it further until approved.
+
+### 2026-09-03 — Anomalous Wild audio mix + Suno: locked-value changes (Tony, A/B by ear on 0003)
+
+- **AW audio mix formula updated** in `render_outputs.py` (the loudnorm-per-layer approach — NOT static volume multipliers, which drift 5-11 dB). New locked values: narration `loudnorm I=-14` (unchanged, YouTube standard); **music `loudnorm I=-22`** (was -26 — score was too quiet); **sidechain duck `threshold=0.045:ratio=2.5:attack=300:release=600`** (was `0.015:4:150:800` — ducked in too hard/abrupt on every syllable). Also see Claude memory `feedback-audio-mix-formula`.
+- **Suno generations: always save BOTH tracks + the prompt.** `generate_suno_music.py` rewritten — the API returns ~2 tracks; it now saves every one as `<stem>_v1.mp3`/`_v2.mp3`, copies the longest to the requested path, and writes a `<stem>_suno.json` sidecar with the prompt/style/taskId/per-track metadata. (Previously it discarded the 2nd track and the prompt was never persisted — a real gap, the 0003 score prompt was lost.)
+- **Anomalous Wild score direction:** "modern science documentary" — curious/clear-headed, gentle forward rhythmic pulse (arpeggiated synth + marimba/mallets), warm strings pad, hopeful resolution. NOT solo-piano, NOT dark/mysterious/"mystery-trailer". Restrained enough to sit under VO.
+
+### 2026-09-04 — Anomalous Wild 0003 Glass Frog: final approved (grade A), milestone reference + audio-pipeline changes
+
+- **0003 Glass Frog is the Anomalous Wild GEMSTONE / MILESTONE reference video** — first AW video graded A. Worked example: `Productions/0003_Glass_Frog_Transparency/Production/Milestone_Reference.md`. Published private (Blotato acct 42514): https://www.youtube.com/watch?v=JMn32MmAzWw (replaces the old private `LiJcg5aUu6I`, which Tony deletes manually). Canonical file: `Renders/0003_Glass_Frog_Transparency_FINAL_v2a.mp4`.
+- **Video-to-audio SFX is now the AW DEFAULT.** NEW `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_stems_v2a.py` — segments a picture-locked render on scene boundaries (`Data/v2a_segment_map.json`, ≤60s each), runs each through **fal.ai Mirelo SFX v1.6** (`mirelo-ai/sfx1.6/video-to-video`, motion-conditioned, cheap GPU-compute-seconds), crossfade-concats to one bed. `generate_stems.py` (ElevenLabs text-to-SFX) is the **fallback**. Gotcha: the internal segment cut MUST be downscaled/bitrate-capped (`scale=1280:-2 -maxrate 4M`) — a full-res/all-intra segment is ~50× bigger and stalls the fal upload (cost ~1h on 0003).
+- **AW audio mix — SFX/ambience level lowered.** `render_outputs.py`: `STEMS_FILTER` `loudnorm I=-25` (was -20) + NEW `STEMS_SIDECHAIN_FILTER` (`threshold=0.06:ratio=2:attack=350:release=700`), wired into `render_final`. Rule: **SFX sits a hair below the music bed** (music -22). Tony, A/B by ear on the 0003 v2a bed. Narration -14 and music -22 + its duck unchanged from the 2026-09-03 values.
+- **CTA voiceover level rule (locked).** The end-card CTA VO is ALWAYS normalized to the SAME filter the mix applies to the body narration (`loudnorm=I=-14:TP=-1:LRA=7`) and verified within ~1 dB via `ebur128` — never eyeballed, never a pre-baked `end_card_with_cta.mp4` reused without re-checking. 0003's first CTA render was ~6 dB under the body VO; Tony caught it on the finished cut.
+- **NEW consolidated PRE-REVIEW GATE in the AW SKILL** (9 checks: black/white scan, audio-pop gate, audio-continuity scan, per-cut transition verify, clip-vs-VO beat check, generated-clip anatomy pass, CTA-VO level, duration frame-floor, ambience-vs-score balance). Run the whole battery before ANY cut goes to Tony, re-run in full after every re-render. Reason: 0003 took 6 review rounds *past* "it's done", each a defect class an existing-or-missing check would have caught.
+- When a video is finished + graded, sync its Shot_List / Timeline_Cut_Map / Report_Card to what actually shipped and mark it the channel reference (done for 0003).
+
+### 2026-09-05 — Graphify: Codex offload is the default for heavy domain builds
+
+- Claude's session rate limit trips on graphify's many-parallel-subagent semantic
+  extraction. Hand whole domain builds to **Codex** (`Skill("codex:rescue")` +
+  a written spec file) — separate quota, works cleanly, follows the graphify
+  SKILL.md fine. Done this way for the Video Editor domain 2026-09-05.
+- **`.graphifyignore` case bug (fixed 2026-09-05):** graphify's `_is_ignored()`
+  uses Python `fnmatch`, which is case-SENSITIVE on macOS/Linux. Lowercase-only
+  patterns (`*.png`) silently pass every `.PNG`. Root `.graphifyignore` now uses
+  case-insensitive bracket-class patterns (`*.[pP][nN][gG]`) + a broad image/video/
+  audio extension list. Images & video are NEVER graphified — any ext, any case.
+  (`.gitignore` was already case-safe via `core.ignorecase=true`.)
+- `OpenAI_History/` (accidental 2058-file ChatGPT export in 007_Resource_Library)
+  is excluded from graphify until it's properly routed.
+- Graph state: Architecture ✅ (2026-09-05), Video Editor ✅ (2026-09-05, via Codex).
+  Wiki + Resource Library still pending — Resource Library needs a scoping decision
+  from Tony first (3559 files even after exclusions).
+- A Claude Agent-tool subagent can't receive async task-completion notifications
+  like the primary session — don't nest a "dispatch + wait for notification"
+  pattern inside a subagent; it hangs in a re-poll loop.
+
+### 2026-09-05 (evening) — Graphify CLI upgraded to 0.9.55
+- The `graphify` CLI package is `graphifyy` (double-y). Upgraded 0.4.2 → 0.9.55 on
+  Framework Python 3.13 (`/Library/Frameworks/Python.framework/Versions/3.13/bin/graphify`).
+  A stale Homebrew 0.4.23 install was removed — one `graphify` on PATH now.
+- The old 0.4.2 CLI lacked `update`/`add`/`extract` subcommands — that was the
+  long-standing "skill vs package mismatch". 0.9.55 has the full set:
+  `extract` (headless full AST+LLM), `update` (fast AST-only incremental),
+  `check-update` (cron-safe), plus `path`/`explain`/`query`/`add`/`watch`/`merge-graphs`.
+- Skill copies for claude + codex refreshed via `graphify install --platform <x>`;
+  `.graphify_version` marker = 0.9.55. Old skills saved as `SKILL.md.bak` per dir.
+- Existing Architecture + Video Editor graphs are on the pre-#1504 node-ID scheme;
+  a `graphify extract --force` rebuild adds path-qualified IDs (fixes same-name-file
+  collisions). Not urgent — queries work as-is.
+- REGISTRY.md now has a `## Tooling version` section as the source of truth for this.

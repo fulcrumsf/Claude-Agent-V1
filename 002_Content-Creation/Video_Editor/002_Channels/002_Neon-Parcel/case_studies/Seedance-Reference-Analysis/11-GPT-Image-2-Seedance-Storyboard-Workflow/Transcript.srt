@@ -1,0 +1,160 @@
+1
+00:00:00,000 --> 00:00:07,680
+Okay, you've probably seen these videos everywhere recently storyboard plus an AI video and somehow the AI actually
+
+2
+00:00:07,680 --> 00:00:14,440
+Follows every single frame. I kept seeing these and thought there's no way it's actually this easy turns out it kind of is
+
+3
+00:00:14,920 --> 00:00:21,920
+So in this video, let me show you exactly how I've been making these using GPT image 2 and cdance 2.0
+
+4
+00:00:22,120 --> 00:00:29,960
+I've tried this with product ads cinematic scenes anime and honestly it works surprisingly well across all of them
+
+5
+00:00:30,000 --> 00:00:38,840
+Before we touch the storyboard, there's one thing that's worth spending an extra minute on. Character, product, or basically anything you want to keep consistent.
+
+6
+00:00:38,840 --> 00:00:45,920
+If your character changes every other shot, you'll notice it immediately. So I like to build a few reference images first.
+
+7
+00:00:45,920 --> 00:00:51,360
+Inside Luba, you can find the AI image generator here and I'm using GPT image 2.
+
+8
+00:00:52,360 --> 00:01:02,360
+Upload a few references, write my prompt. You can literally copy this prompt and use it to create your own reference sheet.
+
+9
+00:01:02,360 --> 00:01:11,360
+Then I set it to 2k, which is more than enough for me. High quality, 16x9, and generate 4 versions to compare.
+
+10
+00:01:11,360 --> 00:01:15,360
+Usually one of them is exactly what I'm looking for.
+
+11
+00:01:16,360 --> 00:01:19,360
+Yep, I like this one. Let's keep it.
+
+12
+00:01:19,360 --> 00:01:25,360
+That I'm going to do the same thing for the product since I'm making a product ad this time. This one looks great.
+
+13
+00:01:25,360 --> 00:01:33,360
+Now we can actually build the storyboard. This part is honestly my favorite because you get to plan the whole video before spending credits on video generation.
+
+14
+00:01:33,360 --> 00:01:40,360
+I'm uploading the character reference, the product reference, and here's the prompt. And I use GPT for a little help.
+
+15
+00:01:41,360 --> 00:01:49,360
+Then now I'm asking GPT image 2 to turn everything into a storyboard. Here comes the result. This one's definitely the one I'd use.
+
+16
+00:01:49,360 --> 00:01:53,360
+The framing is clean and the shot sequence already feels like a real commercial.
+
+17
+00:01:53,360 --> 00:01:59,360
+Here's the part everyone actually came for. I'm going to click Generate Video, then switch over to Seedance 2.0.
+
+18
+00:01:59,360 --> 00:02:05,360
+The storyboard goes in first. Then I upload the same character reference and product reference again.
+
+19
+00:02:05,360 --> 00:02:11,360
+Trust me, it's worth the extra few seconds. It really helps keep everything consistent in the final video.
+
+20
+00:02:11,360 --> 00:02:17,360
+My prompt is actually pretty short. You don't need to write an essay here. And here's what came back.
+
+21
+00:02:17,360 --> 00:02:29,360
+Honestly, this is the part that still surprises me. It doesn't just copy the images. It actually understands the sequence, the camera movement, the pacing, even the transitions between shots feel intentional.
+
+22
+00:02:30,360 --> 00:02:36,360
+This workflow actually works for more than just product ads. I'll quickly show you two more example I tested inside Luba.
+
+23
+00:02:36,360 --> 00:02:40,360
+One is a cinematic short film. The other one is anime.
+
+24
+00:02:40,360 --> 00:02:52,360
+Let's start with the cinematic one. Just like before, I open GPT Image 2. Just like the process I've made in product ad creation, it's better to create a character reference sheet before generating the storyboard.
+
+25
+00:02:52,360 --> 00:02:57,360
+The process is the same, so I'm not showing it again. So I upload a character reference.
+
+26
+00:02:57,360 --> 00:03:04,360
+I use GPT to generate a detailed storyboard prompt for me so I can quickly put it in the prompt box and get the result.
+
+27
+00:03:04,360 --> 00:03:13,360
+Then I generate the storyboard. And this is what I got. You can immediately feel the difference. It's less commercial polish, more like a real short film sequence.
+
+28
+00:03:13,360 --> 00:03:19,360
+You've got establishing shots, character close ups, emotional beats, slower pacing.
+
+29
+00:03:19,360 --> 00:03:27,360
+Honestly, it already feels like a shot list from a director. Now I take the same exact step as before. Go into cdance 2.0.
+
+30
+00:03:27,360 --> 00:03:35,360
+Upload, storyboard, image 1, character reference, image 2, and I'll usually keep the prompts very simple again.
+
+31
+00:03:35,360 --> 00:03:47,360
+That's it. No need to overthink it. And this is the result. The camera movement feels more natural here. There's more emotion in the pacing. And it actually respects the storyboard structure really well.
+
+32
+00:03:49,360 --> 00:04:09,360
+Now anime works exactly the same way, just with a slightly different visual direction. Back in the GPT image 2, same setup, character reference uploaded, then the prompts becomes more Pixar inspired, styled focused.
+
+33
+00:04:09,360 --> 00:04:18,360
+And yeah, this is what I got. Honestly, it's already insane. It looks like a storyboard straight from a professional anime production studio.
+
+34
+00:04:18,360 --> 00:04:32,360
+Same process again. Click generate video, select cdance 2.0, upload, the storyboard we've just made, character reference, prompts stays simple again.
+
+35
+00:04:32,360 --> 00:04:39,360
+Final anime animation. And this is the final output.
+
+36
+00:04:39,360 --> 00:04:57,360
+Honestly, all three styles, commercials, cinematic films, and anime translate really well using this workflow.
+
+37
+00:04:57,360 --> 00:05:08,360
+What I like most about this workflow is control. You don't burn video credits while ideating, storyboards and GPT image 2 are cheaper and faster to iterate than cdance 2.0.
+
+38
+00:05:08,360 --> 00:05:17,360
+So yeah, if you've been generating every shot one at a time, give this workflow a try. It's faster, it's easier to control, and honestly it's just a lot more fun.
+
+39
+00:05:17,360 --> 00:05:24,360
+If you want to try it yourself, everything in this video was made inside Luba AI. Thanks for watching, and I'll catch you in the next one.
+
+40
+00:05:27,360 --> 00:05:37,360
+Thanks for watching.
+

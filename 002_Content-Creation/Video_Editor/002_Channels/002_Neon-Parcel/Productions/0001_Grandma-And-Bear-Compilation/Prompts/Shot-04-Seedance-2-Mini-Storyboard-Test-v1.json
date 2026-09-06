@@ -1,0 +1,56 @@
+{
+  "shot_id": "Shot-04",
+  "version": "v1-storyboard-test",
+  "model": "bytedance/seedance-2-mini",
+  "generation_resolution": "480p",
+  "duration_seconds": 10,
+  "aspect_ratio": "16:9",
+  "reference_assets": [
+    "Images/Shot-04-Storyboard-v1.png"
+  ],
+  "postprocess": {
+    "topaz": "pending",
+    "ffmpeg_normalization": "pending"
+  },
+  "prompt_sections": {
+    "camera_lock": "The attached storyboard is a visual continuity reference only. Preserve a distant neighbor-filmed smartphone viewpoint from across an ordinary suburban backyard. Keep imperfect handheld framing, natural daylight, ordinary phone exposure, mild digital noise, the same fence, house edge, flowerbed, lawn, and backyard geometry. The camera operator remains off camera and does not move into the scene. Do not turn this into a polished commercial or cinematic tracking shot.",
+    "scene_continuity": "Maintain one continuous backyard event with exactly one older woman and one large black bear. The woman is watering flowers near the house and initially faces the flowerbed, with her back partly toward the yard. The bear is behind her near the back fence. Keep the same woman, bear, hose, flowerbed, fence, house, and distant neighbor-phone viewpoint throughout.",
+    "action_timeline": [
+      "The woman calmly waters the flowers while facing the flowerbed and remains unaware of the yard behind her.",
+      "The bear quietly steps into view behind her near the fence while she continues watering and does not see it.",
+      "The off-camera neighbor calls once, \"Ma'am, turn around!\" while the woman is still facing the flowers.",
+      "The woman stops watering, turns her head and shoulders toward the yard, and then sees the bear behind her.",
+      "She backs quickly toward the house while keeping the bear in view; end on the same backyard phone viewpoint without a cut."
+    ],
+    "audio": {
+      "ambient": [
+        "quiet suburban backyard",
+        "light wind",
+        "distant neighborhood ambience"
+      ],
+      "foley": [
+        "water spraying from the hose",
+        "grass and flowerbed movement",
+        "quick footsteps on lawn"
+      ],
+      "in_scene_dialogue": [
+        {
+          "speaker": "off-camera neighbor",
+          "line": "Ma'am, turn around!"
+        }
+      ],
+      "music": "none"
+    },
+    "hard_constraints": [
+      "Use the storyboard only for visual continuity; do not reproduce its grid, panels, captions, numbers, or descriptions.",
+      "The woman must face the flowers and be unaware of the bear before the neighbor's warning.",
+      "The woman must not already be facing the bear when the neighbor says to turn around.",
+      "Keep exactly one woman and one bear; no duplicates, morphing, teleporting, or identity changes.",
+      "The bear remains behind the woman until she turns; do not place it in front of her at the beginning.",
+      "No camera cut, camera operator entering frame, cinematic tracking shot, commercial lighting, subtitles, captions, title cards, labels, watermarks, emojis, or graphics."
+    ]
+  },
+  "prompt": "CAMERA LOCK: The attached storyboard is a visual continuity reference only. Preserve a distant neighbor-filmed smartphone viewpoint from across an ordinary suburban backyard. Keep imperfect handheld framing, natural daylight, ordinary phone exposure, mild digital noise, the same fence, house edge, flowerbed, lawn, and backyard geometry. The camera operator remains off camera and does not move into the scene. Do not turn this into a polished commercial or cinematic tracking shot.\n\nSCENE CONTINUITY: Maintain one continuous backyard event with exactly one older woman and one large black bear. The woman is watering flowers near the house and initially faces the flowerbed, with her back partly toward the yard. The bear is behind her near the back fence. Keep the same woman, bear, hose, flowerbed, fence, house, and distant neighbor-phone viewpoint throughout.\n\nACTION TIMELINE: The woman calmly waters the flowers while facing the flowerbed and remains unaware of the yard behind her. The bear quietly steps into view behind her near the fence while she continues watering and does not see it. The off-camera neighbor calls once, \"Ma'am, turn around!\" while the woman is still facing the flowers. The woman stops watering, turns her head and shoulders toward the yard, and then sees the bear behind her. She backs quickly toward the house while keeping the bear in view; end on the same backyard phone viewpoint without a cut.\n\nAUDIO: Natural audio only: quiet suburban backyard, light wind, distant neighborhood ambience, water spraying from the hose, grass and flowerbed movement, and quick footsteps on lawn. The off-camera neighbor speaks once: \"Ma'am, turn around!\" No music.\n\nHARD CONSTRAINTS: Use the storyboard only for visual continuity; do not reproduce its grid, panels, captions, numbers, or descriptions. The woman must face the flowers and be unaware of the bear before the neighbor's warning. The woman must not already be facing the bear when the neighbor says to turn around. Keep exactly one woman and one bear; no duplicates, morphing, teleporting, or identity changes. The bear remains behind the woman until she turns; do not place it in front of her at the beginning. No camera cut, camera operator entering frame, cinematic tracking shot, commercial lighting, subtitles, captions, title cards, labels, watermarks, emojis, or graphics.",
+  "task_id": "e0076c7aa98af3bb9febd349a0a5699c",
+  "reference_url": "https://res.cloudinary.com/da6zdvts2/image/upload/v1787946059/neon-parcel/0001/Shot-04-Storyboard-v1-reference-test.jpg"
+}

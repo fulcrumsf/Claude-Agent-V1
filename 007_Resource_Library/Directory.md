@@ -4,7 +4,13 @@ This directory serves as the filing cabinet for all reference materials, researc
 
 > **AGENT INSTRUCTION:** If an ingested file does not clearly belong in one of the existing folders below, the agent MUST ask Tony for approval before creating a new directory. Do not guess or create new top-level folders without permission.
 
-> **GLOBAL TAGGING RULE:** EVERY text file or Asset Note routed into this library MUST include 2 to 5 descriptive category tags (e.g., `ai-automation`, `agentic-ai`, `video-production`) in its YAML frontmatter. This ensures AI filterability across all folders.
+> **GLOBAL FRONTMATTER CONTRACT:** EVERY note in this library (text-file OR image-derived) MUST conform to the single canonical contract defined in `001_Architecture/Skills/ingest/SKILL.md` → "Step 2 / Frontmatter Rules". Summary:
+> - `tags:` (lowercase YAML block list) is the ONLY tag carrier — never `Tag:`, `Tags:`, or a `Category:` list. 2–5 tags, lowercase kebab-case, topical.
+> - `type:` — required, single value, real content type (never `extracted-knowledge`).
+> - `form:` — required, single value: what the thing IS (`github-repo`, `saas-tool`, `youtube-video`, `tiktok`, `channel-study`, …). This is what makes fuzzy library queries resolvable.
+> - `summary:` — required frontmatter field, 1–3 sentences on the primary subject.
+> - `url:` — required whenever a source / product / repo URL is **visible** (obfuscated-but-reconstructable counts). GitHub repos: `form: github-repo` + `github-repo` as first tag + repo URL in `url:` only if shown.
+> - `search_for:` — when `url` is unknown but the thing is nameable: the web-search string to resolve it later. Pairs with a `needs-enrichment` tag. **Never invent a URL** that wasn't in the source.
 
 ## Folder Layout & Descriptions
 

@@ -1,5 +1,6 @@
 # test_analyze_reference_video.py
 from pathlib import Path
+from subprocess import CalledProcessError
 from unittest.mock import patch, MagicMock
 import pytest
 from analyze_reference_video import download_video, detect_scenes, analyze_video_narrative, write_analysis_md, main
@@ -15,6 +16,21 @@ def test_download_video_calls_yt_dlp_and_returns_path(tmp_path):
         check=True, capture_output=True,
     )
     assert result == expected_path
+
+def test_download_video_falls_back_to_separate_mp4_video_and_audio(tmp_path):
+    with patch("analyze_reference_video.subprocess.run") as mock_run:
+        mock_run.side_effect = [
+            CalledProcessError(1, ["yt-dlp"]),
+            MagicMock(returncode=0),
+        ]
+        result = download_video("https://youtube.com/shorts/abc123", tmp_path)
+
+    assert result == tmp_path / "Video.mp4"
+    assert mock_run.call_count == 2
+    assert mock_run.call_args_list[1].args[0][0:5] == [
+        "yt-dlp", "-f", "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]",
+        "--merge-output-format", "mp4",
+    ]
 
 def test_detect_scenes_parses_ffmpeg_output_into_boundaries(tmp_path):
     video_path = tmp_path / "Video.mp4"
