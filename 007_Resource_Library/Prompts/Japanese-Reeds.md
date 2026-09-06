@@ -1,7 +1,19 @@
 ---
-Category: bathroom
-Phase 2: Set
-Score: "75"
-Status: Not started
-url: https://www.etsy.com/search?q=cat+approved+bathroom+sign&sort_by=best_selling
+title: "Japanese Reeds"
+type: tool-doc
+form: saas-tool
+summary: "This link leads to a search results page on Etsy, an e-commerce platform for handmade, vintage, and unique items. The search query is for 'cat approved bathroom sign' and the results are sorted by best-selling items. Etsy provides a marketplace for independent makers, DIY crafters, and collectors to sell their products."
+url: "https://www.etsy.com/search?q=cat+approved+bathroom+sign&sort_by=best_selling"
+verified: true
+tags:
+  - e-commerce
+  - handmade-goods
+  - home-decor
+  - pet-accessories
+  - search-results
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+This link leads to a search results page on Etsy, an e-commerce platform for handmade, vintage, and unique items. The search query is for 'cat approved bathroom sign' and the results are sorted by best-selling items. Etsy provides a marketplace for independent makers, DIY crafters, and collectors to sell their products.

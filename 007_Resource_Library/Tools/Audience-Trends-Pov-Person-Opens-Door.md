@@ -1,16 +1,27 @@
 ---
 title: "Audience Trends Pov Person Opens Door"
-type: tool-doc
+type: research
 category: content-strategy
+form: social-thread
+summary: "A screenshot of YouTube Studio analytics showing the 'Content' tab, specifically highlighting a section for 'YouTube search terms'. The visible data tracks audience queries like 'grandma feeding bear' and 'benny and grandma' over the last 28 days. This image documents how viewers find specific videos through keyword searches rather than recommendations."
+search_for: "YouTube Studio Analytics Search Terms Report tutorial"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Audience Trends Pov Person Opens Door with readable text about a as)."
+  - youtube-analytics
+  - seo-strategy
+  - audience-insights
+  - shorts-metrics
+  - needs-enrichment
 original_filename: "IMG_8821.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Audience-Trends-POV-Person-Opens-Door.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Audience Trends Pov Person Opens Door with visible text about a as). It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A screenshot of YouTube Studio analytics showing the 'Content' tab, specifically highlighting a section for 'YouTube search terms'. The visible data tracks audience queries like 'grandma feeding bear' and 'benny and grandma' over the last 28 days. This image documents how viewers find specific videos through keyword searches rather than recommendations.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `YouTube Studio Analytics Search Terms Report tutorial`

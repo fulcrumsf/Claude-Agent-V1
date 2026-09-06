@@ -28,6 +28,25 @@ When Tony asks for a recommendation, suggestion, options, or where something sho
 
 Codex should use `001_Architecture/Skills/codex-agent-os-hardening/SKILL.md` whenever operating in Agent-OS. The skill mirrors Claude Code's Agent-OS operating discipline: read the core manuals and maps, check skills/tools first, respect recommendation approval boundaries, preserve files, update feedback/logs/memory, and close sessions cleanly.
 
+### 2026-09-06 — Neon Parcel Autonomy Scores Track Human-Iteration Readiness
+
+For Neon Parcel long-form compilations, Tony's percentage score is not a rigid
+completion gate. A score around 65% means Tony intentionally remains in a
+human-iterated hardening loop, checking prompts and videos whenever he wants
+throughout an end-to-end production. After each full production he reviews the
+system and raises the score as the pipeline hardens. Around 95%, Tony expects
+to reduce manual checks and make the process mostly autonomous.
+
+### 2026-09-06 — Phase Context Is Not Approval To Execute
+
+When Tony says what the next phase is, agents must treat that as orientation
+context only. The required workflow is: interview Tony about what he wants,
+draft a plan from that input, wait for explicit approval, then execute. Do not
+build production artifacts, modify scripts, run renders, or start
+implementation from phase context alone. Premature execution risks mutating or
+breaking previously built systems before the current session goal is understood;
+establish the session goal first.
+
 ### 2026-09-04 — Agent-OS Onboarding Priority
 
 When getting oriented in Agent-OS, prioritize the numbered top-level folders (`NNN_...`) as the main operating departments. Tony's hierarchy is: `001_Architecture` first, `002_Content-Creation` second, `007_Resource_Library` third. `000_Ingest` can usually be skipped unless the task is specifically about ingesting or organizing raw intake.
@@ -112,6 +131,7 @@ Tony wants screenshot renaming to use Gemini vision first, then OpenAI vision as
 - Config files always use placeholder references like `${KEY_NAME}` — never real values
 - If a tool needs a key, it reads it from the environment after `source ~/.env-secrets` has been run via `~/.agent-bootstrap.sh`
 - Any agent that finds a hardcoded key in a file must replace it with a placeholder immediately and flag it to Tony
+- This holds even when Tony asks for the end result (e.g. "switch claude-mem to Gemini for me"). If a tool's installer/config wants a literal key, add an **alias export** in `~/.env-secrets` pointing at the existing var (`export CLAUDE_MEM_GEMINI_API_KEY="$GEMINI_API_KEY"`) and rely on the tool's env-var fallback; leave the tool's own key field blank. Never duplicate a key into a second file — each copy is another leak/rotation surface. (Correction logged 2026-09-05: Claude wrote GEMINI key into `~/.claude-mem/settings.json`, then remediated.)
 
 ### 2026-05-03 — Shared Agent Bootstrap Draft
 
@@ -1091,3 +1111,124 @@ Seedance handoff must preserve verified visual observations from the accepted
   a `graphify extract --force` rebuild adds path-qualified IDs (fixes same-name-file
   collisions). Not urgent — queries work as-is.
 - REGISTRY.md now has a `## Tooling version` section as the source of truth for this.
+
+### 2026-09-05 — Neon Parcel narration direction
+- Neon Parcel narrator voice selected: ElevenLabs `Herbie`, voice ID
+  `Kz0DA4tCctbPjLay2QT1`.
+- Use concise intro/transition narration rather than continuous commentary;
+  preserve usable in-clip speech, keep every VO segment shorter than its clip,
+  and keep total VO well under the combined footage runtime for edit flexibility.
+
+### 2026-09-05 — Neon Parcel narration assembly validated
+- Tony approved the narration review direction: short Herbie lines add humor
+  while original clip dialogue and natural sound remain present.
+- Locked review-cut defaults for Neon Parcel compilations: separate
+  shot-aligned ElevenLabs assets, original audio volume `0.55`, narration
+  volume `1.6`, 48 kHz stereo, timestamp-safe filter concat, intentional
+  silence for clips with no audio, and no music/branding before narration review.
+- Always verify audio reaches the video endpoint; stream-copy concat is unsafe
+  when generated clips mix missing audio streams, sample rates, and timestamps.
+
+### 2026-09-05 — Neon Parcel music and end-screen defaults
+- After narration review approval, use an instrumental, comical, quirky,
+  whimsical, kid-friendly, family-friendly home-video-TV-show music bed; no
+  lyrics, profanity, ominous drama, or commercial/trailer energy.
+- Every Neon Parcel long-form video ends with the seven-second horizontal asset:
+  `002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Assets/Neon_Parcel_Endscreen_Horizontal_1080.mp4`.
+- CTA uses locked Herbie voice and must fit entirely inside the seven-second
+  end-screen window. Tony selects CTA wording before paid TTS generation.
+
+### 2026-09-05 — Neon Parcel compilation status
+- Tony graded the completed Grandma-and-Bear compilation **B**.
+- Tony set the Neon Parcel Compilation pipeline at **65% autonomy-ready**;
+  **95%** is the threshold for mostly autonomous scheduled operation with
+  minimal interaction. Manual creative review, non-destructive versioning,
+  paid-generation safeguards, exception handling, and publishing approval stay
+  active below and above that threshold.
+- Next production gate: title, description, thumbnail, and complete YouTube
+  package approval before Blotato publishing.
+
+### 2026-09-05 — Video-Analyzer model and routing defaults
+- The shared Video-Analyzer defaults to Gemini 3.8 Flash. Long-form case studies
+  and tutorials use explicit Gemini agentic processing through the Interactions
+  API, while continuity and physics audits use static Gemini plus dense 0.5s
+  keyframes. Screen-text reviews use static Gemini plus full-resolution keyframes.
+- `hybrid` is the high-risk route: agentic narrative understanding plus dense
+  local frames. Agentic sampling must never be treated as exhaustive frame review.
+- Required frame-sensitive checks include deformed/extra limbs, morphing,
+  duplicate or missing subjects, broken object connections, impossible paths or
+  entrances/exits, and causality errors. The analyzer records the agentic
+  processing trace when the API returns it.
+
+### 2026-09-05 — YouTube thumbnail architecture add-on
+- The YouTube thumbnail skill retains its existing defaults and now includes an
+  optional Architecture-First Thumbnail Pass. Use it for complex, multi-element,
+  identity-sensitive, or high-cost thumbnail work.
+- The add-on requires one dominant visual promise, a structured foreground/
+  midground/background and negative-space brief, a deliberate modular-asset
+  decision, one-variable refinements, non-destructive versions, and mobile/safe-
+  zone validation. It makes no guarantee of viral or CTR performance.
+
+### 2026-09-05 — Mandatory thumbnail visual-reference gate
+- Tony's standing rule: never design or generate a thumbnail from text-based
+  case-study takeaways alone. At least one good thumbnail example must be
+  visually inspected first, with concrete lessons recorded for focal hierarchy,
+  scale, expression/gaze, contrast, text placement, simplicity, and mobile
+  readability. This is a prerequisite, not an optional enhancement.
+
+### 2026-09-05 — Compilation-level thumbnail and title promise
+- For long-form compilations, thumbnail overlays and titles must sell the
+  collection-level experience, not one isolated hero clip. Use a representative
+  vivid moment to imply the recurring pattern, but make the copy collection-
+  oriented and verify it against the actual clip set.
+- Neon Parcel packaging should be bright, eye-catching, vivid, and poppy while
+  preserving truthful expectations about the full compilation.
+
+### 2026-09-05 — Neon Parcel thumbnail template default
+- The global reusable thumbnail framework is
+  `001_Architecture/Skills/youtube-thumbnail-design/Thumbnail-Architecture-Template.json`.
+- The Neon Parcel long-form compilation pipeline must always instantiate that
+  formatted template for thumbnail planning and generation. It is not optional
+  within this pipeline, even though other channels may choose whether to use it.
+
+### 2026-09-06 — Thumbnail demographics are content-first
+- The reusable thumbnail template must derive people and demographic
+  representation from the actual video; it must never assume white, Asian,
+  Black, Southern, or any other identity by default.
+- The white Southern Grandma direction applies only to the current
+  Grandma-and-Bear compilation because that production brief calls for it. It
+  is not a global rule and must not be carried into future compilations.
+
+### 2026-09-06 — Neon Parcel metadata tags default
+- Every Neon Parcel long-form title/description pass must also generate a
+  comma-separated YouTube tag string under 500 characters.
+- Tags are based on collection-level search intent and include a small number
+  of plausible common misspellings. They must not make unsupported claims about
+  authenticity or specific events.
+
+### 2026-09-06 — Blotato MCP is enabled for Codex
+- Codex has a global enabled streamable HTTP MCP registration named `blotato`
+  for `https://mcp.blotato.com/mcp`.
+- It uses `BLOTATO_API_KEY` through `bearer_token_env_var`; never place the
+  literal credential in Codex configuration. Restart Codex to load the tools in
+  an existing session.
+
+### 2026-09-06 — Neon Parcel Blotato upload validated
+- The Grandma-and-Bear compilation was successfully uploaded privately to
+  Neon Parcel YouTube through native Codex Blotato MCP after verifying account
+  `25731`. Submission: `072ab410-d284-42db-8a7f-732313a7f2c3`; URL:
+  `https://www.youtube.com/watch?v=Wxc3xBnaoNo`.
+- Locked upload defaults for this pipeline: title/description selected only
+  after package approval, private visibility, `isMadeForKids: false`,
+  `containsSyntheticMedia: true`, notifications disabled, approved thumbnail
+  via a separate sub-2 MB upload copy, and status polling after submission.
+- Tags, category, and caption language remain explicit YouTube Studio follow-up
+  fields because Blotato does not expose them in its YouTube schema.
+
+### 2026-09-06 — Neon Parcel upload closeout
+- Tony completed the manual YouTube Studio steps for the Grandma-and-Bear
+  compilation: tags added, category set to Comedy, and caption language set to
+  English. The production is complete as a private upload.
+- For future Neon Parcel packages, choose YouTube category from the actual
+  editorial promise: Comedy for comedy-led compilations; Entertainment only
+  when the collection is broader than comedy. This is not a global default.

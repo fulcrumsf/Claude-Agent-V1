@@ -2,13 +2,26 @@
 title: "Faceless Pov AI Agent High Level Overview"
 type: workflow
 category: workflows
+form: workflow-diagram
+summary: "A handwritten system specification and flowchart for automating AI-generated POV video publishing to YouTube. The workflow utilizes a multi-step pipeline involving OpenAI for prompt expansion, Flux/Kling for image and video generation, ElevenLabs for audio, and Creatomate for final rendering and stitching."
+search_for: "OpenAI ChatGPT gpt-4 Flux Kling ElevenLabs Creatomate API integration workflow"
 tags:
   - workflows
+  - automation
+  - aigc-video
+  - youtube-api
+  - creatmate
+  - workflow-diagram
+  - kling-ai
+  - needs-enrichment
 created: 2026-05-03
-source: faceless-pov-ai-agent-high-level-overview.png
+enriched: 2026-09-05
 ---
 
 ![[Faceless-POV-AI-Agent-High-Level-Overview.png]]
 
-## AI Analysis
-Image reference from Notion export: faceless-pov-ai-agent-high-level-overview.
+## Summary
+A handwritten system specification and flowchart for automating AI-generated POV video publishing to YouTube. The workflow utilizes a multi-step pipeline involving OpenAI for prompt expansion, Flux/Kling for image and video generation, ElevenLabs for audio, and Creatomate for final rendering and stitching.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `OpenAI ChatGPT gpt-4 Flux Kling ElevenLabs Creatomate API integration workflow`

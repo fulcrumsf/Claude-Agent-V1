@@ -1,16 +1,20 @@
 ---
-Faceless Type: Story Book
-Description: Storybook style automations
+title: "Storybook Animation Transitions"
+type: tutorial
+form: youtube-video
+summary: "The video demonstrates an n8n AI workflow that automates the creation of children's books, including cover design, text generation, and image assembly into a PDF, ensuring consistent characters. It provides a free template and a step-by-step guide to building this automation."
+url: "https://youtu.be/fePma0_Zn_8?si=RyblVG7rVgNiYVGv"
+verified: true
 tags:
   - Story-Books
-Rating: ★★★☆☆ (3 stars)
-Difficulty Level: Intermediate
+  - ai-automation
+  - n8n
+  - content-creation
+  - childrens-books
+  - no-code
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-**High Priority**
-[https://youtu.be/fePma0_Zn_8?si=RyblVG7rVgNiYVGv](https://youtu.be/fePma0_Zn_8?si=RyblVG7rVgNiYVGv)
-**NCA+Gemini+KokoroTTS**
-  
-**Medium Priority**
-[https://youtu.be/fY96Z3GUaGY?si=4AAnWFLYKBTow6nZ](https://youtu.be/fY96Z3GUaGY?si=4AAnWFLYKBTow6nZ)
-**Gemini+NCA+FishAudio**
-**Low Priority**
+
+## Summary
+The video demonstrates an n8n AI workflow that automates the creation of children's books, including cover design, text generation, and image assembly into a PDF, ensuring consistent characters. It provides a free template and a step-by-step guide to building this automation.

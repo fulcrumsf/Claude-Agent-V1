@@ -1,7 +1,19 @@
 ---
-URL: https://vochlea.com/products/dubler2
-Category: Tools
-Description: Record your music ideas easily
-Tag:
-  - Audio
+title: "Dubler 2"
+type: tool-doc
+form: desktop-app
+summary: "Dubler 2 is a standalone desktop application by Vochlea that transforms vocal input into real-time MIDI signals. It allows users to control virtual instruments and DAWs by singing, humming, or beatboxing, translating pitch and percussive sounds into MIDI notes. The tool aims to streamline music creation by enabling users to record musical ideas directly with their voice."
+url: "https://vochlea.com/products/dubler2"
+verified: true
+tags:
+  - voice-to-midi
+  - music-production
+  - midi-controller
+  - digital-audio-workstation
+  - ai-music-tech
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Dubler 2 is a standalone desktop application by Vochlea that transforms vocal input into real-time MIDI signals. It allows users to control virtual instruments and DAWs by singing, humming, or beatboxing, translating pitch and percussive sounds into MIDI notes. The tool aims to streamline music creation by enabling users to record musical ideas directly with their voice.

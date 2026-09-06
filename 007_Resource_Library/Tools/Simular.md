@@ -1,8 +1,19 @@
 ---
-URL: https://www.simular.ai/
-Category: Tools
-Description: Simular is a research/agent product focused on autonomous AI agents that can plan and execute tasks. It’s often referenced for “Agent S” style computer-use agents and experimentation with agent capabilities.
-Tag:
-  - AI Agents
-  - Automation
+title: "Simular"
+type: tool-doc
+form: saas-tool
+summary: "Simular AI develops intelligent, general-purpose AI agents that interact with computers across macOS, Windows, and Linux, mimicking human actions like clicking and typing. These agents automate complex workflows and adapt to changing software environments, aiming to create autonomous computing experiences."
+url: "https://www.simular.ai/"
+verified: true
+tags:
+  - ai-agents
+  - workflow-automation
+  - autonomous-computing
+  - desktop-automation
+  - human-computer-interaction
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Simular AI develops intelligent, general-purpose AI agents that interact with computers across macOS, Windows, and Linux, mimicking human actions like clicking and typing. These agents automate complex workflows and adapt to changing software environments, aiming to create autonomous computing experiences.

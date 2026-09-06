@@ -1,14 +1,20 @@
 ---
 title: "Unomas0795 Surreal Dreamworld Ar 43 V 6"
-type: research
+type: design-inspiration
 category: research
+form: design-reference
+summary: "A surreal digital artwork featuring a massive rocky cliff topped with a detailed fantasy castle and spires. The landscape morphs into a giant human face profile, surrounded by whimsical elements like pink coral-like clouds, floating balloons, and misty skies."
 tags:
   - research
+  - surrealism
+  - fantasy-art
+  - digital-dreamscape
+  - concept-art
 created: 2026-05-03
-source: unomas0795_surreal_dreamworld_--ar_43_--v_6.1_5bda1797-e520-473f-870a-77f20ec5adde_0.png
+enriched: 2026-09-05
 ---
 
 ![[Unomas0795-Surreal-Dreamworld-Ar-43-V-6.png]]
 
-## AI Analysis
-Image reference from Notion export: unomas0795_surreal_dreamworld_--ar_43_--v_6.1_5bda1797-e520-473f-870a-77f20ec5adde_0.
+## Summary
+A surreal digital artwork featuring a massive rocky cliff topped with a detailed fantasy castle and spires. The landscape morphs into a giant human face profile, surrounded by whimsical elements like pink coral-like clouds, floating balloons, and misty skies.

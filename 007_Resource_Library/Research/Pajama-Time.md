@@ -1,14 +1,20 @@
 ---
 title: "Pajama Time"
-type: research
+type: reference
 category: research
+form: other
+summary: "A blue line-drawing illustration of a pair of loose sweatpants and slippers accompanied by the caption 'It's been real. It's pajama time.' The image appears to be a relatable meme or comfort-themed greeting intended for personal enjoyment."
 tags:
   - research
+  - pajamas
+  - relatable-meme
+  - comfort
+  - illustration
 created: 2026-05-03
-source: Pajama_Time.jpg
+enriched: 2026-09-05
 ---
 
 ![[Pajama-Time.jpg]]
 
-## AI Analysis
-Image reference from Notion export: Pajama_Time.
+## Summary
+A blue line-drawing illustration of a pair of loose sweatpants and slippers accompanied by the caption 'It's been real. It's pajama time.' The image appears to be a relatable meme or comfort-themed greeting intended for personal enjoyment.

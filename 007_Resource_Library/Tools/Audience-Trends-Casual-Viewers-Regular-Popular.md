@@ -1,16 +1,28 @@
 ---
 title: "Audience Trends Casual Viewers Regular Popular"
-type: tool-doc
+type: reference
 category: content-strategy
+form: dashboard-screenshot
+summary: "Screenshot of the YouTube Studio mobile app showing the Audience tab with detailed viewer metrics. The view highlights the split between casual and regular viewers, a list of popular videos attracting new audiences with view counts over 28 days, and an analytics chart on viewer presence times. This is saved as a reference for channel analytics and audience behavior patterns."
+search_for: "YouTube studio audience demographics casual vs regular viewers"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Audience Trends Casual Viewers Regular Popular with readable text about Overview."
+  - youtube-studio
+  - audience-analytics
+  - channel-growth
+  - casual-viewers
+  - content-insights
+  - needs-enrichment
 original_filename: "IMG_8822.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Audience-Trends-Casual-Viewers-Regular-Popular.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Audience Trends Casual Viewers Regular Popular with visible text about Overview. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+Screenshot of the YouTube Studio mobile app showing the Audience tab with detailed viewer metrics. The view highlights the split between casual and regular viewers, a list of popular videos attracting new audiences with view counts over 28 days, and an analytics chart on viewer presence times. This is saved as a reference for channel analytics and audience behavior patterns.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `YouTube studio audience demographics casual vs regular viewers`

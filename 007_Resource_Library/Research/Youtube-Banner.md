@@ -1,14 +1,20 @@
 ---
 title: "Youtube Banner"
-type: research
+type: design-inspiration
 category: research
+form: design-reference
+summary: "A cinematic group portrait of five men dressed in ornate, historical armor with gold detailing and red capes against a dark background. The image features dramatic lighting and realistic facial textures, serving as visual inspiration for character design or concept art in historical fantasy settings."
 tags:
   - research
+  - character-design
+  - concept-art
+  - historical-portrait
+  - cinematic-lighting
 created: 2026-05-03
-source: Youtube_Banner.png
+enriched: 2026-09-05
 ---
 
 ![[Youtube-Banner.png]]
 
-## AI Analysis
-Image reference from Notion export: Youtube_Banner.
+## Summary
+A cinematic group portrait of five men dressed in ornate, historical armor with gold detailing and red capes against a dark background. The image features dramatic lighting and realistic facial textures, serving as visual inspiration for character design or concept art in historical fantasy settings.

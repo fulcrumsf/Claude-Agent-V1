@@ -1,16 +1,27 @@
 ---
 title: "Ollow Ses Bypass Expensive Dates Act"
-type: tool-doc
+type: prompt
 category: content-strategy
+form: tiktok
+summary: "A TikTok video by Digital Laura A showcasing a reusable AI prompt designed to bypass expensive dates when booking flights. The central text displays a specific prompt instructing the AI to act as a flight analyst to find the cheapest round-trip combos based on flexible weekdays and months."
+search_for: "Digital Laura A AI travel tips chatgpt prompts"
 tags:
   - screenshot
   - prompt
-ai_description: "Screenshot of Ollow Ses Bypass Expensive Dates Act with readable text about ollow."
+  - chatgpt-prompt
+  - travel-tips
+  - airfare-hacks
+  - ai-use-cases
+  - needs-enrichment
 original_filename: "IMG_7654.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Ollow-Ses-Bypass-Expensive-Dates-Act.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Ollow Ses Bypass Expensive Dates Act with visible text about ollow. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A TikTok video by Digital Laura A showcasing a reusable AI prompt designed to bypass expensive dates when booking flights. The central text displays a specific prompt instructing the AI to act as a flight analyst to find the cheapest round-trip combos based on flexible weekdays and months.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Digital Laura A AI travel tips chatgpt prompts`

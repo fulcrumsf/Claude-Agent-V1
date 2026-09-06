@@ -1,26 +1,20 @@
 ---
-Faceless Type: Shortform
-Description: Shorts workflows
+title: "Shorts Workflow"
+type: tutorial
+form: youtube-video
+summary: "This YouTube video presents a 4-hour workflow for efficiently creating 30 YouTube Shorts. It details a batching process that includes identifying content opportunities, developing topics and hooks, writing scripts, and using AI for video production, aiming to streamline content creation and reduce context switching. The tutorial emphasizes strategic batching and leveraging AI to handle repetitive tasks, enabling creators to produce a month's worth of Shorts in a single production block."
+url: "https://youtu.be/CIYv59aJIv8?si=K65jF553jtPCy27e"
+verified: true
 tags:
   - Shortform
+  - youtube-shorts
+  - content-creation
+  - workflow-automation
+  - ai-tools
+  - video-production
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-**High Priority**
-[https://youtu.be/CIYv59aJIv8?si=K65jF553jtPCy27e](https://youtu.be/CIYv59aJIv8?si=K65jF553jtPCy27e)
-[[RoboNuggets Faceless Any Subject n8n Automation]]
-[https://youtu.be/hJKkZY6ZvAg?si=n6ijlDXzpmGoyCRU](https://youtu.be/hJKkZY6ZvAg?si=n6ijlDXzpmGoyCRU)
-**Freepik+Veo**
-[https://youtu.be/JhiStx-uQYY?si=5JZbpTCwjLpzN5Ze](https://youtu.be/JhiStx-uQYY?si=5JZbpTCwjLpzN5Ze)
-**n8n+PiAPI**
-**Medium Priority**
-[https://youtu.be/YKVyzg8H_SU?si=pZNjiR5q3J4pneC8](https://youtu.be/YKVyzg8H_SU?si=pZNjiR5q3J4pneC8)
-**FreeAPI+n8n**
-[https://youtu.be/pd76XGHCavY?si=kasRGUr4F974p0yO](https://youtu.be/pd76XGHCavY?si=kasRGUr4F974p0yO)
-**Comfy+Wan2.1**
-[https://youtu.be/sg33qAZxKJg?si=BqdIV_JGR4D_4RbX](https://youtu.be/sg33qAZxKJg?si=BqdIV_JGR4D_4RbX)
-**Activepieces+Zerowork+Capcut**
-  
-**Low Priority**
-[https://youtu.be/uXH5_bNq4uA?si=ITPRoMd6qqb1ou2h](https://youtu.be/uXH5_bNq4uA?si=ITPRoMd6qqb1ou2h)
-**Pika Labs+Add Anything**
-[https://youtu.be/Dgo6dyPMv_Q?si=6VWq6_v7tXoKkhuL](https://youtu.be/Dgo6dyPMv_Q?si=6VWq6_v7tXoKkhuL)
-**Framepack**
+
+## Summary
+This YouTube video presents a 4-hour workflow for efficiently creating 30 YouTube Shorts. It details a batching process that includes identifying content opportunities, developing topics and hooks, writing scripts, and using AI for video production, aiming to streamline content creation and reduce context switching. The tutorial emphasizes strategic batching and leveraging AI to handle repetitive tasks, enabling creators to produce a month's worth of Shorts in a single production block.

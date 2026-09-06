@@ -1,18 +1,26 @@
 ---
 title: "Scribe AI Workflow Platform"
-type: extracted-knowledge
+type: tool-doc
 category: tools
+form: saas-tool
+summary: "The landing page for Scribe, an AI platform designed to capture and optimize workflows for teams and agents. The image highlights the product's value proposition as a tool to make work better by instantly capturing processes."
+url: "https://scribe.com"
 tags:
   - scribe-ai
   - workflow-automation
   - productivity-tool
   - ai-platform
   - documentation
+  - scribe
+  - ai-workflow
+  - productivity-software
+  - automation
 original_filename: "Scribe-AI-Platform-15.png"
 created: 2026-05-09
+enriched: 2026-09-05
 ---
 
 ![[Scribe-AI-Workflow-Platform.png]]
 
-## AI Analysis
-A mobile landing page for Scribe, an AI-powered platform designed to automate workflow documentation. The main banner highlights its use case of capturing and optimizing workflows so teams and agents can focus on their best work.
+## Summary
+The landing page for Scribe, an AI platform designed to capture and optimize workflows for teams and agents. The image highlights the product's value proposition as a tool to make work better by instantly capturing processes.

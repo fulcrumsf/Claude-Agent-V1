@@ -1,7 +1,19 @@
 ---
-URL: https://www.agen.cy/
-Category: Tools
-Description: AI agent developer tools, observability, and expertise. Leading the industry in AI agents. AgentOps and scaling agents to enterprise.
-Tag:
-  - AI Agents
+title: "Agen"
+type: tool-doc
+form: saas-tool
+summary: "Agen.cy is a platform that provides developer tools, observability, and expertise for building and scaling AI agents. It focuses on enabling enterprises to create reliable AI agents and manage their operations, including AgentOps."
+url: "https://www.agen.cy/"
+verified: true
+tags:
+  - ai-agents
+  - agent-development
+  - observability
+  - enterprise-ai
+  - agentops
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Agen.cy is a platform that provides developer tools, observability, and expertise for building and scaling AI agents. It focuses on enabling enterprises to create reliable AI agents and manage their operations, including AgentOps.

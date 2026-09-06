@@ -1,8 +1,19 @@
 ---
-URL: https://www.blaze.ai/
-Category: Tools
-Description: Blaze is an AI marketing platform that helps plan campaigns and generate on-brand content for multiple channels. It’s built to streamline content creation and publishing for small teams and solo operators.
-Tag:
-  - Marketing
-  - Social Media
+title: "Blaze"
+type: tool-doc
+form: saas-tool
+summary: "Blaze is an AI-powered marketing platform designed for small businesses, entrepreneurs, and teams to streamline content creation and publishing. It generates on-brand content across various formats like social media posts, blogs, and emails, and automates posting to multiple platforms. The platform also includes features for visual content creation, scheduling, and performance tracking."
+url: "https://www.blaze.ai/"
+verified: true
+tags:
+  - ai-marketing
+  - content-creation
+  - social-media-management
+  - marketing-automation
+  - small-business-marketing
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Blaze is an AI-powered marketing platform designed for small businesses, entrepreneurs, and teams to streamline content creation and publishing. It generates on-brand content across various formats like social media posts, blogs, and emails, and automates posting to multiple platforms. The platform also includes features for visual content creation, scheduling, and performance tracking.

@@ -2,15 +2,22 @@
 title: "Loadi Book Add Source Get Started"
 type: tool-doc
 category: content-strategy
+form: tiktok
+summary: "A TikTok video by Victor C demonstrating how to use Google NotebookLM to generate infographics. The image displays the NotebookLM interface (notebooklm.google) which allows users to upload sources like PDFs and websites to create new content."
+url: "https://notebooklm.google"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Loadi Book Add Source Get Started with readable text about loadi book."
+  - google-notebooklm
+  - infographic-generator
+  - ai-productivity
+  - tiktok-tutorial
 original_filename: "IMG_8675.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Loadi-Book-Add-Source-Get-Started.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Loadi Book Add Source Get Started with visible text about loadi book. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A TikTok video by Victor C demonstrating how to use Google NotebookLM to generate infographics. The image displays the NotebookLM interface (notebooklm.google) which allows users to upload sources like PDFs and websites to create new content.

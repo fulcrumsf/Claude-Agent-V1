@@ -1,5 +1,18 @@
 ---
-Description: Findaway Voices is an audiobook production and distribution platform that connects authors with professional narrators. Use it to manage narration, production, and distribution to major audiobook retailers (and compare options vs. ACX).
-URL: https://www.findawayvoices.com/
-Category: Voice Over
+title: "Findawayvoices"
+type: tool-doc
+form: saas-tool
+summary: "Findaway Voices, now operating as Voices by INaudio, is an audiobook distribution platform that allows authors to upload and manage their audiobooks for wide distribution to various retailers and library systems. It was formerly owned by Spotify, which has since spun off the distribution business back to its original founders."
+url: "https://www.findawayvoices.com/"
+verified: true
+tags:
+  - audiobook-distribution
+  - self-publishing
+  - author-services
+  - digital-publishing
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Findaway Voices, now operating as Voices by INaudio, is an audiobook distribution platform that allows authors to upload and manage their audiobooks for wide distribution to various retailers and library systems. It was formerly owned by Spotify, which has since spun off the distribution business back to its original founders.

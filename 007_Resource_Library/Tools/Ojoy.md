@@ -1,8 +1,19 @@
 ---
-URL: https://ojoy.ai/
-Category: Tools
-Description: oJoy is an AI marketing tool positioned as a “strategy + execution” assistant. It aims to analyze a business, identify high-leverage growth opportunities, and guide implementation with marketer-style planning and content help.
-Tag:
-  - Ad Creative
-  - Product
+title: "Ojoy"
+type: tool-doc
+form: saas-tool
+summary: "oJoy.ai is an AI marketing tool designed to assist businesses with both strategy and content creation. It analyzes a business to identify high-leverage growth opportunities and then generates various marketing materials, including sales letters, emails, social posts, and video scripts. The tool utilizes a conversational interface and is trained in direct response marketing and consumer psychology to produce high-performing content."
+url: "https://ojoy.ai/"
+verified: true
+tags:
+  - ai-marketing
+  - content-generation
+  - copywriting
+  - marketing-strategy
+  - saas
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+oJoy.ai is an AI marketing tool designed to assist businesses with both strategy and content creation. It analyzes a business to identify high-leverage growth opportunities and then generates various marketing materials, including sales letters, emails, social posts, and video scripts. The tool utilizes a conversational interface and is trained in direct response marketing and consumer psychology to produce high-performing content.

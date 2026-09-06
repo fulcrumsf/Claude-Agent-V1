@@ -1,14 +1,21 @@
 ---
 title: "Youtube Watermark"
-type: research
+type: design-inspiration
 category: research
+form: artwork
+summary: "A highly detailed fantasy digital painting of a massive gothic castle rising from dark waters under a giant, luminous moon. The scene features warriors on rocky outcrops, flying creatures in the cloudy sky, and dramatic lighting with a golden hue reflecting off the water."
 tags:
   - research
+  - fantasy-art
+  - castle-design
+  - gothic-fantasy
+  - digital-painting
+  - environment-design
 created: 2026-05-03
-source: Youtube_Watermark.png
+enriched: 2026-09-05
 ---
 
 ![[Youtube-Watermark.png]]
 
-## AI Analysis
-Image reference from Notion export: Youtube_Watermark.
+## Summary
+A highly detailed fantasy digital painting of a massive gothic castle rising from dark waters under a giant, luminous moon. The scene features warriors on rocky outcrops, flying creatures in the cloudy sky, and dramatic lighting with a golden hue reflecting off the water.

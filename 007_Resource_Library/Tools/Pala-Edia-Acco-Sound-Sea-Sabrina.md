@@ -1,16 +1,28 @@
 ---
 title: "Pala Edia Acco Sound Sea Sabrina"
-type: tool-doc
+type: tutorial
 category: content-strategy
+form: tiktok
+summary: "A workflow diagram displayed on a computer screen demonstrating an automation process for social media accounts. The visible nodes include RSS Feed, Filter out story, and Get TikTok Page steps. The content is from Marcin AI and demonstrates setting up AI automations."
+search_for: "Marcin AI ZZZELLO github or website"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Pala Edia Acco Sound Sea Sabrina with readable text about pala."
+  - automation
+  - workflow-diagram
+  - rss
+  - tiktok
+  - social-media
+  - needs-enrichment
 original_filename: "IMG_8655.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Pala-Edia-Acco-Sound-Sea-Sabrina.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Pala Edia Acco Sound Sea Sabrina with visible text about pala. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A workflow diagram displayed on a computer screen demonstrating an automation process for social media accounts. The visible nodes include RSS Feed, Filter out story, and Get TikTok Page steps. The content is from Marcin AI and demonstrates setting up AI automations.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Marcin AI ZZZELLO github or website`

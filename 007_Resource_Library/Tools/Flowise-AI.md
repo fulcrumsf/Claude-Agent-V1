@@ -1,8 +1,19 @@
 ---
-URL: https://flowiseai.com/
-Category: Tools
-Description: Flowise is an open-source visual builder for LLM apps and AI agents, focused on drag-and-drop orchestration. Use it to prototype chatbots/agent workflows, connect tools and data sources, and ship LLM pipelines faster.
-Tag:
-  - API
-  - LLM
+title: "Flowise AI"
+type: tool-doc
+form: open-source-project
+summary: "Flowise is an open-source visual builder for Large Language Model (LLM) applications and AI agents. It provides a drag-and-drop interface for designing, testing, and deploying AI workflows by connecting various components like LLMs, data loaders, and vector databases. Users can self-host the platform or utilize a managed cloud service to create chatbots, Retrieval-Augmented Generation (RAG) assistants, and multi-step LLM pipelines."
+url: "https://flowiseai.com/"
+verified: true
+tags:
+  - llm-development
+  - ai-agents
+  - visual-programming
+  - open-source
+  - langchain
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Flowise is an open-source visual builder for Large Language Model (LLM) applications and AI agents. It provides a drag-and-drop interface for designing, testing, and deploying AI workflows by connecting various components like LLMs, data loaders, and vector databases. Users can self-host the platform or utilize a managed cloud service to create chatbots, Retrieval-Augmented Generation (RAG) assistants, and multi-step LLM pipelines.

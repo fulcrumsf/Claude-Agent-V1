@@ -1,7 +1,20 @@
 ---
-URL: https://github.com/nari-labs/dia
-Category: Tools
-Description: Dia (by nari-labs) is an open-source project on GitHub (see repository for specifics and setup). Use it as a codebase/reference for experimenting with the project’s model or tooling, and check the README for intended use cases.
-Tag:
-  - Audio
+title: "Nari Dia"
+type: tool-doc
+form: github-repo
+summary: "Dia by Nari Labs is a 1.6B parameter open-source text-to-speech model hosted on GitHub. It generates ultra-realistic, multi-speaker dialogue from transcripts, including non-verbal cues like laughter and coughs. The repository provides pretrained model checkpoints and inference code for research and educational purposes."
+url: "https://github.com/nari-labs/dia"
+verified: true
+tags:
+  - github-repo
+  - text-to-speech
+  - deep-learning
+  - dialogue-generation
+  - open-source-model
+  - ai-research
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Dia by Nari Labs is a 1.6B parameter open-source text-to-speech model hosted on GitHub. It generates ultra-realistic, multi-speaker dialogue from transcripts, including non-verbal cues like laughter and coughs. The repository provides pretrained model checkpoints and inference code for research and educational purposes.

@@ -1,7 +1,19 @@
 ---
-URL: https://lmstudio.ai/
-Category: Tools
-Description: LM Studio is a desktop app for running LLMs locally and chatting with them on your machine. It simplifies downloading models, managing inference settings, and exposing a local server for integrations and dev workflows.
-Tag:
-  - LLM
+title: "Lm Studio"
+type: tool-doc
+form: desktop-app
+summary: "LM Studio is a desktop application that allows users to download, run, and interact with large language models (LLMs) locally on their personal computers. It provides a user-friendly interface for managing models, configuring inference settings, and chatting with LLMs. The tool also offers a local inference server with an OpenAI-compatible API for developer integrations, emphasizing privacy and offline operation."
+url: "https://lmstudio.ai/"
+verified: true
+tags:
+  - large-language-models
+  - local-inference
+  - desktop-application
+  - ai-tools
+  - privacy
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+LM Studio is a desktop application that allows users to download, run, and interact with large language models (LLMs) locally on their personal computers. It provides a user-friendly interface for managing models, configuring inference settings, and chatting with LLMs. The tool also offers a local inference server with an OpenAI-compatible API for developer integrations, emphasizing privacy and offline operation.

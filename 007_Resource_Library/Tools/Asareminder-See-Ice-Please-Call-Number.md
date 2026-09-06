@@ -1,16 +1,27 @@
 ---
 title: "Asareminder See Ice Please Call Number"
-type: tool-doc
+type: reference
 category: content-strategy
+form: article
+summary: "A digital flyer sharing emergency contact numbers for the Charlotte Jail Support, intended for individuals involved in protests or tracking ICE activities. It lists specific instructions on what information to provide (date, time, location) when calling if ICE is spotted or if a person is detained."
+search_for: "Charlotte Jail Support hotline number"
 tags:
   - screenshot
   - video
-ai_description: "Screenshot of Asareminder See Ice Please Call Number with readable text about asareminder."
+  - civics
+  - legal-resources
+  - charlotte
+  - jail-support
+  - needs-enrichment
 original_filename: "IMG_8617.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Asareminder-See-Ice-Please-Call-Number.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Asareminder See Ice Please Call Number with visible text about asareminder. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A digital flyer sharing emergency contact numbers for the Charlotte Jail Support, intended for individuals involved in protests or tracking ICE activities. It lists specific instructions on what information to provide (date, time, location) when calling if ICE is spotted or if a person is detained.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Charlotte Jail Support hotline number`

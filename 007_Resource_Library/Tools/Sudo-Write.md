@@ -1,5 +1,19 @@
 ---
-URL: https://sudowrite.com/
-Category: Tools
-Description: Write your novel faster with the best AI tool for fiction. Start for free today and see why The New Yorker calls it &quot;a salvation&quot; for writers and why The New York Times, The Verge, and many more love Sudowrite.
+title: "Sudo Write"
+type: tool-doc
+form: saas-tool
+summary: "Sudowrite is an AI-powered writing tool designed for fiction authors. It assists with various stages of the writing process, including brainstorming, outlining, drafting, and editing. The tool helps writers overcome creative blocks and generate content, offering features like story development, character ideas, and prose enhancement."
+url: "https://sudowrite.com/"
+verified: true
+tags:
+  - ai-writing
+  - fiction-writing
+  - creative-writing
+  - writing-assistant
+  - novel-writing
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Sudowrite is an AI-powered writing tool designed for fiction authors. It assists with various stages of the writing process, including brainstorming, outlining, drafting, and editing. The tool helps writers overcome creative blocks and generate content, offering features like story development, character ideas, and prose enhancement.

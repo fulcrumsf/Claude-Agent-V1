@@ -2,15 +2,22 @@
 title: "There Curated Open Source Every Task Vetted"
 type: tool-doc
 category: content-strategy
+form: saas-tool
+summary: "A mobile screenshot of the Open Apps Pro website, which serves as a curated directory for open-source alternatives to popular SaaS tools. The landing page highlights vetted apps designed to help users find free software options without subscription costs."
+url: "https://openapps.pro"
 tags:
   - screenshot
   - tools
-ai_description: "Screenshot of There Curated Open Source Every Task Vetted with readable text about there."
+  - open-source-directory
+  - saas-alternatives
+  - free-software
+  - tech-tools
 original_filename: "IMG_8796.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[There-Curated-Open-Source-Every-Task-Vetted.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of There Curated Open Source Every Task Vetted with visible text about there. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A mobile screenshot of the Open Apps Pro website, which serves as a curated directory for open-source alternatives to popular SaaS tools. The landing page highlights vetted apps designed to help users find free software options without subscription costs.

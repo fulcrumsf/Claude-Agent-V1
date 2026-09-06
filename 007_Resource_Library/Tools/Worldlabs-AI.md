@@ -2,15 +2,22 @@
 title: "Worldlabs AI"
 type: tool-doc
 category: content-strategy
+form: saas-tool
+summary: "The landing or welcome page for 'World Labs', displayed within a mobile browser. The screen features the brand logo, a stylized 'Hello World Labs' greeting, and a purple wavy line graphic design, indicating the entry point to this software service."
+url: "https://worldlabs.ai"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Worldlabs AI with readable text about worldlabs ai."
+  - world-labs
+  - saas-tool
+  - welcome-screen
+  - artificial-intelligence-platform
 original_filename: "IMG_8031.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Worldlabs-AI.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Worldlabs AI with visible text about worldlabs ai. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+The landing or welcome page for 'World Labs', displayed within a mobile browser. The screen features the brand logo, a stylized 'Hello World Labs' greeting, and a purple wavy line graphic design, indicating the entry point to this software service.

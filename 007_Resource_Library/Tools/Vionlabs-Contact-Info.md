@@ -1,18 +1,26 @@
 ---
 title: "Vionlabs Contact Info"
-type: extracted-knowledge
+type: tool-doc
 category: tools
+form: saas-tool
+summary: "A physical business card or informational leaflet for Vionlabs, a company based in Stockholm, Sweden. The card features contact details including their website (www.vionlabs.com), email, and address, alongside a QR code inviting users to book a demo to explore 'Vionlabs power today'. It serves as a marketing artifact used to drive traffic to the platform's demo page."
+url: "https://vionlabs.com"
 tags:
   - vionlabs
   - business-card
   - software-company
   - contact-info
   - b2b
+  - marketing-materials
+  - demo-request
+  - b2b-saas
+  - qrcode
 original_filename: "Open-Source-AI-Tools-And-Investments-02.jpg"
 created: 2026-05-09
+enriched: 2026-09-05
 ---
 
 ![[Vionlabs-Contact-Info.jpg]]
 
-## AI Analysis
-A physical business card for the technology company Vionlabs, displaying contact details like their Stockholm address and website. The card features a QR code directing users to book a demo and explore the company's capabilities.
+## Summary
+A physical business card or informational leaflet for Vionlabs, a company based in Stockholm, Sweden. The card features contact details including their website (www.vionlabs.com), email, and address, alongside a QR code inviting users to book a demo to explore 'Vionlabs power today'. It serves as a marketing artifact used to drive traffic to the platform's demo page.

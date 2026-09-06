@@ -1,14 +1,20 @@
 ---
-Faceless Type: Channel Cloning
-Description: Cloning successful channels
+title: "Channel Cloning"
+type: tutorial
+form: youtube-video
+summary: "This YouTube video is a tutorial demonstrating how to replicate successful YouTube channels using free AI tools. It covers the workflow for analyzing existing channels, extracting their content formulas, replicating visual branding, and producing videos with AI to accelerate YouTube growth."
+url: "https://youtu.be/1bXBYDFdkOQ?si=FUDeYIa1vD6szOhA"
+verified: true
 tags:
   - Channel-Cloning
-Difficulty Level: Advanced
+  - youtube-growth
+  - ai-tools
+  - channel-strategy
+  - content-creation
+  - video-marketing
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-[https://youtu.be/1bXBYDFdkOQ?si=FUDeYIa1vD6szOhA](https://youtu.be/1bXBYDFdkOQ?si=FUDeYIa1vD6szOhA)
-**Deepseek-Leonardo- Pixverse**
-[https://youtu.be/eLkKUaIbBwM?si=xzYkrefjzIB_K9pV](https://youtu.be/eLkKUaIbBwM?si=xzYkrefjzIB_K9pV)
-**Leonardo & Hailuo AI**
-[https://youtu.be/RxmqY8EGSMc?si=pg318e0SLqEcPnhf](https://youtu.be/RxmqY8EGSMc?si=pg318e0SLqEcPnhf)
-  
-### Archive
+
+## Summary
+This YouTube video is a tutorial demonstrating how to replicate successful YouTube channels using free AI tools. It covers the workflow for analyzing existing channels, extracting their content formulas, replicating visual branding, and producing videos with AI to accelerate YouTube growth.

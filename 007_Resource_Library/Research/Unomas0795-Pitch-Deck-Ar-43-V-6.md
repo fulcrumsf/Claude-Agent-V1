@@ -1,14 +1,26 @@
 ---
 title: "Unomas0795 Pitch Deck Ar 43 V 6"
-type: research
+type: design-inspiration
 category: research
+form: design-reference
+summary: "A high-fidelity mockup of a corporate presentation and branding suite featuring a dark theme with gold accents. The layout showcases business slides, stationery items like cards, and infographics including charts and diagrams arranged on a desk."
+search_for: "dark mode presentation deck template gold accents business design"
 tags:
   - research
+  - presentation-design
+  - corporate-branding
+  - ui-layout
+  - infographic-style
+  - mockup
+  - needs-enrichment
 created: 2026-05-03
-source: unomas0795_Pitch_deck_--ar_43_--v_6.1_ffe7dd45-e8f4-4d69-aab0-7135f97abf30_2.png
+enriched: 2026-09-05
 ---
 
 ![[Unomas0795-Pitch-Deck-Ar-43-V-6.png]]
 
-## AI Analysis
-Image reference from Notion export: unomas0795_Pitch_deck_--ar_43_--v_6.1_ffe7dd45-e8f4-4d69-aab0-7135f97abf30_2.
+## Summary
+A high-fidelity mockup of a corporate presentation and branding suite featuring a dark theme with gold accents. The layout showcases business slides, stationery items like cards, and infographics including charts and diagrams arranged on a desk.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `dark mode presentation deck template gold accents business design`

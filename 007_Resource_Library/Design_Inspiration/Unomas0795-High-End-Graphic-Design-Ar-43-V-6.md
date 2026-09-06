@@ -2,14 +2,20 @@
 title: "Unomas0795 High End Graphic Design Ar 43 V 6"
 type: design-inspiration
 category: design-inspiration
+form: design-reference
+summary: "A surreal digital portrait of a woman with blue-toned skin, looking upwards against a white background. The subject is surrounded by vibrant, colorful leaves and feather-like elements in shades of orange, pink, and magenta. This visual serves as aesthetic inspiration for sci-fi character design or editorial illustration."
 tags:
   - design-inspiration
   - design
+  - surreal-art
+  - digital-portrait
+  - sci-fi-aesthetic
+  - colorful-styling
 created: 2026-05-03
-source: unomas0795_high_end_graphic_design_--ar_43_--v_6.1_9b84cf01-32ff-4141-82d0-ce1cc74ebc7f_0.png
+enriched: 2026-09-05
 ---
 
 ![[Unomas0795-High-End-Graphic-Design-Ar-43-V-6.png]]
 
-## AI Analysis
-Image reference from Notion export: unomas0795_high_end_graphic_design_--ar_43_--v_6.1_9b84cf01-32ff-4141-82d0-ce1cc74ebc7f_0.
+## Summary
+A surreal digital portrait of a woman with blue-toned skin, looking upwards against a white background. The subject is surrounded by vibrant, colorful leaves and feather-like elements in shades of orange, pink, and magenta. This visual serves as aesthetic inspiration for sci-fi character design or editorial illustration.

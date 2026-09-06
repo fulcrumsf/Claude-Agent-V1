@@ -1,5 +1,19 @@
 ---
-URL: https://huggingface.co/spaces
-Category: Directory
-Description: Hugging Face Spaces is a directory of interactive AI demos and apps hosted by Hugging Face. It’s useful for trying models in the browser, exploring community projects, and sharing simple web apps built around ML models.
+title: "Spaces"
+type: tool-doc
+form: saas-tool
+summary: "Hugging Face Spaces is a platform that allows users to host and deploy interactive machine learning demo applications directly on their profile or organization's profile. It supports various frameworks like Gradio, Docker, and static HTML, enabling the creation and sharing of ML-powered web apps. This service facilitates showcasing ML projects, collaborating with others, and trying models in a browser."
+url: "https://huggingface.co/spaces"
+verified: true
+tags:
+  - machine-learning
+  - ai-demos
+  - web-hosting
+  - model-deployment
+  - developer-tools
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Hugging Face Spaces is a platform that allows users to host and deploy interactive machine learning demo applications directly on their profile or organization's profile. It supports various frameworks like Gradio, Docker, and static HTML, enabling the creation and sharing of ML-powered web apps. This service facilitates showcasing ML projects, collaborating with others, and trying models in a browser.

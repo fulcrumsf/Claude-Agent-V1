@@ -1,16 +1,25 @@
 ---
 title: "Storybook Flat Frame Style"
-type: prompt
+type: tool-doc
 category: video-production
+form: saas-tool
+summary: "This link points to a file hosted on Gumroad, an e-commerce platform for creators to sell digital products. The file is likely a digital asset, template, or resource intended to be used as a tool or in conjunction with other software or services."
+url: "https://public-files.gumroad.com/4nj271ufk68d555cwdkhtaypb7j6"
+verified: true
 tags:
   - prompt
   - image-generation
   - style
   - niji-6
   - storybook
+  - digital-products
+  - creator-economy
+  - online-tools
+  - templates
+  - resources
 created: 2026-05-01
-source: https://public-files.gumroad.com/4nj271ufk68d555cwdkhtaypb7j6
+enriched: 2026-09-05
 ---
-[![](https://public-files.gumroad.com/4nj271ufk68d555cwdkhtaypb7j6)](https://public-files.gumroad.com/4nj271ufk68d555cwdkhtaypb7j6)
-**Prompt**
-`a giant owl guarding an ancient library, storybook flat frame style, balanced layout, thick outlines, stylized textures --niji 6 --ar 16:9`
+
+## Summary
+This link points to a file hosted on Gumroad, an e-commerce platform for creators to sell digital products. The file is likely a digital asset, template, or resource intended to be used as a tool or in conjunction with other software or services.

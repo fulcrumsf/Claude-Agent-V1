@@ -1,5 +1,19 @@
 ---
-URL: https://skylight.social/
-Category: Social
-Description: Skylight Social is an open-source, TikTok-style social media platform. Use it as a reference project for exploring short-form social UX patterns or for tracking alternative/open social platforms.
+title: "Skylight Social"
+type: tool-doc
+form: saas-tool
+summary: "Skylight Social is a short-form video social media platform launched in April 2025, built on the AT Protocol. It emphasizes user ownership of content and a decentralized approach to social networking, offering features like an in-app video editor and community-curated feeds. The platform serves as an alternative to centralized services like TikTok."
+url: "https://skylight.social/"
+verified: true
+tags:
+  - short-form-video
+  - social-media
+  - decentralized-social
+  - at-protocol
+  - open-source-components
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Skylight Social is a short-form video social media platform launched in April 2025, built on the AT Protocol. It emphasizes user ownership of content and a decentralized approach to social networking, offering features like an in-app video editor and community-curated feeds. The platform serves as an alternative to centralized services like TikTok.

@@ -1,17 +1,29 @@
 ---
 title: "Glif MCP Server Claude Integration"
-type: extracted-knowledge
+type: tool-doc
 category: tools
+form: github-repo
+summary: "A TikTok post by sebintel promoting the glifxyz/glif-mcp-server GitHub repository. The content highlights this open-source project as an MCP server solution designed to enhance functionality for Claude AI users."
+search_for: "glifxyz/glif-mcp-server github"
 tags:
+  - github-repo
   - mcp-server
   - claude-ai
   - live-coding
   - developer-tools
+  - github
+  - glif
+  - dev-tools
+  - needs-enrichment
 original_filename: "IMG_9858.PNG"
 created: 2026-08-24
+enriched: 2026-09-05
 ---
 
 ![[Glif-MCP-Server-Claude-Integration.png]]
 
-## AI Analysis
-This image highlights the 'glif-mcp-server' tool, specifically demonstrating its integration with the Claude AI model. The content focuses on using Model Context Protocol (MCP) to enable live coding and terminal capabilities within the LLM interface.
+## Summary
+A TikTok post by sebintel promoting the glifxyz/glif-mcp-server GitHub repository. The content highlights this open-source project as an MCP server solution designed to enhance functionality for Claude AI users.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `glifxyz/glif-mcp-server github`

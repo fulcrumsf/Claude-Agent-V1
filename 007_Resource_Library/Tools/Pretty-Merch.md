@@ -1,7 +1,20 @@
 ---
-Description: PrettyMerch is a free Chrome extension for Merch by Amazon sellers. Use it to pull quick product and keyword insights while browsing Amazon, helping with niche research and listing decisions.
-Category: Tool
-URL: https://www.prettymerch.com/
+title: "Pretty Merch"
+type: tool-doc
+form: saas-tool
+summary: "PrettyMerch is a suite of tools for Merch by Amazon sellers, primarily offering a Chrome extension that provides real-time sales analytics, notifications, and a redesigned dashboard. It also includes a web platform with advanced features like product research, keyword research, and trademark research to aid in niche and listing decisions."
+url: "https://www.prettymerch.com/"
+verified: true
 tags:
   - Merch
+  - merch-by-amazon
+  - e-commerce-tools
+  - sales-analytics
+  - keyword-research
+  - browser-extension
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+PrettyMerch is a suite of tools for Merch by Amazon sellers, primarily offering a Chrome extension that provides real-time sales analytics, notifications, and a redesigned dashboard. It also includes a web platform with advanced features like product research, keyword research, and trademark research to aid in niche and listing decisions.

@@ -1,11 +1,19 @@
 ---
-Created: 2025-03-15T12:33
+title: "New Project"
+type: tool-doc
+form: saas-tool
+summary: "Notion is an AI-powered all-in-one workspace that integrates note-taking, task management, project organization, and team collaboration. It allows users to create customizable pages, documents, and databases using a block-based system. Notion is available as a web, desktop, and mobile application."
+url: "https://www.notion.so"
+verified: true
+tags:
+  - productivity
+  - project-management
+  - note-taking
+  - collaboration
+  - knowledge-management
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-### The idea
----
-[![](https://www.notion.so)](https://www.notion.so)
-### The process
----
-[](https://www.notion.soundefined)
-### The design
----
+
+## Summary
+Notion is an AI-powered all-in-one workspace that integrates note-taking, task management, project organization, and team collaboration. It allows users to create customizable pages, documents, and databases using a block-based system. Notion is available as a web, desktop, and mobile application.

@@ -1,0 +1,935 @@
+# Resource Library — Re-vision Log
+
+Started 2026-09-05T22:42:21
+
+- FAIL (vision) `Research/Unomas0795-Futuristic-Shogun-Warriors-Cinematic-Ar-43-V-6-21a768f0-5df9-4c06-A0b1-E0ccaf6b774e-2.md`
+- FAIL (vision) `Research/A-Clear-Empty-Space-The-Scene-Depicts-A-Nk0mifnytf6rkz-Obopb-W-Cu5ekmwuqcgdb3vr-Wso0w.md`
+- FAIL (vision) `Research/Anthropic-Claude-Code-Leak-Discussion.md`
+- ok `Research/Unomas0795-Futuristic-Shogun-Warriors-Cinematic-Ar-43-V-6-21a768f0-5df9-4c06-A0b1-E0ccaf6b774e-2.md`
+    - was: ''
+    - now: 'A high-quality digital artwork featuring futuristic samurai warriors in wet, bla'
+- ok `Research/A-Clear-Empty-Space-The-Scene-Depicts-A-Nk0mifnytf6rkz-Obopb-W-Cu5ekmwuqcgdb3vr-Wso0w.md`
+    - was: ''
+    - now: 'A minimalist bedroom interior design mockup featuring a framed art print with pl'
+- ok `Research/Anthropic-Claude-Code-Leak-Discussion.md`
+    - was: ''
+    - now: "A YouTube comment section where the creator 'Goju' shares a recorded stream and "
+- ok `Research/Stn-Gmwt7kafhrlkbehuhaetv8sx4ld8nipupjgfhqvw.md`
+    - was: ''
+    - now: 'The landing page for Gobii, a SaaS platform that enables developers to launch se'
+- ok `Personal/Royal-Asia-Prawn-Hacao-Southeast.md`
+    - was: ''
+    - now: 'A photo of Royal Asia brand Prawn Hacao (shrimp dumplings) with soy ginger sauce'
+- ok `Tools/Following-Shop-Gec-Payouts-Mbox-Ceostacks.md`
+    - was: 'Screenshot of Following Shop Gec Payouts Mbox Ceostacks with readable text about'
+    - now: 'Screenshot of the TikTok profile for Danzel Wright, known as _ceostacks (CEO Sta'
+- ok `Tools/Worked-Major-Brands-Dream-Through-Vidsy.md`
+    - was: 'Screenshot of Worked Major Brands Dream Through Vidsy with readable text about w'
+    - now: 'A TikTok post from a UGC content creator discussing platforms used to land brand'
+- ok `Tools/OpenCode-AI-Coding-Agent.md`
+    - was: ''
+    - now: 'The homepage for OpenCode, an open-source AI coding agent desktop application. T'
+- FAIL (vision) `Tools/Toughppwns-Fea-Rdurneipter-Pocais-Shop-Touchdown.md`
+- ok `Tools/Live-Explore-Following-Shop-Chrome-File.md`
+    - was: 'Screenshot of Live Explore Following Shop Chrome File with readable text about l'
+    - now: 'The image displays the web interface for Rube (visible as rube.app in the browse'
+- ok `Tools/Blueprint-For-Creator-App.md`
+    - was: ''
+    - now: "A screenshot of the App Store product page for 'Blueprint for Creators', a mobil"
+- ok `Tools/Come-Sts-Taptowstchuve-Oracle-Friends-Inbox.md`
+    - was: 'Screenshot of Come Sts Taptowstchuve Oracle Friends Inbox with readable text abo'
+    - now: 'A photo of a computer monitor displaying a software interface with purple accent'
+- ok `Tools/GBrain-By-Garrytan-AI-Agent-Org.md`
+    - was: ''
+    - now: "A screenshot of the GitHub repository page for 'garrytan/gbrain'. The repository"
+- ok `Tools/Device-Amere-Rear-Rest-Front-Grorad.md`
+    - was: 'Screenshot of Device Amere Rear Rest Front Grorad with readable text about te el'
+    - now: "Screenshot of the Nothing Phone (2a) 'About phone' settings screen showing key h"
+- ok `Tools/Oul-Blueprint-Masta-Boas-Vic-Dov.md`
+    - was: 'Screenshot of Oul Blueprint Masta Boas Vic Dov with readable text about oul.'
+    - now: "The image shows the interface of a SaaS tool called 'BluePrint App', which appea"
+- ok `Tools/Fair-Again-Actually-Make-Viral-Thinkverseal1.md`
+    - was: 'Screenshot of Fair Again Actually Make Viral Thinkverseal1 with readable text ab'
+    - now: 'A YouTube video thumbnail promoting Antigravity, an AI tool claimed to create an'
+- ok `Tools/Sheet-Chita-Cheat-Selling-Digital-Products.md`
+    - was: 'Screenshot of Sheet Chita Cheat Selling Digital Products with readable text abou'
+    - now: "A TikTok profile for 'Social Cheat Sheet' focused on teaching users how to make "
+- ok `Tools/TIKTOK-Stayviral-Earnin-Mont-Step-By-Step-Stay.md`
+    - was: 'Screenshot of TikTok Stayviral Earnin Mont Step By Step Stay with readable text '
+    - now: "The image displays a landing page for 'StayViral', a system designed to help cre"
+- ok `Tools/Oul-Twin-Try-Now-Coitie-Bullc.md`
+    - was: 'Screenshot of Oul Twin Try Now Coitie Bullc with readable text about oul.'
+    - now: "Landing page for 'Twin', an AI-powered platform marketed as a company builder. T"
+- ok `Tools/Llowing-Shop-Live-Tem-Creative-Output.md`
+    - was: 'Screenshot of Llowing Shop Live Tem Creative Output with readable text about llo'
+    - now: 'A TikTok video by Jake Abrams promoting the use of three specific tools: Wispr, '
+- ok `Tools/Pron-Ste-Gas-Lal-Eee-Eat.md`
+    - was: 'Screenshot of Pron Ste Gas Lal Eee Eat with readable text about pron.'
+    - now: 'Screenshot of the official Record Store Day (RSD) homepage promoting the Black F'
+- ok `Workflows/CastNym-Tony-Ishant-Meeting-Invitation.md`
+    - was: ''
+    - now: "A screenshot of an email invitation for a meeting titled 'CastNym | Tony/Ishant "
+- ok `Design_Inspiration/Unomas0795-Product-Design-Ar-43-Profile-Uwlnugl-V-6.md`
+    - was: ''
+    - now: 'A side-profile view of a highly stylized, futuristic desk with organic, flowing '
+- ok `Design_Inspiration/Unomas0795-A-Modern-Sustainable-Packaging-Design-Eco-Friendly-8f7076e6-774c-4da8-Aaa9-928b09734e5d-1.md`
+    - was: ''
+    - now: 'A flat-lay product mockup featuring minimalist cosmetic packaging in soft sage g'
+- ok `Personal/Hikari-Miso-Shio-Koji-All-Purpose-Seasoning.md`
+    - was: ''
+    - now: "A TikTok video by America's Test Kitchen featuring a close-up of Hikari Miso bra"
+- ok `Tools/Tive-Explore-Following-Shop-These-Dumb.md`
+    - was: 'Screenshot of Tive Explore Following Shop These Dumb with readable text about ti'
+    - now: 'A TikTok video tutorial discussing a print-on-demand business model based on sel'
+- ok `Tools/Notion-Developer-Platform-Update.md`
+    - was: ''
+    - now: 'A TikTok video by Matt Wolfe discussing a massive update to the Notion Developer'
+- ok `Tools/Pinia-Spreading-Love-Rescue-Ata-Time.md`
+    - was: 'Screenshot of Pinia Spreading Love Rescue Ata Time with readable text about pini'
+    - now: "A TikTok post featuring a video by 'Blastoffmedia' that is part of a series rank"
+- ok `Tools/Oll-Lte-Cve-Stew-Explore-Follow.md`
+    - was: 'Screenshot of Oll Lte Cve Stew Explore Follow with readable text about oll lte.'
+    - now: "A screenshot featuring content from 'Your AI Advisory' centered on an advanced A"
+- ok `Tools/Ai4next-Al4next-Subscribers-View-Channel-Latest.md`
+    - was: 'Screenshot of Ai4next Al4next Subscribers View Channel Latest with readable text'
+    - now: "A screenshot of the YouTube channel page for 'AI4Next', which specializes in AI "
+- ok `Tools/Live-Tem-Explore-Following-Shop-Post.md`
+    - was: 'Screenshot of Live Tem Explore Following Shop Post with readable text about live'
+    - now: 'A TikTok tutorial by Leo Grundström advising creators to post longer videos and '
+- ok `Tools/Capture-Inspect-Alae-Enadine-Mee-Chuck.md`
+    - was: 'Screenshot of Capture Inspect Alae Enadine Mee Chuck with readable text about ca'
+    - now: 'A TikTok tutorial video by Chuck Finley demonstrating a specific tip for Unreal '
+- ok `Tools/Open-Source-AI-Tools-01.md`
+    - was: 'Screenshot batch showing open-source AI tools and related product pages.'
+    - now: "A TikTok video from channel 'Chase AI' discussing the project CLI-Anything, a to"
+- ok `Tools/Aaa-Guy-Takes-Outu-Iap-Tube.md`
+    - was: 'Screenshot of Aaa Guy Takes Outu Iap Tube with readable text about aaa.'
+    - now: "A TikTok video from user 'pham' featuring a vlog-style shot on a balcony overloo"
+- ok `Tools/Sign-Tubegenal-Studio-YOUTUBE-Automation-Scripts.md`
+    - was: 'Screenshot of Sign Tubegenal Studio YouTube Automation Scripts with readable tex'
+    - now: 'A landing page for TubeGenAI, an AI-powered studio designed to assist with YouTu'
+- ok `Tools/Nove-Eigen-Editing-Dislik-Med.md`
+    - was: 'Screenshot of Nove Eigen Editing Dislik Med with readable text about nove eigen.'
+    - now: 'A TikTok video from RoyD Media providing instructions on how to obtain editing a'
+- ok `Tools/Koa-Tive-Tem-Explore-Following-Shop.md`
+    - was: 'Screenshot of Koa Tive Tem Explore Following Shop with readable text about koa.'
+    - now: 'A TikTok video documenting a progress update (Day 13) for a project aimed at ear'
+- ok `Tools/Ceo-Ict-Ene-Kad-Lye-Uot.md`
+    - was: 'Screenshot of Ceo Ict Ene Kad Lye Uot with readable text about ceo.'
+    - now: 'A retail display board showcasing Ridge brand Magsafe accessories, including mag'
+- ok `Tools/PluginPlay-After-Effects-Plugins.md`
+    - was: ''
+    - now: 'The image features a business card for PluginPlay, a vendor offering plugins and'
+- ok `Tools/Asareminder-See-Ice-Please-Call-Number.md`
+    - was: 'Screenshot of Asareminder See Ice Please Call Number with readable text about as'
+    - now: 'A digital flyer sharing emergency contact numbers for the Charlotte Jail Support'
+- ok `Tools/TIKTOK-Stayviral-Olgalia-Mont-Step-By-Step-Stay.md`
+    - was: 'Screenshot of TikTok Stayviral Olgalia Mont Step By Step Stay with readable text'
+    - now: 'A landing page for Stay Viral, a platform promising to teach creators how to ear'
+- ok `Tools/Sellyour-Boar-Turn-Waste-Into-Instant.md`
+    - was: 'Screenshot of Sellyour Boar Turn Waste Into Instant with readable text about sel'
+    - now: 'Mobile landing page for SellYourBoards.com, a service allowing users to sell scr'
+- ok `Design_Inspiration/Logo.md`
+    - was: ''
+    - now: 'The official logo of Nano (XNO), a cryptocurrency featuring two diamond shapes i'
+- ok `Design_Inspiration/Unomas0795-45-Degree-Angled-View-Of-A-Boho-Living-Room-Design-F4c9023e-2cc9-43ad-A65d-Ee3c1f01b17b-1.md`
+    - was: ''
+    - now: 'An interior design shot of a cozy living room corner featuring warm earth tones.'
+- ok `Research/Creative-Ghost-Icon-Transparent.md`
+    - was: ''
+    - now: 'This is the logo and branding for Ghoti, an open-source project designed as a th'
+- ok `Research/Unomas0795-Futuristic-Video-Editing-System-Ar-43-V-6.md`
+    - was: ''
+    - now: 'A futuristic, dark-themed workspace setup featuring a large curved ultrawide mon'
+- ok `Personal/Cardboard-Egg-Container-Durability-Corner.md`
+    - was: ''
+    - now: 'A close-up photo of a beige molded fiber or cardboard egg carton held in hand. T'
+- ok `Personal/Anthropic-Fellows-Program-AI-Mentorship-Job.md`
+    - was: ''
+    - now: 'A TikTok screenshot featuring a presenter discussing the Anthropic Fellows Progr'
+- ok `Tools/Message-Eee-Autoae-Online-Invite-Friends.md`
+    - was: 'Screenshot of Message Eee Autoae Online Invite Friends with readable text about '
+    - now: 'A SaaS landing page for AutoAE (autoae.online), a web tool designed to create vi'
+- ok `Tools/Foe-Viewmax-Studio-Sign-SORA-Generator.md`
+    - was: 'Screenshot of Foe Viewmax Studio Sign Sora Generator with readable text about fo'
+    - now: 'The landing page for Viewmax Studio, a SaaS tool positioned as an AI video edito'
+- ok `Tools/Jinety-Sin-Dog-Lovers-Cat-Mom.md`
+    - was: 'Screenshot of Jinety Sin Dog Lovers Cat Mom with readable text about jinety.'
+    - now: "A TikTok video by 'Adrian I Print on Dem...' presenting a list of specific targe"
+- ok `Tools/Nam-Mone-Tener-Fremecet-Tage-Pnd.md`
+    - was: 'Screenshot of Nam Mone Tener Fremecet Tage Pnd with readable text about nam mone'
+    - now: "The image shows the YouTube Studio 'Channel content' tab for the channel named E"
+- ok `Tools/Lactiv-Live-Shop-Sha-Uations-Puen.md`
+    - was: 'Screenshot of Lactiv Live Shop Sha Uations Puen with readable text about lactiv.'
+    - now: 'A TikTok video demonstrating a workflow diagram for automating social media post'
+- ok `Tools/Lte-Eve-Cameras-Actors-Editing-Gow.md`
+    - was: 'Screenshot of Lte Eve Cameras Actors Editing Gow with readable text about lte.'
+    - now: 'The screenshot displays a node-based workflow diagram on a laptop screen, showin'
+- ok `Tools/Live-Explore-Following-Shop-Uvluiliitinaly-Viutus.md`
+    - was: 'Screenshot of Live Explore Following Shop Uvluiliitinaly Viutus with readable te'
+    - now: 'A TikTok tutorial video by Boss Media Tech demonstrating how to create 3D docume'
+- ok `Tools/Nfl-Popular-Game-Lines-Tdscorers-Passing.md`
+    - was: 'Screenshot of Nfl Popular Game Lines Tdscorers Passing with readable text about '
+    - now: 'The screenshot displays the DraftKings mobile app interface showing a betting me'
+- ok `Tools/Live-Explore-Following-Shop-Get-Metadata.md`
+    - was: 'Screenshot of Live Explore Following Shop Get Metadata with readable text about '
+    - now: 'A node-based automation workflow built in n8n that prepares faceless video conte'
+- ok `Tools/Vertex-AI-Vision-Google-Cloud-Platform.md`
+    - was: ''
+    - now: "A sign displaying Google's Vertex AI Vision product, advertising capabilities to"
+- ok `Tools/Impact-Fess-Eee-Chat-Tips-Theaiimpact.md`
+    - was: 'Screenshot of Impact Fess Eee Chat Tips Theaiimpact with readable text about imp'
+    - now: "A chat message from 'The AI Impact | No BS Tips' sharing a Google Document conta"
+- ok `Tools/Ais-Saas-Eae-Rna-Need-Administrator.md`
+    - was: 'Screenshot of Ais Saas Eae Rna Need Administrator with readable text about ais.'
+    - now: "A social media post by the user 'tekkerslovakian' announcing a job opening for a"
+- ok `Tools/Audience-Trends-Casual-Viewers-Regular-Popular.md`
+    - was: 'Screenshot of Audience Trends Casual Viewers Regular Popular with readable text '
+    - now: 'Screenshot of the YouTube Studio mobile app showing the Audience tab with detail'
+- ok `Tools/Liw-Alert-Multiple-Flights-Day-Pin.md`
+    - was: 'Screenshot of Liw Alert Multiple Flights Day Pin with readable text about liw al'
+    - now: "A TikTok video from user 'traveldaddydave' presenting a specific flight deal for"
+- ok `Tools/Wae-Tive-Tem-Explore-Following-Shop.md`
+    - was: 'Screenshot of Wae Tive Tem Explore Following Shop with readable text about wae.'
+    - now: 'A screen recording demonstrating an AI automation workflow where video files are'
+- ok `Tools/Live-Explore-Following-Shop-Kite-Nathan.md`
+    - was: 'Screenshot of Live Explore Following Shop Kite Nathan with readable text about l'
+    - now: "A TikTok video featuring Nathan Hodgson introducing 'Kite', an AI tool that conv"
+- ok `Research/Bdrm-Japandi-Beige-4x5.md`
+    - was: ''
+    - now: 'A rendering of a bright, minimalist bedroom featuring a low wooden platform bed '
+- ok `Research/Youtube-Banner-Alt.md`
+    - was: ''
+    - now: 'A cinematic sci-fi concept art piece featuring futuristic, sleek go-karts racing'
+- ok `Personal/Couple-Ice-Skating-Dates.md`
+    - was: ''
+    - now: 'A TikTok video capturing a romantic couple ice skating together at an indoor rin'
+- ok `Tools/Alinea-Personalized-Investing-App.md`
+    - was: ''
+    - now: 'A TikTok advertisement for Alinea, a personalized investing platform that combin'
+- ok `Tools/Studio-Audience-Trends-Explore-Topics-Search.md`
+    - was: 'Screenshot of Studio Audience Trends Explore Topics Search with readable text ab'
+    - now: "The Trends tab within the YouTube Studio mobile application, featuring an 'Explo"
+- ok `Tools/April-Selling-Follow-Popular-Live-Ses.md`
+    - was: 'Screenshot of April Selling Follow Popular Live Ses with readable text about apr'
+    - now: 'A demonstration of the Leonardo.ai interface displaying the image-to-video gener'
+- ok `Tools/Mpbcom-Sponsored-Buy-Sell-Trade-Used.md`
+    - was: 'Screenshot of Mpbcom Sponsored Buy Sell Trade Used with readable text about mpbc'
+    - now: 'Screenshot of an MPB advertisement showcasing a marketplace platform for buying,'
+- ok `Tools/Live-Rae-Ere-Pool-Eco-Tayou.md`
+    - was: 'Screenshot of Live Rae Ere Pool Eco Tayou with readable text about For You.'
+    - now: 'A TikTok video promoting the Noise app, a mobile application. The content featur'
+- ok `Tools/Hide-Sponsored-Results-N8N-Docs-Https.md`
+    - was: 'Screenshot of Hide Sponsored Results n8n Docs Https with readable text about hid'
+    - now: "A search results page for 'n8n mcp server' featuring documentation, templates, a"
+- ok `Tools/Live-Explore-Following-Shop-Ite-Change.md`
+    - was: 'Screenshot of Live Explore Following Shop Ite Change with readable text about li'
+    - now: 'An advertising pop-up for the Alinea investing app, featuring user testimonials '
+- ok `Tools/Zerpd-Campaign-Platform-for-Content-Creators.md`
+    - was: ''
+    - now: 'A laptop screen displaying the Zerpd landing page, a platform that connects crea'
+- ok `Tools/Z-Image-Turbo-Demo.md`
+    - was: ''
+    - now: 'A demo interface for the Z-Image Turbo project, identified as a GitHub repositor'
+- ok `Tools/Google-Jules-Coding-Agent-Tool.md`
+    - was: ''
+    - now: "A TikTok video discussing Google's recent release of 'Jules', an AI coding agent"
+- ok `Tools/Ciel-Some-Bem-Nee-Sing-Live.md`
+    - was: 'Screenshot of Ciel Some Bem Nee Sing Live with readable text about ciel.'
+    - now: 'A TikTok video by Marcin AI demonstrating an automation workflow that extracts a'
+- ok `Tools/Liv-Lor-Coming-Deere-Aoe-Cas.md`
+    - was: 'Screenshot of Liv Lor Coming Deere Aoe Cas with readable text about liv.'
+    - now: 'A TikTok demonstration of Nano Banana Pro, a new AI model or tool running on Gem'
+- ok `Tools/Sem-Desk-Mat-Or-Home-Office-Deooy-Everbee-Store.md`
+    - was: 'Screenshot of Sem Desk Mat Or Home Office Deooy Everbee Store with readable text'
+    - now: 'A TikTok video screenshot discussing a Print On Demand business strategy, specif'
+- ok `Tools/Live-Explore-Following-Shop-Pricing-Nials.md`
+    - was: 'Screenshot of Live Explore Following Shop Pricing Nials with readable text about'
+    - now: 'A TikTok video from Marcin AI illustrating a workflow for high-converting landin'
+- ok `Tools/Sjinn-Boss-Media-Tech-Make-Consistent.md`
+    - was: 'Screenshot of Sjinn Boss Media Tech Make Consistent with readable text about sji'
+    - now: 'A TikTok video from Boss Media Tech presenting a tutorial on how to make consist'
+- ok `Tools/Fitness-Niche-Fee-Captain-Workout-Captainworkoutyt.md`
+    - was: 'Screenshot of Fitness Niche Fee Captain Workout Captainworkoutyt with readable t'
+    - now: "A TikTok video featuring YouTuber Caleb Boxx rating the 'Fitness Niche' for face"
+- ok `Tools/Eal-Lte-Gree-Ask-Question-Pricing.md`
+    - was: 'Screenshot of Eal Lte Gree Ask Question Pricing with readable text about eal lte'
+    - now: "A screenshot of the PostHog homepage featuring a custom isometric 'garden' visua"
+- FAIL (vision) `Research/Gengis-Selfie-Midjourney.md`
+- ok `Research/Robotto-Gato-Youtube-Banner.md`
+    - was: ''
+    - now: 'A digital artwork featuring an anime-style character with cat-eared headphones s'
+- ok `Research/Unomas0795-Surreal-3d-Animation-Ar-43-V-6.md`
+    - was: ''
+    - now: 'A 3D rendered digital art piece featuring an anthropomorphic mushroom character '
+- ok `Research/Stn-K9o0jcrgubm8zmryg6q64ggauuuvv0uaajumolsw.md`
+    - was: ''
+    - now: 'A screenshot of the BeamNG.drive official website displaying the latest news sec'
+- ok `Research/Clip6.md`
+    - was: ''
+    - now: 'A first-person perspective shot showing the back of a Shiba Inu dog wearing a bl'
+- ok `Research/Stn-8fghchig9tj51iyf0zbjhqbpb5suezsnbkiravxo.md`
+    - was: ''
+    - now: 'The main dashboard and creation interface for PixVerse, an AI-powered video gene'
+- ok `Personal/Gino-Bambino-Sourdough-Pizza-Kit.md`
+    - was: ''
+    - now: 'A retail display of Gino Bambino Sour dough Pizza Starter Kits in packaging, sho'
+- ok `Tools/Let-Goes-Aye-Alia-Utes-See.md`
+    - was: 'Screenshot of Let Goes Aye Alia Utes See with readable text about let.'
+    - now: "A promoted Instagram Reel featuring the tool 'AI Apply', which claims to streaml"
+- ok `Tools/Vercel-Agent-Browser-Automation.md`
+    - was: ''
+    - now: "The screenshot displays the GitHub repository page for 'agent-browser', an open-"
+- ok `Tools/Nfl-Starts-Lac-Cel-Laay-Dynamic-Odds.md`
+    - was: 'Screenshot of Nfl Starts Lac Cel Laay Dynamic Odds with readable text about nfl.'
+    - now: 'A screenshot of the DraftKings mobile sports betting interface displaying a 3-le'
+- ok `Tools/Vionlabs-Contact-Info.md`
+    - was: ''
+    - now: 'A physical business card or informational leaflet for Vionlabs, a company based '
+- ok `Tools/OpenMontage-AI-Video-Montage-Tool.md`
+    - was: ''
+    - now: 'A TikTok tutorial screenshot showcasing the OpenMontage tool, an open-source pro'
+- ok `Tools/Makesthem-Lik-Omnp-Lite-Build-Saas.md`
+    - was: 'Screenshot of Makesthem Lik Omnp Lite Build Saas with readable text about makest'
+    - now: "This image features 'OK Computer', an open-source AI model developed by Kimi (Mo"
+- ok `Tools/Pobeon-Pets-Pet-Bowl-Eaeese-Eneric.md`
+    - was: 'Screenshot of Pobeon Pets Pet Bowl Eaeese Eneric with readable text about pobeon'
+    - now: 'A TikTok video tutorial showcasing a Print On Demand (POD) business strategy, sp'
+- ok `Tools/Sentry-Search-Video-Tool.md`
+    - was: ''
+    - now: 'This screenshot features a local video search engine tool named SentrySearch, cr'
+- ok `Tools/Floor-Transformation-Transform-Interiors-Into-Cinematic.md`
+    - was: 'Screenshot of Floor Transformation Transform Interiors Into Cinematic with reada'
+    - now: "A TikTok video by AI Century showcasing a custom AI prompt tool named 'Floor Tra"
+- ok `Tools/Reactsphere-Reactsphere7-Following-Followers-Likes-Message.md`
+    - was: 'Screenshot of Reactsphere Reactsphere7 Following Followers Likes Message with re'
+    - now: "A screenshot of a TikTok profile page for the channel 'ReactSphere' (@reactspher"
+- ok `Tools/Eal-Zap-Live-Tem-Explore-Following.md`
+    - was: 'Screenshot of Eal Zap Live Tem Explore Following with readable text about eal za'
+    - now: 'A TikTok post by Nathan Hodgson promoting a library of over 7000 n8n AI agents a'
+- ok `Tools/Ver-Checkditjout-Fameup-Com-Connect-Busi.md`
+    - was: 'Screenshot of Ver Checkditjout Fameup Com Connect Busi with readable text about '
+    - now: 'This image shows a TikTok sponsored advertisement for FameUp, a platform that cl'
+- ok `Tools/Bigmotion-Xkek-Generate-Passive-Income-Generated.md`
+    - was: 'Screenshot of Bigmotion Xkek Generate Passive Income Generated with readable tex'
+    - now: 'The landing page for BigMotion, a SaaS platform promising to generate passive in'
+- ok `Tools/Tive-Tem-Explore-Following-Shop-Sal.md`
+    - was: 'Screenshot of Tive Tem Explore Following Shop Sal with readable text about al > '
+    - now: "A tutorial video demonstrating a storytelling formula called 'Brain-to-Brain Cou"
+- ok `Research/Wombat-In-Washer2.md`
+    - was: ''
+    - now: 'A close-up photograph of a wombat sitting inside the drum of an open Haier washi'
+- ok `Research/Unomas0795-A-Top-Down-Shot-With-Futuristic-Tools-Arranged-Nea-Fc398466-5820-4c26-97bb-Cc71570b11fb-1.md`
+    - was: ''
+    - now: 'A top-down flatlay composition featuring vintage technology and tools, including'
+- ok `Personal/Cute-Easter-Cat-Costume.md`
+    - was: ''
+    - now: 'An AI-generated image of a cute tabby kitten wearing a white bunny costume with '
+- ok `Tools/Weekly-Recap-Dec-These-Searches-Led.md`
+    - was: 'Screenshot of Weekly Recap Dec These Searches Led with readable text about a ia)'
+    - now: 'An Instagram insights screenshot showing a weekly recap (Dec 22 - Dec 28) of the'
+- ok `Tools/Brik-Space-Animation-Platform.md`
+    - was: ''
+    - now: 'A TikTok recommendation for Brik.Space, an animation website or platform highlig'
+- ok `Tools/Rome-Avatiad-Stan-Store-Danzelwright-Download.md`
+    - was: 'Screenshot of Rome Avatiad Stan Store Danzelwright Download with readable text a'
+    - now: 'A screen recording of a TikTok live stream featuring Danzel Wright, CEO of Stack'
+- ok `Tools/Scribe-AI-Platform-01.md`
+    - was: 'Screenshot set of the Scribe AI platform homepage and product interface.'
+    - now: 'Screenshot of a YouTube comment thread discussing specific investment opportunit'
+- ok `Tools/Stn-Orn-Eae-Guy-Bakes-Sib.md`
+    - was: 'Screenshot of Stn Orn Eae Guy Bakes Sib with readable text about stn.'
+    - now: "A TikTok video by user 'pham' titled 'Exposing the SMARTEST YouTubers pt2'. The "
+- ok `Tools/Iser-Male-Archetypes-Empathy-Ski-Independence.md`
+    - was: 'Screenshot of Iser Male Archetypes Empathy Ski Independence with readable text a'
+    - now: 'A visualization of a 12-stage pyramid model categorizing male archetypes from th'
+- ok `Tools/Explore-Categories-Alternative-Open-Source-Alternatives.md`
+    - was: 'Screenshot of Explore Categories Alternative Open Source Alternatives with reada'
+    - now: 'The image shows a webpage article or blog post listing open-source alternatives '
+- ok `Tools/Selling-Popular-Live-September-Aiva-Lanl.md`
+    - was: 'Screenshot of Selling Popular Live September Aiva Lanl with readable text about '
+    - now: "A screenshot of the Aiua 'AI Creator Academy' landing page displayed on a laptop"
+- ok `Tools/Lte-Relay-Get-Paid-Post-Free.md`
+    - was: 'Screenshot of Lte Relay Get Paid Post Free with readable text about lte.'
+    - now: 'The image displays the App Store product page for Relay, a social platform desig'
+- ok `Tools/Break-Down-Chlorogenic-Acid-Where-Comments.md`
+    - was: 'Screenshot of Break Down Chlorogenic Acid Where Comments with readable text abou'
+    - now: 'A screenshot of a YouTube comment section discussing sources and dietary impacts'
+- ok `Tools/Eal-Safari-Poe-Ond-Eset-Emt.md`
+    - was: 'Screenshot of Eal Safari Poe Ond Eset Emt with readable text about eal.'
+    - now: 'A screenshot of a YouTube page featuring two viral videos focused on TikTok audi'
+- ok `Tools/Scribe-AI-Workflow-Platform.md`
+    - was: ''
+    - now: 'The landing page for Scribe, an AI platform designed to capture and optimize wor'
+- ok `Tools/Live-Explore-Following-Shop-Plugin-Could.md`
+    - was: 'Screenshot of Live Explore Following Shop Plugin Could with readable text about '
+    - now: "A TikTok video from user Graphic Glide showcasing 'Fossa: Tether', a new AI plug"
+- ok `Tools/Eso-Nais-Iren-See-Get-Early.md`
+    - was: 'Screenshot of Eso Nais Iren See Get Early with readable text about eso.'
+    - now: 'A YouTube video by the channel @TickerSymbolYOU featuring a list of three specif'
+- ok `Tools/Audience-Trends-Pov-Person-Opens-Door.md`
+    - was: 'Screenshot of Audience Trends Pov Person Opens Door with readable text about a a'
+    - now: "A screenshot of YouTube Studio analytics showing the 'Content' tab, specifically"
+- ok `Tools/Sal-Live-Tem-Explore-Following-Shop.md`
+    - was: 'Screenshot of Sal Live Tem Explore Following Shop with readable text about sal.'
+    - now: "A TikTok video featuring the creator 'Catnoisesocial' claiming to have earned ov"
+- ok `Tools/Selling-Daily-Ranking-Fantastic-Jour-Gol.md`
+    - was: 'Screenshot of Selling Daily Ranking Fantastic Jour Gol with readable text about '
+    - now: 'A laptop screen displaying the Socially Sheets online store, featuring a variety'
+- ok `Research/Tiger-Pool-Hall.md`
+    - was: ''
+    - now: "A surreal 3D render of a massive tiger's head housing an interior game room. Ins"
+- ok `Research/Open-Source-AI-Tools-And-Investments-01.md`
+    - was: 'Mixed screenshots of open-source AI tools and investment-related references.'
+    - now: 'A physical promotional sign for Tarion offering a 20% discount. The card feature'
+- ok `Personal/The-Only-Bean-Protein-Pasta-Dumplings.md`
+    - was: ''
+    - now: 'A box of The Only Bean brand protein pasta, specifically the Edamame Fettuccine '
+- ok `Tools/PandaDoc.md`
+    - was: ''
+    - now: 'A minimalist graphic representation of a branching Git commit structure, showing'
+- ok `Tools/Selling-League-TIKTOK-Live-Rcirea-Rvs.md`
+    - was: 'Screenshot of Selling League TikTok Live Rcirea Rvs with readable text about sel'
+    - now: "A TikTok Live session by the channel 'Selling Digital Sheets' featuring a case s"
+- ok `Tools/Vie-Create-Full-CLAUDE-Code-Remotion-Dev.md`
+    - was: 'Screenshot of Vie Create Full Claude Code Remotion Dev with readable text about '
+    - now: 'A TikTok video from user agentic.james promoting the remotion-dev/skills GitHub '
+- ok `Tools/Artika-Sonolok-Acoustic-Wood-Panel.md`
+    - was: ''
+    - now: 'A product display for the Artika Sonolok slatted acoustic wood wall panel at Cos'
+- ok `Tools/Selling-League-Live-Camera-See-Skounh.md`
+    - was: 'Screenshot of Selling League Live Camera See Skounh with readable text about sel'
+    - now: "A tutorial walkthrough on the OpenArt platform titled 'AI Creator Academy,' spec"
+- ok `Tools/Pere-Pre-Sun-Shades-Xeneric-Brand.md`
+    - was: 'Screenshot of Pere Pre Sun Shades Xeneric Brand with readable text about pere pr'
+    - now: "A screenshot of a TikTok video titled '5 Uncommon POD Products For Huge Profits "
+- ok `Tools/Search-Ask-Question-Tongveo-Ptz-Conference.md`
+    - was: 'Screenshot of Search Ask Question Tongveo Ptz Conference with readable text abou'
+    - now: 'A screenshot of the Amazon product page for the Cadothy Amaze 5 Pro, a specializ'
+- ok `Tools/Google-Pitch-Shoppir-Https-Pitchem.md`
+    - was: 'Screenshot of Google Pitch Shoppir Https Pitchem with readable text about google'
+    - now: "A Google search results page for 'pitch em', highlighting Pitch'Em as an all-in-"
+- ok `Tools/TIKTOK-Who-Michael-Evans-Chapters-Book.md`
+    - was: 'Screenshot of TikTok Who Michael Evans Chapters Book with readable text about ti'
+    - now: 'An FAQ and download landing page for the Creatorwood book by Michael Evans. The '
+- ok `Tools/Worldlabs-AI.md`
+    - was: 'Screenshot of Worldlabs AI with readable text about worldlabs ai.'
+    - now: "The landing or welcome page for 'World Labs', displayed within a mobile browser."
+- ok `Tools/Prismofpixels-Marvel83-Fonvey.md`
+    - was: 'Screenshot of Prismofpixels Marvel83 Fonvey with readable text about prismofpixe'
+    - now: 'A digital artwork featuring a figure in futuristic protective gear riding a rugg'
+- ok `Tools/Eal-Lte-Will-Switch-Address-Islike.md`
+    - was: 'Screenshot of Eal Lte Will Switch Address Islike with readable text about eal lt'
+    - now: 'A promotional video demonstrating the Keep Your Home IP hardware device, a blue '
+- ok `Tools/Find-Value-Share-Greg-Earn-Cash.md`
+    - was: 'Screenshot of Find Value Share Greg Earn Cash with readable text about find valu'
+    - now: "A TikTok video by Greg promoting Anyspark.io, a platform described as 'a new Sup"
+- ok `Tools/Live-Explore-Following-Shop-Valuations-Prepare.md`
+    - was: 'Screenshot of Live Explore Following Shop Valuations Prepare with readable text '
+    - now: "A screen recording demonstrating a workflow diagram centered on 'Upload to Biota"
+- ok `Tools/Oll-Lte-Mosaic-Artificial-Intelligence-Labs.md`
+    - was: 'Screenshot of Oll Lte Mosaic Artificial Intelligence Labs with readable text abo'
+    - now: 'Landing page for Mosaic, an AI video editing platform by Artificial Intelligence'
+- ok `Tools/Joesosso6-Aes-Search-Friends-Inbox-Profile.md`
+    - was: 'Screenshot of Joesosso6 Aes Search Friends Inbox Profile with readable text abou'
+    - now: 'A TikTok video by user sebintel featuring a curated list of recommended tools fo'
+- ok `Workflows/Client-Consultation-Form-Template.md`
+    - was: 'Client consultation form template used as a workflow or intake reference.'
+    - now: "A screenshot of the GitHub repository page for 'nano-banana-2-skill' by kingboot"
+- ok `Design_Inspiration/Freestyle-Music-Hits-Video-Gallery.md`
+    - was: ''
+    - now: "An Instagram sound profile page for 'Freestyle Music Hits' featuring an original"
+- ok `Prompts/JSON-Prompt-Example1.md`
+    - was: ''
+    - now: 'A digital illustration depicting a futuristic samurai warrior holding a katana i'
+- ok `Tutorials/Etsy-Best-Practices.md`
+    - was: 'Screenshot of Etsy Best Practices, likely a saved reference for Tony’s research '
+    - now: "A guide outlining Etsy's stated best practices for writing product titles and ta"
+- ok `Investments/Bsb-Alinea-Personalized-Automated-Investing-Finance.md`
+    - was: 'Screenshot of Bsb Alinea Personalized Automated Investing Finance with readable '
+    - now: 'Screenshot of the Alinea mobile application page on the App Store, an investment'
+- ok `Research/Unomas0795-A-Rugged-Mongol-Warrior-In-Fur-And-Leather-Armor-S-10442a31-E2f8-425a-Abd5-4f27630cc697-3.md`
+    - was: ''
+    - now: 'Character design reference sheet for a cybersamurai warrior blending traditional'
+- FAIL (vision) `Research/Lvrm-Colorful-3x4.md`
+- ok `Research/Stn-Vkflgsm7cx481iwtnivxd7vwse1uxvespjevhpr3.md`
+    - was: ''
+    - now: 'The landing page for TubeGenAI, a SaaS platform described as an AI studio for Yo'
+- ok `Personal/Trader-Joes-Pasture-Raised-Eggs.md`
+    - was: ''
+    - now: "Close-up photo of the side label on a carton of Trader Joe's Pasture Raised eggs"
+- ok `Tools/Beamng.md`
+    - was: ''
+    - now: 'The official news landing page for BeamNG.drive, a soft-body physics driving sim'
+- ok `Tools/Advisory-Youraiadvisory-Followers-Likes-Following-Earn.md`
+    - was: 'Screenshot of Advisory Youraiadvisory Followers Likes Following Earn with readab'
+    - now: "A TikTok profile for 'Your AI Advisory' that focuses on automation strategies. T"
+- ok `Tools/Aliabdaal-Origi-Creatorgrid-Handle-Comment-Down.md`
+    - was: 'Screenshot of Aliabdaal Origi Creatorgrid Handle Comment Down with readable text'
+    - now: 'A social media post promoting CreatorGrid, a service that handles paperwork and '
+- ok `Tools/Google-Side-Shift-Short-Sideshift-Https.md`
+    - was: 'Screenshot of Google Side Shift Short Sideshift Https with readable text about g'
+    - now: 'A mobile browser search result for SideShift, a platform designed to recruit UGC'
+- ok `Tools/Shop-Twe-Stem-Expipre-Following-Ors.md`
+    - was: 'Screenshot of Shop Twe Stem Expipre Following Ors with readable text about shop.'
+    - now: "A TikTok video discussing 'Nano Banana' (identified as a tool with a moral dilem"
+- ok `Tools/Oul-Marbs-Girlie-Marbsgirlie-Stan-Let.md`
+    - was: 'Screenshot of Oul Marbs Girlie Marbsgirlie Stan Let with readable text about oul'
+    - now: 'A screenshot of a Stan Store landing page by @MarbsGirlie displaying digital pro'
+- ok `Tools/Live-Tem-Explore-Following-Shop-Get.md`
+    - was: 'Screenshot of Live Tem Explore Following Shop Get with readable text about live.'
+    - now: 'A TikTok video from the creator Marcin AI that discusses strategies for acquirin'
+- ok `Tools/Explore-Ana-Hte-Kallaway-Fastest-Ways.md`
+    - was: 'Screenshot of Explore Ana Hte Kallaway Fastest Ways with readable text about on '
+    - now: 'A TikTok video by user Kallaway promoting IBM SkillsBuild, a free learning platf'
+- ok `Tools/Wus-Itay-Shi-Popul-Ple-Ally.md`
+    - was: 'Screenshot of Wus Itay Shi Popul Ple Ally with readable text about wus.'
+    - now: "A YouTube video titled 'How I Actually Make Viral AI Videos In...' featuring con"
+- ok `Tools/Bre-Rewards-Whop-Mam-Live-Ore.md`
+    - was: 'Screenshot of Bre Rewards Whop Mam Live Ore with readable text about bre.'
+    - now: 'A TikTok video featuring a creator discussing EasySlice.AI, an AI-powered tool d'
+- ok `Tools/Kalshi-Clorox-Ereeny-View-History-Benes.md`
+    - was: 'Screenshot of Kalshi Clorox Ereeny View History Benes with readable text about k'
+    - now: 'A screenshot of the Kalshi website displaying a specific prediction market askin'
+- ok `Tools/Glif-MCP-Server-Claude-Integration.md`
+    - was: ''
+    - now: 'A TikTok post by sebintel promoting the glifxyz/glif-mcp-server GitHub repositor'
+- ok `Tools/Ccb-Ofigg-Luggage-Cover-Gen-Print.md`
+    - was: 'Screenshot of Ccb Ofigg Luggage Cover Gen Print with readable text about ccb ofi'
+    - now: 'A TikTok video thumbnail featuring a print-on-demand business concept for luggag'
+- ok `Tools/Claude-Skills-And-AI-Tools-01.md`
+    - was: 'Screenshot batch showing Claude skills and related AI tooling references.'
+    - now: 'An advertisement showing the Xtra AI-powered vlogging camera being demonstrated '
+- ok `Tools/Alele-Live-Apply-Skills-Google-Cloud.md`
+    - was: 'Screenshot of Alele Live Apply Skills Google Cloud with readable text about XD I'
+    - now: 'A TikTok video by Node AI featuring a Google Cloud documentation tutorial. The c'
+- ok `Tools/Oll-Lte-Comments-Mteviero-Here-Let.md`
+    - was: 'Screenshot of Oll Lte Comments Mteviero Here Let with readable text about oll lt'
+    - now: "Screenshot of a social media comment thread promoting 'MovieFlow', an AI tool de"
+- ok `Design_Inspiration/Unomas0795-Futuristic-Racecar-Wide-Angle-34-Shot-In-Style-Of-2b3272ef-5717-4343-A01f-D7a5350dc0f5-0.md`
+    - was: ''
+    - now: 'A highly detailed futuristic concept car design featuring a sleek, black carbon-'
+- ok `Research/Stn-Jhum7kiabwgloclqsl3q3gvwip8olm3fuizik4xk.md`
+    - was: ''
+    - now: 'A screenshot of the Kie.ai dashboard featuring a detailed guide for the Midjourn'
+- ok `Personal/Egg-Recall-Warnig-August-17th.md`
+    - was: ''
+    - now: 'A TikTok video screenshot featuring a creator named Ding discussing a nationwide'
+- ok `Tools/Live-Tem-Explore-Following-Shop-Window.md`
+    - was: 'Screenshot of Live Tem Explore Following Shop Window with readable text about li'
+    - now: 'A screenshot of the RSS.app web application interface, specifically displaying t'
+- ok `Tools/Deve-Edi-Matted-Document-Tables-Forte.md`
+    - was: 'Screenshot of Deve Edi Matted Document Tables Forte with readable text about dev'
+    - now: 'A TikTok video screenshot displaying a detailed AI image generation prompt templ'
+- ok `Tools/Ride-Mage-Owerfi-Live-Tems-Expi.md`
+    - was: 'Screenshot of Ride Mage Owerfi Live Tems Expi with readable text about ride mage'
+    - now: 'A TikTok video and overlay text discussing Z-Image, an efficient image generatio'
+- ok `Tools/Live-Exp-Following-Shop-Started-Off.md`
+    - was: 'Screenshot of Live Exp Following Shop Started Off with readable text about live.'
+    - now: "A TikTok review discussing the platform 'Cohleys' for UGC creators. The creator "
+- ok `Tools/Paes-Creation-Them-Ive-Temp-Ote.md`
+    - was: 'Screenshot of Paes Creation Them Ive Temp Ote with readable text about C1 ae.'
+    - now: 'A TikTok tutorial by Chase | AI Guides demonstrating a workflow automation syste'
+- ok `Tools/Chatgpt-Realapy-Liveaiapp-Aliveal-Create-Realistic.md`
+    - was: 'Screenshot of ChatGPT Realapy Liveaiapp Aliveal Create Realistic with readable t'
+    - now: 'A YouTube video tutorial by a creator demonstrating how to build an AI-powered O'
+- ok `Tools/Chase-Eee-Www-Skool-Com-Agen.md`
+    - was: 'Screenshot of Chase Eee Www Skool Com Agen with readable text about chase.'
+    - now: 'Screenshot of the Chase AI+ community page on Skool, a private membership site l'
+- ok `Tools/Live-Explore-Following-Shop-Post-Longer.md`
+    - was: 'Screenshot of Live Explore Following Shop Post Longer with readable text about l'
+    - now: "A TikTok video analyzing the YouTube channel 'Boring Space' by Leo Grundström, d"
+- ok `Tools/Live-Hon-Ass-Comment-Insidersal-Glipzap.md`
+    - was: 'Screenshot of Live Hon Ass Comment Insidersal Glipzap with readable text about l'
+    - now: 'A TikTok promotional post for Clipzap, an all-in-one AI tool that aggregates var'
+- ok `Tools/Cir-Illars-Architecture-Live-Tem-Explore.md`
+    - was: 'Screenshot of Cir Illars Architecture Live Tem Explore with readable text about '
+    - now: "A TikTok tutorial video by Chase AI that outlines the '7 Pillars of App Architec"
+- ok `Tools/Sine-Ice-Iil-Mantel.md`
+    - was: 'Screenshot of Sine Ice Iil Mantel with readable text about i si..'
+    - now: 'A retail photo of the Ugreen Nexode 200W 6-Port GaN Desktop Fast Charger packagi'
+- ok `Tools/Nfl-Game-Lines-Popular-Scorers-Passing.md`
+    - was: 'Screenshot of Nfl Game Lines Popular Scorers Passing with readable text about L_'
+    - now: 'Screenshot of the DraftKings mobile sports betting app displaying NFL player pro'
+- ok `Tools/MuscleBooster-App-Weight-Loss-After-50-Ad.md`
+    - was: ''
+    - now: "An Instagram post or ad from the brand 'musclebooster_app' featuring a speaker ("
+- ok `Tools/Getitfresh-Instagram.md`
+    - was: 'Screenshot of Getitfresh Instagram, likely a saved reference for Tony’s research'
+    - now: "A promotional video screenshot from the brand 'Liv' (specifically Liv Dental Ins"
+- ok `Tools/Allie-Live-Stem-Explore-Follow-Happy.md`
+    - was: 'Screenshot of Allie Live Stem Explore Follow Happy with readable text about alli'
+    - now: "A TikTok video by creator dave_preneur titled 'How to create a faceless account "
+- ok `Tools/Remote-Introverts-Sales-Gomper-Ation-Uli.md`
+    - was: 'Screenshot of Remote Introverts Sales Gomper Ation Uli with readable text about '
+    - now: "A sponsored TikTok post from 'Remote_Jobs_Finder' advertising a remote Sr. Sales"
+- ok `Tools/Thersyagentipiatforms-Thatwilllreplace-Ialt-Wonks-Lindy-Search.md`
+    - was: 'Screenshot of Thersyagentipiatforms Thatwilllreplace Ialt Wonks Lindy Search wit'
+    - now: 'A TikTok video tutorial discussing AI agent platforms, specifically highlighting'
+- ok `Design_Inspiration/Neon-Parcel-YT-Banner.md`
+    - was: ''
+    - now: 'A pixel-art illustration of an orange bear delivering packages on a bicycle thro'
+- ok `Models/Zhipu-GLM-5.1-Flagship-Model-Promo.md`
+    - was: ''
+    - now: "A social media post highlighting Zhipu's GLM-5.1, a new flagship foundation mode"
+- ok `Tutorials/Master-AI-Realism-Higgsfield-Tutorial.md`
+    - was: ''
+    - now: 'A showcase of Higgsfield AI, a tool focused on generating ultra-realistic AI vid'
+- ok `Investments/Corning-Nvidia-AI-Fiber-Deal.md`
+    - was: ''
+    - now: 'A CNBC news clip featuring anchor Katie Tarasov reporting on a partnership deal '
+- FAIL (vision) `Research/Stn-Axbk58p2jzemo4oceeapstlo2b7xbejtp3wamwcx.md`
+- ok `Research/Unomas0795-Futuristic-Directory-Or-Library-Ar-43-Profile-F8ca6f74-B5e0-4a56-8b8b-D97b49021931-2.md`
+    - was: ''
+    - now: 'A moody, atmospheric architectural visualization of a futuristic library featuri'
+- ok `Research/Photoreal-Hyperrealistic-Portrait-Of-Genghis-Khan-3.md`
+    - was: ''
+    - now: 'A close-up portrait of a man styled as a historical Asian ruler, likely represen'
+- ok `Research/Clip6a.md`
+    - was: ''
+    - now: 'A highly stylized image of a Shiba Inu riding in front of the camera, carrying a'
+- ok `Research/AI-Booth-Conference-01.md`
+    - was: 'Photos of AI conference booths and vendor displays.'
+    - now: 'The image displays an Aaton Cantar X3 portable audio recorder, a professional fi'
+- ok `Research/TikTok-GO-Referral-Influencer-Marketing.md`
+    - was: ''
+    - now: "A TikTok post by user 'tiktokgohacks' promoting a platform called TikTok GO. The"
+- ok `Personal/BP-Schedule-Hour-Log.md`
+    - was: ''
+    - now: "A screenshot of a personal to-do or reminder list titled 'BP' tracking shift hou"
+- ok `Tools/Live-Explore-Following-Shop-Insane-Making.md`
+    - was: 'Screenshot of Live Explore Following Shop Insane Making with readable text about'
+    - now: 'A screen capture of the Vidrush AI video tool interface, showing a URL bar with '
+- ok `Tools/Tive-Explore-Following-Shop-Blew-YOUTUBE.md`
+    - was: 'Screenshot of Tive Explore Following Shop Blew YouTube with readable text about '
+    - now: 'A TikTok video thumbnail demonstrating a YouTube video script structure using a '
+- ok `Tools/Aca-Exolore-Image-Edit-Gles-Like-Live.md`
+    - was: 'Screenshot of Aca Exolore Image Edit Gles Like Live with readable text about aca'
+    - now: 'A demo of a Qwen Image Edit interface running on zero-cost infrastructure, featu'
+- ok `Tools/2026-Portable-AI-Language-Translator-Device.md`
+    - was: ''
+    - now: 'An e-commerce product page for a portable AI language translator device. The dev'
+- ok `Tools/Pow-Punts-Ors-Romr-Subheading-Subneading.md`
+    - was: 'Screenshot of Pow Punts Ors Romr Subheading Subneading with readable text about '
+    - now: 'A TikTok video by Marcin AI explaining the essential components of a high-conver'
+- ok `Tools/Oul-Captain-Auto-Editor-Auto-Editor-Watch.md`
+    - was: 'Screenshot of Oul Captain Auto Editor Auto Editor Watch with readable text about'
+    - now: 'Mobile landing page for AI Ai, Captain, an AI-powered auto-editor plugin designe'
+- ok `Tools/Selling-Daily-Ranking-Newly-Upgra-Lis.md`
+    - was: 'Screenshot of Selling Daily Ranking Newly Upgra Lis with readable text about sel'
+    - now: "A laptop screen displaying the 'Social Cheat Sheet 2.0' website, showcasing a di"
+- ok `Tools/Bal-Tins-Listing-Details-Shap-Naleani.md`
+    - was: 'Screenshot of Bal Tins Listing Details Shap Naleani with readable text about bal'
+    - now: "A screenshot of a seller analytics dashboard for an Etsy listing titled 'Santas "
+- ok `Tools/Shadow-Script-Getshadowscript-Com.md`
+    - was: 'Screenshot of Shadow Script Getshadowscript Com with readable text about shadow '
+    - now: 'Screenshot of the ShadowScript landing page, a tool designed to find currently v'
+- ok `Tools/Selling-Daily-Ranking-Loopy-Goes-Ries.md`
+    - was: 'Screenshot of Selling Daily Ranking Loopy Goes Ries with readable text about sel'
+    - now: "A screen recording of a computer display showing an Instagram profile named 'tat"
+- ok `Tools/Agents-Agent-Search-Hersyagent-Ote-Forms.md`
+    - was: 'Screenshot of Agents Agent Search Hersyagent Ote Forms with readable text about '
+    - now: 'A TikTok video tutorial by The AI Solopreneur featuring the Agents platform (a Z'
+- ok `Tools/Alm-Athe-Eee-Poe-Eae-Ees.md`
+    - was: 'Screenshot of Alm Athe Eee Poe Eae Ees with readable text about alm.'
+    - now: 'A printed rate sheet or brochure for The Village at Commonwealth Guest Suite. It'
+- ok `Tools/Layla-Ai-Travel-Planner.md`
+    - was: ''
+    - now: 'A screenshot showing a YouTube comment section where the creator confirms they u'
+- ok `Tools/Combinator-Open-Source-Browseros-Al-Powered-Browser.md`
+    - was: 'Screenshot of Combinator Open Source Browseros Al Powered Browser with readable '
+    - now: 'This image displays a landing page for BrowserOS, described as an open-source, A'
+- ok `Design_Inspiration/01-Mockup.md`
+    - was: ''
+    - now: 'An abstract artwork featuring overlapping geometric and organic shapes in a pale'
+- ok `Design_Inspiration/Unomas0795-Eye-Level-Straight-On-View-Of-A-Modern-Living-Room-F9abcc20-7924-497e-9179-7d5ca01b1e43-0.md`
+    - was: ''
+    - now: 'A 3D interior rendering of a bohemian-style living room featuring a teal tufted '
+- ok `Docs/TikTok-Creator-Commercial-Licensing-Terms.md`
+    - was: ''
+    - now: "A screenshot displaying the 'Authorization Details' section for TikTok, specific"
+- ok `Tutorials/Digital-Products-Ecom-Strategy-Tutorial.md`
+    - was: ''
+    - now: "A TikTok video by the creator 'jordanviralcoach' advertising a free class on ear"
+- ok `Investments/IONQ-Stock-Growth-Catalyst.md`
+    - was: ''
+    - now: 'A TikTok video featuring speaker Jay Patel discussing the stock IonQ, specifical'
+- ok `Design_Inspiration/Freepik-The-Style-Is-Candid-Image-Photography-With-Natural-53305.md`
+    - was: ''
+    - now: 'An underwater fantasy scene depicting a silhouette of a scuba diver riding on th'
+- ok `Design_Inspiration/Nordic-Floral-Monochrome.md`
+    - was: ''
+    - now: 'A high-contrast silhouette illustration of stylized floral elements arranged in '
+- ok `Design_Inspiration/Unomas0795-Skinny-Framed-Blank-Canvas-Mockup-In-34-Ratio-In-Ret-7ce4c9a7-0224-4317-Bf0a-1d2658d7eb41.md`
+    - was: ''
+    - now: 'An elegant interior design setup featuring a black rolling bar cart fully stocke'
+- ok `Tutorials/How-To-Fire-Your-Graphic-Designer-With-Claude-Code.md`
+    - was: ''
+    - now: 'A TikTok video by brandonevansai recommending a tutorial on using Claude Code to'
+- ok `Investments/Everspin-Technologies-MRAM-Stock-Pump.md`
+    - was: ''
+    - now: 'A TikTok video by user Roadto100kPortfolio analyzing Everspin Technologies (tick'
+- ok `Investments/QQQM-ETF-Investment-Single-Stock-Pick.md`
+    - was: ''
+    - now: 'A TikTok video featuring content creator Lydia Money Moves discussing the QQQM E'
+- ok `Design_Inspiration/Unomas0795-3d-Animation-Pixar-Style-Ar-43-V-6.md`
+    - was: ''
+    - now: 'A close-up of a stylized, cartoonish green lizard with massive eyes and an expre'
+- ok `Design_Inspiration/Shopify-Banner.md`
+    - was: ''
+    - now: 'A high-fantasy concept art piece depicting a dramatic sunset over a sprawling ci'
+- ok `Design_Inspiration/Unomas0795-A-Stylish-Mid-Century-Bedroom-Captured-Straight-On-A-4b8af48f-09b3-42f4-Aef5-11bee9f9caf7.md`
+    - was: ''
+    - now: 'A view of a minimalist bedroom featuring a neutral color palette with beige, rus'
+- ok `Tutorials/Training-AI-Prompts-On-Design-Aesthetics.md`
+    - was: ''
+    - now: "A TikTok tutorial by 'Your Chief AI Officer' explaining a prompt engineering tec"
+- ok `Investments/Ron-Dalal-ETF-Investment-Strategy-2026.md`
+    - was: ''
+    - now: 'A TikTok video post by financial creator Ron Dalal regarding investment opportun'
+- ok `Investments/Autopilot-Investment-Cancel-Modern-Way-Invest.md`
+    - was: 'Screenshot of Autopilot Investment Cancel Modern Way Invest with readable text a'
+    - now: 'Screenshot of the Autopilot - Investment App page on the iOS App Store, currentl'
+- ok `Design_Inspiration/10-00064-Abstract-Loose-Shapes-Thbn-Iso-A1-23.md`
+    - was: ''
+    - now: 'A bright, minimalist interior corner featuring a woven rattan lounge chair and m'
+- ok `Design_Inspiration/Unomas0795-45-Degree-Angled-View-Of-A-Japandi-Living-Room-Des-82a1fc7b-675b-4345-98b7-E2a5fad5e7a6-0.md`
+    - was: ''
+    - now: 'A high-quality interior design visualization of a rustic living space featuring '
+- ok `Tutorials/Algojs-Pov.md`
+    - was: ''
+    - now: 'A handwritten system specification for a fully automated workflow that generates'
+- ok `Investments/SCHD-Etf-Personal-Finance-Social-Recommendation.md`
+    - was: ''
+    - now: 'A TikTok video featuring a creator named Mia discussing the SCHD ETF. The user i'
+- ok `Investments/AI-Stock-Rally-NVST-INOD.md`
+    - was: ''
+    - now: 'A TikTok video by Xavier Wagner discussing investment recommendations for two sp'
+- ok `Research/Unomas0795-Influencer-Realistic-Selfie-Camera-Ar-43-V-6.md`
+    - was: ''
+    - now: 'A digital portrait featuring a woman holding a yellow instant camera over her ey'
+- ok `Research/Unomas0795-Apps-Topdown-Ar-43-V-6.md`
+    - was: ''
+    - now: 'A grid-style composition of numerous floating smartphone mockups displaying dive'
+- ok `Personal/C-vitt-Vitamin-Drinks-Thailand.md`
+    - was: ''
+    - now: 'A TikTok video screenshot featuring a creator holding two C-vitt Vitamin drinks '
+- ok `Tools/Open-Generative-AI-Higgsfield-Alternative.md`
+    - was: ''
+    - now: 'A TikTok video by Nathan Hodgson introducing Open Generative AI, described as an'
+- ok `Tools/Lensa-Medicine-Delivery-Job-Posting.md`
+    - was: ''
+    - now: 'A social media advertisement for Lensa Jobs recruiting Medicine Delivery Drivers'
+- ok `Tools/Introducing-Fossa-Tether-Built-Inside-After.md`
+    - was: 'Screenshot of Introducing Fossa Tether Built Inside After with readable text abo'
+    - now: 'A promotional screenshot introducing Fossa Tether, a tool built inside Adobe Aft'
+- ok `Tools/Lte-Live-Stem-Explore-Following-Hoox.md`
+    - was: 'Screenshot of Lte Live Stem Explore Following Hoox with readable text about lte.'
+    - now: "This image is a TikTok video screenshot showcasing 'HOOX', an AI-powered tool th"
+- ok `Tools/Eal-Lte-Booboopgs-Follow-Booboo-Pet.md`
+    - was: 'Screenshot of Eal Lte Booboopgs Follow Booboo Pet with readable text about eal l'
+    - now: 'An Instagram post about the Syros Cats project in Greece, where volunteers can r'
+- ok `Tools/There-Curated-Open-Source-Every-Task-Vetted.md`
+    - was: 'Screenshot of There Curated Open Source Every Task Vetted with readable text abo'
+    - now: 'A mobile screenshot of the Open Apps Pro website, which serves as a curated dire'
+- ok `Tools/Horat-Oten-Horne-Torrie-Tony-Udeet.md`
+    - was: 'Screenshot of Horat Oten Horne Torrie Tony Udeet with readable text about horat '
+    - now: "A TikTok profile video for 'tony.mindset01' overlayed with the title 'How To Sel"
+- ok `Tools/Pinterest-Amazon-Affiliate-Influencer-Marketing-Mrbarrows.md`
+    - was: 'Screenshot of Pinterest Amazon Affiliate Influencer Marketing Mrbarrows with rea'
+    - now: "A paid guide for sale on Gumroad titled 'Pinterest Amazon Affiliate & Influencer"
+- ok `Tools/Selling-Popular-Live-Camera-Peek-Ohh.md`
+    - was: 'Screenshot of Selling Popular Live Camera Peek Ohh with readable text about sell'
+    - now: 'A live stream presentation of AiCA (AI Creator Academy), a platform designed for'
+- ok `Tools/Ore-TIKTOK-Instagram-YOUTUBE-Facebook-Huzefausama.md`
+    - was: 'Screenshot of Ore TikTok Instagram YouTube Facebook Huzefausama with readable te'
+    - now: 'A futuristic architectural rendering of a massive, skeletal structure referred t'
+- ok `Tools/Oul-Lazy-Way-Make-Money-Online.md`
+    - was: 'Screenshot of Oul Lazy Way Make Money Online with readable text about oul.'
+    - now: 'A landing page for the AI Freedom Formula, a paid system or course teaching user'
+- ok `Tools/Google-Aintignawity-Bring-Plants-Windows-Linux.md`
+    - was: 'Screenshot of Google Aintignawity Bring Plants Windows Linux with readable text '
+    - now: "A TikTok post by 'Julian The SEO Expert' showcasing a search feature called 'Goo"
+- ok `Tools/Loadi-Book-Add-Source-Get-Started.md`
+    - was: 'Screenshot of Loadi Book Add Source Get Started with readable text about loadi b'
+    - now: 'A TikTok video by Victor C demonstrating how to use Google NotebookLM to generat'
+- ok `Tools/Ricin-Gareers-Agent-Thess-Age-Plat.md`
+    - was: 'Screenshot of Ricin Gareers Agent Thess Age Plat with readable text about ricin.'
+    - now: 'A screenshot of a TikTok video reviewing the Agent 3 platform, marketed as a too'
+- ok `Tools/Pala-Edia-Acco-Sound-Sea-Sabrina.md`
+    - was: 'Screenshot of Pala Edia Acco Sound Sea Sabrina with readable text about pala.'
+    - now: 'A workflow diagram displayed on a computer screen demonstrating an automation pr'
+- ok `Tools/Ool-Lte-Tive-Stem-Explore-Following.md`
+    - was: 'Screenshot of Ool Lte Tive Stem Explore Following with readable text about ool l'
+    - now: 'A promotional capture for Deep Lookup, a beta AI tool that allows users to searc'
+- ok `Tools/Print-Ify-Upliful-Rintiful-Stee-Nreiter.md`
+    - was: 'Screenshot of Print Ify Upliful Rintiful Stee Nreiter with readable text about p'
+    - now: 'A TikTok video tutorial introducing how to start a TikTok Shop with zero startup'
+- ok `Tools/Chase-Eee-Www-Skool-Com-Log.md`
+    - was: 'Screenshot of Chase Eee Www Skool Com Log with readable text about chase.'
+    - now: 'This image displays the landing page for Chase AI+, a subscription-based educati'
+- ok `Tools/Live-Explore-Following-Shop-Bro-Chatgpt.md`
+    - was: 'Screenshot of Live Explore Following Shop Bro ChatGPT with readable text about l'
+    - now: "A promotional TikTok video featuring the AI tool 'Magai', which markets itself a"
+- ok `Workflows/Faceless-Pov-AI-Agent-High-Level-Overview.md`
+    - was: ''
+    - now: 'A handwritten system specification and flowchart for automating AI-generated POV'
+- ok `Design_Inspiration/Vertical-Voyagers-AI-Goat-Jump.md`
+    - was: ''
+    - now: "A TikTok post from the account 'vertical voyagers' showcasing a hyper-realistic "
+- ok `Design_Inspiration/Unomas0795-Eye-Level-Straight-On-View-Of-An-Art-Deco-Hallway-Fd3cd7bd-5467-4576-B696-Fbccaebee381-2.md`
+    - was: ''
+    - now: 'An architectural interior view featuring ornate white wall paneling with decorat'
+- ok `Models/Mia-Love-Me-Right-Lyrics.md`
+    - was: ''
+    - now: "A screenshot of the YouTube song information description for 'Love Me Right' by "
+- ok `Tutorials/YouTube-Content-Strategy-Conflict-Arc-Diagram.md`
+    - was: ''
+    - now: 'A TikTok video screenshot by AJ demonstrating a strategy to grow a YouTube chann'
+- ok `Investments/Cracker-Barrel-SMCI-Stock-Chart-Volatility.md`
+    - was: ''
+    - now: 'A TikTok video featuring a financial chart of Cracker Barrel stock (ticker CBRL)'
+- ok `Personal/Afrika-Bambaataa-Planet-Rock-Sound-Page.md`
+    - was: ''
+    - now: "A TikTok sound page for the song 'Planet Rock' by Afrika Bambaataa & The Soulson"
+- ok `Personal/Base-Culture-Simply-Classic-Bread.md`
+    - was: ''
+    - now: "A close-up of a 'Base Culture' Simply Classic Sandwich Bread package held in a h"
+- ok `Tools/TIKTOK-Ece-Stayviral-Tolgalia-Month-Step-By-Step.md`
+    - was: 'Screenshot of TikTok Ece Stayviral Tolgalia Month Step By Step with readable tex'
+    - now: "A landing page for 'Stay Viral', a system claiming to teach beginners how to ear"
+- ok `Tools/Ares-Chi-Mene-Eee-Pustiato-Ago.md`
+    - was: 'Screenshot of Ares Chi Mene Eee Pustiato Ago with readable text about ares.'
+    - now: 'A screen recording of a laptop display showing a detailed football analytics int'
+- ok `Tools/Zao-Story-Ppicknick-OPENAI-Mace-Theimagehs.md`
+    - was: 'Screenshot of Zao Story Ppicknick OpenAI Mace Theimagehs with readable text abou'
+    - now: 'A conceptual design of a futuristic city integrated with organic structures and '
+- ok `Tools/Ollow-Ses-Bypass-Expensive-Dates-Act.md`
+    - was: 'Screenshot of Ollow Ses Bypass Expensive Dates Act with readable text about ollo'
+    - now: 'A TikTok video by Digital Laura A showcasing a reusable AI prompt designed to by'
+- ok `Tools/Lemonade-AI-Roblox-Game-Generator.md`
+    - was: ''
+    - now: 'A TikTok video screenshot demonstrating how to build a Roblox game using artific'
+- ok `Tools/Com-Coinemp-Tatus-Tual-Book-Post.md`
+    - was: 'Screenshot of Com Coinemp Tatus Tual Book Post with readable text about com coin'
+    - now: 'A tweet by Vana from Coinpress summarizing a Base livestream announcement. The v'
+- ok `Tools/Remote-Job-Platform-Directory.md`
+    - was: ''
+    - now: 'A curated list of 8 remote job platforms and companies (including Parexel, Omnii'
+- ok `Tools/Ate-Cok-Bigs-Beha-Een-Profan.md`
+    - was: 'Screenshot of Ate Cok Bigs Beha Een Profan with readable text about ate.'
+    - now: 'A physical product box for the JLab JBuds Ergonomic Mouse displayed on a retail '
+- FAIL (vision) `Tools/Live-Explore-Following-Shop-Sjinn-Workspace.md`
+- ok `Tools/Live-Tem-Explore-Following-Shop-Twelvelabs.md`
+    - was: 'Screenshot of Live Tem Explore Following Shop Twelvelabs with readable text abou'
+    - now: 'This screenshot captures a social media post (appearing to be from Twitter/X) di'
+- ok `Tools/Studio-Breese-Trends-Keywords-Last-Days.md`
+    - was: 'Screenshot of Studio Breese Trends Keywords Last Days with readable text about s'
+    - now: 'A YouTube video by creator DevonMcGregor1 demonstrating the prompt engineering t'
+- ok `Tools/English-Nano-Banana-Pro-Generate-Auto.md`
+    - was: 'Screenshot of English Nano Banana Pro Generate Auto with readable text about eng'
+    - now: 'A screenshot of the YouMind platform showcasing the Nano Banana Pro tool, a coll'
+- ok `Tools/Sting-Tails-Shop-Jon-Tudy-Jask.md`
+    - was: 'Screenshot of Sting Tails Shop Jon Tudy Jask with readable text about sting.'
+    - now: 'A TikTok screenshot featuring a case study of an Etsy product (Lofi Cat Study De'
+- ok `Tools/Yout-Ers-Channel-Onn-Friends-Talerey.md`
+    - was: 'Screenshot of Yout Ers Channel Onn Friends Talerey with readable text about yout'
+    - now: "A TikTok video by user 'pham' featuring a creator with the overlaid claim of ear"
+- ok `Tools/Scribe-AI-Platform.md`
+    - was: 'Screenshot set of the Scribe AI platform homepage and product interface.'
+    - now: 'An investment analysis thread focused on Marvell Technology (ticker: $MRVL), hig'
+- ok `Tools/R2ze585-Post-Reply-Search-Relevant-People.md`
+    - was: 'Screenshot of R2ze585 Post Reply Search Relevant People with readable text about'
+    - now: 'A summary of key updates from the Base blockchain livestream presented in a twee'
+- ok `Design_Inspiration/Unomas0795-A-Serene-Japandi-Style-Bedroom-Designed-For-A-Mini-Bf9420e6-Fa7c-40db-B426-Bd10356d7c2a-1.md`
+    - was: ''
+    - now: 'A serene bedroom interior featuring a wooden platform bed with neutral bedding, '
+- ok `Design_Inspiration/Unomas0795-Mongul-On-Horse-Realistic-Style-Of-Gladiator-Arri-F5007bd9-A368-4b34-9b95-18f7858e9b2d-1.md`
+    - was: ''
+    - now: 'A moody, atmospheric image featuring the dark silhouette of a lone rider on hors'
+- ok `Design_Inspiration/Unomas0795-45-Degree-Angled-View-Of-A-Mid-Century-Living-Room-S-D704bf37-Da21-4431-8522-Ae8d14432816.md`
+    - was: ''
+    - now: 'A bright, sunlit living room scene featuring a prominent mid-century modern wood'
+- ok `Design_Inspiration/Etsy-Logo-Alt.md`
+    - was: ''
+    - now: 'A stylized vector illustration of an owl featuring a geometric, tribal-inspired '
+- FAIL (vision) `Design_Inspiration/Unomas0795-A-Visually-Appealing-Photo-Of-A-Stylish-Living-Room-153b9f2d-5e3b-47cd-9afa-C75bee9cd170.md`
+- ok `Design_Inspiration/Thumbnail.md`
+    - was: ''
+    - now: 'A cinematic underwater scene featuring a translucent, glowing jellyfish floating'
+- ok `Prompts/JSON-Prompt-Example2.md`
+    - was: ''
+    - now: 'An anime-style illustration of a female cyberpunk samurai standing in the rain w'
+- ok `Tutorials/Food-Recall-Educational-Video-Tips.md`
+    - was: ''
+    - now: 'A TikTok video tutorial by user Ding regarding egg safety and recalls. The creat'
+- ok `Investments/Coherent-Corp-Stock-Breakout-Pattern.md`
+    - was: ''
+    - now: 'A TikTok video by MarkhamTrading featuring a stock chart for Coherent Corp (Tick'
+- ok `Tools/QR-Code-Digital-Link-Asset.md`
+    - was: ''
+    - now: 'A raw QR code image intended for scanning. The specific destination URL or conte'
+- ok `Tools/Sal-Madre-Selva-Lindbergh-Uptown-Pink.md`
+    - was: 'Screenshot of Sal Madre Selva Lindbergh Uptown Pink with readable text about sal'
+    - now: "This image captures a top 10 list from Infatuation Atlanta's 'Best New Restauran"
+- ok `Tools/Descovery-Dose-Subscrie-Discover-Discovery-Discoverydose.md`
+    - was: 'Screenshot of Descovery Dose Subscrie Discover Discovery Discoverydose with read'
+    - now: 'A screenshot of the YouTube channel page for Discovery Dose (@DiscoveryDose_). T'
+- ok `Design_Inspiration/Sci-Fi-Command-Center-UI-Concept.md`
+    - was: ''
+    - now: 'A futuristic, cinematic desk setup featuring a massive curved multi-monitor disp'
+- ok `Design_Inspiration/Unomas0795-High-End-Graphic-Design-Ar-43-V-6.md`
+    - was: ''
+    - now: 'A surreal digital portrait of a woman with blue-toned skin, looking upwards agai'
+- ok `Design_Inspiration/Unomas0795-45-Degree-Angled-View-Of-A-Modern-Living-Room-Styl-6251d5fd-1a51-4a04-Beb8-02efba8c8336-0.md`
+    - was: ''
+    - now: 'A serene interior design scene featuring a minimalist living room with warm ligh'
+- ok `Prompts/Annotation-Prompts-2.md`
+    - was: ''
+    - now: 'An AI-generated or stylized image depicting a large sci-fi robot engaged in comb'
+- ok `Tutorials/Lofi.md`
+    - was: 'Screenshot of Lofi, likely a saved reference for Tony’s research or workflow lib'
+    - now: 'A YouTube Short by AdrianVideoImage demonstrating an AI workflow for generating '
+- ok `Investments/Bloom-Energy-AI-Energy-Infrastructure-Stock.md`
+    - was: ''
+    - now: 'A TikTok post from user foxofstocks analyzing Bloom Energy ($BE) stock. The cont'
+- ok `Prompts/Gemghi-Khan-Script-Storyboards.md`
+    - was: ''
+    - now: 'A curated moodboard of high-fidelity AI-generated images depicting the Genghis K'
+- ok `Tutorials/Qepaba-Cevapi-Balkan-Recipe-Series-Episode-1.md`
+    - was: ''
+    - now: 'A TikTok post by user gulasgrub sharing a specific recipe for Qepaba/Cevapi, des'
+- ok `Investments/CGNT-Ticker-Stock-Analysis.md`
+    - was: ''
+    - now: 'A TikTok video from Wealth Blue Print discussing 5 AI stocks beyond the obvious '
+- ok `Design_Inspiration/09-00070-Womans-Back-Line-Drawing-Thbn-Iso-A1-23.md`
+    - was: ''
+    - now: 'A minimalist interior design reference featuring a living space with natural lig'
+- ok `Design_Inspiration/Unomas0795-Minimalist-Black-And-White-Poster-With-Large-Shapes-43ae50c4-4a02-4fcb-8e52-Ddfce6cd2976.md`
+    - was: ''
+    - now: 'A minimalist interior design composition featuring a dark upholstered lounge cha'
+- ok `Design_Inspiration/Unomas0795-Eye-Level-Straight-On-View-Of-A-Modern-Living-Room-98a3c516-3672-4585-Bf77-2040000e19b3-1.md`
+    - was: ''
+    - now: 'A high-quality architectural rendering of a serene living space featuring Japand'
+- ok `Prompts/UGC-Content-Creation-Breakdown.md`
+    - was: ''
+    - now: "A TikTok video by user 'elizabeth' featuring advice on starting in UGC (User Gen"
+- ok `Investments/CRDO-Stock-Investment-Recommendation.md`
+    - was: ''
+    - now: 'A TikTok video by Wealth Blue Print discussing the company CRDO, likely as part '
+- ok `Investments/Hyoda-Electrolyte-Hydration-Soda.md`
+    - was: ''
+    - now: 'A product showcase of Hyoda hydration sodas featuring Cherry and Limeade flavors'
+- FAIL (vision) `Design_Inspiration/Unomas0795-Simple-Blank-Poster-In-Stylish-Living-Room-No-Text-A-D24cb7da-4f30-4063-A464-Cf95cfb0f356.md`
+- ok `Design_Inspiration/Felt-Wall-Panel-Child-Room-Decor.md`
+    - was: ''
+    - now: 'A close-up shot of grey felt wall panels featuring an engraved semi-circular wav'
+- ok `Prompts/JSON-Prompt-Example3.md`
+    - was: ''
+    - now: 'A detailed cyberpunk-style illustration of an anthropomorphic dog warrior wearin'
+- ok `Tutorials/CapCut-Template-Creator-Program-Process.md`
+    - was: ''
+    - now: 'A YouTube Short tutorial by @LittleMxHoney explaining the process of becoming a '
+- ok `Investments/Vanguard-ETF-Investment-Strategy-Ron-Dalal.md`
+    - was: ''
+    - now: 'A TikTok video featuring financial expert Ron Dalal discussing investment strate'

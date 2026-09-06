@@ -1,5 +1,19 @@
 ---
-URL: https://hunter.io/
-Category: Scraper
-Description: http://Hunter.io is a B2B prospecting tool for finding and verifying professional email addresses. It’s commonly used for outreach and partnership/affiliate recruitment workflows, including building lead lists and validating contacts.
+title: "Hunter"
+type: tool-doc
+form: saas-tool
+summary: "Hunter.io is a B2B email outreach and verification platform that helps users find professional email addresses, verify their deliverability, and send cold email campaigns. It offers features like Domain Search, Email Finder, Email Verifier, and Sequences for personalized outreach."
+url: "https://hunter.io/"
+verified: true
+tags:
+  - email-finder
+  - email-verification
+  - b2b-prospecting
+  - cold-email
+  - sales-tool
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Hunter.io is a B2B email outreach and verification platform that helps users find professional email addresses, verify their deliverability, and send cold email campaigns. It offers features like Domain Search, Email Finder, Email Verifier, and Sequences for personalized outreach.

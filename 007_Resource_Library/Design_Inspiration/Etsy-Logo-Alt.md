@@ -1,14 +1,20 @@
 ---
 title: "Etsy Logo Alt"
-type: design-inspiration
+type: personal
 category: design-inspiration
+form: other
+summary: "A stylized vector illustration of an owl featuring a geometric, tribal-inspired pattern. The design is centered with pastel peach and teal colors against a light green background, suitable for use as a profile avatar or icon."
 tags:
   - design-inspiration
+  - owl
+  - illustration
+  - logo
+  - avatar
 created: 2026-05-03
-source: Etsy_Logo-Alt.jpg
+enriched: 2026-09-05
 ---
 
 ![[Etsy-Logo-Alt.jpg]]
 
-## AI Analysis
-Image reference from Notion export: Etsy_Logo-Alt.
+## Summary
+A stylized vector illustration of an owl featuring a geometric, tribal-inspired pattern. The design is centered with pastel peach and teal colors against a light green background, suitable for use as a profile avatar or icon.

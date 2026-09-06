@@ -1,14 +1,21 @@
 ---
 title: "Scottish Fold"
-type: research
+type: personal
 category: research
+form: other
+summary: "A studio shot of a brown tabby Scottish Fold cat sitting upright on its back against a white background, wearing a pink bow tie. The cat has folded ears and large green eyes with front paws resting on its chest."
 tags:
   - research
+  - cat
+  - pet
+  - bow-tie
+  - cute
+  - studio-shot
 created: 2026-05-03
-source: Scottish_Fold.png
+enriched: 2026-09-05
 ---
 
 ![[Scottish-Fold.png]]
 
-## AI Analysis
-Image reference from Notion export: Scottish_Fold.
+## Summary
+A studio shot of a brown tabby Scottish Fold cat sitting upright on its back against a white background, wearing a pink bow tie. The cat has folded ears and large green eyes with front paws resting on its chest.

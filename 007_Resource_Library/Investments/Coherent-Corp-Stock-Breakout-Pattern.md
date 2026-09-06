@@ -1,18 +1,28 @@
 ---
 title: "Coherent Corp Stock Breakout Pattern"
-type: extracted-knowledge
+type: social-thread
 category: investments
+form: tiktok
+summary: "A TikTok video by MarkhamTrading featuring a stock chart for Coherent Corp (Ticker: COHR) on the NYSE. The creator uses a green screen effect to highlight a 'stock breakout' in the price action and describes it as a 'quiet AI stock' that is moving significantly."
+search_for: "MarkhamTrading TikTok COHR stock analysis"
 tags:
   - stock-market
   - technical-analysis
   - coherent-corp
   - breakout-pattern
   - trading-signals
+  - market-breakout
+  - trading-insights
+  - needs-enrichment
 original_filename: "IMG_9867.PNG"
 created: 2026-08-24
+enriched: 2026-09-05
 ---
 
 ![[Coherent-Corp-Stock-Breakout-Pattern.png]]
 
-## AI Analysis
-A financial trading analysis of Coherent Corp (COHR) identifying a potential breakout pattern. The visual features a stock chart overlaid with key metrics like market cap, P/E ratio, and recent performance data.
+## Summary
+A TikTok video by MarkhamTrading featuring a stock chart for Coherent Corp (Ticker: COHR) on the NYSE. The creator uses a green screen effect to highlight a 'stock breakout' in the price action and describes it as a 'quiet AI stock' that is moving significantly.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `MarkhamTrading TikTok COHR stock analysis`

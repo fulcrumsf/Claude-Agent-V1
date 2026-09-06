@@ -1,16 +1,28 @@
 ---
 title: "Digital Noir With Angular Realism V7 Blue Palette"
-type: prompt
+type: tool-doc
 category: video-production
+form: other
+summary: "This link points to a public file hosted on Gumroad, a platform for creators to sell digital products. Based on Gumroad's typical offerings, this file is likely a digital resource such as a guide, template, or other practical document designed to assist users with a specific task or workflow."
+url: "https://public-files.gumroad.com/dyt31t6vqvnllg8jtarbewbns7db"
+verified: false
 tags:
   - prompt
   - image-generation
   - style
   - v7
   - noir
+  - digital-product
+  - resource
+  - template
+  - guide
+  - creator-economy
+  - unverified-link
 created: 2026-05-01
-source: https://public-files.gumroad.com/dyt31t6vqvnllg8jtarbewbns7db
+enriched: 2026-09-05
 ---
-[![](https://public-files.gumroad.com/dyt31t6vqvnllg8jtarbewbns7db)](https://public-files.gumroad.com/dyt31t6vqvnllg8jtarbewbns7db)
-**Notes**
-Switch the red to blue palette
+
+## Summary
+This link points to a public file hosted on Gumroad, a platform for creators to sell digital products. Based on Gumroad's typical offerings, this file is likely a digital resource such as a guide, template, or other practical document designed to assist users with a specific task or workflow.
+
+> [!warning] Link not verified by search — summary is inferred from the URL.

@@ -2,15 +2,22 @@
 title: "Google Pitch Shoppir Https Pitchem"
 type: tool-doc
 category: content-strategy
+form: saas-tool
+summary: "A Google search results page for 'pitch em', highlighting Pitch'Em as an all-in-one platform designed to help creators scan products, connect with brand decision-makers, and land sponsorships. The visible text describes its utility in transforming physical products into deal opportunities via a 3-click process."
+url: "https://pitchem.co"
 tags:
   - screenshot
   - video
-ai_description: "Screenshot of Google Pitch Shoppir Https Pitchem with readable text about google."
+  - influencer-marketing
+  - brand-deals
+  - sponsorship-platform
+  - creator-economy
 original_filename: "IMG_9330.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Google-Pitch-Shoppir-Https-Pitchem.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Google Pitch Shoppir Https Pitchem with visible text about google. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A Google search results page for 'pitch em', highlighting Pitch'Em as an all-in-one platform designed to help creators scan products, connect with brand decision-makers, and land sponsorships. The visible text describes its utility in transforming physical products into deal opportunities via a 3-click process.

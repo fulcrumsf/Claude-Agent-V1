@@ -2,15 +2,27 @@
 title: "Device Amere Rear Rest Front Grorad"
 type: tool-doc
 category: content-strategy
+form: desktop-app
+summary: "Screenshot of the Nothing Phone (2a) 'About phone' settings screen showing key hardware specifications and software details. The device is identified as running Nothing OS 3.2 on Android 15, powered by a MediaTek Dimensity 7200 Pro processor with 12GB RAM and 256GB storage."
+search_for: "Nothing Phone 2a specs MediaTek Dimensity 7200 Pro Nothing OS 3.2"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Device Amere Rear Rest Front Grorad with readable text about te el."
+  - nothing-phone-2a
+  - nothing-os
+  - dimensity-7200-pro
+  - smartphone-specs
+  - android-15
+  - needs-enrichment
 original_filename: "IMG_9278.jpeg"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Device-Amere-Rear-Rest-Front-Grorad.jpeg]]
 
-## AI Analysis
-This appears to be a screenshot of Device Amere Rear Rest Front Grorad with visible text about te el. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+Screenshot of the Nothing Phone (2a) 'About phone' settings screen showing key hardware specifications and software details. The device is identified as running Nothing OS 3.2 on Android 15, powered by a MediaTek Dimensity 7200 Pro processor with 12GB RAM and 256GB storage.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Nothing Phone 2a specs MediaTek Dimensity 7200 Pro Nothing OS 3.2`

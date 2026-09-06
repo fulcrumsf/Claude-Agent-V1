@@ -1,7 +1,19 @@
 ---
-URL: https://chatllm.abacus.ai/
-Category: Tools
-Description: "http://Abacus.AI ChatLLM Teams: one workspace to chat with multiple top LLMs and use built‑in agents for general tasks and coding. Includes access to a large model catalog (text + image/video generation) with a simple subscription and optional Open Claw setup."
-Tag:
-  - LLM
+title: "Abacus"
+type: tool-doc
+form: saas-tool
+summary: "ChatLLM Teams by Abacus.AI is an AI super-assistant platform that provides a unified workspace for accessing numerous large language models, image, and video generation models. It integrates AI agents, coding tools, and collaboration features to automate tasks, analyze data, and streamline workflows for professionals and teams."
+url: "https://chatllm.abacus.ai/"
+verified: true
+tags:
+  - ai-assistant
+  - large-language-models
+  - ai-agents
+  - productivity
+  - workflow-automation
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+ChatLLM Teams by Abacus.AI is an AI super-assistant platform that provides a unified workspace for accessing numerous large language models, image, and video generation models. It integrates AI agents, coding tools, and collaboration features to automate tasks, analyze data, and streamline workflows for professionals and teams.

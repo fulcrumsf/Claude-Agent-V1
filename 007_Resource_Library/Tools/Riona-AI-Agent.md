@@ -1,4 +1,20 @@
 ---
-URL: https://github.com/David-patrick-chuks/Instagram-AI-Agent
-Description: This repository is an open-source Instagram AI agent project (per the repo name). Use it as a reference for building an agent that can generate content or automate parts of an Instagram workflow, and review the README for setup and capabilities.
+title: "Riona AI Agent"
+type: tool-doc
+form: github-repo
+summary: "This GitHub repository contains an open-source Instagram AI agent built with Node.js and TypeScript. It automates Instagram interactions such as logging in, posting, liking, and commenting. The agent also leverages Google Generative AI for creating engaging captions and comments."
+url: "https://github.com/David-patrick-chuks/Instagram-AI-Agent"
+verified: true
+tags:
+  - github-repo
+  - instagram-automation
+  - ai-agent
+  - content-generation
+  - nodejs
+  - typescript
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+This GitHub repository contains an open-source Instagram AI agent built with Node.js and TypeScript. It automates Instagram interactions such as logging in, posting, liking, and commenting. The agent also leverages Google Generative AI for creating engaging captions and comments.

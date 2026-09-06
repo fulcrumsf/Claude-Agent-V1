@@ -1,9 +1,20 @@
 ---
-URL: https://github.com/minio/minio
-Category: Tools
-Description: MinIO is an open-source, S3-compatible object storage server you can self-host. It’s commonly used to store files/blobs for apps and data pipelines, and to provide S3-style storage in private infrastructure.
-Tag:
-  - API
-  - Image
-  - Video
+title: "Minio"
+type: tool-doc
+form: github-repo
+summary: "MinIO is an open-source, high-performance, S3-compatible object storage server released under the GNU AGPLv3 license. The GitHub repository contains the source code for this server, which is designed for speed and scalability to power AI/ML, analytics, and data-intensive workloads. The community edition is now distributed as source code only."
+url: "https://github.com/minio/minio"
+verified: true
+tags:
+  - github-repo
+  - object-storage
+  - s3-compatible
+  - open-source
+  - data-storage
+  - cloud-native
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+MinIO is an open-source, high-performance, S3-compatible object storage server released under the GNU AGPLv3 license. The GitHub repository contains the source code for this server, which is designed for speed and scalability to power AI/ML, analytics, and data-intensive workloads. The community edition is now distributed as source code only.

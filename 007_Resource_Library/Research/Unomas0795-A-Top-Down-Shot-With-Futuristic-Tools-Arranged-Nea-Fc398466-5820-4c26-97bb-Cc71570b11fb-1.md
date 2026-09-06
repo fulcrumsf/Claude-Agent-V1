@@ -1,15 +1,27 @@
 ---
 title: "Unomas0795 A Top Down Shot With Futuristic Tools Arranged Nea Fc398466 5820 4c26 97bb Cc71570b11fb 1"
-type: research
+type: design-inspiration
 category: research
+form: design-reference
+summary: "A top-down flatlay composition featuring vintage technology and tools, including a typewriter, disassembled cameras, tape reels, and various mechanical components. The arrangement is set against a light blue grid background with orange accents, showcasing a retro-futuristic or creative workspace aesthetic."
+search_for: "vintage tech flatlay pastel retro design inspiration"
 tags:
   - research
   - tool
+  - flatlay
+  - retro-aesthetic
+  - vintage-tech
+  - photography-setup
+  - creative-studio
+  - needs-enrichment
 created: 2026-05-03
-source: unomas0795_A_top_down_shot_with_futuristic_tools_arranged_nea_fc398466-5820-4c26-97bb-cc71570b11fb_1.png
+enriched: 2026-09-05
 ---
 
 ![[Unomas0795-A-Top-Down-Shot-With-Futuristic-Tools-Arranged-Nea-Fc398466-5820-4c26-97bb-Cc71570b11fb-1.png]]
 
-## AI Analysis
-Image reference from Notion export: unomas0795_A_top_down_shot_with_futuristic_tools_arranged_nea_fc398466-5820-4c26-97bb-cc71570b11fb_1.
+## Summary
+A top-down flatlay composition featuring vintage technology and tools, including a typewriter, disassembled cameras, tape reels, and various mechanical components. The arrangement is set against a light blue grid background with orange accents, showcasing a retro-futuristic or creative workspace aesthetic.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `vintage tech flatlay pastel retro design inspiration`

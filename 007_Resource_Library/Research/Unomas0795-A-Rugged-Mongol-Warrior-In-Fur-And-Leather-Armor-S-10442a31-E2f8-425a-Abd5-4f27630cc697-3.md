@@ -1,14 +1,26 @@
 ---
 title: "Unomas0795 A Rugged Mongol Warrior In Fur And Leather Armor S 10442a31 E2f8 425a Abd5 4f27630cc697 3"
-type: research
+type: design-reference
 category: research
+form: design-reference
+summary: "Character design reference sheet for a cybersamurai warrior blending traditional Chinese aesthetics with futuristic sci-fi armor. The image displays front and back orthographic views featuring intricate black armor with glowing red circuitry patterns, heavy plating, and a tattered red sash with dragon motifs."
+search_for: "cyberpunk chinese samurai character design armor concept art"
 tags:
   - research
+  - character-design
+  - sci-fi-art
+  - concept-art
+  - cyberpunk
+  - armor
+  - needs-enrichment
 created: 2026-05-03
-source: unomas0795_A_rugged_Mongol_warrior_in_fur_and_leather_armor_s_10442a31-e2f8-425a-abd5-4f27630cc697_3.png
+enriched: 2026-09-05
 ---
 
 ![[Unomas0795-A-Rugged-Mongol-Warrior-In-Fur-And-Leather-Armor-S-10442a31-E2f8-425a-Abd5-4f27630cc697-3.png]]
 
-## AI Analysis
-Image reference from Notion export: unomas0795_A_rugged_Mongol_warrior_in_fur_and_leather_armor_s_10442a31-e2f8-425a-abd5-4f27630cc697_3.
+## Summary
+Character design reference sheet for a cybersamurai warrior blending traditional Chinese aesthetics with futuristic sci-fi armor. The image displays front and back orthographic views featuring intricate black armor with glowing red circuitry patterns, heavy plating, and a tattered red sash with dragon motifs.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `cyberpunk chinese samurai character design armor concept art`

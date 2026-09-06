@@ -1,21 +1,19 @@
 ---
-Composition: Image_Only
-Files & media:
-  - "[[Screenshot_2025-11-06_at_10.19.24_AM.png]]"
-Model: Flux Kontext Pro
-Orientation: 2:3 Ratio Portrait
-Phase 2: Set
-Score: "86"
-Status: Done
-Style_Token:
-  - "[[Mid-Century_Modern]]"
-Style_Token_Text: Mid-Century_Modern
-Visual_Modifiers:
-  - Geometric_Balance
-  - Ink_Brush_Texture
-  - Matte_Finish
-  - Negative_Space
-  - Printmaking_Effect
-  - Uneven_Brush_Strokes
-url: https://www.etsy.com/search?q=cocktail+abstract+minimal+art&sort_by=best_selling
+title: "Japandi Waves Vivid Blue Tones Symmetry"
+type: tool-doc
+form: saas-tool
+summary: "Etsy is an online marketplace for handmade, vintage, and craft items. This specific link displays search results for 'cocktail abstract minimal art' on the Etsy platform, sorted by best-selling items."
+url: "https://www.etsy.com/search?q=cocktail+abstract+minimal+art&sort_by=best_selling"
+verified: true
+tags:
+  - e-commerce
+  - art
+  - minimalism
+  - cocktail-art
+  - marketplace
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Etsy is an online marketplace for handmade, vintage, and craft items. This specific link displays search results for 'cocktail abstract minimal art' on the Etsy platform, sorted by best-selling items.

@@ -1,13 +1,24 @@
 ---
 title: "Database And Storage"
-type: tutorial
+type: reference
 category: tutorials
+form: other
+summary: "The URL 'https://www' is not a specific, live resource but rather a generic prefix for secure web addresses. HTTPS (Hypertext Transfer Protocol Secure) is a secure version of HTTP that encrypts communication between a browser and a website using TLS/SSL. WWW stands for World Wide Web, which is a system of interconnected hypertext documents accessed via the Internet."
+url: "https://www"
+verified: false
 tags:
   - tutorials
+  - web-protocol
+  - https
+  - www
+  - internet-security
+  - encryption
+  - unverified-link
 created: 2026-05-03
-source: Databases/Resource Dashboard/Resource Gallery/Video Tutorials/Tutorial Library/Database & Storage.md
+enriched: 2026-09-05
 ---
 
-> [!info] Unlock Multimodal RAG Agents in n8n (Images, Tables & Text)  
-> 👉 Upgrade your n8n AI Agents with our Advanced RAG workflows https://www.  
-> [https://youtu.be/5aCi42dVOTA?si=jARxj_PG18J-Ho5L](https://youtu.be/5aCi42dVOTA?si=jARxj_PG18J-Ho5L)
+## Summary
+The URL 'https://www' is not a specific, live resource but rather a generic prefix for secure web addresses. HTTPS (Hypertext Transfer Protocol Secure) is a secure version of HTTP that encrypts communication between a browser and a website using TLS/SSL. WWW stands for World Wide Web, which is a system of interconnected hypertext documents accessed via the Internet.
+
+> [!warning] Link not verified by search — summary is inferred from the URL.

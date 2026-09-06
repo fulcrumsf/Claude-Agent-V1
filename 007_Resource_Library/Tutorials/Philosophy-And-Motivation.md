@@ -1,10 +1,19 @@
 ---
-Faceless Type: Slideshow
-Description: Philosophy like Marcus Aurelius & Motivation Videos
+title: "Philosophy And Motivation"
+type: tutorial
+form: youtube-video
+summary: "This YouTube video provides stoic motivation based on the philosophy of Marcus Aurelius, focusing on mental toughness, self-discipline, and overcoming adversity. It encourages viewers to conquer their mornings, deal with negative influences, and turn challenges into opportunities for growth."
+url: "https://youtu.be/FY_T5IafuBI?si=pzlAD_EsXi5OLW-6"
+verified: true
+tags:
+  - stoicism
+  - marcus-aurelius
+  - motivation
+  - self-discipline
+  - mental-toughness
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-[https://youtu.be/FY_T5IafuBI?si=pzlAD_EsXi5OLW-6](https://youtu.be/FY_T5IafuBI?si=pzlAD_EsXi5OLW-6)
-**NCA+n8n+ComfyUI**
-[https://youtu.be/PeelSIEewUY?si=4IWWf5AaNeLKmPus](https://youtu.be/PeelSIEewUY?si=4IWWf5AaNeLKmPus)
-**n8n+YoutubeAPI**
-[https://youtu.be/2AyCVKHNhAo?si=KoSQuaNrWpbA2Yna](https://youtu.be/2AyCVKHNhAo?si=KoSQuaNrWpbA2Yna)
-**Warrior as Country+RunwayAPI**
+
+## Summary
+This YouTube video provides stoic motivation based on the philosophy of Marcus Aurelius, focusing on mental toughness, self-discipline, and overcoming adversity. It encourages viewers to conquer their mornings, deal with negative influences, and turn challenges into opportunities for growth.

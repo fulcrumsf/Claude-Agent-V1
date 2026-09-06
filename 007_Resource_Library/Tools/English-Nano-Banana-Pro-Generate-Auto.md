@@ -2,15 +2,26 @@
 title: "English Nano Banana Pro Generate Auto"
 type: tool-doc
 category: content-strategy
+form: saas-tool
+summary: "A screenshot of the YouMind platform showcasing the Nano Banana Pro tool, a collection of over 1,000 ready-made prompts for generating AI images. The interface displays a text input box for describing desired images and category filters like 'YouTube Thumbnail' and 'Comic/Storyboard'."
+search_for: "YouMind Nano Banana Pro"
 tags:
   - screenshot
   - prompt
-ai_description: "Screenshot of English Nano Banana Pro Generate Auto with readable text about english."
+  - ai-tools
+  - image-generation
+  - prompts
+  - youmind
+  - needs-enrichment
 original_filename: "IMG_8934.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[English-Nano-Banana-Pro-Generate-Auto.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of English Nano Banana Pro Generate Auto with visible text about english. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A screenshot of the YouMind platform showcasing the Nano Banana Pro tool, a collection of over 1,000 ready-made prompts for generating AI images. The interface displays a text input box for describing desired images and category filters like 'YouTube Thumbnail' and 'Comic/Storyboard'.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `YouMind Nano Banana Pro`

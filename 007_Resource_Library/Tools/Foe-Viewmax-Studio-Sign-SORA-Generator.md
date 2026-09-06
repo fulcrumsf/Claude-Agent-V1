@@ -2,15 +2,23 @@
 title: "Foe Viewmax Studio Sign Sora Generator"
 type: tool-doc
 category: video-production
+form: saas-tool
+summary: "The landing page for Viewmax Studio, a SaaS tool positioned as an AI video editor designed to help creators make viral videos. The interface highlights built-in templates for social media formats and promotes its new 'Sora AI video generator' integration."
+url: "https://viewmax.io"
 tags:
   - screenshot
   - video
-ai_description: "Screenshot of Foe Viewmax Studio Sign Sora Generator with readable text about foe."
+  - viewmax-studio
+  - sora-video-ai
+  - social-media-tools
+  - video-editor
+  - viral-videos
 original_filename: "IMG_8719.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Foe-Viewmax-Studio-Sign-Sora-Generator.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Foe Viewmax Studio Sign Sora Generator with visible text about foe. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+The landing page for Viewmax Studio, a SaaS tool positioned as an AI video editor designed to help creators make viral videos. The interface highlights built-in templates for social media formats and promotes its new 'Sora AI video generator' integration.

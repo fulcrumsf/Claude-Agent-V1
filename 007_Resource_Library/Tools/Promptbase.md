@@ -1,7 +1,19 @@
 ---
-URL: https://promptbase.com/
-Category: Directory
-Description: "The #1 marketplace for AI prompts. Find 270,000+ prompts for ChatGPT, Gemini, Midjourney and more. Start creating better AI content, instantly."
-Tag:
-  - Midjourney
+title: "Promptbase"
+type: tool-doc
+form: saas-tool
+summary: "PromptBase is an online marketplace where users can buy and sell AI prompts for various generative AI models such as ChatGPT, Gemini, Midjourney, DALL-E, and Stable Diffusion. It serves as a platform for prompt engineers to monetize their expertise and for users to find high-quality, ready-to-use prompts for specific tasks and creative outputs."
+url: "https://promptbase.com/"
+verified: true
+tags:
+  - ai-prompts
+  - marketplace
+  - generative-ai
+  - prompt-engineering
+  - ai-tools
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+PromptBase is an online marketplace where users can buy and sell AI prompts for various generative AI models such as ChatGPT, Gemini, Midjourney, DALL-E, and Stable Diffusion. It serves as a platform for prompt engineers to monetize their expertise and for users to find high-quality, ready-to-use prompts for specific tasks and creative outputs.

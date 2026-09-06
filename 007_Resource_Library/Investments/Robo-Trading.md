@@ -1,8 +1,19 @@
 ---
-Created: 2025-03-10T23:38
+title: "Robo Trading"
+type: tool-doc
+form: saas-tool
+summary: "Stoic AI is an automated crypto trading and portfolio management platform that utilizes AI and algorithmic strategies to manage cryptocurrency portfolios. It connects to users' exchange accounts via API to execute trades based on selected strategies, offering various options for different investment goals."
+url: "https://stoic.ai/"
+verified: true
+tags:
+  - crypto-trading
+  - ai-automation
+  - portfolio-management
+  - algorithmic-trading
+  - fintech
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-[![](https://images.unsplash.com/photo-1508175800969-525c72a047dd?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb)](https://images.unsplash.com/photo-1508175800969-525c72a047dd?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb)
 
-> [!info] Crypto Trading Bot by Stoic  
-> 3 Unique Trading Strategies: Long Only: Uptrend king, Meta: 200+ sub-strategies in one, Fixed Income: Multi-cycle strategy  
-> [https://stoic.ai/](https://stoic.ai/)
+## Summary
+Stoic AI is an automated crypto trading and portfolio management platform that utilizes AI and algorithmic strategies to manage cryptocurrency portfolios. It connects to users' exchange accounts via API to execute trades based on selected strategies, offering various options for different investment goals.

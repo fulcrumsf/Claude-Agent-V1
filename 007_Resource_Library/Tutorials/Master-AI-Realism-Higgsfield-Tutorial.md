@@ -1,18 +1,28 @@
 ---
 title: "Master AI Realism Higgsfield Tutorial"
-type: extracted-knowledge
+type: tool-doc
 category: tutorials
+form: saas-tool
+summary: "A showcase of Higgsfield AI, a tool focused on generating ultra-realistic AI video footage. The image highlights the ability to blend real-world elements with AI generation and mentions integrating these assets into existing projects."
+search_for: "higgsfield ai official website"
 tags:
   - higgsfield
   - ai-video
   - realism
   - tutorial
   - digital-art
+  - ai-video-generation
+  - vfx-tools
+  - needs-enrichment
 original_filename: "IMG_9966.PNG"
 created: 2026-08-24
+enriched: 2026-09-05
 ---
 
 ![[Master-AI-Realism-Higgsfield-Tutorial.png]]
 
-## AI Analysis
-A YouTube video tutorial focused on creating hyper-realistic AI-generated videos using the Higgsfield AI tool. The content targets creators looking to blend generative AI with real-world footage for professional production.
+## Summary
+A showcase of Higgsfield AI, a tool focused on generating ultra-realistic AI video footage. The image highlights the ability to blend real-world elements with AI generation and mentions integrating these assets into existing projects.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `higgsfield ai official website`

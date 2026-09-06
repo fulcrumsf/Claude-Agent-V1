@@ -1,12 +1,19 @@
 ---
-Category: Research
+title: "Model Stlyes"
+type: model-doc
+form: saas-tool
+summary: "DreamShaper XL is a general-purpose AI model hosted on Civitai.com, designed for generating diverse images including photos, art, anime, and manga. It is a Stable Diffusion (SD) model that aims to compete with other generative AI models like Midjourney and DALL-E. The model is available in various versions, such as Turbo and Lightning, optimized for different generation speeds and quality settings."
+url: "https://civitai.com/models/112902/dreamshaper-xl"
+verified: true
 tags:
   - Reference
+  - ai-model
+  - image-generation
+  - stable-diffusion
+  - generative-ai
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-#### Civitai
-|![](https://www.notion.so/icons/font_gray.svg)Title|![](https://www.notion.so/icons/tag_gray.svg)Tags|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/link_gray.svg)Website|![](https://www.notion.so/icons/list_gray.svg)License|
-|---|---|---|---|---|
-|[[DreamShaper XL]]|Photo Realistic|Art|[https://civitai.com/models/112902/dreamshaper-xl](https://civitai.com/models/112902/dreamshaper-xl)|Non-Commercial|
-|[[Dreamy Vibes V2]]|Mixed Media|Art|[https://civitai.com/models/313770/dreamyvibes-artstyle-alternate-version-2](https://civitai.com/models/313770/dreamyvibes-artstyle-alternate-version-2)|Non-Commercial|
-|[[Juggernaut XL]]|Photo Realistic|Art|[https://civitai.com/models/258575/painting-style-lora-sdxl-milde-style)](https://civitai.com/models/258575/painting-style-lora-sdxl-milde-style\))|Non-Commercial|
-|[[Painting Style LoRA]]|Painting|Art|[https://civitai.com/models/258575/painting-style-lora-sdxl-milde-style](https://civitai.com/models/258575/painting-style-lora-sdxl-milde-style)|Non-Commercial|
+
+## Summary
+DreamShaper XL is a general-purpose AI model hosted on Civitai.com, designed for generating diverse images including photos, art, anime, and manga. It is a Stable Diffusion (SD) model that aims to compete with other generative AI models like Midjourney and DALL-E. The model is available in various versions, such as Turbo and Lightning, optimized for different generation speeds and quality settings.

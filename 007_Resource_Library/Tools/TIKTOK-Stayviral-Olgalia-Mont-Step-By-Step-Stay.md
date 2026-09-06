@@ -2,15 +2,23 @@
 title: "TikTok Stayviral Olgalia Mont Step By Step Stay"
 type: tool-doc
 category: video-production
+form: saas-tool
+summary: "A landing page for Stay Viral, a platform promising to teach creators how to earn $5K-$10K/month on TikTok using an 'Organic Affiliate Marketing' system. The page advertises a free 3-minute training video and claims the method requires no prior experience or existing followers."
+url: "https://stayviral.io"
 tags:
   - screenshot
   - tiktok
-ai_description: "Screenshot of TikTok Stayviral Olgalia Mont Step By Step Stay with readable text about tiktok."
+  - affiliate-marketing
+  - tiktok-growth
+  - passive-income
+  - creator-economy
+  - marketing-strategy
 original_filename: "IMG_9360.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Tiktok-Stayviral-Olgalia-Mont-Step-By-Step-Stay.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of TikTok Stayviral Olgalia Mont Step By Step Stay with visible text about tiktok. It is most likely useful as content research or platform inspiration for Tony’s marketing workflows.
+## Summary
+A landing page for Stay Viral, a platform promising to teach creators how to earn $5K-$10K/month on TikTok using an 'Organic Affiliate Marketing' system. The page advertises a free 3-minute training video and claims the method requires no prior experience or existing followers.

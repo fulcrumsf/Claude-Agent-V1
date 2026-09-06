@@ -1,5 +1,18 @@
 ---
-Description: Jellypod is an AI podcast creation platform for generating realistic podcast episodes from scripts or prompts. It supports customization and voice cloning so you can produce consistent shows and iterate quickly without a full recording setup.
-URL: https://jellypod.ai/
-Category: Podcast
+title: "Jellypod"
+type: tool-doc
+form: saas-tool
+summary: "Jellypod is an AI studio that generates podcasts, videos, and voiceovers from various inputs like topics, documents, or scripts. It automates scriptwriting, voice generation with realistic AI hosts, and publishing to platforms like Spotify and YouTube."
+url: "https://jellypod.ai/"
+verified: true
+tags:
+  - ai-podcast-generation
+  - voice-synthesis
+  - content-creation
+  - saas
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Jellypod is an AI studio that generates podcasts, videos, and voiceovers from various inputs like topics, documents, or scripts. It automates scriptwriting, voice generation with realistic AI hosts, and publishing to platforms like Spotify and YouTube.

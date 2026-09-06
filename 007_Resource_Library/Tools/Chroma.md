@@ -1,5 +1,19 @@
 ---
-URL: https://www.trychroma.com/
-Description: Chroma - the open-source data infrastructure for AI Log in to Chroma Continue with Google Continue with Github Continue with SSO Continue with email By logging in, you agree to our terms of service and privacy policy
-Category: Development
+title: "Chroma"
+type: tool-doc
+form: saas-tool
+summary: "Chroma is an open-source vector database and AI-native embedding database for building applications with large language models. It provides storage, retrieval, and management for vector embeddings, supporting vector, full-text, regex, and metadata search. Users can deploy it locally, self-host, or utilize the managed Chroma Cloud service."
+url: "https://www.trychroma.com/"
+verified: true
+tags:
+  - vector-database
+  - ai-infrastructure
+  - large-language-models
+  - embeddings
+  - open-source
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Chroma is an open-source vector database and AI-native embedding database for building applications with large language models. It provides storage, retrieval, and management for vector embeddings, supporting vector, full-text, regex, and metadata search. Users can deploy it locally, self-host, or utilize the managed Chroma Cloud service.

@@ -1,14 +1,24 @@
 ---
 title: "JSON Prompting"
-type: prompt
+type: bookmark
 category: prompts
+form: tiktok
+summary: "This link points to a TikTok video. The specific content of this video could not be determined from the search results, as TikTok content can be made private or deleted."
+url: "https://www.tiktok.com/t/ZP86yCh7x/"
+verified: false
 tags:
   - prompts
   - prompt
+  - tiktok
+  - short-video
+  - social-media
+  - video-sharing
+  - unverified-link
 created: 2026-05-03
-source: Databases/Resource Dashboard/Resource Gallery/Prompting/Prompts/ChatGPT/ChatGPT Prompts/Json Prompting.md
+enriched: 2026-09-05
 ---
 
-> [!info] Replying to @Drew’s | Ai Creations did you know you should be promoting \#chatgpt with \#json \#prompt to get 10x better results 🤔 \#aitips #aicontent #chatgpt4  
->  
-> [https://www.tiktok.com/t/ZP86yCh7x/](https://www.tiktok.com/t/ZP86yCh7x/)
+## Summary
+This link points to a TikTok video. The specific content of this video could not be determined from the search results, as TikTok content can be made private or deleted.
+
+> [!warning] Link not verified by search — summary is inferred from the URL.

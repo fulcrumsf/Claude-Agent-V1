@@ -1,8 +1,21 @@
 ---
-URL: https://clarity.microsoft.com/
-Description: Clarity is a free user behavior analytics tool that helps you understand how users are interacting with your website through session replays and heatmaps.
-Category: Tool
+title: "Clarity By Microsoft"
+type: tool-doc
+form: saas-tool
+summary: "Microsoft Clarity is a free behavioral analytics platform from Microsoft that helps website owners understand user interactions through heatmaps, session recordings, and AI-powered insights. It provides visual data on user behavior, such as clicks, scrolls, and frustration signals, to improve website user experience."
+url: "https://clarity.microsoft.com/"
+verified: true
 tags:
   - Blog
   - Tool
+  - user-behavior-analytics
+  - heatmaps
+  - session-recording
+  - website-analytics
+  - ux-research
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Microsoft Clarity is a free behavioral analytics platform from Microsoft that helps website owners understand user interactions through heatmaps, session recordings, and AI-powered insights. It provides visual data on user behavior, such as clicks, scrolls, and frustration signals, to improve website user experience.

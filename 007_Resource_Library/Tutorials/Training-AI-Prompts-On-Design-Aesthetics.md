@@ -1,17 +1,30 @@
 ---
 title: "Training AI Prompts On Design Aesthetics"
-type: extracted-knowledge
+type: tool-doc
 category: tutorials
+form: tiktok
+summary: "A TikTok tutorial by 'Your Chief AI Officer' explaining a prompt engineering technique for training AI image generators on specific design aesthetics. The user demonstrates a method of using example images to create a reusable template that replicates a visual style, referencing 'nano banana' as a recent tool or concept."
+search_for: "Your Chief AI Officer Gemini aesthetic training prompt"
 tags:
   - ai-prompting
   - style-training
   - design-aesthetics
   - workflow
+  - prompt-engineering
+  - aesthetic-training
+  - image-generation
+  - gemini
+  - tutorial
+  - needs-enrichment
 original_filename: "Itt-Live-Explore-Following-Shop-Way.PNG"
 created: 2026-05-09
+enriched: 2026-09-05
 ---
 
 ![[Training-AI-Prompts-On-Design-Aesthetics.png]]
 
-## AI Analysis
-A tutorial explaining a workflow for converting design aesthetics into reusable AI prompt templates. The content describes a process of analyzing visual examples to 'train' a prompt, allowing for the consistent replication of a specific artistic style.
+## Summary
+A TikTok tutorial by 'Your Chief AI Officer' explaining a prompt engineering technique for training AI image generators on specific design aesthetics. The user demonstrates a method of using example images to create a reusable template that replicates a visual style, referencing 'nano banana' as a recent tool or concept.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Your Chief AI Officer Gemini aesthetic training prompt`

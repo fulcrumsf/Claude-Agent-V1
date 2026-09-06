@@ -1,7 +1,20 @@
 ---
-URL: https://fameswap.com/
-Description: Fameswap is a marketplace for buying and selling social media accounts and channels. Use it to research available YouTube/TikTok properties, evaluate listings, and acquire an existing audience or sell a channel.
-Category: Tools
+title: "Fameswap"
+type: tool-doc
+form: saas-tool
+summary: "Fameswap is an online marketplace that facilitates the buying and selling of social media accounts and channels, such as Instagram, YouTube, and TikTok. It provides a secure platform with an escrow service to ensure safe transactions between buyers and sellers. The platform offers verified listing data, secure messaging, and encrypted payment capture."
+url: "https://fameswap.com/"
+verified: true
 tags:
   - Marketplace
+  - social-media-marketplace
+  - account-trading
+  - youtube-channels
+  - tiktok-accounts
+  - instagram-accounts
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Fameswap is an online marketplace that facilitates the buying and selling of social media accounts and channels, such as Instagram, YouTube, and TikTok. It provides a secure platform with an escrow service to ensure safe transactions between buyers and sellers. The platform offers verified listing data, secure messaging, and encrypted payment capture.

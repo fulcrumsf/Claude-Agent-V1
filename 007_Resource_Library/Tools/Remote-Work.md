@@ -1,15 +1,19 @@
 ---
-Description: This entry is a placeholder for remote-work resources related to travel. Add a URL to a job board, community, or guide you use for location-independent work, and keep this description as the anchor for that resource list.
-Category: Article
+title: "Remote Work"
+type: tool-doc
+form: saas-tool
+summary: "TrustedHousesitters is an online community marketplace that connects pet owners with verified pet sitters globally. Members pay an annual fee to access the platform, allowing pet owners to find sitters for their homes and pets in exchange for free accommodation for the sitters. This service facilitates travel for pet owners with peace of mind and offers unique travel experiences for pet-loving sitters."
+url: "https://www.trustedhousesitters.com/"
+verified: true
+tags:
+  - pet-sitting
+  - house-sitting
+  - travel
+  - community-marketplace
+  - remote-work-resource
+created: 2026-09-05
+enriched: 2026-09-05
 ---
-> [!info]  
->  
-> [https://www.trustedhousesitters.com/](https://www.trustedhousesitters.com/)  
 
-> [!info] Workaway International  
-> DOROTHY DU PLESSIS - MOTHER OF PARTICIPANT - BOCA WEST COUNTRY CLUB  
-> [https://www.workaway.com/](https://www.workaway.com/)  
-
-> [!info] Worldpackers: Work Exchange, Volunteer Abroad, Gap Year  
-> Volunteer experiences in over 100 countries, Programs for Travelers, and Content made by a community of 6.  
-> [https://www.worldpackers.com/](https://www.worldpackers.com/)
+## Summary
+TrustedHousesitters is an online community marketplace that connects pet owners with verified pet sitters globally. Members pay an annual fee to access the platform, allowing pet owners to find sitters for their homes and pets in exchange for free accommodation for the sitters. This service facilitates travel for pet owners with peace of mind and offers unique travel experiences for pet-loving sitters.

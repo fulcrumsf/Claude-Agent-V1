@@ -1,16 +1,27 @@
 ---
 title: "Descovery Dose Subscrie Discover Discovery Discoverydose"
-type: tool-doc
+type: reference
 category: content-strategy
+form: channel-study
+summary: "A screenshot of the YouTube channel page for Discovery Dose (@DiscoveryDose_). The image highlights the channel's branding, subscriber count (652K), and a selection of popular short-form content thumbnails covering science and nature topics like beetles and food."
+search_for: "Discovery Dose YouTube channel @DiscoveryDose_"
 tags:
   - screenshot
   - video
-ai_description: "Screenshot of Descovery Dose Subscrie Discover Discovery Discoverydose with readable text about descovery dose."
+  - youtube-channel
+  - science-education
+  - discovery-dose
+  - shorts
+  - needs-enrichment
 original_filename: "IMG_8810.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Descovery-Dose-Subscrie-Discover-Discovery-Discoverydose.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Descovery Dose Subscrie Discover Discovery Discoverydose with visible text about descovery dose. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A screenshot of the YouTube channel page for Discovery Dose (@DiscoveryDose_). The image highlights the channel's branding, subscriber count (652K), and a selection of popular short-form content thumbnails covering science and nature topics like beetles and food.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Discovery Dose YouTube channel @DiscoveryDose_`

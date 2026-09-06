@@ -1,5 +1,19 @@
 ---
-URL: https://www.joinmavely.com/
-Category: Marketplace
-Description: Mavely is an affiliate platform for creators and influencers. It provides access to brand programs and tools to generate trackable links so you can earn commissions from recommended products.
+title: "Mavery"
+type: tool-doc
+form: saas-tool
+summary: "Mavely is an affiliate marketing platform for creators and influencers, now operating under the Later brand as 'Later Creator'. It enables users to generate trackable links for products from over 1,400 partner brands and earn commissions on sales. The platform provides tools for link creation, performance tracking, and commission payouts, catering to creators of all sizes."
+url: "https://www.joinmavely.com/"
+verified: true
+tags:
+  - affiliate-marketing
+  - creator-economy
+  - influencer-platform
+  - social-commerce
+  - commission-earning
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Mavely is an affiliate marketing platform for creators and influencers, now operating under the Later brand as 'Later Creator'. It enables users to generate trackable links for products from over 1,400 partner brands and earn commissions on sales. The platform provides tools for link creation, performance tracking, and commission payouts, catering to creators of all sizes.

@@ -1,5 +1,19 @@
 ---
-URL: https://www.sievedata.com/
-Category: Tools
-Description: Sieve is an AI research lab and platform focused on video data. It’s aimed at building datasets and infrastructure for training/evaluating video models, which is useful for teams working on video understanding and generation.
+title: "Sieve AI"
+type: tool-doc
+form: saas-tool
+summary: "Sieve (sievedata.com, now sieve.ai) is a multimodal data lab that provides high-quality video, audio, image, and interaction data, along with environments, for frontier AI labs. It focuses on building datasets and infrastructure to train and evaluate next-generation multimodal AI models for applications like generative media, robotics, and world models."
+url: "https://www.sievedata.com/"
+verified: true
+tags:
+  - multimodal-ai
+  - data-platform
+  - ai-model-training
+  - video-data
+  - ai-infrastructure
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Sieve (sievedata.com, now sieve.ai) is a multimodal data lab that provides high-quality video, audio, image, and interaction data, along with environments, for frontier AI labs. It focuses on building datasets and infrastructure to train and evaluate next-generation multimodal AI models for applications like generative media, robotics, and world models.

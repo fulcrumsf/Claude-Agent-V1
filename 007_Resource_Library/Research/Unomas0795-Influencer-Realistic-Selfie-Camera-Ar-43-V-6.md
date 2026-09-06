@@ -1,14 +1,21 @@
 ---
 title: "Unomas0795 Influencer Realistic Selfie Camera Ar 43 V 6"
-type: research
+type: design-inspiration
 category: research
+form: design-reference
+summary: "A digital portrait featuring a woman holding a yellow instant camera over her eye, styled with a strong monochromatic yellow color palette and vibrant lighting. The composition emphasizes bold colors and stylized photography aesthetics, likely intended as visual inspiration for fashion editorial art or retro-themed design projects."
 tags:
   - research
+  - yellow-monochrome
+  - portrait-art
+  - camera-subject
+  - vibrant-lighting
+  - digital-fashion
 created: 2026-05-03
-source: unomas0795_Influencer_realistic_selfie_camera_--ar_43_--v_6.1_2a29255c-5a27-42dc-8ac9-bc541d336bc5_3.png
+enriched: 2026-09-05
 ---
 
 ![[Unomas0795-Influencer-Realistic-Selfie-Camera-Ar-43-V-6.png]]
 
-## AI Analysis
-Image reference from Notion export: unomas0795_Influencer_realistic_selfie_camera_--ar_43_--v_6.1_2a29255c-5a27-42dc-8ac9-bc541d336bc5_3.
+## Summary
+A digital portrait featuring a woman holding a yellow instant camera over her eye, styled with a strong monochromatic yellow color palette and vibrant lighting. The composition emphasizes bold colors and stylized photography aesthetics, likely intended as visual inspiration for fashion editorial art or retro-themed design projects.

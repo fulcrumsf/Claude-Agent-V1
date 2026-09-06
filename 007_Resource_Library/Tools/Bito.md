@@ -1,5 +1,19 @@
 ---
-URL: https://alpha.bito.ai/
-Description: Bito is an AI assistant for developers that helps write, explain, and refactor code. It’s used to accelerate day-to-day programming tasks like debugging, generating snippets, and understanding unfamiliar codebases.
-Category: Development
+title: "Bito"
+type: tool-doc
+form: saas-tool
+summary: "Bito is an AI assistant for developers that offers AI-powered code reviews and provides comprehensive codebase context. Its AI Code Review Agent integrates with IDEs and Git platforms to deliver suggestions on code quality, security, and performance. Additionally, Bito's AI Architect builds a knowledge graph of an entire codebase, integrating with various development and documentation tools to enhance AI coding agents and review processes."
+url: "https://alpha.bito.ai/"
+verified: true
+tags:
+  - ai-development
+  - code-review
+  - developer-tools
+  - software-development
+  - artificial-intelligence
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Bito is an AI assistant for developers that offers AI-powered code reviews and provides comprehensive codebase context. Its AI Code Review Agent integrates with IDEs and Git platforms to deliver suggestions on code quality, security, and performance. Additionally, Bito's AI Architect builds a knowledge graph of an entire codebase, integrating with various development and documentation tools to enhance AI coding agents and review processes.

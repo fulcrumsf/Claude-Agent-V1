@@ -1,6 +1,19 @@
 ---
-URL: https://www.briskteaching.com/
-Category: Research
-Description: Brisk Teaching is an AI assistant for educators that helps generate lesson materials and provide feedback faster. It offers a suite of classroom-focused tools (plans, quizzes, writing feedback) rather than affiliate marketing functionality.
-Link: https://www.briskteaching.com/
+title: "Brisk Teaching"
+type: tool-doc
+form: saas-tool
+summary: "Brisk Teaching is an AI-powered Chrome extension designed for educators. It integrates with existing teaching platforms like Google Docs and Classroom to help teachers generate lesson plans, create quizzes, and provide student feedback. The tool aims to streamline administrative tasks and enhance teaching efficiency."
+url: "https://www.briskteaching.com/"
+verified: true
+tags:
+  - ai-education
+  - teacher-tools
+  - lesson-planning
+  - student-feedback
+  - chrome-extension
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Brisk Teaching is an AI-powered Chrome extension designed for educators. It integrates with existing teaching platforms like Google Docs and Classroom to help teachers generate lesson plans, create quizzes, and provide student feedback. The tool aims to streamline administrative tasks and enhance teaching efficiency.

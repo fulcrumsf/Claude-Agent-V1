@@ -1,6 +1,19 @@
 ---
-URL: https://www.clickmagick.com/
-Category: Analytics
-Description: ClickMagick helps you scale your ads and grow faster with unbeatable ad tracking and attribution. We obsess over tracking, so you don
-Link: https://www.clickmagick.com/
+title: "Clickmagick"
+type: tool-doc
+form: saas-tool
+summary: "ClickMagick is a comprehensive click tracking and optimization software designed for online marketers. It enables users to monitor clicks, conversions, and overall campaign performance in real-time, offering features like A/B split testing, click fraud detection, and advanced attribution modeling. The tool helps businesses optimize ad spend and improve the effectiveness of their marketing campaigns."
+url: "https://www.clickmagick.com/"
+verified: true
+tags:
+  - ad-tracking
+  - conversion-optimization
+  - marketing-analytics
+  - click-fraud-detection
+  - campaign-management
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+ClickMagick is a comprehensive click tracking and optimization software designed for online marketers. It enables users to monitor clicks, conversions, and overall campaign performance in real-time, offering features like A/B split testing, click fraud detection, and advanced attribution modeling. The tool helps businesses optimize ad spend and improve the effectiveness of their marketing campaigns.

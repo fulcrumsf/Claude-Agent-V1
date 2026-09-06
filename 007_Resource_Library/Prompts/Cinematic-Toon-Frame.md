@@ -1,16 +1,24 @@
 ---
 title: "Cinematic Toon Frame"
-type: prompt
+type: tool-doc
 category: video-production
+form: other
+summary: "This link points to a file hosted on Gumroad's public file server. Gumroad is an e-commerce platform that allows creators to sell various digital products, including templates, guides, and software assets. This file is a digital asset provided via Gumroad, likely serving as a document or resource for a digital tool or product."
+url: "https://public-files.gumroad.com/b689lxc5lzy2sr2dvbn66dtaj6ss"
+verified: true
 tags:
   - prompt
   - image-generation
   - style
   - niji-6
   - toon
+  - digital-products
+  - e-commerce
+  - creator-economy
+  - digital-resources
 created: 2026-05-01
-source: https://public-files.gumroad.com/b689lxc5lzy2sr2dvbn66dtaj6ss
+enriched: 2026-09-05
 ---
-[![](https://public-files.gumroad.com/b689lxc5lzy2sr2dvbn66dtaj6ss)](https://public-files.gumroad.com/b689lxc5lzy2sr2dvbn66dtaj6ss)
-**Prompt**
-`a robotic samurai standing in a burning temple, cinematic toon frame style, glowing edges, anime flames, exaggerated anatomy --niji 6 --ar 16:9`
+
+## Summary
+This link points to a file hosted on Gumroad's public file server. Gumroad is an e-commerce platform that allows creators to sell various digital products, including templates, guides, and software assets. This file is a digital asset provided via Gumroad, likely serving as a document or resource for a digital tool or product.

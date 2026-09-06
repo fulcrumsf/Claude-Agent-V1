@@ -1,16 +1,24 @@
 ---
 title: "Blocky Hero Stance Style"
-type: prompt
+type: doc
 category: video-production
+form: other
+summary: "This URL points to a file hosted on Gumroad, an online platform that allows creators to sell various digital products directly to consumers. The specific content of this file, identified by a generic file ID, cannot be determined without direct access."
+url: "https://public-files.gumroad.com/p81fvvngqho8qw58xa3d1hiyzvze"
+verified: true
 tags:
   - prompt
   - image-generation
   - style
   - niji-6
   - hero
+  - digital-products
+  - e-commerce
+  - creator-economy
+  - file-hosting
 created: 2026-05-01
-source: https://public-files.gumroad.com/p81fvvngqho8qw58xa3d1hiyzvze
+enriched: 2026-09-05
 ---
-[![](https://public-files.gumroad.com/p81fvvngqho8qw58xa3d1hiyzvze)](https://public-files.gumroad.com/p81fvvngqho8qw58xa3d1hiyzvze)
-**Prompt**
-`a superhero standing heroically in front of a crumbling city, blocky 2D hero stance style, bold colors, flat background, comic simplicity --niji 6 --ar 16:9`
+
+## Summary
+This URL points to a file hosted on Gumroad, an online platform that allows creators to sell various digital products directly to consumers. The specific content of this file, identified by a generic file ID, cannot be determined without direct access.

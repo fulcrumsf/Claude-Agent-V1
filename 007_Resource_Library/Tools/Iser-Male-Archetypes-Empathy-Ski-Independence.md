@@ -1,16 +1,27 @@
 ---
 title: "Iser Male Archetypes Empathy Ski Independence"
-type: tool-doc
+type: reference
 category: content-strategy
+form: other
+summary: "A visualization of a 12-stage pyramid model categorizing male archetypes from the bottom (The Caregiver, The Jester) to the top (The King). Each tier is associated with specific personality dimensions including Empathy, Skills, Independence, Wisdom, and Creativity, along with percentage weights."
+search_for: "Impulse Brain Training 12 male archetypes test"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Iser Male Archetypes Empathy Ski Independence with readable text about iser."
+  - psychology-frameworks
+  - personality-types
+  - archetype-models
+  - masculinity-psychology
+  - needs-enrichment
 original_filename: "IMG_8905.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Iser-Male-Archetypes-Empathy-Ski-Independence.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Iser Male Archetypes Empathy Ski Independence with visible text about iser. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A visualization of a 12-stage pyramid model categorizing male archetypes from the bottom (The Caregiver, The Jester) to the top (The King). Each tier is associated with specific personality dimensions including Empathy, Skills, Independence, Wisdom, and Creativity, along with percentage weights.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Impulse Brain Training 12 male archetypes test`

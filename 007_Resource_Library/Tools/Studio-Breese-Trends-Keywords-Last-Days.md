@@ -1,16 +1,27 @@
 ---
 title: "Studio Breese Trends Keywords Last Days"
-type: tool-doc
+type: tutorial
 category: content-strategy
+form: youtube-video
+summary: "A YouTube video by creator DevonMcGregor1 demonstrating the prompt engineering technique for generating content with Sora 2 specifically tailored for YouTube Shorts. The thumbnail displays a split screen featuring a revenue dashboard alongside the video content preview."
+search_for: "how to prompt Sora 2 for yt shorts devonmcgregor"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Studio Breese Trends Keywords Last Days with readable text about studio."
+  - sora-2
+  - video-prompting
+  - youtube-shorts
+  - aigc
+  - needs-enrichment
 original_filename: "IMG_8954.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Studio-Breese-Trends-Keywords-Last-Days.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Studio Breese Trends Keywords Last Days with visible text about studio. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A YouTube video by creator DevonMcGregor1 demonstrating the prompt engineering technique for generating content with Sora 2 specifically tailored for YouTube Shorts. The thumbnail displays a split screen featuring a revenue dashboard alongside the video content preview.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `how to prompt Sora 2 for yt shorts devonmcgregor`

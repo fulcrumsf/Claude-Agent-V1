@@ -1,16 +1,25 @@
 ---
 title: "Stylized Action Frame Style"
-type: prompt
+type: tool-doc
 category: video-production
+form: saas-tool
+summary: "This link points to a digital file hosted on Gumroad, a platform where creators sell various digital products. It is likely a document or resource related to a software-as-a-service tool or a similar digital asset."
+url: "https://public-files.gumroad.com/9wfdknoxcn2ufp69k1git01vh2y2"
+verified: true
 tags:
   - prompt
   - image-generation
   - style
   - niji-6
   - action
+  - digital-product
+  - gumroad
+  - saas-resource
+  - documentation
+  - creator-economy
 created: 2026-05-01
-source: https://public-files.gumroad.com/9wfdknoxcn2ufp69k1git01vh2y2
+enriched: 2026-09-05
 ---
-[![](https://public-files.gumroad.com/9wfdknoxcn2ufp69k1git01vh2y2)](https://public-files.gumroad.com/9wfdknoxcn2ufp69k1git01vh2y2)
-**Prompt**
-`a warrior mid-air about to strike, dynamic pose, sharp angular limbs, stylized action frame style, intense motion blur, limited color palette, high energy line work --niji 6 --ar 16:9`
+
+## Summary
+This link points to a digital file hosted on Gumroad, a platform where creators sell various digital products. It is likely a document or resource related to a software-as-a-service tool or a similar digital asset.

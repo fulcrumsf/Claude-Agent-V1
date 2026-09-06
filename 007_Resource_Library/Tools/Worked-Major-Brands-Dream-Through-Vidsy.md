@@ -1,16 +1,28 @@
 ---
 title: "Worked Major Brands Dream Through Vidsy"
-type: tool-doc
+type: reference
 category: content-strategy
+form: social-thread
+summary: "A TikTok post from a UGC content creator discussing platforms used to land brand deals, specifically highlighting Vidsy and Fiverr. The text provides a testimonial about the ease of application and success in securing major brands through these sites."
+search_for: "Vidsy UGC platform Fiverr for creators"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Worked Major Brands Dream Through Vidsy with readable text about worked."
+  - ugc-creator
+  - freelance-platforms
+  - brand-deals
+  - vidsy
+  - fiverr
+  - needs-enrichment
 original_filename: "IMG_8044.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Worked-Major-Brands-Dream-Through-Vidsy.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Worked Major Brands Dream Through Vidsy with visible text about worked. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A TikTok post from a UGC content creator discussing platforms used to land brand deals, specifically highlighting Vidsy and Fiverr. The text provides a testimonial about the ease of application and success in securing major brands through these sites.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Vidsy UGC platform Fiverr for creators`

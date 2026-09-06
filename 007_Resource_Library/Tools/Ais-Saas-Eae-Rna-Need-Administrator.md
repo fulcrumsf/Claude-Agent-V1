@@ -1,16 +1,28 @@
 ---
 title: "Ais Saas Eae Rna Need Administrator"
-type: tool-doc
+type: social-thread
 category: content-strategy
+form: tiktok
+summary: "A social media post by the user 'tekkerslovakian' announcing a job opening for an administrator. The position is part-time (P/T), remote, and flexible with Scale_Careers, instructing interested parties to DM them."
+search_for: "Scale_Careers job hiring"
 tags:
   - screenshot
   - reference
-ai_description: "Screenshot of Ais Saas Eae Rna Need Administrator with readable text about ais."
+  - scale_careers
+  - job-posting
+  - hiring
+  - part-time
+  - remote-work
+  - needs-enrichment
 original_filename: "IMG_8884.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Ais-Saas-Eae-Rna-Need-Administrator.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Ais Saas Eae Rna Need Administrator with visible text about ais. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A social media post by the user 'tekkerslovakian' announcing a job opening for an administrator. The position is part-time (P/T), remote, and flexible with Scale_Careers, instructing interested parties to DM them.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `Scale_Careers job hiring`

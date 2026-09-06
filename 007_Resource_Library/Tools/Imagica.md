@@ -1,5 +1,19 @@
 ---
-URL: https://create.imagica.ai/fot/#/signin
-Description: Imagica is an AI app builder that helps you turn a prompt into a simple working app. It’s geared toward fast prototyping—generate a UI and basic logic, then iterate as you refine the idea.
-Category: Development
+title: "Imagica"
+type: tool-doc
+form: saas-tool
+summary: "Imagica AI is a no-code platform that enables users to build AI applications rapidly using natural language or a chat interface. It supports real-time data integration and multimodal inputs/outputs, allowing for the creation of functional apps without traditional coding. The platform is designed for fast prototyping and iterating on AI application ideas."
+url: "https://create.imagica.ai/fot/#/signin"
+verified: true
+tags:
+  - ai-app-builder
+  - no-code-development
+  - rapid-prototyping
+  - generative-ai
+  - saas
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+Imagica AI is a no-code platform that enables users to build AI applications rapidly using natural language or a chat interface. It supports real-time data integration and multimodal inputs/outputs, allowing for the creation of functional apps without traditional coding. The platform is designed for fast prototyping and iterating on AI application ideas.

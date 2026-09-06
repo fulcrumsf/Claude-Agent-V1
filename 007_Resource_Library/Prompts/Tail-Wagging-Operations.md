@@ -1,6 +1,19 @@
 ---
-Phase 2: Set
-Score: "80"
-Status: Not started
-url: https://www.etsy.com/search?q=aperitivo+line+art+printable&sort_by=best_selling
+title: "Tail Wagging Operations"
+type: design-inspiration
+form: design-reference
+summary: "This link is an Etsy search results page displaying various 'aperitivo line art printable' digital downloads. These printables are typically used for home decor, bar cart styling, or as gifts, featuring minimalist line drawings of cocktails and Italian aperitivo themes."
+url: "https://www.etsy.com/search?q=aperitivo+line+art+printable&sort_by=best_selling"
+verified: true
+tags:
+  - aperitivo
+  - line-art
+  - printable-art
+  - digital-download
+  - home-decor
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+This link is an Etsy search results page displaying various 'aperitivo line art printable' digital downloads. These printables are typically used for home decor, bar cart styling, or as gifts, featuring minimalist line drawings of cocktails and Italian aperitivo themes.

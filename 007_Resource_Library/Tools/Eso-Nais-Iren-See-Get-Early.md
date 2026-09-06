@@ -1,16 +1,28 @@
 ---
 title: "Eso Nais Iren See Get Early"
-type: tool-doc
+type: article
 category: content-strategy
+form: youtube-video
+summary: "A YouTube video by the channel @TickerSymbolYOU featuring a list of three specific stock recommendations: CRWV, NBIS, and IREN. The visual content includes an on-screen graphic overlaying the speaker with these ticker symbols and numbers 01-03, alongside footage of stock charts being analyzed on a smartphone."
+search_for: "TickerSymbolYOU youtube CRWV NBIS IREN stocks"
 tags:
   - screenshot
   - finance
-ai_description: "Screenshot of Eso Nais Iren See Get Early with readable text about eso."
+  - stocks
+  - investments
+  - crwv
+  - nbis
+  - iren
+  - needs-enrichment
 original_filename: "IMG_8971.PNG"
 created: 2026-05-01
+enriched: 2026-09-05
 ---
 
 ![[Eso-Nais-Iren-See-Get-Early.PNG]]
 
-## AI Analysis
-This appears to be a screenshot of Eso Nais Iren See Get Early with visible text about eso. It can be kept as a general visual reference inside the vault for later comparison or idea capture.
+## Summary
+A YouTube video by the channel @TickerSymbolYOU featuring a list of three specific stock recommendations: CRWV, NBIS, and IREN. The visual content includes an on-screen graphic overlaying the speaker with these ticker symbols and numbers 01-03, alongside footage of stock charts being analyzed on a smartphone.
+
+## Enrichment needed
+URL/context not shown in the image. Resolve by web-searching: `TickerSymbolYOU youtube CRWV NBIS IREN stocks`

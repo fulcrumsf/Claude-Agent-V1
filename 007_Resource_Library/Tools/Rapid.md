@@ -1,5 +1,19 @@
 ---
-URL: https://rapidapi.com/
-Description: RapidAPI is a marketplace and developer hub for discovering and consuming APIs. It helps you test endpoints, subscribe to API products, and manage keys/usage so you can integrate services into your apps faster.
-Category: Marketplace
+title: "Rapid"
+type: tool-doc
+form: saas-tool
+summary: "RapidAPI is the world's largest API hub and marketplace, enabling developers to discover, test, and connect to thousands of public and private APIs. It provides a unified platform for managing API subscriptions, monitoring usage, and integrating services into applications with a single account and API key."
+url: "https://rapidapi.com/"
+verified: true
+tags:
+  - api-marketplace
+  - api-management
+  - developer-tools
+  - api-integration
+  - api-discovery
+created: 2026-09-05
+enriched: 2026-09-05
 ---
+
+## Summary
+RapidAPI is the world's largest API hub and marketplace, enabling developers to discover, test, and connect to thousands of public and private APIs. It provides a unified platform for managing API subscriptions, monitoring usage, and integrating services into applications with a single account and API key.
