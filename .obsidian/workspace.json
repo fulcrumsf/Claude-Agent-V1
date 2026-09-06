@@ -189,6 +189,8 @@
   },
   "active": "5cd3c1beb69c94c9",
   "lastOpenFiles": [
+    "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Video_Clips/Shot-12-1080p-v8.mp4",
+    "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Intermediate/Shot-12-Topaz-2x-v8.mp4",
     "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Scripts/finish_shot12_v8.py",
     "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Shot-12-Seedance-2-Mini-480p-v8.mp4",
     "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Analysis/Shot-12-Storyboard-QA-v4/qa-report.json",
@@ -199,8 +201,6 @@
     "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Scripts/generate_shot12_v8.py",
     "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Prompts/Shot-12-Seedance-2-Mini-v8.md",
     "001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/shot_12_storyboard_spec_v4.json",
-    "001_Architecture/graphify-out/cache/ast/v0.9.55-s2/0583c54545501a2a2fcc8fc6a6f6064e8d28705dc70b0099e28a8e1088bfee6d.json",
-    "001_Architecture/graphify-out/cache/ast/v0.9.55-s2/9b530105e2ba68254bac35c1be69885a79fad6be0f58e00fb34008db94aed733.json",
     "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Images/Shot-12-Storyboard-v4.png",
     "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Prompts/Shot-12-GPT-Image-2-Storyboard-v4.md",
     "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Prompts/Shot-12-Seedance-2-Mini-v7.md",

@@ -244,3 +244,12 @@
 - Submitted a new Kie/Seedance 2 Mini raw generation as v8, task
   `598a54640b1872a89e542efa537f8aa2`. It is awaiting provider completion;
   no upscale or overwrite is permitted before Tony's manual approval.
+
+## Shot 12 v8 approved and upscale submitted
+
+- Tony approved the raw Shot 12 v8 video.
+- Recovered the already-submitted raw file without creating another Seedance
+  task, then submitted its authorized 2x Topaz upscale as task
+  `db84fab20ad9d9514aea10cf5fb762af`.
+- Final 1080p output is not available yet; the recovery script now reuses the
+  existing Topaz task ID if resumed, preventing duplicate upscale charges.

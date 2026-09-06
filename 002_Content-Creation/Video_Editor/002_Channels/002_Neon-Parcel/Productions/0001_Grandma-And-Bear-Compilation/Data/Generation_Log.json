@@ -822,16 +822,20 @@
       "prompt_sha256": "9ea6a8fd03092e5647800f169918faeec22801a57f987f443109e11fcde83662",
       "prior_attempts": 0,
       "model": "bytedance/seedance-2-mini",
-      "status": "topaz_submitted",
+      "status": "completed",
       "reserved_at": "2026-09-06T00:25:13.944398+00:00",
       "task_id": "598a54640b1872a89e542efa537f8aa2",
       "submitted_at": "2026-09-06T00:25:14Z",
       "route": "seedance_2_mini_storyboard",
       "reference_url": "https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Shot-12-Storyboard-v4.png",
       "raw_output": "Working/Shot-12-Seedance-2-Mini-480p-v8.mp4",
-      "postprocess": "blocked_until_manual_approval",
+      "postprocess": "topaz-2x-then-ffmpeg-1920x1080",
       "topaz_task_id": "db84fab20ad9d9514aea10cf5fb762af",
-      "topaz_source_url": "https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Shot-12-Seedance-2-Mini-480p-v8.mp4"
+      "topaz_source_url": "https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Shot-12-Seedance-2-Mini-480p-v8.mp4",
+      "topaz_output": "Intermediate/Shot-12-Topaz-2x-v8.mp4",
+      "final_output": "Video_Clips/Shot-12-1080p-v8.mp4",
+      "resolution": "1920x1080",
+      "approval_note": "Tony approved Shot 12 v8 raw video before upscale."
     }
   ],
   "processing": [
