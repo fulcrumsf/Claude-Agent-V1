@@ -269,6 +269,31 @@
   `Assembly/Versions/v3/Neon-Parcel-Grandma-And-Bear-Compilation-VO-Review-v3.mp4`.
   No music, branding, captions, or publishing steps were added.
 
+## Neon Parcel narration sync correction
+
+- Tony reported inaudible narration and original-audio sync drift in the first
+  review cut.
+- Root cause confirmed: selected clips mix missing audio streams with 32 kHz
+  AAC streams of different durations; stream-copy concatenation was unsafe.
+- Created a timestamp-safe v4 assembly that filter-concats every clip, inserts
+  silence for clips without audio, resamples original audio to 48 kHz, and
+  mixes the 13 VO lines directly without the faulty sidechain path.
+- Verified v4 picture and audio both run 129.768 seconds at 1920x1080/48 kHz.
+
+## Neon Parcel audio workflow hardened
+
+- Hardened the successful narration approach into the Neon Parcel skill,
+  Toolbox, report card, feedback loop, and Global Agent Memory.
+- Locked Herbie (`Kz0DA4tCctbPjLay2QT1`), separate shot-aligned VO lines,
+  original audio preservation, 48 kHz timestamp-safe assembly, review mix
+  defaults of `0.55` source audio and `1.6` narration, and no music/branding
+  before narration review.
+- Added the shared TTS `config.py` secret loader and verified it loads from
+  `~/.env-secrets` without exposing credentials.
+- Verification: Neon Parcel suite remains 75/75 passing and `git diff --check`
+  is clean. Remaining production work is final music/branding/package review,
+  not pipeline hardening.
+
 ## Resource Library graph build — Option A ran, result weak
 
 - `graphify extract .` via Gemini: 3,548 docs, $1.46, ~15 min. OpenAI_History + media
