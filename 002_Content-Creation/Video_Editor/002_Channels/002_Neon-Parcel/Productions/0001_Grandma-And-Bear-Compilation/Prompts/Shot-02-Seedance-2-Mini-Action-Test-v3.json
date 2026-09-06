@@ -1,0 +1,10 @@
+{
+  "shot_id": "Shot-02",
+  "version": "v3-action-test",
+  "model": "bytedance/seedance-2-mini",
+  "generation_resolution": "480p",
+  "duration_seconds": 12,
+  "reference_assets": ["Images/Shot-02-Storyboard-v2.png"],
+  "postprocess": {"topaz": false, "ffmpeg_normalization": false},
+  "prompt": "Use the attached Neon Parcel 16:9 storyboard as a visual continuity reference only, not as a visible multi-panel layout and not as a literal storyboard to reproduce. Preserve the same fixed elevated rural security-camera viewpoint, wide lens character, horizon, lighting, porch geometry, swamp edge, and consistent subject identities across one continuous shot. Follow the six visual states in order: Grandma actively sweeps the porch while looking down at the boards; an alligator physically emerges from the swamp; Grandma remains unaware and keeps sweeping; one black bear notices the alligator and physically walks between them; the bear drives the alligator back toward the swamp without morphing or changing identity; only after the danger has passed does Grandma stop sweeping and look toward the yard. Show a visibly different broom position, body posture, and gaze direction as the action progresses. Keep exactly one Grandma, one black bear, and one alligator. Preserve continuous anatomy and body shape during every turn and movement. Generate realistic native ambient and action audio. Do not add captions, title cards, labels, emojis, watermarks, or any graphics."
+}

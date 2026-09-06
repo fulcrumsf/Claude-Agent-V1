@@ -135,19 +135,45 @@ GOOD: "YouTube-Analytics-Growth-Dashboard" (what the screenshot actually shows)
 - Docs: Reference material, documentation, API examples
 - Undetermined: Image is blurry, has no context, or lacks actionable content
 
+## DO NOT FABRICATE — hard rule
+
+You may only state what is VISIBLE in the image or reconstructable from visible text.
+
+- **URL**: only fill `url` if the address is actually shown — including when it is
+  obfuscated to dodge a link filter (e.g. `mesh3d [.gallery]` → `https://mesh3d.gallery`,
+  `github dot com slash foo` → `https://github.com/foo`). Reconstructing shown text is fine.
+  **Never guess or synthesize a URL that is not in the frame.** A confident wrong URL is
+  worse than none. If you know the name of a repo/product/site but its URL is not shown,
+  leave `url` as "" and put a web-search query in `search_for` (e.g. "claude-watch github repo").
+- **ai_description / summary**: describe only what the frame shows or verifiably states.
+  If it references a tool/repo/site whose PURPOSE is not shown, say "purpose not shown in
+  frame" — do NOT invent what it does.
+- If unsure whether something is real vs inferred, mark it inferred in the description.
+
 Output ONLY a raw JSON object (no markdown ```json blocks):
 
 {
     "category": "Tools",
+    "content_type": "tool-doc",
+    "form": "github-repo",
     "title_case_name": "Title-Case-With-Dashes",
-    "ai_description": "2-3 sentences describing the PRIMARY SUBJECT: what tool/concept/idea is shown, what it does, why someone would save it. Do NOT describe the app chrome or navigation.",
+    "ai_description": "2-3 sentences describing the PRIMARY SUBJECT: what tool/concept/idea is shown, what it does (only if shown), why someone would save it. Do NOT describe the app chrome or navigation. Do NOT invent capabilities that are not visible.",
+    "url": "",
+    "search_for": "exact-name-or-phrase to web-search if url is unknown, else \"\"",
     "tags": ["tag-one", "tag-two", "tag-three"]
 }
 
 Naming rules:
 - title_case_name: Title-Case-With-Dashes, semantic meaning only (e.g. Suno-AI-Music-Platform, ComfyUI-Workflow-Tutorial)
 - NO nav bar text, NO UI labels, NO timestamps, NO dimension numbers in the name
-- tags: 2-5 lowercase kebab-case strings describing the CONTENT, not the UI
+
+Field rules:
+- content_type: ONE of bookmark|api-doc|tool-doc|tutorial|model-doc|prompt|reference|case-study|script|workflow|project-idea|design-inspiration|personal|research|doc . Never "extracted-knowledge".
+- form: ONE of saas-tool|desktop-app|browser-extension|github-repo|open-source-project|api-service|youtube-video|tiktok|article|social-thread|prompt|workflow-diagram|channel-study|market-research|model-spec|design-reference|project-idea|dataset|paper|other . This is WHAT THE THING IS.
+- url: the source / product / repo URL ONLY if it is visible in the frame (obfuscated-but-reconstructable counts). Use "" otherwise. Do NOT synthesize a plausible URL.
+- search_for: if `url` is "" but you can name the thing (a repo, product, site, channel), put the best web-search string here so it can be resolved later. Use "" if nothing to search.
+- If it is or references a GitHub repo: form MUST be "github-repo" and "github-repo" MUST be the first tag. Set `url` to the repo URL only if shown; otherwise `url`="" and `search_for`="<repo-name> github".
+- tags: 2-5 lowercase kebab-case strings describing the CONTENT/topic, not the UI. (The artifact kind lives in `form`, not tags — except the github-repo mirror.)
 """
 
 def process_image(image_path):
@@ -320,6 +346,34 @@ def main():
         title_case_name = data.get("title_case_name", "Untitled")
         ai_description = data.get("ai_description", "No description available.")
         tags = data.get("tags", [])
+        content_type = data.get("content_type", "reference") or "reference"
+        form = data.get("form", "other") or "other"
+        url = (data.get("url", "") or "").strip()
+        search_for = (data.get("search_for", "") or "").strip()
+
+        # Guardrail: never emit the deprecated placeholder type
+        if content_type in ("extracted-knowledge", "", None):
+            content_type = "reference"
+
+        # Anti-fabrication guardrail: only keep a URL that looks real AND was returned
+        # as an actual address. If the model slipped a guessed URL in, demote it to a
+        # search hint rather than presenting it as verified.
+        if url and not re.match(r"^https?://[^\s]+\.[^\s]+", url):
+            if not search_for:
+                search_for = url
+            url = ""
+
+        # GitHub mirror rule (form + tag always; url only if it was actually provided)
+        if "github.com" in url or form == "github-repo":
+            form = "github-repo"
+            if "github-repo" not in tags:
+                tags = ["github-repo"] + tags
+            if not url and not search_for:
+                search_for = f"{title_case_name.replace('-', ' ')} github repo"
+
+        # Flag notes that still need a URL/context resolved
+        if search_for and not url and "needs-enrichment" not in tags:
+            tags = tags + ["needs-enrichment"]
 
         # Validate that the AI returned a descriptive name — reject generic/hash names
         if is_bad_name(title_case_name):
@@ -365,12 +419,16 @@ def main():
         
         yaml_tags = "\n".join([f"  - {t}" for t in tags])
         date_str = datetime.now().strftime("%Y-%m-%d")
-        
+        url_line = f'url: "{url}"\n' if url else ""
+        search_line = f'search_for: "{search_for.replace(chr(34), chr(39))}"\n' if (search_for and not url) else ""
+
         md_content = f"""---
 title: "{human_title}"
-type: extracted-knowledge
+type: {content_type}
 category: {category.lower()}
-tags:
+form: {form}
+summary: "{ai_description.replace('"', "'")}"
+{url_line}{search_line}tags:
 {yaml_tags}
 original_filename: "{os.path.basename(file_path)}"
 created: {date_str}
@@ -378,9 +436,11 @@ created: {date_str}
 
 ![[{new_img_filename}]]
 
-## AI Analysis
+## Summary
 {ai_description}
 """
+        if search_line:
+            md_content += f'\n## Enrichment needed\nURL/context not shown in the image. Resolve by web-searching: `{search_for}`\n'
         with open(md_path, "w") as f:
             f.write(md_content)
             

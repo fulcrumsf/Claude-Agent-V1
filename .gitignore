@@ -43,12 +43,22 @@ Notion-Edit/
 .vscode/
 .idea/
 
-# Media assets (not needed in repo)
+# Media assets (not needed in repo) — images and video, any extension, never
+# committed (Tony, 2026-09-04). Case is handled automatically: this repo has
+# core.ignorecase=true, so *.png also blocks *.PNG/*.Png/etc. without needing
+# to list every case combination (unlike graphify's own ignore file, which
+# needs explicit case handling — see .graphifyignore for why).
 *.mp4
 *.mov
 *.avi
 *.mkv
 *.webm
+*.m4v
+*.wmv
+*.flv
+*.mpg
+*.mpeg
+*.3gp
 *.png
 *.jpg
 *.jpeg
@@ -57,13 +67,19 @@ Notion-Edit/
 *.psd
 *.ai
 *.tiff
+*.tif
 *.bmp
 *.ico
 *.svg
+*.heic
+*.heif
+*.avif
 *.mp3
 *.wav
 *.aac
 *.flac
+*.m4a
+*.ogg
 *.ogg
 *.m4a
 

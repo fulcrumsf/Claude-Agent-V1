@@ -260,25 +260,117 @@ def cost(pipeline, verbose):
 @click.option("--type", "media_type", required=True, type=click.Choice(["image", "video", "audio", "video-to-audio"]),
               help="image or video")
 @click.option("--need", default="", help="What the task needs, e.g. photorealism, character-consistency")
-def recommend(media_type, need):
-    """Recommend the best model for a task using model_catalog.json. Returns winner + backup."""
+@click.option("--task", default="", help="Plain-language task requirements for capability-aware routing")
+def recommend(media_type, need, task):
+    """Recommend a model using task requirements, capabilities, ratings, and price."""
     # Load catalog (primary) with fallback to legacy model_capabilities.json
     if MODEL_CATALOG.exists():
         catalog = load_json(MODEL_CATALOG)
-        _recommend_from_catalog(catalog, media_type, need)
+        _recommend_from_catalog(catalog, media_type, need, task)
     elif MODEL_CAPS.exists():
-        _recommend_from_caps(media_type, need)
+        _recommend_from_caps(media_type, need, task)
     else:
         click.echo("  ⚠️  No model data found. Run catalog_refresh.py first.")
 
 
-def _recommend_from_catalog(catalog, media_type, need):
-    """Recommend from model_catalog.json — cross-platform pricing + ratings."""
+TASK_REQUIREMENT_ALIASES = {
+    "multi_reference_images": (
+        "multi-reference", "multi reference", "multiple reference", "reference images",
+        "character sheet", "environment sheet", "storyboard reference", "@image"
+    ),
+    "first_last_frames": (
+        "first and last frame", "first/last frame", "start and end frame", "start/end frame",
+        "end frame", "last frame", "first frame"
+    ),
+    "native_1080p": ("1080p", "1920x1080", "full hd"),
+    "native_audio": ("native audio", "audio generated", "synchronized audio", "sync audio"),
+    "storyboard_timeline": ("timestamp", "time-stamped", "action timeline", "storyboard timeline"),
+}
+
+
+def parse_task_requirements(task: str, need: str = "") -> set[str]:
+    """Extract routing requirements from plain-language task text.
+
+    This is intentionally conservative: an unrecognized requirement is not
+    treated as supported. The catalog remains the source of capability facts.
+    """
+    text = f"{task} {need}".lower()
+    return {
+        requirement
+        for requirement, aliases in TASK_REQUIREMENT_ALIASES.items()
+        if any(alias in text for alias in aliases)
+    }
+
+
+def _capability_support(model: dict, requirement: str) -> dict:
+    """Return aggregate support state for a model capability.
+
+    Values are True, False, or None (unverified). Platform-specific support is
+    preserved so the recommender can avoid choosing a cheap incompatible route.
+    """
+    entry = model.get("capabilities", {}).get(requirement)
+    if not entry:
+        return {"supported": None, "platforms": {}}
+    platforms = {
+        platform: details.get("supported") if isinstance(details, dict) else details
+        for platform, details in entry.items()
+        if platform != "_note"
+    }
+    values = set(platforms.values())
+    if True in values:
+        state = True
+    elif None in values:
+        state = None
+    else:
+        state = False
+    return {"supported": state, "platforms": platforms}
+
+
+def _platform_price(pricing: dict, platform: str):
+    """Read either a normalized price or a catalog pricing record."""
+    value = pricing.get(platform)
+    if isinstance(value, (int, float)):
+        return value
+    if isinstance(value, dict):
+        return value.get("price")
+    return None
+
+
+def _eligible_platforms(model: dict, requirements: set[str]) -> tuple[list[str], list[str]]:
+    """Filter priced platforms by confirmed task capabilities."""
+    pricing = model.get("pricing", {})
+    platforms = [p for p in pricing
+                 if p not in {"reference_unit", "cheapest", "cheapest_price"}
+                 and _platform_price(pricing, p) is not None]
+    if not requirements:
+        return platforms, []
+
+    eligible = []
+    unknown = []
+    for platform in platforms:
+        rejected = False
+        has_unknown = False
+        for requirement in requirements:
+            support = _capability_support(model, requirement)["platforms"].get(platform)
+            if support is False:
+                rejected = True
+                break
+            if support is None:
+                has_unknown = True
+        if not rejected and not has_unknown:
+            eligible.append(platform)
+        elif not rejected and has_unknown:
+            unknown.append(platform)
+    return eligible, unknown
+
+
+def _recommend_from_catalog(catalog, media_type, need, task=""):
+    """Recommend from the catalog, using capabilities before price/rating."""
     models = catalog.get("models", [])
 
     # Filter by type — support aliases (video = text-to-video, image = text-to-image, etc.)
     type_map = {
-        "video": ["text-to-video", "video-to-video"],
+        "video": ["text-to-video", "image-to-video", "video-to-video"],
         "image": ["text-to-image"],
         "audio": ["text-to-speech", "text-to-sfx", "text-to-music"],
         "video-to-audio": ["video-to-audio"],
@@ -289,14 +381,45 @@ def _recommend_from_catalog(catalog, media_type, need):
         m for m in models
         if m.get("status") != "deprecated"
         and any(t in m.get("type", "") for t in target_types)
-        and m.get("rating") is not None
     ]
 
-    # Sort by rating desc, then cheapest_price asc as tiebreaker
-    candidates.sort(key=lambda m: (
-        -(m.get("rating") or 0),
-        m["pricing"].get("cheapest_price") or 999
-    ))
+    requirements = parse_task_requirements(task, need)
+    capability_notes = []
+    task_text = f"{task} {need}".lower()
+    requested_model = next(
+        (model for model in candidates
+         if model.get("name", "").lower() in task_text),
+        None,
+    )
+
+    if requirements:
+        filtered = []
+        for model in candidates:
+            eligible, unknown = _eligible_platforms(model, requirements)
+            if eligible:
+                model = dict(model)
+                model["_eligible_platforms"] = eligible
+                model["_unknown_platforms"] = unknown
+                filtered.append(model)
+            elif unknown:
+                capability_notes.append(model["name"])
+        candidates = filtered
+
+    # Without a task description, retain the original rating-first behavior.
+    # With one, only eligible models remain and capability fit outranks rating.
+    if requirements:
+        candidates.sort(key=lambda m: (
+            -(1 if requested_model and m["id"] == requested_model["id"] else 0),
+            -(m.get("rating") or 0),
+            min((_platform_price(m.get("pricing", {}), p) or 999)
+                for p in m.get("_eligible_platforms", [])),
+        ))
+    else:
+        candidates = [m for m in candidates if m.get("rating") is not None]
+        candidates.sort(key=lambda m: (
+            -(m.get("rating") or 0),
+            m["pricing"].get("cheapest_price") or 999
+        ))
 
     click.echo(f"\n  MODEL RECOMMENDATION — {media_type.upper()}")
     click.echo("  " + "=" * 48)
@@ -310,8 +433,13 @@ def _recommend_from_catalog(catalog, media_type, need):
 
     def _fmt_model(m, label):
         pricing = m.get("pricing", {})
-        cheapest = str(pricing.get("cheapest") or "needs-pricing")
-        price = pricing.get("cheapest_price")
+        if requirements and m.get("_eligible_platforms"):
+            priced = [(_platform_price(pricing, p), p) for p in m["_eligible_platforms"]
+                      if _platform_price(pricing, p) is not None]
+            price, cheapest = min(priced) if priced else (None, "needs-pricing")
+        else:
+            cheapest = str(pricing.get("cheapest") or "needs-pricing")
+            price = pricing.get("cheapest_price")
         price_str = f"${price}" if price is not None else "price unknown"
         rating = m.get("rating", "?")
         click.echo(f"\n  {label}: {m['name']}")
@@ -326,13 +454,13 @@ def _recommend_from_catalog(catalog, media_type, need):
     if backup:
         _fmt_model(backup, "BACKUP")
 
-    if need:
-        click.echo(f"\n  Task note: '{need}'")
-        # Check if any model description matches the need keyword
-        matches = [m for m in candidates if need.lower() in m.get("description", "").lower()
-                   or need.lower() in m.get("notes", "").lower()]
-        if matches and matches[0]["id"] != winner["id"]:
-            click.echo(f"  Tip: '{matches[0]['name']}' may better match this requirement.")
+    if task or need:
+        click.echo(f"\n  Task requirements: {', '.join(sorted(requirements)) or 'no recognized capability requirements'}")
+        if task:
+            click.echo(f"  Task: '{task}'")
+        if capability_notes:
+            click.echo("  ⚠️  Models with unverified capability routes were excluded: "
+                       + ", ".join(capability_notes))
 
     # Show full ranked list
     click.echo(f"\n  All {media_type} models (by rating):")
@@ -341,11 +469,12 @@ def _recommend_from_catalog(catalog, media_type, need):
         price = pricing.get("cheapest_price")
         price_str = f"${price}" if price is not None else "N/A"
         platform = str(pricing.get("cheapest") or "needs-pricing")
-        click.echo(f"    {m.get('rating','?'):>4}/10  {m['name']:<30} {platform:<18} {price_str}")
+        rating = m.get("rating") if m.get("rating") is not None else "?"
+        click.echo(f"    {str(rating):>4}/10  {m['name']:<30} {platform:<18} {price_str}")
     click.echo()
 
 
-def _recommend_from_caps(media_type, need):
+def _recommend_from_caps(media_type, need, task=""):
     """Legacy fallback using model_capabilities.json."""
     caps = load_json(MODEL_CAPS)
     section = caps.get(media_type, {})

@@ -1,0 +1,8 @@
+{
+  "shot_id": "Shot-02",
+  "version": "v2-topaz",
+  "model": "topaz/video-upscale",
+  "source_video_url": "https://res.cloudinary.com/da6zdvts2/video/upload/v1787890573/neon-parcel/0001/Shot-02-v2-video.mp4",
+  "upscale_factor": "2",
+  "purpose": "Upscale only; no generative prompt."
+}

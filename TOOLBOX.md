@@ -38,10 +38,23 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - Always run this BEFORE calling the ingest script — avoids duplicate API spend
 - Output: count of already-cataloged vs needs-vision, with per-file reasons
 
+**Resource Library dedup script:** `001_Architecture/Scripts/resource_library_dedup.py`
+- Scans `007_Resource_Library/` for likely duplicate bookmarks (same source re-saved months apart — esp. YouTube tutorials)
+- Match tiers: exact (same canonical URL / YouTube ID / identical body), high (same domain + fuzzy title), medium (fuzzy body), low (shares a link but looks unrelated)
+- Writes a side-by-side review table: `007_Resource_Library/_Dedup_Review.md` + `.json`. **Never deletes or moves anything** — Tony reviews and decides.
+- Options: `--roots`, `--output`, `--format {md,json,both}`, `--min-title-sim`, `--min-body-sim`, `--include-images`
+- Run: `python3 001_Architecture/Scripts/resource_library_dedup.py` — safe to re-run any time (e.g. after an ingest batch)
+- Run this BEFORE any Resource Library graphify build — don't graph the same source twice
+
 **Skill registry sync script:** `001_Architecture/Scripts/sync_skill_index.py`
 - Regenerates `001_Architecture/Skills/Skill-Index.md` from every `SKILL.md` in the skills tree
 - Designed to run from Claude/Gemini hooks after skill edits so Gemini can discover new or changed skills automatically
 - Safe to run manually at any time if the registry needs a refresh
+
+**Codex Agent-OS Hardening skill:** `001_Architecture/Skills/codex-agent-os-hardening/SKILL.md`
+- Operating checklist for Codex/OpenAI-compatible agents in Agent-OS
+- Covers startup orientation, folder routing, recommendation approval boundaries, preservation rules, feedback-loop writes, memory updates, session logs, and closeout behavior
+- Use whenever Codex starts work in Agent-OS or Tony corrects Codex workflow/process behavior
 
 **Image Extraction script:** `001_Architecture/Scripts/process_image_ingest.py`
 - Uses OpenRouter vision first (qwen model), then OpenAI vision fallback, to extract semantic knowledge
@@ -71,6 +84,26 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - Automates multi-step FFmpeg scene detection and audio Whisper transcription for incoming raw videos.
 - Run: `python3 001_Architecture/Scripts/process_video_ingest.py "/path/to/video.mp4"`
 - Output: Properly structured package with keyframes and transcript files in `007_Resource_Library/Videos/`.
+
+**Neon Parcel storyboard QA adapter:** `001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/storyboard_vision_provider.py`
+- Builds the structured storyboard inspection request for OpenRouter/Qwen vision, preserves raw provider responses, and rejects missing keys or malformed JSON.
+- Use `--dry-run` to verify request construction without a network call or provider spend.
+- Pair with `storyboard_qa.py`; the adapter does not itself approve a storyboard and must feed the fail-closed evaluator.
+
+**Neon Parcel storyboard review policy:** `001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/storyboard_ensemble.py`
+- Loads a production-level manual-review policy with a safe default of `manual_review_required: true`.
+- Manual review can be turned off explicitly, but provider disagreement still forces manual review when `require_provider_agreement` is true.
+
+**Neon Parcel storyboard control loop — remaining pieces** (hardened 2026-09-04, see `Neon_Parcel_Longform_Compilation/SKILL.md` and `Logs/Handoffs/2026-09-04_Neon-Parcel-Longform-Hardening_Codex-Handoff.md`), all in `001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/`:
+- `storyboard_contract.py` — serializes a frame-level contract (subjects, states, relationships, actions, captions, tone, capture style) that the storyboard image must satisfy.
+- `storyboard_qa.py` — evaluates storyboard vision-provider evidence against that contract; fail-closed (no evidence = no pass).
+- `storyboard_regeneration.py` — caps storyboard retries at 3 attempts, preserves every failed candidate (never overwrites).
+- `storyboard_handoff.py` — builds the Seedance prompt from what the *accepted* storyboard actually shows, not the original idea/assumptions (prevents reintroducing unverified actions/geometry).
+- `generation_guard.py` — blocks any paid generation call that lacks an explicit version number + revision reason.
+- `artifact_preservation.py` — centralizes the non-destructive version/archive rule (new version on every regen, superseded moves to `Archived/`) so every tool enforces it the same way.
+- `validate_pre_video_gate.py` — fail-closed pre-video validation gate before a Seedance call is allowed to fire.
+- `decide_end_frame.py` — decides the storyboard's end-frame selection for image-to-video continuity.
+- `gemini_video_inspection.py` — uploads a generated clip directly to Gemini (not OpenRouter) for timestamped structured findings; static 3 FPS sampling for short clips. This is the **default** evidence provider for Neon Parcel clip review — OpenRouter/Qwen (`storyboard_vision_provider.py`) is the fallback/second opinion, not primary. Neither provider auto-approves or auto-rejects; findings go to Tony.
 
 ---
 
@@ -151,6 +184,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - **What it's for:** kie.ai has ~441 models on its Market API; kie-cli only wraps a subset. This is a thin wrapper around the unified `/api/v1/jobs/createTask` + `/api/v1/jobs/recordInfo` endpoints for models kie-cli doesn't expose (confirmed gaps as of 2026-08-17: `bytedance/seedance-2-mini`, `topaz/video-upscale`).
 - **Not a kie-cli replacement** — kie-cli stays the default for anything it already covers. Extend this file one function at a time as new gaps are found, per Tony's explicit direction (2026-08-17) — do not build a full custom CLI.
 - **Usage:** `python3 kie_market_api.py seedance_mini "<prompt>" output.mp4 --resolution 480p` or `python3 kie_market_api.py grok_upscale <task_id> output.mp4`
+- **Reference routing:** `--reference-image-url <url>` sends contextual storyboard/reference assets through `reference_image_urls`; `--first_frame_url <url>` is reserved for a clean temporal start frame. The wrapper rejects storyboard/frame role confusion before submission.
 - **API Key:** `KIE_API_KEY`
 
 ### WaveSpeed CLI
@@ -209,6 +243,24 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ---
 
+## Sound Effects / Ambience (video audio)
+
+### Video-to-audio (motion-conditioned Foley) — DEFAULT for Anomalous Wild
+- **Python Tool:** `001_Architecture/Tools/Video-Generation/Channels/Anomalous_Wild/generate_stems_v2a.py`
+  - Feeds picture-locked video segments through **fal.ai Mirelo SFX v1.6**
+    (`mirelo-ai/sfx1.6/video-to-video`) so ambience/Foley is conditioned on real
+    on-screen motion. Segments a render on scene boundaries (`Data/v2a_segment_map.json`,
+    ≤60s each), crossfade-concats to one bed (`Assembly/V2A/v2a_bed.mp3`).
+  - Usage: `python3 generate_stems_v2a.py <production_folder> --source <picture_locked_render>`
+  - Requires `fal-client` (`pip install fal-client`) + `FAL.AI_API_KEY`. Cheap (GPU compute-seconds).
+  - No model does a 3-min single pass — Mirelo ≤60s, MMAudio v2 ≤30s, Kling v2a 3-20s.
+  - Locked 2026-09-04 (Glass Frog 0003, graded A). See Global_Agent_Memory 2026-09-04.
+- **Fallback:** `.../Anomalous_Wild/generate_stems.py` — ElevenLabs text-to-SFX
+  (`v1/sound-generation`, 28s chunk cap) from `Data/stem_map.json`. Use only if
+  video-to-audio is unavailable or a segment repeatedly fails.
+
+---
+
 ## YouTube & Video Research
 
 ### yt-dlp (Video Download)
@@ -219,6 +271,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 ### Gemini Video Analysis
 - **Python Tool:** `001_Architecture/Tools/AI-Analysis/gemini_video_analysis.py` — analyze video style, camera work, humor, AI-prompt potential
   - Usage: `python3 001_Architecture/Tools/AI-Analysis/gemini_video_analysis.py "<URL>" -o output.md`
+- **Neon Parcel production inspection:** `001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/gemini_video_inspection.py` — direct Gemini video upload with timestamped structured findings; defaults to static 3 FPS for short clips. OpenRouter is the fallback, not the primary route.
 - **Skill:** `/analyze-video` — same functionality via skill interface
 
 ### Case Study Generator
@@ -620,8 +673,10 @@ Multi-platform affiliate marketing operations. 18 programs tracked across travel
 - **Purpose:** Reference-inspired 16:9 animal compilations for Neon Parcel, with variable-duration generated clips, post-assembly editorial narration, Suno music, Shorts derivatives, report cards, and explicit Blotato approval gates.
 - **Scaffold:** `001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/scaffold_new_production.py`
 - **Checkpoint ledger:** `001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/production_state.py` records the current state plus append-only decision history.
+- **Shot complexity router:** `001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/route_shot_complexity.py` scores each shot before generation and routes simple shots to Seedance 1.5 at 1080p, complex shots to Seedance 2 Mini at 480p with storyboard guidance followed by Topaz 2x and FFmpeg normalization to 1920x1080, and borderline shots to human review. It only writes an auditable JSON decision; it never calls a provider or spends credits.
 - **Contract:** `001_Architecture/Skills/Neon_Parcel_Longform_Compilation/pipeline.yaml`
 - **Scope boundary:** This is separate from the Neon Parcel TikTok Shop affiliate pipeline. Preserve reference media and all production versions; never auto-publish or activate learned humor patterns.
+- **2026-09-04 hardening checkpoint:** Storyboard and Seedance lessons are propagated into the governing skills and executable Neon Parcel tools, not stored only as session memory. Vision inspection is advisory evidence; Tony makes the storyboard/video decision. Paid retries, fallbacks, upscales, and normalized derivatives always use new versions and preserve prior artifacts.
 
 ### Reimagined Realms Video Pipeline Skill (Global — `001_Architecture/Skills/Reimagined_Realms_Video_Pipeline/`)
 - **Invoke:** `/reimagined-realms`
@@ -699,6 +754,9 @@ Multi-platform affiliate marketing operations. 18 programs tracked across travel
 - **mix_stems.py** — Mix all stems onto video timeline with S-curve (hsin) crossfades
   - Usage: `python3 mix_stems.py <production_folder> [--stems-file Data/per_scene_stem_map.json] [--narration Assembly/narration.mp3]`
   - Output: `Assembly/stems_mix.mp3`; optionally `Assembly/stems_narration_mix.mp3`
+- **audio_pop_scan.py** — Pre-review splice-pop gate (raw PCM + numpy; catches un-faded audio joins)
+  - Usage: `python3 audio_pop_scan.py <render.mp4> --production <production_folder> [--joins t1,t2,...] [--json]`
+  - Exit 1 on any silence-bounded hard step / very-hard step / narration-join discontinuity; run before every AW review (SKILL Phase 8)
 - **render_video.py** — Versioned renderer — keeps all audio tracks separate, bakes into MP4
   - Usage: `python3 render_video.py <production_folder> --stems Assembly/stems_mix.mp3 --narration Assembly/narration.mp3 [--music Assembly/music.mp3] --stems-vol 0.88 --narration-vol 3.09 --music-vol 0.12 --duck --note "description"`
   - Locked formula: stems vol=0.88 (-23 LUFS), narration vol=3.09 (-14 LUFS), sidechain duck threshold=0.015 ratio=4 attack=150 release=800

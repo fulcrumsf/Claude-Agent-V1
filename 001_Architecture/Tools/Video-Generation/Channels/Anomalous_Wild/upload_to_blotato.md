@@ -16,6 +16,15 @@ Mirrors Reimagined Realms Phase 12 exactly, with Anomalous Wild's own account ID
 - `shouldNotifySubscribers`: `false` (while private)
 - `playlistIds`: omit — added manually by Tony during scheduling
 
+## Tags — NEVER goes to Blotato (locked 2026-09-04)
+
+`YouTube_Package.md` may have a trailing `# Tags` section (comma-separated, ≤500
+chars, from `generate_youtube_package.py --tags`). That section is for Tony to paste
+into **YouTube Studio's own Tags field by hand** — Blotato's `create_post` has no
+tags field, and the upload step must read ONLY the `# Description` section as the
+post `text`. Never append, prepend, or otherwise fold the Tags section into the
+description sent to Blotato.
+
 ## Steps
 1. Present Tony: chosen video file (duration/size), 3 titles from `Package/YouTube_Package.md`, 3 thumbnail concepts, privacy status choice. ⏸ PAUSE — wait for his picks.
 2. Compress thumbnail if over 2MB: `ffmpeg -y -i input.png -vf "scale=1920:-1" -q:v 5 output.jpg`

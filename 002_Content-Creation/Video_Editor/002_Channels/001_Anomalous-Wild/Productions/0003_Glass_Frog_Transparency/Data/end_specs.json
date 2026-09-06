@@ -1,0 +1,128 @@
+[
+  {
+    "id": "01A",
+    "sb": "01",
+    "char": true,
+    "env": false,
+    "end_desc": "Extreme macro shot, the glass frog's translucent belly seen from directly below, backlit, the beating heart clearly visible pulsing through the skin, a thin hard-glitch digital distortion beginning to overlay the frame. Corresponds to storyboard frame 6.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_01A_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_01A_End.png"
+  },
+  {
+    "id": "02A",
+    "sb": "02",
+    "char": true,
+    "env": true,
+    "end_desc": "Extreme close-up, camera now beneath the leaf looking up at the frog's translucent ventral belly, backlit from below, the pale internal forms of the liver and lungs just beginning to resolve. Corresponds to storyboard frame 6.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02A_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02A_End.png"
+  },
+  {
+    "id": "02B",
+    "sb": "02",
+    "char": true,
+    "env": true,
+    "end_desc": "Wide shot, camera pulled back to a medium view of the whole glass frog resting calmly on the leaf above the stream, settling the sequence. Corresponds to storyboard frame 12.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02B_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02B_End.png"
+  },
+  {
+    "id": "04B",
+    "sb": "04",
+    "char": false,
+    "env": true,
+    "end_desc": "Closer overhead view, camera descended lower and nearer toward the stream, mist thinner, canopy detail more resolved, no creatures in frame.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04B_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04B_End.png"
+  },
+  {
+    "id": "04C",
+    "sb": "04",
+    "char": true,
+    "env": false,
+    "end_desc": "Close-up, the insect just caught, the frog's tongue retracting back into its mouth, settling back into stillness. Corresponds to storyboard frame 5.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04C_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04C_End.png"
+  },
+  {
+    "id": "04D",
+    "sb": "04",
+    "char": true,
+    "env": false,
+    "end_desc": "Extreme macro push-in, camera now very close on the frog's pale ventral skin texture, soft daylight diffusing through, only a portion of the body visible in frame.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04D_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04D_End.png"
+  },
+  {
+    "id": "04E",
+    "sb": "04",
+    "char": true,
+    "env": false,
+    "end_desc": "Extreme close-up, the frog's outline now nearly disappearing into the leaf's own backlit translucent glow, edges barely distinguishable. Corresponds to storyboard frame 8.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04E_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04E_End.png"
+  },
+  {
+    "id": "04F",
+    "sb": "04",
+    "char": true,
+    "env": true,
+    "end_desc": "Full wide hold, the entire cloud-forest leaf canopy filling the frame, the glass frog now imperceptible within it. Corresponds to storyboard frame 12.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04F_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04F_End.png"
+  },
+  {
+    "id": "06A",
+    "sb": "06",
+    "char": true,
+    "env": true,
+    "end_desc": "Wide cinematic shot, camera pulled back further, the frog and leaf now smaller within a wider view of the surrounding forest.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06A_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06A_End.png"
+  },
+  {
+    "id": "06D",
+    "sb": "06",
+    "char": true,
+    "env": false,
+    "end_desc": "Closer medium shot, camera pushed in slightly nearer to the sleeping frog, beginning to isolate its torso, preparing for a macro push.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06D_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06D_End.png"
+  },
+  {
+    "id": "06E",
+    "sb": "06",
+    "char": true,
+    "env": false,
+    "end_desc": "Extreme macro, the beating heart alone filling almost the entire frame, slow and steady, no other body parts visible. Corresponds to storyboard frame 6.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06E_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06E_End.png"
+  },
+  {
+    "id": "06F",
+    "sb": "06",
+    "char": true,
+    "env": true,
+    "end_desc": "Wide shot, the same canopy view now transitioning toward daylight, mist lifting, warmer light beginning to filter through. Corresponds to storyboard frame 8.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06F_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06F_End.png"
+  },
+  {
+    "id": "06G",
+    "sb": "06",
+    "char": true,
+    "env": true,
+    "end_desc": "Wide final hold, the glass frog nearly vanishing into the leaf's own backlit glow, frame softening slightly at the edges as if fading. Corresponds to storyboard frame 12.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06G_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06G_End.png"
+  },
+  {
+    "id": "07A",
+    "sb": "07",
+    "char": false,
+    "env": false,
+    "end_desc": "Extreme close-up fragment, one unidentifiable anatomical detail of a different, unnamed creature glimpsed amid hard glitch-distortion, deliberately unclear. Corresponds to storyboard frame 4.",
+    "start_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_07A_Start.png",
+    "end_out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_07A_End.png"
+  }
+]

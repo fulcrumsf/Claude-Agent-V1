@@ -1,17 +1,36 @@
 {
   "_meta": {
     "description": "Pricing cache for all APIs in Tony's toolbox. Refreshed monthly via pricing_refresh.py. All prices fetched from live sources \u2014 never hardcoded.",
-    "last_updated": "2026-08-17T16:26:01.393917",
-    "next_refresh": "2026-09-16T16:26:01.393923",
+    "last_updated": "2026-08-26T00:15:39.846576",
+    "next_refresh": "2026-09-25T00:15:39.846580",
     "refresh_interval_days": 30,
-    "refresh_failures": {}
+    "refresh_failures": {
+      "n8n": {
+        "status": "\u274c Scrape failed",
+        "reason": "Firecrawl returned empty for https://n8n.io/pricing",
+        "action": "Check manually: https://n8n.io/pricing",
+        "logged": "2026-08-26T00:15:39.096343"
+      },
+      "wavespeed": {
+        "status": "\u274c Scrape failed",
+        "reason": "Firecrawl returned empty for https://wavespeed.ai/pricing",
+        "action": "Check manually: https://wavespeed.ai/pricing",
+        "logged": "2026-08-26T00:15:39.576782"
+      },
+      "google": {
+        "status": "\u274c Scrape failed",
+        "reason": "Firecrawl returned empty for https://ai.google.dev/gemini-api/docs/pricing",
+        "action": "Check manually: https://ai.google.dev/gemini-api/docs/pricing",
+        "logged": "2026-08-26T00:15:39.846558"
+      }
+    }
   },
   "apis": {
     "openai": {
       "display_name": "OpenAI",
       "pricing_url": "https://openai.com/api/pricing",
       "fetch_method": "firecrawl",
-      "last_fetched": "2026-08-17T16:23:57.260541",
+      "last_fetched": "2026-08-26T00:14:42.621077",
       "services": {
         "gpt-4o-input": {
           "price": 2.5,
@@ -59,15 +78,63 @@
           "note": "TTS-1 HD voice"
         }
       },
-      "raw_pricing_snapshot": "Business Pricing \\| OpenAI\n\n# Pricing\n\nSee pricing for our business and enterprise plans.\n\n![](https://images.ctfassets.net/kftzwdyauwt9/5VpL5Fj00dC65H8mTi1jHn/9dded36b68c5120e69f1b101638d2529/chat-1.png?w=3840&q=90&fm=webp)\n\n### Business\n\nA secure workspace with company context and tools for teams, built for growing companies\n\n$20\n\n/ user / month\n\n[Get started(opens in a new window)](https://chatgpt.com/team-sign-up?openaicom-did=10f2a35a-b5cc-449a-aecc-fc0f04cea2a4&openaicom_referred=true)\n\nWhat's included:\n\n- Access ChatGPT and Codex across desktop and mobile apps\n\n- AI for chat, coding, analysis, and workflows\n\n- Connect tools like Microsoft 365, Google Drive, Slack, Github, Linear, Figma, and more\n\n- Build on company knowledge and team context with custom team agent plugins\n\n- Centralized billing and administration\n\n- Usage analytics, budgeting, and spend controls\n\n- Secure workspace with SAML SSO and MFA\n\n- No training on your business data by default\n\n\n\\*2+ users, billed annually. $25.00 per user per month when billed monthly. Unlimited subject to abuse guardrails. [Learn more\u2060(opens in a new window)](https://help.openai.com/en/articles/8792828-what-is-chatgpt-team)\n\n![](https://images.ctfassets.net/kftzwdyauwt9/s2GhJeU3baS4ToFbNYOTs/35171dcb81bd64418aec716692646f6e/chat-2.png?w=3840&q=90&fm=webp)\n\n### Enterprise\n\nEnterprise-grade AI, security, and support for businesses operating at scale\n\nCustom pricing\n\nContact our sales team to discuss pricing.\\*\n\n[Contact sales](https://openai.com/contact-sales/)\n\nWhat\u2019s included:\n\n- Expanded context window that supports longer inputs and larger files\n\n- Enterprise-level security and controls, including SCIM, EKM, user analytics, domain verification, and role-based access controls\n\n- Advanced data privacy with custom data retention policies, encryption at rest and in transit, and no training on your business data by default. [Learn more\u2060](https://openai.com/business-data/)\n\n- Support for data residency in ten regions\n\n- ",
+      "raw_pricing_snapshot": "Business Pricing \\| OpenAI\n\n# Pricing\n\nSee pricing for our business and enterprise plans.\n\n## Powered by our frontier models\n\nOur industry-leading models deliver advanced intelligence and multimodal capabilities.\n\nChoose your processing mode\n\nStandardBatch -50%Data residency +10%\n\nPromotional pricing\\*\n\n![](https://images.ctfassets.net/kftzwdyauwt9/tsvA6xovRKMmdy1rh3ZwH/3f8031ee5081c0f69bbcd7262089f3be/pricing_card-0.png?w=3840&q=90&fm=webp)\n\n## GPT-5.6 Sol\n\nFlagship model for ambitious agentic work\n\n### Price\n\nInput:$4.00 / 1M tokensPrevious price: ~~$5.00 / 1M tokens~~Cached input:$0.40 / 1M tokensPrevious price: ~~$0.50 / 1M tokens~~Output:$20.00 / 1M tokensPrevious price: ~~$30.00 / 1M tokens~~\n\n\\*Available at least through November 21, 2026\n\n![](https://images.ctfassets.net/kftzwdyauwt9/62PndWE2giu4UYlkM6BsRm/48991a14be102c6bdef1da5494f3b060/pricing_card-1.png?w=3840&q=90&fm=webp)\n\n## GPT-5.6 Terra\n\nBalanced model for efficient, high-volume work\n\n### Price\n\nInput:$2.00 / 1M tokensCached input:$0.20 / 1M tokensOutput:$12.00 / 1M tokens\n\n![](https://images.ctfassets.net/kftzwdyauwt9/1TDnCeTbscE8tvxOK9SG6v/a475244d85b0f67cf2b02f0ca43cba6d/pricing_card-2.png?w=3840&q=90&fm=webp)\n\n## GPT-5.6 Luna\n\nFast, affordable model for everyday work\n\n### Price\n\nInput:$0.20 / 1M tokensCached input:$0.02 / 1M tokensOutput:$1.20 / 1M tokens\n\nPricing above reflects standard processing rates for context lengths under 270K. Learn more about [Batch Processing\u2060\u2060(opens in a new window)](https://developers.openai.com/api/docs/guides/batch)\u00a0and [Data residency & Regional Processing\u2060(opens in a new window)](https://developers.openai.com/api/docs/guides/your-data#how-does-data-residency-work) **.**\n\nGPT\u20115.6 Sol\u2019s promotional pricing is available at least through November 21, 2026.\n\n- [Explore detailed pricing(opens in a new window)](https://developers.openai.com/api/docs/pricing)\n\nCompare all features\n\n### Multimodal models\n\nPower applications across text, image, and audio with models built",
       "fetch_note": "Live from platform.openai.com/docs/pricing"
     },
     "kie.ai": {
       "display_name": "kie.ai",
       "pricing_url": "https://kie.ai/pricing",
       "fetch_method": "playwright",
-      "last_fetched": "2026-08-17T16:24:34.542127",
+      "last_fetched": "2026-08-26T00:15:31.506673",
       "services": {
+        "wan3.0-video-prime-1080p-video": {
+          "price": 0.252,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.28",
+          "note": "wan3.0 video prime, 1080p, video"
+        },
+        "wan3.0-video-prime-720p-video": {
+          "price": 0.126,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.14",
+          "note": "wan3.0 video prime, 720p, video"
+        },
+        "wan3.0-video-prime-480p-video": {
+          "price": 0.0612,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.068",
+          "note": "wan3.0 video prime, 480p, video"
+        },
+        "wan-3.0-video-1080p-video": {
+          "price": 0.16,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.20",
+          "note": "wan 3.0 video, 1080p, video"
+        },
+        "wan-3.0-video-720p-video": {
+          "price": 0.16,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.20",
+          "note": "wan 3.0 video, 720p, video"
+        },
+        "wan-3.0-video-480p-video": {
+          "price": 0.04,
+          "unit": "per second",
+          "provider": "Wan",
+          "interface_type": "video",
+          "official_fal_price": "0.05",
+          "note": "wan 3.0 video, 480p, video"
+        },
         "pixverse-v6-extend-1080p-with-aiduo": {
           "price": 0.092,
           "unit": "per second",
@@ -2326,7 +2393,7 @@
         },
         "grok-imagine-text-to-image": {
           "price": 0.02,
-          "unit": "per 6 images",
+          "unit": "per 2 images",
           "provider": "Grok",
           "interface_type": "image",
           "official_fal_price": "0.02",
@@ -3603,7 +3670,7 @@
       "display_name": "fal.ai",
       "pricing_url": "https://fal.ai/pricing",
       "fetch_method": "firecrawl",
-      "last_fetched": "2026-08-17T16:24:45.606559",
+      "last_fetched": "2026-08-26T00:15:33.463081",
       "services": {
         "wan-2.5": {
           "price": 0.05,
@@ -3653,7 +3720,7 @@
       "display_name": "ElevenLabs",
       "pricing_url": "https://elevenlabs.io/pricing",
       "fetch_method": "firecrawl",
-      "last_fetched": "2026-08-17T16:24:57.882605",
+      "last_fetched": "2026-08-26T00:15:34.023929",
       "services": {
         "tts-flash": {
           "price": 0.05,
@@ -3666,13 +3733,13 @@
           "note": "Multilingual v2/v3 \u2014 higher quality"
         }
       },
-      "raw_pricing_snapshot": "[Skip to content](https://elevenlabs.io/pricing#content)\n\n[Log in](https://elevenlabs.io/app/sign-in) [Sign up](https://elevenlabs.io/app/sign-up)\n\n[Contact sales](https://elevenlabs.io/contact-sales) [Log in](https://elevenlabs.io/app)\n\n[ElevenLabs](https://elevenlabs.io/)\n\n- [Sign up](https://elevenlabs.io/app/sign-up)\n\n\n# Flexible pricing for your needs\n\n[![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-creative.f5fbfcf5.png&w=3840&q=80)\\\\\n\\\\\nElevenCreative\\\\\n\\\\\nCreative](https://elevenlabs.io/pricing) [![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-agents.d9236159.png&w=3840&q=80)\\\\\n\\\\\nElevenAgents\\\\\n\\\\\nAgents](https://elevenlabs.io/pricing/agents) [![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-api.6fcc2b4f.png&w=3840&q=80)\\\\\n\\\\\nElevenAPI\\\\\n\\\\\nAPI](https://elevenlabs.io/pricing/api)\n\n[![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-creative.f5fbfcf5.png&w=3840&q=80)\\\\\n\\\\\nElevenCreative\\\\\n\\\\\nCreative](https://elevenlabs.io/pricing) [![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-agents.d9236159.png&w=3840&q=80)\\\\\n\\\\\nElevenAgents\\\\\n\\\\\nAgents](https://elevenlabs.io/pricing/agents) [![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-api.6fcc2b4f.png&w=3840&q=80)\\\\\n\\\\\nElevenAPI\\\\\n\\\\\nAPI](https://elevenlabs.io/pricing/api)\n\nMonthly billing\n\nMonthly billingYearly billing\n\n![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2FFree.489bee"
+      "raw_pricing_snapshot": "[Skip to content](https://elevenlabs.io/pricing#content)\n\n[Log in](https://elevenlabs.io/app/sign-in) [Sign up](https://elevenlabs.io/app/sign-up)\n\n[Contact sales](https://elevenlabs.io/contact-sales) [Log in](https://elevenlabs.io/app)\n\n[ElevenLabs](https://elevenlabs.io/)\n\n- [Sign up](https://elevenlabs.io/app/sign-up?platform=creative)\n\n\n# Flexible pricing for your needs\n\n[![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-creative.f5fbfcf5.png&w=3840&q=80)\\\\\n\\\\\nElevenCreative\\\\\n\\\\\nCreative](https://elevenlabs.io/pricing) [![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-agents.d9236159.png&w=3840&q=80)\\\\\n\\\\\nElevenAgents\\\\\n\\\\\nAgents](https://elevenlabs.io/pricing/agents) [![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-api.6fcc2b4f.png&w=3840&q=80)\\\\\n\\\\\nElevenAPI\\\\\n\\\\\nAPI](https://elevenlabs.io/pricing/api)\n\n[![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-creative.f5fbfcf5.png&w=3840&q=80)\\\\\n\\\\\nElevenCreative\\\\\n\\\\\nCreative](https://elevenlabs.io/pricing) [![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-agents.d9236159.png&w=3840&q=80)\\\\\n\\\\\nElevenAgents\\\\\n\\\\\nAgents](https://elevenlabs.io/pricing/agents) [![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fmedia%2Feleven-api.6fcc2b4f.png&w=3840&q=80)\\\\\n\\\\\nElevenAPI\\\\\n\\\\\nAPI](https://elevenlabs.io/pricing/api)\n\nMonthly billing\n\nMonthly billingYearly billing\n\n![](https://elevenlabs.io/_next/image?url=https%3A%2F%2Feleven-public-cdn.elevenlabs.io%2Fmarketing_website%2F_next%2Fstatic%2Fm"
     },
     "firecrawl": {
       "display_name": "Firecrawl",
       "pricing_url": "https://firecrawl.dev/pricing",
       "fetch_method": "firecrawl",
-      "last_fetched": "2026-08-17T16:25:18.352074",
+      "last_fetched": "2026-08-26T00:15:34.672818",
       "services": {
         "scrape": {
           "price": 0.002,
@@ -3680,13 +3747,13 @@
           "note": "$199/mo for 100k pages. Hobby: $16/mo for 5k pages = $0.003/page."
         }
       },
-      "raw_pricing_snapshot": "Introducing our most accurate /search yet. [Read the announcement \u2192](https://www.firecrawl.dev/blog/introducing-our-most-accurate-search-yet?utm_source=firecrawl-web&utm_medium=banner&utm_campaign=introducing-our-most-accurate-search-yet)\n\n//\n\nTransparent\n\n//\n\n# Flexible pricing\n\nStart for free, then scale as you grow.\n\nMonthly credits\n\n1k\n\n5k\n\n6.5k\n\n8k\n\n100k\n\n130k\n\n160k\n\n500k\n\n650k\n\n1M\n\nCustom\n\n\ud83c\uddfa\ud83c\uddf8USD\n\n### Free Plan\n\nA lightweight way to get started.\n\nNo cost, no card, no hassle.\n\n1,000 credits / month\n\n$0123456789\n\n/month\n\nGet started\n\nScrape1,000pages\n\n2 concurrent requests\n\nLow rate limits\n\n### Hobby\n\nGreat for side projects and small tools.\n\nFast, simple, no overkill.\n\n5,000 credits / month\n\n$01234567890123456789\n\n/month\n\nBilled yearly\n\nSave $38\n\nSubscribe\n\nScrape5,000pages\n\n5 concurrent requests\n\nBasic support\n\n### Standard  Recommended\n\nPerfect for scaling with less effort.\n\nSimple, solid, dependable.\n\n100,000 credits / month\n\n$01234567890123456789\n\n/month\n\nBilled yearly\n\nSave $198\n\nSubscribe\n\nScrape100,000pages\n\n50 concurrent requests\n\nStandard support\n\n### Growth\n\nBuilt for high volume and speed.\n\nFirecrawl at full force.\n\n500,000 credits / month\n\n$012345678901234567890123456789\n\n/month\n\nBilled yearly\n\nSave $798\n\nSubscribe\n\nScrape500,000pages\n\n100 concurrent requests\n\nPriority support\n\n## Scale Plans\n\nHigh-volume plans for teams that need more power and dedicated support. Get access to higher rate limits, more concurrent browsers, and priority support.\n\n[Need more? Contact us](https://www.firecrawl.dev/contact-sales)\n\n### Scale\n\nFor teams scaling their data pipelines\n\n1,000,000 credits / month\n\n$599/monthly\n\nBilled yearly\n\nSave $1,798\n\nSubscribe\n\nScrape1,000,000pages\n\n150concurrent requests\n\nPriority support\n\n$397per extra350kcredits\n\n### Enterprise\n\nPower at your pace with custom solutions\n\nCustom credits\n\nCustom\n\n[Contact sales](https://www.firecrawl.dev/contact-sales)\n\nScrapeunlimitedpages\n\nCustomconcurrent requests\n\nDedicated support & SLA\n\nBulk discount"
+      "raw_pricing_snapshot": "Introducing the Firecrawl Developer Index, built for supercharging coding agents. [Read the announcement \u2192](https://www.firecrawl.dev/blog/developer-index-launch?utm_source=firecrawl-web&utm_medium=banner&utm_campaign=developer-index-launch)\n\n//\n\nTransparent\n\n//\n\n# Flexible pricing\n\nStart for free, then scale as you grow.\n\nMonthly credits\n\n1k\n\n5k\n\n6.5k\n\n8k\n\n100k\n\n130k\n\n160k\n\n500k\n\n650k\n\n1M\n\nCustom\n\n\ud83c\uddfa\ud83c\uddf8USD\n\n### Free Plan\n\nA lightweight way to get started.\n\nNo cost, no card, no hassle.\n\n1,000 credits / month\n\n$0123456789\n\n/month\n\nGet started\n\nScrape1,000pages\n\n2 concurrent requests\n\nLow rate limits\n\n### Hobby\n\nGreat for side projects and small tools.\n\nFast, simple, no overkill.\n\n5,000 credits / month\n\n$01234567890123456789\n\n/month\n\nBilled yearly\n\nSave $38\n\nSubscribe\n\nScrape5,000pages\n\n5 concurrent requests\n\nBasic support\n\n### Standard  Recommended\n\nPerfect for scaling with less effort.\n\nSimple, solid, dependable.\n\n100,000 credits / month\n\n$01234567890123456789\n\n/month\n\nBilled yearly\n\nSave $198\n\nSubscribe\n\nScrape100,000pages\n\n25 concurrent requests\n\nStandard support\n\n### Growth\n\nBuilt for high volume and speed.\n\nFirecrawl at full force.\n\n500,000 credits / month\n\n$012345678901234567890123456789\n\n/month\n\nBilled yearly\n\nSave $798\n\nSubscribe\n\nScrape500,000pages\n\n50 concurrent requests\n\nPriority support\n\n## Scale Plans\n\nHigh-volume plans for teams that need more power and dedicated support. Get access to higher rate limits, more concurrent browsers, and priority support.\n\n[Need more? Contact us](https://www.firecrawl.dev/contact-sales)\n\n### Scale\n\nFor teams scaling their data pipelines\n\n1,000,000 credits / month\n\n$599/monthly\n\nBilled yearly\n\nSave $1,798\n\nSubscribe\n\nScrape1,000,000pages\n\n100concurrent requests\n\nPriority support\n\n$397per extra350kcredits\n\n### Enterprise\n\nPower at your pace with custom solutions\n\nCustom credits\n\nCustom\n\n[Contact sales](https://www.firecrawl.dev/contact-sales)\n\nScrapeunlimitedpages\n\nCustomconcurrent requests\n\nDedicated support & SLA\n\nBulk discou"
     },
     "perplexity": {
       "display_name": "Perplexity",
       "pricing_url": "https://docs.perplexity.ai/guides/pricing",
       "fetch_method": "firecrawl",
-      "last_fetched": "2026-08-17T16:25:29.130667",
+      "last_fetched": "2026-08-26T00:15:35.360246",
       "services": {
         "sonar-input": {
           "price": 1.0,
@@ -3724,14 +3791,14 @@
           "note": "web_search tool per invocation"
         }
       },
-      "raw_pricing_snapshot": "> ## Documentation Index\n>\n> Fetch the complete documentation index at: [/llms.txt](https://docs.perplexity.ai/llms.txt)\n>\n> Use this file to discover all available pages before exploring further.\n\n[Skip to main content](https://docs.perplexity.ai/docs/getting-started/pricing#content-area)\n\nThis page shows **pricing information** to help you understand API costs.For **billing setup**, payment methods, and usage monitoring, visit the [Admin section](https://docs.perplexity.ai/docs/getting-started/api-groups). For **rate limits**, see the [Rate Limits & Usage Tiers](https://docs.perplexity.ai/docs/admin/rate-limits-usage-tiers) page.\n\n## [\u200b](https://docs.perplexity.ai/docs/getting-started/pricing\\#estimate-your-cost)  Estimate your cost\n\nSearch APIAgent APISonar APIEmbeddings API\n\nRequests\n\nThe Search API charges per successful request, including a successful request with multiple queries \u2014 no token costs. $5 per 1,000 requests.\n\nSearch API estimate: $5 for 1,000 requests\n\nEstimated cost for 1,000 requests\n\n$5\n\n1,000 requests \u00b7 $0.005 per request\n\nShow breakdown\n\nEstimate only. Final cost is metered from each response\u2019s usage field - view it in the [API Portal](https://docs.perplexity.ai/docs/getting-started/api-groups#accessing-the-api-portal). See the full rate tables below.\n\n## [\u200b](https://docs.perplexity.ai/docs/getting-started/pricing\\#router-api-pricing)  Router API Pricing\n\nRouter API usage is billed per token at each model\u2019s published rates \u2014 there are no per-request fees. Every model has its own input and output rate, with cache reads billed at the model\u2019s discounted cache-read rate and reasoning tokens billed at the output rate. You are always billed at the requested model\u2019s rates, regardless of how the request is served.See [Router Models & Pricing](https://docs.perplexity.ai/docs/gateway/models) for the full per-model rate card, including cache-write rates and long-context pricing.\n\n## [\u200b](https://docs.perplexity.ai/docs/getting-started/pricing\\#agent-api-",
+      "raw_pricing_snapshot": "> ## Documentation Index\n>\n> Fetch the complete documentation index at: [/llms.txt](https://docs.perplexity.ai/llms.txt)\n>\n> Use this file to discover all available pages before exploring further.\n\n[Skip to main content](https://docs.perplexity.ai/docs/getting-started/pricing#content-area)\n\nThis page shows **pricing information** to help you understand API costs.For **billing setup**, payment methods, and usage monitoring, visit the [Admin section](https://docs.perplexity.ai/docs/getting-started/projects). For **rate limits**, see the [Rate Limits & Usage Tiers](https://docs.perplexity.ai/docs/admin/rate-limits-usage-tiers) page.\n\n## [\u200b](https://docs.perplexity.ai/docs/getting-started/pricing\\#estimate-your-cost)  Estimate your cost\n\nSearch APIAgent APISonar APIEmbeddings API\n\nRequests\n\nThe Search API charges per successful request, including a successful request with multiple queries \u2014 no token costs. $5 per 1,000 requests.\n\nEstimated cost for 1,000 requests\n\n$5\n\n1,000 requests \u00b7 $0.005 per request\n\nShow breakdown\n\nEstimate only. Final cost is metered from each response\u2019s usage field - view it in the [API Portal](https://docs.perplexity.ai/docs/getting-started/projects#accessing-the-api-portal). See the full rate tables below.\n\n## [\u200b](https://docs.perplexity.ai/docs/getting-started/pricing\\#router-api-pricing)  Router API Pricing\n\nRouter API usage is billed per token at each model\u2019s published rates \u2014 there are no per-request fees. Every model has its own input and output rate, with cache reads billed at the model\u2019s discounted cache-read rate and reasoning tokens billed at the output rate. You are always billed at the requested model\u2019s rates, regardless of how the request is served.See [Router Models & Pricing](https://docs.perplexity.ai/docs/gateway/models) for the full per-model rate card, including cache-write rates and long-context pricing.\n\n## [\u200b](https://docs.perplexity.ai/docs/getting-started/pricing\\#agent-api-pricing)  Agent API Pricing\n\nThe Agent API provi",
       "fetch_note": "Live from docs.perplexity.ai/docs/getting-started/pricing"
     },
     "cloudinary": {
       "display_name": "Cloudinary",
       "pricing_url": "https://cloudinary.com/pricing",
       "fetch_method": "firecrawl",
-      "last_fetched": "2026-08-17T16:25:42.582554",
+      "last_fetched": "2026-08-26T00:15:36.037320",
       "services": {
         "storage": {
           "price": 0.0,
@@ -3761,7 +3828,7 @@
       "display_name": "Airtable",
       "pricing_url": "https://airtable.com/pricing",
       "fetch_method": "firecrawl",
-      "last_fetched": "2026-08-17T16:25:49.730102",
+      "last_fetched": "2026-08-26T00:15:36.804822",
       "services": {
         "pro_plan": {
           "unit": "per_seat_per_month",
@@ -3775,15 +3842,15 @@
       "display_name": "Blotato",
       "pricing_url": "https://blotato.com/pricing",
       "fetch_method": "firecrawl",
-      "last_fetched": "2026-08-17T16:25:55.127334",
+      "last_fetched": "2026-08-26T00:15:37.341539",
       "services": {},
-      "raw_pricing_snapshot": "[Skip to main content](https://www.blotato.com/pricing#main)\n\n10 DAYS ONLY \u00b7 $500 VALUE**Top 100 Viral Hooks** + **Repurpose Engine**(Claude Skills)[Start free \u2192Start free \u2192](https://my.blotato.com/signup?plan=starter-monthly&ref=top-banner-cta&utm_source=blotato&utm_medium=promo&utm_campaign=top-banner-cta)\n\nSIMPLE PRICING\n\n# Pick a plan. _Ship more content._\n\nFree 7-day trial on every plan. Cancel anytime. No per-post fees, no seat fees, no hidden tax on your soul.\n\n### Starter\n\n$29/mo\n\nSolo creators getting started.\n\n[Start Free Trial \u2192](https://my.blotato.com/signup?plan=starter-monthly)\n\n- 58 languages\n- Mobile friendly\n- Social media API\n- **Unlimited** threads\n- **Unlimited** sources\n- **Unlimited** AI writing\n- AI image generation\n- AI videos generation\n- AI voices & captions\n- Proven viral templates\n- **1,250** AI credits per month(AI images + videos)\n- ElevenLabs AI voiceovers\n- **20** social media accounts\n- **1,000** active contacts per month(DMs + comment replies)\n- 2025 social media guides\n- Proven AI writing prompts\n- n8n & Make official nodes\n- Up to 900 TikTok posts/month\n\nMOST POPULAR\n\n### Creator\n\n$97/mo\n\nOperators scaling to a real audience.\n\n[Start Free Trial \u2192](https://my.blotato.com/signup?plan=creator-monthly)\n\n- **Everything** in Starter\n- **5,000** AI credits per month(AI images, videos, voice)\n- Faster video processing\n- **40** social media accounts\n- **6,000** active contacts per month(DMs + comment replies)\n- **Unlimited** database of viral posts for inspiration\n- Support troubleshooting your n8n/Make automations\n\n### Agency\n\n$499/mo\n\nAgencies and teams running multiple brands.\n\n[Start Free Trial \u2192](https://my.blotato.com/signup?plan=agency-monthly)\n\n- **Everything** in Creator\n- **28,000** AI credits per month(AI images videos)\n- **15,000** active contacts per month(DMs + comment replies)\n- Dedicated video processing\n- Dedicated support channel\n- Dedicated support troubleshooting automations\n\nWhat's in your free trial\n\n- \u2713Access to **al"
+      "raw_pricing_snapshot": "[Skip to main content](https://www.blotato.com/pricing#main)\n\n**Unlimited Nano Banana 2** + **50% off your first month with code BIRTHDAY2026**[Start free \u2192Start free \u2192](https://my.blotato.com/signup?plan=starter-monthly&ref=top-banner-cta&utm_source=blotato&utm_medium=promo&utm_campaign=top-banner-cta)\n\nSIMPLE PRICING\n\n# Pick a plan. _Ship more content._\n\nFree 7-day trial on every plan. Cancel anytime. No per-post fees, no seat fees, no hidden tax on your soul.\n\n### Starter\n\n$29/mo\n\nSolo creators getting started.\n\n[Start Free Trial \u2192](https://my.blotato.com/signup?plan=starter-monthly)\n\n- 58 languages\n- Mobile friendly\n- Social media API\n- **Unlimited** threads\n- **Unlimited** sources\n- **Unlimited** AI writing\n- AI image generation\n- AI videos generation\n- AI voices & captions\n- Proven viral templates\n- **1,250** AI credits per month(AI images + videos)\n- ElevenLabs AI voiceovers\n- **20** social media accounts\n- **1,000** active contacts per month(DMs + comment replies)\n- 2025 social media guides\n- Proven AI writing prompts\n- n8n & Make official nodes\n- Up to 900 TikTok posts/month\n\nMOST POPULAR\n\n### Creator\n\n$97/mo\n\nOperators scaling to a real audience.\n\n[Start Free Trial \u2192](https://my.blotato.com/signup?plan=creator-monthly)\n\n- **Everything** in Starter\n- **5,000** AI credits per month(AI images, videos, voice)\n- Faster video processing\n- **40** social media accounts\n- **6,000** active contacts per month(DMs + comment replies)\n- **Unlimited** database of viral posts for inspiration\n- Support troubleshooting your n8n/Make automations\n\n### Agency\n\n$499/mo\n\nAgencies and teams running multiple brands.\n\n[Start Free Trial \u2192](https://my.blotato.com/signup?plan=agency-monthly)\n\n- **Everything** in Creator\n- **28,000** AI credits per month(AI images videos)\n- **15,000** active contacts per month(DMs + comment replies)\n- Dedicated video processing\n- Dedicated support channel\n- Dedicated support troubleshooting automations\n\nWhat's in your free trial\n\n- \u2713Access to **all fea"
     },
     "openrouter": {
       "display_name": "OpenRouter",
       "pricing_url": "https://openrouter.ai/models",
       "fetch_method": "firecrawl",
-      "last_fetched": "2026-08-17T16:25:57.974293",
+      "last_fetched": "2026-08-26T00:15:37.956609",
       "services": {
         "google--gemini-2.5-flash-input": {
           "price": 0.3,
@@ -3856,14 +3923,14 @@
           "note": "mistralai/mistral-large output"
         }
       },
-      "raw_pricing_snapshot": "Gemini 3.7 Flash is 50% off for a limited time. See all discounted models [here(opens in new tab)](https://openrouter.ai/models?discount=true)\n\nDismiss\n\n# Models\n\n# Models\n\n[Compare](https://openrouter.ai/compare) [Discover Models\\\\\n\\\\\n![Favicon for mistralai](https://openrouter.ai/images/icons/Mistral.png)\\\\\n\\\\\n![Favicon for meta](https://openrouter.ai/images/icons/Meta.png)](https://openrouter.ai/discover)\n\n[Compare](https://openrouter.ai/compare) [Discover Models\\\\\n\\\\\n![Favicon for mistralai](https://openrouter.ai/images/icons/Mistral.png)\\\\\n\\\\\n![Favicon for meta](https://openrouter.ai/images/icons/Meta.png)](https://openrouter.ai/discover)\n\nNewestAll variants\n\nListTable\n\nNewestAll variants\n\nListTable\n\nAllText414Image43Embeddings34Audio4Video23Rerank7Speech18Transcription19\n\n- [Qwen: Qwen3.8 27B](https://openrouter.ai/qwen/qwen3.8-27b)\n\n\n\n\n\n\n\n\n\n[![Favicon for qwen](https://openrouter.ai/images/icons/Qwen.png)](https://openrouter.ai/qwen)[Qwen: Qwen3.8 27BQwen3.8 27B](https://openrouter.ai/qwen/qwen3.8-27b)\n\n\n\n\n\n\n\n\n\n\n\n20.5B tokens\n\n\n\n\n\n[Qwen3.8 27B is an open-weight dense vision-language model from Qwen. It is suited for coding, professional workflows, research, multimodal interaction, and long-running agent tasks, with flexible thinking that can be enabled or disabled.](https://openrouter.ai/qwen/qwen3.8-27b)\n\n\n\n\n\nby [qwen](https://openrouter.ai/qwen)Aug 14, 2026262K context$0.40/M input tokens$3/M output tokens\n\n- [Dots Studio: Dots3-Note Preview (free)](https://openrouter.ai/dots-studio/dots-3-note-preview:free)\n\n\n\n\n\n\n\n\n\n[![Favicon for dots-studio](https://openrouter.ai/images/icons/DotsStudio.png)](https://openrouter.ai/dots-studio)[Dots Studio: Dots3-Note Preview (free)Dots3-Note Preview (free)](https://openrouter.ai/dots-studio/dots-3-note-preview:free) Free variant\n\n\n\n\n\n\n\n\n\n\n\n28.1B tokens\n\n\n\n\n\n[Dots3-Note Preview is an open-weight mixture-of-experts model from Dots Studio, with 16B active parameters out of 280B total. It is the lightest model in the Dots 3 ",
+      "raw_pricing_snapshot": "Gemini 3.7 Flash is 75% off for a limited time. See all discounted models [here(opens in new tab)](https://openrouter.ai/models?discount=true)\n\nDismiss\n\n# Models\n\n# Models\n\n[Compare](https://openrouter.ai/compare) [Discover Models\\\\\n\\\\\n![Favicon for anthropic](https://openrouter.ai/images/icons/Anthropic.svg)\\\\\n\\\\\n![Favicon for openai](https://openrouter.ai/images/icons/OpenAI.svg)](https://openrouter.ai/discover)\n\n[Compare](https://openrouter.ai/compare) [Discover Models\\\\\n\\\\\n![Favicon for anthropic](https://openrouter.ai/images/icons/Anthropic.svg)\\\\\n\\\\\n![Favicon for openai](https://openrouter.ai/images/icons/OpenAI.svg)](https://openrouter.ai/discover)\n\nNewestAll variants\n\nListTable\n\nNewestAll variants\n\nListTable\n\nAllText417Image43Video26Speech18Transcription19Embeddings36Rerank7Audio4\n\n- [Alibaba: Wan 3.0](https://openrouter.ai/alibaba/wan-3.0)\n\n\n\n\n\n\n\n\n\n[![Favicon for alibaba](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.alibabacloud.com&size=256)](https://openrouter.ai/alibaba)[Alibaba: Wan 3.0Wan 3.0](https://openrouter.ai/alibaba/wan-3.0)\n\n15% off\n\n\n\n\n\n\n\n\n\n\n\n\n\n4 hours\n\n\n\n\n\n[Wan 3.0 is a video generation model from Alibaba for text-to-video, image-to-video, and reference-guided video generation. It produces 480p, 720p, or 1080p video with durations from 2 to 30 seconds.](https://openrouter.ai/alibaba/wan-3.0)\n\n\n\n\n\nby [alibaba](https://openrouter.ai/alibaba)Aug 24, 2026from $0.0425/second\n\n- [HeyGen: Avatar IV](https://openrouter.ai/heygen/avatar-iv)\n\n\n\n\n\n\n\n\n\n[![Favicon for heygen](https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://heygen.com&size=256)](https://openrouter.ai/heygen)[HeyGen: Avatar IVAvatar IV](https://openrouter.ai/heygen/avatar-iv)\n\n\n\n\n\n\n\n\n\n\n\n<1 hour\n\n\n\n\n\n[HeyGen: Avatar IV is an image-to-video model that animates a single photo into an expressive, lip-synced talking-head video. Rather than only matching mouth shapes to words, it interpr",
       "fetch_note": "Live from openrouter.ai/api/v1/models \u2014 7 models"
     },
     "notion": {
       "display_name": "Notion",
       "pricing_url": "https://www.notion.so/pricing",
       "fetch_method": "firecrawl",
-      "last_fetched": "2026-08-17T16:25:59.347579",
+      "last_fetched": "2026-08-26T00:15:38.708472",
       "services": {},
       "raw_pricing_snapshot": "Chat with us\n\n# One tool to run your company.\n\nTrusted by teams at\n\n![](https://images.ctfassets.net/spoqsaf9291f/6gu2Rybt4VdhS2GEEA99PO/ac0fedd553b2f541fde79cdda05271cc/OpenAI.svg)![](https://images.ctfassets.net/spoqsaf9291f/6T4QxYfpIzIbZgWUSa5Rb1/8c6cb40bbf2304f8486222d777314b83/Figma_Wordmark__Black_.svg)![](https://images.ctfassets.net/spoqsaf9291f/1TZBxOqNgDNBTJUEkD9Rn2/95219318a8bc7198d69e3fe0190ea94c/Volvo_Spread_Word_Mark_2025_bl.svg)![](https://images.ctfassets.net/spoqsaf9291f/4KBpzIRuWO9Bkoho07RwHW/7e608b80b697431b92ffb144e545cf3c/Ramp.svg)![](https://images.ctfassets.net/spoqsaf9291f/5zvQQUAMUwmWaGbC9qhXpK/633c8d40bbbb2b42faec7ea3339788ff/cursor-logo-mono.svg)\n\n## Essentials for staying organized.\n\n### Free\n\n$0per member / month\n\nFor individuals to organize personal projects and life.\n\n[Sign up](https://www.notion.com/signup)\n\n**Includes:**\n\n- Trial AI capabilities like generating docs, or autofilling databases\n\n\n\n\n\nTrial of Notion AI\n\n- Capture, organize, and act on responses right inside Notion.\n\n\n\n\n\nBasic forms\n\n- Publish a Notion page to the web\n\n\n\n\n\nBasic sites\n\n- Connect multiple Calendars to manage work and time together.\n\n\n\n\n\nNotion Calendar\n\n- Organize hundreds or thousands of items in one place, like projects or tasks\n\n\n\n\n\nDatabases including subtasks, dependencies, custom properties and more\n\n\n### Plus\\*\n\n$10per member / month\n\nFor small teams and professionals to work together.\n\n[Get started](https://www.notion.com/signup?target=plans)\n\n**Everything in Free, and:**\n\n- Trial AI capabilities like generating docs, or autofilling databases\n\n\n\n\n\nTrial of Notion AI\n\n- Remove Notion branding from public forms\n\n\n\n\n\nCustom forms\n\n- Customize your top header, choose a light or dark theme, add a custom favicon, and integrate with Google Analytics.\n\n\n\n\n\nCustom sites\n\n- Visualize data from databases in different ways (e.g. donut, bar, and line charts).\n\n\n\n\n\nUnlimited charts\n\n- Blocks are pieces of content you add to a page (e.g. to-do checkboxes, paragra"
     },

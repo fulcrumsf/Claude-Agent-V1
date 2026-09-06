@@ -4,4 +4,5 @@ Description: Gobii is a browser automation tool that lets AI agents navigate web
 Tag:
   - AI Agents
   - Automation
+  - API
 ---

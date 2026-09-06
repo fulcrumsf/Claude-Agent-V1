@@ -8,6 +8,7 @@ import { CinematicTitleCard } from "./video-components/CinematicTitleCard";
 import { AnomalousWildEndCard } from "./video-components/AnomalousWildEndCard";
 import { DiagramLabels, diagramLabelsSchema } from "./video-components/DiagramLabels";
 import { EscaBacteriaCallout, ESCA_CALLOUT_DURATION_FRAMES } from "./video-components/EscaBacteriaCallout";
+import { GlassFrogDoc, GLASS_FROG_DURATION_FRAMES } from "./video-components/GlassFrogDoc";
 import { NeonParcelTitleOverlay } from "./video-components/NeonParcelTitleOverlay";
 import { POVShort } from "./video-components/POVShort";
 import { Scene02DiagramTest } from "./video-components/Scene02DiagramTest";
@@ -57,6 +58,16 @@ export const RemotionRoot: React.FC = () => {
         id="BioluminescenceDoc"
         component={BioluminescenceDoc}
         durationInFrames={BIOLUMINESCENCE_DURATION_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* 003 Anomalous Wild — Glass Frog Transparency documentary */}
+      <Composition
+        id="GlassFrogDoc"
+        component={GlassFrogDoc}
+        durationInFrames={GLASS_FROG_DURATION_FRAMES}
         fps={30}
         width={1920}
         height={1080}

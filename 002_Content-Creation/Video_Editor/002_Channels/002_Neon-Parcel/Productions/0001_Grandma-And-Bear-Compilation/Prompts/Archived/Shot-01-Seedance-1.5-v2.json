@@ -1,0 +1,10 @@
+{
+  "shot_id": "Shot-01",
+  "version": "v2",
+  "model": "bytedance/seedance-1.5-pro",
+  "generation_resolution": "1080p",
+  "duration_seconds": 10,
+  "reference_assets": ["Images/Shot-01-Start-Frame-v1.png"],
+  "endpoint_decision": "start_frame_only",
+  "prompt": "Realistic fixed body-worn officer camera footage approaching an ordinary rural porch in daylight. One older grandmother stands beside one black bear near the porch. The off-camera officer says, Ma'am, you know that's a wild bear. Grandma calmly replies, Well he sure ain't hurting nobody is he? Keep the capture perspective physically plausible, imperfect body-camera motion, natural exposure, authentic ambient audio, one continuous interaction, and no additional people or animals. Do not add captions, title cards, labels, emojis, watermarks, or other graphics."
+}

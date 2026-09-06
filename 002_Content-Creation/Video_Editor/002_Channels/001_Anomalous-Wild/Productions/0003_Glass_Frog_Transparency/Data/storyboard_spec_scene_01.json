@@ -1,0 +1,35 @@
+{
+  "scene_id": "Scene_01",
+  "scene_duration_s": 3.855,
+  "frame_count": 6,
+  "scene_description": "Glitch-hook opener: camera pushes through a night rainforest canopy toward a glass frog perched under a leaf, arriving on its translucent belly backlit from below with the heart visibly beating through the skin, capped by a hard glitch stinger.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; backgrounds trend toward a dark #2B0B5A-to-#0B0F1A gradient feel outside of natural daylight/night forest scenes. National Geographic-quality lighting on real/photoreal shots; clean scientific-diagram aesthetic (no gore, no viscera) on any internal-anatomy render. Glitch-distortion cuts used only at anomaly-reveal/hook moments.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Wide establishing, night rainforest canopy seen from a distance, a single leaf lit faintly by moonlight, camera beginning to push forward."
+    },
+    {
+      "frame": 2,
+      "action": "Medium push, camera moving through leaves and vines, the glass frog barely visible ahead, perched beneath a leaf."
+    },
+    {
+      "frame": 3,
+      "action": "Closer push, the frog's silhouette resolving clearly, thin glitch-distortion streaks beginning to flicker across the frame."
+    },
+    {
+      "frame": 4,
+      "action": "Extreme close-up, camera arriving beneath the frog looking up at its translucent ventral belly, a soft backlit glow building."
+    },
+    {
+      "frame": 5,
+      "action": "Extreme macro, the frog's beating heart clearly visible pulsing through the translucent skin, backlit reddish glow."
+    },
+    {
+      "frame": 6,
+      "action": "Hard glitch-cut freeze frame, digital distortion overlaying the heart close-up as the shot locks on the anomaly reveal."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel must show the same subject with identical coloring, markings, and proportions, as if part of one continuous shot. Use clean composition and precise detail. The sequence should read as one continuous event from start to finish."
+}

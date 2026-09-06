@@ -42,6 +42,9 @@ The Tool Manager is a real CLI. Invoke it directly before answering any tool que
 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Tool-Manager/tm recommend --type image
 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Tool-Manager/tm recommend --type video
 
+# Capability-aware recommendation from the actual task
+/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Tool-Manager/tm recommend --type video --task "Seedance 2 Mini storyboard reference, timestamped complex physical action, native audio, 480p"
+
 # Research models via Perplexity (populates capabilities DB)
 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Tool-Manager/tm research-models
 
@@ -52,7 +55,7 @@ The Tool Manager is a real CLI. Invoke it directly before answering any tool que
 Data files updated by the CLI:
 - `001_Architecture/Tools/Tool-Manager/data/pricing_cache.json` — all API pricing
 - `001_Architecture/Tools/Tool-Manager/data/model_capabilities.json` — model pros/cons/benchmarks
-- `001_Architecture/Tools/Tool-Manager/data/model_catalog.json` — **curated 24-model catalog with cross-platform pricing matrix** (primary source for model recommendations)
+- `001_Architecture/Tools/Tool-Manager/data/model_catalog.json` — **curated 27-model catalog with cross-platform pricing matrix** (primary source for model recommendations)
 
 Pricing auto-refreshes monthly via launchd (1st of each month, 3:17am). Run `catalog_refresh.py` manually anytime.
 
@@ -72,6 +75,10 @@ This catalog covers 24 production models across video, image, audio, and video-t
 - `capabilities` (added 2026-08-18, populated per-model as gaps are found — not yet backfilled for every model) — feature/capability parity across platforms, e.g. whether a platform's wrapper actually exposes a parameter the underlying model supports. **Check this BEFORE applying the price-based routing rule below** — the cheapest platform is only the right answer among platforms that actually support the capability the job needs. Confirmed real gap (2026-08-18): kie.ai's GPT-Image-2 wrapper is cheaper than direct OpenAI but exposes no transparent-background parameter at all — a job needing alpha-transparent output must route to direct OpenAI regardless of price. See `capabilities` block on the `gpt-image-2` entry for the documented example.
 
 **Routing rule:** First, filter to platforms whose `capabilities` support what the job actually needs (if the catalog doesn't have a `capabilities` entry for the relevant feature yet, that's a signal to research it now, not assume parity). Among those, use `cheapest` platform; prefer direct API (google_direct, elevenlabs_direct, openai_direct) when within 5% of cheapest aggregator. Never route ElevenLabs through kie.ai — already on $5/mo subscription.
+
+**Task-aware recommendation rule:** When the task is known, call `tm recommend --type <type> --task "<plain-language requirements>"` rather than the broad type-only command. The recommender extracts only recognized capability requirements, excludes platforms with confirmed incompatibilities, reports unverified routes, and compares price only among eligible platforms. A type-only recommendation remains valid for a general overview, but must not be used as the final route decision for a constrained production task.
+
+Recognized Seedance routing requirements include separate multi-reference images, first/last frames, native 1080p, native audio, storyboard/timestamped action prompting, and post-generation upscaling. "Complex physics" and "upscale" are routing context, not provider capabilities; they should be stated in the task so the consultant can explain the route without pretending those are API parameters.
 
 **Standing rule (2026-08-18): consult this catalog before defaulting to any specific platform/endpoint for a generation call — unprompted, not only when asked.** If this catalog doesn't answer the actual question (price gaps are usually covered; capability gaps often aren't yet), that means Tool-Manager needs to research and update its own data via the Update Protocol below — the calling agent should not surface an unresearched platform/capability question back to Tony as if it were his job to already know the answer.
 
@@ -298,6 +305,18 @@ The Tool Manager does NOT write files directly. If it discovers something new or
    ```
 
 This keeps writes in one place and avoids concurrent edit conflicts between agents.
+
+## Cross-agent learning propagation
+
+When Tony validates a recurring workflow rule or identifies a repeatable failure,
+do not leave the lesson only in a session log or feedback file. The calling agent
+must also update the governing skill, pipeline configuration, or executable
+chokepoint when one exists, then update `TOOLBOX.md` if the tool behavior or
+routing changed. Memory records the decision; the skill/tool contract makes it
+repeatable across Codex, Claude Code, Gemini CLI, Antigravity, and future agents.
+Prefer executable guards and tests for cost, preservation, approval, and routing
+rules. If a rule cannot yet be enforced in code, label it as a documented
+requirement and keep it visible in the relevant skill until enforcement exists.
 
 ---
 

@@ -66,3 +66,9 @@ Once generated, this sheet becomes an input reference (`reference_image_urls` / 
 ## Known limitation (carried over from GPT-Image-2-Prompting-Guide)
 
 No source found specifically discussing GPT-Image-2's animal/creature anatomy failure modes (extra limbs, wrong proportions, etc.) — the `creature` mode above is a reasoned adaptation of the well-documented `person` pattern, not independently validated against animal-specific failure data. Run Video-Analyzer's continuity check on any real output using this mode, same as any other new technique in this pipeline.
+
+Two ingested-but-not-yet-case-studied tutorials touch character-reference-sheet
+workflows (`007_Resource_Library/Tutorials/Create-Seamless-AI-Films-of-ANY-Length-GPT-Image-2-Seedance-2.0.md`,
+`I-Can't-Believe-ChatGPT-Work-Made-This-Whole-Video-From-One-Image.md`) — see
+[`Seedance-Prompting-Guide`](../Seedance-Prompting-Guide/SKILL.md)'s "Un-reviewed
+reference material" section before treating either as validated technique.

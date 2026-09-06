@@ -1,0 +1,17 @@
+{
+  "scene_id": "Shot-04",
+  "scene_duration_s": 10,
+  "frame_count": 6,
+  "scene_description": "A neighbor casually films an ordinary suburban backyard from a nearby property on a smartphone. An older woman waters flowers with her back partly turned to the yard. A large black bear quietly appears behind her near the back fence, and the neighbor warns her before she notices it.",
+  "visual_style": "Authentic neighbor-filmed smartphone video, distant handheld framing from across the yard, ordinary daylight, imperfect phone exposure, modest digital noise, natural suburban backyard detail, documentary realism, never a polished commercial or cinematic camera move.",
+  "panel_convention": "six separate 16:9 landscape image panels in a clean horizontal storyboard sheet, each panel has a clean white caption band beneath the image for its frame number and one-sentence description; numbers and descriptions must remain in the white bands and never inside the image areas; no dialogue text or graphics in the image areas",
+  "frames": [
+    {"frame": 1, "action": "Wide distant neighbor-phone view of the backyard; the woman faces the flowerbed and waters the plants, with no bear visible."},
+    {"frame": 2, "action": "The woman continues watering with her back partly toward the yard, still unaware; the neighbor's phone remains at the same distant viewpoint."},
+    {"frame": 3, "action": "One large black bear quietly steps into view behind the woman near the back fence while she continues watering and does not see it."},
+    {"frame": 4, "action": "The bear remains behind her at a safe distance as the off-camera neighbor calls a warning; the woman is still facing the flowers."},
+    {"frame": 5, "action": "The woman stops watering and turns her head and shoulders toward the yard, finally seeing the bear behind her."},
+    {"frame": 6, "action": "The woman backs quickly toward the house while keeping the bear in view; the neighbor's phone captures the same woman, same bear, and same backyard without a camera cut."}
+  ],
+  "consistency_directive": "This is a planning storyboard for visual continuity, not a comic strip and not a layout to reproduce in the video. Keep one neighbor-phone viewpoint, one woman, one black bear, the same backyard geometry, and a clear causal progression from unaware watering to warning to discovery to retreat. The woman must not face the bear before the warning. Keep all numbers and descriptions only in the white caption bands."
+}

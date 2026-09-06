@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "review_mode": "tony_manual_approval",
+  "findings": [],
+  "checks": [
+    "16:9_panels",
+    "continuous_route",
+    "trampoline_endpoint",
+    "natural_scale",
+    "single_camera"
+  ]
+}

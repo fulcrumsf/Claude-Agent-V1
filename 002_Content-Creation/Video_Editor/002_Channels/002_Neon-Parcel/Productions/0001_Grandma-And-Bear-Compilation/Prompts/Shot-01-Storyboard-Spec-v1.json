@@ -1,0 +1,17 @@
+{
+  "scene_id": "Shot-01",
+  "scene_duration_s": 12,
+  "frame_count": 6,
+  "scene_description": "A realistic body-worn officer-camera recording approaches an ordinary rural porch in daylight. An older grandmother is calmly standing beside one black bear near the porch. The officer is the camera operator and remains off camera.",
+  "visual_style": "Authentic imperfect body-camera footage, natural exposure, slight motion from the officer walking, ordinary rural property, modest wide-angle lens distortion, limited dynamic range, mild digital grain, documentary realism, never polished or commercial.",
+  "panel_convention": "six separate 16:9 landscape image panels in a clean horizontal storyboard sheet, each panel has a clean white caption band beneath the image for its frame number and one-sentence description; numbers and descriptions must remain in the white bands and never inside the image areas; no dialogue text or graphics in the image areas",
+  "frames": [
+    {"frame": 1, "action": "Wide body-camera view from the officer approaching the ordinary rural porch; Grandma and one black bear are visible together near the porch."},
+    {"frame": 2, "action": "The officer is closer to the porch; Grandma remains calm beside the bear, with the bear clearly visible as a full wild animal."},
+    {"frame": 3, "action": "Medium body-camera view of Grandma and the bear; Grandma looks toward the approaching officer while the bear remains beside her."},
+    {"frame": 4, "action": "The officer has stopped a few steps away; the camera remains at natural body height and Grandma faces the officer while the bear stays beside her."},
+    {"frame": 5, "action": "Closer view during the officer's concerned interaction; Grandma remains sincere and unbothered, and the bear remains calm and physically separate from the officer."},
+    {"frame": 6, "action": "The interaction settles in a natural two-subject porch view: Grandma calmly stands beside the bear while the officer remains off camera."}
+  ],
+  "consistency_directive": "This is a planning storyboard for visual continuity, not a comic strip and not a layout to reproduce in the video. Keep one officer-camera viewpoint, one Grandma, one black bear, the same porch geometry, and chronological progression. Do not add captions, speech bubbles, labels, or text inside the image areas."
+}

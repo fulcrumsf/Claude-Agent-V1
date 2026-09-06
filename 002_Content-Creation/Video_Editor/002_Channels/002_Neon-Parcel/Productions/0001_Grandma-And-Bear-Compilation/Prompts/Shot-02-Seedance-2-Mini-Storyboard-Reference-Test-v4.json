@@ -1,0 +1,53 @@
+{
+  "shot_id": "Shot-02",
+  "version": "v4-storyboard-reference-test",
+  "model": "bytedance/seedance-2-mini",
+  "generation_resolution": "480p",
+  "duration_seconds": 12,
+  "aspect_ratio": "16:9",
+  "reference_assets": [
+    "Images/Shot-02-Storyboard-v2.png"
+  ],
+  "postprocess": {
+    "topaz": false,
+    "ffmpeg_normalization": false
+  },
+  "prompt_sections": {
+    "camera_lock": "Fixed elevated consumer home-security camera mounted under the porch roof, angled downward toward the porch and swamp edge. Wide security-camera field of view with mild barrel distortion, limited dynamic range, imperfect daylight exposure, and slight digital grain. The camera remains locked in this exact viewpoint for the entire take; preserve the same framing, horizon, porch geometry, and swamp edge.",
+    "scene_continuity": "Use the attached six-frame storyboard only as a visual continuity reference for the same landscape, camera viewpoint, subject identities, and overall progression. Do not reproduce the storyboard grid, panel borders, captions, numbers, or drawings in the video. Keep exactly one older grandmother, one black bear, and one alligator. Preserve their identities, anatomy, scale, and positions consistently. The grandmother is sweeping the porch; the alligator is at the swamp edge; the bear is nearby in the yard.",
+    "action_timeline": [
+      "The grandmother continues sweeping the porch, looking down at the boards and unaware of the animals.",
+      "The alligator physically crawls forward out of the swamp toward the yard; its body remains one continuous alligator body during the movement.",
+      "The bear notices the alligator, crosses the yard, and moves between the alligator and the porch.",
+      "The bear forces the alligator to retreat by advancing toward it until the alligator turns and crawls back toward the swamp. Show a real change of direction, not a morph or reversal in place.",
+      "Only after the animals have moved away does the grandmother stop sweeping, lift her head, and look toward the yard. End on the same fixed security-camera view."
+    ],
+    "audio": {
+      "ambient": [
+        "distant insects",
+        "light wind",
+        "subtle swamp ambience"
+      ],
+      "foley": [
+        "broom brushing porch boards",
+        "alligator movement through damp ground",
+        "bear footfalls",
+        "rustling vegetation"
+      ],
+      "in_scene_dialogue": [],
+      "music": "none"
+    },
+    "hard_constraints": [
+      "The storyboard is visual continuity guidance only, not a literal six-panel sequence.",
+      "Do not show any storyboard layout, captions, numbers, labels, or graphics.",
+      "No camera movement, reframing, zoom, tracking, cuts, or eye-level cinematic viewpoint.",
+      "No duplicate grandmother, bear, or alligator.",
+      "No morphing, melting, teleporting, identity changes, or skipped cause-and-effect states.",
+      "The alligator must physically turn around before retreating; it must not reverse direction by morphing.",
+      "No disappearing porch, swamp, animals, broom, or fixed geometry."
+    ]
+  },
+  "prompt": "CAMERA LOCK: Fixed elevated consumer home-security camera mounted under the porch roof, angled downward toward the porch and swamp edge. Wide security-camera field of view with mild barrel distortion, limited dynamic range, imperfect daylight exposure, and slight digital grain. The camera remains locked in this exact viewpoint for the entire take; preserve the same framing, horizon, porch geometry, and swamp edge.\n\nSCENE CONTINUITY: Use the attached six-frame storyboard only as a visual continuity reference for the same landscape, camera viewpoint, subject identities, and overall progression. Do not reproduce the storyboard grid, panel borders, captions, numbers, or drawings in the video. Keep exactly one older grandmother, one black bear, and one alligator. Preserve their identities, anatomy, scale, and positions consistently. The grandmother is sweeping the porch; the alligator is at the swamp edge; the bear is nearby in the yard.\n\nACTION TIMELINE: The grandmother continues sweeping the porch, looking down at the boards and unaware of the animals. The alligator physically crawls forward out of the swamp toward the yard; its body remains one continuous alligator body during the movement. The bear notices the alligator, crosses the yard, and moves between the alligator and the porch. The bear forces the alligator to retreat by advancing toward it until the alligator turns and crawls back toward the swamp. Show a real change of direction, not a morph or reversal in place. Only after the animals have moved away does the grandmother stop sweeping, lift her head, and look toward the yard. End on the same fixed security-camera view.\n\nAUDIO: Natural ambient and action sound only: distant insects, light wind, subtle swamp ambience, broom brushing porch boards, alligator movement through damp ground, bear footfalls, and rustling vegetation. No dialogue and no music.\n\nHARD CONSTRAINTS: The storyboard is visual continuity guidance only, not a literal six-panel sequence. Do not show any storyboard layout, captions, numbers, labels, or graphics. No camera movement, reframing, zoom, tracking, cuts, or eye-level cinematic viewpoint. No duplicate grandmother, bear, or alligator. No morphing, melting, teleporting, identity changes, or skipped cause-and-effect states. The alligator must physically turn around before retreating; it must not reverse direction by morphing. No disappearing porch, swamp, animals, broom, or fixed geometry.",
+  "task_id": "184972cc7aaca537f5bc03427e7f5888",
+  "reference_url": "https://res.cloudinary.com/da6zdvts2/image/upload/v1787895230/neon-parcel/0001/Shot-02-Storyboard-v2-reference-test-v4.png"
+}

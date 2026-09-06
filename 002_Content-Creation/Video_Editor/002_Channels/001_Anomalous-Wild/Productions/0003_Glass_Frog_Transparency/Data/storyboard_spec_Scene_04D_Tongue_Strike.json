@@ -1,0 +1,35 @@
+{
+  "scene_id": "Scene_04D_Tongue_Strike",
+  "scene_duration_s": 6.07,
+  "frame_count": 6,
+  "scene_description": "Night. A single glass frog ambush-hunts from a broad wet leaf: it sits perfectly still, then catches a moth with one explosive flick of its tongue, then settles back to stillness. One continuous ~6-second shot. Anatomy check: in every panel the glass frog has all four legs attached to its body and both eyes present and correctly placed \u2014 never a missing or detached limb, never a single-eyed frog.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; National Geographic-quality lighting on real/photoreal shots; no gore, no viscera. Photoreal, shallow depth of field.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Medium shot at night, the glass frog perched on the edge of a broad rain-wet leaf, all four legs folded and gripping the leaf, both large eyes open and fixed forward, completely motionless in an ambush crouch, a small moth hovering a short distance in front of it."
+    },
+    {
+      "frame": 2,
+      "action": "Slow push to a tighter medium close-up, the frog's head and both eyes locked onto the moth, body coiled and still, one front foot adjusting its grip on the leaf."
+    },
+    {
+      "frame": 3,
+      "action": "Close-up, the instant of the strike: the frog's mouth open and its long tongue launching forward at full extension toward the moth, head thrust forward, all four legs still anchored to the leaf."
+    },
+    {
+      "frame": 4,
+      "action": "Extreme close-up, the tip of the tongue making contact with the moth in mid-air, the moth's wings folding against it."
+    },
+    {
+      "frame": 5,
+      "action": "Close-up, the tongue retracting into the mouth carrying the moth, the frog's head pulling back to centre, all four legs still planted on the leaf."
+    },
+    {
+      "frame": 6,
+      "action": "Medium shot, the frog settled back into its original still ambush posture on the leaf, moth gone, both eyes open and forward, dark night-forest bokeh behind it."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel shows the SAME glass frog with identical coloring, markings and proportions, as one continuous shot. Anatomy check: in every panel the glass frog has all four legs attached to its body and both eyes present and correctly placed \u2014 never a missing or detached limb, never a single-eyed frog."
+}

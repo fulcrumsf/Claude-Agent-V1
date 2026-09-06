@@ -1,0 +1,22 @@
+{
+  "evaluated_at": "2026-09-02T03:47:56.525022+00:00",
+  "candidate_image": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Images/Shot-06-Storyboard-v1.png",
+  "candidate_sha256": "23df509b7ebbbf53b134eb0707c1436f4bb1dfc9c0eee2b5d8b4a5d466dc1c40",
+  "contract_path": "shot_06_storyboard_spec.json",
+  "contract_sha256": "3514a54adcd8d49aa46a22b8c1e47dc845376f7f7da3bc0b51ac6a566d447eb5",
+  "status": "manual_review",
+  "overall_confidence": 0.0,
+  "checked_frames": [],
+  "checked_transitions": [],
+  "findings": [
+    {
+      "frame": "all",
+      "category": "report_schema",
+      "severity": "error",
+      "status": "missing",
+      "confidence": 1.0,
+      "evidence": "Vision report is missing frame_checks or transition_checks.",
+      "recommendation": "Retry vision inspection with the required JSON schema."
+    }
+  ]
+}

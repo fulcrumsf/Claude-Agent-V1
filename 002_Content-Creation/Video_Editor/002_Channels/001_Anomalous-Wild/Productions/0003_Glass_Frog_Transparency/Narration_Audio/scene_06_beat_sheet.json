@@ -1,0 +1,635 @@
+{
+  "scene_id": "scene_06",
+  "words": [
+    {
+      "word": "That",
+      "start_s": 0.0,
+      "end_s": 0.406
+    },
+    {
+      "word": "contradiction",
+      "start_s": 0.499,
+      "end_s": 1.196
+    },
+    {
+      "word": "is",
+      "start_s": 1.242,
+      "end_s": 1.324
+    },
+    {
+      "word": "exactly",
+      "start_s": 1.393,
+      "end_s": 1.904
+    },
+    {
+      "word": "what",
+      "start_s": 1.95,
+      "end_s": 2.101
+    },
+    {
+      "word": "makes",
+      "start_s": 2.159,
+      "end_s": 2.403
+    },
+    {
+      "word": "this",
+      "start_s": 2.438,
+      "end_s": 2.577
+    },
+    {
+      "word": "discovery",
+      "start_s": 2.635,
+      "end_s": 3.135
+    },
+    {
+      "word": "matter",
+      "start_s": 3.216,
+      "end_s": 3.587
+    },
+    {
+      "word": "far",
+      "start_s": 3.796,
+      "end_s": 4.052
+    },
+    {
+      "word": "beyond",
+      "start_s": 4.122,
+      "end_s": 4.481
+    },
+    {
+      "word": "one",
+      "start_s": 4.598,
+      "end_s": 4.83
+    },
+    {
+      "word": "frog",
+      "start_s": 4.899,
+      "end_s": 5.248
+    },
+    {
+      "word": "in",
+      "start_s": 5.422,
+      "end_s": 5.596
+    },
+    {
+      "word": "one",
+      "start_s": 5.677,
+      "end_s": 5.851
+    },
+    {
+      "word": "rainforest.",
+      "start_s": 5.909,
+      "end_s": 6.815
+    },
+    {
+      "word": "In",
+      "start_s": 7.512,
+      "end_s": 7.674
+    },
+    {
+      "word": "humans,",
+      "start_s": 7.732,
+      "end_s": 8.336
+    },
+    {
+      "word": "the",
+      "start_s": 8.452,
+      "end_s": 8.557
+    },
+    {
+      "word": "balance",
+      "start_s": 8.615,
+      "end_s": 8.963
+    },
+    {
+      "word": "between",
+      "start_s": 8.998,
+      "end_s": 9.3
+    },
+    {
+      "word": "clotting",
+      "start_s": 9.369,
+      "end_s": 9.799
+    },
+    {
+      "word": "and",
+      "start_s": 9.845,
+      "end_s": 9.938
+    },
+    {
+      "word": "bleeding",
+      "start_s": 9.996,
+      "end_s": 10.426
+    },
+    {
+      "word": "is",
+      "start_s": 10.635,
+      "end_s": 10.786
+    },
+    {
+      "word": "one",
+      "start_s": 10.832,
+      "end_s": 10.937
+    },
+    {
+      "word": "of",
+      "start_s": 10.96,
+      "end_s": 11.006
+    },
+    {
+      "word": "the",
+      "start_s": 11.041,
+      "end_s": 11.111
+    },
+    {
+      "word": "hardest",
+      "start_s": 11.18,
+      "end_s": 11.598
+    },
+    {
+      "word": "problems",
+      "start_s": 11.656,
+      "end_s": 12.144
+    },
+    {
+      "word": "in",
+      "start_s": 12.202,
+      "end_s": 12.283
+    },
+    {
+      "word": "medicine",
+      "start_s": 12.341,
+      "end_s": 12.887
+    },
+    {
+      "word": "\u2014",
+      "start_s": 12.945,
+      "end_s": 13.096
+    },
+    {
+      "word": "too",
+      "start_s": 13.421,
+      "end_s": 13.607
+    },
+    {
+      "word": "much",
+      "start_s": 13.677,
+      "end_s": 13.886
+    },
+    {
+      "word": "clotting",
+      "start_s": 13.955,
+      "end_s": 14.385
+    },
+    {
+      "word": "causes",
+      "start_s": 14.629,
+      "end_s": 15.047
+    },
+    {
+      "word": "strokes",
+      "start_s": 15.105,
+      "end_s": 15.5
+    },
+    {
+      "word": "and",
+      "start_s": 15.535,
+      "end_s": 15.639
+    },
+    {
+      "word": "heart",
+      "start_s": 15.709,
+      "end_s": 15.895
+    },
+    {
+      "word": "attacks;",
+      "start_s": 15.941,
+      "end_s": 16.463
+    },
+    {
+      "word": "too",
+      "start_s": 16.638,
+      "end_s": 16.823
+    },
+    {
+      "word": "little",
+      "start_s": 16.893,
+      "end_s": 17.241
+    },
+    {
+      "word": "causes",
+      "start_s": 17.357,
+      "end_s": 17.799
+    },
+    {
+      "word": "uncontrolled",
+      "start_s": 17.868,
+      "end_s": 18.507
+    },
+    {
+      "word": "bleeding.",
+      "start_s": 18.542,
+      "end_s": 19.087
+    },
+    {
+      "word": "One",
+      "start_s": 19.784,
+      "end_s": 19.97
+    },
+    {
+      "word": "of",
+      "start_s": 20.004,
+      "end_s": 20.051
+    },
+    {
+      "word": "the",
+      "start_s": 20.086,
+      "end_s": 20.155
+    },
+    {
+      "word": "researchers",
+      "start_s": 20.202,
+      "end_s": 20.713
+    },
+    {
+      "word": "called",
+      "start_s": 20.771,
+      "end_s": 21.096
+    },
+    {
+      "word": "solving",
+      "start_s": 21.374,
+      "end_s": 21.874
+    },
+    {
+      "word": "that",
+      "start_s": 21.943,
+      "end_s": 22.094
+    },
+    {
+      "word": "balance",
+      "start_s": 22.176,
+      "end_s": 22.617
+    },
+    {
+      "word": "the",
+      "start_s": 22.663,
+      "end_s": 22.744
+    },
+    {
+      "word": "holy",
+      "start_s": 22.802,
+      "end_s": 23.069
+    },
+    {
+      "word": "grail",
+      "start_s": 23.128,
+      "end_s": 23.464
+    },
+    {
+      "word": "of",
+      "start_s": 23.743,
+      "end_s": 23.882
+    },
+    {
+      "word": "hematology.",
+      "start_s": 23.963,
+      "end_s": 24.915
+    },
+    {
+      "word": "A",
+      "start_s": 25.519,
+      "end_s": 25.6
+    },
+    {
+      "word": "glass",
+      "start_s": 25.67,
+      "end_s": 25.96
+    },
+    {
+      "word": "frog",
+      "start_s": 26.018,
+      "end_s": 26.274
+    },
+    {
+      "word": "solves",
+      "start_s": 26.344,
+      "end_s": 26.645
+    },
+    {
+      "word": "it",
+      "start_s": 26.703,
+      "end_s": 26.785
+    },
+    {
+      "word": "daily,",
+      "start_s": 26.843,
+      "end_s": 27.33
+    },
+    {
+      "word": "without",
+      "start_s": 27.423,
+      "end_s": 27.783
+    },
+    {
+      "word": "trying,",
+      "start_s": 27.818,
+      "end_s": 28.375
+    },
+    {
+      "word": "every",
+      "start_s": 28.491,
+      "end_s": 28.782
+    },
+    {
+      "word": "time",
+      "start_s": 28.828,
+      "end_s": 29.095
+    },
+    {
+      "word": "it",
+      "start_s": 29.142,
+      "end_s": 29.211
+    },
+    {
+      "word": "falls",
+      "start_s": 29.269,
+      "end_s": 29.548
+    },
+    {
+      "word": "asleep.",
+      "start_s": 29.606,
+      "end_s": 30.117
+    },
+    {
+      "word": "What",
+      "start_s": 30.628,
+      "end_s": 30.813
+    },
+    {
+      "word": "we",
+      "start_s": 30.86,
+      "end_s": 30.941
+    },
+    {
+      "word": "now",
+      "start_s": 31.011,
+      "end_s": 31.173
+    },
+    {
+      "word": "know",
+      "start_s": 31.231,
+      "end_s": 31.405
+    },
+    {
+      "word": "is",
+      "start_s": 31.487,
+      "end_s": 31.579
+    },
+    {
+      "word": "that",
+      "start_s": 31.626,
+      "end_s": 31.788
+    },
+    {
+      "word": "studying",
+      "start_s": 31.963,
+      "end_s": 32.45
+    },
+    {
+      "word": "this",
+      "start_s": 32.508,
+      "end_s": 32.659
+    },
+    {
+      "word": "small,",
+      "start_s": 32.717,
+      "end_s": 33.205
+    },
+    {
+      "word": "transparent",
+      "start_s": 33.228,
+      "end_s": 33.89
+    },
+    {
+      "word": "animal",
+      "start_s": 33.936,
+      "end_s": 34.308
+    },
+    {
+      "word": "could",
+      "start_s": 34.552,
+      "end_s": 34.761
+    },
+    {
+      "word": "shape",
+      "start_s": 34.795,
+      "end_s": 35.097
+    },
+    {
+      "word": "how",
+      "start_s": 35.144,
+      "end_s": 35.283
+    },
+    {
+      "word": "we",
+      "start_s": 35.341,
+      "end_s": 35.434
+    },
+    {
+      "word": "treat",
+      "start_s": 35.48,
+      "end_s": 35.724
+    },
+    {
+      "word": "blood",
+      "start_s": 35.794,
+      "end_s": 36.014
+    },
+    {
+      "word": "clots",
+      "start_s": 36.061,
+      "end_s": 36.398
+    },
+    {
+      "word": "in",
+      "start_s": 36.456,
+      "end_s": 36.56
+    },
+    {
+      "word": "humans",
+      "start_s": 36.63,
+      "end_s": 37.141
+    },
+    {
+      "word": "\u2014",
+      "start_s": 37.257,
+      "end_s": 37.303
+    },
+    {
+      "word": "turning",
+      "start_s": 37.454,
+      "end_s": 37.837
+    },
+    {
+      "word": "a",
+      "start_s": 37.895,
+      "end_s": 37.93
+    },
+    {
+      "word": "rainforest",
+      "start_s": 38.023,
+      "end_s": 38.604
+    },
+    {
+      "word": "camouflage",
+      "start_s": 38.662,
+      "end_s": 39.3
+    },
+    {
+      "word": "trick",
+      "start_s": 39.335,
+      "end_s": 39.602
+    },
+    {
+      "word": "into",
+      "start_s": 39.811,
+      "end_s": 40.066
+    },
+    {
+      "word": "a",
+      "start_s": 40.159,
+      "end_s": 40.194
+    },
+    {
+      "word": "lead",
+      "start_s": 40.275,
+      "end_s": 40.542
+    },
+    {
+      "word": "for",
+      "start_s": 40.612,
+      "end_s": 40.74
+    },
+    {
+      "word": "cardiovascular",
+      "start_s": 40.798,
+      "end_s": 41.692
+    },
+    {
+      "word": "research.",
+      "start_s": 41.75,
+      "end_s": 42.528
+    },
+    {
+      "word": "Of",
+      "start_s": 43.131,
+      "end_s": 43.259
+    },
+    {
+      "word": "all",
+      "start_s": 43.317,
+      "end_s": 43.491
+    },
+    {
+      "word": "the",
+      "start_s": 43.561,
+      "end_s": 43.631
+    },
+    {
+      "word": "creatures",
+      "start_s": 43.689,
+      "end_s": 44.095
+    },
+    {
+      "word": "on",
+      "start_s": 44.153,
+      "end_s": 44.258
+    },
+    {
+      "word": "Earth",
+      "start_s": 44.327,
+      "end_s": 44.548
+    },
+    {
+      "word": "working",
+      "start_s": 44.617,
+      "end_s": 44.954
+    },
+    {
+      "word": "on",
+      "start_s": 45.0,
+      "end_s": 45.07
+    },
+    {
+      "word": "this",
+      "start_s": 45.105,
+      "end_s": 45.233
+    },
+    {
+      "word": "problem,",
+      "start_s": 45.291,
+      "end_s": 45.778
+    },
+    {
+      "word": "the",
+      "start_s": 46.103,
+      "end_s": 46.219
+    },
+    {
+      "word": "answer",
+      "start_s": 46.289,
+      "end_s": 46.579
+    },
+    {
+      "word": "may",
+      "start_s": 46.626,
+      "end_s": 46.742
+    },
+    {
+      "word": "already",
+      "start_s": 46.788,
+      "end_s": 47.125
+    },
+    {
+      "word": "be",
+      "start_s": 47.183,
+      "end_s": 47.334
+    },
+    {
+      "word": "sleeping",
+      "start_s": 47.415,
+      "end_s": 47.81
+    },
+    {
+      "word": "under",
+      "start_s": 47.856,
+      "end_s": 48.054
+    },
+    {
+      "word": "a",
+      "start_s": 48.112,
+      "end_s": 48.135
+    },
+    {
+      "word": "leaf,",
+      "start_s": 48.193,
+      "end_s": 48.541
+    },
+    {
+      "word": "upside",
+      "start_s": 48.658,
+      "end_s": 49.099
+    },
+    {
+      "word": "down,",
+      "start_s": 49.145,
+      "end_s": 49.563
+    },
+    {
+      "word": "invisible.",
+      "start_s": 49.633,
+      "end_s": 50.434
+    }
+  ]
+}

@@ -1,0 +1,223 @@
+{
+  "production": "0003_Glass_Frog_Transparency",
+  "character_sheet": "Images/Character_Sheets/Glass_Frog_Main_Character_Sheet.png",
+  "environment_sheet": "Images/Environment_Sheets/Cloud_Forest_Stream_Sheet.png",
+  "b_roll_summary": "Zero beats in this production use real Pexels B-roll. All 10 downloaded clips are generic frog/rainforest-amphibian footage with no true glass-frog content (confirmed by Production-Research-Agent). Only one beat (scene_04 visual 3, nocturnal ambush-hunting) was a plausible candidate; evaluated honestly and rejected -- see beats.scene_04.visual_3 below. This matches Script.md's own production-note expectation of 'essentially zero usable real footage of the actual subject.'",
+  "scenes": {
+    "scene_01": {
+      "coarse_routing": "live_footage",
+      "duration_s": 3.855,
+      "beats": [
+        {
+          "visual": 1,
+          "description": "Extreme macro glitch-cut push through canopy to backlit translucent belly, heart beating",
+          "source": "generation",
+          "reason": "Glass-frog-specific transparency/heart shot; no real footage of any frog could show this internal-organ visibility. Character sheet required (whole frog).",
+          "character_sheet": true,
+          "environment_sheet": false
+        }
+      ]
+    },
+    "scene_02": {
+      "coarse_routing": "live_footage",
+      "duration_s": 14.396,
+      "beats": [
+        {
+          "visual": "1-5 (dorsal establishing -> ventral reveal -> organ silhouette -> texture comparison -> POV drift)",
+          "source": "generation",
+          "reason": "All five visuals are glass-frog-specific transparency shots (ventral skin, organ silhouettes, POV through tissue) with no real-footage equivalent possible. Character sheet + environment sheet (leaf-over-stream) required throughout for scene-internal identity/location consistency.",
+          "character_sheet": true,
+          "environment_sheet": true
+        }
+      ]
+    },
+    "scene_03": {
+      "coarse_routing": "diagram",
+      "duration_s": 50.899,
+      "note": "Scientific Diagram sub-pipeline scope (Phase 6B) for the internal-anatomy render panels (visuals 1,2,3,6,7,8) -- exempt from character-sheet requirement per the skill's own carve-out; framing decided in Phase 6B's own prompts. Storyboard built in this pass (Step 5) covering the full scene for planning purposes.",
+      "beats": [
+        {
+          "visual": "1,2,3,6,7 (heart push-in, organ cutaways, mirrored pouch cutaway)",
+          "source": "diagram_pipeline_deferred",
+          "reason": "Internal-anatomy render panels -- Phase 6B Scientific Diagram sub-pipeline, not this pass.",
+          "character_sheet": false,
+          "environment_sheet": false
+        },
+        {
+          "visual": 4,
+          "description": "Species-comparison montage (3-way real species split)",
+          "source": "generation_direct_reference",
+          "reason": "One-off shot, not a recurring subject -- generated directly from Research/Reference_Images/ real species photos (Cochran's, Emerald, Euknemos, Granular, Granulosa, Little, Spinosa, Dusty) as input_urls per Shot_List.md's routing (GPT-Image-2 direct, not the full diagram sub-pipeline). No dedicated character sheet built for this (see Recurring_Subjects.json rationale). Deferred to Phase 6B execution alongside the rest of scene_03's generation.",
+          "character_sheet": false,
+          "environment_sheet": false
+        },
+        {
+          "visual": "3,5 (macro real-footage-style full ventral view; species-comparison bridges into whole-frog panels)",
+          "source": "generation",
+          "reason": "Visual 3 shows the WHOLE frog (not an internal-anatomy diagram panel) -- despite the scene's coarse 'diagram' routing, this specific beat needs the main character sheet for identity consistency, per the task's own carve-out ('exempt... for the internal-anatomy-render panels specifically'). Flagged for Phase 6B to ground against Glass_Frog_Main_Character_Sheet.png rather than treating the whole scene as sheet-exempt.",
+          "character_sheet": true,
+          "environment_sheet": false
+        }
+      ]
+    },
+    "scene_04": {
+      "coarse_routing": "live_footage",
+      "duration_s": 35.526,
+      "beats": [
+        {
+          "visual": 1,
+          "description": "Animated range map",
+          "source": "remotion_data_graphic",
+          "reason": "Data-driven geographic animation -- Remotion, not an image-generation asset. Not part of Asset_Plan generation scope.",
+          "character_sheet": false,
+          "environment_sheet": false
+        },
+        {
+          "visual": 2,
+          "description": "Wide overhead cloud-forest canopy over stream, mist",
+          "source": "generation",
+          "reason": "No B-roll match -- none of the 10 Pexels clips show a canopy/stream establishing shot. Environment sheet grounding used.",
+          "character_sheet": false,
+          "environment_sheet": true
+        },
+        {
+          "visual": 3,
+          "description": "Nocturnal ambush-hunting behavior, tongue-flick strike",
+          "source": "generation",
+          "reason": "B-ROLL CANDIDATE EVALUATED AND REJECTED. Checked both plausible Pexels clips: Generic_Frog_Eating_Firefly_01.mp4 has a real tongue/lunge-strike action but at a daylight pond surface with lily pads (wrong lighting, wrong habitat, wrong predation mechanic -- an aquatic surface-lunge, not a stationary leaf-perch tongue-flick) -- visually and behaviorally inconsistent with this beat's night cloud-forest ambush description. Generic_Frog_On_Leaves_At_Night_04.mp4 has the right night/leaf mood but the frog 'remains still' the entire clip -- zero strike action, so it doesn't cover the specific action described ('quick tongue-flick strike'). Neither genuinely matches the described action; forcing either in would be a bad substitution per the skill's own guidance. Generated instead, keeping the same individual as the rest of the scene for identity continuity.",
+          "character_sheet": true,
+          "environment_sheet": false,
+          "b_roll_rejected": [
+            {"clip": "Generic_Frog_Eating_Firefly_01.mp4", "why_rejected": "Right action (strike), wrong everything else: daylight pond/lily-pad setting, aquatic surface-lunge mechanic instead of a stationary leaf-perch tongue-flick."},
+            {"clip": "Generic_Frog_On_Leaves_At_Night_04.mp4", "why_rejected": "Right mood (night, leaf, foliage density), but frog is static the whole clip -- no strike action at all."}
+          ]
+        },
+        {
+          "visual": 4,
+          "description": "Frog motionless on leaf underside, daylight",
+          "source": "generation",
+          "reason": "Must stay the same individual as the rest of the scene (identity-consistency rule) -- substituting a different-species generic frog clip (e.g. Generic_Green_Tree_Frog_On_Leaf_Closeup_03.mp4) would visibly break continuity mid-scene, even though its pose/mood is superficially similar.",
+          "character_sheet": true,
+          "environment_sheet": false
+        },
+        {
+          "visual": 5,
+          "description": "Frog pressed flat against backlit leaf, edges disappearing",
+          "source": "generation",
+          "reason": "Glass-frog-specific translucency effect against the leaf; no real footage of any frog demonstrates this.",
+          "character_sheet": true,
+          "environment_sheet": false
+        },
+        {
+          "visual": 6,
+          "description": "Slow zoom out to full canopy, frog nearly imperceptible",
+          "source": "generation",
+          "reason": "Continuous camera move from visual 5's location; environment sheet + character sheet combined so the pull-back stays the same location and individual.",
+          "character_sheet": true,
+          "environment_sheet": true
+        }
+      ]
+    },
+    "scene_05": {
+      "coarse_routing": "diagram",
+      "duration_s": 73.004,
+      "note": "Scientific Diagram sub-pipeline scope (Phase 6B) for the internal blood-cell/vessel render panels (visuals 2,3,4,7,8) and the lab/photoacoustic insert (visual 10) -- exempt from character-sheet requirement, framing decided in Phase 6B. Storyboard built in this pass covering the full scene. Per the task's explicit scope (Step 3 named scenes 01,02,04,07 + scene_06's frog sub-beats only), scene_05's whole-frog panels (visuals 1,5,6,9) are NOT clip-boundaried or given start/end frame pairs in this Phase 5B pass -- flagged below for Phase 6B/6C to pick up using Glass_Frog_Main_Character_Sheet.png.",
+      "beats": [
+        {
+          "visual": "2,3,4,7,8,10",
+          "source": "diagram_pipeline_deferred",
+          "reason": "Internal blood-cell/vessel renders + human-vascular contrast + lab/photoacoustic insert -- Phase 6B Scientific Diagram sub-pipeline.",
+          "character_sheet": false,
+          "environment_sheet": false
+        },
+        {
+          "visual": "1,5,6,9",
+          "description": "Whole-frog panels: asleep frog, awake-vs-asleep comparison, calm frog",
+          "source": "generation_deferred_to_phase6",
+          "reason": "Whole-frog shots needing the main character sheet, but out of this Phase 5B pass's explicit clip-boundary/start-end-frame scope (task named only scenes 01,02,04,07 + scene_06 frog sub-beats). Flagged for follow-up.",
+          "character_sheet": true,
+          "environment_sheet": false
+        }
+      ]
+    },
+    "scene_06": {
+      "coarse_routing": "diagram (mixed)",
+      "duration_s": 50.434,
+      "note": "Mixed scene per Shot_List.md -- frog-shot sub-beats (visuals 1,4,5,6,7) are live_footage-style generation in THIS pass; visuals 2 and 3 are diagram/lab-context, deferred to Phase 6B.",
+      "beats": [
+        {
+          "visual": 1,
+          "description": "Wide cinematic, frog on leaf, camera pulling back",
+          "source": "generation",
+          "letter": "06A",
+          "character_sheet": true,
+          "environment_sheet": true
+        },
+        {
+          "visual": 2,
+          "description": "Abstract human circulatory infographic",
+          "source": "diagram_pipeline_deferred",
+          "letter": "06B",
+          "character_sheet": false,
+          "environment_sheet": false
+        },
+        {
+          "visual": 3,
+          "description": "Lab/photoacoustic imaging insert, non-identifiable",
+          "source": "diagram_pipeline_deferred",
+          "letter": "06C",
+          "character_sheet": false,
+          "environment_sheet": false
+        },
+        {
+          "visual": 4,
+          "description": "Return to frog, calm and sleeping",
+          "source": "generation",
+          "letter": "06D",
+          "character_sheet": true,
+          "environment_sheet": false
+        },
+        {
+          "visual": 5,
+          "description": "Slow push-in on transparent belly, heart visible",
+          "source": "generation",
+          "letter": "06E",
+          "character_sheet": true,
+          "environment_sheet": false,
+          "note": "Script-drafted 8s; real scaled duration runs slightly past the 8s single-clip guideline -- kept as one clip since it's one continuous push-in action, not a subject/location change (documented tolerance, see Report)."
+        },
+        {
+          "visual": 6,
+          "description": "Overhead pull-back from leaf into canopy, night into day",
+          "source": "generation",
+          "letter": "06F",
+          "character_sheet": true,
+          "environment_sheet": true
+        },
+        {
+          "visual": 7,
+          "description": "Final wide hold, frog nearly vanishing into leaf light",
+          "source": "generation",
+          "letter": "06G",
+          "character_sheet": true,
+          "environment_sheet": true,
+          "note": "Same 8s-tolerance note as 06E -- one continuous held shot, not split further."
+        }
+      ]
+    },
+    "scene_07": {
+      "coarse_routing": "live_footage",
+      "duration_s": 4.737,
+      "beats": [
+        {
+          "visual": 1,
+          "description": "Quick glitch-cut flash of an unnamed future-video anomalous creature",
+          "source": "generation",
+          "reason": "Deliberately NOT the glass frog -- no character sheet grounding, no B-roll possible (unnamed/undecided future subject).",
+          "character_sheet": false,
+          "environment_sheet": false
+        }
+      ]
+    }
+  }
+}

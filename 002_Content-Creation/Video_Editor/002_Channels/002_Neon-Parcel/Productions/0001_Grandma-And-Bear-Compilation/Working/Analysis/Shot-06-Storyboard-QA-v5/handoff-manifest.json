@@ -1,0 +1,17 @@
+{
+  "shot_id": "Shot-06",
+  "status": "pass",
+  "selected_attempt": 1,
+  "active_storyboard_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Images/Shot-06-Storyboard-v5.png",
+  "contract_path": "/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/shot_06_storyboard_spec_v5.json",
+  "qa_report_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Analysis/Shot-06-Storyboard-QA-v5/qa-report.json",
+  "attempt_state_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Analysis/Shot-06-Storyboard-QA-v5/attempt-state.json",
+  "review_policy_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Production/Storyboard-QA-Policy.json",
+  "manual_review_approved": true,
+  "storyboard_reference_url": "https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Shot-06-Storyboard-v5.png",
+  "reference_role": "storyboard_reference",
+  "storyboard_sha256": "9b40796ee99d8f4cca64e44b34e013f3839c9124c664cf11a89727add5a43f1f",
+  "contract_sha256": "5847f6507cd74db6fefebedc46f79126cf850263f4c52bbffedf767a078ac49c",
+  "qa_report_sha256": "526e97afa80b7cc418dacad5e080361f60b4e9b56bc625b6e7e5ab7a91ba5ef8",
+  "approval_note": "Tony approved storyboard v5 and Seedance prompt v6 for raw generation."
+}

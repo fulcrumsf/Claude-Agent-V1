@@ -66,10 +66,23 @@ def download_video(url: str, out_dir: Path) -> Path:
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     video_path = out_dir / "Video.mp4"
-    subprocess.run(
-        ["yt-dlp", "-f", "mp4", "-o", str(video_path), url],
-        check=True, capture_output=True,
-    )
+    command = ["yt-dlp", "-f", "mp4", "-o", str(video_path), url]
+    try:
+        subprocess.run(command, check=True, capture_output=True)
+    except subprocess.CalledProcessError:
+        # Some YouTube uploads expose MP4 video and audio as separate streams;
+        # fall back to an explicit compatible pair before reporting failure.
+        fallback = [
+            "yt-dlp",
+            "-f",
+            "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]",
+            "--merge-output-format",
+            "mp4",
+            "-o",
+            str(video_path),
+            url,
+        ]
+        subprocess.run(fallback, check=True, capture_output=True)
     return video_path
 
 def extract_keyframes(video_path: Path, out_dir: Path, threshold: float = 0.3) -> Path:

@@ -1,0 +1,75 @@
+{
+  "scene_id": "scene_07",
+  "words": [
+    {
+      "word": "And",
+      "start_s": 0.0,
+      "end_s": 0.139
+    },
+    {
+      "word": "this",
+      "start_s": 0.186,
+      "end_s": 0.325
+    },
+    {
+      "word": "isn't",
+      "start_s": 0.395,
+      "end_s": 0.639
+    },
+    {
+      "word": "the",
+      "start_s": 0.673,
+      "end_s": 0.755
+    },
+    {
+      "word": "only",
+      "start_s": 0.836,
+      "end_s": 1.045
+    },
+    {
+      "word": "animal",
+      "start_s": 1.115,
+      "end_s": 1.486
+    },
+    {
+      "word": "that's",
+      "start_s": 1.66,
+      "end_s": 1.916
+    },
+    {
+      "word": "learned",
+      "start_s": 1.974,
+      "end_s": 2.264
+    },
+    {
+      "word": "to",
+      "start_s": 2.31,
+      "end_s": 2.38
+    },
+    {
+      "word": "disappear",
+      "start_s": 2.461,
+      "end_s": 3.019
+    },
+    {
+      "word": "on",
+      "start_s": 3.193,
+      "end_s": 3.355
+    },
+    {
+      "word": "its",
+      "start_s": 3.413,
+      "end_s": 3.553
+    },
+    {
+      "word": "own",
+      "start_s": 3.611,
+      "end_s": 3.82
+    },
+    {
+      "word": "terms.",
+      "start_s": 3.889,
+      "end_s": 4.737
+    }
+  ]
+}

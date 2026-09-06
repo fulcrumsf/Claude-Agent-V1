@@ -1,0 +1,35 @@
+{
+  "scene_id": "Scene_06G_Grand_Wide",
+  "scene_duration_s": 6.07,
+  "frame_count": 6,
+  "scene_description": "Dawn. A grand WIDE establishing shot of the whole cloud-forest that slowly finds one leaf with the tiny frog beneath it. DISTINCT from the backlit-transparency shot and the upside-down close \u2014 this one is about scale and the vastness of the forest. Anatomy check: in every panel the glass frog has all four legs attached to its body and both eyes present and correctly placed \u2014 never a missing or detached limb, never a single-eyed frog.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; National Geographic-quality lighting on real/photoreal shots; no gore, no viscera. Photoreal, shallow depth of field.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Extreme wide establishing shot from across a ravine, looking at a towering wall of misty cloud-forest canopy at dawn, a thin waterfall and stream far below, no frog visible."
+    },
+    {
+      "frame": 2,
+      "action": "The same wide, camera drifting slowly, thousands of leaves catching the low light, the scale of the forest emphasised."
+    },
+    {
+      "frame": 3,
+      "action": "Wide, a slow push toward one particular tree among many, its broad leaves overhanging the stream."
+    },
+    {
+      "frame": 4,
+      "action": "Medium-wide, closing on a single overhanging branch, one leaf standing out, a barely-perceptible pale shape on its underside."
+    },
+    {
+      "frame": 5,
+      "action": "Medium shot, the overhanging leaf clearly in frame, the glass frog just resolvable beneath it, all four legs gripping, both eyes closed."
+    },
+    {
+      "frame": 6,
+      "action": "Medium close-up settling on the frog under the leaf, tiny and still, the vast forest implied in the soft-focus background."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel shows the SAME glass frog with identical coloring, markings and proportions, as one continuous shot. Anatomy check: in every panel the glass frog has all four legs attached to its body and both eyes present and correctly placed \u2014 never a missing or detached limb, never a single-eyed frog."
+}

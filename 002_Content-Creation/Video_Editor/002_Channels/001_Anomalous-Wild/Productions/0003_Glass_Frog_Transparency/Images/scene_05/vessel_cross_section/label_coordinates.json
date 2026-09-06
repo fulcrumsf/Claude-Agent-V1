@@ -1,0 +1,16 @@
+{
+  "labels": [
+    {
+      "feature": "red_blood_cells",
+      "x_pct": 47.9,
+      "y_pct": 53.6,
+      "confidence": "high"
+    },
+    {
+      "feature": "vessel_wall",
+      "x_pct": 39.5,
+      "y_pct": 28.5,
+      "confidence": "high"
+    }
+  ]
+}

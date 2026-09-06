@@ -1,0 +1,10 @@
+{
+  "shot_id": "Shot-06",
+  "max_attempts": 3,
+  "events": [
+    {"event": "reserved", "attempt": 1, "reason": "Tony approved storyboard v5 and Seedance prompt v6"},
+    {"event": "candidate_generated", "attempt": 1, "path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Images/Shot-06-Storyboard-v5.png"},
+    {"event": "qa_recorded", "attempt": 1, "status": "pass", "review_mode": "human_approved"},
+    {"event": "selected", "attempt": 1, "reason": "Tony approved storyboard v5 for Seedance handoff"}
+  ]
+}

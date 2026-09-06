@@ -1,0 +1,588 @@
+1
+00:00:00,000 --> 00:00:08,720
+Here's the easy way to create Lawn AI video. In this tutorial, I'm showing you exactly how I generated this realistic 44-second Lawn Pightsy,
+
+2
+00:00:08,720 --> 00:00:14,720
+and how I made this 71-second Lawn Shortroom, and now show you how to extend them even more to be as long as you want.
+
+3
+00:00:14,720 --> 00:00:19,040
+This is by far the simplest and easiest method to generate Lawn AI videos.
+
+4
+00:00:19,040 --> 00:00:23,520
+The first step is to use AI to generate a storyboard just like this one.
+
+5
+00:00:23,520 --> 00:00:27,760
+It's going to divide our Lawn AI videos into these separate scenes.
+
+6
+00:00:27,760 --> 00:00:32,160
+The tool we're going to use for this is the newest GPT-2 Image Model.
+
+7
+00:00:32,160 --> 00:00:38,240
+What this tool is amazing at is reasoning and generating text, and that's going to come in really handy for us
+
+8
+00:00:38,240 --> 00:00:40,880
+when we're trying to generate these Lawn Storyboards.
+
+9
+00:00:40,880 --> 00:00:47,200
+To use GPT Image2, I'm inside Higgs Field AI, and you can find it on the homepage,
+
+10
+00:00:47,200 --> 00:00:52,720
+or we can go to the list of Image Generators, and find the new GPT Image2 model.
+
+11
+00:00:52,800 --> 00:00:58,960
+For the first example I'm creating, I'm going to generate a Lawn AI video based around these two photos
+
+12
+00:00:58,960 --> 00:01:04,960
+of the scientists in the hazmat suit and his robot companion who are exploring this toxic forest.
+
+13
+00:01:04,960 --> 00:01:10,800
+So we have the GPT Image2 model chosen, and what I'm going to do is upload those two
+
+14
+00:01:10,800 --> 00:01:14,880
+reference images of my characters. Let's put those inside here.
+
+15
+00:01:14,880 --> 00:01:19,040
+Next, I'm going to ask the GPT Image2 model to create a full storyboard for us.
+
+16
+00:01:19,040 --> 00:01:21,280
+The prompt can be super, super simple.
+
+17
+00:01:21,280 --> 00:01:25,760
+Just a one sentence description is going to be enough to create a full storyboard.
+
+18
+00:01:25,760 --> 00:01:32,960
+Now, you have some other options like choosing the quality, the resolution of the storyboard,
+
+19
+00:01:33,680 --> 00:01:38,480
+and also the aspect ratio. I'll recommend setting this to 16 to 9.
+
+20
+00:01:38,480 --> 00:01:41,040
+And then we just have to generate the AI storyboard.
+
+21
+00:01:41,040 --> 00:01:47,040
+This is the full built out story. It's got 12 complete shots in it that tell a full story,
+
+22
+00:01:47,040 --> 00:01:51,920
+and underneath each individual shot there's a small text description.
+
+23
+00:01:51,920 --> 00:01:55,920
+Those little text descriptions are going to be super useful later on because we're going to use
+
+24
+00:01:55,920 --> 00:02:00,800
+those as part of the prompts for our AI video generator. I didn't notice sometimes that when
+
+25
+00:02:00,800 --> 00:02:05,120
+you're generating a bunch of separate panels like this, there is some repetition.
+
+26
+00:02:05,120 --> 00:02:10,240
+So if you look at this image in panel three, which is the robot gesturing upwards,
+
+27
+00:02:10,240 --> 00:02:14,080
+it ends up being the same image as shown inside panel 11.
+
+28
+00:02:14,080 --> 00:02:18,240
+So we need to make a minor edit to the storyboard so we don't have this repetition.
+
+29
+00:02:18,240 --> 00:02:23,760
+So inside Hicksfield, what I'm going to do is hit reference, which is going to let me edit this
+
+30
+00:02:23,760 --> 00:02:30,480
+storyboard. And so there's that storyboard added on into our image references. Let's delete all the
+
+31
+00:02:30,480 --> 00:02:39,040
+otherwise. And also change the prompt. What we want to do is change panel 11 so that it's not a
+
+32
+00:02:39,120 --> 00:02:44,560
+repetition of panel three. And that's basically exactly what I'm going to tell the AI to do.
+
+33
+00:02:44,560 --> 00:02:49,840
+Just adjust shot 11 so it's not a repeat of shot number three. And looking at the result,
+
+34
+00:02:49,840 --> 00:02:54,720
+it's swapped shot 11 to one of the scientists inspecting some kind of a toolkit.
+
+35
+00:02:55,760 --> 00:03:01,920
+So now that we have the storyboard sequence, how do we leverage this and turn it into a lawn AI
+
+36
+00:03:01,920 --> 00:03:08,160
+video? We're going to use a AI video model called cdance 2.0. So if we have a storyboard
+
+37
+00:03:08,160 --> 00:03:14,880
+and what cdance can do for us is to animate all of these in a single video generation at the same
+
+38
+00:03:14,880 --> 00:03:20,160
+time to use the cdance video model. I'm going to look through the video models on Hicksfield and
+
+39
+00:03:20,160 --> 00:03:28,160
+the top one is cdance 2.0. So for this AI video model, the maximum duration of each video generation
+
+40
+00:03:28,160 --> 00:03:35,360
+happens to be 15 seconds. So then how do we create a super lawn AI video sequence of our entire
+
+41
+00:03:35,360 --> 00:03:43,520
+storyboard? Well, if we try to fit this entire storyboard all 12 shots into a single 15 second video,
+
+42
+00:03:43,520 --> 00:03:49,600
+there just isn't enough time inside those 15 seconds to animate this entire storyboard. So I'm
+
+43
+00:03:49,600 --> 00:03:56,560
+going to split the storyboard up and crop out each individual role. So this is the first row
+
+44
+00:03:56,560 --> 00:04:02,160
+I've cropped out where I'm just taking the first four shots of that storyboard. And what we're
+
+45
+00:04:02,160 --> 00:04:08,320
+going to do is animate these four shots inside the 15 second video sequence and it should be able
+
+46
+00:04:08,320 --> 00:04:14,560
+to produce a pretty good result for us. A quick technical point you will need to layer the crop
+
+47
+00:04:14,560 --> 00:04:20,960
+role on top of a 16 by 9 image. This is just to make sure that Hicksfield can actually use this
+
+48
+00:04:20,960 --> 00:04:26,000
+image as a reference. For the prompt that I'm going to use, what I'm going to rely on is the
+
+49
+00:04:26,000 --> 00:04:31,920
+pre-generated text descriptions that's already inside the storyboard. So what we're going to do is
+
+50
+00:04:31,920 --> 00:04:38,080
+tell it to generate a scene using the shots in the uploaded film storyboard. Then for each of the
+
+51
+00:04:38,080 --> 00:04:45,280
+shots inside this 15 second video generation, I'm going to give it a time frame of when I want
+
+52
+00:04:45,280 --> 00:04:50,400
+the shot to happen. For example, the first four seconds and then for the description of what happens
+
+53
+00:04:50,400 --> 00:04:57,280
+in the shot, I'm basically just going to copy the text description that's already described in
+
+54
+00:04:57,360 --> 00:05:02,800
+the storyboard. And I'm going to fill out the rest of the prompt using the same method.
+
+55
+00:05:02,800 --> 00:05:07,760
+You'll also want to add in this line at the bottom that says no music and no subtitles.
+
+56
+00:05:07,760 --> 00:05:12,320
+I found that that just makes it much easier later on when we're putting everything together.
+
+57
+00:05:12,320 --> 00:05:17,440
+Before we go and use this prompt though, there's an really important addition that we need to add
+
+58
+00:05:17,440 --> 00:05:25,680
+into this to preserve character consistency. So if we just used the prompt exactly written like this,
+
+59
+00:05:25,680 --> 00:05:31,760
+we'll get results like this, which does basically animate the scene as expected, except the robot
+
+60
+00:05:31,760 --> 00:05:37,040
+doesn't look quite the same. For starters, in this sequence, the robot's legs look super long
+
+61
+00:05:37,040 --> 00:05:42,320
+for some reason. He should be much shorter than that. And there's a lot of different variation
+
+62
+00:05:42,320 --> 00:05:47,440
+in the way that the character looks between different video generations. We need an additional
+
+63
+00:05:47,440 --> 00:05:52,160
+character reference sheet so that when we generate the Launei video sequence of them,
+
+64
+00:05:52,160 --> 00:05:56,800
+they actually stay consistent throughout the entire scene. To create a character reference sheet,
+
+65
+00:05:56,800 --> 00:06:03,120
+I'm still going to use the GPT image 2 model. And I'm going to upload the original shot of my robot
+
+66
+00:06:03,120 --> 00:06:08,160
+in the forest. And then in the prompt, I'm going to tell it to create a character reference sheet.
+
+67
+00:06:08,160 --> 00:06:12,560
+I'm going to put the prompt in the description so you can go and copy it. And the prompt is going to
+
+68
+00:06:12,560 --> 00:06:19,360
+give us this really useful character reference sheet to help us maintain consistency inside the videos.
+
+69
+00:06:19,360 --> 00:06:23,760
+Now that we have all of these different assets, we can start putting together our Launei video
+
+70
+00:06:23,760 --> 00:06:28,400
+sequence. So first off, I'm going to upload into Higgs field. The first four shots of our
+
+71
+00:06:28,400 --> 00:06:34,400
+store board, along with the character reference sheet of our robot. Let's drag that inside there.
+
+72
+00:06:34,400 --> 00:06:40,080
+And inside the prompt, we're going to write it exactly like I previously described. So first
+
+73
+00:06:40,080 --> 00:06:46,080
+telling it to generate a scene using the shots inside the uploaded film store board. And here,
+
+74
+00:06:46,080 --> 00:06:54,080
+I'm actually going to make a reference to the film storyboard uploaded image. So type at,
+
+75
+00:06:54,080 --> 00:06:59,840
+which lets me tag different references. And then I'm going to write out each of the individual
+
+76
+00:06:59,840 --> 00:07:06,720
+scenes, just basically copy in the text descriptions already in the store board. And then inside this
+
+77
+00:07:06,720 --> 00:07:12,720
+prompt, I'm also going to need to reference our character sheet for the robot as well. So that the
+
+78
+00:07:12,720 --> 00:07:18,000
+AI video knows exactly what the robot should look like. So here, I'll add an additional tag
+
+79
+00:07:19,040 --> 00:07:24,560
+next to the word robot for our character sheet. I'm actually also going to do this
+
+80
+00:07:25,440 --> 00:07:30,960
+in a few other places as well. And then in the settings, I'm just going to make sure that I'm using
+
+81
+00:07:30,960 --> 00:07:38,160
+the full 15 second video duration. Now let's generate the video and see what it looks like.
+
+82
+00:07:42,720 --> 00:07:59,360
+That actually looks like it animated five shots here instead of the four shots that are
+
+83
+00:07:59,360 --> 00:08:05,600
+prompted for. But that's not a bad problem to have. It still followed all the shots inside the
+
+84
+00:08:05,600 --> 00:08:12,240
+store board accurately. And the robot looks great. And then using the same exact method, I went ahead
+
+85
+00:08:12,240 --> 00:08:18,960
+and animated the rest of the store board. So here's the animation sequence for role number two
+
+86
+00:08:18,960 --> 00:08:26,720
+of the store board, which is shots five through eight. And here are the last four shots of the store board.
+
+87
+00:08:30,560 --> 00:08:36,640
+And now we have three separate 15 second video clips that are in sequence to each other,
+
+88
+00:08:36,640 --> 00:08:42,640
+which means that we can combine them together into a full 45 second AI video sequence. But it
+
+89
+00:08:42,640 --> 00:08:48,640
+doesn't stop here. We can actually extend our store board as many times as we want to. So looking
+
+90
+00:08:48,640 --> 00:08:54,080
+at the sequence of shots inside the store board, what if we wanted to extend this so that they
+
+91
+00:08:54,080 --> 00:09:00,560
+start exploring the forest even more. What we can do is actually use GPT image two to generate the
+
+92
+00:09:00,560 --> 00:09:07,760
+next 12 panels of the store board as well. So here's what we're going to do inside the GPT two image
+
+93
+00:09:07,760 --> 00:09:13,760
+generator. We're going to upload the original store board reference. So this is the first 12 shots
+
+94
+00:09:13,760 --> 00:09:19,360
+that we just animated. And then I'm just going to upload a character reference sheet for my scientist
+
+95
+00:09:19,360 --> 00:09:24,400
+and also the character reference sheet that I generated for the robot. Then inside the problem,
+
+96
+00:09:24,400 --> 00:09:29,520
+I'm going to ask it to simply generate the next 12 panels of the store board. And here's a prompt
+
+97
+00:09:29,520 --> 00:09:34,640
+I'm going to use generate the next page of the store board from image one, which continues the
+
+98
+00:09:34,640 --> 00:09:41,280
+story with 12 panels using the uploaded images. The robot reveals hitting knowledge of the forest,
+
+99
+00:09:41,280 --> 00:09:46,800
+guiding the scientists to a deeper, more dangerous core where the source of the toxic outbreak lies.
+
+100
+00:09:47,520 --> 00:09:53,840
+And this is the extended store board that GPT image two has created for us. And then I can use
+
+101
+00:09:53,920 --> 00:10:01,360
+the same exact technique of animating four separate shots at the same time to turn this store board
+
+102
+00:10:01,360 --> 00:10:10,880
+into three 15 second video generations as well. And if you do the math using the two store board
+
+103
+00:10:10,880 --> 00:10:17,360
+pages will end up with six 15 second video clips, which is a 90 second video sequence.
+
+104
+00:10:18,160 --> 00:10:22,320
+I found that some of the sequences that I generated were a little bit repetitive.
+
+105
+00:10:23,040 --> 00:10:29,600
+So I ended up trimming it down to a 71 second video instead. But you can use this method
+
+106
+00:10:29,600 --> 00:10:37,440
+and extend your videos for as long as you want. I'm going to put a link in the description for
+
+107
+00:10:37,440 --> 00:10:42,800
+Higgsio AI. If you want to go and generate your own long video sequences using GPT image two
+
+108
+00:10:42,800 --> 00:10:48,320
+and cdance 2.0. Now one of the challenges we're going to run into this especially when animating
+
+109
+00:10:48,400 --> 00:10:54,720
+more dynamic action-packed scenes. For example, this fight scene that I created is that because of
+
+110
+00:10:54,720 --> 00:11:00,640
+how much action there is, I found that if we animate each of the rows inside the store board
+
+111
+00:11:00,640 --> 00:11:07,600
+separately and by themselves, it's much harder to combine them together seamlessly. So let's see
+
+112
+00:11:07,600 --> 00:11:12,240
+how we can fix this problem. First off, for my fight scene, these are the characters
+
+113
+00:11:12,240 --> 00:11:18,240
+ending environment that I want them to be in and this is the store board and the prompt that I
+
+114
+00:11:18,240 --> 00:11:23,760
+used inside GPT image two to create this. Now when I go and animate each row separately of the
+
+115
+00:11:23,760 --> 00:11:29,520
+store board, each of the individual animations look really really good. So this is the first row
+
+116
+00:11:29,520 --> 00:11:38,400
+animated and keep an eye on what happens in the last scene. The bounty hunter suddenly ambushes
+
+117
+00:11:38,640 --> 00:11:44,560
+the female character and has her in this chokehold. Now when I go and animate the second row of the
+
+118
+00:11:44,560 --> 00:11:51,360
+store board, it starts off with the first frame of them already engaged inside a fight scene.
+
+119
+00:11:51,360 --> 00:11:57,120
+If we look at this individually, it's a really amazing looking AI video. However, if we try to combine
+
+120
+00:11:57,760 --> 00:12:03,920
+those two separate 15 second clips together, the transition is going to look a little weird. So
+
+121
+00:12:04,000 --> 00:12:10,400
+starting with the first video sequence and suddenly jumping into the second video sequence.
+
+122
+00:12:10,400 --> 00:12:14,880
+That transition right there, it doesn't really make sense to use in the chokehold and suddenly
+
+123
+00:12:14,880 --> 00:12:21,200
+is free and engaged in a fight scene. So then how do we get the transitions to be seamless
+
+124
+00:12:21,200 --> 00:12:27,360
+inside our lawn AI video? What we're going to need to do is give the AI some extra information
+
+125
+00:12:27,360 --> 00:12:32,400
+when generating each individual video clip. So first, I'm going to use this tool called
+
+126
+00:12:32,400 --> 00:12:37,920
+Video Frame Extractor and I'm going to save that last image frame of our video sequence.
+
+127
+00:12:37,920 --> 00:12:42,800
+Now when we go and generate the next four shots of our store board sequence,
+
+128
+00:12:42,800 --> 00:12:49,600
+actually tell the AI to use the screenshot I just saved as the first frame and generate those
+
+129
+00:12:49,600 --> 00:12:56,800
+next four shots starting from that initial screenshot. This is what it's going to look like inside.
+
+130
+00:12:56,800 --> 00:13:02,400
+Hixield first with all of our image references uploaded and then inside the prompt, I'm going to
+
+131
+00:13:02,400 --> 00:13:09,280
+tell it to generate a scene using the uploaded film store board fight sequence. Starting with this
+
+132
+00:13:09,280 --> 00:13:15,200
+image frame of the female character getting attacked and then the rest of the prompt is written
+
+133
+00:13:15,200 --> 00:13:22,160
+just like how it was done before basically describing what happens inside each store board sequence.
+
+134
+00:13:22,960 --> 00:13:29,120
+Now when we go and generate this scene, it should generate the next four shots starting with
+
+135
+00:13:29,120 --> 00:13:35,120
+the initial image frames and using this method, you can generate endless continuous shots for your AI
+
+136
+00:13:35,120 --> 00:13:41,600
+films. Here's a quick note about using Hixfield when you upload image references. What Hixfield is
+
+137
+00:13:41,600 --> 00:13:49,280
+going to do is check the eligibility of each image. This is to avoid any copyright issues.
+
+138
+00:13:49,920 --> 00:13:56,240
+Now if you're using like a celebrity or a scene from a movie or something, it's going to get denied,
+
+139
+00:13:56,880 --> 00:14:03,840
+but sometimes when you upload images of your own characters as well, it can also get denied. So
+
+140
+00:14:03,840 --> 00:14:09,520
+the first time that I tried to upload my reference sheet from my bounty hunter character,
+
+141
+00:14:09,520 --> 00:14:16,880
+it actually got determined as not eligible. But then when I tried again, the next time it was
+
+142
+00:14:17,440 --> 00:14:23,520
+determined as eligible to be used. So if you try to do this and you upload an image of yourself
+
+143
+00:14:23,520 --> 00:14:28,080
+for your characters and it gets denied, just try uploading that image reference a few different
+
+144
+00:14:28,080 --> 00:14:32,480
+times and eventually it might work. Let's take a look at what the full animated
+
+145
+00:14:32,480 --> 00:14:43,840
+side scene looks like so you can get an idea of what this method is capable of.
+
+146
+00:15:02,880 --> 00:15:28,640
+If you also want a complete breakdown of 10 practical tips to generate the most realistic possible
+
+147
+00:15:28,640 --> 00:15:47,200
+AI views, go watch this guide right here.
+

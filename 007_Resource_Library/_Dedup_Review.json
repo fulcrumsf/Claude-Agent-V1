@@ -1,0 +1,182 @@
+[
+  {
+    "original": {
+      "path": "Tutorials/VOX-Style-Documentary-Tutorial-Template.md",
+      "title": "VOX Style Documentary Tutorial Template",
+      "url": "https://drive.google.com/drive/folders/1b2AoxZLmU7WEy8Hc14w6JQ\\_n9TK1\\_WuP?usp=sharing",
+      "created": "2026-05-12"
+    },
+    "duplicates": [
+      {
+        "path": "Tutorials/Johnny-Harris-Tutorial-Template-Files.md",
+        "title": "Johnny Harris Tutorial Template Files",
+        "url": "https://drive.google.com/drive/folders/1pM-8RyDV10BwuaFSsu-d1upqnEOAXkss?usp=sharing",
+        "created": "2026-05-12",
+        "match": "body ~90%+ similar",
+        "confidence": "medium"
+      }
+    ]
+  },
+  {
+    "original": {
+      "path": "Tools/3dtuning.md",
+      "title": "3dtuning",
+      "url": "https://3dtuning.com/en-US",
+      "created": "2026-05-03"
+    },
+    "duplicates": [
+      {
+        "path": "Tools/AI-Tools.md",
+        "title": "AI Tools",
+        "url": "https://3dtuning.com/en-US",
+        "created": "2026-05-03",
+        "match": "shares URL https://3dtuning.com/en-US \u2014 but one side is a link-list/index note (likely NOT a dup)",
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "original": {
+      "path": "Tools/Affiliate-Academy-By-Voluum.md",
+      "title": "Affiliate Academy By Voluum",
+      "url": "https://voluum.com/academy",
+      "created": "2026-05-03"
+    },
+    "duplicates": [
+      {
+        "path": "Tools/Affiliate-Marketing.md",
+        "title": "Affiliate Marketing",
+        "url": "https://voluum.com/academy",
+        "created": "2026-05-03",
+        "match": "shares URL https://voluum.com/academy \u2014 but one side is a link-list/index note (likely NOT a dup)",
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "original": {
+      "path": "Tools/Buildwithai.md",
+      "title": "Buildwithai",
+      "url": "https://buildwithai.io/braindumper",
+      "created": "2026-05-03"
+    },
+    "duplicates": [
+      {
+        "path": "Tools/App-Building.md",
+        "title": "App Building",
+        "url": "https://buildwithai.io/braindumper",
+        "created": "2026-05-03",
+        "match": "shares URL https://buildwithai.io/braindumper \u2014 but one side is a link-list/index note (likely NOT a dup)",
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "original": {
+      "path": "Tools/Clip-Labs.md",
+      "title": "Clip Labs",
+      "url": "https://whop.com/clip-labs-bootcamp",
+      "created": "2026-05-03"
+    },
+    "duplicates": [
+      {
+        "path": "Tools/Youtube-And-Tiktok.md",
+        "title": "Youtube And Tiktok",
+        "url": "https://whop.com/clip-labs-bootcamp",
+        "created": "2026-05-03",
+        "match": "shares URL https://whop.com/clip-labs-bootcamp \u2014 but one side is a link-list/index note (likely NOT a dup)",
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "original": {
+      "path": "Tools/Faceless-Wealth-School.md",
+      "title": "Faceless Wealth School",
+      "url": "https://skool.com/facelesswealth/about",
+      "created": "2026-05-03"
+    },
+    "duplicates": [
+      {
+        "path": "Tools/Education.md",
+        "title": "Education",
+        "url": "https://skool.com/facelesswealth/about",
+        "created": "2026-05-03",
+        "match": "shares URL https://skool.com/facelesswealth/about \u2014 but one side is a link-list/index note (likely NOT a dup)",
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "original": {
+      "path": "Tools/Genfm-By-Elevenlabs.md",
+      "title": "Genfm By Elevenlabs",
+      "url": "https://elevenlabs.io/genfm",
+      "created": "2026-05-03"
+    },
+    "duplicates": [
+      {
+        "path": "Tools/Audiobooks-And-Podcast.md",
+        "title": "Audiobooks And Podcast",
+        "url": "https://elevenlabs.io/genfm",
+        "created": "2026-05-03",
+        "match": "shares URL https://elevenlabs.io/genfm \u2014 but one side is a link-list/index note (likely NOT a dup)",
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "original": {
+      "path": "Tools/Social-Army.md",
+      "title": "Social Army",
+      "url": "https://whop.com/discover/social-army",
+      "created": "2026-05-03"
+    },
+    "duplicates": [
+      {
+        "path": "Tools/Social-Media.md",
+        "title": "Social Media",
+        "url": "https://whop.com/discover/social-army",
+        "created": "2026-05-03",
+        "match": "shares URL https://whop.com/discover/social-army \u2014 but one side is a link-list/index note (likely NOT a dup)",
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "original": {
+      "path": "Tools/Substack.md",
+      "title": "Substack",
+      "url": "https://substack.com/home",
+      "created": "2026-05-03"
+    },
+    "duplicates": [
+      {
+        "path": "Tools/Newsletters.md",
+        "title": "Newsletters",
+        "url": "https://substack.com/home",
+        "created": "2026-05-03",
+        "match": "shares URL https://substack.com/home \u2014 but one side is a link-list/index note (likely NOT a dup)",
+        "confidence": "low"
+      }
+    ]
+  },
+  {
+    "original": {
+      "path": "Tutorials/Robonuggets-Faceless-Any-Subject-N8N-Automation.md",
+      "title": "Robonuggets Faceless Any Subject N8N Automation",
+      "url": "https://youtube.com/CIYv59aJIv8",
+      "created": "2026-05-03"
+    },
+    "duplicates": [
+      {
+        "path": "Tutorials/Shorts-Workflow.md",
+        "title": "Shorts Workflow",
+        "url": "https://youtube.com/CIYv59aJIv8",
+        "created": "2026-05-03",
+        "match": "shares URL https://youtube.com/CIYv59aJIv8 \u2014 but one side is a link-list/index note (likely NOT a dup)",
+        "confidence": "low"
+      }
+    ]
+  }
+]

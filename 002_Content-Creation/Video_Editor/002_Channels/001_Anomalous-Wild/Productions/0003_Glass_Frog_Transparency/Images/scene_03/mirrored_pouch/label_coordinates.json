@@ -1,0 +1,16 @@
+{
+  "labels": [
+    {
+      "feature": "mirrored_pouch",
+      "x_pct": 59.2,
+      "y_pct": 50.1,
+      "confidence": "high"
+    },
+    {
+      "feature": "guanine_crystal_surface",
+      "x_pct": 51.1,
+      "y_pct": 47.9,
+      "confidence": "high"
+    }
+  ]
+}

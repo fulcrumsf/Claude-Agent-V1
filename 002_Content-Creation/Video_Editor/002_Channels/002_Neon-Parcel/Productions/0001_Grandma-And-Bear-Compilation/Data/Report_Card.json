@@ -1,0 +1,14 @@
+{
+  "production": "0001_Grandma-And-Bear-Compilation",
+  "grade": "in_progress",
+  "reviews": [
+    {
+      "shot_id": "Shot-08",
+      "version": "v4",
+      "grade": "A",
+      "status": "raw_clip_approved",
+      "note": "Visible bear and Grandma origins plus an unobstructed route produced nearly physically correct motion; minor issues remain non-blocking."
+    }
+  ],
+  "autonomy_readiness": "manual_review_required"
+}

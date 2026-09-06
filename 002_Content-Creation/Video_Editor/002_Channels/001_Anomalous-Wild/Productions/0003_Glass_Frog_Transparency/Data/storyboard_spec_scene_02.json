@@ -1,0 +1,59 @@
+{
+  "scene_id": "Scene_02",
+  "scene_duration_s": 14.396,
+  "frame_count": 12,
+  "scene_description": "Setup scene: from above the glass frog looks like an ordinary green frog on a leaf above a cloud-forest stream; the frame flips to reveal its underside is almost completely transparent, then drifts as if passing through the translucent layer toward the organs beneath.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; backgrounds trend toward a dark #2B0B5A-to-#0B0F1A gradient feel outside of natural daylight/night forest scenes. National Geographic-quality lighting on real/photoreal shots; clean scientific-diagram aesthetic (no gore, no viscera) on any internal-anatomy render. Glitch-distortion cuts used only at anomaly-reveal/hook moments.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Wide overhead/God view, the glass frog perched on a broad leaf above the stream, opaque green dorsal camouflage blending into the foliage."
+    },
+    {
+      "frame": 2,
+      "action": "Medium wide, the same frog and leaf, camera beginning a slow orbit around the perch."
+    },
+    {
+      "frame": 3,
+      "action": "Medium shot, camera continuing the orbit, the frog's side profile visible against the leaf edge."
+    },
+    {
+      "frame": 4,
+      "action": "Hard cut, camera now positioned beneath the leaf looking up at the frog's ventral side, both eyes and all four limbs visible in silhouette."
+    },
+    {
+      "frame": 5,
+      "action": "Macro, the frog's translucent belly now dominant in frame, pale skin catching a soft backlight from below."
+    },
+    {
+      "frame": 6,
+      "action": "Extreme close-up, backlit ventral skin, the pale internal forms of the liver and lungs beginning to resolve."
+    },
+    {
+      "frame": 7,
+      "action": "Extreme close-up, split composition: opaque green dorsal skin texture on one side of frame, translucent pale ventral skin texture on the other."
+    },
+    {
+      "frame": 8,
+      "action": "Close-up, camera pulling back slightly to re-establish both eyes and the full head above the transparent chest."
+    },
+    {
+      "frame": 9,
+      "action": "POV shot, camera drifting slowly toward the translucent belly as if passing directly into the tissue itself."
+    },
+    {
+      "frame": 10,
+      "action": "Extreme macro POV, now inside the translucency, the beating heart filling most of the frame."
+    },
+    {
+      "frame": 11,
+      "action": "Extreme macro POV, drifting further past the heart, the coiled intestinal loops visible beyond it."
+    },
+    {
+      "frame": 12,
+      "action": "Wide bookend, camera pulls back out to a medium shot of the whole frog resting on the leaf, settling the sequence."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel must show the same subject with identical coloring, markings, and proportions, as if part of one continuous shot. Use clean composition and precise detail. The sequence should read as one continuous event from start to finish."
+}

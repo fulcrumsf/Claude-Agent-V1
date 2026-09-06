@@ -40,10 +40,42 @@ NARRATION_FILTER = "loudnorm=I=-14:TP=-1:LRA=7"
 
 # Stems in final mix: -20 LUFS → ~6 dB below narration
 STEMS_VOLUME_FULL = 0.85   # stems-only output (no narration competing)
-STEMS_VOLUME_MIX  = 0.40   # stems when narration is present
 
-# Music bed: -26 LUFS → ~12 dB below narration
-MUSIC_VOLUME = 0.12
+# Stems/music targets are hit with loudnorm (not a static volume multiplier) —
+# a fixed multiplier only lands on target for the loudness the constant was
+# originally calibrated against; different stem beds / Suno tracks measure at
+# very different raw LUFS, so a static gain silently drifts off the locked
+# target (confirmed drifting ~5-11dB off target on the 0003 production mix).
+# Lowered from -20 on 2026-09-04 (Tony, on the 0003 Glass Frog v2a ambience bed):
+# SFX/ambience should sit "a hair lower in volume than the soundtrack" (-22 music).
+# The video-to-audio bed (generate_stems_v2a.py) is denser than the old sparse
+# ElevenLabs stems, so it also gets a gentle duck under narration now.
+STEMS_FILTER = "loudnorm=I=-25:TP=-4:LRA=11"
+STEMS_SIDECHAIN_FILTER = "sidechaincompress=threshold=0.06:ratio=2:attack=350:release=700"
+
+# Music bed: -22 LUFS → ~8 dB below narration. Raised from -26 on 2026-09-03 after
+# Tony judged the score too quiet and the duck too strong on 0003 Glass Frog —
+# A/B confirmed by ear. See Global_Agent_Memory "Audio Mix Formula".
+MUSIC_FILTER = "loudnorm=I=-22:TP=-4:LRA=11"
+
+# Each layer above is individually peak-limited via loudnorm, but amix(normalize=0)
+# sums them without any ceiling on the combined signal — independently-safe streams
+# can still exceed 0 dBFS (and blow past -1 dBTP) once added together. Confirmed live
+# 2026-08-29: a real mix measured +0.1 dBTP after amix despite every input being
+# individually loudnorm'd under its own TP target. Fix: a brickwall limiter on the
+# mixed output. Target -1.8 dBTP (not -1.0) because alimiter operates in the sample
+# domain, not oversampled — plain sample-peak limiting to exactly -1 dBTP still left
+# measured true peak at -0.9 dBTP (inter-sample peaks slip through), so the extra
+# ~0.8dB of margin is deliberate, not arbitrary.
+FINAL_LIMITER = "alimiter=limit=0.8128:attack=5:release=50:level=disabled"
+
+# Sidechain duck: music ducks further under narration (locked mix formula,
+# see Global_Agent_Memory.md "Audio Mix Formula"). Softened on 2026-09-03 (Tony,
+# A/B by ear on 0003): threshold 0.015->0.045 (~-27 dBFS, so only sustained speech
+# triggers a full duck, not every breath/consonant), ratio 4->2.5 (~4-5 dB duck
+# instead of 10+), attack 150->300ms (eases in instead of clamping — kills the
+# "ducks in abruptly" feel), release 800->600ms (breathes back between sentences).
+SIDECHAIN_FILTER = "sidechaincompress=threshold=0.045:ratio=2.5:attack=300:release=600"
 
 # Video encode settings
 VIDEO_CRF    = 18
@@ -93,9 +125,10 @@ def render_stems_and_narration(raw_video, stems_mix, narration, output_path):
         "-i", str(narration),
         "-filter_complex",
         (
-            f"[1:a]volume={STEMS_VOLUME_MIX}[stems];"
+            f"[1:a]{STEMS_FILTER}[stems];"
             f"[2:a]{NARRATION_FILTER}[narr];"
-            f"[stems][narr]amix=inputs=2:normalize=0[mix]"
+            f"[stems][narr]amix=inputs=2:normalize=0[mixed];"
+            f"[mixed]{FINAL_LIMITER}[mix]"
         ),
         "-map", "0:v",
         "-map", "[mix]",
@@ -107,7 +140,8 @@ def render_stems_and_narration(raw_video, stems_mix, narration, output_path):
 
 
 def render_final(raw_video, stems_mix, narration, music, output_path):
-    """Output 3: raw video + stems (ducked) + narration (loudnorm) + music bed."""
+    """Output 3: raw video + stems (ducked) + narration (loudnorm) + music bed
+    (music additionally sidechain-ducked under narration)."""
     run_ffmpeg([
         "ffmpeg", "-y",
         "-i", str(raw_video),
@@ -116,10 +150,14 @@ def render_final(raw_video, stems_mix, narration, music, output_path):
         "-i", str(music),
         "-filter_complex",
         (
-            f"[1:a]volume={STEMS_VOLUME_MIX}[stems];"
+            f"[1:a]{STEMS_FILTER}[stems_pre];"
             f"[2:a]{NARRATION_FILTER}[narr];"
-            f"[3:a]volume={MUSIC_VOLUME}[music];"
-            f"[stems][narr][music]amix=inputs=3:normalize=0[mix]"
+            f"[narr]asplit=3[narr_out][narr_sc][narr_sc2];"
+            f"[stems_pre][narr_sc2]{STEMS_SIDECHAIN_FILTER}[stems];"
+            f"[3:a]{MUSIC_FILTER}[music_pre];"
+            f"[music_pre][narr_sc]{SIDECHAIN_FILTER}[music];"
+            f"[stems][narr_out][music]amix=inputs=3:normalize=0[mixed];"
+            f"[mixed]{FINAL_LIMITER}[mix]"
         ),
         "-map", "0:v",
         "-map", "[mix]",
@@ -174,8 +212,8 @@ def main():
 
     print(f"\nAudio levels:")
     print(f"  Narration : loudnorm -14 LUFS / -1 dBTP (YouTube standard)")
-    print(f"  Stems     : {STEMS_VOLUME_MIX:.0%} in mix ({STEMS_VOLUME_FULL:.0%} in stems-only output)")
-    print(f"  Music bed : {MUSIC_VOLUME:.0%} (heavily ducked under narration)\n")
+    print(f"  Stems     : {STEMS_FILTER} in mix ({STEMS_VOLUME_FULL:.0%} in stems-only output)")
+    print(f"  Music bed : {MUSIC_FILTER} + sidechain duck under narration\n")
 
     # Output 1: video + stems
     print("── Output 1: Raw video + stems ──")

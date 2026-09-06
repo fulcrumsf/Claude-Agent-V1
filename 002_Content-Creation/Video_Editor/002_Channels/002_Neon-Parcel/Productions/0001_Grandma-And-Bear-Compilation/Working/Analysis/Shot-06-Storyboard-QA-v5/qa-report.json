@@ -1,0 +1,10 @@
+{
+  "evaluated_at": "2026-09-02T00:00:00-04:00",
+  "candidate_image": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Images/Shot-06-Storyboard-v5.png",
+  "contract_path": "/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/shot_06_storyboard_spec_v5.json",
+  "status": "pass",
+  "review_mode": "human_approved",
+  "approval_by": "Tony",
+  "approval_basis": "Tony approved storyboard v5 and the schema-generated Seedance v6 prompt for raw video generation.",
+  "findings": []
+}

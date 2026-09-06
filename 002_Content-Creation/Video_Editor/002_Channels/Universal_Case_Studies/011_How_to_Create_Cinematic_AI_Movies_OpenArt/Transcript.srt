@@ -1,0 +1,416 @@
+1
+00:00:00,000 --> 00:00:12,080
+Be careful out there today. I'm not scared of sharks. It's something else. Stop freaking me out.
+
+2
+00:00:12,080 --> 00:00:33,200
+This is from a concept movie I made entirely inside OpenArts' new smart shot tool, which uses
+
+3
+00:00:33,200 --> 00:00:41,600
+GPT Image 2 and Sedance 2.0 to turn your ideas into cinematic movies. Today's video is sponsored by OpenArts.
+
+4
+00:00:41,760 --> 00:00:48,560
+The storyboards generated in GPT Image 2 lay out your characters, shots, camera moves,
+
+5
+00:00:48,560 --> 00:00:54,880
+and color palette. Then Sedance 2 takes that sheet and then generates a video that can be up to 15
+
+6
+00:00:54,880 --> 00:01:00,560
+seconds long. I'll show you how to use smart shot to go beyond just generating individual clips
+
+7
+00:01:00,560 --> 00:01:05,920
+to creating multiple clips that have consistent characters and environments that you can edit
+
+8
+00:01:05,920 --> 00:01:11,360
+together into short films. I'll show you some tips to save credits as you're generating.
+
+9
+00:01:11,360 --> 00:01:15,920
+For this first one, I'm really going to push the capabilities of this text rendering. So I'm
+
+10
+00:01:15,920 --> 00:01:21,040
+going to paste this story idea. I'm not going to use any characters or objects this time,
+
+11
+00:01:21,040 --> 00:01:26,960
+and I'm not going to use an environment. So there's sheet quality, low medium high, and there's
+
+12
+00:01:26,960 --> 00:01:33,040
+output quality with different resolutions. Let's just try the different sheets. Let's do this as
+
+13
+00:01:33,040 --> 00:01:40,080
+a low quality sheet and then do it as a medium quality sheet and then a high quality sheet.
+
+14
+00:01:40,080 --> 00:01:45,680
+So let's take a look at the low quality version first. On the billboard truck, the text is rendered
+
+15
+00:01:45,680 --> 00:01:51,760
+correctly. This light on college application looks good, the phone number looks good,
+
+16
+00:01:52,320 --> 00:01:57,440
+but you can see it's not perfect on all of them. So we've got our front facing, a side facing,
+
+17
+00:01:57,440 --> 00:02:03,440
+and a back view. There is the facial close-up, the profile, and I'm not sure why we need that.
+
+18
+00:02:03,440 --> 00:02:10,320
+I guess it's at the costume detail. So it has this plan. I'm not sure how closely this plan
+
+19
+00:02:10,320 --> 00:02:16,400
+actually ties to this storyboard, but as long as AI understands what it needs to do with this,
+
+20
+00:02:16,400 --> 00:02:21,360
+I guess that makes sense. Now that we've seen the low quality one, let's go to the medium quality.
+
+21
+00:02:21,360 --> 00:02:26,160
+The character looks a little bit better, in my opinion. Here's the diagram. I wonder if this one's
+
+22
+00:02:26,160 --> 00:02:31,040
+any better. So we've got much more legible text here. It says call disconnected. The number you've
+
+23
+00:02:31,040 --> 00:02:36,400
+dialed is not in service. I do like the fact that we can see it here. It's clear. It's slightly
+
+24
+00:02:36,400 --> 00:02:41,280
+out of focus here, but we still have the right numbers and everything is in the right place.
+
+25
+00:02:41,280 --> 00:02:46,000
+And then it's putting his picture on the billboard. So this billboard is not on the truck,
+
+26
+00:02:46,000 --> 00:02:51,280
+and that might be a problem with my prompt. Here is the high quality one. It's a better outfit,
+
+27
+00:02:51,360 --> 00:02:56,720
+maybe because that's almost the clothes I wear. So we're getting a lot more detail in this top
+
+28
+00:02:56,720 --> 00:03:02,160
+down view than we had in the original one. And it also knows that the billboard progresses here.
+
+29
+00:03:02,800 --> 00:03:07,680
+So it's really interesting. The last one we had that billboard that wasn't on the truck,
+
+30
+00:03:07,680 --> 00:03:12,640
+and here it knows to keep it on the truck. I was wondering about this. If it would be showing
+
+31
+00:03:12,640 --> 00:03:18,160
+everything on the phone, or if it would do these overlays, and I love that it does this message
+
+32
+00:03:18,160 --> 00:03:23,360
+overlay. So for the preview sheets, that's the difference between the low quality,
+
+33
+00:03:24,160 --> 00:03:32,000
+the medium quality, and the high quality. C-dance 2 is very strict about celebrity likenesses.
+
+34
+00:03:32,000 --> 00:03:40,240
+And GPT image 2 is leaning in on its training data, which is mostly famous people. So I did the
+
+35
+00:03:40,240 --> 00:03:45,760
+IP safety check, so I couldn't turn it into a video. So if you're just generating a video here,
+
+36
+00:03:45,760 --> 00:03:50,960
+I don't know if you really need to use this check IP safety, because it costs 20 credits,
+
+37
+00:03:50,960 --> 00:03:56,160
+and if your video doesn't go through, the credits are refunded anyway. Maybe someone has a reason
+
+38
+00:03:56,160 --> 00:04:01,280
+that they would use this, but for me, I would rather just, if I like the storyboard, I would just
+
+39
+00:04:01,280 --> 00:04:06,960
+generate it. I don't know if these count as a secret promptacks, but two things that I did that I
+
+40
+00:04:06,960 --> 00:04:14,080
+noticed worked was describing a character's face as unconventional, or unconventionally attractive.
+
+41
+00:04:14,080 --> 00:04:19,200
+And I feel like that forces the model to dig a little deeper. And the other thing I did was
+
+42
+00:04:19,200 --> 00:04:25,040
+just put an age in there, like, like 38-year-old woman. That might be because she's a 38-year-old
+
+43
+00:04:25,040 --> 00:04:30,400
+surfer, and there's not a lot of celebrities that match that. But my theory is that when you use
+
+44
+00:04:30,400 --> 00:04:36,800
+an age, I'm guessing that celebrities aren't tagged by age in the model. Just two things to try.
+
+45
+00:04:36,800 --> 00:04:42,320
+Unconventional, or unconventionally attractive, and give them an age. Here's the version of the
+
+46
+00:04:42,320 --> 00:05:02,880
+movie that passed the IP safety. There's a few things like the number is correct here,
+
+47
+00:05:03,760 --> 00:05:08,960
+but it's not correct there. And he lied on his coolage application. I tried to do this same
+
+48
+00:05:09,040 --> 00:05:16,080
+scene with a different cinematic style and using the medium resolution of 720. I actually like the
+
+49
+00:05:16,080 --> 00:05:22,000
+look of it a little bit more, but the text didn't come out quite right. So if you're doing a video
+
+50
+00:05:22,000 --> 00:05:28,480
+that has a lot of complicated text, I'd recommend using high resolution for both the preview sheet
+
+51
+00:05:28,480 --> 00:05:36,000
+and the video. Speaking of our 38-year-old surfer, I'm going to do a high quality sheet with a low
+
+52
+00:05:36,000 --> 00:05:41,360
+quality video, just to save some credits. And then I'm going to do a different high quality sheet
+
+53
+00:05:41,360 --> 00:05:47,200
+with a high quality video. So we can compare the two of those. First, let's just compare the sheets.
+
+54
+00:05:47,200 --> 00:05:52,720
+So we've got our full body profiles here, a front side and back. We've got a close-up of the face,
+
+55
+00:05:52,720 --> 00:05:58,880
+a profile. And then there's some details around the board and our color grade. We've got our
+
+56
+00:05:59,360 --> 00:06:08,800
+camera diagram here and then the storyboard.
+
+57
+00:06:17,760 --> 00:06:24,160
+So I've generated a new storyboard and I'm going to generate a high quality video from that one.
+
+58
+00:06:24,160 --> 00:06:28,800
+I like how this diagram shows. Here's where the submerged city is. Here's where the surfer
+
+59
+00:06:28,800 --> 00:06:34,000
+is. Here's where the cameras are. To answer my question from before, this is camera 4 looking
+
+60
+00:06:34,000 --> 00:06:40,320
+directly at her. If it's looking here, it's not going to see the city and in here cut 4, we see the
+
+61
+00:06:40,320 --> 00:06:46,080
+city. So I'm not sure how closely it's following this diagram, but it seems like maybe it's getting
+
+62
+00:06:46,080 --> 00:07:02,880
+some direction from it.
+
+63
+00:07:16,800 --> 00:07:23,040
+The nice thing about doing it in two steps, where you first generate the preview sheet and then
+
+64
+00:07:23,040 --> 00:07:28,160
+the video, is that you can double check the sheet to make sure everything looks good. So for instance,
+
+65
+00:07:28,160 --> 00:07:34,000
+I got lazy and just pasted it in a prompt and hit generate. And I didn't even look at the storyboard.
+
+66
+00:07:34,000 --> 00:07:38,800
+If I had, I might have noticed that the dead makes a terrible mistake here. The nice thing is it's
+
+67
+00:07:38,800 --> 00:07:44,880
+seedant. So there's no actual physical pain that you see. So this handoff of the knife is probably
+
+68
+00:07:44,880 --> 00:07:50,640
+something I could have caught in the preview sheet. Now even if you do check the preview sheets,
+
+69
+00:07:50,640 --> 00:07:56,960
+if you're doing something that's really complicated logically, like I'm having a robot hold one arm
+
+70
+00:07:56,960 --> 00:08:02,560
+with their other hand, that's really hard for AI to figure out. So let's look at that one really
+
+71
+00:08:02,560 --> 00:08:20,240
+quick. But before we do that, let's look at this one one more time.
+
+72
+00:08:20,640 --> 00:08:26,400
+I wanted to do a video where I uploaded some of my favorite characters. So I used a character reference
+
+73
+00:08:26,400 --> 00:08:32,000
+sheet of this Android. And then this guy who I used as a reference in my movie, Jettie tsunami.
+
+74
+00:08:32,000 --> 00:08:38,720
+So based on my prompt, it knew to change the outfit and it knew to change one arm holding the other
+
+75
+00:08:38,720 --> 00:08:44,320
+arm. But when I look at this storyboard, I can tell maybe this isn't going to work. What I decided to
+
+76
+00:08:44,320 --> 00:08:50,720
+do was just go into images and then generate an image of the character already in that outfit
+
+77
+00:08:50,720 --> 00:08:56,880
+and already with one arm holding the other arm that gives GPT image to less to figure out when
+
+78
+00:08:56,880 --> 00:09:03,280
+it creates this storyboard. This one looks a lot better. But let's see how well C-Dance 2
+
+79
+00:09:03,280 --> 00:09:10,880
+takes this storyboard from GPT image 2 and translates the confusing physical logic of what's
+
+80
+00:09:10,880 --> 00:09:31,520
+happening in this scene. So I had something very specific in mind. Let's say you saw this without
+
+81
+00:09:31,520 --> 00:09:37,280
+the prompt. You would just see this very compelling shot. You wouldn't be worried that the name made
+
+82
+00:09:37,280 --> 00:09:46,560
+no sense. You'd see that reaction and everything's very consistent in the clip itself. So even though
+
+83
+00:09:46,560 --> 00:09:52,480
+it doesn't match the storyboard that we got, everything is consistent within the video itself. So
+
+84
+00:09:52,480 --> 00:09:58,720
+there's a mistranslation between GPT image 2 and C-Dance 2 for scenes like this that might be a
+
+85
+00:09:58,720 --> 00:10:04,320
+little more logically complicated for the model to figure out what's happening. Let's go back to
+
+86
+00:10:04,400 --> 00:10:11,200
+our surfer. I have this really great scene and I want to turn it into a story. I can just show what
+
+87
+00:10:11,200 --> 00:10:18,400
+happened before and after this event. So I'm going to bring our Android back for this and I'm going
+
+88
+00:10:18,400 --> 00:10:25,680
+to use a consistent environment or location. So I went back to images to generate this mid-century
+
+89
+00:10:25,680 --> 00:10:32,800
+lini with this amazing view and now I can generate two different scenes to book end that surfing scene.
+
+90
+00:10:32,800 --> 00:10:37,440
+This isn't a complete movie. It feels like something you might see at the beginning of a movie.
+
+91
+00:10:38,320 --> 00:10:44,880
+Be careful out there today. I'm not scared of sharks. So that's the advantage of using this tool
+
+92
+00:10:44,880 --> 00:10:51,040
+is that you can create consistent characters in consistent environments and get these amazing
+
+93
+00:10:51,040 --> 00:10:57,120
+looking cinematic results. I'll also generate a little bit of music to tie those scenes together a
+
+94
+00:10:57,120 --> 00:11:05,840
+little bit more. And if you are looking to save credits by doing it at 480 instead of 1080,
+
+95
+00:11:05,840 --> 00:11:13,360
+you can always go in an upscale to 1080. So you're just upscaling the resolution of the 480 version.
+
+96
+00:11:13,360 --> 00:11:19,280
+The 1080 version has a lot more detail and a lot more going on with the physics and the lighting
+
+97
+00:11:19,280 --> 00:11:25,040
+and the realism of the characters. But C-Dance is a really expensive model. So if you're just playing
+
+98
+00:11:25,040 --> 00:11:30,640
+around, I recommend doing 480. If you need it to be 1080, you could upscale it. Thank you for
+
+99
+00:11:30,640 --> 00:11:36,080
+watching. I hope this was helpful. I hope seeing these experiments helped you save on some of your
+
+100
+00:11:36,080 --> 00:11:40,320
+own credits. Go make some cool storyboards and movies in open art.
+
+101
+00:11:44,880 --> 00:11:53,120
+Be careful out there today. I'm not scared of sharks. It's something else. Stop freaking me out.
+
+102
+00:11:55,920 --> 00:11:57,920
+You...
+
+103
+00:12:12,560 --> 00:12:16,400
+They want... who wants what?
+
+104
+00:12:16,400 --> 00:12:24,480
+The extraterrestrials living under our ocean want to speak with... you.
+

@@ -161,29 +161,54 @@ The script uses OpenRouter vision first (qwen model), then OpenAI vision as the 
 
 ## Step 2: Add YAML Frontmatter (Text Files Only)
 
-For `.md`, `.txt`, `.json`, `.csv`, and other text-readable files — add YAML frontmatter before moving:
+For `.md`, `.txt`, `.json`, `.csv`, and other text-readable files — add YAML frontmatter before moving.
+
+> **This is the ONE canonical frontmatter contract for the entire Resource Library.**
+> It applies to text-file notes AND image-derived notes (Step 4). Screenshot notes
+> written by `process_image_ingest.py` must conform to the exact same contract —
+> if the script's output diverges from this, the script is wrong, not this spec.
 
 ```yaml
 ---
 title: "Human-Readable Title"
 type: bookmark|api-doc|tool-doc|tutorial|model-doc|prompt|reference|case-study|script|workflow|project-idea|design-inspiration|personal|research|doc
 category: ai-agents|rag-systems|app-dev|content-strategy|architecture|video-production|ecommerce|general
+form: saas-tool|desktop-app|browser-extension|github-repo|open-source-project|api-service|youtube-video|tiktok|article|social-thread|prompt|workflow-diagram|channel-study|market-research|model-spec|design-reference|project-idea|dataset|paper|other
+summary: "1–3 sentences on the PRIMARY SUBJECT — what it is, what it does, why it was saved. Not the app chrome, not the nav bar."
+url: https://...        # REQUIRED whenever a source / product / repo URL is VISIBLE (obfuscated-but-reconstructable counts); omit if not shown
+search_for: "name or phrase"   # ONLY when url is unknown but the thing is nameable — the web-search string to resolve it later; pairs with a `needs-enrichment` tag
 tags:
-  - tag-one
-  - tag-two
-  - tag-three
+  - topical-tag-one
+  - topical-tag-two
 created: YYYY-MM-DD
 source: https://... or local
 ---
 ```
 
-### Tag Rules (non-negotiable)
-- Minimum 2 tags, maximum 5 tags.
-- All lowercase, kebab-case (dashes not spaces): `video-generation` not `Video Generation`
-- No camelCase, no PascalCase, no spaces, no quotes around tags
-- Use rich semantic tags (e.g., `ai-automation`, `agentic-ai`, `video-editing`) so flat folders can be easily filtered.
+### Frontmatter Rules (non-negotiable)
 
-**Skip this step for image files and binary files** — they get an Asset Note in Step 4 instead.
+**Schema — one way only:**
+- `tags:` (lowercase, YAML block list) is the **ONLY** tag carrier. Never `Tag:`, `Tags:`, `Tag :`, or a bare `Category:` list. If a legacy note being re-touched uses any of those, fix it to `tags:`.
+- `category:` is a **single** domain value from the list above — never a list, never a stand-in for tags.
+- `type:` is **required**, single value, from the Step 1 table. Image notes map to a real type (`tool-doc`, `tutorial`, `research`, …) — **never `extracted-knowledge`**.
+- `form:` is **required**, single value — this is the "what IS this thing" label (a GitHub repo? a SaaS product? a TikTok tip? a YouTube tutorial?). It is what makes fuzzy queries like "find tutorials about Seedance storyboards" resolvable.
+- `summary:` is **required** as a frontmatter field (not only in the body) — so it is machine-readable for graph/dataview.
+
+**GitHub / repo capture:**
+- If the item is or references a GitHub repo, set `form: github-repo` and include `github-repo` as the first tag. Put the repo URL in `url:` **only if it is shown**; otherwise leave `url:` empty and set `search_for: "<repo-name> github repo"`.
+- Any visible product/source URL always goes in `url:`.
+
+**Never fabricate (hard rule):**
+- Only record what is **visible** in the image or reconstructable from visible text (obfuscated links like `foo [.gallery]` → `foo.gallery` are fine to reconstruct).
+- **Never synthesize a plausible-looking URL that is not in the frame.** A confident wrong URL is worse than none. Use `search_for:` + `needs-enrichment` tag instead.
+- **Never state what an unshown tool/repo/site does.** If the purpose isn't visible, say "purpose not shown" in the summary — don't invent capabilities.
+
+**Tags:**
+- 2–5 tags, all lowercase kebab-case (`video-generation`, not `Video Generation` or `videoGeneration`). No spaces, no quotes, no PascalCase/camelCase.
+- Tags are **topical** (`seedance`, `storyboarding`, `image-to-video`) — the artifact kind lives in `form:`, not in tags (except the `github-repo` mirror above).
+- Rich and specific so flat folders filter well.
+
+**Skip this step for image files and binary files** — they get a note in Step 4 instead, but that note follows this same contract.
 
 ---
 
@@ -267,6 +292,32 @@ Obsidian has a native PDF viewer. PDFs routed to `007_Resource_Library/Docs/` ar
 ### Images
 
 Images no longer use generic "Asset Notes." They are processed automatically by the `process_image_ingest.py` script in Step 1.5, which creates rich semantic markdown notes and leaves the image in `Visual_Assets/`. If you are processing an image, you should have already skipped this step.
+
+**The generated note MUST follow the canonical frontmatter contract from Step 2** — real `type:`, required `form:`, required `summary:`, `url:` when a URL is visible, `tags:` block list only. Shape:
+
+```markdown
+---
+title: "Human Readable Title"
+type: tool-doc            # a real type, NOT extracted-knowledge
+category: video-production
+form: github-repo         # what the screenshot actually shows
+summary: "OKO is an open-source 3D Gaussian-splat editor; saved as a possible asset-prep tool."
+url: https://github.com/oko-editor/oko
+tags:
+  - github-repo
+  - gaussian-splatting
+  - 3d-tools
+original_filename: "IMG_4821.PNG"
+created: YYYY-MM-DD
+---
+
+![[Title-Case-With-Dashes.webp]]
+
+## Summary
+Same text as the `summary:` field, room to expand.
+```
+
+If a batch of screenshot notes on disk predate this contract (`type: extracted-knowledge`, no `form:`, `Tag:`/`Category:` lists), that is a known backlog — flag the count to Tony, don't silently mass-rewrite unless asked.
 
 ### Media Notes
 

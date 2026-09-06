@@ -1,0 +1,53 @@
+{
+  "shot_id": "Shot-03",
+  "version": "v2-storyboard-direction-test",
+  "model": "bytedance/seedance-2-mini",
+  "generation_resolution": "480p",
+  "duration_seconds": 10,
+  "aspect_ratio": "16:9",
+  "reference_assets": [
+    "Images/Shot-03-Storyboard-v1.png"
+  ],
+  "postprocess": {
+    "topaz": "pending",
+    "ffmpeg_normalization": "pending"
+  },
+  "prompt_sections": {
+    "camera_lock": "The attached storyboard is a visual continuity reference only. Preserve the viewpoint of a passenger holding a smartphone inside a moving city bus, looking sideways through the bus's right-side window. Keep the bus window frame, yellow pole, slight glass reflections, muted snowy daylight, ordinary phone exposure, and imperfect handheld movement. The camera remains inside the bus and never changes to an exterior viewpoint or polished cinematic tracking camera.",
+    "scene_continuity": "Maintain one continuous passing event on one snowy city street. The bus is traveling forward in its own lane. The convertible is in the opposing lane, facing the opposite direction from the bus. Keep exactly one weathered burgundy convertible, one older Russian woman driving it, and one large polar bear seated in the passenger seat. The driver and bear remain inside that same single car. Keep the same apartment buildings, snow, road, bus window, and passenger viewpoint.",
+    "action_timeline": [
+      "The passenger films the snowy street through the bus window while the bus continues forward.",
+      "The front of the one burgundy convertible enters from the left edge of the phone's view, traveling continuously from left to right in the opposing lane.",
+      "The same car passes across the window from left to right. Its front always leads the movement and its rear follows; it never changes direction or turns around.",
+      "As the car passes the center of the view, the older woman remains driving and the same polar bear remains seated in the passenger seat.",
+      "The rear of that same convertible exits through the right edge of the frame. Hold briefly on the empty snowy street after it has completely left."
+    ],
+    "audio": {
+      "ambient": [
+        "quiet bus interior",
+        "soft bus engine and road noise",
+        "muted winter street ambience"
+      ],
+      "foley": [
+        "subtle window vibration",
+        "natural handheld phone movement",
+        "passing vehicle road noise"
+      ],
+      "in_scene_dialogue": [],
+      "music": "none"
+    },
+    "hard_constraints": [
+      "Use the storyboard only for visual continuity; do not reproduce its grid, panels, captions, numbers, or descriptions.",
+      "The bus and convertible occupy opposing lanes and travel in opposite physical directions.",
+      "The convertible enters from the left edge and exits through the right edge; this direction is continuous for the entire pass.",
+      "Do not reverse, flip, rotate, turn around, change lanes, loop, reset, or morph the convertible.",
+      "There is exactly one car, one driver, and one polar bear; do not introduce a second vehicle or duplicate subjects.",
+      "The driver and bear remain in the same convertible until it exits; no subject disappears or changes identity.",
+      "Do not change to an exterior camera, commercial lighting, cinematic tracking shot, or polished professional camera.",
+      "No subtitles, captions, title cards, labels, watermarks, emojis, or graphics."
+    ]
+  },
+  "prompt": "CAMERA LOCK: The attached storyboard is a visual continuity reference only. Preserve the viewpoint of a passenger holding a smartphone inside a moving city bus, looking sideways through the bus's right-side window. Keep the bus window frame, yellow pole, slight glass reflections, muted snowy daylight, ordinary phone exposure, and imperfect handheld movement. The camera remains inside the bus and never changes to an exterior viewpoint or polished cinematic tracking camera.\n\nSCENE CONTINUITY: Maintain one continuous passing event on one snowy city street. The bus is traveling forward in its own lane. The convertible is in the opposing lane, facing the opposite direction from the bus. Keep exactly one weathered burgundy convertible, one older Russian woman driving it, and one large polar bear seated in the passenger seat. The driver and bear remain inside that same single car. Keep the same apartment buildings, snow, road, bus window, and passenger viewpoint.\n\nACTION TIMELINE: The passenger films the snowy street through the bus window while the bus continues forward. The front of the one burgundy convertible enters from the left edge of the phone's view, traveling continuously from left to right in the opposing lane. The same car passes across the window from left to right. Its front always leads the movement and its rear follows; it never changes direction or turns around. As the car passes the center of the view, the older woman remains driving and the same polar bear remains seated in the passenger seat. The rear of that same convertible exits through the right edge of the frame. Hold briefly on the empty snowy street after it has completely left.\n\nAUDIO: Natural audio only: quiet bus interior, soft bus engine and road noise, muted winter street ambience, subtle window vibration, natural handheld phone movement, and passing vehicle road noise. No dialogue and no music.\n\nHARD CONSTRAINTS: Use the storyboard only for visual continuity; do not reproduce its grid, panels, captions, numbers, or descriptions. The bus and convertible occupy opposing lanes and travel in opposite physical directions. The convertible enters from the left edge and exits through the right edge; this direction is continuous for the entire pass. Do not reverse, flip, rotate, turn around, change lanes, loop, reset, or morph the convertible. There is exactly one car, one driver, and one polar bear; do not introduce a second vehicle or duplicate subjects. The driver and bear remain in the same convertible until it exits; no subject disappears or changes identity. Do not change to an exterior camera, commercial lighting, cinematic tracking shot, or polished professional camera. No subtitles, captions, title cards, labels, watermarks, emojis, or graphics.",
+  "task_id": "fa66eb2e4763ed7381e3e715280a34da",
+  "reference_url": "https://res.cloudinary.com/da6zdvts2/image/upload/v1787944272/neon-parcel/0001/Shot-03-Storyboard-v1-reference-direction-test-v2.png"
+}

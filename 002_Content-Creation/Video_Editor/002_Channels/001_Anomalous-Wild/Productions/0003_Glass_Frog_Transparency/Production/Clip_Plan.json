@@ -1,0 +1,217 @@
+{
+  "note_on_timing": "Script.md's per-visual second-marks were drafted before real TTS narration existed and do not sum to the real beat_sheet.json durations for every scene (e.g. scene_02's visuals sum to a drafted 24s but the real narration is 14.396s; scene_04 drafted 30s vs real 35.526s; scene_06 drafted 40s vs real 50.434s). Per the instruction to use real durations from beat_sheet.json, clip boundaries below use each scene's REAL duration, with the script's visual list proportionally compressed/expanded to fit -- concept order and relative emphasis preserved, literal second-counts are not. Flagged as a judgment call for human review.",
+  "clips": [
+    {
+      "scene": "scene_01",
+      "letter": "01A",
+      "start_s": 0.0,
+      "end_s": 3.855,
+      "generated": true,
+      "content": "Full scene: canopy push-in to backlit heart",
+      "character_sheet": true,
+      "environment_sheet": false,
+      "target_duration_s": 3.855,
+      "generation_duration_s": 4,
+      "trim_after_generation": true
+    },
+    {
+      "scene": "scene_02",
+      "letter": "02A",
+      "start_s": 0.0,
+      "end_s": 7.2,
+      "generated": true,
+      "content": "Wide dorsal establishing -> hard-cut ventral reveal -> organs beginning to resolve",
+      "character_sheet": true,
+      "environment_sheet": true,
+      "target_duration_s": 7.2,
+      "generation_duration_s": 7.2
+    },
+    {
+      "scene": "scene_02",
+      "letter": "02B",
+      "start_s": 7.2,
+      "end_s": 14.396,
+      "generated": true,
+      "content": "Texture comparison -> head re-establish -> POV drift through tissue -> wide bookend",
+      "character_sheet": true,
+      "environment_sheet": true,
+      "target_duration_s": 7.196,
+      "generation_duration_s": 7.196
+    },
+    {
+      "scene": "scene_04",
+      "letter": "04A",
+      "start_s": 0.0,
+      "end_s": 5.9,
+      "generated": false,
+      "content": "Animated range map (Remotion data-graphic, not an image-gen clip)"
+    },
+    {
+      "scene": "scene_04",
+      "letter": "04B",
+      "start_s": 5.9,
+      "end_s": 11.8,
+      "generated": true,
+      "content": "Wide overhead cloud-forest canopy over stream, mist",
+      "character_sheet": false,
+      "environment_sheet": true,
+      "target_duration_s": 5.9,
+      "generation_duration_s": 5.9
+    },
+    {
+      "scene": "scene_04",
+      "letter": "04C",
+      "start_s": 11.8,
+      "end_s": 17.7,
+      "generated": true,
+      "content": "Nocturnal ambush hunting: alert posture -> tongue-flick strike -> insect caught (B-roll rejected, see Asset_Plan.json)",
+      "character_sheet": true,
+      "environment_sheet": false,
+      "target_duration_s": 5.9,
+      "generation_duration_s": 5.9
+    },
+    {
+      "scene": "scene_04",
+      "letter": "04D",
+      "start_s": 17.7,
+      "end_s": 23.6,
+      "generated": true,
+      "content": "Frog motionless on leaf underside, daylight, medium to macro push",
+      "character_sheet": true,
+      "environment_sheet": false,
+      "target_duration_s": 5.9,
+      "generation_duration_s": 5.9
+    },
+    {
+      "scene": "scene_04",
+      "letter": "04E",
+      "start_s": 23.6,
+      "end_s": 31.0,
+      "generated": true,
+      "content": "Wide from below/side pressed flat -> extreme close-up, edges disappearing into leaf",
+      "character_sheet": true,
+      "environment_sheet": false,
+      "target_duration_s": 7.4,
+      "generation_duration_s": 7.4
+    },
+    {
+      "scene": "scene_04",
+      "letter": "04F",
+      "start_s": 31.0,
+      "end_s": 35.526,
+      "generated": true,
+      "content": "Zoom out: medium wide -> full wide hold, frog imperceptible in canopy",
+      "character_sheet": true,
+      "environment_sheet": true,
+      "target_duration_s": 4.526,
+      "generation_duration_s": 4.526
+    },
+    {
+      "scene": "scene_06",
+      "letter": "06A",
+      "start_s": 0.0,
+      "end_s": 6.3,
+      "generated": true,
+      "content": "Wide cinematic, frog on leaf, camera pulling back",
+      "character_sheet": true,
+      "environment_sheet": true,
+      "target_duration_s": 6.3,
+      "generation_duration_s": 6.3
+    },
+    {
+      "scene": "scene_06",
+      "letter": "06B",
+      "start_s": 6.3,
+      "end_s": 12.6,
+      "generated": false,
+      "content": "Human circulatory infographic (Scientific Diagram sub-pipeline, Phase 6B)"
+    },
+    {
+      "scene": "scene_06",
+      "letter": "06C",
+      "start_s": 12.6,
+      "end_s": 17.6,
+      "generated": false,
+      "content": "Lab/photoacoustic imaging insert (Phase 6B / diagram-adjacent, non-frog)"
+    },
+    {
+      "scene": "scene_06",
+      "letter": "06D",
+      "start_s": 17.6,
+      "end_s": 23.9,
+      "generated": true,
+      "content": "Return to frog, calm and sleeping, medium shot",
+      "character_sheet": true,
+      "environment_sheet": false,
+      "target_duration_s": 6.3,
+      "generation_duration_s": 6.3
+    },
+    {
+      "scene": "scene_06",
+      "letter": "06E",
+      "start_s": 23.9,
+      "end_s": 31.9,
+      "generated": true,
+      "content": "Slow push-in on transparent belly -> extreme macro on the beating heart",
+      "character_sheet": true,
+      "environment_sheet": false,
+      "note": "Real scaled span (~8s) is at the upper edge of the ~8s guideline for one continuous push-in -- kept as a single clip since it's one uninterrupted camera move, not a subject/location change.",
+      "target_duration_s": 8.0,
+      "generation_duration_s": 8.0
+    },
+    {
+      "scene": "scene_06",
+      "letter": "06F",
+      "start_s": 31.9,
+      "end_s": 39.5,
+      "generated": true,
+      "content": "Overhead pull-back from leaf into canopy, night into day",
+      "character_sheet": true,
+      "environment_sheet": true,
+      "target_duration_s": 7.6,
+      "generation_duration_s": 7.6
+    },
+    {
+      "scene": "scene_06",
+      "letter": "06G",
+      "start_s": 39.5,
+      "end_s": 45.5,
+      "generated": true,
+      "content": "Overhead pull-back continuing: extreme wide of whole scene, frog beginning to fade against leaf glow",
+      "character_sheet": true,
+      "environment_sheet": true,
+      "note": "Split from original over-length 06G (was 10.93s, exceeded the 8.0s live-footage cap). Chained to 06H via last-frame-passing (Seedance-Prompting-Guide technique) \u2014 this clip's end frame is 06H's start frame.",
+      "target_duration_s": 6.0,
+      "generation_duration_s": 6.0
+    },
+    {
+      "scene": "scene_06",
+      "letter": "06H",
+      "start_s": 45.5,
+      "end_s": 50.434,
+      "generated": true,
+      "content": "Final wide hold, frog vanishing into leaf glow",
+      "character_sheet": true,
+      "environment_sheet": true,
+      "note": "Second half of the 06G split, chained via last-frame-passing from 06G's end frame.",
+      "target_duration_s": 4.934,
+      "generation_duration_s": 4.934
+    },
+    {
+      "scene": "scene_07",
+      "letter": "07A",
+      "start_s": 0.0,
+      "end_s": 4.737,
+      "generated": true,
+      "content": "Unnamed future-creature teaser flash (no character-sheet grounding, deliberately unidentifiable)",
+      "character_sheet": false,
+      "environment_sheet": false,
+      "target_duration_s": 4.737,
+      "generation_duration_s": 4.737
+    }
+  ],
+  "deferred_to_phase6": [
+    "scene_03 (entire diagram-pipeline scope, plus the species-comparison montage generated directly from reference photos)",
+    "scene_05 (entire diagram-pipeline scope, plus whole-frog panels 1/5/6/9 which are flagged in Asset_Plan.json but not clip-boundaried here per this task's explicit scope)"
+  ]
+}

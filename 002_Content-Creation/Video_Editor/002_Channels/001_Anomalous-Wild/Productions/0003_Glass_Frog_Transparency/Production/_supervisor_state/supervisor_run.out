@@ -1,0 +1,94 @@
+[22:38:55] ========================================================
+[22:38:55] PRODUCTION SUPERVISOR — 0003_Glass_Frog_Transparency
+[22:38:55] ========================================================
+[22:38:55] ── THREE-LAYER AUDIO CHECK ──────────────────────────────────
+[22:38:55]   ⚠ Layer 1 MISSING: beat_sheet.json not found.
+    Run: python3 tools/audio_tts.py <script.md> <audio_dir>
+[22:38:55]   ⚠ Layer 2 MISSING: No score files in score/ folder.
+    Generate a full-length instrumental via Suno and save to score/
+[22:38:55]   ⚠ Layer 3 MISSING: No sfx files in sfx/ folder.
+    Kling clips with sound:true will populate this layer
+[22:38:55] ─────────────────────────────────────────────────────────────
+[22:38:55] Processing 15 video clips (0 images already handled)...
+[22:38:55]   ✓ Scene_01A — already looped, skipping
+[22:38:55]   ✓ Scene_07A — already looped, skipping
+[22:38:55]   ✓ Scene_02A — already looped, skipping
+[22:38:55]   ✓ Scene_02B — already looped, skipping
+[22:38:55]   ✓ Scene_04B — already looped, skipping
+[22:38:55]   ✓ Scene_04C — already looped, skipping
+[22:38:55]   ✓ Scene_04D — already looped, skipping
+[22:38:55]   ✓ Scene_04E — already looped, skipping
+[22:38:55]   ✓ Scene_04F — already looped, skipping
+[22:38:55]   → Scene_06A [medium] attempt 1/4 (bytedance/seedance-1.5-pro)
+[22:38:55]   Seedance task: 6bb4f4e6bda61f3322f49f8eaaba20d3
+[22:39:06]   [6bb4f4e6bda61f3322f4] 10s — state=waiting
+[22:39:21]   [6bb4f4e6bda61f3322f4] 25s — state=waiting
+[22:39:41]   [6bb4f4e6bda61f3322f4] 45s — state=waiting
+[22:40:06]   [6bb4f4e6bda61f3322f4] 70s — state=waiting
+[22:40:36]   [6bb4f4e6bda61f3322f4] 100s — state=waiting
+[22:41:07]   Downloading Scene_06A...
+[22:41:08]   ✓ Scene_06A downloaded (16.6 MB)
+[22:41:08]   → Scene_06A prelooping...
+[22:41:10]   ✓ Scene_06A looped (9.0 MB)
+[22:41:15]   → Scene_06D [medium] attempt 1/4 (bytedance/seedance-1.5-pro)
+[22:41:15]   Seedance task: 01ee1e2dca00ee878801301648df03f9
+[22:41:25]   [01ee1e2dca00ee878801] 10s — state=waiting
+[22:41:41]   [01ee1e2dca00ee878801] 25s — state=waiting
+[22:42:01]   [01ee1e2dca00ee878801] 45s — state=waiting
+[22:42:26]   [01ee1e2dca00ee878801] 70s — state=waiting
+[22:42:56]   Downloading Scene_06D...
+[22:42:58]   ✓ Scene_06D downloaded (15.2 MB)
+[22:42:58]   → Scene_06D prelooping...
+[22:42:59]   ✓ Scene_06D looped (6.6 MB)
+[22:43:04]   → Scene_06E [medium] attempt 1/4 (bytedance/seedance-1.5-pro)
+[22:43:04]   Seedance task: 04a6cf8b38ec40909a61bd5a05c44b0f
+[22:43:14]   [04a6cf8b38ec40909a61] 10s — state=waiting
+[22:43:30]   [04a6cf8b38ec40909a61] 25s — state=waiting
+[22:43:50]   [04a6cf8b38ec40909a61] 45s — state=waiting
+[22:44:15]   [04a6cf8b38ec40909a61] 70s — state=waiting
+[22:44:45]   [04a6cf8b38ec40909a61] 101s — state=waiting
+[22:45:15]   [04a6cf8b38ec40909a61] 131s — state=waiting
+[22:45:46]   Downloading Scene_06E...
+[22:45:48]   ✓ Scene_06E downloaded (20.7 MB)
+[22:45:48]   → Scene_06E prelooping...
+[22:45:50]   ✓ Scene_06E looped (11.1 MB)
+[22:45:55]   → Scene_06F [medium] attempt 1/4 (bytedance/seedance-1.5-pro)
+[22:45:55]   Seedance task: 48a8e29fd05487f9c60faaefd763ebdb
+[22:46:06]   [48a8e29fd05487f9c60f] 10s — state=waiting
+[22:46:21]   [48a8e29fd05487f9c60f] 25s — state=waiting
+[22:46:41]   [48a8e29fd05487f9c60f] 45s — state=waiting
+[22:47:06]   [48a8e29fd05487f9c60f] 70s — state=waiting
+[22:47:37]   [48a8e29fd05487f9c60f] 101s — state=waiting
+[22:48:07]   [48a8e29fd05487f9c60f] 131s — state=waiting
+[22:48:37]   Downloading Scene_06F...
+[22:48:43]   ✓ Scene_06F downloaded (24.1 MB)
+[22:48:43]   → Scene_06F prelooping...
+[22:48:44]   ✓ Scene_06F looped (13.9 MB)
+[22:48:49]   → Scene_06G [medium] attempt 1/4 (bytedance/seedance-1.5-pro)
+[22:48:49]   Seedance task: 2a14f7f7b746abb399e6db4e8fd549ec
+[22:49:00]   [2a14f7f7b746abb399e6] 10s — state=waiting
+[22:49:15]   [2a14f7f7b746abb399e6] 25s — state=waiting
+[22:49:36]   [2a14f7f7b746abb399e6] 46s — state=waiting
+[22:50:01]   [2a14f7f7b746abb399e6] 71s — state=waiting
+[22:50:31]   [2a14f7f7b746abb399e6] 101s — state=waiting
+[22:51:01]   [2a14f7f7b746abb399e6] 131s — state=waiting
+[22:51:31]   Downloading Scene_06G...
+[22:51:34]   ✓ Scene_06G downloaded (25.7 MB)
+[22:51:34]   → Scene_06G prelooping...
+[22:51:35]   ✓ Scene_06G looped (12.7 MB)
+[22:51:40]   → Scene_06H [medium] attempt 1/4 (bytedance/seedance-1.5-pro)
+[22:51:41]   Seedance task: afc40dbf22e4cac441556d63be9a3216
+[22:51:51]   [afc40dbf22e4cac44155] 10s — state=waiting
+[22:52:06]   [afc40dbf22e4cac44155] 25s — state=waiting
+[22:52:27]   [afc40dbf22e4cac44155] 45s — state=waiting
+[22:52:52]   [afc40dbf22e4cac44155] 71s — state=waiting
+[22:53:22]   Downloading Scene_06H...
+[22:53:24]   ✓ Scene_06H downloaded (17.5 MB)
+[22:53:24]   → Scene_06H prelooping...
+[22:53:25]   ✓ Scene_06H looped (9.2 MB)
+[22:53:30] Prelooping original clips...
+[22:53:30]   preloop_videos.sh warning: /opt/homebrew/bin/bash: tools/preloop_videos.sh: No such file or directory
+
+[22:53:30] ========================================================
+[22:53:30] DONE. 15/15 clips looped. 0 permanent failures.
+[22:53:31] Supervisor complete.

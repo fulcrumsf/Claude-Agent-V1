@@ -82,6 +82,36 @@ Sources: [OpenAI Cookbook prompting guide](https://developers.openai.com/cookboo
 
 **Scaling the storyboard to the scene, not to a fixed panel count:** a scene's storyboard should have however many panels match that scene's actual shot count — 1, 2, or 3 panels (wide / medium / close-up / reverse-angle) for a short scene, not a fixed grid size. The 3×3/8-panel grid technique above is for storyboarding an entire multi-shot sequence in one image; a single scene within a larger production typically needs far fewer panels.
 
+## Optional workflow additions — use only when the task calls for them
+
+These techniques came from the reviewed GPT Image 2 workflows. They are **extras**, not mandatory stages. The agent should select them based on the job's risk, complexity, and iteration needs rather than applying the entire list by default.
+
+### 1. Short idea → expanded production prompt
+
+When the user provides only a brief concept and the image will become a production reference, first expand the idea into a structured prompt using the normal order: scene/background → subject → key details → constraints. Preserve the user's concept and do not invent story beats that change its intent. For a simple image or a tightly specified edit, skip expansion and use the user's instructions directly.
+
+### 2. Storyboard correction loop
+
+When a storyboard has repeated panels, continuity errors, ambiguous object positions, or an impossible visual state, use the generated storyboard as an input reference and request a corrected storyboard. State exactly what must change and what must remain unchanged. This is a pre-video quality gate; do it before spending video-generation credits. Do not use this loop merely to make a satisfactory storyboard more elaborate.
+
+### 3. Storyboard continuation
+
+When a sequence is longer than one storyboard page, attach the completed page and ask for the next page while preserving the established characters, environment, camera language, lighting, and visual style. Treat the new page as a continuity draft that still requires review. Do not assume continuation guarantees exact identity or composition across calls.
+
+### 4. Brief-to-storyboard shortcut
+
+When the user wants rapid ideation, a one-sentence concept can be converted into a panel-by-panel storyboard draft. Use explicit visual beats rather than abstract labels. This is a planning shortcut, not a substitute for detailed prompting when the storyboard controls complex action, physical continuity, or a paid video generation.
+
+### 5. Structured character data block
+
+When recurring characters or creatures must remain consistent across several images, place invariant details in one reusable block: identity, age or species, proportions, coloring, markings, clothing, accessories, and behavior. Attach the appropriate reference sheet and repeat the invariant block on each generation. Use only the details relevant to the shot; an unnecessarily large block can compete with the actual scene direction.
+
+### 6. Compare before committing
+
+When the image is a high-cost or high-impact production anchor and more than one compatible image route is available, generate a small comparison set using the same brief and constraints before committing to a model, resolution, or platform. Compare composition, continuity, anatomy, text/layout accuracy, and style adherence separately. Skip this for routine images or when the user has already selected the model and the task is an iteration of an approved direction.
+
+**Decision rule:** choose the smallest optional workflow that reduces the specific risk. For example, use prompt expansion for an underspecified idea, storyboard correction for a visual continuity error, character data for identity drift, continuation for a multi-page sequence, and comparison only when the model/platform choice is genuinely uncertain. Never combine optional techniques automatically just because they are available.
+
 ## Cross-session style/palette consistency — real, sourced gap
 
 This is the weakest-sourced topic in this guide, and the gap is being stated plainly rather than papered over:

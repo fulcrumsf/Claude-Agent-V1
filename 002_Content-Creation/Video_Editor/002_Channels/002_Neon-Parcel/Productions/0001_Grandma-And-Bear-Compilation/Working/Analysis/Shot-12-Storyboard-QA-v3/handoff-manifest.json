@@ -1,0 +1,22 @@
+{
+  "shot_id": "Shot-12",
+  "status": "pass",
+  "selected_attempt": 1,
+  "active_storyboard_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Images/Shot-12-Storyboard-v3.png",
+  "contract_path": "/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/shot_12_storyboard_spec_v3.json",
+  "qa_report_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Analysis/Shot-12-Storyboard-QA-v3/qa-report.json",
+  "attempt_state_path": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Working/Analysis/Shot-12-Storyboard-QA-v3/attempt-state.json",
+  "storyboard_reference_url": "https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Shot-12-Storyboard-v3.png",
+  "reference_role": "storyboard_reference",
+  "reference_order": [
+    {
+      "upload_index": 1,
+      "role": "approved eight-panel storyboard sheet"
+    }
+  ],
+  "manual_review_approved": true,
+  "storyboard_sha256": "12f62a1542109fe6c11a1b347cd76b49f29112b4543769e7abfb57fbc245f645",
+  "contract_sha256": "66736b413f80a1002e7220e8f8c42fa992333ae090f350129fb267c71c944789",
+  "qa_report_sha256": "cc67c5c7d2d44666a1a64fb5125c27fe076a9904a1873f5ac9f471bf079bfc98",
+  "approval_note": "Tony approved Shot 12 storyboard v3 with Grandma arriving on the trampoline and beginning a small bounce."
+}

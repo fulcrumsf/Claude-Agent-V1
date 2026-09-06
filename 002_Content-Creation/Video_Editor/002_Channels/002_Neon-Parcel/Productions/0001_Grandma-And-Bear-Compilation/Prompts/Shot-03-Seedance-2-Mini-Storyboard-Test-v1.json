@@ -1,0 +1,50 @@
+{
+  "shot_id": "Shot-03",
+  "version": "v1-storyboard-test",
+  "model": "bytedance/seedance-2-mini",
+  "generation_resolution": "480p",
+  "duration_seconds": 10,
+  "aspect_ratio": "16:9",
+  "reference_assets": [
+    "Images/Shot-03-Storyboard-v1.png"
+  ],
+  "postprocess": {
+    "topaz": "pending",
+    "ffmpeg_normalization": "pending"
+  },
+  "prompt_sections": {
+    "camera_lock": "The attached storyboard is a visual continuity reference only. Preserve the viewpoint of a passenger holding a smartphone inside a moving city bus, filming sideways through the bus window. Keep a little bus interior, window frame, yellow pole, glass reflections, muted snowy daylight, ordinary phone exposure, and imperfect handheld movement. The phone follows the single passing car naturally but does not become a polished tracking-camera shot or change to an exterior viewpoint.",
+    "scene_continuity": "Maintain one continuous passing event on one snowy city street. Keep exactly one weathered burgundy convertible, one older Russian woman driving it, and one large polar bear seated in the passenger seat. Keep the same apartment buildings, snow, road, bus window, and passenger viewpoint. The car, driver, and bear are one connected group and remain together until the car exits the frame.",
+    "action_timeline": [
+      "The bus passenger films the empty snowy street through the window.",
+      "One burgundy convertible enters the frame and moves steadily along the road beside the bus.",
+      "As the same car passes the center of the window, the older woman remains driving and the same polar bear remains seated in the passenger seat.",
+      "The single car continues forward and exits the frame completely.",
+      "Hold briefly on the empty snowy street through the same bus window after the car has gone."
+    ],
+    "audio": {
+      "ambient": [
+        "quiet bus interior",
+        "soft engine and road noise",
+        "muted winter street ambience"
+      ],
+      "foley": [
+        "subtle window vibration",
+        "natural handheld phone movement"
+      ],
+      "in_scene_dialogue": [],
+      "music": "none"
+    },
+    "hard_constraints": [
+      "Use the storyboard only for visual continuity; do not reproduce the storyboard grid, panels, captions, numbers, or descriptions.",
+      "There is exactly one car and it must physically pass through and leave the frame.",
+      "Do not introduce a second car, second driver, second bear, replacement vehicle, duplicate pass, loop, or reset.",
+      "The driver and polar bear remain in the same convertible and do not morph, teleport, disappear, or change identity.",
+      "Do not change to an exterior camera, cinematic tracking shot, commercial lighting, or polished professional camera.",
+      "No subtitles, captions, title cards, labels, watermarks, emojis, or graphics."
+    ]
+  },
+  "prompt": "CAMERA LOCK: The attached storyboard is a visual continuity reference only. Preserve the viewpoint of a passenger holding a smartphone inside a moving city bus, filming sideways through the bus window. Keep a little bus interior, window frame, yellow pole, glass reflections, muted snowy daylight, ordinary phone exposure, and imperfect handheld movement. The phone follows the single passing car naturally but does not become a polished tracking-camera shot or change to an exterior viewpoint.\n\nSCENE CONTINUITY: Maintain one continuous passing event on one snowy city street. Keep exactly one weathered burgundy convertible, one older Russian woman driving it, and one large polar bear seated in the passenger seat. Keep the same apartment buildings, snow, road, bus window, and passenger viewpoint. The car, driver, and bear are one connected group and remain together until the car exits the frame.\n\nACTION TIMELINE: The bus passenger films the empty snowy street through the window. One burgundy convertible enters the frame and moves steadily along the road beside the bus. As the same car passes the center of the window, the older woman remains driving and the same polar bear remains seated in the passenger seat. The single car continues forward and exits the frame completely. Hold briefly on the empty snowy street through the same bus window after the car has gone.\n\nAUDIO: Natural audio only: quiet bus interior, soft engine and road noise, muted winter street ambience, subtle window vibration, and natural handheld phone movement. No dialogue and no music.\n\nHARD CONSTRAINTS: Use the storyboard only for visual continuity; do not reproduce the storyboard grid, panels, captions, numbers, or descriptions. There is exactly one car and it must physically pass through and leave the frame. Do not introduce a second car, second driver, second bear, replacement vehicle, duplicate pass, loop, or reset. The driver and polar bear remain in the same convertible and do not morph, teleport, disappear, or change identity. Do not change to an exterior camera, cinematic tracking shot, commercial lighting, or polished professional camera. No subtitles, captions, title cards, labels, watermarks, emojis, or graphics.",
+  "task_id": "51519cd3e56692b121dac881f7f363ff",
+  "reference_url": "https://res.cloudinary.com/da6zdvts2/image/upload/v1787943538/neon-parcel/0001/Shot-03-Storyboard-v1-reference-test.png"
+}

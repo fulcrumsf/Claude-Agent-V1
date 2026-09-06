@@ -33,6 +33,15 @@ Search and download real, Creative Commons / public-domain reference images of t
 - Save to `Research/Reference_Images/`, named descriptively (e.g. `Mantis_Shrimp_Coloration_01.jpg`, not `image1.jpg`), per this workspace's naming convention.
 - If the topic is about a specific individual (the George/Coco case), search for that individual specifically, not just the species.
 
+## Step 2b — Map / geography asset (only when the script names a place, region, route, migration, or range)
+
+If the topic or script references a **real location, region, route, migration path, or species range**, source a real map asset for it now — do not leave the assembly step to fake it with a synthetic shape (this was a real defect on 0003 Glass Frog, Notes 9–10).
+
+- Preferred source: **Natural Earth** raster (naturalearthdata.com — explicitly public domain, no attribution required). `NE2_50M_SR_W` (shaded relief) crops well to any region. Wikimedia Commons PD relief/terrain maps also work — **verify the license and record any required attribution.**
+- If no suitable real map exists: do a plain web/image search for the correct map and keep it as a *reference only*, then note that the geography beat needs a stylized map generated from it (GPT-Image-2, or GeoJSON→SVG) at the diagram/asset step — never ship a hand-drawn approximation.
+- Save to `Research/Reference_Images/` (or a `Research/Maps/` subfolder) with a `SOURCE.md` recording the origin, license, and whether on-screen attribution is required. If attribution is required, it goes bottom-right on the map in the final composition.
+- The map is styled to the channel and used as a **base layer** with the animated route/path drawn over it (see Diagram-Generation's map/geography type) — the path must trace the real geography on that base, never float over nothing.
+
 ## Step 3 — Pexels video search + download
 
 Search Pexels for video footage matching the subject exactly as named by the topic — no special branching logic for the "specific individual" case, the search term is just whatever the topic names:

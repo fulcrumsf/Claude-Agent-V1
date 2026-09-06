@@ -1,0 +1,55 @@
+{
+  "scene_id": "scene_01",
+  "words": [
+    {
+      "word": "This",
+      "start_s": 0.0,
+      "end_s": 0.255
+    },
+    {
+      "word": "frog",
+      "start_s": 0.337,
+      "end_s": 0.697
+    },
+    {
+      "word": "turns",
+      "start_s": 0.766,
+      "end_s": 1.091
+    },
+    {
+      "word": "off",
+      "start_s": 1.138,
+      "end_s": 1.254
+    },
+    {
+      "word": "its",
+      "start_s": 1.312,
+      "end_s": 1.451
+    },
+    {
+      "word": "own",
+      "start_s": 1.498,
+      "end_s": 1.66
+    },
+    {
+      "word": "blood.",
+      "start_s": 1.73,
+      "end_s": 2.136
+    },
+    {
+      "word": "Every",
+      "start_s": 2.461,
+      "end_s": 2.798
+    },
+    {
+      "word": "single",
+      "start_s": 2.868,
+      "end_s": 3.239
+    },
+    {
+      "word": "day.",
+      "start_s": 3.286,
+      "end_s": 3.855
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "scene_id": "Scene_03",
+  "scene_duration_s": 50.899,
+  "frame_count": 12,
+  "scene_description": "Tease #1 (diagram-routed scene): through the transparent skin the heart, liver, lungs and intestines are visible in real time; internal-anatomy 3D-render cutaways reveal the organs sit in mirrored, crystal-lined pouches that reflect light instead of absorbing it, ending on a held beat before the escalation line. NOTE: the internal-anatomy 3D-render panels (frames 2,3,4,7,8) are diagram-pipeline content and do not need the creature character sheet's exact likeness -- only the whole-frog panels (1,5,6,9,10,11,12) do.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; backgrounds trend toward a dark #2B0B5A-to-#0B0F1A gradient feel outside of natural daylight/night forest scenes. National Geographic-quality lighting on real/photoreal shots; clean scientific-diagram aesthetic (no gore, no viscera) on any internal-anatomy render. Glitch-distortion cuts used only at anomaly-reveal/hook moments.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Extreme macro, POV push toward the frog's chest, the red beating heart visible and pulsing in sync with a heartbeat cue."
+    },
+    {
+      "frame": 2,
+      "action": "3D-render cutaway, the heart now shown as a clean labeled-form silhouette (no baked-in text), a faint mirrored sheen surrounding it."
+    },
+    {
+      "frame": 3,
+      "action": "3D-render cutaway, camera pans down past the heart to the liver's cutaway form."
+    },
+    {
+      "frame": 4,
+      "action": "3D-render cutaway, continuing down to the paired lungs and the coiled intestinal loops shown in sequence."
+    },
+    {
+      "frame": 5,
+      "action": "Macro real-footage style, full ventral view of the whole frog, calm and still, all organs visible together through the skin."
+    },
+    {
+      "frame": 6,
+      "action": "Species comparison, a three-way split frame showing three different real glass frog species with differing degrees of transparency side by side."
+    },
+    {
+      "frame": 7,
+      "action": "Zoom punch, a single organ silhouette isolated in frame, contrasted against a faint ghosted outline of the dark-red blob one would normally expect."
+    },
+    {
+      "frame": 8,
+      "action": "Extreme macro cutaway, the mirrored guanine-crystal pouch structure surrounding an organ, catching and scattering light like tiny mirrors."
+    },
+    {
+      "frame": 9,
+      "action": "Slow pull-out from the mirrored pouch to reveal the whole visible torso, organs present but none reading as dark solid shapes."
+    },
+    {
+      "frame": 10,
+      "action": "Wide shot, the frog motionless on its leaf, a near-silence beat building tension before the tease line."
+    },
+    {
+      "frame": 11,
+      "action": "Extreme close-up on the frog's eye, alert and still, holding tension into the tease line."
+    },
+    {
+      "frame": 12,
+      "action": "Glitch-cut freeze frame, hard digital distortion breaking across the wide shot as the tease line lands."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel must show the same subject with identical coloring, markings, and proportions, as if part of one continuous shot. Use clean composition and precise detail. The sequence should read as one continuous event from start to finish."
+}

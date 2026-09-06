@@ -1,0 +1,72 @@
+{
+  "shot_id": "Shot-08",
+  "overall_summary": "A black bear moves from shoreline rocks into a loosely tied canoe. Grandma sees it from the cabin doorway, runs along a clear open ground path to the dock, and arrives too late as the canoe drifts downstream.",
+  "tone": "Unplanned real-life outdoor security-camera footage: ordinary, observational, imperfect, and believable; never cinematic, staged, polished, promotional, or commercial.",
+  "capture_style": "One fixed outdoor security-camera viewpoint with mild fisheye distortion, natural late-afternoon light, ordinary image quality, and no camera operator movement.",
+  "visual_style": "Real lakeside cabin footage with a simple brown cabin on the left, visible side door, open ground path, shoreline rocks, short dock, one red canoe, and downstream lake bend.",
+  "visual_realism": "The cabin door, ground path, rocks, dock, canoe, shoreline, and lake must form one physically continuous environment with believable scale and contact.",
+  "audio_policy": "Natural location sound only: water, wood, rope strain, bear movement, footsteps, and distant birds.",
+  "audio_exclusions": ["music", "commercial soundtrack", "dramatic scoring", "voiceover", "dialogue", "synthetic sound effects"],
+  "camera_lock": "Keep one completely fixed elevated security-camera viewpoint, with the cabin on the left, dock on the right, and lake moving toward the visible bend. No pan, tilt, zoom, cut, alternate angle, or geometry change.",
+  "continuity_invariants": [
+    "Exactly one bear, one Grandma, one canoe, one dock, and one cabin remain throughout.",
+    "The bear's route is shoreline rocks to shoreline beside the canoe to inside the canoe to downstream water.",
+    "Grandma's route is the visible cabin doorway to the unobstructed ground path to the dock edge.",
+    "No railing, wall, hidden corner, stairs, fence, or obstacle blocks the path between the cabin door and dock."
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "visible_subjects": ["one black bear near the shoreline rocks beside the canoe", "no Grandma visible"],
+      "object_states": ["one red canoe is loosely tied beside the dock", "cabin side door is closed"],
+      "spatial_relationships": ["bear is on the ground at the shoreline", "open ground path from cabin door to dock is visible"],
+      "action": "The bear waits by the shoreline rocks beside the canoe.",
+      "caption": "Bear waits by the shoreline rocks beside the canoe."
+    },
+    {
+      "frame": 2,
+      "visible_subjects": ["the same black bear between the shoreline rocks and the canoe", "no Grandma visible"],
+      "object_states": ["the canoe remains beside the dock and has not moved", "cabin side door is closed"],
+      "spatial_relationships": ["bear has walked a short distance from the rocks toward the canoe", "open path remains unchanged"],
+      "action": "The bear approaches the canoe from the rocks.",
+      "transition_from_previous": "The bear takes a short grounded walk from the rocks toward the canoe; the canoe stays tied.",
+      "caption": "Bear approaches the canoe from the rocks."
+    },
+    {
+      "frame": 3,
+      "visible_subjects": ["the same black bear climbing into the canoe", "the same Grandma peeking through the open cabin door"],
+      "object_states": ["the canoe is still close to the dock", "cabin side door is open"],
+      "spatial_relationships": ["Grandma is at the doorway, not yet on the path", "bear is at the canoe beside the dock"],
+      "action": "Grandma sees the bear as it climbs into the canoe.",
+      "transition_from_previous": "The door opens and Grandma begins to look out; the bear physically climbs from the shoreline into the canoe.",
+      "caption": "Grandma sees the bear as it climbs into the canoe."
+    },
+    {
+      "frame": 4,
+      "visible_subjects": ["the same Grandma running on the open ground path", "the same bear seated inside the canoe"],
+      "object_states": ["the canoe has just come loose and is a short distance downstream", "cabin side door remains open"],
+      "spatial_relationships": ["Grandma runs from the door toward the dock", "the canoe remains relatively near the dock"],
+      "action": "Grandma runs to the dock as the canoe starts drifting away.",
+      "transition_from_previous": "Grandma crosses the threshold onto the visible path while the bear's weight loosens the canoe and the current moves it a short distance.",
+      "caption": "Grandma runs to the dock as the canoe starts drifting away."
+    },
+    {
+      "frame": 5,
+      "visible_subjects": ["the same Grandma standing at the dock edge", "the same bear seated inside the canoe farther downstream"],
+      "object_states": ["the canoe is farther toward the visible bend", "the dock is empty"],
+      "spatial_relationships": ["Grandma has followed the open path to the dock edge", "the bear and canoe are separated from her by increasing water distance"],
+      "action": "Grandma reaches the dock, but the bear is already farther away.",
+      "transition_from_previous": "Grandma completes the short run to the dock while the current carries the canoe farther downstream; neither subject teleports or changes sides.",
+      "caption": "Grandma reaches the dock, but the bear is already farther away."
+    }
+  ],
+  "panel_convention": "Five chronological landscape panels with white caption bands beneath them; captions remain outside the image areas.",
+  "hard_constraints": [
+    "Do not introduce a bear from nowhere; show its shoreline origin before the canoe.",
+    "Do not introduce Grandma from nowhere; show her at the visible cabin doorway before she runs.",
+    "Do not create or imply a wraparound railing, hidden route, or blocked path.",
+    "Do not show Grandma walking through a railing, wall, dock, canoe, or other object.",
+    "Do not duplicate or morph the bear, Grandma, canoe, cabin, dock, or path.",
+    "Preserve one fixed camera and identical architecture across every frame."
+  ]
+}

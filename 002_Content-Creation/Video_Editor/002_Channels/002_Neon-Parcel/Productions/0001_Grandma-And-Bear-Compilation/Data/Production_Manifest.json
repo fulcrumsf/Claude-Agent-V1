@@ -1,0 +1,41 @@
+{
+  "pipeline": "neonparcel-reference-inspired-compilation",
+  "version": "0.1",
+  "status": "scaffolded",
+  "concept": "Distinct realistic-looking grandma-and-bear scenarios",
+  "generation_mode": "image-first",
+  "reference_set": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Case_Studies/Grandma_And_Bear_Compilation_References/Reference_Set.json",
+  "created": "2026-08-25",
+  "production_root": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation",
+  "long_form": {
+    "target_duration_minutes": [
+      6,
+      8
+    ],
+    "aspect_ratio": "16:9"
+  },
+  "shorts": {
+    "target_duration_seconds": 60,
+    "target_is_soft": true,
+    "max_duration_seconds": null,
+    "overlay_frames": [
+      1,
+      30
+    ],
+    "aspect_ratio": "9:16"
+  },
+  "approval_policy": {
+    "first_clip": "human_required",
+    "first_five_clips": "human_required",
+    "remaining_batch": "human_release_required",
+    "final_package": "human_required",
+    "blotato_publish": "human_required"
+  },
+  "production_approval_override": {
+    "intermediate_image_review": "waived_by_tony",
+    "individual_clip_review": "waived_by_tony",
+    "batch_generation_release": "approved_by_tony",
+    "final_compilation_review": "required",
+    "final_package_review": "required"
+  }
+}

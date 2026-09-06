@@ -1,0 +1,18 @@
+{
+  "evaluated_at": "2026-09-02T00:00:00-04:00",
+  "candidate_image": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Images/Shot-06-Storyboard-v3.png",
+  "contract_path": "/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/shot_06_storyboard_spec.json",
+  "status": "pass",
+  "review_mode": "human_approved",
+  "approval_by": "Tony",
+  "approval_basis": "Tony manually reviewed the corrected six-frame storyboard and approved it for Seedance generation after the gate-direction caption was repaired.",
+  "checked_requirements": [
+    "Six storyboard panels are present.",
+    "The bear is visible from frame 1 and remains the same bear.",
+    "The gate is closed through frame 2 and opens from frame 3.",
+    "Grandma pulls the gate toward the camera and away from the bear.",
+    "The action remains causally coherent through frame 6.",
+    "The storyboard captions match the corrected visual action."
+  ],
+  "findings": []
+}

@@ -146,6 +146,45 @@ def phase_concat_video(trimmed_paths, tmp, out_raw_video, overwrite=False):
 
 # ── Phase 3: Concatenate narration ───────────────────────────────────────────
 
+# Never hard-concat VO. Every scene join gets a 20ms fade-out/fade-in pair so the
+# mp3 splice can't pop (2026-09-02, Glass Frog 0003 Block C / P6). A fade *pair*
+# (not a crossfade) keeps each scene's duration exact, so downstream timing that
+# assumes narration length == sum(scene mp3 lengths) still holds.
+NARRATION_JOIN_FADE_S = 0.02
+
+
+def _audio_duration_s(path) -> float:
+    out = subprocess.run(
+        ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+         "-of", "csv=p=0", str(path)],
+        capture_output=True, text=True,
+    )
+    return float(out.stdout.strip())
+
+
+def build_narration_concat_filter(durations, fade_s: float = NARRATION_JOIN_FADE_S) -> str:
+    """filter_complex for concatenating N narration mp3s with edge-faded joins.
+
+    Each input is resampled to 44.1k mono, gets an `fade_s` fade-in at its head
+    and an `fade_s` fade-out at its tail, then all are concatenated. The head fade
+    on scene 1 and the tail fade on the final scene fall on the VO's own silent
+    edges, so they're inaudible no-ops; every *internal* join is now a clean
+    fade-out→fade-in instead of a raw bitstream splice.
+    """
+    n = len(durations)
+    parts = []
+    for i, d in enumerate(durations):
+        fade_out_start = max(0.0, d - fade_s)
+        parts.append(
+            f"[{i}:a]aresample=44100,aformat=channel_layouts=mono,"
+            f"afade=t=in:st=0:d={fade_s},"
+            f"afade=t=out:st={fade_out_start:.4f}:d={fade_s}[a{i}]"
+        )
+    labels = "".join(f"[a{i}]" for i in range(n))
+    parts.append(f"{labels}concat=n={n}:v=0:a=1[out]")
+    return ";".join(parts)
+
+
 def phase_concat_narration(audio_dir, tmp, out_narration):
     print("\n── Phase 3: Concatenate narration → narration.mp3 ──")
     if out_narration.exists():
@@ -163,18 +202,20 @@ def phase_concat_narration(audio_dir, tmp, out_narration):
         )
 
     story_narration = tmp / "narration_story.mp3"
-    concat_file = tmp / "concat_audio.txt"
-    with open(concat_file, "w") as f:
-        for p in scene_files:
-            f.write(f"file '{p}'\n")
+
+    durations = [_audio_duration_s(p) for p in scene_files]
+    inputs = []
+    for p in scene_files:
+        inputs += ["-i", str(p)]
 
     run([
         "ffmpeg", "-y",
-        "-f", "concat", "-safe", "0",
-        "-i", str(concat_file),
-        "-c", "copy",
+        *inputs,
+        "-filter_complex", build_narration_concat_filter(durations),
+        "-map", "[out]",
+        "-c:a", "libmp3lame", "-b:a", "192k",
         str(story_narration)
-    ], label="concat narration (story only)")
+    ], label="concat narration (story only, edge-faded joins)")
 
     # Append gap + static CTA audio. Resample/normalize both inputs so the concat
     # filter works regardless of source sample rate — story narration is
@@ -186,7 +227,8 @@ def phase_concat_narration(audio_dir, tmp, out_narration):
         "-filter_complex",
         f"[0:a]aresample=44100,aformat=channel_layouts=mono[a0];"
         f"anullsrc=r=44100:cl=mono:d={CTA_GAP_SECONDS}[gap];"
-        f"[1:a]aresample=44100,aformat=channel_layouts=mono[a2];"
+        f"[1:a]aresample=44100,aformat=channel_layouts=mono,"
+        f"afade=t=in:st=0:d={NARRATION_JOIN_FADE_S}[a2];"
         f"[a0][gap][a2]concat=n=3:v=0:a=1[out]",
         "-map", "[out]",
         "-c:a", "libmp3lame", "-b:a", "192k",

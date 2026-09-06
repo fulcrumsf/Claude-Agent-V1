@@ -1,0 +1,84 @@
+1
+00:00:00,000 --> 00:00:13,000
+In this video I'm going to show you how you can generate all of these collage style motion graphic animations with all of the sound effects using gpt image 2.0 and cdance 2.0 and it's actually really easy and fun to do.
+
+2
+00:00:13,000 --> 00:00:20,500
+So firstly I'm just going to go into how you generate the images and then how you generate the videos and I've got some prompt templates for people to use.
+
+3
+00:00:20,500 --> 00:00:31,500
+So just looking in here I'm in Atlas at the moment where a lot of generations was happening and what we're using is gpt image 2.0 which is really good for this kind of style.
+
+4
+00:00:31,500 --> 00:00:40,500
+And we started off with like really simple prompts like as you can see here like it's just bold athletic sneaker marketing poster energetic collage composition.
+
+5
+00:00:40,500 --> 00:00:54,500
+I find that like no matter what your prompt is as long as it's just something to do with the poster and collage style it really works like collage poster and the key thing that makes this work with the animation is just having layers to the images.
+
+6
+00:00:54,500 --> 00:01:10,500
+So you've got text you've got sort of different images you can see these could easily all be cut out as different sort of design layers as if you're in like Photoshop or Illustrator and that just makes the animation a whole lot easier.
+
+7
+00:01:10,500 --> 00:01:21,500
+Some of these were just coming out just really nice just like honestly one shot and not really having to think too much about the prompt but just sort of coming up with just a base idea.
+
+8
+00:01:21,500 --> 00:01:30,500
+And so what I ended up doing was like reverse engineering kind of some of the prompts and creating this template prompt here. So what you're going to do is I'll link this in description.
+
+9
+00:01:30,500 --> 00:01:41,500
+You're just going to copy this and we go into chat gpt we paste it and what this should ask you for is either describe your idea or concept or you can upload an image reference.
+
+10
+00:01:41,500 --> 00:01:50,500
+So let's say you've like got an image of an object that you want or piece of clothing or just something you want to post it beyond upload that or you can just describe your idea.
+
+11
+00:01:50,500 --> 00:02:01,500
+So I'm just going to show you how simple this is. I'm just going to go iPhone 17 all I'm going to give it which is just bare bones minimum to just show you how capable this is right.
+
+12
+00:02:01,500 --> 00:02:11,500
+So now I've got this incredibly long detailed prompt. We could then just generate this in here which I will try or we could just go into the aggregate like Artless and generate it down here.
+
+13
+00:02:11,500 --> 00:02:19,500
+I'm going to actually do it in both just to just see if there's actually any differences here. So we're going to use model. I'm going to go on media.
+
+14
+00:02:19,500 --> 00:02:31,500
+I find that's a good balance. Let's go for let's also paste that in here. Okay. So the one in chat gpt has been generated as you can see this looks pretty decent with the iPhone 17 in the middle.
+
+15
+00:02:31,500 --> 00:02:38,500
+Even like the text details here look like the text is so good. Look how small is Texas in it and it actually still looks pretty clear. Probably miss on the video more.
+
+16
+00:02:38,500 --> 00:02:50,500
+It's not so great. But like as a collage style poster like I'm very very happy with that based off of just putting in iPhone 17 and the prompt and this is the perfect image now to basically animate all of these.
+
+17
+00:02:50,500 --> 00:03:07,500
+And if we go in look at the Artless ones these are 16 by 9 don't really like that one but as you can see done a fairly similar job in terms of style compared to the one in chat gpt completely different tool but say model you can see here quite like that one again.
+
+18
+00:03:07,500 --> 00:03:19,500
+So you can just experiment around with these you generate as many as you like images are obviously super cheap generate you can obviously go back in and just say maybe I actually want more of this color or less of this more of that.
+
+19
+00:03:19,500 --> 00:03:28,500
+And just tell chat gpt what you like and what you don't like about this to then just regenerate the prompt and you just go back and forth until you find something that you like.
+
+20
+00:03:28,500 --> 00:03:48,500
+So now what we're going to do is now return these into a video animation and this is actually pretty easy as well it's just taking the image and using a prompt which I've also got a template for and you'll get mix results with this just like the images but eventually you just find one that comes out quite nice.
+
+21
+00:03:48,500 --> 00:03:59,500
+And so what I've been doing in terms of the process is you want to take this here and basically what this is doing is saying analyze the uploaded reference image and create a cinematic AI video.
+

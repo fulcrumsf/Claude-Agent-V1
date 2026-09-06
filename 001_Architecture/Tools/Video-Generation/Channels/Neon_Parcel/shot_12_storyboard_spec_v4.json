@@ -1,0 +1,30 @@
+{
+  "shot_id": "Shot-12",
+  "overall_summary": "One fixed elevated backyard security-camera shot follows exactly one Grandma from the upper-right gate across the grass, up the lower-left trampoline steps, onto the trampoline, and into a small first bounce beside three bear cubs.",
+  "tone": "Unplanned real-life nighttime home-security footage: ordinary, observational, imperfect, funny because the event is unexpectedly real, never cinematic or commercial.",
+  "capture_style": "One fixed elevated outdoor security-camera viewpoint with mild fisheye distortion, grain, limited dynamic range, and no camera movement.",
+  "visual_style": "A fenced suburban backyard at night with one trampoline, one short set of lower-left steps, one upper-right gate, and a clear grass route.",
+  "visual_realism": "The gate, grass route, trampoline, steps, Grandma, and three cubs remain in one continuous physical layout with realistic scale and contact.",
+  "audio_policy": "Natural location sound only: faint night ambience, footsteps, gate movement, trampoline springs, mat movement, and bear cub sounds.",
+  "audio_exclusions": ["music", "commercial soundtrack", "dramatic scoring", "voiceover", "dialogue", "synthetic advertising audio"],
+  "camera_lock": "Keep the same wide elevated security-camera viewpoint, horizon, lens character, fence, gate, route, trampoline, and steps throughout. No cuts, pans, tilts, zooms, or alternate views.",
+  "continuity_invariants": [
+    "Exactly one older woman and exactly three separate bear cubs; no duplicates or morphing.",
+    "Grandma's only route is upper-right gate, open grass, lower-left steps, trampoline mat, then a small bounce.",
+    "Grandma is visibly on the ground and at the bottom of the steps before climbing.",
+    "Grandma is visibly on the trampoline before the bounce and remains naturally scaled.",
+    "The three cubs remain separate on the trampoline with stable identity and scale."
+  ],
+  "frames": [
+    {"frame": 1, "visible_subjects": ["no Grandma visible", "three separate bear cubs on trampoline"], "object_states": ["gate closed", "steps visible"], "spatial_relationships": ["gate upper-right", "steps lower-left", "open grass route visible"], "action": "Establish the full yard before Grandma enters.", "caption": "Three cubs are on the trampoline; Grandma is not visible yet."},
+    {"frame": 2, "visible_subjects": ["exactly one Grandma at gate", "three separate bear cubs on trampoline"], "object_states": ["gate open", "Grandma mostly outside"], "spatial_relationships": ["Grandma at upper-right gate", "steps lower-left"], "action": "Grandma first appears at the open gate threshold.", "caption": "Grandma first appears at the open upper-right gate."},
+    {"frame": 3, "visible_subjects": ["exactly one Grandma on grass", "three separate bear cubs on trampoline"], "object_states": ["gate remains open", "Grandma on ground"], "spatial_relationships": ["Grandma just inside gate", "Grandma looks toward lower-left steps"], "action": "Grandma steps into the yard and looks toward the steps.", "caption": "Grandma enters the yard and looks toward the steps."},
+    {"frame": 4, "visible_subjects": ["exactly one Grandma crossing grass", "three separate bear cubs on trampoline"], "object_states": ["Grandma remains on ground"], "spatial_relationships": ["Grandma moves upper-right to lower-left", "route remains unobstructed"], "action": "Grandma crosses the open grass toward the steps.", "caption": "Grandma crosses the open grass toward the trampoline steps."},
+    {"frame": 5, "visible_subjects": ["exactly one Grandma curving down the left side of the trampoline", "three separate bear cubs on trampoline"], "object_states": ["both Grandma feet on grass", "Grandma not on mat", "gate area empty"], "spatial_relationships": ["Grandma follows the same visible grass route toward the lower-left steps", "Grandma faces generally toward the fixed camera with a slight counterclockwise turn toward the steps", "steps connect ground to trampoline"], "action": "The same Grandma continues around the trampoline toward the steps while remaining visible and camera-facing, with only a slight counterclockwise body turn.", "caption": "The same Grandma curves around the trampoline, still facing the camera and turned slightly counterclockwise toward the steps."},
+    {"frame": 6, "visible_subjects": ["exactly one Grandma climbing steps", "three separate bear cubs on trampoline"], "object_states": ["Grandma aligned with steps", "Grandma partly below trampoline edge"], "spatial_relationships": ["Grandma uses lower-left steps", "no alternate entry"], "action": "Grandma physically climbs the lower-left steps.", "caption": "Grandma climbs the visible steps at natural scale."},
+    {"frame": 7, "visible_subjects": ["exactly one Grandma on trampoline mat", "three separate bear cubs on trampoline"], "object_states": ["Grandma has just arrived", "all subjects naturally scaled"], "spatial_relationships": ["Grandma beside cubs near trampoline edge"], "action": "Grandma reaches the trampoline mat before jumping.", "caption": "Grandma joins the three cubs on the trampoline."},
+    {"frame": 8, "visible_subjects": ["exactly one Grandma bouncing", "three separate bear cubs on trampoline"], "object_states": ["Grandma begins a small bounce", "cubs remain separate"], "spatial_relationships": ["Grandma bounces beside cubs", "Grandma remains on trampoline"], "action": "Grandma makes one small first bounce.", "caption": "Grandma begins a small first bounce beside the cubs."}
+  ],
+  "panel_convention": "Eight chronological landscape panels, each with a true 16:9 image area and a caption band below.",
+  "hard_constraints": ["No duplicate Grandma", "No teleportation", "No walking through rails or fence", "No alternate camera angle", "No commercial look", "Grandma must be on the trampoline before jumping", "Keep Grandma naturally scaled", "End after the first small bounce begins"]
+}

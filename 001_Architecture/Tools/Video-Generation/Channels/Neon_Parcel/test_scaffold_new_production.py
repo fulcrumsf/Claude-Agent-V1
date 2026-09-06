@@ -10,7 +10,7 @@ class ScaffoldTests(unittest.TestCase):
     def test_creates_expected_non_destructive_scaffold(self):
         with tempfile.TemporaryDirectory() as temporary_directory:
             root = Path(temporary_directory) / "Dogs-At-The-Park"
-            scaffold(root)
+            root = scaffold(root)
 
             for relative_folder in FOLDERS:
                 self.assertTrue((root / relative_folder).is_dir())

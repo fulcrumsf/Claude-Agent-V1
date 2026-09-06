@@ -1,0 +1,865 @@
+{
+  "scene_id": "scene_05",
+  "words": [
+    {
+      "word": "Science",
+      "start_s": 0.0,
+      "end_s": 0.58
+    },
+    {
+      "word": "has",
+      "start_s": 0.627,
+      "end_s": 0.789
+    },
+    {
+      "word": "only",
+      "start_s": 0.859,
+      "end_s": 1.068
+    },
+    {
+      "word": "recently",
+      "start_s": 1.149,
+      "end_s": 1.602
+    },
+    {
+      "word": "discovered",
+      "start_s": 1.66,
+      "end_s": 2.183
+    },
+    {
+      "word": "how",
+      "start_s": 2.392,
+      "end_s": 2.577
+    },
+    {
+      "word": "far",
+      "start_s": 2.67,
+      "end_s": 2.995
+    },
+    {
+      "word": "this",
+      "start_s": 3.077,
+      "end_s": 3.274
+    },
+    {
+      "word": "trick",
+      "start_s": 3.355,
+      "end_s": 3.634
+    },
+    {
+      "word": "actually",
+      "start_s": 3.75,
+      "end_s": 4.296
+    },
+    {
+      "word": "goes.",
+      "start_s": 4.377,
+      "end_s": 5.074
+    },
+    {
+      "word": "In",
+      "start_s": 5.77,
+      "end_s": 5.933
+    },
+    {
+      "word": "2022,",
+      "start_s": 6.002,
+      "end_s": 7.198
+    },
+    {
+      "word": "researchers",
+      "start_s": 7.314,
+      "end_s": 7.918
+    },
+    {
+      "word": "at",
+      "start_s": 7.976,
+      "end_s": 8.057
+    },
+    {
+      "word": "the",
+      "start_s": 8.092,
+      "end_s": 8.162
+    },
+    {
+      "word": "American",
+      "start_s": 8.22,
+      "end_s": 8.661
+    },
+    {
+      "word": "Museum",
+      "start_s": 8.719,
+      "end_s": 9.265
+    },
+    {
+      "word": "of",
+      "start_s": 9.334,
+      "end_s": 9.427
+    },
+    {
+      "word": "Natural",
+      "start_s": 9.497,
+      "end_s": 9.857
+    },
+    {
+      "word": "History",
+      "start_s": 9.915,
+      "end_s": 10.344
+    },
+    {
+      "word": "found",
+      "start_s": 10.588,
+      "end_s": 10.879
+    },
+    {
+      "word": "that",
+      "start_s": 10.925,
+      "end_s": 11.053
+    },
+    {
+      "word": "glass",
+      "start_s": 11.122,
+      "end_s": 11.471
+    },
+    {
+      "word": "frogs",
+      "start_s": 11.54,
+      "end_s": 11.958
+    },
+    {
+      "word": "don't",
+      "start_s": 12.167,
+      "end_s": 12.434
+    },
+    {
+      "word": "just",
+      "start_s": 12.55,
+      "end_s": 12.841
+    },
+    {
+      "word": "have",
+      "start_s": 12.922,
+      "end_s": 13.108
+    },
+    {
+      "word": "transparent",
+      "start_s": 13.154,
+      "end_s": 13.816
+    },
+    {
+      "word": "skin",
+      "start_s": 13.862,
+      "end_s": 14.199
+    },
+    {
+      "word": "\u2014",
+      "start_s": 14.443,
+      "end_s": 14.501
+    },
+    {
+      "word": "they",
+      "start_s": 14.745,
+      "end_s": 14.896
+    },
+    {
+      "word": "can",
+      "start_s": 14.942,
+      "end_s": 15.07
+    },
+    {
+      "word": "turn",
+      "start_s": 15.116,
+      "end_s": 15.372
+    },
+    {
+      "word": "their",
+      "start_s": 15.418,
+      "end_s": 15.581
+    },
+    {
+      "word": "own",
+      "start_s": 15.639,
+      "end_s": 15.79
+    },
+    {
+      "word": "transparency",
+      "start_s": 15.836,
+      "end_s": 16.649
+    },
+    {
+      "word": "up",
+      "start_s": 16.742,
+      "end_s": 16.939
+    },
+    {
+      "word": "on",
+      "start_s": 17.055,
+      "end_s": 17.218
+    },
+    {
+      "word": "command.",
+      "start_s": 17.299,
+      "end_s": 18.008
+    },
+    {
+      "word": "While",
+      "start_s": 18.449,
+      "end_s": 18.727
+    },
+    {
+      "word": "a",
+      "start_s": 18.762,
+      "end_s": 18.785
+    },
+    {
+      "word": "glass",
+      "start_s": 18.843,
+      "end_s": 19.18
+    },
+    {
+      "word": "frog",
+      "start_s": 19.238,
+      "end_s": 19.54
+    },
+    {
+      "word": "sleeps,",
+      "start_s": 19.621,
+      "end_s": 20.202
+    },
+    {
+      "word": "it",
+      "start_s": 20.318,
+      "end_s": 20.469
+    },
+    {
+      "word": "pulls",
+      "start_s": 20.527,
+      "end_s": 20.864
+    },
+    {
+      "word": "nearly",
+      "start_s": 20.933,
+      "end_s": 21.27
+    },
+    {
+      "word": "ninety",
+      "start_s": 21.386,
+      "end_s": 21.781
+    },
+    {
+      "word": "percent",
+      "start_s": 21.839,
+      "end_s": 22.222
+    },
+    {
+      "word": "of",
+      "start_s": 22.268,
+      "end_s": 22.326
+    },
+    {
+      "word": "its",
+      "start_s": 22.384,
+      "end_s": 22.501
+    },
+    {
+      "word": "red",
+      "start_s": 22.559,
+      "end_s": 22.733
+    },
+    {
+      "word": "blood",
+      "start_s": 22.791,
+      "end_s": 23.023
+    },
+    {
+      "word": "cells",
+      "start_s": 23.081,
+      "end_s": 23.464
+    },
+    {
+      "word": "out",
+      "start_s": 23.673,
+      "end_s": 23.94
+    },
+    {
+      "word": "of",
+      "start_s": 24.01,
+      "end_s": 24.068
+    },
+    {
+      "word": "general",
+      "start_s": 24.149,
+      "end_s": 24.521
+    },
+    {
+      "word": "circulation.",
+      "start_s": 24.59,
+      "end_s": 25.426
+    },
+    {
+      "word": "It",
+      "start_s": 25.867,
+      "end_s": 26.03
+    },
+    {
+      "word": "packs",
+      "start_s": 26.088,
+      "end_s": 26.367
+    },
+    {
+      "word": "them",
+      "start_s": 26.402,
+      "end_s": 26.529
+    },
+    {
+      "word": "into",
+      "start_s": 26.576,
+      "end_s": 26.738
+    },
+    {
+      "word": "one",
+      "start_s": 26.831,
+      "end_s": 27.028
+    },
+    {
+      "word": "organ.",
+      "start_s": 27.075,
+      "end_s": 27.597
+    },
+    {
+      "word": "Its",
+      "start_s": 28.039,
+      "end_s": 28.259
+    },
+    {
+      "word": "liver.",
+      "start_s": 28.329,
+      "end_s": 28.805
+    },
+    {
+      "word": "With",
+      "start_s": 29.246,
+      "end_s": 29.432
+    },
+    {
+      "word": "that",
+      "start_s": 29.467,
+      "end_s": 29.617
+    },
+    {
+      "word": "much",
+      "start_s": 29.699,
+      "end_s": 29.896
+    },
+    {
+      "word": "of",
+      "start_s": 29.931,
+      "end_s": 29.977
+    },
+    {
+      "word": "its",
+      "start_s": 30.024,
+      "end_s": 30.14
+    },
+    {
+      "word": "blood",
+      "start_s": 30.175,
+      "end_s": 30.395
+    },
+    {
+      "word": "cells",
+      "start_s": 30.43,
+      "end_s": 30.72
+    },
+    {
+      "word": "removed",
+      "start_s": 30.778,
+      "end_s": 31.22
+    },
+    {
+      "word": "from",
+      "start_s": 31.254,
+      "end_s": 31.394
+    },
+    {
+      "word": "the",
+      "start_s": 31.44,
+      "end_s": 31.51
+    },
+    {
+      "word": "rest",
+      "start_s": 31.557,
+      "end_s": 31.731
+    },
+    {
+      "word": "of",
+      "start_s": 31.777,
+      "end_s": 31.824
+    },
+    {
+      "word": "its",
+      "start_s": 31.87,
+      "end_s": 31.986
+    },
+    {
+      "word": "body,",
+      "start_s": 32.044,
+      "end_s": 32.532
+    },
+    {
+      "word": "the",
+      "start_s": 32.741,
+      "end_s": 32.845
+    },
+    {
+      "word": "frog",
+      "start_s": 32.903,
+      "end_s": 33.194
+    },
+    {
+      "word": "becomes",
+      "start_s": 33.263,
+      "end_s": 33.693
+    },
+    {
+      "word": "two",
+      "start_s": 33.763,
+      "end_s": 34.053
+    },
+    {
+      "word": "to",
+      "start_s": 34.169,
+      "end_s": 34.25
+    },
+    {
+      "word": "three",
+      "start_s": 34.308,
+      "end_s": 34.54
+    },
+    {
+      "word": "times",
+      "start_s": 34.587,
+      "end_s": 35.016
+    },
+    {
+      "word": "more",
+      "start_s": 35.098,
+      "end_s": 35.307
+    },
+    {
+      "word": "transparent",
+      "start_s": 35.353,
+      "end_s": 36.212
+    },
+    {
+      "word": "than",
+      "start_s": 36.421,
+      "end_s": 36.619
+    },
+    {
+      "word": "when",
+      "start_s": 36.665,
+      "end_s": 36.804
+    },
+    {
+      "word": "it's",
+      "start_s": 36.851,
+      "end_s": 36.99
+    },
+    {
+      "word": "awake.",
+      "start_s": 37.025,
+      "end_s": 37.559
+    },
+    {
+      "word": "We'll",
+      "start_s": 38.07,
+      "end_s": 38.325
+    },
+    {
+      "word": "come",
+      "start_s": 38.383,
+      "end_s": 38.581
+    },
+    {
+      "word": "back",
+      "start_s": 38.627,
+      "end_s": 38.859
+    },
+    {
+      "word": "to",
+      "start_s": 38.941,
+      "end_s": 39.033
+    },
+    {
+      "word": "why",
+      "start_s": 39.15,
+      "end_s": 39.486
+    },
+    {
+      "word": "that",
+      "start_s": 39.579,
+      "end_s": 39.765
+    },
+    {
+      "word": "matters",
+      "start_s": 39.846,
+      "end_s": 40.264
+    },
+    {
+      "word": "\u2014",
+      "start_s": 40.473,
+      "end_s": 40.531
+    },
+    {
+      "word": "but",
+      "start_s": 41.042,
+      "end_s": 41.216
+    },
+    {
+      "word": "first,",
+      "start_s": 41.274,
+      "end_s": 41.785
+    },
+    {
+      "word": "consider",
+      "start_s": 41.959,
+      "end_s": 42.493
+    },
+    {
+      "word": "what",
+      "start_s": 42.586,
+      "end_s": 42.772
+    },
+    {
+      "word": "should",
+      "start_s": 42.818,
+      "end_s": 43.004
+    },
+    {
+      "word": "happen",
+      "start_s": 43.039,
+      "end_s": 43.318
+    },
+    {
+      "word": "next.",
+      "start_s": 43.399,
+      "end_s": 43.956
+    },
+    {
+      "word": "In",
+      "start_s": 44.56,
+      "end_s": 44.711
+    },
+    {
+      "word": "almost",
+      "start_s": 44.757,
+      "end_s": 45.071
+    },
+    {
+      "word": "every",
+      "start_s": 45.14,
+      "end_s": 45.442
+    },
+    {
+      "word": "other",
+      "start_s": 45.512,
+      "end_s": 45.744
+    },
+    {
+      "word": "vertebrate",
+      "start_s": 45.814,
+      "end_s": 46.29
+    },
+    {
+      "word": "on",
+      "start_s": 46.336,
+      "end_s": 46.417
+    },
+    {
+      "word": "Earth,",
+      "start_s": 46.487,
+      "end_s": 46.859
+    },
+    {
+      "word": "concentrating",
+      "start_s": 47.01,
+      "end_s": 47.707
+    },
+    {
+      "word": "blood",
+      "start_s": 47.776,
+      "end_s": 47.997
+    },
+    {
+      "word": "cells",
+      "start_s": 48.043,
+      "end_s": 48.461
+    },
+    {
+      "word": "that",
+      "start_s": 48.635,
+      "end_s": 48.809
+    },
+    {
+      "word": "densely",
+      "start_s": 48.879,
+      "end_s": 49.344
+    },
+    {
+      "word": "triggers",
+      "start_s": 49.413,
+      "end_s": 49.866
+    },
+    {
+      "word": "dangerous",
+      "start_s": 50.04,
+      "end_s": 50.609
+    },
+    {
+      "word": "clotting.",
+      "start_s": 50.69,
+      "end_s": 51.457
+    },
+    {
+      "word": "Glass",
+      "start_s": 52.153,
+      "end_s": 52.501
+    },
+    {
+      "word": "frogs",
+      "start_s": 52.559,
+      "end_s": 52.931
+    },
+    {
+      "word": "do",
+      "start_s": 52.989,
+      "end_s": 53.094
+    },
+    {
+      "word": "this",
+      "start_s": 53.163,
+      "end_s": 53.314
+    },
+    {
+      "word": "every",
+      "start_s": 53.407,
+      "end_s": 53.732
+    },
+    {
+      "word": "single",
+      "start_s": 53.79,
+      "end_s": 54.15
+    },
+    {
+      "word": "day,",
+      "start_s": 54.197,
+      "end_s": 54.754
+    },
+    {
+      "word": "and",
+      "start_s": 54.905,
+      "end_s": 55.056
+    },
+    {
+      "word": "their",
+      "start_s": 55.102,
+      "end_s": 55.276
+    },
+    {
+      "word": "blood",
+      "start_s": 55.334,
+      "end_s": 55.683
+    },
+    {
+      "word": "never",
+      "start_s": 55.892,
+      "end_s": 56.17
+    },
+    {
+      "word": "clots",
+      "start_s": 56.217,
+      "end_s": 56.553
+    },
+    {
+      "word": "at",
+      "start_s": 56.6,
+      "end_s": 56.693
+    },
+    {
+      "word": "all.",
+      "start_s": 56.762,
+      "end_s": 57.238
+    },
+    {
+      "word": "Researchers",
+      "start_s": 57.842,
+      "end_s": 58.457
+    },
+    {
+      "word": "only",
+      "start_s": 58.539,
+      "end_s": 58.782
+    },
+    {
+      "word": "caught",
+      "start_s": 58.852,
+      "end_s": 59.096
+    },
+    {
+      "word": "this",
+      "start_s": 59.131,
+      "end_s": 59.27
+    },
+    {
+      "word": "happening",
+      "start_s": 59.328,
+      "end_s": 59.746
+    },
+    {
+      "word": "using",
+      "start_s": 59.955,
+      "end_s": 60.292
+    },
+    {
+      "word": "a",
+      "start_s": 60.338,
+      "end_s": 60.373
+    },
+    {
+      "word": "technique",
+      "start_s": 60.431,
+      "end_s": 61.0
+    },
+    {
+      "word": "called",
+      "start_s": 61.116,
+      "end_s": 61.43
+    },
+    {
+      "word": "photoacoustic",
+      "start_s": 61.511,
+      "end_s": 62.428
+    },
+    {
+      "word": "imaging",
+      "start_s": 62.486,
+      "end_s": 62.927
+    },
+    {
+      "word": "\u2014",
+      "start_s": 63.136,
+      "end_s": 63.182
+    },
+    {
+      "word": "pulses",
+      "start_s": 63.507,
+      "end_s": 63.925
+    },
+    {
+      "word": "of",
+      "start_s": 63.984,
+      "end_s": 64.053
+    },
+    {
+      "word": "light",
+      "start_s": 64.146,
+      "end_s": 64.483
+    },
+    {
+      "word": "that",
+      "start_s": 64.692,
+      "end_s": 64.866
+    },
+    {
+      "word": "make",
+      "start_s": 64.912,
+      "end_s": 65.098
+    },
+    {
+      "word": "blood",
+      "start_s": 65.156,
+      "end_s": 65.4
+    },
+    {
+      "word": "cells",
+      "start_s": 65.446,
+      "end_s": 65.829
+    },
+    {
+      "word": "vibrate",
+      "start_s": 65.922,
+      "end_s": 66.526
+    },
+    {
+      "word": "audibly,",
+      "start_s": 66.584,
+      "end_s": 67.258
+    },
+    {
+      "word": "mapped",
+      "start_s": 67.501,
+      "end_s": 67.861
+    },
+    {
+      "word": "without",
+      "start_s": 67.977,
+      "end_s": 68.337
+    },
+    {
+      "word": "a",
+      "start_s": 68.384,
+      "end_s": 68.407
+    },
+    {
+      "word": "single",
+      "start_s": 68.477,
+      "end_s": 68.825
+    },
+    {
+      "word": "incision,",
+      "start_s": 68.86,
+      "end_s": 69.487
+    },
+    {
+      "word": "on",
+      "start_s": 69.696,
+      "end_s": 69.835
+    },
+    {
+      "word": "a",
+      "start_s": 69.881,
+      "end_s": 69.916
+    },
+    {
+      "word": "frog",
+      "start_s": 69.997,
+      "end_s": 70.346
+    },
+    {
+      "word": "that",
+      "start_s": 70.555,
+      "end_s": 70.752
+    },
+    {
+      "word": "never",
+      "start_s": 70.81,
+      "end_s": 71.042
+    },
+    {
+      "word": "even",
+      "start_s": 71.135,
+      "end_s": 71.472
+    },
+    {
+      "word": "woke",
+      "start_s": 71.542,
+      "end_s": 71.809
+    },
+    {
+      "word": "up.",
+      "start_s": 71.855,
+      "end_s": 73.004
+    }
+  ]
+}

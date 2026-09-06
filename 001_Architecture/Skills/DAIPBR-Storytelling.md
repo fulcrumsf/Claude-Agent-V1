@@ -18,6 +18,26 @@ Every video must do three things:
 
 If any of these three fail, viewers leave.
 
+## Remarkable-but-Believable Attention
+
+An optional hook principle for viral storytelling is to present a “Pink
+Elephant”: an immediately legible event so unusual that viewers want to see
+what happens, while the world around it remains believable. This is not a
+request for random weirdness or a reusable scene recipe.
+
+Before using the device, check:
+
+- Is the unusual visual clear enough to stop attention?
+- Could this event plausibly happen in the established world?
+- Could a believable person or camera realistically capture it?
+- Does each beat follow from the previous beat through cause and effect?
+- Does the sequence end when the strongest consequence or reaction lands?
+
+Novelty earns attention; coherent escalation and payoff earn continued
+watching. When a viewer approves a story, learn the underlying judgment about
+logic, believability, humor, and overall effect. Do not copy the approved
+setting, prop, action, dialogue, or camera as a formula for the next story.
+
 ---
 
 ## Framework 1: Hook–Body–Reward

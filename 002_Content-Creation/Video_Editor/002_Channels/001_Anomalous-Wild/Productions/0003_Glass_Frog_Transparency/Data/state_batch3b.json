@@ -1,0 +1,86 @@
+{
+  "end_01A": {
+    "task_id": "32c86fce7286ecedfc8e97eabcb3b87d",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_01A_End.png",
+    "status": "done",
+    "result_url": "https://tempfile.aiquickdraw.com/h/32c86fce7286ecedfc8e97eabcb3b87d_1787779476.png"
+  },
+  "end_02A": {
+    "task_id": "0eae30b166596fdfed8f1bc0fd8cbec9",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02A_End.png",
+    "status": "done",
+    "result_url": "https://tempfile.aiquickdraw.com/a2/0eae30b166596fdfed8f1bc0fd8cbec9_1787779482071.png"
+  },
+  "end_02B": {
+    "task_id": "66119de697682911a585bc8c48847eb6",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_02B_End.png",
+    "status": "done",
+    "result_url": "https://tempfile.aiquickdraw.com/a2/66119de697682911a585bc8c48847eb6_1787779497072.png"
+  },
+  "end_04B": {
+    "task_id": "84a1b7b1dfdb3ba80f80ada0a93334de",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04B_End.png",
+    "status": "done",
+    "result_url": "https://tempfile.aiquickdraw.com/h/84a1b7b1dfdb3ba80f80ada0a93334de_1787779533.png"
+  },
+  "end_04C": {
+    "task_id": "5c7cea6a87bd7cf731b00bcc14a86e4a",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04C_End.png",
+    "status": "done",
+    "result_url": "https://tempfile.aiquickdraw.com/a2/5c7cea6a87bd7cf731b00bcc14a86e4a_1787779497441.png"
+  },
+  "end_04D": {
+    "task_id": "84ed8bc0f373620c1b7da274fd00e64d",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04D_End.png",
+    "status": "done",
+    "result_url": "https://tempfile.aiquickdraw.com/a2/84ed8bc0f373620c1b7da274fd00e64d_1787779514187.png"
+  },
+  "end_04E": {
+    "task_id": "546c1e322d1952b252a61d7929cfbbf0",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04E_End.png",
+    "status": "failed",
+    "error": "Something went wrong. Please try again, or change your input files or prompt."
+  },
+  "end_04F": {
+    "task_id": "e6b964c1514da195ba3caecbe3497a47",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_04F_End.png",
+    "status": "done",
+    "result_url": "https://tempfile.aiquickdraw.com/h/e6b964c1514da195ba3caecbe3497a47_1787779546.png"
+  },
+  "end_06A": {
+    "task_id": "81386a4f1cccc06c8535936116a4410e",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06A_End.png",
+    "status": "done",
+    "result_url": "https://tempfile.aiquickdraw.com/a2/81386a4f1cccc06c8535936116a4410e_1787779558109.png"
+  },
+  "end_06D": {
+    "task_id": "4f19518f5035dc8e7a7530ecd03348bf",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06D_End.png",
+    "status": "failed",
+    "error": "Internal Error"
+  },
+  "end_06E": {
+    "task_id": "8e9a500e723cb60be633dd7a19d1c1d6",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06E_End.png",
+    "status": "failed",
+    "error": "The generated images appear to be unsafe. Try modifying the prompts."
+  },
+  "end_06F": {
+    "task_id": "8b2b99534e4e2fe9606bf525950bae33",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06F_End.png",
+    "status": "done",
+    "result_url": "https://tempfile.aiquickdraw.com/a2/8b2b99534e4e2fe9606bf525950bae33_1787779578071.png"
+  },
+  "end_06G": {
+    "task_id": "e2dd2e3767e66714bb3ff152dd4e0bd2",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_06G_End.png",
+    "status": "done",
+    "result_url": "https://tempfile.aiquickdraw.com/h/e2dd2e3767e66714bb3ff152dd4e0bd2_1787779620.png"
+  },
+  "end_07A": {
+    "task_id": "5e8743de547eb76bdfb5dcb4ae0dd7ae",
+    "out": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Images/Start_End_Frames/Scene_07A_End.png",
+    "status": "done",
+    "result_url": "https://tempfile.aiquickdraw.com/a2/5e8743de547eb76bdfb5dcb4ae0dd7ae_1787779578897.png"
+  }
+}

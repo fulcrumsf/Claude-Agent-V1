@@ -1,0 +1,59 @@
+{
+  "shot_id": "Shot-01",
+  "version": "v1-storyboard-test",
+  "model": "bytedance/seedance-2-mini",
+  "generation_resolution": "480p",
+  "duration_seconds": 12,
+  "aspect_ratio": "16:9",
+  "reference_assets": [
+    "Images/Shot-01-Storyboard-v1.png"
+  ],
+  "postprocess": {
+    "topaz": "pending",
+    "ffmpeg_normalization": "pending"
+  },
+  "prompt_sections": {
+    "camera_lock": "The attached storyboard is a visual continuity reference only. Use it to preserve the body-worn officer-camera viewpoint, ordinary rural porch, wide body-camera lens character, natural daylight, imperfect exposure, mild digital grain, and realistic documentary capture. The camera belongs to the approaching officer and moves only with natural walking motion. Keep the viewpoint at plausible chest height with restrained body-camera sway; do not turn this into a polished commercial shot, cinematic crane shot, eye-level third-person shot, or a visible camera operator.",
+    "scene_continuity": "Maintain one continuous real-world interaction with exactly one older grandmother, one black bear, and one off-camera officer. Keep the same rural porch, porch steps, railing, doorway, yard, and bear identity throughout. The bear is a calm but unmistakably wild black bear standing beside Grandma near the porch. Grandma is an ordinary older woman who sincerely treats the situation as normal. The officer remains off camera; only the body-worn camera perspective represents him.",
+    "action_timeline": [
+      "The officer approaches the porch and the camera naturally moves closer to Grandma and the bear.",
+      "The officer stops a few steps away while Grandma remains beside the bear and looks toward the camera.",
+      "The off-camera officer says clearly, \"Ma'am, you know that's a wild bear.\"",
+      "Grandma calmly looks toward the officer and replies clearly, \"Well he sure ain't hurting nobody, is he?\"",
+      "End immediately after her reply on the same believable body-camera view, with Grandma still calmly beside the bear."
+    ],
+    "audio": {
+      "ambient": [
+        "quiet rural porch ambience",
+        "light wind",
+        "distant birds"
+      ],
+      "foley": [
+        "natural officer footsteps",
+        "subtle body-camera movement"
+      ],
+      "in_scene_dialogue": [
+        {
+          "speaker": "off-camera officer",
+          "line": "Ma'am, you know that's a wild bear."
+        },
+        {
+          "speaker": "Grandma, visible in frame",
+          "line": "Well he sure ain't hurting nobody, is he?"
+        }
+      ],
+      "music": "none"
+    },
+    "hard_constraints": [
+      "Use the storyboard for visual continuity only; do not reproduce its grid, panels, borders, captions, numbers, or descriptions in the video.",
+      "Keep the officer's voice off camera and keep Grandma's voice coming from Grandma; do not swap speakers.",
+      "Each person speaks their line once only; do not repeat or duplicate either line.",
+      "No duplicate people or animals, no extra officer visible, no morphing, no identity changes, and no disappearing porch geometry.",
+      "No commercial lighting, cinematic camera move, dramatic zoom, tracking shot, or artificial staged composition.",
+      "No subtitles, captions, title cards, labels, watermarks, emojis, or graphics."
+    ]
+  },
+  "prompt": "CAMERA LOCK: The attached storyboard is a visual continuity reference only. Use it to preserve the body-worn officer-camera viewpoint, ordinary rural porch, wide body-camera lens character, natural daylight, imperfect exposure, mild digital grain, and realistic documentary capture. The camera belongs to the approaching officer and moves only with natural walking motion. Keep the viewpoint at plausible chest height with restrained body-camera sway; do not turn this into a polished commercial shot, cinematic crane shot, eye-level third-person shot, or a visible camera operator.\n\nSCENE CONTINUITY: Maintain one continuous real-world interaction with exactly one older grandmother, one black bear, and one off-camera officer. Keep the same rural porch, porch steps, railing, doorway, yard, and bear identity throughout. The bear is a calm but unmistakably wild black bear standing beside Grandma near the porch. Grandma is an ordinary older woman who sincerely treats the situation as normal. The officer remains off camera; only the body-worn camera perspective represents him.\n\nACTION TIMELINE: The officer approaches the porch and the camera naturally moves closer to Grandma and the bear. The officer stops a few steps away while Grandma remains beside the bear and looks toward the camera. The off-camera officer says clearly, \"Ma'am, you know that's a wild bear.\" Grandma calmly looks toward the officer and replies clearly, \"Well he sure ain't hurting nobody, is he?\" End immediately after her reply on the same believable body-camera view, with Grandma still calmly beside the bear.\n\nAUDIO: Natural audio only: quiet rural porch ambience, light wind, distant birds, natural officer footsteps, and subtle body-camera movement. The off-camera officer speaks once: \"Ma'am, you know that's a wild bear.\" Grandma, visible in frame, speaks once: \"Well he sure ain't hurting nobody, is he?\" No music.\n\nHARD CONSTRAINTS: Use the storyboard for visual continuity only; do not reproduce its grid, panels, borders, captions, numbers, or descriptions in the video. Keep the officer's voice off camera and keep Grandma's voice coming from Grandma; do not swap speakers. Each person speaks their line once only; do not repeat or duplicate either line. No duplicate people or animals, no extra officer visible, no morphing, no identity changes, and no disappearing porch geometry. No commercial lighting, cinematic camera move, dramatic zoom, tracking shot, or artificial staged composition. No subtitles, captions, title cards, labels, watermarks, emojis, or graphics.",
+  "task_id": "2bcc5a3d12face05e655ef7bf052ffbd",
+  "reference_url": "https://res.cloudinary.com/da6zdvts2/image/upload/v1787941652/neon-parcel/0001/Shot-01-Storyboard-v1-reference-test.png"
+}

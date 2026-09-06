@@ -1,0 +1,10 @@
+{
+  "shot_id": "Shot-04",
+  "version": "v2",
+  "model": "bytedance/seedance-2-mini",
+  "generation_resolution": "480p",
+  "duration_seconds": 10,
+  "reference_assets": ["Images/Shot-04-Start-Frame-v2.png"],
+  "postprocess": {"topaz_factor": "2x", "final_normalization": "1920x1080"},
+  "prompt": "Use the attached 16:9 still as the exact visual starting composition for realistic neighbor-filmed smartphone footage, not as a storyboard or graphic. Preserve the same distant viewpoint across an ordinary suburban backyard, imperfect handheld phone framing, natural daylight, lens character, house geometry, and one older woman watering flowers near the back door while one large black bear stands quietly near the flowerbed behind her. The neighbor suddenly shouts from off-camera, Ma'am, turn around! The woman freezes, turns, sees the bear, drops the hose, and quickly retreats through the back door. Keep the event physically simple and believable, with one woman and one bear only, natural phone audio, and no cinematic camera move. Do not add captions, title cards, labels, emojis, watermarks, or other graphics."
+}

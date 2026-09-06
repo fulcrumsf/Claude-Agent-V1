@@ -214,6 +214,13 @@ function CalloutOverlay({
         alignItems: "center",
         gap: 12,
         pointerEvents: "none",
+        // 50%-black backing plate (Glass Frog notes 7/16) — a little padding around
+        // the text so a brand-green callout always reads over busy/coloured
+        // imagery. Fades + scales in/out with the text via the parent opacity +
+        // scaleIn transform. Reusable for every callout instance.
+        background: "rgba(0,0,0,0.5)",
+        padding: "20px 40px 24px",
+        borderRadius: 12,
         ...posStyle,
       }}
     >
@@ -272,7 +279,7 @@ function SpeciesCard({
   startS: number;
   durationS: number;
 }) {
-  const { opacity, visible, localFrame, fps } = useVisibility(startS, durationS);
+  const { opacity, visible, localFrame } = useVisibility(startS, durationS);
   const { width } = useVideoConfig();
 
   if (!visible && opacity === 0) return null;

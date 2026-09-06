@@ -1,0 +1,35 @@
+{
+  "scene_id": "Scene_07",
+  "scene_duration_s": 4.737,
+  "frame_count": 6,
+  "scene_description": "Hook-forward stinger: a single deliberately brief, unexplained flash of a different, unnamed future-video anomalous creature -- NOT the glass frog. No character-sheet grounding; keep the subject genuinely unidentifiable.",
+  "visual_style": "Anomalous Wild dark neon nature-documentary hybrid: cinematic wildlife-documentary macro photography combined with AI 3D-render inserts for internal anatomy/mechanism shots. Deep teal, forest dark-green, and amber lighting; backgrounds trend toward a dark #2B0B5A-to-#0B0F1A gradient feel outside of natural daylight/night forest scenes. National Geographic-quality lighting on real/photoreal shots; clean scientific-diagram aesthetic (no gore, no viscera) on any internal-anatomy render. Glitch-distortion cuts used only at anomaly-reveal/hook moments.",
+  "panel_convention": "clean professional storyboard grid, thin black borders separating panels, bold sans-serif frame number badge in the top-left corner of each panel, short one-line caption in a plain white strip beneath each panel.",
+  "frames": [
+    {
+      "frame": 1,
+      "action": "Near-total darkness, a single indistinct shape beginning to resolve at the edge of frame."
+    },
+    {
+      "frame": 2,
+      "action": "Quick glitch-distortion streak crossing the frame, obscuring most detail."
+    },
+    {
+      "frame": 3,
+      "action": "Brief flash-frame, an unnamed anomalous creature's silhouette glimpsed but not clearly identifiable."
+    },
+    {
+      "frame": 4,
+      "action": "Extreme close-up fragment, one unidentifiable anatomical detail of the creature, deliberately unclear."
+    },
+    {
+      "frame": 5,
+      "action": "Hard glitch-cut, the image breaking apart into digital distortion again."
+    },
+    {
+      "frame": 6,
+      "action": "Cut to black, the last flicker of the glitch fading to nothing before the end card."
+    }
+  ],
+  "consistency_directive": "Keep the storyboard readable and visually consistent. Every panel must show the same subject with identical coloring, markings, and proportions, as if part of one continuous shot. Use clean composition and precise detail. The sequence should read as one continuous event from start to finish."
+}

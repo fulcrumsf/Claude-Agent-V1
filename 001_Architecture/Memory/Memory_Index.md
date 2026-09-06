@@ -38,6 +38,7 @@ Use this as the routing layer. Do not load every memory file unless Tony explici
 - Gemini CLI uses `~/.gemini/GEMINI.md` for claude-mem context injection
 
 ## Task Routing
+- Broad Agent-OS orientation: read root manuals first, then prioritize numbered departments in this order: `001_Architecture`, `002_Content-Creation`, `007_Resource_Library`. Usually skip `000_Ingest` unless the task is about ingest.
 - Installed tools, CLIs, local apps, MCPs, scripts: read `System-Map.md`, `TOOLBOX.md`, then search `claude-mem`.
 - Workspace structure, departments, where files live: read `Workspace-Map.md`, then search `claude-mem`.
 - Ingest, wiki, Graphify: read `AGENTS.md` ingest procedure, `000_Wiki/log.md`, and relevant feedback/log entries.
