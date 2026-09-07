@@ -466,3 +466,10 @@
   Content = TikTok Shop TOS/compliance corpus + Neon Parcel TikTok Shop Creator pipeline.
 - Both via `graphify extract --force --token-budget 8000` + cluster + label. REGISTRY rows updated.
 - Queries verified.
+
+### Note review pass — closed (2026-09-07)
+- Built note_review.py (renamed from build_stub_review): copies un-enriched notes +
+  images to ~/Desktop/Resource_Library_Review/ with a Keep/Junk HTML page.
+- Triage bug fixed: notes with `enriched:` marker no longer re-flagged (108→13 real).
+- Tony reviewed: 3 junked (deleted via ~/Desktop/Delete), 13 kept as-is — enrichment
+  on these is CLOSED, not revisiting. Future: richer visual review/edit tool (deferred).

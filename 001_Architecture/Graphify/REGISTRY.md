@@ -32,7 +32,7 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | pending build | — |
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
 | Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 125 | built | 2026-09-06T02:00Z |
-| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 3836 | built | 2026-09-07T03:45Z|
+| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 3843 | built | 2026-09-07T05:52Z|
 | Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 2952 | built | 2026-09-05T22:55Z|
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | pending build | — |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | pending build | — |
@@ -65,6 +65,12 @@ Total: 12 domains tracked (Wiki + Affiliate Marketing built 2026-09-06).
 > ~12% (mostly gumroad-mirror / `*-GITHUB` stub dupes) — acceptable, diminishing returns.
 > **Rule learned:** for a docs-heavy folder, `--token-budget 8000` per-subfolder is the
 > sweet spot; the 60000 default makes Gemini silently drop most files.
+>
+> **Cleanup closed (2026-09-07):** Tony reviewed the notes automation couldn't enrich
+> (`note_review.py` → `~/Desktop/Resource_Library_Review/`). 3 junked + deleted; the
+> remaining 13 (7 unreadable images, 5 YouTube links, fal.ai) are **kept as-is on
+> purpose** — no further enrichment. Tools' ~12%% omission also parked. A richer visual
+> review/edit tool is a future build.
 
 > **Status legend:**
 > - `pending build` — domain has YAML frontmatter, but graph hasn't been built yet
