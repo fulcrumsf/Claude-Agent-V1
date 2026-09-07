@@ -3,7 +3,7 @@ title: "Reimagined Realms — Autonomy Report Card"
 type: report-card
 category: autonomy-tracking
 channel: Reimagined Realms
-current_autonomy: "TBD"
+current_autonomy: "10%"
 updated: 2026-09-06
 ---
 
@@ -11,15 +11,15 @@ updated: 2026-09-06
 
 Faceless history. `/reimagined-realms` 12-phase pipeline, production-proven.
 
-## Current autonomy: **TBD**
+## Current autonomy: **10%**
 
-_Pipeline is production-proven (Pompeii, V8 published) but Tony hasn't assigned a % yet. Estimate and confirm with him._
+Provisional 10% set by Tony 2026-09-07 pending a proper re-assessment. Pipeline is production-proven (Pompeii, V8 published) but needs a fresh look to score fairly.
 
 ## Per-production log
 
 | Production | Date | Autonomy % | Manual interventions | Notes |
 |-----------|------|-----------|---------------------|-------|
-| Pompeii | 2026-07 | TBD | title/thumb/description review, package approval | published private, V8 |
+| Pompeii | 2026-07 | 10% (provisional) | title/thumb/description review, package approval | published private, V8 |
 
 ## What "autonomy" means here
 
