@@ -52,6 +52,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - `001_Architecture/Scripts/enrich_url_stub_notes.py` — Gemini (Google Search grounding) visits bucket-2 URLs and writes `summary:`/`form:`/`verified:`. Same flags. Needs `GEMINI_API_KEY`.
 - `001_Architecture/Scripts/apply_dead_stub_graphignore.py` — writes bucket-3 paths into root `.graphifyignore` between `AUTO` markers (idempotent). Files stay in the vault; only excluded from the graph.
 - `001_Architecture/Scripts/note_review.py` — for the stubs automation couldn't enrich: copies the notes (+ full images) to `~/Desktop/Resource_Library_Review/` and builds `review.html` — one page, each note shown with its image or link + text, Keep/Junk buttons per card (saved in browser), "Copy decisions" button hands back a `KEEP`/`JUNK` + path list. Read-only on the vault. Run `resource_library_stub_triage.py` first.
+- `001_Architecture/Scripts/note_review_excluded.py` — bulk review page for the ~1,044 notes auto-excluded from the graph (bucket 3: garbled-title / missing-image / no-signal). `~/Desktop/Resource_Library_Review/review_excluded.html` — faceted filters (reason, folder, decision, text search), "Junk/Keep/Clear all shown" bulk buttons scoped to the current filter, per-card override, browser-saved, "Copy decisions" export. Read-only. No images (none resolve).
 - First run 2026-09-05: ~890 notes enriched, 1046 dead notes graph-ignored.
 
 **Skill registry sync script:** `001_Architecture/Scripts/sync_skill_index.py`
