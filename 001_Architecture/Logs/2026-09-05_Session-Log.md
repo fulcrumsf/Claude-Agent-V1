@@ -459,3 +459,10 @@
 - Re-merged 13 subgraphs → cluster → label: **3686 nodes / 1622 edges / 2146 communities (392 labeled)**.
 - `scratchpad/rl_bigfolders.sh`. REGISTRY v2.1 note added with the token-budget rule.
 - Queries verified (POD/etsy, AI video, n8n) — relevant + well-clustered.
+
+### Wiki + Affiliate Marketing graphs built (2026-09-06)
+- 000_Wiki: 125 docs → 345 nodes / 89 edges / 261 communities (3 omitted, all README). $0.24.
+- 005_Affiliate_Marketing: 36 docs → 202 nodes / 162 edges / 50 communities (0 omitted). $0.34.
+  Content = TikTok Shop TOS/compliance corpus + Neon Parcel TikTok Shop Creator pipeline.
+- Both via `graphify extract --force --token-budget 8000` + cluster + label. REGISTRY rows updated.
+- Queries verified.
