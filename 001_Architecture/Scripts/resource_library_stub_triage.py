@@ -119,6 +119,10 @@ def main():
                 continue
             if body_word_count(text) >= STUB_WORD_THRESHOLD:
                 continue
+            # Already enriched (has the marker) but written terse — not a stub,
+            # don't re-flag it for review.
+            if re.search(r"^enriched:\s*\S", text, re.M):
+                continue
 
             embed = first_image_embed(text)
             img_path = img_index.get(embed.lower()) if embed else None

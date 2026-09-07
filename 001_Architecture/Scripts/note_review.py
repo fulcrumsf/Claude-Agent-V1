@@ -13,8 +13,8 @@ Nothing in the vault is moved or deleted. This only copies OUT for review.
 
 Usage:
   python3 001_Architecture/Scripts/resource_library_stub_triage.py   # refresh first
-  python3 001_Architecture/Scripts/build_stub_review.py
-  python3 001_Architecture/Scripts/build_stub_review.py --out ~/Desktop/RL_Review
+  python3 001_Architecture/Scripts/note_review.py
+  python3 001_Architecture/Scripts/note_review.py --out ~/Desktop/RL_Review
 """
 import os
 import re
@@ -69,8 +69,11 @@ def main():
     out = args.out
     notes_dir = os.path.join(out, "notes")
     images_dir = os.path.join(out, "images")
-    os.makedirs(notes_dir, exist_ok=True)
-    os.makedirs(images_dir, exist_ok=True)
+    # start clean so the folder always matches the page (keeps decisions_*.txt at root)
+    for d in (notes_dir, images_dir):
+        if os.path.isdir(d):
+            shutil.rmtree(d)
+        os.makedirs(d)
 
     cards = []
 
