@@ -473,3 +473,13 @@
 - Triage bug fixed: notes with `enriched:` marker no longer re-flagged (108→13 real).
 - Tony reviewed: 3 junked (deleted via ~/Desktop/Delete), 13 kept as-is — enrichment
   on these is CLOSED, not revisiting. Future: richer visual review/edit tool (deferred).
+
+### 2026-09-08 — RL excluded-notes purge committed
+- Tony reviewed all 1,044 excluded notes in review_excluded.html, confirmed all junk
+  (dead image links, near-empty Notion rows, prompt fragments, "ChatGPT Image <date>" shells).
+- All 1,044 moved to ~/Desktop/Delete/RL_Excluded_Notes/ (Tony deleting manually).
+- Orphan-image ingest attempt cleaned: 4 good new notes kept (Nano-Banana-Prompt-Library,
+  Etsy-Best-Practices, Consistent-Character-AI-Tutorial, How-To-Sell-Digital-Products-...);
+  redundant Hiring-Cafe + stray Longcat note + 5 dup images → ~/Desktop/Delete/RL_Ingest_Cleanup/.
+- .graphifyignore dead-stub block removed (files gone). note_review_excluded.py got a
+  Download-decisions.txt button. Vault now 2,512 curated notes (was ~3,560).

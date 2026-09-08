@@ -139,6 +139,7 @@ def render(cards):
     <button class="act keep" id="bulkKeep">Keep all shown</button>
     <button class="act" id="bulkClear">Clear all shown</button>
     <button class="act exp" id="export">Copy decisions</button>
+    <button class="act exp" id="download">⬇ Download decisions.txt</button>
     <span id="shown" style="font-size:12px;opacity:.6"></span>
   </div>
 </header>
@@ -245,16 +246,25 @@ document.getElementById('bulkJunk').onclick = () => bulk('junk');
 document.getElementById('bulkKeep').onclick = () => bulk('keep');
 document.getElementById('bulkClear').onclick = () => bulk('');
 
-document.getElementById('export').onclick = () => {{
+function decisionsText() {{
   const lines = CARDS.map(c => {{
     const v = state[c.path];
     return v ? `${{v.toUpperCase()}}\\t${{c.path}}` : null;
   }}).filter(Boolean);
-  const txt = lines.join('\\n') || '(no decisions yet)';
-  const ta = document.getElementById('outbox');
-  ta.value = txt;
+  return lines.join('\\n') || '(no decisions yet)';
+}}
+document.getElementById('export').onclick = () => {{
+  const txt = decisionsText();
+  document.getElementById('outbox').value = txt;
   document.getElementById('dlg').showModal();
   try {{ navigator.clipboard.writeText(txt); }} catch(e) {{}}
+}};
+document.getElementById('download').onclick = () => {{
+  const blob = new Blob([decisionsText()], {{ type: 'text/plain' }});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'rl_excluded_decisions.txt';
+  document.body.appendChild(a); a.click(); a.remove();
 }};
 
 render();

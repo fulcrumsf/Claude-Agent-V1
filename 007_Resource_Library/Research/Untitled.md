@@ -1,4 +1,0 @@
----
-Threshold: false
-Submitted: false
----

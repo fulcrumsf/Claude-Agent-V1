@@ -437,3 +437,7 @@
 - `IMG_9941.PNG` → `Anthropic-Fellows-Program-AI-Mentorship-Job.png` | category: Personal | 2026-08-24 23:14
 - `IMG_9821.PNG` → `Boulder-Canyon-Avocado-Oil-Chips-Seed-Oil-Free.png` | category: Personal | 2026-08-24 23:15
 - `IMG_0347.JPG` → `Miracle-Noodle-Egg-White-Spaghetti.jpg` | category: Personal | 2026-08-24 23:15
+- `How-To-Sell-Digital-Products-On-Social-Media.png` → `How-To-Sell-Digital-Products-on-Social-Media-Tutorial.png` | category: Tutorials | 2026-09-07 12:04
+- `AI-Character-Consistency-Tutorial.png` → `Consistent-Character-AI-Tutorial.png` | category: Tutorials | 2026-09-07 12:05
+- `Hiring-Cafe-Job-Board.PNG` → `Hiring-Cafe-Job-Board-2.png` | category: Tools | 2026-09-07 12:06
+- `Nano-Banana-Prompt-Library.PNG` → `Longcat-Insidersedge-AIVideoTool.png` | category: Tools | 2026-09-07 12:06

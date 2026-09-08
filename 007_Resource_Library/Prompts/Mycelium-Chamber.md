@@ -1,3 +1,0 @@
----
-Animal: Coral-jawed whale
----

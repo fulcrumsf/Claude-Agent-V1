@@ -1,4 +1,0 @@
----
-Hotels:
-  - Marriott
----

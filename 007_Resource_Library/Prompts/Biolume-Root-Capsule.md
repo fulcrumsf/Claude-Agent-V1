@@ -1,3 +1,0 @@
----
-Animal: Sabertooth seal
----
