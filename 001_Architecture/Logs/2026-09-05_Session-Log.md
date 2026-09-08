@@ -483,3 +483,10 @@
   redundant Hiring-Cafe + stray Longcat note + 5 dup images → ~/Desktop/Delete/RL_Ingest_Cleanup/.
 - .graphifyignore dead-stub block removed (files gone). note_review_excluded.py got a
   Download-decisions.txt button. Vault now 2,512 curated notes (was ~3,560).
+
+### 2026-09-08 — 6 remaining domain graphs built
+- Built graphs for every folder with content except empty 000_Project-Ideas:
+  000_Daily (6n), Whop_Clipping (6n), Social_Media_Marketing (4n), 003_Apps (263n/373e —
+  Upkeeply + MCP_Gateway_Controller), 004_Games (15n), 005_Ecommerce (9n).
+- All via graphify extract --force --token-budget 8000 + cluster + label. REGISTRY rows updated.
+- Federation now: all domains built except 000_Project-Ideas (empty) and 005_Affiliate_Marketing... (built 2026-09-06).

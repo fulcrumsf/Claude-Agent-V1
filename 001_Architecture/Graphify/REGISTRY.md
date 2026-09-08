@@ -29,16 +29,16 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 
 | Domain | Path | Graph location | MD files | Status | Last built |
 |--------|------|----------------|----------|--------|------------|
-| Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | pending build | — |
+| Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
 | Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 125 | built | 2026-09-06T02:00Z |
 | Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 3843 | built | 2026-09-07T05:52Z|
 | Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 2952 | built | 2026-09-05T22:55Z|
-| Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | pending build | — |
-| Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | pending build | — |
-| Apps | `003_Apps/` | `003_Apps/graphify-out/` | 8 | pending build | — |
-| Games | `004_Games/` | `004_Games/graphify-out/` | 2 | pending build | — |
-| Ecommerce | `005_Ecommerce/` | `005_Ecommerce/graphify-out/` | 4 | pending build | — |
+| Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
+| Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
+| Apps | `003_Apps/` | `003_Apps/graphify-out/` | 10 | built (263n/373e) | 2026-09-08T16:00Z |
+| Games | `004_Games/` | `004_Games/graphify-out/` | 2 | built | 2026-09-08T16:00Z |
+| Ecommerce | `005_Ecommerce/` | `005_Ecommerce/graphify-out/` | 4 | built | 2026-09-08T16:00Z |
 | Affiliate Marketing | `005_Affiliate_Marketing/` | `005_Affiliate_Marketing/graphify-out/` | 36 | built | 2026-09-06T02:00Z |
 | Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 2507 | built (v2.1 — see note) | 2026-09-06T01:30Z |
 
