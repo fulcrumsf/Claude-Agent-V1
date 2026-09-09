@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resource Library Visualizer</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #f4f4f5; --fg: #18181b; --muted: #71717a;
+    --card: #ffffff; --line: #e4e4e7; --accent: #2563eb;
+    --pill-bg: #f4f4f5; --pill-fg: #3f3f46;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #18181b; --fg: #e4e4e7; --muted: #a1a1aa;
+      --card: #27272a; --line: #3f3f46; --accent: #3b82f6;
+      --pill-bg: #3f3f46; --pill-fg: #e4e4e7;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+         font: 13px/1.45 -apple-system, system-ui, sans-serif; }
+  a { color: var(--accent); }
+
+  header { position: sticky; top: 0; z-index: 20; background: var(--bg);
+           border-bottom: 1px solid var(--line); padding: 10px 14px; }
+  .titlebar { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  h1 { font-size: 15px; margin: 0; }
+  #count { color: var(--muted); font-size: 12px; }
+  .grow { flex: 1; }
+  input[type=search] { font: inherit; padding: 5px 9px; border: 1px solid var(--line);
+    border-radius: 7px; background: var(--card); color: var(--fg); min-width: 200px; }
+  button { font: inherit; cursor: pointer; }
+  .btn { padding: 5px 11px; border: 1px solid var(--line); border-radius: 7px;
+    background: var(--card); color: var(--fg); }
+  .btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .btn.danger { background: #dc2626; color: #fff; border-color: #dc2626; }
+
+  .filters { display: flex; flex-direction: column; gap: 5px; }
+  .frow { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
+  .frow > .lbl { font-size: 10px; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--muted); width: 52px; flex-shrink: 0; }
+  .chip { font-size: 12px; padding: 3px 9px; border: 1px solid var(--line);
+    border-radius: 999px; background: var(--card); color: var(--fg); }
+  .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  #actionbar { display: none; gap: 8px; align-items: center; margin-top: 8px;
+    padding: 7px 10px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 8px; }
+  #actionbar.show { display: flex; }
+  #actionbar select { font: inherit; padding: 4px 8px; border-radius: 6px;
+    border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+
+  main { padding: 12px; display: grid; gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+    overflow: hidden; position: relative; display: flex; flex-direction: column; }
+  .card.sel { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .thumbwrap { position: relative; aspect-ratio: 4/3; background: var(--pill-bg);
+    display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .thumbwrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .glyph { width: 100%; height: 100%; display: flex; align-items: center;
+    justify-content: center; font: 700 22px ui-monospace, monospace; color: #fff; }
+  .play { position: absolute; inset: 0; margin: auto; width: 0; height: 0;
+    border-style: solid; border-width: 15px 0 15px 26px;
+    border-color: transparent transparent transparent rgba(255,255,255,.92);
+    filter: drop-shadow(0 0 6px #0008); }
+  .chk { position: absolute; top: 6px; left: 6px; width: 20px; height: 20px;
+    border-radius: 5px; border: 2px solid #fff; background: #0006; cursor: pointer;
+    opacity: 0; transition: opacity .1s; display: flex; align-items: center;
+    justify-content: center; color: #fff; font-size: 13px; z-index: 3; }
+  .card:hover .chk, .chk.on { opacity: 1; }
+  .chk.on { background: var(--accent); border-color: var(--accent); }
+  .body { padding: 9px 10px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+  .t { font-weight: 600; display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden; }
+  .d { color: var(--muted); font-size: 12px; display: -webkit-box; -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; overflow: hidden; }
+  .foot { margin-top: auto; display: flex; flex-direction: column; gap: 4px; }
+  .foot .line { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
+  .pill { font-size: 11px; padding: 1px 7px; border-radius: 999px;
+    background: var(--pill-bg); color: var(--pill-fg); }
+  .src { margin-left: auto; font-size: 11px; padding: 1px 7px; border-radius: 999px;
+    color: #fff; font-weight: 600; }
+  .src.Screenshot { background: #d97706; }
+  .src.YouTube { background: #dc2626; }
+  .src.Bookmark { background: #2563eb; }
+
+  /* detail slide-over */
+  #scrim { position: fixed; inset: 0; background: #0007; z-index: 40; display: none; }
+  #scrim.show { display: block; }
+  #detail { position: fixed; top: 0; right: 0; height: 100%; width: 62%;
+    max-width: 900px; background: var(--bg); border-left: 1px solid var(--line);
+    z-index: 41; transform: translateX(100%); transition: transform .18s ease;
+    display: flex; flex-direction: column; }
+  #detail.show { transform: none; }
+  #detail .dhead { padding: 10px 14px; border-bottom: 1px solid var(--line);
+    display: flex; gap: 8px; align-items: center; }
+  #detail .dhead .path { font: 12px ui-monospace, monospace; color: var(--muted);
+    flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  #detail .dbody { padding: 14px 18px; overflow: auto; flex: 1; }
+  #detail img { max-width: 100%; border-radius: 6px; }
+  #detail iframe.yt { width: 100%; aspect-ratio: 16/9; border: 0; border-radius: 6px; }
+  dl.fm { display: grid; grid-template-columns: max-content 1fr; gap: 3px 12px;
+    background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 12px; margin: 0 0 14px; font-size: 12px; }
+  dl.fm dt { color: var(--muted); }
+  dl.fm dd { margin: 0; word-break: break-word; }
+  .callout { border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    border-radius: 6px; padding: 8px 12px; margin: 10px 0; background: var(--card); }
+  .wikilink { color: var(--accent); border-bottom: 1px dotted var(--accent); }
+  .editrow { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+  .editrow label { font-size: 11px; color: var(--muted); }
+  .editrow input, .editrow textarea { font: inherit; padding: 6px 9px; width: 100%;
+    border: 1px solid var(--line); border-radius: 6px; background: var(--card);
+    color: var(--fg); }
+  .editrow textarea { min-height: 160px; font: 12px ui-monospace, monospace; }
+  pre.diff { background: var(--card); border: 1px solid var(--line); border-radius: 6px;
+    padding: 10px; overflow: auto; font-size: 11px; }
+
+  dialog { max-width: 640px; width: 92%; border: 1px solid var(--line);
+    border-radius: 10px; background: var(--bg); color: var(--fg); }
+  dialog textarea { width: 100%; min-height: 260px; font: 11px ui-monospace, monospace; }
+  #toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+    background: #18181b; color: #fff; padding: 8px 16px; border-radius: 8px;
+    z-index: 60; opacity: 0; transition: opacity .2s; pointer-events: none; }
+  #toast.show { opacity: 1; }
+</style>
+</head>
+<body>
+<header>
+  <div class="titlebar">
+    <h1>Resource Library</h1>
+    <span id="count">loading…</span>
+    <span class="grow"></span>
+    <input type="search" id="q" placeholder="title / filename contains…">
+    <button class="btn" id="textToggle">Show text-only</button>
+    <button class="btn primary" id="finalizeBtn">Finalize Queue</button>
+  </div>
+  <div class="filters">
+    <div class="frow"><span class="lbl">Folder</span><span id="fFolders"></span></div>
+    <div class="frow"><span class="lbl">Source</span>
+      <button class="chip" data-src="YouTube">YouTube</button>
+      <button class="chip" data-src="Screenshot">Screenshot</button>
+      <button class="chip" data-src="Bookmark">Bookmark</button>
+    </div>
+    <div class="frow"><span class="lbl">Tags</span><span id="fTags"></span></div>
+  </div>
+  <div id="actionbar">
+    <b id="selCount">0 selected</b>
+    <select id="actionSel">
+      <option value="delete">Delete</option>
+      <option value="rerun">Re-run AI</option>
+    </select>
+    <button class="btn primary" id="applyAction">Apply</button>
+    <button class="btn" id="clearSel">Clear</button>
+  </div>
+</header>
+
+<main id="grid"></main>
+
+<div id="scrim"></div>
+<aside id="detail">
+  <div class="dhead">
+    <span class="path" id="dPath"></span>
+    <button class="btn" id="dEdit">Edit</button>
+    <button class="btn" id="dRerun">Re-run AI</button>
+    <button class="btn" id="dComment">Comment</button>
+    <button class="btn danger" id="dDelete">Delete</button>
+    <button class="btn" id="dClose">✕</button>
+  </div>
+  <div class="dbody" id="dBody"></div>
+</aside>
+
+<dialog id="commentDlg">
+  <h3>Add comment</h3>
+  <p style="color:var(--muted);font-size:12px" id="commentFor"></p>
+  <textarea id="commentText" style="min-height:120px" placeholder="e.g. should be design-inspiration not graphic-design"></textarea>
+  <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
+    <button class="btn" onclick="commentDlg.close()">Cancel</button>
+    <button class="btn primary" id="commentSend">Send to queue</button>
+  </div>
+</dialog>
+
+<dialog id="queueDlg">
+  <h3>Queue finalized</h3>
+  <p style="color:var(--muted);font-size:12px">Hand this to the agent to action the comments.</p>
+  <textarea id="queueText" readonly></textarea>
+  <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
+    <button class="btn" id="queueCopy">Copy</button>
+    <button class="btn" id="queueDownload">Download</button>
+    <button class="btn primary" onclick="queueDlg.close()">Done</button>
+  </div>
+</dialog>
+
+<div id="toast"></div>
+
+<script>
+"use strict";
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => (s || "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+let ALL = [];
+const state = { q: "", folders: new Set(), sources: new Set(), tags: new Set(), showText: false };
+const selected = new Set();
+let current = null; // path of open detail
+
+const TAG_COLORS = ["#e0e7ff", "#fce7f3", "#dcfce7", "#fef9c3", "#ffedd5", "#f3e8ff"];
+const TAG_FG = ["#3730a3", "#9d174d", "#166534", "#854d0e", "#9a3412", "#6b21a8"];
+function hash(s) { let h = 0; for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return Math.abs(h); }
+function tagPill(t) {
+  const i = hash(t) % TAG_COLORS.length;
+  return `<span class="pill" style="background:${TAG_COLORS[i]};color:${TAG_FG[i]}">${esc(t)}</span>`;
+}
+
+function toast(msg) {
+  const el = $("#toast"); el.textContent = msg; el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 1600);
+}
+
+async function api(url, opts) {
+  const r = await fetch(url, opts);
+  if (!r.ok) throw new Error(url + " -> " + r.status);
+  return r.json();
+}
+
+function visible() {
+  return ALL.filter(c => {
+    if (!state.showText && c.kind === "text") return false;
+    if (state.folders.size && !state.folders.has(c.folder)) return false;
+    if (state.sources.size && !state.sources.has(c.source_label)) return false;
+    if (state.tags.size && !c.tags.some(t => state.tags.has(t))) return false;
+    if (state.q) {
+      const hay = (c.title + " " + c.path).toLowerCase();
+      if (!hay.includes(state.q)) return false;
+    }
+    return true;
+  });
+}
+
+function cardHTML(c) {
+  let thumb;
+  if (c.thumb) {
+    thumb = `<img loading="lazy" src="${esc(c.thumb)}" alt="">`;
+  } else {
+    thumb = `<div class="glyph" style="background:${esc(c.glyph_color || "#9ca3af")}">.md</div>`;
+  }
+  const play = c.kind === "youtube" ? '<span class="play"></span>' : "";
+  const isSel = selected.has(c.path);
+  const tags = c.tags.slice(0, 2).map(tagPill).join("");
+  const src = c.source_label
+    ? `<span class="src ${esc(c.source_label)}">${c.vision_risk ? "⚠ " : ""}${esc(c.source_label)}</span>`
+    : "";
+  return `<div class="card${isSel ? " sel" : ""}" data-path="${esc(c.path)}">
+    <div class="thumbwrap">
+      <div class="chk${isSel ? " on" : ""}" data-check>${isSel ? "✓" : ""}</div>
+      ${thumb}${play}
+    </div>
+    <div class="body">
+      <div class="t">${esc(c.title)}</div>
+      <div class="d">${esc(c.summary)}</div>
+      <div class="foot">
+        <div class="line"><span class="pill">${esc(c.folder || "—")}</span></div>
+        <div class="line">${tags || "<span></span>"}</div>
+        <div class="line">${src}</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderGrid() {
+  const vis = visible();
+  $("#grid").innerHTML = vis.map(cardHTML).join("") ||
+    '<p style="color:var(--muted);grid-column:1/-1">Nothing matches these filters.</p>';
+  $("#count").textContent = `${vis.length} shown · ${ALL.length} total`;
+  $("#selCount").textContent = `${selected.size} selected`;
+  $("#actionbar").classList.toggle("show", selected.size > 0);
+}
+
+function renderFilters(f) {
+  $("#fFolders").innerHTML = f.folders.map(x =>
+    `<button class="chip" data-folder="${esc(x)}">${esc(x)}</button>`).join("");
+  $("#fTags").innerHTML = f.top_tags.map(x =>
+    `<button class="chip" data-tag="${esc(x)}">${esc(x)}</button>`).join("") ||
+    '<span style="color:var(--muted);font-size:11px">none</span>';
+}
+
+// ---------- events: filters ----------
+document.addEventListener("click", e => {
+  const t = e.target;
+  const toggle = (set, key, el) => { set.has(key) ? set.delete(key) : set.add(key); el.classList.toggle("on"); renderGrid(); };
+  if (t.dataset.folder !== undefined) return toggle(state.folders, t.dataset.folder, t);
+  if (t.dataset.src !== undefined) return toggle(state.sources, t.dataset.src, t);
+  if (t.dataset.tag !== undefined) return toggle(state.tags, t.dataset.tag, t);
+});
+$("#q").addEventListener("input", e => { state.q = e.target.value.toLowerCase().trim(); renderGrid(); });
+$("#textToggle").addEventListener("click", e => {
+  state.showText = !state.showText;
+  e.target.classList.toggle("on", state.showText);
+  e.target.textContent = state.showText ? "Hide text-only" : "Show text-only";
+  renderGrid();
+});
+
+// ---------- events: grid ----------
+$("#grid").addEventListener("click", e => {
+  const card = e.target.closest(".card");
+  if (!card) return;
+  const path = card.dataset.path;
+  if (e.target.closest("[data-check]")) {
+    selected.has(path) ? selected.delete(path) : selected.add(path);
+    renderGrid();
+    return;
+  }
+  openDetail(path);
+});
+
+$("#clearSel").addEventListener("click", () => { selected.clear(); renderGrid(); });
+
+$("#applyAction").addEventListener("click", async () => {
+  const paths = [...selected];
+  if (!paths.length) return;
+  const action = $("#actionSel").value;
+  if (action === "delete") {
+    if (!confirm(`Move ${paths.length} note(s) + their images to ~/Desktop/delete/ ?`)) return;
+    await api("/api/delete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ paths }) });
+    ALL = ALL.filter(c => !selected.has(c.path));
+    selected.clear();
+    if (current && paths.includes(current)) closeDetail();
+    renderGrid();
+    toast(`${paths.length} moved to ~/Desktop/delete/`);
+  } else {
+    const est = (paths.length * 0.01).toFixed(2);
+    if (!confirm(`Re-run Vision AI on ${paths.length} note(s)? Est. cost ~$${est}. Results are shown for review, nothing is written yet.`)) return;
+    const r = await api("/api/rerun-ai", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ paths }) });
+    console.log("rerun results", r.results);
+    toast("Re-run done — see console; open a card to apply");
+  }
+});
+
+// ---------- detail ----------
+function closeDetail() {
+  current = null;
+  $("#detail").classList.remove("show");
+  $("#scrim").classList.remove("show");
+}
+$("#dClose").addEventListener("click", closeDetail);
+$("#scrim").addEventListener("click", closeDetail);
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDetail(); });
+
+async function openDetail(path) {
+  current = path;
+  $("#dPath").textContent = path;
+  $("#dBody").innerHTML = "<p style='color:var(--muted)'>loading…</p>";
+  $("#detail").classList.add("show");
+  $("#scrim").classList.add("show");
+  const d = await api("/api/note?path=" + encodeURIComponent(path));
+  $("#dBody").dataset.fm = JSON.stringify(d.frontmatter || {});
+  $("#dBody").innerHTML = d.frontmatter_html + d.body_html;
+}
+
+$("#dEdit").addEventListener("click", () => {
+  const fm = JSON.parse($("#dBody").dataset.fm || "{}");
+  const tags = Array.isArray(fm.tags) ? fm.tags.join(", ") : (fm.tags || "");
+  $("#dBody").innerHTML = `
+    <div class="editrow"><label>Title</label><input id="eTitle" value="${esc(String(fm.title || ""))}"></div>
+    <div class="editrow"><label>Description / summary</label><input id="eSummary" value="${esc(String(fm.summary || ""))}"></div>
+    <div class="editrow"><label>URL</label><input id="eUrl" value="${esc(String(fm.url || ""))}"></div>
+    <div class="editrow"><label>Tags (comma separated)</label><input id="eTags" value="${esc(tags)}"></div>
+    <div class="editrow"><label>Body (leave blank to keep as-is)</label><textarea id="eBody" placeholder="only fill this if the mislabel is deeper than the fields above"></textarea></div>
+    <div style="display:flex;gap:8px">
+      <button class="btn primary" id="eSave">Save</button>
+      <button class="btn" id="eCancel">Cancel</button>
+    </div>`;
+  $("#eCancel").addEventListener("click", () => openDetail(current));
+  $("#eSave").addEventListener("click", async () => {
+    const payload = { path: current, title: $("#eTitle").value, summary: $("#eSummary").value, url: $("#eUrl").value, tags: $("#eTags").value };
+    const b = $("#eBody").value.trim();
+    if (b) payload.body = b + "\n";
+    await api("/api/note", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+    const c = ALL.find(x => x.path === current);
+    if (c) { c.title = payload.title; c.summary = payload.summary; c.tags = payload.tags.split(",").map(s => s.trim()).filter(Boolean); }
+    renderGrid();
+    toast("Saved");
+    openDetail(current);
+  });
+});
+
+$("#dRerun").addEventListener("click", async () => {
+  if (!confirm("Re-run Vision AI on this note? Est. ~$0.01. Nothing is written until you accept.")) return;
+  const r = await api("/api/rerun-ai", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: current }) });
+  const res = r.results[current] || {};
+  if (res.error) { toast("Re-run failed: " + res.error); return; }
+  $("#dBody").innerHTML = `
+    <h3>Before</h3><pre class="diff">${esc(JSON.stringify(res.before, null, 2))}</pre>
+    <h3>After (proposed)</h3><pre class="diff">${esc(JSON.stringify(res.after, null, 2))}</pre>
+    <div style="display:flex;gap:8px">
+      <button class="btn primary" id="applyRerun">Apply</button>
+      <button class="btn" id="discardRerun">Discard</button>
+    </div>`;
+  $("#discardRerun").addEventListener("click", () => openDetail(current));
+  $("#applyRerun").addEventListener("click", async () => {
+    const a = res.after || {};
+    await api("/api/note", { method: "PATCH", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ path: current, title: a.title, summary: a.summary, url: a.url, tags: a.tags }) });
+    toast("Applied");
+    openDetail(current);
+  });
+});
+
+$("#dDelete").addEventListener("click", async () => {
+  if (!confirm("Move this note + its image to ~/Desktop/delete/ ?")) return;
+  const p = current;
+  await api("/api/delete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ paths: [p] }) });
+  ALL = ALL.filter(c => c.path !== p);
+  selected.delete(p);
+  closeDetail();
+  renderGrid();
+  toast("Moved to ~/Desktop/delete/");
+});
+
+// ---------- comment ----------
+$("#dComment").addEventListener("click", () => {
+  $("#commentFor").textContent = current;
+  $("#commentText").value = "";
+  $("#commentDlg").showModal();
+});
+$("#commentSend").addEventListener("click", async () => {
+  const text = $("#commentText").value.trim();
+  if (!text) return;
+  await api("/api/comment", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ path: current, text }) });
+  $("#commentDlg").close();
+  toast("Queued");
+});
+
+// ---------- finalize queue ----------
+$("#finalizeBtn").addEventListener("click", async () => {
+  if (!confirm("Seal the current review batch and start a fresh one?")) return;
+  const r = await api("/api/queue/finalize", { method: "POST" });
+  $("#queueText").value = r.batch || "(empty batch)";
+  $("#queueDlg").showModal();
+});
+$("#queueCopy").addEventListener("click", () => {
+  navigator.clipboard.writeText($("#queueText").value).then(() => toast("Copied"));
+});
+$("#queueDownload").addEventListener("click", () => {
+  const blob = new Blob([$("#queueText").value], { type: "text/markdown" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "Review_Queue_batch.md";
+  document.body.appendChild(a); a.click(); a.remove();
+});
+
+// ---------- boot ----------
+(async function boot() {
+  const [notes, filters] = await Promise.all([api("/api/notes"), api("/api/filters")]);
+  ALL = notes;
+  renderFilters(filters);
+  renderGrid();
+})();
+</script>
+</body>
+</html>

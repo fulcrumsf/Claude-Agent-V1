@@ -23,7 +23,7 @@ render = _load("render")
 queue = _load("queue")
 actions = _load("actions")
 
-_APP_FILE = _here / "app.html"
+_APP_FILE = _here / "App.html"
 APP_HTML = (_APP_FILE.read_text(encoding="utf-8") if _APP_FILE.is_file()
             else "<!doctype html><title>Resource Library Visualizer</title>"
                  "<p>app.html missing</p>")
