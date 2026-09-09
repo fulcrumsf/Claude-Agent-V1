@@ -56,6 +56,14 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - `001_Architecture/Scripts/build_image_cull.py` + `apply_image_cull.py` — visual culling page for all ~9k images in 007_Resource_Library (`~/Desktop/Resource_Library_Review/image_cull.html`). Area filters (OpenAI_History / Visual_Assets / OpenAI_Images / Videos_Keyframes / Undetermined), note/no-note tag + filter, "mark all shown for delete", live GB-to-reclaim counter, copy/download delete list. apply script moves each marked image + its note to ~/Desktop/Delete/RL_Image_Cull/.
 - First run 2026-09-05: ~890 notes enriched, 1046 dead notes graph-ignored.
 
+**Resource Library Visualizer:** `001_Architecture/Tools/Resource-Library-Visualizer/serve.py`
+- Local browser gallery ("Lightroom for screenshots") for reviewing / culling `007_Resource_Library`. Run `python3 001_Architecture/Tools/Resource-Library-Visualizer/serve.py` → opens `localhost:8756` (cold start ~10-15s while it indexes ~4k notes).
+- Default view: notes with an embedded image or a YouTube video, newest-ingested first. Toggle shows text-only `.md` notes as color-coded glyph cards. Filters: folder / source-type (YouTube·Screenshot·Bookmark) / top-8 tags / search.
+- Click a card → note rendered Obsidian-style (inline images, playable YouTube embeds, callouts, wikilinks). Per-card: **Edit** (title/summary/url/tags/body → rewrites the `.md` in place), **Re-run AI** (re-runs `process_image_ingest` vision, shows before/after, apply or discard), **Add Comment** (queued for the agent).
+- Bulk select → **Delete** (moves note + sibling image to `~/Desktop/delete/`, card vanishes — never a hard delete) or **Re-run AI**.
+- Comments + edit requests append to `~/Desktop/Resource_Library_Review/Review_Queue.md`; **Finalize Queue** seals a batch (copy/download) to hand to the agent.
+- Nothing is committed to git. Source-type labels are heuristic (~90%). Tests: `tests/resource_library_visualizer/` (39, pytest).
+
 **Skill registry sync script:** `001_Architecture/Scripts/sync_skill_index.py`
 - Regenerates `001_Architecture/Skills/Skill-Index.md` from every `SKILL.md` in the skills tree
 - Designed to run from Claude/Gemini hooks after skill edits so Gemini can discover new or changed skills automatically
@@ -308,13 +316,14 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ## Video Editing & Composition
 
-### Subject-Aware Reframer — Experimental Gate 2
+### Subject-Aware Reframer — Experimental Gate 3
 - **Tool:** `001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/`
-- **Status:** Detection/tracking prototype only; camera planning and production adoption require later approval.
+- **Status:** Channel-independent framing prototype with configurable group, subject, and hybrid modes. Part Three comparison awaits Tony's review; automatic clipping and pipeline adoption remain later stages.
 - **Runtime:** Isolated Python 3.11 environment, 42 approved hash-locked packages, official YOLO11s weights, explicit ByteTrack, FFmpeg/OpenCV diagnostics.
-- **Launcher:** `run_offline.py` runs `diagnose.py` with OS network denial, restricted checkpoint loading, automatic installs disabled, and tool-local caches.
-- **Outputs:** New production-local `Shorts/Versions/v3/Auto-Reframe/` runs contain raw detections, track IDs, debug video, contact sheet, and run report. Sources and approved Shorts are never overwritten.
-- **Scope:** Tony's own local Agent-OS workflow. No narration analysis, crop planner, vertical render, or publishing in Gate 2.
+- **Launcher:** `run_offline.py` dispatches detection and `plan/render/reframe` commands with OS network denial, automatic installs disabled, and tool-local caches. Detection uses restricted model loading.
+- **Configuration:** `Framing-Profiles-v1.json` and `Job-Contract-v1.md`; shared defaults, saved profiles, per-video settings, and shot overrides. No channel-specific camera code.
+- **Outputs:** New production-local runs contain vertical MP4 variants, crop-plan JSON, comparison/debug videos, contact sheet, and verified run report. Sources and approved Shorts are never overwritten.
+- **Scope:** Tony's local Agent-OS workflow. Gate 3 reuses the approved dependencies and detection cache. Automatic clip selection, narration analysis, Airtable/MCP connections, and publishing are not implemented.
 
 ### Video-Use (Agent-Driven Video Editor)
 - **Repo:** `001_Architecture/Tools/Video-Generation/Video-Use/`
