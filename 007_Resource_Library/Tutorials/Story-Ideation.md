@@ -8,6 +8,7 @@ tags:
   - storytelling
   - script-writing
   - hooks
+  - shared-image-review
 created: 2026-05-01
 source: https://www.youtube.com/watch?v=w-QV-Xpplas
 ---
@@ -42,7 +43,7 @@ It can be vague or specific — just something you’re curious about or find st
 > _Can you break down that one reason into 5 short, specific ideas — events, turning points, contradictions, or facts — that are shocking, emotional, or visually powerful?_
 > 
 > _Keep them tightly related to that reason._
-![[Story_Structure.png]]
+![[Story-Ideation.png]]
 ### Scripts Prompt Template
 ## Input the topic information for the hook you need help from CHATGPT and copy and paste it in CHATGPT 🤖
 Write a dramatic short story in this **exact format and pacing** for the following topic _**🟨 [INSERT TOPIC]**_Each sentence should be short and cinematic — like subtitles. No long paragraphs.

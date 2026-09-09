@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Google-Aintignawity-Bring-Plants-Windows-Linux.PNG]]
+![[Google-Aintignawity-Bring-Plants-Windows-Linux.png]]
 
 ## Summary
 A TikTok post by 'Julian The SEO Expert' showcasing a search feature called 'Google Antigravity'. The content highlights that the tool is compatible with both Windows and Linux. It functions as a promotional tip for a specialized Google search method or utility.

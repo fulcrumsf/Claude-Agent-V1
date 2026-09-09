@@ -10,7 +10,7 @@ original_filename: "IMG_8739.PNG"
 created: 2026-05-01
 ---
 
-![[Civ-Stem-Emplores-Fali-Wihg-Shop.PNG]]
+![[Civ-Stem-Emplores-Fali-Wihg-Shop.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Civ Stem Emplores Fali Wihg Shop with visible text about civ stem emplores fali wihg shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

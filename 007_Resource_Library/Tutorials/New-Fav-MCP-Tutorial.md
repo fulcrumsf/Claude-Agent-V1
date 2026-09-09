@@ -15,7 +15,7 @@ original_filename: "new-fav-mcp-tutorial.PNG"
 created: 2026-05-01
 ---
 
-![[New-Fav-MCP-Tutorial.PNG]]
+![[New-Fav-MCP-Tutorial.png]]
 
 ## What It Is
 This is a tutorial-style screenshot showing a node-based AI agent workflow. The main value is the walkthrough of how the pieces connect.

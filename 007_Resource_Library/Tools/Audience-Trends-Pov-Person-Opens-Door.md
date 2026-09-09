@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Audience-Trends-POV-Person-Opens-Door.PNG]]
+![[Audience-Trends-Pov-Person-Opens-Door.png]]
 
 ## Summary
 A screenshot of YouTube Studio analytics showing the 'Content' tab, specifically highlighting a section for 'YouTube search terms'. The visible data tracks audience queries like 'grandma feeding bear' and 'benny and grandma' over the last 28 days. This image documents how viewers find specific videos through keyword searches rather than recommendations.

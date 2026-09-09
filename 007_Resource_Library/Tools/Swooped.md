@@ -10,7 +10,7 @@ original_filename: "Swooped.PNG"
 created: 2026-05-01
 ---
 
-![[Swooped.PNG]]
+![[Swooped.png]]
 
 ## AI Analysis
 This screenshot captures the landing page for Swooped.co, a software designed to assist job seekers with AI-powered resume optimization, one-click applications, and job tracking. The page features a bold value proposition 'LAND YOUR DREAM JOB', clear benefits ('finds your next role 3x faster'), a call to action 'Try for free', and strong social proof including 'TRUSTED BY 630,000+ JOB SEEKERS' and recognizable brand logos like Google, Spotify, and Netflix. A content creator or entrepreneur would likely save this to analyze effective landing page design, copywriting for a SaaS product, understand the competitive landscape of AI-powered career tools, or to potentially feature Swooped in content related to job searching or productivity tools.

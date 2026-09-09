@@ -10,7 +10,7 @@ original_filename: "canvas-for-mind-ai.PNG"
 created: 2026-05-01
 ---
 
-![[Canvas-For-Mind-AI.PNG]]
+![[Canvas-For-Mind-AI.png]]
 
 ## AI Analysis
 This screenshot displays the TikTok application, showing a video promoting the 'EXISTS' AI game design platform. The visible text includes TikTok navigation (LIVE, Explore, Following, Shop, For You), video engagement metrics (2,824 likes, 2,499 saves), and overlay text about 'Automated Intelligence' and the 'Canvas for the mind' features of the EXISTS tool. A content creator or entrepreneur likely saved this to research new AI tools for game development or content creation, to gather ideas for creating content around emerging AI technologies, or to bookmark a relevant tool for future use in their projects.

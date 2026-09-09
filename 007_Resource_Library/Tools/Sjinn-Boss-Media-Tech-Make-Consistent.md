@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Sjinn-Boss-Media-Tech-Make-Consistent.PNG]]
+![[Sjinn-Boss-Media-Tech-Make-Consistent.png]]
 
 ## Summary
 A TikTok video from Boss Media Tech presenting a tutorial on how to make consistent characters using AI. The search bar displays 'SJinn.ai', indicating the specific tool used for this workflow.

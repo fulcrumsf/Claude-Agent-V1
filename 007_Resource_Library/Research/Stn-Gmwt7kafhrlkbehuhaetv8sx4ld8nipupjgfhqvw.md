@@ -17,7 +17,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[STN-GmWT7KAFHRLkbehuHAETv8sx4lD8nipUpjgFhQvw.jpeg]]
+![[Stn-Gmwt7kafhrlkbehuhaetv8sx4ld8nipupjgfhqvw.jpeg]]
 
 ## Summary
 The landing page for Gobii, a SaaS platform that enables developers to launch serverless browser-use agents via an API. The interface highlights key features such as AI-powered automation for complex web tasks and scalable cloud infrastructure to handle parallel execution.

@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Explore-Ana-Hte-Kallaway-Fastest-Ways.PNG]]
+![[Explore-Ana-Hte-Kallaway-Fastest-Ways.png]]
 
 ## Summary
 A TikTok video by user Kallaway promoting IBM SkillsBuild, a free learning platform for AI skills. The video highlights the availability of free resources to level up knowledge in artificial intelligence.

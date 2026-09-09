@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Sal-Live-Tem-Explore-Following-Shop.PNG]]
+![[Sal-Live-Tem-Explore-Following-Shop.png]]
 
 ## Summary
 A TikTok video featuring the creator 'Catnoisesocial' claiming to have earned over $1,732 with a platform called 'Noise'. The overlay graphic displays earnings data and an invitation to join as a Premium Creator. The caption describes this as a 'side hustle', suggesting it is a social media or audio-based monetization method.

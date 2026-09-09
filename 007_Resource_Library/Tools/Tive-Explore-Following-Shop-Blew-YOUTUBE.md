@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Tive-Explore-Following-Shop-Blew-Youtube.PNG]]
+![[Tive-Explore-Following-Shop-Blew-YOUTUBE.png]]
 
 ## Summary
 A TikTok video thumbnail demonstrating a YouTube video script structure using a progression vs. intensity graph labeled with Hook, Rising Action, and Payoff. The content focuses on the narrative framework used to successfully grow a channel in 7 days using AI.

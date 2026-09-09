@@ -10,7 +10,7 @@ original_filename: "ditherboy-studio-design.PNG"
 created: 2026-05-01
 ---
 
-![[Ditherboy-Studio-Design.PNG]]
+![[Ditherboy-Studio-Design.png]]
 
 ## AI Analysis
 This screenshot displays a mobile view of `studioaaa.com`, featuring a product page for 'Dither Boy,' an advanced image editor specializing in dithering and pixel art effects. The interface shows numerous sliders and options such as 'Scale,' 'Palette Category: Retro,' 'Palette: Bubblegum,' 'Contrast,' 'Midtones,' and 'Depth,' allowing fine control over the visual output of the pixel art. An entrepreneur or content creator would likely save this to explore new visual styles for branding, social media, or digital products, or to find a specialized tool for creating unique, retro-inspired graphics.

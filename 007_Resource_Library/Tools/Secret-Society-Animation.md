@@ -10,7 +10,7 @@ original_filename: "secret-society-animation.PNG"
 created: 2026-05-01
 ---
 
-![[Secret-Society-Animation.PNG]]
+![[Secret-Society-Animation.png]]
 
 ## AI Analysis
 This screenshot displays a TikTok user's profile page, identified by the username @darkai26 and display name 'Secret society.' The profile highlights creator metrics with 15 Following, 13.1K Followers, and 203.4K Likes. A prominent call to action links to an 'AI Animation Course' on Gumroad, indicating a direct monetization strategy. Below, a grid of videos, which appear to be AI-generated art or animations, displays individual view counts like 3,456, 4,926, 123.1K, etc., along with a 'Just watched' label on one video. A content creator or digital entrepreneur would save this to analyze a creator's success in the AI art/animation niche, explore potential course offerings, or gather inspiration for their own content and monetization strategies.

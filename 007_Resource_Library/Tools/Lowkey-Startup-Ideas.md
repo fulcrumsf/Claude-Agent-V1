@@ -10,7 +10,7 @@ original_filename: "lowkey-startup-ideas.PNG"
 created: 2026-05-01
 ---
 
-![[Lowkey-Startup-Ideas.PNG]]
+![[Lowkey-Startup-Ideas.png]]
 
 ## AI Analysis
 The screenshot captures a TikTok video titled 'lowkey the smartest way to generate startup ideas,' which features the Novi (usenovi.com) web application running within what's identified as the 'ChatGPT Atlas Browser'. Novi is displayed analyzing a 'AI Healthcare Recruiting' concept, showing an 'Idea score' of 7.8, a 'Market' score of 7.8, and a 'Verdict' of 'YES (with caveats)', alongside other metrics and potential problems. This content is likely saved by a content creator or digital entrepreneur to research AI tools for business idea generation and validation, gather inspiration for entrepreneurship-focused content, or identify promising startup niches.

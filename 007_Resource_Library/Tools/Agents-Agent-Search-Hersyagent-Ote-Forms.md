@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Agents-Agent-Search-Hersyagent-Ote-Forms.PNG]]
+![[Agents-Agent-Search-Hersyagent-Ote-Forms.png]]
 
 ## Summary
 A TikTok video tutorial by The AI Solopreneur featuring the Agents platform (a Zappier product visible in the browser URL). The screen displays a dashboard with various AI 'Pods' like Sales, Marketing, and LinkedIn Outreach, highlighting automation workflows such as action item extraction and auto-responses. The video promises to introduce three agent platforms capable of replacing significant portions of manual work.

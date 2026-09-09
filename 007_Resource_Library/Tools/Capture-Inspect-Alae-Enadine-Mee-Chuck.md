@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Capture-Inspect-Alae-Enadine-Mee-Chuck.PNG]]
+![[Capture-Inspect-Alae-Enadine-Mee-Chuck.png]]
 
 ## Summary
 A TikTok tutorial video by Chuck Finley demonstrating a specific tip for Unreal Engine 5 regarding 'Models' (likely mesh capture or photogrammetry). The visual shows a green point cloud or wireframe overlay of an armchair and guitar, indicating a 3D scanning workflow.

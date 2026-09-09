@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Bal-Tins-Listing-Details-Shap-Naleani.PNG]]
+![[Bal-Tins-Listing-Details-Shap-Naleani.png]]
 
 ## Summary
 A screenshot of a seller analytics dashboard for an Etsy listing titled 'Santas Cocktail Club Christmas Sweatshirt'. The tool displays performance metrics including monthly revenue ($81), total sales (628), views, favorites, and category classification. A promotional offer is visible at the bottom offering 3 free months using code BF2024.

@@ -17,7 +17,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[STN-PfNvROoD19CYCjiqIXZE3uyLftc7X48NZ8DdNcan.jpeg]]
+![[Stn-Pfnvrood19cycjiqixze3uylftc7x48nz8ddncan.jpeg]]
 
 ## Summary
 A screenshot of the Adobe Mixamo interface, showcasing its library of 3D animated characters and animations. The left panel displays a grid of character models performing various actions like dancing or combat moves (e.g., Capoeira, Taunt), while the right side shows a preview of a detailed pirate character model in an idle state.

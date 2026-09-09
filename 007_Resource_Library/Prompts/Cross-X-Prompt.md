@@ -12,7 +12,7 @@ original_filename: "Cross_X_Prompt7689.PNG"
 created: 2026-05-01
 ---
 
-![[Cross-X-Prompt.PNG]]
+![[Cross-X-Prompt.png]]
 
 ## Prompt Template
 3D cross-section AI video prompt template.

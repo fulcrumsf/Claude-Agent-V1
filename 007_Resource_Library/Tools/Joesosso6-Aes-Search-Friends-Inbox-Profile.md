@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Joesosso6-Aes-Search-Friends-Inbox-Profile.PNG]]
+![[Joesosso6-Aes-Search-Friends-Inbox-Profile.png]]
 
 ## Summary
 A TikTok video by user sebintel featuring a curated list of recommended tools for content creators. The caption explicitly names 'Paper Animator', 'Jitter', and 'Vidclue' as essential tools, while the video overlay displays gameplay footage from a mobile game rather than the tools themselves.

@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Oul-Blueprint-Masta-Boas-Vic-Dov.PNG]]
+![[Oul-Blueprint-Masta-Boas-Vic-Dov.png]]
 
 ## Summary
 The image shows the interface of a SaaS tool called 'BluePrint App', which appears to be designed for content creation workflows. The screen displays a list of '7 Content Ideas' with management fields like status, category, and specific inputs for 'Visual Hook'. Key visible actions include saving ideas to a vault and using a feature to 'Create Script', suggesting an all-in-one tool for content planning and scripting.

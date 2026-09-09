@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Rae-Ere-Pool-Eco-Tayou.PNG]]
+![[Live-Rae-Ere-Pool-Eco-Tayou.png]]
 
 ## Summary
 A TikTok video promoting the Noise app, a mobile application. The content features a user sharing a specific referral code (swhxh) to help viewers download the app and mentions a secondary TikTok handle for side hustles.

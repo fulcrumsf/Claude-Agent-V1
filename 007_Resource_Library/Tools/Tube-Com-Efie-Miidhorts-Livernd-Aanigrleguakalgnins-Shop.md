@@ -10,7 +10,7 @@ original_filename: "IMG_8692.PNG"
 created: 2026-05-01
 ---
 
-![[Tube-Com-Efie-Miidhorts-Livernd-Aanigrleguakalgnins-Shop.PNG]]
+![[Tube-Com-Efie-Miidhorts-Livernd-Aanigrleguakalgnins-Shop.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Tube Com Efie Miidhorts Livernd Aanigrleguakalgnins Shop with visible text about tube com efie-miidhorts. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

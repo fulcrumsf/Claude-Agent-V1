@@ -12,7 +12,7 @@ original_filename: "Chatgpt_Prompt1.png"
 created: 2026-05-01
 ---
 
-![[Chatgpt-Prompt.png]]
+![[ChatGPT-Prompt.png]]
 
 ## Prompt Context
 ChatGPT is being used to generate YouTube channel name ideas for a mystery/documentary niche.

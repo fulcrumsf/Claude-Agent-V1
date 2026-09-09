@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Find-Value-Share-Greg-Earn-Cash.PNG]]
+![[Find-Value-Share-Greg-Earn-Cash.png]]
 
 ## Summary
 A TikTok video by Greg promoting Anyspark.io, a platform described as 'a new Supabase' that allows creators to earn cash while creating content. The visual features overlay text reading 'FIND VALUE IN', suggesting the video provides advice or insights on finding value through this tool.

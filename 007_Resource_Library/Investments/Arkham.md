@@ -10,7 +10,7 @@ original_filename: "Arkham.PNG"
 created: 2026-05-01
 ---
 
-![[Arkham.PNG]]
+![[Arkham.png]]
 
 ## AI Analysis
 The image captures a profile page from Arkham Intelligence, a blockchain analytics platform, accessed through a mobile browser. It details the cryptocurrency portfolio and exchange activity of 'Alex Becker,' displaying his current portfolio value, daily gains, and a pie chart illustrating the distribution of his deposits across various exchanges over a two-year period. A content creator or digital entrepreneur would likely save this screenshot as research material to analyze the holdings and transaction patterns of a public figure in the crypto space, gather data for content related to blockchain transparency, or understand how such analytics platforms visualize financial data.

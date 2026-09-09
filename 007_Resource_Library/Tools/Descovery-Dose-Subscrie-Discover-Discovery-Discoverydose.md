@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Descovery-Dose-Subscrie-Discover-Discovery-Discoverydose.PNG]]
+![[Descovery-Dose-Subscrie-Discover-Discovery-Discoverydose.png]]
 
 ## Summary
 A screenshot of the YouTube channel page for Discovery Dose (@DiscoveryDose_). The image highlights the channel's branding, subscriber count (652K), and a selection of popular short-form content thumbnails covering science and nature topics like beetles and food.

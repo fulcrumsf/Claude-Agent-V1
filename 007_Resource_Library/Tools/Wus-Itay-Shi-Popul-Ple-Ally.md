@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Wus-Itay-Shi-Popul-Ple-Ally.PNG]]
+![[Wus-Itay-Shi-Popul-Ple-Ally.png]]
 
 ## Summary
 A YouTube video titled 'How I Actually Make Viral AI Videos In...' featuring content creators @syraxverse and @thepprofitprofiles. The thumbnail displays a grid of impressive 3D-style renderings including characters like a donkey, robot, and cars in gritty environments, suggesting the tutorial demonstrates a specific technique for high-quality generative art or animation.

@@ -11,7 +11,7 @@ original_filename: "claude-mem-plugin.PNG"
 created: 2026-05-01
 ---
 
-![[Claude-Mem-Plugin.PNG]]
+![[Claude-Mem-Plugin.png]]
 
 ## What It Is
 This is a reference for the Claude-Mem plugin. The main value is the plugin itself and the memory workflow it enables.

@@ -17,7 +17,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Impact-Fess-Eee-Chat-Tips-Theaiimpact.PNG]]
+![[Impact-Fess-Eee-Chat-Tips-Theaiimpact.png]]
 
 ## Summary
 A chat message from 'The AI Impact | No BS Tips' sharing a Google Document containing instructions to build an image app. The document includes best practices baked into the guide, as indicated by the sender.

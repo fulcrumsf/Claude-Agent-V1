@@ -151,11 +151,16 @@ Run the image ingestion script on files the audit flagged (or just pass the whol
 python /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/process_image_ingest.py "/path/to/images"
 ```
 
-The script uses OpenRouter vision first (qwen model), then OpenAI vision as the fallback if OpenRouter is unavailable or fails. It semantically extracts the content (Tools, Tutorials, Workflows, Research, Ideas), generates `Title-Case-With-Dashes.md` files in the appropriate folders, and leaves the raw image in `Visual_Assets/`.
+The script uses OpenRouter vision first (qwen model), then OpenAI vision as the fallback if OpenRouter is unavailable or fails. It semantically extracts the content (Tools, Tutorials, Workflows, Research, Ideas), then writes **both the note and its renamed image into the same category folder** — `007_Resource_Library/Tools/OpenCode.md` + `007_Resource_Library/Tools/OpenCode.png`, sharing the exact same name stem. `Visual_Assets/` is retired.
+
+**Dedup, applied automatically before writing (2026-09-09):**
+1. **Image hash** — if a byte-identical image already exists anywhere in the library, the incoming one is skipped (`[DUP] exact-duplicate`).
+2. **URL match** — if the vision pass extracts a `url:` that already appears in another note's frontmatter, it's skipped (`[DUP] same URL`).
+3. **Title soft-flag** — if a note with that title already exists in the target folder, the new one is written as `<name>-N` **and** tagged `possible-duplicate` for a later review pass.
 
 **Important:** Do not use OCR as the default screenshot path. OCR is not the primary ingest strategy here and should only be used if Tony explicitly asks for it or a separate OCR workflow is being implemented.
 
-**CRITICAL:** Once an image is processed by this script, the raw image stays in `Visual_Assets/`. Only the paired note is routed. **Skip Steps 2 and 3 for image files.**
+**CRITICAL:** This script writes the note **and** its image together into the category folder, with matching names. The `![[...]]` embed points at the sibling file. **Skip Steps 2 and 3 for image files.**
 
 ---
 
@@ -291,7 +296,7 @@ Obsidian has a native PDF viewer. PDFs routed to `007_Resource_Library/Docs/` ar
 
 ### Images
 
-Images no longer use generic "Asset Notes." They are processed automatically by the `process_image_ingest.py` script in Step 1.5, which creates rich semantic markdown notes and leaves the image in `Visual_Assets/`. If you are processing an image, you should have already skipped this step.
+Images no longer use generic "Asset Notes." They are processed automatically by the `process_image_ingest.py` script in Step 1.5, which writes the note and its renamed image side by side in the category folder. If you are processing an image, you should have already skipped this step.
 
 **The generated note MUST follow the canonical frontmatter contract from Step 2** — real `type:`, required `form:`, required `summary:`, `url:` when a URL is visible, `tags:` block list only. Shape:
 

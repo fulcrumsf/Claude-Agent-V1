@@ -16,7 +16,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[STN-XyxjAE7ZZIIol75Sq6XwRUNDrY2kGvKt5pjWW8Kw.png]]
+![[Stn-Xyxjae7zziiol75sq6xwrundry2kgvkt5pjww8kw.png]]
 
 ## Summary
 The official landing page for Adobe Mixamo, a web-based animation service. The main headline 'Get animated.' and subtitle explicitly state that the tool is used to 'Animate 3D characters for games, film, and more,' highlighting its purpose for users in game development and film production.

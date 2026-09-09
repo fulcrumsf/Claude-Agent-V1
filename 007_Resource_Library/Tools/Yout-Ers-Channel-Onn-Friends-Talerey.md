@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Yout-Ers-Channel-Onn-Friends-Talerey.PNG]]
+![[Yout-Ers-Channel-Onn-Friends-Talerey.png]]
 
 ## Summary
 A TikTok video by user 'pham' featuring a creator with the overlaid claim of earning '$10,000 per month'. The caption reads 'Exposing the SMARTEST YouTubers pt2', suggesting this is part of a series investigating high-earning content creators.

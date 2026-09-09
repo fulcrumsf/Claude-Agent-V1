@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Explore-Following-Shop-Bro-Chatgpt.PNG]]
+![[Live-Explore-Following-Shop-Bro-Chatgpt.png]]
 
 ## Summary
 A promotional TikTok video featuring the AI tool 'Magai', which markets itself as a unified chat platform for switching between different AI models (like Claude and GPT) within a single interface. The content highlights the business potential of building an AI wrapper, citing specific revenue claims.

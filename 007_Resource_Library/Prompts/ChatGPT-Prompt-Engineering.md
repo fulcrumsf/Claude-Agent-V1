@@ -12,7 +12,7 @@ original_filename: "chatgpt-prompt-engineering.PNG"
 created: 2026-05-01
 ---
 
-![[Chatgpt-Prompt-Engineering.PNG]]
+![[ChatGPT-Prompt-Engineering.png]]
 
 ## Prompt
 Absolute Mode prompt for ChatGPT.

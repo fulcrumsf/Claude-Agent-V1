@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Explore-Following-Shop-Insane-Making.PNG]]
+![[Live-Explore-Following-Shop-Insane-Making.png]]
 
 ## Summary
 A screen capture of the Vidrush AI video tool interface, showing a URL bar with 'app.vidrush.ai/create-video/form' and the tool's branded purple header. This appears to be an automated video creation platform being featured in a promotional TikTok about YouTube automation.

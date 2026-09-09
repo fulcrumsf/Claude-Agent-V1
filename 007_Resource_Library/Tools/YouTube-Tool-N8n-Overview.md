@@ -12,7 +12,7 @@ original_filename: "YouTube_Tool_n8n_Overview.PNG"
 created: 2026-05-01
 ---
 
-![[Youtube-Tool-Nn-Overview.PNG]]
+![[YouTube-Tool-N8n-Overview.png]]
 
 ## What It Is
 This is a screenshot of YouTube Studio's content page. The main value is the channel management and performance view.

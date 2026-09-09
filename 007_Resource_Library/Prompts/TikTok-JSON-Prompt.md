@@ -15,7 +15,7 @@ original_filename: "tiktok-json-prompt.PNG"
 created: 2026-05-01
 ---
 
-![[Tiktok-JSON-Prompt.PNG]]
+![[TikTok-JSON-Prompt.png]]
 
 ## Prompt
 Generate a JSON prompt based on the reference image.

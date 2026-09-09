@@ -20,7 +20,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Combinator-Open-Source-Browseros-Al-Powered-Browser.PNG]]
+![[Combinator-Open-Source-Browseros-Al-Powered-Browser.png]]
 
 ## Summary
 This image displays a landing page for BrowserOS, described as an open-source, AI-powered agentic browser backed by Y Combinator. The tool is designed to execute web tasks based on plain language descriptions. The screenshot highlights GitHub integration with a 'Star on GitHub' button and download options.

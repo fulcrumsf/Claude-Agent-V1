@@ -10,7 +10,7 @@ original_filename: "flames-blue-ai-website.PNG"
 created: 2026-05-01
 ---
 
-![[Flames-Blue-AI-Website.PNG]]
+![[Flames-Blue-AI-Website.png]]
 
 ## AI Analysis
 This screenshot captures a TikTok video on the 'For You' page, highlighting an AI tool named 'FLAMES.BLUE' for website design. The creator, 'Nathan Hodgson', is promoting this tool, which would be of significant interest to a content creator or digital entrepreneur looking for new technologies. The active search query 'how to do the ai generated image' further suggests the user's interest in leveraging AI for creative or business purposes, making this a bookmark for a useful AI tool or a content topic.

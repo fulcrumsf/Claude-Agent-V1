@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Aca-Exolore-Image-Edit-Gles-Like-Live.PNG]]
+![[Aca-Exolore-Image-Edit-Gles-Like-Live.png]]
 
 ## Summary
 A demo of a Qwen Image Edit interface running on zero-cost infrastructure, featuring 3D camera controls for rotation, vertical tilt, and distance/zoom. The tool utilizes dx8152's Qwen-Edit-2509-Multiple-angles LoRA and Phro0t/Qwen-Image-Edit-Rapid-AIO workflows to allow users to manipulate image perspective with simple sliders.

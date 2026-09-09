@@ -10,7 +10,7 @@ original_filename: "meow-toptop-yellow.PNG"
 created: 2026-05-01
 ---
 
-![[Meow-Toptop-Yellow.PNG]]
+![[Meow-Toptop-Yellow.png]]
 
 ## AI Analysis
 The screenshot shows a TikTok video interface with a distinct vertical layout and user interaction elements. Visible text includes the time '1:36', a search bar for 'Find related content', the video title 'Meow TÓPTÓP' and date '6-18', along with hashtags like #meo #dethuong #giaitri #xuhuongtiktok #xuhuong. Engagement metrics like likes (2,254), comments (42), saves (256), and shares (988) are prominently displayed. This image was likely saved by a content creator or digital entrepreneur to analyze a successful viral content format, explore trending niches (cute animals, pet costumes), or potentially inspire a product line based on the visible pet costume.

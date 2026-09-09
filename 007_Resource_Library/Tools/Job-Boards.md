@@ -10,7 +10,7 @@ original_filename: "Job Boards1170.PNG"
 created: 2026-05-01
 ---
 
-![[Job-Boards.PNG]]
+![[Job-Boards.png]]
 
 ## AI Analysis
 The screenshot shows a TikTok video from the user 'Ashley ✨ • Remote Jobs 💻' advising against using LinkedIn and Indeed for job searches, and instead recommending six alternative sites for remote work: Truly Remote, Remotive, Working Solutions, No Desk, Otta, and Justremote. For a content creator or digital entrepreneur, this post is likely saved as inspiration for creating similar content, as a valuable resource to share with their audience interested in remote work, or to explore these platforms for their own business or hiring needs.

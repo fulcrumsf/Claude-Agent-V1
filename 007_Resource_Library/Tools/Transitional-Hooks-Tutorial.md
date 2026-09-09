@@ -10,7 +10,7 @@ original_filename: "transitional-hooks-tutorial.PNG"
 created: 2026-05-01
 ---
 
-![[Transitional-Hooks-Tutorial.PNG]]
+![[Transitional-Hooks-Tutorial.png]]
 
 ## AI Analysis
 The image captures a TikTok video playing on a mobile device, where the video's content is a laptop screen showcasing a website. The website, 'thetransitionalhooks.com', appears to be a curated library of video transitions or 'hooks' designed to enhance video engagement, with visible examples like 'Move Thumb To The Beat' and 'Low Battery Ios' available for download. A content creator or digital entrepreneur would likely save this as a direct reference to explore the website, gather new video editing resources, or use it as inspiration for their own content or tutorials on video production.

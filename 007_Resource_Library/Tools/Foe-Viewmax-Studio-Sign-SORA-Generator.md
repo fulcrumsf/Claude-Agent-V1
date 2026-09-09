@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Foe-Viewmax-Studio-Sign-Sora-Generator.PNG]]
+![[Foe-Viewmax-Studio-Sign-SORA-Generator.png]]
 
 ## Summary
 The landing page for Viewmax Studio, a SaaS tool positioned as an AI video editor designed to help creators make viral videos. The interface highlights built-in templates for social media formats and promotes its new 'Sora AI video generator' integration.

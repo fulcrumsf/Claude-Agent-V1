@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Nam-Mone-Tener-Fremecet-Tage-Pnd.PNG]]
+![[Nam-Mone-Tener-Fremecet-Tage-Pnd.png]]
 
 ## Summary
 The image shows the YouTube Studio 'Channel content' tab for the channel named Ezzlone. It displays a list of published videos related to bugs and glitches in video games (specifically Minecraft), complete with metadata like view counts, dates, and performance bars.

@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[English-Nano-Banana-Pro-Generate-Auto.PNG]]
+![[English-Nano-Banana-Pro-Generate-Auto.png]]
 
 ## Summary
 A screenshot of the YouMind platform showcasing the Nano Banana Pro tool, a collection of over 1,000 ready-made prompts for generating AI images. The interface displays a text input box for describing desired images and category filters like 'YouTube Thumbnail' and 'Comic/Storyboard'.

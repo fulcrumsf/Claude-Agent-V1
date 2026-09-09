@@ -12,7 +12,7 @@ original_filename: "skilljar-agent-skills-url.PNG"
 created: 2026-05-01
 ---
 
-![[Skilljar-Agent-Skills-URL.PNG]]
+![[Skilljar-Agent-Skills-URL.png]]
 
 ## What It Is
 This is a tutorial resource for learning Claude agent skills. The main value is the course link and the beginner setup guidance.

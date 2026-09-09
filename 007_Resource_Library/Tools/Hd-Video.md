@@ -10,7 +10,7 @@ original_filename: "HD Video.jpg"
 created: 2026-05-01
 ---
 
-![[HD Video.jpg]]
+![[Hd-Video.jpg]]
 
 ## AI Analysis
 This screenshot depicts a video being shared, likely within an Instagram Story or a similar social media context, where the user has added a personal caption. The visible text 'Incredible work @turbotwigs 🙌 Loved getting to be a part of the team 🎥' indicates a collaborative effort, with the original content creator being '@turbotwigs' and the video having a duration of '0:25'. The content creator or digital entrepreneur likely saved this as a memento of their involvement in a project, a piece for their portfolio, or a public acknowledgement of teamwork, which is valuable for professional networking and showcasing work.

@@ -10,7 +10,7 @@ original_filename: "ModernlivingJapan.com.PNG"
 created: 2026-05-01
 ---
 
-![[ModernlivingJapan.com.PNG]]
+![[Modernlivingjapan-Com.png]]
 
 ## AI Analysis
 This screenshot displays a TikTok video showing a small bathroom within a furnished apartment available for short-term rental in Tokyo. The video description provides key details: 'Part 15 | #furnishedapartment #shorttermrentals in #Tokyo ! Just $1100/mo (at the time of recording) only 15 minutes from #shibuya. Only at ModernLivingJapan.com. #japan #tokyohotel #tokyotravel'. The presence of a 'Playlist · Japan' suggests the user is actively curating or researching content related to Japan, making this an ideal save for a content creator or digital entrepreneur interested in travel, real estate, or lifestyle content in Tokyo.

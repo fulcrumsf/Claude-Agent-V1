@@ -10,7 +10,7 @@ original_filename: "Tool_Motion_AI_Employees.PNG"
 created: 2026-05-01
 ---
 
-![[Tool_Motion_AI_Employees.PNG]]
+![[Tool-Motion-AI-Employees.png]]
 
 ## AI Analysis
 The screenshot displays the homepage of Motion, an "Agentic Work Suite" as seen from the URL usemotion.com, emphasizing its capability to "Deploy AI Employees" and manage "Human and AI Tasks." A prominent banner announces Motion's recent $60M funding, alongside a badge stating it's "Voted #1 hottest product by Amplitude." This tool would be highly valuable for a content creator or digital entrepreneur looking to automate tasks, scale operations using AI, or research cutting-edge productivity platforms for potential use or content creation about AI in business.

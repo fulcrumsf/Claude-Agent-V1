@@ -12,7 +12,7 @@ original_filename: "nexlev-youtube-tool.PNG"
 created: 2026-05-01
 ---
 
-![[Nexlev-Youtube-Tool.PNG]]
+![[Nexlev-YouTube-Tool.png]]
 
 ## What It Is
 This is a screenshot of NexLev, a tool for YouTube niche research and workflow automation. The main value is the product itself.

@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Reactsphere-Reactsphere7-Following-Followers-Likes-Message.PNG]]
+![[Reactsphere-Reactsphere7-Following-Followers-Likes-Message.png]]
 
 ## Summary
 A screenshot of a TikTok profile page for the channel 'ReactSphere' (@reactsphere7). The bio includes a prompt to 'Can You guess answer in less than 5 Seconds'. The profile grid displays short clips featuring viral-style content, including human interest moments, pranks, and observational videos marked with red circles and arrows.

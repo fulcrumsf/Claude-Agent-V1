@@ -17,7 +17,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Google-Side-Shift-Short-Sideshift-Https.PNG]]
+![[Google-Side-Shift-Short-Sideshift-Https.png]]
 
 ## Summary
 A mobile browser search result for SideShift, a platform designed to recruit UGC (User Generated Content) creators and manage campaigns. The visible description highlights features such as tracking results and automatic payments within one operating system.

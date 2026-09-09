@@ -12,7 +12,7 @@ original_filename: "viewstats-youtube-tool.PNG"
 created: 2026-05-01
 ---
 
-![[Viewstats-Youtube-Tool.PNG]]
+![[Viewstats-YouTube-Tool.png]]
 
 ## What It Is
 This is a screenshot of Viewstats, a YouTube research and optimization tool. The main value is the software itself and its content analytics positioning.

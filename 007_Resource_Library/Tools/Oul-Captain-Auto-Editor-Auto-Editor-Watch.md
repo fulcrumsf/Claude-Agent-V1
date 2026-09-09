@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Oul-Captain-Auto-Editor-Auto-Editor-Watch.PNG]]
+![[Oul-Captain-Auto-Editor-Auto-Editor-Watch.png]]
 
 ## Summary
 Mobile landing page for AI Ai, Captain, an AI-powered auto-editor plugin designed for Adobe Premiere Pro and DaVinci Resolve Studio. The tool claims to automatically edit vlogs, b-roll, and podcasts by intelligently analyzing footage to revolutionize video production.

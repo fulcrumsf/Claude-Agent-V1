@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Eal-Lte-Will-Switch-Address-Islike.PNG]]
+![[Eal-Lte-Will-Switch-Address-Islike.png]]
 
 ## Summary
 A promotional video demonstrating the Keep Your Home IP hardware device, a blue physical box designed to maintain a consistent home IP address. The video highlights its function of automatically switching back to the user's home IP address upon connection.

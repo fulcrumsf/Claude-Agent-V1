@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Ool-Lte-Tive-Stem-Explore-Following.PNG]]
+![[Ool-Lte-Tive-Stem-Explore-Following.png]]
 
 ## Summary
 A promotional capture for Deep Lookup, a beta AI tool that allows users to search the public web like a database. It enables finding specific sets of products with precision and exporting them in table-ready structures, described here as a 'ChatGPT of webscaping.' The interface demonstrates searching for specific entities like green hydrogen producers.

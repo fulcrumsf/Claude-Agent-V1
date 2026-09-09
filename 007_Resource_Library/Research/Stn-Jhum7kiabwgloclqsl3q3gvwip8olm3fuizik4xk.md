@@ -17,7 +17,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[STN-JHUm7kiAbWgLoClqSL3Q3GvwIp8OLM3fUIzIk4xk.png]]
+![[Stn-Jhum7kiabwgloclqsl3q3gvwip8olm3fuizik4xk.png]]
 
 ## Summary
 A screenshot of the Kie.ai dashboard featuring a detailed guide for the Midjourney API. The page highlights capabilities like text-to-image and video generation, while displaying a directory of 31 integrated AI models including Google Veo 3.1 and OpenAI Sora 2 Pro.

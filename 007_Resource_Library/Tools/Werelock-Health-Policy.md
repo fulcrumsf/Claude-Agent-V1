@@ -10,7 +10,7 @@ original_filename: "werelock-health-policy.PNG"
 created: 2026-05-01
 ---
 
-![[Werelock-Health-Policy.PNG]]
+![[Werelock-Health-Policy.png]]
 
 ## AI Analysis
 This screenshot captures an Instagram Reel or Story, identifiable by the user interface elements like the profile picture, username (@werelock), 'Watch full reel' button, and engagement icons (heart, speech bubble). The content provides critical information related to a resource call created by 'SiembraNC', including a website (Ojonc.org), a hotline number (336)543-0353, and mentions 'healthpolicyprincess and influencenc'. A content creator or digital entrepreneur would likely save this as a reference for community resources, potential collaboration opportunities with organizations like SiembraNC or influencers in the health policy space, or as inspiration for creating informative content with clear calls to action and resource details.

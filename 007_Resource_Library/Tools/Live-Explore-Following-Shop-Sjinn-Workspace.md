@@ -10,7 +10,7 @@ original_filename: "IMG_8717.PNG"
 created: 2026-05-01
 ---
 
-![[Live-Explore-Following-Shop-Sjinn-Workspace.PNG]]
+![[Live-Explore-Following-Shop-Sjinn-Workspace.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Live Explore Following Shop Sjinn Workspace with visible text about live. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

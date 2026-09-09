@@ -10,7 +10,7 @@ original_filename: "ai-image-generation.PNG"
 created: 2026-05-01
 ---
 
-![[AI-Image-Generation.PNG]]
+![[AI-Image-Generation.png]]
 
 ## AI Analysis
 This screenshot captures a TikTok video by 'Justyn | The AI Guy,' a content creator focused on AI. The video is likely part of a tutorial or showcase, leveraging a 'Green Screen' effect to display text about AI image generation prompts and a prominent banner for 'Awesome-Nano-Banana images' with various language and licensing options (CC BY 4.0). The creator uses a common lead generation strategy by asking viewers to 'Drop 'IMAGE' in the comments' to receive a link to 'all 91 M...' (likely millions of images or prompts), which is valuable for content creators and entrepreneurs seeking to build an audience or offer resources. The search bar at the bottom also highlights a specific interest in 'Polaroid Gemini Ai Image Editing Prompt,' indicating the user is researching or tracking AI image editing tools and related content.

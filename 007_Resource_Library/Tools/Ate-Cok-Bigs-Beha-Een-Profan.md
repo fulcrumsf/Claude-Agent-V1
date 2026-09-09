@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Ate-Cok-Bigs-Beha-Een-Profan.JPG]]
+![[Ate-Cok-Bigs-Beha-Een-Profan.jpg]]
 
 ## Summary
 A physical product box for the JLab JBuds Ergonomic Mouse displayed on a retail shelf. The packaging highlights its natural ergonomic design and multi-device wireless connectivity capabilities.

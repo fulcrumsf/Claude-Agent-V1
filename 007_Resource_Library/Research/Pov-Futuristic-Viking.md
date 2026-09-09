@@ -17,7 +17,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[POV-Futuristic-VIking.png]]
+![[Pov-Futuristic-Viking.png]]
 
 ## Summary
 A first-person perspective shot of futuristic metallic boots sitting on a mossy cliff overlooking a lush, bioluminescent valley. The scene blends high-tech sci-fi elements like crystalline spires and floating structures with vibrant natural landscapes, featuring glowing blue waterfalls and dense pine forests under moody lighting.

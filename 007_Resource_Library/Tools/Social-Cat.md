@@ -10,7 +10,7 @@ original_filename: "Social Cat.PNG"
 created: 2026-05-01
 ---
 
-![[Social Cat.PNG]]
+![[Social-Cat.png]]
 
 ## AI Analysis
 This screenshot displays an Instagram sponsored post from a tool or platform called 'Social Cat' (username 'socialcat'). The ad targets 'micro-influencers looking for collaborations' and states it helps them 'Work with brands interested in gifted & paid collaborations on Instagram & TikTok.' A content creator or digital entrepreneur likely saved this to explore 'Social Cat' as a resource for finding brand partnerships, or to analyze advertising strategies for influencer marketing platforms.

@@ -10,7 +10,7 @@ original_filename: "aura-twitter-profile.PNG"
 created: 2026-05-01
 ---
 
-![[Aura-Twitter-Profile.PNG]]
+![[Aura-Twitter-Profile.png]]
 
 ## AI Analysis
 This screenshot displays the TikTok profile of 'Aura' (@auraclipsmax), an account curating short-form video clips, primarily featuring a 'UFC Champion' with overlaid text narratives and high engagement (1.3M likes) relative to its follower count (6,198). The content creator likely saved this as a reference for content creation strategies, observing how an account can gain significant traction by consistently posting viral or highly engaging clips from a specific persona or niche, potentially using this as a model for their own content curation or audience growth tactics on social media.

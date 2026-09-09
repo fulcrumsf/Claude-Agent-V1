@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Nove-Eigen-Editing-Dislik-Med.PNG]]
+![[Nove-Eigen-Editing-Dislik-Med.png]]
 
 ## Summary
 A TikTok video from RoyD Media providing instructions on how to obtain editing assets. The visual highlights the creator's Instagram handle, 'roydmedia', as the source for these resources. The title suggests this is part of a series (Part 4) focusing on mastering a specific editing style.

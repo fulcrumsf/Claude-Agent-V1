@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Aliabdaal-Origi-Creatorgrid-Handle-Comment-Down.PNG]]
+![[Aliabdaal-Origi-Creatorgrid-Handle-Comment-Down.png]]
 
 ## Summary
 A social media post promoting CreatorGrid, a service that handles paperwork and contracts. The caption encourages viewers to comment to receive the link, suggesting this is a promotional video for a tool designed for creator management.

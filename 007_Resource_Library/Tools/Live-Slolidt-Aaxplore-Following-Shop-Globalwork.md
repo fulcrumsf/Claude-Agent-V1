@@ -10,7 +10,7 @@ original_filename: "IMG_8702.PNG"
 created: 2026-05-01
 ---
 
-![[Live-Slolidt-Aaxplore-Following-Shop-Globalwork.PNG]]
+![[Live-Slolidt-Aaxplore-Following-Shop-Globalwork.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Live Slolidt Aaxplore Following Shop Globalwork with visible text about live slolidt aaxplore following shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

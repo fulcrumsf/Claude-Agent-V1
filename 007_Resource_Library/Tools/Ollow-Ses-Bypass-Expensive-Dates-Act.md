@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Ollow-Ses-Bypass-Expensive-Dates-Act.PNG]]
+![[Ollow-Ses-Bypass-Expensive-Dates-Act.png]]
 
 ## Summary
 A TikTok video by Digital Laura A showcasing a reusable AI prompt designed to bypass expensive dates when booking flights. The central text displays a specific prompt instructing the AI to act as a flight analyst to find the cheapest round-trip combos based on flexible weekdays and months.

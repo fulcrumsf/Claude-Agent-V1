@@ -10,7 +10,7 @@ original_filename: "one-click-rig-tutorial.PNG"
 created: 2026-05-01
 ---
 
-![[One-Click-Rig-Tutorial.PNG]]
+![[One-Click-Rig-Tutorial.png]]
 
 ## AI Analysis
 This screenshot displays a TikTok video from the 'For You' page, featuring a tutorial by user Josh Toonen on 3D character animation in Unreal Engine 5. The visible text 'ONE CLICK RIG' highlights a key feature or method in the tutorial. A content creator or digital entrepreneur would likely save this for learning a new skill in 3D animation or game development, to explore a useful tool, or to gain inspiration for creating similar educational content.

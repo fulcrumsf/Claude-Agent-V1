@@ -10,7 +10,7 @@ original_filename: "youtube-studio-eligibility.PNG"
 created: 2026-05-01
 ---
 
-![[Youtube-Studio-Eligibility.PNG]]
+![[YOUTUBE-Studio-Eligibility.png]]
 
 ## AI Analysis
 The screenshot displays the 'Earn' tab of the YouTube Studio mobile application, which outlines the current channel's progress towards meeting the YouTube Partner Program eligibility requirements. Visible text includes the current metrics: '3 video uploads' (met requirement), '0 valid public watch hours' (out of 3,000), and '896K valid public Shorts views' (out of 3M), with data updated as of 'Oct 31, 2025'. This tool allows content creators and digital entrepreneurs to monitor their channel's growth and understand the specific milestones (views, watch hours, uploads) they need to achieve to qualify for monetization and apply to the program, making it a critical reference for business planning and content strategy.

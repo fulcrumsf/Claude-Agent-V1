@@ -10,7 +10,7 @@ original_filename: "blosm-blender-3d-cities.PNG"
 created: 2026-05-01
 ---
 
-![[Blosm-Blender-D-Cities.PNG]]
+![[Blosm-Blender-D-Cities.png]]
 
 ## AI Analysis
 This screenshot displays a TikTok video interface at 5:43, with standard navigation options like 'LIVE', 'STEM', 'Explore', 'Following', 'Shop', and 'For You'. The video features a creator named 'Massimo' explaining how to use the 'Blosm' plugin in Blender to import entire cities, indicating a technical tutorial or demonstration. Visible metrics show 22 likes and 10 bookmarks, suggesting engagement. For a content creator or digital entrepreneur, this is a valuable saved resource, potentially for learning a new software tool (Blosm plugin) to enhance their digital content production, create immersive environments, or inspire future tutorial content related to 3D design and visual effects.

@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Eal-Safari-Poe-Ond-Eset-Emt.PNG]]
+![[Eal-Safari-Poe-Ond-Eset-Emt.png]]
 
 ## Summary
 A screenshot of a YouTube page featuring two viral videos focused on TikTok audience growth strategies. The content highlights specific methods for acquiring followers quickly, including a '30-day plan' to reach 10k followers and tactics for rapid growth in under a week. This serves as a bookmark for social media marketing tutorials.

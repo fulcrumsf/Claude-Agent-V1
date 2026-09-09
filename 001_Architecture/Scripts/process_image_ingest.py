@@ -8,6 +8,7 @@ import urllib.request
 import urllib.error
 import time
 import shutil
+import hashlib
 from datetime import datetime
 
 try:  # macOS framework Python frequently ships without a usable CA bundle for urllib
@@ -23,9 +24,8 @@ OPENAI_KEY = os.environ.get("OPENAI_API_KEY")
 
 WORKSPACE_ROOT = "/Users/tonymacbook2025/Documents/Agent-OS"
 RESOURCE_LIBRARY = os.path.join(WORKSPACE_ROOT, "007_Resource_Library")
-VISUAL_ASSETS_DIR = os.path.join(RESOURCE_LIBRARY, "Obsidian_Attachments", "Visual_Assets")
 UNDETERMINED_DIR = os.path.join(RESOURCE_LIBRARY, "Undetermined")
-RENAME_LOG = os.path.join(VISUAL_ASSETS_DIR, "rename_log.md")
+RENAME_LOG = os.path.join(RESOURCE_LIBRARY, "_Ingest_Rename_Log.md")
 
 # Filename stems that are non-descriptive — AI sometimes produces these when it can't read an image
 BAD_NAME_PATTERNS = [
@@ -85,9 +85,46 @@ VALID_FOLDERS = [
 
 
 def is_bad_name(name):
-    """Return True if the name is non-descriptive and should not land in Visual_Assets."""
+    """Return True if the name is non-descriptive and should not become a note."""
     stem = name.lower().replace(" ", "-")
     return any(re.match(p, stem) for p in BAD_NAME_PATTERNS)
+
+
+def _sha256(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 16), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def build_library_index():
+    """Scan the Resource Library for dedup: image hashes, note URLs, taken names per folder."""
+    img_hashes = {}   # sha256 -> relative note/image path
+    note_urls = {}     # normalized url -> note path
+    taken = set()      # (category, stem) already used
+    for root, dirs, files in os.walk(RESOURCE_LIBRARY):
+        dirs[:] = [d for d in dirs if d not in ("OpenAI_History", "graphify-out", ".git")]
+        cat = os.path.relpath(root, RESOURCE_LIBRARY).split(os.sep)[0]
+        for fn in files:
+            fp = os.path.join(root, fn)
+            low = fn.lower()
+            if low.endswith((".png", ".jpg", ".jpeg", ".webp", ".gif")):
+                try:
+                    img_hashes.setdefault(_sha256(fp), os.path.relpath(fp, RESOURCE_LIBRARY))
+                except OSError:
+                    pass
+            elif low.endswith(".md") and not fn.startswith("_"):
+                taken.add((cat, os.path.splitext(fn)[0].lower()))
+                try:
+                    t = open(fp, encoding="utf-8", errors="ignore").read()
+                except OSError:
+                    continue
+                m = re.search(r'^url:\s*"?([^"\n]+?)"?\s*$', t, re.M)
+                if m:
+                    note_urls.setdefault(m.group(1).strip().rstrip("/").lower(),
+                                         os.path.relpath(fp, RESOURCE_LIBRARY))
+    return img_hashes, note_urls, taken
 
 
 def log_rename(original, new_name, category):
@@ -323,7 +360,6 @@ def main():
         print("Error: OPENROUTER_API_KEY and OPENAI_API_KEY are both missing.")
         sys.exit(1)
 
-    os.makedirs(VISUAL_ASSETS_DIR, exist_ok=True)
     os.makedirs(UNDETERMINED_DIR, exist_ok=True)
     for folder in VALID_FOLDERS:
         os.makedirs(os.path.join(RESOURCE_LIBRARY, folder), exist_ok=True)
@@ -340,15 +376,26 @@ def main():
         sys.exit(1)
 
     print(f"Found {len(files_to_process)} images to process.")
+    print("Indexing library for dedup...")
+    img_hashes, note_urls, taken = build_library_index()
 
     for i, file_path in enumerate(files_to_process):
         print(f"[{i+1}/{len(files_to_process)}] Processing {os.path.basename(file_path)}...")
-        
+
+        # --- dedup 1: byte-identical image already in the library ---
+        try:
+            digest = _sha256(file_path)
+        except OSError:
+            digest = None
+        if digest and digest in img_hashes:
+            print(f"   -> [DUP] exact-duplicate image of {img_hashes[digest]} — skipped")
+            continue
+
         data = process_image(file_path)
         if not data:
             print("   -> Failed to extract semantic data.")
             continue
-            
+
         category = data.get("category", "Undetermined")
         title_case_name = data.get("title_case_name", "Untitled")
         ai_description = data.get("ai_description", "No description available.")
@@ -382,47 +429,60 @@ def main():
         if search_for and not url and "needs-enrichment" not in tags:
             tags = tags + ["needs-enrichment"]
 
+        # --- dedup 2: same source URL already saved ---
+        if url:
+            key = url.strip().rstrip("/").lower()
+            if key in note_urls:
+                print(f"   -> [DUP] same URL as {note_urls[key]} — skipped")
+                continue
+
         # Validate that the AI returned a descriptive name — reject generic/hash names
         if is_bad_name(title_case_name):
             print(f"   -> [BAD NAME] '{title_case_name}' is non-descriptive — routing to Undetermined/")
             category = "Undetermined"
 
         ext = file_path.lower().split('.')[-1]
-        new_img_filename = f"{title_case_name}.{ext}"
+        if ext == "jpeg":
+            ext = "jpg"
 
         if category == "Undetermined" or category not in VALID_FOLDERS:
-            # Move directly to Undetermined, no markdown
-            dest_img_path = os.path.join(UNDETERMINED_DIR, new_img_filename)
+            # Move image to Undetermined/, no markdown
+            dest_img_path = os.path.join(UNDETERMINED_DIR, f"{title_case_name}.{ext}")
+            c = 1
+            while os.path.exists(dest_img_path):
+                dest_img_path = os.path.join(UNDETERMINED_DIR, f"{title_case_name}-{c}.{ext}")
+                c += 1
             shutil.move(file_path, dest_img_path)
             print(f"   -> [UNDETERMINED] Moved to {dest_img_path}")
             time.sleep(1)
             continue
 
-        # Move image to Visual Assets
-        dest_img_path = os.path.join(VISUAL_ASSETS_DIR, new_img_filename)
-        # Handle conflicts
-        counter = 1
-        while os.path.exists(dest_img_path):
-            new_img_filename = f"{title_case_name}-{counter}.{ext}"
-            dest_img_path = os.path.join(VISUAL_ASSETS_DIR, new_img_filename)
-            counter += 1
-            
+        # --- dedup 3: one free name for BOTH the note and its co-located image ---
+        base = title_case_name
+        name = base
+        n = 1
+        soft_dup = False
+        while (os.path.exists(os.path.join(RESOURCE_LIBRARY, category, f"{name}.md"))
+               or os.path.exists(os.path.join(RESOURCE_LIBRARY, category, f"{name}.{ext}"))
+               or (category, name.lower()) in taken):
+            soft_dup = True
+            name = f"{base}-{n}"
+            n += 1
+        taken.add((category, name.lower()))
+        if soft_dup and "possible-duplicate" not in tags:
+            tags = tags + ["possible-duplicate"]
+            print(f"   -> [SOFT-DUP] a note titled '{base}' already exists — tagged possible-duplicate")
+
+        new_img_filename = f"{name}.{ext}"
+        dest_img_path = os.path.join(RESOURCE_LIBRARY, category, new_img_filename)
         shutil.move(file_path, dest_img_path)
-        log_rename(os.path.basename(file_path), new_img_filename, category)
+        img_hashes[digest] = os.path.relpath(dest_img_path, RESOURCE_LIBRARY) if digest else None
+        log_rename(os.path.basename(file_path), f"{category}/{new_img_filename}", category)
 
-        # Create Markdown file
-        md_filename = f"{title_case_name}.md"
-        md_path = os.path.join(RESOURCE_LIBRARY, category, md_filename)
-
-        # Avoid overwriting an existing note — append counter to filename
-        md_counter = 1
-        while os.path.exists(md_path):
-            md_filename = f"{title_case_name}-{md_counter}.md"
-            md_path = os.path.join(RESOURCE_LIBRARY, category, md_filename)
-            md_counter += 1
+        md_path = os.path.join(RESOURCE_LIBRARY, category, f"{name}.md")
 
         # Resolve human title
-        human_title = title_case_name.replace("-", " ")
+        human_title = name.replace("-", " ")
         
         yaml_tags = "\n".join([f"  - {t}" for t in tags])
         date_str = datetime.now().strftime("%Y-%m-%d")
@@ -451,7 +511,7 @@ created: {date_str}
         with open(md_path, "w") as f:
             f.write(md_content)
             
-        print(f"   -> [EXTRACTED] Created {category}/{md_filename}")
+        print(f"   -> [EXTRACTED] Created {category}/{name}.md (+ {new_img_filename} beside it)")
         time.sleep(1)
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Sem-Desk-Mat-Or-Home-Office-Deooy-Everbee-Store.PNG]]
+![[Sem-Desk-Mat-Or-Home-Office-Deooy-Everbee-Store.png]]
 
 ## Summary
 A TikTok video screenshot discussing a Print On Demand business strategy, specifically focusing on 5 uncommon POD products for high profits. The visual displays digital artwork being sold as mousepads via Everbee Store.

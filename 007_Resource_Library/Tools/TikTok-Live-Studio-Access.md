@@ -12,7 +12,7 @@ original_filename: "tiktok-live-studio-access.PNG"
 created: 2026-05-01
 ---
 
-![[Tiktok-Live-Studio-Access.PNG]]
+![[TikTok-Live-Studio-Access.png]]
 
 ## What It Is
 This is a TikTok LIVE Studio access reference page. The main value is the platform rule set and access requirements.

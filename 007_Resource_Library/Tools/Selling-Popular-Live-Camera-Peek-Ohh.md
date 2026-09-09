@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Selling-Popular-Live-Camera-Peek-Ohh.PNG]]
+![[Selling-Popular-Live-Camera-Peek-Ohh.png]]
 
 ## Summary
 A live stream presentation of AiCA (AI Creator Academy), a platform designed for building AI avatars that generate sales while the creator stays behind the scenes. The visible content includes the tool's branding and a description explaining its purpose of creating talking AI influencers.

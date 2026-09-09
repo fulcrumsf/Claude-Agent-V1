@@ -10,7 +10,7 @@ original_filename: "IMG_8008.PNG"
 created: 2026-05-01
 ---
 
-![[Main-Awesome-Nano-Banana-Images-Readme-Mor-Jem-Explore.PNG]]
+![[Main-Awesome-Nano-Banana-Images-Readme-Mor-Jem-Explore.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Main Awesome Nano Banana Images Readme Mor Jem Explore with visible text about main. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

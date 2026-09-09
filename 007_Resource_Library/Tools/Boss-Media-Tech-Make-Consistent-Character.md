@@ -10,7 +10,7 @@ original_filename: "IMG_8816.PNG"
 created: 2026-05-01
 ---
 
-![[Boss-Media-Tech-Make-Consistent-Character.PNG]]
+![[Boss-Media-Tech-Make-Consistent-Character.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Boss Media Tech Make Consistent Character with visible text about boss media tech. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

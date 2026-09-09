@@ -10,7 +10,7 @@ original_filename: "IMG_8685.PNG"
 created: 2026-05-01
 ---
 
-![[Live-Tem-Explore-Following-Shop-Stories.PNG]]
+![[Live-Tem-Explore-Following-Shop-Stories.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Live Tem Explore Following Shop Stories with visible text about live tem explore following shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

@@ -20,7 +20,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Ccb-Ofigg-Luggage-Cover-Gen-Print.PNG]]
+![[Ccb-Ofigg-Luggage-Cover-Gen-Print.png]]
 
 ## Summary
 A TikTok video thumbnail featuring a print-on-demand business concept for luggage covers. The image displays a white suitcase cover on a laptop screen, while the caption suggests exploring uncommon POD products for high profits using Printify and EverBee.

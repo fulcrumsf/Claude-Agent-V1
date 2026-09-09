@@ -10,7 +10,7 @@ original_filename: "societies-r-history.PNG"
 created: 2026-05-01
 ---
 
-![[Societies-R-History.PNG]]
+![[Societies-R-History.png]]
 
 ## AI Analysis
 This screenshot shows the 'For You' page of the TikTok mobile application, featuring a video from the user 'Societies-r'. The video is an animation portraying a scene with people and oxen, tagged with relevant hashtags such as #history, #HistoryTime, #stories, #animation, and #sovietunion. A content creator or digital entrepreneur would likely save this screenshot to analyze popular content in the history or animation niche, draw inspiration for their own video concepts or animation styles, or to benchmark engagement metrics for similar content.

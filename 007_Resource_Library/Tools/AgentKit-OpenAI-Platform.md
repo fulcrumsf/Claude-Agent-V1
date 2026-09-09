@@ -12,7 +12,7 @@ original_filename: "agentkit-openai-platform.PNG"
 created: 2026-05-01
 ---
 
-![[Agentkit-Openai-Platform.PNG]]
+![[AgentKit-OpenAI-Platform.png]]
 
 ## What It Is
 This is a screenshot of OpenAI's AgentKit platform. The main value is the tool and its feature set, especially the build, design, deploy, and optimize flow.

@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Oul-Marbs-Girlie-Marbsgirlie-Stan-Let.PNG]]
+![[Oul-Marbs-Girlie-Marbsgirlie-Stan-Let.png]]
 
 ## Summary
 A screenshot of a Stan Store landing page by @MarbsGirlie displaying digital product offers for monetizing online skills. Visible items include paid guides for Tech UGC Gigs, the Amazon Influencer Program, and UpWork gigs, each priced at €27.99.

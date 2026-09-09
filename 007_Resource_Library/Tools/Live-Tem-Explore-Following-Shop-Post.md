@@ -20,7 +20,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Tem-Explore-Following-Shop-Post.PNG]]
+![[Live-Tem-Explore-Following-Shop-Post.png]]
 
 ## Summary
 A TikTok tutorial by Leo Grundström advising creators to post longer videos and featuring the 'Auto Wheels' YouTube channel as an example case. The video discusses doubling content length and provides a free automation guide via comment keyword.

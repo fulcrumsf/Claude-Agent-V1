@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Llowing-Shop-Live-Tem-Creative-Output.PNG]]
+![[Llowing-Shop-Live-Tem-Creative-Output.png]]
 
 ## Summary
 A TikTok video by Jake Abrams promoting the use of three specific tools: Wispr, Snowball, and Octo. The overlay text claims this combination allows for '100x creative output', suggesting a tutorial or workflow demonstration on how to scale content creation using these platforms.

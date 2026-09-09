@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Explore-Following-Shop-Kite-Nathan.PNG]]
+![[Live-Explore-Following-Shop-Kite-Nathan.png]]
 
 ## Summary
 A TikTok video featuring Nathan Hodgson introducing 'Kite', an AI tool that converts screen recordings into polished product videos. The image displays the Kite logo and branding alongside a description of its core functionality for automated video editing.

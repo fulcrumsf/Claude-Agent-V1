@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Search-Ask-Question-Tongveo-Ptz-Conference.PNG]]
+![[Search-Ask-Question-Tongveo-Ptz-Conference.png]]
 
 ## Summary
 A screenshot of the Amazon product page for the Cadothy Amaze 5 Pro, a specialized live streaming device featuring a vertical tablet interface with an integrated camera and speaker system. The product is marketed as a professional solution for platforms like TikTok Live, priced at $2,199.

@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Alm-Athe-Eee-Poe-Eae-Ees.JPG]]
+![[Alm-Athe-Eee-Poe-Eae-Ees.jpg]]
 
 ## Summary
 A printed rate sheet or brochure for The Village at Commonwealth Guest Suite. It lists accommodation options (bedroom configurations), prices per night, cleaning fees, and contact details including a phone number and email address.

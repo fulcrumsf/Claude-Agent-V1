@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Print-Ify-Upliful-Rintiful-Stee-Nreiter.PNG]]
+![[Print-Ify-Upliful-Rintiful-Stee-Nreiter.png]]
 
 ## Summary
 A TikTok video tutorial introducing how to start a TikTok Shop with zero startup costs using print-on-demand platforms. The central subject lists Printify, Supliful, and Printful as recommended tools for e-commerce sellers.

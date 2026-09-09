@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Sal-Madre-Selva-Lindbergh-Uptown-Pink.PNG]]
+![[Sal-Madre-Selva-Lindbergh-Uptown-Pink.png]]
 
 ## Summary
 This image captures a top 10 list from Infatuation Atlanta's 'Best New Restaurants 2025' award. It details the specific restaurant names and their locations across Atlanta neighborhoods, including Madre Selva, Pink Lotus, Madeira Park, Mothers Best Fried Chicken, Ryokou, Heaps Pies, Vegan House of Pancakes, Brainwave Pizza, and Sammy's.

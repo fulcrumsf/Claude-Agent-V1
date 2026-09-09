@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Ricin-Gareers-Agent-Thess-Age-Plat.PNG]]
+![[Ricin-Gareers-Agent-Thess-Age-Plat.png]]
 
 ## Summary
 A screenshot of a TikTok video reviewing the Agent 3 platform, marketed as a tool for building autonomous apps with features like self-testing and longer run times. The content compares AI agent capabilities against traditional ChatGPT usage and highlights 'Autonomy for All' as a key concept.

@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Iser-Male-Archetypes-Empathy-Ski-Independence.PNG]]
+![[Iser-Male-Archetypes-Empathy-Ski-Independence.png]]
 
 ## Summary
 A visualization of a 12-stage pyramid model categorizing male archetypes from the bottom (The Caregiver, The Jester) to the top (The King). Each tier is associated with specific personality dimensions including Empathy, Skills, Independence, Wisdom, and Creativity, along with percentage weights.

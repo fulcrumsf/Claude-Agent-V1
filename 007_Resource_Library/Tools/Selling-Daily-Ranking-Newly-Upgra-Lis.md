@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Selling-Daily-Ranking-Newly-Upgra-Lis.PNG]]
+![[Selling-Daily-Ranking-Newly-Upgra-Lis.png]]
 
 ## Summary
 A laptop screen displaying the 'Social Cheat Sheet 2.0' website, showcasing a digital product store offering a bundle of 22 e-books with PLR (Private Label Rights) and MRR (Master Resell Rights). The page includes pricing details ($49.00 USD), purchasing options via Shop, and navigation links for various digital assets like journals and printables.

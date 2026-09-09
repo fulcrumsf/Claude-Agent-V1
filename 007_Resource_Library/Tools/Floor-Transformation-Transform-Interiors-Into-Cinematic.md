@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Floor-Transformation-Transform-Interiors-Into-Cinematic.PNG]]
+![[Floor-Transformation-Transform-Interiors-Into-Cinematic.png]]
 
 ## Summary
 A TikTok video by AI Century showcasing a custom AI prompt tool named 'Floor Transformation' created for aicenturies.com. The tool is designed to generate cinematic timelapse prompts specifically featuring artistic luxury epoxy floors and includes capabilities like web search, canvas usage, and image generation.

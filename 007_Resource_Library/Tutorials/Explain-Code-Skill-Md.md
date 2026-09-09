@@ -10,7 +10,7 @@ original_filename: "explain-code-skill-md.PNG"
 created: 2026-05-01
 ---
 
-![[Explain-Code-Skill-Md.PNG]]
+![[Explain-Code-Skill-Md.png]]
 
 ## AI Analysis
 The screenshot shows a TikTok video titled '5 Claude Skills that every beginner needs to install' by user @nocode.joshua, with 4,268 likes and 5,933 saves. The video highlights a text editor displaying a file path `~/ .claude/skills/explain-code/SKILL.md`, revealing a custom skill definition for the Claude AI assistant. This skill, named 'explain-code', includes instructions like 'Start with an analogy', 'Draw a diagram', 'Walk through the code', and 'Highlight a gotcha', teaching the AI how to explain code effectively. For content creators and digital entrepreneurs, this resource is valuable for learning to customize and enhance AI tools like Claude for educational content, software explanations, or to build more sophisticated AI agents for their workflows.

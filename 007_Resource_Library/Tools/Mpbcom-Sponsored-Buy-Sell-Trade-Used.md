@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Mpbcom-Sponsored-Buy-Sell-Trade-Used.PNG]]
+![[Mpbcom-Sponsored-Buy-Sell-Trade-Used.png]]
 
 ## Summary
 Screenshot of an MPB advertisement showcasing a marketplace platform for buying, selling, and trading used photography and video equipment. The image highlights features like instant quotes, free shipping, fast payment, and high trust scores on Trustpilot.

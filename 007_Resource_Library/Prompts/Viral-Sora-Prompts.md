@@ -12,7 +12,7 @@ original_filename: "viral-sora-prompts.PNG"
 created: 2026-05-01
 ---
 
-![[Viral-Sora-Prompts.PNG]]
+![[Viral-Sora-Prompts.png]]
 
 ## Prompt Resource
 This is a prompt-generation tool for viral Sora-style prompts.

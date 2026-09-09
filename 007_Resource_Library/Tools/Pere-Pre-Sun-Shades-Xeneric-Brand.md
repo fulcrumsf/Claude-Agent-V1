@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Pere-Pre-Sun-Shades-Xeneric-Brand.PNG]]
+![[Pere-Pre-Sun-Shades-Xeneric-Brand.png]]
 
 ## Summary
 A screenshot of a TikTok video titled '5 Uncommon POD Products For Huge Profits (Printify + EverBee)' featuring a product case study for Car Sun Shades. The image displays specific product details including material composition (100% Polyester front, Aluminized film cushion back) and size options intended as inspiration for Print on Demand business ideas.

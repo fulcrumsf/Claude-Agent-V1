@@ -17,7 +17,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[STN-LtkLKaauxx5MvmcQjklbMXUFQ2IYoqzgAnGiSNdX.jpeg]]
+![[Stn-Ltklkaauxx5mvmcqjklbmxufq2iyoqzgangisndx.jpeg]]
 
 ## Summary
 The main dashboard interface for Flowith, an AI chat platform featuring a knowledge base system called 'Knowledge Garden'. The screenshot highlights the chat input with DeepSeek V3 model selection, Agent Mode toggle, and usage metrics including Knowledge Bases and File Uploads. It serves as a starting point for users to manage AI interactions and uploaded context.

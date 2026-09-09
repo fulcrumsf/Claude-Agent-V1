@@ -10,7 +10,7 @@ original_filename: "IMG_8009.PNG"
 created: 2026-05-01
 ---
 
-![[Files-Main-Awesome-Nano-Banana-Images-Readme-Live-Explore.PNG]]
+![[Files-Main-Awesome-Nano-Banana-Images-Readme-Live-Explore.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Files Main Awesome Nano Banana Images Readme Live Explore with visible text about files. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

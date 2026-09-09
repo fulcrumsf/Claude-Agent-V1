@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Pinia-Spreading-Love-Rescue-Ata-Time.PNG]]
+![[Pinia-Spreading-Love-Rescue-Ata-Time.png]]
 
 ## Summary
 A TikTok post featuring a video by 'Blastoffmedia' that is part of a series ranking YouTube Shorts channels. The video thumbnail shows the channel 'AJAnimalKing', a content creator with 934K subscribers focused on wholesome animal rescue stories. This appears to be an analysis or critique of successful YouTube strategies.

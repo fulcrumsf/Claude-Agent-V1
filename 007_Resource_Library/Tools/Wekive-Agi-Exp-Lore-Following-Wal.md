@@ -10,7 +10,7 @@ original_filename: "IMG_8756.PNG"
 created: 2026-05-01
 ---
 
-![[Wekive-Agi-Exp-Lore-Following-Wal.PNG]]
+![[Wekive-Agi-Exp-Lore-Following-Wal.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Wekive Agi Exp Lore Following Wal with visible text about wekive agi exp. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

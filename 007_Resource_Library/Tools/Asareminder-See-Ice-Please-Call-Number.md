@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Asareminder-See-Ice-Please-Call-Number.PNG]]
+![[Asareminder-See-Ice-Please-Call-Number.png]]
 
 ## Summary
 A digital flyer sharing emergency contact numbers for the Charlotte Jail Support, intended for individuals involved in protests or tracking ICE activities. It lists specific instructions on what information to provide (date, time, location) when calling if ICE is spotted or if a person is detained.

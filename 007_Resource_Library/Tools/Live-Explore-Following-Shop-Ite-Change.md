@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Explore-Following-Shop-Ite-Change.PNG]]
+![[Live-Explore-Following-Shop-Ite-Change.png]]
 
 ## Summary
 An advertising pop-up for the Alinea investing app, featuring user testimonials about AI insights and portfolio management. The screenshot highlights that the app has over 300,000 downloads and allows users to invest in stocks and causes.

@@ -10,7 +10,7 @@ original_filename: "IMG_8677.PNG"
 created: 2026-05-01
 ---
 
-![[Live-Stem-Explore-Following-Shop-Yop.PNG]]
+![[Live-Stem-Explore-Following-Shop-Yop.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Live Stem Explore Following Shop Yop with visible text about live stem explore. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

@@ -16,7 +16,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[A-Clear-Empty-Space-The-Scene-Depicts-A-Nk0mifnyTf6rkz-OBopB-W-CU5EKMWuQcGdb3VR-Wso0w.png]]
+![[A-Clear-Empty-Space-The-Scene-Depicts-A-Nk0mifnytf6rkz-Obopb-W-Cu5ekmwuqcgdb3vr-Wso0w.png]]
 
 ## Summary
 A minimalist bedroom interior design mockup featuring a framed art print with placeholder text reading 'iso-ratio art print mockup' mounted above a bed. The room displays a neutral color palette with beige curtains, textured linens, and modern mushroom-shaped lamps.

@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Lactiv-Live-Shop-Sha-Uations-Puen.PNG]]
+![[Lactiv-Live-Shop-Sha-Uations-Puen.png]]
 
 ## Summary
 A TikTok video demonstrating a workflow diagram for automating social media posts across platforms like Instagram, YouTube, Facebook, and Threads using the tool Blotato. The image shows nodes connecting different publishing methods within an automation interface.

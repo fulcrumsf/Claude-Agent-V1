@@ -10,7 +10,7 @@ original_filename: "genie-3-world-models.PNG"
 created: 2026-05-01
 ---
 
-![[Genie-World-Models.PNG]]
+![[Genie-World-Models.png]]
 
 ## AI Analysis
 The screenshot displays a TikTok video from the account 'AI Update Daily', promoting a new AI concept or product called 'Genie 3' that focuses on 'world models'. The video description begins 'STOP SCROLLING. This isn't a high-end game engine running a de...'. A content creator or digital entrepreneur would likely save this video to research new AI technologies like 'Genie 3' for potential content creation, understand emerging trends, or explore tools that could enhance their business operations.

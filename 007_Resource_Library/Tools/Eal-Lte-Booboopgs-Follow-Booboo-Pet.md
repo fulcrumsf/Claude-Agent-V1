@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Eal-Lte-Booboopgs-Follow-Booboo-Pet.PNG]]
+![[Eal-Lte-Booboopgs-Follow-Booboo-Pet.png]]
 
 ## Summary
 An Instagram post about the Syros Cats project in Greece, where volunteers can receive free accommodation on the island of Syros in exchange for caring for rescued kittens. The image displays cats gathered outdoors with a caption detailing the unique volunteer offer.

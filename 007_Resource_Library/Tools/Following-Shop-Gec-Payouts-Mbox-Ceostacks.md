@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Following-Shop-Gec-Payouts-Mbox-Ceostacks.PNG]]
+![[Following-Shop-Gec-Payouts-Mbox-Ceostacks.png]]
 
 ## Summary
 Screenshot of the TikTok profile for Danzel Wright, known as _ceostacks (CEO Stacks), a brand and business mentor. The content highlights his narrative of transitioning from DoorDash to earning six figures through digital products, offering a monetization class via a Stan Store link.

@@ -17,7 +17,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Eal-Lte-Gree-Ask-Question-Pricing.PNG]]
+![[Eal-Lte-Gree-Ask-Question-Pricing.png]]
 
 ## Summary
 A screenshot of the PostHog homepage featuring a custom isometric 'garden' visual theme with hedgehog characters. The page displays various interactive elements for documentation, pricing, changelog, and company handbook, indicating a unique approach to navigating product resources.

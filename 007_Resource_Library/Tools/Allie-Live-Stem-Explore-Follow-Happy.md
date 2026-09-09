@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Allie-Live-Stem-Explore-Follow-Happy.PNG]]
+![[Allie-Live-Stem-Explore-Follow-Happy.png]]
 
 ## Summary
 A TikTok video by creator dave_preneur titled 'How to create a faceless account and scale it to 10k followers' that displays screenshots of his own successful anonymous social media accounts. The content serves as a case study or tutorial on building faceless brand accounts on TikTok.

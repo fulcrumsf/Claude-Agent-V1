@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Liv-Lor-Coming-Deere-Aoe-Cas.PNG]]
+![[Liv-Lor-Coming-Deere-Aoe-Cas.png]]
 
 ## Summary
 A TikTok demonstration of Nano Banana Pro, a new AI model or tool running on Gemini 3. The video shows an interactive chat interface where the AI generates consistent illustrations and assets, featuring a prompt example about 'high-end publication' style art.

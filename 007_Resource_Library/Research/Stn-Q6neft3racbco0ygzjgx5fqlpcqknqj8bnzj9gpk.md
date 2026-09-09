@@ -16,7 +16,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[STN-Q6Neft3RAcBCO0yGZJGx5fqLpcQknqj8bnzJ9GpK.jpeg]]
+![[Stn-Q6neft3racbco0ygzjgx5fqlpcqknqj8bnzj9gpk.jpeg]]
 
 ## Summary
 Screenshot of the landing page for LO, an AI design agent tool described as creating designs by your side. The interface features a dark theme with large typography, a logo in the top left, and call-to-action buttons including 'Get Started' and 'Sign Up'.

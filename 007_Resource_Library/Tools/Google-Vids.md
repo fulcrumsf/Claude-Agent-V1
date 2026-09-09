@@ -10,7 +10,7 @@ original_filename: "Google_Vids.PNG"
 created: 2026-05-01
 ---
 
-![[Google_Vids.PNG]]
+![[Google-Vids.png]]
 
 ## AI Analysis
 The image captures a webpage promoting 'Google Vids', a new AI-powered video creation tool within Google Workspace. Visible text highlights its core function: 'AI-powered video creation for work', emphasizing its collaborative features and integration with 'Gemini', and its availability on 'Workspace Business and Enterprise plans, and Google AI plans'. For a content creator or digital entrepreneur, this screenshot is a valuable reference for exploring innovative tools that can automate and enhance video production, streamlining content workflows and offering new ways to create engaging stories for their audience or business.

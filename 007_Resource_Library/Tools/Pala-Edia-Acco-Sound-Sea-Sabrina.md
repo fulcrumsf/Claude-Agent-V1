@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Pala-Edia-Acco-Sound-Sea-Sabrina.PNG]]
+![[Pala-Edia-Acco-Sound-Sea-Sabrina.png]]
 
 ## Summary
 A workflow diagram displayed on a computer screen demonstrating an automation process for social media accounts. The visible nodes include RSS Feed, Filter out story, and Get TikTok Page steps. The content is from Marcin AI and demonstrates setting up AI automations.

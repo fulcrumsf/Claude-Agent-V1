@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Ais-Saas-Eae-Rna-Need-Administrator.PNG]]
+![[Ais-Saas-Eae-Rna-Need-Administrator.png]]
 
 ## Summary
 A social media post by the user 'tekkerslovakian' announcing a job opening for an administrator. The position is part-time (P/T), remote, and flexible with Scale_Careers, instructing interested parties to DM them.

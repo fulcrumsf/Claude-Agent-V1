@@ -10,7 +10,7 @@ original_filename: "IMG_8801.PNG"
 created: 2026-05-01
 ---
 
-![[Tive-Tem-Explore-Following-Shop-Avoid.PNG]]
+![[Tive-Tem-Explore-Following-Shop-Avoid.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Tive Tem Explore Following Shop Avoid with visible text about tive tem explore following shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

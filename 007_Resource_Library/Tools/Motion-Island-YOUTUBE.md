@@ -10,7 +10,7 @@ original_filename: "motion-island-youtube.PNG"
 created: 2026-05-01
 ---
 
-![[Motion-Island-Youtube.PNG]]
+![[Motion-Island-YOUTUBE.png]]
 
 ## AI Analysis
 The screenshot shows a YouTube channel page for 'Motion Island,' a resource described as a 'UNIQUE MOTION GRAPHICS RESOURCE' providing 'After Effects templates, green screen animations, clock timers, and stock videos' to its 9.01K subscribers. The user has navigated to the 'Shorts' tab, where examples like a green screen billboard and a timer graphic are visible. This indicates the user, likely a content creator or entrepreneur, saved this page as a reference for specific video editing assets, template ideas, or as a source for tools like green screen elements and clock timers for their own digital content production.

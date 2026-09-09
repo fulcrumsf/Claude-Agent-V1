@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Hon-Ass-Comment-Insidersal-Glipzap.PNG]]
+![[Live-Hon-Ass-Comment-Insidersal-Glipzap.png]]
 
 ## Summary
 A TikTok promotional post for Clipzap, an all-in-one AI tool that aggregates various features into a single platform. The video features animated characters and a call-to-action encouraging users to comment 'Clipzap' to learn more about the software.

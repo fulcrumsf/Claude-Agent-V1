@@ -10,7 +10,7 @@ original_filename: "Brush Swatch.PNG"
 created: 2026-05-01
 ---
 
-![[Brush Swatch.PNG]]
+![[Brush-Swatch.png]]
 
 ## AI Analysis
 The image captures a social media feed, highly resembling TikTok, displaying a video promoting a T-shirt design. Key text like 'ick's Day T-shirt PNG,' 'EverBee.io | Etsy Growth,' and 'These niches/trends are hot right now' indicates the content is related to product trend analysis for e-commerce, specifically Etsy sellers. A digital entrepreneur or content creator would save this as a reference for identifying popular product niches, researching market trends using tools like EverBee.io, or finding inspiration for new print-on-demand designs.

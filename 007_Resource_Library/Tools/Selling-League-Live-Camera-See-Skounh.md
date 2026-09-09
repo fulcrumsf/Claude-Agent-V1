@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Selling-League-Live-Camera-See-Skounh.PNG]]
+![[Selling-League-Live-Camera-See-Skounh.png]]
 
 ## Summary
 A tutorial walkthrough on the OpenArt platform titled 'AI Creator Academy,' specifically focusing on 'Tier 2 Training' for AI Avatar creation. The screen displays course modules like 'AI Avatar Lab' and instructions for training a base image to customize character avatars using the OpenArt interface.

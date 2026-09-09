@@ -17,7 +17,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[STN-HCuIr7UapSrMlTCrxTazuPFoIMtZIx6VaC6mN5uL.png]]
+![[Stn-Hcuir7uapsrmltcrxtazupfoimtzix6vac6mn5ul.png]]
 
 ## Summary
 A documentation page for Experimental API, a third-party service offering REST API access to AI platforms like Midjourney and Google Flow. It details subscription pricing ($15/month), supported services including Kling, Runway, and LTX Studio, and integration methods connecting user Discord accounts to automated endpoints.

@@ -14,7 +14,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[Wombat-in-washer2.png]]
+![[Wombat-In-Washer2.png]]
 
 ## Summary
 A close-up photograph of a wombat sitting inside the drum of an open Haier washing machine. The animal is holding and eating an orange carrot with its claws.

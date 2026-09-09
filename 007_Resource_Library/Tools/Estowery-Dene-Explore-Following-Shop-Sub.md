@@ -10,7 +10,7 @@ original_filename: "IMG_8723.PNG"
 created: 2026-05-01
 ---
 
-![[Estowery-Dene-Explore-Following-Shop-Sub.PNG]]
+![[Estowery-Dene-Explore-Following-Shop-Sub.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Estowery Dene Explore Following Shop Sub with visible text about estowery dene explore following shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

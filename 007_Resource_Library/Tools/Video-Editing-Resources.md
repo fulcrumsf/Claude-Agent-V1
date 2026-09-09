@@ -10,7 +10,7 @@ original_filename: "Video Editing-Resources1148.PNG"
 created: 2026-05-01
 ---
 
-![[Video-Editing-Resources.PNG]]
+![[Video-Editing-Resources.png]]
 
 ## AI Analysis
 The screenshot shows a TikTok video interface, featuring a prominent list of websites categorized under 'Sound Effects' and 'Royalty-Free Music', offering free assets for video editing. Visible text includes site names like MyInstants, Pixabay, YT Audio Library, Meta Sound Library, and engagement metrics (3549 likes, 27 comments, 3758 saves, 181 shares). A content creator or digital entrepreneur likely saved this video as a valuable reference list for finding audio assets, streamlining their video production workflow, and discovering new tools for their content.

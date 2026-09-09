@@ -12,7 +12,7 @@ original_filename: "gemini-prompt-trend.PNG"
 created: 2026-05-01
 ---
 
-![[Gemini-Prompt-Trend.PNG]]
+![[Gemini-Prompt-Trend.png]]
 
 ## Prompt Context
 This screenshot is about prompt-writing strategy and AI productivity around prompt engineering.

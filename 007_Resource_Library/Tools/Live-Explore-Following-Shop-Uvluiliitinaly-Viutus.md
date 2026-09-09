@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Explore-Following-Shop-Uvluiliitinaly-Viutus.PNG]]
+![[Live-Explore-Following-Shop-Uvluiliitinaly-Viutus.png]]
 
 ## Summary
 A TikTok tutorial video by Boss Media Tech demonstrating how to create 3D documentary style videos using AI tools. The content highlights a 'Sora2 Extend' template, likely within a platform like V0 or similar generative video tools, to generate unlimited duration clips without multi-shot segmentation.

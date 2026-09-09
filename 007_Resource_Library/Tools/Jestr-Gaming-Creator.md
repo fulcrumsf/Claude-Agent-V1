@@ -10,7 +10,7 @@ original_filename: "jestr-gaming-creator.PNG"
 created: 2026-05-01
 ---
 
-![[Jestr-Gaming-Creator.PNG]]
+![[Jestr-Gaming-Creator.png]]
 
 ## AI Analysis
 The screenshot shows the JestR website (jestr.gg) on a mobile browser, advertising itself as 'The Creator Marketplace for Gamers'. The main content, 'Get Rewarded for Creating', explains that creators can 'Support indie studios and get paid to create gaming shorts. Turn your passion for gaming content into consistent income' with a 'Start Earning Rewards' button. The presence of 'For Creators' and 'For Studios' options, along with an image of 'Palworld', suggests a platform connecting game developers with content creators. This would be valuable for a digital entrepreneur or content creator looking for new revenue streams or partnership opportunities within the gaming niche.

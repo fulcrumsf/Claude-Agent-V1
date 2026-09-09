@@ -11,7 +11,7 @@ original_filename: "IMG_8622.PNG"
 created: 2026-05-01
 ---
 
-![[Tive-Rem-Explore-Following-Shop-Acidbite.PNG]]
+![[Tive-Rem-Explore-Following-Shop-Acidbite.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Tive Rem Explore Following Shop Acidbite with visible text about tive rem explore following shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

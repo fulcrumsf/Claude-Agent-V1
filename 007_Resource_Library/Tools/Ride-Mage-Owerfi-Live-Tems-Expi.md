@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Ride-Mage-Owerfi-Live-Tems-Expi.PNG]]
+![[Ride-Mage-Owerfi-Live-Tems-Expi.png]]
 
 ## Summary
 A TikTok video and overlay text discussing Z-Image, an efficient image generation model with 6B parameters. It highlights the Z-Image-Turbo variant which runs on consumer devices (16G VRAM) with sub-second inference latency.

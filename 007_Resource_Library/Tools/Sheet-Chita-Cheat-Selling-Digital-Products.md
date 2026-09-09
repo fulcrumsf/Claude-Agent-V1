@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Sheet-Chita-Cheat-Selling-Digital-Products.PNG]]
+![[Sheet-Chita-Cheat-Selling-Digital-Products.png]]
 
 ## Summary
 A TikTok profile for 'Social Cheat Sheet' focused on teaching users how to make money by selling digital products, PLR (Private Label Rights), and print-on-demand services. The profile features a grid of video thumbnails covering topics like creating Etsy stores, marketing clothing brands, and starting businesses with no experience.

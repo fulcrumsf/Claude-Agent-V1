@@ -70,7 +70,14 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - Uses OpenRouter vision first (qwen model), then OpenAI vision fallback, to extract semantic knowledge
 - OCR is not the default path for screenshot renaming
 - Run: `python3 001_Architecture/Scripts/process_image_ingest.py "/path/to/images"`
-- Output: `Title-Case-With-Dashes.md` note in correct category folder, raw image moved to `Visual_Assets/`, undetermined items to `Undetermined/`
+- Output (as of 2026-09-09): note **and** its renamed image written **side by side** in the category folder, same name stem (`Tools/OpenCode.md` + `Tools/OpenCode.png`). `Visual_Assets/` retired.
+- Dedup, automatic: (1) skip byte-identical image, (2) skip if `url:` already in another note, (3) title clash → `-N` + `possible-duplicate` tag.
+
+**Image co-location migration (one-time, done 2026-09-09):** `001_Architecture/Scripts/migrate_images_to_notes.py`
+- Moved all 1,028 images out of `Visual_Assets/` into their notes' category folders, renamed to match, normalized extensions, updated every embed. `--dry-run` / `--limit` / `--verify`. Backup + `_Image_Migration_Manifest.json`.
+
+**Broken-image / text-only note review:** `001_Architecture/Scripts/build_broken_image_review.py <notes.json> [--title T] [--outfile F]`
+- Generic full-text Keep/Strip/Junk review page for any list of notes. Folder + decision filters, bulk actions, copy/download decisions.
 
 **Image case fix script:** `001_Architecture/Scripts/fix_image_case.py`
 - Post-process cleanup: converts any remaining lowercase kebab-case image filenames in Visual_Assets to Title-Case-With-Dashes

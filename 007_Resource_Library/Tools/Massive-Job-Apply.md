@@ -10,7 +10,7 @@ original_filename: "Massive Job Apply.PNG"
 created: 2026-05-01
 ---
 
-![[Massive Job Apply.PNG]]
+![[Massive-Job-Apply.png]]
 
 ## AI Analysis
 The screenshot displays a social media feed, likely TikTok given the 'For You' tab and layout, with an overlay asking 'What's your address?' above a promoted app. The primary content is an advertisement for 'Massive: Swipe & Apply', a job search app for '100K+ Top Tech Jobs' that features a 'Personal Job Search Assistant' and allows users to 'Swipe right and apply to 500,000+ Jobs', including details like 'Product Intern' at 'Zynga' for '$25.50/hr'. A content creator or digital entrepreneur might save this for inspiration for their own social media ad creatives, to research competitor app marketing strategies, or as a reference for a job search tool to recommend or review for their audience.

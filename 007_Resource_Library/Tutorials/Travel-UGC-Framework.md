@@ -10,7 +10,7 @@ original_filename: "travel-ugc-framework.PNG"
 created: 2026-05-01
 ---
 
-![[Travel-Ugc-Framework.PNG]]
+![[Travel-UGC-Framework.png]]
 
 ## AI Analysis
 The screenshot displays a TikTok video providing an educational 'Travel UGC Framework' for content creators and digital entrepreneurs. The visible text outlines how to pitch non-travel brands for user-generated content (UGC) that naturally fits into travel moments, offering specific examples like 'Skincare/Beauty → My in-flight skincare routine' and 'Food/Wine → Our first night at the Airbnb.' This content is invaluable for a content creator seeking to diversify their monetization strategies, find new brand collaboration opportunities beyond traditional travel brands, and learn practical tips for creating engaging and relevant travel-themed UGC.

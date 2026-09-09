@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Worked-Major-Brands-Dream-Through-Vidsy.PNG]]
+![[Worked-Major-Brands-Dream-Through-Vidsy.png]]
 
 ## Summary
 A TikTok post from a UGC content creator discussing platforms used to land brand deals, specifically highlighting Vidsy and Fiverr. The text provides a testimonial about the ease of application and success in securing major brands through these sites.

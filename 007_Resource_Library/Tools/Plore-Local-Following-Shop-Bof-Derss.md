@@ -10,7 +10,7 @@ original_filename: "IMG_9315.PNG"
 created: 2026-05-01
 ---
 
-![[Plore-Local-Following-Shop-Bof-Derss.PNG]]
+![[Plore-Local-Following-Shop-Bof-Derss.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Plore Local Following Shop Bof Derss with visible text about plore local following shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

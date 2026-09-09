@@ -10,7 +10,7 @@ original_filename: "IMG_8743.PNG"
 created: 2026-05-01
 ---
 
-![[Shop-Immunity-Boosting-Tea-Off-Big.PNG]]
+![[Shop-Immunity-Boosting-Tea-Off-Big.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Shop Immunity Boosting Tea Off Big with visible text about shop immunity boosting tea. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

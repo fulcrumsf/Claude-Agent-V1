@@ -14,11 +14,12 @@ tags:
   - workflow-diagram
   - kling-ai
   - needs-enrichment
+  - shared-image-review
 created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[Faceless-POV-AI-Agent-High-Level-Overview.png]]
+![[Faceless-Pov-AI-Agent-High-Level-Overview.png]]
 
 ## Summary
 A handwritten system specification and flowchart for automating AI-generated POV video publishing to YouTube. The workflow utilizes a multi-step pipeline involving OpenAI for prompt expansion, Flux/Kling for image and video generation, ElevenLabs for audio, and Creatomate for final rendering and stitching.

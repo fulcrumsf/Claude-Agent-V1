@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Ares-Chi-Mene-Eee-Pustiato-Ago.PNG]]
+![[Ares-Chi-Mene-Eee-Pustiato-Ago.png]]
 
 ## Summary
 A screen recording of a laptop display showing a detailed football analytics interface with key matchup statistics for teams (CLE vs CHI). The visual includes projected scores, win probabilities, and comparative metrics like EPA and pressure rates. This is a content example from the TikTok account 'data_by_faro' showcasing sports data visualization.

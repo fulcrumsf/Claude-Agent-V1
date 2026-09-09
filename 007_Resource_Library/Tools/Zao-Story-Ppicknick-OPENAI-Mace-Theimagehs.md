@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Zao-Story-Ppicknick-Openai-Mace-Theimagehs.PNG]]
+![[Zao-Story-Ppicknick-OPENAI-Mace-Theimagehs.png]]
 
 ## Summary
 A conceptual design of a futuristic city integrated with organic structures and nature, featuring flowing white architecture, green spaces, solar panels, and elevated roadways alongside a body of water. The image depicts a high-tech environment harmonized with a forest setting, serving as visual inspiration for sci-fi world-building or sustainable architectural concepts.

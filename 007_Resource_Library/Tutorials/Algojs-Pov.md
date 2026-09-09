@@ -13,11 +13,12 @@ tags:
   - youtube-api
   - creative-tools
   - needs-enrichment
+  - shared-image-review
 created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[Faceless-POV-AI-Agent-High-Level-Overview.png]]
+![[Algojs-Pov.png]]
 
 ## Summary
 A handwritten system specification for a fully automated workflow that generates AI-powered POV video content. The process takes input topics from Google Sheets and uses OpenAI, Flux, Kling, and ElevenLabs to generate assets, which are then stitched together using Creatomate and published to YouTube via API.

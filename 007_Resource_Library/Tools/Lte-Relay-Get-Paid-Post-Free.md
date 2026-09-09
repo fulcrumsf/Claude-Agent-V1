@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Lte-Relay-Get-Paid-Post-Free.PNG]]
+![[Lte-Relay-Get-Paid-Post-Free.png]]
 
 ## Summary
 The image displays the App Store product page for Relay, a social platform designed to pay users for posting content. The app promotes earning money through organic posts without requiring followers or prior experience, as highlighted in the promotional screenshots visible below the main button.

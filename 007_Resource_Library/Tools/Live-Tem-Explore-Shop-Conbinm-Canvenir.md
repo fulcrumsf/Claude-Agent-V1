@@ -10,7 +10,7 @@ original_filename: "IMG_8026.PNG"
 created: 2026-05-01
 ---
 
-![[Live-Tem-Explore-Shop-Conbinm-Canvenir.PNG]]
+![[Live-Tem-Explore-Shop-Conbinm-Canvenir.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Live Tem Explore Shop Conbinm Canvenir with visible text about live tem explore. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

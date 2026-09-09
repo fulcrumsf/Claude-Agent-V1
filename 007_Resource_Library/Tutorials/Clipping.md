@@ -4,6 +4,7 @@ type: tutorial
 category: tutorials
 tags:
   - tutorials
+  - shared-image-review
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Video Tutorials/Tutorial Library/Clipping.md
 ---
@@ -17,7 +18,7 @@ source: Databases/Resource Dashboard/Resource Gallery/Video Tutorials/Tutorial L
 > [!info] The ULTIMATE Agent to Auto-Publish Content Hourly - 9 Social Platforms in 1! (n8n NO-CODE tutorial🥚)  
 > In this lesson, you'll learn how to set up the best publishing agent available right now - as it seamlessly integrates with not 2, not 3, but 9 Social Media Platforms - all in one system 😉  
 > [https://youtu.be/MNYx_0a2XqI?si=XI36VC_eJx369Jnf](https://youtu.be/MNYx_0a2XqI?si=XI36VC_eJx369Jnf)  
-![[RoboNuggets_Clipping.png]]
+![[Clipping.png]]
 ### **AI Clipping System Overview**
 - Built an AI system that automatically generates 100+ shorts from long-form videos
 - System publishes clips across multiple social platforms (TikTok, Instagram, YouTube Shorts, LinkedIn)

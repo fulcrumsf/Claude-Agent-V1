@@ -10,7 +10,7 @@ original_filename: "IMG_8664.PNG"
 created: 2026-05-01
 ---
 
-![[Tive-Rem-Explore-Following-Shop-Toya.PNG]]
+![[Tive-Rem-Explore-Following-Shop-Toya.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Tive Rem Explore Following Shop Toya with visible text about tive rem explore following shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

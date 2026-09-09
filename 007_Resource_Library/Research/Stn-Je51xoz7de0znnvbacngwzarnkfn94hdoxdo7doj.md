@@ -17,7 +17,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[STN-Je51XOz7de0zNNVBaCNGWZaRNkFN94hDOxDo7doj.jpeg]]
+![[Stn-Je51xoz7de0znnvbacngwzarnkfn94hdoxdo7doj.jpeg]]
 
 ## Summary
 A terminal-style marketing landing page for 'N8n Boy', an AI assistant tool designed to work with n8n workflow automation. The interface features a retro green-on-black aesthetic and highlights capabilities such as generating code without searching, fixing broken JSON instantly, and creating optimized AI prompts.

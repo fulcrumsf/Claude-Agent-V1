@@ -12,7 +12,7 @@ original_filename: "anthropic-agent-skills-course.PNG"
 created: 2026-05-01
 ---
 
-![[Anthropic-Agent-Skills-Course.PNG]]
+![[Anthropic-Agent-Skills-Course.png]]
 
 ## What It Is
 This is a tutorial resource for learning Claude Code agent skills. The main value is the free course and the beginner onboarding guidance.

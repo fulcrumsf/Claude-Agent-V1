@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Thersyagentipiatforms-Thatwilllreplace-Ialt-Wonks-Lindy-Search.PNG]]
+![[Thersyagentipiatforms-Thatwilllreplace-Ialt-Wonks-Lindy-Search.png]]
 
 ## Summary
 A TikTok video tutorial discussing AI agent platforms, specifically highlighting 'Lindy' as a key tool that can automate work. The content appears to be an educational breakdown or listicle of software tools intended for productivity and automation.

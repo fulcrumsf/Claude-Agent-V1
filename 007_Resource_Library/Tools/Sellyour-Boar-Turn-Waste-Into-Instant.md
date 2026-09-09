@@ -17,7 +17,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Sellyour-Boar-Turn-Waste-Into-Instant.PNG]]
+![[Sellyour-Boar-Turn-Waste-Into-Instant.png]]
 
 ## Summary
 Mobile landing page for SellYourBoards.com, a service allowing users to sell scrap electronics and e-waste. The interface highlights benefits like free sorting, easy shipping, and instant cash payments via visible call-to-action buttons.

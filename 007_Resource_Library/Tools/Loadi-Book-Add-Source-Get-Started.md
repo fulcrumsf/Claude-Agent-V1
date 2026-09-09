@@ -17,7 +17,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Loadi-Book-Add-Source-Get-Started.PNG]]
+![[Loadi-Book-Add-Source-Get-Started.png]]
 
 ## Summary
 A TikTok video by Victor C demonstrating how to use Google NotebookLM to generate infographics. The image displays the NotebookLM interface (notebooklm.google) which allows users to upload sources like PDFs and websites to create new content.

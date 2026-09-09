@@ -10,7 +10,7 @@ original_filename: "Faceless Niches.PNG"
 created: 2026-05-01
 ---
 
-![[Faceless Niches.PNG]]
+![[Faceless-Niches.png]]
 
 ## AI Analysis
 The screenshot displays a TikTok video from a user promoting 'Zebracat AI | text to video' and discussing '5 faceless niches' for going viral, including affirmations, news compilation, religious explanations, make money online, and scary stories. A content creator or digital entrepreneur likely saved this for inspiration on niche content ideas, strategies for going viral, or to investigate Zebracat AI as a tool for creating such 'faceless' videos without appearing on camera.

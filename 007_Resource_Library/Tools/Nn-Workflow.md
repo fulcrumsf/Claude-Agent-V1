@@ -10,7 +10,7 @@ original_filename: "n8n Workflow.PNG"
 created: 2026-05-01
 ---
 
-![[Nn-Workflow.PNG]]
+![[Nn-Workflow.png]]
 
 ## AI Analysis
 The image captures a TikTok video displaying a visual workflow automation tool, likely accessed via `cloudworkflow.com`, demonstrating a comprehensive 4-step process for content creation: cloning a viral TikTok, suggesting new ideas, creating a video with an avatar, and publishing across 9 platforms including YouTube, Instagram, and X. The video's prominent text overlays '$3,000 A WEEK' and the caption 'Automate Everything' suggest a focus on generating income and efficiency through AI automation. This content would be invaluable for a digital entrepreneur or content creator seeking to streamline their workflow, discover AI tools for content generation and multi-platform distribution, or explore business models around automated content and AI agencies.

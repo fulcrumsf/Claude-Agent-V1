@@ -10,7 +10,7 @@ original_filename: "Sideo.PNG"
 created: 2026-05-01
 ---
 
-![[Sideo.PNG]]
+![[Sideo.png]]
 
 ## AI Analysis
 The screenshot captures the mobile-responsive homepage of Sideo.tv, a specialized marketplace for news video footage. The site describes itself as a community for TV news stringers, videographers, citizen journalists, and media outlets, allowing users to upload or download breaking news content. A content creator or digital entrepreneur would find this site relevant either to acquire authentic news footage for their projects, or as a platform to sell their own produced video content and generate income.

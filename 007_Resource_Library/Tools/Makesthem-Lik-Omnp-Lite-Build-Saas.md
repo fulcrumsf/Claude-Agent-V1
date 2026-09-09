@@ -20,7 +20,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Makesthem-Lik-Omnp-Lite-Build-Saas.PNG]]
+![[Makesthem-Lik-Omnp-Lite-Build-Saas.png]]
 
 ## Summary
 This image features 'OK Computer', an open-source AI model developed by Kimi (Moonshot AI). The screenshot highlights the K2 Thinking Open-Source variant, indicated as free with a high rating. It is being presented in a TikTok ad context aimed at unlocking AI assistants or building SaaS applications for content creators.

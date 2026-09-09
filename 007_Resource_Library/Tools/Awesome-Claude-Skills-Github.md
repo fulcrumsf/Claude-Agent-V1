@@ -11,7 +11,7 @@ original_filename: "awesome-claude-skills.github.PNG"
 created: 2026-05-01
 ---
 
-![[Awesome-Claude-Skills.github.PNG]]
+![[Awesome-Claude-Skills-Github.png]]
 
 ## What It Is
 This is a GitHub repository reference for Claude skills resources. The main value is the repo and the workflow it points to.

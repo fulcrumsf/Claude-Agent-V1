@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Deve-Edi-Matted-Document-Tables-Forte.PNG]]
+![[Deve-Edi-Matted-Document-Tables-Forte.png]]
 
 ## Summary
 A TikTok video screenshot displaying a detailed AI image generation prompt template. The visible content includes structured fields like subject, key characteristics, style, and color palette, specifically referencing Google's 'Nano Banana' image guide. It serves as a formula for converting image guidelines into functional prompts.

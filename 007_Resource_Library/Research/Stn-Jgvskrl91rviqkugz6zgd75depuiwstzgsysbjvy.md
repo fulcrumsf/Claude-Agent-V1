@@ -17,7 +17,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[STN-JgVskrL91rviQKUgZ6ZgD75DEpuiWstzGSYsBJVy.jpeg]]
+![[Stn-Jgvskrl91rviqkugz6zgd75depuiwstzgsysbjvy.jpeg]]
 
 ## Summary
 The screenshot displays the landing page for Gobii, a service that enables users to launch serverless browser-use agents via API. The page highlights key features including AI-powered browser agents for automating complex web tasks and scalable infrastructure capable of running hundreds of parallel automation tasks.

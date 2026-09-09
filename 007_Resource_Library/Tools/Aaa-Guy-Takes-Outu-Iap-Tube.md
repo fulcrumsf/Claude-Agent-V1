@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Aaa-Guy-Takes-Outu-Iap-Tube.PNG]]
+![[Aaa-Guy-Takes-Outu-Iap-Tube.png]]
 
 ## Summary
 A TikTok video from user 'pham' featuring a vlog-style shot on a balcony overlooking a city and campus. The title references an investigation into 'the SMARTEST YouTubers' and includes a search tag for 'irl youtube channel', indicating the content is likely about creators who film in real-life settings.

@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Eso-Nais-Iren-See-Get-Early.PNG]]
+![[Eso-Nais-Iren-See-Get-Early.png]]
 
 ## Summary
 A YouTube video by the channel @TickerSymbolYOU featuring a list of three specific stock recommendations: CRWV, NBIS, and IREN. The visual content includes an on-screen graphic overlaying the speaker with these ticker symbols and numbers 01-03, alongside footage of stock charts being analyzed on a smartphone.

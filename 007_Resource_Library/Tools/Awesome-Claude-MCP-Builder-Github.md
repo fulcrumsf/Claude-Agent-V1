@@ -12,7 +12,7 @@ original_filename: "awesome-claude-mcp-builder.github.PNG"
 created: 2026-05-01
 ---
 
-![[Awesome-Claude-MCP-Builder.github.PNG]]
+![[Awesome-Claude-MCP-Builder-Github.png]]
 
 ## What It Is
 This is a GitHub repository reference for Claude MCP builder resources. The main value is the repo and the build workflow it points to.

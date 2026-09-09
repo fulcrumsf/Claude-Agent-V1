@@ -14,11 +14,12 @@ tags:
   - modding-contest
   - simulation
   - needs-enrichment
+  - shared-image-review
 created: 2026-09-05
 enriched: 2026-09-05
 ---
 
-![[STN-K9o0JCrgUbM8ZmrYg6q64ggAuUUVV0uAAJumolSW.png]]
+![[Beamng.png]]
 
 ## Summary
 The official news landing page for BeamNG.drive, a soft-body physics driving simulation game. The screenshot displays recent updates including the Holiday Modding Contest Results and hotfixes for version v0.35. A featured custom vehicle skin named 'Screamer' is prominently displayed with a geometric overlay visualization.

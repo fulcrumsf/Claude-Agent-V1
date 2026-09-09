@@ -10,7 +10,7 @@ original_filename: "reddit-usdc-defi-discussion.PNG"
 created: 2026-05-01
 ---
 
-![[Reddit-Usdc-Defi-Discussion.PNG]]
+![[Reddit-Usdc-Defi-Discussion.png]]
 
 ## AI Analysis
 The screenshot shows a Reddit discussion thread, specifically searching for "Coinbase U...". The conversation revolves around the mechanics of lending USDC on Coinbase, detailing its limitations, the high risk associated with DeFi lending rates, the potential for interest to be paid in Morpho tokens instead of USDC, and how this might affect Coinbase Amex reward tiers. For a content creator or digital entrepreneur, this offers valuable insights into complex cryptocurrency financial products, useful for personal investment decisions, or for developing educational content, articles, or videos dissecting DeFi opportunities and risks.

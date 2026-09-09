@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Pron-Ste-Gas-Lal-Eee-Eat.JPG]]
+![[Pron-Ste-Gas-Lal-Eee-Eat.jpg]]
 
 ## Summary
 Screenshot of the official Record Store Day (RSD) homepage promoting the Black Friday event on November 28, 2025. The page features navigation links for store locations, archives, charts, and merchandise.

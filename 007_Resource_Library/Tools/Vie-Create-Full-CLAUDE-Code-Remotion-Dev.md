@@ -20,7 +20,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Vie-Create-Full-Claude-Code-Remotion-Dev.PNG]]
+![[Vie-Create-Full-CLAUDE-Code-Remotion-Dev.png]]
 
 ## Summary
 A TikTok video from user agentic.james promoting the remotion-dev/skills GitHub repository. The content highlights a specific 'Agent Skills' feature designed for creating animated videos using Claude Code within the Remotion framework.

@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Pow-Punts-Ors-Romr-Subheading-Subneading.PNG]]
+![[Pow-Punts-Ors-Romr-Subheading-Subneading.png]]
 
 ## Summary
 A TikTok video by Marcin AI explaining the essential components of a high-converting landing page. The speaker points to a background diagram illustrating key sections including 'Why us', 'How it works', 'Benefits', and 'Pricing'. This content serves as a structural guide for building effective marketing pages.

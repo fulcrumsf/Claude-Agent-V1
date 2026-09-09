@@ -16,7 +16,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[STN-P6FHPuqjiZgMjBfcV933oQCAqhsB9myptg65eyqf.png]]
+![[Stn-P6fhpuqjizgmjbfcv933oqcaqhsb9myptg65eyqf.png]]
 
 ## Summary
 A landing page for Chat4Data, a browser extension designed to extract structured web data through natural language chat without coding. The interface displays a usage example where a user requests data extraction from a webpage via an input command.

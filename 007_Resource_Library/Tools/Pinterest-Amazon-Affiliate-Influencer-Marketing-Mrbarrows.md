@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Pinterest-Amazon-Affiliate-Influencer-Marketing-Mrbarrows.PNG]]
+![[Pinterest-Amazon-Affiliate-Influencer-Marketing-Mrbarrows.png]]
 
 ## Summary
 A paid guide for sale on Gumroad titled 'Pinterest Amazon Affiliate & Influencer Marketing Guide'. The item costs $19.99 and is hosted at mrbarrows.gumroad.com. This captures a specific digital marketing resource combining affiliate strategies.

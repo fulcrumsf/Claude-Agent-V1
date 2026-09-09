@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Tive-Tem-Explore-Following-Shop-Sal.PNG]]
+![[Tive-Tem-Explore-Following-Shop-Sal.png]]
 
 ## Summary
 A tutorial video demonstrating a storytelling formula called 'Brain-to-Brain Coupling', which is presented as a method to mesmerize an audience in 90 seconds. The graphic visualizes two human heads connected by USB cables labeled 'LEAD' and 'ARCH', illustrating the concept of transferring a narrative structure directly into a listener's mind.

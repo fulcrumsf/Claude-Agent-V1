@@ -8,6 +8,7 @@ tags:
   - json
   - prompting
   - image-generation
+  - shared-image-review
 created: 2026-05-01
 source: https://youtu.be/afzbZYC6fCM?si=IDsCDMhuFeVL_ntH
 ---
@@ -31,17 +32,17 @@ source: https://youtu.be/afzbZYC6fCM?si=IDsCDMhuFeVL_ntH
 > "mood": "==tense=="  
 > }
 ## Image Examples
-![[JSON_Prompt_Example1.png]]
+![[JSON-Prompts.png]]
 
 > [!important]
 > 
 > "subject": "==cyberpunk samurai=="
-![[JSON_Prompt_Example2.png]]
+![[JSON-Prompts-2.png]]
 
 > [!important]
 > 
 > "subject": "==cyberpunk lady samurai=="
-![[JSON_Prompt_Example3.png]]
+![[JSON-Prompts-3.png]]
 
 > [!important]
 > 

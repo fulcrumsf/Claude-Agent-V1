@@ -10,7 +10,7 @@ original_filename: "IMG_8802.PNG"
 created: 2026-05-01
 ---
 
-![[Live-Explore-Following-Shop-Avoid-Beginner.PNG]]
+![[Live-Explore-Following-Shop-Avoid-Beginner.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Live Explore Following Shop Avoid Beginner with visible text about live explore following shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

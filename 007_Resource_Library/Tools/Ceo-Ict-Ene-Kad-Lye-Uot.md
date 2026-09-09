@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Ceo-Ict-Ene-Kad-Lye-Uot.JPG]]
+![[Ceo-Ict-Ene-Kad-Lye-Uot.jpg]]
 
 ## Summary
 A retail display board showcasing Ridge brand Magsafe accessories, including magnetic power banks, cardholders, and everyday phone cases. The image details product features like built-in cable storage, 5-in-1 charging solutions, and digital theft protection, highlighting the compatibility of these leather-textured accessories with Apple devices.

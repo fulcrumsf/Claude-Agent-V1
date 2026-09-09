@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Explore-Following-Shop-Plugin-Could.PNG]]
+![[Live-Explore-Following-Shop-Plugin-Could.png]]
 
 ## Summary
 A TikTok video from user Graphic Glide showcasing 'Fossa: Tether', a new AI plugin for Adobe After Effects. The content highlights the tool's potential to revolutionize AI animation and art directing in post-production workflows.

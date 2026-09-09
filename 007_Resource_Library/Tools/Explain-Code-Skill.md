@@ -10,7 +10,7 @@ original_filename: "explain-code-skill.PNG"
 created: 2026-05-01
 ---
 
-![[Explain-Code-Skill.PNG]]
+![[Explain-Code-Skill.png]]
 
 ## AI Analysis
 The screenshot shows a TikTok video from the user 'nocode.joshua' discussing '5 Claude Skills'. The primary visual within the video is a detailed mind map explaining Anthropic's 'Explain Code' skill, highlighting its features like analogies, ASCII diagrams, step-by-step walkthroughs, and common mistake flagging. For a content creator or digital entrepreneur, this screenshot is a valuable reference for understanding a specific AI tool (Claude) and its capabilities for code explanation, potentially as a tool to improve their own workflow or as a topic for future content creation regarding AI-powered productivity and learning.

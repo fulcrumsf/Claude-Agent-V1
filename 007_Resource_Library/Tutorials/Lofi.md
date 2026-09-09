@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Lofi.PNG]]
+![[Lofi.png]]
 
 ## Summary
 A YouTube Short by AdrianVideoImage demonstrating an AI workflow for generating anime-style video content. The frame highlights a specific text prompt used to describe a scene of a young woman sleeping peacefully in bed while it rains outside, serving as a reference for creating lofi aesthetic videos.

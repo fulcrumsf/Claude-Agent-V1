@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Exp-Following-Shop-Started-Off.PNG]]
+![[Live-Exp-Following-Shop-Started-Off.png]]
 
 ## Summary
 A TikTok review discussing the platform 'Cohleys' for UGC creators. The creator explains that while it was tough to get bigger brands on Cohleys initially, it provided good starting exposure and required active applications before being selected.

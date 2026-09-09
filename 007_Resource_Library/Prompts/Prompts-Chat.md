@@ -12,7 +12,7 @@ original_filename: "propmts.chat.PNG"
 created: 2026-05-01
 ---
 
-![[Propmts.chat.PNG]]
+![[Prompts-Chat.png]]
 
 ## Prompt Resource
 This screenshot points to the prompts.chat directory itself, which is a reusable prompt resource rather than a product walkthrough.

@@ -12,11 +12,12 @@ tags:
   - shorts-generation
   - social-media-publishing
   - needs-enrichment
+  - shared-image-review
 created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[RoboNuggets-Clipping.png]]
+![[Robonuggets-Clipping.png]]
 
 ## Summary
 A complex automation flowchart titled 'The AI Clip Factory' designed by Jay from RoboNuggets. The workflow details a four-step process to convert long-form content into short clips: retrieving long videos, analyzing them via API (visible as POST requests), processing the output, and finally distributing the result across multiple platforms including TikTok, Instagram, YouTube, and LinkedIn.

@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Fair-Again-Actually-Make-Viral-Thinkverseal1.PNG]]
+![[Fair-Again-Actually-Make-Viral-Thinkverseal1.png]]
 
 ## Summary
 A YouTube video thumbnail promoting Antigravity, an AI tool claimed to create and edit high-quality brand videos on autopilot. The content features a demonstration of generating realistic imagery (including foxes and people surfing) with a prominent rainbow-colored 'A' logo overlaying the creator.

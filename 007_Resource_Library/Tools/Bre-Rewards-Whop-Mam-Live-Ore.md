@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Bre-Rewards-Whop-Mam-Live-Ore.PNG]]
+![[Bre-Rewards-Whop-Mam-Live-Ore.png]]
 
 ## Summary
 A TikTok video featuring a creator discussing EasySlice.AI, an AI-powered tool designed to automatically convert YouTube uploads into social-ready short-form clips. The screen shows a landing page for the tool explaining its 'zero effort' passive workflow and how it processes content without manual editing.

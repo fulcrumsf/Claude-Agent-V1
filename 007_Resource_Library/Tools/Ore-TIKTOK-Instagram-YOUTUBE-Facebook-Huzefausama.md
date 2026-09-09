@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Ore-Tiktok-Instagram-Youtube-Facebook-Huzefausama.PNG]]
+![[Ore-TIKTOK-Instagram-YOUTUBE-Facebook-Huzefausama.png]]
 
 ## Summary
 A futuristic architectural rendering of a massive, skeletal structure referred to as 'The Mechanized Shed.' The concept features giant articulated metal legs supporting multiple glass-walled volumes filled with interior spaces and greenery. It serves as a visual reference for sci-fi structural design and speculative architecture.

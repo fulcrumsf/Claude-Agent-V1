@@ -10,7 +10,7 @@ original_filename: "Vanadium Mineral.PNG"
 created: 2026-05-01
 ---
 
-![[Vanadium Mineral.PNG]]
+![[Vanadium-Mineral.png]]
 
 ## AI Analysis
 This image displays a TikTok video from the user @TheNiFTyInvestor, utilizing the 'Green Screen' feature to overlay text from a news article about 'Vanadium: A Critical Mineral Catalyst for Grid-Scale Storage' and a proposed mine in Eureka County, U.S. The video's caption, 'I think #elonmusk will be looking to this sooner than later. #stocks #stocktok #invest', positions it as investment advice or commentary. A content creator or digital entrepreneur would likely save this for investment research into critical minerals, to generate ideas for their own financial content, or to study effective TikTok strategies, such as using the Green Screen effect to discuss news and finance.

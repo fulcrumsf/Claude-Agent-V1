@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Chatgpt-Realapy-Liveaiapp-Aliveal-Create-Realistic.PNG]]
+![[Chatgpt-Realapy-Liveaiapp-Aliveal-Create-Realistic.png]]
 
 ## Summary
 A YouTube video tutorial by a creator demonstrating how to build an AI-powered OnlyFans persona with zero capital investment. The thumbnail shows the result (generated images on a phone) alongside mock notifications of PayPal earnings, suggesting the guide covers content generation and monetization strategies.

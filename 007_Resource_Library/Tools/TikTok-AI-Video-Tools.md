@@ -12,7 +12,7 @@ original_filename: "tiktok-ai-video-tools.PNG"
 created: 2026-05-01
 ---
 
-![[Tiktok-AI-Video-Tools.PNG]]
+![[TikTok-AI-Video-Tools.png]]
 
 ## What It Is
 This is a screenshot of an AI video generation tool being promoted on TikTok. The main value is the software and its capabilities.

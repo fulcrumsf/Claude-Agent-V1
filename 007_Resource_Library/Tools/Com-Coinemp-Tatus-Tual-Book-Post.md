@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Com-Coinemp-Tatus-Tual-Book-Post.PNG]]
+![[Com-Coinemp-Tatus-Tual-Book-Post.png]]
 
 ## Summary
 A tweet by Vana from Coinpress summarizing a Base livestream announcement. The visible content lists key product updates for the Base platform, including the transition to a standalone Base app, an integrated social feed with Farcaster, mini-apps support, and reduced blocktime.

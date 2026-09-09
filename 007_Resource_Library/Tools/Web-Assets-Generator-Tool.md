@@ -12,7 +12,7 @@ original_filename: "web-assets-generator-skill.PNG"
 created: 2026-05-01
 ---
 
-![[Web-Assets-Generator-Skill.PNG]]
+![[Web-Assets-Generator-Tool.png]]
 
 ## What It Is
 This is a screenshot of a web assets generator tool for Claude. The main value is the asset-generation workflow.

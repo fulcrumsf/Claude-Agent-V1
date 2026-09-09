@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Cir-Illars-Architecture-Live-Tem-Explore.PNG]]
+![[Cir-Illars-Architecture-Live-Tem-Explore.png]]
 
 ## Summary
 A TikTok tutorial video by Chase AI that outlines the '7 Pillars of App Architecture'. The visible list includes Frontend, Backend, Databases, Authentication, Payments, Security, and Infrastructure. The content focuses on these architectural concepts in relation to Cloud Code.

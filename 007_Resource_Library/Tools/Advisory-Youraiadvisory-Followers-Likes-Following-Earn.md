@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Advisory-Youraiadvisory-Followers-Likes-Following-Earn.PNG]]
+![[Advisory-Youraiadvisory-Followers-Likes-Following-Earn.png]]
 
 ## Summary
 A TikTok profile for 'Your AI Advisory' that focuses on automation strategies. The page highlights 'AI workflows that earn while you sleep' and features thumbnails of videos demonstrating complex visual flowcharts and node-based automation interfaces.

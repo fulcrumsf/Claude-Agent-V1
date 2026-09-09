@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Oll-Lte-Comments-Mteviero-Here-Let.PNG]]
+![[Oll-Lte-Comments-Mteviero-Here-Let.png]]
 
 ## Summary
 Screenshot of a social media comment thread promoting 'MovieFlow', an AI tool designed to boost creative ideas. The image displays the platform's official profile offering exclusive benefits via a specific signup link with an invite code (XU4940BN). Visible text invites users to hit the invitation link for access.

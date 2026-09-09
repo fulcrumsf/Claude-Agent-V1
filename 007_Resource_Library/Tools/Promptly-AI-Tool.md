@@ -12,7 +12,7 @@ original_filename: "promptly-ai-tool.PNG"
 created: 2026-05-01
 ---
 
-![[Promptly-AI-Tool.PNG]]
+![[Promptly-AI-Tool.png]]
 
 ## What It Is
 This is a screenshot of the Promptefy AI image generation tool. The main value is the tool interface and its generation controls.

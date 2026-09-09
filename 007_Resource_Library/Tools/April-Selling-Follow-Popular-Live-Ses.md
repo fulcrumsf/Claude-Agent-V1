@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[April-Selling-Follow-Popular-Live-Ses.PNG]]
+![[April-Selling-Follow-Popular-Live-Ses.png]]
 
 ## Summary
 A demonstration of the Leonardo.ai interface displaying the image-to-video generation workflow. The screen shows a generated video clip alongside specific prompt settings, including model selection (Kling 2.1), negative prompts for quality control (e.g., 'bad hands', 'missing fingers'), and duration settings. This serves as a reference for AI video creation parameters.

@@ -10,7 +10,7 @@ original_filename: "Cap.so.PNG"
 created: 2026-05-01
 ---
 
-![[Cap.so.PNG]]
+![[Cap-So.png]]
 
 ## AI Analysis
 The image displays the TikTok mobile application, specifically the 'For You' page, featuring a video reviewing a software called 'Cap.so'. The creator, 'John Tagudin | Creator Tools', highlights 'Cap.so' as a 'Best free screen recording tool'. This screenshot serves as a direct reference for a content creator or digital entrepreneur, allowing them to quickly identify and potentially try out a new, free screen recording tool that could enhance their workflow for creating tutorials, demos, or other digital content.

@@ -10,7 +10,7 @@ original_filename: "tuesday-survival-mode-shirt.PNG"
 created: 2026-05-01
 ---
 
-![[Tuesday-Survival-Mode-Shirt.PNG]]
+![[Tuesday-Survival-Mode-Shirt.png]]
 
 ## AI Analysis
 This screenshot captures a TikTok video, evident from the distinctive 'For You' page layout, top navigation (LIVE, STEM, Explore, Following, Shop, For You), and bottom navigation (Home, Friends, +, Inbox, Profile). The central content is a product image—a t-shirt with a catchy phrase—and a caption related to 'profitable Print-on-Demand phrases'. For a content creator or digital entrepreneur, this indicates a strong interest in e-commerce, specifically the Print-on-Demand business model, serving as a bookmark for potential product ideas, market trends, or content creation inspiration within that niche.

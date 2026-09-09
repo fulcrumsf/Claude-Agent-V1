@@ -17,7 +17,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Kalshi-Clorox-Ereeny-View-History-Benes.PNG]]
+![[Kalshi-Clorox-Ereeny-View-History-Benes.png]]
 
 ## Summary
 A screenshot of the Kalshi website displaying a specific prediction market asking whether MrBeast's next video will get more than 100 million views. The interface shows a price chart tracking the probability (10% chance), trading volume, and order book details for this outcome-based financial instrument.

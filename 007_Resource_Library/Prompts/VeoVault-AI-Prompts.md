@@ -12,7 +12,7 @@ original_filename: "veovault-ai-prompts.PNG"
 created: 2026-05-01
 ---
 
-![[Veovault-AI-Prompts.PNG]]
+![[VeoVault-AI-Prompts.png]]
 
 ## Prompt Resource
 VeoVault is a prompt library for AI video prompts.

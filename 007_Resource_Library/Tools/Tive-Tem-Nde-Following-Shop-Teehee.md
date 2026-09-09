@@ -10,7 +10,7 @@ original_filename: "IMG_8812.PNG"
 created: 2026-05-01
 ---
 
-![[Tive-Tem-Nde-Following-Shop-Teehee.PNG]]
+![[Tive-Tem-Nde-Following-Shop-Teehee.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Tive Tem Nde Following Shop Teehee with visible text about tive tem nde following shop teehee. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

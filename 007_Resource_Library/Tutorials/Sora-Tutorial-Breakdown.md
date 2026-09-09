@@ -15,7 +15,7 @@ original_filename: "sora-2-tutorial-breakdown.PNG"
 created: 2026-05-01
 ---
 
-![[Sora-Tutorial-Breakdown.PNG]]
+![[Sora-Tutorial-Breakdown.png]]
 
 ## What It Is
 This is a tutorial screenshot for Sora-style AI video prompting. The main value is the scene breakdown workflow and prompt structure.

@@ -17,7 +17,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Tiktok-Ece-Stayviral-Tolgalia-Month-Step-By-Step.PNG]]
+![[TIKTOK-Ece-Stayviral-Tolgalia-Month-Step-By-Step.png]]
 
 ## Summary
 A landing page for 'Stay Viral', a system claiming to teach beginners how to earn $5K-$10K/month on TikTok using organic affiliate marketing. The interface highlights a step-by-step method requiring no followers or prior experience, offering a free training video and a quick-start guide to help creators secure brand deals.

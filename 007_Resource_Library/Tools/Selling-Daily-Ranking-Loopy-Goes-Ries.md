@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Selling-Daily-Ranking-Loopy-Goes-Ries.PNG]]
+![[Selling-Daily-Ranking-Loopy-Goes-Ries.png]]
 
 ## Summary
 A screen recording of a computer display showing an Instagram profile named 'tatiana.makes.mu'. The profile bio and captions explicitly describe building an AI Influencer account to generate money online without using a face. Comments on the overlay discuss getting access to AICA (AI Cash Academy) and request to share the IG handle.

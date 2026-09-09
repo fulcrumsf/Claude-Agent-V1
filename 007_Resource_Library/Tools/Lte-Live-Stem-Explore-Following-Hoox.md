@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Lte-Live-Stem-Explore-Following-Hoox.PNG]]
+![[Lte-Live-Stem-Explore-Following-Hoox.png]]
 
 ## Summary
 This image is a TikTok video screenshot showcasing 'HOOX', an AI-powered tool that allows users to turn any product page or link into a publish-ready webpage. The visual displays HOOX's interface with an upload button and previews of products like smartwatches, while the video overlay suggests a tutorial from Boss Media Tech on how to generate instant web pages.

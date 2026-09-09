@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Break-Down-Chlorogenic-Acid-Where-Comments.PNG]]
+![[Break-Down-Chlorogenic-Acid-Where-Comments.png]]
 
 ## Summary
 A screenshot of a YouTube comment section discussing sources and dietary impacts of chlorogenic acid. Visible comments identify black coffee, green tea, yerba mate, and unroasted green beans as high sources of the compound, with clarification that these beverages do not break a fast.

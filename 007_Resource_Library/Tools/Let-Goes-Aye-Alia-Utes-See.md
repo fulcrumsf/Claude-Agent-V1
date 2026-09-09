@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Let-Goes-Aye-Alia-Utes-See.PNG]]
+![[Let-Goes-Aye-Alia-Utes-See.png]]
 
 ## Summary
 A promoted Instagram Reel featuring the tool 'AI Apply', which claims to streamline job applications by reducing weeks of work to minutes. The video overlay invites users to check how it goes, and a green CTA button links to details for the application automation service.

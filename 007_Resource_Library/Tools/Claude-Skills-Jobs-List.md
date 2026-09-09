@@ -12,7 +12,7 @@ original_filename: "claude-skills-jobs-list.PNG"
 created: 2026-05-01
 ---
 
-![[Claude-Skills-Jobs-List.PNG]]
+![[Claude-Skills-Jobs-List.png]]
 
 ## What It Is
 This is a GitHub skills repository reference for Claude. The main value is the repo and the skills list it exposes.

@@ -10,7 +10,7 @@ original_filename: "IMG_8042.PNG"
 created: 2026-05-01
 ---
 
-![[Https-Github-Com-Picotrex-Awesome-Nano-Banana-Images.PNG]]
+![[Https-GITHUB-Com-Picotrex-Awesome-Nano-Banana-Images.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Https GitHub Com Picotrex Awesome Nano Banana Images with visible text about prompt. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

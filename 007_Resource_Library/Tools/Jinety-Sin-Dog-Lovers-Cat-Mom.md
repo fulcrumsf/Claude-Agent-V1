@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Jinety-Sin-Dog-Lovers-Cat-Mom.PNG]]
+![[Jinety-Sin-Dog-Lovers-Cat-Mom.png]]
 
 ## Summary
 A TikTok video by 'Adrian I Print on Dem...' presenting a list of specific target audience niches suitable for print-on-demand products. The visible examples include demographics like Dog Lovers, Nurses, Teachers, Christians, and Wine Lovers. This is a tutorial or educational clip helping users brainstorm product ideas for POD businesses.

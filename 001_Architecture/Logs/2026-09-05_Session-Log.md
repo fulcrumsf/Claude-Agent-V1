@@ -490,3 +490,22 @@
   Upkeeply + MCP_Gateway_Controller), 004_Games (15n), 005_Ecommerce (9n).
 - All via graphify extract --force --token-budget 8000 + cluster + label. REGISTRY rows updated.
 - Federation now: all domains built except 000_Project-Ideas (empty) and 005_Affiliate_Marketing... (built 2026-09-06).
+
+### 2026-09-08→09 — Image co-location: migration + ingest rule change
+- BRAINSTORM (architectural): images should live beside their note in the category
+  folder, not in a shared Visual_Assets pile. Root cause of all the link drift =
+  two files linked by a fragile filename string, edited by different processes.
+  Decided: flat (no per-item subfolders), matching name stems, dedup at ingest.
+- Part 1 — migrate_images_to_notes.py (one-time): moved 1,028 images into their
+  notes' category folders, renamed to match, normalized ext case, updated 1,029
+  embeds. Verified: all beside their note, 0 broken, 0 orphans. Visual_Assets empty.
+  14 shared-image notes tagged `shared-image-review`. Backup + manifest on Desktop.
+- Part 2 — process_image_ingest.py rewrite: writes note + image together in the
+  category folder, same stem. 3 dedup checks: image sha256, url match, title
+  soft-flag (`possible-duplicate` tag). Tested: co-location + hash-dedup both work.
+  rename_log moved to `_Ingest_Rename_Log.md`.
+- Part 3 — docs: ingest SKILL.md + Directory.md updated. graphify still excludes
+  images by extension (verified: 0 images in scan set). TOOLBOX updated.
+- STILL TO DO (Part 3 leftovers, low pri): update note_review.py / build_image_cull.py
+  hardcoded Visual_Assets paths; retire update_asset_notes_vision.py.
+- NEXT (tomorrow, fresh brain): design the visual browse/edit tool.

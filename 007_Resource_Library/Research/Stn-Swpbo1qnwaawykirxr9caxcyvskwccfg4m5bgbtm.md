@@ -17,7 +17,7 @@ created: 2026-05-03
 enriched: 2026-09-05
 ---
 
-![[STN-SWpbO1qNWaAwYKirXr9CaxCyvSkWCCfg4M5bgbtm.png]]
+![[Stn-Swpbo1qnwaawykirxr9caxcyvskwccfg4m5bgbtm.png]]
 
 ## Summary
 A stylized 3D low-poly render of a lighthouse complex situated on a rocky coastal promontory. The image features a distinct reddish-tan color palette for the architecture, complemented by water reflections, serving as an aesthetic reference for game assets or architectural visualization.

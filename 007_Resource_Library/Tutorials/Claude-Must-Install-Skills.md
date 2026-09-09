@@ -12,7 +12,7 @@ original_filename: "claude-5-must-install-skills.PNG"
 created: 2026-05-01
 ---
 
-![[Claude-Must-Install-Skills.PNG]]
+![[Claude-Must-Install-Skills.png]]
 
 ## What It Is
 This is a tutorial-style Claude skills reference focused on marketing AI agents. The main value is the learning framework and the skill categories.

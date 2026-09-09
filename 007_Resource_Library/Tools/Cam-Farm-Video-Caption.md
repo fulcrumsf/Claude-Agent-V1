@@ -10,7 +10,7 @@ original_filename: "cam-farm-video-caption.PNG"
 created: 2026-05-01
 ---
 
-![[Cam-Farm-Video-Caption.PNG]]
+![[Cam-Farm-Video-Caption.png]]
 
 ## AI Analysis
 The screenshot shows an iOS device's interface for drafting a video post, featuring a prominent 'Edit caption' section. The caption details 'Realistic security cam footage of old lady feeding a bear at night on her porch' which is a highly descriptive and engaging narrative. This suggests the content creator is preparing a compelling video, possibly for a social media platform, and has saved this screen to refine the caption, save the content idea, or obtain feedback before utilizing the 'Post video' option to publish.

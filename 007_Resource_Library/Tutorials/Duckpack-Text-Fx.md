@@ -10,7 +10,7 @@ original_filename: "DuckPack_Text_FX.PNG"
 created: 2026-05-01
 ---
 
-![[DuckPack_Text_FX.PNG]]
+![[Duckpack-Text-Fx.png]]
 
 ## AI Analysis
 The screenshot displays the YouTube mobile app interface, showcasing search results for 'premiere text eff...' (presumably 'premiere text effects'). The visible content includes multiple video thumbnails and titles offering tutorials or template packs for text effects in Adobe Premiere Pro and After Effects, such as 'DUCK PACK' and 'TYPEWRITER EFFECT'. A content creator or digital entrepreneur likely saved this screenshot as a reference for improving their video editing skills, discovering new visual effects, or finding assets and inspiration for their video content production, highlighting a common workflow need for multimedia creation.

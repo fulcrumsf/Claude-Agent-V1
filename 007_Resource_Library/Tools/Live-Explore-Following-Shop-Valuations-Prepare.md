@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Explore-Following-Shop-Valuations-Prepare.PNG]]
+![[Live-Explore-Following-Shop-Valuations-Prepare.png]]
 
 ## Summary
 A screen recording demonstrating a workflow diagram centered on 'Upload to Biotato' and 'Prepare for Publish'. The visual shows steps in an automation pipeline likely related to content syndication or AI-assisted publishing, with the user pointing at specific nodes in the process map.

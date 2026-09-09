@@ -10,7 +10,7 @@ original_filename: "neuralframes-music-video.PNG"
 created: 2026-05-01
 ---
 
-![[Neuralframes-Music-Video.PNG]]
+![[Neuralframes-Music-Video.png]]
 
 ## AI Analysis
 The screenshot shows a TikTok 'For You' page displaying a promotional video for 'Neural Frames,' an AI tool designed for generating audioreactive animations and lyric videos. The video features 'Chris | The AI Musicpreneur' and directs users to 'neuralframes.com' to 'Discover the synthesizer for the visual world.' This content is highly pertinent for a content creator or digital entrepreneur focused on music or video production, suggesting the screenshot was saved to explore this AI tool for their own creative workflow or to research AI-driven content generation methods.

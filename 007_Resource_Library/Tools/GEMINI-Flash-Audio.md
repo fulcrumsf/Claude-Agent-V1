@@ -10,7 +10,7 @@ original_filename: "gemini-flash-audio.PNG"
 created: 2026-05-01
 ---
 
-![[Gemini-Flash-Audio.PNG]]
+![[GEMINI-Flash-Audio.png]]
 
 ## AI Analysis
 The screenshot shows a TikTok video playing a screen recording of a desktop browser displaying Google AI Studio, with tabs like 'Google AI St'. The video highlights advanced settings for an AI model, specifically 'Gemini 2.5 Flash Native Audio Pre...' model, 'System instructions', 'Voice: Zephyr', and 'Media resolution: 258 tokens / image'. For a content creator or digital entrepreneur, this serves as a valuable resource for staying updated on cutting-edge AI features, understanding detailed model configurations, and potentially inspiring new content related to AI tools and updates.

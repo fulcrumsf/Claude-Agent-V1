@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Studio-Breese-Trends-Keywords-Last-Days.PNG]]
+![[Studio-Breese-Trends-Keywords-Last-Days.png]]
 
 ## Summary
 A YouTube video by creator DevonMcGregor1 demonstrating the prompt engineering technique for generating content with Sora 2 specifically tailored for YouTube Shorts. The thumbnail displays a split screen featuring a revenue dashboard alongside the video content preview.

@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Nfl-Starts-Lac-Cel-Laay-Dynamic-Odds.PNG]]
+![[Nfl-Starts-Lac-Cel-Laay-Dynamic-Odds.png]]
 
 ## Summary
 A screenshot of the DraftKings mobile sports betting interface displaying a 3-leg parlay slip for an NFL game between the LA Chargers and New England Patriots. The bet slip details team total points props (Over 15.5, Over 19.5) combined with a game total (Over 38.5), along with odds (-150) and potential payout ($3.33).

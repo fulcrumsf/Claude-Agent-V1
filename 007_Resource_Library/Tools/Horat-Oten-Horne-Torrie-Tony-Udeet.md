@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Horat-Oten-Horne-Torrie-Tony-Udeet.PNG]]
+![[Horat-Oten-Horne-Torrie-Tony-Udeet.png]]
 
 ## Summary
 A TikTok profile video for 'tony.mindset01' overlayed with the title 'How To Sell Digital Products On TikTok'. The content features pinned videos about becoming a millionaire and exposing internet scams, alongside a bio link to Stan Store offering mentorship.

@@ -10,7 +10,7 @@ original_filename: "IMG_8645.PNG"
 created: 2026-05-01
 ---
 
-![[Tive-Fem-Explore-Following-Shop-Holo.PNG]]
+![[Tive-Fem-Explore-Following-Shop-Holo.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Tive Fem Explore Following Shop Holo with visible text about tive fem explore following shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

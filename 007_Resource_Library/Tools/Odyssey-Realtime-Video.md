@@ -10,7 +10,7 @@ original_filename: "odyssey-2-realtime-video.PNG"
 created: 2026-05-01
 ---
 
-![[Odyssey-Realtime-Video.PNG]]
+![[Odyssey-Realtime-Video.png]]
 
 ## AI Analysis
 This screenshot displays the TikTok interface, specifically the 'For You' feed, with a video from the account 'AI For Humans'. The video highlights 'Odyssey-2' as a tool for 'real-time AI video generation,' a key feature for content creators. Visible text includes navigation tabs (LIVE, STEM, Local, Following, Shop, For You), engagement metrics (77 likes, 8 comments, 39 saves, 6 shares), and bottom navigation (Home, Friends, Create, Inbox, Profile). A content creator or digital entrepreneur would likely save this screenshot to keep track of cutting-edge AI tools for video production, investigate the 'Odyssey-2' technology, or gather ideas for future content focusing on AI advancements.

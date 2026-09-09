@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Paes-Creation-Them-Ive-Temp-Ote.PNG]]
+![[Paes-Creation-Them-Ive-Temp-Ote.png]]
 
 ## Summary
 A TikTok tutorial by Chase | AI Guides demonstrating a workflow automation system for generating 4K 60 FPS videos. The visual shows two distinct flowcharts (Scene Creation, Stitch + Upscale) using nodes like Webhook, HTTP Request, and API endpoints, while the caption specifies the stack: n8n, seedream 4.0, and Nano banana.

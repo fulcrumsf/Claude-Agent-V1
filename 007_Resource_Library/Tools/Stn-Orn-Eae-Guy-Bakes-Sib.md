@@ -17,7 +17,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[STN-Orn-Eae-Guy-Bakes-Sib.PNG]]
+![[Stn-Orn-Eae-Guy-Bakes-Sib.png]]
 
 ## Summary
 A TikTok video by user 'pham' titled 'Exposing the SMARTEST YouTubers pt2'. The visual shows a person speaking outdoors with an urban background, part of a series analyzing high-performing content creators.

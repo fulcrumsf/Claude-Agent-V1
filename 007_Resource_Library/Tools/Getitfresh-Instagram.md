@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Getitfresh-Instagram.PNG]]
+![[Getitfresh-Instagram.png]]
 
 ## Summary
 A promotional video screenshot from the brand 'Liv' (specifically Liv Dental Insurance) illustrating the anatomy of a tooth. The visual features a detailed 3D model showing a white enamel crown and inflamed pink gums, likely explaining dental procedures or coverage for oral health issues.

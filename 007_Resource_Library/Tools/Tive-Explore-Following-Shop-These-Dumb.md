@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Tive-Explore-Following-Shop-These-Dumb.PNG]]
+![[Tive-Explore-Following-Shop-These-Dumb.png]]
 
 ## Summary
 A TikTok video tutorial discussing a print-on-demand business model based on selling niche PDF files, specifically 'dumb cat' illustrations. The content features an Etsy product listing for a black cat toilet artwork and references using the tool 'Nano Banana' to replicate this strategy.

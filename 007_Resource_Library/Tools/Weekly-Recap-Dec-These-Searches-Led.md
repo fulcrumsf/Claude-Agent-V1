@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Weekly-Recap-Dec-These-Searches-Led.PNG]]
+![[Weekly-Recap-Dec-These-Searches-Led.png]]
 
 ## Summary
 An Instagram insights screenshot showing a weekly recap (Dec 22 - Dec 28) of the top three specific search queries that brought people to the user's profile. The leading keyword is 'grandma feeding bear', followed by variations like 'grandma and bear'. This captures data on how users are discovering the account via long-tail organic search terms.

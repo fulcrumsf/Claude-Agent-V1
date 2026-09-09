@@ -10,7 +10,7 @@ original_filename: "agency-agents.github.PNG"
 created: 2026-05-01
 ---
 
-![[Agency-Agents.github.PNG]]
+![[Agency-Agents-GITHUB.png]]
 
 ## AI Analysis
 This screenshot displays a TikTok video showing a male content creator discussing a GitHub repository. The overlay clearly shows the URL 'https://github.com/msitarzewski/agency-agents'. The GitHub page, partially visible, contains sections like 'README', 'Contributing', 'MIT license', and a heading 'Product Division' with descriptions of AI agents such as 'Sprint Prioritizer', 'Trend Researcher', and 'Feedback Synthesizer', indicating tools for product management or business operations. The video's caption 'The AI Impact | No BS AI Tips' and 'Build an AI Agency inside Claude' with 'Code You can copy this repo a... more' strongly suggest the user saved this as a reference or tutorial for implementing AI agent solutions in their own ventures or for creating content related to AI business applications.

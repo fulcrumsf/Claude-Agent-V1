@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Liw-Alert-Multiple-Flights-Day-Pin.PNG]]
+![[Liw-Alert-Multiple-Flights-Day-Pin.png]]
 
 ## Summary
 A TikTok video from user 'traveldaddydave' presenting a specific flight deal for Alaska Airlines. The screen displays a flight itinerary from Atlanta (ATL) to Seoul (ICN) with connections in Seattle, priced at $422, promoted as a Travel Tuesday offer on January 15th.

@@ -18,7 +18,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Bsb-Alinea-Personalized-Automated-Investing-Finance.PNG]]
+![[Bsb-Alinea-Personalized-Automated-Investing-Finance.png]]
 
 ## Summary
 Screenshot of the Alinea mobile application page on the App Store, an investment platform focused on personalized and automated investing for beginners. The interface highlights a 4.8-star rating, over 38,000 ratings, and marketing claims regarding 1.4 million investors. Preview images show the app's purple-themed UI with portfolio dashboards displaying current balances.

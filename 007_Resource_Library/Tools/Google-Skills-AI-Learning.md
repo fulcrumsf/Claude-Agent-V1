@@ -10,7 +10,7 @@ original_filename: "google-skills-ai-learning.PNG"
 created: 2026-05-01
 ---
 
-![[Google-Skills-AI-Learning.PNG]]
+![[Google-Skills-AI-Learning.png]]
 
 ## AI Analysis
 The image depicts the TikTok app's 'For You' page, showcasing a video about Google's new AI learning platform. Visible text includes the creator's handle 'benkimball.ai', video title 'Google Skills: New AI Learning Platform 🚀 Wait Until the End to See Why It's a Game-Changer!', and engagement metrics (404 likes, 6 comments, 249 saves, 74 shares). Above the video, a 'Generative AI Leader' course from a skills platform (possibly Google Skills) is shown, detailing a 40-hour program. This screenshot was likely saved by a content creator or digital entrepreneur interested in AI education, either to pursue the 'Generative AI Leader' course themselves, or to create content around Google's new AI learning initiatives and opportunities.

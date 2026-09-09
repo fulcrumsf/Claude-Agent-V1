@@ -12,7 +12,7 @@ original_filename: "public-prompt-library.PNG"
 created: 2026-05-01
 ---
 
-![[Public-Prompt-Library.PNG]]
+![[Public-Prompt-Library.png]]
 
 ## Prompt Library
 This screenshot is about a public library of AI video prompts and prompt-generated examples.

@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Wae-Tive-Tem-Explore-Following-Shop.PNG]]
+![[Wae-Tive-Tem-Explore-Following-Shop.png]]
 
 ## Summary
 A screen recording demonstrating an AI automation workflow where video files are retrieved and automatically uploaded to Google Drive. The visible nodes include 'Get Video' and 'Upload to Google Drive', along with configuration text for setting up a public folder.

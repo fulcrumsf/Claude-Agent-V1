@@ -12,7 +12,7 @@ original_filename: "tripo3d-ai-tutorial.PNG"
 created: 2026-05-01
 ---
 
-![[Tripod-AI-Tutorial.PNG]]
+![[Tripod-AI-Tool.png]]
 
 ## What It Is
 This is a screenshot of the TRIPO3D.AI tool being promoted in a TikTok video. The main value is the product and what it does, not the tutorial framing.

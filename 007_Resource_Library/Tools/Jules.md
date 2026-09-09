@@ -10,7 +10,7 @@ original_filename: "Jules.PNG"
 created: 2026-05-01
 ---
 
-![[Jules.PNG]]
+![[Jules.png]]
 
 ## AI Analysis
 This screenshot displays a video from the TikTok 'For You' feed, showcasing 'Jules', a newly released free AI agent from Google capable of building applications. The video content includes animated ASCII art, a clear 'free' tag, and a React code snippet demonstrating a simple button component, implying a developer-friendly or app-building utility. For a content creator or digital entrepreneur, this save likely serves as a reference to explore a promising new AI tool for personal use, generate ideas for tech-focused content, or research innovative solutions for app development, given its relevance to AI and productivity.

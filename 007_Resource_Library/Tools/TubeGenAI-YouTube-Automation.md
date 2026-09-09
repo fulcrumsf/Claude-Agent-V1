@@ -12,7 +12,7 @@ original_filename: "tubegen-ai-youtube.PNG"
 created: 2026-05-01
 ---
 
-![[Tubegen-AI-Youtube.PNG]]
+![[TubeGenAI-YouTube-Automation.png]]
 
 ## What It Is
 This is a screenshot of TubeGenAI, a YouTube automation tool. The product and its automation features are the main value.

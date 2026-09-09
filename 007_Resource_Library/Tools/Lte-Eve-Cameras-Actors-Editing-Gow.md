@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Lte-Eve-Cameras-Actors-Editing-Gow.PNG]]
+![[Lte-Eve-Cameras-Actors-Editing-Gow.png]]
 
 ## Summary
 The screenshot displays a node-based workflow diagram on a laptop screen, showing a connected system of tools including voice generation. The accompanying text 'NO CAMERAS, NO ACTORS, NO VIDEO EDITING SKILLS' indicates this is an automated process for generating professional video content using AI agents without human production needs.

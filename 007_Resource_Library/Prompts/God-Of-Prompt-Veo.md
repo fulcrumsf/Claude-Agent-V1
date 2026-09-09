@@ -12,7 +12,7 @@ original_filename: "god-of-prompt-veo.PNG"
 created: 2026-05-01
 ---
 
-![[God-Of-Prompt-Veo.PNG]]
+![[God-Of-Prompt-Veo.png]]
 
 ## Prompt Resource
 This is a prompt library reference focused on Veo 3 prompt templates.

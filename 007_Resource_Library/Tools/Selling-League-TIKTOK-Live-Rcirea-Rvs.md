@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Selling-League-Tiktok-Live-Rcirea-Rvs.PNG]]
+![[Selling-League-TIKTOK-Live-Rcirea-Rvs.png]]
 
 ## Summary
 A TikTok Live session by the channel 'Selling Digital Sheets' featuring a case study on an AI influencer named Emily. The screen displays an Instagram post where the creator demonstrates how this AI avatar generates passive income, claiming $2,000+ in sales and 1.4 million views with zero showing up on camera.

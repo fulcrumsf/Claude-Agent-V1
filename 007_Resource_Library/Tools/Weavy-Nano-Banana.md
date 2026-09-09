@@ -10,7 +10,7 @@ original_filename: "weavy-nano-banana.PNG"
 created: 2026-05-01
 ---
 
-![[Weavy-Nano-Banana.PNG]]
+![[Weavy-Nano-Banana.png]]
 
 ## AI Analysis
 This screenshot captures a TikTok video post detailing an advanced AI workflow for content generation. The visible text describes a process involving "Weavy," "Nano Banana," and "Kling 2.1" to batch generate 20 varied images from a single input, providing a clear 5-step tutorial. A content creator or digital entrepreneur would likely save this to research new AI tools (Ror.ai, Weavy, Nano Banana, Kling 2.1), learn specific image and video generation techniques, or bookmark a detailed workflow to implement for their own product visuals or content strategy.

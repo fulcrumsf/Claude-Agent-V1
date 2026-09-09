@@ -10,7 +10,7 @@ original_filename: "vercept-ai-agent.PNG"
 created: 2026-05-01
 ---
 
-![[Vercept-AI-Agent.PNG]]
+![[Vercept-AI-Agent.png]]
 
 ## AI Analysis
 The screenshot captures a TikTok video post from content creator Nathan Hodgson, introducing an AI agent called Vy by Vercept that automates computer tasks, similar to a human user. The visible text describes the AI's functionality and includes relevant hashtags like #aiagent and #aitools. The high number of saves (2,166) and the ongoing search for 'vercept ai' indicate that the user found this tool highly relevant and likely saved the screenshot to research Vercept AI further for potential business applications or to generate content showcasing new AI technologies.

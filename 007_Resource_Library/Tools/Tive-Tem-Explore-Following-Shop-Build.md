@@ -10,7 +10,7 @@ original_filename: "IMG_8797.PNG"
 created: 2026-05-01
 ---
 
-![[Tive-Tem-Explore-Following-Shop-Build.PNG]]
+![[Tive-Tem-Explore-Following-Shop-Build.png]]
 
 ## AI Analysis
 This appears to be a screenshot of Tive Tem Explore Following Shop Build with visible text about tive tem explore following shop. It can be kept as a general visual reference inside the vault for later comparison or idea capture.

@@ -15,7 +15,7 @@ original_filename: "vortex-longshot-tutorial.PNG"
 created: 2026-05-01
 ---
 
-![[Vortex-Longshot-Tutorial.PNG]]
+![[Vortex-Longshot-Tool.png]]
 
 ## What It Is
 This is a TikTok screenshot about the Vortex Longshot AI video creation tool. The main value is the software itself, not the tutorial framing.

@@ -10,7 +10,7 @@ original_filename: "creatorflows-content-tutorial.PNG"
 created: 2026-05-01
 ---
 
-![[Creatorflows-Content-Tutorial.PNG]]
+![[Creatorflows-Content-Tutorial.png]]
 
 ## AI Analysis
 The screenshot captures a TikTok video displaying a visual workflow automation platform, likely designed for AI agents or data processing. The video's creator, @creatorflowos, showcases a workflow built to automate the scraping of Reddit posts, evident from the Reddit icon on 'Get many posts' nodes and the output table showing 'subreddit' (e.g., 'Solopreneur') and 'selftext' fields. This tool allows for efficient content idea generation and data collection, making it a valuable resource for a content creator or digital entrepreneur looking to automate research and streamline their content pipeline.

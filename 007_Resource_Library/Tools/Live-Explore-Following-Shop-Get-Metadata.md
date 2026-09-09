@@ -19,7 +19,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Live-Explore-Following-Shop-Get-Metadata.PNG]]
+![[Live-Explore-Following-Shop-Get-Metadata.png]]
 
 ## Summary
 A node-based automation workflow built in n8n that prepares faceless video content. The process handles splitting items, generating videos from arrays, extracting audio metadata, and trimming/combining clips before adding captions.

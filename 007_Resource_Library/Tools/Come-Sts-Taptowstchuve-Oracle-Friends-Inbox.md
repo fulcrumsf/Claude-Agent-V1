@@ -17,7 +17,7 @@ created: 2026-05-01
 enriched: 2026-09-05
 ---
 
-![[Come-Sts-Taptowstchuve-Oracle-Friends-Inbox.PNG]]
+![[Come-Sts-Taptowstchuve-Oracle-Friends-Inbox.png]]
 
 ## Summary
 A photo of a computer monitor displaying a software interface with purple accent colors and some text, being pointed at by a hand. The image is part of a TikTok live stream titled 'The Oracle'. Specific tool names, URLs, or detailed functionality are blurred and illegible due to the focus on the finger.
