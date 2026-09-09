@@ -45,3 +45,52 @@
   artifacts; report retained as `Auto-Reframe/Build-Validation-v1.txt`. Gate 2
   handoff is ready, with camera planning and the vertical candidate awaiting
   Tony's explicit Gate 3 approval.
+
+---
+
+## Resource Library overhaul (Claude, Sep 8–9, separate thread from the reframer above)
+
+### claude-mem → Gemini
+- Observer was on `claude` (sonnet-4-6, CLI subscription auth) — burning the same Claude
+  usage allowance as interactive sessions; it hit its cap. Switched
+  `CLAUDE_MEM_PROVIDER=gemini` (`gemini-2.5-flash-lite`), tier-routing off. Key stays ONLY
+  in `~/.env-secrets` (alias `export CLAUDE_MEM_GEMINI_API_KEY="$GEMINI_API_KEY"` at line 225);
+  settings.json key field left "". Confirmed live: worker log `using Gemini`.
+
+### Graphs built
+- Resource Library v1 (weak, 1066n) → **v2.1: 3,686 nodes / 1,622 edges**. Method: enriched
+  ~890 thin notes in place, excluded ~1,046 dead ones, per-subfolder `graphify extract
+  --force --token-budget 8000` + merge-graphs (small budget was the fix — 60k default makes
+  Gemini drop 2/3 of files). ~$4.80 Gemini total.
+- Built: **000_Wiki** (345n), **005_Affiliate_Marketing** (202n), **003_Apps** (263n),
+  004_Games/005_Ecommerce/000_Daily/Whop/Social (stubs). Only 000_Project-Ideas unbuilt (empty).
+
+### Autonomy report cards
+- `Autonomy_Report_Card/Autonomy_Report_Card.md` in all 13 channel folders. Anomalous Wild
+  ~90%, Neon Parcel ~65%, Reimagined Realms 10% (provisional — needs real assessment), rest placeholder.
+
+### Resource Library cull (all moved to ~/Desktop/Delete/, NOT deleted — Tony holding)
+- ~590 stray/broken/dead notes + 1,044 graph-excluded notes + 8,109 images + 12 video clips
+  + 928 MB ChatGPT export backup. RL went **8.2 GB → ~2 GB**. ~11 GB staged in ~/Desktop/Delete/.
+- New review tools: `resource_library_stub_triage.py`, `revision_stub_notes.py`,
+  `enrich_url_stub_notes.py`, `apply_dead_stub_graphignore.py`, `note_review.py`,
+  `note_review_excluded.py`, `build_broken_image_review.py`, `build_image_cull.py` + `apply_image_cull.py`.
+
+### Image co-location (architectural change — brainstormed then built)
+- **Decision:** images live BESIDE their note in the category folder, same name stem
+  (`Tools/OpenCode.md` + `Tools/OpenCode.png`). Flat, no subfolders. Root cause of years of
+  link drift = two files linked by a fragile filename string edited by different processes.
+- `migrate_images_to_notes.py` (one-time): moved 1,028 images out of `Visual_Assets/` into
+  category folders, renamed to match, normalized ext case, updated 1,029 embeds. Verified 0 broken.
+  14 notes tagged `shared-image-review` (dedup candidates).
+- `process_image_ingest.py` rewritten: writes note + image together; dedup on ingest —
+  (1) skip byte-identical image, (2) skip if `url:` already in another note, (3) title clash
+  → `-N` + `possible-duplicate` tag. Rename log → `_Ingest_Rename_Log.md`. Tested OK.
+- **Deleted by Tony:** `007_Resource_Library/Obsidian_Attachments/` (whole folder — Visual_Assets retired).
+- Docs updated: AGENTS.md, ingest SKILL.md, Directory.md, Global_Agent_Memory.md, Workspace-Map, TOOLBOX.
+- **5 scripts archived** to `001_Architecture/Scripts/_Archive/` (README there): reroute_visual_assets,
+  fix_image_case, update_asset_notes_vision, fix_embeds, rename_screenshots. AGENTS.md ingest
+  step repointed to process_image_ingest.py. `process_notion_edit.py` stays (deprecated, 60%).
+
+### Commits pushed this thread
+9affa3d, 2b6763c, 687d426, bb27e13, b204193, e47c560, f8d3914 (+ earlier RL-enrichment tag session).
