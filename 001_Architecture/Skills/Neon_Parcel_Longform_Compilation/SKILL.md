@@ -376,7 +376,7 @@ archive or missing generation-log reservation is also a hard block.
 
 ### Shot Complexity Routing
 
-Before selecting a video model, route every approved shot through the shared
+Before generating a clip, route every approved shot through the shared
 complexity checker:
 
 ```bash
@@ -389,14 +389,19 @@ The checker must use semantic scene understanding to assess action count,
 physics, object continuity, limb precision, character interaction, spatial
 continuity, timing, dialogue synchronization, failure risk, and storyboard
 value. Keyword matches may support the assessment but must never be the sole
-reason for routing a shot. The semantic assessment, score, and reasons are
-saved with the route decision.
+reason for routing a shot. The semantic assessment, score, reasons, QA
+intensity, and any explicit route override are saved with the route decision.
+The checker does not automatically move simple shots to Seedance 1.5; Neon
+Parcel's normal route remains Seedance 2 Mini for low- and high-complexity
+shots.
 
-- `0–4`: Seedance 1.5 at 1080p with start/end frames
+- `0-4`: default Seedance 2 Mini route with low-complexity QA notes
 - `5–7`: manual route review; do not spend generation credits automatically
-- `8–20`, or a hard physics trigger: Seedance 2 Mini at 480p with a storyboard/reference image, followed by Topaz 2x upscaling and final FFmpeg scaling to 1920x1080
+- `8-20`, or a hard physics trigger: default Seedance 2 Mini route with enhanced storyboard/temporal-anchor QA, followed by Topaz 2x upscaling and final FFmpeg scaling to 1920x1080
 
-For the optional Seedance 1.5 fallback, decide whether an end frame is needed before generating it.
+Use Seedance 1.5 only when Tony explicitly chooses it as a fallback or
+comparison test and the reason is recorded in the routing log. For that
+optional fallback, decide whether an end frame is needed before generating it.
 Use an end frame only when it shows a materially different, unambiguous state
 with stable camera geometry, consistent subject count, and a clear endpoint.
 If it repeats the start composition, preserves a vehicle or subject that
@@ -408,11 +413,13 @@ supports one.
 
 Hard triggers include mechanical interactions, catching or transferring
 objects, breakage/spills, and multi-step ordered actions. A shot may include
-`route_override: force_simple` or `route_override: force_complex`; the router
-records the override rather than hiding it. This router recommends a path only;
-it does not call providers, approve paid generation, or replace Tony's review.
+`route_override: seedance_1_5_fallback` or
+`route_override: seedance_2_mini_default`; the router records the override and
+reason rather than hiding it. This router recommends QA intensity and records
+route decisions only; it does not call providers, approve paid generation, or
+replace Tony's review.
 
-The complex route is explicitly `Seedance 2 Mini 480p -> Topaz 2x -> FFmpeg
+The default route is explicitly `Seedance 2 Mini 480p -> Topaz 2x -> FFmpeg
 1920x1080`. Normalize the final long-form master to 1920x1080 before creating
 Shorts derivatives. FFmpeg performs the final dimension/container normalization
 and does not add an API charge.
@@ -504,6 +511,62 @@ and still pass the existing Tool-Manager and paid-generation gates.
 Assemble the approved clips into a rough cut first. Then write the narrator
 script as if the narrator is the editor rewatching the completed compilation.
 
+### Validated Neon Parcel narration defaults
+
+- Use ElevenLabs voice `Herbie` (`Kz0DA4tCctbPjLay2QT1`) for this compilation
+  pipeline unless Tony explicitly selects another voice.
+- Generate narration as separate, shot-aligned lines rather than one long read.
+  Save each line as a versioned audio asset with word-level timing.
+- Keep narration concise: use short introductions, reactions, and transitions;
+  do not narrate continuously over every moment. Preserve usable spontaneous
+  dialogue already present in the clips.
+- Every narration line must be shorter than its associated clip and must remain
+  within that clip. Total narration should remain well below the combined clip
+  runtime so the edit retains natural pauses and source audio.
+- For the first review cut, do not add music, branding, captions, or publishing
+  elements. The purpose is to evaluate narration, clip order, and source audio.
+
+### Validated narration assembly and mix
+
+- Concatenate clips with a timestamp-safe FFmpeg filter workflow. Never use
+  stream-copy concat for a mixed set of generated clips: clips may have missing
+  audio streams, different sample rates, or incompatible timestamps.
+- Insert intentional stereo silence for a clip with no source audio. Preserve
+  each clip's original audio where present, resampling the complete source bed
+  to 48 kHz stereo before mixing.
+- Place each VO line near the beginning of its associated clip, leaving the
+  action and original sound room to breathe. Do not allow narration to cross
+  into the next clip.
+- Validated review-cut starting mix: original clip audio at `0.55`, narration
+  at `1.6`, both mixed at 48 kHz stereo. Treat these as the pipeline defaults
+  for the narration review cut, then perform a final loudness and clipping QC
+  before delivery.
+- Verify that video and audio durations match within a small tolerance and
+  that the audio stream reaches the final video frame. A render that merely
+  contains an audio stream but loses the tail is not acceptable.
+- If a mix is regenerated, create a new assembly version; never overwrite a
+  prior review cut.
+
+### Music and end-screen defaults
+
+- After Tony approves the narration review cut, add an instrumental music bed
+  with a comical, quirky, whimsical, family-friendly home-video-TV-show feel.
+  Avoid lyrics, profanity, ominous drama, aggressive trailer energy, and music
+  that competes with original dialogue or narration.
+- Keep music as a separate layer and duck it beneath narration and meaningful
+  in-clip dialogue. Do not add music to the narration review cut before Tony
+  approves that direction.
+- Every Neon Parcel long-form video must end with the approved horizontal
+  end-screen asset:
+  `002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Assets/Neon_Parcel_Endscreen_Horizontal_1080.mp4`.
+- The end screen is a dedicated seven-second final segment. Place the CTA
+  voiceover entirely inside that seven-second window; never let narration from
+  the preceding clip spill into it. Generate the CTA with the locked Herbie
+  voice and verify its duration before assembly.
+- End-screen and CTA rendering must create a new versioned assembly and retain
+  every prior review cut. Do not publish until Tony approves the complete
+  music/end-screen master.
+
 For each clip, decide:
 
 - Self-explanatory: no narration
@@ -537,6 +600,56 @@ seconds, but it is not a hard duration.
 
 ## Final Package and Publishing
 
+### Compilation-Level Packaging Gate
+
+The long-form title and thumbnail must promise the compilation as a whole, not
+just the representative hero frame used in the thumbnail. The thumbnail may
+feature one vivid moment, but its visual hook and optional text overlay must
+signal the recurring collection pattern: multiple unusual animal encounters,
+escalating absurdity, or a repeated Grandma-versus-wildlife situation. Do not
+use a single-clip title or overlay unless the entire video is genuinely about
+that clip. Keep the packaging bright, eye-catching, vivid, and poppy while
+remaining truthful to the complete clip set.
+
+### Mandatory Thumbnail Template
+
+Every Neon Parcel long-form compilation thumbnail must use the structured
+`Thumbnail-Architecture-Template.json` from the shared
+`youtube-thumbnail-design` skill. Fill the template from the actual compilation
+and visually inspected reference examples before generation. Do not replace the
+template with an improvised prompt. The global template is reusable across
+channels, but this pipeline always requires the formatted template, including
+its collection-level promise, demographic matching, subject separation, text
+safe area, mobile validation, and non-destructive versioning fields.
+
+Demographic and identity decisions are content-first. Inspect the actual
+compilation before selecting the Grandma's appearance; do not carry a
+demographic constraint from one production into another. For the current
+Grandma-and-Bear production only, the approved direction uses varied white
+Southern grandmothers because that is what this compilation's thumbnail brief
+requires. This is a production decision, not a global pipeline rule.
+
+### Thumbnail Package Scaffold
+
+Within every production's `Package/` directory, thumbnails belong in the
+existing `Thumbnails/` folder. Current approved thumbnails stay directly in
+`Package/Thumbnails/`; rejected, superseded, or older thumbnail versions move
+to `Package/Thumbnails/Archived/`. Never leave thumbnail image files loose in
+the package root, create a parallel thumbnail folder elsewhere, delete a
+superseded candidate, or overwrite an existing version.
+
+Use the Neon Parcel skill together with:
+
+- [`title-hook-generator`](../title-hook-generator/SKILL.md) for five title
+  options, the YouTube description, and the required under-500-character tag
+  string with selected common misspellings.
+- [`youtube-thumbnail-design`](../youtube-thumbnail-design/SKILL.md) for the
+  16:9 thumbnail concept, generation, mobile-size check, and iteration.
+
+Every Neon Parcel long-form metadata pass must output titles, one description,
+and tags together. Tags must be comma-separated, collection-level, under 500
+characters, and checked for misleading claims before package approval.
+
 Create the long-form title, description, thumbnail, Shorts titles, and report
 cards after the final edit is stable. Produce both:
 
@@ -547,3 +660,41 @@ Wait for Tony's approval of the complete long-form and Shorts package. Only
 then use the established Blotato workflow, confirm the Neon Parcel YouTube
 account live, set synthetic-media disclosure where applicable, and report the
 resulting status.
+
+### Validated Blotato YouTube Upload
+
+- Before every upload, call `blotato_list_accounts` and match the account by
+  channel name and platform. Neon Parcel's YouTube account is currently `25731`;
+  never infer or reuse an ID from another platform or channel.
+- Upload local media through
+  `blotato_create_presigned_upload_url`, then PUT the raw bytes with an explicit
+  `Content-Type` header (`video/mp4` or `image/jpeg`). Use the returned public
+  URLs in `blotato_create_post`.
+- Check the video against Blotato's current size limit before transfer. If the
+  approved PNG thumbnail exceeds 2 MB, create a separate JPEG upload copy;
+  never alter or overwrite the approved source thumbnail.
+- For the private first-review upload, send `privacyStatus: "private"`,
+  `shouldNotifySubscribers: false`, `isMadeForKids: false`, and
+  `containsSyntheticMedia: true`, plus the selected title, description,
+  video URL, and thumbnail URL. Do not send tags; Blotato has no YouTube tags
+  field, so surface them for manual YouTube Studio entry.
+- Blotato currently exposes no YouTube category or caption-language field.
+  Treat Entertainment category and English caption language as explicit
+  YouTube Studio follow-up settings, not as silently completed API fields.
+- Choose the YouTube category from the actual editorial promise. For a comedy-
+  led animal compilation, use `Comedy`; use `Entertainment` only when the
+  collection is not primarily comedic. Do not carry this choice into unrelated
+  channels or formats without checking their content.
+- Poll `blotato_get_post_status` after submission and record the returned
+  `postSubmissionId`, status, and URL. A custom-thumbnail OAuth error means the
+  YouTube account must be reconnected in Blotato; retry with the same uploaded
+  media URLs rather than re-uploading.
+
+### Autonomy-readiness status
+
+Track readiness in the production manifest, report card, session log, feedback
+loop, and shared memory. Tony's current status for this compilation pipeline is
+65%. Do not treat the pipeline as mostly autonomous or schedule it for routine
+execution until Tony raises the status to 95%. Even at 95%, retain the
+non-destructive versioning, paid-generation, manual exception, and publishing
+approval gates.

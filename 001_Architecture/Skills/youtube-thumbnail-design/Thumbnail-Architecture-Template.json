@@ -1,0 +1,89 @@
+{
+  "template_name": "neon_parcel_vivid_collection_thumbnail",
+  "version": "1.0",
+  "purpose": "Reusable architecture for bright, scroll-stopping compilation thumbnails.",
+  "required_visual_reference_gate": true,
+  "canvas": {
+    "aspect_ratio": "16:9",
+    "width": 1280,
+    "height": 720,
+    "mobile_test_width": 120
+  },
+  "collection_promise": {
+    "must_describe_full_collection": true,
+    "hero_moment_is_representative_not_exclusive": true,
+    "copy_must_not_promise_one_isolated_clip": true
+  },
+  "composition": {
+    "layout": "three-layer cutout-style thumbnail",
+    "foreground": {
+      "role": "primary human reaction",
+      "subject": "{{grandma_subject}}",
+      "position": "{{foreground_position}}",
+      "scale": "large, readable at mobile size",
+      "gaze": "{{grandma_gaze}}",
+      "expression": "{{grandma_expression}}",
+      "gesture": "{{grandma_gesture}}"
+    },
+    "middle_layer": {
+      "role": "single representative animal action",
+      "animal": "{{animal_subject}}",
+      "action": "{{animal_action}}",
+      "position": "{{animal_position}}",
+      "separation": "crisp cutout-like edge, physically grounded, no merging"
+    },
+    "background": {
+      "environment": "{{environment}}",
+      "focus": "softly blurred and subordinate",
+      "lighting": "{{lighting}}",
+      "palette": "{{palette}}"
+    }
+  },
+  "subject_consistency": {
+    "grandma_demographic": "derive from the actual video; never assume a demographic from the template",
+    "grandma_can_vary": [
+      "hair color and style",
+      "glasses or no glasses",
+      "wardrobe",
+      "age presentation",
+      "facial features",
+      "regional personality"
+    ],
+    "must_match_video": true,
+    "prohibited": [
+      "demographics absent from the actual video",
+      "duplicate people",
+      "extra animals",
+      "merged bodies",
+      "deformed limbs",
+      "impossible anatomy"
+    ]
+  },
+  "text_overlay": {
+    "enabled": true,
+    "copy": "{{collection_overlay}}",
+    "max_words": 5,
+    "line_count": 2,
+    "placement": "dedicated top band over open background, never over key subjects",
+    "font": "bold condensed modern display font",
+    "fill": "{{text_fill_color}}",
+    "outline": "thick black outline",
+    "shadow": "strong black drop shadow",
+    "readability": "large and immediately legible at mobile size"
+  },
+  "style": {
+    "energy": "bright, eye-catching, vivid, poppy, emotionally exaggerated",
+    "realism_boundary": "subjects believable; packaging more vivid and graphic than the video footage",
+    "background_subject_separation": "strong",
+    "no_text_in_source_generation": false
+  },
+  "validation": [
+    "Visually inspect one approved good thumbnail example before designing.",
+    "Confirm the overlay describes the compilation rather than one isolated scene.",
+    "Confirm Grandma's appearance matches the actual video demographics.",
+    "Confirm exactly one Grandma and the intended number of animals appear.",
+    "Confirm the foreground reaction and animal action remain unobstructed.",
+    "Confirm text is readable at 120px and avoids faces, animals, and UI safe zones.",
+    "Preserve every generated version; never overwrite an earlier candidate."
+  ]
+}

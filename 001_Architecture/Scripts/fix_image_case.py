@@ -1,3 +1,8 @@
+"""
+DEPRECATED 2026-09-09 — operates on 007_Resource_Library/Obsidian_Attachments/Visual_Assets/,
+which no longer exists. Images now live beside their note in the category folder.
+Kept for reference only. Do not run.
+"""
 #!/usr/bin/env python3
 """
 fix_image_case.py — Convert lowercase kebab-case image filenames in Visual_Assets

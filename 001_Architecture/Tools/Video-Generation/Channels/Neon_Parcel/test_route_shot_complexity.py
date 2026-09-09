@@ -4,7 +4,7 @@ from route_shot_complexity import route_document, route_shot
 
 
 class ShotComplexityTests(unittest.TestCase):
-    def test_simple_shot_uses_seedance_15(self):
+    def test_simple_shot_uses_seedance_2_mini_with_low_qa(self):
         result = route_shot(
             {
                 "shot_id": "shot-1",
@@ -12,8 +12,9 @@ class ShotComplexityTests(unittest.TestCase):
                 "semantic_assessment": {dimension: 0 for dimension in ("physics", "object_continuity", "precision")},
             }
         )
-        self.assertEqual(result["route"], "seedance_1_5_start_end")
+        self.assertEqual(result["route"], "seedance_2_mini_storyboard")
         self.assertEqual(result["status"], "auto")
+        self.assertEqual(result["qa_intensity"], "low")
 
     def test_physics_hard_gate_uses_mini_storyboard(self):
         result = route_shot(
@@ -25,6 +26,7 @@ class ShotComplexityTests(unittest.TestCase):
         )
         self.assertEqual(result["route"], "seedance_2_mini_storyboard")
         self.assertTrue(result["hard_triggered"])
+        self.assertEqual(result["qa_intensity"], "enhanced")
 
     def test_borderline_shot_stops_for_review(self):
         result = route_shot(
@@ -46,10 +48,22 @@ class ShotComplexityTests(unittest.TestCase):
 
     def test_human_override_is_preserved(self):
         result = route_shot(
-            {"shot_id": "shot-4", "description": "A bear buckles a seat belt.", "route_override": "force_simple"}
+            {
+                "shot_id": "shot-4",
+                "description": "A bear buckles a seat belt.",
+                "route_override": "seedance_1_5_fallback",
+            }
         )
         self.assertEqual(result["route"], "seedance_1_5_start_end")
         self.assertEqual(result["status"], "overridden")
+        self.assertEqual(result["qa_intensity"], "fallback")
+
+    def test_legacy_force_simple_override_stops_for_review(self):
+        result = route_shot(
+            {"shot_id": "shot-5", "description": "A bear buckles a seat belt.", "route_override": "force_simple"}
+        )
+        self.assertEqual(result["route"], "manual_review")
+        self.assertEqual(result["status"], "unknown_override")
 
     def test_document_preserves_input_and_adds_routing(self):
         result = route_document(

@@ -239,6 +239,108 @@ infsh app run falai/flux-dev-lora --input '{
 | Same style every video | Viewer fatigue | Vary within brand guidelines |
 | Misleading thumbnail | Kills trust, hurts retention | Match the actual content |
 
+## Optional Mode: Architecture-First Thumbnail Pass
+
+Use this additive mode when the thumbnail has multiple subjects or props, a
+specific visual story, a recurring character, a complex environment, or a
+high-cost image-generation workflow. It does not replace the Quick Start,
+pattern prompts, checklist, or A/B-testing rules above.
+
+Reusable field structure: `Thumbnail-Architecture-Template.json` in this skill
+folder. Fill its placeholders from the actual video; do not copy its defaults
+over the video evidence.
+
+### Mandatory Visual Reference Gate
+
+Do not design, prompt, or generate a thumbnail from text-based takeaways alone.
+Before starting, visually inspect at least one approved example of a good
+thumbnail relevant to the subject, channel, or intended composition. Record
+the concrete visual lessons being adapted: focal hierarchy, subject scale,
+expression, gaze, contrast, text-space placement, background simplicity, and
+mobile readability. If no suitable visual example has been inspected, pause
+thumbnail work and obtain one before proceeding. Use the example as a design
+reference, never as an exact composition or protected artwork to copy.
+
+### Step 1: Define the Visual Promise
+
+Before generating, write one sentence answering: "What should a viewer
+understand or feel in one second?" Choose one dominant story anchor. Do not
+automatically turn a compilation into a crowded collage; secondary elements
+must support the anchor rather than compete with it.
+
+For a compilation, the visual hook and any text overlay must communicate the
+shared collection-level payoff, not accidentally promise only the single scene
+shown. Use a representative hero moment that implies the recurring pattern,
+while keeping the overlay short and collection-oriented. Compare the copy with
+the actual clip set and reject wording that overpromises one isolated event.
+
+Demographics and identity must come from the actual video content. Never use a
+default ethnicity, age presentation, wardrobe, or regional identity simply
+because it appeared in an earlier thumbnail. Variation is welcome only after
+the thumbnail has been checked against the people represented in the source
+video.
+
+### Step 2: Create a Thumbnail Architecture Brief
+
+Fill in this brief before writing the image prompt:
+
+```text
+Title/topic promise:
+Primary focal subject:
+Foreground:
+Midground:
+Background:
+Subject scale and frame position:
+Eye path and gaze direction:
+Lighting direction and subject/background separation:
+Dominant palette and contrast relationship:
+Reserved text area:
+Elements to keep simple or exclude:
+Mobile-size readability risk:
+YouTube UI safe-zone risks:
+```
+
+The brief should deliberately specify visual hierarchy, approximate placement,
+negative space, and the intended title area. Keep critical elements away from
+the bottom-right timestamp area, bottom-left chapter/progress area, and extreme
+edges, while still applying the existing Safe Zones section.
+
+### Step 3: Decide Whether To Split Assets
+
+Use one generation when the scene is visually simple. Generate complex assets
+separately when they are likely to compete for prompt attention or lose their
+identity, such as:
+
+- A recurring human face or mascot
+- A detailed animal, product, prop, or device
+- Multiple logos or recognizable symbols
+- A screen, sign, or other element requiring controlled content
+
+Assemble separated assets in a staged composite only when doing so gives more
+control. The goal is to isolate failure modes, not to add complexity for its
+own sake. Never copy a reference thumbnail's exact people, logos, protected
+artwork, or composition.
+
+### Step 4: Refine One Variable At A Time
+
+Preserve the best accepted version and make one meaningful change per
+refinement pass, such as screen content, prop placement, wardrobe color,
+material polish, or lighting. Do not combine unrelated changes when a working
+composition or subject identity could be damaged. Keep every iteration
+non-destructive and use a new version rather than overwriting a prior result.
+
+### Step 5: Run The Existing Validation Plus These Additions
+
+- Re-run the existing 120px test, safe-zone check, contrast check, text check,
+  and content-truth check.
+- Confirm the main visual promise is still understandable without reading the
+  title.
+- Confirm the eye lands on one dominant anchor before secondary details.
+- Confirm the reserved text area remains open and readable.
+- Confirm faces, animals, props, and logos have not changed identity or merged.
+- Inspect at mobile size on both light and dark backgrounds.
+- Treat CTR or "viral" improvement as a hypothesis to test, not a guarantee.
+
 ## Related Skills
 
 ```bash
@@ -248,4 +350,3 @@ npx skills add inference-sh/skills@prompt-engineering
 ```
 
 Browse all apps: `infsh app list`
-

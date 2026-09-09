@@ -1232,3 +1232,26 @@ Seedance handoff must preserve verified visual observations from the accepted
 - For future Neon Parcel packages, choose YouTube category from the actual
   editorial promise: Comedy for comedy-led compilations; Entertainment only
   when the collection is broader than comedy. This is not a global default.
+
+### 2026-09-09 — Local subject-aware video reframer
+- Tony requires interview → plan → explicit approval → execution. Preference
+  answers and resumed context alone do not authorize a later approval gate.
+- Experimental tool: `001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/`.
+  Current scope is Gate 2 local YOLO11s/ByteTrack diagnostics on Grandma-and-Bear
+  Part Three, with an isolated environment and OS-enforced offline inference.
+- For this tool, use wider scene over a blurred background when the interaction
+  group cannot fit 9:16. This preference is approved; the camera planner is not.
+- Production outputs stay under the production's `Shorts/` folder. Global adoption,
+  narration-aware switching, and publishing remain separate approvals.
+
+### 2026-09-09 — Resource Library images now live BESIDE their note (supersedes all 2026-05 "Visual_Assets" entries)
+
+Every image is stored **in the same category folder as its note, with the same name stem** — `007_Resource_Library/Tools/OpenCode.md` + `007_Resource_Library/Tools/OpenCode.png`. The `![[...]]` embed points at the sibling file.
+
+- `007_Resource_Library/Obsidian_Attachments/Visual_Assets/` is **RETIRED** — deleted. Do not write images there. Do not look for images there.
+- The whole `Obsidian_Attachments/` folder is obsolete.
+- No `Asset_Notes/` folder — never was, don't create one.
+- `process_image_ingest.py` writes note + image together and dedups on ingest: (1) skip byte-identical image, (2) skip if `url:` already in another note, (3) title clash → `-N` + `possible-duplicate` tag.
+- One-time migration done via `migrate_images_to_notes.py` (1,028 images, 0 broken embeds).
+- **Deprecated scripts** (they operate on the dead Visual_Assets folder — do not run): `update_asset_notes_vision.py`, `reroute_visual_assets.py`, `fix_embeds.py`, `fix_image_case.py`, `rename_screenshots.py`.
+- Obsidian setting: "Default location for new attachments" = "Same folder as current file".

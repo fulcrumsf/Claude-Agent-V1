@@ -3,7 +3,29 @@ from pathlib import Path
 from subprocess import CalledProcessError
 from unittest.mock import patch, MagicMock
 import pytest
-from analyze_reference_video import download_video, detect_scenes, analyze_video_narrative, write_analysis_md, main
+from analyze_reference_video import (
+    ANALYSIS_CATEGORIES,
+    analyze_video_narrative,
+    detect_scenes,
+    download_video,
+    main,
+    resolve_analysis_route,
+    write_analysis_md,
+)
+
+
+def test_analysis_routes_match_video_review_risk():
+    assert resolve_analysis_route("case-study") == {
+        "category": "case-study", "processing": "agentic", "dense_interval": None
+    }
+    assert resolve_analysis_route("tutorial")["processing"] == "agentic"
+    assert resolve_analysis_route("continuity") == {
+        "category": "continuity", "processing": "static", "dense_interval": 0.5
+    }
+    assert resolve_analysis_route("physics")["dense_interval"] == 0.5
+    assert set(ANALYSIS_CATEGORIES) == {
+        "case-study", "tutorial", "continuity", "physics", "screen-text", "hybrid"
+    }
 
 def test_download_video_calls_yt_dlp_and_returns_path(tmp_path):
     with patch("analyze_reference_video.subprocess.run") as mock_run:
@@ -73,6 +95,32 @@ def test_analyze_video_narrative_uploads_file_and_prompts_with_scene_list(tmp_pa
     call_kwargs = client_instance.models.generate_content.call_args.kwargs
     assert "0.0s-3.1s" in str(call_kwargs["contents"])
     assert "3.1s-7.8s" in str(call_kwargs["contents"])
+
+
+def test_analyze_video_narrative_uses_agentic_interactions_when_requested(tmp_path):
+    video_path = tmp_path / "Video.mp4"
+    video_path.touch()
+    mock_file = MagicMock(name="uploaded_file", state=MagicMock(name="ACTIVE"))
+    mock_file.state.name = "ACTIVE"
+    mock_interaction = MagicMock(output_text="agentic analysis", steps=[])
+    metadata = {}
+
+    with patch("analyze_reference_video.genai.Client") as MockClient:
+        client_instance = MockClient.return_value
+        client_instance.files.upload.return_value = mock_file
+        client_instance.interactions.create.return_value = mock_interaction
+
+        result = analyze_video_narrative(
+            video_path, [(0.0, 5.0)], processing_mode="agentic", model="gemini-3.8-flash",
+            metadata=metadata,
+        )
+
+    assert result == "agentic analysis"
+    call = client_instance.interactions.create.call_args.kwargs
+    assert call["model"] == "gemini-3.8-flash"
+    assert call["input"][0]["processing"] == "agentic"
+    assert metadata["agentic_processing_trace_present"] is False
+    client_instance.models.generate_content.assert_not_called()
 
 def test_production_profile_requests_editorial_audio_and_originality_analysis(tmp_path):
     video_path = tmp_path / "Video.mp4"
@@ -172,5 +220,10 @@ def test_main_wires_download_detect_analyze_and_write(tmp_path):
 
     mock_download.assert_called_once_with("https://youtube.com/shorts/abc123", tmp_path)
     mock_detect.assert_called_once_with(tmp_path / "Video.mp4", 0.45)
-    mock_analyze.assert_called_once_with(tmp_path / "Video.mp4", [(0.0, 5.0)])
-    mock_write.assert_called_once_with(tmp_path, [(0.0, 5.0)], "analysis text")
+    mock_analyze.assert_called_once_with(
+        tmp_path / "Video.mp4", [(0.0, 5.0)], processing_mode="agentic", model=None,
+        metadata={"category": "case-study"},
+    )
+    mock_write.assert_called_once_with(
+        tmp_path, [(0.0, 5.0)], "analysis text", {"category": "case-study"}
+    )

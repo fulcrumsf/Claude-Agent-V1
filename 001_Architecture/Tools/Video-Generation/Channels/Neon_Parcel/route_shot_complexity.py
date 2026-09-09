@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Route Neon Parcel shots to the least-complex suitable video workflow.
+"""Route Neon Parcel shots to the approved Neon Parcel video workflow.
 
 This is a conservative, explainable pre-generation check. It does not call a
 video provider or approve paid generation. Human overrides are preserved in
@@ -91,25 +91,43 @@ def route_shot(shot: dict[str, Any]) -> dict[str, Any]:
     has_semantic_assessment = isinstance(shot.get("semantic_assessment"), dict)
 
     override = shot.get("route_override")
-    if override in {"force_simple", "force_complex"}:
-        route = "seedance_1_5_start_end" if override == "force_simple" else "seedance_2_mini_storyboard"
+    qa_intensity = "standard"
+    if override == "seedance_1_5_fallback":
+        route = "seedance_1_5_start_end"
         status = "overridden"
+        qa_intensity = "fallback"
+    elif override == "seedance_2_mini_default":
+        route = "seedance_2_mini_storyboard"
+        status = "overridden"
+        qa_intensity = "standard"
+    elif override:
+        route = "manual_review"
+        status = "unknown_override"
+        qa_intensity = "manual"
     elif not has_semantic_assessment:
         route = "manual_review"
         status = "semantic_assessment_required"
+        qa_intensity = "manual"
     elif hard_flags or total >= 8:
         route = "seedance_2_mini_storyboard"
         status = "auto"
+        qa_intensity = "enhanced"
     elif total <= 4:
-        route = "seedance_1_5_start_end"
+        route = "seedance_2_mini_storyboard"
         status = "auto"
+        qa_intensity = "low"
     else:
         route = "manual_review"
         status = "review_required"
+        qa_intensity = "manual"
 
     reasons = [dimension.replace("_", " ") for dimension, score in scores.items() if score == 2]
     if not has_semantic_assessment:
         reasons = ["structured semantic assessment is missing; keyword signals are advisory only"]
+    elif override == "seedance_1_5_fallback":
+        reasons.append("explicit Seedance 1.5 fallback/comparison override")
+    elif override and status == "unknown_override":
+        reasons.append(f"unknown route override: {override}")
     elif hard_flags:
         reasons.append("hard physics/ordered-action trigger")
     if not reasons:
@@ -121,6 +139,7 @@ def route_shot(shot: dict[str, Any]) -> dict[str, Any]:
         "status": status,
         "complexity_score": total,
         "complexity_scale": "0-20",
+        "qa_intensity": qa_intensity,
         "dimension_scores": scores,
         "reasons": reasons,
         "hard_triggered": bool(hard_flags),

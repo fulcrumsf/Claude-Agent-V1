@@ -1,4 +1,9 @@
 """
+DEPRECATED 2026-09-09 — operates on 007_Resource_Library/Obsidian_Attachments/Visual_Assets/,
+which no longer exists. Images now live beside their note in the category folder.
+Kept for reference only. Do not run.
+"""
+"""
 Update Asset Notes with real vision-based descriptions using Gemini 2.5 Flash.
 
 Scans all resource library folders for images whose Asset Notes have filler

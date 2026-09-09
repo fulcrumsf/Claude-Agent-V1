@@ -1,3 +1,7 @@
+"""
+DEPRECATED 2026-09-09 — writes images into the retired Visual_Assets/ folder.
+Needs rework for the co-located layout (image beside its note) before re-use.
+"""
 #!/usr/bin/env python3
 import argparse
 import os

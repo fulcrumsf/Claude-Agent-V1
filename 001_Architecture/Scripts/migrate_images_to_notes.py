@@ -1,3 +1,4 @@
+# MIGRATION COMPLETE 2026-09-09 (1,028 images). Kept for reference / re-verify only.
 """
 One-time migration: co-locate every Resource Library image with its note.
 

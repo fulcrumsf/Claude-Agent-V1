@@ -59,6 +59,16 @@ Use these as starting frameworks, then make them specific to the topic:
 - No filler words ("really", "literally", "actually")
 - Must work on mobile — test it at small size mentally
 
+### Compilation Title Gate
+
+When the video is a compilation, the title must sell the collection-level
+experience rather than one isolated clip. Signal the collection with language
+such as a count, "moments," "encounters," "compilation," or a recurring
+subject pattern, then create the curiosity gap around the escalation or
+unexpected pattern across the collection. Do not title the compilation as if
+one thumbnail scene is the entire video. Verify the promised pattern against
+the actual clips before finalizing.
+
 Always generate **5 title options** — different structures, same topic — so the user can pick or combine.
 
 ---
@@ -145,6 +155,22 @@ HOOKS (3 variations — different types):
 
 DESCRIPTION:
 [full platform-ready description]
+```
+
+### YouTube Tags Add-On
+
+When generating metadata for a YouTube compilation, also produce a tag string
+of no more than 500 characters. Tags must be comma-separated search-intent
+phrases based on the full collection, not one isolated clip. Include a small
+number of plausible common misspellings of the strongest topic phrases, but do
+not add misleading claims such as authentic footage, real events, or caught-on-
+camera material unless the source video supports them.
+
+Output format:
+
+```text
+TAGS (under 500 characters):
+phrase one, phrase two, intentional misspelling, ...
 ```
 
 ---

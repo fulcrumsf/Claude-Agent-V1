@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "defaults": {
+    "mode": "hybrid",
+    "priority": ["person", "animal"],
+    "switch_policy": "alternate",
+    "subject_hold_seconds": 3.5,
+    "group_hold_seconds": 2.5,
+    "end_group_seconds": 2.0,
+    "gap_hold_seconds": 0.3,
+    "lookahead_seconds": 0.25,
+    "opening_lookahead_seconds": 0.8,
+    "smoothing_seconds": 0.22,
+    "dead_zone_fraction": 0.04,
+    "max_pan_fraction_per_second": 0.65,
+    "max_zoom_fraction_per_second": 0.35,
+    "max_zoom": 1.5,
+    "subject_margin_fraction": 0.08,
+    "fallback_hold_seconds": 1.5,
+    "background_brightness": 0.55,
+    "background_blur": 21
+  },
+  "profiles": {
+    "group": {"mode": "group"},
+    "subject": {"mode": "subject"},
+    "hybrid": {"mode": "hybrid"}
+  }
+}

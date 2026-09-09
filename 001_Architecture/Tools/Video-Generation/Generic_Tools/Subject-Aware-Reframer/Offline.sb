@@ -1,0 +1,5 @@
+(version 1)
+(allow default)
+(deny network*)
+; This profile enforces offline inference. It is NOT a filesystem sandbox.
+

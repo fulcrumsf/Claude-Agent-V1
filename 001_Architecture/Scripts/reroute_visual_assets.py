@@ -1,4 +1,9 @@
 """
+DEPRECATED 2026-09-09 — operates on 007_Resource_Library/Obsidian_Attachments/Visual_Assets/,
+which no longer exists. Images now live beside their note in the category folder.
+Kept for reference only. Do not run.
+"""
+"""
 Re-route images from Visual_Assets/ to correct subfolders based on filename classification.
 Also moves matching Asset Notes and updates their embed links.
 """

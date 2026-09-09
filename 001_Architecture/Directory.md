@@ -19,5 +19,6 @@ This directory is the **unified brain** and **single source of truth** for all a
 *   **Tools:** All Python tools, scripts, and configurations organized by capability. Think of this as the OS toolchain — every tool lives here, not scattered across content folders.
     *   *Subfolders include:* `AI-Analysis/`, `Airtable/`, `Asset-Sourcing/`, `Image-Generation/`, `Remotion/`, `Text-To-Speech/`, `Tool-Manager/`, `Video-Generation/`
     *   `Video-Generation/` further contains: `Channels/` (per-channel scripts: Anomalous_Wild, Reimagined_Realms), `Generic_Tools/` (reusable batch scripts), `Pipeline_Docs/`, `Hyperframes/`, `Video-Use/`
+    *   `Video-Generation/Generic_Tools/Subject-Aware-Reframer/`: experimental Gate 2 local detection/tracking tool and isolated environment. Reusable code belongs here; per-production configuration and diagnostics remain in the production's `Shorts/` folder. Not yet an approved automatic reframe pipeline.
 
 *(Note: If a new global capability is needed that doesn't fit these definitions, explicitly ask Tony before creating a new top-level folder in 001_Architecture.)*

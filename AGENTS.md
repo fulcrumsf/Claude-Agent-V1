@@ -132,7 +132,7 @@ Move (don't copy). Text files use `Title-Case-With-Dashes.md`. Media files use t
 | `tutorial` / How-to guides | `007_Resource_Library/Tutorials/` |
 | `workflow` | `007_Resource_Library/Workflows/` |
 | `project-idea` | `007_Resource_Library/Project_Ideas/` |
-| `image` (ALL raw images) | `007_Resource_Library/Obsidian_Attachments/Visual_Assets/` |
+| `image` (ALL raw images) | Same category folder as the note, same name stem (e.g. `007_Resource_Library/Tools/OpenCode.png` beside `OpenCode.md`) |
 | `video` (Requires package creation) | `007_Resource_Library/Videos/[Kebab-Case-Name]/` |
 
 **AI jobs / contract reference exception:** If a file is a job-specific onboarding contract, work agreement, invention assignment, or platform reference for Tony's AI-testing work, route it to `009_AI_Jobs/[Platform]/` instead of the generic docs folder. Keep all related files for the same platform together.
@@ -164,7 +164,7 @@ Wiki page format: title, type, category, tags, source YAML + `## What It Is`, `#
 
 **PDFs → No companion file needed.** Obsidian has a native PDF viewer. Only create a wiki page if the content warrants synthesis.
 
-**Images and word docs → Note file** in the matching `007_Resource_Library/` destination folder, named with the same stem as the media file and a `.md` extension. The raw image stays in `007_Resource_Library/Obsidian_Attachments/Visual_Assets/`:
+**Images and word docs → Note file** in the matching `007_Resource_Library/` destination folder, named with the same stem as the media file and a `.md` extension. **The image lives right next to the note in that same folder** (`Tools/OpenCode.md` + `Tools/OpenCode.png`) — `Visual_Assets/` is retired:
 
 ```markdown
 ---

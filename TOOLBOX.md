@@ -80,7 +80,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - Generic full-text Keep/Strip/Junk review page for any list of notes. Folder + decision filters, bulk actions, copy/download decisions.
 
 **Image case fix script:** `001_Architecture/Scripts/fix_image_case.py`
-- Post-process cleanup: converts any remaining lowercase kebab-case image filenames in Visual_Assets to Title-Case-With-Dashes
+- Post-process cleanup: DEPRECATED 2026-09-09 (Visual_Assets retired)
 - Uses paired note's frontmatter `title:` field as source of truth; falls back to word-capitalizing the stem
 - Updates `![[...]]` embeds in paired notes and logs to `rename_log.md`
 - Run: `python3 001_Architecture/Scripts/fix_image_case.py` (dry run) or `--apply` to rename
@@ -308,6 +308,14 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 ---
 
 ## Video Editing & Composition
+
+### Subject-Aware Reframer — Experimental Gate 2
+- **Tool:** `001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/`
+- **Status:** Detection/tracking prototype only; camera planning and production adoption require later approval.
+- **Runtime:** Isolated Python 3.11 environment, 42 approved hash-locked packages, official YOLO11s weights, explicit ByteTrack, FFmpeg/OpenCV diagnostics.
+- **Launcher:** `run_offline.py` runs `diagnose.py` with OS network denial, restricted checkpoint loading, automatic installs disabled, and tool-local caches.
+- **Outputs:** New production-local `Shorts/Versions/v3/Auto-Reframe/` runs contain raw detections, track IDs, debug video, contact sheet, and run report. Sources and approved Shorts are never overwritten.
+- **Scope:** Tony's own local Agent-OS workflow. No narration analysis, crop planner, vertical render, or publishing in Gate 2.
 
 ### Video-Use (Agent-Driven Video Editor)
 - **Repo:** `001_Architecture/Tools/Video-Generation/Video-Use/`

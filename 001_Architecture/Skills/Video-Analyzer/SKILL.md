@@ -5,12 +5,12 @@ description: Use when Tony wants to reverse-engineer the style, pacing, editing,
 
 # Video-Analyzer
 
-Downloads a YouTube video and builds a complete, three-source understanding of it — narrative/motion (Gemini native video), exact word-for-word speech (local Whisper), and exact on-screen visual content like pasted prompts or settings panels (full-resolution FFmpeg keyframes, read directly by the invoking agent). No single source alone gives full human-level understanding: Gemini's native video sampling reads motion/narrative well but often can't read small on-screen text; Whisper gives an accurate independent transcript; the keyframes are the only source with full-resolution stills good enough to read a pasted prompt or a settings toggle shown on screen. Output is written to a folder the caller specifies — this skill has no fixed output location and no channel-specific logic, so it works identically for any project.
+Downloads a YouTube video and builds a complete, three-source understanding of it — narrative/motion (Gemini agentic or static video understanding, selected by category), exact word-for-word speech (local Whisper), and exact on-screen visual content like pasted prompts or settings panels (full-resolution FFmpeg keyframes, read directly by the invoking agent). No single source alone gives full human-level understanding: agentic Gemini explores long-form content efficiently, static Gemini and dense frames preserve frame-level coverage, Whisper gives an accurate independent transcript, and keyframes are the only source with full-resolution stills good enough to read a pasted prompt or settings toggle shown on screen. Output is written to a folder the caller specifies — this skill has no fixed output location and no channel-specific logic, so it works identically for any project.
 
 ## Usage
 
 ```bash
-python3 001_Architecture/Skills/Video-Analyzer/analyze_reference_video.py "<youtube_url>" --out "<folder>" [--threshold 0.3] [--dense-interval 0.5] [--profile standard|production]
+python3 001_Architecture/Skills/Video-Analyzer/analyze_reference_video.py "<youtube_url>" --out "<folder>" [--category auto|case-study|tutorial|continuity|physics|screen-text|hybrid] [--threshold 0.3] [--dense-interval 0.5] [--profile standard|production]
 ```
 
 Writes `<folder>/Video.mp4`, `<folder>/ANALYSIS.md`, `<folder>/Transcript.srt`, and `<folder>/Keyframes/001.jpg, 002.jpg, ...`. If `--dense-interval` is set, also writes `<folder>/Dense_Keyframes/0001.jpg, 0002.jpg, ...`.
@@ -25,6 +25,35 @@ patterns, reusable abstractions, and originality boundaries. The default
 **`--dense-interval` — for continuity/fault auditing, not general use.** The default `Keyframes/` set only captures ffmpeg-detected scene *cuts* — it's built for reading on-screen text within each distinct scene, and it has a real blind spot: a defect that drifts gradually *within* one continuous shot (no hard cut) falls straight through the gap between two scene-cut keyframes. Confirmed case: a POV camera that started correctly first-person and drifted into a third-person view partway through a single uncut shot was invisible in the scene-cut `Keyframes/` set, but obvious once every ~1 second of that shot was pulled via `--dense-interval 0.5`. Use this flag when auditing a render for continuity/POV-lock/identity-drift faults specifically — leave it off for a normal case-study run (it adds a large number of frames and proportionally more review time).
 
 `--threshold` (default `0.3`) controls ffmpeg's scene-cut sensitivity for both the Gemini scene ranges and the keyframe extraction — lower detects more cuts. The default suits normally-edited footage. For screen recordings/tutorials with lots of small UI/cursor changes that aren't real cuts, raise it to ~0.45-0.6, or ffmpeg over-detects cuts, which can make the per-scene prompt to Gemini large enough that its response hits the token cap and gets truncated before covering the whole video (confirmed happening on an 11-minute tutorial at the 0.3 default — 287 raw cuts detected, response truncated at the 6:34 mark). If `ANALYSIS.md` still looks cut off after raising the threshold, the script also now sets `max_output_tokens=65536` and prints a `⚠️ Gemini response was truncated` warning to stdout when it hits that cap — the next fix if this happens again is splitting the video into shorter segments. A higher threshold also keeps the keyframe count sane on long tutorials (no need for a fixed "one frame per second" — only real scene/screen changes get captured).
+
+## Analysis routing key
+
+Choose the category based on the question being asked, not only on the video's
+source. The script uses Gemini 3.8 Flash by default (override with
+`GEMINI_VIDEO_MODEL` or `--model`). Agentic processing is explicit; selecting a
+current model does not enable it automatically.
+
+| Category | Gemini route | Local evidence | Use when |
+|---|---|---|---|
+| `case-study` | Agentic | Scene-cut keyframes + transcription | Reverse-engineering narrative, pacing, style, and editorial structure |
+| `tutorial` | Agentic | Scene-cut keyframes + transcription | Understanding spoken explanations and demonstrated workflows |
+| `continuity` | Static | Dense keyframes every 0.5s + transcription | Checking identity drift, duplicate/disappearing subjects, camera drift, and chronology |
+| `physics` | Static | Dense keyframes every 0.5s + transcription | Checking impossible paths, barriers, contact, object origins, spatial geometry, and cause/effect |
+| `screen-text` | Static | Full-resolution scene-cut keyframes + transcription | Reading prompts, settings, labels, captions, or other on-screen text |
+| `hybrid` | Agentic | Dense keyframes every 0.5s + transcription | High-risk review needing long-form understanding plus frame-sensitive QA |
+
+For generated-video QA, use `hybrid` when the video is long or has a complex
+story, and use `continuity` or `physics` for a focused short-clip audit. The
+frame-sensitive checks explicitly include deformed or extra limbs, morphing,
+duplicate or missing people/animals, broken object connections, impossible
+entrances/exits, and actions that occur before their physical cause.
+
+Google recommends agentic processing for long-form or targeted questions, but
+static processing when frame-level precision across the whole clip is required.
+Agentic mode therefore supplements rather than replaces dense keyframes. When
+agentic mode is used, inspect the response steps and record whether
+`processing_call` and `processing_result` were present; do not claim agentic
+processing solely from the model name.
 
 ## Output format
 
@@ -42,11 +71,11 @@ _ffmpeg detected 7 raw scene cuts; see Gemini's narrative breakdown below for th
 
 `Transcript.srt` is Whisper's independent, timestamped, word-for-word transcription of the audio track (local, free, no API cost) — use it to double-check or supplement Gemini's own in-scene transcript when the two disagree on what was actually said.
 
-`Keyframes/` holds one full-resolution `.jpg` per detected scene change, numbered sequentially (`001.jpg`, `002.jpg`, ...) — these are NOT sent to any API. They exist specifically to be read directly by the invoking agent's own vision.
+`Keyframes/` holds one full-resolution `.jpg` per detected scene change, numbered sequentially (`001.jpg`, `002.jpg`, ...) — these are NOT sent to any API. They exist specifically to be read directly by the invoking agent's own vision. When a route selects dense evidence, `Dense_Keyframes/` holds the fixed-interval frames needed to catch gradual defects.
 
 ## Mandatory follow-up step: read the keyframes yourself
 
-The goal of this skill is to understand the video as completely as a human watching it would — not just "what happened" but everything visible on screen that carries real information. Gemini's native video analysis alone is not enough for this: it reads motion and narrative well but frequently can't read small on-screen text, and it doesn't stop to study a frame the way a human would pause a tutorial to actually look at something. After the script finishes, the invoking agent MUST use the Read tool to view every file in `Keyframes/` directly (full resolution, not Gemini's description of them) and extract everything relevant, which is broader than just text:
+The goal of this skill is to understand the video as completely as a human watching it would — not just "what happened" but everything visible on screen that carries real information. Gemini video analysis alone is not enough for this: it may not read small on-screen text reliably, and agentic processing is not exhaustive frame-by-frame inspection. After the script finishes, the invoking agent MUST use the Read tool to view every file in `Keyframes/` directly (and every `Dense_Keyframes/` file when that folder exists) at full resolution, not just rely on Gemini's description. Extract everything relevant, which is broader than just text:
 - **Exact on-screen text** — a prompt someone pastes into a text box (capture it verbatim; this is real-world validated prompt language from someone who has iterated on it, more valuable than any generic prompting guide), settings panels, toggles, sliders, menu selections, labels, values, file names
 - **Visual concepts and composition** — how a reference sheet, character sheet, storyboard grid, or UI layout is actually structured (panel count and arrangement, what angles/views are included, spacing, what's included vs. left out)
 - **Visual style and quality** — art style, lighting, level of detail, consistency (or inconsistency) between frames, anything about how something looks that a written description would flatten or lose

@@ -128,7 +128,7 @@ def build_library_index():
 
 
 def log_rename(original, new_name, category):
-    """Append one entry to the rename log in Visual_Assets."""
+    """Append one entry to the ingest rename log."""
     date_str = datetime.now().strftime("%Y-%m-%d %H:%M")
     line = f"- `{original}` → `{new_name}` | category: {category} | {date_str}\n"
     with open(RENAME_LOG, "a") as f:

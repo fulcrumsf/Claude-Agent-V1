@@ -1,5 +1,6 @@
 # analyze_reference_video.py
 import argparse
+import os
 import re
 import subprocess
 import time
@@ -20,7 +21,7 @@ For each scene, describe (as one markdown section per scene, headed "## Scene N 
 - Sound design cues audible or implied (foley, ambient, music, dialogue presence)
 - Full verbatim transcript of any spoken narration, dialogue, or voiceover in this scene, word for word (write "no speech" if none) — this matters most for tutorial/instructional videos where the spoken explanation IS the content
 - Any on-screen text or overlay style (placement, sizing, drop shadow, timing)
-- Continuity and physics anomalies: character identity/appearance morphing mid-shot (face, build, clothing, or props changing inconsistently), directionally impossible or contradictory motion (e.g. a subject appearing to walk backwards relative to the direction the shot establishes, or reversing travel direction without cause), limb/object warping or duplication, and any other physically implausible movement. Call out the specific timestamp within the scene where each anomaly occurs, and describe exactly what looks wrong.
+- Continuity and physics anomalies: character identity/appearance morphing mid-shot (face, build, clothing, or props changing inconsistently), duplicate or disappearing people/animals, anatomy defects such as deformed or extra limbs, directionally impossible or contradictory motion (e.g. a subject appearing to walk backwards relative to the direction the shot establishes, or reversing travel direction without cause), limb/object warping or duplication, broken object connections, and any other physically implausible movement. Call out the specific timestamp within the scene where each anomaly occurs, and describe exactly what looks wrong.
 """
 
 PRODUCTION_ANALYSIS_APPENDIX = """
@@ -161,11 +162,40 @@ def detect_scenes(video_path: Path, threshold: float = 0.3) -> list[tuple[float,
 MAX_UPLOAD_POLL_ATTEMPTS = 30
 UPLOAD_POLL_INTERVAL_SECONDS = 2
 
+DEFAULT_GEMINI_MODEL = "gemini-3.8-flash"
+
+# These routes make the cost/coverage tradeoff explicit instead of leaving the
+# invoking agent to guess which kind of inspection is appropriate.
+ANALYSIS_CATEGORIES = {
+    "case-study": {"processing": "agentic", "dense_interval": None},
+    "tutorial": {"processing": "agentic", "dense_interval": None},
+    "continuity": {"processing": "static", "dense_interval": 0.5},
+    "physics": {"processing": "static", "dense_interval": 0.5},
+    "screen-text": {"processing": "static", "dense_interval": None},
+    "hybrid": {"processing": "agentic", "dense_interval": 0.5},
+}
+
+
+def resolve_analysis_route(category: str) -> dict[str, str | float | None]:
+    """Return the recommended Gemini mode and local sampling for a category."""
+    if category == "auto":
+        category = "case-study"
+    try:
+        return {"category": category, **ANALYSIS_CATEGORIES[category]}
+    except KeyError as exc:
+        choices = ", ".join(["auto", *ANALYSIS_CATEGORIES])
+        raise ValueError(f"Unknown analysis category {category!r}; choose from {choices}") from exc
+
 def analyze_video_narrative(
     video_path: Path,
     scenes: list[tuple[float, float]],
     profile: str = "standard",
+    *,
+    model: str | None = None,
+    processing_mode: str = "static",
+    metadata: dict[str, object] | None = None,
 ) -> str:
+    """Analyze narrative content using static or agentic Gemini processing."""
     client = genai.Client(api_key=GEMINI_API_KEY)
     uploaded = client.files.upload(file=str(video_path))
 
@@ -191,14 +221,50 @@ def analyze_video_narrative(
     elif profile != "standard":
         raise ValueError(f"Unknown analysis profile: {profile}")
 
+    selected_model = model or os.environ.get("GEMINI_VIDEO_MODEL", DEFAULT_GEMINI_MODEL)
+    if processing_mode == "agentic":
+        interaction = client.interactions.create(
+            model=selected_model,
+            input=[
+                {
+                    "type": "video",
+                    "uri": uploaded.uri,
+                    "mime_type": uploaded.mime_type or "video/mp4",
+                    "processing": "agentic",
+                },
+                {"type": "text", "text": prompt},
+            ],
+        )
+        response_text = getattr(interaction, "output_text", None)
+        if not response_text:
+            raise RuntimeError("Gemini agentic video analysis returned no text")
+        if metadata is not None:
+            steps = getattr(interaction, "steps", None) or []
+            step_types = {
+                getattr(step, "type", None) or (step.get("type") if isinstance(step, dict) else None)
+                for step in steps
+            }
+            metadata.update({
+                "model": selected_model,
+                "processing_mode": "agentic",
+                "agentic_processing_trace_present": {
+                    "processing_call", "processing_result"
+                }.issubset(step_types),
+            })
+        return response_text
+    if processing_mode != "static":
+        raise ValueError("processing_mode must be 'static' or 'agentic'")
+
     response = client.models.generate_content(
-        model="gemini-2.5-pro",
+        model=selected_model,
         contents=types.Content(parts=[
             types.Part(file_data=types.FileData(file_uri=str(uploaded.uri), mime_type=str(uploaded.mime_type))),
             types.Part(text=prompt),
         ]),
         config=types.GenerateContentConfig(max_output_tokens=65536),
     )
+    if metadata is not None:
+        metadata.update({"model": selected_model, "processing_mode": "static"})
 
     finish_reason = response.candidates[0].finish_reason if response.candidates else None
     if finish_reason is not None and finish_reason.name == "MAX_TOKENS":
@@ -210,14 +276,21 @@ def analyze_video_narrative(
 
     return response.text or ""
 
-def write_analysis_md(out_dir: Path, scenes: list[tuple[float, float]], gemini_output: str) -> Path:
+def write_analysis_md(
+    out_dir: Path,
+    scenes: list[tuple[float, float]],
+    gemini_output: str,
+    metadata: dict[str, object] | None = None,
+) -> Path:
     out_dir = Path(out_dir)
     lines = [
         f"_ffmpeg detected {len(scenes)} raw scene cuts; "
         f"see Gemini's narrative breakdown below for the actual scene structure._",
         "",
-        gemini_output,
     ]
+    if metadata:
+        lines.extend([f"_Gemini route: `{json.dumps(metadata, sort_keys=True)}`._", ""])
+    lines.append(gemini_output)
 
     analysis_path = out_dir / "ANALYSIS.md"
     analysis_path.write_text("\n".join(lines))
@@ -230,21 +303,31 @@ def main(
     threshold: float = 0.3,
     dense_interval: float | None = None,
     profile: str = "standard",
+    category: str = "auto",
+    model: str | None = None,
 ) -> None:
     out_dir = Path(out)
     video_path = download_video(url, out_dir)
     scenes = detect_scenes(video_path, threshold)
-    # Preserve the original call shape for the default profile so existing
-    # integrations and tests remain compatible.
+    route = resolve_analysis_route(category)
+    effective_dense_interval = dense_interval if dense_interval is not None else route["dense_interval"]
+    processing_mode = str(route["processing"])
+    analysis_metadata: dict[str, object] = {"category": route["category"]}
     if profile == "standard":
-        gemini_output = analyze_video_narrative(video_path, scenes)
+        gemini_output = analyze_video_narrative(
+            video_path, scenes, processing_mode=processing_mode, model=model,
+            metadata=analysis_metadata,
+        )
     else:
-        gemini_output = analyze_video_narrative(video_path, scenes, profile)
-    write_analysis_md(out_dir, scenes, gemini_output)
+        gemini_output = analyze_video_narrative(
+            video_path, scenes, profile, processing_mode=processing_mode, model=model,
+            metadata=analysis_metadata,
+        )
+    write_analysis_md(out_dir, scenes, gemini_output, analysis_metadata)
     extract_keyframes(video_path, out_dir, threshold)
     transcribe_with_whisper(video_path, out_dir)
-    if dense_interval is not None:
-        extract_dense_keyframes(video_path, out_dir, dense_interval)
+    if effective_dense_interval is not None:
+        extract_dense_keyframes(video_path, out_dir, float(effective_dense_interval))
 
 
 if __name__ == "__main__":
@@ -257,6 +340,17 @@ if __name__ == "__main__":
              "Default 0.3 works for edited footage; raise to ~0.45-0.6 for screen "
              "recordings/tutorials with lots of small UI/cursor changes that aren't real cuts, "
              "to avoid an oversized scene list that can truncate Gemini's response.",
+    )
+    parser.add_argument(
+        "--category",
+        choices=["auto", *ANALYSIS_CATEGORIES],
+        default="auto",
+        help="Analysis route: case-study/tutorial use agentic Gemini; continuity/physics use static Gemini plus dense frames; hybrid uses both.",
+    )
+    parser.add_argument(
+        "--model",
+        default=None,
+        help=f"Override Gemini model (default: GEMINI_VIDEO_MODEL or {DEFAULT_GEMINI_MODEL})",
     )
     parser.add_argument(
         "--dense-interval", type=float, default=None,
@@ -272,4 +366,4 @@ if __name__ == "__main__":
              "dialogue, retention, and originality-boundary analysis.",
     )
     args = parser.parse_args()
-    main(args.url, args.out, args.threshold, args.dense_interval, args.profile)
+    main(args.url, args.out, args.threshold, args.dense_interval, args.profile, args.category, args.model)
