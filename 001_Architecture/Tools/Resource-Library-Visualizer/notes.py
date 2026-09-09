@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 import glob
 import datetime
 import importlib.util
@@ -10,8 +11,12 @@ _here = pathlib.Path(__file__).parent
 
 
 def _load(name):
-    spec = importlib.util.spec_from_file_location(f"rlv_{name}", _here / f"{name}.py")
+    key = f"rlv_{name}"
+    if key in sys.modules:
+        return sys.modules[key]
+    spec = importlib.util.spec_from_file_location(key, _here / f"{name}.py")
     m = importlib.util.module_from_spec(spec)
+    sys.modules[key] = m
     spec.loader.exec_module(m)
     return m
 
@@ -84,9 +89,10 @@ def build_index(root=None):
         yid = detect.youtube_id(
             " ".join(str(fm.get(k, "")) for k in ("url", "source")) + " " + body)
         has_image = img is not None
+        structural = detect.is_structural(os.path.basename(f))
         if has_image:
             kind = "image"
-        elif yid:
+        elif yid and not structural:
             kind = "youtube"
         else:
             kind = "text"

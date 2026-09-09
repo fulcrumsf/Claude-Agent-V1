@@ -1,4 +1,5 @@
 import os
+import sys
 import collections
 import importlib.util
 import pathlib
@@ -10,8 +11,12 @@ _here = pathlib.Path(__file__).parent
 
 
 def _load(name):
-    spec = importlib.util.spec_from_file_location(f"rlv_{name}", _here / f"{name}.py")
+    key = f"rlv_{name}"
+    if key in sys.modules:
+        return sys.modules[key]
+    spec = importlib.util.spec_from_file_location(key, _here / f"{name}.py")
     m = importlib.util.module_from_spec(spec)
+    sys.modules[key] = m
     spec.loader.exec_module(m)
     return m
 
@@ -52,7 +57,9 @@ def _card_public(c):
 
 def create_app():
     app = Flask(__name__)
+    print("scanning 007_Resource_Library …", flush=True)
     app.config["INDEX"] = notes.build_index()
+    print(f"indexed {len(app.config['INDEX'])} notes", flush=True)
 
     def idx():
         return app.config["INDEX"]
@@ -70,7 +77,9 @@ def create_app():
     @app.get("/api/filters")
     def api_filters():
         folders = sorted({c["folder"] for c in idx() if c["folder"]})
-        tag_counts = collections.Counter(t for c in idx() for t in c["tags"])
+        # top tags from the gallery-visible notes (image / youtube), not text-only
+        gallery = [c for c in idx() if c["kind"] != "text"]
+        tag_counts = collections.Counter(t for c in gallery for t in c["tags"])
         return jsonify({"folders": folders,
                         "top_tags": [t for t, _ in tag_counts.most_common(8)]})
 
@@ -79,11 +88,17 @@ def create_app():
         rel = request.args["path"]
         ab = _safe_abs(rel)
         fm, body = notes.parse_note(ab)
+        body_html = render.render_body(body, os.path.dirname(rel))
+        card = next((c for c in idx() if c["path"] == rel), None)
+        if card and card.get("youtube_id") and card["youtube_id"] not in body_html:
+            body_html = (f'<iframe class="yt" src="https://www.youtube.com/embed/'
+                         f'{card["youtube_id"]}" frameborder="0" allowfullscreen></iframe>'
+                         + body_html)
         return jsonify({
             "path": rel,
             "frontmatter": fm,
             "frontmatter_html": render.frontmatter_html(fm),
-            "body_html": render.render_body(body, os.path.dirname(rel)),
+            "body_html": body_html,
         })
 
     @app.get("/thumb")

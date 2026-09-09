@@ -53,6 +53,12 @@ def test_comment_and_finalize(monkeypatch, rl_fixture, tmp_path):
     assert "FINALIZED" in r.get_json()["batch"]
 
 
+def test_note_detail_embeds_frontmatter_only_youtube(monkeypatch, rl_fixture, tmp_path):
+    c = _client(monkeypatch, rl_fixture, tmp_path)
+    d = c.get("/api/note", query_string={"path": "Tutorials/FmVid.md"}).get_json()
+    assert "<iframe" in d["body_html"] and "zzzzzzzzzzz" in d["body_html"]
+
+
 def test_filters_endpoint(monkeypatch, rl_fixture, tmp_path):
     c = _client(monkeypatch, rl_fixture, tmp_path)
     d = c.get("/api/filters").get_json()

@@ -21,7 +21,27 @@ def render_body(body, note_rel_dir):
         blocks.append(html_str)
         return ("\n\n" + token + "\n\n") if block else token
 
-    # --- callouts (block) ---
+    # collect unique youtube ids up front (order preserved)
+    yt_ids = list(dict.fromkeys(YT.findall(body)))
+
+    # --- image embeds:  ![[name.png]]  /  ![[...youtube...]] ---
+    def img_sub(m):
+        name = m.group(1).strip().split("|")[0]
+        y = YT.search(name)
+        if y:
+            return stash(_iframe(y.group(1)))
+        return stash(f'<img src="/img?path={html.escape(note_rel_dir)}/'
+                     f'{html.escape(name)}" loading="lazy">')
+    body = re.sub(r"!\[\[([^\]]+?)\]\]", img_sub, body)
+
+    # --- wikilinks (inline) ---
+    def wl(m):
+        inner = m.group(1)
+        alias = inner.split("|", 1)[1] if "|" in inner else inner
+        return stash(f'<span class="wikilink">{html.escape(alias)}</span>', block=False)
+    body = re.sub(r"\[\[([^\]]+?)\]\]", wl, body)
+
+    # --- callouts:  > [!type] Title / > body ... ---
     lines = body.split("\n")
     out, i = [], 0
     while i < len(lines):
@@ -33,38 +53,24 @@ def render_body(body, note_rel_dir):
         typ, title = m.group(1).lower(), m.group(2).strip()
         i += 1
         inner = []
-        while i < len(lines) and lines[i].startswith(">"):
-            inner.append(lines[i].lstrip("> ").rstrip())
+        while i < len(lines) and lines[i].lstrip().startswith(">"):
+            inner.append(lines[i].lstrip().lstrip(">").strip())
             i += 1
-        inner_html = _md.render("\n".join(inner)) if inner else ""
+        inner_html = _md.render("\n".join(inner)) if any(inner) else ""
         out.append(stash(f'<div class="callout callout-{typ}">'
                          f'<b>{html.escape(title)}</b>{inner_html}</div>'))
     body = "\n".join(out)
 
-    # --- image / youtube embeds (block) ---
-    def img_sub(m):
-        name = m.group(1).strip().split("|")[0]
-        y = YT.search(name)
-        if y:
-            return stash(_iframe(y.group(1)))
-        return stash(f'<img src="/img?path={html.escape(note_rel_dir)}/'
-                     f'{html.escape(name)}" loading="lazy">')
-    body = re.sub(r"!\[\[([^\]]+?)\]\]", img_sub, body)
-
-    def yt_url(m):
-        return stash(_iframe(m.group(1)))
-    body = re.sub(r"https?://\S*?" + YT.pattern + r"[^\s)\]]*", yt_url, body)
-
-    # --- wikilinks (inline) ---
-    def wl(m):
-        inner = m.group(1)
-        alias = inner.split("|", 1)[1] if "|" in inner else inner
-        return stash(f'<span class="wikilink">{html.escape(alias)}</span>', block=False)
-    body = re.sub(r"\[\[([^\]]+?)\]\]", wl, body)
-
     rendered = _md.render(body)
     for idx, blk in enumerate(blocks):
         rendered = rendered.replace(f"@@RLV{idx}@@", blk)
+
+    # --- append playable embeds for every unique youtube link in the note ---
+    already = "".join(blocks)
+    extra = [vid for vid in yt_ids if _iframe(vid) not in already]
+    if extra:
+        rendered += ('<h3 style="margin-top:18px">Videos</h3>'
+                     + "".join(_iframe(v) for v in extra))
     return rendered
 
 

@@ -28,4 +28,8 @@ def rl_fixture(tmp_path):
     (root / "Tutorials").mkdir()
     (root / "Tutorials" / "Vid.md").write_text(
         '---\ntitle: "Vid"\ncreated: 2026-07-01\n---\nhttps://youtu.be/abcdefghijk\n')
+    # youtube id only in frontmatter, not the body
+    (root / "Tutorials" / "FmVid.md").write_text(
+        '---\ntitle: "FmVid"\nurl: "https://youtu.be/zzzzzzzzzzz?si=x"\ncreated: 2026-06-01\n'
+        '---\n## Summary\ntext only, no link in body\n')
     return root

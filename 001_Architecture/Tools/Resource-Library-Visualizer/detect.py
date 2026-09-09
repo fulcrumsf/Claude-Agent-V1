@@ -1,4 +1,5 @@
 import re
+import sys
 import importlib.util
 import pathlib
 
@@ -7,9 +8,12 @@ YT_RE = re.compile(
 
 
 def _markers():
+    if "rlv_config" in sys.modules:
+        return sys.modules["rlv_config"].STRUCTURAL_MARKERS
     p = pathlib.Path(__file__).with_name("config.py")
     spec = importlib.util.spec_from_file_location("rlv_config", p)
     m = importlib.util.module_from_spec(spec)
+    sys.modules["rlv_config"] = m
     spec.loader.exec_module(m)
     return m.STRUCTURAL_MARKERS
 

@@ -1,4 +1,5 @@
 import os
+import sys
 import importlib.util
 import pathlib
 from PIL import Image, ImageOps
@@ -7,8 +8,12 @@ _here = pathlib.Path(__file__).parent
 
 
 def _load(name):
-    spec = importlib.util.spec_from_file_location(f"rlv_{name}", _here / f"{name}.py")
+    key = f"rlv_{name}"
+    if key in sys.modules:
+        return sys.modules[key]
+    spec = importlib.util.spec_from_file_location(key, _here / f"{name}.py")
     m = importlib.util.module_from_spec(spec)
+    sys.modules[key] = m
     spec.loader.exec_module(m)
     return m
 
