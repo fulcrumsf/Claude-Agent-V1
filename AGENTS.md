@@ -87,11 +87,11 @@ This audits each file's Asset Note for filler descriptions. Filler = "likely a s
 - **Already cataloged** (real description found) → skip vision, go to Step 3
 - **Needs vision** → continue below
 
-For files flagged as needing vision, use the rename script:
+For files flagged as needing vision, use the image ingest script:
 ```bash
-python /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/rename_screenshots.py "/path/to/images"
+python /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/process_image_ingest.py "/path/to/images"
 ```
-Uses Gemini vision first and OpenAI vision as fallback. Requires the relevant API keys for whichever provider is used. Do not use OCR as the default path; only use it if Tony explicitly asks for OCR or a dedicated OCR workflow.
+Uses OpenRouter (qwen) vision first and OpenAI vision as fallback. It writes the note **and its renamed image together** into the matching category folder (same name stem), deduping on image hash / URL / title. Do not use OCR as the default path; only use it if Tony explicitly asks for OCR or a dedicated OCR workflow.
 
 ### Step 2: Add YAML Frontmatter (Text Files Only)
 

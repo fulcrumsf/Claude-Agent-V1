@@ -113,9 +113,9 @@ A proper Asset Note `ai_description` must be specific and observable: platform (
 
 When Claude usage quota is high, activate Conservation Mode: Codex becomes the primary brain, Claude only handles synthesis. Triggers: Tony says "usage limit", "conservation mode", "save tokens" etc. (reactive) OR 2+ of these in a session: 15+ tool calls, 5+ files written, 3+ major task cycles, 1 large build (proactive). Exit with "full mode" or "back to normal". Documented in `~/.claude/skills/three-brain/SKILL.md`.
 
-### 2026-05-01 — rename_screenshots.py Is Canonical Ingest Step 1.5
+### 2026-05-01 — rename_screenshots.py Is Canonical Ingest Step 1.5  _(SUPERSEDED — see below)_
 
-`001_Architecture/Scripts/rename_screenshots.py` uses Gemini 2.5 Flash vision to rename image files to descriptive kebab-case names. Accepts a directory as CLI arg; defaults to `000_Ingest/Process Screenshots/Rename/`. The ingest skill Step 1.5 calls this script. Requires `GEMINI_API_KEY` in environment. Duplicate removed from `000_Ingest/`.
+**SUPERSEDED 2026-09-09** by `process_image_ingest.py` (co-located image + note, dedup on ingest). `rename_screenshots.py` archived to `001_Architecture/Scripts/_Archive/`. Original: used Gemini 2.5 Flash vision to rename images to kebab-case; ingest Step 1.5 called it.
 
 ### 2026-05-03 — Screenshot Renaming Vision Order
 
@@ -193,8 +193,8 @@ Installing `be5invis.vscode-custom-css` and adding `vscode_custom_css.imports` w
 
 When modifying Antigravity's core files (like `workbench.html`) for UI customization, the application will show a "corrupt installation" warning on startup because the file checksums no longer match `product.json`. To fix this permanently without dismissing the notification every time, generate the SHA256 base64 hash of the modified file (minus the trailing '=') and replace the old hash in `/Applications/Antigravity.app/Contents/Resources/app/product.json` under the `checksums` object.
 
-### 2026-05-01 — update_asset_notes_vision.py
-`001_Architecture/Scripts/update_asset_notes_vision.py` scans resource library folders for images whose Asset Notes have filler descriptions. It uses Gemini vision with a text-extraction-focused prompt to rewrite the `ai_description` and `## AI Analysis` sections in place.
+### 2026-05-01 — update_asset_notes_vision.py  _(ARCHIVED 2026-09-09 — see `Scripts/_Archive/`)_
+`001_Architecture/Scripts/update_asset_notes_vision.py` scans resource library folders for images whose Asset Notes have filler descriptions. It uses Gemini vision with a text-extraction-focused prompt to rewrite the `ai_description` and `## AI Analysis` sections in place. **Retired** — operated on the deleted `Visual_Assets/` folder.
 
 ### 2026-05-01 — API Cost Mitigation via Multi-Agent Execution
 When performing large batch operations (e.g., passing 500 images to a vision API), do not execute the loop inside Claude Code, as it quickly consumes the Anthropic API org limit. Instead, use Claude Code to author the script, but execute the script using the Gemini CLI (or directly via a standard terminal) to leverage cheaper/unlimited Gemini Flash API endpoints.
@@ -276,8 +276,8 @@ After a full multi-agent coherence audit, the image pipeline was realigned. Curr
 - **Vision script:** `process_image_ingest.py` — uses OpenRouter (qwen model) first, OpenAI fallback. NOT Gemini.
 - **Audit script:** `check_vision_needed.py` — searches category folders (`Tools/`, `Research/`, etc.) for paired notes. Reads `## AI Analysis` section body. `Asset_Notes/` dir does NOT exist and is NOT used.
 - **Naming rule (absolute):** Every file in this workspace — images, notes, scripts exempt — uses Title-Case-With-Dashes. No exceptions.
-- **Deprecated:** `rename_screenshots.py` — produces lowercase kebab-case, uses Gemini API directly. Do not use.
-- **Embed fix tool:** `fix_embeds.py` — case-insensitive Visual_Assets lookup, fixes wrong-case `![[]]` embeds in category folder notes.
+- **Archived:** `rename_screenshots.py` — `Scripts/_Archive/`. Superseded by `process_image_ingest.py`.
+- **Embed fix tool:** `fix_embeds.py` — ARCHIVED 2026-09-09 (`Scripts/_Archive/`); relied on the deleted `Visual_Assets/` folder.
 - **435 ChatGPT export images** still need ingest: `007_Resource_Library/OpenAI_History/ChatGPT_Image_Generator/`
 
 ### 2026-05-09 — Planned: Agent-OS Build
@@ -1253,5 +1253,6 @@ Every image is stored **in the same category folder as its note, with the same n
 - No `Asset_Notes/` folder — never was, don't create one.
 - `process_image_ingest.py` writes note + image together and dedups on ingest: (1) skip byte-identical image, (2) skip if `url:` already in another note, (3) title clash → `-N` + `possible-duplicate` tag.
 - One-time migration done via `migrate_images_to_notes.py` (1,028 images, 0 broken embeds).
-- **Deprecated scripts** (they operate on the dead Visual_Assets folder — do not run): `update_asset_notes_vision.py`, `reroute_visual_assets.py`, `fix_embeds.py`, `fix_image_case.py`, `rename_screenshots.py`.
+- **Archived scripts** — moved to `001_Architecture/Scripts/_Archive/` (has a README), do NOT run: `reroute_visual_assets.py`, `fix_image_case.py`, `update_asset_notes_vision.py`, `fix_embeds.py`, `rename_screenshots.py`. Current image ingest = `process_image_ingest.py`.
+- `process_notion_edit.py` stays in `Scripts/` but is **deprecated** — its image-write path targeted the retired `Visual_Assets/`; needs rework for the co-located layout before any Notion re-import.
 - Obsidian setting: "Default location for new attachments" = "Same folder as current file".

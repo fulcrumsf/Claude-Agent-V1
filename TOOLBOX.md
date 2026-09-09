@@ -79,11 +79,10 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 **Broken-image / text-only note review:** `001_Architecture/Scripts/build_broken_image_review.py <notes.json> [--title T] [--outfile F]`
 - Generic full-text Keep/Strip/Junk review page for any list of notes. Folder + decision filters, bulk actions, copy/download decisions.
 
-**Image case fix script:** `001_Architecture/Scripts/fix_image_case.py`
-- Post-process cleanup: DEPRECATED 2026-09-09 (Visual_Assets retired)
-- Uses paired note's frontmatter `title:` field as source of truth; falls back to word-capitalizing the stem
-- Updates `![[...]]` embeds in paired notes and logs to `rename_log.md`
-- Run: `python3 001_Architecture/Scripts/fix_image_case.py` (dry run) or `--apply` to rename
+**ARCHIVED 2026-09-09 — do not run.** Five image scripts that operated on the retired
+`Visual_Assets/` folder now live in `001_Architecture/Scripts/_Archive/` (with a README):
+`reroute_visual_assets.py`, `fix_image_case.py`, `update_asset_notes_vision.py`,
+`fix_embeds.py`, `rename_screenshots.py`. Current image ingest = `process_image_ingest.py`.
 
 **Notion export processor:** `001_Architecture/Scripts/process_notion_edit.py`
 - Heuristic offline batch processor for large Notion exports when the export mixes md, json, csv, images, PDFs, spreadsheets, and Pages files.
