@@ -1237,12 +1237,22 @@ Seedance handoff must preserve verified visual observations from the accepted
 - Tony requires interview → plan → explicit approval → execution. Preference
   answers and resumed context alone do not authorize a later approval gate.
 - Experimental tool: `001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/`.
-  Current scope is Gate 2 local YOLO11s/ByteTrack diagnostics on Grandma-and-Bear
-  Part Three, with an isolated environment and OS-enforced offline inference.
+  Tony subsequently approved Gate 3: channel-independent group, subject, and hybrid
+  reframing with programmable shared profiles, per-video settings, and shot overrides.
+  Part Three remains the first test, with isolated dependencies and offline execution.
+- Tony preferred the third comparison variant, Hybrid, for this Grandma-and-Bear
+  Part Three test specifically. Keep other videos/channels configurable; this is
+  not a universal Hybrid default or authorization for a later implementation gate.
 - For this tool, use wider scene over a blurred background when the interaction
-  group cannot fit 9:16. This preference is approved; the camera planner is not.
+  group cannot fit 9:16. Also support individual subject views and a configurable
+  mixture of individual/group views. The shared JSON job interface should later
+  serve conversation, optional intake questions, and pipeline/Airtable controllers.
 - Production outputs stay under the production's `Shorts/` folder. Global adoption,
   narration-aware switching, and publishing remain separate approvals.
+- Longer-term direction: approved 16:9 masters can enter a global long-form-to-Shorts
+  workflow that selects complete clips, reframes, and produces multiple drafts.
+  Saved channel profiles can avoid repeated questions; a future Airtable checkbox
+  can submit the same shared job. Build framing first and adopt other stages later.
 
 ### 2026-09-09 — Resource Library images now live BESIDE their note (supersedes all 2026-05 "Visual_Assets" entries)
 
@@ -1256,3 +1266,14 @@ Every image is stored **in the same category folder as its note, with the same n
 - **Archived scripts** — moved to `001_Architecture/Scripts/_Archive/` (has a README), do NOT run: `reroute_visual_assets.py`, `fix_image_case.py`, `update_asset_notes_vision.py`, `fix_embeds.py`, `rename_screenshots.py`. Current image ingest = `process_image_ingest.py`.
 - `process_notion_edit.py` stays in `Scripts/` but is **deprecated** — its image-write path targeted the retired `Visual_Assets/`; needs rework for the co-located layout before any Notion re-import.
 - Obsidian setting: "Default location for new attachments" = "Same folder as current file".
+
+### 2026-09-09 — Resource Library Visualizer (built + shipped)
+
+Local browser tool for reviewing/culling `007_Resource_Library` — Tony's "Lightroom for screenshots." He does NOT browse in Obsidian; this is the review surface.
+
+- **Run:** `python3 001_Architecture/Tools/Resource-Library-Visualizer/serve.py` → `http://localhost:8756` (cold start ~12s while it indexes ~4,000 notes). Leave the terminal open; `Ctrl+C` stops it.
+- **What it does:** Notion-style card grid of every note with an image or YouTube video (newest-ingested first); text-only notes behind a toggle as color-coded `.md` glyphs. Filters: folder / source-type (YouTube·Screenshot·Bookmark) / top-8 tags / search. Click a card → note rendered Obsidian-style. Per-card: Edit (rewrites the `.md`), Re-run AI, Add Comment. Bulk: Delete, Re-run AI.
+- **Delete** = move note + sibling image to `~/Desktop/delete/` (never a hard delete; matches the existing `~/Desktop/Delete/` review folder). **Comments + edit-requests** → `~/Desktop/Resource_Library_Review/Review_Queue.md`; "Finalize Queue" seals a batch to hand to an agent.
+- **Files:** `001_Architecture/Tools/Resource-Library-Visualizer/` (`config/detect/notes/thumbs/render/queue/actions/serve.py` + `App.html` + README). Tests: `tests/resource_library_visualizer/` (39, pytest). Design + plan: `001_Architecture/Superpowers/Specs/2026-09-09-Resource-Library-Visualizer-*.md`.
+- **Known gaps:** no on-disk index cache (slow cold start); `Bookmark` source-detection is weak; `Re-run AI` needs `OPENROUTER_API_KEY` and hasn't been run live. Details in `2026-09-09_Session-Handoff_Claude.md`.
+- Merged to main + pushed 2026-09-09 (`dfb5ed8`).

@@ -1,5 +1,19 @@
 # 2026-09-09 Self-Review
 
+## Gate 3 camera planning
+
+- A valid subject crop can still be a poor edit when it lasts less than a second.
+  Inspect layout durations as well as geometry. Offline knowledge of the plan
+  allows brief crop returns to be replaced with a steady wider view.
+- Scene-level context matters: once multiple subjects are established, hold the
+  intended ending group view even when a track exits or temporarily disappears.
+- One global job/profile contract kept production-specific source paths, timing,
+  choices, and outputs out of the engine. The same interface can support future
+  controllers without adding a server or provider dependency now.
+- Verified 24 tests plus actual Part Three renders and independent camera/media
+  checks. Static review supports geometry and coverage claims; natural pacing
+  still needs Tony's normal-speed review.
+
 ## Local subject-aware reframer, Gate 2
 
 - What worked: isolated hash-locked dependencies, explicit offline enforcement,
@@ -46,3 +60,31 @@
 
 **Recurring pattern to fix:** I default to comprehensive answers. Tony repeatedly wants the
 narrow answer to the narrow question. Verbosity is the #1 friction this session.
+
+---
+
+## Evening addendum — Resource Library Visualizer
+
+**What worked:**
+- Brainstorm-then-plan-then-build with hard gates kept scope tight. The spec + plan were
+  written before any code; the plan's 11 TDD tasks executed cleanly with a green suite the
+  whole way.
+- Grounding the heuristics in real frontmatter (grepped `original_filename`, `source:`, tag
+  frequencies) before writing `detect.py` meant the source-label logic matched real data on
+  first run.
+- Live-testing against the real 4,000-note library (not just the fixture) surfaced two real
+  bugs the unit tests missed: YouTube-in-callout / frontmatter-only-YouTube not embedding, and
+  structural log files leaking into the gallery.
+
+**Mistake — test isolation:**
+- I loaded each module via `importlib` with a bare name and no `sys.modules` registration, so
+  `serve.actions.queue` and `serve.queue` were different objects. `monkeypatch` in the Flask
+  test client only patched one, so `test_delete_moves_and_updates_index` wrote real entries to
+  `~/Desktop/Resource_Library_Review/Review_Queue.md`. No library notes were harmed (the
+  DELETE path's dir *was* mocked), but the queue file got polluted.
+- **Fix + lesson:** any importlib-based module loader in a non-package tool dir MUST cache in
+  `sys.modules` so config is a singleton. Caught it because I diffed the queue file during live
+  verification — verifying the actual artifact (not just green tests) paid off again.
+
+**Deferred honestly in the handoff:** cold-start index cache, weak `Bookmark` detection, and
+`Re-run AI` never being exercised live (API cost). Didn't paper over these.

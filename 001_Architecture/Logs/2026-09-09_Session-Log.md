@@ -1,5 +1,39 @@
 # 2026-09-09 Session Log
 
+## Part Three framing selection
+
+- Tony preferred Hybrid (third comparison variant) for this video specifically.
+  Saved `Gate-3-Review-Decision-v1.json` beside the production review, and recorded
+  the scoped preference in feedback/shared memory. No rerender, global default
+  change, connector activation, or later-stage execution was performed.
+
+## Subject-aware reframer — Gate 3 implementation
+
+- Tony approved the expanded Gate 3 scope: a global engine with programmable group,
+  subject, and hybrid modes, saved profiles, per-video settings, and shot overrides.
+  Future automatic clipping, optional intake questions, and Airtable control are
+  architectural context; they are not implemented or activated in this gate.
+- Added `camera_plan.py`, `reframe.py`, `render_reframe.py`,
+  `Framing-Profiles-v1.json`, `test_camera_plan.py`, and `Job-Contract-v1.md` under
+  the existing shared tool. Extended the offline launcher. No dependencies added.
+- Created `Part-3-Framing-Job-v1.json` and two versioned render runs under the
+  production's `Shorts/Versions/v3/Auto-Reframe/`. Current candidate:
+  `Gate-3-Run-002/`, containing three 1080x1920 videos, comparison/debug videos,
+  contact sheet, crop-plan JSON, and verified report.
+- Initial review found brief crop returns and an ending-group interruption.
+  Fixed hold behavior and added regression tests. First run preserved under the
+  experiment's `Archived/Gate-3-Run-001/`, with an archive hash receipt.
+- All 24 behavioral tests passed. All five current videos passed full decode,
+  codec/timing checks and matching hashes; independent crop coverage, bounds,
+  pan/zoom limit, source integrity and resource checks passed. Render plus media
+  verification took 32.4 seconds. About 2.1 GiB allocated, 19.8 GiB free.
+- Saved `Gate-3-Review-v1.md`, `Gate-3-Test-Results-v1.txt`, and
+  `Gate-3-Verification-v1.json`. Updated shared memory, feedback, TOOLBOX, Workspace
+  Map, Architecture Directory, and tool documentation. Tony's playback review
+  remains pending. Master and prior Shorts are untouched.
+- Final Agent-OS build validation passed for all 15 selected code, configuration,
+  and handoff artifacts; saved `Gate-3-Build-Validation-v1.txt`.
+
 ## Neon Parcel subject-aware reframer — resumed Gate 2
 
 - Session began September 8 and resumed September 9. Tony requested interview →
@@ -94,3 +128,35 @@
 
 ### Commits pushed this thread
 9affa3d, 2b6763c, 687d426, bb27e13, b204193, e47c560, f8d3914 (+ earlier RL-enrichment tag session).
+
+---
+
+## Resource Library Visualizer — designed + built + shipped (Claude, Sep 9 evening)
+
+Full brainstorm → spec → plan → build → merge in one session. Tony's "Lightroom for
+screenshots" for reviewing/culling `007_Resource_Library`.
+
+- **Brainstormed** free-form (per his stated preference) — landed on: browser gallery,
+  Notion-style cards (image + title + summary + folder pill + 2 tag pills + colored source
+  label), default view = image/YouTube notes newest-first, text-only notes behind a toggle as
+  color-coded `.md` glyphs. Filters: folder / source-type / top-8 tags / search. Detail view =
+  note rendered Obsidian-style. Actions: bulk Delete (→ `~/Desktop/delete/`, card vanishes) +
+  Re-run AI; per-card Edit (rewrites the `.md`), Re-run AI, Add Comment. Comments +
+  edit-requests → `~/Desktop/Resource_Library_Review/Review_Queue.md`, "Finalize Queue" seals
+  a batch for the agent.
+- **Spec:** `001_Architecture/Superpowers/Specs/2026-09-09-Resource-Library-Visualizer-Design.md`
+- **Plan:** `...-Implementation-Plan.md` (11 tasks, TDD, executed inline)
+- **Tool:** `001_Architecture/Tools/Resource-Library-Visualizer/` — `config/detect/notes/thumbs/render/queue/actions/serve.py` + `App.html` + README. Flask, PyYAML, Pillow, markdown-it-py. 39 pytest tests (`tests/resource_library_visualizer/`).
+- **Run:** `python3 001_Architecture/Tools/Resource-Library-Visualizer/serve.py` → `localhost:8756` (cold start ~12s, indexes ~4,000 notes; 1,160 gallery cards).
+- **Bug caught mid-build:** modules were loading as separate instances → an early test run
+  wrote junk to the REAL `~/Desktop/Resource_Library_Review/Review_Queue.md`. Fixed with a
+  `sys.modules`-cached loader; deleted the junk file; confirmed no real notes were ever moved.
+- **Tony approved** the running version ("exactly what I want"), did not review code.
+- **Merged to main + pushed:** `dfb5ed8` (squash-free `--no-ff` merge of 12 commits). Branch deleted.
+- TOOLBOX.md + `007_Resource_Library/Directory.md` updated.
+
+### Deferred (in handoff)
+- No on-disk index cache → ~12s cold start. Fine for now; cache keyed by dir mtime is the fix.
+- Source-type labels heuristic (~90%): `Bookmark` detection is weak (needs `http` `source:` +
+  image); most image notes fall back to `Screenshot`. Refine after Tony uses it.
+- `Re-run AI` calls `process_image_ingest.process_image()` — needs `OPENROUTER_API_KEY`. Untested live (costs money).
