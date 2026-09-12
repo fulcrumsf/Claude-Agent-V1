@@ -1,13 +1,13 @@
 ---
-title: "Cali Boho"
+title: "Cali Boho Living Room Inspiration"
 type: design-inspiration
 category: design_inspiration
 tags:
-  - design-inspiration
+  - Art-Style
+  - Art-Reference
 created: 2026-05-03
 source: Databases/Projects/Designs & POD/Categories/Ikigai Room Mockups/Wall Art Mockups/Living Room - Boho/Image Gallery/Cali Boho.md
 ---
-
 ```markdown
 {
   "room_type": "Living Room",

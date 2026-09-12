@@ -1,24 +1,20 @@
 ---
-title: "Aliabdaal Origi Creatorgrid Handle Comment Down"
+title: "CreatorGrid"
 type: tool-doc
 category: content-strategy
 form: saas-tool
-summary: "A social media post promoting CreatorGrid, a service that handles paperwork and contracts. The caption encourages viewers to comment to receive the link, suggesting this is a promotional video for a tool designed for creator management."
-search_for: "CreatorGrid creator contracts platform aliabdaal"
+summary: A social media post promoting CreatorGrid, a service that handles paperwork
+  and contracts. The caption encourages viewers to comment to receive the link, suggesting
+  this is a promotional video for a tool designed for creator management.
+search_for: CreatorGrid creator contracts platform aliabdaal
 tags:
-  - screenshot
-  - reference
-  - creatorgrid
-  - contracts
-  - paperwork
-  - saas
-  - business-tools
-  - needs-enrichment
-original_filename: "IMG_8931.PNG"
+  - Product
+  - App
+original_filename: IMG_8931.PNG
 created: 2026-05-01
 enriched: 2026-09-05
+url: ''
 ---
-
 ![[Aliabdaal-Origi-Creatorgrid-Handle-Comment-Down.png]]
 
 ## Summary

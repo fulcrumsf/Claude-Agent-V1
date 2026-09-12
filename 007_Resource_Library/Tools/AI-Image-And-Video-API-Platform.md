@@ -1,13 +1,10 @@
 ---
-title: "AI-Image-And-Video-API-Platform"
+title: "Seedance 2.0 AI Image and Video API Platform"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - api
-  - video-production
-  - app-dev
+  - Image-Video-Model
+  - App
 created: 2026-06-06
 source: 000_Ingest/AI Image & Video API Platform.md
 ---

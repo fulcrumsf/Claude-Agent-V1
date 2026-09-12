@@ -1,13 +1,10 @@
 ---
-title: "Arcads-AI-Video-Agent-Skill-Pack"
+title: "Arcads AI Video Agent Skill Pack"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - video-production
-  - ads
-  - ugc-ads
+  - Image-Video-Model
+  - Coding-Agent
 created: 2026-06-06
 source: 000_Ingest/krusemediallcarcads-claude-code Arcads external API agent skills, prompting library, and CursorClaude workspace.md
 ---

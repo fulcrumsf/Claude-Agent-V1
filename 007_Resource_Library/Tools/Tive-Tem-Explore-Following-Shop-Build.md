@@ -1,15 +1,15 @@
 ---
-title: "Tive Tem Explore Following Shop Build"
+title: "Tive Tem Explore Following Shop Build Screenshot"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - App
 ai_description: "Screenshot of Tive Tem Explore Following Shop Build with readable text about tive tem explore following shop."
+summary: >-
+  Screenshot of Tive Tem Explore Following Shop Build with readable text about tive tem explore following shop.
 original_filename: "IMG_8797.PNG"
 created: 2026-05-01
 ---
-
 ![[Tive-Tem-Explore-Following-Shop-Build.png]]
 
 ## AI Analysis

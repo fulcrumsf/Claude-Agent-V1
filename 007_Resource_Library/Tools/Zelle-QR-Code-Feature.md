@@ -3,15 +3,11 @@ title: "Zelle QR Code Feature"
 type: extracted-knowledge
 category: tools
 tags:
-  - zelle
-  - mobile-payment
-  - qr-code
-  - fintech
-  - peer-to-peer
+  - App
+  - Guide
 original_filename: "Forms-And-Models-10.png"
 created: 2026-05-09
 ---
-
 ![[Zelle-QR-Code-Feature.png]]
 
 ## AI Analysis

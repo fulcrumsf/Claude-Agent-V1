@@ -1,5 +1,9 @@
 ---
+title: "Youtube & Tiktok Bookmarks"
 Category: Revenue Stream
+tags:
+  - Product
+  - Guide
 ---
 #### Youtube & Tiktok Bookmarks
 |![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/categories_gray.svg)Tags|

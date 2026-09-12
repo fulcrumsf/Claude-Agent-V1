@@ -3,13 +3,14 @@ title: "Claude Code Kills Agencies"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - claude
+  - Coding-Agent
+  - GitHub
 ai_description: "TikTok video by @nocode.joshua discussing 'Did Claude Code just kill marketing Agencies?' and featuring a GitHub repository coreyhaines31/marketing with a .claude-plugin and 'lead-magnets skill', likely saved as a 'claude code tutorial' for AI agent frameworks in marketing."
+summary: >-
+  TikTok video by @nocode.joshua discussing 'Did Claude Code just kill marketing Agencies?' and featuring a GitHub repository coreyhaines31/marketing with a .claude-plugin and 'lead-magnets skill', likely saved as a 'claude code tutorial' for AI agent frameworks in marketing.
 original_filename: "claude-code-kills-agencies.PNG"
 created: 2026-05-01
 ---
-
 ![[CLAUDE-Code-Kills-Agencies.png]]
 
 ## AI Analysis

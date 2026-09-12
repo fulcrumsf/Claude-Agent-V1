@@ -3,15 +3,11 @@ title: "Karpathy Inspired AutoBrowse Skill"
 type: extracted-knowledge
 category: tools
 tags:
-  - ai-agents
-  - skills-sh
-  - auto-browsing
-  - karpathy
-  - browser-base
+  - GitHub
+  - App
 original_filename: "Open-Source-AI-Tools-And-Investments-10.png"
 created: 2026-05-09
 ---
-
 ![[Karpathy-Inspired-AutoBrowse-Skill.png]]
 
 ## AI Analysis

@@ -1,5 +1,9 @@
 ---
+title: "AI Agents and Prompt Engineering Whitepapers"
 Status: Active
+tags:
+  - Guide
+  - LLM
 ---
 ## AI Agents and Prompt Engineering Whitepapers
 **OpenAI - A practical guide to AI Agents**

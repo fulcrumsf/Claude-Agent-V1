@@ -6,7 +6,8 @@ import unittest
 from pathlib import Path
 
 from camera_plan import build_plan, observations, settings_for
-from reframe import new_output, validate_plan
+from reframe import load_job, new_output, validate_plan
+from diagnose import sha256
 
 PROFILES = json.loads((Path(__file__).parent/"Framing-Profiles-v1.json").read_text())
 
@@ -132,6 +133,51 @@ class FramingTests(unittest.TestCase):
                 new_output(root/"existing",job)
             with self.assertRaisesRegex(ValueError,"direct new child"):
                 new_output(root.parent/"escaped",job)
+
+    def temporary_job(self, root):
+        source = root/"source.mp4"
+        source.write_bytes(b"source fingerprint fixture")
+        cache = fixture()
+        cache["schema_version"] = 1
+        cache["config"].update(source=str(source),source_sha256=sha256(source))
+        analysis = root/"analysis.json"
+        analysis.write_text(json.dumps(cache))
+        profiles = Path(__file__).parent/"Framing-Profiles-v1.json"
+        job = {"schema_version":1,"job_id":"test-job","approval":{"gate":3,"approved":True},
+               "source":str(source),"source_sha256":sha256(source),
+               "analysis":str(analysis),"analysis_sha256":sha256(analysis),
+               "profile_file":str(profiles),"profile_sha256":sha256(profiles),
+               "output_root":str(root),"output_stem":"Test",
+               "output":{"width":1080,"height":1920,"fps":30},
+               "variants":{"Group":{"profile":"group","settings":{},"shot_overrides":{}}},
+               "protected_media":{}}
+        path = root/"job.json"
+        path.write_text(json.dumps(job))
+        return path, job
+
+    def test_changed_detection_cache_is_rejected_before_creating_a_run(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            path,job=self.temporary_job(root)
+            Path(job["analysis"]).write_text("{}")
+            with self.assertRaisesRegex(ValueError,"fingerprint changed"):
+                load_job(path)
+            self.assertFalse((root/"run").exists())
+
+    def test_missing_gate_approval_is_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            path,job=self.temporary_job(Path(d))
+            job["approval"]["approved"]=False
+            path.write_text(json.dumps(job))
+            with self.assertRaisesRegex(ValueError,"approval record"):
+                load_job(path)
+
+    def test_edited_plan_cannot_crop_out_its_selected_subject(self):
+        cache=fixture()
+        plan=make_plan(cache,"subject")
+        plan["frames"][0]["crop_xyxy"]=[1000,0,1607.5,1080]
+        with self.assertRaisesRegex(ValueError,"subject is clipped"):
+            validate_plan({"variants":{"test":plan}},cache)
 
     def test_renderer_preserves_complete_foreground_in_group_view(self):
         import numpy as np

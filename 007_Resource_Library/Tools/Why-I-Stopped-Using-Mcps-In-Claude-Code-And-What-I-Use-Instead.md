@@ -3,11 +3,8 @@ title: "Why-I-Stopped-Using-Mcps-In-Claude-Code-And-What-I-Use-Instead"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - claude-code
-  - mcp
-  - ads
+  - LLM
+  - Coding-Agent
 created: 2026-06-06
 source: 000_Ingest/Why I Stopped Using MCPs in Claude Code (And What I Use Instead).md
 ---

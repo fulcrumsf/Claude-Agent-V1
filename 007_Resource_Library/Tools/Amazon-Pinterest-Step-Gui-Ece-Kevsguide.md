@@ -1,15 +1,15 @@
 ---
-title: "Amazon Pinterest Step Gui Ece Kevsguide"
+title: "Amazon Pinterest Step GUI"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - pinterest
+  - Product
 ai_description: "Screenshot of Amazon Pinterest Step Gui Ece Kevsguide with readable text about amazon pinterest step gui."
+summary: >-
+  Screenshot of Amazon Pinterest Step Gui Ece Kevsguide with readable text about amazon pinterest step gui.
 original_filename: "IMG_9322.PNG"
 created: 2026-05-01
 ---
-
 ![[Amazon-Pinterest-Step-Gui-Ece-Kevsguide.png]]
 
 ## AI Analysis

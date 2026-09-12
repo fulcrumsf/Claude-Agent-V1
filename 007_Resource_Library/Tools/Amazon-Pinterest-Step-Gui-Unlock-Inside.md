@@ -3,13 +3,13 @@ title: "Amazon Pinterest Step Gui Unlock Inside"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - pinterest
+  - Product
 ai_description: "Screenshot of Amazon Pinterest Step Gui Unlock Inside with readable text about amazon pinterest step gui."
+summary: >-
+  Screenshot of Amazon Pinterest Step Gui Unlock Inside with readable text about amazon pinterest step gui.
 original_filename: "IMG_9325.PNG"
 created: 2026-05-01
 ---
-
 ![[Amazon-Pinterest-Step-Gui-Unlock-Inside.png]]
 
 ## AI Analysis

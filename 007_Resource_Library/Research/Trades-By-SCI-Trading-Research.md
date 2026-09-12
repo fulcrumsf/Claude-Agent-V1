@@ -1,17 +1,14 @@
 ---
-title: "Trades By SCI Trading Research"
+title: "Trades By SCI Trading Research Discussion"
 type: extracted-knowledge
 category: research
 tags:
-  - trading
-  - education
-  - youtube
-  - research
-  - finance
+  - Stocks
+  - Guide
 original_filename: "Claude-Code-Agents-And-Research-15.png"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[Trades-By-SCI-Trading-Research.png]]
 
 ## AI Analysis

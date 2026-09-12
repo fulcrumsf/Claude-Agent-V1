@@ -1,14 +1,12 @@
 ---
-title: "Prompts Script 1"
+title: "Alexander the Great Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Alexander The Great/Prompts Script 1.md
 ---
-
 ==Certainly! Here are the revised prompts with references to Alexander the Great or the era of the King of Macedonia to ensure the correct timeframe is depicted:==
 1. ==An ancient scroll with "Alexander the Great" in golden letters from the era of the King of Macedonia, the texture and ink details captured vividly, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==Celestial bodies and mysterious symbols aligning, indicative of the era of Alexander the Great, with dramatic lighting highlighting the prophecy, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==

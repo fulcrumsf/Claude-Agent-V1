@@ -3,15 +3,14 @@ title: "Promptly AI Tool"
 type: tool-doc
 category: app-dev
 tags:
-  - screenshot
-  - prompt
-  - tools
-  - ai-image-generation
+  - Image-Video-Model
+  - App
 ai_description: "A social media comments section, likely Instagram or TikTok, discussing the AI image generation tool 'Promptefy,' which is shown with its 'Pacing' options like 'Slow burn' and 'Rhythmic pulse' — saved as a reference for a new AI tool or specific image generation parameters."
+summary: >-
+  A social media comments section, likely Instagram or TikTok, discussing the AI image generation tool 'Promptefy,' which is shown with its 'Pacing' options like 'Slow burn' and 'Rhythmic pulse' — saved as a reference for a new AI tool or specific image generation parameters.
 original_filename: "promptly-ai-tool.PNG"
 created: 2026-05-01
 ---
-
 ![[Promptly-AI-Tool.png]]
 
 ## What It Is

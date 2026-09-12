@@ -3,13 +3,14 @@ title: "Ray Video AI"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
+  - Image-Video-Model
+  - Product
 ai_description: "TikTok showing a video titled 'RAY3' by 'Kalloway' about 'new video AI' from 'Luma AI' with 2,415 likes, 39 comments, 1,056 saves, and 273 shares — likely saved for AI tool research or content ideas."
+summary: >-
+  TikTok showing a video titled 'RAY3' by 'Kalloway' about 'new video AI' from 'Luma AI' with 2,415 likes, 39 comments, 1,056 saves, and 273 shares — likely saved for AI tool research or content ideas.
 original_filename: "ray-3-video-ai.PNG"
 created: 2026-05-01
 ---
-
 ![[Ray-Video-AI.png]]
 
 ## AI Analysis

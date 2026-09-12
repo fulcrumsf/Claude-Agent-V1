@@ -3,15 +3,11 @@ title: "Claude Marketing Intelligence Automation"
 type: extracted-knowledge
 category: workflows
 tags:
-  - claude-ai
-  - marketing-intelligence
-  - automation-workflow
-  - competitor-analysis
-  - mcp-server
+  - LLM
+  - Research-List
 original_filename: "IMG_0365.PNG"
 created: 2026-08-24
 ---
-
 ![[Claude-Marketing-Intelligence-Automation.png]]
 
 ## AI Analysis

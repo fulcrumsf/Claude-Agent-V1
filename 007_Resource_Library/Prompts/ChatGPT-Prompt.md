@@ -1,17 +1,15 @@
 ---
-title: "ChatGPT Prompt"
+title: "ChatGPT Prompt - YouTube Channel Names"
 type: prompt
 category: content-strategy
 tags:
-  - screenshot
-  - chatgpt
-  - prompt
-  - branding
+  - Research-List
 ai_description: "The screenshot shows a YouTube video titled 'I Cloned a $50,000/Month 3D Documentary Channel Using AI (FULL COURSE)' from Money Degree, alongside a ChatGPT conversation generating 10 unique YouTube channel name ideas for mystery/documentary content, likely saved for AI-powered content creation research and branding inspiration."
+summary: >-
+  The screenshot shows a YouTube video titled 'I Cloned a $50,000/Month 3D Documentary Channel Using AI (FULL COURSE)' from Money Degree, alongside a ChatGPT conversation generating 10 unique YouTube channel name ideas for mystery/documentary content, likely saved for AI-powered content creation research and branding inspiration.
 original_filename: "Chatgpt_Prompt1.png"
 created: 2026-05-01
 ---
-
 ![[ChatGPT-Prompt.png]]
 
 ## Prompt Context

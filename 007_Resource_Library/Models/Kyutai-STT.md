@@ -1,15 +1,15 @@
 ---
-title: "Kyutai_stt"
+title: "Kyutai STT"
 type: model-doc
 category: ai-agents
 tags:
-  - screenshot
-  - reference
+  - Audio-Model
 ai_description: "TikTok video showcasing Kyutai STT, a real-time speech-to-text AI model with English/French and English-only models, demonstrated by @dr_cintas — saved as a tool to try for content creation."
+summary: >-
+  TikTok video showcasing Kyutai STT, a real-time speech-to-text AI model with English/French and English-only models, demonstrated by @dr_cintas — saved as a tool to try for content creation.
 original_filename: "Kyutai_STT.PNG"
 created: 2026-05-01
 ---
-
 ![[Kyutai-STT.png]]
 
 ## AI Analysis

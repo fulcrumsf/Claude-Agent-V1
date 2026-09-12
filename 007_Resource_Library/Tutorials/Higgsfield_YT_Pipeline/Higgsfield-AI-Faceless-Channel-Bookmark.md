@@ -3,15 +3,11 @@ title: "Higgsfield AI + Claude — Faceless Channel Video Bookmark"
 type: bookmark
 category: video-production
 tags:
-  - higgsfield-ai
-  - faceless-youtube
-  - claude-mcp
-  - ai-video-pipeline
-  - content-automation
+  - Guide
+  - Pipeline
 created: 2026-06-17
 source: https://www.youtube.com/watch?v=wU_bmWb6bhg
 ---
-
 ![](https://www.youtube.com/watch?v=wU_bmWb6bhg)
 
 I found a faceless YouTube channel making $39,500 a month — then rebuilt it with AI in under 20 minutes using Claude + Higgsfield MCP. No camera, no team, no editing.  

@@ -1,15 +1,13 @@
 ---
-title: "Video Use Coding Agents"
+title: "video-use: Edit Videos with Claude Code"
 type: tool-doc
 category: video-production
 tags:
-  - video-editing
-  - ai-agents
-  - browser-use
+  - Coding-Agent
+  - App
 created: 2026-05-08
 source: local
 ---
-
 [![video-use](https://github.com/browser-use/video-use/raw/main/static/video-use-banner.png)](https://github.com/browser-use/video-use/blob/main/static/video-use-banner.png)
 
 ## video-use

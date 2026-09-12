@@ -3,14 +3,11 @@ title: "Flim AI Movie Inspiration Tool"
 type: extracted-knowledge
 category: tools
 tags:
-  - film-production
-  - visual-development
-  - storyboarding
-  - creative-search-engine
+  - Art-Reference
+  - Product
 original_filename: "IMG_9965.PNG"
 created: 2026-08-24
 ---
-
 ![[Flim-AI-Movie-Inspiration-Tool.png]]
 
 ## AI Analysis

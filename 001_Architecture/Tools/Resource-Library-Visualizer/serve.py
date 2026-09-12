@@ -76,18 +76,32 @@ def create_app():
 
     @app.get("/api/filters")
     def api_filters():
-        folders = sorted({c["folder"] for c in idx() if c["folder"]})
+        folders = sorted({c["folder"] for c in idx() if c["folder"]}
+                         | set(config.CATEGORY_FOLDERS))
         # top tags from the gallery-visible notes (image / youtube), not text-only
         gallery = [c for c in idx() if c["kind"] != "text"]
         tag_counts = collections.Counter(t for c in gallery for t in c["tags"])
+        vocab = config.tag_vocabulary()
+        # off-vocab audit: any tag on ANY note (text-only included) that isn't in
+        # the locked vocabulary - leftovers from before the vocab existed, or a
+        # model slip that validation should have caught but didn't.
+        all_tag_counts = collections.Counter(
+            t for c in idx() if c["folder"] != "OpenAI_History" for t in c["tags"])
+        off_vocab = sorted(
+            ((t, n) for t, n in all_tag_counts.items() if t not in vocab),
+            key=lambda x: -x[1])
         return jsonify({"folders": folders,
-                        "top_tags": [t for t, _ in tag_counts.most_common(8)]})
+                        "move_targets": config.CATEGORY_FOLDERS,
+                        "top_tags": [t for t, _ in tag_counts.most_common(8)],
+                        "tag_vocab": sorted(vocab),
+                        "off_vocab_tags": off_vocab})
 
     @app.get("/api/note")
     def api_note():
         rel = request.args["path"]
         ab = _safe_abs(rel)
         fm, body = notes.parse_note(ab)
+        raw_fm, _ = notes.raw_frontmatter_text(ab)
         body_html = render.render_body(body, os.path.dirname(rel))
         card = next((c for c in idx() if c["path"] == rel), None)
         if card and card.get("youtube_id") and card["youtube_id"] not in body_html:
@@ -97,6 +111,7 @@ def create_app():
         return jsonify({
             "path": rel,
             "frontmatter": fm,
+            "frontmatter_raw": raw_fm,
             "frontmatter_html": render.frontmatter_html(fm),
             "body_html": body_html,
         })
@@ -122,7 +137,13 @@ def create_app():
     def patch_note():
         body = request.get_json(force=True)
         rel = body.pop("path")
-        actions.rewrite_note(rel, body)
+        if body.get("raw_frontmatter") is not None:
+            try:
+                actions.rewrite_note_raw(rel, body["raw_frontmatter"], body.get("body"))
+            except Exception as e:  # noqa: BLE001 - bad hand-edited YAML is expected
+                return jsonify({"ok": False, "error": str(e)}), 400
+        else:
+            actions.rewrite_note(rel, body)
         for c in idx():
             if c["path"] == rel:
                 fm, _ = notes.parse_note(os.path.join(config.RESOURCE_LIB, rel))
@@ -137,6 +158,28 @@ def create_app():
         moved = {p: actions.move_to_delete(p) for p in paths}
         app.config["INDEX"] = [c for c in idx() if c["path"] not in set(paths)]
         return jsonify({"ok": True, "moved": moved})
+
+    @app.post("/api/move")
+    def move():
+        b = request.get_json(force=True)
+        paths, dest = b["paths"], b["dest"]
+        moved, errors = {}, {}
+        for p in paths:
+            try:
+                new_rel = actions.move_note(p, dest)
+                for c in idx():
+                    if c["path"] == p:
+                        c["path"] = new_rel
+                        c["folder"] = dest
+                        c["abspath"] = os.path.join(config.RESOURCE_LIB, new_rel)
+                        if c.get("image_abspath"):
+                            c["image_abspath"] = os.path.join(
+                                config.RESOURCE_LIB, dest, os.path.basename(c["image_abspath"]))
+                        break
+                moved[p] = new_rel
+            except Exception as e:  # noqa: BLE001 - surface to UI
+                errors[p] = str(e)
+        return jsonify({"ok": not errors, "moved": moved, "errors": errors})
 
     @app.post("/api/rerun-ai")
     def rerun():

@@ -1,17 +1,16 @@
 ---
-title: "Agentkit OpenAI Platform"
+title: "AgentKit OpenAI Platform"
 type: tool-doc
 category: ai-agents
 tags:
-  - screenshot
-  - openai
-  - ai-agents
-  - tool
+  - Product
+  - App
 ai_description: "TikTok video by Thaddeus Demeke showcasing OpenAI's new 'AgentKit' on platform.openai.com, highlighting 'Build with AgentKit' design and deployment features with 650 likes and 552 saves; likely bookmarked for content ideas or AI tool research."
+summary: >-
+  TikTok video by Thaddeus Demeke showcasing OpenAI's new 'AgentKit' on platform.openai.com, highlighting 'Build with AgentKit' design and deployment features with 650 likes and 552 saves; likely bookmarked for content ideas or AI tool research.
 original_filename: "agentkit-openai-platform.PNG"
 created: 2026-05-01
 ---
-
 ![[AgentKit-OpenAI-Platform.png]]
 
 ## What It Is

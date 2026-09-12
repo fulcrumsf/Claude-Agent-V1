@@ -1,12 +1,10 @@
 ---
-title: "Uncensored-Ltx2.3-Is-Here-Generate-AI-Videos-Locally-Without-ComfyUI"
+title: "LTX 2.3: Generate AI Videos Locally Without ComfyUI"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - comfyui
-  - video-production
+  - Guide
+  - Image-Video-Model
 created: 2026-06-06
 source: 000_Ingest/UNCENSORED LTX2.3 Is HERE! Generate AI Videos Locally Without ComfyUI.md
 ---

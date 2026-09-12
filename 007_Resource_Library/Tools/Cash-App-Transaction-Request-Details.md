@@ -3,15 +3,11 @@ title: "Cash App Transaction Request Details"
 type: extracted-knowledge
 category: tools
 tags:
-  - cash-app
-  - fintech-interface
-  - mobile-payment
-  - transaction-details
-  - pending-transaction
+  - App
+  - Profile
 original_filename: "Forms-And-Models-09.jpeg"
 created: 2026-05-09
 ---
-
 ![[Cash-App-Transaction-Request-Details.jpeg]]
 
 ## AI Analysis

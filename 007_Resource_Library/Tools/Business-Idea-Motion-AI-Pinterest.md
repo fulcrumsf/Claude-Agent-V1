@@ -1,15 +1,16 @@
 ---
-title: "Business_idea_motion_ai_pinterest"
+title: "Motion AI for Pinterest Automation"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - pinterest
+  - App
+  - Product
 ai_description: "A TikTok video featuring Caden explaining a passive income strategy to make $10K/month using 'AI employees from Motion' to run an automated Pinterest page — saved as a business idea, content inspiration, or tool research for AI-powered automation."
+summary: >-
+  A TikTok video featuring Caden explaining a passive income strategy to make $10K/month using 'AI employees from Motion' to run an automated Pinterest page — saved as a business idea, content inspiration, or tool research for AI-powered automation.
 original_filename: "Business_Idea_Motion_AI_Pinterest.PNG"
 created: 2026-05-01
 ---
-
 ![[Business-Idea-Motion-AI-Pinterest.png]]
 
 ## AI Analysis

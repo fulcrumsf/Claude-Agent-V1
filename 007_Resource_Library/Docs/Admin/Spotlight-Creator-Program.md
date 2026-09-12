@@ -1,12 +1,10 @@
 ---
-title: "Spotlight-Creator-Program"
+title: "Spotlight Creator Program Details"
 type: doc
 category: content-strategy
 tags:
-  - reference
-  - documentation
-  - creator-program
-  - content-strategy
+  - Platforms
+  - Guide
 created: 2026-06-06
 source: 000_Ingest/Spotlight Creator Program.md
 ---

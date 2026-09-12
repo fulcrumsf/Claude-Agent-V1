@@ -318,7 +318,8 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ### Subject-Aware Reframer — Experimental Gate 3
 - **Tool:** `001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/`
-- **Status:** Channel-independent framing prototype with configurable group, subject, and hybrid modes. Part Three comparison awaits Tony's review; automatic clipping and pipeline adoption remain later stages.
+- **Status:** Channel-independent framing prototype with configurable group, subject, and hybrid modes. Tony preferred Hybrid for Part Three specifically; automatic clipping and channel integration are deferred.
+- **Resume / handoff:** For “plug the Shorts workflow into [channel]” or “connect the short-form clipping workflow,” read `001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/Future-Channel-Integration-Handoff-v1.md`. It records the built component, remaining work, examples, and channel-by-channel approval process.
 - **Runtime:** Isolated Python 3.11 environment, 42 approved hash-locked packages, official YOLO11s weights, explicit ByteTrack, FFmpeg/OpenCV diagnostics.
 - **Launcher:** `run_offline.py` dispatches detection and `plan/render/reframe` commands with OS network denial, automatic installs disabled, and tool-local caches. Detection uses restricted model loading.
 - **Configuration:** `Framing-Profiles-v1.json` and `Job-Contract-v1.md`; shared defaults, saved profiles, per-video settings, and shot overrides. No channel-specific camera code.

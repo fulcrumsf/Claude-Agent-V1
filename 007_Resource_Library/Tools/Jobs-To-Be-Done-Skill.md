@@ -3,13 +3,14 @@ title: "Jobs To Be Done Skill"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - jobs
+  - Guide
+  - Product
 ai_description: "TikTok video from @nocode.joshua featuring a 'Jobs To Be Done' framework diagram and discussing '5 Claude Skills that every beginner needs to install' with a GitHub link, likely saved as content research or a practical tool to explore."
+summary: >-
+  TikTok video from @nocode.joshua featuring a 'Jobs To Be Done' framework diagram and discussing '5 Claude Skills that every beginner needs to install' with a GitHub link, likely saved as content research or a practical tool to explore.
 original_filename: "jobs-to-be-done-skill.PNG"
 created: 2026-05-01
 ---
-
 ![[Jobs-To-Be-Done-Skill.png]]
 
 ## AI Analysis

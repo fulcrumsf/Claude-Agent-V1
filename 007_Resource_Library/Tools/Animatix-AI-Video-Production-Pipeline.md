@@ -3,15 +3,11 @@ title: "Animatix AI Video Production Pipeline"
 type: extracted-knowledge
 category: tools
 tags:
-  - animatix
-  - ai-video
-  - production-pipeline
-  - creative-software
-  - ai-technology
+  - Product
+  - Image-Video-Model
 original_filename: "Conference-Floorplan-Adobe-Vizrt-11.jpg"
 created: 2026-05-09
 ---
-
 ![[Animatix-AI-Video-Production-Pipeline.jpg]]
 
 ## AI Analysis

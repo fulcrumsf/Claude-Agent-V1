@@ -1,15 +1,15 @@
 ---
-title: "Now Notification ChatGPT Asks Com E340a D82c 8327 B314 90992d6621le"
+title: "ChatGPT Notification Screenshot"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - chatgpt
+  - App
 ai_description: "Screenshot of Now Notification ChatGPT Asks Com E340a D82c 8327 B314 90992d6621le with readable text about now."
+summary: >-
+  Screenshot of Now Notification ChatGPT Asks Com E340a D82c 8327 B314 90992d6621le with readable text about now.
 original_filename: "IMG_8673.PNG"
 created: 2026-05-01
 ---
-
 ![[Now-Notification-Chatgpt-Asks-Com-E340a-D82c-8327-B314-90992d6621le.png]]
 
 ## AI Analysis

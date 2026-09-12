@@ -1,14 +1,13 @@
 ---
-title: "How-To-Get-The-Open-Source-Higgsfield-AI-Free"
+title: "How to Get and Use the Open Source Higgsfield AI"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - ai-video
-  - video-production
+  - Guide
+  - Image-Video-Model
 created: 2026-06-06
 source: 000_Ingest/How to Get the Open Source Higgsfield AI (Free).md
+retag_flag: "bad-tag-count"
 ---
 ![](https://www.youtube.com/watch?v=4D7YDhsV-jM)
 

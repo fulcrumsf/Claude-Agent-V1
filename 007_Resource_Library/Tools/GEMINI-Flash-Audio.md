@@ -3,13 +3,14 @@ title: "Gemini Flash Audio"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - gemini
+  - LLM
+  - Audio-Model
 ai_description: "A TikTok video by @Rob The Ai Guy demonstrates Google AI Studio's settings for 'Gemini 2.5 Flash Native Audio Pre...' and a 'new screenshare update', likely saved by the user for AI tool research or content ideas."
+summary: >-
+  A TikTok video by @Rob The Ai Guy demonstrates Google AI Studio's settings for 'Gemini 2.5 Flash Native Audio Pre...' and a 'new screenshare update', likely saved by the user for AI tool research or content ideas.
 original_filename: "gemini-flash-audio.PNG"
 created: 2026-05-01
 ---
-
 ![[GEMINI-Flash-Audio.png]]
 
 ## AI Analysis

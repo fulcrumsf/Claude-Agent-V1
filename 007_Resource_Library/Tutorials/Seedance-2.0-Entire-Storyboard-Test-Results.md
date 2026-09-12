@@ -3,15 +3,11 @@ title: "I Gave Seedance 2.0 My Entire Storyboard - Here's What Happened"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - storyboard
-  - nano-banana-2
-  - gpt-image-2
-  - ai-video
+  - Guide
+  - Image-Video-Model
 created: 2026-08-10
 source: https://www.youtube.com/watch?v=7qBYe_VX_lE
 ---
-
 ![](https://www.youtube.com/watch?v=7qBYe_VX_lE)
 
 In this video I tested a completely different AI video workflow —  

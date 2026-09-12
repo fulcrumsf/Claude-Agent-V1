@@ -3,11 +3,10 @@ title: "Docker System Map"
 type: research
 category: research
 tags:
-  - research
+  - Research-List
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Docker System map.md
 ---
-
 🧭 Last updated Tue June 3, 2025
 ---
 # 🐳 Docker System Map

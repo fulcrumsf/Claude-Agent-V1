@@ -3,13 +3,13 @@ title: "Google Skills Logo"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
 ai_description: "TikTok video by @benkimball.ai discussing 'Google Skills: New AI Learning Platform' as a 'Game-Changer!' — saved for AI learning platform research or content ideas."
+summary: >-
+  TikTok video by @benkimball.ai discussing 'Google Skills: New AI Learning Platform' as a 'Game-Changer!' — saved for AI learning platform research or content ideas.
 original_filename: "google-skills-logo.PNG"
 created: 2026-05-01
 ---
-
 ![[Google-Skills-Logo.png]]
 
 ## AI Analysis

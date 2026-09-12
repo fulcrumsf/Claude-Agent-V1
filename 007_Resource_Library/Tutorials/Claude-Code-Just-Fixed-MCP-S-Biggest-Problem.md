@@ -1,15 +1,13 @@
 ---
-title: "Claude-Code-Just-Fixed-MCP-S-Biggest-Problem"
+title: "Claude Code Fixes MCP Context Window Bloat"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - claude-code
-  - mcp
-  - video-production
+  - Guide
+  - Coding-Agent
 created: 2026-06-06
 source: 000_Ingest/Claude Code Just Fixed MCP's Biggest Problem.md
+retag_flag: "bad-tag-value"
 ---
 ![](https://www.youtube.com/watch?v=itS3f1Y52t0)
 

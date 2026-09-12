@@ -3,13 +3,14 @@ title: "TikTok Viral Spreadsheet"
 type: doc
 category: content-strategy
 tags:
-  - screenshot
-  - tiktok
+  - Research-List
+  - Profile
 ai_description: "A TikTok video by @noeauautomates displays a spreadsheet of Instagram and TikTok accounts categorized by 'AI Automation' niche and audience size, offering the list upon commenting 'Viral'—likely saved for competitor research or lead generation."
+summary: >-
+  A TikTok video by @noeauautomates displays a spreadsheet of Instagram and TikTok accounts categorized by 'AI Automation' niche and audience size, offering the list upon commenting 'Viral'—likely saved for competitor research or lead generation.
 original_filename: "tiktok-viral-spreadsheet.PNG"
 created: 2026-05-01
 ---
-
 ![[TIKTOK-Viral-Spreadsheet.png]]
 
 ## AI Analysis

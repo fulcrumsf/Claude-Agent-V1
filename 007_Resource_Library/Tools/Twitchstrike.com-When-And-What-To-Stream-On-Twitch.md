@@ -1,12 +1,10 @@
 ---
-title: "Twitchstrike.com-When-And-What-To-Stream-On-Twitch"
+title: "Twitch Game Streaming Recommendations Tool"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - livestreaming
-  - app-dev
+  - Gaming
+  - Guide
 created: 2026-06-06
 source: 000_Ingest/TwitchStrike.com - When and what to stream on twitch.md
 ---

@@ -3,13 +3,14 @@ title: "Google Pomelli Launch"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
+  - App
 ai_description: "TikTok video by Marcin AI showcasing the newly launched 'Google Pomelli' AI design tool for generating on-brand content, with 271 likes, 11 comments, and 299 saves — saved as a potential new tool to try or content idea."
+summary: >-
+  TikTok video by Marcin AI showcasing the newly launched 'Google Pomelli' AI design tool for generating on-brand content, with 271 likes, 11 comments, and 299 saves — saved as a potential new tool to try or content idea.
 original_filename: "google-pomelli-launch.PNG"
 created: 2026-05-01
 ---
-
 ![[Google-Pomelli-Launch.png]]
 
 ## AI Analysis

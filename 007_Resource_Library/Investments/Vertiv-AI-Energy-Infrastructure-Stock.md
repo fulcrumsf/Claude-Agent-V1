@@ -3,15 +3,11 @@ title: "Vertiv AI Energy Infrastructure Stock"
 type: extracted-knowledge
 category: investments
 tags:
-  - vertiv
-  - ai-infrastructure
-  - stock-picks
-  - datacenter-power
-  - energy-investing
+  - Stocks
+  - Product
 original_filename: "Scribe-AI-Platform-06.png"
 created: 2026-05-09
 ---
-
 ![[Vertiv-AI-Energy-Infrastructure-Stock.png]]
 
 ## AI Analysis

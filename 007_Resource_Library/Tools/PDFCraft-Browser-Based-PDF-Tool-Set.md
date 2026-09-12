@@ -3,15 +3,11 @@ title: "PDFCraft Browser Based PDF Tool Set"
 type: extracted-knowledge
 category: tools
 tags:
-  - pdf-tools
-  - browser-based
-  - open-source
-  - privacy
-  - software
+  - App
+  - Product
 original_filename: "IMG_9809.PNG"
 created: 2026-08-24
 ---
-
 ![[PDFCraft-Browser-Based-PDF-Tool-Set.png]]
 
 ## AI Analysis

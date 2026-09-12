@@ -6,15 +6,10 @@ summary: "Chris Moran's website, chrismoran.link, offers a collection of free Af
 url: "https://chrismoran.link"
 verified: true
 tags:
-  - Tools
-  - after-effects
-  - motion-design
-  - video-editing
-  - animation-presets
-  - project-files
+  - App
+  - Guide
 created: 2026-09-05
 enriched: 2026-09-05
 ---
-
 ## Summary
 Chris Moran's website, chrismoran.link, offers a collection of free After Effects presets and project files. These resources are designed to help creators add high-quality text animations to their videos and accelerate motion design workflows.

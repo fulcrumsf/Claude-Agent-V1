@@ -3,15 +3,11 @@ title: "Martini AI Platform"
 type: extracted-knowledge
 category: tools
 tags:
-  - martini
-  - ai-platform
-  - innovation
-  - branding-signage
-  - trade-show
+  - Product
+  - Art-Reference
 original_filename: "AI-Booth-Conference-14.jpg"
 created: 2026-05-09
 ---
-
 ![[Martini-AI-Platform.jpg]]
 
 ## AI Analysis

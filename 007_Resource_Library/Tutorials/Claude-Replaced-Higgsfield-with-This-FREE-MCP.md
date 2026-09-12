@@ -1,16 +1,13 @@
 ---
-title: "Claude Replaced Higgsfield with This FREE MCP"
+title: "Claude Replaced Higgsfield with FREE MCP Connector"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - kie-ai
-  - ai-agents
-  - video-generation
+  - Guide
+  - Image-Video-Model
 created: 2026-08-29
 source: https://www.youtube.com/watch?v=IUV8QzwIb6g
 ---
-
 ![](https://www.youtube.com/watch?v=IUV8QzwIb6g)
 
 📌 Grab the FREE MCP 👉🏻 https://dainami.ai/go/kie-yt  

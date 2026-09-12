@@ -3,13 +3,13 @@ title: "Tive Rem Explore Following Shop Toya"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "Screenshot of Tive Rem Explore Following Shop Toya with readable text about tive rem explore following shop."
+summary: >-
+  Screenshot of Tive Rem Explore Following Shop Toya with readable text about tive rem explore following shop.
 original_filename: "IMG_8664.PNG"
 created: 2026-05-01
 ---
-
 ![[Tive-Rem-Explore-Following-Shop-Toya.png]]
 
 ## AI Analysis

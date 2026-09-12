@@ -1,15 +1,13 @@
 ---
-title: "Markitdown File Converter"
+title: "MarkItDown File Converter"
 type: tool-doc
 category: app-dev
 tags:
-  - markitdown
-  - file-conversion
-  - markdown
+  - LLM
+  - App
 created: 2026-05-08
 source: local
 ---
-
 ## MarkItDown
 
 > [!important] Important

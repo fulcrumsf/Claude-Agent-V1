@@ -31,6 +31,25 @@ def test_parse_note_no_frontmatter(tmp_path):
     assert "just markdown" in body
 
 
+def test_parse_note_broken_yaml_recovers_title_and_tags(tmp_path):
+    p = tmp_path / "C.md"
+    p.write_text(
+        '---\n'
+        'title: "React Bits Web"\n'
+        'category: app-dev\n'
+        'tags:\n'
+        '  - web-development\n'
+        '  - react\n'
+        'ai_description: "a tool called "React Bits" with "quotes" that break yaml"\n'
+        '---\nbody\n'
+    )
+    fm, body = notes.parse_note(str(p))
+    assert fm["title"] == "React Bits Web"
+    assert fm["category"] == "app-dev"
+    assert fm["tags"] == ["web-development", "react"]
+    assert body.strip() == "body"
+
+
 def test_find_sibling_image(tmp_path):
     (tmp_path / "OpenCode.md").write_text("x")
     (tmp_path / "OpenCode.png").write_bytes(b"\x89PNG")

@@ -3,14 +3,12 @@ title: "Boolean Job Search Google Dork Strategy"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - job-search-strategy
-  - boolean-search
-  - google-dorks
-  - career-hack
+  - Guide
+  - Platforms
 original_filename: "Job-Boards-9.PNG"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[Boolean-Job-Search-Google-Dork-Strategy.png]]
 
 ## AI Analysis

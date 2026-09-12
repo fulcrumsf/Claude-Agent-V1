@@ -1,15 +1,13 @@
 ---
-title: "Sirioberatiseedance-2.0-AI-UGC-AI-Video-Ad-Generation-And-Ab-Testing-Toolkit-Using-Seedance-2-On-Enhancor."
+title: "Seedance 2.0 AI UGC Video Generation and A/B Testing Toolkit"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - seedance
-  - ugc
-  - video-production
+  - Image-Video-Model
+  - Coding-Agent
 created: 2026-06-06
 source: 000_Ingest/sirioberatiSeedance-2.0-AI-UGC AI video ad generation and AB testing toolkit using Seedance 2 on Enhancor..md
+retag_flag: "bad-tag-value"
 ---
 ## Seedance 2.0 AI UGC
 

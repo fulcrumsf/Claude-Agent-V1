@@ -3,13 +3,11 @@ title: "AI Storyboard Video Pipeline"
 type: workflow
 category: video-production
 tags:
-  - video-production
-  - ai-automation
-  - storyboard
+  - Pipeline
+  - Image-Video-Model
 created: 2026-05-08
 source: local
 ---
-
 # AI Storyboard → Image → Video Automation Pipeline
 
 *A modular, long-form video generation system driven by narration beats, visual logic, and continuity-aware AI.*

@@ -6,20 +6,12 @@ form: tiktok
 summary: "A TikTok video post by financial creator Ron Dalal regarding investment opportunities. The text overlay explicitly references a prediction about '4 ETFs' investors should consider for the year 2026 to avoid missing out."
 search_for: "Ron Dalal 4 ETFs 2026"
 tags:
-  - etfs
-  - financial-advice
-  - stock-market
-  - investment-strategy
-  - investing
-  - etf
-  - finance
-  - ron-dalal
-  - needs-enrichment
+  - Stocks
+  - Guide
 original_filename: "IMG_9843.PNG"
 created: 2026-08-24
 enriched: 2026-09-05
 ---
-
 ![[Ron-Dalal-ETF-Investment-Strategy-2026.png]]
 
 ## Summary

@@ -1,15 +1,14 @@
 ---
-title: "Local LLM Video Captioning"
+title: "Local LLM Video Captioning Demo"
 type: tool-doc
 category: video-production
 tags:
-  - video-captioning
-  - local-ai
-  - video-editing
+  - LLM
+  - Image-Video-Model
 created: 2026-05-08
 source: local
+retag_flag: "bad-tag-count"
 ---
-
 ## Local LLM Video Captioning Demo
 
 [![Preview](https://github.com/stevibe/local-llm-video-captioning/raw/main/preview.jpg)](https://github.com/stevibe/local-llm-video-captioning/blob/main/preview.jpg)

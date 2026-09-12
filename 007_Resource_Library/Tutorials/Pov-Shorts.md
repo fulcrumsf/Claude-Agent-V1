@@ -1,5 +1,9 @@
 ---
+title: "RoboNuggets + n8n + Fal"
 Faceless Type: Baby Podcast
+tags:
+  - Guide
+  - Pipeline
 ---
 **High Priority**
 [https://youtu.be/X03tpmhTTL8?si=ErGNJYDxWQCBGCGz](https://youtu.be/X03tpmhTTL8?si=ErGNJYDxWQCBGCGz)

@@ -1,15 +1,16 @@
 ---
-title: "Amazon Pinterest Step Gui Kevsguide Gumroad"
+title: "Amazon Pinterest Step Guide"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - pinterest
+  - Guide
+  - App
 ai_description: "Screenshot of Amazon Pinterest Step Gui Kevsguide Gumroad with readable text about amazon pinterest step gui."
+summary: >-
+  Screenshot of Amazon Pinterest Step Gui Kevsguide Gumroad with readable text about amazon pinterest step gui.
 original_filename: "IMG_9323.PNG"
 created: 2026-05-01
 ---
-
 ![[Amazon-Pinterest-Step-Gui-Kevsguide-Gumroad.png]]
 
 ## AI Analysis

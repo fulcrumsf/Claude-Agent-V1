@@ -1,14 +1,13 @@
 ---
-title: "Script 6 Prompts"
+title: "Ottoman Empire Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Ottomans/Script 6 Prompts.md
+retag_flag: "bad-tag-value"
 ---
-
 1. A dramatic portrayal of an Ottoman warrior in battle, symbolizing the empire's military strength and resilience, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. The grand entrance to an Ottoman city, illustrating its strategic importance and architectural beauty, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. An Ottoman scholar deeply engrossed in philosophical texts, representing the intellectual pursuit of the era, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250

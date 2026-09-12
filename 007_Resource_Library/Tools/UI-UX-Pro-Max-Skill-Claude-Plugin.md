@@ -3,15 +3,12 @@ title: "UI UX Pro Max Skill Claude Plugin"
 type: extracted-knowledge
 category: tools
 tags:
-  - claude-ai
-  - github-repo
-  - ui-ux-design
-  - ai-plugin
-  - open-source
+  - GitHub
+  - Coding-Agent
 original_filename: "Open-Source-AI-Tools-02.png"
 created: 2026-05-09
+retag_flag: "bad-tag-count"
 ---
-
 ![[UI-UX-Pro-Max-Skill-Claude-Plugin.png]]
 
 ## AI Analysis

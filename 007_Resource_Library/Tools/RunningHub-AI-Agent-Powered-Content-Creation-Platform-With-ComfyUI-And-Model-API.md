@@ -1,15 +1,12 @@
 ---
-title: "RunningHub-AI-Agent-Powered-Content-Creation-Platform-With-ComfyUI-And-Model-API"
+title: "RunningHub AI-Powered Content Creation Platform"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - api
-  - comfyui
-  - ai-platforms
+  - Image-Video-Model
 created: 2026-06-06
 source: 000_Ingest/RunningHub ｜ AI Agent-Powered Content Creation Platform with ComfyUI & Model API.md
+retag_flag: "bad-tag-count"
 ---
 <video src="https://rh-images-1252422369.cos.ap-beijing.myqcloud.com/22820eb19d5010de41dbf6856e984340/2026-05-20/734e0c10d27fb08cf433e36357d15dbc.mp4" controls=""></video><video src="https://rh-images-1252422369.cos.ap-beijing.myqcloud.com/22820eb19d5010de41dbf6856e984340/2026-05-07/2500791f1edab8029641417c11bd557c.mp4" controls=""></video>
 

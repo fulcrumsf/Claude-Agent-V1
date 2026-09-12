@@ -3,15 +3,11 @@ title: "Base44 Superagent AI Platform"
 type: extracted-knowledge
 category: tools
 tags:
-  - ai-agent
-  - automation
-  - saas
-  - productivity
-  - base44
+  - Product
+  - App
 original_filename: "IMG_9960.PNG"
 created: 2026-08-24
 ---
-
 ![[Base44-Superagent-AI-Platform.png]]
 
 ## AI Analysis

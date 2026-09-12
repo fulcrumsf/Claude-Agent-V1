@@ -1,16 +1,16 @@
 ---
-title: "Claude Mem Plugin"
+title: "Claude-Mem Plugin"
 type: tool-doc
 category: ai-agents
 tags:
-  - screenshot
-  - claude
-  - plugin
+  - Product
+  - Coding-Agent
 ai_description: "TikTok post by @dr_cintas showcasing 'Claude-Mem,' a free, open-source plugin for Claude AI that provides persistent memory, reduces token usage by up to 95%, and increases tool calls 20x — likely saved for AI tool discovery or content creation ideas."
+summary: >-
+  TikTok post by @dr_cintas showcasing 'Claude-Mem,' a free, open-source plugin for Claude AI that provides persistent memory, reduces token usage by up to 95%, and increases tool calls 20x — likely saved for AI tool discovery or content creation ideas.
 original_filename: "claude-mem-plugin.PNG"
 created: 2026-05-01
 ---
-
 ![[Claude-Mem-Plugin.png]]
 
 ## What It Is

@@ -1,22 +1,17 @@
 ---
-title: "Unomas0795 Eye Level Straight On View Of A Modern Living Room 98a3c516 3672 4585 Bf77 2040000e19b3 1"
+title: "Eye Level Straight On View Of A Modern Living Room"
 type: design-inspiration
 category: design-inspiration
 form: design-reference
 summary: "A high-quality architectural rendering of a serene living space featuring Japandi or warm minimalism aesthetics. Key elements include natural light wood furniture, neutral beige and cream textiles, organic materials like woven rattan and ceramic pottery, and blooming branches as decor accents."
 search_for: "minimalist warm interior design japandi sofa wooden shelf mockup"
 tags:
-  - design-inspiration
-  - interior-design
-  - japandi
-  - minimalist
-  - natural-textures
-  - home-decor
-  - needs-enrichment
+  - Art-Reference
+  - Art-Style
 created: 2026-05-03
 enriched: 2026-09-05
+retag_flag: "bad-tag-value"
 ---
-
 ![[Unomas0795-Eye-Level-Straight-On-View-Of-A-Modern-Living-Room-98a3c516-3672-4585-Bf77-2040000e19b3-1.png]]
 
 ## Summary

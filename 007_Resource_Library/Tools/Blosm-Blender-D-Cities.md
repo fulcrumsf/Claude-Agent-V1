@@ -1,15 +1,16 @@
 ---
-title: "Blosm Blender D Cities"
+title: "Blosm Blender City Importer"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - 3D
+  - App
 ai_description: "TikTok video from 'Massimo' showcasing the 'Blosm' plugin for Blender that allows importing entire cities, visible with 22 likes and 10 bookmarks — likely saved as a tool reference or content idea for 3D modeling and digital asset creation."
+summary: >-
+  TikTok video from 'Massimo' showcasing the 'Blosm' plugin for Blender that allows importing entire cities, visible with 22 likes and 10 bookmarks — likely saved as a tool reference or content idea for 3D modeling and digital asset creation.
 original_filename: "blosm-blender-3d-cities.PNG"
 created: 2026-05-01
 ---
-
 ![[Blosm-Blender-D-Cities.png]]
 
 ## AI Analysis

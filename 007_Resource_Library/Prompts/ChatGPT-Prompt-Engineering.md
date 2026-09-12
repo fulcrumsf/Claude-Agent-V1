@@ -3,15 +3,14 @@ title: "ChatGPT Prompt Engineering"
 type: prompt
 category: content-strategy
 tags:
-  - screenshot
-  - chatgpt
-  - prompt
-  - prompt-engineering
+  - Guide
+  - LLM
 ai_description: "An Instagram post by @airesearches showcasing a Reddit post from r/PromptEngineering with a detailed 'Absolute Mode' prompt for ChatGPT to generate clear, accurate, and direct answers — likely saved as a prompt engineering reference or a powerful tool to try."
+summary: >-
+  An Instagram post by @airesearches showcasing a Reddit post from r/PromptEngineering with a detailed 'Absolute Mode' prompt for ChatGPT to generate clear, accurate, and direct answers — likely saved as a prompt engineering reference or a powerful tool to try.
 original_filename: "chatgpt-prompt-engineering.PNG"
 created: 2026-05-01
 ---
-
 ![[ChatGPT-Prompt-Engineering.png]]
 
 ## Prompt

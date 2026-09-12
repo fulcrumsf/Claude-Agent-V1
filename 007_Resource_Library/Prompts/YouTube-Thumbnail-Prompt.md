@@ -1,15 +1,14 @@
 ---
-title: "YouTube Thumbnail Prompt"
+title: "YouTube Thumbnail Prompt for n8n AI Agent"
 type: prompt
 category: content-strategy
 tags:
-  - prompt
-  - youtube
-  - thumbnail
+  - Art-Style
+  - App
 created: 2026-05-08
 source: local
+retag_flag: "bad-tag-value"
 ---
-
 Perfect use case for n8n 👍
 Below is a **production-ready prompt** you can drop directly into an **n8n AI Agent** (either as a **System Prompt** or **User Prompt**, depending on how you structure your workflow).
 

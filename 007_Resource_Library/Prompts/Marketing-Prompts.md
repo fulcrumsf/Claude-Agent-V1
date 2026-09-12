@@ -3,12 +3,10 @@ title: "Marketing Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Guide
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Prompting/Prompts/ChatGPT/ChatGPT Prompts/Marketing Prompts.md
 ---
-
 ### Pinpoint Target Audience
 Describe the perfect group of people who would love [product/service] in [specific niche]. Share lots of details about them, like their age, what they like, what makes them sad or worried, and how they usually act.
 ### Build a Full Content Marketing Plan

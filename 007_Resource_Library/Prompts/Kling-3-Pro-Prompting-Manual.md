@@ -3,15 +3,11 @@ title: "Kling 3 Pro Prompting Manual"
 type: "prompt"
 category: "video-production"
 tags:
-  - video-production
-  - kling
-  - prompting
-  - cinematic
-  - manual
+  - Guide
+  - Image-Video-Model
 created: 2026-05-12
 source: local
 ---
-
 # The Ultimate Kling 3.0 Pro Prompting Manual
 
 *A working director's reference, distilled from eleven primary sources across three research passes: the official Kling 3.0 user guide (via DataCamp's full walkthrough), fal.ai's API prompting guide, ImagineArt's 5-layer template, Travis Nicholson's styles compendium, Glif's 6-element framework, VEED's motion-intensity & negative-prompt system, Alici.ai's production-workflow guide (multi-shot beat mapping, POV style transfer, native-audio physics), Leonardo.ai's 4-element foundation with motivated camera language, Atlabs.ai's $1000-of-testing guide (time-coded sequencing, SFX notation, micro-motions, performance directions), Klingaio's physics-based motion fixes (heel-first walking, hand anchoring, text stability), and the Klingmotioncontrol UI tutorial (official limits, credit math, single-variable iteration). Built so that when you give me a script or idea, I can turn it into a Kling-ready prompt in one pass.*

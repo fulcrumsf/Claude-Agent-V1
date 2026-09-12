@@ -3,14 +3,10 @@ title: "KPop Demon Hunters Editing Breakdown"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - animation-editing
-  - avid-workflow
-  - film-education
-  - kpop-demon-hunters
+  - Guide
 original_filename: "Conference-Floorplan-Adobe-Vizrt-09.jpeg"
 created: 2026-05-09
 ---
-
 ![[KPop-Demon-Hunters-Editing-Breakdown.jpeg]]
 
 ## AI Analysis

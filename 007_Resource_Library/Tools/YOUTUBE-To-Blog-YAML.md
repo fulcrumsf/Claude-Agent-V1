@@ -3,13 +3,15 @@ title: "Youtube To Blog Yaml"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - youtube
-ai_description: "GitHub Actions showing a "YouTube to Blog" workflow with `youtube-to-blog.yml` and "1 workflow run" – likely saved by a content creator for automating content repurposing."
+  - GitHub
+  - Pipeline
+ai_description: >-
+  GitHub Actions showing a "YouTube to Blog" workflow with `youtube-to-blog.yml` and "1 workflow run" – likely saved by a content creator for automating content repurposing.
+summary: >-
+  GitHub Actions showing a "YouTube to Blog" workflow with `youtube-to-blog.yml` and "1 workflow run" – likely saved by a content creator for automating content repurposing.
 original_filename: "Youtube-to-Blog-YAML.png"
 created: 2026-05-01
 ---
-
 ![[YOUTUBE-To-Blog-YAML.png]]
 
 ## AI Analysis

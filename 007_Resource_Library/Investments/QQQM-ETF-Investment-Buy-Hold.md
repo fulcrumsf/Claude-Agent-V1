@@ -3,15 +3,10 @@ title: "QQQM ETF Investment Buy Hold"
 type: extracted-knowledge
 category: investments
 tags:
-  - stock-market
-  - etf
-  - investment-strategy
-  - nasdaq
-  - long-term-investing
+  - Stocks
 original_filename: "IMG_9838.PNG"
 created: 2026-08-24
 ---
-
 ![[QQQM-ETF-Investment-Buy-Hold.png]]
 
 ## AI Analysis

@@ -3,15 +3,11 @@ title: "AI Value Investor Free Training"
 type: extracted-knowledge
 category: investments
 tags:
-  - value-investing
-  - artificial-intelligence
-  - stock-market
-  - financial-education
-  - webinar
+  - Stocks
+  - Guide
 original_filename: "IMG_9870.PNG"
 created: 2026-08-24
 ---
-
 ![[AI-Value-Investor-Free-Training.png]]
 
 ## AI Analysis

@@ -1,17 +1,13 @@
 ---
-title: "AI Money Maker Kronos Model"
+title: "AI Money Maker Kronos Model Tutorial"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - kronos
-  - time-series
-  - ai-model
-  - research-summary
-  - machine-learning
+  - Guide
+  - LLM
 original_filename: "Forms-And-Models-14.png"
 created: 2026-05-09
 ---
-
 ![[AI-Money-Maker-Kronos-Model.png]]
 
 ## AI Analysis

@@ -3,14 +3,11 @@ title: "Electricity Usage Dashboard Mobile Interface"
 type: extracted-knowledge
 category: tools
 tags:
-  - utility-bills
-  - energy-tracking
-  - kwh-dashboard
-  - smart-home
+  - App
+  - Product
 original_filename: "IMG_0356.PNG"
 created: 2026-08-24
 ---
-
 ![[Electricity-Usage-Dashboard-Mobile-Interface.png]]
 
 ## AI Analysis

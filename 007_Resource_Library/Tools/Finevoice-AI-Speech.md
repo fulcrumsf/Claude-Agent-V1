@@ -1,15 +1,16 @@
 ---
-title: "Finevoice AI Speech"
+title: "Finevoice AI Speech Generator"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Audio-Model
+  - App
 ai_description: "TikTok video promoting FineVoice by FineShare, an AI Voice Generator & Text to Speech tool highlighting features like Text Emotion Control, Instant Voice Cloning (15s), and 154+ Multi-Language Support — saved as research for content creation tools."
+summary: >-
+  TikTok video promoting FineVoice by FineShare, an AI Voice Generator & Text to Speech tool highlighting features like Text Emotion Control, Instant Voice Cloning (15s), and 154+ Multi-Language Support — saved as research for content creation tools.
 original_filename: "finevoice-ai-speech.PNG"
 created: 2026-05-01
 ---
-
 ![[Finevoice-AI-Speech.png]]
 
 ## AI Analysis

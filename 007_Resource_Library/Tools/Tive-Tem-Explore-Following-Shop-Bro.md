@@ -3,13 +3,13 @@ title: "Tive Tem Explore Following Shop Bro"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - chatgpt
+  - App
 ai_description: "Screenshot of Tive Tem Explore Following Shop Bro with readable text about tive tem explore following shop."
+summary: >-
+  Screenshot of Tive Tem Explore Following Shop Bro with readable text about tive tem explore following shop.
 original_filename: "IMG_8774.PNG"
 created: 2026-05-01
 ---
-
 ![[Tive-Tem-Explore-Following-Shop-Bro.png]]
 
 ## AI Analysis

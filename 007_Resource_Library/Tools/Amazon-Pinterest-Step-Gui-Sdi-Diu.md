@@ -3,14 +3,13 @@ title: "Amazon Pinterest Step Gui Sdi Diu"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - pinterest
-  - design
+  - App
 ai_description: "Screenshot of Amazon Pinterest Step Gui Sdi Diu with readable text about amazon pinterest step gui."
+summary: >-
+  Screenshot of Amazon Pinterest Step Gui Sdi Diu with readable text about amazon pinterest step gui.
 original_filename: "IMG_9326.PNG"
 created: 2026-05-01
 ---
-
 ![[Amazon-Pinterest-Step-Gui-Sdi-Diu.png]]
 
 ## AI Analysis

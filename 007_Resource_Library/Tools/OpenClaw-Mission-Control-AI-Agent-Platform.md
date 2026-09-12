@@ -3,15 +3,11 @@ title: "OpenClaw Mission Control AI Agent Platform"
 type: extracted-knowledge
 category: tools
 tags:
-  - openclaw
-  - ai-agents
-  - automated-business
-  - dashboard
-  - saaS
+  - App
+  - Product
 original_filename: "IMG_9797.PNG"
 created: 2026-08-24
 ---
-
 ![[OpenClaw-Mission-Control-AI-Agent-Platform.png]]
 
 ## AI Analysis

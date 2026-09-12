@@ -1,14 +1,13 @@
 ---
-title: "Script 3 Prompts"
+title: "Ottoman Empire Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Image-Video-Model
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Ottomans/Script 3 Prompts.md
 ---
-
 1. Suleiman the Magnificent in regal attire, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator,' powerful and majestic --ar 16:9 --v 5.2 --s 250
 1. Grand bazaars of Constantinople, bustling and vibrant, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator' --ar 16:9 --v 5.2 --s 250
 1. Awe-inspiring Hagia Sophia, majestic architecture, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator' --ar 16:9 --v 5.2 --s 250

@@ -3,13 +3,14 @@ title: "Jules"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Coding-Agent
 ai_description: "TikTok 'For You' page showing a video by Nathan Hodgson introducing 'Jules—a free AI agent that builds apps for you', with a React code snippet and 'free' label, liked by 1,694 people and saved by 1,491 — likely saved as a bookmark for a new AI tool or content idea."
+summary: >-
+  TikTok 'For You' page showing a video by Nathan Hodgson introducing 'Jules—a free AI agent that builds apps for you', with a React code snippet and 'free' label, liked by 1,694 people and saved by 1,491 — likely saved as a bookmark for a new AI tool or content idea.
 original_filename: "Jules.PNG"
 created: 2026-05-01
 ---
-
 ![[Jules.png]]
 
 ## AI Analysis

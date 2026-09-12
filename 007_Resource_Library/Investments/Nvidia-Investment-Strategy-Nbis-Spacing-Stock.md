@@ -1,17 +1,13 @@
 ---
-title: "Nvidia Investment Strategy Nbis Spacing Stock"
+title: "Nvidia NBIS Investment Strategy"
 type: extracted-knowledge
 category: investments
 tags:
-  - nvidia-stock
-  - nbis
-  - investment-analysis
-  - semiconductors
-  - tech-spac
+  - Stocks
 original_filename: "IMG_9927.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Nvidia-Investment-Strategy-Nbis-Spacing-Stock.png]]
 
 ## AI Analysis

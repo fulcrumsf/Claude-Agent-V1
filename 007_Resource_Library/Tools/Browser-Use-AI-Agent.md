@@ -3,13 +3,13 @@ title: "Browser Use AI Agent"
 type: tool-doc
 category: ai-agents
 tags:
-  - screenshot
-  - ai-agents
+  - App
 ai_description: "A mobile browser displaying the homepage for 'Browser Use' at browser-use.com, highlighting its 'AI browser agent' for automating repetitive online tasks without code — likely saved for research into AI automation tools for business processes."
+summary: >-
+  A mobile browser displaying the homepage for 'Browser Use' at browser-use.com, highlighting its 'AI browser agent' for automating repetitive online tasks without code — likely saved for research into AI automation tools for business processes.
 original_filename: "browser-use-ai-agent.PNG"
 created: 2026-05-01
 ---
-
 ![[Browser-Use-AI-Agent.png]]
 
 ## AI Analysis

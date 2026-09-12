@@ -3,13 +3,11 @@ title: "Modly 3D Model Generator"
 type: tool-doc
 category: video-production
 tags:
-  - 3d-generation
-  - local-ai
-  - image-to-3d
+  - 3D
+  - Image-Video-Model
 created: 2026-05-08
 source: local
 ---
-
 [![Modly logo](https://github.com/lightningpixel/modly/raw/main/resources/icons/icon.png)](https://github.com/lightningpixel/modly/blob/main/resources/icons/icon.png)
 
 ## Modly

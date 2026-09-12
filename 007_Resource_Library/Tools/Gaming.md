@@ -3,11 +3,11 @@ title: "Gaming"
 type: tool-doc
 category: tools
 tags:
-  - tools
+  - Gaming
+  - App
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Bookmarks/Bookmarks/Gaming.md
 ---
-
 #### Gaming Gallery
 |![](https://www.notion.so/icons/font_gray.svg)Game Title|![](https://www.notion.so/icons/tag_gray.svg)Tags|![](https://www.notion.so/icons/subtitles_gray.svg)Description|![](https://www.notion.so/icons/link_gray.svg)URL|
 |---|---|---|---|

@@ -3,14 +3,11 @@ title: "Frozen Pizza Recs Rating"
 type: extracted-knowledge
 category: personal
 tags:
-  - frozen-food
-  - pizza-ratings
-  - grocery-haul
-  - food-reviews
+  - Health
+  - Product
 original_filename: "IMG_0350.PNG"
 created: 2026-08-24
 ---
-
 ![[Frozen-Pizza-Recs-Rating.png]]
 
 ## AI Analysis

@@ -1,17 +1,13 @@
 ---
-title: "How I Got 11M Views and 30K Subscribers in 3 Days With This AI Workflow"
+title: "How to Create a Viral AI Portal Video: Full Breakdown"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - video-to-video
-  - higgsfield
-  - prompt-engineering
-  - viral-content
+  - Guide
+  - Image-Video-Model
 created: 2026-08-10
 source: https://www.youtube.com/watch?v=f0QIKt9djqs
 ---
-
 ![](https://www.youtube.com/watch?v=f0QIKt9djqs)
 
 How My AI Reel Hit 10M Views in 3 Days (Full AI Video Breakdown)  

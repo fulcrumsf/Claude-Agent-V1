@@ -3,15 +3,14 @@ title: "Cross X Prompt"
 type: prompt
 category: video-production
 tags:
-  - screenshot
-  - prompt
-  - ai-video
-  - prompt-engineering
+  - Guide
+  - Image-Video-Model
 ai_description: "TikTok 'For You' page showing a video by Victor C demonstrating '3D Cross Section Videos using AI' with a detailed prompt template, including camera angle options like 'side view / bird's eye / high-angle push-in' — likely saved as an AI video generation tutorial or prompt engineering reference."
+summary: >-
+  TikTok 'For You' page showing a video by Victor C demonstrating '3D Cross Section Videos using AI' with a detailed prompt template, including camera angle options like 'side view / bird's eye / high-angle push-in' — likely saved as an AI video generation tutorial or prompt engineering reference.
 original_filename: "Cross_X_Prompt7689.PNG"
 created: 2026-05-01
 ---
-
 ![[Cross-X-Prompt.png]]
 
 ## Prompt Template

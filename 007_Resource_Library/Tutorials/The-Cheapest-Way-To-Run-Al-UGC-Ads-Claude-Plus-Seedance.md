@@ -1,15 +1,13 @@
 ---
-title: "The-Cheapest-Way-To-Run-Al-UGC-Ads-Claude-Plus-Seedance"
+title: "AI UGC Ad Pipeline with Claude and Seedance 2"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - claude-code
-  - seedance
-  - ugc
+  - Pipeline
+  - LLM
 created: 2026-06-06
 source: 000_Ingest/The CHEAPEST way to run Al UGC Ads (Claude +Seedance).md
+retag_flag: "bad-tag-value"
 ---
 ![](https://www.youtube.com/watch?v=M1NsJHcX9rY)
 

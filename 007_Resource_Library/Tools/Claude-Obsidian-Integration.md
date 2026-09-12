@@ -3,15 +3,11 @@ title: "Claude Obsidian Integration"
 type: extracted-knowledge
 category: tools
 tags:
-  - claude-ai
-  - obsidian
-  - knowledge-management
-  - ai-integration
-  - second-brain
+  - LLM
+  - App
 original_filename: "Claude-Code-Agents-And-Research-08.png"
 created: 2026-05-09
 ---
-
 ![[Claude-Obsidian-Integration.png]]
 
 ## AI Analysis

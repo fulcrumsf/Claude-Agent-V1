@@ -1,4 +1,5 @@
 ---
+title: "PI + OpenRouter Local Auth Setup"
 type: research
 status: active
 date: "2026-04-08"
@@ -8,8 +9,10 @@ related:
   - "[[OpenRouter]]"
   - "[[PI Harness Architecture for EMAI]]"
   - "[[2026-04-08 – PI Agent Teams Video Breakdown]]"
+tags:
+  - Coding-Agent
+  - Guide
 ---
-
 # PI + OpenRouter Local Auth Setup
 
 Source:

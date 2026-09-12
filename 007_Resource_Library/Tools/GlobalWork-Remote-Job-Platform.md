@@ -3,15 +3,11 @@ title: "GlobalWork Remote Job Platform"
 type: extracted-knowledge
 category: tools
 tags:
-  - remote-jobs
-  - job-platform
-  - gig-economy
-  - onboarding
-  - employment
+  - Platforms
+  - Product
 original_filename: "Open-Source-AI-Tools-And-Investments-09.png"
 created: 2026-05-09
 ---
-
 ![[GlobalWork-Remote-Job-Platform.png]]
 
 ## AI Analysis

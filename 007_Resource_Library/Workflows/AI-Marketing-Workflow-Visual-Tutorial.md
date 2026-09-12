@@ -3,14 +3,11 @@ title: "AI Marketing Workflow Visual Tutorial"
 type: extracted-knowledge
 category: workflows
 tags:
-  - ai-workflow
-  - marketing-strategy
-  - video-generation
-  - prompting-techniques
+  - Guide
+  - Image-Video-Model
 original_filename: "IMG_0374.PNG"
 created: 2026-08-24
 ---
-
 ![[AI-Marketing-Workflow-Visual-Tutorial.png]]
 
 ## AI Analysis

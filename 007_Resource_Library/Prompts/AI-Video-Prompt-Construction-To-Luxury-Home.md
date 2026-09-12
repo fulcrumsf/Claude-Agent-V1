@@ -3,15 +3,12 @@ title: "AI Video Prompt Construction To Luxury Home"
 type: extracted-knowledge
 category: prompts
 tags:
-  - ai-video-prompts
-  - construction-transformation
-  - luxury-interior
-  - prompt-engineering
-  - render-generation
+  - Art-Style
+  - Guide
 original_filename: "Open-Source-AI-Tools-06.png"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[AI-Video-Prompt-Construction-To-Luxury-Home.png]]
 
 ## AI Analysis

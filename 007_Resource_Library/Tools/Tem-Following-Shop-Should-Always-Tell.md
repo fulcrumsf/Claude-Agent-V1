@@ -1,15 +1,15 @@
 ---
-title: "Tem Following Shop Should Always Tell"
+title: "Tem Following Shop Always Tell"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - App
 ai_description: "Screenshot of Tem Following Shop Should Always Tell with readable text about tem following shop."
+summary: >-
+  Screenshot of Tem Following Shop Should Always Tell with readable text about tem following shop.
 original_filename: "IMG_8539.PNG"
 created: 2026-05-01
 ---
-
 ![[Tem-Following-Shop-Should-Always-Tell.png]]
 
 ## AI Analysis

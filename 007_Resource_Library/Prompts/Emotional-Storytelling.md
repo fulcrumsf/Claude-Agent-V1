@@ -1,13 +1,12 @@
 ---
-title: "Emotional Storytelling"
+title: "Emotional Storytelling Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
+  - Audio-Model
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Prompting/Prompts/ChatGPT/ChatGPT Prompts/Emotional Storytelling.md
 ---
-
 ### 📝 Writing Prompt
   
 Write in a slow-burning, emotionally reflective monologue style. Each line should feel intentional—calm, yet piercing. Use short sentences that echo. Speak to the viewer like a trusted friend or inner voice. Blend philosophical insight with poetic melancholy. Minimalist. Understated. No yelling. No excitement. Just raw, focused truth wrapped in stillness.

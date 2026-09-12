@@ -1,15 +1,16 @@
 ---
-title: "Softr"
+title: "Softr Product Update - New Databases"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "TikTok video displaying a product update from the no-code platform Softr announcing new Databases, posted by Nathan Hodgson and featuring the text 'shipped' — likely saved for no-code tool research or content ideas."
+summary: >-
+  TikTok video displaying a product update from the no-code platform Softr announcing new Databases, posted by Nathan Hodgson and featuring the text 'shipped' — likely saved for no-code tool research or content ideas.
 original_filename: "Softr.PNG"
 created: 2026-05-01
 ---
-
 ![[Softr.png]]
 
 ## AI Analysis

@@ -3,15 +3,12 @@ title: "Easy Machine Protocol V2"
 type: "workflow"
 category: "architecture"
 tags:
-  - architecture
-  - workflow
-  - protocol
-  - ai-agents
-  - automation
+  - Guide
+  - Pipeline
 created: 2026-05-12
 source: local
+retag_flag: "bad-tag-value"
 ---
-
 START HERE
 
 ## GET THESE FIRST

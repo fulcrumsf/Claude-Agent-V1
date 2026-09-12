@@ -1,7 +1,8 @@
 ---
+title: "Bookmarks"
 Category: Research
 tags:
-  - Reference
+  - Platforms
 ---
 #### Bookmarks
 |![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/categories_gray.svg)Category|

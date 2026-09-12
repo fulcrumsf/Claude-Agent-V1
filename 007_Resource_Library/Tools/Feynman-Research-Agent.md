@@ -3,13 +3,12 @@ title: "Feynman Research Agent"
 type: tool-doc
 category: ai-agents
 tags:
-  - ai-agents
-  - research
-  - open-source
+  - GitHub
+  - LLM
 created: 2026-05-08
 source: local
+retag_flag: "bad-tag-count"
 ---
-
 ## The open source AIresearch agent
 
 Reads papers, searches the web, writes drafts, runs experiments, and cites every claim. All locally on your computer.

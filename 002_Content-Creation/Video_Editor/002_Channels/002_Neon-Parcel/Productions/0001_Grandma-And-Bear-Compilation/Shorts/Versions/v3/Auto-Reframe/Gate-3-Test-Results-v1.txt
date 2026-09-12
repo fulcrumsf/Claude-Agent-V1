@@ -1,0 +1,29 @@
+test_changed_source_is_rejected_before_loading_model (test_diagnose.DiagnosticBoundaryTests.test_changed_source_is_rejected_before_loading_model) ... ok
+test_cut_frame_belongs_to_new_shot (test_diagnose.DiagnosticBoundaryTests.test_cut_frame_belongs_to_new_shot) ... ok
+test_duplicate_species_labels_do_not_hide_a_distinct_nearby_animal (test_diagnose.DiagnosticBoundaryTests.test_duplicate_species_labels_do_not_hide_a_distinct_nearby_animal) ... ok
+test_existing_json_is_never_overwritten (test_diagnose.DiagnosticBoundaryTests.test_existing_json_is_never_overwritten) ... ok
+test_irregular_pts_are_held_until_next_real_frame (test_diagnose.DiagnosticBoundaryTests.test_irregular_pts_are_held_until_next_real_frame) ... ok
+test_no_animals_is_a_valid_detection_result (test_diagnose.DiagnosticBoundaryTests.test_no_animals_is_a_valid_detection_result) ... ok
+test_real_part_three_duration_rounds_up_without_exposing_next_shot (test_diagnose.DiagnosticBoundaryTests.test_real_part_three_duration_rounds_up_without_exposing_next_shot) ... ok
+test_unprotected_launch_is_rejected (test_diagnose.DiagnosticBoundaryTests.test_unprotected_launch_is_rejected) ... ok
+test_alternation_works_for_two_people_without_an_animal (test_camera_plan.FramingTests.test_alternation_works_for_two_people_without_an_animal) ... ok
+test_brief_crop_return_between_wide_views_is_suppressed (test_camera_plan.FramingTests.test_brief_crop_return_between_wide_views_is_suppressed) ... ok
+test_changed_detection_cache_is_rejected_before_creating_a_run (test_camera_plan.FramingTests.test_changed_detection_cache_is_rejected_before_creating_a_run) ... ok
+test_edited_plan_cannot_crop_out_its_selected_subject (test_camera_plan.FramingTests.test_edited_plan_cannot_crop_out_its_selected_subject) ... ok
+test_gap_bridging_stops_after_the_configured_limit (test_camera_plan.FramingTests.test_gap_bridging_stops_after_the_configured_limit) ... ok
+test_group_mode_never_discards_source_edges (test_camera_plan.FramingTests.test_group_mode_never_discards_source_edges) ... ok
+test_hybrid_combines_views_and_keeps_the_payoff_wide (test_camera_plan.FramingTests.test_hybrid_combines_views_and_keeps_the_payoff_wide) ... ok
+test_hybrid_ending_stays_wide_when_an_animal_exits (test_camera_plan.FramingTests.test_hybrid_ending_stays_wide_when_an_animal_exits) ... ok
+test_missing_gate_approval_is_rejected (test_camera_plan.FramingTests.test_missing_gate_approval_is_rejected) ... ok
+test_new_run_cannot_overwrite_or_escape_output_root (test_camera_plan.FramingTests.test_new_run_cannot_overwrite_or_escape_output_root) ... ok
+test_one_subject_does_not_get_a_scheduled_camera_reset (test_camera_plan.FramingTests.test_one_subject_does_not_get_a_scheduled_camera_reset) ... ok
+test_renderer_preserves_complete_foreground_in_group_view (test_camera_plan.FramingTests.test_renderer_preserves_complete_foreground_in_group_view) ... ok
+test_scene_override_is_local_and_cut_resets_camera (test_camera_plan.FramingTests.test_scene_override_is_local_and_cut_resets_camera) ... ok
+test_subject_mode_follows_motion_with_bounded_speed_and_full_subject (test_camera_plan.FramingTests.test_subject_mode_follows_motion_with_bounded_speed_and_full_subject) ... ok
+test_too_wide_a_subject_falls_back_without_clipping (test_camera_plan.FramingTests.test_too_wide_a_subject_falls_back_without_clipping) ... ok
+test_unknown_settings_and_shot_names_fail (test_camera_plan.FramingTests.test_unknown_settings_and_shot_names_fail) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 1.514s
+
+OK

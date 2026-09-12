@@ -1,15 +1,13 @@
 ---
-title: "Build Obsidian System"
+title: "Build an AI Operating System and IDE with Obsidian"
 type: tutorial
 category: architecture
 tags:
-  - obsidian
-  - knowledge-management
-  - system-design
+  - Guide
+  - Coding-Agent
 created: 2026-05-08
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=OZ3ZNhrPbF4)
 
 🤖 FREE RESOURCES: https://easymachineai.com/links  

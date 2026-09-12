@@ -3,15 +3,11 @@ title: "Adal Agent CLI Claude Opus Integration"
 type: extracted-knowledge
 category: tools
 tags:
-  - adal-agent
-  - claude-opus-4-6
-  - cli-tool
-  - ai-coding
-  - developer-tools
+  - Coding-Agent
+  - LLM
 original_filename: "IMG_9836.PNG"
 created: 2026-08-24
 ---
-
 ![[Adal-Agent-CLI-Claude-Opus-Integration.png]]
 
 ## AI Analysis

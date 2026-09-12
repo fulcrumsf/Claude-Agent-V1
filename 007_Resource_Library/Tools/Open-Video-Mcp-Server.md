@@ -1,17 +1,13 @@
 ---
-title: "Open Video Mcp Server"
+title: "Open Video MCP Server"
 type: extracted-knowledge
 category: tools
 tags:
-  - mcp-server
-  - ai-agents
-  - video-automation
-  - natural-language
-  - api-integration
+  - Product
+  - App
 original_filename: "Scribe-AI-Platform-12.png"
 created: 2026-05-09
 ---
-
 ![[Open-Video-Mcp-Server.png]]
 
 ## AI Analysis

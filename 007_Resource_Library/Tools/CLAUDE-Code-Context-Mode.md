@@ -3,13 +3,14 @@ title: "Claude Code Context Mode"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - claude
+  - Coding-Agent
+  - LLM
 ai_description: "TikTok video by @Sabrina Ramonov promoting a free 'Context Mode' tool that reduces Claude AI token consumption by 98% (315KB to 5.4KB) — saved as a resource for AI optimization or a content idea."
+summary: >-
+  TikTok video by @Sabrina Ramonov promoting a free 'Context Mode' tool that reduces Claude AI token consumption by 98% (315KB to 5.4KB) — saved as a resource for AI optimization or a content idea.
 original_filename: "claude-code-context-mode.PNG"
 created: 2026-05-01
 ---
-
 ![[CLAUDE-Code-Context-Mode.png]]
 
 ## AI Analysis

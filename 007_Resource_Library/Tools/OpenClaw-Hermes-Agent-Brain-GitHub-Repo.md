@@ -3,15 +3,11 @@ title: "OpenClaw Hermes Agent Brain GitHub Repo"
 type: extracted-knowledge
 category: tools
 tags:
-  - openclaw
-  - hermes
-  - git-hub
-  - ai-agents
-  - garrys-opinionated
+  - GitHub
+  - Coding-Agent
 original_filename: "IMG_0029.PNG"
 created: 2026-08-24
 ---
-
 ![[OpenClaw-Hermes-Agent-Brain-GitHub-Repo.png]]
 
 ## AI Analysis

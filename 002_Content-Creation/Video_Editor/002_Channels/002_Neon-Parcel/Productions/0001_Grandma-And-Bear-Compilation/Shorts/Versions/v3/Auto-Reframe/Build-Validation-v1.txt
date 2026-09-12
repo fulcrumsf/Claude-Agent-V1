@@ -1,0 +1,56 @@
+
+🔍 AGENT-OS BUILD VALIDATION
+==================================================
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/diagnose.py
+  ✓ Syntax: valid
+  ✓ CLI --help: runs without error
+  ✓ Referenced paths: checked
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/run_offline.py
+  ✓ Syntax: valid
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/test_diagnose.py
+  ✓ Syntax: valid
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/Offline.sb
+  ✓ Exists and non-empty
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/requirements-approved.txt
+  ✓ Exists and non-empty
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/requirements.lock
+  ✓ Exists and non-empty
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/Dependency-Provenance-v1.json
+  ✓ JSON syntax: valid
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/Models/Model-Receipt-v1.json
+  ✓ JSON syntax: valid
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/README.md
+  ✓ Exists and non-empty
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Part-3-Detection-Config-v1.json
+  ✓ JSON syntax: valid
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Part-3-Detection-Config-v2.json
+  ✓ JSON syntax: valid
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Run-002/Detections-And-Tracks-v1.json
+  ✓ JSON syntax: valid
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Run-002/Debug-Timeline-v1.json
+  ✓ JSON syntax: valid
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Run-002/Run-Report-v1.json
+  ✓ JSON syntax: valid
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Gate-2-Verification-v1.json
+  ✓ JSON syntax: valid
+
+✅ PASS — /Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Gate-2-Review-v1.md
+  ✓ Exists and non-empty
+
+==================================================
+✅ ALL CHECKS PASSED — safe to report as done

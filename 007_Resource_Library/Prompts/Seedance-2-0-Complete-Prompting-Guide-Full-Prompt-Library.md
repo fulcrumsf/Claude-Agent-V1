@@ -1,17 +1,14 @@
 ---
-title: "Seedance 2.0 Complete Prompting Guide Full Prompt Library"
+title: "Seedance 2.0 Prompting Guide & Library"
 type: "prompt"
 category: "video-production"
 tags:
-  - video-production
-  - seedance
-  - prompt-library
-  - cinematic
-  - guide
+  - Guide
+  - Image-Video-Model
 created: 2026-05-12
 source: local
+retag_flag: "bad-tag-value"
 ---
-
 [Let's Create!](https://higgsfield.ai/s/seedance-2-0-higgsfieldai-jpqvtJ)
 
 ![Seedance 2.0 — Complete Prompting Guide (Full Prompt Library)](https://higgsfield.ai/cdn-cgi/image/fit=scale-down,format=webp,onerror=redirect,width=1920,quality=85/https://images.ctfassets.net/91663d1w6kgm/SuSw52vikPWm2WGz83epo/99f2015361706f1d2e305e6afc602f59/1.png)

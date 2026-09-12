@@ -1,20 +1,19 @@
 ---
-title: "Vortex Longshot Tool"
+title: "Vortex Longshot AI Movie Tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - tiktok
-  - tool
-  - video-generation
+  - Image-Video-Model
+  - Product
 ai_description: >-
   A TikTok video by Victor C showcasing the "Vortex Longshot" AI video creation tool,
   allowing users to create 1 minute AI movies from one prompt via vortex.channel/longshot,
   saved as a reference for AI content creation tools.
+summary: >-
+  A TikTok video by Victor C showcasing the "Vortex Longshot" AI video creation tool, allowing users to create 1 minute AI movies from one prompt via vortex.channel/longshot, saved as a reference for AI content creation tools.
 original_filename: "vortex-longshot-tutorial.PNG"
 created: 2026-05-01
 ---
-
 ![[Vortex-Longshot-Tool.png]]
 
 ## What It Is

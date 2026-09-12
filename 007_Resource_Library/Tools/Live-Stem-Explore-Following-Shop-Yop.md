@@ -1,15 +1,15 @@
 ---
-title: "Live Stem Explore Following Shop Yop"
+title: "Live Stem Explore Following Shop Yop Screenshot"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "Screenshot of Live Stem Explore Following Shop Yop with readable text about live stem explore."
+summary: >-
+  Screenshot of Live Stem Explore Following Shop Yop with readable text about live stem explore.
 original_filename: "IMG_8677.PNG"
 created: 2026-05-01
 ---
-
 ![[Live-Stem-Explore-Following-Shop-Yop.png]]
 
 ## AI Analysis

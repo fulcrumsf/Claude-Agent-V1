@@ -3,13 +3,14 @@ title: "Sim Studio AI"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "TikTok video by @theAISurfer introducing 'Sim Studio AI' as an easier AI automation tool, contrasting it with 'N8N' — likely saved as research for a new AI tool or content idea."
+summary: >-
+  TikTok video by @theAISurfer introducing 'Sim Studio AI' as an easier AI automation tool, contrasting it with 'N8N' — likely saved as research for a new AI tool or content idea.
 original_filename: "sim-studio-ai.PNG"
 created: 2026-05-01
 ---
-
 ![[Sim-Studio-AI.png]]
 
 ## AI Analysis

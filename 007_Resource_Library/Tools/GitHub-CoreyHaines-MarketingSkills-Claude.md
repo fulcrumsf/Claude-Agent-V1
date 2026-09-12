@@ -1,17 +1,13 @@
 ---
-title: "GitHub CoreyHaines MarketingSkills Claude"
+title: "Marketing Skills for Claude"
 type: extracted-knowledge
 category: tools
 tags:
-  - github-repository
-  - claude-ai
-  - marketing-knowledge
-  - ai-agents
-  - automation-tools
+  - GitHub
+  - Coding-Agent
 original_filename: "Claude-Skills-And-AI-Tools-15.png"
 created: 2026-05-09
 ---
-
 ![[GitHub-CoreyHaines-MarketingSkills-Claude.png]]
 
 ## AI Analysis

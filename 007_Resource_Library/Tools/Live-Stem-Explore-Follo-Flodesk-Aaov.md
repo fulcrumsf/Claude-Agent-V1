@@ -3,13 +3,13 @@ title: "Live Stem Explore Follo Flodesk Aaov"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - App
 ai_description: "Screenshot of Live Stem Explore Follo Flodesk Aaov with readable text about live stem explore follo."
+summary: >-
+  Screenshot of Live Stem Explore Follo Flodesk Aaov with readable text about live stem explore follo.
 original_filename: "IMG_8691.PNG"
 created: 2026-05-01
 ---
-
 ![[Live-Stem-Explore-Follo-Flodesk-Aaov.png]]
 
 ## AI Analysis

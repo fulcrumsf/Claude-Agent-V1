@@ -3,15 +3,11 @@ title: "How To Build AI SaaS Lite Api Base44"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - ai-tutorial
-  - saas-development
-  - base44
-  - lite-api
-  - travel-tech
+  - Guide
+  - LLM
 original_filename: "Claude-Skills-And-AI-Tools-09.png"
 created: 2026-05-09
 ---
-
 ![[How-To-Build-AI-SaaS-Lite-Api-Base44.png]]
 
 ## AI Analysis

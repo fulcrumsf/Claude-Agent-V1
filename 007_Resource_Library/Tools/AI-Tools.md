@@ -1,8 +1,9 @@
 ---
+title: "AI Tools Bookmarks"
 Category: Revenue Stream
 tags:
-  - Research
-  - Revenue-Stream
+  - App
+  - Research-List
 ---
 #### AI Tools Bookmarks
 |![](https://www.notion.so/icons/font_gray.svg)Title|![](https://www.notion.so/icons/folder_gray.svg)Category|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/list_gray.svg)Tag|

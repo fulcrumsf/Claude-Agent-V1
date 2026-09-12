@@ -1,16 +1,13 @@
 ---
-title: "I Can't Believe ChatGPT Work Made This Whole Video From One Image"
+title: "Create Cinematic Videos with ChatGPT, Higgsfield, and Seedance"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - seedance-2-5
-  - higgsfield
-  - ai-video
+  - Guide
+  - Image-Video-Model
 created: 2026-08-29
 source: https://www.youtube.com/watch?v=tG-96mrKh8k
 ---
-
 ![](https://www.youtube.com/watch?v=tG-96mrKh8k)
 
 ChatGPT Work made this entire cinematic video from one image, using the new Higgsfield plugin and Seedance 2.5, without ever leaving the chat. Here is the exact workflow, start to finish: https://linktw.in/mrNDTl  

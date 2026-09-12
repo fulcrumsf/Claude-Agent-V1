@@ -1,15 +1,17 @@
 ---
-title: "Chatvideopro"
+title: "ChatVideoPro"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
-ai_description: "TikTok video promoting "ChatVideoPro", an "AI VIDEO EDITING ASSISTANT" featuring GPT-5 and Premiere Pro integration, displayed with a share screenshot modal — likely saved for content creation tool research."
+  - Product
+  - App
+ai_description: >-
+  TikTok video promoting "ChatVideoPro", an "AI VIDEO EDITING ASSISTANT" featuring GPT-5 and Premiere Pro integration, displayed with a share screenshot modal — likely saved for content creation tool research.
+summary: >-
+  TikTok video promoting "ChatVideoPro", an "AI VIDEO EDITING ASSISTANT" featuring GPT-5 and Premiere Pro integration, displayed with a share screenshot modal — likely saved for content creation tool research.
 original_filename: "ChatVideoPro.PNG"
 created: 2026-05-01
 ---
-
 ![[Chatvideopro.png]]
 
 ## AI Analysis

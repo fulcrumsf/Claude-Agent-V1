@@ -1,8 +1,20 @@
-# Subject-Aware Reframer — Experimental Gate 2
+# Subject-Aware Reframer — Experimental Gate 3
 
-Tony approved the Gate 2 dependency installation and Part Three detection/tracking
-diagnostics on 2026-09-08. Camera planning, vertical reframing, integration into the
-production pipeline, and publishing are not authorized at this gate.
+For a future “connect the Shorts workflow to this channel” request, start with
+[Future-Channel-Integration-Handoff-v1.md](Future-Channel-Integration-Handoff-v1.md).
+Tony deferred channel integration; the framing prototype and its job interface
+are available to build on later.
+
+Tony approved Gate 2 dependencies and diagnostics, then Gate 3: a channel-independent,
+programmable reframer with group, subject, and hybrid modes, tested on Part Three.
+Automatic clip selection, questionnaires, connector activation, global pipeline
+adoption, and publishing remain later stages.
+
+The framing CLI, profile settings, and shared job interface are documented in
+[Job-Contract-v1.md](Job-Contract-v1.md). The current Part Three candidate is in
+`Shorts/Versions/v3/Auto-Reframe/Gate-3-Run-002/`. Gate 2 diagnostics are preserved
+as the detection baseline; the superseded first Gate 3 render is under
+`Auto-Reframe/Archived/Gate-3-Run-001/`.
 
 The isolated Python 3.11 environment and pinned packages belong here. Model weights
 and caches are ignored by Git. Production configuration and diagnostic results
@@ -29,7 +41,7 @@ Reserve no more than 5 GiB for this experiment's environment, caches, and output
 Stop work below 10 GiB of available disk. Process one frame at a time. Full source
 frames should not be materialized as a persistent frame sequence.
 
-## Implemented commands
+## Detection commands
 
 Run the launcher with the existing Homebrew Python 3.11 interpreter. It invokes
 the tool's isolated environment under the macOS network-denial profile. The
@@ -109,10 +121,33 @@ offline launch rejection, and animal deduplication:
 Tony's normal-speed review remains pending. Detection presence is not measured
 accuracy, and these diagnostics do not establish vertical framing quality.
 
-## Next approval boundary
+## Gate 3 framing
 
-Gate 3 may build the camera planner and a Part Three vertical review candidate
-only after Tony approves that scope. It must tolerate tracking gaps, include the
-interaction group, reset at cuts, and fit the wider scene over a blurred
-background when the group cannot fit in 9:16. Global adoption, automatic pipeline
-activation, distribution, and publishing remain separate decisions.
+`camera_plan.py` contains the channel-independent planner. `reframe.py` validates
+jobs, source fingerprints, profiles, output boundaries, and camera plans.
+`render_reframe.py` streams the planned frames through OpenCV and FFmpeg.
+`run_offline.py` dispatches the `plan`, `render`, and `reframe` commands.
+No dependencies were added for Gate 3.
+
+Settings resolve from shared defaults, a selected profile, per-video overrides,
+and optional per-shot overrides. The approved Part Three job renders all three
+profiles for comparison. Group mode fits the full source over blur; subject mode
+tracks and alternates subjects; hybrid combines both and keeps the final two
+seconds of multi-subject scenes wide. Subject selection is visual/configured,
+not narration-aware.
+
+Camera positions are bounded, subject coverage is validated, and pan/zoom rates
+are limited within a continuous crop. Short detection gaps are held, and short
+crop returns beside wide views are suppressed. All source cuts reset context.
+
+Run the full behavioral tests with:
+
+```text
+.venv/bin/python -B -m unittest -v test_diagnose.py test_camera_plan.py
+```
+
+The current candidate has three 1080×1920 variants, a side-by-side comparison,
+a framing debug video, a contact sheet, and a per-frame crop plan. Tony preferred
+Hybrid for this Part Three video specifically; see the production's
+`Gate-3-Review-Decision-v1.json`. This does not set a global default.
+See `Gate-3-Review-v1.md` for evidence and limitations.

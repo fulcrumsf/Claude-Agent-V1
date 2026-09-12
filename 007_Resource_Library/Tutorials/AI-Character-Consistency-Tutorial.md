@@ -3,15 +3,11 @@ title: "AI Character Consistency Tutorial"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - ai-tutorial
-  - character-design
-  - generative-ai
-  - visual-consistency
-  - workflow
+  - Guide
+  - Image-Video-Model
 original_filename: "Explore-Following-Shop-Fdryou-Little-Margo.PNG"
 created: 2026-05-09
 ---
-
 ![[AI-Character-Consistency-Tutorial.png]]
 
 ## AI Analysis

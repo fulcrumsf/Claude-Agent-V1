@@ -3,13 +3,14 @@ title: "Tripo AI"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - 3D
+  - App
 ai_description: "TikTok app displaying a video promoting 'Tripo AI', an AI-powered 3D content creation tool, from user Adrien Ninet, with a caption offering free credits for commenting '3D' — saved as a tool to investigate for content creation."
+summary: >-
+  TikTok app displaying a video promoting 'Tripo AI', an AI-powered 3D content creation tool, from user Adrien Ninet, with a caption offering free credits for commenting '3D' — saved as a tool to investigate for content creation.
 original_filename: "tripo-ai.PNG"
 created: 2026-05-01
 ---
-
 ![[Tripo-AI.png]]
 
 ## AI Analysis

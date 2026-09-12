@@ -3,11 +3,11 @@ title: "App Building And Vibe Coding"
 type: tutorial
 category: tutorials
 tags:
-  - tutorials
+  - Guide
+  - LLM
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Video Tutorials/Tutorial Library/App Building & Vibe Coding.md
 ---
-
 > [!info] This is Hands Down the BEST MCP Server for AI Coding Assistants  
 > There is no denying that AI coding assistants like Cursor and Windsurf are extremely powerful, but their biggest limitation right now is they hallucinate a LOT when working with specific tools and frameworks.  
 > [https://youtu.be/G7gK8H6u7Rs?si=jZE3QypPP2k11B6C](https://youtu.be/G7gK8H6u7Rs?si=jZE3QypPP2k11B6C)  

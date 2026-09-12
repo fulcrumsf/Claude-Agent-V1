@@ -3,15 +3,11 @@ title: "Garrytan Gbrain AI Agent Platform"
 type: extracted-knowledge
 category: tools
 tags:
-  - open-source-tools
-  - ai-agents
-  - garry-tan
-  - automation
-  - software
+  - GitHub
+  - LLM
 original_filename: "IMG_9837.PNG"
 created: 2026-08-24
 ---
-
 ![[Garrytan-Gbrain-AI-Agent-Platform.png]]
 
 ## AI Analysis

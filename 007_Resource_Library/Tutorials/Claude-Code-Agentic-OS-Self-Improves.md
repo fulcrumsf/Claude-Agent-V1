@@ -1,17 +1,13 @@
 ---
-title: "Claude Code Agentic OS It Self Improves"
+title: "Claude Code Agentic OS Self-Improvement Tutorial"
 type: "tutorial"
 category: "ai-agents"
 tags:
-  - ai-agents
-  - claude-code
-  - workflow
-  - automation
-  - tutorial
+  - Guide
+  - Coding-Agent
 created: 2026-05-12
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=MAuLQzcMrS0)
 
 📈 Claude Code Full Course: https://bit.ly/4tyq4Uz  

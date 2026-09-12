@@ -1,14 +1,13 @@
 ---
-title: "Script 2 Prompts"
+title: "Ottoman Empire Themed Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Image-Video-Model
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Ottomans/Script 2 Prompts.md
 ---
-
 1. Sultan leading troops, dramatic and powerful presence in a "Gladiator"-like battlefield, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. Ottoman naval fleet in the Mediterranean, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator,' showcasing maritime strength --ar 16:9 --v 5.2 --s 250
 1. Conquest of Constantinople reenactment, intense siege scene, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator,' ensuring historical accuracy --ar 16:9 --v 5.2 --s 250

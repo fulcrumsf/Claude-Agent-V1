@@ -3,15 +3,11 @@ title: "NotebookLM Python GitHub Repo"
 type: extracted-knowledge
 category: tools
 tags:
-  - notebooklm
-  - python
-  - github
-  - ai-workflow
-  - developer-tools
+  - GitHub
+  - LLM
 original_filename: "Claude-Skills-And-AI-Tools-14.png"
 created: 2026-05-09
 ---
-
 ![[NotebookLM-Python-GitHub-Repo.png]]
 
 ## AI Analysis

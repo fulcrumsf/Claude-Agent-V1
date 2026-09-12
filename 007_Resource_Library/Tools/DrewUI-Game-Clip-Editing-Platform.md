@@ -3,15 +3,11 @@ title: "DrewUI Game Clip Editing Platform"
 type: extracted-knowledge
 category: tools
 tags:
-  - game-editing
-  - vertical-content
-  - social-media-tools
-  - s-a-a-s
-  - gaming
+  - Gaming
+  - App
 original_filename: "Claude-Skills-And-AI-Tools-08.png"
 created: 2026-05-09
 ---
-
 ![[DrewUI-Game-Clip-Editing-Platform.png]]
 
 ## AI Analysis

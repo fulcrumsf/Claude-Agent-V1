@@ -3,14 +3,11 @@ title: "Nvidia Video Search and Summarization GitHub Repo"
 type: extracted-knowledge
 category: tools
 tags:
-  - nvidia-blueprints
-  - github-repo
-  - video-summarization
-  - ai-tools
+  - GitHub
+  - App
 original_filename: "IMG_9968.PNG"
 created: 2026-08-24
 ---
-
 ![[Nvidia-Video-Search-and-Summarization-GitHub-Repo.png]]
 
 ## AI Analysis

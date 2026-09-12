@@ -1,0 +1,139 @@
+{
+  "checked_utc": "2026-09-09T06:38:32.934985+00:00",
+  "gate": 2,
+  "run": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Run-002",
+  "automated_checks_passed": true,
+  "checks": [
+    "771 original source frames and monotonic PTS",
+    "241/241/289 source frames across the three approved shots",
+    "no track crosses a shot or person/animal family",
+    "species labels retained separately from subject family",
+    "968 output frames hold the latest source PTS without revealing the following endcard",
+    "H264/yuv420p 1280x800 30fps and AAC 48k stereo",
+    "audio/video begin at zero and agree within one frame",
+    "full video/audio decode with ffmpeg -xerror",
+    "source master and all four protected Shorts SHA256 unchanged",
+    "eight timing/preservation/offline/deduplication unit tests passed",
+    "experiment remains below 5 GiB with at least 10 GiB free disk"
+  ],
+  "stream_summary": {
+    "video": [
+      {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 800,
+        "pix_fmt": "yuv420p",
+        "avg_frame_rate": "30/1",
+        "nb_frames": "968",
+        "start_time": "0.000000",
+        "duration": "32.266016",
+        "sample_rate": null,
+        "channels": null
+      }
+    ],
+    "audio": [
+      {
+        "codec_name": "aac",
+        "width": null,
+        "height": null,
+        "pix_fmt": null,
+        "avg_frame_rate": "0/0",
+        "nb_frames": "1514",
+        "start_time": "0.000000",
+        "duration": "32.266000",
+        "sample_rate": "48000",
+        "channels": 2
+      }
+    ]
+  },
+  "subject_presence_not_accuracy": [
+    {
+      "shot": "Shot-10",
+      "source_frames": 241,
+      "confirmed_animal_count_histogram": {
+        "0": 3,
+        "1": 238
+      },
+      "confirmed_person_count_histogram": {
+        "0": 13,
+        "1": 228
+      }
+    },
+    {
+      "shot": "Shot-11",
+      "source_frames": 241,
+      "confirmed_animal_count_histogram": {
+        "0": 34,
+        "1": 205,
+        "2": 2
+      },
+      "confirmed_person_count_histogram": {
+        "0": 98,
+        "1": 143
+      }
+    },
+    {
+      "shot": "Shot-12",
+      "source_frames": 289,
+      "confirmed_animal_count_histogram": {
+        "0": 3,
+        "2": 33,
+        "3": 243,
+        "4": 10
+      },
+      "confirmed_person_count_histogram": {
+        "0": 16,
+        "1": 273
+      }
+    }
+  ],
+  "track_species_changes_retained": {
+    "Shot-11:animal:3": [
+      16,
+      17,
+      20,
+      21
+    ],
+    "Shot-12:animal:1": [
+      16,
+      21
+    ],
+    "Shot-12:animal:2": [
+      15,
+      16,
+      21
+    ],
+    "Shot-12:animal:3": [
+      16,
+      21
+    ]
+  },
+  "runtime_security": {
+    "os_network_denial": true,
+    "loopback_errno": 1,
+    "clean_environment_launcher": true,
+    "restricted_loading": true,
+    "force_weights_only": true,
+    "auto_install": false,
+    "integrations_enabled": false
+  },
+  "allocated_experiment_bytes": 2107236352,
+  "free_disk_bytes": 21986250752,
+  "tool_sha256": {
+    "diagnose.py": "a2496ad97910c2d610f0b815f3849619be8baefd198edd0ed1319b4744888c18",
+    "run_offline.py": "fbb24f662c6aeb684e93226102c4829a0feb4a1554b936ceec3d870c64dc11e4",
+    "Offline.sb": "89067b451c0e615e1c00c49c5a475fba264f9f9e66383baf7dd8edd456f58d41",
+    "requirements.lock": "1091b646d263ca50d8088157fd9d28396309877c3582d31517c66be0d239ca9c",
+    "test_diagnose.py": "d1ae534cd230982765cb3bc884dbbbd2b5ccb048461922260f84e0ee0afb96f2"
+  },
+  "result_sha256": {
+    "Debug-Timeline-v1.json": "e027c3e8863af4fb60080d9936dce6122f70d93fd51d008189fdd57711f205a6",
+    "Detections-And-Tracks-v1.json": "bbab83299bf731d0ba58f45b5aab77503a30a6cd197971c9ca31081646b809ba",
+    "FFmpeg-Encode.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Part-3-Detection-Contact-Sheet-v1.jpg": "e8c5d675789576c6d61402d1e77bc1651bcca7f59da0d1a3f659f65fc83044c5",
+    "Part-3-Detection-Debug-v1.mp4": "c4b80e002d21d72a3306a90f8c6a242847a50cd73e8d841a1696f2f312f64058",
+    "Run-Report-v1.json": "4a8cbd9716f0300d10951e7546ed05e6eb9592e3e591ac84398a44fc03721d4b",
+    "Run-Started.json": "c895c7bbd592e077fb437c3370d07cac57817081e345f54c34cd736636f8003d"
+  },
+  "review_status": "Human review at normal playback speed pending; no vertical crop quality or measured detector accuracy claim."
+}

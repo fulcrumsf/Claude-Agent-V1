@@ -3,15 +3,11 @@ title: "Tolaria Markdown Desktop App"
 type: extracted-knowledge
 category: tools
 tags:
-  - markdown
-  - desktop-app
-  - knowledge-base
-  - mac-linux
-  - productivity
+  - App
+  - Product
 original_filename: "Scribe-AI-Platform-14.png"
 created: 2026-05-09
 ---
-
 ![[Tolaria-Markdown-Desktop-App.png]]
 
 ## AI Analysis

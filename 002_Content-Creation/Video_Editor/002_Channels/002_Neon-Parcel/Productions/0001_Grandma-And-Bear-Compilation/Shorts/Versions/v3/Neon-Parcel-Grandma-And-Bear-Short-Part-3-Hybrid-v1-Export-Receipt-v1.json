@@ -1,0 +1,23 @@
+{
+  "recorded_utc": "2026-09-10T14:52:22.911605+00:00",
+  "authorization": "Tony requested saving Part Three using the selected Hybrid framing in 9:16.",
+  "source": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Gate-3-Run-002/Part-3-Hybrid-v1.mp4",
+  "source_sha256": "ebe07057a763d09f1921001938e47d9618b3674daf578f02480cf92e44fc4f50",
+  "overlay": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Short-Part-3-Overlay-v2.png",
+  "overlay_sha256": "96a5bf4b852e192701665ef4f1ac4b0f12bd8a3f17322c92fb165268ab19b2b1",
+  "output": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Hybrid-v1.mp4",
+  "output_sha256": "4446e75a59c700d70ca037181f3378c98c0e1af405349962177c97d87113c045",
+  "title_interval_seconds": [
+    0,
+    1
+  ],
+  "framing": "Existing selected Hybrid preserved",
+  "width": 1080,
+  "height": 1920,
+  "frames": 968,
+  "fps": 30,
+  "duration_seconds": "32.266016",
+  "audio": "AAC stream copied; packet payload hash matches source",
+  "decode_check": "Passed full FFmpeg decode",
+  "originals": "Source files preserved"
+}

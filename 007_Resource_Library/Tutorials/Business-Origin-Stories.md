@@ -1,11 +1,10 @@
 ---
-title: "Business-Origin-Stories"
+title: "How to Create Faceless YouTube Channels with AI"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - video-production
+  - Guide
+  - Profile
 created: 2026-06-06
 source: 000_Ingest/Business Origin Stories.md
 ---

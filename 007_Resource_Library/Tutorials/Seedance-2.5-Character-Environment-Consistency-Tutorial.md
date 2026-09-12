@@ -3,15 +3,11 @@ title: "Seedance 2.5 - How to Fix Character & Environment Consistency"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - character-consistency
-  - gpt-image-2
-  - ai-video
-  - claude-skill
+  - Guide
+  - Image-Video-Model
 created: 2026-08-10
 source: https://www.youtube.com/watch?v=MckeX0s_PWI
 ---
-
 ![](https://www.youtube.com/watch?v=MckeX0s_PWI)
 
 In this video, you will learn how to use Dreamina Seedance 2.5 and fix character and environment consistency in your AI short films.  

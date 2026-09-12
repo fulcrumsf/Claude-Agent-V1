@@ -1,5 +1,9 @@
 ---
+title: "LaMa Inpainting Project Setup"
 Status: Planning
+tags:
+  - Image-Video-Model
+  - Pipeline
 ---
 🗓️ _Created: April 5, 2025_
 ---

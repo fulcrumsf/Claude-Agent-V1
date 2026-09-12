@@ -3,13 +3,10 @@ title: "Agent Decision Framework"
 type: tool-doc
 category: ai-agents
 tags:
-  - ai-agents
-  - agent-design
-  - agentic-ai
+  - App
 created: 2026-05-08
 source: local
 ---
-
 We handle the rest.
 
 Just-in-time tool calls, secure delegated auth, sandboxed environments, and parallel execution across 1,000+ apps.

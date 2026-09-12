@@ -3,13 +3,14 @@ title: "AI Map Animation"
 type: prompt
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Image-Video-Model
+  - Art-Style
 ai_description: "A TikTok video by @ai.shishkin is shown, displaying a detailed AI prompt for generating hyper-realistic images with specific materials and lighting, saved likely as a reference for AI content creation prompts or tool discovery."
+summary: >-
+  A TikTok video by @ai.shishkin is shown, displaying a detailed AI prompt for generating hyper-realistic images with specific materials and lighting, saved likely as a reference for AI content creation prompts or tool discovery.
 original_filename: "ai-map-animation.PNG"
 created: 2026-05-01
 ---
-
 ![[AI-Map-Animation.png]]
 
 ## AI Analysis

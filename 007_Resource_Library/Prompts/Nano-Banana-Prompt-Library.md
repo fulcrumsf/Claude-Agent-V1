@@ -3,15 +3,11 @@ title: "Nano Banana Prompt Library"
 type: extracted-knowledge
 category: prompts
 tags:
-  - ai-prompts
-  - nano-banana
-  - image-generation
-  - prompt-curation
-  - github-repo
+  - GitHub
+  - Image-Video-Model
 original_filename: "Ifk-AI-Journey-Chatgpt.PNG"
 created: 2026-05-09
 ---
-
 ![[Nano-Banana-Prompt-Library.png]]
 
 ## AI Analysis

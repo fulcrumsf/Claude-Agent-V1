@@ -3,15 +3,12 @@ title: "Claude Code Video Production Toolkit"
 type: extracted-knowledge
 category: tools
 tags:
-  - claude-code
-  - ai-video-production
-  - open-source-toolkit
-  - programmatic-video
-  - automation
+  - Coding-Agent
+  - Image-Video-Model
 original_filename: "Forms-And-Models-05.png"
 created: 2026-05-09
+retag_flag: "bad-tag-count"
 ---
-
 ![[Claude-Code-Video-Production-Toolkit.png]]
 
 ## AI Analysis

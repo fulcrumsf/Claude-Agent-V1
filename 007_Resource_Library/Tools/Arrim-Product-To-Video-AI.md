@@ -3,14 +3,11 @@ title: "Arrim Product To Video AI"
 type: extracted-knowledge
 category: tools
 tags:
-  - arrim
-  - ai-video-generator
-  - content-automation
-  - marketing-tools
+  - Product
+  - Image-Video-Model
 original_filename: "IMG_9912.PNG"
 created: 2026-08-24
 ---
-
 ![[Arrim-Product-To-Video-AI.png]]
 
 ## AI Analysis

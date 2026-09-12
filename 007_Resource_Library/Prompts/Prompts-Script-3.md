@@ -1,14 +1,13 @@
 ---
-title: "Prompts Script 3"
+title: "Alexander the Great Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Art-Reference
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Alexander The Great/Prompts Script 3.md
 ---
-
 1. An imposing depiction of Alexander the Great, capturing his commanding presence and aura of leadership, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
   
 2. Alexander's troops wielding the long sarissas in battle formation, showcasing their military might and tactical advantage, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250

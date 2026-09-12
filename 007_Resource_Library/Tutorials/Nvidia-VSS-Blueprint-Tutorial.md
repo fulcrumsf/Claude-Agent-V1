@@ -3,15 +3,11 @@ title: "Nvidia VSS Blueprint Tutorial"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - nvidia
-  - vss
-  - ai-blueprint
-  - cyber94
-  - tutorial
+  - Guide
+  - Image-Video-Model
 original_filename: "IMG_9967.PNG"
 created: 2026-08-24
 ---
-
 ![[Nvidia-VSS-Blueprint-Tutorial.png]]
 
 ## AI Analysis

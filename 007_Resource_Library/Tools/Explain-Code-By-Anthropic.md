@@ -3,13 +3,14 @@ title: "Explain Code By Anthropic"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Coding-Agent
+  - Guide
 ai_description: "A short-form video platform, likely TikTok, featuring @nocode.joshua presenting a 'Claude Skill' markdown file named 'explain-code' from Anthropic, detailing how to explain code using analogies and diagrams, with 4,268 likes and 5,933 saves — saved for AI tool education or content creation ideas."
+summary: >-
+  A short-form video platform, likely TikTok, featuring @nocode.joshua presenting a 'Claude Skill' markdown file named 'explain-code' from Anthropic, detailing how to explain code using analogies and diagrams, with 4,268 likes and 5,933 saves — saved for AI tool education or content creation ideas.
 original_filename: "explain-code-by-anthropic.PNG"
 created: 2026-05-01
 ---
-
 ![[Explain-Code-By-Anthropic.png]]
 
 ## AI Analysis

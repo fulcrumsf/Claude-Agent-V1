@@ -3,13 +3,11 @@ title: "Autodesk Flow Studio"
 type: tool-doc
 category: video-production
 tags:
-  - video-editing
-  - autodesk
-  - ai-tools
+  - 3D
+  - App
 created: 2026-05-08
 source: local
 ---
-
 Storytelling technology
 
 ## Autodesk Flow Studio: Create stunning VFX with AI you control

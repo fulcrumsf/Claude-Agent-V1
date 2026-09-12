@@ -3,15 +3,11 @@ title: "Unique Highlighter Effect Full Tutorial"
 type: "tutorial"
 category: "video-production"
 tags:
-  - video-production
-  - tutorial
-  - canva
-  - effect
-  - template
+  - Guide
 created: 2026-05-12
 source: local
+retag_flag: "bad-tag-value"
 ---
-
 This week is a little different, you’re getting a full tutorial instead of just a template.
 
 ![](https://c10.patreonusercontent.com/4/patreon-media/p/post/154674902/c75fce7d1dae446199e011042495d8b7/eyJhIjoxLCJ3Ijo4MjB9/1.gif?token-hash=WHXm_7D7K0IvbWhb9GMqDZvE700LffeqkDv3QBxUn2g%3D&token-time=1779580800)

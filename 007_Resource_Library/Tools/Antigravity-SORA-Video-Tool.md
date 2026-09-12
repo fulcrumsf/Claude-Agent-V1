@@ -3,14 +3,14 @@ title: "Antigravity_sora_video_tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
-  - tools
+  - Product
+  - Coding-Agent
 ai_description: "A YouTube video titled 'How To Make VIRAL Sora 2 Wholesom...' featuring an embedded creator profile 'ajanimalking AJ' (955.6K Followers, 171.4M Likes) showcasing AI-generated wholesome animal videos, alongside a suggested video for 'Antigravity now Creates and Edits $1M-Brand Videos on Autopilot...' — saved for content strategy and AI tool research."
+summary: >-
+  A YouTube video titled 'How To Make VIRAL Sora 2 Wholesom...' featuring an embedded creator profile 'ajanimalking AJ' (955.6K Followers, 171.4M Likes) showcasing AI-generated wholesome animal videos, alongside a suggested video for 'Antigravity now Creates and Edits $1M-Brand Videos on Autopilot...' — saved for content strategy and AI tool research.
 original_filename: "Antigravity_Sora_Video_Tool.PNG"
 created: 2026-05-01
 ---
-
 ![[Antigravity-SORA-Video-Tool.png]]
 
 ## AI Analysis

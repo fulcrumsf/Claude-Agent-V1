@@ -1,17 +1,13 @@
 ---
-title: "SP500 ETF VS Semiconductor ETF Performance"
+title: "SP500 ETF vs Semiconductor ETF Performance Comparison"
 type: extracted-knowledge
 category: investments
 tags:
-  - etf-comparison
-  - sp500
-  - semiconductors
-  - investment-strategy
-  - long-term-growth
+  - Stocks
 original_filename: "IMG_9847.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[SP500-ETF-VS-Semiconductor-ETF-Performance.png]]
 
 ## AI Analysis

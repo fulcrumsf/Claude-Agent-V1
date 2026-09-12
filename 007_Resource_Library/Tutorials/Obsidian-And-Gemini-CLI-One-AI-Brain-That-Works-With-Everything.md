@@ -1,15 +1,13 @@
 ---
-title: "Obsidian and Gemini CLI One AI Brain That Works With Everything"
+title: "Build a Permanent, Local AI Second Brain with Obsidian and Gemini CLI"
 type: tutorial
 category: architecture
 tags:
-  - tutorial
-  - architecture
-  - obsidian
-  - gemini-cli
-  - second-brain
+  - Guide
+  - LLM
 created: 2026-05-01
 source: https://www.youtube.com/watch?v=eXmedaRNGc8
+retag_flag: "bad-tag-count"
 ---
 ![](https://www.youtube.com/watch?v=eXmedaRNGc8)
 

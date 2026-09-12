@@ -1,0 +1,38 @@
+{
+  "version": "v2",
+  "source_duration_s": 129.768,
+  "voice_durations_s": [
+    5.341,
+    3.808,
+    4.737,
+    4.365,
+    3.901,
+    4.551,
+    3.529,
+    3.715,
+    3.855,
+    3.762,
+    4.783,
+    4.412,
+    2.136
+  ],
+  "voice_placements_s": [
+    0.35,
+    12.446,
+    20.446,
+    30.526,
+    40.606,
+    55.648,
+    65.689,
+    75.686,
+    87.782,
+    97.862,
+    107.942,
+    118.022,
+    127.382
+  ],
+  "original_audio_preserved": true,
+  "original_audio_padded_to_picture_length": true,
+  "music_added": false,
+  "status": "review_cut"
+}

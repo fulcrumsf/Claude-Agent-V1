@@ -1,14 +1,12 @@
 ---
-title: "Emotional Storytelling Image Prompts"
+title: "Stoic Reflection Image Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
 created: 2026-05-03
 source: emotional_storytelling_image_prompts.json
 ---
-
 {
   "theme": "Stoic Reflection",
   "style": "cinematic, moody, minimalist",

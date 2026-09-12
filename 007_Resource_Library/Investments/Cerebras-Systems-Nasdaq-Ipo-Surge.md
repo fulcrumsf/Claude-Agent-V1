@@ -1,17 +1,12 @@
 ---
-title: "Cerebras Systems Nasdaq Ipo Surge"
+title: "Cerebras Systems Nasdaq IPO Surge"
 type: extracted-knowledge
 category: investments
 tags:
-  - ipo
-  - nasdaq
-  - cerebras
-  - stock-market
-  - tech-stocks
+  - Stocks
 original_filename: "IMG_9915.PNG"
 created: 2026-08-24
 ---
-
 ![[Cerebras-Systems-Nasdaq-Ipo-Surge.png]]
 
 ## AI Analysis

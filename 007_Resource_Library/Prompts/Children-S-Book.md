@@ -1,5 +1,9 @@
 ---
+title: "My Cozy Corner: A Storybook Prompt"
 Description: Prompt to generate childerns books
+tags:
+  - Art-Reference
+  - Art-Style
 ---
 ### Your task is to:
 1. Interpret the IDEA carefully for emotional and visual tone.

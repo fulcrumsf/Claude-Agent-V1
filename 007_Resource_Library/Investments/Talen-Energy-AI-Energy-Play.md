@@ -3,15 +3,10 @@ title: "Talen Energy AI Energy Play"
 type: extracted-knowledge
 category: investments
 tags:
-  - investments
-  - talen-energy
-  - ai-infrastructure
-  - stock-analysis
-  - energy-sector
+  - Stocks
 original_filename: "Scribe-AI-Platform-10.png"
 created: 2026-05-09
 ---
-
 ![[Talen-Energy-AI-Energy-Play.png]]
 
 ## AI Analysis

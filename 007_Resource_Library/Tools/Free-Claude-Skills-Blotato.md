@@ -1,17 +1,13 @@
 ---
-title: "Free Claude Skills Blotato"
+title: "Free Claude Skills by Blotato"
 type: "tool-doc"
 category: "ai-agents"
 tags:
-  - ai-agents
-  - claude-skills
-  - blotato
-  - automation
-  - tool
+  - Coding-Agent
+  - Guide
 created: 2026-05-12
 source: local
 ---
-
 Free Claude skills you install once, then use forever. They take you from blank page to scheduled social post in one conversation.
 
 Works in Claude Code, Claude Desktop, and Claude Cowork.

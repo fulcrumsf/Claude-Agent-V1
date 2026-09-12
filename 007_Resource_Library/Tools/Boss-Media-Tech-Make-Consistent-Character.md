@@ -3,13 +3,14 @@ title: "Boss Media Tech Make Consistent Character"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - Product
+  - App
 ai_description: "Screenshot of Boss Media Tech Make Consistent Character with readable text about boss media tech."
+summary: >-
+  Screenshot of Boss Media Tech Make Consistent Character with readable text about boss media tech.
 original_filename: "IMG_8816.PNG"
 created: 2026-05-01
 ---
-
 ![[Boss-Media-Tech-Make-Consistent-Character.png]]
 
 ## AI Analysis

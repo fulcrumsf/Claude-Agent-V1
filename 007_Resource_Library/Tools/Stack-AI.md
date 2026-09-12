@@ -6,14 +6,10 @@ summary: "Stack AI is a no-code enterprise AI platform that enables organization
 url: "https://www.stack-ai.com/"
 verified: true
 tags:
-  - no-code-ai
-  - enterprise-ai
-  - ai-agents
-  - workflow-automation
-  - llm-integration
+  - App
+  - Guide
 created: 2026-09-05
 enriched: 2026-09-05
 ---
-
 ## Summary
 Stack AI is a no-code enterprise AI platform that enables organizations to build and deploy custom AI agents and automated workflows using a drag-and-drop interface. It integrates large language models with internal data sources and business systems, offering enterprise-grade security and compliance for various industries.

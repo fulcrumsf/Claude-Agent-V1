@@ -1,17 +1,13 @@
 ---
-title: "Costco Healthiest Soda Guide Poppi Haul"
+title: "Costco Poppi Healthiest Soda Guide"
 type: extracted-knowledge
 category: personal
 tags:
-  - costco-haul
-  - healthy-soda
-  - poppi-brand
-  - grocery-shopping
-  - diet-drinks
+  - Product
+  - Health
 original_filename: "IMG_9826.PNG"
 created: 2026-08-24
 ---
-
 ![[Costco-Healthiest-Soda-Guide-Poppi-Haul.png]]
 
 ## AI Analysis

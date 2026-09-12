@@ -1,15 +1,16 @@
 ---
-title: "Arkham"
+title: "Arkham Intelligence - Alex Becker Crypto Portfolio"
 type: doc
 category: general
 tags:
-  - screenshot
-  - reference
+  - Crypto
+  - Profile
 ai_description: "Arkham Intelligence dashboard showing Alex Becker's crypto portfolio ($87,828.10) with a daily change of +$6.69K and a breakdown of $5.12M in exchange deposits across platforms like Coinbase, Blockchain.com, FTX, Voyager, and Kraken from 2021-2023, likely saved for content research on public figures' crypto holdings or as an example of blockchain analytics."
+summary: >-
+  Arkham Intelligence dashboard showing Alex Becker's crypto portfolio ($87,828.10) with a daily change of +$6.69K and a breakdown of $5.12M in exchange deposits across platforms like Coinbase, Blockchain.com, FTX, Voyager, and Kraken from 2021-2023, likely saved for content research on public figures' crypto holdings or as an example of blockchain analytics.
 original_filename: "Arkham.PNG"
 created: 2026-05-01
 ---
-
 ![[Arkham.png]]
 
 ## AI Analysis

@@ -1,15 +1,16 @@
 ---
-title: "Paintfumestour"
+title: "Paint Fumes Spain Tour 2025 Announcement"
 type: doc
 category: personal
 tags:
-  - screenshot
-  - reference
-ai_description: "Instagram Story from @paintfumesnc announcing a "SPAIN TOUR 2025" for the band Paint Fumes, featuring a temporary flyer with 9 October venue/date entries including "FUNTATSIC DRACULA CARNIVAL" — likely saved for travel research or tour announcement content inspiration."
+  - Art-Reference
+ai_description: >-
+  Instagram Story from @paintfumesnc announcing a "SPAIN TOUR 2025" for the band Paint Fumes, featuring a temporary flyer with 9 October venue/date entries including "FUNTATSIC DRACULA CARNIVAL" — likely saved for travel research or tour announcement content inspiration.
+summary: >-
+  Instagram Story from @paintfumesnc announcing a "SPAIN TOUR 2025" for the band Paint Fumes, featuring a temporary flyer with 9 October venue/date entries including "FUNTATSIC DRACULA CARNIVAL" — likely saved for travel research or tour announcement content inspiration.
 original_filename: "PaintFumesTour.PNG"
 created: 2026-05-01
 ---
-
 ![[Paintfumestour.png]]
 
 ## AI Analysis

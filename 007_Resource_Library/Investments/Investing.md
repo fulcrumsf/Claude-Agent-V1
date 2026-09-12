@@ -1,5 +1,9 @@
 ---
+title: "Investing Gallery"
 Category: Revenue Stream
+tags:
+  - Stocks
+  - Crypto
 ---
 #### Investing Gallery
 |![](https://www.notion.so/icons/font_gray.svg)Title|![](https://www.notion.so/icons/document_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/link_gray.svg)URL|

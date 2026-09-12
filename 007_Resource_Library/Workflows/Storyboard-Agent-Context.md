@@ -3,13 +3,11 @@ title: "Storyboard Agent Context"
 type: workflow
 category: video-production
 tags:
-  - storyboard
-  - ai-agents
-  - video-production
+  - Art-Reference
+  - Pipeline
 created: 2026-05-08
 source: local
 ---
-
 # Storyboard Agent — MD Overview (Context + Current State)
 
 ## What this workflow is trying to do

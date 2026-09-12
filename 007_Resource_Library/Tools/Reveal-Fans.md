@@ -6,15 +6,11 @@ summary: "Revealfans.com currently appears to be a parked domain listed for sale
 url: "https://revealfans.com/"
 verified: false
 tags:
-  - fan-engagement
-  - content-creation
-  - creator-platform
-  - inactive-resource
-  - unverified-link
+  - Platforms
 created: 2026-09-05
 enriched: 2026-09-05
+retag_flag: "bad-tag-value"
 ---
-
 ## Summary
 Revealfans.com currently appears to be a parked domain listed for sale, indicating it is an inactive resource. Based on its name, it was likely intended to be a platform or tool for creators to reveal exclusive content to their fans, potentially for fan engagement or content monetization.
 

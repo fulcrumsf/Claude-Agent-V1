@@ -3,13 +3,14 @@ title: "Nomadwise.io"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "The screenshot shows the homepage of nomadwise.io, a website designed to help users 'Find cafes and coworking spaces to work from' anywhere, featuring a search input for 'Country or Location...'—likely saved as a resource for remote work or content creation."
+summary: >-
+  The screenshot shows the homepage of nomadwise.io, a website designed to help users 'Find cafes and coworking spaces to work from' anywhere, featuring a search input for 'Country or Location...'—likely saved as a resource for remote work or content creation.
 original_filename: "nomadwise.io.PNG"
 created: 2026-05-01
 ---
-
 ![[Nomadwise-Io.png]]
 
 ## AI Analysis

@@ -1,13 +1,13 @@
 ---
-title: "How-To-Turn-A-Storyboard-Into-A-Full-AI-Video-In-Minutes"
+title: "How to Turn a Storyboard into an AI Video with Seedance 2.0"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - video-production
+  - Guide
+  - Image-Video-Model
 created: 2026-06-06
 source: 000_Ingest/How to Turn a Storyboard into a Full AI Video in Minutes.md
+retag_flag: "bad-tag-value"
 ---
 ![](https://www.youtube.com/watch?v=Is4wgEpPMJQ)
 

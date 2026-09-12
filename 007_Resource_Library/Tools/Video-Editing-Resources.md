@@ -3,13 +3,14 @@ title: "Video Editing Resources"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
+  - Guide
+  - Research-List
 ai_description: "A TikTok video from user 'Ben - Content for Creators' displaying a list of 'The Best Websites for Free Video Editing Assets', including categories like 'Sound Effects' and 'Royalty-Free Music' with specific platform names, likely saved as a resource bookmark."
+summary: >-
+  A TikTok video from user 'Ben - Content for Creators' displaying a list of 'The Best Websites for Free Video Editing Assets', including categories like 'Sound Effects' and 'Royalty-Free Music' with specific platform names, likely saved as a resource bookmark.
 original_filename: "Video Editing-Resources1148.PNG"
 created: 2026-05-01
 ---
-
 ![[Video-Editing-Resources.png]]
 
 ## AI Analysis

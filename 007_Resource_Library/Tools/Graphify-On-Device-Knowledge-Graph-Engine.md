@@ -3,15 +3,12 @@ title: "Graphify — On-Device Knowledge Graph Engine"
 type: bookmark
 category: architecture
 tags:
-  - graphify
-  - knowledge-graph
-  - codebase-analysis
-  - on-device
-  - rag-systems
+  - LLM
+  - Coding-Agent
 created: 2026-04-28
 source: https://github.com/safishamsi/graphify
+retag_flag: "bad-tag-value"
 ---
-
 // graph.growing
 
 8 nodes

@@ -3,14 +3,11 @@ title: "Marker Maker Tool"
 type: extracted-knowledge
 category: tools
 tags:
-  - marker-maker
-  - productivity-tool
-  - web-saas
-  - timestamping
+  - Product
+  - App
 original_filename: "Open-Source-AI-Tools-And-Investments-05.jpg"
 created: 2026-05-09
 ---
-
 ![[Marker-Maker-Tool.jpg]]
 
 ## AI Analysis

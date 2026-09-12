@@ -3,13 +3,14 @@ title: "Ditherboy Studio Design"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - design
+  - Product
+  - App
 ai_description: "A product page on studioaaa.com showcasing the 'Dither Boy - Studio AAA Advanced I...' image editor with pixel art controls like palette, contrast, and depth, marked as NEW with an -11% discount — likely saved by a content creator for visual asset generation or tool exploration."
+summary: >-
+  A product page on studioaaa.com showcasing the 'Dither Boy - Studio AAA Advanced I...' image editor with pixel art controls like palette, contrast, and depth, marked as NEW with an -11% discount — likely saved by a content creator for visual asset generation or tool exploration.
 original_filename: "ditherboy-studio-design.PNG"
 created: 2026-05-01
 ---
-
 ![[Ditherboy-Studio-Design.png]]
 
 ## AI Analysis

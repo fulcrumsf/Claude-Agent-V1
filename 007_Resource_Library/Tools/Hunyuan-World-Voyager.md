@@ -3,13 +3,15 @@ title: "Hunyuan World Voyager"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
-ai_description: "TikTok video from @theAIsurfer discussing "HunYuan World-Voyager: Transforming Reality into 3D" with 222 likes and 1 comment — likely saved for AI tool research or content inspiration."
+  - Product
+  - 3D
+ai_description: >-
+  TikTok video from @theAIsurfer discussing "HunYuan World-Voyager: Transforming Reality into 3D" with 222 likes and 1 comment — likely saved for AI tool research or content inspiration.
+summary: >-
+  TikTok video from @theAIsurfer discussing "HunYuan World-Voyager: Transforming Reality into 3D" with 222 likes and 1 comment — likely saved for AI tool research or content inspiration.
 original_filename: "hunyuan-world-voyager.PNG"
 created: 2026-05-01
 ---
-
 ![[Hunyuan-World-Voyager.png]]
 
 ## AI Analysis

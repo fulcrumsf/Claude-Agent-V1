@@ -1,5 +1,10 @@
 ---
+title: "ComfyUI Node Map - Detection, Inpainting, Masking"
 Status: Planning
+tags:
+  - Guide
+  - Pipeline
+retag_flag: "bad-tag-count"
 ---
 **🧭 ComfyUI Node Map (Confirmed Working on Your Setup)**
 ---

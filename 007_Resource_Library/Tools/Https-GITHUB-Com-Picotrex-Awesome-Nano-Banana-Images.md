@@ -1,15 +1,15 @@
 ---
-title: "Https GitHub Com Picotrex Awesome Nano Banana Images"
+title: "Picotrex Awesome Nano - GitHub"
 type: tool-doc
 category: ai-agents
 tags:
-  - screenshot
-  - prompt
+  - GitHub
 ai_description: "Screenshot of Https GitHub Com Picotrex Awesome Nano Banana Images with readable text about prompt."
+summary: >-
+  Screenshot of Https GitHub Com Picotrex Awesome Nano Banana Images with readable text about prompt.
 original_filename: "IMG_8042.PNG"
 created: 2026-05-01
 ---
-
 ![[Https-GITHUB-Com-Picotrex-Awesome-Nano-Banana-Images.png]]
 
 ## AI Analysis

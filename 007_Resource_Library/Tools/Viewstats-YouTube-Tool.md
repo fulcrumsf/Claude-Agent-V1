@@ -3,15 +3,14 @@ title: "Viewstats YouTube Tool"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - youtube
-  - tools
-  - content-analytics
+  - Product
+  - App
 ai_description: "A mobile browser screenshot of the Viewstats website, powered by MrBeast, promoting a tool to 'Create video ideas, titles, and thumbnails that go viral' using real-time YouTube data, likely saved as a tool to try for content creation or market research."
+summary: >-
+  A mobile browser screenshot of the Viewstats website, powered by MrBeast, promoting a tool to 'Create video ideas, titles, and thumbnails that go viral' using real-time YouTube data, likely saved as a tool to try for content creation or market research.
 original_filename: "viewstats-youtube-tool.PNG"
 created: 2026-05-01
 ---
-
 ![[Viewstats-YouTube-Tool.png]]
 
 ## What It Is

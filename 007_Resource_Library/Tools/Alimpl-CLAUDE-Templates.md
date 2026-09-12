@@ -1,15 +1,16 @@
 ---
-title: "Alimpl Claude Templates"
+title: "Aitmpl.com - Claude Code Projects Marketplace"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - claude
+  - Coding-Agent
+  - Platforms
 ai_description: "TikTok video by @learnwithcheer showcasing `aitmpl.com`, a marketplace for 'Claude Code projects' and 'AI Agents & Skills' with various development components like 'React Best Practices' and 'Git Commit Helper' — likely saved as a useful resource for AI development or programming."
+summary: >-
+  TikTok video by @learnwithcheer showcasing `aitmpl.com`, a marketplace for 'Claude Code projects' and 'AI Agents & Skills' with various development components like 'React Best Practices' and 'Git Commit Helper' — likely saved as a useful resource for AI development or programming.
 original_filename: "alimpl-claude-templates.PNG"
 created: 2026-05-01
 ---
-
 ![[Alimpl-CLAUDE-Templates.png]]
 
 ## AI Analysis

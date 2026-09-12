@@ -1,17 +1,16 @@
 ---
-title: "Awesome Claude MCP Builder.github"
+title: "Awesome Claude MCP Builder GitHub"
 type: tool-doc
 category: ai-agents
 tags:
-  - screenshot
-  - claude
-  - mcp
-  - github
+  - GitHub
+  - LLM
 ai_description: "TikTok video 'How to make images/ads in Claude code' by Noe AI, showing a GitHub repository 'awesome-claude-skills/tree/master/mcp-builder' with 4,826 likes and 5,402 saves — likely bookmarked as a tutorial for AI image/ad generation using Claude."
+summary: >-
+  TikTok video 'How to make images/ads in Claude code' by Noe AI, showing a GitHub repository 'awesome-claude-skills/tree/master/mcp-builder' with 4,826 likes and 5,402 saves — likely bookmarked as a tutorial for AI image/ad generation using Claude.
 original_filename: "awesome-claude-mcp-builder.github.PNG"
 created: 2026-05-01
 ---
-
 ![[Awesome-Claude-MCP-Builder-Github.png]]
 
 ## What It Is

@@ -6,18 +6,12 @@ form: tiktok
 summary: "A TikTok video by Marcin AI demonstrating an automation workflow that extracts a TikTok page URL and converts it into a direct video URL using flowchart nodes labeled 'Get Tiktok Page' and 'Get Video URL'. This serves as a visual guide or template for building social media scraping or processing automations."
 search_for: "Marcin AI tiktok automation get video url"
 tags:
-  - screenshot
-  - video
-  - automation-flow
-  - data-extraction
-  - web-scraping
-  - tutorials
-  - needs-enrichment
+  - Guide
+  - Pipeline
 original_filename: "IMG_8656.PNG"
 created: 2026-05-01
 enriched: 2026-09-05
 ---
-
 ![[Ciel-Some-Bem-Nee-Sing-Live.png]]
 
 ## Summary

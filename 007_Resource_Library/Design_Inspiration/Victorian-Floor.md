@@ -1,13 +1,13 @@
 ---
-title: "Victorian Floor"
+title: "Victorian Floor Herringbone"
 type: design-inspiration
 category: design_inspiration
 tags:
-  - design-inspiration
+  - Art-Reference
+  - Art-Style
 created: 2026-05-03
 source: Databases/Projects/Designs & POD/Categories/Ikigai Room Mockups/Wall Art Mockups/Living Room - Boho/Image Gallery/Victorian Floor.md
 ---
-
 ```markdown
 {
   "room_type": "Hallway",

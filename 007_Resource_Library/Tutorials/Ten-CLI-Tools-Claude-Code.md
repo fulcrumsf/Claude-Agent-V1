@@ -1,15 +1,13 @@
 ---
-title: "Ten CLI Tools Claude Code"
+title: "10 CLI Tools for Claude Code"
 type: tutorial
 category: ai-agents
 tags:
-  - claude-code
-  - cli-tools
-  - ai-agents
+  - Guide
+  - Coding-Agent
 created: 2026-05-08
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=3NzCBIcIqD0)
 
 10 CLI Tools I’m Using with Claude Code (LazyGit, Glow, Zoxide, Btop, eza + More)  

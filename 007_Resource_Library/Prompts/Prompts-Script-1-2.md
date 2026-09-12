@@ -1,14 +1,12 @@
 ---
-title: "Prompts Script 1"
+title: "Genghis Khan Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Genghis Khan/Prompts Script 1.md
 ---
-
 1. ==Genghis Khan promoting meritocracy, a scene showing him selecting his leaders based on their abilities and skills, with the Mongol Empire's diverse subjects in the background, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==The bustling activity along the Silk Road, illustrating the trade and cultural exchange facilitated by Khan's empire, with caravans and diverse traders, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==Genghis Khan introducing a written language, a scene depicting scribes and scholars working on manuscripts, symbolizing the unification and advancement of his empire, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==

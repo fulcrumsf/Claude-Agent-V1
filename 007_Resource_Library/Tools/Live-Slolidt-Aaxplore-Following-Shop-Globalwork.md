@@ -1,15 +1,15 @@
 ---
-title: "Live Slolidt Aaxplore Following Shop Globalwork"
+title: "Live Slolidt Aaxplore Following Shop Globalwork Screenshot"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - video
+  - Product
 ai_description: "Screenshot of Live Slolidt Aaxplore Following Shop Globalwork with readable text about live slolidt aaxplore following shop."
+summary: >-
+  Screenshot of Live Slolidt Aaxplore Following Shop Globalwork with readable text about live slolidt aaxplore following shop.
 original_filename: "IMG_8702.PNG"
 created: 2026-05-01
 ---
-
 ![[Live-Slolidt-Aaxplore-Following-Shop-Globalwork.png]]
 
 ## AI Analysis

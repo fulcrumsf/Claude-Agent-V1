@@ -3,15 +3,11 @@ title: "Soco Social Commerce Pinterest Inspiration Ad"
 type: extracted-knowledge
 category: tools
 tags:
-  - social-commerce
-  - affiliate-marketing
-  - viral-trends
-  - sales-analytics
-  - advertising
+  - Product
 original_filename: "IMG_9920.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Soco-Social-Commerce-Pinterest-Inspiration-Ad.png]]
 
 ## AI Analysis

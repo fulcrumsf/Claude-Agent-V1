@@ -1,15 +1,16 @@
 ---
-title: "Swooped"
+title: "Swooped.co AI Job Search Tracker"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "The Swooped.co landing page, viewed via an Instagram-branded webview, promotes its AI job search tracking software to 'LAND YOUR DREAM JOB', emphasizing features like 'AI resume and cover letter optimization' and being 'TRUSTED BY 630,000+ JOB SEEKERS' with a 'Try for free' button — likely saved for SaaS market research or content ideas."
+summary: >-
+  The Swooped.co landing page, viewed via an Instagram-branded webview, promotes its AI job search tracking software to 'LAND YOUR DREAM JOB', emphasizing features like 'AI resume and cover letter optimization' and being 'TRUSTED BY 630,000+ JOB SEEKERS' with a 'Try for free' button — likely saved for SaaS market research or content ideas.
 original_filename: "Swooped.PNG"
 created: 2026-05-01
 ---
-
 ![[Swooped.png]]
 
 ## AI Analysis

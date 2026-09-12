@@ -1,15 +1,15 @@
 ---
-title: "Webflowgasp"
+title: "Webflow GSAP Tutorial"
 type: tutorial
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Guide
 ai_description: "TikTok video from 'Flux Academy' titled 'Webflow GSAP' showing 'No-code GSAP animation in Webflow' with 466 likes and 238 saves — likely saved as a tutorial or content idea for web animation."
+summary: >-
+  TikTok video from 'Flux Academy' titled 'Webflow GSAP' showing 'No-code GSAP animation in Webflow' with 466 likes and 238 saves — likely saved as a tutorial or content idea for web animation.
 original_filename: "WebflowGASP.PNG"
 created: 2026-05-01
 ---
-
 ![[Webflowgasp.png]]
 
 ## AI Analysis

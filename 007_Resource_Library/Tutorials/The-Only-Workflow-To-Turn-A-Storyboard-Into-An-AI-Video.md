@@ -3,15 +3,11 @@ title: "The Only Workflow You Need to Turn a Storyboard into an AI Video"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - storyboard
-  - character-consistency
-  - ai-agent-workflow
-  - ai-video
+  - Guide
+  - Art-Reference
 created: 2026-08-10
 source: https://www.youtube.com/watch?v=LSBI3kfY9ao
 ---
-
 ![](https://www.youtube.com/watch?v=LSBI3kfY9ao)
 
 Create AI Videos with invideo Agent One: https://invideo.io/i/cyberjungle  

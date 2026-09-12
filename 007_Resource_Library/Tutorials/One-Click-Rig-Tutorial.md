@@ -3,13 +3,15 @@ title: "One Click Rig Tutorial"
 type: tutorial
 category: video-production
 tags:
-  - screenshot
-  - reference
-ai_description: "TikTok video by Josh Toonen showing a "ONE CLICK RIG" feature to "How to Animate ANY 3D Character for Free in Unreal Engine 5" — saved as a tutorial bookmark for 3D animation or content idea generation."
+  - Guide
+  - 3D
+ai_description: >-
+  TikTok video by Josh Toonen showing a "ONE CLICK RIG" feature to "How to Animate ANY 3D Character for Free in Unreal Engine 5" — saved as a tutorial bookmark for 3D animation or content idea generation.
+summary: >-
+  TikTok video by Josh Toonen showing a "ONE CLICK RIG" feature to "How to Animate ANY 3D Character for Free in Unreal Engine 5" — saved as a tutorial bookmark for 3D animation or content idea generation.
 original_filename: "one-click-rig-tutorial.PNG"
 created: 2026-05-01
 ---
-
 ![[One-Click-Rig-Tutorial.png]]
 
 ## AI Analysis

@@ -1,15 +1,15 @@
 ---
-title: "Sofi Personal Loans"
+title: "Sofi Personal Loans Landing Page"
 type: tool-doc
 category: app-dev
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "SoFi personal loans landing page accessed via a mobile browser, displaying the message 'Low rates. No fees required. Personal loans made easy online.' and a cookie consent banner — likely saved for financial research or content inspiration."
+summary: >-
+  SoFi personal loans landing page accessed via a mobile browser, displaying the message 'Low rates. No fees required. Personal loans made easy online.' and a cookie consent banner — likely saved for financial research or content inspiration.
 original_filename: "sofi-personal-loans.PNG"
 created: 2026-05-01
 ---
-
 ![[Sofi-Personal-Loans.png]]
 
 ## AI Analysis

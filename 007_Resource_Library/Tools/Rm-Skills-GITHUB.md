@@ -1,15 +1,16 @@
 ---
-title: "Rm Skills.github"
+title: "Rm Skills GitHub Repo"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - GitHub
+  - Coding-Agent
 ai_description: "TikTok video by @rey showcasing a GitHub repo 'rm-skills' with Claude Code AI skills for video analysis, X/Twitter scanning, Gmail triage, and Twitter reading — saved as a reference for AI tools and content ideas."
+summary: >-
+  TikTok video by @rey showcasing a GitHub repo 'rm-skills' with Claude Code AI skills for video analysis, X/Twitter scanning, Gmail triage, and Twitter reading — saved as a reference for AI tools and content ideas.
 original_filename: "rm-skills.github.PNG"
 created: 2026-05-01
 ---
-
 ![[Rm-Skills-GITHUB.png]]
 
 ## AI Analysis

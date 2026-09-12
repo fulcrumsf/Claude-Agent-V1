@@ -3,13 +3,14 @@ title: "Transitional Hooks Tutorial"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Guide
+  - App
 ai_description: "A TikTok video, titled '3. Transitional Hooks' by 'Tyler Wise', is shown playing on a mobile device, featuring a laptop screen displaying the website 'thetransitionalhooks.com' which offers various video transitions for download, saved as a resource for content creation hooks."
+summary: >-
+  A TikTok video, titled '3. Transitional Hooks' by 'Tyler Wise', is shown playing on a mobile device, featuring a laptop screen displaying the website 'thetransitionalhooks.com' which offers various video transitions for download, saved as a resource for content creation hooks.
 original_filename: "transitional-hooks-tutorial.PNG"
 created: 2026-05-01
 ---
-
 ![[Transitional-Hooks-Tutorial.png]]
 
 ## AI Analysis

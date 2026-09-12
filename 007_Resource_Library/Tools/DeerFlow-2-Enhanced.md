@@ -1,15 +1,13 @@
 ---
-title: "DeerFlow 2 Enhanced"
+title: "DeerFlow 2.0 Enhanced"
 type: tool-doc
 category: ai-agents
 tags:
-  - ai-agents
-  - deerflow
-  - open-source
+  - Coding-Agent
+  - GitHub
 created: 2026-05-08
 source: local
 ---
-
 ## 🦌 DeerFlow - 2.0
 
 English | [中文](https://github.com/stophobia/deerflow2.0-enhanced/blob/main/README_zh.md) | [日本語](https://github.com/stophobia/deerflow2.0-enhanced/blob/main/README_ja.md)

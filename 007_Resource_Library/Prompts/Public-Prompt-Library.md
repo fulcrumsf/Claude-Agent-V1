@@ -3,15 +3,15 @@ title: "Public Prompt Library"
 type: prompt
 category: video-production
 tags:
-  - screenshot
-  - prompt
-  - prompt-library
-  - ai-video
-ai_description: "The screenshot shows a mobile app with a TikTok-like interface, displaying a video by @sebintel demonstrating an AI video generation tool with an "Explore For You" section, a "Limited Time Offer! Get 35% OFF with code FRIEND35 at checkout!", and examples of AI-generated videos like "Ethereal Lightfalls in a Forgotten Sanctuary" that come with "exact JSON prompts" — likely saved for content ideas or researching AI video generation tools."
+  - Image-Video-Model
+  - Product
+ai_description: >-
+  The screenshot shows a mobile app with a TikTok-like interface, displaying a video by @sebintel demonstrating an AI video generation tool with an "Explore For You" section, a "Limited Time Offer! Get 35% OFF with code FRIEND35 at checkout!", and examples of AI-generated videos like "Ethereal Lightfalls in a Forgotten Sanctuary" that come with "exact JSON prompts" — likely saved for content ideas or researching AI video generation tools.
+summary: >-
+  The screenshot shows a mobile app with a TikTok-like interface, displaying a video by @sebintel demonstrating an AI video generation tool with an "Explore For You" section, a "Limited Time Offer! Get 35% OFF with code FRIEND35 at checkout!", and examples of AI-generated videos like "Ethereal Lightfalls in a Forgotten Sanctuary" that come with "exact JSON prompts" — likely saved for content ideas or researching AI video generation tools.
 original_filename: "public-prompt-library.PNG"
 created: 2026-05-01
 ---
-
 ![[Public-Prompt-Library.png]]
 
 ## Prompt Library

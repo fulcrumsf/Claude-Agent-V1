@@ -1,15 +1,13 @@
 ---
-title: "How-To-Become-A-Master-TikTok-Shop-Affiliate"
+title: "How to Master TikTok Shop Affiliate Marketing"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - tiktok
-  - tiktok-shop
-  - affiliate-marketing
+  - Guide
+  - Platforms
 created: 2026-06-06
 source: 000_Ingest/How to Become a Master TikTok Shop Affiliate.md
+retag_flag: "bad-tag-value"
 ---
 ![](https://www.youtube.com/watch?v=zSuzIrgQYP8)
 

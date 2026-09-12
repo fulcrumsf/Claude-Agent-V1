@@ -3,15 +3,11 @@ title: "LinkedIn QR Code Profile Feature"
 type: extracted-knowledge
 category: tools
 tags:
-  - linkedin
-  - qr-code
-  - networking
-  - profile-sharing
-  - mobile-app
+  - App
+  - Profile
 original_filename: "Conference-Floorplan-Adobe-Vizrt-15.jpg"
 created: 2026-05-09
 ---
-
 ![[LinkedIn-QR-Code-Profile-Feature.jpg]]
 
 ## AI Analysis

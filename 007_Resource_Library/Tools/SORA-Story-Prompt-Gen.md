@@ -1,15 +1,16 @@
 ---
-title: "Sora Story Prompt Gen"
+title: "Sora Story Prompt Generator"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - prompt
+  - Image-Video-Model
+  - Guide
 ai_description: "A TikTok video titled 'Sora 2 Tutorial' by 'Jonathan Acuña - Doctor AI' demonstrates a 'Sora 2 Story Prompt Generator' tool, likely saved for learning AI video generation or prompt engineering techniques."
+summary: >-
+  A TikTok video titled 'Sora 2 Tutorial' by 'Jonathan Acuña - Doctor AI' demonstrates a 'Sora 2 Story Prompt Generator' tool, likely saved for learning AI video generation or prompt engineering techniques.
 original_filename: "sora-2-story-prompt-gen.PNG"
 created: 2026-05-01
 ---
-
 ![[SORA-Story-Prompt-Gen.png]]
 
 ## AI Analysis

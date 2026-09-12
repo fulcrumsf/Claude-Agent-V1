@@ -29,6 +29,41 @@ EMBED_RE = re.compile(r"!\[\[([^\]|]+?\.(?:png|jpe?g|webp|gif))", re.I)
 MD_IMG_RE = re.compile(r"!\[[^\]]*\]\(([^)]+?\.(?:png|jpe?g|webp|gif))\)", re.I)
 
 
+_SCALAR_RE = re.compile(r'^([A-Za-z_][A-Za-z0-9_]*):[ \t]*(.*?)[ \t]*$')
+_LISTITEM_RE = re.compile(r'^[ \t]*-[ \t]+(.+?)[ \t]*$')
+
+
+def _loose_frontmatter(fmtext):
+    """Best-effort scrape when YAML won't parse: pull simple scalars and the
+    first block list (usually tags) so one bad field never blanks a card."""
+    fm, cur_list_key = {}, None
+    for ln in fmtext.split("\n"):
+        item = _LISTITEM_RE.match(ln)
+        if item and cur_list_key:
+            fm.setdefault(cur_list_key, []).append(item.group(1).strip("'\""))
+            continue
+        m = _SCALAR_RE.match(ln)
+        if not m:
+            continue
+        key, val = m.group(1), m.group(2)
+        if val == "" or val in (">-", "|-", ">", "|"):
+            cur_list_key = key
+            continue
+        cur_list_key = None
+        fm[key] = val.strip().strip("'\"")
+    return fm
+
+
+def raw_frontmatter_text(path):
+    """Return (raw_yaml_text, body) without parsing — for the raw-YAML editor,
+    so hand-formatting (block scalars, comments) round-trips untouched."""
+    text = open(path, encoding="utf-8", errors="ignore").read()
+    m = FM_RE.match(text)
+    if not m:
+        return "", text
+    return m.group(1), m.group(2)
+
+
 def parse_note(path):
     text = open(path, encoding="utf-8", errors="ignore").read()
     m = FM_RE.match(text)
@@ -39,7 +74,7 @@ def parse_note(path):
         if not isinstance(fm, dict):
             return {}, text
     except yaml.YAMLError:
-        return {}, text
+        return _loose_frontmatter(m.group(1)), m.group(2)
     return fm, m.group(2)
 
 

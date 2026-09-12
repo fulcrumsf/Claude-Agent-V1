@@ -1,15 +1,16 @@
 ---
-title: "Tiktok_saas_business_idea"
+title: "TikTok SaaS Business Ideas"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - tiktok
+  - Product
+  - Research-List
 ai_description: "TikTok video from Starter Story titled 'Bro's doing $200K per month with 5 saas products' showing a total MRR of $200,000, likely saved for SaaS business inspiration and entrepreneurial strategy research."
+summary: >-
+  TikTok video from Starter Story titled 'Bro's doing $200K per month with 5 saas products' showing a total MRR of $200,000, likely saved for SaaS business inspiration and entrepreneurial strategy research.
 original_filename: "TikTok_SaaS_Business_Idea.PNG"
 created: 2026-05-01
 ---
-
 ![[TIKTOK-Saas-Business-Idea.png]]
 
 ## AI Analysis

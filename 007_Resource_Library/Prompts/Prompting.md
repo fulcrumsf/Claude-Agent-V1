@@ -1,7 +1,9 @@
 ---
+title: "Prompts"
 Category: Course
 tags:
-  - Reference
+  - LLM
+  - App
 ---
 #### Prompts
 |![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/document_gray.svg)Description|

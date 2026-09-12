@@ -3,15 +3,11 @@ title: "Even G2 Smart Glasses Product Showcase"
 type: extracted-knowledge
 category: tools
 tags:
-  - smart-glasses
-  - wearable-tech
-  - even-g2
-  - gadgets
-  - product-launch
+  - Product
+  - App
 original_filename: "IMG_0252.PNG"
 created: 2026-08-24
 ---
-
 ![[Even-G2-Smart-Glasses-Product-Showcase.png]]
 
 ## AI Analysis

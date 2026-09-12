@@ -1,15 +1,13 @@
 ---
-title: "Only Strategy Make Money AI Agents"
+title: "Make Money with AI Agents: Content Posting & Product Sales Strategy"
 type: tutorial
 category: content-strategy
 tags:
-  - ai-agents
-  - monetization
-  - content-strategy
+  - Guide
+  - Product
 created: 2026-05-08
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=YC7S4PJjZSY)
 
 ## Transcript

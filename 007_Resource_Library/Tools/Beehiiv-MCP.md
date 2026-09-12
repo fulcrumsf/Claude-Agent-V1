@@ -3,11 +3,8 @@ title: "Beehiiv MCP"
 type: "tool-doc"
 category: "ai-agents"
 tags:
-  - ai-agents
-  - mcp
-  - beehiiv
-  - newsletter
-  - automation
+  - App
+  - LLM
 created: 2026-05-12
 source: local
 origin: "Email newsletter"
@@ -17,8 +14,8 @@ recipient: "info@unomascreative.com"
 date: "2026-03-24 12:58:16 +0000"
 message_id: "20260324.125816.95ebfddb@mta7"
 newsletter: "Product Updates"
+retag_flag: "bad-tag-value"
 ---
-
 # beehiiv MCP
 
 > Email from **Tyler from beehiiv** about the launch of the **beehiiv MCP**, signup flows, and the website dashboard.

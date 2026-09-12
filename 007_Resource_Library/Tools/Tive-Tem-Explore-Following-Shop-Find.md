@@ -3,13 +3,13 @@ title: "Tive Tem Explore Following Shop Find"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "Screenshot of Tive Tem Explore Following Shop Find with readable text about tive tem explore following shop."
+summary: >-
+  Screenshot of Tive Tem Explore Following Shop Find with readable text about tive tem explore following shop.
 original_filename: "IMG_8660.PNG"
 created: 2026-05-01
 ---
-
 ![[Tive-Tem-Explore-Following-Shop-Find.png]]
 
 ## AI Analysis

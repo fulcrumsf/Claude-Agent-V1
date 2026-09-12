@@ -3,13 +3,14 @@ title: "Hailuo AI Video Generator"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
+  - Product
+  - Image-Video-Model
 ai_description: "Hailuo AI web app showing 'Transform Idea to Visual' feature and 'Join Hailuo CPP Creator Partnership Program' banner from hailuoai.video — saved to explore AI video generation tools or partnership opportunities."
+summary: >-
+  Hailuo AI web app showing 'Transform Idea to Visual' feature and 'Join Hailuo CPP Creator Partnership Program' banner from hailuoai.video — saved to explore AI video generation tools or partnership opportunities.
 original_filename: "hailuo-ai-video-generator.PNG"
 created: 2026-05-01
 ---
-
 ![[Hailuo-AI-Video-Generator.png]]
 
 ## AI Analysis

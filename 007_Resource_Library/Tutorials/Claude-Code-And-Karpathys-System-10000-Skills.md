@@ -1,13 +1,10 @@
 ---
-title: "Claude Code and Karpathys System 10000 Skills"
+title: "Claude Code and Karpathy's System for Self-Improving Skills"
 type: tutorial
 category: ai-agents
 tags:
-  - tutorial
-  - ai-agents
-  - claude-code
-  - skills
-  - memory
+  - Coding-Agent
+  - Guide
 created: 2026-05-01
 source: https://www.youtube.com/watch?v=pCqpuHA8kHM
 ---

@@ -3,15 +3,11 @@ title: "Bob Do You Have My Stapler"
 type: extracted-knowledge
 category: design_inspiration
 tags:
-  - ai-art
-  - claymation
-  - office-humor
-  - 3d-render
-  - character-design
+  - Art-Reference
+  - Art-Style
 original_filename: "ChatGPT-Image-Apr-29-2025-09-03-43-PM.png"
 created: 2026-05-09
 ---
-
 ![[Bob-Do-You-Have-My-Stapler.png]]
 
 ## AI Analysis

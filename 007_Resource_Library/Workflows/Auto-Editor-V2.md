@@ -1,8 +1,10 @@
 ---
+title: "Terminal Commands for Auto Shorts Editor V2 and Whisper Transcription"
 Description: Takes videos from Google Drive and automates the video editing to a finished product with .SRT file
 Status: In Progress
 tags:
-  - Video
+  - Pipeline
+  - Audio-Model
 Related Database: Document Storage
 ---
 [[Archive]]

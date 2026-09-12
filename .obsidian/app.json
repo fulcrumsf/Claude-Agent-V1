@@ -2,5 +2,6 @@
   "alwaysUpdateLinks": true,
   "promptDelete": false,
   "newFileLocation": "folder",
-  "newFileFolderPath": "007_Resource_Library/Obsidian_Attachments"
+  "newFileFolderPath": "007_Resource_Library/Undetermined",
+  "attachmentFolderPath": "./"
 }

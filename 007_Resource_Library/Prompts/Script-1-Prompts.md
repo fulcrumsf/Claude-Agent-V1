@@ -3,12 +3,11 @@ title: "Script 1 Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Image-Video-Model
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Ottomans/Script 1 Prompts.md
 ---
-
 1. Cinematic view of Istanbul at dawn, blending ancient and modern architecture, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. Realistic, detailed portrait of Osman I in 13th-century attire, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. Realistic depiction of early Anatolian landscape, rustic, earthy tones, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250

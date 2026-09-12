@@ -3,14 +3,11 @@ title: "Renesas Electronics Corp Stock Analysis"
 type: extracted-knowledge
 category: investments
 tags:
-  - stock-analysis
-  - semiconductors
-  - renesas-electronics
-  - market-trends
+  - Stocks
 original_filename: "IMG_9923.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Renesas-Electronics-Corp-Stock-Analysis.png]]
 
 ## AI Analysis

@@ -1,15 +1,16 @@
 ---
-title: "Ai_glass_cuting_prompt"
+title: "AI cinematic prompt: Knife slicing glass apple"
 type: prompt
 category: video-production
 tags:
-  - screenshot
-  - prompt
+  - Art-Style
+  - Image-Video-Model
 ai_description: "TikTok video by @AidanStanik showing a detailed AI-generated prompt for a cinematic shot of a knife slicing a glass apple, likely saved by a content creator for AI content generation inspiration or prompt engineering reference."
+summary: >-
+  TikTok video by @AidanStanik showing a detailed AI-generated prompt for a cinematic shot of a knife slicing a glass apple, likely saved by a content creator for AI content generation inspiration or prompt engineering reference.
 original_filename: "AI_Glass_Cuting_Prompt.PNG"
 created: 2026-05-01
 ---
-
 ![[AI-Glass-Cuting-Prompt.png]]
 
 ## AI Analysis

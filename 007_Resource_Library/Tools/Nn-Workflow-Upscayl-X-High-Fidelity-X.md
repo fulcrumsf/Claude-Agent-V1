@@ -1,15 +1,16 @@
 ---
-title: "Nn Workflow Upscayl X High Fidelity X"
+title: "Upscayl AI Upscaling Tool Workflow"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - automation
+  - App
+  - Guide
 ai_description: "TikTok video showing a workflow automation tool for content creation, including steps to 'Clone a viral TikTok video', 'Suggest new content ideas', 'Create the new video with your avatar', and 'Publish to 9 platforms', alongside the claim '$3,000 A WEEK' and the call to action 'Automate Everything' — saved as a tool reference for AI-powered content automation strategy."
+summary: >-
+  TikTok video showing a workflow automation tool for content creation, including steps to 'Clone a viral TikTok video', 'Suggest new content ideas', 'Create the new video with your avatar', and 'Publish to 9 platforms', alongside the claim '$3,000 A WEEK' and the call to action 'Automate Everything' — saved as a tool reference for AI-powered content automation strategy.
 original_filename: "n8n Workflow_upscayl_3x_high-fidelity-4x.png"
 created: 2026-05-01
 ---
-
 ![[Nn-Workflow-Upscayl-X-High-Fidelity-X.png]]
 
 ## AI Analysis

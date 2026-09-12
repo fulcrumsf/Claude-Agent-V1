@@ -3,15 +3,12 @@ title: "PostHog Tech Stack Recommendation"
 type: extracted-knowledge
 category: tools
 tags:
-  - posthog
-  - product-analytics
-  - solo-founder
-  - tech-stack
-  - developer-tools
+  - Product
+  - Guide
 original_filename: "IMG_9862.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[PostHog-Tech-Stack-Recommendation.png]]
 
 ## AI Analysis

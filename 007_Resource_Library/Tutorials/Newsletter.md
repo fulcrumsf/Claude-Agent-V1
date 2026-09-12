@@ -1,13 +1,13 @@
 ---
-title: "Newsletter"
+title: "Newsletter Automation with n8n AI Agents"
 type: tutorial
 category: tutorials
 tags:
-  - tutorials
+  - Guide
+  - Pipeline
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Video Tutorials/Tutorial Library/Newsletter.md
 ---
-
 [https://youtu.be/E7yKKRe5fZw?si=ISRuIHoPHrkiq2pK](https://youtu.be/E7yKKRe5fZw?si=ISRuIHoPHrkiq2pK)
 
 > [!info] Watch Me Build a Multi-Agent Newsletter System in n8n (step-by-step)  

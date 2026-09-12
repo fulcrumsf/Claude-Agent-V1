@@ -1,13 +1,13 @@
 ---
-title: "Instructions For Customgpt Tokenizer"
+title: "FLUX Prompt Framework Instructions"
 type: prompt
 category: prompts
 tags:
-  - prompts
+  - Guide
+  - Art-Style
 created: 2026-05-03
 source: Instructions_For_CustomGPT_Tokenizer.txt
 ---
-
 Here’s your **fully rewritten instruction set**, permanently updated so that the **FLUX Prompt Framework** is now your **default structure**, and the **Ikigai fallback** only activates when explicitly requested.
 Everything else — including your rendering logic, dataset consistency rules, and table behavior — remains untouched and compatible with Google Sheets.
 

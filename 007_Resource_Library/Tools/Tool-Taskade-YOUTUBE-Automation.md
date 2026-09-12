@@ -1,16 +1,17 @@
 ---
-title: "Tool_taskade_youtube_automation"
+title: "Taskade YouTube Automation"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - youtube
-  - tools
-ai_description: "TikTok video titled "AUTOMATE YOUTUBE WITH TASKADE" demonstrating Taskade's automation triggers with Calendly and Slack integrations, saved by a content creator researching "how to start youtube automation" and seeking tools for workflow efficiency."
+  - Product
+  - Guide
+ai_description: >-
+  TikTok video titled "AUTOMATE YOUTUBE WITH TASKADE" demonstrating Taskade's automation triggers with Calendly and Slack integrations, saved by a content creator researching "how to start youtube automation" and seeking tools for workflow efficiency.
+summary: >-
+  TikTok video titled "AUTOMATE YOUTUBE WITH TASKADE" demonstrating Taskade's automation triggers with Calendly and Slack integrations, saved by a content creator researching "how to start youtube automation" and seeking tools for workflow efficiency.
 original_filename: "Tool_Taskade_YouTube_Automation.PNG"
 created: 2026-05-01
 ---
-
 ![[Tool-Taskade-YOUTUBE-Automation.png]]
 
 ## AI Analysis

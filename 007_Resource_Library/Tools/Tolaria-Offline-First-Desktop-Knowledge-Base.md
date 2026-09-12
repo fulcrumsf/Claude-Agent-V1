@@ -3,16 +3,11 @@ title: "Tolaria Offline First Desktop Knowledge Base"
 type: extracted-knowledge
 category: tools
 tags:
-  - tolaria
-  - knowledge-base
-  - second-brain
-  - markdown
-  - productivity-tools
-  - mac-os
+  - App
+  - Guide
 original_filename: "Scribe-AI-Platform-13.png"
 created: 2026-05-09
 ---
-
 ![[Tolaria-Offline-First-Desktop-Knowledge-Base.png]]
 
 ## AI Analysis

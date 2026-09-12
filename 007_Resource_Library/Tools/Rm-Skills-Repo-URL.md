@@ -3,13 +3,14 @@ title: "Rm Skills Repo URL"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - GitHub
+  - LLM
 ai_description: "A mobile screenshot of a YouTube video's comment section, showing a discussion about Gemini AI's limitations for processing 1-hour meetings (limited to 15-min), a GitHub repo link from the creator reymerekar7/rm-skills, and a search for 'claude code' — likely saved for AI tool research or a resource bookmark."
+summary: >-
+  A mobile screenshot of a YouTube video's comment section, showing a discussion about Gemini AI's limitations for processing 1-hour meetings (limited to 15-min), a GitHub repo link from the creator reymerekar7/rm-skills, and a search for 'claude code' — likely saved for AI tool research or a resource bookmark.
 original_filename: "rm-skills-repo-url.PNG"
 created: 2026-05-01
 ---
-
 ![[Rm-Skills-Repo-URL.png]]
 
 ## AI Analysis

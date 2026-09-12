@@ -1,13 +1,13 @@
 ---
-title: "Funky"
+title: "Funky Living Room Design Inspiration"
 type: design-inspiration
 category: design_inspiration
 tags:
-  - design-inspiration
+  - Art-Reference
+  - Art-Style
 created: 2026-05-03
 source: Databases/Projects/Designs & POD/Categories/Ikigai Room Mockups/Wall Art Mockups/Living Room - Boho/Image Gallery/Funky.md
 ---
-
 ```markdown
 {
   "room_type": "Living Room",

@@ -1,0 +1,51 @@
+{
+  "job_id": "Part-3-Gate-3-v1",
+  "gate": 3,
+  "completion_marker": "Run-Report-v1.json",
+  "job": {
+    "schema_version": 1,
+    "job_id": "Part-3-Gate-3-v1",
+    "approval": {
+      "gate": 3,
+      "approved": true,
+      "by": "Tony",
+      "scope": "Build channel-independent group, subject, and hybrid modes; Part Three comparison only. No automatic clip selection or connector activation."
+    },
+    "source": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Assembly/Versions/v5/Neon-Parcel-Grandma-And-Bear-Compilation-Music-Endscreen-Review-v1.mp4",
+    "source_sha256": "22748828bfa360e3a73819d6ce82ff3e17868e3cf1b04183dcf8974eeeb4d449",
+    "analysis": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Run-002/Detections-And-Tracks-v1.json",
+    "analysis_sha256": "bbab83299bf731d0ba58f45b5aab77503a30a6cd197971c9ca31081646b809ba",
+    "profile_file": "/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/Framing-Profiles-v1.json",
+    "profile_sha256": "a278b6323bee09066b9744b8d572085ebd48b7643f41df51ff13de9a20f148d8",
+    "output_root": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe",
+    "output_stem": "Part-3",
+    "output": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30
+    },
+    "variants": {
+      "Group": {
+        "profile": "group",
+        "settings": {},
+        "shot_overrides": {}
+      },
+      "Subject": {
+        "profile": "subject",
+        "settings": {},
+        "shot_overrides": {}
+      },
+      "Hybrid": {
+        "profile": "hybrid",
+        "settings": {},
+        "shot_overrides": {}
+      }
+    },
+    "protected_media": {
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-1-Test-v1.mp4": "1681e116ebc7c910ab6dc68bb5b6f20a1a588659ca4ab292dbe8aafe236cb953",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-2-Test-v2.mp4": "34e6bc32f549b21a4e6725ddae78372cfb7bfaaee3aefad6da9ad71c87f04bf7",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Test-v1.mp4": "511c01f0922ecc04616bdd7c803f633f188f38f6195860363e25054a3fe53960",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Test-v2.mp4": "3befe61032dcae22e2c2d6cbf5299329bf2b60e929f46c3366a9bc4e2212954e"
+    }
+  }
+}

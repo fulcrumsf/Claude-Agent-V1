@@ -1,15 +1,15 @@
 ---
-title: "Vochlea.com"
+title: "Vochlea Dubler 2 Ad"
 type: tool-doc
 category: app-dev
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "An Instagram in-app browser displaying an advertisement for Vochlea's Dubler 2 music creation software, currently priced at $99, with the slogan 'Jackson Did It. Jay Did It. Now You Can, Too. Not AI. Not Pre-Made Loops. Just Your Ideas.' — likely saved for product research or a content idea related to music production tools."
+summary: >-
+  An Instagram in-app browser displaying an advertisement for Vochlea's Dubler 2 music creation software, currently priced at $99, with the slogan 'Jackson Did It. Jay Did It. Now You Can, Too. Not AI. Not Pre-Made Loops. Just Your Ideas.' — likely saved for product research or a content idea related to music production tools.
 original_filename: "Vochlea.com.PNG"
 created: 2026-05-01
 ---
-
 ![[Vochlea-Com.png]]
 
 ## AI Analysis

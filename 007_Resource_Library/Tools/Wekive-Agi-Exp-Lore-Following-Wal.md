@@ -3,13 +3,13 @@ title: "Wekive Agi Exp Lore Following Wal"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - App
 ai_description: "Screenshot of Wekive Agi Exp Lore Following Wal with readable text about wekive agi exp."
+summary: >-
+  Screenshot of Wekive Agi Exp Lore Following Wal with readable text about wekive agi exp.
 original_filename: "IMG_8756.PNG"
 created: 2026-05-01
 ---
-
 ![[Wekive-Agi-Exp-Lore-Following-Wal.png]]
 
 ## AI Analysis

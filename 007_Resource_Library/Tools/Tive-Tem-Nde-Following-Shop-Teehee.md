@@ -3,13 +3,13 @@ title: "Tive Tem Nde Following Shop Teehee"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - App
 ai_description: "Screenshot of Tive Tem Nde Following Shop Teehee with readable text about tive tem nde following shop teehee."
+summary: >-
+  Screenshot of Tive Tem Nde Following Shop Teehee with readable text about tive tem nde following shop teehee.
 original_filename: "IMG_8812.PNG"
 created: 2026-05-01
 ---
-
 ![[Tive-Tem-Nde-Following-Shop-Teehee.png]]
 
 ## AI Analysis

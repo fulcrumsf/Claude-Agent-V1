@@ -1,5 +1,9 @@
 ---
+title: "Midjourney Multiple Characters Tutorial"
 Faceless Type: Character
+tags:
+  - Guide
+  - Image-Video-Model
 ---
 **High Priority**
 [https://youtu.be/-lCApZhDtX8?si=hoYKxa--YG-YCLTf](https://youtu.be/-lCApZhDtX8?si=hoYKxa--YG-YCLTf)

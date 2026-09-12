@@ -1,15 +1,15 @@
 ---
-title: "Tencent D AI"
+title: "Tencent D AI Model 1.0"
 type: model-doc
 category: ai-agents
 tags:
-  - screenshot
-  - reference
+  - Image-Video-Model
 ai_description: "TikTok video showcasing 'Tencent Model 1.0' by @dr_cintas, announcing 'The first 3D world generation AI model just launched,' with metrics of 12.6K likes and 8,079 saves — likely saved for AI tech research or content idea."
+summary: >-
+  TikTok video showcasing 'Tencent Model 1.0' by @dr_cintas, announcing 'The first 3D world generation AI model just launched,' with metrics of 12.6K likes and 8,079 saves — likely saved for AI tech research or content idea.
 original_filename: "Tencent_3D_AI.PNG"
 created: 2026-05-01
 ---
-
 ![[Tencent-D-AI.png]]
 
 ## AI Analysis

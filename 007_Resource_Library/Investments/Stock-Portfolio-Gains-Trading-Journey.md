@@ -3,15 +3,10 @@ title: "Stock Portfolio Gains Trading Journey"
 type: extracted-knowledge
 category: investments
 tags:
-  - stock-trading
-  - investing
-  - gains
-  - financial-freedom
-  - nvidia
+  - Stocks
 original_filename: "IMG_9888.PNG"
 created: 2026-08-24
 ---
-
 ![[Stock-Portfolio-Gains-Trading-Journey.png]]
 
 ## AI Analysis

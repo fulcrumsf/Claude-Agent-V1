@@ -1,16 +1,15 @@
 ---
-title: "Google Inulin Products"
+title: "Google Search for Inulin Products"
 type: doc
-category: general
 category: personal
+form: screenshot
 tags:
-  - screenshot
-  - reference
-ai_description: "A mobile Google Search results page displaying sponsored shopping ads for "inulin with fos powder," featuring products from Micro Ingredients (€33.05) and NOW Foods (€11.20) available on iHerb, likely saved for product research and price comparison of health supplements."
+  - Health
+  - Product
+summary: "Mobile Google Search results page showing sponsored shopping ads for 'inulin with FOS powder' (Micro Ingredients EUR 33.05, NOW Foods EUR 11.20 on iHerb). Saved as a personal health reference - inulin as a prebiotic fiber for gut health - and for supplement price comparison."
 original_filename: "google-inulin-products.PNG"
 created: 2026-05-01
 ---
-
 ![[Google-Inulin-Products.png]]
 
 ## AI Analysis

@@ -1,14 +1,12 @@
 ---
-title: "How-I-Finally-Got-Out-Of-Shorts-Jail-And-Went-Viral"
+title: "How to Escape YouTube Shorts Jail and Go Viral"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - youtube-shorts
-  - video-production
+  - Guide
 created: 2026-06-06
 source: 000_Ingest/How I FINALLY got out of Shorts Jail (and went viral).md
+retag_flag: "bad-tag-value"
 ---
 ![](https://www.youtube.com/watch?v=DnMYPL927i8)
 

@@ -1,8 +1,10 @@
 ---
+title: "SRT to TXT: SEO Metadata Generation Rules V2.0"
 Description: ChatGPT Custom GPT that takes a .SRT file and creates a .TXT file with Title, Description, Tags for Repurpose.io
 Status: Planning
 tags:
-  - Data
+  - Guide
+  - LLM
 Related Database: Newsletter Subscribers
 ---
 ### Instruction Set V2.0

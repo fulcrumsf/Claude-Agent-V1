@@ -1,0 +1,95 @@
+{
+  "checked_utc": "2026-09-09T21:53:46.802008+00:00",
+  "status": "automated_verification_passed_human_review_pending",
+  "checks": [
+    "24 behavioral tests passed",
+    "job, source, analysis, profiles and protected media fingerprints match",
+    "camera plan matches the rendered plan fingerprint",
+    "all five video files and contact sheet match verified render hashes",
+    "968 frame mappings per variant preserve the 771 source frames interval without the following endcard",
+    "source bounds, selected subject coverage, vertical crop aspect and cut resets checked",
+    "continuous crop pan and zoom limits checked against settings",
+    "three reusable modes, shot overrides and two-person alternation tested",
+    "superseded first run archived with every file fingerprint preserved"
+  ],
+  "camera_summary": {
+    "Group": {
+      "maximum_continuous_pan_source_width_per_second": 0,
+      "maximum_continuous_zoom_source_height_per_second": 0,
+      "shots": {
+        "Shot-10": {
+          "frames": 303,
+          "cuts_including_shot_start": 1,
+          "last_layout": "fit_blur"
+        },
+        "Shot-11": {
+          "frames": 302,
+          "cuts_including_shot_start": 1,
+          "last_layout": "fit_blur"
+        },
+        "Shot-12": {
+          "frames": 363,
+          "cuts_including_shot_start": 1,
+          "last_layout": "fit_blur"
+        }
+      }
+    },
+    "Subject": {
+      "maximum_continuous_pan_source_width_per_second": 0.5094574375,
+      "maximum_continuous_zoom_source_height_per_second": 0.3500000000000038,
+      "shots": {
+        "Shot-10": {
+          "frames": 303,
+          "cuts_including_shot_start": 4,
+          "last_layout": "crop"
+        },
+        "Shot-11": {
+          "frames": 302,
+          "cuts_including_shot_start": 3,
+          "last_layout": "crop"
+        },
+        "Shot-12": {
+          "frames": 363,
+          "cuts_including_shot_start": 4,
+          "last_layout": "crop"
+        }
+      }
+    },
+    "Hybrid": {
+      "maximum_continuous_pan_source_width_per_second": 0.5094574375,
+      "maximum_continuous_zoom_source_height_per_second": 0.3500000000000038,
+      "shots": {
+        "Shot-10": {
+          "frames": 303,
+          "cuts_including_shot_start": 2,
+          "last_layout": "fit_blur"
+        },
+        "Shot-11": {
+          "frames": 302,
+          "cuts_including_shot_start": 4,
+          "last_layout": "fit_blur"
+        },
+        "Shot-12": {
+          "frames": 363,
+          "cuts_including_shot_start": 4,
+          "last_layout": "fit_blur"
+        }
+      }
+    }
+  },
+  "resources": {
+    "allocated_bytes": 2247409664,
+    "free_bytes": 21251915776
+  },
+  "engine_sha256": {
+    "camera_plan.py": "6834a905443556acb37188fe867b9139e3afe0300d43b2572a9e40959a050706",
+    "reframe.py": "c2bb32b566c2bf5b417c8156ca405b09f8cf26564e43944ccfb7209e71a6d9ea",
+    "test_camera_plan.py": "867dd35170443d89a65b812a2852ace6b139f17792c895444a1c9618b7177fa9",
+    "render_reframe.py": "d5a6c5d712d8b6e2720859b84fcee4360b0ef90bc04ae61c13ee13497b1d0a96",
+    "run_offline.py": "1beb75de797208e9f83296a862baaf8e0916467b010bab8ed3e237763e2fda7a",
+    "diagnose.py": "a2496ad97910c2d610f0b815f3849619be8baefd198edd0ed1319b4744888c18",
+    "test_diagnose.py": "d1ae534cd230982765cb3bc884dbbbd2b5ccb048461922260f84e0ee0afb96f2"
+  },
+  "job_sha256": "3b9f09d880771a157c096de1e51d1c17bc9da6b5fc16cc7b13496394b6934cfc",
+  "review_notes": "Static contact sheet reviewed. Normal-speed human review is pending. No semantic clipping, narration awareness, connector, or publishing was implemented."
+}

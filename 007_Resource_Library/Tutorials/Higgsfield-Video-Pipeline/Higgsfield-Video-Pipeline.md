@@ -3,15 +3,11 @@ title: "The TWO Claude Skills that run our entire AI video pipeline (free downlo
 type: tutorial
 category: video-production
 tags:
-  - higgsfield
-  - seedance
-  - claude-skills
-  - prompt-engineering
-  - video-production
+  - Guide
+  - Pipeline
 created: 2026-06-06
 source: https://www.youtube.com/watch?v=0YhhPQVXA7c
 ---
-
 # The TWO Claude Skills that run our entire AI video pipeline (free download + easy setup)
 
 ![](https://www.youtube.com/watch?v=0YhhPQVXA7c)

@@ -1,15 +1,13 @@
 ---
-title: "Viblo-AI-Video-Editor-For-Short-Form-Content"
+title: "Viblo AI Video Editor"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - video-production
-  - video-editor
-  - app-dev
+  - App
+  - Guide
 created: 2026-06-06
 source: 000_Ingest/Viblo — AI Video Editor for Short-Form Content.md
+retag_flag: "bad-tag-value"
 ---
 ## BEFORE VS AFTER VIBLO
 

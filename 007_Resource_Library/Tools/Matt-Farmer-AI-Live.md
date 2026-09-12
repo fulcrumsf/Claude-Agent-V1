@@ -3,13 +3,14 @@ title: "Matt Farmer AI Live"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Profile
+  - App
 ai_description: "TikTok's 'For You' page showing a live stream by 'Matt Farmer | AI & Marketing' discussing an 'AI-generated' TikTok video from @humaneantics, likely saved as research on AI content, tools, and marketing trends."
+summary: >-
+  TikTok's 'For You' page showing a live stream by 'Matt Farmer | AI & Marketing' discussing an 'AI-generated' TikTok video from @humaneantics, likely saved as research on AI content, tools, and marketing trends.
 original_filename: "matt-farmer-ai-live-2.PNG"
 created: 2026-05-01
 ---
-
 ![[Matt-Farmer-AI-Live.png]]
 
 ## AI Analysis

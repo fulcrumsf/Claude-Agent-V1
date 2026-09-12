@@ -3,13 +3,14 @@ title: "Neuralframes Music Video"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
+  - App
+  - Image-Video-Model
 ai_description: "TikTok video promoting the AI tool Neural Frames for creating audioreactive visuals and lyric videos, featuring 'Chris | The AI Musicpreneur' and the URL neuralframes.com — likely saved as a tool reference for AI-powered content creation."
+summary: >-
+  TikTok video promoting the AI tool Neural Frames for creating audioreactive visuals and lyric videos, featuring 'Chris | The AI Musicpreneur' and the URL neuralframes.com — likely saved as a tool reference for AI-powered content creation.
 original_filename: "neuralframes-music-video.PNG"
 created: 2026-05-01
 ---
-
 ![[Neuralframes-Music-Video.png]]
 
 ## AI Analysis

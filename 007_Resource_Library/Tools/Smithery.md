@@ -6,14 +6,10 @@ summary: "Smithery AI is a registry and management platform for Model Context Pr
 url: "https://smithery.ai/"
 verified: true
 tags:
-  - ai-agents
-  - llm-tools
-  - api-management
-  - model-context-protocol
-  - developer-platform
+  - LLM
+  - App
 created: 2026-09-05
 enriched: 2026-09-05
 ---
-
 ## Summary
 Smithery AI is a registry and management platform for Model Context Protocol (MCP) servers, which are APIs or plugins that extend the capabilities of large language models (LLMs). It enables AI systems to discover, install, and manage these servers to call external services directly. The platform also offers tooling for developers to build, test, and distribute their own MCP servers.

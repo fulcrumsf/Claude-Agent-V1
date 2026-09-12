@@ -1,15 +1,16 @@
 ---
-title: "Canvas For Mind AI"
+title: "EXISTS AI Game Design Tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
+  - Gaming
 ai_description: "A TikTok video featuring the 'EXISTS' AI game design tool, highlighting features like 'Generating worlds' and 'AI personalization,' with a 'video prompt ai generator' search suggestion — likely saved for AI tool research or content ideas."
+summary: >-
+  A TikTok video featuring the 'EXISTS' AI game design tool, highlighting features like 'Generating worlds' and 'AI personalization,' with a 'video prompt ai generator' search suggestion — likely saved for AI tool research or content ideas.
 original_filename: "canvas-for-mind-ai.PNG"
 created: 2026-05-01
 ---
-
 ![[Canvas-For-Mind-AI.png]]
 
 ## AI Analysis

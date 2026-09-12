@@ -3,15 +3,11 @@ title: "Stitch Beta AI Design Tool"
 type: extracted-knowledge
 category: tools
 tags:
-  - stitch-beta
-  - ai-design
-  - generative-ui
-  - no-code
-  - ai-tools
+  - Product
+  - App
 original_filename: "Open-Source-AI-Tools-03.png"
 created: 2026-05-09
 ---
-
 ![[Stitch-Beta-AI-Design-Tool.png]]
 
 ## AI Analysis

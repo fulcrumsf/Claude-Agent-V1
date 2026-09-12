@@ -1,9 +1,10 @@
 ---
+title: "Amazon Influencer Tools - Low Hanging Fruit & SortioX"
 Category: Education
 tags:
-  - Reference
-  - Revenue-Stream
-  - Tutorial
+  - Research-List
+  - Product
+retag_flag: "bad-tag-value"
 ---
 #### Amazon Influencer Bookmarks
 |![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/snippet_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|

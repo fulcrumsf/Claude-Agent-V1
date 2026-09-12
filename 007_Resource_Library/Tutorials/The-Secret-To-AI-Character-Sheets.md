@@ -3,15 +3,11 @@ title: "The Secret to AI Character Sheets"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - character-consistency
-  - character-sheet
-  - ai-video
-  - recraft
+  - Guide
+  - Image-Video-Model
 created: 2026-08-10
 source: https://www.youtube.com/watch?v=X-rlr3k-2TI
 ---
-
 ![](https://www.youtube.com/watch?v=X-rlr3k-2TI)
 
 The "secret" to consistent AI characters? Honestly — there isn't one. I tested every character sheet method head-to-head: turnaround sheets, the blacked-out-faces trick, and first-frame vs. omni workflows. Here's what actually matters (and what's just wasting your credits).  

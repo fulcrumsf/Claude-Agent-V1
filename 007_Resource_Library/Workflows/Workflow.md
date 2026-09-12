@@ -1,15 +1,16 @@
 ---
-title: "Workflow"
+title: "Music Monetization Workflows"
 type: workflow
 category: video-production
 tags:
-  - screenshot
-  - automation
+  - Guide
+  - Art-Reference
 ai_description: "A conceptual diagram outlining two music monetization pathways: AI-generated music (AIVA) distributed via DistroKid to Spotify for playlists and streams, and YouTube videos for views, with both leading to profit, and a link from YouTube views to Spotify playlists — saved as a strategy guide for AI content monetization."
+summary: >-
+  A conceptual diagram outlining two music monetization pathways: AI-generated music (AIVA) distributed via DistroKid to Spotify for playlists and streams, and YouTube videos for views, with both leading to profit, and a link from YouTube views to Spotify playlists — saved as a strategy guide for AI content monetization.
 original_filename: "Workflow.png"
 created: 2026-05-01
 ---
-
 ![[Workflow.png]]
 
 ## AI Analysis

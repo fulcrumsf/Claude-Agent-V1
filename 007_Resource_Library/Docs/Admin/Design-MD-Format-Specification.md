@@ -1,12 +1,9 @@
 ---
-title: "Design-MD-Format-Specification"
+title: "DESIGN.md Format Specification"
 type: doc
 category: app-dev
 tags:
-  - reference
-  - documentation
-  - design-systems
-  - app-dev
+  - LLM
 created: 2026-06-06
 source: 000_Ingest/google-labs-codedesign.md A format specification for describing a visual identity to coding agents. DESIGN.md gives agents a persistent, structured understanding of a design system..md
 ---

@@ -1,13 +1,10 @@
 ---
-title: "FalcoCut-Best-AI-Video-Generator-For-Avatars-Voice-Cloning-And-Translation"
+title: "FalcoCut AI Video Generator"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - video-production
-  - ai-video
-  - app-dev
+  - App
+  - Image-Video-Model
 created: 2026-06-06
 source: 000_Ingest/FalcoCut Best AI Video Generator for Avatars, Voice Cloning & Translation.md
 ---

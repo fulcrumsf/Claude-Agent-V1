@@ -63,7 +63,7 @@ def detect_source(fm, body, filename, has_image):
     if "screenshot" in tags or has_image:
         return "Screenshot", bool(orig)
 
-    return None, False
+    return "MD", False
 
 
 def glyph_color(fm, folder):

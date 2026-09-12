@@ -3,14 +3,13 @@ title: "Live Xplore Local Following Shop Zuru"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - video
-  - design
+  - Product
 ai_description: "Screenshot of Live Xplore Local Following Shop Zuru with readable text about live xplore local following shop."
+summary: >-
+  Screenshot of Live Xplore Local Following Shop Zuru with readable text about live xplore local following shop.
 original_filename: "IMG_9214.PNG"
 created: 2026-05-01
 ---
-
 ![[Live-Xplore-Local-Following-Shop-Zuru.png]]
 
 ## AI Analysis

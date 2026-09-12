@@ -1,4 +1,5 @@
 ---
+title: "PI Harness Architecture"
 type: research
 status: active
 date: "2026-04-08"
@@ -9,8 +10,10 @@ related:
   - "[[Codex]]"
   - "[[Obsidian]]"
   - "[[Google Workspace]]"
+tags:
+  - Coding-Agent
+  - LLM
 ---
-
 # PI Harness Architecture for EMAI
 
 ## The goal

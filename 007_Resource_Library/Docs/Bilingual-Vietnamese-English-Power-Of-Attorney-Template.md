@@ -3,15 +3,11 @@ title: "Bilingual Vietnamese English Power Of Attorney Template"
 type: extracted-knowledge
 category: docs
 tags:
-  - power-of-attorney
-  - bilingual-documents
-  - vietnamese-english
-  - legal-template
-  - contract-forms
+  - Guide
 original_filename: "Claude-Code-Agents-And-Research-02.png"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[Bilingual-Vietnamese-English-Power-Of-Attorney-Template.png]]
 
 ## AI Analysis

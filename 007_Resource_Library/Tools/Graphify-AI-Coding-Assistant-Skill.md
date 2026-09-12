@@ -1,15 +1,13 @@
 ---
-title: "Graphify AI Coding Assistant Skill"
+title: "Graphify AI Coding Assistant"
 type: tool-doc
 category: ai-agents
 tags:
-  - tool-doc
-  - ai-agents
-  - graphify
-  - knowledge-graph
-  - multimodal
+  - Coding-Agent
+  - LLM
 created: 2026-05-01
 source: https://raw.githubusercontent.com/safishamsi/graphify/v4/docs/logo-text.svg
+retag_flag: "bad-tag-count"
 ---
 [![Graphify](https://raw.githubusercontent.com/safishamsi/graphify/v4/docs/logo-text.svg)](https://graphifylabs.ai/)
 

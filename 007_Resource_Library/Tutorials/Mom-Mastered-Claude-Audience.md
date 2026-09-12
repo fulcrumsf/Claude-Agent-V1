@@ -3,13 +3,11 @@ title: "Mom Mastered Claude Audience"
 type: tutorial
 category: content-strategy
 tags:
-  - claude-code
-  - audience-building
-  - marketing
+  - Guide
+  - Coding-Agent
 created: 2026-05-08
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=DnZ53NQXfuA)
 
 Start using Gamma Today: https://bit.ly/GammaxCalum  

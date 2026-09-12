@@ -1,17 +1,14 @@
 ---
-title: "Hermes Agent New Desktop App The 247 Self-Evolving AI Agent"
+title: "Hermes Agent New Desktop App"
 type: "tool-doc"
 category: "ai-agents"
 tags:
-  - ai-agents
-  - desktop-app
-  - agentic-ai
-  - automation
-  - tool
+  - App
+  - Coding-Agent
 created: 2026-05-12
 source: local
+retag_flag: "bad-tag-value"
 ---
-
 ![](https://www.youtube.com/watch?v=YBp_PXBbe80)
 
 Hermes Agent is one of the most advanced open-source AI agents right now, and in this video I showcase the brand new Hermes Desktop App that makes running persistent autonomous AI agents dramatically easier.  

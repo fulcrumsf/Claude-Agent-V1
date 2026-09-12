@@ -3,13 +3,12 @@ title: "Transition Fixer Prompt"
 type: prompt
 category: video-production
 tags:
-  - prompt
-  - video-production
-  - ai-automation
+  - Pipeline
+  - Image-Video-Model
 created: 2026-05-08
 source: local
+retag_flag: "bad-tag-value"
 ---
-
 I need you to build me an app that will import a CSV file. It then takes the video prompt and searches for any video prompt in this column that says this [[TRANSITION_INVALID]]
 
 If the video prop shows [[TRANSITION_INVALID]]

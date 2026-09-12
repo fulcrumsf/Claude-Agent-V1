@@ -44,6 +44,15 @@
   .chip { font-size: 12px; padding: 3px 9px; border: 1px solid var(--line);
     border-radius: 999px; background: var(--card); color: var(--fg); }
   .chip.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .chip.offvocab { border-color: #dc2626; color: #dc2626; }
+  .chip.offvocab.on { background: #dc2626; color: #fff; border-color: #dc2626; }
+  .tagpicker { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tagpicker label { font-size: 12px; padding: 3px 9px; border: 1px solid var(--line);
+    border-radius: 999px; background: var(--card); cursor: pointer; user-select: none; }
+  .tagpicker input { margin-right: 5px; }
+  .tagpicker label.checked { background: var(--accent); color: #fff; border-color: var(--accent); }
+  #eTagCount { font-size: 11px; color: var(--muted); }
+  #eTagCount.over { color: #dc2626; }
 
   #actionbar { display: none; gap: 8px; align-items: center; margin-top: 8px;
     padding: 7px 10px; background: var(--card); border: 1px solid var(--line);
@@ -86,6 +95,7 @@
   .src.Screenshot { background: #d97706; }
   .src.YouTube { background: #dc2626; }
   .src.Bookmark { background: #2563eb; }
+  .src.MD { background: #6b7280; }
 
   /* detail slide-over */
   #scrim { position: fixed; inset: 0; background: #0007; z-index: 40; display: none; }
@@ -144,15 +154,21 @@
       <button class="chip" data-src="YouTube">YouTube</button>
       <button class="chip" data-src="Screenshot">Screenshot</button>
       <button class="chip" data-src="Bookmark">Bookmark</button>
+      <button class="chip" data-src="MD">MD</button>
     </div>
     <div class="frow"><span class="lbl">Tags</span><span id="fTags"></span></div>
+    <div class="frow" id="fOffVocabRow" style="display:none">
+      <span class="lbl" style="color:#dc2626">⚠ Off-list</span><span id="fOffVocab"></span>
+    </div>
   </div>
   <div id="actionbar">
     <b id="selCount">0 selected</b>
     <select id="actionSel">
       <option value="delete">Delete</option>
+      <option value="move">Move to…</option>
       <option value="rerun">Re-run AI</option>
     </select>
+    <select id="moveDest" style="display:none"></select>
     <button class="btn primary" id="applyAction">Apply</button>
     <button class="btn" id="clearSel">Clear</button>
   </div>
@@ -163,6 +179,8 @@
 <div id="scrim"></div>
 <aside id="detail">
   <div class="dhead">
+    <button class="btn" id="dPrev" title="Previous (←)">‹</button>
+    <button class="btn" id="dNext" title="Next (→)">›</button>
     <span class="path" id="dPath"></span>
     <button class="btn" id="dEdit">Edit</button>
     <button class="btn" id="dRerun">Re-run AI</button>
@@ -202,6 +220,7 @@ const $ = (s, r = document) => r.querySelector(s);
 const esc = s => (s || "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 let ALL = [];
+let TAG_VOCAB = [];
 const state = { q: "", folders: new Set(), sources: new Set(), tags: new Set(), showText: false };
 const selected = new Set();
 let current = null; // path of open detail
@@ -281,9 +300,16 @@ function renderGrid() {
 function renderFilters(f) {
   $("#fFolders").innerHTML = f.folders.map(x =>
     `<button class="chip" data-folder="${esc(x)}">${esc(x)}</button>`).join("");
+  $("#moveDest").innerHTML = (f.move_targets || f.folders).map(x =>
+    `<option value="${esc(x)}">${esc(x)}</option>`).join("");
   $("#fTags").innerHTML = f.top_tags.map(x =>
     `<button class="chip" data-tag="${esc(x)}">${esc(x)}</button>`).join("") ||
     '<span style="color:var(--muted);font-size:11px">none</span>';
+  TAG_VOCAB = f.tag_vocab || [];
+  const off = f.off_vocab_tags || [];
+  $("#fOffVocabRow").style.display = off.length ? "" : "none";
+  $("#fOffVocab").innerHTML = off.map(([t, n]) =>
+    `<button class="chip offvocab" data-tag="${esc(t)}">${esc(t)} (${n})</button>`).join("");
 }
 
 // ---------- events: filters ----------
@@ -317,6 +343,10 @@ $("#grid").addEventListener("click", e => {
 
 $("#clearSel").addEventListener("click", () => { selected.clear(); renderGrid(); });
 
+$("#actionSel").addEventListener("change", e => {
+  $("#moveDest").style.display = e.target.value === "move" ? "" : "none";
+});
+
 $("#applyAction").addEventListener("click", async () => {
   const paths = [...selected];
   if (!paths.length) return;
@@ -329,6 +359,21 @@ $("#applyAction").addEventListener("click", async () => {
     if (current && paths.includes(current)) closeDetail();
     renderGrid();
     toast(`${paths.length} moved to ~/Desktop/delete/`);
+  } else if (action === "move") {
+    const dest = $("#moveDest").value;
+    if (!dest) return;
+    if (!confirm(`Move ${paths.length} note(s) + their images into ${dest}/ ?`)) return;
+    const r = await api("/api/move", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ paths, dest }) });
+    const errs = Object.entries(r.errors || {});
+    Object.entries(r.moved || {}).forEach(([oldP, newP]) => {
+      const c = ALL.find(x => x.path === oldP);
+      if (c) { c.path = newP; c.folder = dest; }
+    });
+    if (current && r.moved && r.moved[current]) { current = r.moved[current]; }
+    selected.clear();
+    renderGrid();
+    toast(errs.length ? `Moved ${Object.keys(r.moved).length}, ${errs.length} failed (see console)` : `${Object.keys(r.moved).length} moved to ${dest}/`);
+    if (errs.length) console.warn("move errors", r.errors);
   } else {
     const est = (paths.length * 0.01).toFixed(2);
     if (!confirm(`Re-run Vision AI on ${paths.length} note(s)? Est. cost ~$${est}. Results are shown for review, nothing is written yet.`)) return;
@@ -356,35 +401,108 @@ async function openDetail(path) {
   $("#scrim").classList.add("show");
   const d = await api("/api/note?path=" + encodeURIComponent(path));
   $("#dBody").dataset.fm = JSON.stringify(d.frontmatter || {});
+  $("#dBody").dataset.fmRaw = d.frontmatter_raw || "";
   $("#dBody").innerHTML = d.frontmatter_html + d.body_html;
+  updateNavButtons();
 }
 
-$("#dEdit").addEventListener("click", () => {
-  const fm = JSON.parse($("#dBody").dataset.fm || "{}");
-  const tags = Array.isArray(fm.tags) ? fm.tags.join(", ") : (fm.tags || "");
+// ---------- prev / next ----------
+function currentList() { return visible(); }
+
+function updateNavButtons() {
+  const list = currentList();
+  const idx = list.findIndex(c => c.path === current);
+  $("#dPrev").disabled = idx <= 0;
+  $("#dNext").disabled = idx === -1 || idx >= list.length - 1;
+}
+
+function stepDetail(delta) {
+  const list = currentList();
+  const idx = list.findIndex(c => c.path === current);
+  if (idx === -1) return;
+  const next = list[idx + delta];
+  if (next) openDetail(next.path);
+}
+$("#dPrev").addEventListener("click", () => stepDetail(-1));
+$("#dNext").addEventListener("click", () => stepDetail(1));
+document.addEventListener("keydown", e => {
+  if (!$("#detail").classList.contains("show")) return;
+  if (document.activeElement && ["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) return;
+  if (e.key === "ArrowLeft") stepDetail(-1);
+  if (e.key === "ArrowRight") stepDetail(1);
+});
+
+const $$$ = (s) => Array.from(document.querySelectorAll(s));
+function updateTagCount() {
+  const n = $$$("#eTagPicker input:checked").length;
+  const el = $("#eTagCount");
+  el.textContent = `${n} of 1-2 selected`;
+  el.classList.toggle("over", n < 1 || n > 2);
+}
+
+function renderFieldEdit(fm) {
+  const current_tags = new Set((Array.isArray(fm.tags) ? fm.tags : []).map(String));
+  const vocab = TAG_VOCAB.length ? TAG_VOCAB : [...current_tags].sort();
+  const picker = vocab.map(t => `
+    <label class="${current_tags.has(t) ? "checked" : ""}">
+      <input type="checkbox" value="${esc(t)}" ${current_tags.has(t) ? "checked" : ""}>${esc(t)}
+    </label>`).join("");
   $("#dBody").innerHTML = `
     <div class="editrow"><label>Title</label><input id="eTitle" value="${esc(String(fm.title || ""))}"></div>
     <div class="editrow"><label>Description / summary</label><input id="eSummary" value="${esc(String(fm.summary || ""))}"></div>
     <div class="editrow"><label>URL</label><input id="eUrl" value="${esc(String(fm.url || ""))}"></div>
-    <div class="editrow"><label>Tags (comma separated)</label><input id="eTags" value="${esc(tags)}"></div>
+    <div class="editrow"><label>Tags (pick 1-2) <span id="eTagCount"></span></label>
+      <div class="tagpicker" id="eTagPicker">${picker}</div></div>
     <div class="editrow"><label>Body (leave blank to keep as-is)</label><textarea id="eBody" placeholder="only fill this if the mislabel is deeper than the fields above"></textarea></div>
     <div style="display:flex;gap:8px">
       <button class="btn primary" id="eSave">Save</button>
+      <button class="btn" id="eYamlMode">Edit full YAML instead</button>
       <button class="btn" id="eCancel">Cancel</button>
     </div>`;
+  updateTagCount();
+  $("#eTagPicker").addEventListener("change", e => {
+    e.target.closest("label").classList.toggle("checked", e.target.checked);
+    updateTagCount();
+  });
   $("#eCancel").addEventListener("click", () => openDetail(current));
+  $("#eYamlMode").addEventListener("click", () => renderYamlEdit());
   $("#eSave").addEventListener("click", async () => {
-    const payload = { path: current, title: $("#eTitle").value, summary: $("#eSummary").value, url: $("#eUrl").value, tags: $("#eTags").value };
+    const tags = $$$("#eTagPicker input:checked").map(el => el.value);
+    if (tags.length < 1 || tags.length > 2) { if (!confirm(`${tags.length} tags selected (expected 1-2). Save anyway?`)) return; }
+    const payload = { path: current, title: $("#eTitle").value, summary: $("#eSummary").value, url: $("#eUrl").value, tags };
     const b = $("#eBody").value.trim();
     if (b) payload.body = b + "\n";
     await api("/api/note", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
     const c = ALL.find(x => x.path === current);
-    if (c) { c.title = payload.title; c.summary = payload.summary; c.tags = payload.tags.split(",").map(s => s.trim()).filter(Boolean); }
+    if (c) { c.title = payload.title; c.summary = payload.summary; c.tags = tags; }
     renderGrid();
     toast("Saved");
     openDetail(current);
   });
-});
+}
+
+function renderYamlEdit() {
+  const raw = $("#dBody").dataset.fmRaw || "";
+  $("#dBody").innerHTML = `
+    <div class="editrow"><label>Raw frontmatter YAML (between the --- lines)</label>
+      <textarea id="eYaml" style="min-height:320px">${esc(raw)}</textarea></div>
+    <p id="eYamlErr" style="color:#dc2626;font-size:12px"></p>
+    <div style="display:flex;gap:8px">
+      <button class="btn primary" id="eYamlSave">Save</button>
+      <button class="btn" id="eYamlCancel">Cancel</button>
+    </div>`;
+  $("#eYamlCancel").addEventListener("click", () => openDetail(current));
+  $("#eYamlSave").addEventListener("click", async () => {
+    const r = await fetch("/api/note", { method: "PATCH", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ path: current, raw_frontmatter: $("#eYaml").value }) });
+    const data = await r.json();
+    if (!r.ok) { $("#eYamlErr").textContent = data.error || "Save failed"; return; }
+    toast("Saved");
+    openDetail(current);
+  });
+}
+
+$("#dEdit").addEventListener("click", () => renderFieldEdit(JSON.parse($("#dBody").dataset.fm || "{}")));
 
 $("#dRerun").addEventListener("click", async () => {
   if (!confirm("Re-run Vision AI on this note? Est. ~$0.01. Nothing is written until you accept.")) return;
@@ -411,12 +529,18 @@ $("#dRerun").addEventListener("click", async () => {
 $("#dDelete").addEventListener("click", async () => {
   if (!confirm("Move this note + its image to ~/Desktop/delete/ ?")) return;
   const p = current;
+  const idx = currentList().findIndex(c => c.path === p);
   await api("/api/delete", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ paths: [p] }) });
   ALL = ALL.filter(c => c.path !== p);
   selected.delete(p);
-  closeDetail();
   renderGrid();
   toast("Moved to ~/Desktop/delete/");
+  const list = currentList();
+  if (list.length) {
+    openDetail(list[Math.min(idx, list.length - 1)].path);
+  } else {
+    closeDetail();
+  }
 });
 
 // ---------- comment ----------

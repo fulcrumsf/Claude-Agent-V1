@@ -3,13 +3,13 @@ title: "Platinum group elements"
 type: doc
 category: general
 tags:
-  - screenshot
-  - reference
+  - Stocks
 ai_description: "TikTok video by @TheNiFTyInvestor discussing #elonmusk, #stocks, #stocktok, and #invest, featuring a Green Screen background with highlighted text about USGS exploration for critical metals like Titanium, Vanadium, and Platinum Group Elements at Lake Owen — likely saved for investment research or content idea generation."
+summary: >-
+  TikTok video by @TheNiFTyInvestor discussing #elonmusk, #stocks, #stocktok, and #invest, featuring a Green Screen background with highlighted text about USGS exploration for critical metals like Titanium, Vanadium, and Platinum Group Elements at Lake Owen — likely saved for investment research or content idea generation.
 original_filename: "Platinum Group Elements.PNG"
 created: 2026-05-01
 ---
-
 ![[Platinum-Group-Elements.png]]
 
 ## AI Analysis

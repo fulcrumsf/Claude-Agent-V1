@@ -1,24 +1,17 @@
 ---
-title: "Ate Cok Bigs Beha Een Profan"
+title: "JLab JBuds Ergonomic Mouse Product Box"
 type: tool-doc
 category: content-strategy
 form: desktop-app
 summary: "A physical product box for the JLab JBuds Ergonomic Mouse displayed on a retail shelf. The packaging highlights its natural ergonomic design and multi-device wireless connectivity capabilities."
 search_for: "JLab JBuds Ergonomic Mouse specs features price"
 tags:
-  - screenshot
-  - reference
-  - ergonomics
-  - computer-mouse
-  - wireless-peripheral
-  - hardware-review
-  - jlab
-  - needs-enrichment
+  - Product
+  - App
 original_filename: "IMG_9363.JPG"
 created: 2026-05-01
 enriched: 2026-09-05
 ---
-
 ![[Ate-Cok-Bigs-Beha-Een-Profan.jpg]]
 
 ## Summary

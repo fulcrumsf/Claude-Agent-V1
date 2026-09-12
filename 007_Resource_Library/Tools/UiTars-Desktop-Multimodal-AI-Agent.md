@@ -3,15 +3,11 @@ title: "UiTars Desktop Multimodal AI Agent"
 type: extracted-knowledge
 category: tools
 tags:
-  - uitars
-  - open-source
-  - agentic-ai
-  - computer-use
-  - edge-ai
+  - GitHub
+  - App
 original_filename: "IMG_9853.PNG"
 created: 2026-08-24
 ---
-
 ![[UiTars-Desktop-Multimodal-AI-Agent.png]]
 
 ## AI Analysis

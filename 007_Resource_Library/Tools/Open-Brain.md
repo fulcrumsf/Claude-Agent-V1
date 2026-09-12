@@ -3,9 +3,8 @@ title: "Open Brain"
 type: tool-doc
 category: rag-systems
 tags:
-  - tool-doc
-  - rag-systems
-  - natebjones-projectsob1-open-brain-the-infrastructure-layer-for-your-thinking-one-database-one-ai-gateway-one-chat-channel-any-ai-plugs-in-no-middleware-no-saas
+  - App
+  - GitHub
 created: 2026-05-01
 source: https://github.com/NateBJones-Projects/OB1/raw/main/.github/ob1-logo-wide.png
 ---

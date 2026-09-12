@@ -1,15 +1,15 @@
 ---
-title: "Reddit Usdc Defi Discussion"
+title: "Reddit USDC DeFi Discussion"
 type: doc
 category: general
 tags:
-  - screenshot
-  - reference
+  - Crypto
 ai_description: "Reddit discussion about Coinbase USDC lending, its risks, interest payment in Morpho tokens, and impact on Coinbase Amex tiers — likely saved for cryptocurrency investment research or content creation on DeFi lending strategies."
+summary: >-
+  Reddit discussion about Coinbase USDC lending, its risks, interest payment in Morpho tokens, and impact on Coinbase Amex tiers — likely saved for cryptocurrency investment research or content creation on DeFi lending strategies.
 original_filename: "reddit-usdc-defi-discussion.PNG"
 created: 2026-05-01
 ---
-
 ![[Reddit-Usdc-Defi-Discussion.png]]
 
 ## AI Analysis

@@ -1,14 +1,12 @@
 ---
-title: "Prompts Script 6"
+title: "Genghis Khan Image Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Genghis Khan/Prompts Script 6.md
 ---
-
 1. ==A visual of Genghis Khan as a unifier of cultures, showing a scene where different cultural groups come together under his rule, symbolizing unity and diversity, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==The expansion of trade routes under Genghis Khan, illustrated with bustling trade caravans and diverse market scenes along the Silk Road, capturing the economic prosperity of his era, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==A portrayal of religious freedom in Genghis Khan's empire, with scenes of various religious practices being observed peacefully, reflecting his progressive policies, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==

@@ -3,15 +3,11 @@ title: "Venmo Payment Request Cancellation Warning"
 type: extracted-knowledge
 category: tools
 tags:
-  - venmo
-  - mobile-app
-  - ux-design
-  - payment-process
-  - error-state
+  - App
+  - Guide
 original_filename: "Forms-And-Models-11.png"
 created: 2026-05-09
 ---
-
 ![[Venmo-Payment-Request-Cancellation-Warning.png]]
 
 ## AI Analysis

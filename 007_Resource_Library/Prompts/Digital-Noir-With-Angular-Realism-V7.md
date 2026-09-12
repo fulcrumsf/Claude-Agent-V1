@@ -1,15 +1,13 @@
 ---
-title: "Digital Noir With Angular Realism V7"
+title: "Digital Noir With Angular Realism V7 Prompt"
 type: prompt
 category: video-production
 tags:
-  - prompt
-  - image-generation
-  - style
-  - v7
-  - noir
+  - Art-Style
+  - Image-Video-Model
 created: 2026-05-01
 source: https://public-files.gumroad.com/n9inhb7ndn6ayrzzwmf9mtpjexps
+retag_flag: "bad-tag-value"
 ---
 [![](https://public-files.gumroad.com/n9inhb7ndn6ayrzzwmf9mtpjexps)](https://public-files.gumroad.com/n9inhb7ndn6ayrzzwmf9mtpjexps)
 **Prompt**

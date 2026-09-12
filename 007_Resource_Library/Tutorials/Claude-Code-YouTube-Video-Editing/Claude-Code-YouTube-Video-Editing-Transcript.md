@@ -1,17 +1,13 @@
 ---
-title: "Claude Code YouTube Video Editing Transcript"
+title: "Claude Code YouTube Video Editing Tutorial"
 type: tutorial
 category: video-production
 tags:
-  - youtube
-  - claude-code
-  - transcript
-  - video-production
-  - higgsfield
+  - Coding-Agent
+  - Guide
 created: 2026-06-06
 source: 000_Ingest/Higgsfield-Claude-prompt/Claude Code + YouTube Video Editing = $20,000Month.md
 ---
-
 ![](https://www.youtube.com/watch?v=1RCGep9wY8I)
 
 ## Transcript

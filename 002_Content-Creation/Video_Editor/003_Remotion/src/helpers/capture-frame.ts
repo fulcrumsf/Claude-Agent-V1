@@ -16,7 +16,7 @@ export async function captureFrame(
   frame: number,
   config: CaptureConfig,
 ): Promise<string> {
-  const { blob } = await renderStillOnWeb({
+  const still = await renderStillOnWeb({
     composition: {
       component: Component,
       id: "frame-capture",
@@ -26,12 +26,12 @@ export async function captureFrame(
       durationInFrames: config.durationInFrames,
     },
     frame,
-    imageFormat: "jpeg",
     scale: 0.5, // 960x540 - good enough for AI context
     inputProps: {},
   });
 
   // Convert blob to base64 data URL
+  const blob = await still.blob({ format: "jpeg" });
   const buffer = await blob.arrayBuffer();
   const bytes = new Uint8Array(buffer);
   let binary = "";

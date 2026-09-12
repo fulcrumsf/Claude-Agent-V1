@@ -1,12 +1,10 @@
 ---
-title: "Anil-Matchaopen-Generative-AI-Open-Source-Alternative-To-AI-Video-Platforms-Free-AI-Image-And-Video-Generation-Studio-With-200-Plus-Models-Flux-Midjourney-Kling-Sora-Veo-.-No-Content-Filters.-Self-Hosted-Mit-Licensed."
+title: "Anil-Matcha Generative AI: Open Source Alternative to AI Video Platforms"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - video-production
-  - app-dev
+  - Image-Video-Model
+  - GitHub
 created: 2026-06-06
 source: 000_Ingest/Anil-matchaOpen-Generative-AI Open-source alternative to AI video platforms — Free AI image & video generation studio with 200+ models (Flux, Midjourney, Kling, Sora, Veo). No content filters. Self-hosted, MIT licensed..md
 ---

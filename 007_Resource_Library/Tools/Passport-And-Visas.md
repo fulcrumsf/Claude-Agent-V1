@@ -1,10 +1,10 @@
 ---
+title: "International Hiring and Compliance Software"
 Description: Passport & Visas is a catch-all bookmark for resources related to passport renewals and visa requirements. Use it to track official government sites, application steps, and country-by-country entry rules.
 Category: Research
 tags:
-  - Documentation
+  - App
   - Guide
-  - Tutorial
 ---
 > [!info] Software-enabled hiring and compliance  
 > Issa automates hiring and compliance, saving up to 95% of the time for local businesses to hire international staff.  

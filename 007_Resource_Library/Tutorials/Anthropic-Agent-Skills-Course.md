@@ -3,15 +3,14 @@ title: "Anthropic Agent Skills Course"
 type: tutorial
 category: ai-agents
 tags:
-  - screenshot
-  - ai-agents
-  - tutorial
-  - claude-code
+  - Guide
+  - Coding-Agent
 ai_description: "TikTok video by @nocode.joshua about '5 Claude Skills that every beginner needs to install,' featuring an overlay advertising a free 'Introduction to agent skills' course for Claude Code, likely saved for AI skill development or content ideas."
+summary: >-
+  TikTok video by @nocode.joshua about '5 Claude Skills that every beginner needs to install,' featuring an overlay advertising a free 'Introduction to agent skills' course for Claude Code, likely saved for AI skill development or content ideas.
 original_filename: "anthropic-agent-skills-course.PNG"
 created: 2026-05-01
 ---
-
 ![[Anthropic-Agent-Skills-Course.png]]
 
 ## What It Is

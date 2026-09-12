@@ -1,17 +1,16 @@
 ---
-title: "Tubegen AI YouTube"
+title: "Tubegen AI YouTube Automation Studio"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - youtube
-  - tool
-  - youtube-automation
+  - Product
+  - App
 ai_description: "Landing page for TubeGenAI, an AI Studio for YouTube Automation, displaying its features for scripts, voiceovers, and thumbnails, with a demo showing 7.1M views and $16,738 estimated revenue — likely saved for content automation tool research or as a revenue benchmark for YouTube."
+summary: >-
+  Landing page for TubeGenAI, an AI Studio for YouTube Automation, displaying its features for scripts, voiceovers, and thumbnails, with a demo showing 7.1M views and $16,738 estimated revenue — likely saved for content automation tool research or as a revenue benchmark for YouTube.
 original_filename: "tubegen-ai-youtube.PNG"
 created: 2026-05-01
 ---
-
 ![[TubeGenAI-YouTube-Automation.png]]
 
 ## What It Is

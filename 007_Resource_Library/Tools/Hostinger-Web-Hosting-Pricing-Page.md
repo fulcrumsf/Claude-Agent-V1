@@ -3,15 +3,11 @@ title: "Hostinger Web Hosting Pricing Page"
 type: extracted-knowledge
 category: tools
 tags:
-  - web-hosting
-  - hostinger
-  - saas
-  - pricing
-  - ai-development
+  - Product
+  - App
 original_filename: "Open-Source-AI-Tools-14.png"
 created: 2026-05-09
 ---
-
 ![[Hostinger-Web-Hosting-Pricing-Page.png]]
 
 ## AI Analysis

@@ -3,15 +3,11 @@ title: "Cyberpunk Anime Prompts"
 type: extracted-knowledge
 category: prompts
 tags:
-  - ai-prompts
-  - cyberpunk
-  - anime-style
-  - image-generation
-  - prompt-engineering
+  - Art-Style
+  - Image-Video-Model
 original_filename: "ChatGPT-Image-Aug-1-2025-11-29-46-PM.png"
 created: 2026-05-09
 ---
-
 ![[Cyberpunk-Anime-Prompts.png]]
 
 ## AI Analysis

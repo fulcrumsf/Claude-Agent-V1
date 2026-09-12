@@ -1,22 +1,16 @@
 ---
-title: "Unomas0795 Eye Level Straight On View Of An Art Deco Hallway Fd3cd7bd 5467 4576 B696 Fbccaebee381 2"
+title: "Eye Level Straight On View Of An Art Deco Hallway"
 type: design-inspiration
 category: design-inspiration
 form: design-reference
 summary: "An architectural interior view featuring ornate white wall paneling with decorative molding details and a sunlit herringbone wood parquet floor. A simple wooden picture frame rests on the floor, serving as a mockup context for an empty gallery or minimalist living space."
 search_for: "classic french interior design wall molding parquet floor"
 tags:
-  - design-inspiration
-  - interior-design
-  - architecture
-  - french-style
-  - parquet-floor
-  - minimalist-home
-  - needs-enrichment
+  - Art-Reference
+  - Art-Style
 created: 2026-05-03
 enriched: 2026-09-05
 ---
-
 ![[Unomas0795-Eye-Level-Straight-On-View-Of-An-Art-Deco-Hallway-Fd3cd7bd-5467-4576-B696-Fbccaebee381-2.png]]
 
 ## Summary

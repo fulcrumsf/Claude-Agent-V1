@@ -6,14 +6,11 @@ summary: "Poppy AI is a visual AI workspace designed for content creators, marke
 url: "https://getpoppy.ai/"
 verified: true
 tags:
-  - ai-tool
-  - content-creation
-  - marketing-automation
-  - visual-workspace
-  - productivity
+  - Product
+  - App
 created: 2026-09-05
 enriched: 2026-09-05
+retag_flag: "bad-tag-value"
 ---
-
 ## Summary
 Poppy AI is a visual AI workspace designed for content creators, marketers, and agencies to generate on-brand content. It allows users to integrate diverse sources like videos, PDFs, and voice notes onto a visual canvas, leveraging AI models to produce scripts, posts, and emails. The tool aims to streamline content creation workflows and organize research and ideas efficiently.

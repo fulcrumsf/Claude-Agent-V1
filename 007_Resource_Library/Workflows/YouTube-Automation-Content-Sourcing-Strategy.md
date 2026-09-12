@@ -3,15 +3,11 @@ title: "YouTube Automation Content Sourcing Strategy"
 type: extracted-knowledge
 category: workflows
 tags:
-  - youtube-automation
-  - content-strategy
-  - workflow
-  - video-marketing
-  - trending-analysis
+  - Guide
+  - Research-List
 original_filename: "IMG_0490.PNG"
 created: 2026-08-24
 ---
-
 ![[YouTube-Automation-Content-Sourcing-Strategy.png]]
 
 ## AI Analysis

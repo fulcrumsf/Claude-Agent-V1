@@ -3,15 +3,12 @@ title: "MoneyPrinterTurbo Auto Video Generator"
 type: extracted-knowledge
 category: tools
 tags:
-  - money-printer-turbo
-  - automation
-  - content-creation
-  - open-source
-  - github-tools
+  - Image-Video-Model
+  - Guide
 original_filename: "IMG_0364.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[MoneyPrinterTurbo-Auto-Video-Generator.png]]
 
 ## AI Analysis

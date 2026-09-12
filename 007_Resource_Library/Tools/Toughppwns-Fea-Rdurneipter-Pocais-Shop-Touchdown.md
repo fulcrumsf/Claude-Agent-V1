@@ -3,13 +3,13 @@ title: "Toughppwns Fea Rdurneipter Pocais Shop Touchdown"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "Screenshot of Toughppwns Fea Rdurneipter Pocais Shop Touchdown with readable text about toughppwns."
+summary: >-
+  Screenshot of Toughppwns Fea Rdurneipter Pocais Shop Touchdown with readable text about toughppwns.
 original_filename: "IMG_8690.PNG"
 created: 2026-05-01
 ---
-
 ![[Toughppwns-Fea-Rdurneipter-Pocais-Shop-Touchdown.png]]
 
 ## AI Analysis

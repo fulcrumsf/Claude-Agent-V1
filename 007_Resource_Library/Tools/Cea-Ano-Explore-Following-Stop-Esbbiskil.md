@@ -3,13 +3,13 @@ title: "Cea Ano Explore Following Stop Esbbiskil"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "Screenshot of Cea Ano Explore Following Stop Esbbiskil with readable text about cea ano explore following stop esbbiskil fos."
+summary: >-
+  Screenshot of Cea Ano Explore Following Stop Esbbiskil with readable text about cea ano explore following stop esbbiskil fos.
 original_filename: "IMG_8649.PNG"
 created: 2026-05-01
 ---
-
 ![[Cea-Ano-Explore-Following-Stop-Esbbiskil.png]]
 
 ## AI Analysis

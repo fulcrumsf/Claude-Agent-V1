@@ -3,13 +3,14 @@ title: "Lofi_prompt"
 type: prompt
 category: video-production
 tags:
-  - screenshot
-  - prompt
+  - Art-Style
+  - Image-Video-Model
 ai_description: "YouTube Shorts displaying an AI-generated anime video created with Meta AI, featuring the prompt 'Imagine an anime-style video depicting a young woman sleeping peacefully...', from creator @AdrianVideoImage, likely saved for AI video creation learning or prompt engineering."
+summary: >-
+  YouTube Shorts displaying an AI-generated anime video created with Meta AI, featuring the prompt 'Imagine an anime-style video depicting a young woman sleeping peacefully...', from creator @AdrianVideoImage, likely saved for AI video creation learning or prompt engineering.
 original_filename: "Lofi_Prompt.PNG"
 created: 2026-05-01
 ---
-
 ![[Lofi-Prompt.png]]
 
 ## AI Analysis

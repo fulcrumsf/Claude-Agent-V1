@@ -1,15 +1,16 @@
 ---
-title: "Marketingskills Claude.github"
+title: "Marketingskills GitHub Repo"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - claude
+  - GitHub
+  - Coding-Agent
 ai_description: "TikTok video showing a GitHub repository for 'coreyhaines31 / marketingskills' featuring directories like `ai-seo` and `.claude-plugin`, overlaid with text about hiring a marketing team inside Claude AI, likely saved as a content idea or tutorial for AI-powered marketing workflows."
+summary: >-
+  TikTok video showing a GitHub repository for 'coreyhaines31 / marketingskills' featuring directories like `ai-seo` and `.claude-plugin`, overlaid with text about hiring a marketing team inside Claude AI, likely saved as a content idea or tutorial for AI-powered marketing workflows.
 original_filename: "marketingskills-claude.github.PNG"
 created: 2026-05-01
 ---
-
 ![[Marketingskills-CLAUDE-GITHUB.png]]
 
 ## AI Analysis

@@ -3,16 +3,11 @@ title: "Okay By Spielberg AI Filmmaking"
 type: extracted-knowledge
 category: tools
 tags:
-  - ai-film-making
-  - okay-ai
-  - script-to-video
-  - generative-videp
-  - jakogyllenhaal
-  - spikejonze
+  - Image-Video-Model
+  - App
 original_filename: "IMG_0503.PNG"
 created: 2026-08-24
 ---
-
 ![[Okay-By-Spielberg-AI-Filmmaking.png]]
 
 ## AI Analysis

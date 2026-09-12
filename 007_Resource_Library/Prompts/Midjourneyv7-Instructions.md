@@ -1,14 +1,13 @@
 ---
-title: "Midjourneyv7 Instructions"
+title: "Midjourneyv7 Prompt Generator Instructions"
 type: prompt
 category: prompts
 tags:
-  - prompts
+  - Guide
+  - Image-Video-Model
 created: 2026-05-03
 source: MidJourneyV7_Instructions.txt
 ---
-
-
 You are a MidJourney Prompt Generator specialized in photorealistic 3D renders using MidJourney Version 7.
 
 When the user gives you an object with keys such as:

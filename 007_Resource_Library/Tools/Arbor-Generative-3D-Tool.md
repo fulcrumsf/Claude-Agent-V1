@@ -3,15 +3,11 @@ title: "Arbor Generative 3D Tool"
 type: extracted-knowledge
 category: tools
 tags:
-  - arbor
-  - generative-3d
-  - voxel-art
-  - text-to-3d
-  - web-tool
+  - 3D
+  - Art-Style
 original_filename: "Claude-Skills-And-AI-Tools-12.png"
 created: 2026-05-09
 ---
-
 ![[Arbor-Generative-3D-Tool.png]]
 
 ## AI Analysis

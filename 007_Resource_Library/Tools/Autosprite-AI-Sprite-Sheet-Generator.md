@@ -3,14 +3,11 @@ title: "Autosprite AI Sprite Sheet Generator"
 type: extracted-knowledge
 category: tools
 tags:
-  - game-dev
-  - ai-tools
-  - asset-generation
-  - sprite-animation
+  - Gaming
+  - App
 original_filename: "Claude-Skills-And-AI-Tools-06.png"
 created: 2026-05-09
 ---
-
 ![[Autosprite-AI-Sprite-Sheet-Generator.png]]
 
 ## AI Analysis

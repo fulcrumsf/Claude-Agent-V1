@@ -3,13 +3,14 @@ title: "Liberty AI Logo"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
+  - Art-Reference
 ai_description: "A TikTok video showing 'Liberty AI' as a private alternative to ChatGPT and Perplexity, posted by @dr_cintas, likely saved for AI tool research or content ideas."
+summary: >-
+  A TikTok video showing 'Liberty AI' as a private alternative to ChatGPT and Perplexity, posted by @dr_cintas, likely saved for AI tool research or content ideas.
 original_filename: "liberty-ai-logo.PNG"
 created: 2026-05-01
 ---
-
 ![[Liberty-AI-Logo.png]]
 
 ## AI Analysis

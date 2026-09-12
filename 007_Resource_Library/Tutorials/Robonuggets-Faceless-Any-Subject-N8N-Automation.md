@@ -1,15 +1,13 @@
 ---
-title: "Robonuggets Faceless Any Subject N8N Automation"
+title: "Robonuggets Faceless TikTok Automation with n8n"
 type: tutorial
 category: tutorials
 tags:
-  - tutorials
+  - Guide
+  - Pipeline
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Video Tutorials/Tutorial Library/Faceless Channels/Gallery Collection/Shorts Workflow/RoboNuggets Faceless Any Subject n8n Automation.md
 ---
-
-  
-
 > [!info] This AI System makes Monetizable Faceless Tiktoks, Hourly (with the Free FFmpeg tool, n8n no-code 🥚)  
 > This AI system auto-generates one-minute, monetizable, faceless TikToks in your niche, using the open-source FFmpeg tool as an alternative to other costly services.  
 > [https://youtu.be/CIYv59aJIv8?si=KZW-ky3-cYhVRbHJ](https://youtu.be/CIYv59aJIv8?si=KZW-ky3-cYhVRbHJ)  

@@ -3,11 +3,8 @@ title: "Knowledge Graph Skill for AI Coding Assistants"
 type: tool-doc
 category: ai-agents
 tags:
-  - tool-doc
-  - ai-agents
-  - graphify
-  - knowledge-graph
-  - assistant-skill
+  - Coding-Agent
+  - LLM
 created: 2026-05-01
 source: https://graphify.net/knowledge-graph-for-ai-coding-assistants.html
 ---

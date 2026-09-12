@@ -1,17 +1,13 @@
 ---
-title: "Seedance 2.0 Complete Prompting Master Guide"
+title: "Seedance 2.0 Prompting Master Guide"
 type: "prompt"
 category: "video-production"
 tags:
-  - video-production
-  - seedance
-  - prompting
-  - reference
-  - guide
+  - Guide
+  - Image-Video-Model
 created: 2026-05-12
 source: local
 ---
-
 # 🎬 Seedance 2.0 — Complete Prompting Master Guide
 
 > Compiled from the EvoLinkAI official guide, the official Seedance prompt documentation, and top community resources. This is your single reference for writing production-quality Seedance 2.0 prompts.

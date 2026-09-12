@@ -3,14 +3,11 @@ title: "Silver Hills Sprouted Power Bread"
 type: extracted-knowledge
 category: personal
 tags:
-  - silver-hills-bread
-  - healthy-snacks
-  - grocery-pick
-  - food-review
+  - Health
+  - Product
 original_filename: "IMG_9814.PNG"
 created: 2026-08-24
 ---
-
 ![[Silver-Hills-Sprouted-Power-Bread.png]]
 
 ## AI Analysis

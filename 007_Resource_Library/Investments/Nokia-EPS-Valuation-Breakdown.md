@@ -3,15 +3,11 @@ title: "Nokia EPS Valuation Breakdown"
 type: extracted-knowledge
 category: investments
 tags:
-  - nokia
-  - stock-analysis
-  - eps
-  - valuation
-  - financial-literacy
+  - Stocks
 original_filename: "IMG_9942.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Nokia-EPS-Valuation-Breakdown.png]]
 
 ## AI Analysis

@@ -1,15 +1,16 @@
 ---
-title: "Nocode Joshua Skills.github"
+title: "Nocode Joshua Claude Skills GitHub"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - GitHub
+  - App
 ai_description: "TikTok video by @nocode.joshua titled '5 Claude Skills that every beginner needs to install' featuring an embedded GitHub repository 'Wondelai/skills' showing Claude-related files — saved as a tutorial or reference for AI skills."
+summary: >-
+  TikTok video by @nocode.joshua titled '5 Claude Skills that every beginner needs to install' featuring an embedded GitHub repository 'Wondelai/skills' showing Claude-related files — saved as a tutorial or reference for AI skills.
 original_filename: "nocode-joshua-skills.github.PNG"
 created: 2026-05-01
 ---
-
 ![[Nocode-Joshua-Skills-GITHUB.png]]
 
 ## AI Analysis

@@ -3,15 +3,11 @@ title: "Skool CLI with Printing Press"
 type: "tool-doc"
 category: "ai-agents"
 tags:
-  - ai-agents
-  - skool
-  - cli
-  - printing-press
-  - tool
+  - App
+  - GitHub
 created: 2026-05-12
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=YHk45NEpspE)
 
 Full courses + unlimited support: https://www.skool.com/ai-automation-society-plus/about?el=printing-press-cc  

@@ -3,13 +3,14 @@ title: "Pokee AI Automation"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Pipeline
 ai_description: "TikTok video from Matt Farmer | AI & Marketing promoting 'New AI Tools POKEE AI' which 'Turns Prompts Into Automated Workflows', showing 718 likes and 137 saves — likely saved for researching new AI automation tools."
+summary: >-
+  TikTok video from Matt Farmer | AI & Marketing promoting 'New AI Tools POKEE AI' which 'Turns Prompts Into Automated Workflows', showing 718 likes and 137 saves — likely saved for researching new AI automation tools.
 original_filename: "pokee-ai-automation.PNG"
 created: 2026-05-01
 ---
-
 ![[Pokee-AI-Automation.png]]
 
 ## AI Analysis

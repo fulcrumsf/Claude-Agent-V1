@@ -3,15 +3,11 @@ title: "Kie.ai CLI + MCP Server + Agent Skill"
 type: tool-doc
 category: video-production
 tags:
-  - kie-ai
-  - mcp-server
-  - cli-tool
-  - seedance
-  - agentic-ai
+  - App
+  - LLM
 created: 2026-08-10
 source: https://github.com/felores/kie-cli-mcp
 ---
-
 ```
 ██╗  ██╗██╗███████╗
 ██║ ██╔╝██║██╔════╝

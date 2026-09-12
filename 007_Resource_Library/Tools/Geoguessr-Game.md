@@ -3,13 +3,14 @@ title: "Geoguessr Game"
 type: tool-doc
 category: app-dev
 tags:
-  - screenshot
-  - reference
+  - Gaming
+  - App
 ai_description: "A Google search results page on an iPhone browser displays the search term 'geoguessr', showing the official website link and a description: 'Explore the world! Get dropped anywhere from the busy streets of New York to the beautiful beaches of Bali.' along with sub-links for 'Log in', 'GeoGuessr Free', 'The U.S.: 50 States', and 'Pro membership' — likely saved as inspiration for content creation or travel-related research."
+summary: >-
+  A Google search results page on an iPhone browser displays the search term 'geoguessr', showing the official website link and a description: 'Explore the world! Get dropped anywhere from the busy streets of New York to the beautiful beaches of Bali.' along with sub-links for 'Log in', 'GeoGuessr Free', 'The U.S.: 50 States', and 'Pro membership' — likely saved as inspiration for content creation or travel-related research.
 original_filename: "geoguessr-game.PNG"
 created: 2026-05-01
 ---
-
 ![[Geoguessr-Game.png]]
 
 ## AI Analysis

@@ -3,15 +3,11 @@ title: "Zopia AI Film Production Agent"
 type: extracted-knowledge
 category: tools
 tags:
-  - zopia
-  - ai-video-generation
-  - film-agent
-  - end-to-end-production
-  - automated-filmmaking
+  - Image-Video-Model
+  - App
 original_filename: "Claude-Skills-And-AI-Tools-11.png"
 created: 2026-05-09
 ---
-
 ![[Zopia-AI-Film-Production-Agent.png]]
 
 ## AI Analysis

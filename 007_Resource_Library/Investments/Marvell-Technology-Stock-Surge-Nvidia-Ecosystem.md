@@ -1,17 +1,12 @@
 ---
-title: "Marvell Technology Stock Surge Nvidia Ecosystem"
+title: "Marvell Technology Stock Surge Driven by Nvidia Ecosystem"
 type: extracted-knowledge
 category: investments
 tags:
-  - marvell-tech
-  - mrvl-stock
-  - nvidia-investment
-  - stock-market
-  - semiconductor
+  - Stocks
 original_filename: "IMG_9928.PNG"
 created: 2026-08-24
 ---
-
 ![[Marvell-Technology-Stock-Surge-Nvidia-Ecosystem.png]]
 
 ## AI Analysis

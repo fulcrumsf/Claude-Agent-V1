@@ -1,17 +1,13 @@
 ---
-title: "Sempra SRE AI Energy Infrastructure"
+title: "Sempra SRE AI Energy Infrastructure Investment Analysis"
 type: extracted-knowledge
 category: investments
 tags:
-  - sempra
-  - energy-stock
-  - ai-infrastructure
-  - energy-crisis
-  - investment-research
+  - Stocks
 original_filename: "Scribe-AI-Platform-09.png"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[Sempra-SRE-AI-Energy-Infrastructure.png]]
 
 ## AI Analysis

@@ -3,15 +3,11 @@ title: "Claude Code Nano Banana Prompting Guide"
 type: extracted-knowledge
 category: prompts
 tags:
-  - claude-code
-  - prompting-guide
-  - design-automation
-  - nano-banana
-  - ai-workflows
+  - Coding-Agent
+  - Guide
 original_filename: "Conference-Floorplan-Adobe-Vizrt-03.png"
 created: 2026-05-09
 ---
-
 ![[Claude-Code-Nano-Banana-Prompting-Guide.png]]
 
 ## AI Analysis

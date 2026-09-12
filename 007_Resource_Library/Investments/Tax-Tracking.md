@@ -3,11 +3,10 @@ title: "Tax Tracking"
 type: investment
 category: investments
 tags:
-  - investments
+  - Stocks
 created: 2026-05-03
 source: Databases/Tax Tracking.md
 ---
-
 #### Tax Tracking
 |![](https://www.notion.so/icons/font_gray.svg)Vendor|![](https://www.notion.so/icons/arrow-circle-down_gray.svg)Asset Class|![](https://www.notion.so/icons/list_gray.svg)1099 Type|![](https://www.notion.so/icons/checkmark-square_gray.svg)1099 Received|![](https://www.notion.so/icons/checkmark-square_gray.svg)N/A|![](https://www.notion.so/icons/hashtag_gray.svg)Tax Year|![](https://www.notion.so/icons/description_gray.svg)Notes|
 |---|---|---|---|---|---|---|

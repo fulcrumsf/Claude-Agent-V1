@@ -3,18 +3,17 @@ title: "New Fav MCP Tutorial"
 type: tutorial
 category: ai-agents
 tags:
-  - screenshot
-  - tutorial
-  - mcp
-  - ai-agents
+  - Guide
+  - App
 ai_description: >-
   A mobile video player displays a node-based visual programming interface for an AI agent,
   showcasing an "AI Agent1" connected to an "OpenAI Chat Model", "Simple Memory1",
   and "MCP Client1", titled "New Fav MCP", likely saved as a reference for a new AI agent development tool.
+summary: >-
+  A mobile video player displays a node-based visual programming interface for an AI agent, showcasing an "AI Agent1" connected to an "OpenAI Chat Model", "Simple Memory1", and "MCP Client1", titled "New Fav MCP", likely saved as a reference for a new AI agent development tool.
 original_filename: "new-fav-mcp-tutorial.PNG"
 created: 2026-05-01
 ---
-
 ![[New-Fav-MCP-Tutorial.png]]
 
 ## What It Is

@@ -3,15 +3,11 @@ title: "Matt Farmer AI Marketing Stream With Humeantics"
 type: extracted-knowledge
 category: tools
 tags:
-  - ai-marketing
-  - ai-tools
-  - live-stream
-  - humeantics
-  - ai-animation
+  - Profile
+  - Guide
 original_filename: "Matt-Farmer-AI-Live-2.PNG"
 created: 2026-05-09
 ---
-
 ![[Matt-Farmer-AI-Marketing-Stream-With-Humeantics.png]]
 
 ## AI Analysis

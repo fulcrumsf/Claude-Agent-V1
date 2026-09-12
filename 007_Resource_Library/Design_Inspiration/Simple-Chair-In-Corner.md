@@ -3,11 +3,11 @@ title: "Simple Chair In Corner"
 type: design-inspiration
 category: design_inspiration
 tags:
-  - design-inspiration
+  - Art-Reference
+  - Art-Style
 created: 2026-05-03
 source: Databases/Projects/Designs & POD/Categories/Ikigai Room Mockups/Wall Art Mockups/Living Room - Japandi Minimalist/Gallery Images/Simple Chair in Corner.md
 ---
-
 ```markdown
 {
   "room_type": "Living Room",

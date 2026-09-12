@@ -1,15 +1,16 @@
 ---
-title: "Base Full AI Build"
+title: "Base44 AI Build & Live Hotel Booking Biz"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
+  - App
 ai_description: "TikTok video by @MarcinAI showcasing the Base44 AI app building platform and a 'LIVE Hotel Booking Biz' built with it that generated over $100k in sales, likely saved as an idea for a tool to try or a business model inspiration."
+summary: >-
+  TikTok video by @MarcinAI showcasing the Base44 AI app building platform and a 'LIVE Hotel Booking Biz' built with it that generated over $100k in sales, likely saved as an idea for a tool to try or a business model inspiration.
 original_filename: "base44-full-ai-build.PNG"
 created: 2026-05-01
 ---
-
 ![[Base-Full-AI-Build.png]]
 
 ## AI Analysis

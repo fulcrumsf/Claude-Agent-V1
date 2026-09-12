@@ -3,15 +3,11 @@ title: "Telemetry OTLP API Overview Google Cloud Observability"
 type: "api-doc"
 category: "app-dev"
 tags:
-  - app-dev
-  - telemetry
-  - opentelemetry
-  - gcp
-  - api-docs
+  - Guide
+  - App
 created: 2026-05-12
 source: local
 ---
-
 This document describes the Telemetry (OTLP) API, which implements the [OpenTelemetry Line Protocol](https://opentelemetry.io/docs/specs/otlp). This API is designed for use with applications that are instrumented by using one of the [OpenTelemetry SDKs](https://opentelemetry.io/docs/languages/) or that use any OpenTelemetry Collector.
 
 OpenTelemetry is a Google Cloud-supported open source project with Google Cloud engineers staffed to ensure support for ingesting and visualizing your telemetry.

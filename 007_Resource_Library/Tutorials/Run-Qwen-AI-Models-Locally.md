@@ -3,13 +3,11 @@ title: "Run Qwen AI Models Locally"
 type: tutorial
 category: ai-agents
 tags:
-  - local-ai
-  - qwen
-  - vision
+  - Guide
+  - LLM
 created: 2026-05-08
 source: local
 ---
-
 What if you could run an AI model that outperforms GPT-5 Nano on vision benchmarks, understands images, charts, and documents, supports over 200 languages, and fits in your pocket? And what if you could run it entirely on your laptop, offline, for free?
 
 That's Qwen3.5. This guide walks you through getting it running on your machine in under ten minutes.

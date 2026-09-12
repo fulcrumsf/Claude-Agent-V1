@@ -1,5 +1,9 @@
 ---
+title: "MCP Servers for Vibe Coding"
 Description: This is a curated list of MCP (Model Context Protocol) servers plus notes on document rules and usage. Use it as a reference for discovering available MCP tools and how to connect them to agents/workflows.
+tags:
+  - Coding-Agent
+  - LLM
 ---
 > [!info] 5 MCP Servers For Vibe Coding Glory (Just Plug-In & Go)  
 > For prompts and longer tutorials, check my free skool group here: https://www.  

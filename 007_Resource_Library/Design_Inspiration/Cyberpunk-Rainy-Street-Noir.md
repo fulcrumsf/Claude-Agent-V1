@@ -3,15 +3,11 @@ title: "Cyberpunk Rainy Street Noir"
 type: extracted-knowledge
 category: design_inspiration
 tags:
-  - cyberpunk
-  - neon-noir
-  - digital-art
-  - rainy-scenery
-  - street-photography
+  - Art-Style
+  - Art-Reference
 original_filename: "Unomas0795-Bladerunner-Cyberpunk-Night-Scene-Film-Epic-Cinema-4ccba411-4862-40e3-B8f0-F1cb06231f8d-3.png"
 created: 2026-05-09
 ---
-
 ![[Cyberpunk-Rainy-Street-Noir.png]]
 
 ## AI Analysis

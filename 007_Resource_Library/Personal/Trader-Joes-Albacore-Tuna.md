@@ -3,14 +3,12 @@ title: "Trader Joes Albacore Tuna"
 type: extracted-knowledge
 category: personal
 tags:
-  - grocery-shopping
-  - food-staples
-  - tuna
-  - trader-joes
+  - Product
+  - Health
 original_filename: "IMG_0333.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-count"
 ---
-
 ![[Trader-Joes-Albacore-Tuna.png]]
 
 ## AI Analysis

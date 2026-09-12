@@ -1,16 +1,16 @@
 ---
-title: "Awesome Claude Skills.github"
+title: "Awesome Claude Skills GitHub Repo"
 type: tool-doc
 category: ai-agents
 tags:
-  - screenshot
-  - claude
-  - github
+  - GitHub
+  - Coding-Agent
 ai_description: "A mobile app (likely TikTok) screenshot displaying a video from creator 'Noe AI' titled 'How to make images/ads in Claude code #ai #claude', showing a GitHub repository 'ComposioHQ/awesome-claude-skills' related to 'mcp-builder' with '4,826' likes and '5,402' saves — saved for learning AI image generation or as a content idea."
+summary: >-
+  A mobile app (likely TikTok) screenshot displaying a video from creator 'Noe AI' titled 'How to make images/ads in Claude code #ai #claude', showing a GitHub repository 'ComposioHQ/awesome-claude-skills' related to 'mcp-builder' with '4,826' likes and '5,402' saves — saved for learning AI image generation or as a content idea.
 original_filename: "awesome-claude-skills.github.PNG"
 created: 2026-05-01
 ---
-
 ![[Awesome-Claude-Skills-Github.png]]
 
 ## What It Is

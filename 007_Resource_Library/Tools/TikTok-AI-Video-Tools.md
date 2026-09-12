@@ -3,15 +3,14 @@ title: "TikTok AI Video Tools"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - tiktok
-  - video
-  - ai-video
+  - Image-Video-Model
+  - App
 ai_description: "TikTok showing a video by @ohneis652 promoting 'Waver 1.0', a free AI video tool by ByteDance capable of Text-to-Video, Image-to-Video, and Text-to-Image, likely saved as a resource for content creation."
+summary: >-
+  TikTok showing a video by @ohneis652 promoting 'Waver 1.0', a free AI video tool by ByteDance capable of Text-to-Video, Image-to-Video, and Text-to-Image, likely saved as a resource for content creation.
 original_filename: "tiktok-ai-video-tools.PNG"
 created: 2026-05-01
 ---
-
 ![[TikTok-AI-Video-Tools.png]]
 
 ## What It Is

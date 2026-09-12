@@ -1,15 +1,16 @@
 ---
-title: "Social cat"
+title: "Social Cat - Brand Collaborations for Micro-Influencers"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Platforms
+  - Product
 ai_description: "Instagram sponsored post from @socialcat promoting brand collaborations for micro-influencers on Instagram & TikTok, showing 'Learn More' button, 1,616 likes, and 87 comments — saved as a potential tool for content creators to find brand deals."
+summary: >-
+  Instagram sponsored post from @socialcat promoting brand collaborations for micro-influencers on Instagram & TikTok, showing 'Learn More' button, 1,616 likes, and 87 comments — saved as a potential tool for content creators to find brand deals.
 original_filename: "Social Cat.PNG"
 created: 2026-05-01
 ---
-
 ![[Social-Cat.png]]
 
 ## AI Analysis

@@ -1,14 +1,12 @@
 ---
-title: "Prompts Script 2"
+title: "Alexander the Great Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Alexander The Great/Prompts Script 2.md
 ---
-
 1. ==Alexander the Great overlooking a vast battlefield, deep in thought, with a dramatic sunset in the background, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==Close-up of Alexander's determined face with a ghostly map of the known world superimposed, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==Alexander poring over ancient scrolls in a dimly lit tent, seeking hidden knowledge, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==

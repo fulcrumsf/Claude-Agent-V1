@@ -3,13 +3,11 @@ title: "Submagic MCP Server"
 type: tool-doc
 category: ai-agents
 tags:
-  - mcp
-  - ai-agents
-  - video-editing
+  - App
+  - Coding-Agent
 created: 2026-05-08
 source: local
 ---
-
 Submagic exposes an [MCP](https://modelcontextprotocol.io/) -compatible endpoint at `POST https://api.submagic.co/mcp`. Connect from Claude Code, Claude Desktop, Cursor, or any MCP client to drive Submagic from inside your AI assistant.
 
 ## Authentication

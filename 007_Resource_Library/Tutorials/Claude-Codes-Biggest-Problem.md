@@ -1,13 +1,10 @@
 ---
-title: "Claude Code's Biggest Problem"
+title: "Claude Code Frontend Weakness Solved with Impeccable"
 type: tutorial
 category: ai-agents
 tags:
-  - tutorial
-  - ai-agents
-  - claude-code
-  - memory
-  - productivity
+  - Coding-Agent
+  - Guide
 created: 2026-05-01
 source: https://www.youtube.com/watch?v=0-AosS67IGU
 ---

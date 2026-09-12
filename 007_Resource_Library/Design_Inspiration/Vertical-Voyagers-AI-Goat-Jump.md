@@ -6,22 +6,12 @@ form: tiktok
 summary: "A TikTok post from the account 'vertical voyagers' showcasing a hyper-realistic AI-generated image of a cliffside environment with an animal scaling a vertical stone wall. The content highlights the capabilities of AI image generation tools in creating dramatic, survival-themed nature scenes."
 search_for: "vertical voyagers tiktok ai image"
 tags:
-  - ai-generated
-  - mountain-goat
-  - cliff-jump
-  - vertical-voyagers
-  - nature-ai
-  - ai-image-generation
-  - tiktok
-  - nature-scenery
-  - midjourney
-  - digital-art
-  - needs-enrichment
+  - Art-Style
+  - Image-Video-Model
 original_filename: "Open-Source-AI-Tools-05.png"
 created: 2026-05-09
 enriched: 2026-09-05
 ---
-
 ![[Vertical-Voyagers-AI-Goat-Jump.png]]
 
 ## Summary

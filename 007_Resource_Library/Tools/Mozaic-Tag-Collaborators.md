@@ -3,13 +3,14 @@ title: "Mozaic Tag Collaborators"
 type: tool-doc
 category: app-dev
 tags:
-  - screenshot
-  - reference
+  - App
+  - Guide
 ai_description: "Mobile website `mozaic.io` showing 'Step 3: Tag your collaborators' for setting up revenue splits with examples Jack A. (USA) and Anne J. (UK) — saved as a potential tool for managing payments with project partners."
+summary: >-
+  Mobile website `mozaic.io` showing 'Step 3: Tag your collaborators' for setting up revenue splits with examples Jack A. (USA) and Anne J. (UK) — saved as a potential tool for managing payments with project partners.
 original_filename: "mozaic-tag-collaborators.PNG"
 created: 2026-05-01
 ---
-
 ![[Mozaic-Tag-Collaborators.png]]
 
 ## AI Analysis

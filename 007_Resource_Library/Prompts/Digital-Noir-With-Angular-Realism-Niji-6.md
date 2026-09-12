@@ -3,11 +3,8 @@ title: "Digital Noir With Angular Realism NIJI 6"
 type: prompt
 category: video-production
 tags:
-  - prompt
-  - image-generation
-  - style
-  - niji-6
-  - noir
+  - Art-Style
+  - Image-Video-Model
 created: 2026-05-01
 source: https://public-files.gumroad.com/qqkporlzyg3vnjjvonshdfwcweia
 ---

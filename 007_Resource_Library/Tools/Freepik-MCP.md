@@ -3,13 +3,11 @@ title: "Freepik MCP"
 type: tool-doc
 category: ai-agents
 tags:
-  - mcp
-  - freepik
-  - image-generation
+  - Coding-Agent
+  - App
 created: 2026-05-08
 source: local
 ---
-
 ## Freepik MCP
 
 🚀 **MCP Server for seamless Freepik API integration**

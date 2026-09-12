@@ -1,15 +1,16 @@
 ---
-title: "Beeble Vfx Tool"
+title: "Beeble VFX Tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - tools
+  - Product
+  - App
 ai_description: "TikTok 'For You' feed showcasing a video promoting 'Beeble' for creating VFX without a green screen, posted by Sebastien Jefferies with 2,074 saves — likely a bookmark for a content creation tool or content idea."
+summary: >-
+  TikTok 'For You' feed showcasing a video promoting 'Beeble' for creating VFX without a green screen, posted by Sebastien Jefferies with 2,074 saves — likely a bookmark for a content creation tool or content idea.
 original_filename: "beeble-vfx-tool.PNG"
 created: 2026-05-01
 ---
-
 ![[Beeble-Vfx-Tool.png]]
 
 ## AI Analysis

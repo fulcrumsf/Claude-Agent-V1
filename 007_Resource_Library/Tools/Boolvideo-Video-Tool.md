@@ -1,16 +1,16 @@
 ---
-title: "Boolvideo Video Tool"
+title: "Boolvideo AI Tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
-  - tools
+  - Product
+  - App
 ai_description: "TikTok video by @sebintel showcasing the 'Boolvideo' AI tool with its 'Idea to Video' feature that converts a single sentence into a video, likely saved as a tool reference for content creation automation."
+summary: >-
+  TikTok video by @sebintel showcasing the 'Boolvideo' AI tool with its 'Idea to Video' feature that converts a single sentence into a video, likely saved as a tool reference for content creation automation.
 original_filename: "boolvideo-video-tool.PNG"
 created: 2026-05-01
 ---
-
 ![[Boolvideo-Video-Tool.png]]
 
 ## AI Analysis

@@ -1,15 +1,15 @@
 ---
-title: "Coinbase Usdc Apy Questions"
+title: "Coinbase USDC APY Promotion Inquiry"
 type: doc
 category: general
 tags:
-  - screenshot
-  - reference
+  - Crypto
 ai_description: "A Reddit post in r/CoinBase asks for details on a Coinbase USDC 10% APY promotion, along with a promoted ad for iTrustCapital's tax-advantaged Crypto IRA — likely saved for cryptocurrency investment research or content ideas."
+summary: >-
+  A Reddit post in r/CoinBase asks for details on a Coinbase USDC 10% APY promotion, along with a promoted ad for iTrustCapital's tax-advantaged Crypto IRA — likely saved for cryptocurrency investment research or content ideas.
 original_filename: "coinbase-usdc-apy-questions.PNG"
 created: 2026-05-01
 ---
-
 ![[Coinbase-Usdc-Apy-Questions.png]]
 
 ## AI Analysis

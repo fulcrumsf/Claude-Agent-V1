@@ -1,15 +1,16 @@
 ---
-title: "AI Image Generation"
+title: "AI Image Generation Prompts"
 type: prompt
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Guide
+  - Image-Video-Model
 ai_description: "A TikTok video featuring @Justyn | The AI Guy discussing AI image generation prompts and offering a link to 'all 91 M...' images, with an 'Awesome-Nano-Banana images' banner and a search for 'Polaroid Gemini Ai Image Editing Prompt' — likely saved for AI tool research, prompt ideas, or content creation inspiration."
+summary: >-
+  A TikTok video featuring @Justyn | The AI Guy discussing AI image generation prompts and offering a link to 'all 91 M...' images, with an 'Awesome-Nano-Banana images' banner and a search for 'Polaroid Gemini Ai Image Editing Prompt' — likely saved for AI tool research, prompt ideas, or content creation inspiration.
 original_filename: "ai-image-generation.PNG"
 created: 2026-05-01
 ---
-
 ![[AI-Image-Generation.png]]
 
 ## AI Analysis

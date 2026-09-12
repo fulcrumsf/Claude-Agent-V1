@@ -1,5 +1,8 @@
 ---
+title: "Website & SEO Tools"
 Category: Revenue Stream
+tags:
+  - Product
 ---
 #### Website & SEO Bookmarks
 |![](https://www.notion.so/icons/font_gray.svg)Title|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/tabs_gray.svg)Tags|![](https://www.notion.so/icons/note-whole_gray.svg)Description|

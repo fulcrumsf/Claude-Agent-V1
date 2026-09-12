@@ -3,15 +3,11 @@ title: "Nano Banana MCP GitHub Repository"
 type: extracted-knowledge
 category: tools
 tags:
-  - github
-  - mcp
-  - open-source
-  - developer-tools
-  - nano-banana
+  - GitHub
+  - App
 original_filename: "Open-Source-AI-Tools-13.png"
 created: 2026-05-09
 ---
-
 ![[Nano-Banana-MCP-GitHub-Repository.png]]
 
 ## AI Analysis

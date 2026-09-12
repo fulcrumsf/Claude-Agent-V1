@@ -3,13 +3,14 @@ title: "Wan Animate AI Guides"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
+  - Image-Video-Model
 ai_description: "TikTok's 'For You' page displays a video by 'Chase | AI Guides' discussing 'Wan Animate' and 'AI video updates', showing 139 likes and 132 saves — likely saved as research for a new AI video animation tool or content idea."
+summary: >-
+  TikTok's 'For You' page displays a video by 'Chase | AI Guides' discussing 'Wan Animate' and 'AI video updates', showing 139 likes and 132 saves — likely saved as research for a new AI video animation tool or content idea.
 original_filename: "wan-animate-ai-guides.PNG"
 created: 2026-05-01
 ---
-
 ![[Wan-Animate-AI-Guides.png]]
 
 ## AI Analysis

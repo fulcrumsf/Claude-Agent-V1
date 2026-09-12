@@ -3,13 +3,12 @@ title: "Digistore24 MCP Server"
 type: tool-doc
 category: ai-agents
 tags:
-  - mcp
-  - ai-agents
-  - ecommerce
+  - Platforms
+  - LLM
 created: 2026-05-08
 source: local
+retag_flag: "bad-tag-value"
 ---
-
 You already use AI tools to write copy, research competitors, and map out launch strategies. But if you’re like most vendors and affiliates, your AI agents are probably working *around* your business data, not *with* it.
 
 The Digistore24 MCP Server changes that.

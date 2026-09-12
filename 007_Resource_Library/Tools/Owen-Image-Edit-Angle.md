@@ -1,15 +1,16 @@
 ---
-title: "Owen Image Edit Angle"
+title: "Qwen Image Edit Camera Control AI"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Image-Video-Model
+  - Product
 ai_description: "TikTok video showcasing the QWEN Image Edit Camera Control AI tool from Hugging Face, which generates infinite camera angles from a single photo, likely saved as a resource for content creation and AI tool research."
+summary: >-
+  TikTok video showcasing the QWEN Image Edit Camera Control AI tool from Hugging Face, which generates infinite camera angles from a single photo, likely saved as a resource for content creation and AI tool research.
 original_filename: "owen-image-edit-angle.PNG"
 created: 2026-05-01
 ---
-
 ![[Owen-Image-Edit-Angle.png]]
 
 ## AI Analysis

@@ -1,13 +1,13 @@
 ---
-title: "AI Automation"
+title: "AI Automation with n8n Tutorials"
 type: tutorial
 category: tutorials
 tags:
-  - tutorials
+  - Guide
+  - Pipeline
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Video Tutorials/Tutorial Library/AI Automation.md
 ---
-
 **High Priority**
 [https://youtu.be/KkLADjyk9fE?si=I5AEq7KxSmowmS04](https://youtu.be/KkLADjyk9fE?si=I5AEq7KxSmowmS04)
 **n8nBoy Extension**

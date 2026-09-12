@@ -3,11 +3,8 @@ title: "MemPalace"
 type: tool-doc
 category: rag-systems
 tags:
-  - tool-doc
-  - rag-systems
-  - memory
-  - semantic-search
-  - open-source
+  - GitHub
+  - App
 created: 2026-05-01
 source: https://github.com/MemPalace/mempalace
 ---

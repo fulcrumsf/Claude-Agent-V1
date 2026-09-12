@@ -3,15 +3,11 @@ title: "CLI Printing Press"
 type: "tool-doc"
 category: "ai-agents"
 tags:
-  - ai-agents
-  - cli
-  - printing-press
-  - sqlite
-  - automation
+  - LLM
+  - Coding-Agent
 created: 2026-05-12
 source: local
 ---
-
 ## CLI Printing Press
 
 Nothing is more valuable than time and money. In a world of AI agents, that's speed and token spend. A well-designed CLI is muscle memory for an agent: no hunting through docs, no wrong turns, no wasted tokens. We built the Printing Press to print the best CLIs in the world for agents.

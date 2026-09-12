@@ -3,18 +3,17 @@ title: "Sora Tutorial Breakdown"
 type: tutorial
 category: video-production
 tags:
-  - screenshot
-  - tutorial
-  - sora
-  - prompt-engineering
+  - Guide
+  - Image-Video-Model
 ai_description: >-
   TikTok video titled "Sora 2 Tutorial" by Jonathan Acuña - Doctor AI, showing a detailed
   "Scene Breakdown" document with text prompts for AI video generation, likely saved for learning
   Sora AI video creation or as a prompt engineering reference.
+summary: >-
+  TikTok video titled "Sora 2 Tutorial" by Jonathan Acuña - Doctor AI, showing a detailed "Scene Breakdown" document with text prompts for AI video generation, likely saved for learning Sora AI video creation or as a prompt engineering reference.
 original_filename: "sora-2-tutorial-breakdown.PNG"
 created: 2026-05-01
 ---
-
 ![[Sora-Tutorial-Breakdown.png]]
 
 ## What It Is

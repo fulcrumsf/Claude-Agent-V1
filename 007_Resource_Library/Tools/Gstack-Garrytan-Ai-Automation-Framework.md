@@ -1,17 +1,13 @@
 ---
-title: "Gstack Garrytan Ai Automation Framework"
+title: "Gstack Garrytan AI Automation Framework"
 type: extracted-knowledge
 category: tools
 tags:
-  - garrytan-github-project
-  - ai-automation
-  - software-engineering
-  - developer-productivity
-  - open-source-tools
+  - GitHub
+  - LLM
 original_filename: "IMG_9891.PNG"
 created: 2026-08-24
 ---
-
 ![[Gstack-Garrytan-Ai-Automation-Framework.png]]
 
 ## AI Analysis

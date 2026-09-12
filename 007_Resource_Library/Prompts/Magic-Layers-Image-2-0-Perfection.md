@@ -3,15 +3,11 @@ title: "Magic Layers Image 2.0 Perfection"
 type: "prompt"
 category: "video-production"
 tags:
-  - video-production
-  - canva
-  - image-generation
-  - prompt
-  - template
+  - Art-Style
+  - Image-Video-Model
 created: 2026-05-12
 source: local
 ---
-
 These two tools together make it incredibly easy to create seriously impressive, professional-looking animations.
 
 ![](https://c10.patreonusercontent.com/4/patreon-media/p/post/156444044/cef4b395f8564d46a561b14d6130d554/eyJhIjoxLCJwIjoxfQ%3D%3D/1.gif?token-hash=M-CwVQ8eQBEjMfRsgWcLjRau517vF93uua1uWMOiKRA%3D&token-time=1779580800)

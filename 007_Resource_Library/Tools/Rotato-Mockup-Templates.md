@@ -3,13 +3,14 @@ title: "Rotato Mockup Templates"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "TikTok video posted by user 'Alex' promoting Rotato.app, a tool for creating animated mockups for devices like iPhone 16, 15 Pro Max, and 16 Plus, with features for exporting images/videos and adjusting camera angles — likely saved as a content creation tool idea."
+summary: >-
+  TikTok video posted by user 'Alex' promoting Rotato.app, a tool for creating animated mockups for devices like iPhone 16, 15 Pro Max, and 16 Plus, with features for exporting images/videos and adjusting camera angles — likely saved as a content creation tool idea.
 original_filename: "rotato-mockup-templates.PNG"
 created: 2026-05-01
 ---
-
 ![[Rotato-Mockup-Templates.png]]
 
 ## AI Analysis

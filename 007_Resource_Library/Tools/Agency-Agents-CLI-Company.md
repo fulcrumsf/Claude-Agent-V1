@@ -3,15 +3,11 @@ title: "Agency Agents CLI Company"
 type: extracted-knowledge
 category: tools
 tags:
-  - agency-agents
-  - github-repo
-  - ai-automation
-  - cli-tools
-  - startup-stack
+  - GitHub
+  - Coding-Agent
 original_filename: "Claude-Code-Agents-And-Research-06.png"
 created: 2026-05-09
 ---
-
 ![[Agency-Agents-CLI-Company.png]]
 
 ## AI Analysis

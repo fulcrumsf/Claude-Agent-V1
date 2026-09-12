@@ -1,17 +1,14 @@
 ---
-title: "Clik Ai Video Editioning Tool"
+title: "Clik AI Video Editing Tool"
 type: extracted-knowledge
 category: tools
 tags:
-  - clik-ai
-  - video-editing
-  - batch-processing
-  - content-creation
-  - claude-code
+  - Image-Video-Model
+  - Coding-Agent
 original_filename: "IMG_9805.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Clik-Ai-Video-Editioning-Tool.png]]
 
 ## AI Analysis

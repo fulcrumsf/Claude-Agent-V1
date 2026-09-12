@@ -3,13 +3,14 @@ title: "Tabiplaces Social Travel"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - travel
+  - Profile
+  - App
 ai_description: "A TikTok profile for @tabiplaces, an app that helps users 'automatically pin places from social media to a map and create your bucketlists' on tabi.place, showing follower counts (96) and example content marketing videos highlighting the app's features and views up to 1,741 — likely saved as content inspiration or to research a competitor's marketing strategy."
+summary: >-
+  A TikTok profile for @tabiplaces, an app that helps users 'automatically pin places from social media to a map and create your bucketlists' on tabi.place, showing follower counts (96) and example content marketing videos highlighting the app's features and views up to 1,741 — likely saved as content inspiration or to research a competitor's marketing strategy.
 original_filename: "tabiplaces-social-travel.PNG"
 created: 2026-05-01
 ---
-
 ![[Tabiplaces-Social-Travel.png]]
 
 ## AI Analysis

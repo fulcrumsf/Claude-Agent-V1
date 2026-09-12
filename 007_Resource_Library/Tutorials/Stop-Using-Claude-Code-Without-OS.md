@@ -3,13 +3,11 @@ title: "Stop Using Claude Code Without OS"
 type: tutorial
 category: ai-agents
 tags:
-  - claude-code
-  - agentic-ai
-  - architecture
+  - Guide
+  - Coding-Agent
 created: 2026-05-08
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=Bgxsx8slDEA)
 
 ⚡Master Claude Code, Build Your Agency, Land Your First Client⚡  

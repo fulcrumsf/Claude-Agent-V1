@@ -3,15 +3,11 @@ title: "Voicebox Open Source AI Voice Studio"
 type: extracted-knowledge
 category: tools
 tags:
-  - voicebox
-  - text-to-speech
-  - open-source
-  - github
-  - local-ai
+  - Audio-Model
+  - GitHub
 original_filename: "IMG_0501.PNG"
 created: 2026-08-24
 ---
-
 ![[Voicebox-Open-Source-AI-Voice-Studio.png]]
 
 ## AI Analysis

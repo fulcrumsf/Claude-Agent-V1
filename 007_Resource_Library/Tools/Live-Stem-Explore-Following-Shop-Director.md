@@ -3,13 +3,13 @@ title: "Live Stem Explore Following Shop Director"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - video
+  - App
 ai_description: "Screenshot of Live Stem Explore Following Shop Director with readable text about live stem explore following shop."
+summary: >-
+  Screenshot of Live Stem Explore Following Shop Director with readable text about live stem explore following shop.
 original_filename: "IMG_8758.PNG"
 created: 2026-05-01
 ---
-
 ![[Live-Stem-Explore-Following-Shop-Director.png]]
 
 ## AI Analysis

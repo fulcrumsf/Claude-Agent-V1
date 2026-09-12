@@ -3,13 +3,14 @@ title: "Lumalabs Creative Agents"
 type: tool-doc
 category: app-dev
 tags:
-  - screenshot
-  - ai-agents
+  - Product
+  - App
 ai_description: "Mobile browser screenshot of the lumalabs.ai website, detailing 'Core Product Differentiation' and 'Creative Agents' with text 'Physically intelligent creative agents embedded into your workflow', along with 'dentsu', 'adidas', and 'HUMAIN' logos — likely saved for researching AI tools for creative workflows or product strategy inspiration."
+summary: >-
+  Mobile browser screenshot of the lumalabs.ai website, detailing 'Core Product Differentiation' and 'Creative Agents' with text 'Physically intelligent creative agents embedded into your workflow', along with 'dentsu', 'adidas', and 'HUMAIN' logos — likely saved for researching AI tools for creative workflows or product strategy inspiration.
 original_filename: "lumalabs-creative-agents.PNG"
 created: 2026-05-01
 ---
-
 ![[Lumalabs-Creative-Agents.png]]
 
 ## AI Analysis

@@ -3,11 +3,10 @@ title: "Website And SEO"
 type: tutorial
 category: tutorials
 tags:
-  - tutorials
+  - Guide
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Video Tutorials/Tutorial Library/Website & SEO.md
 ---
-
 [https://youtu.be/R_B3ryglQJc?si=K9fC94NMHDfY9AJf](https://youtu.be/R_B3ryglQJc?si=K9fC94NMHDfY9AJf)
 [https://youtu.be/OTGH_SwtGk0?si=i4sPYpmMPGHSB6fu](https://youtu.be/OTGH_SwtGk0?si=i4sPYpmMPGHSB6fu)
 

@@ -1,15 +1,15 @@
 ---
-title: "Tive Stem Explore Following Shop Thisishow"
+title: "Tive Stem Explore"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "Screenshot of Tive Stem Explore Following Shop Thisishow with readable text about tive stem explore following shop."
+summary: >-
+  Screenshot of Tive Stem Explore Following Shop Thisishow with readable text about tive stem explore following shop.
 original_filename: "IMG_8749.PNG"
 created: 2026-05-01
 ---
-
 ![[Tive-Stem-Explore-Following-Shop-Thisishow.png]]
 
 ## AI Analysis

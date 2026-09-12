@@ -3,15 +3,14 @@ title: "Claude Must Install Skills"
 type: tutorial
 category: ai-agents
 tags:
-  - screenshot
-  - claude
-  - tutorial
-  - marketing-ai
+  - Guide
+  - Coding-Agent
 ai_description: "A TikTok video by @nocode.joshua titled '5 Claude Skills that every beginner needs to install' featuring a '7 Marketing AI Agents' diagram outlining AI applications in marketing functions like SEO, CRO, Content, Paid, Growth, Sales, and Strategy — likely saved for AI tool research or content inspiration."
+summary: >-
+  A TikTok video by @nocode.joshua titled '5 Claude Skills that every beginner needs to install' featuring a '7 Marketing AI Agents' diagram outlining AI applications in marketing functions like SEO, CRO, Content, Paid, Growth, Sales, and Strategy — likely saved for AI tool research or content inspiration.
 original_filename: "claude-5-must-install-skills.PNG"
 created: 2026-05-01
 ---
-
 ![[Claude-Must-Install-Skills.png]]
 
 ## What It Is

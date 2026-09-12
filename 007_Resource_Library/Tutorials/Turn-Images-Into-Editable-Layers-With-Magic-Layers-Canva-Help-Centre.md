@@ -1,17 +1,13 @@
 ---
-title: "Turn Images Into Editable Layers With Magic Layers Canva Help Centre"
+title: "Turn Images Into Editable Layers With Magic Layers in Canva"
 type: "tutorial"
 category: "app-dev"
 tags:
-  - app-dev
-  - canva
-  - image-editing
-  - tutorial
-  - help-centre
+  - Guide
+  - App
 created: 2026-05-12
 source: local
 ---
-
 ## Turn images into editable layers with Magic Layers
 
 ---

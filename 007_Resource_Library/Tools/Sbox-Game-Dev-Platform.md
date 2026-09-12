@@ -1,15 +1,13 @@
 ---
-title: "Sbox Game Dev Platform"
+title: "s&box Game Dev Platform"
 type: tool-doc
 category: app-dev
 tags:
-  - game-dev
-  - source2
-  - sandbox
+  - Gaming
+  - App
 created: 2026-05-08
 source: local
 ---
-
 ## s&box
 
 Stub

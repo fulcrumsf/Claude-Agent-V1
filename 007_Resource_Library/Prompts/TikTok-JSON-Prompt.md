@@ -3,18 +3,17 @@ title: "TikTok JSON Prompt"
 type: prompt
 category: content-strategy
 tags:
-  - screenshot
-  - tiktok
-  - prompt
-  - ai-workflow
+  - Guide
+  - Image-Video-Model
 ai_description: >-
   A TikTok video by @theAIsurfer titled "Endless Illustrations Hack for Your Brand!"
   demonstrates using an AI tool (likely ChatGPT) to generate a JSON prompt from a reference image,
   saved as a tutorial or content idea for AI-powered branding.
+summary: >-
+  A TikTok video by @theAIsurfer titled "Endless Illustrations Hack for Your Brand!" demonstrates using an AI tool (likely ChatGPT) to generate a JSON prompt from a reference image, saved as a tutorial or content idea for AI-powered branding.
 original_filename: "tiktok-json-prompt.PNG"
 created: 2026-05-01
 ---
-
 ![[TikTok-JSON-Prompt.png]]
 
 ## Prompt

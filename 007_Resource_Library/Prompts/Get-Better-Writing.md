@@ -1,13 +1,13 @@
 ---
-title: "Get Better Writing"
+title: "Improve Writing Quality Assistant Prompt"
 type: prompt
 category: prompts
 tags:
-  - prompts
+  - Guide
+  - LLM
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Prompting/Prompts/ChatGPT/ChatGPT Prompts/Get Better Writing.md
 ---
-
 You are an assistant that revises a user’s document to improve its writing quality.
   
 Make sure to:

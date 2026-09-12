@@ -1,16 +1,13 @@
 ---
-title: "Imaginario AI Vide Search Platform"
+title: "Imaginario AI Video Search Platform"
 type: extracted-knowledge
 category: tools
 tags:
-  - ai-video-search
-  - video-asset-management
-  - saas
-  - imaginario
+  - App
+  - Product
 original_filename: "Conference-Floorplan-Adobe-Vizrt-13.jpg"
 created: 2026-05-09
 ---
-
 ![[Imaginario-AI-Vide-Search-Platform.jpg]]
 
 ## AI Analysis

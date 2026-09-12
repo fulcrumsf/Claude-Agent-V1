@@ -3,13 +3,13 @@ title: "Tive Stem Explore Following Shop Custom"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - video
+  - Product
 ai_description: "Screenshot of Tive Stem Explore Following Shop Custom with readable text about tive stem explore following shop."
+summary: >-
+  Screenshot of Tive Stem Explore Following Shop Custom with readable text about tive stem explore following shop.
 original_filename: "IMG_8695.PNG"
 created: 2026-05-01
 ---
-
 ![[Tive-Stem-Explore-Following-Shop-Custom.png]]
 
 ## AI Analysis

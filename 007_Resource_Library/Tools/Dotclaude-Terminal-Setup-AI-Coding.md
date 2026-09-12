@@ -3,15 +3,11 @@ title: "Dotclaude Terminal Setup AI Coding"
 type: extracted-knowledge
 category: tools
 tags:
-  - claude-code
-  - token-optimization
-  - dotfiles
-  - dev-tools
-  - aidevelopment
+  - Coding-Agent
+  - LLM
 original_filename: "IMG_9863.PNG"
 created: 2026-08-24
 ---
-
 ![[Dotclaude-Terminal-Setup-AI-Coding.png]]
 
 ## AI Analysis

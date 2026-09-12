@@ -3,15 +3,11 @@ title: "Avnac Browser Design Editor GitHub"
 type: extracted-knowledge
 category: tools
 tags:
-  - avnaac
-  - design-tools
-  - github-repo
-  - graphic-design
-  - browser-editor
+  - App
+  - GitHub
 original_filename: "IMG_9859.PNG"
 created: 2026-08-24
 ---
-
 ![[Avnac-Browser-Design-Editor-GitHub.png]]
 
 ## AI Analysis

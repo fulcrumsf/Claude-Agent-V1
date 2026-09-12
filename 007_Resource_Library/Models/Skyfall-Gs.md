@@ -1,15 +1,16 @@
 ---
-title: "Skyfall Gs"
+title: "Skyfall-GS AI Model"
 type: model-doc
 category: ai-agents
 tags:
-  - screenshot
-  - reference
+  - LLM
+  - Research-List
 ai_description: "Research project page for 'Skyfall-GS', an AI model for 'Synthesizing Immersive 3D Urban Scenes from Satellite Imagery', with links to arXiv, Code, Datasets, 3DGS PLY Files, and Evaluation Data – likely saved as a reference for AI technology or content inspiration."
+summary: >-
+  Research project page for 'Skyfall-GS', an AI model for 'Synthesizing Immersive 3D Urban Scenes from Satellite Imagery', with links to arXiv, Code, Datasets, 3DGS PLY Files, and Evaluation Data – likely saved as a reference for AI technology or content inspiration.
 original_filename: "Skyfall-GS.png"
 created: 2026-05-01
 ---
-
 ![[Skyfall-Gs.png]]
 
 ## AI Analysis

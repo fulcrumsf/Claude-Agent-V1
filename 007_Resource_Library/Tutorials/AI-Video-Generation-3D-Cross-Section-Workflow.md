@@ -3,15 +3,11 @@ title: "AI Video Generation 3D Cross Section Workflow"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - ai-video
-  - 3d-animation
-  - runway-ml
-  - animation-workflow
-  - content-creation
+  - Guide
+  - Image-Video-Model
 original_filename: "Cross-X-Prompt-4.PNG"
 created: 2026-05-09
 ---
-
 ![[AI-Video-Generation-3D-Cross-Section-Workflow.png]]
 
 ## AI Analysis

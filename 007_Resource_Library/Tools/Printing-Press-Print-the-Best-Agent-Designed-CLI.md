@@ -1,17 +1,14 @@
 ---
-title: "Printing Press Print the Best Agent Designed CLI"
+title: "Printing Press: Agent-Designed CLI Tool"
 type: "tool-doc"
 category: "ai-agents"
 tags:
-  - ai-agents
-  - cli
-  - printing-press
-  - automation
-  - tool
+  - Coding-Agent
+  - App
 created: 2026-05-12
 source: local
+retag_flag: "bad-tag-value"
 ---
-
 PRESS IS OPENPL. A
 
 ## Welcome to the Printing Press.Print the best agent-designed CLI of all time. From anything, or install and use the ones the community has made so far.

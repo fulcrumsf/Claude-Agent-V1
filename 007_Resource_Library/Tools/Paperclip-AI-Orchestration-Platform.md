@@ -3,15 +3,11 @@ title: "Paperclip AI Orchestration Platform"
 type: extracted-knowledge
 category: tools
 tags:
-  - open-source
-  - ai-agents
-  - automation
-  - saas
-  - workflow-management
+  - App
 original_filename: "Open-Source-AI-Tools-09.png"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[Paperclip-AI-Orchestration-Platform.png]]
 
 ## AI Analysis

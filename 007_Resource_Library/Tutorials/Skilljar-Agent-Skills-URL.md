@@ -3,15 +3,13 @@ title: "Skilljar Agent Skills URL"
 type: tutorial
 category: ai-agents
 tags:
-  - screenshot
-  - ai-agents
-  - tutorial
-  - claude-skills
+  - Guide
 ai_description: "A TikTok video by @nocode.joshua, titled '5 Claude Skills that every beginner needs to install,' is displayed, featuring a URL to `anthropic.skilljar.com/introduction-to-agent-skills` and 'URL and paste' text, likely saved as a tutorial or resource for learning AI agent skills."
+summary: >-
+  A TikTok video by @nocode.joshua, titled '5 Claude Skills that every beginner needs to install,' is displayed, featuring a URL to `anthropic.skilljar.com/introduction-to-agent-skills` and 'URL and paste' text, likely saved as a tutorial or resource for learning AI agent skills.
 original_filename: "skilljar-agent-skills-url.PNG"
 created: 2026-05-01
 ---
-
 ![[Skilljar-Agent-Skills-URL.png]]
 
 ## What It Is

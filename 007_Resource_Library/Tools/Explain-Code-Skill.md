@@ -3,13 +3,14 @@ title: "Explain Code Skill"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Coding-Agent
+  - LLM
 ai_description: "TikTok video by @nocode.joshua, titled '5 Claude Skills that every beginner needs to install', featuring a diagram of Anthropic's 'Explain Code' AI skill with its functionalities — likely saved as a resource for AI tool exploration or content ideas."
+summary: >-
+  TikTok video by @nocode.joshua, titled '5 Claude Skills that every beginner needs to install', featuring a diagram of Anthropic's 'Explain Code' AI skill with its functionalities — likely saved as a resource for AI tool exploration or content ideas.
 original_filename: "explain-code-skill.PNG"
 created: 2026-05-01
 ---
-
 ![[Explain-Code-Skill.png]]
 
 ## AI Analysis

@@ -3,13 +3,11 @@ title: "Claude Hyperframes V2 Video"
 type: tutorial
 category: video-production
 tags:
-  - video-editing
-  - claude-code
-  - hyperframes
+  - Guide
+  - LLM
 created: 2026-05-08
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=4E2I_NJkzhI)
 
 Want the Agentic AI Masterclass and start earning from AI? 🚀 https://www.skool.com/robonuggets/about?ref=c1365a0fede2445292bc2bbd2b9e9359  

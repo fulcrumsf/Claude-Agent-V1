@@ -3,13 +3,13 @@ title: "Aivideo"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
+  - App
 ai_description: "AIVIDEO's mobile website (aivideo.com) advertises its '#1 AI Video App' for creating informative, viral videos for TikTok, Shorts, and Reels, with a promotional price of $9/month — likely saved for content creation tool research."
+summary: >-
+  AIVIDEO's mobile website (aivideo.com) advertises its '#1 AI Video App' for creating informative, viral videos for TikTok, Shorts, and Reels, with a promotional price of $9/month — likely saved for content creation tool research.
 original_filename: "AIVideo.PNG"
 created: 2026-05-01
 ---
-
 ![[Aivideo.png]]
 
 ## AI Analysis

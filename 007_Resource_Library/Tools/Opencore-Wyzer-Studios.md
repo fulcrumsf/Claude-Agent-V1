@@ -3,13 +3,13 @@ title: "Opencore Wyzer Studios"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - GitHub
 ai_description: "TikTok video showing a GitHub release page for 'Open-coreUI', version 'v0.9.6', a rewritten Open WebUI in Rust with download links for various platforms — likely saved for tech research or content ideas."
+summary: >-
+  TikTok video showing a GitHub release page for 'Open-coreUI', version 'v0.9.6', a rewritten Open WebUI in Rust with download links for various platforms — likely saved for tech research or content ideas.
 original_filename: "opencore-wyzer-studios.PNG"
 created: 2026-05-01
 ---
-
 ![[Opencore-Wyzer-Studios.png]]
 
 ## AI Analysis

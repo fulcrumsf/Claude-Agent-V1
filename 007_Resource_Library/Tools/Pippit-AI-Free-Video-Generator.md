@@ -3,15 +3,11 @@ title: "Pippit AI Free Video Generator"
 type: "tool-doc"
 category: "video-production"
 tags:
-  - video-production
-  - ai-video
-  - pippit
-  - tool
-  - generator
+  - Image-Video-Model
 created: 2026-05-12
 source: local
+retag_flag: "bad-tag-count"
 ---
-
 Dreamina Seedance Fast 2.0, free for limited time
 
 Try Now!

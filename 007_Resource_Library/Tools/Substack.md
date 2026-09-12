@@ -6,14 +6,11 @@ summary: "Substack is an online publishing platform that enables writers and cre
 url: "https://substack.com/home"
 verified: true
 tags:
-  - publishing-platform
-  - newsletter-service
-  - content-monetization
-  - podcast-hosting
-  - community-building
+  - Platforms
+  - Product
 created: 2026-09-05
 enriched: 2026-09-05
+retag_flag: "bad-tag-value"
 ---
-
 ## Summary
 Substack is an online publishing platform that enables writers and creators to publish newsletters, podcasts, and videos with built-in paid subscriptions. It provides tools for content creation, audience growth, and direct monetization, allowing creators to send digital content directly to subscribers.

@@ -3,15 +3,14 @@ title: "YouTube Tool N8n Overview"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - youtube
-  - tools
-  - youtube-studio
+  - App
+  - Guide
 ai_description: "YouTube Studio content page showing four videos including 'n8n overview' and 'This Jellyfish Broke the Rules of Life', with their view counts, upload times, and visibility status — likely saved for tracking video performance or content management."
+summary: >-
+  YouTube Studio content page showing four videos including 'n8n overview' and 'This Jellyfish Broke the Rules of Life', with their view counts, upload times, and visibility status — likely saved for tracking video performance or content management.
 original_filename: "YouTube_Tool_n8n_Overview.PNG"
 created: 2026-05-01
 ---
-
 ![[YouTube-Tool-N8n-Overview.png]]
 
 ## What It Is

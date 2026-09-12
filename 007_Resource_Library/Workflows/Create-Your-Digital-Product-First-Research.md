@@ -3,15 +3,11 @@ title: "Create Your Digital Product First Research"
 type: extracted-knowledge
 category: workflows
 tags:
-  - digital-products
-  - market-research
-  - etsy-analysis
-  - reddit-scraping
-  - product-validation
+  - Guide
+  - Research-List
 original_filename: "Digital Products.png"
 created: 2026-05-08
 ---
-
 ![[Create-Your-Digital-Product-First-Research.png]]
 
 ## AI Analysis

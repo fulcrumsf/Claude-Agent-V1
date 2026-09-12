@@ -1,15 +1,16 @@
 ---
-title: "Mozaic YouTube Revenue"
+title: "Mozaic YouTube Revenue Tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - youtube
+  - App
+  - Product
 ai_description: "A screenshot of the mozaic.io website, displayed in an iOS browser, highlighting its service for 'YouTube revenue, shared seamlessly' and an 'all-in-one app designed for creators' — likely saved as a tool for creator collaboration and revenue management."
+summary: >-
+  A screenshot of the mozaic.io website, displayed in an iOS browser, highlighting its service for 'YouTube revenue, shared seamlessly' and an 'all-in-one app designed for creators' — likely saved as a tool for creator collaboration and revenue management.
 original_filename: "mozaic-youtube-revenue.PNG"
 created: 2026-05-01
 ---
-
 ![[Mozaic-YOUTUBE-Revenue.png]]
 
 ## AI Analysis

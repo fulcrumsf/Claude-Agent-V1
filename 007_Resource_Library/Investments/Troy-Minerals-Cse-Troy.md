@@ -1,15 +1,16 @@
 ---
-title: "Troy minerals Cse$troy"
+title: "Troy Minerals ($TROY) TikTok Promotion"
 type: doc
 category: general
 tags:
-  - screenshot
-  - reference
+  - Stocks
+  - Product
 ai_description: "TikTok video by @TheNIFTyInvestor promoting 'TROY MINERALS CSE: $TROY' with a compensated disclaimer for $1000, likely saved for investment research, content ideas for financial promotion, or to observe sponsored post disclosure practices."
+summary: >-
+  TikTok video by @TheNIFTyInvestor promoting 'TROY MINERALS CSE: $TROY' with a compensated disclaimer for $1000, likely saved for investment research, content ideas for financial promotion, or to observe sponsored post disclosure practices.
 original_filename: "Troy Minerals-CSE$TROY.PNG"
 created: 2026-05-01
 ---
-
 ![[Troy-Minerals-Cse-Troy.png]]
 
 ## AI Analysis

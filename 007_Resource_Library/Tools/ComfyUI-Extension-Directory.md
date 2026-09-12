@@ -3,15 +3,11 @@ title: "ComfyUI Extension Directory"
 type: extracted-knowledge
 category: tools
 tags:
-  - comfyui
-  - stable-diffusion
-  - custom-nodes
-  - software-directory
-  - ai-gui
+  - App
+  - GitHub
 original_filename: "ComfyUI Upgrade.png"
 created: 2026-05-08
 ---
-
 ![[ComfyUI-Extension-Directory.png]]
 
 ## AI Analysis

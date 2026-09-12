@@ -3,13 +3,13 @@ title: "Yt.jobs"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - jobs
+  - Platforms
 ai_description: "Mobile browser screenshot of ytjobs.co, a job platform for YouTube professionals, showing options to 'Join as Talent' or 'Post a Job' and testimonials from creators with 129M, 128M, and 94.7M subscribers — saved for researching industry-specific job boards or talent acquisition."
+summary: >-
+  Mobile browser screenshot of ytjobs.co, a job platform for YouTube professionals, showing options to 'Join as Talent' or 'Post a Job' and testimonials from creators with 129M, 128M, and 94.7M subscribers — saved for researching industry-specific job boards or talent acquisition.
 original_filename: "yt.jobs.PNG"
 created: 2026-05-01
 ---
-
 ![[Yt-Jobs.png]]
 
 ## AI Analysis

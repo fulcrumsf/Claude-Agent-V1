@@ -1253,6 +1253,13 @@ Seedance handoff must preserve verified visual observations from the accepted
   workflow that selects complete clips, reframes, and produces multiple drafts.
   Saved channel profiles can avoid repeated questions; a future Airtable checkbox
   can submit the same shared job. Build framing first and adopt other stages later.
+- Tony explicitly deferred channel integration after selecting the Part Three
+  framing preference. When he says “plug the short-form clipping workflow into
+  [channel],” start with
+  `001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/Future-Channel-Integration-Handoff-v1.md`.
+  Reuse the built engine; inspect the channel, discuss missing choices, and obtain
+  approval for its concrete integration plan. No channel or controller is enabled
+  by the handoff itself.
 
 ### 2026-09-09 — Resource Library images now live BESIDE their note (supersedes all 2026-05 "Visual_Assets" entries)
 

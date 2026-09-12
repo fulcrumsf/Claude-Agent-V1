@@ -3,15 +3,11 @@ title: "Trade With The Pros Cohort Program"
 type: extracted-knowledge
 category: tools
 tags:
-  - trade-with-the-pros
-  - trading-community
-  - education
-  - lifestyle
-  - group-learning
+  - Guide
+  - Product
 original_filename: "IMG_9868.PNG"
 created: 2026-08-24
 ---
-
 ![[Trade-With-The-Pros-Cohort-Program.png]]
 
 ## AI Analysis

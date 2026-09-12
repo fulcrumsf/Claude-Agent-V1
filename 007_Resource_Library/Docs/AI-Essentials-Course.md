@@ -3,14 +3,10 @@ title: "AI Essentials Course"
 type: doc
 category: ai-agents
 tags:
-  - ai-fundamentals
-  - ai-agents
-  - llms
-  - machine-learning
+  - Guide
 created: 2026-05-08
 source: local
 ---
-
 AI Essentials:
 Building Foundational
 Knowledge

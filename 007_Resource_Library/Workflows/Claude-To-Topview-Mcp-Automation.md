@@ -1,16 +1,14 @@
 ---
-title: "Claude To Topview Mcp Automation"
+title: "Claude to Topview MCP Automation Workflow"
 type: extracted-knowledge
 category: workflows
 tags:
-  - llm-automation
-  - marketing-research
-  - mcp
-  - agent-workflow
+  - LLM
+  - Pipeline
 original_filename: "IMG_0366.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Claude-To-Topview-Mcp-Automation.png]]
 
 ## AI Analysis

@@ -3,13 +3,14 @@ title: "Liberty AI Platform"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "TikTok video by @dr_cintas showcasing 'Liberty,' a decentralized and privacy-first AI platform alternative to ChatGPT and Perplexity, emphasizing speed and free speech — saved as a potential AI tool to try or content idea."
+summary: >-
+  TikTok video by @dr_cintas showcasing 'Liberty,' a decentralized and privacy-first AI platform alternative to ChatGPT and Perplexity, emphasizing speed and free speech — saved as a potential AI tool to try or content idea.
 original_filename: "liberty-ai-platform.PNG"
 created: 2026-05-01
 ---
-
 ![[Liberty-AI-Platform.png]]
 
 ## AI Analysis

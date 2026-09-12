@@ -1,0 +1,130 @@
+{
+  "stage": "gate_3",
+  "status": "rendered_and_verified_awaiting_tony_review",
+  "job_id": "Part-3-Gate-3-v1",
+  "security": {
+    "os_network_denial": true,
+    "loopback_errno": 1,
+    "clean_environment_launcher": true
+  },
+  "source_unchanged": true,
+  "protected_media_unchanged": true,
+  "elapsed_seconds": 32.362,
+  "outputs": {
+    "Group": {
+      "width": 1080,
+      "height": 1920,
+      "frames": 968,
+      "fps": 30,
+      "video_start": "0.000000",
+      "video_duration": "32.266667",
+      "audio_start": "0.000000",
+      "audio_duration": "32.266000",
+      "sha256": "ba54c6d48c50a6821537521c9c6f3415ac40c9a3c57e7cde65b2b0c7553dbe3c",
+      "full_decode_passed": true
+    },
+    "Subject": {
+      "width": 1080,
+      "height": 1920,
+      "frames": 968,
+      "fps": 30,
+      "video_start": "0.000000",
+      "video_duration": "32.266016",
+      "audio_start": "0.000000",
+      "audio_duration": "32.266000",
+      "sha256": "cf11b50c78a5a4694e0d55686f321a4bfc0012dd24c45a4430d95f2773d51a48",
+      "full_decode_passed": true
+    },
+    "Hybrid": {
+      "width": 1080,
+      "height": 1920,
+      "frames": 968,
+      "fps": 30,
+      "video_start": "0.000000",
+      "video_duration": "32.266016",
+      "audio_start": "0.000000",
+      "audio_duration": "32.266000",
+      "sha256": "ebe07057a763d09f1921001938e47d9618b3674daf578f02480cf92e44fc4f50",
+      "full_decode_passed": true
+    },
+    "comparison": {
+      "width": 1080,
+      "height": 720,
+      "frames": 968,
+      "fps": 30,
+      "video_start": "0.000000",
+      "video_duration": "32.266016",
+      "audio_start": "0.000000",
+      "audio_duration": "32.266000",
+      "sha256": "7660df5109057e355a3155b7071dfd283cb84b9f95231b0013e1209884b0babf",
+      "full_decode_passed": true
+    },
+    "debug": {
+      "width": 1320,
+      "height": 704,
+      "frames": 968,
+      "fps": 30,
+      "video_start": "0.000000",
+      "video_duration": "32.266016",
+      "audio_start": "0.000000",
+      "audio_duration": "32.266000",
+      "sha256": "bb33a5008476b11a46e3ef070e229f79af66333d8056a565fca8db937e5f4f6e",
+      "full_decode_passed": true
+    }
+  },
+  "resources": {
+    "allocated_bytes": 2250518528,
+    "free_bytes": 21936410624
+  },
+  "layout_counts": {
+    "Group": {
+      "fit_blur": 968
+    },
+    "Subject": {
+      "crop": 775,
+      "fit_blur": 193
+    },
+    "Hybrid": {
+      "crop": 449,
+      "fit_blur": 519
+    }
+  },
+  "reason_counts": {
+    "Group": {
+      "group_profile": 968
+    },
+    "Subject": {
+      "subject_view": 775,
+      "subject_or_motion_does_not_fit": 4,
+      "fallback_minimum_hold": 176,
+      "short_crop_suppressed": 13
+    },
+    "Hybrid": {
+      "subject_view": 449,
+      "hybrid_group_hold": 243,
+      "short_crop_suppressed": 25,
+      "subject_or_motion_does_not_fit": 2,
+      "fallback_minimum_hold": 69,
+      "hybrid_payoff_group": 180
+    }
+  },
+  "contact_sheet_frames": [
+    0,
+    76,
+    151,
+    226,
+    302,
+    303,
+    378,
+    453,
+    529,
+    604,
+    605,
+    695,
+    786,
+    877,
+    967
+  ],
+  "contact_sheet_sha256": "d89d081da24edebec81b27215e82a14d8961bdc3244d18438e30ce09db637c42",
+  "crop_plan_sha256": "ade5ae6788bbb79b80701eb2eb64dc5e0fe654f75efab23debed898599404ad3"
+}

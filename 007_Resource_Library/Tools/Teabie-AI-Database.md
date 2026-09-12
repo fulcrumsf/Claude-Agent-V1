@@ -1,15 +1,16 @@
 ---
-title: "Teabie AI Database"
+title: "Teable AI Database"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "TikTok video showcasing 'Teable - The AI Database Agent' at https://teable.ai/, described as a 'Live database app + Automations' similar to 'airtable + lovable + n8n' — likely saved to explore the AI tool for business use or content creation."
+summary: >-
+  TikTok video showcasing 'Teable - The AI Database Agent' at https://teable.ai/, described as a 'Live database app + Automations' similar to 'airtable + lovable + n8n' — likely saved to explore the AI tool for business use or content creation.
 original_filename: "teabie-ai-database.PNG"
 created: 2026-05-01
 ---
-
 ![[Teabie-AI-Database.png]]
 
 ## AI Analysis

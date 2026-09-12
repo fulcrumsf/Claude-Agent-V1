@@ -3,15 +3,11 @@ title: "Device Setup QR Code"
 type: extracted-knowledge
 category: tools
 tags:
-  - qr-code
-  - setup
-  - connectivity
-  - hardware
-  - wifi-config
+  - Product
 original_filename: "AI-Booth-Conference-08.jpg"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[Device-Setup-QR-Code.jpg]]
 
 ## AI Analysis

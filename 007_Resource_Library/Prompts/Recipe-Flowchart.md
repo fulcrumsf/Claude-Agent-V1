@@ -1,13 +1,13 @@
 ---
-title: "Recipe Flowchart"
+title: "Birria Tacos Recipe Flowchart Prompt"
 type: prompt
 category: prompts
 tags:
-  - prompts
+  - Guide
+  - Art-Reference
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Prompting/Prompts/ChatGPT/ChatGPT Prompts/Recipe Flowchart.md
 ---
-
 **Prompt:**  
 **Create a recipe flow chart**
 It should look like a flat lay with all the ingredients

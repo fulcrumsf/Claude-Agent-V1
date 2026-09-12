@@ -6,14 +6,10 @@ summary: "Braindumper is a free AI-powered wizard by BuildWithAI that transforms
 url: "https://www.buildwithai.io/braindumper"
 verified: true
 tags:
-  - ai-app-planning
-  - app-development
-  - requirements-gathering
-  - software-design
-  - no-code-development
+  - App
+  - Coding-Agent
 created: 2026-09-05
 enriched: 2026-09-05
 ---
-
 ## Summary
 Braindumper is a free AI-powered wizard by BuildWithAI that transforms app ideas into detailed, platform-specific code prompts. It helps users clarify requirements and break down features into actionable implementation outlines before coding.

@@ -1,15 +1,16 @@
 ---
-title: "YouTube Studio Eligibility"
+title: "YouTube Studio Monetization Eligibility Tracker"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - youtube
+  - App
+  - Guide
 ai_description: "YouTube Studio mobile app showing the 'Earn' section with monetization eligibility criteria: 3 video uploads (met), 0 public watch hours (target 3,000), and 896K Shorts views (target 3M) as of Oct 31, 2025 — likely saved as a progress tracker for YouTube Partner Program eligibility."
+summary: >-
+  YouTube Studio mobile app showing the 'Earn' section with monetization eligibility criteria: 3 video uploads (met), 0 public watch hours (target 3,000), and 896K Shorts views (target 3M) as of Oct 31, 2025 — likely saved as a progress tracker for YouTube Partner Program eligibility.
 original_filename: "youtube-studio-eligibility.PNG"
 created: 2026-05-01
 ---
-
 ![[YOUTUBE-Studio-Eligibility.png]]
 
 ## AI Analysis

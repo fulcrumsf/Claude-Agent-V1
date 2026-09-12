@@ -1,5 +1,9 @@
 ---
+title: "ComfyUI Assistant Instructions"
 Status: Planning
+tags:
+  - Coding-Agent
+  - Guide
 ---
 ```
 ## 📜 Custom GPT Instruction Set: ComfyUI Assistant

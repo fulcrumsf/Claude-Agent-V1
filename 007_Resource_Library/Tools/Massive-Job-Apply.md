@@ -1,15 +1,16 @@
 ---
-title: "Massive job apply"
+title: "Massive: Swipe & Apply Job App Ad"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - jobs
+  - Platforms
+  - Product
 ai_description: "TikTok feed showcasing an advertisement for the 'Massive: Swipe & Apply' job search app, highlighting features like '1M+ Applications Sent' and an example 'Product Intern' role paying '$25.50/hr' for 'Fall 2025' — saved as inspiration for ad creative or a potential tool for their audience."
+summary: >-
+  TikTok feed showcasing an advertisement for the 'Massive: Swipe & Apply' job search app, highlighting features like '1M+ Applications Sent' and an example 'Product Intern' role paying '$25.50/hr' for 'Fall 2025' — saved as inspiration for ad creative or a potential tool for their audience.
 original_filename: "Massive Job Apply.PNG"
 created: 2026-05-01
 ---
-
 ![[Massive-Job-Apply.png]]
 
 ## AI Analysis

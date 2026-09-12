@@ -1,16 +1,16 @@
 ---
-title: "Chatgpt etsy prompts"
+title: "ChatGPT Prompt Cheat Sheet for E-commerce"
 type: prompt
 category: video-production
 tags:
-  - screenshot
-  - chatgpt
-  - ecommerce
+  - LLM
+  - Research-List
 ai_description: "A TikTok video presenting a 'Chat GPT Cheat Sheet' with AI prompts for creating greeting card phrases, print-on-demand funny phrases, Etsy shop names, and mug designs, likely saved by the creator for business ideas or content creation prompts."
+summary: >-
+  A TikTok video presenting a 'Chat GPT Cheat Sheet' with AI prompts for creating greeting card phrases, print-on-demand funny phrases, Etsy shop names, and mug designs, likely saved by the creator for business ideas or content creation prompts.
 original_filename: "Chatgpt Etsy Prompts.PNG"
 created: 2026-05-01
 ---
-
 ![[Chatgpt-Etsy-Prompts.png]]
 
 ## AI Analysis

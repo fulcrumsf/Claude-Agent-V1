@@ -1,15 +1,16 @@
 ---
-title: "Military YouTube Browse"
+title: "TubeGem AI Niche Discovery - Military YouTube Channel Analysis"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - youtube
+  - Profile
+  - Research-List
 ai_description: "TikTok video by AJ showcasing the TubeGem AI 'Niche Discovery' feature, displaying analysis of YouTube channels like 'GeoPolitics' and 'UKRAINE TODAY' for copying a military YouTube channel with AI — likely saved as a tool reference for YouTube niche research and content strategy."
+summary: >-
+  TikTok video by AJ showcasing the TubeGem AI 'Niche Discovery' feature, displaying analysis of YouTube channels like 'GeoPolitics' and 'UKRAINE TODAY' for copying a military YouTube channel with AI — likely saved as a tool reference for YouTube niche research and content strategy.
 original_filename: "military-youtube-browse.PNG"
 created: 2026-05-01
 ---
-
 ![[Military-YOUTUBE-Browse.png]]
 
 ## AI Analysis

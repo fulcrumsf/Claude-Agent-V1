@@ -1,5 +1,9 @@
 ---
+title: "App Building Bookmarks"
 Category: Revenue Stream
+tags:
+  - App
+  - Product
 ---
 #### App Building Bookmarks
 |![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/link_gray.svg)URL|

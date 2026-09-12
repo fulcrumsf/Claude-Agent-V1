@@ -1,15 +1,16 @@
 ---
-title: "Sideo"
+title: "Sideo.tv"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Platforms
+  - Product
 ai_description: "The Sideo.tv website is shown, a platform for TV news stringers, videographers, and media outlets to buy and sell newsworthy video, featuring 'I want to Buy video' and 'I want to Sell video' options, and a 'News Archive' — likely saved for content acquisition or a potential monetization channel."
+summary: >-
+  The Sideo.tv website is shown, a platform for TV news stringers, videographers, and media outlets to buy and sell newsworthy video, featuring 'I want to Buy video' and 'I want to Sell video' options, and a 'News Archive' — likely saved for content acquisition or a potential monetization channel.
 original_filename: "Sideo.PNG"
 created: 2026-05-01
 ---
-
 ![[Sideo.png]]
 
 ## AI Analysis

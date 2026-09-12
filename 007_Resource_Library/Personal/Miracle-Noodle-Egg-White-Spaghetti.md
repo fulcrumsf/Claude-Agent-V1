@@ -3,15 +3,11 @@ title: "Miracle Noodle Egg White Spaghetti"
 type: extracted-knowledge
 category: personal
 tags:
-  - miracle-noodle
-  - egg-white-spaghetti
-  - healthy-snacks
-  - low-carb
-  - grocery-shopping
+  - Product
+  - Health
 original_filename: "IMG_0347.JPG"
 created: 2026-08-24
 ---
-
 ![[Miracle-Noodle-Egg-White-Spaghetti.jpg]]
 
 ## AI Analysis

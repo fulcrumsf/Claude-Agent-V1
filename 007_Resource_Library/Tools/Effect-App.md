@@ -3,13 +3,14 @@ title: "Effect.app"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Art-Reference
 ai_description: "A TikTok video showing a black and white striped visual effect with the text 'it is called effect.app' overlayed, captured with the 'Share screenshot to' modal open — likely saved by a content creator to remember an interesting tool for future use."
+summary: >-
+  A TikTok video showing a black and white striped visual effect with the text 'it is called effect.app' overlayed, captured with the 'Share screenshot to' modal open — likely saved by a content creator to remember an interesting tool for future use.
 original_filename: "effect.app.PNG"
 created: 2026-05-01
 ---
-
 ![[Effect-App.png]]
 
 ## AI Analysis

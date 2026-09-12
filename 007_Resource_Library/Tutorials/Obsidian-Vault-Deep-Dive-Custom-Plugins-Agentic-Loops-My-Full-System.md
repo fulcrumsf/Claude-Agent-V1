@@ -1,17 +1,13 @@
 ---
-title: "Obsidian Vault Deep Dive Custom Plugins Agentic Loops My Full System"
+title: "Obsidian Vault Deep Dive: Custom Plugins & Agentic Loops for Automated Note-Taking"
 type: "tutorial"
 category: "architecture"
 tags:
-  - architecture
-  - obsidian
-  - plugins
-  - agentic-loops
-  - tutorial
+  - Guide
+  - Pipeline
 created: 2026-05-12
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=VaGpWWiHXm8)
 
 🤖 FREE RESOURCES: https://easymachineai.com/links  

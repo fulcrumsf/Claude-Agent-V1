@@ -1,15 +1,16 @@
 ---
-title: "Sora API Key Workflow"
+title: "FAL.ai API for Video Generation"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - automation
+  - Image-Video-Model
+  - Guide
 ai_description: "TikTok video by Will Francis AI+Marketing discussing FAL.ai API integration for video generation, with 1,463 saves and 1,120 likes — likely saved as research for AI video tools or content creation ideas."
+summary: >-
+  TikTok video by Will Francis AI+Marketing discussing FAL.ai API integration for video generation, with 1,463 saves and 1,120 likes — likely saved as research for AI video tools or content creation ideas.
 original_filename: "sora-api-key-workflow.PNG"
 created: 2026-05-01
 ---
-
 ![[SORA-API-Key-Workflow.png]]
 
 ## AI Analysis

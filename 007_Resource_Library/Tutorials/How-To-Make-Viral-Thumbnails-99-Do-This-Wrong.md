@@ -6,14 +6,11 @@ form: youtube-video
 summary: "A tutorial explaining an AI-assisted thumbnail workflow: preserve a creator's exact facial identity, reverse-engineer structural composition without copying protected elements, generate separate assets, and combine them through a node-based workflow."
 url: https://www.youtube.com/watch?v=jOcztYdF0fc
 tags:
-  - youtube-thumbnails
-  - thumbnail-design
-  - ai-image-generation
-  - ctr-optimization
+  - Guide
+  - Art-Style
 created: 2026-09-05
 source: https://www.youtube.com/watch?v=jOcztYdF0fc
 ---
-
 ![](https://www.youtube.com/watch?v=jOcztYdF0fc)
 
 Link to ImagineArt: https://imagineartinc.pxf.io/K01oLn  

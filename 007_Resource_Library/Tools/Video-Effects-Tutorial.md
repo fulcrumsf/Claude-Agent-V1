@@ -1,15 +1,16 @@
 ---
-title: "Video Effects Tutorial"
+title: "Video Effects Website Tutorial"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
+  - Guide
+  - Product
 ai_description: "TikTok video from Tyler Wise, bookmarked, showcasing the 'VideoEffects' website which offers custom video templates for content creators for platforms like TikTok, YouTube, and Instagram — saved as a potential tool for content creation."
+summary: >-
+  TikTok video from Tyler Wise, bookmarked, showcasing the 'VideoEffects' website which offers custom video templates for content creators for platforms like TikTok, YouTube, and Instagram — saved as a potential tool for content creation.
 original_filename: "video-effects-tutorial.PNG"
 created: 2026-05-01
 ---
-
 ![[Video-Effects-Tutorial.png]]
 
 ## AI Analysis

@@ -3,15 +3,14 @@ title: "Tripod AI Tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - ecommerce
-  - tool
-  - 3d-modeling
+  - Product
+  - 3D
 ai_description: "A TikTok video from @theAISurfer (theAISurfer.com) promoting the 'TRIPO3D.AI' tool that transforms images into 3D models, featuring a visible Google search for 'tripO3' — saved as AI tool research or content inspiration for 3D modeling."
+summary: >-
+  A TikTok video from @theAISurfer (theAISurfer.com) promoting the 'TRIPO3D.AI' tool that transforms images into 3D models, featuring a visible Google search for 'tripO3' — saved as AI tool research or content inspiration for 3D modeling.
 original_filename: "tripo3d-ai-tutorial.PNG"
 created: 2026-05-01
 ---
-
 ![[Tripod-AI-Tool.png]]
 
 ## What It Is

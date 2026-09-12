@@ -3,13 +3,14 @@ title: "Apple Swift Coding"
 type: model-doc
 category: ai-agents
 tags:
-  - screenshot
-  - reference
+  - Coding-Agent
+  - LLM
 ai_description: "TikTok video from @Marcin AI detailing Apple's new AI Assistant in Swift/Xcode with ChatGPT 5 and Claude integration, showing 647 likes and 490 saves — likely saved as a content idea or tech development update."
+summary: >-
+  TikTok video from @Marcin AI detailing Apple's new AI Assistant in Swift/Xcode with ChatGPT 5 and Claude integration, showing 647 likes and 490 saves — likely saved as a content idea or tech development update.
 original_filename: "apple-swift-coding.PNG"
 created: 2026-05-01
 ---
-
 ![[Apple-Swift-Coding.png]]
 
 ## AI Analysis

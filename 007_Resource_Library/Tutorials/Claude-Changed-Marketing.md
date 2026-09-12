@@ -1,15 +1,13 @@
 ---
-title: "Claude Changed Marketing"
+title: "Claude Chat for Marketing with Heygen and FireCrawl"
 type: tutorial
 category: content-strategy
 tags:
-  - claude-code
-  - marketing
-  - ai-automation
+  - Guide
+  - Coding-Agent
 created: 2026-05-08
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=la1dkCFgj1k)
 
 Work with me: https://www.skool.com/claude  

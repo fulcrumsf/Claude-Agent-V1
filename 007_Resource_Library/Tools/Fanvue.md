@@ -3,13 +3,14 @@ title: "Fanvue"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Platforms
+  - App
 ai_description: "Mobile webpage for Fanvue.com, a creator subscription platform, showcasing 'Connect, Create, Earn.', 'Trusted by 30,000+ Creators,' an 85% revenue share for 3 months, and 'Fanvue AI is coming soon' — likely saved for platform research and revenue share comparison."
+summary: >-
+  Mobile webpage for Fanvue.com, a creator subscription platform, showcasing 'Connect, Create, Earn.', 'Trusted by 30,000+ Creators,' an 85% revenue share for 3 months, and 'Fanvue AI is coming soon' — likely saved for platform research and revenue share comparison.
 original_filename: "Fanvue.PNG"
 created: 2026-05-01
 ---
-
 ![[Fanvue.png]]
 
 ## AI Analysis

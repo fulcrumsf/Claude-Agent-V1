@@ -3,15 +3,11 @@ title: "Weavy Artistic Intelligence"
 type: extracted-knowledge
 category: tools
 tags:
-  - ai-tool
-  - node-based-platform
-  - creative-workflow
-  - weavy
-  - artificial-intelligence
+  - App
+  - Image-Video-Model
 original_filename: "Screenshot-2025-08-20-at-4-45.png"
 created: 2026-05-09
 ---
-
 ![[Weavy-Artistic-Intelligence.png]]
 
 ## AI Analysis

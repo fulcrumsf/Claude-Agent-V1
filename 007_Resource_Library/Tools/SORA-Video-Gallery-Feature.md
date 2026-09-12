@@ -3,13 +3,14 @@ title: "Sora Video Gallery Feature"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
+  - Product
+  - App
 ai_description: "TikTok video showing 'Will Francis - AI + Marketing' discussing a 'Video Gallery' system for Sora AI generated videos with features like status badges, playback controls, and download options — likely saved for AI video creation research or content ideas."
+summary: >-
+  TikTok video showing 'Will Francis - AI + Marketing' discussing a 'Video Gallery' system for Sora AI generated videos with features like status badges, playback controls, and download options — likely saved for AI video creation research or content ideas.
 original_filename: "sora-video-gallery-feature.PNG"
 created: 2026-05-01
 ---
-
 ![[SORA-Video-Gallery-Feature.png]]
 
 ## AI Analysis

@@ -1,15 +1,13 @@
 ---
-title: "Build Sell Claude Code OS"
+title: "Build Claude Code OS"
 type: tutorial
 category: ai-agents
 tags:
-  - claude-code
-  - agentic-ai
-  - course
+  - Guide
+  - Coding-Agent
 created: 2026-05-08
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=bCljOfCH8Ms)
 
 Full courses + unlimited support: https://www.skool.com/ai-automation-society-plus/about?el=ai-os-course  

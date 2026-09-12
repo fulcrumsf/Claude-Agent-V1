@@ -3,13 +3,14 @@ title: "Maverick AI ChatGPT"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - chatgpt
+  - App
+  - Product
 ai_description: "A TikTok video featuring a laptop screen showing the Storm MCP 'Applications' dashboard with 'Airia' and 'Contextual AI' integrations for AI & ChatGPT is visible, likely saved by the creator as a reference for new AI tools or content ideas."
+summary: >-
+  A TikTok video featuring a laptop screen showing the Storm MCP 'Applications' dashboard with 'Airia' and 'Contextual AI' integrations for AI & ChatGPT is visible, likely saved by the creator as a reference for new AI tools or content ideas.
 original_filename: "maverick-ai-chatgpt.PNG"
 created: 2026-05-01
 ---
-
 ![[Maverick-AI-Chatgpt.png]]
 
 ## AI Analysis

@@ -3,13 +3,13 @@ title: "Genie World Models"
 type: model-doc
 category: general
 tags:
-  - screenshot
-  - reference
+  - Image-Video-Model
 ai_description: "TikTok short-form video from 'AI Update Daily' showcasing 'Genie 3: A new frontier for world models' with 23 likes, 0 comments, and 6 saves — likely saved for AI tool research or content idea generation."
+summary: >-
+  TikTok short-form video from 'AI Update Daily' showcasing 'Genie 3: A new frontier for world models' with 23 likes, 0 comments, and 6 saves — likely saved for AI tool research or content idea generation.
 original_filename: "genie-3-world-models.PNG"
 created: 2026-05-01
 ---
-
 ![[Genie-World-Models.png]]
 
 ## AI Analysis

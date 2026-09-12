@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-09-09
+created: 2026-09-11
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-09-09T12:38:12-04:00
+Generated: 2026-09-11T22:18:51-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -39,7 +39,6 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | director-packet-framework | Use when a complex cinematic, episodic, or long-form scene needs coordinated character, wardrobe, prop, environment, spatial camera, and storyboard references before video generat… | `001_Architecture/Skills/Director-Packet-Framework/SKILL.md` |
 | environment-sheet-generation | Use whenever a video production has a location that appears in more than one scene and needs to look identical every time — "build an environment sheet", "location reference sheet… | `001_Architecture/Skills/Environment-Sheet-Generation/SKILL.md` |
 | gpt-image-2-prompting-guide | Use whenever writing or reviewing a prompt for OpenAI's GPT-Image-2 (image generation/editing) via kie.ai or the OpenAI API directly. Triggers on "write a GPT-Image-2 prompt", "ge… | `001_Architecture/Skills/GPT-Image-2-Prompting-Guide/SKILL.md` |
-| Motion-Graphics | Use whenever building, reviewing, or planning ANY motion graphic — animated diagram/callout labels, kinetic typography, chart/data reveals, title cards, lower-thirds, or any Remot… | `001_Architecture/Skills/Motion-Graphics/SKILL.md` |
 | Motion-Graphics-Compositing | Use whenever a beat needs an animated diagram, infographic, data-viz, or collage-style motion graphic — never ask a video-generation model (Seedance or otherwise) to animate this… | `001_Architecture/Skills/Motion-Graphics-Compositing/SKILL.md` |
 | neon-parcel-longform-compilation | Use when Tony asks to create a Neon Parcel long-form animal compilation, analyze reference animal videos for Neon Parcel, or generate Shorts from a Neon Parcel long-form compilati… | `001_Architecture/Skills/Neon_Parcel_Longform_Compilation/SKILL.md` |
 | Production-Asset-Planner | Invoke once a production's shot list/beat breakdown exists, on ANY channel — reads the script and beats in one combined pass to decide (1) which conditional image assets (prop/env… | `001_Architecture/Skills/Production-Asset-Planner/SKILL.md` |
@@ -149,8 +148,14 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | hook-development | This skill should be used when the user asks to "create a hook", "add a PreToolUse/PostToolUse/Stop hook", "validate tool use", "implement prompt-based hooks", "use ${CLAUDE_PLUGI… | `001_Architecture/Skills/hook-development/SKILL.md` |
 | hooked-ux | Design habit-forming product loops using the Hook Model (Trigger, Action, Variable Reward, Investment). Use when the user mentions "users aren''t coming back", "engagement loops",… | `001_Architecture/Skills/hooked-ux/SKILL.md` |
 | hundred-million-offers | Create irresistible offers using the Value Equation, bonus stacking, risk-reversing guarantees, and ethical scarcity. Use when the user mentions "pricing strategy", "irresistible… | `001_Architecture/Skills/hundred-million-offers/SKILL.md` |
-| hyperframes | Create video compositions, animations, title cards, overlays, captions, voiceovers, audio-reactive visuals, and scene transitions in HyperFrames HTML. Use when asked to build any… | `001_Architecture/Skills/hyperframes/SKILL.md` |
-| hyperframes-cli | HyperFrames CLI dev loop — `npx hyperframes` for scaffolding (init), validation (lint, inspect), preview, render, and environment troubleshooting (doctor, browser, info, upgrade).… | `001_Architecture/Skills/hyperframes-cli/SKILL.md` |
+| hyperframes | > | `001_Architecture/Skills/hyperframes/SKILL.md` |
+| hyperframes-animation | All animation knowledge for HyperFrames — atomic motion rules, multi-phase scene blueprints, scene transitions, broader motion-design techniques, AND the seven runtime adapters (G… | `001_Architecture/Skills/hyperframes-animation/SKILL.md` |
+| hyperframes-audio | > | `001_Architecture/Skills/hyperframes-audio/SKILL.md` |
+| hyperframes-cli | > | `001_Architecture/Skills/hyperframes-cli/SKILL.md` |
+| hyperframes-core | The HyperFrames composition contract — build one renderable project. Use for composition structure, the `data-*` timing attributes, `class="clip"`, tracks, sub-compositions, varia… | `001_Architecture/Skills/hyperframes-core/SKILL.md` |
+| hyperframes-creative | Non-animation creative direction for HyperFrames videos. Use for design spec (frame.md / design.md) handling, palettes, typography, narration, beat planning, audio-reactive visual… | `001_Architecture/Skills/hyperframes-creative/SKILL.md` |
+| hyperframes-keyframes | > | `001_Architecture/Skills/hyperframes-keyframes/SKILL.md` |
+| hyperframes-registry | Search, install, and wire registry blocks and components into HyperFrames compositions. Use BEFORE hand-building any named visual — whenever a brief, a user, or a storyboard names… | `001_Architecture/Skills/hyperframes-registry/SKILL.md` |
 | improve-retention | Diagnose and fix retention problems using behavior design (B=MAP). Use when the user mentions "users drop off", "activation rate", "onboarding friction", "retention metrics", or "… | `001_Architecture/Skills/improve-retention/SKILL.md` |
 | influence-psychology | Apply the six principles of ethical persuasion (reciprocity, commitment, social proof, authority, liking, scarcity) to product design, copy, and sales. Use when the user mentions… | `001_Architecture/Skills/influence-psychology/SKILL.md` |
 | ingest | Process files from the 000_Ingest/ folder into the vault. Triggers when the user says \"ingest\", \"process ingest\", \"ingest this file\", \"process the ingest folder\", \"what's… | `001_Architecture/Skills/ingest/SKILL.md` |
@@ -169,8 +174,10 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | marketing-psychology | When the user wants to apply psychological principles, mental models, or behavioral science to marketing. Also use when the user mentions 'psychology,' 'mental models,' 'cognitive… | `001_Architecture/Skills/marketing-psychology/SKILL.md` |
 | mcp-builder | Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers… | `001_Architecture/Skills/mcp-builder/SKILL.md` |
 | mcp-integration | This skill should be used when the user asks to "add MCP server", "integrate MCP", "configure MCP in plugin", "use .mcp.json", "set up Model Context Protocol", "connect external s… | `001_Architecture/Skills/mcp-integration/SKILL.md` |
+| media-use | Agent Media OS, the single skill for every media need in a HyperFrames project. Resolve BGM, SFX, image, icon, brand logo, voice, color grade, or LUT into a frozen local file or p… | `001_Architecture/Skills/media-use/SKILL.md` |
 | microinteractions | Design the small details — triggers, rules, feedback, loops and modes — that separate good products from great ones. Use when the user mentions "microinteraction", "button feedbac… | `001_Architecture/Skills/microinteractions/SKILL.md` |
 | mom-test | Talk to customers without leading them using Mom Test rules: discuss their life not your idea, ask about specifics in the past, and talk less. Use when the user mentions "customer… | `001_Architecture/Skills/mom-test/SKILL.md` |
+| motion-graphics | > | `001_Architecture/Skills/motion-graphics/SKILL.md` |
 | mythology-research | Deep research skill for mythology, folklore, ancient mysteries, and strange historical events. Tailored for Glyphary, Polyoculis, Reimagined Realms, and Kingdoms & Conquerors chan… | `001_Architecture/Skills/mythology-research/SKILL.md` |
 | n8n-code-javascript | Write JavaScript code in n8n Code nodes. Use when writing JavaScript in n8n, using $input/$json/$node syntax, making HTTP requests with $helpers, working with dates using DateTime… | `001_Architecture/Skills/n8n-code-javascript/SKILL.md` |
 | n8n-expression-syntax | Validate n8n expression syntax and fix common errors. Use when writing n8n expressions, using {{}} syntax, accessing $json/$node variables, troubleshooting expression errors, or w… | `001_Architecture/Skills/n8n-expression-syntax/SKILL.md` |

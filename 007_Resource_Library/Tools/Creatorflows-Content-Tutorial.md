@@ -3,13 +3,14 @@ title: "Creatorflows Content Tutorial"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Guide
+  - App
 ai_description: "TikTok video by @creatorflowos demonstrating a visual workflow automation tool to scrape Reddit posts for content ideas, showing a workflow with 'Get many posts,' 'Filter,' and 'Create a database page' nodes — saved as a tool to try for automated content research."
+summary: >-
+  TikTok video by @creatorflowos demonstrating a visual workflow automation tool to scrape Reddit posts for content ideas, showing a workflow with 'Get many posts,' 'Filter,' and 'Create a database page' nodes — saved as a tool to try for automated content research.
 original_filename: "creatorflows-content-tutorial.PNG"
 created: 2026-05-01
 ---
-
 ![[Creatorflows-Content-Tutorial.png]]
 
 ## AI Analysis

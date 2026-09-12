@@ -3,13 +3,14 @@ title: "Hera AI Motion Designer"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - design
+  - Product
+  - App
 ai_description: "Hera, a short-form video platform, is showcasing its 'Your AI Motion Designer' tool for creating 'unlimited motion graphics with AI' by user @dr_cintas, backed by Y Combinator — likely saved as a tool to try for content creation."
+summary: >-
+  Hera, a short-form video platform, is showcasing its 'Your AI Motion Designer' tool for creating 'unlimited motion graphics with AI' by user @dr_cintas, backed by Y Combinator — likely saved as a tool to try for content creation.
 original_filename: "hera-ai-motion-designer.PNG"
 created: 2026-05-01
 ---
-
 ![[Hera-AI-Motion-Designer.png]]
 
 ## AI Analysis

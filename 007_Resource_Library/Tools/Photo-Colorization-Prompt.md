@@ -3,13 +3,15 @@ title: "Photo Colorization Prompt"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - prompt
-ai_description: "TikTok video by "Justyn | The AI Guy" showcasing an "Old Photo Colorization" AI tool displayed in a GitHub README, with "Polaroid Gemini Ai Image Editing Prompt" visible in the search bar, likely saved as a content idea or AI tool reference."
+  - Product
+  - App
+ai_description: >-
+  TikTok video by "Justyn | The AI Guy" showcasing an "Old Photo Colorization" AI tool displayed in a GitHub README, with "Polaroid Gemini Ai Image Editing Prompt" visible in the search bar, likely saved as a content idea or AI tool reference.
+summary: >-
+  TikTok video by "Justyn | The AI Guy" showcasing an "Old Photo Colorization" AI tool displayed in a GitHub README, with "Polaroid Gemini Ai Image Editing Prompt" visible in the search bar, likely saved as a content idea or AI tool reference.
 original_filename: "photo-colorization-prompt.PNG"
 created: 2026-05-01
 ---
-
 ![[Photo-Colorization-Prompt.png]]
 
 ## AI Analysis

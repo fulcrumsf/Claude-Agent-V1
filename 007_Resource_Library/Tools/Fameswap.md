@@ -6,15 +6,10 @@ summary: "Fameswap is an online marketplace that facilitates the buying and sell
 url: "https://fameswap.com/"
 verified: true
 tags:
-  - Marketplace
-  - social-media-marketplace
-  - account-trading
-  - youtube-channels
-  - tiktok-accounts
-  - instagram-accounts
+  - Platforms
+  - Product
 created: 2026-09-05
 enriched: 2026-09-05
 ---
-
 ## Summary
 Fameswap is an online marketplace that facilitates the buying and selling of social media accounts and channels, such as Instagram, YouTube, and TikTok. It provides a secure platform with an escrow service to ensure safe transactions between buyers and sellers. The platform offers verified listing data, secure messaging, and encrypted payment capture.

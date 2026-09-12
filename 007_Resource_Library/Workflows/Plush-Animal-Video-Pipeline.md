@@ -1,5 +1,8 @@
 ---
+title: "Image Generation and Video Workflow"
 Status: Planning
+tags:
+  - Pipeline
 ---
 # Summary
 ---

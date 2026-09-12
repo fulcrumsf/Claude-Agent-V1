@@ -3,14 +3,11 @@ title: "How to Turn Storyboards into AI Videos with GPT Image 2 + Seedance 2.0"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - gpt-image-2
-  - storyboards
-  - ai-video
+  - Guide
+  - Image-Video-Model
 created: 2026-08-29
 source: https://www.youtube.com/watch?v=Xi9zyPTgJL8
 ---
-
 ![](https://www.youtube.com/watch?v=Xi9zyPTgJL8)
 
 In this tutorial, I'll show you my complete workflow for turning a storyboard into a fully animated AI video using GPT Image 2 and Seedance 2.0 inside Loova AI.  

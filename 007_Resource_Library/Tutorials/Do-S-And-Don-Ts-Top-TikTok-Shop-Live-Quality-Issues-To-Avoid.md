@@ -1,15 +1,12 @@
 ---
-title: "Do-S-And-Don-Ts-Top-TikTok-Shop-Live-Quality-Issues-To-Avoid"
+title: "Avoid TikTok Shop Live Quality Issues to Boost Sales"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - tiktok
-  - tiktok-shop
-  - video-production
+  - Guide
 created: 2026-06-06
 source: 000_Ingest/Do's and Don'ts Top TikTok Shop LIVE Quality Issues to Avoid.md
+retag_flag: "bad-tag-value"
 ---
 ![](https://www.youtube.com/watch?v=0H15gbquZG8)
 

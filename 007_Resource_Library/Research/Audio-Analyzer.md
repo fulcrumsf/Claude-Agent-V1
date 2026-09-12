@@ -1,5 +1,9 @@
 ---
+title: "Audio Analysis Script"
 Category: Audio
+tags:
+  - Coding-Agent
+  - Research-List
 ---
 ## **What This Script Does (Simple Summary)**
 - Looks inside a specific **audio folder** on your computer.

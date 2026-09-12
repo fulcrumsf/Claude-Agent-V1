@@ -1,13 +1,10 @@
 ---
-title: "The-Hook-Strategy-That-Got-Me-30m-Plus-Views-On-A-Single-TikTok-Shop-Video"
+title: "The Hook Strategy: Get 30M+ Views on a Single TikTok Shop Video"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - tiktok
-  - tiktok-shop
-  - video-production
+  - Guide
+  - Platforms
 created: 2026-06-06
 source: 000_Ingest/The Hook Strategy That Got Me 30M+ Views on a Single TikTok Shop Video.md
 ---

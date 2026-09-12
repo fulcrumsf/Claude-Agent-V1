@@ -1,14 +1,13 @@
 ---
-title: "Lovable Prompt"
+title: "Lovable Meta Prompt for Product Idea"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Coding-Agent
+  - Guide
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Prompting/Prompts/ChatGPT/ChatGPT Prompts/Lovable Prompt.md
 ---
-
 **Lovable Meta Prompt**
 I'm building **[insert product idea]** using Lovable.
 I want you to generate the most effective, complete, and specific prompt I can feed directly into Lovable to kick off the app build.

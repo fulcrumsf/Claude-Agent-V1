@@ -3,13 +3,14 @@ title: "Keypano"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - GitHub
+  - Profile
 ai_description: "GitHub profile of Steph Ango (@kepano) displaying several Obsidian-related projects, prominently featuring the 'obsidian-skills' repository for AI agent integration, likely saved by a content creator or digital entrepreneur for research into AI agent frameworks and Obsidian workflow enhancements."
+summary: >-
+  GitHub profile of Steph Ango (@kepano) displaying several Obsidian-related projects, prominently featuring the 'obsidian-skills' repository for AI agent integration, likely saved by a content creator or digital entrepreneur for research into AI agent frameworks and Obsidian workflow enhancements.
 original_filename: "Keypano.png"
 created: 2026-05-01
 ---
-
 ![[Keypano.png]]
 
 ## AI Analysis

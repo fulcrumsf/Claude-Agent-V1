@@ -3,14 +3,11 @@ title: "Create Seamless AI Films of ANY Length"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - gpt-image-2
-  - ai-video
-  - character-consistency
+  - Guide
+  - Image-Video-Model
 created: 2026-08-29
 source: https://www.youtube.com/watch?v=KxRR8uiex_s
 ---
-
 ![](https://www.youtube.com/watch?v=KxRR8uiex_s)
 
 🔖🔥 Create Your Own Long AI Scenes in Higgsfield AI: https://higgsfield.ai/s/gpt-image-2-seedance-2-0-taoprompts-lvBjaE  

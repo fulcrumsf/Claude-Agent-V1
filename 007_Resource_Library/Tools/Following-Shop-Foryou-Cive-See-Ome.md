@@ -3,13 +3,13 @@ title: "Following Shop Foryou Cive See Ome"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - App
 ai_description: "Screenshot of Following Shop Foryou Cive See Ome with readable text about following shop foryou."
+summary: >-
+  Screenshot of Following Shop Foryou Cive See Ome with readable text about following shop foryou.
 original_filename: "IMG_8666.PNG"
 created: 2026-05-01
 ---
-
 ![[Following-Shop-Foryou-Cive-See-Ome.png]]
 
 ## AI Analysis

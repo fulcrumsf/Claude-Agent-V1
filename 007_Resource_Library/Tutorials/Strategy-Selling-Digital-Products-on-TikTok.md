@@ -3,14 +3,11 @@ title: "Strategy Selling Digital Products on TikTok"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - tiktok-marketing
-  - digital-products
-  - passive-income
-  - creator-economy
+  - Guide
+  - Product
 original_filename: "IMG_9990.PNG"
 created: 2026-08-24
 ---
-
 ![[Strategy-Selling-Digital-Products-on-TikTok.png]]
 
 ## AI Analysis

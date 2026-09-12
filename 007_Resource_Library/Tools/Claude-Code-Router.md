@@ -3,13 +3,11 @@ title: "Claude Code Router"
 type: tool-doc
 category: ai-agents
 tags:
-  - tool-doc
-  - ai-agents
-  - claude-code
-  - router
-  - models
+  - Coding-Agent
+  - App
 created: 2026-05-01
 source: https://github.com/musistudio/claude-code-router/raw/main/blog/images/claude-code-router-img.png
+retag_flag: "bad-tag-count"
 ---
 [![](https://github.com/musistudio/claude-code-router/raw/main/blog/images/claude-code-router-img.png)](https://github.com/musistudio/claude-code-router/blob/main/blog/images/claude-code-router-img.png)
 

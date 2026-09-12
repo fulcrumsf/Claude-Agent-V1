@@ -3,13 +3,11 @@ title: "FUT Oracle AI Trading"
 type: tool-doc
 category: general
 tags:
-  - ai-tools
-  - trading
-  - game
+  - App
+  - Gaming
 created: 2026-05-08
 source: local
 ---
-
 Trading signals, expert analysis, and AI-driven player price forecasts to make easy coins.
 
 Get exclusive early beta access.

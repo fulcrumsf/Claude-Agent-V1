@@ -1,17 +1,16 @@
 ---
-title: "Prompts.chat"
+title: "Prompts.chat - Prompts Directory"
 type: prompt
 category: content-strategy
 tags:
-  - screenshot
-  - prompt
-  - prompt-engineering
-  - reference
+  - App
+  - Guide
 ai_description: "TikTok video from @RoboNuggets showcasing 'prompts.chat', described as 'World's First & Most Famous Prompts Directory' with integrations for ChatGPT, Claude, Gemini, and Llama, likely saved by the user as a resource for AI prompts or content ideas."
+summary: >-
+  TikTok video from @RoboNuggets showcasing 'prompts.chat', described as 'World's First & Most Famous Prompts Directory' with integrations for ChatGPT, Claude, Gemini, and Llama, likely saved by the user as a resource for AI prompts or content ideas.
 original_filename: "propmts.chat.PNG"
 created: 2026-05-01
 ---
-
 ![[Prompts-Chat.png]]
 
 ## Prompt Resource

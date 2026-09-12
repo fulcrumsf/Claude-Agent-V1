@@ -1,15 +1,16 @@
 ---
-title: "String"
+title: "string.com"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "TikTok video by 'automation girl 🤖' promoting 'string.com – Build and run a' (likely 'automations'), visible in a Chrome browser with 'part 13 if you go to string.com' overlay — saved for research on an automation tool or content idea."
+summary: >-
+  TikTok video by 'automation girl 🤖' promoting 'string.com – Build and run a' (likely 'automations'), visible in a Chrome browser with 'part 13 if you go to string.com' overlay — saved for research on an automation tool or content idea.
 original_filename: "String.PNG"
 created: 2026-05-01
 ---
-
 ![[String.png]]
 
 ## AI Analysis

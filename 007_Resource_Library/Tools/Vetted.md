@@ -6,14 +6,10 @@ summary: "Vetted AI is an artificial intelligence-powered shopping assistant tha
 url: "https://vetted.ai/"
 verified: true
 tags:
-  - ai-shopping-assistant
-  - product-research
-  - review-summarization
-  - price-comparison
-  - e-commerce-tool
+  - Product
+  - App
 created: 2026-09-05
 enriched: 2026-09-05
 ---
-
 ## Summary
 Vetted AI is an artificial intelligence-powered shopping assistant that helps users discover products, summarize reviews from trusted sources like Reddit and YouTube, and compare prices. It aims to simplify product research and assist in making informed purchasing decisions.

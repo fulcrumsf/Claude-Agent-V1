@@ -1,17 +1,13 @@
 ---
-title: "Digital Product Sales on TikTok Stanstore Income"
+title: "Digital Product Sales on TikTok via Stan Store"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - stan-store
-  - tiktok-marketing
-  - digital-products
-  - passive-income
-  - ecommerce
+  - Guide
+  - Platforms
 original_filename: "IMG_9989.PNG"
 created: 2026-08-24
 ---
-
 ![[Digital-Product-Sales-on-TikTok-Stanstore-Income.png]]
 
 ## AI Analysis

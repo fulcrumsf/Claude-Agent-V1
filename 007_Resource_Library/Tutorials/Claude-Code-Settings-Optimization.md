@@ -3,15 +3,11 @@ title: "Claude Code Settings Optimization"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - claude-code
-  - ai-configuration
-  - developer-tools
-  - settings-json
-  - anthropic
+  - Guide
+  - Coding-Agent
 original_filename: "Open-Source-AI-Tools-And-Investments-11.png"
 created: 2026-05-09
 ---
-
 ![[Claude-Code-Settings-Optimization.png]]
 
 ## AI Analysis

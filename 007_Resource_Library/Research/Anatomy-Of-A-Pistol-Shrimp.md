@@ -3,15 +3,12 @@ title: "Anatomy Of A Pistol Shrimp"
 type: extracted-knowledge
 category: research
 tags:
-  - biology
-  - infographic
-  - marine-life
-  - scientific-diagram
-  - pistol-shrimp
+  - Art-Reference
+  - Guide
 original_filename: "Pistol_Shrimp_Diamgram.png"
 created: 2026-05-08
+retag_flag: "bad-tag-value"
 ---
-
 ![[Anatomy-Of-A-Pistol-Shrimp.png]]
 
 ## AI Analysis

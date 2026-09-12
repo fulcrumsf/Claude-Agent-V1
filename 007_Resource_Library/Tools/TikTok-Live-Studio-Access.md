@@ -3,15 +3,14 @@ title: "TikTok Live Studio Access"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - tiktok
-  - tool
-  - live-streaming
+  - Guide
+  - Platforms
 ai_description: "TikTok LIVE Access page showing renewal and revocation requirements for LIVE Studio, detailing 180-day extensions for specific LIVE durations/frequencies — saved as a reference for platform guidelines."
+summary: >-
+  TikTok LIVE Access page showing renewal and revocation requirements for LIVE Studio, detailing 180-day extensions for specific LIVE durations/frequencies — saved as a reference for platform guidelines.
 original_filename: "tiktok-live-studio-access.PNG"
 created: 2026-05-01
 ---
-
 ![[TikTok-Live-Studio-Access.png]]
 
 ## What It Is

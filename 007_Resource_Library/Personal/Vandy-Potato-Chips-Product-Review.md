@@ -3,14 +3,12 @@ title: "Vandy Potato Chips Product Review"
 type: extracted-knowledge
 category: personal
 tags:
-  - food-review
-  - snacks
-  - seed-oil-free
-  - vandy-chips
+  - Health
+  - Product
 original_filename: "IMG_9822.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Vandy-Potato-Chips-Product-Review.png]]
 
 ## AI Analysis

@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "source_master": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Assembly/Versions/v5/Neon-Parcel-Grandma-And-Bear-Compilation-Music-Endscreen-Review-v1.mp4",
+  "source_master_duration_s": 136.775,
+  "policy": {
+    "aspect_ratio": "9:16",
+    "target_duration_seconds": 60,
+    "target_is_soft": true,
+    "complete_clip_boundaries_only": true,
+    "opening_overlay_seconds": 1,
+    "exclude_longform_end_screen": true
+  },
+  "shorts": [
+    {
+      "part": 1,
+      "title_overlay": "Ridiculous Grandma and Bear Encounters, Part One",
+      "file": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v1/Neon-Parcel-Grandma-And-Bear-Short-Part-1-v2.mp4",
+      "shots": [
+        "Shot-01",
+        "Shot-02",
+        "Shot-03",
+        "Shot-04",
+        "Shot-05"
+      ],
+      "source_start_s": 0.0,
+      "duration_s": 55.3,
+      "status": "review_candidate",
+      "overlay_file": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v1/Short-Part-1-Overlay-v2.png",
+      "reframe": "manual shot-window crop inspired by auto-reframe"
+    }
+  ]
+}

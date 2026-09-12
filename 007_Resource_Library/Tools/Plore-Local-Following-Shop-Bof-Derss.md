@@ -1,15 +1,15 @@
 ---
-title: "Plore Local Following Shop Bof Derss"
+title: "Plore Local Following Shop"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - prompt
+  - App
 ai_description: "Screenshot of Plore Local Following Shop Bof Derss with readable text about plore local following shop."
+summary: >-
+  Screenshot of Plore Local Following Shop Bof Derss with readable text about plore local following shop.
 original_filename: "IMG_9315.PNG"
 created: 2026-05-01
 ---
-
 ![[Plore-Local-Following-Shop-Bof-Derss.png]]
 
 ## AI Analysis

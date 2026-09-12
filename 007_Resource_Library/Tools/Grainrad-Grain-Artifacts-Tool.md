@@ -3,15 +3,11 @@ title: "Grainrad Grain Artifacts Tool"
 type: extracted-knowledge
 category: tools
 tags:
-  - grain-texture
-  - design-tools
-  - web-app
-  - visual-effects
-  - noise-overlay
+  - App
+  - Art-Reference
 original_filename: "Open-Source-AI-Tools-07.png"
 created: 2026-05-09
 ---
-
 ![[Grainrad-Grain-Artifacts-Tool.png]]
 
 ## AI Analysis

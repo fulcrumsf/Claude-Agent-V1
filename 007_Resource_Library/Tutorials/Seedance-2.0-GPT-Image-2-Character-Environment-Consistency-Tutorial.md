@@ -1,17 +1,13 @@
 ---
-title: "How to Fix Character & Environment Consistency - Seedance 2.0 + GPT Image 2"
+title: "How to Fix Character & Environment Consistency in Seedance 2.0 + GPT Image 2"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - character-consistency
-  - gpt-image-2
-  - ai-video
-  - prompt-engineering
+  - Guide
+  - Image-Video-Model
 created: 2026-08-10
 source: https://www.youtube.com/watch?v=042D0gKZUGw
 ---
-
 ![](https://www.youtube.com/watch?v=042D0gKZUGw)
 
 Getting the "Face Detected" error in Seedance 2.0? Or struggling with ChatGPT images that are full of noise and weird artifacts? In this video, I am going to show you the ultimate workflow to fix both of these problems.  

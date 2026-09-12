@@ -3,15 +3,10 @@ title: "Stock Screener Demand Patterns JetBlue"
 type: extracted-knowledge
 category: investments
 tags:
-  - stock-market
-  - investment-analysis
-  - jetblue-aviairways
-  - insider-trading
-  - technical-analysis
+  - Stocks
 original_filename: "IMG_9876.PNG"
 created: 2026-08-24
 ---
-
 ![[Stock-Screener-Demand-Patterns-JetBlue.png]]
 
 ## AI Analysis

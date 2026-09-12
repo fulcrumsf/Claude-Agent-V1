@@ -1,15 +1,15 @@
 ---
-title: "Military YouTube Share"
+title: "TubeGen AI - Military YouTube Channel Research Tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - youtube
+  - Product
 ai_description: "TikTok video showing a creator discussing 'I Copied a Military YouTube Channel With AI *From Scratch*', crediting @eddieeizner on YT, and demonstrating the 'TubeGen AI' tool's 'Advanced Filters' for YouTube channel research, while promoting a free 'Quickstart Walkthrough + Guide & Course'—likely saved for content ideas, tool research, or to access the free course."
+summary: >-
+  TikTok video showing a creator discussing 'I Copied a Military YouTube Channel With AI *From Scratch*', crediting @eddieeizner on YT, and demonstrating the 'TubeGen AI' tool's 'Advanced Filters' for YouTube channel research, while promoting a free 'Quickstart Walkthrough + Guide & Course'—likely saved for content ideas, tool research, or to access the free course.
 original_filename: "military-youtube-share.PNG"
 created: 2026-05-01
 ---
-
 ![[Military-YOUTUBE-Share.png]]
 
 ## AI Analysis

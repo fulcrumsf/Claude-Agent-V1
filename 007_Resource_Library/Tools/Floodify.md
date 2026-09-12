@@ -3,13 +3,14 @@ title: "Floodify"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Platforms
+  - Product
 ai_description: "Floodify Creator platform's landing page, promising creators passive income for sponsored content without requiring followers or effort, including a call to action to 'Join Our Discord Community' with 5,000+ creators — saved as a potential new revenue stream or tool to explore."
+summary: >-
+  Floodify Creator platform's landing page, promising creators passive income for sponsored content without requiring followers or effort, including a call to action to 'Join Our Discord Community' with 5,000+ creators — saved as a potential new revenue stream or tool to explore.
 original_filename: "Floodify.PNG"
 created: 2026-05-01
 ---
-
 ![[Floodify.png]]
 
 ## AI Analysis

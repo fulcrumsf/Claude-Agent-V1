@@ -1,15 +1,13 @@
 ---
-title: "OpenSpec Vibe Coding"
+title: "OpenSpec Vibe Coding Tool"
 type: tool-doc
 category: app-dev
 tags:
-  - app-dev
-  - ai-coding
-  - openspec
+  - App
+  - LLM
 created: 2026-05-08
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=nFq4POtqom4)
 
 🔥Join my FREE community with full guides & tons of prompts from past videos: https://www.skool.com/tech-snack  

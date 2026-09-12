@@ -2763,3 +2763,6 @@ Destinations:
 - `007_Resource_Library/Tutorials/I-Can't-Believe-ChatGPT-Work-Made-This-Whole-Video-From-One-Image.md`
 Case-study analyses retained in `002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Case_Studies/Seedance-Reference-Analysis/`.
 Duplicate removal: explicitly deleted `000_Ingest/Claude Replaced Higgsfield with This FREE MCP 1.md` after confirming it duplicated the `IUV8QzwIb6g` source.
+## [2026-09-05] ingest | How To Make Viral Thumbnails (99% Do This Wrong)
+Source: How To Make Viral Thumbnails (99% Do This Wrong).md -> 007_Resource_Library/Tutorials/How-To-Make-Viral-Thumbnails-99-Do-This-Wrong.md
+Wiki/Asset Note: Not created; source is a routed tutorial reference note. Case study: 002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Case_Studies/How-To-Make-Viral-Thumbnails-99-Do-This-Wrong/Case-Study.md

@@ -3,13 +3,12 @@ title: "Recruiter Resume Prompt"
 type: prompt
 category: personal
 tags:
-  - prompt
-  - resume
-  - job-search
+  - Guide
+  - LLM
 created: 2026-05-08
 source: local
+retag_flag: "bad-tag-value"
 ---
-
 # Recruiter-Optimized Job Application Playbook
 
 ## ROLE

@@ -1,15 +1,16 @@
 ---
 title: "Collabaway"
 type: tool-doc
-category: video-production
+category: travel
+form: saas-tool
 tags:
-  - screenshot
-  - reference
-ai_description: "A mobile browser screenshot of the CollabAway website homepage, displaying "Welcome to CollabAway" and "Connecting vetted travel influencers and hosts around the world" with a "How It Works" button at collabawayhq.com — likely saved for travel collaboration research or a potential partnership opportunity."
+  - Platforms
+  - Product
+summary: "CollabAway (collabawayhq.com) - a platform connecting vetted travel influencers with hosts around the world for collaborations. Relevant to Bored Nomad / travel-influence work rather than video production."
+url: "https://collabawayhq.com"
 original_filename: "collabaway.PNG"
 created: 2026-05-01
 ---
-
 ![[Collabaway.png]]
 
 ## AI Analysis

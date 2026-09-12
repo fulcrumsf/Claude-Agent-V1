@@ -1334,7 +1334,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 ├── @wavespeed/cli@0.2.3
 ├── corepack@0.35.0
 ├── firecrawl-cli@1.19.0
-├── hyperframes@0.6.76
+├── hyperframes@0.8.34
 ├── npm@11.12.1
 ├── pyright@1.1.410
 ├── typescript-language-server@5.3.0
@@ -1343,3 +1343,5 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 └── vercel@54.9.1
 ```
 
+
+Node globals refreshed 2026-09-10 after the video-tool upgrade; other sections retain their original scan dates. Remotion 4.0.523 is installed locally in `002_Content-Creation/Video_Editor/003_Remotion/`.

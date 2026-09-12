@@ -1,15 +1,13 @@
 ---
-title: "I-Converted-A-WordPress-Site-To-Astro-Using-Claude-AI-Full-Walkthrough"
+title: "I Converted a WordPress Site to Astro Using Claude AI: Full Walkthrough"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - claude-code
-  - web-development
-  - video-production
+  - Coding-Agent
+  - Guide
 created: 2026-06-06
 source: 000_Ingest/I Converted a WordPress Site to Astro Using Claude AI (Full Walkthrough).md
+retag_flag: "bad-tag-value"
 ---
 ![](https://www.youtube.com/watch?v=QdgfS41Tr3I)
 

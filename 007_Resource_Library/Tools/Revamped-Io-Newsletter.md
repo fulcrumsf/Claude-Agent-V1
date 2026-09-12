@@ -1,15 +1,16 @@
 ---
-title: "Revamped Io Newsletter"
+title: "Revamped.io Content Transformation Tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
+  - Guide
 ai_description: "YouTube video 'How You Can Create a 7-figure Newsle...' by @LifeBrett, promoting the REVAMPED.IO content transformation tool for newsletters, with a visible search bar for 'starting a newsletter busin...' — likely saved as a content creation tool to try for business efficiency."
+summary: >-
+  YouTube video 'How You Can Create a 7-figure Newsle...' by @LifeBrett, promoting the REVAMPED.IO content transformation tool for newsletters, with a visible search bar for 'starting a newsletter busin...' — likely saved as a content creation tool to try for business efficiency.
 original_filename: "revamped-io-newsletter.PNG"
 created: 2026-05-01
 ---
-
 ![[Revamped-Io-Newsletter.png]]
 
 ## AI Analysis

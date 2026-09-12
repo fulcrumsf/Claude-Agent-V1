@@ -43,6 +43,26 @@ def move_to_delete(note_rel_path):
     return moved
 
 
+def move_note(note_rel_path, dest_folder):
+    """Move a note .md + its co-located image(s) into dest_folder (a top-level
+    Resource Library category). Returns the new rel path. Same-name stem is kept."""
+    if dest_folder not in config.CATEGORY_FOLDERS or "/" in dest_folder or dest_folder.startswith("."):
+        raise ValueError(f"bad destination folder: {dest_folder!r}")
+    src_md = os.path.join(config.RESOURCE_LIB, note_rel_path)
+    if not os.path.isfile(src_md):
+        raise FileNotFoundError(note_rel_path)
+    dst_dir = os.path.join(config.RESOURCE_LIB, dest_folder)
+    os.makedirs(dst_dir, exist_ok=True)
+    stem = os.path.splitext(src_md)[0]
+    base_stem = os.path.basename(stem)
+    if os.path.exists(os.path.join(dst_dir, base_stem + ".md")):
+        raise FileExistsError(f"{dest_folder}/{base_stem}.md already exists")
+    for src in [src_md] + [stem + e for e in config.IMG_EXT]:
+        if os.path.isfile(src):
+            shutil.move(src, os.path.join(dst_dir, os.path.basename(src)))
+    return os.path.join(dest_folder, base_stem + ".md")
+
+
 def _coerce_tags(v):
     if isinstance(v, list):
         return [str(x).strip() for x in v if str(x).strip()]
@@ -68,6 +88,28 @@ def rewrite_note(note_rel_path, fields):
             body += "\n"
     new_fm = yaml.safe_dump(fm, sort_keys=False, allow_unicode=True).strip()
     open(path, "w", encoding="utf-8").write(f"---\n{new_fm}\n---\n{body}")
+
+
+def rewrite_note_raw(note_rel_path, raw_yaml_text, body=None):
+    """Replace a note's frontmatter with hand-edited raw YAML text verbatim
+    (preserves block scalars / formatting instead of round-tripping through
+    yaml.safe_dump). Validates it parses to a mapping before writing."""
+    try:
+        parsed = yaml.safe_load(raw_yaml_text)
+    except yaml.YAMLError as e:
+        raise ValueError(f"Invalid YAML: {e}") from e
+    if not isinstance(parsed, dict):
+        raise ValueError("Frontmatter must be a YAML mapping (key: value pairs)")
+    path = os.path.join(config.RESOURCE_LIB, note_rel_path)
+    text = open(path, encoding="utf-8").read()
+    m = FM_RE.match(text)
+    old_body = m.group(2) if m else text
+    new_body = old_body if body is None else body
+    if not new_body.endswith("\n"):
+        new_body += "\n"
+    fm_text = raw_yaml_text.strip("\n")
+    open(path, "w", encoding="utf-8").write(f"---\n{fm_text}\n---\n{new_body}")
+    return parsed
 
 
 def estimate_rerun_cost(n):

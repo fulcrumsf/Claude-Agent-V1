@@ -3,13 +3,14 @@ title: "Virtualthreads"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - 3D
+  - Product
 ai_description: "TikTok video showcasing a 3D apparel mockup created with 'Virtual Threads' AI tool, highlighted by @theAISurfer.com, likely saved for tool research on AI-powered design."
+summary: >-
+  TikTok video showcasing a 3D apparel mockup created with 'Virtual Threads' AI tool, highlighted by @theAISurfer.com, likely saved for tool research on AI-powered design.
 original_filename: "VirtualThreads.PNG"
 created: 2026-05-01
 ---
-
 ![[Virtualthreads.png]]
 
 ## AI Analysis

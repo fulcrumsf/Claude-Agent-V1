@@ -3,15 +3,11 @@ title: "Animation Gotchas Workflow Tips Claude"
 type: extracted-knowledge
 category: workflows
 tags:
-  - animation
-  - technical-gotchas
-  - claude-workflow
-  - coding-tips
-  - video-editing
+  - Coding-Agent
+  - Guide
 original_filename: "Claude-Code-Agents-And-Research-09.png"
 created: 2026-05-09
 ---
-
 ![[Animation-Gotchas-Workflow-Tips-Claude.png]]
 
 ## AI Analysis

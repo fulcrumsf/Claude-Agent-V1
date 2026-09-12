@@ -3,15 +3,11 @@ title: "How To Fire Graphic Designer With Claude Code"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - claude-code
-  - design-automation
-  - ai-tutorial
-  - workflow
-  - prompt-engineering
+  - Guide
+  - Coding-Agent
 original_filename: "Conference-Floorplan-Adobe-Vizrt-05.png"
 created: 2026-05-09
 ---
-
 ![[How-To-Fire-Graphic-Designer-With-Claude-Code.png]]
 
 ## AI Analysis

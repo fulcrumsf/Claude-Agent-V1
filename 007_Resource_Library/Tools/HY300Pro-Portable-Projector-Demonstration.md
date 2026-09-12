@@ -3,14 +3,11 @@ title: "HY300Pro Portable Projector Demonstration"
 type: extracted-knowledge
 category: tools
 tags:
-  - portable-projector
-  - home-office-setup
-  - tech-review
-  - streaming-device
+  - Product
+  - Guide
 original_filename: "IMG_9975.PNG"
 created: 2026-08-24
 ---
-
 ![[HY300Pro-Portable-Projector-Demonstration.png]]
 
 ## AI Analysis

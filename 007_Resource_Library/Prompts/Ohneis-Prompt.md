@@ -1,15 +1,16 @@
 ---
-title: "Ohneis Prompt"
+title: "Ohneis Prompt GPT"
 type: prompt
 category: video-production
 tags:
-  - screenshot
-  - prompt
+  - LLM
+  - Guide
 ai_description: "TikTok video by @ohneis652 showcasing a custom GPT that crafts professional prompts for various creative fields, with the caption 'You can't tell this anime is AI — and that's exactly the problem' — likely saved as a resource for AI content creation tools or prompt engineering."
+summary: >-
+  TikTok video by @ohneis652 showcasing a custom GPT that crafts professional prompts for various creative fields, with the caption 'You can't tell this anime is AI — and that's exactly the problem' — likely saved as a resource for AI content creation tools or prompt engineering.
 original_filename: "ohneis652-prompt.PNG"
 created: 2026-05-01
 ---
-
 ![[Ohneis-Prompt.png]]
 
 ## AI Analysis

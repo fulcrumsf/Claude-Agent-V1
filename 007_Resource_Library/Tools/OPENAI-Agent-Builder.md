@@ -3,14 +3,14 @@ title: "OpenAI Agent Builder"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - openai
-  - ai-agents
+  - App
+  - Guide
 ai_description: "TikTok video by @RileyBrown showcasing the OpenAI Agent Builder tool, including its URL `https://platform.openai.com/agent-builder` and a drag-and-drop interface, likely saved as a tool to explore or a content idea."
+summary: >-
+  TikTok video by @RileyBrown showcasing the OpenAI Agent Builder tool, including its URL `https://platform.openai.com/agent-builder` and a drag-and-drop interface, likely saved as a tool to explore or a content idea.
 original_filename: "openai-agent-builder.PNG"
 created: 2026-05-01
 ---
-
 ![[OPENAI-Agent-Builder.png]]
 
 ## AI Analysis

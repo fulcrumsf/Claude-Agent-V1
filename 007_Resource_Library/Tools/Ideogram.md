@@ -6,14 +6,10 @@ summary: "Ideogram AI is an AI-powered platform that generates high-quality imag
 url: "https://ideogram.ai/"
 verified: true
 tags:
-  - ai-art-generator
-  - text-to-image
-  - typography
-  - graphic-design
-  - mockup-tool
+  - Image-Video-Model
+  - Art-Style
 created: 2026-09-05
 enriched: 2026-09-05
 ---
-
 ## Summary
 Ideogram AI is an AI-powered platform that generates high-quality images from text prompts. It specializes in accurately rendering legible text within images, making it particularly useful for creating logos, posters, and social media graphics.

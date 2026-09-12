@@ -3,14 +3,11 @@ title: "Chat Video Pro"
 type: extracted-knowledge
 category: tools
 tags:
-  - ai-tools
-  - video-editing
-  - premiere-pro
-  - plugin
+  - App
+  - Guide
 original_filename: "Screenshot-2025-10-24-at-5-45.png"
 created: 2026-05-09
 ---
-
 ![[Chat-Video-Pro.png]]
 
 ## AI Analysis

@@ -1,15 +1,16 @@
 ---
-title: "Google_vids"
+title: "Google Vids"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "A mobile browser screenshot of the Google Workspace landing page for Google Vids, an AI-powered video creation tool integrated with Gemini, showing options to 'Sign in to Vids' or 'Try Vids for work' — likely saved for research on new AI content creation technologies."
+summary: >-
+  A mobile browser screenshot of the Google Workspace landing page for Google Vids, an AI-powered video creation tool integrated with Gemini, showing options to 'Sign in to Vids' or 'Try Vids for work' — likely saved for research on new AI content creation technologies.
 original_filename: "Google_Vids.PNG"
 created: 2026-05-01
 ---
-
 ![[Google-Vids.png]]
 
 ## AI Analysis

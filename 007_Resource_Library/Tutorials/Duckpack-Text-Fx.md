@@ -1,15 +1,16 @@
 ---
-title: "Duckpack_text_fx"
+title: "Premiere Pro Text Effects Tutorial Search"
 type: tutorial
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Guide
+  - Art-Style
 ai_description: "YouTube mobile app showing search results for 'premiere text eff...' with video titles like '100 Free After Effects & Premiere Pro Templat...' and 'Here's how to make this VIRAL TEXT EFFECT i...' — likely saved for video editing tutorial reference or content enhancement ideas."
+summary: >-
+  YouTube mobile app showing search results for 'premiere text eff...' with video titles like '100 Free After Effects & Premiere Pro Templat...' and 'Here's how to make this VIRAL TEXT EFFECT i...' — likely saved for video editing tutorial reference or content enhancement ideas.
 original_filename: "DuckPack_Text_FX.PNG"
 created: 2026-05-01
 ---
-
 ![[Duckpack-Text-Fx.png]]
 
 ## AI Analysis

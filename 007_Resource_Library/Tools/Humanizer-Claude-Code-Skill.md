@@ -3,15 +3,11 @@ title: "Humanizer Claude Code Skill"
 type: extracted-knowledge
 category: tools
 tags:
-  - github-repo
-  - claude-ai
-  - ai-humanizer
-  - text-writer
-  - developer-tools
+  - Coding-Agent
+  - GitHub
 original_filename: "Claude-Skills-And-AI-Tools-05.png"
 created: 2026-05-09
 ---
-
 ![[Humanizer-Claude-Code-Skill.png]]
 
 ## AI Analysis

@@ -1,15 +1,15 @@
 ---
-title: "Main Awesome Nano Banana Images Readme Mor Jem Explore"
+title: "Main Awesome Nano Banana Images Readme"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - prompt
+  - App
 ai_description: "Screenshot of Main Awesome Nano Banana Images Readme Mor Jem Explore with readable text about main."
+summary: >-
+  Screenshot of Main Awesome Nano Banana Images Readme Mor Jem Explore with readable text about main.
 original_filename: "IMG_8008.PNG"
 created: 2026-05-01
 ---
-
 ![[Main-Awesome-Nano-Banana-Images-Readme-Mor-Jem-Explore.png]]
 
 ## AI Analysis

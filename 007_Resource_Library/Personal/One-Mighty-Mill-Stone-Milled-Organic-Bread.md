@@ -3,15 +3,12 @@ title: "One Mighty Mill Stone Milled Organic Bread"
 type: extracted-knowledge
 category: personal
 tags:
-  - one-mighty-mill
-  - organic-bread
-  - seed-oil-free
-  - grocery-finds
-  - healthy-food
+  - Health
+  - Product
 original_filename: "Open-Source-AI-Tools-And-Investments-08.png"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[One-Mighty-Mill-Stone-Milled-Organic-Bread.png]]
 
 ## AI Analysis

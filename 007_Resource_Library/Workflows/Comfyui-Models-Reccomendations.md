@@ -1,5 +1,9 @@
 ---
+title: "ComfyUI Recommended Models & Tools"
 Status: Planning
+tags:
+  - Image-Video-Model
+  - Guide
 ---
 Absolutely. Here's a clean, organized **copy-paste Notion-ready list** of recommended models and tools for your ComfyUI setup based on your needs:
 ---

@@ -3,14 +3,12 @@ title: "Cookware Materials and Care Specifications"
 type: extracted-knowledge
 category: docs
 tags:
-  - materials
-  - cooking-equipment
-  - kitchen-appliances
-  - product-specs
+  - Product
+  - Guide
 original_filename: "IMG_9964.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Cookware-Materials-and-Care-Specifications.png]]
 
 ## AI Analysis

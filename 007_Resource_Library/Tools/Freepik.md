@@ -3,11 +3,8 @@ title: "Freepik"
 type: bookmark
 category: video-production
 tags:
-  - bookmark
-  - video-production
-  - ai-models
-  - image-generation
-  - video-generation
+  - Image-Video-Model
+  - App
 created: 2026-05-01
 source: https://www.freepik.com/
 ---

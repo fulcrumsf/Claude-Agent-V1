@@ -1,17 +1,13 @@
 ---
-title: "Ron Dalal Charles Schwab Etf Investment Talk"
+title: "Ron Dalal Charles Schwab ETF Investment Talk"
 type: extracted-knowledge
 category: investments
 tags:
-  - etf-investing
-  - charles-schwab
-  - schd
-  - financial-advice
-  - dividends
+  - Stocks
+  - Guide
 original_filename: "IMG_9845.PNG"
 created: 2026-08-24
 ---
-
 ![[Ron-Dalal-Charles-Schwab-Etf-Investment-Talk.png]]
 
 ## AI Analysis

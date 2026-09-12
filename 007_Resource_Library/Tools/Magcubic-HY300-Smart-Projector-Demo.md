@@ -3,14 +3,11 @@ title: "Magcubic HY300 Smart Projector Demo"
 type: extracted-knowledge
 category: tools
 tags:
-  - smart-projector
-  - affiliate-marketing
-  - tech-review
-  - streaming-devices
+  - Product
+  - App
 original_filename: "IMG_0314.PNG"
 created: 2026-08-24
 ---
-
 ![[Magcubic-HY300-Smart-Projector-Demo.png]]
 
 ## AI Analysis

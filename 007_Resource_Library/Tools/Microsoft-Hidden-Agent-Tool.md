@@ -1,15 +1,13 @@
 ---
-title: "Microsoft Hidden Agent Tool"
+title: "MarkItDown Microsoft Tool"
 type: tool-doc
 category: ai-agents
 tags:
-  - ai-agents
-  - microsoft
-  - developer-tools
+  - GitHub
+  - App
 created: 2026-05-08
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=CRTxKRRZqeo)
 
 Get the Agentic AI Masterclass and start earning from AI 🚀 https://www.skool.com/robonuggets/about?ref=c1365a0fede2445292bc2bbd2b9e9359  

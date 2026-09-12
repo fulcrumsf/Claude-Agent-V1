@@ -1,14 +1,13 @@
 ---
-title: "Prompts Script 3"
+title: "Genghis Khan Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Image-Video-Model
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Genghis Khan/Prompts Script 3.md
 ---
-
 1. ==A visual of Genghis Khan in conquest, a scene showing him leading his army, symbolizing the beginning of his legendary accumulation of wealth, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==Treasures from conquered lands, a depiction of gold, jewels, and priceless artifacts, illustrating the immense wealth of Khan's empire, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==Historians and treasure hunters searching through ancient maps and landscapes, a scene of their quest to find Khan's tomb and treasure, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==

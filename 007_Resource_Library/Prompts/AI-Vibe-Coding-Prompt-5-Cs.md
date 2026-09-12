@@ -3,15 +3,11 @@ title: "AI Vibe Coding Prompt 5 Cs"
 type: extracted-knowledge
 category: prompts
 tags:
-  - ai-prompt
-  - vibe-coding
-  - bolt-ai
-  - landing-page
-  - prompt-engineering
+  - Coding-Agent
+  - Guide
 original_filename: "Ive-Stem-Explore-Following-Shop-Can.PNG"
 created: 2026-05-09
 ---
-
 ![[AI-Vibe-Coding-Prompt-5-Cs.png]]
 
 ## AI Analysis

@@ -1,6 +1,9 @@
 ---
+title: "ChatGPT Prompts"
 Description: Comprehensive prompt that assists in creating detailed business plans, market analysis, and financial projections. Helps entrepreneurs and business owners structure their ideas into professional business documents.
 Category: Research
+tags:
+  - Guide
 ---
 #### ChatGPT Prompts
 |![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/document_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|

@@ -51,6 +51,13 @@ def test_source_bookmark_from_web_clip():
     assert label == "Bookmark"
 
 
+def test_source_md_for_text_only_note():
+    label, risk = detect.detect_source({"tags": ["ideas"]}, "just plain text, no image, no link",
+                                        "Some-Notion-Export.md", False)
+    assert label == "MD"
+    assert risk is False
+
+
 def test_is_structural():
     assert detect.is_structural("Dedup-Review.md") is True
     assert detect.is_structural("rename_log.md") is True

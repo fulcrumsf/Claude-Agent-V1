@@ -3,13 +3,12 @@ title: "Type With Voice Dictation"
 type: tool-doc
 category: general
 tags:
-  - dictation
-  - voice-input
-  - productivity
+  - App
+  - Guide
 created: 2026-05-08
 source: local
+retag_flag: "bad-tag-value"
 ---
-
 ## Stop typingstart talking
 
 Speak naturally. Get clean, ready-to-send text in any app. Save 20+ hours a month.

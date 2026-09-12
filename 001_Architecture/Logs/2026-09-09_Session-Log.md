@@ -1,5 +1,17 @@
 # 2026-09-09 Session Log
 
+## Deferred channel-integration handoff
+
+- Tony requested a durable handoff so a future “plug this Shorts workflow into
+  [channel]” request can resume without repeating the history. No integration
+  should happen today.
+- Wrote `Future-Channel-Integration-Handoff-v1.md` in the shared reframer directory,
+  covering current capability, remaining automatic clipping/controller work,
+  per-channel profiles, pilot/approval steps, technical limits, and artifact links.
+- Added discovery pointers to README, TOOLBOX, Memory Index, and shared memory.
+  Only handoff/documentation records changed; no rendering, installation,
+  channel activation, automation, or Airtable changes were performed.
+
 ## Part Three framing selection
 
 - Tony preferred Hybrid (third comparison variant) for this video specifically.

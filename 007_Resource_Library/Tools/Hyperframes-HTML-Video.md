@@ -1,15 +1,13 @@
 ---
-title: "Hyperframes HTML Video"
+title: "Hyperframes: Open-source Video Rendering Framework"
 type: tool-doc
 category: video-production
 tags:
-  - video-generation
-  - ai-agents
-  - heygen
+  - GitHub
+  - Image-Video-Model
 created: 2026-05-08
 source: local
 ---
-
 ![HyperFrames](https://github.com/heygen-com/hyperframes/raw/main/docs/logo/light.svg)
 
 **Write HTML. Render video. Built for agents.**

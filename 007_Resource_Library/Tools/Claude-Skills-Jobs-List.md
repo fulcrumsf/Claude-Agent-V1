@@ -3,15 +3,14 @@ title: "Claude Skills Jobs List"
 type: tool-doc
 category: ai-agents
 tags:
-  - screenshot
-  - claude
-  - jobs
-  - github
+  - GitHub
+  - Coding-Agent
 ai_description: "TikTok video by @nocode.joshua titled '5 Claude Skills that every beginner needs to install', featuring a GitHub repository 'Wondelai/skills' with entries like '.claude-plugin' and 'claude/skills' — likely saved for AI tool research or content inspiration."
+summary: >-
+  TikTok video by @nocode.joshua titled '5 Claude Skills that every beginner needs to install', featuring a GitHub repository 'Wondelai/skills' with entries like '.claude-plugin' and 'claude/skills' — likely saved for AI tool research or content inspiration.
 original_filename: "claude-skills-jobs-list.PNG"
 created: 2026-05-01
 ---
-
 ![[Claude-Skills-Jobs-List.png]]
 
 ## What It Is

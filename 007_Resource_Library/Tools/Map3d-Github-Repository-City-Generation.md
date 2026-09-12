@@ -3,15 +3,11 @@ title: "Map3d Github Repository City Generation"
 type: extracted-knowledge
 category: tools
 tags:
-  - github-tool
-  - 3d-mapping
-  - open-source
-  - urban-planning
-  - map-extraction
+  - GitHub
+  - 3D
 original_filename: "IMG_9871.PNG"
 created: 2026-08-24
 ---
-
 ![[Map3d-Github-Repository-City-Generation.png]]
 
 ## AI Analysis

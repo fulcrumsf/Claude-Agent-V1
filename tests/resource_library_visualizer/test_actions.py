@@ -18,6 +18,24 @@ def test_move_to_delete_takes_note_and_image(monkeypatch, rl_fixture):
     assert (rl_fixture.parent / "delete" / "Tools" / "OpenCode.png").exists()
 
 
+def test_move_note_takes_note_and_image(monkeypatch, rl_fixture):
+    a = _mod(monkeypatch, rl_fixture)
+    monkeypatch.setattr(a.config, "CATEGORY_FOLDERS", ["Tools", "Content_Ideas"])
+    new_rel = a.move_note("Tools/OpenCode.md", "Content_Ideas")
+    assert new_rel == "Content_Ideas/OpenCode.md"
+    assert not (rl_fixture / "Tools" / "OpenCode.md").exists()
+    assert (rl_fixture / "Content_Ideas" / "OpenCode.md").exists()
+    assert (rl_fixture / "Content_Ideas" / "OpenCode.png").exists()
+
+
+def test_move_note_rejects_bad_dest(monkeypatch, rl_fixture):
+    a = _mod(monkeypatch, rl_fixture)
+    monkeypatch.setattr(a.config, "CATEGORY_FOLDERS", ["Tools"])
+    import pytest
+    with pytest.raises(ValueError):
+        a.move_note("Tools/OpenCode.md", "../Evil")
+
+
 def test_rewrite_note_fixes_fields(monkeypatch, rl_fixture):
     a = _mod(monkeypatch, rl_fixture)
     a.rewrite_note("Tools/MisLabel.md", {
@@ -38,6 +56,23 @@ def test_rewrite_note_replaces_body(monkeypatch, rl_fixture):
     a.rewrite_note("Tutorials/Vid.md", {"body": "new body\n"})
     _, body = load("notes").parse_note(str(rl_fixture / "Tutorials" / "Vid.md"))
     assert body.strip() == "new body"
+
+
+def test_rewrite_note_raw_writes_verbatim_yaml(monkeypatch, rl_fixture):
+    a = _mod(monkeypatch, rl_fixture)
+    raw = 'title: "New Title"\ncategory: personal\ntags:\n  - one\n  - two\n'
+    parsed = a.rewrite_note_raw("Tools/MisLabel.md", raw)
+    assert parsed["title"] == "New Title"
+    fm, _ = load("notes").parse_note(str(rl_fixture / "Tools" / "MisLabel.md"))
+    assert fm["title"] == "New Title"
+    assert fm["tags"] == ["one", "two"]
+
+
+def test_rewrite_note_raw_rejects_invalid_yaml(monkeypatch, rl_fixture):
+    a = _mod(monkeypatch, rl_fixture)
+    import pytest
+    with pytest.raises(ValueError):
+        a.rewrite_note_raw("Tools/MisLabel.md", 'title: "unterminated')
 
 
 def test_rerun_ai_returns_before_after(monkeypatch, rl_fixture):

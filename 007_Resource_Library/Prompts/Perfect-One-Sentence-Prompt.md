@@ -1,6 +1,11 @@
 ---
+title: "AI Copywriting Business Questions"
 Description: A one sentence prompt
 Category: Education
+tags:
+  - Guide
+  - Research-List
+retag_flag: "bad-tag-value"
 ---
 In a minute I am going to ask you to write copy for my business. This includes sales emails, blog post, instagram captions, tiktok ideas. (Whatever you want)
   

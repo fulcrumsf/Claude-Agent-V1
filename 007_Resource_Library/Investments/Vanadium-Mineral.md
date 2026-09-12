@@ -3,13 +3,13 @@ title: "Vanadium mineral"
 type: doc
 category: general
 tags:
-  - screenshot
-  - reference
+  - Stocks
 ai_description: "TikTok video from @TheNiFTyInvestor discussing 'Vanadium: A Critical Mineral Catalyst' via a green screen effect, showing 183 likes, 5 comments, 56 saves, and 21 shares — likely saved for investment research or content ideas related to critical minerals and stock market analysis."
+summary: >-
+  TikTok video from @TheNiFTyInvestor discussing 'Vanadium: A Critical Mineral Catalyst' via a green screen effect, showing 183 likes, 5 comments, 56 saves, and 21 shares — likely saved for investment research or content ideas related to critical minerals and stock market analysis.
 original_filename: "Vanadium Mineral.PNG"
 created: 2026-05-01
 ---
-
 ![[Vanadium-Mineral.png]]
 
 ## AI Analysis

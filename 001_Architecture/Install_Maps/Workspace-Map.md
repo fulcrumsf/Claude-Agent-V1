@@ -91,7 +91,7 @@ Synthesized knowledge pages created by agents during ingest. Not raw sources —
 | `Text-To-Speech/` | TTS tool docs |
 | `Tool-Manager/` | Cost-routing CLI (`tm`), model catalog, and monthly refresh script. Key files: `tool_manager.py` (tm CLI), `catalog_refresh.py` (monthly auto-refresh + Airtable sync), `data/model_catalog.json` (24-model cross-platform pricing matrix), `data/pricing_cache.json` (live API pricing cache) |
 | `Video-Generation/` | Video generation tool docs, model catalog. Subfolders: `Channels/` (per-channel scripts — Anomalous_Wild, Reimagined_Realms), `Generic_Tools/` (reusable batch scripts), `Pipeline_Docs/` (pipeline planning), `Hyperframes/` (HTML renderer), `Video-Use/` (agent editor). Key scripts in `Channels/Reimagined_Realms/`: `assemble.py` (universal assembly — takes `production_folder` arg, reads `Production/assemble_config.json`), `batch_generate_images.py` (GPT Image 2 batch, `--clips --overwrite` flags), `batch_generate_videos.py` (Seedance batch, beatmap-driven durations) |
-| `Video-Generation/Generic_Tools/Subject-Aware-Reframer/` | Experimental local YOLO11s/ByteTrack detection diagnostics, isolated Python environment, hash-locked dependencies, offline launcher. Gate 2 only; production results stay in the source production's `Shorts/` folder. Camera planning and adoption await approval. |
+| `Video-Generation/Generic_Tools/Subject-Aware-Reframer/` | Experimental local detection and configurable group/subject/hybrid reframing, isolated environment, hash-locked dependencies, offline launcher, shared JSON jobs/profiles. Gate 3 Part Three review pending; production results remain in its `Shorts/` folder. Automatic clipping and pipeline adoption are later stages. |
 
 ---
 

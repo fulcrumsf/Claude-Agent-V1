@@ -1,14 +1,13 @@
 ---
-title: "Prompts Script 5"
+title: "Genghis Khan Invasion Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Research-List
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Genghis Khan/Prompts Script 5.md
 ---
-
 1. ==A scene depicting Genghis Khan's initial peaceful outreach to the Khwarezm Empire, illustrating the diplomatic efforts and the potential for trade, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==The betrayal by the Khwarezm Empire, a dramatic representation of the moment the envoys and merchants are unjustly killed, igniting the conflict, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==Genghis Khan mobilizing his vast armies, a scene capturing the preparation for a massive military campaign, showcasing the might and readiness of the Mongol forces, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==

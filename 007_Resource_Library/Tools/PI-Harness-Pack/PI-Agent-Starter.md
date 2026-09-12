@@ -1,3 +1,9 @@
+---
+title: "Pi Setup on OpenRouter"
+tags:
+  - Coding-Agent
+  - Guide
+---
 This the clean setup of **Pi** on OpenRouter by default
 
 ## 0) Install Pi

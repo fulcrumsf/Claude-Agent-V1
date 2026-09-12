@@ -1,13 +1,13 @@
 ---
-title: "Mid Century Mom"
+title: "Mid Century Mom Living Room Art"
 type: design-inspiration
 category: design_inspiration
 tags:
-  - design-inspiration
+  - Art-Reference
+  - Art-Style
 created: 2026-05-03
 source: Databases/Projects/Designs & POD/Categories/Ikigai Room Mockups/Wall Art Mockups/Living Room - Modern/Image Gallery/Mid-Century Mom.md
 ---
-
 ```markdown
 {
   "room_type": "Living Room",

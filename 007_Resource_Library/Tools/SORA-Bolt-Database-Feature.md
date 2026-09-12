@@ -3,13 +3,14 @@ title: "Sora Bolt Database Feature"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
+  - Image-Video-Model
 ai_description: "TikTok video by Will Francis on AI + Marketing, promoting Bolt.new and detailing technical requirements for a video generation and management tool, likely saved for project development ideas or AI video creation research, as indicated by the 'Sora Ai Video' search."
+summary: >-
+  TikTok video by Will Francis on AI + Marketing, promoting Bolt.new and detailing technical requirements for a video generation and management tool, likely saved for project development ideas or AI video creation research, as indicated by the 'Sora Ai Video' search.
 original_filename: "sora-bolt-database-feature.PNG"
 created: 2026-05-01
 ---
-
 ![[SORA-Bolt-Database-Feature.png]]
 
 ## AI Analysis

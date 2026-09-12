@@ -3,15 +3,11 @@ title: "Google Advanced Search String Remote Jobs"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - google-search
-  - remote-jobs
-  - job-hunting
-  - career-tips
-  - search-operators
+  - Guide
+  - Platforms
 original_filename: "Job-Boards-8.PNG"
 created: 2026-05-09
 ---
-
 ![[Google-Advanced-Search-String-Remote-Jobs.png]]
 
 ## AI Analysis

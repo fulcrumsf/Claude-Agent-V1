@@ -1,17 +1,13 @@
 ---
-title: "Claude Just Changed the SEO Industry Forever"
+title: "Claude Code AI SEO Toolkit Tutorial"
 type: "tutorial"
 category: "content-strategy"
 tags:
-  - content-strategy
-  - seo
-  - claude-code
-  - automation
-  - tutorial
+  - Coding-Agent
+  - Guide
 created: 2026-05-12
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=3T7-4EbWTkw)
 
 Learn how to sell this to businesses + unlimited tech support 👉 https://skool.com/aiworkshop  

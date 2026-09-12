@@ -3,15 +3,11 @@ title: "Zopia AI Film Studio"
 type: extracted-knowledge
 category: tools
 tags:
-  - zopia
-  - ai-video-generator
-  - saas
-  - film-making
-  - text-to-video
+  - App
+  - Image-Video-Model
 original_filename: "Claude-Skills-And-AI-Tools-10.png"
 created: 2026-05-09
 ---
-
 ![[Zopia-AI-Film-Studio.png]]
 
 ## AI Analysis

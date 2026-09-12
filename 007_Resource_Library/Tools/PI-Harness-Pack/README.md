@@ -1,3 +1,9 @@
+---
+title: "PI Harness Pack"
+tags:
+  - Coding-Agent
+  - Guide
+---
 # PI Harness Pack
 
 Open these in this order:

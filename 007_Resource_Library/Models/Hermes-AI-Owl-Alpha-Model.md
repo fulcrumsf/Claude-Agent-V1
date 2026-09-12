@@ -3,14 +3,11 @@ title: "Hermes AI Owl Alpha Model"
 type: extracted-knowledge
 category: models
 tags:
-  - hermes-agent
-  - owl-alpha
-  - open-source-ai
-  - large-language-model
+  - LLM
+  - Coding-Agent
 original_filename: "IMG_9872.PNG"
 created: 2026-08-24
 ---
-
 ![[Hermes-AI-Owl-Alpha-Model.png]]
 
 ## AI Analysis

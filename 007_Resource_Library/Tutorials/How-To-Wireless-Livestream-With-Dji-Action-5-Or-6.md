@@ -1,14 +1,13 @@
 ---
-title: "How-To-Wireless-Livestream-With-Dji-Action-5-Or-6"
+title: "How-To-Wireless-Livestream-With-DJI-Action-5-Or-6"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - livestreaming
-  - video-production
+  - Guide
+  - Product
 created: 2026-06-06
 source: 000_Ingest/How to wireless livestream with DJI Action 5 or 6.md
+retag_flag: "bad-tag-value"
 ---
 ![](https://www.youtube.com/watch?v=TeiqNsEtAoo)
 

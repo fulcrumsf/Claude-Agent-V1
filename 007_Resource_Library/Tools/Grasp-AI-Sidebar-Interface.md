@@ -3,15 +3,11 @@ title: "Grasp AI Sidebar Interface"
 type: extracted-knowledge
 category: tools
 tags:
-  - grasp-ai
-  - browser-extension
-  - productivity
-  - ai-notes
-  - web-browsing
+  - App
+  - Guide
 original_filename: "Gemini-Prompt-Trend-2.PNG"
 created: 2026-05-09
 ---
-
 ![[Grasp-AI-Sidebar-Interface.png]]
 
 ## AI Analysis

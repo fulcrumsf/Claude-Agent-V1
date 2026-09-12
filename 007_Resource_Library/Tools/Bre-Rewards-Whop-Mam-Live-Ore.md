@@ -1,24 +1,17 @@
 ---
-title: "Bre Rewards Whop Mam Live Ore"
+title: "EasySlice.AI"
 type: tool-doc
 category: content-strategy
 form: tiktok
 summary: "A TikTok video featuring a creator discussing EasySlice.AI, an AI-powered tool designed to automatically convert YouTube uploads into social-ready short-form clips. The screen shows a landing page for the tool explaining its 'zero effort' passive workflow and how it processes content without manual editing."
 search_for: "EasySlice.AI github repo or official website"
 tags:
-  - screenshot
-  - reference
-  - easy-slice
-  - ai-video-editing
-  - youtube-tools
-  - social-media-automation
-  - saas
-  - needs-enrichment
+  - App
+  - Guide
 original_filename: "IMG_8713.PNG"
 created: 2026-05-01
 enriched: 2026-09-05
 ---
-
 ![[Bre-Rewards-Whop-Mam-Live-Ore.png]]
 
 ## Summary

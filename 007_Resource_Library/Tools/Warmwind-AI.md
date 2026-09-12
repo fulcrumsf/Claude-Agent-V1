@@ -1,15 +1,15 @@
 ---
-title: "Warmwind_ai"
+title: "Warmwind AI"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
 ai_description: "TikTok video from Matt Farmer | AI & Marketing promoting the 'Warmwind AI Operating System' as 'DATA ENTRY AI TOOLS' that work '24/7 Like Virtual Emplo...', showing 101 likes and 59 saves — likely saved for AI tool research or content inspiration for productivity."
+summary: >-
+  TikTok video from Matt Farmer | AI & Marketing promoting the 'Warmwind AI Operating System' as 'DATA ENTRY AI TOOLS' that work '24/7 Like Virtual Emplo...', showing 101 likes and 59 saves — likely saved for AI tool research or content inspiration for productivity.
 original_filename: "Warmwind_AI.PNG"
 created: 2026-05-01
 ---
-
 ![[Warmwind-AI.png]]
 
 ## AI Analysis

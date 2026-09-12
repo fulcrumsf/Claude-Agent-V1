@@ -1,14 +1,13 @@
 ---
-title: "Prompts Script 5"
+title: "Alexander the Great Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Image-Video-Model
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Alexander The Great/Prompts Script 5.md
 ---
-
 1. A scenic view of ancient Macedonia's rugged terrains, setting the stage for a young prince's journey to greatness, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. A young Alexander in the Macedonian court, showcasing his early life as a royal heir, with a backdrop of the palace and its surroundings, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. Aristotle tutoring young Alexander, a scene depicting their mentor-student relationship, with scrolls and ancient texts surrounding them, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250

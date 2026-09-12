@@ -1,7 +1,11 @@
 ---
+title: "LLM Engineering Essentials - Nebius Academy"
 URL: https://nebius.com/
 Description: Nebius is a cloud infrastructure provider focused on AI workloads and GPU compute. It offers cloud services for training and running models, useful when you need scalable compute beyond local hardware.
 Category: Development
+tags:
+  - LLM
+  - Guide
 ---
 https://github.com/Nebius-Academy/LLM-Engineering-Essentials
 

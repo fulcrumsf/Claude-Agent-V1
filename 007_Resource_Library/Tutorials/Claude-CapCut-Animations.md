@@ -1,15 +1,13 @@
 ---
-title: "Claude CapCut Animations"
+title: "Claude & Remotion for Motion Graphics in CapCut"
 type: tutorial
 category: video-production
 tags:
-  - video-editing
-  - claude-code
-  - animation
+  - Guide
+  - Coding-Agent
 created: 2026-05-08
 source: local
 ---
-
 ![](https://www.youtube.com/watch?v=8oIFBQ9BhVU)
 
 I've been able to create some of the most premium looking motion graphics I've ever made, all without actually editing. This video demonstrates how to create premium motion graphics quickly using a tool called Remotion. This step-by-step tutorial covers using AI for animation and the power of Claude for generating these incredible videos. If you want to dive deeper into video editing, this is for you!  

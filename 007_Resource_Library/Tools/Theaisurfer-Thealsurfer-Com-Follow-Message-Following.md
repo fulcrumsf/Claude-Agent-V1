@@ -1,15 +1,15 @@
 ---
-title: "Theaisurfer Thealsurfer Com Follow Message Following"
+title: "Theaisurfer"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - Profile
 ai_description: "Screenshot of Theaisurfer Thealsurfer Com Follow Message Following with readable text about theaisurfer thealsurfer com."
+summary: >-
+  Screenshot of Theaisurfer Thealsurfer Com Follow Message Following with readable text about theaisurfer thealsurfer com.
 original_filename: "IMG_8808.PNG"
 created: 2026-05-01
 ---
-
 ![[Theaisurfer-Thealsurfer-Com-Follow-Message-Following.png]]
 
 ## AI Analysis

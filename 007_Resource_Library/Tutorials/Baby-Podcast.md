@@ -1,8 +1,10 @@
 ---
+title: "How to Make a Viral AI Talking Baby Video (Step-by-Step Tutorial)"
 Faceless Type: Baby Podcast
 Description: Baby Podcast Style Videos
 tags:
-  - Baby-Podcast
+  - Guide
+  - Image-Video-Model
 Rating: ★★★★★ (5 stars)
 Difficulty Level: Intermediate
 ---

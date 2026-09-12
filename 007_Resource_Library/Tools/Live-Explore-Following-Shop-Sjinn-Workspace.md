@@ -3,13 +3,13 @@ title: "Live Explore Following Shop Sjinn Workspace"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - tools
+  - App
 ai_description: "Screenshot of Live Explore Following Shop Sjinn Workspace with readable text about live."
+summary: >-
+  Screenshot of Live Explore Following Shop Sjinn Workspace with readable text about live.
 original_filename: "IMG_8717.PNG"
 created: 2026-05-01
 ---
-
 ![[Live-Explore-Following-Shop-Sjinn-Workspace.png]]
 
 ## AI Analysis

@@ -1,15 +1,16 @@
 ---
-title: "Graph"
+title: "Graph AI Tool for App Building"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "TikTok video showcasing an AI tool named 'Graph' for building apps, with a caption 'It's Better With Ai' and 1,777 likes, likely saved as a reference for a new AI tool to explore for app development or content creation."
+summary: >-
+  TikTok video showcasing an AI tool named 'Graph' for building apps, with a caption 'It's Better With Ai' and 1,777 likes, likely saved as a reference for a new AI tool to explore for app development or content creation.
 original_filename: "graph.PNG"
 created: 2026-05-01
 ---
-
 ![[Graph.png]]
 
 ## AI Analysis

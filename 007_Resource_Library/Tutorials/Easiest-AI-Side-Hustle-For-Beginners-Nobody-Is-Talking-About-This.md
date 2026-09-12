@@ -1,11 +1,10 @@
 ---
-title: "Easiest-AI-Side-Hustle-For-Beginners-Nobody-Is-Talking-About-This"
+title: "Easiest AI Side Hustle For Beginners: Make Money with ChatGPT"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - video-production
+  - Guide
+  - LLM
 created: 2026-06-06
 source: 000_Ingest/Easiest AI side hustle for beginners (Nobody is talking about this).md
 ---

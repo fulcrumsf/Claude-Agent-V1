@@ -1,15 +1,16 @@
 ---
-title: "Audius Saudio Token Drop"
+title: "Audius Saudio Token Drop Phishing Example"
 type: tool-doc
 category: app-dev
 tags:
-  - screenshot
-  - reference
+  - Crypto
+  - App
 ai_description: "An iPhone Mail app screenshot shows an email from 'Audius' with the subject 'Re:[## 101 ##] Final Notice: Claim your $AUDIO before redistribution,' asking the user to connect supported wallets for a token drop, likely saved as an example of a phishing scam."
+summary: >-
+  An iPhone Mail app screenshot shows an email from 'Audius' with the subject 'Re:[## 101 ##] Final Notice: Claim your $AUDIO before redistribution,' asking the user to connect supported wallets for a token drop, likely saved as an example of a phishing scam.
 original_filename: "audius-saudio-token-drop.PNG"
 created: 2026-05-01
 ---
-
 ![[Audius-Saudio-Token-Drop.png]]
 
 ## AI Analysis

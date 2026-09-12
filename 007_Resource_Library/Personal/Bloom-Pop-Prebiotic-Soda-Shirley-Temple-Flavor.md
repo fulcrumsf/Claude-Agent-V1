@@ -1,17 +1,14 @@
 ---
-title: "Bloom Pop Prebiotic Soda Shirley Temple Flavor"
+title: "Bloom Pop Prebiotic Soda Shirley Temple Flavor Review"
 type: extracted-knowledge
 category: personal
 tags:
-  - bloom-pop
-  - prebiotic-soda
-  - food-review
-  - healthy-drinks
-  - shirley-temple
+  - Health
+  - Product
 original_filename: "IMG_9827.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Bloom-Pop-Prebiotic-Soda-Shirley-Temple-Flavor.png]]
 
 ## AI Analysis

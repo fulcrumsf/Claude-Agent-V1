@@ -32,7 +32,7 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
 | Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 125 | built | 2026-09-06T02:00Z |
-| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 3917 | built | 2026-09-09T06:33Z|
+| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 7033 | built | 2026-09-12T02:15Z|
 | Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 2952 | built | 2026-09-05T22:55Z|
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
@@ -40,7 +40,7 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Games | `004_Games/` | `004_Games/graphify-out/` | 2 | built | 2026-09-08T16:00Z |
 | Ecommerce | `005_Ecommerce/` | `005_Ecommerce/graphify-out/` | 4 | built | 2026-09-08T16:00Z |
 | Affiliate Marketing | `005_Affiliate_Marketing/` | `005_Affiliate_Marketing/graphify-out/` | 36 | built | 2026-09-06T02:00Z |
-| Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 7340 | built | 2026-09-09T06:33Z|
+| Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 7052 | built | 2026-09-12T02:19Z|
 
 Total: 12 domains tracked (Wiki + Affiliate Marketing built 2026-09-06).
 

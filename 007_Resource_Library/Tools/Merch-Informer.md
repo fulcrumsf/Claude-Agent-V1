@@ -6,17 +6,10 @@ summary: "Merch Informer is a SaaS research and analytics platform designed for 
 url: "https://merchinformer.com/"
 verified: true
 tags:
-  - Etsy
-  - Merch
-  - Tiktok-Shop
-  - merch-by-amazon
-  - print-on-demand
-  - keyword-research
-  - niche-research
-  - ecommerce-tools
+  - App
+  - Research-List
 created: 2026-09-05
 enriched: 2026-09-05
 ---
-
 ## Summary
 Merch Informer is a SaaS research and analytics platform designed for Merch by Amazon and other print-on-demand sellers. It offers tools for keyword research, niche discovery, trademark checking, and listing optimization. The platform helps sellers identify profitable design opportunities and improve their product sales.

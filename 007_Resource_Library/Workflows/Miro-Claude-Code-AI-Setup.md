@@ -3,15 +3,11 @@ title: "Miro Claude Code AI Setup"
 type: extracted-knowledge
 category: workflows
 tags:
-  - miro
-  - claude-code
-  - ai-workflow
-  - productivity
-  - nocode
+  - Coding-Agent
+  - LLM
 original_filename: "Claude-Code-Agents-And-Research-13.png"
 created: 2026-05-09
 ---
-
 ![[Miro-Claude-Code-AI-Setup.png]]
 
 ## AI Analysis

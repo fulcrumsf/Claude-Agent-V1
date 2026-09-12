@@ -3,15 +3,14 @@ title: "Viral Sora Prompts"
 type: prompt
 category: video-production
 tags:
-  - screenshot
-  - prompt
-  - ai-video
-  - prompt-library
+  - Image-Video-Model
+  - Research-List
 ai_description: "TikTok video by Sabrina Ramonov showcasing the viralsoraprompts.com AI tool for generating viral-ready Sora 2 prompts, demonstrating its 'GENERATE VIRAL PROMPT' feature with a 'blair witch style' example — likely saved for AI content generation ideas or tool research."
+summary: >-
+  TikTok video by Sabrina Ramonov showcasing the viralsoraprompts.com AI tool for generating viral-ready Sora 2 prompts, demonstrating its 'GENERATE VIRAL PROMPT' feature with a 'blair witch style' example — likely saved for AI content generation ideas or tool research.
 original_filename: "viral-sora-prompts.PNG"
 created: 2026-05-01
 ---
-
 ![[Viral-Sora-Prompts.png]]
 
 ## Prompt Resource

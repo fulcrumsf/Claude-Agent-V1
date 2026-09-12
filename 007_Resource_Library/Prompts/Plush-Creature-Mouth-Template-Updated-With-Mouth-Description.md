@@ -1,13 +1,13 @@
 ---
-title: "Plush Creature Mouth Template Updated With Mouth Description"
+title: "Plush Creature Mouth Prompt Template"
 type: prompt
 category: prompts
 tags:
-  - prompts
+  - Art-Style
+  - Guide
 created: 2026-05-03
 source: Plush_Creature_Mouth_Template_Updated_with_Mouth_Description.json
 ---
-
 {
   "prompt_template": {
     "description": "Scene Inside a Creature\u2019s Open Mouth \u2014 modular image prompt template.",

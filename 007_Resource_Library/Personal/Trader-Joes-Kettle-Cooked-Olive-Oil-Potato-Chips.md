@@ -3,15 +3,12 @@ title: "Trader Joes Kettle Cooked Olive Oil Potato Chips"
 type: extracted-knowledge
 category: personal
 tags:
-  - trader-joes
-  - snacks
-  - olive-oil-chips
-  - kettle-cooked
-  - grocery-finds
+  - Product
+  - Health
 original_filename: "IMG_9823.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Trader-Joes-Kettle-Cooked-Olive-Oil-Potato-Chips.png]]
 
 ## AI Analysis

@@ -3,13 +3,14 @@ title: "Files Main Awesome Nano Banana Images Readme Live Explore"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - prompt
+  - Product
+  - App
 ai_description: "Screenshot of Files Main Awesome Nano Banana Images Readme Live Explore with readable text about files."
+summary: >-
+  Screenshot of Files Main Awesome Nano Banana Images Readme Live Explore with readable text about files.
 original_filename: "IMG_8009.PNG"
 created: 2026-05-01
 ---
-
 ![[Files-Main-Awesome-Nano-Banana-Images-Readme-Live-Explore.png]]
 
 ## AI Analysis

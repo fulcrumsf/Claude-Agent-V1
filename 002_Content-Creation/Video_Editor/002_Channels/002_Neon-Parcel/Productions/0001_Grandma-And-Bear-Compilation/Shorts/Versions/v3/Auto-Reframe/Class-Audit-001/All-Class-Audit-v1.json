@@ -1,0 +1,1159 @@
+{
+  "stage": "diagnostic_class_audit_only",
+  "runtime": {
+    "security": {
+      "os_network_denial": true,
+      "loopback_errno": 1,
+      "clean_environment_launcher": true,
+      "restricted_loading": true,
+      "force_weights_only": true,
+      "auto_install": false,
+      "integrations_enabled": false
+    },
+    "packages": {
+      "anyio": "4.15.1",
+      "certifi": "2026.7.22",
+      "charset-normalizer": "3.5.1",
+      "cloudpickle": "3.1.2",
+      "contourpy": "1.3.3",
+      "cycler": "0.12.1",
+      "filelock": "3.32.5",
+      "fonttools": "4.64.0",
+      "fsspec": "2026.7.0",
+      "h11": "0.16.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "idna": "3.19",
+      "jinja2": "3.1.6",
+      "kiwisolver": "1.5.1",
+      "lap": "0.5.13",
+      "markupsafe": "3.0.3",
+      "matplotlib": "3.11.1",
+      "mpmath": "1.3.0",
+      "networkx": "3.6.1",
+      "numpy": "2.4.6",
+      "nvidia-ml-py": "13.610.43",
+      "opencv-python-headless": "4.14.0.94",
+      "packaging": "26.3",
+      "pillow": "12.3.0",
+      "polars": "1.44.1",
+      "polars-runtime-32": "1.44.1",
+      "psutil": "7.2.2",
+      "pyparsing": "3.3.2",
+      "python-dateutil": "2.9.0.post0",
+      "pyyaml": "6.0.3",
+      "requests": "2.34.2",
+      "setuptools": "84.0.0",
+      "six": "1.17.0",
+      "sympy": "1.14.0",
+      "torch": "2.14.0",
+      "torchvision": "0.29.0",
+      "typing-extensions": "4.16.0",
+      "ultralytics-opencv-headless": "8.4.144",
+      "ultralytics-platform": "0.1.32",
+      "ultralytics-thop": "2.1.6",
+      "urllib3": "2.7.0"
+    },
+    "model": {
+      "schema_version": 1,
+      "file": "yolo11s.pt",
+      "url": "https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11s.pt",
+      "release": "https://github.com/ultralytics/assets/releases/tag/v8.3.0",
+      "bytes": 19313732,
+      "sha256": "85a76fe86dd8afe384648546b56a7a78580c7cb7b404fc595f97969322d502d5",
+      "publisher_digest_available": false,
+      "verification": "Official HTTPS asset, expected size, locally calculated SHA-256; no independent publisher digest."
+    },
+    "mps_available": true,
+    "torch_threads": 4
+  },
+  "config": {
+    "schema_version": 1,
+    "approval": "Tony approved Gate 2 on 2026-09-08: dependencies and Part Three detection/tracking diagnostics only.",
+    "source": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Assembly/Versions/v5/Neon-Parcel-Grandma-And-Bear-Compilation-Music-Endscreen-Review-v1.mp4",
+    "source_sha256": "22748828bfa360e3a73819d6ce82ff3e17868e3cf1b04183dcf8974eeeb4d449",
+    "time_base": "1/12288",
+    "expected_source_frames": 771,
+    "classes": [
+      0,
+      21
+    ],
+    "inference_size": 960,
+    "confidence": 0.1,
+    "shots": [
+      {
+        "id": "Shot-10",
+        "description": "Grandma at the doorway",
+        "start_pts": 1198080,
+        "end_pts": 1321984
+      },
+      {
+        "id": "Shot-11",
+        "description": "Hose and bear interaction",
+        "start_pts": 1321984,
+        "end_pts": 1445888
+      },
+      {
+        "id": "Shot-12",
+        "description": "Grandma and bears at the trampoline",
+        "start_pts": 1445888,
+        "end_pts": 1594368
+      }
+    ],
+    "future_group_fallback": "Wider scene over a blurred background; approved preference, not implemented in Gate 2.",
+    "protected_media": [
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-1-Test-v1.mp4",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-2-Test-v2.mp4",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Test-v1.mp4",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Test-v2.mp4"
+    ]
+  },
+  "audit_confidence": 0.05,
+  "observations": [
+    {
+      "source_frame": 2334,
+      "pts": 1198080,
+      "source_seconds": 97.5,
+      "shot": "Shot-10",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            1080.519,
+            783.264,
+            1585.653,
+            995.588
+          ],
+          "confidence": 0.92333,
+          "class_id": 16,
+          "class_name": "dog"
+        },
+        {
+          "bbox_xyxy": [
+            980.819,
+            756.278,
+            1114.89,
+            867.312
+          ],
+          "confidence": 0.9019,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            432.581,
+            805.272,
+            706.35,
+            1079.065
+          ],
+          "confidence": 0.87098,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            1699.117,
+            955.429,
+            1792.191,
+            1050.599
+          ],
+          "confidence": 0.33347,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            1699.719,
+            956.869,
+            1791.771,
+            1051.46
+          ],
+          "confidence": 0.08922,
+          "class_id": 26,
+          "class_name": "handbag"
+        },
+        {
+          "bbox_xyxy": [
+            673.785,
+            356.146,
+            770.211,
+            812.587
+          ],
+          "confidence": 0.05988,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            674.584,
+            357.527,
+            769.025,
+            815.919
+          ],
+          "confidence": 0.05651,
+          "class_id": 0,
+          "class_name": "person"
+        }
+      ]
+    },
+    {
+      "source_frame": 2394,
+      "pts": 1228800,
+      "source_seconds": 100.0,
+      "shot": "Shot-10",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            1080.193,
+            782.547,
+            1586.275,
+            998.247
+          ],
+          "confidence": 0.92151,
+          "class_id": 16,
+          "class_name": "dog"
+        },
+        {
+          "bbox_xyxy": [
+            650.774,
+            106.332,
+            898.87,
+            835.667
+          ],
+          "confidence": 0.91191,
+          "class_id": 0,
+          "class_name": "person"
+        },
+        {
+          "bbox_xyxy": [
+            431.725,
+            805.25,
+            710.309,
+            1078.808
+          ],
+          "confidence": 0.8167,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            1701.666,
+            934.543,
+            1804.026,
+            1050.817
+          ],
+          "confidence": 0.46008,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            1693.362,
+            875.118,
+            1807.871,
+            1050.932
+          ],
+          "confidence": 0.37625,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            1505.827,
+            635.369,
+            1529.106,
+            684.121
+          ],
+          "confidence": 0.20685,
+          "class_id": 10,
+          "class_name": "fire hydrant"
+        },
+        {
+          "bbox_xyxy": [
+            813.147,
+            243.576,
+            841.235,
+            326.752
+          ],
+          "confidence": 0.08649,
+          "class_id": 27,
+          "class_name": "tie"
+        },
+        {
+          "bbox_xyxy": [
+            777.674,
+            322.501,
+            882.668,
+            434.542
+          ],
+          "confidence": 0.06661,
+          "class_id": 26,
+          "class_name": "handbag"
+        }
+      ]
+    },
+    {
+      "source_frame": 2454,
+      "pts": 1259520,
+      "source_seconds": 102.5,
+      "shot": "Shot-10",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            760.866,
+            131.137,
+            1125.31,
+            922.709
+          ],
+          "confidence": 0.92439,
+          "class_id": 0,
+          "class_name": "person"
+        },
+        {
+          "bbox_xyxy": [
+            1082.107,
+            781.677,
+            1586.922,
+            1000.176
+          ],
+          "confidence": 0.91821,
+          "class_id": 16,
+          "class_name": "dog"
+        },
+        {
+          "bbox_xyxy": [
+            430.786,
+            806.394,
+            709.163,
+            1080.0
+          ],
+          "confidence": 0.84184,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            1702.037,
+            944.669,
+            1796.383,
+            1050.728
+          ],
+          "confidence": 0.57622,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            1697.892,
+            875.586,
+            1801.864,
+            1050.341
+          ],
+          "confidence": 0.27389,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            999.723,
+            787.306,
+            1114.492,
+            865.641
+          ],
+          "confidence": 0.20631,
+          "class_id": 45,
+          "class_name": "bowl"
+        },
+        {
+          "bbox_xyxy": [
+            1018.654,
+            281.056,
+            1040.374,
+            366.269
+          ],
+          "confidence": 0.10189,
+          "class_id": 27,
+          "class_name": "tie"
+        },
+        {
+          "bbox_xyxy": [
+            1505.514,
+            635.864,
+            1528.59,
+            684.564
+          ],
+          "confidence": 0.09898,
+          "class_id": 10,
+          "class_name": "fire hydrant"
+        }
+      ]
+    },
+    {
+      "source_frame": 2514,
+      "pts": 1290240,
+      "source_seconds": 105.0,
+      "shot": "Shot-10",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            1084.123,
+            782.006,
+            1583.385,
+            997.1
+          ],
+          "confidence": 0.91754,
+          "class_id": 16,
+          "class_name": "dog"
+        },
+        {
+          "bbox_xyxy": [
+            1412.085,
+            498.842,
+            1604.571,
+            938.092
+          ],
+          "confidence": 0.91244,
+          "class_id": 0,
+          "class_name": "person"
+        },
+        {
+          "bbox_xyxy": [
+            430.59,
+            800.834,
+            708.485,
+            1080.0
+          ],
+          "confidence": 0.81215,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            984.56,
+            785.804,
+            1112.997,
+            867.016
+          ],
+          "confidence": 0.73843,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            1700.803,
+            943.825,
+            1797.312,
+            1050.776
+          ],
+          "confidence": 0.55144,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            1691.886,
+            876.321,
+            1805.67,
+            1050.566
+          ],
+          "confidence": 0.29807,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            442.167,
+            806.642,
+            665.761,
+            1044.36
+          ],
+          "confidence": 0.05111,
+          "class_id": 58,
+          "class_name": "potted plant"
+        }
+      ]
+    },
+    {
+      "source_frame": 2574,
+      "pts": 1320960,
+      "source_seconds": 107.5,
+      "shot": "Shot-10",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            1080.18,
+            783.409,
+            1586.427,
+            999.587
+          ],
+          "confidence": 0.92196,
+          "class_id": 16,
+          "class_name": "dog"
+        },
+        {
+          "bbox_xyxy": [
+            1551.46,
+            576.103,
+            1655.825,
+            784.446
+          ],
+          "confidence": 0.90735,
+          "class_id": 0,
+          "class_name": "person"
+        },
+        {
+          "bbox_xyxy": [
+            430.576,
+            804.973,
+            710.495,
+            1080.0
+          ],
+          "confidence": 0.80576,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            981.589,
+            785.871,
+            1113.348,
+            866.891
+          ],
+          "confidence": 0.76073,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            1702.001,
+            942.496,
+            1799.082,
+            1050.576
+          ],
+          "confidence": 0.51814,
+          "class_id": 58,
+          "class_name": "potted plant"
+        },
+        {
+          "bbox_xyxy": [
+            1699.118,
+            875.969,
+            1809.986,
+            1050.109
+          ],
+          "confidence": 0.33408,
+          "class_id": 58,
+          "class_name": "potted plant"
+        }
+      ]
+    },
+    {
+      "source_frame": 2575,
+      "pts": 1321984,
+      "source_seconds": 107.58333333333333,
+      "shot": "Shot-11",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            500.795,
+            551.804,
+            562.84,
+            606.784
+          ],
+          "confidence": 0.1793,
+          "class_id": 13,
+          "class_name": "bench"
+        },
+        {
+          "bbox_xyxy": [
+            869.35,
+            908.486,
+            1188.625,
+            999.555
+          ],
+          "confidence": 0.11808,
+          "class_id": 13,
+          "class_name": "bench"
+        }
+      ]
+    },
+    {
+      "source_frame": 2635,
+      "pts": 1352704,
+      "source_seconds": 110.08333333333333,
+      "shot": "Shot-11",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            1289.028,
+            524.113,
+            1826.329,
+            932.403
+          ],
+          "confidence": 0.94124,
+          "class_id": 21,
+          "class_name": "bear"
+        }
+      ]
+    },
+    {
+      "source_frame": 2695,
+      "pts": 1383424,
+      "source_seconds": 112.58333333333333,
+      "shot": "Shot-11",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            1067.571,
+            492.056,
+            1572.602,
+            970.237
+          ],
+          "confidence": 0.95973,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            283.385,
+            87.014,
+            482.592,
+            478.571
+          ],
+          "confidence": 0.88294,
+          "class_id": 0,
+          "class_name": "person"
+        }
+      ]
+    },
+    {
+      "source_frame": 2755,
+      "pts": 1414144,
+      "source_seconds": 115.08333333333333,
+      "shot": "Shot-11",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            1245.789,
+            452.607,
+            1676.133,
+            947.551
+          ],
+          "confidence": 0.95539,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            527.047,
+            109.944,
+            923.998,
+            747.057
+          ],
+          "confidence": 0.95298,
+          "class_id": 0,
+          "class_name": "person"
+        }
+      ]
+    },
+    {
+      "source_frame": 2815,
+      "pts": 1444864,
+      "source_seconds": 117.58333333333333,
+      "shot": "Shot-11",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            457.897,
+            88.476,
+            661.752,
+            759.634
+          ],
+          "confidence": 0.92909,
+          "class_id": 0,
+          "class_name": "person"
+        }
+      ]
+    },
+    {
+      "source_frame": 2816,
+      "pts": 1445888,
+      "source_seconds": 117.66666666666667,
+      "shot": "Shot-12",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            1198.027,
+            659.905,
+            1366.548,
+            869.258
+          ],
+          "confidence": 0.86471,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            827.724,
+            581.941,
+            1016.748,
+            797.623
+          ],
+          "confidence": 0.85451,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            1095.413,
+            525.062,
+            1250.527,
+            691.011
+          ],
+          "confidence": 0.7413,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            294.108,
+            644.735,
+            1470.459,
+            1078.762
+          ],
+          "confidence": 0.13109,
+          "class_id": 8,
+          "class_name": "boat"
+        },
+        {
+          "bbox_xyxy": [
+            1619.009,
+            965.945,
+            1737.687,
+            1075.744
+          ],
+          "confidence": 0.0558,
+          "class_id": 41,
+          "class_name": "cup"
+        }
+      ]
+    },
+    {
+      "source_frame": 2888,
+      "pts": 1482752,
+      "source_seconds": 120.66666666666667,
+      "shot": "Shot-12",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            1497.283,
+            231.031,
+            1606.899,
+            512.596
+          ],
+          "confidence": 0.90005,
+          "class_id": 0,
+          "class_name": "person"
+        },
+        {
+          "bbox_xyxy": [
+            828.61,
+            573.27,
+            1022.68,
+            794.81
+          ],
+          "confidence": 0.73607,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            1193.62,
+            664.597,
+            1376.487,
+            868.009
+          ],
+          "confidence": 0.68822,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            1100.921,
+            520.002,
+            1262.417,
+            690.572
+          ],
+          "confidence": 0.58032,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            1619.529,
+            965.227,
+            1734.481,
+            1075.992
+          ],
+          "confidence": 0.18515,
+          "class_id": 41,
+          "class_name": "cup"
+        },
+        {
+          "bbox_xyxy": [
+            303.192,
+            648.076,
+            691.698,
+            1077.785
+          ],
+          "confidence": 0.15166,
+          "class_id": 13,
+          "class_name": "bench"
+        },
+        {
+          "bbox_xyxy": [
+            1495.907,
+            284.195,
+            1525.701,
+            403.291
+          ],
+          "confidence": 0.06251,
+          "class_id": 26,
+          "class_name": "handbag"
+        },
+        {
+          "bbox_xyxy": [
+            1832.464,
+            908.419,
+            1892.931,
+            975.173
+          ],
+          "confidence": 0.05424,
+          "class_id": 41,
+          "class_name": "cup"
+        }
+      ]
+    },
+    {
+      "source_frame": 2960,
+      "pts": 1519616,
+      "source_seconds": 123.66666666666667,
+      "shot": "Shot-12",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            886.159,
+            274.888,
+            1011.439,
+            467.963
+          ],
+          "confidence": 0.89569,
+          "class_id": 0,
+          "class_name": "person"
+        },
+        {
+          "bbox_xyxy": [
+            1194.253,
+            661.889,
+            1348.126,
+            869.299
+          ],
+          "confidence": 0.74299,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            825.824,
+            569.288,
+            1004.842,
+            795.961
+          ],
+          "confidence": 0.72279,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            1100.102,
+            536.04,
+            1238.167,
+            690.961
+          ],
+          "confidence": 0.64753,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            1617.96,
+            965.836,
+            1737.048,
+            1076.076
+          ],
+          "confidence": 0.14612,
+          "class_id": 41,
+          "class_name": "cup"
+        },
+        {
+          "bbox_xyxy": [
+            302.596,
+            649.12,
+            686.948,
+            1078.271
+          ],
+          "confidence": 0.11384,
+          "class_id": 13,
+          "class_name": "bench"
+        },
+        {
+          "bbox_xyxy": [
+            305.806,
+            646.265,
+            1596.21,
+            1076.531
+          ],
+          "confidence": 0.06206,
+          "class_id": 8,
+          "class_name": "boat"
+        }
+      ]
+    },
+    {
+      "source_frame": 3032,
+      "pts": 1556480,
+      "source_seconds": 126.66666666666667,
+      "shot": "Shot-12",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            418.693,
+            530.542,
+            663.957,
+            1022.507
+          ],
+          "confidence": 0.88017,
+          "class_id": 0,
+          "class_name": "person"
+        },
+        {
+          "bbox_xyxy": [
+            1185.433,
+            666.362,
+            1343.794,
+            866.899
+          ],
+          "confidence": 0.84046,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            1100.568,
+            547.531,
+            1226.617,
+            691.714
+          ],
+          "confidence": 0.77751,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            832.551,
+            589.864,
+            989.014,
+            794.576
+          ],
+          "confidence": 0.56457,
+          "class_id": 16,
+          "class_name": "dog"
+        },
+        {
+          "bbox_xyxy": [
+            832.498,
+            590.29,
+            987.347,
+            794.372
+          ],
+          "confidence": 0.44645,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            363.763,
+            772.83,
+            687.989,
+            1071.732
+          ],
+          "confidence": 0.10635,
+          "class_id": 8,
+          "class_name": "boat"
+        },
+        {
+          "bbox_xyxy": [
+            1619.507,
+            965.522,
+            1736.161,
+            1076.386
+          ],
+          "confidence": 0.10379,
+          "class_id": 41,
+          "class_name": "cup"
+        },
+        {
+          "bbox_xyxy": [
+            360.123,
+            773.876,
+            688.059,
+            1070.701
+          ],
+          "confidence": 0.06747,
+          "class_id": 13,
+          "class_name": "bench"
+        },
+        {
+          "bbox_xyxy": [
+            362.578,
+            774.263,
+            688.061,
+            1067.715
+          ],
+          "confidence": 0.06168,
+          "class_id": 56,
+          "class_name": "chair"
+        }
+      ]
+    },
+    {
+      "source_frame": 3104,
+      "pts": 1593344,
+      "source_seconds": 129.66666666666666,
+      "shot": "Shot-12",
+      "detections": [
+        {
+          "bbox_xyxy": [
+            868.642,
+            326.483,
+            1024.037,
+            839.358
+          ],
+          "confidence": 0.90005,
+          "class_id": 0,
+          "class_name": "person"
+        },
+        {
+          "bbox_xyxy": [
+            1097.105,
+            543.731,
+            1220.503,
+            718.389
+          ],
+          "confidence": 0.69836,
+          "class_id": 16,
+          "class_name": "dog"
+        },
+        {
+          "bbox_xyxy": [
+            1191.454,
+            681.725,
+            1335.207,
+            888.701
+          ],
+          "confidence": 0.40826,
+          "class_id": 16,
+          "class_name": "dog"
+        },
+        {
+          "bbox_xyxy": [
+            1191.145,
+            681.387,
+            1335.006,
+            888.127
+          ],
+          "confidence": 0.35005,
+          "class_id": 15,
+          "class_name": "cat"
+        },
+        {
+          "bbox_xyxy": [
+            1191.792,
+            681.361,
+            1334.945,
+            888.339
+          ],
+          "confidence": 0.27741,
+          "class_id": 21,
+          "class_name": "bear"
+        },
+        {
+          "bbox_xyxy": [
+            304.472,
+            643.995,
+            1585.751,
+            1076.176
+          ],
+          "confidence": 0.19184,
+          "class_id": 8,
+          "class_name": "boat"
+        },
+        {
+          "bbox_xyxy": [
+            298.627,
+            648.158,
+            694.14,
+            1078.051
+          ],
+          "confidence": 0.18969,
+          "class_id": 13,
+          "class_name": "bench"
+        },
+        {
+          "bbox_xyxy": [
+            1618.652,
+            965.736,
+            1738.751,
+            1076.475
+          ],
+          "confidence": 0.17086,
+          "class_id": 41,
+          "class_name": "cup"
+        },
+        {
+          "bbox_xyxy": [
+            295.875,
+            648.487,
+            697.086,
+            1078.088
+          ],
+          "confidence": 0.13786,
+          "class_id": 8,
+          "class_name": "boat"
+        },
+        {
+          "bbox_xyxy": [
+            1831.844,
+            907.85,
+            1893.13,
+            975.961
+          ],
+          "confidence": 0.06205,
+          "class_id": 41,
+          "class_name": "cup"
+        },
+        {
+          "bbox_xyxy": [
+            1693.13,
+            930.586,
+            1754.626,
+            985.484
+          ],
+          "confidence": 0.05421,
+          "class_id": 41,
+          "class_name": "cup"
+        }
+      ]
+    }
+  ],
+  "note": "Explains filtering and misclassification; does not relabel subjects or change the baseline."
+}

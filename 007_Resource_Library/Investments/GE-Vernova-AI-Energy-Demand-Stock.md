@@ -3,15 +3,11 @@ title: "GE Vernova AI Energy Demand Stock"
 type: extracted-knowledge
 category: investments
 tags:
-  - ge-vernova
-  - ai-infrastructure
-  - energy-stocks
-  - grid-modernization
-  - stock-analysis
+  - Stocks
 original_filename: "Scribe-AI-Platform-04.png"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[GE-Vernova-AI-Energy-Demand-Stock.png]]
 
 ## AI Analysis

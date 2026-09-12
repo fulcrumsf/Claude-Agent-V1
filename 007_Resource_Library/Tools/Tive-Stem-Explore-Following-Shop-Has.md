@@ -3,13 +3,13 @@ title: "Tive Stem Explore Following Shop Has"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - video
+  - App
 ai_description: "Screenshot of Tive Stem Explore Following Shop Has with readable text about tive stem explore."
+summary: >-
+  Screenshot of Tive Stem Explore Following Shop Has with readable text about tive stem explore.
 original_filename: "IMG_8693.PNG"
 created: 2026-05-01
 ---
-
 ![[Tive-Stem-Explore-Following-Shop-Has.png]]
 
 ## AI Analysis

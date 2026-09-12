@@ -1,15 +1,16 @@
 ---
-title: "Google Skills AI Learning"
+title: "Google Skills AI Learning Platform"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
+  - Guide
 ai_description: "TikTok feed showing a video from @benkimball.ai discussing the new Google Skills AI Learning Platform and a 'Generative AI Leader' course — likely saved for content ideas or personal learning about AI trends."
+summary: >-
+  TikTok feed showing a video from @benkimball.ai discussing the new Google Skills AI Learning Platform and a 'Generative AI Leader' course — likely saved for content ideas or personal learning about AI trends.
 original_filename: "google-skills-ai-learning.PNG"
 created: 2026-05-01
 ---
-
 ![[Google-Skills-AI-Learning.png]]
 
 ## AI Analysis

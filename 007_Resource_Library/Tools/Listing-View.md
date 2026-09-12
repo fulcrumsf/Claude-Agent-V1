@@ -6,15 +6,10 @@ summary: "ListingView is a SaaS platform and browser extension designed for Etsy
 url: "https://listingview.io/"
 verified: true
 tags:
-  - Etsy
-  - etsy-seller-tool
-  - product-research
-  - competitor-analysis
-  - e-commerce-analytics
-  - listing-optimization
+  - App
+  - Product
 created: 2026-09-05
 enriched: 2026-09-05
 ---
-
 ## Summary
 ListingView is a SaaS platform and browser extension designed for Etsy sellers. It provides data-driven insights for product research, competitor analysis, and listing optimization directly on Etsy pages. The tool helps users identify best-selling products, analyze shop performance, and manage listings.

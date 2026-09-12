@@ -1,15 +1,16 @@
 ---
-title: "Lucy Edit Video"
+title: "Lucy Edit Video AI Tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
+  - Image-Video-Model
+  - App
 ai_description: "A TikTok feed showcasing 'Lucy Edit' video transformations from a person into a Lego character, with creator 'Sebastien Jefferies' promoting it as 'the future of video editing' — saved as a reference for a new AI-powered editing tool or content idea."
+summary: >-
+  A TikTok feed showcasing 'Lucy Edit' video transformations from a person into a Lego character, with creator 'Sebastien Jefferies' promoting it as 'the future of video editing' — saved as a reference for a new AI-powered editing tool or content idea.
 original_filename: "lucy-edit-video.PNG"
 created: 2026-05-01
 ---
-
 ![[Lucy-Edit-Video.png]]
 
 ## AI Analysis

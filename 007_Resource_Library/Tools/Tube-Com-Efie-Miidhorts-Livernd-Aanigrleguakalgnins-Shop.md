@@ -1,15 +1,15 @@
 ---
-title: "Tube Com Efie Miidhorts Livernd Aanigrleguakalgnins Shop"
+title: "Tube Com Efie Miidhorts"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - video
+  - App
 ai_description: "Screenshot of Tube Com Efie Miidhorts Livernd Aanigrleguakalgnins Shop with readable text about tube com efie-miidhorts."
+summary: >-
+  Screenshot of Tube Com Efie Miidhorts Livernd Aanigrleguakalgnins Shop with readable text about tube com efie-miidhorts.
 original_filename: "IMG_8692.PNG"
 created: 2026-05-01
 ---
-
 ![[Tube-Com-Efie-Miidhorts-Livernd-Aanigrleguakalgnins-Shop.png]]
 
 ## AI Analysis

@@ -3,15 +3,14 @@ title: "Web Assets Generator Skill"
 type: tool-doc
 category: app-dev
 tags:
-  - screenshot
-  - reference
-  - tool
-  - web-assets
+  - App
+  - Coding-Agent
 ai_description: "TikTok video by @nocode.joshua showcasing a 'Web Assets Generator' tool, described as a 'Claude Skill,' which generates app icons, social images, favicons, and HTML meta tags; likely saved as a resource for AI tools or asset generation."
+summary: >-
+  TikTok video by @nocode.joshua showcasing a 'Web Assets Generator' tool, described as a 'Claude Skill,' which generates app icons, social images, favicons, and HTML meta tags; likely saved as a resource for AI tools or asset generation.
 original_filename: "web-assets-generator-skill.PNG"
 created: 2026-05-01
 ---
-
 ![[Web-Assets-Generator-Tool.png]]
 
 ## What It Is

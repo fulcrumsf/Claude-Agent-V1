@@ -1,15 +1,16 @@
 ---
-title: "Jestr Gaming Creator"
+title: "Jestr Gaming Creator Marketplace"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Platforms
+  - Gaming
 ai_description: "A mobile browser view of JestR.gg, a creator marketplace for gamers, showing its landing page encouraging creators to 'Get Rewarded for Creating' gaming shorts and featuring 'Palworld' content — saved as a potential platform for monetizing gaming content."
+summary: >-
+  A mobile browser view of JestR.gg, a creator marketplace for gamers, showing its landing page encouraging creators to 'Get Rewarded for Creating' gaming shorts and featuring 'Palworld' content — saved as a potential platform for monetizing gaming content.
 original_filename: "jestr-gaming-creator.PNG"
 created: 2026-05-01
 ---
-
 ![[Jestr-Gaming-Creator.png]]
 
 ## AI Analysis

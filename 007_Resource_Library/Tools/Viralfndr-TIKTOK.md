@@ -3,13 +3,14 @@ title: "Viralfndr TikTok"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - tiktok
+  - App
+  - Product
 ai_description: "TikTok app displaying a video from @digitalkingship overlaid with an ad for 'ViralFindr', a tool to 'Save time finding content for social media' on Instagram — likely saved as a tool recommendation or content strategy idea for viral posts."
+summary: >-
+  TikTok app displaying a video from @digitalkingship overlaid with an ad for 'ViralFindr', a tool to 'Save time finding content for social media' on Instagram — likely saved as a tool recommendation or content strategy idea for viral posts.
 original_filename: "viralfndr-tiktok.PNG"
 created: 2026-05-01
 ---
-
 ![[Viralfndr-TIKTOK.png]]
 
 ## AI Analysis

@@ -1,17 +1,12 @@
 ---
-title: "Lumentum Stock Chart Nvidia Investment"
+title: "Lumentum Stock Performance and Nvidia Investment"
 type: extracted-knowledge
 category: investments
 tags:
-  - lumentum
-  - stock-market
-  - nvda
-  - financial-analysis
-  - tech-stocks
+  - Stocks
 original_filename: "IMG_9929.PNG"
 created: 2026-08-24
 ---
-
 ![[Lumentum-Stock-Chart-Nvidia-Investment.png]]
 
 ## AI Analysis

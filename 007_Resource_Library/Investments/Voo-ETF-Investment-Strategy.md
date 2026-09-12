@@ -1,17 +1,12 @@
 ---
-title: "Voo ETF Investment Strategy"
+title: "VOO ETF Investment Strategy"
 type: extracted-knowledge
 category: investments
 tags:
-  - stock-market
-  - etf-investing
-  - personal-finance
-  - voovg
-  - long-term-investing
+  - Stocks
 original_filename: "IMG_9839.PNG"
 created: 2026-08-24
 ---
-
 ![[Voo-ETF-Investment-Strategy.png]]
 
 ## AI Analysis

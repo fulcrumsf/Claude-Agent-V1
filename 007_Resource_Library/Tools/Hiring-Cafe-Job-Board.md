@@ -3,14 +3,11 @@ title: "Hiring Cafe Job Board"
 type: extracted-knowledge
 category: tools
 tags:
-  - hiring-cafe
-  - job-board
-  - recruitment
-  - career-resources
+  - Platforms
+  - Product
 original_filename: "Hiring-Cafe-Job-Board-2.PNG"
 created: 2026-05-09
 ---
-
 ![[Hiring-Cafe-Job-Board.png]]
 
 ## AI Analysis

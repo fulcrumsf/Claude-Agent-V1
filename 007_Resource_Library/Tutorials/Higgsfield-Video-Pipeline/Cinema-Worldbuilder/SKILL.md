@@ -1,8 +1,11 @@
 ---
+title: "Seedance Director - Cinematography Grammar"
 name: cinema-worldbuilder
 description: "Universal cinema worldbuilding director for Seedance video prompts. Reads uploaded reference images for wardrobe, hair, makeup, identity markers, and environment, then composes production-ready Seedance prompts using a locked cinematography grammar — five cinema modes (Narrative, Studio, Action, Performance, Atmospheric), each with canonical camera/lens/movement/filtration/grade specs, plus diegetic audio design (footsteps, fabric, breath, room tone, weapon fire, crowd, weather — never music or lyrics). Use this skill whenever the user wants to create a Seedance video prompt, mentions Seedance, asks for a cinematic scene breakdown, uploads reference images for a scene they want to build, describes a scene for video generation, or asks for shot prompts for music videos, action sequences, performance scenes, narrative shorts, fashion films, or atmospheric environment plates — even if they don't explicitly say 'cinematic' or name a mode."
+tags:
+  - Guide
+  - Image-Video-Model
 ---
-
 # Cinema Worldbuilder — Seedance Director
 
 The locked cinematography grammar for great Seedance video prompts. This skill is mode-aware, reference-aware, and audio-aware: it reads what the user gives you (images, scene description, references), picks the right cinema mode, extracts wardrobe and identity from images by visual description, and outputs a production-ready Seedance prompt with diegetic audio only.

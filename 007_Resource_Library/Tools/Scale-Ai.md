@@ -1,17 +1,13 @@
 ---
-title: "Scale Ai"
+title: "Scale AI"
 type: extracted-knowledge
 category: tools
 tags:
-  - scale-ai
-  - ai-infrastructure
-  - data-platform
-  - machine-learning-tool
-  - brand-logo
+  - Art-Reference
+  - Product
 original_filename: "new-design-tool.png"
 created: 2026-05-09
 ---
-
 ![[Scale-Ai.png]]
 
 ## AI Analysis

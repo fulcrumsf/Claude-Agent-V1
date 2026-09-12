@@ -3,15 +3,14 @@ title: "Nexlev YouTube Tool"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - youtube
-  - tools
-  - youtube-growth
+  - App
+  - Product
 ai_description: "A mobile browser screenshot shows the NexLev.io landing page, promoting NexLev as the 'Best tools for creators' to 'Crush faceless YouTube' by finding niches and automating workflows, featuring a 'Sign up for free' button and a Chrome Extension — saved as a potential tool for content creation efficiency."
+summary: >-
+  A mobile browser screenshot shows the NexLev.io landing page, promoting NexLev as the 'Best tools for creators' to 'Crush faceless YouTube' by finding niches and automating workflows, featuring a 'Sign up for free' button and a Chrome Extension — saved as a potential tool for content creation efficiency.
 original_filename: "nexlev-youtube-tool.PNG"
 created: 2026-05-01
 ---
-
 ![[Nexlev-YouTube-Tool.png]]
 
 ## What It Is

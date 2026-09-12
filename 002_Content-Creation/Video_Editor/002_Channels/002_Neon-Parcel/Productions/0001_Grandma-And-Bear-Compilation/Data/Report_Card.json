@@ -1,6 +1,6 @@
 {
   "production": "0001_Grandma-And-Bear-Compilation",
-  "grade": "in_progress",
+  "grade": "B",
   "reviews": [
     {
       "shot_id": "Shot-08",
@@ -10,5 +10,12 @@
       "note": "Visible bear and Grandma origins plus an unobstructed route produced nearly physically correct motion; minor issues remain non-blocking."
     }
   ],
-  "autonomy_readiness": "manual_review_required"
+  "autonomy_readiness": {
+    "percent": 65,
+    "status": "manual_review_required",
+    "autonomous_operation_threshold_percent": 95,
+    "threshold_behavior": "mostly_autonomous_scheduled_job_with_minimal_iteration",
+    "next_phase": "title_description_thumbnail_final_package",
+    "publishing": "blocked_until_tony_approves_complete_package"
+  }
 }

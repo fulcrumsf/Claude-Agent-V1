@@ -1,17 +1,13 @@
 ---
-title: "Klarna 1.7B Capital Raise Stock Decline"
+title: "Klarna Capital Raise Stock Decline"
 type: extracted-knowledge
 category: investments
 tags:
-  - klarna
-  - fintech
-  - stock-market
-  - capital-raising
-  - buy-now-pay-later
+  - Stocks
 original_filename: "IMG_9931.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Klarna-1.7B-Capital-Raise-Stock-Decline.png]]
 
 ## AI Analysis

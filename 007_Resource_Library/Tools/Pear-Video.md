@@ -3,13 +3,14 @@ title: "Pear Video"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
+  - Platforms
+  - App
 ai_description: "The Pear Video 'stringer' platform, accessible via stringer.pearvideo.com on an iPhone browser, advertises 'You Shoot, We Pay' to content creators and lists 'Looking for a LYNK&CO Car Owner' under 'Trending Topics' — saved to explore new video monetization avenues."
+summary: >-
+  The Pear Video 'stringer' platform, accessible via stringer.pearvideo.com on an iPhone browser, advertises 'You Shoot, We Pay' to content creators and lists 'Looking for a LYNK&CO Car Owner' under 'Trending Topics' — saved to explore new video monetization avenues.
 original_filename: "Pear-Video.PNG"
 created: 2026-05-01
 ---
-
 ![[Pear-Video.png]]
 
 ## AI Analysis

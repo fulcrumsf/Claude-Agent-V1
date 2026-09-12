@@ -1,17 +1,12 @@
 ---
-title: "Nvidia Investment Strategy Iren Stock"
+title: "Nvidia Investment Strategy in Iren Stock"
 type: extracted-knowledge
 category: investments
 tags:
-  - nvidia
-  - irentech
-  - stock-market
-  - semiconductor-investing
-  - financial-analysis
+  - Stocks
 original_filename: "IMG_9925.PNG"
 created: 2026-08-24
 ---
-
 ![[Nvidia-Investment-Strategy-Iren-Stock.png]]
 
 ## AI Analysis

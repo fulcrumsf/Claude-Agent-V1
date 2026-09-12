@@ -6,20 +6,12 @@ form: saas-tool
 summary: "An advertisement showing the Xtra AI-powered vlogging camera being demonstrated by a user. The device features an articulated lens module and an integrated screen interface, designed for content creation with automatic AI tracking capabilities."
 search_for: "Xtra AI camera shop temu"
 tags:
-  - claude
-  - ai-tools
-  - automation
-  - agent-workflows
-  - vlogging-camera
-  - ai-tracking
-  - gadgets
-  - content-creation
-  - needs-enrichment
+  - Product
+  - App
 original_filename: "claude-skills-and-ai-tools-01.png"
 created: 2026-05-03
 enriched: 2026-09-05
 ---
-
 ![[Claude-Skills-And-AI-Tools-01.png]]
 
 ## Summary

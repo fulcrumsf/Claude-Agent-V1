@@ -3,15 +3,12 @@ title: "Finacea Medication Overview"
 type: extracted-knowledge
 category: docs
 tags:
-  - finacea
-  - azelaic-acid
-  - rosacea-treatment
-  - prescription-drug
-  - medical-reference
+  - Product
+  - Health
 original_filename: "Open-Source-AI-Tools-And-Investments-07.jpg"
 created: 2026-05-09
+retag_flag: "bad-tag-count"
 ---
-
 ![[Finacea-Medication-Overview.jpg]]
 
 ## AI Analysis

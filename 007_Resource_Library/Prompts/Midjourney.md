@@ -1,6 +1,10 @@
 ---
+title: "Art Styles and First-Person Perspective Image Prompts"
 Description: Technical prompt designed to analyze code snippets, suggest improvements, identify potential bugs, and explain complex programming concepts in simple terms. Ideal for developers seeking code optimization and learning.
 Category: Code
+tags:
+  - Art-Style
+  - Guide
 ---
 ### Art Styles for Posters
 ### Art Styles

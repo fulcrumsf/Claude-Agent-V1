@@ -3,12 +3,11 @@ title: "Prompts Script 6"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Image-Video-Model
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Alexander The Great/Prompts Script 6.md
 ---
-
 1. A captivating view of Tyre, an island city, in its full glory with formidable walls and the sea around, setting the stage for Alexander's legendary siege, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. Alexander the Great looking out towards Tyre, a look of determination on his face, as he plans his bold and unprecedented siege strategy, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. The initial construction of the causeway to Tyre, showing Macedonian soldiers and engineers working with rubble, a scene of ambition and challenge, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250

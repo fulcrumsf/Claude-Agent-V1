@@ -1,5 +1,8 @@
 ---
+title: "Remote Job Search Sites"
 Category: Revenue Stream
+tags:
+  - Platforms
 ---
 > [!info] Remote Jobs | Working Nomads  
 > Discover fully remote jobs worldwide for digital nomads and remote workers.  

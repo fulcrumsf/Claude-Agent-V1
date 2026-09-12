@@ -3,14 +3,11 @@ title: "Arcads Claude Code Github Repository"
 type: extracted-knowledge
 category: tools
 tags:
-  - github-repository
-  - claude-ai
-  - developer-tools
-  - open-source
+  - GitHub
+  - Coding-Agent
 original_filename: "IMG_9918.PNG"
 created: 2026-08-24
 ---
-
 ![[Arcads-Claude-Code-Github-Repository-1.png]]
 
 ## AI Analysis

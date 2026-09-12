@@ -1,15 +1,17 @@
 ---
-title: "AI Video Sora Building"
+title: "AI Video Generator Web App Prompt"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
-ai_description: "TikTok video from @WillFrancis-AI+Marketing detailing a prompt to "Build a professional AI video generator web app" using the FAL.ai API, outlining features like video generation form, aspect ratio, duration, and video gallery — saved as a reference for building an AI tool or content creation idea."
+  - App
+  - Guide
+ai_description: >-
+  TikTok video from @WillFrancis-AI+Marketing detailing a prompt to "Build a professional AI video generator web app" using the FAL.ai API, outlining features like video generation form, aspect ratio, duration, and video gallery — saved as a reference for building an AI tool or content creation idea.
+summary: >-
+  TikTok video from @WillFrancis-AI+Marketing detailing a prompt to "Build a professional AI video generator web app" using the FAL.ai API, outlining features like video generation form, aspect ratio, duration, and video gallery — saved as a reference for building an AI tool or content creation idea.
 original_filename: "ai-video-sora-building.PNG"
 created: 2026-05-01
 ---
-
 ![[AI-Video-SORA-Building.png]]
 
 ## AI Analysis

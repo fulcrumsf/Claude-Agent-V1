@@ -3,15 +3,11 @@ title: "FreeBuff Coding Agent AI Switcher"
 type: extracted-knowledge
 category: tools
 tags:
-  - ai-coding-agent
-  - command-line-interface
-  - open-source-tools
-  - deeppseek
-  - dev-tools
+  - Coding-Agent
+  - App
 original_filename: "IMG_9851.PNG"
 created: 2026-08-24
 ---
-
 ![[FreeBuff-Coding-Agent-AI-Switcher.png]]
 
 ## AI Analysis

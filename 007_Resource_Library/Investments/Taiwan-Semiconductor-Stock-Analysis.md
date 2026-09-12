@@ -3,15 +3,11 @@ title: "Taiwan Semiconductor Stock Analysis"
 type: extracted-knowledge
 category: investments
 tags:
-  - semiconductor
-  - stock-market
-  - financial-analysis
-  - tsmc
-  - market-trends
+  - Stocks
 original_filename: "IMG_9924.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-value"
 ---
-
 ![[Taiwan-Semiconductor-Stock-Analysis.png]]
 
 ## AI Analysis

@@ -1,15 +1,15 @@
 ---
-title: "Phone Io"
+title: "Phone.io - Nomad Phone Number"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "Instagram ad for phone2.io, showing a service offering 'A real phone number for nomads' with 'Unlimited calling & incoming sms' for '$4/mo.', complete with a simulated bank verification code message — likely saved for travel research or a potential tool for digital entrepreneurs."
+summary: >-
+  Instagram ad for phone2.io, showing a service offering 'A real phone number for nomads' with 'Unlimited calling & incoming sms' for '$4/mo.', complete with a simulated bank verification code message — likely saved for travel research or a potential tool for digital entrepreneurs.
 original_filename: "Phone2.io.PNG"
 created: 2026-05-01
 ---
-
 ![[Phone-Io.png]]
 
 ## AI Analysis

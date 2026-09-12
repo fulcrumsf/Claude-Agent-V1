@@ -1,11 +1,10 @@
 ---
-title: "Free-And-Unlimited-How-I-Make-Viral-3d-Documentary-Videos-100-With-AI"
+title: "How to Make Viral 3D Documentary Videos with AI and Free Tools"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - video-production
+  - Guide
+  - 3D
 created: 2026-06-06
 source: 000_Ingest/FREE & UNLIMITED  How I Make VIRAL 3D Documentary Videos 100% With AI.md
 ---

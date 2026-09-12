@@ -1,15 +1,16 @@
 ---
-title: "Aurora Print Leggings Review"
+title: "Class Central Free Online Courses"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Guide
+  - Product
 ai_description: "TikTok video from @theAIsurfer promoting Class Central, a website for 'Get Certified for Free: Google & Harvard Secrets Revealed!', showing its 'Find your next course' interface with categories like 'Free Certificates' and 'Free AI-powered' — likely saved as a content idea or resource discovery for free online certifications."
+summary: >-
+  TikTok video from @theAIsurfer promoting Class Central, a website for 'Get Certified for Free: Google & Harvard Secrets Revealed!', showing its 'Find your next course' interface with categories like 'Free Certificates' and 'Free AI-powered' — likely saved as a content idea or resource discovery for free online certifications.
 original_filename: "aurora-print-leggings-review.PNG"
 created: 2026-05-01
 ---
-
 ![[Aurora-Print-Leggings-Review.png]]
 
 ## AI Analysis

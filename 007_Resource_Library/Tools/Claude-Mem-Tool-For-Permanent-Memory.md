@@ -3,15 +3,11 @@ title: "Claude Mem Tool For Permanent Memory"
 type: extracted-knowledge
 category: tools
 tags:
-  - claude-ai
-  - github-repository
-  - ai-memory
-  - developer-tools
-  - coding-assistant
+  - Coding-Agent
+  - GitHub
 original_filename: "Conference-Floorplan-Adobe-Vizrt-07.png"
 created: 2026-05-09
 ---
-
 ![[Claude-Mem-Tool-For-Permanent-Memory.png]]
 
 ## AI Analysis

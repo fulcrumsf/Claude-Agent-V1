@@ -3,15 +3,12 @@ title: "Open Generative AI Unsloth HuggingFace Tool"
 type: extracted-knowledge
 category: tools
 tags:
-  - open-source-tools
-  - generative-ai
-  - unsloth
-  - huggingface
-  - ai-alternatives
+  - GitHub
+  - Image-Video-Model
 original_filename: "IMG_9808.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-count"
 ---
-
 ![[Open-Generative-AI-Unsloth-HuggingFace-Tool.png]]
 
 ## AI Analysis

@@ -1,0 +1,21 @@
+{
+  "reason": "First framing iteration superseded by pacing corrections in Gate-3-Run-002; archived under the workspace iteration rule.",
+  "original": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Gate-3-Run-001",
+  "archived": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe/Archived/Gate-3-Run-001",
+  "file_sha256": {
+    "Framing-Debug-v1.mp4": "a7274b34b75aa0319514138396f4ab36f93cf420a2999c581cbef81e7741dc36",
+    "Framing-Debug-v1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Crop-Plan-v1.json": "538e9738cc6f775ab6500d46481ba88b08a004dc6bbc6c9251992901c6b3608b",
+    "Run-Report-v1.json": "507a515b7fdb67333d06d59f081290504ce0608057db8ee7b065ec4e6a3d8787",
+    "Part-3-Hybrid-v1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Run-Started-v1.json": "dbc5d0326b1e8c637f9a9908f497a27f425ceab48e146b96465d0fd099008fad",
+    "Part-3-Subject-v1.mp4": "81cd365c236234f38417316c529d42941c517b9249e53d3fc9e009adfa043e8a",
+    "Part-3-Hybrid-v1.mp4": "b95f391ce9d711d73eb6c58d6d9ffe56e725d076f6288a0e3ab338638453a5b6",
+    "Part-3-Subject-v1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Framing-Comparison-v1.mp4": "bc5eea9319df3241dfaf590a83605da2e733d148830adcae6dc83e909f073dc4",
+    "Framing-Comparison-v1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Framing-Contact-Sheet-v1.jpg": "f59a864ff909c34858f412c36c8c6f48c1fb3d2bb5c62db7dc86d130c92fe258",
+    "Part-3-Group-v1.mp4": "ba54c6d48c50a6821537521c9c6f3415ac40c9a3c57e7cde65b2b0c7553dbe3c",
+    "Part-3-Group-v1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

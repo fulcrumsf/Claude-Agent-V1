@@ -3,13 +3,14 @@ title: "Cap.so"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
+  - App
 ai_description: "TikTok feed showing a video by 'John Tagudin | Creator Tools' reviewing 'Cap.so' as the 'Best free screen recording tool I’ve found', with 14.2K likes and 13.1K saves — likely saved as a bookmark for content creation tool discovery."
+summary: >-
+  TikTok feed showing a video by 'John Tagudin | Creator Tools' reviewing 'Cap.so' as the 'Best free screen recording tool I’ve found', with 14.2K likes and 13.1K saves — likely saved as a bookmark for content creation tool discovery.
 original_filename: "Cap.so.PNG"
 created: 2026-05-01
 ---
-
 ![[Cap-So.png]]
 
 ## AI Analysis

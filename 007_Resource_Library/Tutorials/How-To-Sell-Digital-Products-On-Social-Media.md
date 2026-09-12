@@ -3,15 +3,11 @@ title: "How To Sell Digital Products On Social Media"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - digital-products
-  - social-media-marketing
-  - online-business
-  - monetization-strategy
-  - personal-branding
+  - Guide
+  - Profile
 original_filename: "Digital-Products-Social-Media-10.png"
 created: 2026-05-09
 ---
-
 ![[How-To-Sell-Digital-Products-On-Social-Media.png]]
 
 ## AI Analysis

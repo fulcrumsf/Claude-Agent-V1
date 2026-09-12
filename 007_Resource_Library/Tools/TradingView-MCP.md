@@ -1,15 +1,13 @@
 ---
-title: "TradingView MCP"
+title: "TradingView MCP Bridge"
 type: tool-doc
 category: general
 tags:
-  - mcp
-  - tradingview
-  - trading
+  - App
+  - Coding-Agent
 created: 2026-05-08
 source: local
 ---
-
 ## TradingView MCP Bridge
 
 Personal AI assistant for your TradingView Desktop charts. Connects Claude Code to your locally running TradingView app via Chrome DevTools Protocol for AI-assisted chart analysis, Pine Script development, and workflow automation.

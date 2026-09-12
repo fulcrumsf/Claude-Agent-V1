@@ -3,11 +3,8 @@ title: "We-Made-92k-From-TikTok-AI-Videos-In-45-Days-No-Bs-Guide"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - tiktok
-  - video-production
-  - ads
+  - Guide
+  - Profile
 created: 2026-06-06
 source: 000_Ingest/We Made $92K From TikTok AI Videos in 45 Days (No BS Guide).md
 ---

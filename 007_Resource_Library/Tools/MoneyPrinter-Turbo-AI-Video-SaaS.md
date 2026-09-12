@@ -3,15 +3,11 @@ title: "MoneyPrinter Turbo AI Video SaaS"
 type: extracted-knowledge
 category: tools
 tags:
-  - moneyprinter-turbo
-  - open-source-tools
-  - short-form-video
-  - github
-  - automation
+  - GitHub
+  - Image-Video-Model
 original_filename: "IMG_0499.PNG"
 created: 2026-08-24
 ---
-
 ![[MoneyPrinter-Turbo-AI-Video-SaaS.png]]
 
 ## AI Analysis

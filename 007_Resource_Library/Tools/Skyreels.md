@@ -3,13 +3,14 @@ title: "Skyreels"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Image-Video-Model
+  - Product
 ai_description: "A TikTok video by @theAIsurfer.com promoting SkyReels V2, an 'Infinite-Length Film Generative' AI model for 'unlimited AI videos without expensive subscriptions,' embedded within a TikTok feed — saved for AI video tool research and content ideas."
+summary: >-
+  A TikTok video by @theAIsurfer.com promoting SkyReels V2, an 'Infinite-Length Film Generative' AI model for 'unlimited AI videos without expensive subscriptions,' embedded within a TikTok feed — saved for AI video tool research and content ideas.
 original_filename: "Skyreels.PNG"
 created: 2026-05-01
 ---
-
 ![[Skyreels.png]]
 
 ## AI Analysis

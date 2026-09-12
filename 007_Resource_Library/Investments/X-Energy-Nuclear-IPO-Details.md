@@ -3,15 +3,11 @@ title: "X Energy Nuclear IPO Details"
 type: extracted-knowledge
 category: investments
 tags:
-  - x-energy
-  - ipo
-  - nuclear-energy
-  - cnbc
-  - stock-market
+  - Stocks
 original_filename: "IMG_9769.PNG"
 created: 2026-08-24
+retag_flag: "bad-tag-count"
 ---
-
 ![[X-Energy-Nuclear-IPO-Details.png]]
 
 ## AI Analysis

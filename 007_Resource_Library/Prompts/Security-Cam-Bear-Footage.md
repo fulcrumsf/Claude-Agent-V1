@@ -1,15 +1,16 @@
 ---
-title: "Security Cam Bear Footage"
+title: "Realistic security cam footage of old lady feeding a bear prompt"
 type: prompt
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Image-Video-Model
+  - Art-Style
 ai_description: "An iOS screenshot showing an X (Twitter) notification and a partially typed AI image/video generation prompt: 'Realistic security cam footage of old lady feeding a bear at night on her porch, she has a big bowl of ground beef feeding the bear with a wooden spoon, the bear is perched on a railing,' likely saved as a content idea or prompt engineering reference for a digital entrepreneur."
+summary: >-
+  An iOS screenshot showing an X (Twitter) notification and a partially typed AI image/video generation prompt: 'Realistic security cam footage of old lady feeding a bear at night on her porch, she has a big bowl of ground beef feeding the bear with a wooden spoon, the bear is perched on a railing,' likely saved as a content idea or prompt engineering reference for a digital entrepreneur.
 original_filename: "security-cam-bear-footage.PNG"
 created: 2026-05-01
 ---
-
 ![[Security-Cam-Bear-Footage.png]]
 
 ## AI Analysis

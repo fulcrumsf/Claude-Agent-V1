@@ -1,15 +1,16 @@
 ---
-title: "Agency Agents.github"
+title: "Agency Agents GitHub Repo"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - ai-agents
+  - GitHub
+  - Coding-Agent
 ai_description: "A TikTok video featuring a GitHub repository 'msitarzewski/agency-agents' which outlines AI agent tools for a 'Product Division', likely saved by a digital entrepreneur or content creator for research into building an AI agency or leveraging AI agent frameworks."
+summary: >-
+  A TikTok video featuring a GitHub repository 'msitarzewski/agency-agents' which outlines AI agent tools for a 'Product Division', likely saved by a digital entrepreneur or content creator for research into building an AI agency or leveraging AI agent frameworks.
 original_filename: "agency-agents.github.PNG"
 created: 2026-05-01
 ---
-
 ![[Agency-Agents-GITHUB.png]]
 
 ## AI Analysis

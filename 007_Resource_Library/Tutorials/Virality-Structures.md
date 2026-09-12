@@ -3,13 +3,13 @@ title: "Virality Structures"
 type: tutorial
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Guide
 ai_description: "TikTok video by 'Short Form Content Strategist ✨' presenting a content script template with 'Hook 1', 'Hook 2 (imme video):', 'P 1-3:', 'CTA 1', 'CTA 2 (ending' and 'Common Scri' elements — saved as a short-form video content creation guide."
+summary: >-
+  TikTok video by 'Short Form Content Strategist ✨' presenting a content script template with 'Hook 1', 'Hook 2 (imme video):', 'P 1-3:', 'CTA 1', 'CTA 2 (ending' and 'Common Scri' elements — saved as a short-form video content creation guide.
 original_filename: "Virality Structures1153.PNG"
 created: 2026-05-01
 ---
-
 ![[Virality-Structures.png]]
 
 ## AI Analysis

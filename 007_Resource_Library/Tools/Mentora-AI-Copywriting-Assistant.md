@@ -3,14 +3,10 @@ title: "Mentora AI Copywriting Assistant"
 type: extracted-knowledge
 category: tools
 tags:
-  - AI-copilot
-  - copywriting-tools
-  - marketing-automation
-  - sales-scripts
+  - App
 original_filename: "IMG_9999.PNG"
 created: 2026-08-24
 ---
-
 ![[Mentora-AI-Copywriting-Assistant.png]]
 
 ## AI Analysis

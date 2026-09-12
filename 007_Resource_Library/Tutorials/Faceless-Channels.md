@@ -1,5 +1,8 @@
 ---
+title: "Tutorial Library Gallery Collection"
 Category: Video
+tags:
+  - Guide
 ---
 #### Gallery Collection
 |![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/subtitles_gray.svg)Description|![](https://www.notion.so/icons/tag_gray.svg)Tags|

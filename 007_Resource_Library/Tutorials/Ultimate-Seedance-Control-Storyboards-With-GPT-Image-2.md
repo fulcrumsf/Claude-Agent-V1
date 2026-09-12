@@ -1,17 +1,13 @@
 ---
-title: "Ultimate Seedance Control - Storyboards With GPT Image 2"
+title: "Ultimate Seedance Control with GPT Image 2 Storyboards"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - storyboard
-  - gpt-image-2
-  - topview
-  - ai-video
+  - Guide
+  - Image-Video-Model
 created: 2026-08-10
 source: https://www.youtube.com/watch?v=4swPHBbsqtg
 ---
-
 ![](https://www.youtube.com/watch?v=4swPHBbsqtg)
 
 🔗 Access GPT Image 2:  

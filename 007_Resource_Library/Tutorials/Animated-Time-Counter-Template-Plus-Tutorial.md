@@ -1,13 +1,13 @@
 ---
-title: "Animated-Time-Counter-Template-Plus-Tutorial"
+title: "Canva Animated Time Counter Template Tutorial"
 type: tutorial
 category: video-production
 tags:
-  - tutorial
-  - how-to
-  - video-production
+  - Guide
+  - App
 created: 2026-06-06
 source: 000_Ingest/Animated Time Counter (Template + Tutorial).md
+retag_flag: "bad-tag-value"
 ---
 ### [Lilly's Tech Tips](https://www.patreon.com/lillytech)
 

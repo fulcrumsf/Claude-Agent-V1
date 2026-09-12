@@ -1,17 +1,13 @@
 ---
-title: "Angular Retro Cartoon Style"
+title: "Angular Retro Cartoon Style Prompt"
 type: prompt
 category: video-production
 tags:
-  - niji-6
-  - prompt
-  - retro-cartoon
-  - sci-fi
-  - cel-shading
+  - Art-Style
+  - Image-Video-Model
 created: 2026-04-28
 source: local
 ---
-
 ---
 Image: https://public-files.gumroad.com/u0ckooiyhpd9vg8a36rjmktlp3h6
 Model: Niji 6

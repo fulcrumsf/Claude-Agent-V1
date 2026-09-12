@@ -3,13 +3,14 @@ title: "Dora_studio"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Image-Video-Model
 ai_description: "TikTok video by Nathan Hodgson showcasing Dora Studio, an AI tool for generating motion graphics and animations from text prompts — saved as a potential tool for content creation or an AI tool content idea."
+summary: >-
+  TikTok video by Nathan Hodgson showcasing Dora Studio, an AI tool for generating motion graphics and animations from text prompts — saved as a potential tool for content creation or an AI tool content idea.
 original_filename: "Dora_Studio.PNG"
 created: 2026-05-01
 ---
-
 ![[Dora-Studio.png]]
 
 ## AI Analysis

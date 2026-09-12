@@ -1,15 +1,15 @@
 ---
-title: "Clip Cafe Movie Search"
+title: "Clip.Cafe Movie Search"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
 ai_description: "A TikTok video by @TylerWise demonstrates the Clip.Cafe website, a searchable database for movie and TV show quotes and clips, likely saved as a valuable resource for content creation and inspiration."
+summary: >-
+  A TikTok video by @TylerWise demonstrates the Clip.Cafe website, a searchable database for movie and TV show quotes and clips, likely saved as a valuable resource for content creation and inspiration.
 original_filename: "clip-cafe-movie-search.PNG"
 created: 2026-05-01
 ---
-
 ![[Clip-Cafe-Movie-Search.png]]
 
 ## AI Analysis

@@ -1,15 +1,16 @@
 ---
-title: "Pipedream.com.string"
+title: "Pipedream.com - String AI Agent"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "TikTok video by @sophietheodorou (automation girl) showcasing the 'string alpha' AI agent tool on pipedream.com, which can 'find all grants for a small business...' — saved as a potential tool to try or content idea for AI agents and business automation."
+summary: >-
+  TikTok video by @sophietheodorou (automation girl) showcasing the 'string alpha' AI agent tool on pipedream.com, which can 'find all grants for a small business...' — saved as a potential tool to try or content idea for AI agents and business automation.
 original_filename: "pipedream.com.string.PNG"
 created: 2026-05-01
 ---
-
 ![[Pipedream-Com-String.png]]
 
 ## AI Analysis

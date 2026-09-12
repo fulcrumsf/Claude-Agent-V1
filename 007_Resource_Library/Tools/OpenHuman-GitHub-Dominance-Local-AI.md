@@ -3,15 +3,11 @@ title: "OpenHuman GitHub Dominance Local AI"
 type: extracted-knowledge
 category: tools
 tags:
-  - opnhuman
-  - github-top-repos
-  - local-ai
-  - llm-tools
-  - developer-trends
+  - GitHub
+  - LLM
 original_filename: "IMG_0034.PNG"
 created: 2026-08-24
 ---
-
 ![[OpenHuman-GitHub-Dominance-Local-AI.png]]
 
 ## AI Analysis

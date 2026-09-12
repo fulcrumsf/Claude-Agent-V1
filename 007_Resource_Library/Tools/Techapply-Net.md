@@ -3,13 +3,13 @@ title: "Techapply.net"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Platforms
 ai_description: "A TikTok video by @quietlifejapan promoting a remote job website, techapply.net, which offers worldwide jobs with no age or experience requirements — likely saved for remote work opportunities or content ideas."
+summary: >-
+  A TikTok video by @quietlifejapan promoting a remote job website, techapply.net, which offers worldwide jobs with no age or experience requirements — likely saved for remote work opportunities or content ideas.
 original_filename: "techapply.net.PNG"
 created: 2026-05-01
 ---
-
 ![[Techapply-Net.png]]
 
 ## AI Analysis

@@ -1,15 +1,16 @@
 ---
-title: "Rive_editor"
+title: "Rive Editor"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Art-Reference
 ai_description: "The rive.app website showcasing the Rive Editor, a design tool for production-ready, interactive graphics using State Machines, likely saved by a content creator for tool research or a potential tutorial topic."
+summary: >-
+  The rive.app website showcasing the Rive Editor, a design tool for production-ready, interactive graphics using State Machines, likely saved by a content creator for tool research or a potential tutorial topic.
 original_filename: "Rive_Editor.PNG"
 created: 2026-05-01
 ---
-
 ![[Rive-Editor.png]]
 
 ## AI Analysis

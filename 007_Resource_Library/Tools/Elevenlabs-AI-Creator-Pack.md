@@ -3,13 +3,15 @@ title: "Elevenlabs AI Creator Pack"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
-ai_description: "A mobile web page for "AI CREATOR PACK Vol. 1" on `aicreatorpack.com`, promoted by or related to ElevenLabs, offering over $5,000 in savings on AI apps for content creators, likely saved for tool research and potential purchase."
+  - Product
+  - Audio-Model
+ai_description: >-
+  A mobile web page for "AI CREATOR PACK Vol. 1" on `aicreatorpack.com`, promoted by or related to ElevenLabs, offering over $5,000 in savings on AI apps for content creators, likely saved for tool research and potential purchase.
+summary: >-
+  A mobile web page for "AI CREATOR PACK Vol. 1" on `aicreatorpack.com`, promoted by or related to ElevenLabs, offering over $5,000 in savings on AI apps for content creators, likely saved for tool research and potential purchase.
 original_filename: "elevenlabs-ai-creator-pack.PNG"
 created: 2026-05-01
 ---
-
 ![[Elevenlabs-AI-Creator-Pack.png]]
 
 ## AI Analysis

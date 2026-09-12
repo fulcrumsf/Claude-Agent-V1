@@ -6,14 +6,10 @@ summary: "ClickMagick is a comprehensive click tracking and optimization softwar
 url: "https://www.clickmagick.com/"
 verified: true
 tags:
-  - ad-tracking
-  - conversion-optimization
-  - marketing-analytics
-  - click-fraud-detection
-  - campaign-management
+  - App
+  - Product
 created: 2026-09-05
 enriched: 2026-09-05
 ---
-
 ## Summary
 ClickMagick is a comprehensive click tracking and optimization software designed for online marketers. It enables users to monitor clicks, conversions, and overall campaign performance in real-time, offering features like A/B split testing, click fraud detection, and advanced attribution modeling. The tool helps businesses optimize ad spend and improve the effectiveness of their marketing campaigns.

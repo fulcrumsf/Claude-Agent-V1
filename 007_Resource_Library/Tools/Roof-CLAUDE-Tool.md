@@ -3,14 +3,14 @@ title: "Roof Claude Tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - claude
-  - tools
+  - LLM
+  - App
 ai_description: "TikTok video from @nicksadler.io discussing a powerful Claude AI tool called 'RuFlo' or 'Roof', with 13.4K saves — likely bookmarked for AI tool research or content inspiration."
+summary: >-
+  TikTok video from @nicksadler.io discussing a powerful Claude AI tool called 'RuFlo' or 'Roof', with 13.4K saves — likely bookmarked for AI tool research or content inspiration.
 original_filename: "roof-claude-tool.PNG"
 created: 2026-05-01
 ---
-
 ![[Roof-CLAUDE-Tool.png]]
 
 ## AI Analysis

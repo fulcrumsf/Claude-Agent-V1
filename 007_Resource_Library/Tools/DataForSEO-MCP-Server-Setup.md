@@ -1,17 +1,14 @@
 ---
-title: "DataForSEO MCP Server Setup"
+title: "DataForSEO MCP Server Setup Guide"
 type: extracted-knowledge
 category: tools
 tags:
-  - dataforseo
-  - seo-tools
-  - mcp-server
-  - api-integration
-  - ai-workflows
+  - Guide
+  - LLM
 original_filename: "Open-Source-AI-Tools-08.png"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[DataForSEO-MCP-Server-Setup.png]]
 
 ## AI Analysis

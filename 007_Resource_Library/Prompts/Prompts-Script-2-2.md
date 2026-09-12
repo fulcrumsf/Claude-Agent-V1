@@ -1,14 +1,13 @@
 ---
-title: "Prompts Script 2"
+title: "Genghis Khan Prompt Ideas"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Art-Reference
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Genghis Khan/Prompts Script 2.md
 ---
-
 1. ==A shadowy depiction of Genghis Khan potentially falling from his horse, a scene imbued with uncertainty and the whispers of fate, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==An intense battle scene suggesting Khan being struck by an arrow, a moment frozen in time, capturing the chaos and danger of warfare, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==
 1. ==A secretive gathering, possibly of Khan's inner circle, hinting at betrayal and conspiracy, with shadowy figures and a sense of foreboding, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250==

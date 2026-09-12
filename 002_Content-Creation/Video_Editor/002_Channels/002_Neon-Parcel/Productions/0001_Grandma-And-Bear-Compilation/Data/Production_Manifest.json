@@ -1,7 +1,7 @@
 {
   "pipeline": "neonparcel-reference-inspired-compilation",
   "version": "0.1",
-  "status": "scaffolded",
+  "status": "complete_private_upload",
   "concept": "Distinct realistic-looking grandma-and-bear scenarios",
   "generation_mode": "image-first",
   "reference_set": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Case_Studies/Grandma_And_Bear_Compilation_References/Reference_Set.json",
@@ -29,7 +29,11 @@
     "first_five_clips": "human_required",
     "remaining_batch": "human_release_required",
     "final_package": "human_required",
-    "blotato_publish": "human_required"
+    "blotato_publish": "human_required",
+    "autonomy_readiness_percent": 65,
+    "autonomy_threshold_percent": 95,
+    "autonomy_threshold_behavior": "mostly_autonomous_scheduled_job_with_minimal_iteration",
+    "next_phase": "optional_public_release_or_shorts"
   },
   "production_approval_override": {
     "intermediate_image_review": "waived_by_tony",

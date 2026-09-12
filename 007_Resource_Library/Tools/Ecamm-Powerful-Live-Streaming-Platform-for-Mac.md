@@ -1,17 +1,13 @@
 ---
-title: "Ecamm Powerful Live Streaming Platform for Mac"
+title: "Ecamm Live Powerful Live Streaming Platform"
 type: "tool-doc"
 category: "video-production"
 tags:
-  - video-production
-  - livestreaming
-  - ecamm
-  - mac
-  - tool
+  - App
+  - Product
 created: 2026-05-12
 source: local
 ---
-
 Your All-in-One Video Tool
 
 Whether you're streaming, recording, podcasting, or presenting, everything's here in Ecamm, including support for multiple cameras and screensharing. A live camera switcher lets you direct the show in real time.  

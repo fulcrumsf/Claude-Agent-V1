@@ -3,13 +3,14 @@ title: "Wyzer Studios D Suite"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - 3D
+  - Image-Video-Model
 ai_description: "TikTok video from @Wyzer Studios demonstrating a 3D generative AI workflow on 3d.hunyuan.tencent.com, with nodes for 'Prompt Augmentation' and 'Text to Single-Image' — saved as a reference for AI tools or content ideas."
+summary: >-
+  TikTok video from @Wyzer Studios demonstrating a 3D generative AI workflow on 3d.hunyuan.tencent.com, with nodes for 'Prompt Augmentation' and 'Text to Single-Image' — saved as a reference for AI tools or content ideas.
 original_filename: "wyzer-studios-3d-suite.PNG"
 created: 2026-05-01
 ---
-
 ![[Wyzer-Studios-D-Suite.png]]
 
 ## AI Analysis

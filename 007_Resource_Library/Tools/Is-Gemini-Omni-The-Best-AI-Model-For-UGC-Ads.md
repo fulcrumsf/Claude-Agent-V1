@@ -1,13 +1,10 @@
 ---
-title: "Is-Gemini-Omni-The-Best-AI-Model-For-UGC-Ads"
+title: "Gemini Omni for Generating UGC Ads"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - ugc
-  - ads
-  - app-dev
+  - Image-Video-Model
+  - Guide
 created: 2026-06-06
 source: 000_Ingest/Is Gemini Omni the Best AI Model for UGC Ads?.md
 ---

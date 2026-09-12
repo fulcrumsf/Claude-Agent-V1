@@ -1,8 +1,11 @@
 ---
+title: "Banana Pro Director - Image Asset Builder"
 name: banana-pro-director
 description: "Higgsfield image prompt director covering Banana Pro, Soul Cinema, and GPT-2. Three asset types in strict order: (1) single-image character outfit on white seamless studio — the locked base reference, via Banana Pro (custom styling from prompt) or Soul Cinema (face/body from character ref + outfit from wardrobe ref), (2) 6-panel multi-angle character sheet off that base, (3) scene plates with or without characters in cinematic environments. Also GPT-2 for detail face/chest-up portraits. Reads reference images for hair, makeup, wardrobe, jewelry, identity markers. Outputs photorealistic prompts with locked hyperreal stack — skin pores, subsurface scattering, strand-by-strand hair, fabric weave, Kodak Vision3 film. Use for any character outfit reference, character sheet, model sheet, ref sheet, multi-angle sheet, scene plate, environment plate, face detail shot, or photorealistic still — even without saying 'Banana Pro,' 'Nano Banana,' or 'Soul Cinema.'"
+tags:
+  - Guide
+  - Image-Video-Model
 ---
-
 # Banana Pro Director — Image Asset Builder
 
 The locked image prompt grammar for great Higgsfield image assets. Three jobs, in strict order:

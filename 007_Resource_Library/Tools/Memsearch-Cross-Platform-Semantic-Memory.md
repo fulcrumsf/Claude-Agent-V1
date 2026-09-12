@@ -3,15 +3,11 @@ title: "Memsearch — Cross-Platform Semantic Memory for AI Agents"
 type: tool-doc
 category: rag-systems
 tags:
-  - memsearch
-  - semantic-memory
-  - vector-database
-  - ai-agents
-  - milvus
+  - Coding-Agent
+  - LLM
 created: 2026-04-30
 source: https://github.com/zilliztech/memsearch
 ---
-
 ## memsearch
 
 **Cross-platform semantic memory for AI coding agents.**

@@ -3,15 +3,11 @@ title: "Marker Maker Timecode Workflow"
 type: extracted-knowledge
 category: tools
 tags:
-  - video-editing
-  - timecode
-  - nle
-  - workflow
-  - marker-maker
+  - Product
+  - Guide
 original_filename: "Open-Source-AI-Tools-And-Investments-06.jpg"
 created: 2026-05-09
 ---
-
 ![[Marker-Maker-Timecode-Workflow.jpg]]
 
 ## AI Analysis

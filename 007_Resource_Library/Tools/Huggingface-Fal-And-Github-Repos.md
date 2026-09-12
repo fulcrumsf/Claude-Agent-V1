@@ -1,7 +1,9 @@
 ---
+title: "AI Video Animation and Automation Tools"
 Category: Research
 tags:
-  - Tools
+  - GitHub
+  - Image-Video-Model
 ---
 A list of useful repositories and tools for video animation and automation
 [https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools](https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools)

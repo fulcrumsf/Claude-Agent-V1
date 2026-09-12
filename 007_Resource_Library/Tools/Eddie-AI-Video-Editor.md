@@ -3,14 +3,11 @@ title: "Eddie AI Video Editor"
 type: extracted-knowledge
 category: tools
 tags:
-  - ai-video-editor
-  - video-editing-software
-  - professional-tools
-  - automation
+  - Product
+  - App
 original_filename: "Conference-Floorplan-Adobe-Vizrt-14.jpg"
 created: 2026-05-09
 ---
-
 ![[Eddie-AI-Video-Editor.jpg]]
 
 ## AI Analysis

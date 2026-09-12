@@ -3,15 +3,10 @@ title: "Constellation Energy Nuclear AI Infrastructure"
 type: extracted-knowledge
 category: investments
 tags:
-  - constellation-energy
-  - nuclear-power
-  - ai-infrastructure
-  - stock-investment
-  - ceg
+  - Stocks
 original_filename: "Scribe-AI-Platform-07.png"
 created: 2026-05-09
 ---
-
 ![[Constellation-Energy-Nuclear-AI-Infrastructure.png]]
 
 ## AI Analysis

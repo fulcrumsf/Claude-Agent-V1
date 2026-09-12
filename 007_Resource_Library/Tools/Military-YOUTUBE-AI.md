@@ -1,15 +1,16 @@
 ---
-title: "Military YouTube AI"
+title: "TubeGen AI"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - youtube
+  - App
+  - Profile
 ai_description: "TikTok video by AJ showcasing the 'TubeGen AI' SaaS tool for analyzing and copying YouTube channels with AI, displaying competitor channel data and offering a free quickstart guide — saved as a tool to try and a content generation idea."
+summary: >-
+  TikTok video by AJ showcasing the 'TubeGen AI' SaaS tool for analyzing and copying YouTube channels with AI, displaying competitor channel data and offering a free quickstart guide — saved as a tool to try and a content generation idea.
 original_filename: "military-youtube-ai.PNG"
 created: 2026-05-01
 ---
-
 ![[Military-YOUTUBE-AI.png]]
 
 ## AI Analysis

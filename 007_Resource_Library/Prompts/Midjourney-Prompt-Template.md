@@ -3,13 +3,11 @@ title: "Midjourney Prompt Template"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Image-Video-Model
 created: 2026-05-03
 source: midjourney_prompt_template.json
 ---
-
-
 {% if items is iterable %}
 {% for item in items %}
 {{ item.subject }}, photorealistic 3D render, made of {{ item.material }}, {{ item.surface }}, {{ item.lighting }}, colors: {{ item.colors | join(', ') }}, set against a {{ item.background }} background, effects: {{ item.effects | join(', ') }} --v 7 --style raw --ar {{ item.aspect_ratio or "1:1" }} --quality {{ item.quality or "2" }}

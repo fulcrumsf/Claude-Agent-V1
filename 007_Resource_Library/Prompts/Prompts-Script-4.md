@@ -1,14 +1,12 @@
 ---
-title: "Prompts Script 4"
+title: "Alexander the Great Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Alexander The Great/Prompts Script 4.md
 ---
-
 1. Alexander the Great as a young prince, deep in thought, with a backdrop of ancient Macedonia, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
   
 2. An ancient oracle delivering a prophecy to Alexander, a scene filled with mysticism and foreboding, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250

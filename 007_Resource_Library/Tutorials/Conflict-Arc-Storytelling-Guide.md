@@ -3,15 +3,11 @@ title: "Conflict Arc Storytelling Guide"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - storytelling
-  - script-structure
-  - conflict-arc
-  - video-retention
-  - content-strategy
+  - Guide
+  - Art-Reference
 original_filename: "Tive-Explore-Following-Shop-Blew-Youtube-3.PNG"
 created: 2026-05-09
 ---
-
 ![[Conflict-Arc-Storytelling-Guide.png]]
 
 ## AI Analysis

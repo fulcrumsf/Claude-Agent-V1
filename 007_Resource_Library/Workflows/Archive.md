@@ -1,13 +1,13 @@
 ---
-title: "Archive"
+title: "Master Documentation for Video Editing Automation"
 type: workflow
 category: workflows
 tags:
-  - workflows
+  - Pipeline
+  - Audio-Model
 created: 2026-05-03
 source: Databases/Projects/Automation/Automation Workflows/Auto Editor V2 0 (Python Local)/Archive.md
 ---
-
 ### 📖 Master Documentation for Your Video Editing Automation
 ### **📖 Master Documentation for Your Video Editing Automation**
 This document serves as a **full reference** for your **Make + Google Colab + FFmpeg + Whisper AI automation workflow**. If you ever return later, you can copy and paste this into any ChatGPT session to continue exactly where you left off.

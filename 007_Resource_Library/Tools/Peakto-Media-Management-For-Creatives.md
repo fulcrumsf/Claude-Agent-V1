@@ -3,15 +3,11 @@ title: "Peakto Media Management For Creatives"
 type: extracted-knowledge
 category: tools
 tags:
-  - peakto
-  - media-management
-  - creative-software
-  - premiere-pro
-  - video-workflow
+  - Product
+  - App
 original_filename: "Conference-Floorplan-Adobe-Vizrt-12.jpg"
 created: 2026-05-09
 ---
-
 ![[Peakto-Media-Management-For-Creatives.jpg]]
 
 ## AI Analysis

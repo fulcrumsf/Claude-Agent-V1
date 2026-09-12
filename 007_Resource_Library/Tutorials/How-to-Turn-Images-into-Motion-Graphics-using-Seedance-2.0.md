@@ -3,14 +3,11 @@ title: "How to Turn Images into Motion Graphics using Seedance 2.0"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - motion-graphics
-  - image-to-video
-  - ai-video
+  - Guide
+  - Image-Video-Model
 created: 2026-08-29
 source: https://www.youtube.com/watch?v=k0gSSN2A8fQ
 ---
-
 ![](https://www.youtube.com/watch?v=k0gSSN2A8fQ)
 
 In this video I show you how to turn collage style images into motion graphics using Seedance 2.0.  

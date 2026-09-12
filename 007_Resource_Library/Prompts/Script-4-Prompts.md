@@ -1,14 +1,12 @@
 ---
-title: "Script 4 Prompts"
+title: "Ottoman Empire Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Ottomans/Script 4 Prompts.md
 ---
-
 1. An Ottoman astronomer gazing through an ancient telescope under a starlit sky, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. A grand Ottoman naval ship navigating the Mediterranean, demonstrating maritime prowess, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. An intricate Ottoman-era firearm, showcasing advanced weaponry technology, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250

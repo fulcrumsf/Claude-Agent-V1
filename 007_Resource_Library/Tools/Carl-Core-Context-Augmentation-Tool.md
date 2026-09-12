@@ -3,15 +3,11 @@ title: "Carl Core Context Augmentation Tool"
 type: extracted-knowledge
 category: tools
 tags:
-  - carl
-  - claude-code
-  - terminal-setup
-  - developer-tools
-  - context-augmentation
+  - Coding-Agent
+  - LLM
 original_filename: "IMG_9857.PNG"
 created: 2026-08-24
 ---
-
 ![[Carl-Core-Context-Augmentation-Tool.png]]
 
 ## AI Analysis

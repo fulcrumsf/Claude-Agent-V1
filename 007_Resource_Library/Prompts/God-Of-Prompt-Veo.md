@@ -1,17 +1,16 @@
 ---
-title: "God Of Prompt Veo"
+title: "God of Prompt Veo AI Video Prompts"
 type: prompt
 category: video-production
 tags:
-  - screenshot
-  - prompt
-  - ai-video
-  - prompt-library
+  - Image-Video-Model
+  - Research-List
 ai_description: "A mobile browser displays an article on godofprompt.ai titled 'Best Veo 3 Prompts That Generated Millions of Views (+ Exact Templates),' featuring an 'AI PROMPT LIBRARY IS LIVE!' banner — likely saved as a resource for viral AI prompt ideas and templates for content creation."
+summary: >-
+  A mobile browser displays an article on godofprompt.ai titled 'Best Veo 3 Prompts That Generated Millions of Views (+ Exact Templates),' featuring an 'AI PROMPT LIBRARY IS LIVE!' banner — likely saved as a resource for viral AI prompt ideas and templates for content creation.
 original_filename: "god-of-prompt-veo.PNG"
 created: 2026-05-01
 ---
-
 ![[God-Of-Prompt-Veo.png]]
 
 ## Prompt Resource

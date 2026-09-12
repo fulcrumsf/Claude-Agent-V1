@@ -1,15 +1,17 @@
 ---
-title: "Tool_motion_ai_employees"
+title: "Motion AI Employees"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - tools
-ai_description: "Mobile browser showing the landing page for Motion (usemotion.com), highlighting its "Agentic Work Suite" that deploys "AI Employees" and announcing its recent $60M funding, likely saved for research on AI productivity tools for entrepreneurs."
+  - App
+  - Product
+ai_description: >-
+  Mobile browser showing the landing page for Motion (usemotion.com), highlighting its "Agentic Work Suite" that deploys "AI Employees" and announcing its recent $60M funding, likely saved for research on AI productivity tools for entrepreneurs.
+summary: >-
+  Mobile browser showing the landing page for Motion (usemotion.com), highlighting its "Agentic Work Suite" that deploys "AI Employees" and announcing its recent $60M funding, likely saved for research on AI productivity tools for entrepreneurs.
 original_filename: "Tool_Motion_AI_Employees.PNG"
 created: 2026-05-01
 ---
-
 ![[Tool-Motion-AI-Employees.png]]
 
 ## AI Analysis

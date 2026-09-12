@@ -3,15 +3,11 @@ title: "She Isn't Real - The Definitive AI Influencer Pipeline"
 type: tutorial
 category: video-production
 tags:
-  - seedance
-  - ai-influencer
-  - character-consistency
-  - voice-cloning
-  - ugc
+  - Guide
+  - Pipeline
 created: 2026-08-10
 source: https://www.youtube.com/watch?v=mCavxK7UJ84
 ---
-
 ![](https://www.youtube.com/watch?v=mCavxK7UJ84)
 
 Try Enhancor AI and build your AI influencer: http://app.enhancor.ai/video-generator  

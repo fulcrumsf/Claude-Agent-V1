@@ -1,15 +1,16 @@
 ---
-title: "Copilot"
+title: "Copilot Investments Tab"
 type: doc
 category: general
 tags:
-  - screenshot
-  - reference
+  - Stocks
+  - App
 ai_description: "Copilot personal finance app showing the 'Investments' tab with a $29,120 live balance, 5.96% gain over 3 months, top daily movers (DIS, TSLA, AMZN down), and 3-month returns for linked accounts (Coinbase, Wealthfront, Robinhood) — likely saved for tracking personal investments or as a reference for a finance app review."
+summary: >-
+  Copilot personal finance app showing the 'Investments' tab with a $29,120 live balance, 5.96% gain over 3 months, top daily movers (DIS, TSLA, AMZN down), and 3-month returns for linked accounts (Coinbase, Wealthfront, Robinhood) — likely saved for tracking personal investments or as a reference for a finance app review.
 original_filename: "Copilot.PNG"
 created: 2026-05-01
 ---
-
 ![[Copilot.png]]
 
 ## AI Analysis

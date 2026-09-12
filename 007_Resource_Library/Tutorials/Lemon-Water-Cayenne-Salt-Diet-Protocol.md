@@ -3,15 +3,11 @@ title: "Lemon Water Cayenne Salt Diet Protocol"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - detox-diet
-  - weight-loss-hacks
-  - healthy-eating
-  - natural-remedies
-  - intermittent-fasting
+  - Guide
+  - Health
 original_filename: "IMG_0035.PNG"
 created: 2026-08-24
 ---
-
 ![[Lemon-Water-Cayenne-Salt-Diet-Protocol.png]]
 
 ## AI Analysis

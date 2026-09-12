@@ -3,14 +3,11 @@ title: "OpenVid Tool Screenshot to Walkthrough Video"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - product-demo
-  - openvid
-  - github-tool
-  - video-marketing
+  - Guide
+  - App
 original_filename: "IMG_9969.PNG"
 created: 2026-08-24
 ---
-
 ![[OpenVid-Tool-Screenshot-to-Walkthrough-Video.png]]
 
 ## AI Analysis

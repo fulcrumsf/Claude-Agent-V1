@@ -3,13 +3,14 @@ title: "Lindy Build AI"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Product
 ai_description: "TikTok video showing Nathan Hodgson promoting the 'Lindy Build' AI app-building tool which builds apps from descriptions, with 1,061 saves — likely saved as a resource for app development or content creation ideas."
+summary: >-
+  TikTok video showing Nathan Hodgson promoting the 'Lindy Build' AI app-building tool which builds apps from descriptions, with 1,061 saves — likely saved as a resource for app development or content creation ideas.
 original_filename: "lindy-build-ai.PNG"
 created: 2026-05-01
 ---
-
 ![[Lindy-Build-AI.png]]
 
 ## AI Analysis

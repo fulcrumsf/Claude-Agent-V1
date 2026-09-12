@@ -3,13 +3,11 @@ title: "Clik AI Video Editor"
 type: tool-doc
 category: video-production
 tags:
-  - video-editing
-  - ai-tools
-  - conversational-ai
+  - Product
+  - App
 created: 2026-05-08
 source: local
 ---
-
 AI agents that help creators and video professionals produce better content and grow their business.
 
 ![Clik video editor interface showing media search, timeline, and AI assistant](https://www.clik.vision/images/product-screenshot.png)

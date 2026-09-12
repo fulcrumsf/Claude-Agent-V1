@@ -1,22 +1,17 @@
 ---
-title: "Unomas0795 45 Degree Angled View Of A Japandi Living Room Des 82a1fc7b 675b 4345 98b7 E2a5fad5e7a6 0"
+title: "45 Degree Angled View Of A Japandi Living Room Design"
 type: design-inspiration
 category: design-inspiration
 form: design-reference
 summary: "A high-quality interior design visualization of a rustic living space featuring a low sectional sofa in sage green, exposed wooden ceiling beams, and weathered brick walls. The room highlights natural textures like jute rugs, wood block coffee tables, and ceramic pottery against warm, earth-toned decor."
 search_for: "bohemian industrial living room interior design inspiration"
 tags:
-  - design-inspiration
-  - interior-design
-  - rustic-decor
-  - natural-textures
-  - earth-tones
-  - loft-style
-  - needs-enrichment
+  - Art-Style
+  - Research-List
 created: 2026-05-03
 enriched: 2026-09-05
+retag_flag: "bad-tag-value"
 ---
-
 ![[Unomas0795-45-Degree-Angled-View-Of-A-Japandi-Living-Room-Des-82a1fc7b-675b-4345-98b7-E2a5fad5e7a6-0.png]]
 
 ## Summary

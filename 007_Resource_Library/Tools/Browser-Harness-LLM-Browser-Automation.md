@@ -3,14 +3,11 @@ title: "Browser Harness LLM Browser Automation"
 type: extracted-knowledge
 category: tools
 tags:
-  - llm-tools
-  - browser-automation
-  - cdp
-  - ai-agents
+  - Coding-Agent
+  - LLM
 original_filename: "IMG_9893.PNG"
 created: 2026-08-24
 ---
-
 ![[Browser-Harness-LLM-Browser-Automation.png]]
 
 ## AI Analysis

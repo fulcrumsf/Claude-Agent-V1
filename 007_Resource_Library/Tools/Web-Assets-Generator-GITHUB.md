@@ -1,15 +1,16 @@
 ---
-title: "Web Assets Generator.github"
+title: "Web Assets Generator"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - GitHub
+  - App
 ai_description: "A TikTok video by @nocode.joshua, titled '5 Claude Skills that every beginner needs to install,' is shown, featuring an embedded GitHub repository `alonw0/web-asset-generator` related to 'Web Assets' and receiving 4,268 likes, likely saved for AI tool research or content ideas."
+summary: >-
+  A TikTok video by @nocode.joshua, titled '5 Claude Skills that every beginner needs to install,' is shown, featuring an embedded GitHub repository `alonw0/web-asset-generator` related to 'Web Assets' and receiving 4,268 likes, likely saved for AI tool research or content ideas.
 original_filename: "web-assets-generator.github.PNG"
 created: 2026-05-01
 ---
-
 ![[Web-Assets-Generator-GITHUB.png]]
 
 ## AI Analysis

@@ -1,5 +1,9 @@
 ---
+title: "Audio & Podcast Tools"
 Category: Revenue Stream
+tags:
+  - App
+  - Audio-Model
 ---
 #### Audio & Podcast Bookmarks
 |![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/preview_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|

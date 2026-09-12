@@ -1,5 +1,8 @@
 ---
+title: "Design Bookmarks"
 Category: Research
+tags:
+  - App
 ---
 view. Yes just continue with the remaining true databases
 #### Design Bookmarks

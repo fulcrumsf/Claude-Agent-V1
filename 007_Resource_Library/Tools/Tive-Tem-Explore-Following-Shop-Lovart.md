@@ -1,16 +1,15 @@
 ---
-title: "Tive Tem Explore Following Shop Lovart"
+title: "Tive Tem Explore"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - ai-agents
-  - design
+  - App
 ai_description: "Screenshot of Tive Tem Explore Following Shop Lovart with readable text about tive tem explore following shop."
+summary: >-
+  Screenshot of Tive Tem Explore Following Shop Lovart with readable text about tive tem explore following shop.
 original_filename: "IMG_8003.PNG"
 created: 2026-05-01
 ---
-
 ![[Tive-Tem-Explore-Following-Shop-Lovart.png]]
 
 ## AI Analysis

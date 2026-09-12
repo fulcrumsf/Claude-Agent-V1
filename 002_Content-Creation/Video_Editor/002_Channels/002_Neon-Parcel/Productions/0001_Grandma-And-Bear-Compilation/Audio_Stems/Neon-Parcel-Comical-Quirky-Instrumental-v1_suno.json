@@ -1,0 +1,26 @@
+{
+  "prompt": "Instrumental background music for a funny family-friendly home-video television show compilation. Quirky, whimsical, playful, lighthearted, warm, and mischievous. Bouncy pizzicato strings, marimba, muted brass, brushed percussion, playful woodwinds, gentle comic timing, upbeat but not frantic. Leave room for spoken narration, natural dialogue, and environmental sound. No vocals, no lyrics, no singing, no speech, no ominous tension, no cinematic trailer drama.",
+  "style_tags": "instrumental, quirky comedy, whimsical, family-friendly, playful home video, light orchestral, pizzicato, marimba, gentle upbeat",
+  "title": "Anomalous Wild Score",
+  "negative_tags": "vocals, lyrics, singing, speech",
+  "model": "V4",
+  "task_id": "baabd6540261a874656a3cb8441aa37c",
+  "generated_at": "2026-09-05T21:13:07-0400",
+  "default_pick": "Neon-Parcel-Comical-Quirky-Instrumental-v1_v1.mp3",
+  "tracks": [
+    {
+      "file": "Neon-Parcel-Comical-Quirky-Instrumental-v1_v1.mp3",
+      "suno_id": "d7928e41-3f8f-4c71-8856-b0c2f91fe37a",
+      "duration_s": 83.72,
+      "audio_url": "https://tempfile.aiquickdraw.com/r/d7928e41-3f8f-4c71-8856-b0c2f91fe37a.mp3",
+      "title": "Anomalous Wild Score"
+    },
+    {
+      "file": "Neon-Parcel-Comical-Quirky-Instrumental-v1_v2.mp3",
+      "suno_id": "593195c3-5f59-475b-a612-93e4659e7466",
+      "duration_s": 76.72,
+      "audio_url": "https://tempfile.aiquickdraw.com/r/593195c3-5f59-475b-a612-93e4659e7466.mp3",
+      "title": "Anomalous Wild Score"
+    }
+  ]
+}

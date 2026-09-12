@@ -3,13 +3,14 @@ title: "Intangible AI Tool"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - tools
+  - App
+  - 3D
 ai_description: "TikTok video from @Sferro.ai promoting 'Intangible,' a free AI tool for building entire 3D scenes, showing 193 likes and 198 saves — likely saved for AI tool discovery or content creation ideas."
+summary: >-
+  TikTok video from @Sferro.ai promoting 'Intangible,' a free AI tool for building entire 3D scenes, showing 193 likes and 198 saves — likely saved for AI tool discovery or content creation ideas.
 original_filename: "intangible-ai-tool.PNG"
 created: 2026-05-01
 ---
-
 ![[Intangible-AI-Tool.png]]
 
 ## AI Analysis

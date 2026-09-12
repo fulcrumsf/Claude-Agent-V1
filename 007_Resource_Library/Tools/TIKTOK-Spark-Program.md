@@ -1,15 +1,16 @@
 ---
-title: "TikTok Spark Program"
+title: "TikTok Spark Program Error"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - tiktok
+  - App
+  - Platforms
 ai_description: "A TikTok Spark Program screen titled 'Welcome to the Spark Program!' with the hashtag '#TikTokShopSparkCreator' and content categories like 'Tech' and 'Fashion', displaying an error 'Something went wrong' for recommendations, likely saved by a creator exploring TikTok Shop monetization."
+summary: >-
+  A TikTok Spark Program screen titled 'Welcome to the Spark Program!' with the hashtag '#TikTokShopSparkCreator' and content categories like 'Tech' and 'Fashion', displaying an error 'Something went wrong' for recommendations, likely saved by a creator exploring TikTok Shop monetization.
 original_filename: "tiktok-spark-program.PNG"
 created: 2026-05-01
 ---
-
 ![[TIKTOK-Spark-Program.png]]
 
 ## AI Analysis

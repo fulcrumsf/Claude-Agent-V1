@@ -3,15 +3,11 @@ title: "Codepen Sabosugi Heart Grid Interactive Demo"
 type: extracted-knowledge
 category: tools
 tags:
-  - codepen
-  - creative-coding
-  - heart-emoji
-  - interactive-design
-  - web-toy
+  - Art-Reference
+  - App
 original_filename: "Open-Source-AI-Tools-And-Investments-13.png"
 created: 2026-05-09
 ---
-
 ![[Codepen-Sabosugi-Heart-Grid-Interactive-Demo.png]]
 
 ## AI Analysis

@@ -1,15 +1,13 @@
 ---
-title: "Composio Skills"
+title: "Composio Skills Library"
 type: tool-doc
 category: ai-agents
 tags:
-  - ai-agents
-  - composio
-  - tool-use
+  - Coding-Agent
+  - Guide
 created: 2026-05-08
 source: local
 ---
-
 ## @composiohq/skills
 
 Distributable agent skills for Composio developers. This repository contains comprehensive guides and best practices for building AI agents with Composio's Tool Router and Triggers.

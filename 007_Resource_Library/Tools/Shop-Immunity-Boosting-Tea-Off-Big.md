@@ -1,15 +1,15 @@
 ---
-title: "Shop Immunity Boosting Tea Off Big"
+title: "Shop Immunity Boosting Tea"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "Screenshot of Shop Immunity Boosting Tea Off Big with readable text about shop immunity boosting tea."
+summary: >-
+  Screenshot of Shop Immunity Boosting Tea Off Big with readable text about shop immunity boosting tea.
 original_filename: "IMG_8743.PNG"
 created: 2026-05-01
 ---
-
 ![[Shop-Immunity-Boosting-Tea-Off-Big.png]]
 
 ## AI Analysis

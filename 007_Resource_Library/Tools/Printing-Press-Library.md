@@ -3,15 +3,11 @@ title: "Printing Press Library"
 type: "tool-doc"
 category: "ai-agents"
 tags:
-  - ai-agents
-  - cli
-  - tool-library
-  - automation
-  - printing-press
+  - GitHub
+  - App
 created: 2026-05-12
 source: local
 ---
-
 ## Printing Press Library
 
 Nothing is more valuable than time and money. In a world of AI agents, that's speed and token spend. A well-designed CLI is muscle memory for an agent: no hunting through docs, no wrong turns, no wasted tokens. The [CLI Printing Press](https://github.com/mvanhorn/cli-printing-press) prints those CLIs. This repo is the catalog of CLIs already printed and ready to install.

@@ -1,13 +1,12 @@
 ---
-title: "POD And Amazon Fba"
+title: "POD and Amazon FBA Tutorials"
 type: tutorial
 category: tutorials
 tags:
-  - tutorials
+  - Guide
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Video Tutorials/Tutorial Library/POD & Amazon FBA.md
 ---
-
 [https://youtu.be/4wuAOm05O6c?si=vwUGUE7_P7F3LQlE](https://youtu.be/4wuAOm05O6c?si=vwUGUE7_P7F3LQlE)
 [https://youtu.be/3VicyD6SACU?si=xmNVcC-X25b8PTYO](https://youtu.be/3VicyD6SACU?si=xmNVcC-X25b8PTYO)
 [https://youtu.be/na9qlrd-vag?si=kMvWTe5L6dZ8CPa_](https://youtu.be/na9qlrd-vag?si=kMvWTe5L6dZ8CPa_)

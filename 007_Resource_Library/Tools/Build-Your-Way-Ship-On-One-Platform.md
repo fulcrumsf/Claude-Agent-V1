@@ -1,11 +1,10 @@
 ---
-title: "Build-Your-Way-Ship-On-One-Platform"
+title: "Build your way. Ship on one platform."
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - app-dev
+  - App
+  - Guide
 created: 2026-06-06
 source: 000_Ingest/Push your ideas to the web.md
 ---

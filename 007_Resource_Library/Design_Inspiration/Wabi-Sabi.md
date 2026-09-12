@@ -1,7 +1,8 @@
 ---
+title: "Wabi Sabi Bedroom with Minimalist Art"
 tags:
-  - Abstract
-  - Architecture
+  - Art-Style
+  - Art-Reference
 ---
 ```markdown
 {

@@ -3,15 +3,11 @@ title: "Whisk Experiment"
 type: extracted-knowledge
 category: tools
 tags:
-  - google-whisk
-  - ai-tools
-  - imagen-4
-  - veo-2
-  - creative-suite
+  - Image-Video-Model
+  - Platforms
 original_filename: "Screenshot-2025-08-27-at-11-53.jpg"
 created: 2026-05-09
 ---
-
 ![[Whisk-Experiment.jpg]]
 
 ## AI Analysis

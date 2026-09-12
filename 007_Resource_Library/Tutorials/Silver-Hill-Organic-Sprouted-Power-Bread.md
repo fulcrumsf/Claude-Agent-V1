@@ -3,14 +3,11 @@ title: "Silver Hill Organic Sprouted Power Bread"
 type: extracted-knowledge
 category: tutorials
 tags:
-  - sprouted-grains
-  - healthy-bread
-  - nutrition-guide
-  - silver-hill-farms
+  - Guide
+  - Health
 original_filename: "IMG_9819.PNG"
 created: 2026-08-24
 ---
-
 ![[Silver-Hill-Organic-Sprouted-Power-Bread.png]]
 
 ## AI Analysis

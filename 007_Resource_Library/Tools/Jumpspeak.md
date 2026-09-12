@@ -3,13 +3,14 @@ title: "Jumpspeak"
 type: tool-doc
 category: app-dev
 tags:
-  - screenshot
-  - reference
+  - Product
+  - App
 ai_description: "An Instagram in-app browser displaying the Jumpspeak language learning website with a 'Summer Special: Get 75% Off' offer ending August 5, promising to 'Learn a New Language By Actually Speaking It' with AI feedback in 3 weeks — saved likely for competitor analysis or marketing inspiration."
+summary: >-
+  An Instagram in-app browser displaying the Jumpspeak language learning website with a 'Summer Special: Get 75% Off' offer ending August 5, promising to 'Learn a New Language By Actually Speaking It' with AI feedback in 3 weeks — saved likely for competitor analysis or marketing inspiration.
 original_filename: "Jumpspeak.PNG"
 created: 2026-05-01
 ---
-
 ![[Jumpspeak.png]]
 
 ## AI Analysis

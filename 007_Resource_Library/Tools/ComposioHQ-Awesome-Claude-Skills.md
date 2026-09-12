@@ -1,17 +1,13 @@
 ---
-title: "ComposioHQ Awesome Claude Skills"
+title: "ComposioHQ Awesome Claude Skills GitHub Repo"
 type: extracted-knowledge
 category: tools
 tags:
-  - claude-ai
-  - composiohq
-  - github-repo
-  - ai-tools
-  - open-source
+  - GitHub
+  - LLM
 original_filename: "Claude-Skills-And-AI-Tools-07.png"
 created: 2026-05-09
 ---
-
 ![[ComposioHQ-Awesome-Claude-Skills.png]]
 
 ## AI Analysis

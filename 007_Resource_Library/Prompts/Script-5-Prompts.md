@@ -1,14 +1,13 @@
 ---
-title: "Script 5 Prompts"
+title: "Ottoman Art and Culture Prompts"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Art-Reference
 created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Ottomans/Script 5 Prompts.md
 ---
-
 1. An artistically crafted Iznik ceramic piece, showcasing the unique and intricate designs from the Ottoman era, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. The vibrant and bustling atmosphere of an Ottoman-era Silk Road market, filled with traders and goods from various cultures, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250
 1. A traditional Ottoman feast, displaying a variety of dishes that blend Central Asian, Middle Eastern, and Balkan flavors, styled with the cinematic quality of an Arri Alexa 35 camera and the dramatic feel of 'Gladiator.' --ar 16:9 --v 5.2 --s 250

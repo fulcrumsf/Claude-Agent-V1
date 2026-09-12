@@ -1,11 +1,10 @@
 ---
-title: "AI-Singing-Voice-Generator"
+title: "AI Singing Voice Generator"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - app-dev
+  - Audio-Model
+  - App
 created: 2026-06-06
 source: 000_Ingest/AI Singing Voice Generator.md
 ---

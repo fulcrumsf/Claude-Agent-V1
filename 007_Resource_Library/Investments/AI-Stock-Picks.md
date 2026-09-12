@@ -3,13 +3,13 @@ title: "Ai stock picks"
 type: doc
 category: general
 tags:
-  - screenshot
-  - finance
+  - Stocks
 ai_description: "YouTube video still showing a presenter and an overlay list of three stock tickers: IONQ STOCK 01, RGTI STOCK 02, QBTS STOCK 03 — likely saved as a content idea or video editing reference for financial content."
+summary: >-
+  YouTube video still showing a presenter and an overlay list of three stock tickers: IONQ STOCK 01, RGTI STOCK 02, QBTS STOCK 03 — likely saved as a content idea or video editing reference for financial content.
 original_filename: "AI Stock Picks.png"
 created: 2026-05-01
 ---
-
 ![[AI-Stock-Picks.png]]
 
 ## AI Analysis

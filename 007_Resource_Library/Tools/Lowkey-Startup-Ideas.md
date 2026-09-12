@@ -1,15 +1,16 @@
 ---
-title: "Lowkey Startup Ideas"
+title: "Novi AI Healthcare Recruiting Idea Score"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - App
+  - Research-List
 ai_description: "TikTok video showcasing the Novi (usenovi.com) AI tool, analyzing a 'AI Healthcare Recruiting' startup idea with an Idea Score of 7.8 and a 'YES (with caveats)' verdict, promoted as 'the smartest way to generate startup ideas' using 'ChatGPT Atlas Browser' — saved as a tool to try or content idea for entrepreneurship."
+summary: >-
+  TikTok video showcasing the Novi (usenovi.com) AI tool, analyzing a 'AI Healthcare Recruiting' startup idea with an Idea Score of 7.8 and a 'YES (with caveats)' verdict, promoted as 'the smartest way to generate startup ideas' using 'ChatGPT Atlas Browser' — saved as a tool to try or content idea for entrepreneurship.
 original_filename: "lowkey-startup-ideas.PNG"
 created: 2026-05-01
 ---
-
 ![[Lowkey-Startup-Ideas.png]]
 
 ## AI Analysis

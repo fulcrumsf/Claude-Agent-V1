@@ -3,13 +3,13 @@ title: "Duozhu Health Cleaner"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "TikTok Shop product listing for 'DUWZGU DAILY CLEANER BURNING BOOST' from 'Duwzgu Health Club' with prices ranging from $8.99 - $17.99, featuring 'Flash Sale' and 'Free shipping' — likely saved for product research or e-commerce creative inspiration."
+summary: >-
+  TikTok Shop product listing for 'DUWZGU DAILY CLEANER BURNING BOOST' from 'Duwzgu Health Club' with prices ranging from $8.99 - $17.99, featuring 'Flash Sale' and 'Free shipping' — likely saved for product research or e-commerce creative inspiration.
 original_filename: "duozhu-health-cleaner.PNG"
 created: 2026-05-01
 ---
-
 ![[Duozhu-Health-Cleaner.png]]
 
 ## AI Analysis

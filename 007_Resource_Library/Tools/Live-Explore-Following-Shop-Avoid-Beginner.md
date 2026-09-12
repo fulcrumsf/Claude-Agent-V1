@@ -3,13 +3,13 @@ title: "Live Explore Following Shop Avoid Beginner"
 type: tool-doc
 category: content-strategy
 tags:
-  - screenshot
-  - video
+  - App
 ai_description: "Screenshot of Live Explore Following Shop Avoid Beginner with readable text about live explore following shop."
+summary: >-
+  Screenshot of Live Explore Following Shop Avoid Beginner with readable text about live explore following shop.
 original_filename: "IMG_8802.PNG"
 created: 2026-05-01
 ---
-
 ![[Live-Explore-Following-Shop-Avoid-Beginner.png]]
 
 ## AI Analysis

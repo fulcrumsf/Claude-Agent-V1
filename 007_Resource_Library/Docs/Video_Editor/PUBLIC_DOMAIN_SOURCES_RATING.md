@@ -3,8 +3,9 @@ title: "Public Domain & CC-Licensed Asset Sources — Rating & Prioritization"
 type: doc
 domain: video-production
 tags: [doc, video-production, research, knowledge-graph]
+tags:
+  - Guide
 ---
-
 # Public Domain & CC-Licensed Asset Sources — Rating & Prioritization
 
 **Last updated:** 2026-04-07  

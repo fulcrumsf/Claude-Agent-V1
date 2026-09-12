@@ -1,13 +1,10 @@
 ---
-title: "The 4 Levels of Obsidian"
+title: "The 4 Modes of Obsidian"
 type: tutorial
 category: architecture
 tags:
-  - tutorial
-  - architecture
-  - obsidian
-  - workspaces
-  - second-brain
+  - Guide
+  - App
 created: 2026-05-01
 source: https://www.youtube.com/watch?v=J3KHlz89cRs
 ---

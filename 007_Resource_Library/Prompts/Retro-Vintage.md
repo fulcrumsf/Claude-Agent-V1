@@ -1,13 +1,13 @@
 ---
-title: "Retro Vintage"
+title: "Retro Vintage Prompt Template"
 type: prompt
 category: prompts
 tags:
-  - prompts
+  - Art-Style
+  - Guide
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Prompting/Prompts/ChatGPT/ChatGPT Prompts/Retro Vintage.md
 ---
-
 **Give me 10 variations of this image prompt.**
 **[Subject]**, styled in **[Specific Clothing or Era-Appropriate Fashion]**, captured in a **[Scene/Location]** setting. Shot on a **[Camera Type or Model]** using a **[Camera Angle]** with **[Lens Type or Focal Length]**.
 The image is lit with **[Lighting Style – e.g., harsh midday sun, tungsten glow, soft ambient haze]** and colored in a **[Color Palette – e.g., warm tones, faded pastels, deep contrast]** mood.

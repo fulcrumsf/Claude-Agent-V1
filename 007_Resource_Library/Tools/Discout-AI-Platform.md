@@ -1,15 +1,16 @@
 ---
-title: "Discout AI Platform"
+title: "dscout.com homepage"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - reference
+  - Product
 ai_description: "Mobile browser view of the dscout.com homepage, featuring the headline 'Get the answers you need to move forward confidently' and a 'Schedule a demo' button — likely saved for market research tool evaluation or UI/UX inspiration."
+summary: >-
+  Mobile browser view of the dscout.com homepage, featuring the headline 'Get the answers you need to move forward confidently' and a 'Schedule a demo' button — likely saved for market research tool evaluation or UI/UX inspiration.
 original_filename: "discout-ai-platform.PNG"
 created: 2026-05-01
+retag_flag: "bad-tag-value"
 ---
-
 ![[Discout-AI-Platform.png]]
 
 ## AI Analysis

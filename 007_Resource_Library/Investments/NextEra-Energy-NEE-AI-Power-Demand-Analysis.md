@@ -1,17 +1,13 @@
 ---
-title: "NextEra Energy NEE AI Power Demand Analysis"
+title: "NextEra Energy (NEE) AI Power Demand Analysis"
 type: extracted-knowledge
 category: investments
 tags:
-  - nextera-energy
-  - stock-market
-  - ai-infrastructure
-  - renewable-energy
-  - investment-thesis
+  - Stocks
 original_filename: "Scribe-AI-Platform-08.png"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[NextEra-Energy-NEE-AI-Power-Demand-Analysis.png]]
 
 ## AI Analysis

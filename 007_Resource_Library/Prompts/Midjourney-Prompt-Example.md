@@ -1,14 +1,13 @@
 ---
-title: "Midjourney Prompt Example"
+title: "Midjourney Prompt Example - Glass Dice"
 type: prompt
 category: prompts
 tags:
-  - prompts
-  - prompt
+  - Art-Style
+  - Image-Video-Model
 created: 2026-05-03
 source: MidJourney_Prompt_Example.json
 ---
-
 {
     "items": [
         {

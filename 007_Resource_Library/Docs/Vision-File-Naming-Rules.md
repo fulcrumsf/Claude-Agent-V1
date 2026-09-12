@@ -1,16 +1,13 @@
 ---
-title: "Vision File Naming Rules"
+title: "Semantic Screenshot Filenameing Guide"
 type: doc
 category: architecture
 tags:
-  - image-ingest
-  - naming-conventions
-  - vision-pipeline
-  - visual-assets
+  - Guide
+  - App
 created: 2026-05-09
 source: local
 ---
-
 # Semantic Screenshot Filenameing Guide
 
 ## Purpose

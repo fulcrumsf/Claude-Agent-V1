@@ -3,15 +3,11 @@ title: "Render Json Framework Generative JSON"
 type: extracted-knowledge
 category: tools
 tags:
-  - npm-package
-  - generative-ai
-  - json-extraction
-  - developer-tools
-  - data-structure
+  - GitHub
+  - LLM
 original_filename: "Forms-And-Models-02.png"
 created: 2026-05-09
 ---
-
 ![[Render-Json-Framework-Generative-JSON.png]]
 
 ## AI Analysis

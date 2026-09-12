@@ -1,14 +1,13 @@
 ---
-title: "TikTok-Ad-Swipe-File"
+title: "TikTok Ad Swipe File"
 type: research
 category: content-strategy
 tags:
-  - research
-  - case-study
-  - tiktok-ads
-  - social-media
+  - Product
+  - Research-List
 created: 2026-06-06
 source: 000_Ingest/Social1.md
+retag_flag: "bad-tag-value"
 ---
 Find ads on TikTok that are doing very well. 
 

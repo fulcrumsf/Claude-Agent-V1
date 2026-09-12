@@ -3,15 +3,11 @@ title: "Intangible AI VFX Tool"
 type: extracted-knowledge
 category: tools
 tags:
-  - intangible
-  - vfx
-  - generativeai
-  - videoediting
-  - aivideo
+  - Product
+  - Image-Video-Model
 original_filename: "Forms-And-Models-03.png"
 created: 2026-05-09
 ---
-
 ![[Intangible-AI-VFX-Tool.png]]
 
 ## AI Analysis

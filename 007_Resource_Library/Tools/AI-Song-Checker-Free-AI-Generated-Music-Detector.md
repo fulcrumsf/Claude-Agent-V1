@@ -1,11 +1,10 @@
 ---
-title: "AI-Song-Checker-Free-AI-Generated-Music-Detector"
+title: "AI Song Checker - Detect AI Generated Music"
 type: tool-doc
 category: app-dev
 tags:
-  - tooling
-  - reference
-  - app-dev
+  - Product
+  - App
 created: 2026-06-06
 source: 000_Ingest/AI Song Checker  Free AI-Generated Music Detector.md
 ---

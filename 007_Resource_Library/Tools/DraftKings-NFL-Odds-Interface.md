@@ -3,15 +3,11 @@ title: "DraftKings NFL Odds Interface"
 type: extracted-knowledge
 category: tools
 tags:
-  - draftkings
-  - sports-betting
-  - nfl
-  - betting-odds
-  - mobile-interface
+  - App
+  - Gaming
 original_filename: "Nfl-Popular-Game-Lines-Tdscorers-Passing-2.PNG"
 created: 2026-05-09
 ---
-
 ![[DraftKings-NFL-Odds-Interface.png]]
 
 ## AI Analysis

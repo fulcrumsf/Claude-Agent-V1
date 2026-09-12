@@ -3,15 +3,11 @@ title: "Metabase Open Source BI Platform"
 type: extracted-knowledge
 category: tools
 tags:
-  - metabase
-  - business-intelligence
-  - open-source
-  - data-visualization
-  - analytics
+  - App
+  - GitHub
 original_filename: "Forms-And-Models-04.png"
 created: 2026-05-09
 ---
-
 ![[Metabase-Open-Source-BI-Platform.png]]
 
 ## AI Analysis

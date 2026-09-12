@@ -3,15 +3,12 @@ title: "Surreal Tiger Mouth Interior Design"
 type: extracted-knowledge
 category: design_inspiration
 tags:
-  - surrealism
-  - interior-design
-  - ai-art
-  - fantasy-concept
-  - pool-room
+  - Art-Style
+  - Art-Reference
 original_filename: "Tiger-Pool-Hall-2.png"
 created: 2026-05-09
+retag_flag: "bad-tag-value"
 ---
-
 ![[Surreal-Tiger-Mouth-Interior-Design.png]]
 
 ## AI Analysis

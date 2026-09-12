@@ -1,16 +1,15 @@
 ---
-title: "Tiktok_ai_agent_tier_list"
+title: "n8n AI Agent Tier List"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - tiktok
-  - ai-agents
+  - Research-List
 ai_description: "TikTok feed showing a video from 'Chase | AI Guides' detailing an 'n8n AI agent tier list' with 423 likes and 436 saves — likely bookmarked for AI agent research or content inspiration related to automation."
+summary: >-
+  TikTok feed showing a video from 'Chase | AI Guides' detailing an 'n8n AI agent tier list' with 423 likes and 436 saves — likely bookmarked for AI agent research or content inspiration related to automation.
 original_filename: "TikTok_AI_Agent_Tier_List.PNG"
 created: 2026-05-01
 ---
-
 ![[TIKTOK-AI-Agent-Tier-List.png]]
 
 ## AI Analysis

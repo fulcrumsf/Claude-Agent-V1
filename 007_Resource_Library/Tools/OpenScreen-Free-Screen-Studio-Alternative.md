@@ -3,15 +3,11 @@ title: "OpenScreen Free Screen Studio Alternative"
 type: extracted-knowledge
 category: tools
 tags:
-  - openscreen
-  - screen-recording
-  - open-source
-  - free-alternative
-  - github
+  - Product
+  - GitHub
 original_filename: "Open-Source-AI-Tools-15.png"
 created: 2026-05-09
 ---
-
 ![[OpenScreen-Free-Screen-Studio-Alternative.png]]
 
 ## AI Analysis

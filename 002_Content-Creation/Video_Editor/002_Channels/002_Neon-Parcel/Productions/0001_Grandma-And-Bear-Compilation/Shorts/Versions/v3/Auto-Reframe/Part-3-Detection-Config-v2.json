@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "approval": "Tony approved Gate 2 on 2026-09-08: dependencies and Part Three detection/tracking diagnostics only.",
+  "source": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Assembly/Versions/v5/Neon-Parcel-Grandma-And-Bear-Compilation-Music-Endscreen-Review-v1.mp4",
+  "source_sha256": "22748828bfa360e3a73819d6ce82ff3e17868e3cf1b04183dcf8974eeeb4d449",
+  "time_base": "1/12288",
+  "expected_source_frames": 771,
+  "classes": [
+    0,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "inference_size": 960,
+  "confidence": 0.1,
+  "shots": [
+    {
+      "id": "Shot-10",
+      "description": "Grandma at the doorway",
+      "start_pts": 1198080,
+      "end_pts": 1321984
+    },
+    {
+      "id": "Shot-11",
+      "description": "Hose and bear interaction",
+      "start_pts": 1321984,
+      "end_pts": 1445888
+    },
+    {
+      "id": "Shot-12",
+      "description": "Grandma and bears at the trampoline",
+      "start_pts": 1445888,
+      "end_pts": 1594368
+    }
+  ],
+  "future_group_fallback": "Wider scene over a blurred background; approved preference, not implemented in Gate 2.",
+  "protected_media": [
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-1-Test-v1.mp4",
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-2-Test-v2.mp4",
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Test-v1.mp4",
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v2/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Test-v2.mp4"
+  ],
+  "family_tracking": true,
+  "diagnostic_revision": "Gate 2: include COCO animal classes, preserve raw species labels, suppress duplicate animal boxes, associate person/animal separately, require four consecutive frames before displaying a track. Baseline v1 retained for comparison."
+}

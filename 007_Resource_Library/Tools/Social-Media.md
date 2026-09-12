@@ -1,8 +1,9 @@
 ---
+title: "Social Media Bookmarking Tools"
 Category: Revenue Stream
 tags:
-  - Analytics
-  - Personal
+  - Product
+  - App
 ---
 #### Social Media Bookmarks
 |![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/folder_gray.svg)Category|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/list_gray.svg)Tags|

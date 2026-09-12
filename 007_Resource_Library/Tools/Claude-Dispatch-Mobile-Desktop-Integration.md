@@ -3,15 +3,11 @@ title: "Claude Dispatch Mobile Desktop Integration"
 type: extracted-knowledge
 category: tools
 tags:
-  - claude
-  - desktop-app
-  - mobile-integration
-  - remote-control
-  - ai-automation
+  - App
+  - Coding-Agent
 original_filename: "Open-Source-AI-Tools-16.png"
 created: 2026-05-09
 ---
-
 ![[Claude-Dispatch-Mobile-Desktop-Integration.png]]
 
 ## AI Analysis

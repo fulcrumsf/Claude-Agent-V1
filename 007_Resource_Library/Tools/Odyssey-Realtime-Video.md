@@ -3,13 +3,14 @@ title: "Odyssey Realtime Video"
 type: tool-doc
 category: video-production
 tags:
-  - screenshot
-  - video
+  - Product
+  - Image-Video-Model
 ai_description: "TikTok video promoting 'Odyssey-2' as real-time AI video generation from the account 'AI For Humans' — saved as a reference for researching new AI tools for content creation."
+summary: >-
+  TikTok video promoting 'Odyssey-2' as real-time AI video generation from the account 'AI For Humans' — saved as a reference for researching new AI tools for content creation.
 original_filename: "odyssey-2-realtime-video.PNG"
 created: 2026-05-01
 ---
-
 ![[Odyssey-Realtime-Video.png]]
 
 ## AI Analysis

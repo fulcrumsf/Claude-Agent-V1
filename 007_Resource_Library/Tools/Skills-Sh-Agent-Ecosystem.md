@@ -3,13 +3,14 @@ title: "Skills Sh Agent Ecosystem"
 type: tool-doc
 category: ai-agents
 tags:
-  - screenshot
-  - ai-agents
+  - LLM
+  - Coding-Agent
 ai_description: "Mobile web page for skills.sh, presenting 'THE OPEN AGENT SKILLS ECOSYSTEM' for AI agents with the installation command '$ npx skills update' and agent compatibility — saved as a reference for AI agent development or content ideas."
+summary: >-
+  Mobile web page for skills.sh, presenting 'THE OPEN AGENT SKILLS ECOSYSTEM' for AI agents with the installation command '$ npx skills update' and agent compatibility — saved as a reference for AI agent development or content ideas.
 original_filename: "skills-sh-agent-ecosystem.PNG"
 created: 2026-05-01
 ---
-
 ![[Skills-Sh-Agent-Ecosystem.png]]
 
 ## AI Analysis

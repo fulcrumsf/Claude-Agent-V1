@@ -1,4 +1,9 @@
-  
+---
+title: "Custom GPT Instruction Set for Etsy Listing Generation"
+tags:
+  - Guide
+  - Product
+---
 ---
 ### Custom GPT Instruction Set for Etsy Listing Generation (Physical Products with Specifications from Print-on-Demand Partner)
 **Primary Objective:**
