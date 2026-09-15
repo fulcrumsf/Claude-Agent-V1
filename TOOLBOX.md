@@ -237,6 +237,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - **Thumbnail constraint:** custom YouTube thumbnails must be ≤2MB JPEG/PNG — compress with ffmpeg first if over (`ffmpeg -i in.png -vf "scale=1920:-1" -q:v 5 out.jpg`)
 - **Gotcha:** if `create_post` errors "reconnect your YouTube account" for a custom thumbnail, that's an OAuth scope issue fixed in the Blotato dashboard (not a script/MCP bug) — already-uploaded media URLs don't need re-uploading after reconnect
 - **Python integration:** `kie_upload.py` for file uploads before publishing (legacy path — MCP's own presigned-upload flow is now preferred)
+- **Neon Parcel Shorts, 4-platform publish (locked 2026-09-15):** one presigned upload, then `blotato_create_post` to all four Neon Parcel accounts (YouTube `25731`, TikTok `27763`, Instagram `29334`, Facebook `18651`/pageId `888301901041580`) from the same media URL. Full field-by-field settings in `Neon_Parcel_Longform_Compilation/SKILL.md` under "Validated Blotato Shorts Upload." Still requires Tony's per-Short approval of title/caption/hashtags before every publish — not a standing authorization.
 - **API Key:** `BLOTATO_API_KEY` (used by the MCP server itself, not needed for direct calls from Claude Code)
 
 ---
@@ -318,7 +319,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ### Subject-Aware Reframer — Experimental Gate 3
 - **Tool:** `001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/`
-- **Status:** Channel-independent framing prototype with configurable group, subject, and hybrid modes. Tony preferred Hybrid for Part Three specifically; automatic clipping and channel integration are deferred.
+- **Status:** Channel-independent framing prototype with configurable group, subject, and hybrid modes. **Locked in 2026-09-15 as Neon Parcel's standard Shorts reframe step, Hybrid mode fixed default** (no more per-video Group/Subject comparison for Neon Parcel) — see `Neon_Parcel_Longform_Compilation/SKILL.md` "Locked Reframe Method". Other channels should still evaluate their own footage before assuming Hybrid; automatic clip selection and channel integration are still deferred.
 - **Resume / handoff:** For “plug the Shorts workflow into [channel]” or “connect the short-form clipping workflow,” read `001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/Future-Channel-Integration-Handoff-v1.md`. It records the built component, remaining work, examples, and channel-by-channel approval process.
 - **Runtime:** Isolated Python 3.11 environment, 42 approved hash-locked packages, official YOLO11s weights, explicit ByteTrack, FFmpeg/OpenCV diagnostics.
 - **Launcher:** `run_offline.py` dispatches detection and `plan/render/reframe` commands with OS network denial, automatic installs disabled, and tool-local caches. Detection uses restricted model loading.
