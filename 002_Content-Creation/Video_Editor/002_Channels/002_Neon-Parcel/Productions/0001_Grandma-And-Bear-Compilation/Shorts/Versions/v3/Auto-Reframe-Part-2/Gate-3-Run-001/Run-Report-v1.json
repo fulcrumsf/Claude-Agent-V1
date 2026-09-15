@@ -1,0 +1,95 @@
+{
+  "stage": "gate_3",
+  "status": "rendered_and_verified_awaiting_tony_review",
+  "job_id": "Part-2-Gate-3-Hybrid-v1",
+  "security": {
+    "os_network_denial": true,
+    "loopback_errno": 1,
+    "clean_environment_launcher": true
+  },
+  "source_unchanged": true,
+  "protected_media_unchanged": true,
+  "elapsed_seconds": 36.795,
+  "outputs": {
+    "Hybrid": {
+      "width": 1080,
+      "height": 1920,
+      "frames": 1267,
+      "fps": 30,
+      "video_start": "0.000000",
+      "video_duration": "42.233008",
+      "audio_start": "0.000000",
+      "audio_duration": "42.233000",
+      "sha256": "53363de464e6aa381e6ec13f70ed1542f27f49bd5213c48a99f3444290bce9ca",
+      "full_decode_passed": true
+    },
+    "comparison": {
+      "width": 360,
+      "height": 720,
+      "frames": 1267,
+      "fps": 30,
+      "video_start": "0.000000",
+      "video_duration": "42.233008",
+      "audio_start": "0.000000",
+      "audio_duration": "42.233000",
+      "sha256": "2a972fa38e648c33ad9e81c48618cff7b721c36f6e375c5677efde21b337bc9d",
+      "full_decode_passed": true
+    },
+    "debug": {
+      "width": 1320,
+      "height": 704,
+      "frames": 1267,
+      "fps": 30,
+      "video_start": "0.000000",
+      "video_duration": "42.233008",
+      "audio_start": "0.000000",
+      "audio_duration": "42.233000",
+      "sha256": "0ad0f2f345d3a895a33405ecccf128f4a3eee8a81b8ad94ff96253f9aa489273",
+      "full_decode_passed": true
+    }
+  },
+  "resources": {
+    "allocated_bytes": 2165653504,
+    "free_bytes": 25586450432
+  },
+  "layout_counts": {
+    "Hybrid": {
+      "fit_blur": 782,
+      "crop": 485
+    }
+  },
+  "reason_counts": {
+    "Hybrid": {
+      "short_crop_suppressed": 102,
+      "subject_or_motion_does_not_fit": 5,
+      "fallback_minimum_hold": 193,
+      "hybrid_group_hold": 242,
+      "hybrid_payoff_group": 240,
+      "subject_view": 485
+    }
+  },
+  "contact_sheet_frames": [
+    0,
+    75,
+    150,
+    226,
+    301,
+    302,
+    377,
+    452,
+    526,
+    601,
+    602,
+    692,
+    782,
+    873,
+    963,
+    964,
+    1040,
+    1115,
+    1190,
+    1266
+  ],
+  "contact_sheet_sha256": "cb39c2cc78ae140450c1e7b522529e8ac897c1d576532346c1a498331a712632",
+  "crop_plan_sha256": "ddb653c853ef16537fe45d456e746a0fb3625b89b01569ed24e46e368e558059"
+}

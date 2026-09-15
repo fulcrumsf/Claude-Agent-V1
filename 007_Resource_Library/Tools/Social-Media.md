@@ -6,7 +6,7 @@ tags:
   - App
 ---
 #### Social Media Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/folder_gray.svg)Category|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/list_gray.svg)Tags|
+|Name|URL|Category|Description|Tags|
 |---|---|---|---|---|
 |[[VidBuzz]]|[https://app.vidbuzz.io/](https://app.vidbuzz.io/)|Tools|Build ai video workflows to create ai video content. Video trend analytics on tiktok, instagram, and youtube.||
 |[[VidClue]]|[https://vidclue.com/](https://vidclue.com/)|Tools|VidClue is a library of short-form video ideas for businesses and creators. Use it to quickly pull hook + concept inspiration when planning reels/shorts and to keep an ongoing backlog of video prompts.||

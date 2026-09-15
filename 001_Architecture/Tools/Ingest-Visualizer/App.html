@@ -1,0 +1,430 @@
+<title>Ingest Visualizer</title>
+<style>
+  :root { --line:#e5e7eb; --muted:#6b7280; --bg:#f8fafc; --card:#fff; }
+  * { box-sizing: border-box; }
+  body { margin:0; font: 14px/1.4 -apple-system, system-ui, sans-serif; background:var(--bg); color:#111; }
+  .titlebar { display:flex; align-items:center; gap:12px; padding:12px 16px; background:#fff;
+    border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; }
+  .titlebar h1 { font-size:16px; margin:0; }
+  #count { color:var(--muted); font-size:12px; }
+  .grow { flex:1; }
+  .btn { font:inherit; padding:6px 12px; border:1px solid var(--line); border-radius:8px;
+    background:#fff; cursor:pointer; }
+  .btn:hover { background:#f3f4f6; }
+  .btn.primary { background:#2563eb; color:#fff; border-color:#2563eb; }
+  .btn.primary:hover { background:#1d4ed8; }
+  .btn:disabled { opacity:.4; cursor:default; }
+  select, input[type=text], textarea { font:inherit; padding:6px 8px; border:1px solid var(--line);
+    border-radius:6px; width:100%; }
+  textarea { resize:vertical; }
+
+  .tabbar { display:flex; gap:6px; padding:10px 16px; background:#fff; border-bottom:1px solid var(--line);
+    flex-wrap:wrap; }
+  .tab { padding:5px 12px; border:1px solid var(--line); border-radius:999px; cursor:pointer;
+    font-size:12px; background:#fff; }
+  .tab.on { background:#111; color:#fff; border-color:#111; }
+
+  .play { position: absolute; inset: 0; margin: auto; width: 0; height: 0;
+    border-style: solid; border-width: 15px 0 15px 26px;
+    border-color: transparent transparent transparent rgba(255,255,255,.92);
+    filter: drop-shadow(0 0 6px #0008); }
+  .src { position:absolute; bottom:6px; left:6px; font-size:10px; padding:2px 7px; border-radius:999px;
+    color:#fff; font-weight:600; }
+  .src.YouTube { background:#dc2626; }
+  .src.Screenshot { background:#d97706; }
+  .src.Video { background:#7c3aed; }
+  .src.PDF { background:#0891b2; }
+  .src.MD { background:#6b7280; }
+
+  .batchbar { display:none; align-items:center; gap:10px; padding:10px 16px; background:#eff6ff;
+    border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  .batchbar.show { display:flex; }
+  .batchbar .tagchip { display:inline-flex; align-items:center; gap:4px; padding:3px 9px;
+    border:1px solid var(--line); border-radius:999px; cursor:pointer; font-size:12px; background:#fff; }
+  .batchbar .tagchip.on { background:#2563eb; color:#fff; border-color:#2563eb; }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:14px; padding:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden;
+    cursor:pointer; position:relative; }
+  .card.sel { outline:2px solid #2563eb; }
+  .card.tagged { box-shadow: inset 0 0 0 2px #10b981; }
+  .thumbwrap { position:relative; aspect-ratio:4/3; background:#eee; }
+  .thumbwrap img { width:100%; height:100%; object-fit:cover; display:block; }
+  .glyph { width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    font-size:40px; color:#fff; background:#9ca3af; }
+  .chk { position:absolute; top:6px; left:6px; width:20px; height:20px; border-radius:5px;
+    background:rgba(255,255,255,.9); border:1px solid #9ca3af; display:flex; align-items:center;
+    justify-content:center; font-size:12px; z-index:2; }
+  .chk.on { background:#2563eb; color:#fff; border-color:#2563eb; }
+  .zonebadge { position:absolute; top:6px; right:6px; font-size:10px; padding:2px 6px;
+    border-radius:999px; background:rgba(0,0,0,.6); color:#fff; }
+  .taggedbadge { position:absolute; bottom:6px; right:6px; font-size:10px; padding:2px 6px;
+    border-radius:999px; background:#10b981; color:#fff; }
+  .body { padding:8px 10px; }
+  .fn { font-size:12px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+  #detail { position:fixed; top:0; right:0; width:420px; max-width:92vw; height:100%; background:#fff;
+    border-left:1px solid var(--line); box-shadow:-4px 0 16px rgba(0,0,0,.08); transform:translateX(100%);
+    transition:transform .15s ease; z-index:20; overflow-y:auto; }
+  #detail.open { transform:translateX(0); }
+  #detail .dhead { display:flex; align-items:center; gap:8px; padding:12px 14px; border-bottom:1px solid var(--line); }
+  #detail .dbody { padding:14px; display:flex; flex-direction:column; gap:12px; }
+  #detail .dimg { width:100%; border-radius:8px; max-height:260px; object-fit:contain; background:#f3f4f6; }
+  label.f { display:block; font-size:11px; color:var(--muted); text-transform:uppercase;
+    letter-spacing:.03em; margin-bottom:4px; }
+  .tagpick { display:flex; flex-wrap:wrap; gap:6px; }
+  .tagpick .tagchip { display:inline-flex; align-items:center; gap:4px; padding:4px 10px;
+    border:1px solid var(--line); border-radius:999px; cursor:pointer; font-size:12px; }
+  .tagpick .tagchip.on { background:#2563eb; color:#fff; border-color:#2563eb; }
+  #overlay { position:fixed; inset:0; background:rgba(0,0,0,.15); z-index:15; display:none; }
+  #overlay.show { display:block; }
+  #toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:#111; color:#fff;
+    padding:8px 16px; border-radius:8px; font-size:13px; opacity:0; transition:opacity .2s; z-index:30; }
+  #toast.show { opacity:1; }
+</style>
+
+<div class="titlebar">
+  <h1>Ingest Visualizer</h1>
+  <span id="count">loading…</span>
+  <span id="progressBar" style="display:none;align-items:center;gap:8px">
+    <span style="width:140px;height:8px;background:#e5e7eb;border-radius:999px;overflow:hidden;display:inline-block">
+      <span id="progressFill" style="display:block;height:100%;width:0%;background:#2563eb;transition:width .2s"></span>
+    </span>
+    <span id="progressText" style="font-size:12px;color:var(--muted)"></span>
+  </span>
+  <span class="grow"></span>
+  <button class="btn primary" id="autoTutorialsBtn" title="Sets every YouTube item to folder=Tutorials, tag=Guide, then ingests them all — asks to confirm first">🎯 Auto-Ingest YouTube → Tutorials</button>
+  <button class="btn" id="refreshBtn">Refresh</button>
+</div>
+
+<div class="tabbar" id="tabbar"></div>
+
+<div class="tabbar" style="border-top:none">
+  <span style="font-size:11px;color:var(--muted);align-self:center;margin-right:2px">SELECT BY SOURCE</span>
+  <span class="tab" id="selectYouTubeBtn">YouTube</span>
+  <span class="tab" id="selectMdBtn">MD</span>
+  <span class="tab" id="selectAllVisibleBtn">☑ Select All Visible (in current tab)</span>
+  <span class="tab" id="clearSelectionBtn">✕ Uncheck All</span>
+</div>
+
+<div class="batchbar" id="batchbar">
+  <span id="selCount">0 selected</span>
+  <select id="batchFolder"><option value="">Set folder…</option></select>
+  <span id="batchTags" class="tagpick"></span>
+  <span class="grow"></span>
+  <button class="btn primary" id="ingestSelectedBtn">Ingest Selected</button>
+</div>
+
+<div id="grid" class="grid"></div>
+<div id="overlay"></div>
+<div id="detail">
+  <div class="dhead">
+    <b>Item</b><span class="grow"></span>
+    <button class="btn" id="closeDetailBtn">Close</button>
+  </div>
+  <div class="dbody" id="detailBody"></div>
+</div>
+<div id="toast"></div>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => (s || "").replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+
+let ALL = [];
+let VOCAB = { folders: [], tags: [] };
+const selected = new Set();
+let current = null; // path of open detail panel
+let draftTags = new Set();     // per-item edit draft
+let batchDraftTags = new Set(); // batch-apply draft
+let activeZone = "All";
+
+function renderTabs() {
+  const zones = ["All", ...new Set(ALL.map(c => c.zone))];
+  $("#tabbar").innerHTML = zones.map(z => {
+    const n = z === "All" ? ALL.length : ALL.filter(c => c.zone === z).length;
+    return `<span class="tab${z === activeZone ? " on" : ""}" data-zone="${esc(z)}">${esc(z)} (${n})</span>`;
+  }).join("");
+}
+
+document.addEventListener("click", e => {
+  const tab = e.target.closest("#tabbar .tab");
+  if (!tab) return;
+  activeZone = tab.dataset.zone;
+  renderTabs();
+  renderGrid();
+});
+
+function toast(msg) {
+  const el = $("#toast"); el.textContent = msg; el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 1800);
+}
+
+async function api(url, opts) {
+  const r = await fetch(url, opts);
+  if (!r.ok) throw new Error(url + " -> " + r.status);
+  return r.json();
+}
+
+async function loadVocab() {
+  VOCAB = await api("/api/vocab");
+  $("#batchFolder").innerHTML = '<option value="">Set folder…</option>' +
+    VOCAB.folders.map(f => `<option value="${esc(f)}">${esc(f)}</option>`).join("");
+  $("#batchTags").innerHTML = VOCAB.tags.map(t =>
+    `<span class="tagchip" data-tag="${esc(t)}">${esc(t)}</span>`).join("");
+}
+
+async function loadItems() {
+  ALL = await api("/api/items");
+  renderTabs();
+  renderGrid();
+}
+
+function glyphFallback(emoji) {
+  return `this.replaceWith(Object.assign(document.createElement('div'),{className:'glyph',textContent:'${emoji}'}))`;
+}
+
+function cardHTML(c) {
+  let thumb;
+  if (c.kind === "image") {
+    thumb = `<img loading="lazy" src="/thumb?path=${encodeURIComponent(c.path)}" alt="" onerror="${glyphFallback('🖼️')}">`;
+  } else if (c.kind === "video") {
+    thumb = `<img loading="lazy" src="/thumb?path=${encodeURIComponent(c.path)}" alt="" onerror="${glyphFallback('🎬')}">`;
+  } else if (c.kind === "pdf") {
+    thumb = `<div class="glyph">📄</div>`;
+  } else if (c.kind === "text" && c.thumb_kind === "remote") {
+    thumb = `<img loading="lazy" src="${esc(c.thumb_value)}" alt="" onerror="${glyphFallback('.md')}">`;
+  } else if (c.kind === "text" && c.thumb_kind === "local") {
+    thumb = `<img loading="lazy" src="/thumb?path=${encodeURIComponent(c.path)}" alt="" onerror="${glyphFallback('.md')}">`;
+  } else if (c.kind === "text" && c.thumb_kind === "lazy") {
+    thumb = `<img loading="lazy" src="/url_thumb?path=${encodeURIComponent(c.path)}" alt="" onerror="${glyphFallback('.md')}">`;
+  } else {
+    thumb = `<div class="glyph">.md</div>`;
+  }
+  const isSel = selected.has(c.path);
+  const tagged = c.has_manual_data;
+  const play = c.source_label === "YouTube" ? '<span class="play"></span>' : "";
+  return `<div class="card${isSel ? " sel" : ""}${tagged ? " tagged" : ""}" data-path="${esc(c.path)}">
+    <div class="thumbwrap">
+      <div class="chk${isSel ? " on" : ""}" data-check>${isSel ? "✓" : ""}</div>
+      <span class="zonebadge">${esc(c.zone)}</span>
+      ${thumb}${play}
+      <span class="src ${esc(c.source_label)}">${esc(c.source_label)}</span>
+      ${tagged ? '<span class="taggedbadge">tagged</span>' : ""}
+    </div>
+    <div class="body"><div class="fn" title="${esc(c.filename)}">${esc(c.title || c.filename)}</div></div>
+  </div>`;
+}
+
+function visibleCards() {
+  return activeZone === "All" ? ALL : ALL.filter(c => c.zone === activeZone);
+}
+
+function renderGrid() {
+  const vis = visibleCards();
+  $("#grid").innerHTML = vis.map(cardHTML).join("") ||
+    '<p style="color:#6b7280;grid-column:1/-1">Nothing here.</p>';
+  $("#count").textContent = `${vis.length} shown · ${ALL.length} total`;
+  $("#selCount").textContent = `${selected.size} selected`;
+  $("#batchbar").classList.toggle("show", selected.size > 0);
+}
+
+document.addEventListener("click", e => {
+  const card = e.target.closest(".card");
+  if (!card) return;
+  const path = card.dataset.path;
+  if (e.target.closest("[data-check]")) {
+    selected.has(path) ? selected.delete(path) : selected.add(path);
+    renderGrid();
+    return;
+  }
+  openDetail(path);
+});
+
+$("#refreshBtn").addEventListener("click", loadItems);
+
+function selectBySource(label) {
+  ALL.filter(c => c.source_label === label).forEach(c => selected.add(c.path));
+  renderGrid();
+  toast(`Selected ${selected.size} total (added ${label})`);
+}
+$("#selectYouTubeBtn").addEventListener("click", () => selectBySource("YouTube"));
+$("#selectMdBtn").addEventListener("click", () => selectBySource("MD"));
+$("#selectAllVisibleBtn").addEventListener("click", () => {
+  const vis = visibleCards();
+  vis.forEach(c => selected.add(c.path));
+  renderGrid();
+  toast(`Selected ${selected.size} total (added ${vis.length} from "${activeZone}")`);
+});
+function resetBatchDraft() {
+  batchDraftTags.clear();
+  $("#batchFolder").value = "";
+  $("#batchTags").querySelectorAll(".tagchip.on").forEach(el => el.classList.remove("on"));
+}
+
+$("#clearSelectionBtn").addEventListener("click", () => {
+  selected.clear();
+  resetBatchDraft();
+  renderGrid();
+  toast("Selection cleared");
+});
+
+$("#autoTutorialsBtn").addEventListener("click", async () => {
+  const targets = ALL.filter(c => c.source_label === "YouTube").map(c => c.path);
+  if (!targets.length) { toast("No YouTube items in the ingest folder right now"); return; }
+  const ok = confirm(
+    `Confirm: ${targets.length} YouTube item(s) will be set to folder = Tutorials, ` +
+    `tag = Guide, and ingested now (titles/descriptions still come from vision).\n\n` +
+    `This actually moves the files — proceed?`
+  );
+  if (!ok) return;
+  await api("/api/batch_tags", { method: "POST", headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ paths: targets, folder: "Tutorials", tags: ["Guide"] }) });
+  await runIngest(targets);
+});
+
+function findCard(path) { return ALL.find(c => c.path === path); }
+
+function openDetail(path) {
+  current = path;
+  const c = findCard(path);
+  if (!c) return;
+  draftTags = new Set(c.tags || []);
+  const isImgLike = c.kind === "image";
+  const isVideo = c.kind === "video";
+  const preview = (c.kind === "image" || c.kind === "video")
+    ? `<img class="dimg" src="/thumb?path=${encodeURIComponent(c.path)}">`
+    : "";
+  $("#detailBody").innerHTML = `
+    ${preview}
+    <div><label class="f">Filename</label><div>${esc(c.filename)}</div></div>
+    <div><label class="f">Title</label><input type="text" id="fTitle" value="${esc(c.title)}" placeholder="${esc(c.filename)}"></div>
+    <div><label class="f">Description</label><textarea id="fDesc" rows="3">${esc(c.description)}</textarea></div>
+    <div><label class="f">URL</label><input type="text" id="fUrl" value="${esc(c.url)}"></div>
+    <div><label class="f">Folder</label>
+      <select id="fFolder"><option value="">Let vision decide…</option>
+      ${VOCAB.folders.map(f => `<option value="${esc(f)}"${f===c.folder?" selected":""}>${esc(f)}</option>`).join("")}
+      </select>
+    </div>
+    <div><label class="f">Tags (max 2)</label><div class="tagpick" id="fTags">
+      ${VOCAB.tags.map(t => `<span class="tagchip${draftTags.has(t)?" on":""}" data-tag="${esc(t)}">${esc(t)}</span>`).join("")}
+    </div></div>
+    ${isVideo ? `<div><label class="f">Note to Claude (how to analyze this video)</label>
+      <textarea id="fNote" rows="4" placeholder="e.g. treat as a case study, focus on pacing and editing">${esc(c.note)}</textarea></div>` : ""}
+    <div style="display:flex;gap:8px;padding-top:6px">
+      <button class="btn" id="saveBtn">Save</button>
+      <button class="btn primary" id="ingestOneBtn">Ingest</button>
+    </div>
+  `;
+  $("#fTags").querySelectorAll(".tagchip").forEach(el => {
+    el.addEventListener("click", () => {
+      const t = el.dataset.tag;
+      if (draftTags.has(t)) { draftTags.delete(t); el.classList.remove("on"); }
+      else {
+        if (draftTags.size >= 2) { toast("Max 2 tags"); return; }
+        draftTags.add(t); el.classList.add("on");
+      }
+    });
+  });
+  $("#saveBtn").addEventListener("click", () => saveItem(path, false));
+  $("#ingestOneBtn").addEventListener("click", async () => {
+    await saveItem(path, true);
+    await runIngest([path]);
+  });
+  $("#detail").classList.add("open");
+  $("#overlay").classList.add("show");
+}
+
+async function saveItem(path, silent) {
+  const body = {
+    path,
+    title: $("#fTitle") ? $("#fTitle").value : "",
+    description: $("#fDesc") ? $("#fDesc").value : "",
+    url: $("#fUrl") ? $("#fUrl").value : "",
+    folder: $("#fFolder") ? $("#fFolder").value : "",
+    tags: Array.from(draftTags),
+    note: $("#fNote") ? $("#fNote").value : "",
+  };
+  await api("/api/save_tags", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify(body) });
+  if (!silent) { toast("Saved"); await loadItems(); }
+}
+
+function closeDetail() {
+  current = null;
+  $("#detail").classList.remove("open");
+  $("#overlay").classList.remove("show");
+}
+$("#closeDetailBtn").addEventListener("click", closeDetail);
+$("#overlay").addEventListener("click", closeDetail);
+
+// Picking a folder or clicking a tag chip saves immediately to every
+// selected item - no separate "Apply" step. Selecting a folder/tag IS
+// applying it, matching how it actually looks (the chip turning blue).
+async function saveBatchNow() {
+  const folder = $("#batchFolder").value;
+  const tags = Array.from(batchDraftTags);
+  if (!selected.size || (!folder && !tags.length)) return;
+  await api("/api/batch_tags", { method: "POST", headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ paths: Array.from(selected), folder, tags }) });
+  await loadItems();
+}
+
+$("#batchTags").addEventListener("click", async e => {
+  const chip = e.target.closest(".tagchip");
+  if (!chip) return;
+  const t = chip.dataset.tag;
+  if (batchDraftTags.has(t)) { batchDraftTags.delete(t); chip.classList.remove("on"); }
+  else {
+    if (batchDraftTags.size >= 2) { toast("Max 2 tags"); return; }
+    batchDraftTags.add(t); chip.classList.add("on");
+  }
+  await saveBatchNow();
+});
+
+$("#batchFolder").addEventListener("change", saveBatchNow);
+
+function setProgress(done, total) {
+  const bar = $("#progressBar");
+  if (total <= 0) { bar.style.display = "none"; return; }
+  bar.style.display = "inline-flex";
+  $("#progressFill").style.width = `${Math.round((done / total) * 100)}%`;
+  $("#progressText").textContent = `Ingesting: ${done}/${total}`;
+}
+
+async function runIngest(paths) {
+  const { job_id, total } = await api("/api/ingest", { method: "POST", headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ paths }) });
+  setProgress(0, total);
+
+  let job;
+  while (true) {
+    await new Promise(r => setTimeout(r, 1200));
+    job = await api(`/api/ingest_status?job_id=${encodeURIComponent(job_id)}`);
+    setProgress(job.done, job.total);
+    await loadItems(); // items disappear from the grid as each one finishes, not just at the end
+    if (job.status === "complete") break;
+  }
+
+  setProgress(0, 0); // hides the bar
+  const results = job.results;
+  const ok = results.filter(r => r.status === "written" || r.status === "undetermined").length;
+  const dup = results.filter(r => r.status === "dup").length;
+  const err = results.filter(r => r.status === "error").length;
+  toast(`Done — ${ok} ingested, ${dup} duplicate(s), ${err} error(s)`);
+  selected.clear();
+  resetBatchDraft();
+  closeDetail();
+  await loadItems();
+}
+
+$("#ingestSelectedBtn").addEventListener("click", () => {
+  const paths = Array.from(selected);
+  if (!paths.length) return;
+  if (!confirm(`Ingest ${paths.length} selected item(s) now? This actually moves the files.`)) return;
+  runIngest(paths); // folder/tags were already saved live when you picked them
+});
+
+(async function init() {
+  await loadVocab();
+  await loadItems();
+})();
+</script>

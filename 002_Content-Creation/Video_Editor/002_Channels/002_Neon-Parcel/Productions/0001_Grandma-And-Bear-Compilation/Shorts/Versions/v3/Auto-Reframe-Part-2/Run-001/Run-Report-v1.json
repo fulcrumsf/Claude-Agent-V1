@@ -1,0 +1,96 @@
+{
+  "stage": "gate_2",
+  "device": "cpu",
+  "source_frames": 1010,
+  "analysis_seconds": 71.393,
+  "shots": [
+    {
+      "id": "Shot-06",
+      "frames": 241,
+      "raw_person_present_frames": 241,
+      "raw_bear_present_frames": 148,
+      "raw_animal_present_frames": 196,
+      "confirmed_animal_present_frames": 174,
+      "person_track_ids": [
+        "Shot-06:person:1",
+        "Shot-06:person:13",
+        "Shot-06:person:3"
+      ],
+      "bear_track_ids": [
+        "Shot-06:animal:10",
+        "Shot-06:animal:2",
+        "Shot-06:animal:4"
+      ],
+      "confirmed_animal_track_ids": [
+        "Shot-06:animal:10",
+        "Shot-06:animal:2",
+        "Shot-06:animal:4"
+      ]
+    },
+    {
+      "id": "Shot-07",
+      "frames": 239,
+      "raw_person_present_frames": 60,
+      "raw_bear_present_frames": 201,
+      "raw_animal_present_frames": 214,
+      "confirmed_animal_present_frames": 204,
+      "person_track_ids": [
+        "Shot-07:person:12",
+        "Shot-07:person:3"
+      ],
+      "bear_track_ids": [
+        "Shot-07:animal:1"
+      ],
+      "confirmed_animal_track_ids": [
+        "Shot-07:animal:1"
+      ]
+    },
+    {
+      "id": "Shot-08",
+      "frames": 289,
+      "raw_person_present_frames": 188,
+      "raw_bear_present_frames": 85,
+      "raw_animal_present_frames": 126,
+      "confirmed_animal_present_frames": 107,
+      "person_track_ids": [
+        "Shot-08:person:2",
+        "Shot-08:person:3",
+        "Shot-08:person:7"
+      ],
+      "bear_track_ids": [
+        "Shot-08:animal:1"
+      ],
+      "confirmed_animal_track_ids": [
+        "Shot-08:animal:1"
+      ]
+    },
+    {
+      "id": "Shot-09",
+      "frames": 241,
+      "raw_person_present_frames": 241,
+      "raw_bear_present_frames": 216,
+      "raw_animal_present_frames": 241,
+      "confirmed_animal_present_frames": 236,
+      "person_track_ids": [
+        "Shot-09:person:1"
+      ],
+      "bear_track_ids": [
+        "Shot-09:animal:2"
+      ],
+      "confirmed_animal_track_ids": [
+        "Shot-09:animal:2"
+      ]
+    }
+  ],
+  "metric_note": "Presence counts describe model output, not measured accuracy. Human review is required.",
+  "protected_media_unchanged": true,
+  "source_hash_unchanged": true,
+  "protected_media_sha256": {
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v1/Neon-Parcel-Grandma-And-Bear-Short-Part-1-v2.mp4": "7d6acb6f5ef0f8248c7101bbd0140f352691bda8788c7d01c3df11c5129e601d",
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Hybrid-v1.mp4": "4446e75a59c700d70ca037181f3378c98c0e1af405349962177c97d87113c045",
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe-Part-1/Gate-3-Run-001/Part-1-Hybrid-Overlay-v1.mp4": "73ffd40877beb0e0e94e774bf8dcf426ef4bd899f862247c94fcb8c445c57c1c"
+  },
+  "status": "diagnostics_complete_awaiting_human_review",
+  "elapsed_seconds": 84.509,
+  "peak_process_rss_bytes": 672006144
+}

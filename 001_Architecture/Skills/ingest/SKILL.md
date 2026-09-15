@@ -26,19 +26,27 @@ Do every step in order. Never skip steps.
 
 ## Scope Question (Ask Before Processing)
 
-When the user triggers ingest generically ("ingest", "process ingest", "process the ingest folder", "what's in ingest") without already specifying a scope, ask a multiple-choice question before touching any files:
+When the user triggers ingest generically, ask conversationally, one step at a time — never touch any files until the relevant steps below are answered:
 
-**Question:** "What should I ingest from `000_Ingest/`?"
+**Step 1:** "What are we ingesting today — just the top-level `000_Ingest/` folder, or a specific subfolder?"
 
-1. **Top-level only** — just files sitting directly in `000_Ingest/`, skip every subfolder (default/recommended)
-2. **Everything, including subfolders** — recurse into all subfolders and process everything found
-3. **A specific subfolder** — Tony names it (e.g. "PDF", "Tiktok-TOS"), only that one gets processed
-4. **Let me choose files** — list what's in ingest (top-level + subfolder contents, grouped by folder) and Tony picks individual files
-5. **Other (describe it)** — Tony explains in plain language what he wants ingested and why; parse that into a targeted ingest run instead of picking from the list above
+**If top-level:**
+**Step 2:** "Anything specific, or all of it?" — Tony either names a topic/search (e.g. "find the ones about Seedance and Claude Code") or says "all."
 
-Skip this question if the user's trigger message already specifies scope (e.g. "ingest the PDF subfolder", "ingest file X", "ingest everything including subfolders", or a freeform description matching Option 5).
+**If a specific subfolder** and Tony doesn't name one: list the current subfolders in `000_Ingest/` and let him pick.
 
-**Do not run Option 4's file list or Option 5 through markitdown/classification until Tony confirms the final set of files.**
+**Step 3 — route by folder type, once a subfolder is picked:**
+
+| Folder | What happens |
+|---|---|
+| `PDF/` | Markitdown → `.md` → normal text pipeline |
+| `Images/`, `Screenshots/` | `process_image_ingest.py` (vision, rename, write note) |
+| `Videos/` | `process_video_ingest.py` (keyframes + transcript) |
+| Anything else (e.g. `Pipeline_Orchestration/`, `Tiktok_Shop_Video_Dump/`, `Love_Hate/`, or any other project-specific folder) | **Do not guess.** Stop and ask Tony directly what should happen. Many of these are deliberately parked in `000_Ingest/` to stay *out* of graphify/wiki until a dedicated pipeline or skill (not generic ingest) finishes with them, or they're grouped multi-file bundles where per-file classification would break the relationship between the files. |
+
+Skip straight to the relevant step if the trigger message already answers it (e.g. "ingest the PDF folder" skips Step 1; "ingest everything including subfolders" skips straight to processing all of it; a freeform description of exactly what's wanted skips both steps and gets parsed directly into a targeted run).
+
+**Do not run any file list or freeform request through markitdown/classification until Tony confirms the final set of files.**
 
 ---
 
@@ -68,10 +76,12 @@ Then delete the original binary. The resulting `.md` file proceeds through Steps
 
 **Skip this step for:** `.md`, `.txt`, `.json`, `.csv`, images, videos — they are handled by their own pipelines.
 
-**Drop zones** (check these subfolders first):
+**Named drop zones** (route files this way only when they're actually in scope for this run):
 - `000_Ingest/PDF/` — PDFs
 - `000_Ingest/Screenshots/` — images (skip markitdown, go to Step 1.5)
 - `000_Ingest/Videos/` — videos (skip markitdown, run `process_video_ingest.py`)
+
+**These are subfolders like any other.** They follow the same Subfolder Recursion rule above — never auto-checked or auto-processed on a plain "ingest" trigger. `000_Ingest/Videos/` in particular is never touched unless Tony explicitly asks for it by name; a top-level-only ingest run must skip it entirely, the same as any other subfolder.
 
 ---
 

@@ -1,11 +1,13 @@
 import os
+import re
 import sys
 import collections
 import importlib.util
 import pathlib
+import subprocess
 import webbrowser
 import threading
-from flask import Flask, request, jsonify, send_file, Response, abort
+from flask import Flask, request, jsonify, send_file, Response, abort, redirect
 
 _here = pathlib.Path(__file__).parent
 
@@ -27,6 +29,7 @@ thumbs = _load("thumbs")
 render = _load("render")
 queue = _load("queue")
 actions = _load("actions")
+url_preview = _load("url_preview")
 
 _APP_FILE = _here / "App.html"
 APP_HTML = (_APP_FILE.read_text(encoding="utf-8") if _APP_FILE.is_file()
@@ -44,12 +47,19 @@ def _safe_abs(rel):
 
 def _card_public(c):
     d = {k: c[k] for k in ("path", "title", "summary", "folder", "tags", "kind",
-                           "source_label", "vision_risk", "glyph_color",
+                           "source_label", "vision_risk", "glyph_color", "glyph_emoji",
                            "ingested_at", "youtube_id")}
     if c["kind"] == "image" and c["image_abspath"]:
         d["thumb"] = "/thumb?path=" + c["path"]
+    elif c["kind"] == "image" and c.get("remote_image_url"):
+        d["thumb"] = c["remote_image_url"]
     elif c["kind"] == "youtube" and c["youtube_id"]:
         d["thumb"] = thumbs.youtube_poster_url(c["youtube_id"])
+    elif c["kind"] == "text" and c.get("preview_url"):
+        # Lazy - nothing fetched yet. The browser requests this only if/when
+        # the card is actually rendered, and a miss/dead-link falls back to
+        # the plain .md glyph client-side (see App.html's onerror handler).
+        d["thumb"] = "/url_thumb?path=" + c["path"]
     else:
         d["thumb"] = None
     return d
@@ -73,6 +83,26 @@ def create_app():
         if request.args.get("refresh"):
             app.config["INDEX"] = notes.build_index()
         return jsonify([_card_public(c) for c in idx()])
+
+    @app.get("/api/fuzzy_search")
+    def api_fuzzy_search():
+        q = (request.args.get("q") or "").strip()
+        if not q:
+            return jsonify({"paths": []})
+        graph_path = os.path.join(config.RESOURCE_LIB, "graphify-out", "graph.json")
+        if not os.path.isfile(graph_path):
+            return jsonify({"paths": [], "error": "graph not built"})
+        try:
+            result = subprocess.run(
+                ["graphify", "query", q, "--budget", "1500", "--graph", graph_path],
+                capture_output=True, text=True, timeout=10,
+            )
+            paths = sorted({
+                m for m in re.findall(r"\[src=([^\s\]]+)", result.stdout)
+            })
+        except Exception:
+            paths = []
+        return jsonify({"paths": paths})
 
     @app.get("/api/filters")
     def api_filters():
@@ -125,6 +155,16 @@ def create_app():
         if not t:
             abort(404)
         return send_file(t, mimetype="image/jpeg")
+
+    @app.get("/url_thumb")
+    def url_thumb():
+        c = next((x for x in idx() if x["path"] == request.args["path"]), None)
+        if not c or not c.get("preview_url"):
+            abort(404)
+        image_url = url_preview.get_preview_image(c["preview_url"])
+        if not image_url:
+            abort(404)
+        return redirect(image_url)
 
     @app.get("/img")
     def img():

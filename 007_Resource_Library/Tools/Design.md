@@ -6,7 +6,7 @@ tags:
 ---
 view. Yes just continue with the remaining true databases
 #### Design Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/tag_gray.svg)Tags|
+|Name|URL|Description|Tags|
 |---|---|---|---|
 |[[Polymet.ai]]|[https://www.polymet.ai/](https://www.polymet.ai/)|Polymet helps product teams to create production-ready designs and front-end code. They explain what they want or provide an image, and Polymet designs and implements the interface.|Tool|
 |[[Modyfi]]|[https://www.modyfi.com/](https://www.modyfi.com/)|Modyfi is a collaborative design tool that combines image editing and design workflows in one place. It’s geared toward multidisciplinary teams who want faster iteration and shared design assets (and it has been connected to the Figma ecosystem).|Tool|

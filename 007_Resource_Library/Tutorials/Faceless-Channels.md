@@ -5,7 +5,7 @@ tags:
   - Guide
 ---
 #### Gallery Collection
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/subtitles_gray.svg)Description|![](https://www.notion.so/icons/tag_gray.svg)Tags|
+|Name|Description|Tags|
 |---|---|---|
 |[[Admin Workflows]]|Admin tutorials like backing up|Admin|
 |[[AI Avatar]]|AI Avatar Automation|Avatar|

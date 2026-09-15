@@ -5,7 +5,7 @@ tags:
   - Product
 ---
 #### Website & SEO Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Title|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/tabs_gray.svg)Tags|![](https://www.notion.so/icons/note-whole_gray.svg)Description|
+|Title|Category|Tags|Description|
 |---|---|---|---|
 |[[Clarity by Microsoft]]|Tool|Blog, Tool|Clarity is a free user behavior analytics tool that helps you understand how users are interacting with your website through session replays and heatmaps.|
 |[[Glimpse]]|Tool|SEO|Glimpse is a trends discovery tool that surfaces fast-growing topics across the internet. Use it to spot early trend signals for SEO/content planning and to prioritize keywords before they become saturated.|

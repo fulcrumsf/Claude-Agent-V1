@@ -8,7 +8,7 @@ Files & media:
   - "[[Instructions_For_CustomGPT_Tokenizer.txt]]"
 ---
 #### Ikigai_Wall_Art_Token_Creator
-|![](https://www.notion.so/icons/key-antique_gray.svg)Style_Tokens|![](https://www.notion.so/icons/tag_gray.svg)Tags|![](https://www.notion.so/icons/numero_gray.svg)Token_ID|
+|Style_Tokens|Tags|Token_ID|
 |---|---|---|
 |[[Abstract_Expressionism]]||TS-335|
 |[[Abstract_Landscape]]||TS-412|

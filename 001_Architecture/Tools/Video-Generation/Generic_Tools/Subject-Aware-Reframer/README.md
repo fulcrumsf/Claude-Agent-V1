@@ -148,6 +148,15 @@ Run the full behavioral tests with:
 
 The current candidate has three 1080×1920 variants, a side-by-side comparison,
 a framing debug video, a contact sheet, and a per-frame crop plan. Tony preferred
-Hybrid for this Part Three video specifically; see the production's
-`Gate-3-Review-Decision-v1.json`. This does not set a global default.
-See `Gate-3-Review-v1.md` for evidence and limitations.
+Hybrid for this Part Three video; see the production's
+`Gate-3-Review-Decision-v1.json`.
+
+**Update, 2026-09-15:** After a second successful run on Neon Parcel Part One
+(`Shorts/Versions/v3/Auto-Reframe-Part-1/`), Tony locked Hybrid in as the fixed
+default reframe mode for all future Neon Parcel Shorts — see the
+`Neon_Parcel_Longform_Compilation` skill's "Locked Reframe Method" section.
+Future Neon Parcel jobs should render a Hybrid-only variant rather than the
+three-way Group/Subject/Hybrid comparison used for Part Three's evaluation.
+This default is specific to Neon Parcel; other channels connecting to this
+tool later should still evaluate their own footage before assuming Hybrid.
+See `Gate-3-Review-v1.md` for the original evidence and limitations.

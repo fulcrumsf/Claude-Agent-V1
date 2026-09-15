@@ -6,7 +6,7 @@ tags:
   - Research-List
 ---
 #### AI Tools Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Title|![](https://www.notion.so/icons/folder_gray.svg)Category|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/list_gray.svg)Tag|
+|Title|Category|Description|URL|Tag|
 |---|---|---|---|---|
 |[[3DTuning]]||3DTuning is a photorealistic 3D car configurator + game: customize cars, trucks, and bikes with parts, paint/materials, wheels, stance/suspension, and decals—then save builds, browse the gallery, and join challenges with other tuning fans.|[https://www.3dtuning.com/en-US/](https://www.3dtuning.com/en-US/)|3D, Image|
 |[[Abacus]]|Tools|[Abacus.AI](http://Abacus.AI) ChatLLM Teams: one workspace to chat with multiple top LLMs and use built‑in agents for general tasks and coding. Includes access to a large model catalog (text + image/video generation) with a simple subscription and optional Open Claw setup.|[https://chatllm.abacus.ai/](https://chatllm.abacus.ai/)|LLM|

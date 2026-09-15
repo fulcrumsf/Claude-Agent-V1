@@ -31,8 +31,8 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 |--------|------|----------------|----------|--------|------------|
 | Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
-| Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 125 | built | 2026-09-06T02:00Z |
-| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 7033 | built | 2026-09-12T02:15Z|
+| Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 126 | built | 2026-09-15T09:11Z |
+| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 7126 | built | 2026-09-15T04:05Z|
 | Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 2952 | built | 2026-09-05T22:55Z|
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
@@ -40,7 +40,7 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Games | `004_Games/` | `004_Games/graphify-out/` | 2 | built | 2026-09-08T16:00Z |
 | Ecommerce | `005_Ecommerce/` | `005_Ecommerce/graphify-out/` | 4 | built | 2026-09-08T16:00Z |
 | Affiliate Marketing | `005_Affiliate_Marketing/` | `005_Affiliate_Marketing/graphify-out/` | 36 | built | 2026-09-06T02:00Z |
-| Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 7052 | built | 2026-09-12T02:19Z|
+| Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 7957 | built | 2026-09-15T09:00Z|
 
 Total: 12 domains tracked (Wiki + Affiliate Marketing built 2026-09-06).
 
@@ -65,6 +65,8 @@ Total: 12 domains tracked (Wiki + Affiliate Marketing built 2026-09-06).
 > ~12% (mostly gumroad-mirror / `*-GITHUB` stub dupes) — acceptable, diminishing returns.
 > **Rule learned:** for a docs-heavy folder, `--token-budget 8000` per-subfolder is the
 > sweet spot; the 60000 default makes Gemini silently drop most files.
+>
+> **v2.2 incremental update (2026-09-15):** ran `graphify` incrementally after a session of ingestion rework (tag canonicalization, folder-taxonomy hardening, ~140 decorative Notion-icon embeds stripped, `Directory.md` rewritten). Detection flagged 2,477 changed docs, but ~1,866 of those were the cosmetic icon-strip only — re-extracting them would have cost ~100 wasted subagent dispatches for zero graph value. Scoped semantic extraction instead to the 608 genuinely new/untracked notes plus `Directory.md` (609 files, 28 subagent chunks), and pruned 11 deleted files. **Result: 7,957 nodes / 6,197 edges / 2,095 communities** (up from 3,686/1,622/2,146 at v2.1). Community labels were NOT hand-curated this round (2,095 communities is far beyond a manual labeling pass) — `GRAPH_REPORT.md` currently shows generic `Community N` labels; a future labeling pass or `--cluster-only` re-run can restore curated names. **Known limitation:** `build_merge`'s cross-repo dedup guard rejects this graph outright (`dedup=True` throws `ValueError: nodes span multiple repos`) because the original v2/v2.1 per-subfolder-then-merge-graphs build tagged nodes with a `repo` attribute per subfolder (Docs, Personal, Prompts, Research, Tools, ...) — any future `--update` on this domain must pass `dedup=False` to `build_merge`, or the incremental update will fail with that same error. The ~1,866 cosmetically-touched files remain flagged as "changed" in the manifest and will resurface in the next `detect_incremental` diff; that's expected and harmless (detection-only cost, not extraction cost) until they're swept up in a future real edit or a deliberate full re-extraction.
 >
 > **Cleanup closed (2026-09-07):** Tony reviewed the notes automation couldn't enrich
 > (`note_review.py` → `~/Desktop/Resource_Library_Review/`). 3 junked + deleted; the

@@ -6,7 +6,7 @@ tags:
   - Audio-Model
 ---
 #### Audio & Podcast Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/preview_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|
+|Name|URL|Description|Category|
 |---|---|---|---|
 |[[Babel]]|[https://babel.audio/](https://babel.audio/)|Babel Audio is a platform for paid conversations used to help train and evaluate AI systems. It’s relevant if you’re looking for flexible voice/data work or want insight into human-in-the-loop audio data collection.|Voice Over|
 |[[Podcastle]]|[https://podcastle.ai/](https://podcastle.ai/)|Podcastle is a podcast and audio production platform with AI tools for recording, editing, and enhancing voice. It helps creators clean up audio, generate voiceovers, and produce podcast episodes faster with a streamlined workflow.|Podcast|

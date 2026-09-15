@@ -5,7 +5,7 @@ tags:
   - Platforms
 ---
 #### Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/categories_gray.svg)Category|
+|Name|URL|Category|
 |---|---|---|
 |[[Affiliate Marketing]]||Revenue Stream|
 |[[AI Tools]]||Revenue Stream|

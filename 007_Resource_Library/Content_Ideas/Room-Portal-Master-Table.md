@@ -8,7 +8,7 @@ created: 2026-05-03
 source: Databases/Projects/Content Creation/Channels/Room Portal/Room_Portal_Master_Table.md
 retag_flag: "bad-tag-value"
 ---
-|![](https://www.notion.so/icons/font_gray.svg)Theme|![](https://www.notion.so/icons/description_gray.svg)DR (Google Trends Avg)|![](https://www.notion.so/icons/description_gray.svg)# Long-form in Top 20|![](https://www.notion.so/icons/description_gray.svg)# New in 90d|![](https://www.notion.so/icons/hashtag_gray.svg)CI|![](https://www.notion.so/icons/description_gray.svg)Top Incumbent (Title + Views)|![](https://www.notion.so/icons/description_gray.svg)GS (DR ÷ [CI+1])|![](https://www.notion.so/icons/description_gray.svg)Verdict|
+|Theme|DR (Google Trends Avg)|# Long-form in Top 20|# New in 90d|CI|Top Incumbent (Title + Views)|GS (DR ÷ [CI+1])|Verdict|
 |---|---|---|---|---|---|---|---|
 |[[000_Ingest/Notion-Edit/Notion/Private & Shared/Project Dashboard/Projects/Content Creation/Channels/Room Portal/Room_Portal_Master_Table/Tent Camping Rain\|Tent Camping Rain]]|86|—|—|21|—|3.91|Medium (Best Opportunity)|
 |[[000_Ingest/Notion-Edit/Notion/Private & Shared/Project Dashboard/Projects/Content Creation/Channels/Room Portal/Room_Portal_Master_Table/Ocean Waves (Night)\|Ocean Waves (Night)]]|77|15+|4+|19|All You Need to Fall Asleep – Ocean Sounds – 12h (36M+)|3.85|High|

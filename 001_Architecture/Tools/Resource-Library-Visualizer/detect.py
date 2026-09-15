@@ -66,6 +66,56 @@ def detect_source(fm, body, filename, has_image):
     return "MD", False
 
 
+# Layer 1: title keywords, checked in order, first match wins - this can
+# override a wrong/mistagged note, since title text tends to be more reliably
+# on-topic than the LLM-assigned tags (see 2026-09-11 tag-accuracy findings).
+_TITLE_GLYPHS = [
+    (r"\b(kdp|kindle|publishing)\b|\bbook\b", "📚"),
+    (r"\bbookmarks?\b", "🔖"),
+    (r"\b(youtube|tiktok|shorts?)\b|\bvideos?\b", "🎥"),
+    (r"\bgithub\b|\brepos?\b", "🐙"),
+    (r"\bprompts?\b", "💬"),
+    (r"\b(crypto|bitcoin|defi|nft|tokens?)\b", "🪙"),
+    (r"\b(travel|flight|hotel|visa)\b", "✈️"),
+    (r"\b(recipe|food|sandwich(es)?|restaurant)\b", "🍽️"),
+    (r"\b(design|mockups?|ui|ux|style)\b", "🎨"),
+    (r"\b(llm|gpt|claude|gemini|models?)\b", "🧠"),
+    (r"\b(research|study|analysis)\b", "📊"),
+    (r"\bseo\b|\bwebsites?\b", "🌐"),
+    (r"\b(audio|podcasts?|voice(over)?)\b", "🎙️"),
+    (r"\b(jobs?|hiring|career|resume)\b", "💼"),
+    (r"\b(invest(ing|ment)?|stocks?|tax(es)?|portfolio)\b", "💰"),
+    (r"\b(workflows?|pipelines?|automation)\b", "⚙️"),
+    (r"\bgames?|gaming\b", "🎮"),
+    (r"\b(etsy|pod|print[- ]on[- ]demand|merch)\b", "🖨️"),
+]
+_TITLE_GLYPH_RES = [(re.compile(p, re.I), g) for p, g in _TITLE_GLYPHS]
+
+# Layer 2: tag fallback, only used when no title keyword matched. Keyed on
+# the note's first tag (the fixed 20-value vocabulary in Directory.md).
+_TAG_GLYPHS = {
+    "guide": "📖", "profile": "👤", "product": "🛍️", "art-reference": "🖼️",
+    "gaming": "🎮", "3d": "🧊", "art-style": "🎨", "platforms": "🌐",
+    "stocks": "📈", "crypto": "🪙", "app": "📱", "github": "🐙",
+    "llm": "🧠", "image-video-model": "🎬", "audio-model": "🎙️",
+    "research-list": "📋", "health": "🩺", "pipeline": "⚙️",
+    "coding-agent": "🤖", "misc": "📄",
+}
+DEFAULT_GLYPH = "📄"
+
+
+def glyph_emoji(title, tags):
+    title = title or ""
+    for rx, glyph in _TITLE_GLYPH_RES:
+        if rx.search(title):
+            return glyph
+    for t in (tags or []):
+        glyph = _TAG_GLYPHS.get(str(t).lower())
+        if glyph:
+            return glyph
+    return DEFAULT_GLYPH
+
+
 def glyph_color(fm, folder):
     if is_structural(str(fm.get("_filename", ""))):
         return GLYPH_PALETTE["structural"]

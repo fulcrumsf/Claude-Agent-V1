@@ -5,7 +5,7 @@ tags:
   - Art-Reference
 ---
 #### Wall Art Mockups
-|![](https://www.notion.so/icons/font_gray.svg)Mockup Name|![](https://www.notion.so/icons/lounge_gray.svg)Room Type|![](https://www.notion.so/icons/tag_gray.svg)Tags|
+|Mockup Name|Room Type|Tags|
 |---|---|---|
 |[[Living Room - Japandi Minimalist]]|Living Room|Japandi, Minimalist, Wabisabi|
 |[[Living Room - Modern]]|Living Room|Minimalist, Modern, Neutral Palette|

@@ -7,7 +7,7 @@ Text: Stories about kingdoms
 ---
 ---
 #### Warrior Scripts
-|![](https://www.notion.so/icons/font_gray.svg)Name|
+|Name|
 |---|
 |[[000_Ingest/Notion-Edit/Notion/Private & Shared/Project Dashboard/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Genghis Khan\|Genghis Khan]]|
 |[[Alexander The Great]]|

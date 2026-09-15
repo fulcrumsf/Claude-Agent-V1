@@ -81,6 +81,10 @@ Notion-Edit/
 *.m4a
 *.ogg
 *.ogg
+
+# PDFs — never committed (Tony, 2026-09-15, after a 154MB PDF was about to go
+# into git history permanently). PDFs stay on disk / in the vault, never in git.
+*.pdf
 *.m4a
 
 # Graphify generated output — rebuilds automatically, never commit

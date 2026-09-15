@@ -5,7 +5,7 @@ tags:
   - Platforms
 ---
 #### UGC Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/preview_gray.svg)Thumbnail|
+|Name|URL|Description|Category|Thumbnail|
 |---|---|---|---|---|
 |[[Payday.Social]]|[https://payday.social/](https://payday.social/)|Payday Social is a creator monetization platform that pays creators to make content for brands, often without requiring a large following. Use it to find performance-based opportunities and turn short-form content into recurring income.|Work||
 |[[Payper]]|[https://getpayper.app/](https://getpayper.app/)|Payper is a platform for getting paid by brands for creating content. Use it to find brand briefs, submit content, and earn payouts for UGC and promotional assets.|Tool||

@@ -5,7 +5,7 @@ tags:
   - Guide
 ---
 #### Education Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/view_gray.svg)Thumbnail|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|
+|Name|URL|Thumbnail|Description|Category|
 |---|---|---|---|---|
 |[[GeeksforGeeks]]|[https://www.geeksforgeeks.org/](https://www.geeksforgeeks.org/)||GeeksforGeeks is a computer science learning site covering coding tutorials, data structures/algorithms, and interview prep. Use it to study fundamentals, practice problems, and reference implementations across languages.||
 |[[Faceless Wealth School]]|[https://www.skool.com/facelesswealth/about](https://www.skool.com/facelesswealth/about)||Faceless Wealth School is a Skool community centered on “faceless” content and monetization strategies. Use it for community learning, frameworks, and accountability around building income streams without being on camera.|Research|

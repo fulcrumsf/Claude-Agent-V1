@@ -70,7 +70,7 @@
     display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .thumbwrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .glyph { width: 100%; height: 100%; display: flex; align-items: center;
-    justify-content: center; font: 700 22px ui-monospace, monospace; color: #fff; }
+    justify-content: center; font-size: 48px; line-height: 1; color: #fff; }
   .play { position: absolute; inset: 0; margin: auto; width: 0; height: 0;
     border-style: solid; border-width: 15px 0 15px 26px;
     border-color: transparent transparent transparent rgba(255,255,255,.92);
@@ -96,6 +96,8 @@
   .src.YouTube { background: #dc2626; }
   .src.Bookmark { background: #2563eb; }
   .src.MD { background: #6b7280; }
+  .fuzzybadge { position: absolute; top: 6px; left: 6px; font-size: 10px;
+    padding: 2px 6px; border-radius: 999px; background: rgba(0,0,0,.65); color: #fff; }
 
   /* detail slide-over */
   #scrim { position: fixed; inset: 0; background: #0007; z-index: 40; display: none; }
@@ -143,8 +145,9 @@
   <div class="titlebar">
     <h1>Resource Library</h1>
     <span id="count">loading…</span>
+    <span id="fuzzyStatus" style="color:var(--muted);font-size:12px"></span>
     <span class="grow"></span>
-    <input type="search" id="q" placeholder="title / filename contains…">
+    <input type="search" id="q" placeholder="title / filename contains… (pause to also search the graph)">
     <button class="btn" id="textToggle">Show text-only</button>
     <button class="btn primary" id="finalizeBtn">Finalize Queue</button>
   </div>
@@ -221,7 +224,7 @@ const esc = s => (s || "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 
 let ALL = [];
 let TAG_VOCAB = [];
-const state = { q: "", folders: new Set(), sources: new Set(), tags: new Set(), showText: false };
+const state = { q: "", folders: new Set(), sources: new Set(), tags: new Set(), showText: false, fuzzyPaths: null };
 const selected = new Set();
 let current = null; // path of open detail
 
@@ -246,24 +249,46 @@ async function api(url, opts) {
 
 function visible() {
   return ALL.filter(c => {
-    if (!state.showText && c.kind === "text") return false;
+    let searchMatch = null; // null = no active search; true/false once evaluated
+    if (state.q) {
+      const hay = (c.title + " " + c.path).toLowerCase();
+      const literalMatch = hay.includes(state.q);
+      const fuzzyMatch = state.fuzzyPaths && state.fuzzyPaths.has(c.path);
+      searchMatch = literalMatch || fuzzyMatch;
+      if (!searchMatch) return false;
+    }
+    // An active search that actually matched this card overrides the
+    // text-only hide - you're explicitly looking for it, show it regardless.
+    if (!state.showText && c.kind === "text" && !searchMatch) return false;
     if (state.folders.size && !state.folders.has(c.folder)) return false;
     if (state.sources.size && !state.sources.has(c.source_label)) return false;
     if (state.tags.size && !c.tags.some(t => state.tags.has(t))) return false;
-    if (state.q) {
-      const hay = (c.title + " " + c.path).toLowerCase();
-      if (!hay.includes(state.q)) return false;
-    }
     return true;
   });
+}
+
+function isFuzzyOnlyMatch(c) {
+  if (!state.q || !state.fuzzyPaths || !state.fuzzyPaths.has(c.path)) return false;
+  const hay = (c.title + " " + c.path).toLowerCase();
+  return !hay.includes(state.q);
+}
+
+function rlvThumbFallback(img) {
+  const div = document.createElement("div");
+  div.className = "glyph";
+  div.style.background = img.dataset.glyph || "#9ca3af";
+  div.textContent = img.dataset.emoji || "📄";
+  img.replaceWith(div);
 }
 
 function cardHTML(c) {
   let thumb;
   if (c.thumb) {
-    thumb = `<img loading="lazy" src="${esc(c.thumb)}" alt="">`;
+    // A lazy /url_thumb (or a dead remote embed) can 404 or fail to load -
+    // fall back to the tag/title-matched emoji glyph instead of a broken-image icon.
+    thumb = `<img loading="lazy" src="${esc(c.thumb)}" alt="" data-glyph="${esc(c.glyph_color || "#9ca3af")}" data-emoji="${esc(c.glyph_emoji || "📄")}" onerror="rlvThumbFallback(this)">`;
   } else {
-    thumb = `<div class="glyph" style="background:${esc(c.glyph_color || "#9ca3af")}">.md</div>`;
+    thumb = `<div class="glyph" style="background:${esc(c.glyph_color || "#9ca3af")}">${esc(c.glyph_emoji || "📄")}</div>`;
   }
   const play = c.kind === "youtube" ? '<span class="play"></span>' : "";
   const isSel = selected.has(c.path);
@@ -271,10 +296,12 @@ function cardHTML(c) {
   const src = c.source_label
     ? `<span class="src ${esc(c.source_label)}">${c.vision_risk ? "⚠ " : ""}${esc(c.source_label)}</span>`
     : "";
+  const fuzzyBadge = isFuzzyOnlyMatch(c)
+    ? '<span class="fuzzybadge" title="Matched via graph relationship, not literal text">🔮 related</span>' : "";
   return `<div class="card${isSel ? " sel" : ""}" data-path="${esc(c.path)}">
     <div class="thumbwrap">
       <div class="chk${isSel ? " on" : ""}" data-check>${isSel ? "✓" : ""}</div>
-      ${thumb}${play}
+      ${thumb}${play}${fuzzyBadge}
     </div>
     <div class="body">
       <div class="t">${esc(c.title)}</div>
@@ -320,7 +347,36 @@ document.addEventListener("click", e => {
   if (t.dataset.src !== undefined) return toggle(state.sources, t.dataset.src, t);
   if (t.dataset.tag !== undefined) return toggle(state.tags, t.dataset.tag, t);
 });
-$("#q").addEventListener("input", e => { state.q = e.target.value.toLowerCase().trim(); renderGrid(); });
+let fuzzyTimer = null;
+let fuzzyToken = 0;
+
+async function runFuzzySearch(q) {
+  const myToken = ++fuzzyToken;
+  $("#fuzzyStatus").textContent = "🔮 searching graph…";
+  let paths = [];
+  try {
+    const data = await api("/api/fuzzy_search?q=" + encodeURIComponent(q));
+    paths = data.paths || [];
+  } catch (e) {
+    paths = [];
+  }
+  if (myToken !== fuzzyToken) return; // a newer query superseded this one
+  state.fuzzyPaths = new Set(paths);
+  $("#fuzzyStatus").textContent = paths.length ? `🔮 ${paths.length} graph matches` : "";
+  renderGrid();
+}
+
+$("#q").addEventListener("input", e => {
+  state.q = e.target.value.toLowerCase().trim();
+  state.fuzzyPaths = null; // stale - clear until the new debounced fetch resolves
+  fuzzyToken++; // invalidate any in-flight fuzzy request
+  $("#fuzzyStatus").textContent = "";
+  renderGrid();
+  clearTimeout(fuzzyTimer);
+  if (state.q.length > 2) {
+    fuzzyTimer = setTimeout(() => runFuzzySearch(state.q), 400);
+  }
+});
 $("#textToggle").addEventListener("click", e => {
   state.showText = !state.showText;
   e.target.classList.toggle("on", state.showText);

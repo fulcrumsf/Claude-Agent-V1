@@ -12,7 +12,7 @@ tags:
 
 ---
 #### Reimagined Realms Characters
-|![](https://www.notion.so/icons/font_gray.svg)Character Name|![](https://www.notion.so/icons/seed_gray.svg)Character Seed in Freepik|![](https://www.notion.so/icons/link_gray.svg)URL Link|
+|Character Name|Character Seed in Freepik|URL Link|
 |---|---|---|
 |[[000_Ingest/Notion-Edit/Notion/Private & Shared/Project Dashboard/Projects/Content Creation/Channels/Kingdoms and Conquerors/Warrior Scripts/Genghis Khan]]|7777||
 |[[Julius Cesar]]|0000||
@@ -20,7 +20,7 @@ tags:
   
 ---
 #### Story Workflow Styles
-|![](https://www.notion.so/icons/font_gray.svg)Title|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/camera-roll-portrait_gray.svg)Format|
+|Title|Category|Format|
 |---|---|---|
 |[[POV Futuristic]]|POV History|Short (9:16)|
 |[[Vlogger]]|Vlogger Style|Landscape (16:9)|

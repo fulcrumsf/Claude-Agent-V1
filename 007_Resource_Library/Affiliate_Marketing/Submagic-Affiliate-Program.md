@@ -1,13 +1,15 @@
 ---
-title: "Submagic Affiliate Program"
-type: "tool-doc"
-category: "video-production"
+title: Submagic Affiliate Program
+type: tool-doc
+category: video-production
 tags:
-  - Product
-  - Platforms
+- Platforms
+- Product
 created: 2026-05-12
 source: local
-retag_flag: "bad-tag-value"
+retag_flag: bad-tag-value
+summary: 'Submagic affiliate program '
+url: https://affiliate.submagic.co/
 ---
 ## Start earning passive income in 2 minutes
 

@@ -6,7 +6,7 @@ tags:
   - Guide
 ---
 #### Youtube & Tiktok Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/categories_gray.svg)Tags|
+|Name|Description|Category|URL|Tags|
 |---|---|---|---|---|
 |[[AI Animation Course]]|This Gumroad product is an AI animation course by Societies-r (TikTok). Use it to learn practical AI animation workflows, prompts, and production techniques for creating short-form animated content.||[https://societiesr.gumroad.com/l/jbvfco](https://societiesr.gumroad.com/l/jbvfco)|Learning|
 |[[Buy Me a Coffee]]|Buy Me a Coffee is a creator monetization platform for tips, memberships, and digital product sales. Use it to collect support from fans, sell downloads, and run lightweight membership perks without a full storefront.||[https://buymeacoffee.com/](https://buymeacoffee.com/)|Tools|

@@ -10,6 +10,8 @@ THUMB_W = 280
 IMG_EXT = (".png", ".jpg", ".jpeg", ".webp", ".gif")
 
 THUMB_CACHE = os.path.expanduser("~/.cache/rl_visualizer/thumbs")
+URL_IMAGE_CACHE = os.path.expanduser("~/.cache/rl_visualizer/url_image_cache.json")
+URL_FETCH_TIMEOUT = 4  # seconds; a dead/slow site falls back silently, never blocks the page
 DELETE_DIR = os.path.expanduser("~/Desktop/delete")
 QUEUE_DIR = os.path.expanduser("~/Desktop/Resource_Library_Review")
 QUEUE_FILE = os.path.join(QUEUE_DIR, "Review_Queue.md")

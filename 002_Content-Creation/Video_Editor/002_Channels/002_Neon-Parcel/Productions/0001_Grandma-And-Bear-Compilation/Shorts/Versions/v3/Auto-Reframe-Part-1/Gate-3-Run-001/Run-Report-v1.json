@@ -1,0 +1,100 @@
+{
+  "stage": "gate_3",
+  "status": "rendered_and_verified_awaiting_tony_review",
+  "job_id": "Part-1-Gate-3-Hybrid-v1",
+  "security": {
+    "os_network_denial": true,
+    "loopback_errno": 1,
+    "clean_environment_launcher": true
+  },
+  "source_unchanged": true,
+  "protected_media_unchanged": true,
+  "elapsed_seconds": 45.039,
+  "outputs": {
+    "Hybrid": {
+      "width": 1080,
+      "height": 1920,
+      "frames": 1659,
+      "fps": 30,
+      "video_start": "0.000000",
+      "video_duration": "55.300000",
+      "audio_start": "0.000000",
+      "audio_duration": "55.300000",
+      "sha256": "dc3aeaed82cb8047ed9c3e42853ec8dc067821fed3a90ba4adf3ffcfba822454",
+      "full_decode_passed": true
+    },
+    "comparison": {
+      "width": 360,
+      "height": 720,
+      "frames": 1659,
+      "fps": 30,
+      "video_start": "0.000000",
+      "video_duration": "55.300000",
+      "audio_start": "0.000000",
+      "audio_duration": "55.300000",
+      "sha256": "0e6996ba3f8b4bf85d429f8f3d635458a4f09461bfeae5167071c3079b4ca6c2",
+      "full_decode_passed": true
+    },
+    "debug": {
+      "width": 1320,
+      "height": 704,
+      "frames": 1659,
+      "fps": 30,
+      "video_start": "0.000000",
+      "video_duration": "55.300000",
+      "audio_start": "0.000000",
+      "audio_duration": "55.300000",
+      "sha256": "6fa68596dccc8c15f036318d789b9f28930ab7bace855fdad9dcd924474d71c2",
+      "full_decode_passed": true
+    }
+  },
+  "resources": {
+    "allocated_bytes": 2179932160,
+    "free_bytes": 25732939776
+  },
+  "layout_counts": {
+    "Hybrid": {
+      "crop": 588,
+      "fit_blur": 1071
+    }
+  },
+  "reason_counts": {
+    "Hybrid": {
+      "subject_view": 588,
+      "hybrid_group_hold": 468,
+      "short_crop_suppressed": 192,
+      "subject_or_motion_does_not_fit": 4,
+      "fallback_minimum_hold": 107,
+      "hybrid_payoff_group": 300
+    }
+  },
+  "contact_sheet_frames": [
+    0,
+    90,
+    181,
+    272,
+    362,
+    363,
+    423,
+    483,
+    542,
+    602,
+    603,
+    678,
+    753,
+    829,
+    904,
+    905,
+    981,
+    1056,
+    1131,
+    1207,
+    1208,
+    1320,
+    1433,
+    1546,
+    1658
+  ],
+  "contact_sheet_sha256": "8a549dff403c0af30929317fb8b1a929530a85777bbbcc7ba829e0533c19b281",
+  "crop_plan_sha256": "ad3440b45b963dc7704951793058ec5177355853de5c549b84cb2795923a87ac"
+}

@@ -1,0 +1,112 @@
+{
+  "stage": "gate_2",
+  "device": "cpu",
+  "source_frames": 1324,
+  "analysis_seconds": 93.999,
+  "shots": [
+    {
+      "id": "Shot-01",
+      "frames": 289,
+      "raw_person_present_frames": 289,
+      "raw_bear_present_frames": 23,
+      "raw_animal_present_frames": 287,
+      "confirmed_animal_present_frames": 277,
+      "person_track_ids": [
+        "Shot-01:person:1"
+      ],
+      "bear_track_ids": [
+        "Shot-01:animal:2"
+      ],
+      "confirmed_animal_track_ids": [
+        "Shot-01:animal:2"
+      ]
+    },
+    {
+      "id": "Shot-02",
+      "frames": 192,
+      "raw_person_present_frames": 192,
+      "raw_bear_present_frames": 192,
+      "raw_animal_present_frames": 192,
+      "confirmed_animal_present_frames": 189,
+      "person_track_ids": [
+        "Shot-02:person:1",
+        "Shot-02:person:19"
+      ],
+      "bear_track_ids": [
+        "Shot-02:animal:2"
+      ],
+      "confirmed_animal_track_ids": [
+        "Shot-02:animal:2"
+      ]
+    },
+    {
+      "id": "Shot-03",
+      "frames": 241,
+      "raw_person_present_frames": 211,
+      "raw_bear_present_frames": 0,
+      "raw_animal_present_frames": 132,
+      "confirmed_animal_present_frames": 94,
+      "person_track_ids": [
+        "Shot-03:person:1",
+        "Shot-03:person:15",
+        "Shot-03:person:17",
+        "Shot-03:person:20",
+        "Shot-03:person:24",
+        "Shot-03:person:5",
+        "Shot-03:person:7",
+        "Shot-03:person:8"
+      ],
+      "bear_track_ids": [],
+      "confirmed_animal_track_ids": [
+        "Shot-03:animal:12",
+        "Shot-03:animal:2",
+        "Shot-03:animal:6"
+      ]
+    },
+    {
+      "id": "Shot-04",
+      "frames": 241,
+      "raw_person_present_frames": 241,
+      "raw_bear_present_frames": 239,
+      "raw_animal_present_frames": 241,
+      "confirmed_animal_present_frames": 238,
+      "person_track_ids": [
+        "Shot-04:person:1"
+      ],
+      "bear_track_ids": [
+        "Shot-04:animal:2"
+      ],
+      "confirmed_animal_track_ids": [
+        "Shot-04:animal:2"
+      ]
+    },
+    {
+      "id": "Shot-05",
+      "frames": 361,
+      "raw_person_present_frames": 361,
+      "raw_bear_present_frames": 0,
+      "raw_animal_present_frames": 356,
+      "confirmed_animal_present_frames": 340,
+      "person_track_ids": [
+        "Shot-05:person:1",
+        "Shot-05:person:12"
+      ],
+      "bear_track_ids": [],
+      "confirmed_animal_track_ids": [
+        "Shot-05:animal:13",
+        "Shot-05:animal:14",
+        "Shot-05:animal:2"
+      ]
+    }
+  ],
+  "metric_note": "Presence counts describe model output, not measured accuracy. Human review is required.",
+  "protected_media_unchanged": true,
+  "source_hash_unchanged": true,
+  "protected_media_sha256": {
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v1/Neon-Parcel-Grandma-And-Bear-Short-Part-1-v2.mp4": "7d6acb6f5ef0f8248c7101bbd0140f352691bda8788c7d01c3df11c5129e601d",
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Hybrid-v1.mp4": "4446e75a59c700d70ca037181f3378c98c0e1af405349962177c97d87113c045"
+  },
+  "status": "diagnostics_complete_awaiting_human_review",
+  "elapsed_seconds": 110.169,
+  "peak_process_rss_bytes": 677216256
+}

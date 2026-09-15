@@ -5,7 +5,7 @@ tags:
   - Product
 ---
 #### Print On Demand Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/document_gray.svg)Description|![](https://www.notion.so/icons/list_gray.svg)Tags|![](https://www.notion.so/icons/link_gray.svg)URL|
+|Name|Category|Description|Tags|URL|
 |---|---|---|---|---|
 |[[Auto DS]]|Tool|AutoDS is a dropshipping automation platform for product importing, pricing/stock monitoring, and fulfillment. Use it to manage a dropshipping store at scale and find products while reducing manual operations.|Shopify, Tiktok Shop|[https://www.autods.com/](https://www.autods.com/)|
 |[[Drop Sure]]|Tool|DropSure is a dropshipping sourcing and fulfillment service that helps stores find winning products and automate order processing. Use it for product sourcing, faster shipping options, and branding/packaging support.|Amazon FBA, Shopify|[https://www.dropsure.com/](https://www.dropsure.com/)|

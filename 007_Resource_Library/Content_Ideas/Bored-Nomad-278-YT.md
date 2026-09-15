@@ -11,7 +11,7 @@ retag_flag: "bad-tag-value"
 - [ ] Rating Food I ate in Japan
 - [ ] Figuring out how to get a sim card in foreign country? Do this instead (Airalo)
 #### Video Scripts
-|![](https://www.notion.so/icons/font_gray.svg)Name|
+|Name|
 |---|
 |[[Suica Tiktok & Youtube Short]]|
 |[[Best Sandwiches]]|
@@ -314,7 +314,7 @@ Let me know if you’d like help implementing these or tweaking further!
   
 ---
 #### Video Ideas
-|![](https://www.notion.so/icons/font_gray.svg)Name|
+|Name|
 |---|
 |[[Benagil Caves]]|
 |[[Ranking food I ate in Kuala Lumpur]]|

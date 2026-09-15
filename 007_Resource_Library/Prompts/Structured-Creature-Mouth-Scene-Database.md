@@ -8,7 +8,7 @@ tags:
 created: 2026-05-03
 source: Databases/Resource Dashboard/Resource Gallery/Prompting/Prompts/ChatGPT/ChatGPT Prompts/Plush Animal World Prompt/Structured Creature Mouth Scene Database.md
 ---
-|![](https://www.notion.so/icons/font_gray.svg)Environment|![](https://www.notion.so/icons/description_gray.svg)Animal|![](https://www.notion.so/icons/description_gray.svg)Mouth Interior|![](https://www.notion.so/icons/description_gray.svg)Lighting|
+|Environment|Animal|Mouth Interior|Lighting|
 |---|---|---|---|
 |[[Geode crystal cavern]]|Tiger|stone-carved lounge|Full ambient glow from ceiling sconces|
 |[[Sunken submarine hangar]]|Lion|lush mini theater|Warm recessed lighting with uplight corners|

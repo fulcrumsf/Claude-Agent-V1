@@ -1,0 +1,40 @@
+{
+  "job_id": "Part-2-Gate-3-Hybrid-v1",
+  "gate": 3,
+  "completion_marker": "Run-Report-v1.json",
+  "job": {
+    "schema_version": 1,
+    "job_id": "Part-2-Gate-3-Hybrid-v1",
+    "approval": {
+      "gate": 3,
+      "approved": true,
+      "by": "Tony",
+      "scope": "Run the locked Gate 3 hybrid subject-aware reframer on Part Two. Do not publish yet."
+    },
+    "source": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Assembly/Versions/v5/Neon-Parcel-Grandma-And-Bear-Compilation-Music-Endscreen-Review-v1.mp4",
+    "source_sha256": "22748828bfa360e3a73819d6ce82ff3e17868e3cf1b04183dcf8974eeeb4d449",
+    "analysis": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe-Part-2/Run-001/Detections-And-Tracks-v1.json",
+    "analysis_sha256": "89687c4a5dce602263fe9ef920941dc6a988721b71699c551049a8903b4490c4",
+    "profile_file": "/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/Framing-Profiles-v1.json",
+    "profile_sha256": "a278b6323bee09066b9744b8d572085ebd48b7643f41df51ff13de9a20f148d8",
+    "output_root": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe-Part-2",
+    "output_stem": "Part-2",
+    "output": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30
+    },
+    "variants": {
+      "Hybrid": {
+        "profile": "hybrid",
+        "settings": {},
+        "shot_overrides": {}
+      }
+    },
+    "protected_media": {
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v1/Neon-Parcel-Grandma-And-Bear-Short-Part-1-v2.mp4": "7d6acb6f5ef0f8248c7101bbd0140f352691bda8788c7d01c3df11c5129e601d",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Hybrid-v1.mp4": "4446e75a59c700d70ca037181f3378c98c0e1af405349962177c97d87113c045",
+      "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe-Part-1/Gate-3-Run-001/Part-1-Hybrid-Overlay-v1.mp4": "73ffd40877beb0e0e94e774bf8dcf426ef4bd899f862247c94fcb8c445c57c1c"
+    }
+  }
+}

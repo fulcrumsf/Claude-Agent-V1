@@ -6,7 +6,7 @@ tags:
   - Guide
 ---
 #### Newsletter Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/folder_gray.svg)Category|![](https://www.notion.so/icons/note-whole_gray.svg)Description|
+|Name|URL|Category|Description|
 |---|---|---|---|
 |[[PLR.me]]|[https://www.plr.me/](https://www.plr.me/)|PLR|[PLR.me](http://PLR.me) is a marketplace for private label rights (PLR) content and templates, especially in wellness and coaching niches. Use it to source editable articles, workbooks, and marketing assets you can rebrand for products or lead magnets.|
 |[[000_Ingest/Notion-Edit/Notion/Private & Shared/Resource Dashboard/Resource Gallery/Bookmarks/Bookmarks/Newsletters/Newsletter Bookmarks/Lenny’s Newsletter\|Lenny’s Newsletter]]|[https://www.lennysnewsletter.com/](https://www.lennysnewsletter.com/)|Education|Lenny’s Newsletter is a product and growth newsletter (and podcast) featuring deeply researched advice and interviews. Use it as a learning resource for building products, improving growth strategy, and leveling up as a builder.|

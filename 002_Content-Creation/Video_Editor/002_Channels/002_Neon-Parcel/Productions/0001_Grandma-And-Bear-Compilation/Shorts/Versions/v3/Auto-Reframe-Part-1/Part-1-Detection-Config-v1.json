@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "approval": "Tony directed running Part One through the Gate 3 group/subject/hybrid reframer on 2026-09-15, mirroring the Part Three Gate 2/3 detection approach.",
+  "source": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Assembly/Versions/v5/Neon-Parcel-Grandma-And-Bear-Compilation-Music-Endscreen-Review-v1.mp4",
+  "source_sha256": "22748828bfa360e3a73819d6ce82ff3e17868e3cf1b04183dcf8974eeeb4d449",
+  "time_base": "1/12288",
+  "expected_source_frames": 1324,
+  "classes": [
+    0,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "inference_size": 960,
+  "confidence": 0.1,
+  "shots": [
+    {
+      "id": "Shot-01",
+      "description": "The porch regular: grandmother and bear at the door with a plate/bowl",
+      "start_pts": 0,
+      "end_pts": 148480
+    },
+    {
+      "id": "Shot-02",
+      "description": "The wildlife warning: ranger body camera, grandmother and bear",
+      "start_pts": 148480,
+      "end_pts": 246784
+    },
+    {
+      "id": "Shot-03",
+      "description": "The grocery delivery: doorbell camera, bear with grocery bag, grandmother at door",
+      "start_pts": 246784,
+      "end_pts": 370688
+    },
+    {
+      "id": "Shot-04",
+      "description": "The garden dispute: backyard camera, bear in garden, grandmother with rake",
+      "start_pts": 370688,
+      "end_pts": 494592
+    },
+    {
+      "id": "Shot-05",
+      "description": "The window customer: kitchen phone video, bear at glass, grandmother with number card",
+      "start_pts": 494592,
+      "end_pts": 679424
+    }
+  ],
+  "future_group_fallback": "Wider scene over a blurred background; approved preference, not implemented in Gate 2.",
+  "protected_media": [
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v1/Neon-Parcel-Grandma-And-Bear-Short-Part-1-v2.mp4",
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Hybrid-v1.mp4"
+  ],
+  "family_tracking": true,
+  "diagnostic_revision": "Same Gate 2 revision used for Part Three: COCO animal classes included, raw species labels preserved, duplicate animal boxes suppressed, person/animal associated separately, four consecutive frames required before displaying a track."
+}

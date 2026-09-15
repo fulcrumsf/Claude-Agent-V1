@@ -8,7 +8,7 @@ retag_flag: "bad-tag-value"
 ---
 A Youtube and Tiktok account based on animal related content and animal meme style videos.
 #### Video Styles
-|![](https://www.notion.so/icons/font_gray.svg)Title|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/subtitles_gray.svg)Description|
+|Title|Category|Description|
 |---|---|---|
 |[[Animal Reveal]]|Reveals|Video a reveal and use Pika Labs|
 |[[Grandma and Bear]]|||
@@ -18,7 +18,7 @@ A Youtube and Tiktok account based on animal related content and animal meme sty
   
   
 #### Video Ideas
-|![](https://www.notion.so/icons/font_gray.svg)Video Idea|![](https://www.notion.so/icons/description_gray.svg)Title|![](https://www.notion.so/icons/description_gray.svg)Description|![](https://www.notion.so/icons/description_gray.svg)Tags|![](https://www.notion.so/icons/list_gray.svg)Status|![](https://www.notion.so/icons/link_gray.svg)URL|
+|Video Idea|Title|Description|Tags|Status|URL|
 |---|---|---|---|---|---|
 |[[000_Ingest/Notion-Edit/Notion/Private & Shared/Project Dashboard/Projects/Content Creation/Channels/NeonParcel (YT 1833)/Video Ideas/Untitled\|Untitled]]||||||
   

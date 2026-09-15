@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "approval": "Tony directed running Part Two through the Gate 3 hybrid reframer on 2026-09-15, using the now-locked Neon Parcel Shorts process (analyze -> Hybrid reframe -> overlay), but not publishing yet.",
+  "source": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Assembly/Versions/v5/Neon-Parcel-Grandma-And-Bear-Compilation-Music-Endscreen-Review-v1.mp4",
+  "source_sha256": "22748828bfa360e3a73819d6ce82ff3e17868e3cf1b04183dcf8974eeeb4d449",
+  "time_base": "1/12288",
+  "expected_source_frames": 1010,
+  "classes": [
+    0,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23
+  ],
+  "inference_size": 960,
+  "confidence": 0.1,
+  "shots": [
+    {
+      "id": "Shot-06",
+      "description": "The lawn-chair inspection: driveway camera, bear testing lawn chairs, grandmother with reservation sign",
+      "start_pts": 679424,
+      "end_pts": 802816
+    },
+    {
+      "id": "Shot-07",
+      "description": "The porch swing complaint: handheld phone footage, bear on porch swing, grandmother arguing",
+      "start_pts": 802816,
+      "end_pts": 925696
+    },
+    {
+      "id": "Shot-08",
+      "description": "The trash-can misunderstanding: side-yard camera, grandmother labeling bear's trash can, wildlife officer",
+      "start_pts": 925696,
+      "end_pts": 1074176
+    },
+    {
+      "id": "Shot-09",
+      "description": "The picnic rules: family phone video, grandmother picnic blanket and rule sheet, bear's paw near dessert",
+      "start_pts": 1074176,
+      "end_pts": 1198080
+    }
+  ],
+  "future_group_fallback": "Wider scene over a blurred background; approved preference, not implemented in Gate 2.",
+  "protected_media": [
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v1/Neon-Parcel-Grandma-And-Bear-Short-Part-1-v2.mp4",
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Neon-Parcel-Grandma-And-Bear-Short-Part-3-Hybrid-v1.mp4",
+    "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Shorts/Versions/v3/Auto-Reframe-Part-1/Gate-3-Run-001/Part-1-Hybrid-Overlay-v1.mp4"
+  ],
+  "family_tracking": true,
+  "diagnostic_revision": "Same Gate 2 revision used for Part One and Part Three: COCO animal classes included, raw species labels preserved, duplicate animal boxes suppressed, person/animal associated separately, four consecutive frames required before displaying a track."
+}

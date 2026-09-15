@@ -6,7 +6,7 @@ tags:
   - Guide
 ---
 #### ChatGPT Prompts
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/document_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|
+|Name|Description|Category|
 |---|---|---|
 |[[Action Figure Prompt]]|||
 |[[ChatGPT SEO Plugin]]|||

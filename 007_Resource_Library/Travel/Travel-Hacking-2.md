@@ -8,7 +8,7 @@ created: 2026-05-03
 source: Databases/Travel Hacking.md
 ---
 #### Destinations
-|![](https://www.notion.so/icons/city_gray.svg)City|![](https://www.notion.so/icons/flag-checkered_gray.svg)Country|![](https://www.notion.so/icons/moon_gray.svg)Cost per night|![](https://www.notion.so/icons/calendar-month_gray.svg)Cost per Month|![](https://www.notion.so/icons/airplane_gray.svg)Travel|![](https://www.notion.so/icons/do-not-disturb_gray.svg)Accommodation|![](https://www.notion.so/icons/passport_gray.svg)Visa|![](https://www.notion.so/icons/map_gray.svg)Schengen|
+|City|Country|Cost per night|Cost per Month|Travel|Accommodation|Visa|Schengen|
 |---|---|---|---|---|---|---|---|
 |[[Budapest]]|Hungary|$38.00|$948.00|$191.81|$386.00|90 day|Yes|
 |[[Bangkok 3]]|Thailand|$22.46|$674.00|$272.75|$0.00|60 OA+30IMG||
@@ -35,7 +35,7 @@ source: Databases/Travel Hacking.md
   
   
 #### Points
-|![](https://www.notion.so/icons/font_gray.svg)Vendor|![](https://www.notion.so/icons/list_gray.svg)Airlines|![](https://www.notion.so/icons/list_gray.svg)Hotels|![](https://www.notion.so/icons/calendar-month_gray.svg)Points|![](https://www.notion.so/icons/description_gray.svg)Flight Path|
+|Vendor|Airlines|Hotels|Points|Flight Path|
 |---|---|---|---|---|
 |[[Bilt]]|British, Cathay, Emirates, Turkish, United, Virgin||984||
 |[[Chase]]|British, Canada, United, Virgin|Hyatt, IHG, Marriott|11,024||

@@ -27,6 +27,9 @@ detect = _load("detect")
 FM_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n?(.*)$", re.S)
 EMBED_RE = re.compile(r"!\[\[([^\]|]+?\.(?:png|jpe?g|webp|gif))", re.I)
 MD_IMG_RE = re.compile(r"!\[[^\]]*\]\(([^)]+?\.(?:png|jpe?g|webp|gif))\)", re.I)
+# Remote image embed: ![...](https://...) with no required file extension —
+# CDN image URLs (Unsplash, etc.) commonly end in query params, not .jpg/.png.
+REMOTE_IMG_RE = re.compile(r"!\[[^\]]*\]\((https?://[^)\s]+)\)", re.I)
 
 
 _SCALAR_RE = re.compile(r'^([A-Za-z_][A-Za-z0-9_]*):[ \t]*(.*?)[ \t]*$')
@@ -98,6 +101,44 @@ def first_embed_image(body, md_dir):
     return None
 
 
+_NOT_CONTENT_IMG = re.compile(r"notion\.so/icons/", re.I)
+
+_ASSET_URL = re.compile(
+    r"\.(svg|css|js|woff2?|ico|png|jpe?g|gif|webp|map)(\?|$)"
+    r"|notion\.so/icons/|notion\.so/image/|images\.unsplash\.com"
+    r"|gstatic|googletagmanager|fonts\.googleapis",
+    re.I,
+)
+
+
+def first_note_url(fm, body):
+    """The one URL worth visiting for a preview image: the note's own `url`/
+    `source` frontmatter field if it's a real link, else the first real
+    (non-asset/CDN/icon) destination link in the body."""
+    for key in ("url", "source"):
+        v = str(fm.get(key) or "").strip()
+        if v.startswith("http") and not _ASSET_URL.search(v):
+            return v
+    for m in re.finditer(r"https?://[^\s)>\]\"']+", body or ""):
+        u = m.group(0).rstrip(".,);")
+        if not _ASSET_URL.search(u):
+            return u
+    return None
+
+
+def first_remote_image(body):
+    """First ![...](https://...) embed pointing at a remote URL (no local file
+    involved) — e.g. a Notion import's Unsplash cover image. Query-string CDN
+    URLs with no file extension count; the browser fetches these directly.
+    Notion's own decorative column-icons (notion.so/icons/*_gray.svg) are
+    never real content and are excluded even if one slips back in later."""
+    for m in REMOTE_IMG_RE.finditer(body or ""):
+        url = m.group(1).strip()
+        if not _NOT_CONTENT_IMG.search(url):
+            return url
+    return None
+
+
 def _ingested_at(fm, path):
     for k in ("enriched", "created"):
         v = fm.get(k)
@@ -121,9 +162,10 @@ def build_index(root=None):
         rel = os.path.relpath(f, root)
         folder = _folder(rel)
         img = find_sibling_image(f) or first_embed_image(body, os.path.dirname(f))
+        remote_img = None if img else first_remote_image(body)
         yid = detect.youtube_id(
             " ".join(str(fm.get(k, "")) for k in ("url", "source")) + " " + body)
-        has_image = img is not None
+        has_image = img is not None or remote_img is not None
         structural = detect.is_structural(os.path.basename(f))
         if has_image:
             kind = "image"
@@ -131,23 +173,28 @@ def build_index(root=None):
             kind = "youtube"
         else:
             kind = "text"
+        preview_url = first_note_url(fm, body) if kind == "text" else None
         label, risk = detect.detect_source(fm, body, os.path.basename(f), has_image)
         fm_for_glyph = dict(fm)
         fm_for_glyph["_filename"] = os.path.basename(f)
         tags = [str(t) for t in (fm.get("tags") or []) if t]
+        title = str(fm.get("title") or os.path.splitext(os.path.basename(f))[0])
         cards.append({
             "path": rel,
             "abspath": f,
-            "title": str(fm.get("title") or os.path.splitext(os.path.basename(f))[0]),
+            "title": title,
             "summary": str(fm.get("summary") or fm.get("ai_description") or ""),
             "folder": folder,
             "tags": tags,
             "kind": kind,
             "image_abspath": img,
+            "remote_image_url": remote_img,
+            "preview_url": preview_url,
             "youtube_id": yid,
             "source_label": label,
             "vision_risk": risk,
             "glyph_color": detect.glyph_color(fm_for_glyph, folder),
+            "glyph_emoji": detect.glyph_emoji(title, tags),
             "ingested_at": _ingested_at(fm, f),
             "has_image": has_image,
         })

@@ -1,12 +1,14 @@
 ---
-title: "Partner With PayKickstart Affiliate Program"
+title: Partner With PayKickstart Affiliate Program
 type: doc
 category: ecommerce
 tags:
-  - Platforms
-  - Guide
+- Guide
+- Platforms
 created: 2026-06-06
 source: 000_Ingest/Partner_with_Paykickstart.md
+summary: 'Affiliate program for PayKickstart '
+url: https://paykickstart.com/partner/
 ---
 ## Partner With Paykickstart
 

@@ -6,7 +6,7 @@ tags:
   - Product
 ---
 #### App Building Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/note-whole_gray.svg)Description|![](https://www.notion.so/icons/link_gray.svg)URL|
+|Name|Category|Description|URL|
 |---|---|---|---|
 |[[Acquire]]|Marketplace|[Acquire.com](http://Acquire.com) is a marketplace for buying and selling online businesses, especially SaaS companies. It helps founders list businesses, find qualified buyers, and manage the acquisition process with tools for valuation, diligence, and deal flow.|[https://acquire.com/](https://acquire.com/)|
 |[[Agents.Sabrina]]|Development|Agents.Sabrina is a collection of free AI agents and automation tools. Use it to explore ready-made agents/workflows you can adapt for content, ops, or development tasks.|[https://agents.sabrina.dev/](https://agents.sabrina.dev/)|

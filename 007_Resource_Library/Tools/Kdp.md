@@ -6,7 +6,7 @@ tags:
   - Research-List
 ---
 #### KDP Bookmarks
-|![](https://www.notion.so/icons/font_gray.svg)Name|![](https://www.notion.so/icons/link_gray.svg)URL|![](https://www.notion.so/icons/snippet_gray.svg)Description|![](https://www.notion.so/icons/categories_gray.svg)Category|![](https://www.notion.so/icons/categories_gray.svg)Tags|
+|Name|URL|Description|Category|Tags|
 |---|---|---|---|---|
 |[[Book Bolt Studio]]|[https://boltdesigner.io/](https://boltdesigner.io/)|Book Bolt is a design and research tool for creating KDP-ready low-content books (journals, planners, coloring books). Use it to design interiors/covers and research keywords and niches to improve Amazon discoverability.|Book Templates|Reference, Work|
 |[[Book Sprout]]|[https://booksprout.co/](https://booksprout.co/)|BookSprout is an ARC/review management platform for authors. Use it to distribute advance copies, automate follow-ups, and collect early reviews on Amazon and other sites before or after launch.|Service|Research, Tutorial|

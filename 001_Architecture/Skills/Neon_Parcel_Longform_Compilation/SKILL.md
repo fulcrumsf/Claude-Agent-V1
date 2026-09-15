@@ -585,18 +585,66 @@ after the narration pass is approved.
 Create multiple Shorts from the final master. The target duration is 60
 seconds, but it is not a hard duration.
 
-- Crop the 16:9 master to 9:16 around the action.
-- Use the nearest complete clip boundary.
-- Never cut through a clip, action, or narration.
+- Use the nearest complete clip boundary to select each Short's interval from
+  the approved master. Never cut through a clip, action, or narration.
 - A Short may end below 60 seconds.
 - A Short may exceed 60 seconds when needed to preserve the final complete clip.
 - Do not allow narration to cross from one clip into the next.
-- Add the opening title overlay only to Shorts.
-- Overlay occupies frames 1–30 at 30 FPS.
-- Center horizontally, place slightly above vertical center, and respect
-  TikTok/Shorts safe padding.
-- Do not put the core payoff under the overlay.
 - Use Part 1, Part 2, etc. only for the derived Shorts, not the long-form title.
+
+### Locked Reframe Method: Subject-Aware Reframer, Hybrid Mode
+
+As of 2026-09-15, the 16:9→9:16 crop for every Neon Parcel Short is produced
+with the Subject-Aware Reframer at
+`001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/`,
+using its `hybrid` profile as the fixed default. Do not use the older manual
+FFmpeg crop-expression script (`create_shorts_derivatives_v1.py`'s hand-tuned
+`x_expr`) for new Shorts; that approach is superseded. Do not render Group or
+Subject variants for comparison — Hybrid is locked in, not a per-video choice.
+Tony confirmed this lock-in on 2026-09-15 after approving the Part One Hybrid
+render; see the Feedback Loop and cross-session memory for that date.
+
+Steps, run from the Subject-Aware-Reframer tool directory:
+
+1. **Determine the Short's shot boundaries in the wide master.** Get each
+   shot's frame count from its individual clip in `Video_Clips/` via
+   `ffprobe -show_entries stream=nb_frames`, then find the cumulative pts at
+   30 fps... at the master's native fps (currently 24, `time_base=1/12288`,
+   512 ticks/frame). Confirm cut points against real scene changes with:
+   `ffprobe -f lavfi -i "movie='<master>',select='gt(scene\,0.15)'" -show_entries frame=pts,pts_time:frame_tags=lavfi.scene_score -of csv=p=0`.
+   Do not trust multiplied durations alone — the master can have small VFR
+   drift from concat; always cross-check against detected scene cuts.
+2. **Analyze** (`run_offline.py analyze --config <Detection-Config>.json --out <new-run-dir> --device cpu`).
+   Build the detection config from the previous shot's/production's config as
+   a template: same `source`/`source_sha256` (the shared wide master),
+   `classes: [0,14,15,16,17,18,19,20,21,22,23]` (person + all COCO animal
+   classes — needed because YOLO mislabels the AI-generated bear as dog/cat),
+   `confidence: 0.1`, `inference_size: 960`, `family_tracking: true`, and a
+   `shots` list with this Short's own pts boundaries. Set
+   `expected_source_frames` from the tool's own probe, not your manual
+   estimate — run once, let it raise a `ValueError` with the actual count if
+   your guess is off, then correct the config and rerun.
+3. **Frame/plan/render** (`run_offline.py reframe --job <Framing-Job>.json --out <new-run-dir>`)
+   with a single `"Hybrid": {"profile": "hybrid", "settings": {}, "shot_overrides": {}}`
+   variant, 1080×1920×30 output, pointing `analysis` at step 2's
+   `Detections-And-Tracks-v1.json`. Verify `full_decode_passed: true` and
+   `source_unchanged`/`protected_media_unchanged: true` in the run report
+   before proceeding.
+4. **Composite the opening title overlay** on top of the Hybrid render — this
+   is a separate FFmpeg step, the reframer does not do it:
+   `overlay=0:0:enable='between(n,0,29)'` (frames 1–30 at 30 FPS), reusing the
+   production's existing per-part overlay PNG (1080×1920, centered, slightly
+   above vertical center, TikTok/Shorts-safe padding, no payoff under it).
+5. Each run's output directory, detection config, and framing job are
+   permanent evidence — never overwrite a prior run; use a new run folder
+   per Short.
+
+New Shorts output/config folders live under the production's
+`Shorts/Versions/<vN>/Auto-Reframe-Part-<N>/`, mirroring the Part Three Gate 3
+evidence structure. Note a cosmetic bug: `diagnose.py`'s analyze step
+hardcodes `Part-3` in its own output filenames (contact sheet, debug video)
+regardless of which part is actually being analyzed — harmless, but don't
+confuse it with the real Part Three production.
 
 ## Final Package and Publishing
 
@@ -689,6 +737,40 @@ resulting status.
   `postSubmissionId`, status, and URL. A custom-thumbnail OAuth error means the
   YouTube account must be reconnected in Blotato; retry with the same uploaded
   media URLs rather than re-uploading.
+
+### Validated Blotato Shorts Upload (TikTok, YouTube Shorts, Instagram Reels, Facebook Reel)
+
+Locked in 2026-09-15 after the first cross-platform Shorts publish (Part One).
+Each Short uploads once, then posts to all four Neon Parcel accounts from the
+same public media URL:
+
+- Call `blotato_list_accounts` and confirm live account IDs before every
+  upload; do not hardcode from memory alone even though these are stable:
+  - YouTube: `25731` (title required; this account also receives Shorts —
+    a public, vertical, <60s-ish upload is auto-detected as a Short)
+  - TikTok: `27763` (`@neonparcel`)
+  - Instagram: `29334` (`@neonparcel`)
+  - Facebook: `18651`, with `pageId: "888301901041580"` ("NeonParcel" page)
+- Upload the finished Short (reframed + overlay-composited) once via
+  `blotato_create_presigned_upload_url` + PUT with `Content-Type: video/mp4`,
+  then reuse that one `publicUrl` in all four `blotato_create_post` calls.
+- Per-platform fields used for the public Shorts release:
+  - YouTube: `title`, `privacyStatus: "public"`, `shouldNotifySubscribers: true`,
+    `isMadeForKids: false`, `containsSyntheticMedia: true`.
+  - TikTok: `privacyLevel: "PUBLIC_TO_EVERYONE"`, `isAiGenerated: true`,
+    `isBrandedContent: false`, `isYourBrand: false` (organic entertainment
+    content, not a sponsored/business disclosure).
+  - Instagram: `mediaType: "reel"`, `shareToFeed: true`.
+  - Facebook: `mediaType: "reel"`, `pageId` as above.
+- Caption/description text is shared across all four platforms; YouTube's
+  `title` field is separate. Two relevant hashtags go inside the caption
+  text, not a separate field.
+- Poll `blotato_get_post_status` for any post that returns `in-progress`;
+  Instagram and Facebook Reels routinely take 10–20+ seconds longer than
+  YouTube/TikTok to finish processing.
+- This is a public-release action requiring Tony's explicit go-ahead on the
+  specific title/caption/hashtags before every publish — the approval gate
+  is per-Short, not a standing authorization.
 
 ### Autonomy-readiness status
 

@@ -1,13 +1,15 @@
 ---
-title: "OpusClip Affiliate Program Welcome Email"
-type: "tool-doc"
-category: "video-production"
+title: OpusClip Affiliate Program Welcome Email
+type: tool-doc
+category: video-production
 tags:
-  - Guide
-  - Platforms
+- Guide
+- Platforms
 created: 2026-05-12
 source: local
-retag_flag: "bad-tag-value"
+retag_flag: bad-tag-value
+summary: 'OpusClip Affiliate Program '
+url: https://opus-clip.getrewardful.com/
 ---
 # OpusClip / Agent Opus Partner Program Welcome 💸
 
