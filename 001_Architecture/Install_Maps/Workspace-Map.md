@@ -74,6 +74,7 @@ Synthesized knowledge pages created by agents during ingest. Not raw sources —
 | `Self_Learning_Loop/` | Periodic self-review and pattern recognition notes |
 | `Skills/` | **Authoritative skill source.** `~/.claude/skills`, `~/.codex/skills`, `~/.gemini/skills` all symlink here. Add skills here; all agents pick them up automatically. |
 | `Tools/` | Tool documentation organized by type |
+| `Tools/Video-Generation/Generic_Tools/models/` + `Generic_Tools/Subject-Aware-Reframer/Models/` | **Only home for model weights** (YOLO, YOLOE + text encoder, mediapipe). Gitignored (`*.pt`, `*.onnx`, `*.task`); scripts load by full path. Never in production folders or the repo root (2026-09-27). |
 | `Business-Strategy.md` | Business strategy overview |
 | `Ecosystem-Map.md` | Full business ecosystem map |
 | `Revenue-Streams.md` | Revenue stream overview |
@@ -258,4 +259,4 @@ Reference area for AI job onboarding, platform contracts, worker agreements, and
 | `Mercor/` | Mercor onboarding contracts and worker reference set |
 | `CLAUDE.md` | Department playbook for AI job reference handling |
 
-**Last updated:** 2026-07-04
+**Last updated:** 2026-09-27
