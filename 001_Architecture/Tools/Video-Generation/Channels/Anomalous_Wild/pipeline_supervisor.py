@@ -191,7 +191,7 @@ def _classify_kie_response(http_status: int, body: dict) -> tuple:
     Returns (category, message) from a Kie.ai response.
     Checks both HTTP status and the JSON body 'code' field — Kie.ai often
     returns HTTP 200 with an error code inside the body.
-    Categories: OK | FATAL | CREDITS | SKIP | RATE | WAIT | RETRY | UNKNOWN
+    Categories: OK | FATAL | CREDITS | SKIP | RATE | WAIT | RETRY | UNKNOWN  (CONFIG is raised locally, before any API call)
     """
     # Body-level code takes priority (Kie.ai uses HTTP 200 + body code for errors)
     body_code = body.get("code", 0)
@@ -316,31 +316,70 @@ def generate_kling(entry: dict) -> dict:
     return {"ok": True, "url": url} if url else {"ok": False, "error_category": "RETRY", "reason": "No URL in completed response"}
 
 
+SEEDANCE_15_MODELS = {"bytedance/seedance-1.5-pro"}
+SEEDANCE_2_MODELS = {"bytedance/seedance-2", "bytedance/seedance-2-fast"}
+
+
+def seedance_payload(entry: dict) -> dict:
+    """Build the kie.ai createTask body for the entry's Seedance model. Raises ValueError on a bad clip config.
+
+    Default is Seedance 1.5 Pro (locked). A beat Tony switches to Seedance 2.0 sets
+    entry["model"] = "bytedance/seedance-2" (or "-2-fast") and runs in ONE of Kie's
+    mutually exclusive modes (fixed 2026-09-27; it used to be silently sent as 1.5):
+      - start/end frames: first_frame_url (+ optional last_frame_url), same assets as 1.5
+      - reference images: reference_image_urls (sheets/storyboard); the prompt must pass
+        check_seedance_prompt_refs.lint (every image mapped as @Image N and used in the beats)
+    An unknown Seedance model is an error, never a silent fallback to 1.5."""
+    model = entry.get("model", "bytedance/seedance-1.5-pro")
+    first, last = entry.get("first_frame_url"), entry.get("last_frame_url")
+    common = {
+        "prompt": entry["video_prompt"],
+        "resolution": entry.get("resolution", "1080p"),
+        "aspect_ratio": entry.get("aspect_ratio", "16:9"),
+        "generate_audio": entry.get("generate_audio", True),
+    }
+    if model in SEEDANCE_15_MODELS:
+        # kie.ai's bytedance/seedance-1.5-pro exposes first/last frame as a single
+        # input_urls array: element 0 = first frame, element 1 = last frame.
+        # Confirmed live 2026-08-17/18 (see Seedance-Prompting-Guide SKILL.md).
+        return {"model": model, "input": {**common,
+                "input_urls": [url for url in [first, last] if url],
+                "duration": str(gen_request_duration(entry))}}
+    if model in SEEDANCE_2_MODELS:
+        refs = entry.get("reference_image_urls") or []
+        if refs and (first or last):
+            raise ValueError("Seedance 2 start/end frames and reference_image_urls are mutually exclusive on kie.ai; "
+                             "use the frames OR the reference images for this beat")
+        inp = {**common, "duration": gen_request_duration(entry)}
+        if refs:
+            sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "Generic_Tools"))
+            from check_seedance_prompt_refs import lint
+            fails = lint(entry["video_prompt"], len(refs))
+            if fails:
+                raise ValueError("Seedance 2 reference prompt fails the @Image tag check: " + "; ".join(fails))
+            inp["reference_image_urls"] = refs
+        else:
+            if first:
+                inp["first_frame_url"] = first
+            if last:
+                inp["last_frame_url"] = last
+        return {"model": model, "input": inp}
+    raise ValueError(f"Unknown Seedance model '{model}'. Supported: "
+                     + ", ".join(sorted(SEEDANCE_15_MODELS | SEEDANCE_2_MODELS)))
+
+
 def generate_seedance(entry: dict) -> dict:
-    """Submit Seedance 1.5 Pro job via kie.ai createTask. Returns {ok, url, error_category} or {ok:False, reason, error_category}."""
+    """Submit a Seedance job (1.5 Pro default, or a Seedance 2 per-beat override) via kie.ai createTask.
+    Returns {ok, url} or {ok:False, reason, error_category}."""
+    try:
+        payload = seedance_payload(entry)
+    except ValueError as e:
+        return {"ok": False, "error_category": "CONFIG", "reason": str(e)}
     try:
         resp = requests.post(
             "https://api.kie.ai/api/v1/jobs/createTask",
             headers=kie_headers(),
-            json={
-                "model": "bytedance/seedance-1.5-pro",
-                "input": {
-                    "prompt": entry["video_prompt"],
-                    # kie.ai's bytedance/seedance-1.5-pro exposes first/last frame as a single
-                    # input_urls array: element 0 = first frame, element 1 = last frame.
-                    # Confirmed live 2026-08-17/18 (see Seedance-Prompting-Guide SKILL.md).
-                    "input_urls": [
-                        url for url in [
-                            entry.get("first_frame_url"),
-                            entry.get("last_frame_url"),
-                        ] if url
-                    ],
-                    "resolution": "1080p",
-                    "duration": str(gen_request_duration(entry)),
-                    "aspect_ratio": entry.get("aspect_ratio", "16:9"),
-                    "generate_audio": entry.get("generate_audio", True),
-                },
-            },
+            json=payload,
             timeout=30,
         )
     except requests.exceptions.ConnectionError as e:
@@ -716,6 +755,16 @@ def run():
                         FAILURES_FILE.write_text(json.dumps(failures, indent=2))
                         write_clip_manifest_entry(entry, "skipped", f"Content policy: {reason[:120]}")
                         success = True   # don't count as retry-able failure
+                        break
+
+                    elif category == "CONFIG":
+                        # Bad clip setup (e.g. mixed Seedance 2 modes, unknown model) — no API call was made; retrying won't help
+                        log(f"  CONFIG error — skipping {scene_id}, nothing submitted: {reason}")
+                        notify("⚠️ Clip config error", f"{scene_id}: {reason[:80]}", sound="Basso")
+                        failures[scene_id] = f"CONFIG: {reason}"
+                        FAILURES_FILE.write_text(json.dumps(failures, indent=2))
+                        write_clip_manifest_entry(entry, "skipped", f"Config error: {reason[:120]}")
+                        success = True   # don't burn retries on a setup error
                         break
 
                     elif category == "RATE":

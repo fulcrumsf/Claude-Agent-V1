@@ -401,7 +401,7 @@ reference's role stated in the prompt. Full routing for every other prop is in
 
 | Situation | Action | When |
 |---|---|---|
-| Two or more subjects must match the same worn/handheld item (uniform, logo) | Make one small shared-item asset (Prop-Sheet-Generation, single item, front only). Attach it to each character sheet call that must match it, role stated in the prompt | BEFORE the character sheets |
+| Two or more subjects must match the same worn/handheld item (uniform, logo) | Make one small shared-item asset (Prop-Sheet-Generation, single item, front only). Attach it to each character sheet call that must match it, and to any prop sheet that shows that item, role stated in the prompt | BEFORE the character sheets |
 | Prop is used by a subject and its beats-required look/hold is visible | Put it in the subject's character sheet (in the subject description, from the beats). No separate prop sheet | During the character sheet |
 | Prop is in the beats but not shown on any character sheet | Make a prop sheet | AFTER the character sheets |
 | Prop has a hidden side or an orientation that matters (asymmetric front/back, a specific hold) | Make a prop sheet. Attach the holder's character sheet as a labeled reference so the held panel matches the holder; name the specific hand | AFTER the character sheets |
@@ -833,6 +833,36 @@ segment. If one shot needs more than six frames, split it into sequential
 segments and name the resulting files with suffixes such as `Shot-03A`,
 `Shot-03B`, and `Shot-03C`. Each segment must preserve the prior segment's
 ending state as its next starting state.
+
+### Shots Longer Than 15 Seconds: WaveSpeed Seedance 2 Mini Video Extend (locked 2026-09-27, Tony)
+
+Seedance 2 Mini on Kie caps a clip at 15 s. For a longer shot, the default is
+**Clip 1 + WaveSpeed Video Extend**, proven on Shot 07 (Clip 1 15 s + 8 s
+extend = 23 s joined, clean join, graded B+ with the rest of the shot).
+
+1. **Clip 1** runs the normal route (Kie Mini, reference mode, storyboard +
+   sheets, scale check, `seedance2_call.py`) and must pass raw-clip QA first.
+   If it needed a crop (edge leftovers), extend the **cropped** version.
+2. **Extend call:** WaveSpeed `bytedance/seedance-2.0-mini/video-extend`,
+   input video = the approved Clip 1, 480p, `generate_audio` on, duration =
+   the extra seconds the story needs. The output is the whole joined clip.
+   Shot 07 cost about $0.06/s at 480p; confirm the live price via Tool-Manager.
+3. **No end frame by default.** On Shot 07 v1, an end frame showing a distant
+   state (the harbour beyond the wall) was pulled onto the foreground, and water
+   appeared on the tarmac. The run without an end frame was the one approved.
+4. **Host the input video on Cloudinary** and pass its URL. The WaveSpeed CLI
+   upload aborts after about 10 s for multi-MB files.
+5. **Prompt:** start with "Continue this exact shot from its last frame as the
+   same ..." and restate the camera behaviour. Say which fixed objects stay
+   exactly where they are, where things physically can and can't be (e.g.
+   "the harbour water is only ever beyond the quay wall; the road stays dry"),
+   then the action, the audio and the exclusions. Reference sheets: Shot 07
+   left them out by Tony's one-off choice, which is NOT a rule. Check the
+   endpoint's live schema; if it accepts reference images, Operating Rule 6
+   applies.
+6. **After:** inspect the join and the new seconds in the raw joined clip
+   (Gemini inspection + by eye), log the call in `Data/Generation_Log.json`,
+   then upscale the joined clip per the Upscale fallback rule.
 
 ### Neon Parcel Storyboard Template
 

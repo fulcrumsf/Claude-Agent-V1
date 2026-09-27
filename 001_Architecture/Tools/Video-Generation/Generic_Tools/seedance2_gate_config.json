@@ -16,7 +16,7 @@
   "The_Brain_Blueprint": false
  },
  "notes": {
-  "Anomalous_Wild": "Seedance 1.5 Pro (start/end frame only): can never use references",
+  "Anomalous_Wild": "Default Seedance 1.5 Pro (start/end frame only). Per-beat Seedance 2 overrides run inside pipeline_supervisor.py (frames mode, or reference mode with the @Image tag lint), not through seedance2_call.py (2026-09-27).",
   "Reimagined_Realms": "disabled for now: POV v2 uses Seedance 2 in start-image mode by design (each beat's start image is its storyboard); long-form storyboards deferred until tested"
  }
 }

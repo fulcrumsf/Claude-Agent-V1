@@ -32,7 +32,7 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
 | Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 126 | built | 2026-09-15T09:11Z |
-| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 7257 | built | 2026-09-20T04:31Z|
+| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 8382 | built | 2026-09-27T04:34Z|
 | Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 3306 | built | 2026-09-20T03:09Z|
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | built | 2026-09-08T16:00Z |

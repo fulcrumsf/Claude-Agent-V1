@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-09-26
+created: 2026-09-27
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-09-26T23:40:40-04:00
+Generated: 2026-09-27T00:59:09-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -33,6 +33,10 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | review-agent | Perform a read-only, defect-first review of a specified code change and return every actionable finding. Use when another agent delegates review of uncommitted changes, a base-bra… | `001_Architecture/Skills/.system/review-agent/SKILL.md` |
 | skill-creator | Create or update a Codex skill with appropriately scoped instructions and any needed supporting resources. | `001_Architecture/Skills/.system/skill-creator/SKILL.md` |
 | skill-installer | Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skil… | `001_Architecture/Skills/.system/skill-installer/SKILL.md` |
+| 21st-cli-use | >- | `001_Architecture/Skills/21st-cli-use/SKILL.md` |
+| 21st-ui-build | Build or substantially change production UI using the current project's design context, existing components, and grounded 21st inspiration. Use when implementing a page, section,… | `001_Architecture/Skills/21st-ui-build/SKILL.md` |
+| 21st-ui-explore | Explore and compare multiple meaningfully different UI directions grounded in the current project's design system and 21st inspiration. Use when the user wants options, variants,… | `001_Architecture/Skills/21st-ui-explore/SKILL.md` |
+| 21st-ui-review | Review existing UI against the project's design context, accessibility expectations, responsive behavior, interaction quality, and high-confidence production rules. Use for UI aud… | `001_Architecture/Skills/21st-ui-review/SKILL.md` |
 | Anomalous_Wild_Video_Pipeline | Invoke when Tony says /anomalous-wild, make an Anomalous Wild video, build me a video for the nature/science channel, run the Anomalous Wild pipeline, or start an AW production. O… | `001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md` |
 | character-sheet-generation | Use whenever a video production has a recurring character or creature that appears in more than one scene and needs to look identical every time — "build a character sheet", "crea… | `001_Architecture/Skills/Character-Sheet-Generation/SKILL.md` |
 | diagram-generation | Use whenever a video production needs a labeled scientific/technical diagram — "build a diagram", "generate a scientific illustration", "animate this diagram", or any beat compari… | `001_Architecture/Skills/Diagram-Generation/SKILL.md` |

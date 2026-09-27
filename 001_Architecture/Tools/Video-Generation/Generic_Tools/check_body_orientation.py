@@ -24,6 +24,8 @@ visibility rather than true 3D shoulder depth. Coarser, but it actually runs.
 import argparse
 from pathlib import Path
 
+MODELS = Path(__file__).resolve().parent / "models"  # one shared copy of the weights; a bare name makes YOLO download into the cwd
+
 from ultralytics import YOLO
 
 # COCO keypoint indices (YOLO-pose convention)
@@ -81,7 +83,7 @@ def main():
     parser.add_argument("images", nargs="+", type=Path)
     args = parser.parse_args()
 
-    model = YOLO("yolo11n-pose.pt")
+    model = YOLO(str(MODELS / "yolo11n-pose.pt"))
 
     for img_path in args.images:
         if not img_path.exists():

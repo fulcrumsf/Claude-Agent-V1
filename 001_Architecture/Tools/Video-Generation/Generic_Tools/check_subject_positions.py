@@ -46,6 +46,8 @@ import json
 import tempfile
 from pathlib import Path
 
+MODELS = Path(__file__).resolve().parent / "models"  # one shared copy of the weights; a bare name makes YOLO download into the cwd
+
 from PIL import Image
 
 
@@ -112,7 +114,7 @@ def onion_skin(panel_a_path: Path, panel_b_path: Path, out_path: Path) -> Path:
 def detect_positions(panels: list[Image.Image], classes: list[str]) -> list[dict]:
     from ultralytics import YOLO
 
-    model = YOLO("yolo11n.pt")
+    model = YOLO(str(MODELS / "yolo11n.pt"))
     names = model.names
     wanted = {v for k, v in names.items() if v in classes}
     results = []
@@ -141,7 +143,7 @@ def detect_person_ankles(panels: list[Image.Image]) -> list[dict]:
     point for "which spot is he standing in," not a whole-body bbox center."""
     from ultralytics import YOLO
 
-    model = YOLO("yolo11n-pose.pt")
+    model = YOLO(str(MODELS / "yolo11n-pose.pt"))
     # COCO keypoint indices: 15=left_ankle, 16=right_ankle
     results = []
     for i, panel in enumerate(panels, start=1):

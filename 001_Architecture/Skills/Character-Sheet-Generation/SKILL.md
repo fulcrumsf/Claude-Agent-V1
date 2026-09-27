@@ -24,13 +24,23 @@ own fictional company hoodie logo, and the two logos didn't match. Text
 silence on a detail does not prevent the model from inventing one, and
 separate generation calls have no shared memory to invent the *same* one.
 
-**Fix:** generate a [`Prop-Sheet-Generation`](../Prop-Sheet-Generation/SKILL.md)
-sheet for the shared wardrobe/logo item first — it already exists for exactly
-this ("a recurring worn object that needs to look identical every time").
-Pass that prop sheet as an `--input_urls` reference into every character
-sheet that needs to match it, with an explicit instruction to match that
-design exactly. This conditions every character on the same literal image
-instead of hoping independent generations coincidentally agree.
+**Fix (aligned with Neon Parcel's Prop Routing rule, Tony 2026-09-27):** before any
+character sheet, make the shared item as **its own small single image**: the
+uniform, hoodie or logo alone, front view only, no person, via
+[`Prop-Sheet-Generation`](../Prop-Sheet-Generation/SKILL.md) in single-item mode
+(not a full multi-panel prop sheet). Then:
+
+1. Attach that image as a labeled reference to **every character sheet** that must
+   match it, with the role stated in the prompt ("Reference image 1 is the company
+   hoodie: match this exact design, colours and logo").
+2. Attach it to **any prop sheet** that later shows the same item (e.g. a held or
+   worn panel), so the prop sheet and the character sheets share one literal source.
+
+This conditions every sheet on the same image instead of hoping independent
+generations agree. For every other prop (inside a character sheet, its own prop
+sheet, or none) follow the portable **Prop Routing** rule in
+[`Neon_Parcel_Longform_Compilation_v2/SKILL.md`](../Neon_Parcel_Longform_Compilation_v2/SKILL.md)
+(copy it unchanged between its BEGIN/END markers into any pipeline that needs it).
 
 ## When to build one
 
