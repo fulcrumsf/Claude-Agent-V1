@@ -1,5 +1,6 @@
 # analyze_reference_video.py
 import argparse
+import json
 import os
 import re
 import subprocess
@@ -18,6 +19,7 @@ For each scene, describe (as one markdown section per scene, headed "## Scene N 
 - Visual description (subjects, setting, framing)
 - What is actually happening — narrative and historical/contextual meaning (era, role, activity — e.g. "POV of a shackled pyramid worker eating porridge," not just "person eating")
 - Camera type and motion (e.g. static, handheld POV, tracking)
+- Camera-operator behavior: any reactive camera movement — whip pans, tilts, drops, reframes, turning away then back, walking backward — and specifically what in the scene triggered each one, the exact motion, and its timestamp within the scene. Write "no operator movement (static/locked shot)" if the camera never reacts to anything. This is a required field, not an inference to leave to the camera-motion line above — describe it even when it's subtle.
 - Sound design cues audible or implied (foley, ambient, music, dialogue presence)
 - Full verbatim transcript of any spoken narration, dialogue, or voiceover in this scene, word for word (write "no speech" if none) — this matters most for tutorial/instructional videos where the spoken explanation IS the content
 - Any on-screen text or overlay style (placement, sizing, drop shadow, timing)
@@ -64,26 +66,39 @@ sequence, framing, soundtrack, or choreography as reusable.
 """
 
 def download_video(url: str, out_dir: Path) -> Path:
+    """Download with an explicit video+audio merge selector - never the bare
+    '-f mp4' selector, which silently resolves to a video-only DASH stream on
+    videos with no pre-merged mp4 available (yt-dlp exits 0 either way, so a
+    missing audio track goes undetected unless checked). Confirmed 2026-09-17:
+    a case-study run analyzed a muted download and Gemini correctly reported
+    "no music/no speech" for a video that actually has both - the analysis
+    wasn't wrong, the source file was silently broken."""
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     video_path = out_dir / "Video.mp4"
-    command = ["yt-dlp", "-f", "mp4", "-o", str(video_path), url]
-    try:
-        subprocess.run(command, check=True, capture_output=True)
-    except subprocess.CalledProcessError:
-        # Some YouTube uploads expose MP4 video and audio as separate streams;
-        # fall back to an explicit compatible pair before reporting failure.
-        fallback = [
-            "yt-dlp",
-            "-f",
-            "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]",
-            "--merge-output-format",
-            "mp4",
-            "-o",
-            str(video_path),
-            url,
-        ]
-        subprocess.run(fallback, check=True, capture_output=True)
+    command = [
+        "yt-dlp",
+        "-f",
+        "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]",
+        "--merge-output-format",
+        "mp4",
+        "-o",
+        str(video_path),
+        url,
+    ]
+    subprocess.run(command, check=True, capture_output=True)
+
+    probe = subprocess.run(
+        ["ffprobe", "-v", "error", "-select_streams", "a",
+         "-show_entries", "stream=index", "-of", "csv=p=0", str(video_path)],
+        capture_output=True, text=True,
+    )
+    if not probe.stdout.strip():
+        raise RuntimeError(
+            f"Downloaded {video_path} has no audio stream - re-download failed "
+            f"silently or this source truly has no audio. Do not analyze a "
+            f"muted file as if it were representative of the real video."
+        )
     return video_path
 
 def extract_keyframes(video_path: Path, out_dir: Path, threshold: float = 0.3) -> Path:
@@ -159,7 +174,7 @@ def detect_scenes(video_path: Path, threshold: float = 0.3) -> list[tuple[float,
     boundaries = [0.0] + sorted(cut_points) + [duration]
     return [(boundaries[i], boundaries[i + 1]) for i in range(len(boundaries) - 1)]
 
-MAX_UPLOAD_POLL_ATTEMPTS = 30
+MAX_UPLOAD_POLL_ATTEMPTS = 150
 UPLOAD_POLL_INTERVAL_SECONDS = 2
 
 DEFAULT_GEMINI_MODEL = "gemini-3.8-flash"

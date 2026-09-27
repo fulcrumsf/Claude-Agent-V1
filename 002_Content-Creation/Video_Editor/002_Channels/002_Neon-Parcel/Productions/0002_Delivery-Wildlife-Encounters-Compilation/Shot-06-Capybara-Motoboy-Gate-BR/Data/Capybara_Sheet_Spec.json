@@ -1,0 +1,20 @@
+{
+ "sheet_type": "creature",
+ "name": "Capybara",
+ "role": "the capybara",
+ "subject_description": "A real adult capybara (Hydrochoerus hydrochaeris): about 50 kg, about 1.2 m long and about 0.55 m tall at the shoulder; coarse tawny reddish-brown fur, slightly darker on the head and ears and paler tan on the belly and chest; a barrel-shaped body, a large blunt squarish snout with high-set nostrils, small rounded ears, small eyes set high on the head, NO visible tail, short sturdy legs with slightly webbed toes; damp fur from a light drizzle",
+ "anatomy_notes": "Four short legs: two front legs with four toes each and two hind legs with three toes each, all slightly webbed. No visible tail. Two small rounded ears and two small eyes set high on the head, large nostrils on top of a blunt squarish snout. Coarse tawny reddish-brown coat, paler tan underparts. About 1.2 m long, about 0.55 m tall at the shoulder, about 50 kg.",
+ "extra_panels": [
+  {
+   "title": "Lying down",
+   "description": "the capybara settled lying on flat pale concrete with its legs tucked under its body, head slightly raised, eyes half-closed, calm"
+  },
+  {
+   "title": "Grazing on grass",
+   "description": "the capybara standing on a damp grass verge with its head down eating grass, side view, damp fur"
+  }
+ ],
+ "out": "../Character_Sheets/Capybara_Creature_Sheet_v1.png",
+ "prompt_out": "../Prompts/Capybara-Creature-Sheet-Spec-v1.md",
+ "title_out": "../Character_Sheets/Capybara_Creature_Sheet_v1_Titled.png"
+}

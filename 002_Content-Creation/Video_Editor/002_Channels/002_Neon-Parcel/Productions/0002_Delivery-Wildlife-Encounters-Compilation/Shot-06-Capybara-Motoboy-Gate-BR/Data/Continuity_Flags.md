@@ -1,0 +1,5 @@
+# Continuity Flags — Storyboard v1 (logged, not auto-regenerated)
+- Body-orientation checker (YOLO-pose, per-panel crops): motoboy AWAY_FROM_CAMERA in frames 1-4 (facing the window, consistent), RIGHT in frame 5 (turning to look down), LEFT in frame 6 (stepping/walking out) — reads as one continuous turn, no flip. In frame 6 the tool also flagged a false "person_2" on the capybara's body (a known limitation of this coarse per-body check, not a real second person).
+- My own frame-by-frame read: subject count is exactly 1 motoboy + 1 capybara in every frame after frame 1; motorcycle stays in the same spot on its kickstand in all 6 frames; scale reads correctly (capybara knee-height on the motoboy).
+- Minor pacing note (not a defect): the capybara reaches the slab close to the motoboy already in frame 3 ("heads for the dry spot"), slightly ahead of the written beat; frame 4 (lying down) still reads as the next physical step. Not blocking.
+- Helmet: right hand in frames 1-4, held up/being put on by frame 6 — consistent with the character sheet's right-hand helmet rule.

@@ -1,0 +1,687 @@
+<!-- Historical snapshot only. Superseded guidance; consult the active Seedance-Prompting-Guide/SKILL.md. Preserved before the authorized audit update. -->
+---
+name: seedance-prompting-guide
+description: Use whenever writing or reviewing a prompt for ByteDance Seedance (any version — 1.5 Pro, 2.0, 2.0 Fast, and future releases) — image-to-video or text-to-video generation via kie.ai, WaveSpeed, or fal.ai. Triggers on "write a Seedance prompt", "generate a video with Seedance", "how do I prompt Seedance for dialogue/audio/camera movement", "Seedance negative prompt", or any video-generation task using a Seedance model. Covers native audio control (dialogue vs. ambient/foley-only), camera movement/cinematic shot language, and negative-prompt conventions. This is the living reference — update it in place as new Seedance versions ship, never fork a separate per-version file.
+---
+
+# Seedance Prompting Guide (All Versions)
+
+ByteDance Seedance generates video and — since 1.5 Pro — synchronized native audio in the same pass. This guide is the single reference for prompting any Seedance version correctly. Update this file in place when a new version ships; do not create version-specific duplicate skills.
+
+## Used by
+
+Pipelines that generate video through Seedance should link back to this file rather than re-deriving capability knowledge locally:
+
+- [Reimagined_Realms_POV_Shorts_Pipeline_v2](../Reimagined_Realms_POV_Shorts_Pipeline_v2/SKILL.md) — Seedance 2.0 via kie.ai, character-sheet + environment-sheet reference conditioning (active POC)
+- [Reimagined_Realms_POV_Shorts_Pipeline](../Reimagined_Realms_POV_Shorts_Pipeline/SKILL.md) — v1, Seedance 1.5 Pro via WaveSpeed, single per-shot image (production-proven baseline)
+
+## Core philosophy
+
+Seedance wants **cinematic direction, not image-generation keywords**. Write the prompt like a shot list handed to a director of photography, not a mood-board caption. The model responds to narrative structure across four layers, in this order:
+
+1. **Subject definition** — who/what, framing, setting
+2. **Action / key sound events** — what happens, what makes sound (dialogue if any, footsteps, specific foley events)
+3. **Environmental audio cues** — the ambient bed (wind, birds, crowd murmur, distant traffic)
+4. **Visual style / camera / lighting** — grade, lens feel, camera movement
+
+Source: [Seedance 2.0 Prompting Guide (fal.ai)](https://fal.ai/learn/tools/seedance-2-0-prompting-guide), [How to Use Seedance 2.0 Like a Pro (fal.ai)](https://fal.ai/learn/tools/how-to-use-seedance-2-0)
+
+## Neon Parcel real-life capture lock
+
+For Neon Parcel compilation videos, the default tone is unplanned real-life neighbor footage, not a commercial, staged scene, cinematic short, or professionally operated production. Prompts must explicitly define the capture style: ordinary consumer smartphone, natural exposure, imperfect everyday framing, and subtle human handheld movement when the shot is not intentionally locked off. Do not imply a tripod, cinema rig, dramatic grade, advertising polish, or designed camera coverage unless the shot contract explicitly requires it.
+
+The tone and capture-style fields belong in the structured storyboard contract and must be rendered into both the storyboard-generation prompt and the Seedance handoff prompt. A shot-specific camera lock may override handheld movement, but it must not override the real-life, non-commercial tone. For audio, name concrete environmental and physical foley events and close with explicit exclusions for music, commercial soundtrack, dramatic scoring, promotional audio, voiceover, dialogue, and synthetic sound effects when the shot is intended to be silent or ambient.
+
+### Which Seedance version accepts which images (READ THIS FIRST, Tony 2026-09-20)
+
+| Version | Start frame | End frame | Reference images (`@Image` tags, sheets, storyboard) |
+|---|---|---|---|
+| **Anything below Seedance 2** (1.5 Pro and every earlier flavor, on any provider) | yes | yes | **NO. Never.** Only a start frame and an end frame. Consistency must be baked into those two images at the image-generation stage. |
+| **Seedance 2, 2 Fast, 2 Mini** | yes | yes | yes, BUT reference images and start/end frames are mutually exclusive in one call: pick one mode |
+
+So the reference-image process (storyboard + environment sheet + character/prop sheets, `@Image` tagging, the `seedance2_call.py` gate) applies ONLY to Seedance 2 / 2 Fast / 2 Mini in reference mode. Pipelines locked to Seedance 1.5 Pro (Anomalous Wild, Reimagined Realms 1.5 clips, POV v1) can never use it. Never write a reference-image prompt or tag structure for a version below Seedance 2.
+
+### Version-scope every technique
+
+Tutorials often use "Seedance" as a loose label for several different model
+versions or platform wrappers. Before adopting a technique, record the exact
+model version and provider endpoint that demonstrated it. Do not transfer a
+Seedance 2.0 or 2.5 capability to 1.5 Pro without confirming that version's
+live schema and behavior. In particular, multi-reference inputs, reference
+image tagging, duration limits, resolution tiers, and storyboard workflows are
+version- and platform-dependent.
+
+### Reference Images Are Not Start Frames
+
+Keep temporal frames and contextual references separate at the API boundary.
+`first_frame_url` means the visual state at time zero; a storyboard or contact
+sheet is contextual conditioning and must use the endpoint's dedicated
+`reference_image_urls` field when that field exists. Never pass a storyboard
+as a first frame merely because it is an image. A wrapper should reject that
+combination before submission, and a pipeline should stop when its provider
+does not expose distinct fields rather than silently changing the meaning of
+the asset.
+
+### Explicit Reference-Image Tags
+
+When a provider exposes ordered image references to the prompt, bind every file
+by upload order using that provider's literal tag syntax. Kie's Seedance Mini
+playground example uses the spaced, capitalized form: the first uploaded image
+is `@Image 1`, the second is `@Image 2`, and so on. State the mapping before the
+action prompt, for example: `@Image 1 = storyboard; @Image 2 = character sheet;
+@Image 3 = environment sheet; @Image 4 = prop sheet.` Preserve the upload order
+and role mapping in the generation manifest so the prompt and payload can be
+audited together. Do not substitute `@Image1` or `@image_1` when testing the Kie
+playground syntax unless the provider's actual input surface explicitly
+requires that variant.
+
+### Mandatory process for EVERY Seedance 2 / Seedance 2 Mini call, in every channel (GLOBAL, locked 2026-09-20, Tony)
+
+Applies whenever Seedance 2.0 (standard, Fast) or Seedance 2 Mini runs, for any video pipeline. It does not apply to Seedance 1.5 Pro (different reference model).
+
+1. **Send the final labeled assets, all of them:** the final storyboard, the full labeled environment sheet, and every character/creature sheet and prop sheet built for that clip, each in its FINAL LABELED version (title label, markers, dots, callouts). Never a naked sheet. A character or prop sheet may be left out ONLY if none was built for that clip; every sheet that exists in the clip's folder must be sent or explicitly listed as not sent with a reason.
+2. **Fixed upload order:** storyboard, environment sheet, character/creature sheets, prop sheets. Tag by upload order (`@Image 1`...).
+3. **Prompt structure = the winning template:** reference block first (one `@Image N = ...` line per image; storyboard = follow its shot selection and panel order; environment = where the whole clip takes place, CAMERA POV panel named by its printed title and pinned to every frame; each character sheet quotes its printed title), then Camera Lock, Scene Continuity, Action Timeline, Audio, Hard Constraints, in that order.
+4. **Every action beat names its subject by `@Image` tag** ("@Image 3 walks to the counter of @Image 2 and sets the clipboard down").
+5. **Channel switch:** the process is ENFORCED only for channels checked (`true`) in `Generic_Tools/seedance2_gate_config.json` (the single source of truth; all 13 channels listed). Currently ON: Neon Parcel only. OFF: every other channel (Reimagined Realms until storyboards are tested there; Anomalous Wild can never, it is below Seedance 2). Turn a channel on by flipping it to `true`.
+6. **Run it through the gate, never hand-build the call (for enabled channels):** `Generic_Tools/seedance2_call.py <clip_dir> <prompt.md> ...` builds the reference list from the clip's `Data/Video_Reference_Set.json` and blocks the paid call if any rule above is broken. Template: `Neon_Parcel_Longform_Compilation_v2/Templates/Seedance_Winning_Prompt_Template_v7.md` (source run graded B+ by Tony). Execution is tested for Mini; standard/Fast go through kie-cli and are untested.
+7. Older text elsewhere in this guide that says otherwise (for example about storyboard sheets in `reference_image_urls`, or optional environment references) is superseded by this section for Seedance 2 / Mini.
+
+### Use the tag as the subject in the action text (HARD RULE, Tony, repeated many times, locked 2026-09-20 for every Seedance prompt)
+
+Declaring the mapping at the top is not enough. Every reference image must also be **used by tag inside the action**, as the subject of the sentence, so the model knows exactly which image each person, animal, prop or place in each beat comes from. Do not write "the courier" or "the monkey" in the action beats; write the tag.
+
+Wrong (mapping only, plain nouns in the action):
+```
+@Image 3 = the courier's character sheet
+[00:00-00:03] The courier walks to the counter and sets down the clipboard.
+```
+Right:
+```
+@Image 1 = the storyboard: follow its shot selection and panel order
+@Image 2 = the environment sheet: the scene takes place at this shopfront (Camera POV panel = the camera's view)
+@Image 3 = the courier's character sheet
+@Image 4 = the monkey's character sheet
+[00:00-00:03] @Image 3 walks from his parked bicycle to the counter of @Image 2 and sets the clipboard down on the counter top.
+[00:03-00:05] @Image 4 leaps from the top of the awning post onto the counter top beside the clipboard.
+```
+- Every uploaded image gets a mapping line, in upload order (`@Image 1` = first upload).
+- Every timestamped beat names its subject(s) by tag. Every character/creature/prop sheet tag appears in at least one beat.
+- The storyboard tag and the environment tag are referred to again in the body (e.g. "follow @Image 1's shot selection", "the scene takes place at @Image 2").
+- **This is enforced by code, not memory:** `Generic_Tools/check_seedance_prompt_refs.py` fails a prompt that breaks these rules, and `kie_market_api.generate_seedance_mini()` runs it before any paid call whenever reference images are sent. Run the same check by hand for any other provider wrapper.
+
+## Review intent, template protection, and recovery (Tony approved A–G, 2026-09-23)
+
+### Scope: preserve legacy and provider boundaries
+
+- **Seedance below 2.0, including 1.5 Pro:** use a clean start image and, optionally, a clean end image. Never send storyboard grids, character sheets, or `@Image` reference mappings as contextual inputs. Storyboards may inform planning and the text, but must be converted to clean temporal frames for submission.
+- **Seedance 2 / Fast / Mini:** use contextual reference images only on endpoints that support them. On the documented Kie endpoints, reference mode and start/end-frame mode are mutually exclusive. Supporting both modes does not mean they can be combined in one call. Verify other endpoints separately.
+- The review-intent and evidence rules below apply to all versions. The v7 clauses, labeled-sheet requirements, and reference-template comparison apply only to the active Seedance 2 reference workflow. They must never be imposed on legacy temporal-frame workflows.
+- For active Neon Parcel reference calls, the September 20 mandatory process above controls over older examples below. Other channels retain their own model and conditioning choices; tutorial examples are not global defaults.
+
+### A. Keep review comments out of model instructions
+
+Tony accepting a visible defect (for example, “ignore the wrong scale”) is permission to proceed with that known risk, not an instruction to tell Seedance to ignore the reference. Record acceptance in production notes. Do not translate review commentary or hopes about model behavior into prompt wording unless Tony clearly asks for that wording. If intent is ambiguous and would change the prompt, clarify that point before submission.
+
+### B. Protect the winning reference clauses
+
+For v7-based reference calls, preserve the complete `@Image 1` mapping sentence from the winning template verbatim, including its anti-layout wording. Preserve the camera-lock relationship **“every panel of @Image 1”**; never narrow it to panel 1 to compensate for inconsistent storyboard frames. Shot-specific camera placement, setting, subjects, timing, and physical action remain editable. A deliberate experiment changing these protected clauses requires Tony's authorization and a recorded reason.
+
+### C. Review the storyboard before video spend
+
+Check scale, framing, continuity, and geometry before submission. Describe visible defects and recommend fixing the storyboard first. If Tony explicitly accepts a defect and chooses to proceed, record the risk and his decision without inserting instructions to ignore or repair the reference into the video prompt. Acceptance is not evidence that the storyboard passed visual QA; record the exception honestly.
+
+### D. Recover from grids, titles, labels, or borders
+
+1. Inspect the raw clip across its full duration before upscaling. Record where layout leakage occurs.
+2. Check the actual model, endpoint, submitted image roles, and payload first. A storyboard mistakenly sent as a temporal start/end frame is an input error; negative wording cannot correct its API meaning. For legacy versions, replace such an input with a clean scene frame.
+3. For reference-mode runs, compare the saved prompt with the approved template and inspect the submitted storyboard and sheets for inconsistent framing or scale. Existing anti-grid/text exclusions are required but do not guarantee success.
+4. If a stable border or title lies outside an otherwise usable scene, present a crop option after checking every part of the clip for lost action and sufficient remaining resolution. A tiled scene generally needs regeneration. Preserve the original and version any derivative.
+5. Before another paid attempt, explain the proposed change, retained limitations, and cost for Tony's approval. For Neon Parcel reference-layout failure, the existing fallback is approved clean first/last frames in a separate temporal-mode call, with no reference array. Do not silently switch models or strip mandatory sheet labels. Any alternative reference-sheet experiment requires explicit approval.
+
+### E. Compare with the template before submission
+
+For every v7-based call, compare the saved prompt against the winning template: protected storyboard clause, every-panel camera relationship, reference mappings, section order, tags in beats, and anti-layout exclusions. Separate normal shot-detail substitutions from meaningful deviations. Remove accidental deviations; explain deliberate ones and obtain authorization before spend. Save a concise comparison result with the generation record. The current automated gate checks references, tags, and section order; passing it does not prove semantic compliance with these clauses. This comparison is an additional agent review, not a claim of new automated enforcement.
+
+### F. Resolve guidance by version and input mode
+
+Use the scope rules above when reading examples. Never resolve a reference-workflow conflict by removing legacy start/end-frame support. Never combine temporal frames with references on an endpoint that forbids it. Keep historical/tutorial observations explicitly scoped instead of treating them as competing production instructions.
+
+### G. Record evidence without overstating causes
+
+Record prompt version, reference versions, model/endpoint, settings, observed failure, and changes made for each attempt. Distinguish a demonstrated salvage from an unproven preventive fix. Where practical, change one variable per retry; when several must change, list all of them and do not attribute the outcome to one phrase.
+
+Shot 07 evidence: v1 added commentary about incorrect storyboard panels and narrowed the camera relationship; the output tiled. The retry restored wording AND changed the storyboard, producing a single scene with a title/border, then salvaged by cropping. Cropping worked for that clip. Neither a causal link to one phrase nor a guaranteed preventive wording fix was established. Tony later clarified that accepting the initial storyboard errors was not a request to insert “ignore them” into the prompt.
+
+## Primary route and temporal fallback
+
+For Neon Parcel Seedance 2 / Mini, the current primary route is the approved storyboard and final labeled sheets in reference mode, under the September 20 mandatory process. Never send the composite storyboard as a temporal first or last frame. Inspect the raw output before upscaling. If sheet reproduction occurs, follow recovery above: approved clean first/last frames may be used in a separate temporal-mode attempt. This fallback does not combine frames and references.
+
+For Seedance 1.5 Pro and earlier, clean temporal frames are the normal input route, not a reference-mode fallback. Keep their existing audio, camera, duration, and continuity guidance.
+
+Every paid attempt is append-only and versioned. Never reuse an output path,
+never overwrite a prior generation or derivative, and archive superseded
+assets in the matching `Archived/` directory. The shared Neon Parcel
+`artifact_preservation.py` helper and Kie download guard fail closed on output
+collisions; a false-positive automated inspection must not destroy the prior
+asset.
+
+For continuity-critical motion, the prompt must preserve the storyboard's
+visible origins and routes: state where each moving subject starts, the
+continuous path it takes, and the physical result. Do not ask Seedance to
+invent an entrance, infer a hidden doorway, wrap a path around an unseen
+structure, or resolve an obstacle that the storyboard has not made visible.
+Simplify the scene geometry before generation when a route is ambiguous.
+
+## Which production style is this?
+
+Confirm this before picking a reference-image strategy or writing the prompt — it changes which sections below actually apply.
+
+| Style | What it is | Where the guidance lives |
+|---|---|---|
+| **1. POV / First-person** | One character, camera IS the character, no dialogue | "Style 1: POV" section below (this file) — our current locked convention |
+| **2. Cinematic Narrative / Multi-character** | Third-person, multiple named characters interacting, may speak (two-shots, OTS, wide coverage) | [`Cinematic-Narrative-Multi-Character.md`](./Cinematic-Narrative-Multi-Character.md) in this folder — not used by any pipeline yet |
+| **3. Documentary / Narration-driven** | Third-person, characters never speak, a narrator describes the action; includes pure B-roll/timelapse with no characters at all | "Style 3: Documentary" section below — everything else needed is in Core sections |
+| **4. UGC / Talking presenter** | One character facing camera, talking via pre-generated voiceover + lip-sync, often holding a product | "Style 4: UGC / Talking Presenter" section below |
+| **5. Portal / Transition / Effect-driven** | Real filmed footage stays unchanged; AI replaces one specific element (e.g. what's behind a door) | "Style 5: Portal / Transition Effects" section below |
+
+The sections between here and "Style 1" contain shared guidance, but image-conditioning techniques apply only to the specified model version and provider mode. A production style never grants reference-image support to a legacy model.
+
+## Audio control
+
+Seedance's audio generation is driven entirely by prompt content plus one boolean parameter — there is no separate "audio prompt" field.
+
+### The `generate_audio` parameter
+
+- Boolean, defaults to `true` on 1.5 Pro (confirmed live via `wavespeed schema bytedance/seedance-v1.5-pro/image-to-video`).
+- Set explicitly per call — never assume the platform default matches what you want.
+- When `false`, no audio track is generated at all (silent output) — useful if the pipeline plans to add all audio in post (e.g. a dedicated Foley/music pipeline stage) instead of relying on native generation.
+
+### Dialogue — triggered by quotation marks
+
+**Putting a spoken line in double quotes inside the prompt is the trigger for lip-synced dialogue.** Example:
+
+> A barista leans over the counter and says, "Your usual, right?" with a warm smile.
+
+The model lip-syncs the quoted line to the character's mouth. This works for both 1.5 and 2.0.
+
+**To avoid dialogue entirely: never include quoted spoken lines in the prompt.** There is no separate toggle to "turn off" the lip-sync mechanism other than simply not writing quoted speech — the presence of quotes IS the mechanism.
+
+Source: [Seedance 1.5 Prompt Guide (fal.ai)](https://fal.ai/learn/devs/seedance-1-5-prompt-guide)
+
+### Ambient / foley-only sound (no dialogue)
+
+Treat the prompt like **a sound brief**, not a vague mood description — name the specific sounds you want in the mix as concrete nouns/events (footsteps on packed dirt, water sloshing, distant birds, crowd murmur), not abstract adjectives (avoid "atmospheric sound"). An open-ended prompt tends to default toward whatever was most common in training data (often music-forward, "ad-like" scoring) rather than a clean ambient/foley mix.
+
+### Negative prompts — explicitly excluding unwanted audio/visual elements
+
+Seedance defaults toward elements common in its training distribution unless told otherwise — background music, on-screen captions, logos/watermarks, and even incidental extra people/objects can "sneak in" even when not requested, because the model has seen so many clips containing them.
+
+**Convention:** a single closing line, beginning with a dash, listing every forbidden element by name. Their own universal example (documented as "the universal nine word closer"):
+
+> `- No music, No logo, no text on screen.`
+
+Adapt per-project. For a no-dialogue, foley-only, no-baked-music POV Short (our own convention — see "Our locked convention" below):
+
+> `- No dialogue, no spoken words, no voiceover, no lip sync, no music, no on-screen text.`
+
+Source: [Seedance 2.0 Negative Prompts Guide (videoai.me)](https://videoai.me/blog/seedance-2-0-negative-prompts)
+
+**Constraints can also be woven inline, not just in the closing line.** Real production prompts often state continuity/anti-hallucination rules directly where the relevant character or action is introduced — e.g. "Hands anatomically correct, no extra fingers, no warping," "Positions never swap" stated right inside that character's description — in addition to a closing negative-prompt line, not instead of it. Use both together for anything that needs to hold firm across a whole generation. (Source: kie.ai Seedance 2.0 production prompt, `Universal_Case_Studies/002_Seedance_2.0_GPT_Image_2_Character_Environment_Consistency/Keyframes/019.jpg`; Claude-written video-to-video prompt, `Universal_Case_Studies/008_How_I_Got_11M_Views_30K_Subscribers/Keyframes/013.jpg`)
+
+## Camera movement / cinematic shot language
+
+- Describe **how** the camera moves, not just what's in frame — this is the single biggest gap between amateur-looking and cinematic-looking output.
+- Universal template: **Subject + Camera movement + Modifier + Lighting + Style**
+- Modifiers like "smooth," "aggressive," or "handheld" set the emotional register of the movement (calm/controlled vs. urgent/chaotic).
+- **Never stack more than 2-3 camera instructions in one prompt** — more than that and the model's motion output degrades/conflicts.
+- `camera_fixed` boolean parameter (1.5 Pro, confirmed via WaveSpeed schema) locks the camera to a static position — set `true` for POV static shots (e.g. sitting, eating, watching), `false` (default) when you want camera motion (walking POV, tracking shots).
+
+Example (from fal.ai's own guide):
+
+> A flamenco dancer in a deep red dress drops into a low spin on a worn wooden stage, the skirt flaring wide before she snaps upright and stamps twice, dust lifting in the single hard spotlight above her. Shot from a low front angle on a long lens, the background falling into black, a warm amber grade with hard-edged shadows.
+
+Source: [Seedance 2.0 Prompting Guide (fal.ai)](https://fal.ai/learn/tools/seedance-2-0-prompting-guide)
+
+### Action-only iteration
+
+When rerolling a shot, keep the subject identity, reference roles, camera lock,
+lighting, style, and hard constraints unchanged unless one of those elements is
+the specific problem under review. Change only the action timeline or the one
+failed instruction being tested. This isolates the variable, reduces prompt
+drift, and makes the result easier to compare with the previous generation.
+
+## Hand/limb laterality in POV and multi-character shots (applies beyond Seedance — any first-person image or video model, including GPT-Image-2)
+
+**The problem:** in any shot with two people's hands interacting (handshake, object hand-off, a hand placed on the POV character), image/video models frequently get left/right hand wrong relative to which arm it's attached to, and get the pairing wrong (e.g. a left hand shaking a right hand, which isn't how people actually shake hands). Confirmed failure on Reimagined Realms 0005 (Roman Gladiator), Scene 6: prompt said only "Brutus grips the POV character's forearm in a handshake," with no hand specified on either side — the model rendered the POV character's own left arm ending in a hand with a right hand's thumb orientation (the wrist twist didn't match the arm it was on), and paired it with Brutus's hand in a left-to-right grip, which people don't naturally do (handshakes are same-side: right-to-right, or left-to-left if both are left-handed).
+
+**Root cause, per actual research (not guessed):** community-documented and cross-platform — this is a known training-data-level limitation of image/video models, not a one-off bug specific to any single tool ([OpenAI Developer Community thread](https://community.openai.com/t/image-gneration-is-great-but-struggles-with-left-right-direction/1245598)). Two findings from that thread matter directly for how we prompt:
+1. **Screen/camera-relative directional language is unreliable** ("screen right," "camera left," "our right") — models don't reliably hold a character's own left/right constant against a shifting viewer perspective.
+2. **What works better: anchor the description to the character's own anatomy**, not the screen — state which shoulder/side an arm originates from and which of the character's own hands is doing the action, e.g. *"his right hand, attached to his right arm and shoulder, extends forward"* rather than *"a hand reaches from the left of frame."*
+3. **Reference images can make this worse, not better** — multiple users in that thread reported that attaching pose/style reference images (even when the instruction says "use this only for styling") increased left/right reversal errors. This is directly relevant to our sheet-driven pipeline, since every shot attaches multiple reference sheets — do not assume more reference material automatically fixes hand laterality; it can do the opposite.
+
+**How to prompt any scene with hand-to-hand or hand-to-object contact between two characters:**
+1. **Always name which hand** on each side of the contact — never leave it to the model to pick (e.g. "POV character's right hand" / "Brutus's right hand," not just "grips the POV character's forearm").
+2. **State the pairing explicitly when it's a shared gesture** — for a handshake specifically, say "both use their right hands" (or left, if that's the deliberate staging) rather than assuming the model will default to the natural same-side pairing.
+3. **Anchor each hand to its own arm/shoulder in the text**, especially for the POV character's own limb reaching into frame, since that's the hand most likely to get its laterality flipped relative to the arm it's attached to.
+4. **Do not rely on reference sheets to self-correct this** — laterality needs to be solved in the prompt text itself, independent of whatever reference images are attached.
+5. This is a genuine, distinct scene-writing checklist item — see `Reimagined_Realms_POV_Shorts_Pipeline_v2/POV_Style_Guide.md`'s "Hand/limb laterality check."
+
+**This guidance applies to prompting the STARTING IMAGE — not to the video-generation prompt once that image exists.** When a scene already has a corrected `first_frame_url` (a storyboard panel/scene image where laterality was already solved at the image-generation stage), the video prompt should NOT re-describe which hand is doing what — image-to-video prompting research is consistent on this: the model already has the pose/identity/hand-position from the reference frame, and prompt tokens should go toward what changes over time (motion, camera movement, sound), not toward re-stating static visual details already visible in the frame. Re-describing them risks diluting the motion instruction or, worse, describing something that doesn't exactly match what the frame already shows, which reads as a conflicting instruction rather than reinforcement. **Rule of thumb: solve laterality once, at the image stage; describe motion, camera, and sound at the video stage.**
+
+Sources: [OpenAI Developer Community — image generation struggles with left/right direction](https://community.openai.com/t/image-gneration-is-great-but-struggles-with-left-right-direction/1245598), [Seedance 2.0 Reference Guide — image/video/audio tagging patterns (magichour.ai)](https://magichour.ai/blog/seedance-20-reference-guide), [How to Use Seedance 2.0 — reference images without drift (magichour.ai)](https://magichour.ai/blog/how-to-use-seedance-20)
+
+## Character consistency across shots (storyboards, character sheets, reference images)
+
+**Decide this BEFORE the image-generation stage, not after — which Seedance version a pipeline targets changes what reference assets are worth building at all.** A pipeline built around 1.5 Pro gets no benefit from a rich multi-angle character sheet passed at video-generation time (it has nowhere to put a second reference image except as a last-frame target — see the version-parameters warning above) — for 1.5 Pro, consistency has to be solved earlier, either by compositing the character sheet directly into each shot's single starting image (at the image-generation stage, before Seedance ever runs) or by reusing one anchor image across every call. A pipeline built around 2.0 can instead carry a real character sheet, environment sheet, and storyboard panel all the way into the video call itself via `reference_image_urls`. **Switching which Seedance version a pipeline uses is not a drop-in swap — it changes how many reference images to build, what each one should contain, and at which pipeline stage identity consistency actually gets solved.**
+
+**The problem this section solves:** when a production is built from many separate Seedance generations (e.g. a 13-shot POV sequence), each call has no memory of any other call. Without an explicit anchor, the model re-imagines the character's identity (skin tone, hand/build proportions, clothing) independently each time — this is "identity drift," a known model-level limitation, not a one-off bug. Confirmed on our own production: Gemini's Video-Analyzer flagged hand/skin-tone/proportion drift in nearly every scene of Reimagined Realms 0003 (Pyramid Builder I. Deep), plus a background pyramid changing shape (Great Pyramid → step pyramid) between the opening and closing shots.
+
+**Capability differs sharply by version — verified live, 2026-08-04:**
+
+| Version | Reference mechanism | Verified via |
+|---|---|---|
+| **1.5 Pro** | Only `image` (first-frame) + `last_image` (last-frame). No dedicated multi-reference field. The only way to anchor identity across separate clips is to reuse the *same* character-sheet image as the `image` input on every call (or composite the character sheet into each shot's own first-frame image before generating). This is a workaround, not a native feature. | `wavespeed schema bytedance/seedance-v1.5-pro/image-to-video` |
+| **2.0 / 2.0 Fast / 2.0 Turbo** | Has a genuine, separate multi-reference input: `reference_image_urls` (up to 9 images, for style/subject guidance) plus `reference_video_urls` (up to 3) and `reference_audio_urls` (up to 3) — distinct from `first_frame_url`/`last_frame_url`. **Correction, confirmed live 2026-08-08 against the real API (not just `--help` output): `reference_image_urls` and `first_frame_url`/`last_frame_url` are mutually exclusive on kie.ai's `bytedance_seedance_video` endpoint — the API rejects a call using both with "The reference image and the first and last frames are mutually exclusive, and only one scene can be selected."** The `--help` schema listing both flags as available options does NOT mean they're combinable in one call; this was wrongly assumed on 2026-08-06 and never tested end-to-end until a real production run hit it. Pick one: `first_frame_url` when a specific starting composition already exists (the normal case once an image-generation stage has produced it — see Reimagined_Realms_POV_Shorts_Pipeline_v2/SKILL.md); `reference_image_urls` for supported reference workflows, including the active Neon Parcel storyboard workflow; no temporal-frame fields accompany it. **Note:** WaveSpeed's `seedance-2.0/image-to-video-turbo` schema only exposes `image`/`last_image` (no reference array) — the multi-reference field is confirmed live on **kie.ai's** `bytedance_seedance_video` endpoint, so route character-consistency work through kie.ai, not WaveSpeed, for 2.0. | `kie-cli bytedance_seedance_video --help`, and a real submitted task on 2026-08-08 for the mutual-exclusivity finding |
+| **2.5** | **Confirmed live and in active hands-on use, per two independent tutorials (2026-08) — the earlier "not yet available, marketing-only" caveat below is now outdated.** Supports up to 30-second generations (vs. 2.0's shorter cap) and up to 50 references in a single pass — sometimes marketed as "Omni reference" mode on third-party platforms (e.g. Dreamina). Reference images should be named descriptively and tagged by that exact name in the prompt (see "Multi-character scenes" below). **Still verify exact parameter names/ranges via a live kie.ai/WaveSpeed schema check before integrating** — these are tutorial-observed capabilities, not a confirmed API schema yet. Original marketing sources for context: [ByteDance Seed blog](https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5), [MindStudio](https://www.mindstudio.ai/blog/seedance-2-5-50-reference-multimodal-input-consistency). | "Seedance 2.5 - How to Fix Character & Environment Consistency," `Universal_Case_Studies/003_Seedance_2.5_Character_Environment_Consistency/ANALYSIS.md`; "She Isn't Real," `Universal_Case_Studies/004_She_Isnt_Real_AI_Influencer_Pipeline/ANALYSIS.md` |
+
+### Reference-mode choice also decides how far the camera can move
+
+A first-frame-only setup (for channels using temporal conditioning) means Seedance never sees the character from any angle but the one in that frame, so it can't invent a believable view of what it hasn't seen — no full rotations or reveals of the character's back. A multi-reference setup (several angles passed in `reference_image_urls`) gives the model enough to work with for bigger camera moves, at a small cost: identity holds slightly less tightly shot-to-shot than the locked first-frame method.
+
+This is a non-issue for POV shots — a first-person camera never orbits itself. It matters for Cinematic Narrative-style shots, where a move might call for circling around a character. For channels without a locked reference workflow, decide reference mode by what the shot actually needs: first-frame-only as their baseline, multi-reference specifically when the camera move requires an angle the first frame doesn't show (e.g. a spin/turn move) — not as a default "more references = better" habit. (Source: "The Secret to AI Character Sheets" case study, `Universal_Case_Studies/006_The_Secret_To_AI_Character_Sheets/ANALYSIS.md`)
+
+### Multi-character scenes — ordinal image referencing (`@Image1`, `@Image2`)
+
+**Confirmed live, 2026-08-06, via ByteDance's own BytePlus ModelArk docs** (`docs.byteplus.com/en/docs/ModelArk/2222480`, the Seedance 2.0/2.5 series' own prompt guide — the primary source, not a third-party guess): when multiple reference images are passed in `reference_image_urls`, the model understands ordinal tags in the prompt text itself to assign each image to a specific character or element. Syntax: `@Image1`, `@Image2` (or `@Image 1` with a space — both forms appear in ByteDance's own examples). Direct example from their docs: *"Reference @Image 2 for the pianist. Reference @Image 3 for the cello. Reference @Image 4 for the violin."* This is corroborated by multiple independent practitioner guides (magichour.ai, glbgpt.com, piapi.ai) describing the same pattern for identity ("@Image for identity, @Video for motion/camera, @Audio for rhythm/voice"). **kie.ai's own docs page for the endpoint doesn't document this syntax explicitly** — it only describes `reference_image_urls` as a plain URL list — but the prompt field is free text, so the tags work regardless of which platform relays the call; the model itself (not the aggregator) is what understands them.
+
+**Why this matters:** if a single character sheet is the only human-identity reference passed to a multi-person shot, Seedance has nothing else to draw a second identity from and will duplicate the same face for every person in frame — confirmed as a real failure mode on Reimagined Realms 0004 (Titanic Stoker), where three background stokers in one shot all rendered with identical faces because only one character sheet existed. **Fix:** build a separate reference sheet per distinct character (e.g. `Main_Character_Sheet.png`, `Background_Worker_Sheet.png`), pass all of them in `reference_image_urls`, and explicitly assign each one in the prompt via `@Image1`/`@Image2` ordinal tags. **Not yet live-tested end-to-end in our own pipeline** — this is a documented, sourced capability, not something we've confirmed produces distinct faces in an actual Seedance 2.0 output yet. Test on an isolated shot before relying on it for a full production.
+
+**Named-tag alternative to pure ordinal numbers, confirmed in two independent tutorials:** name reference files descriptively (e.g. `brutus.png`, `forest_man.png`, `seller.png`) and reference that same name directly in the prompt text, instead of "image one." This is the naming convention Tony already uses for character sheets — extend it to every reference passed in a multi-reference call, not just the file on disk. **Caution when passing several references in one call:** more than a couple of references the model can't clearly tell apart from each other causes real confusion — every additional reference needs to be clearly named/tagged, not just added in bulk. Fewer, well-labeled references beat more, ambiguous ones. (Source: "Seedance 2.5 - How to Fix Character & Environment Consistency," `Universal_Case_Studies/003_Seedance_2.5_Character_Environment_Consistency/ANALYSIS.md`; "Create Seamless AI Films of Any Length," `Universal_Case_Studies/007_Create_Seamless_AI_Films_Of_Any_Length/ANALYSIS.md`)
+
+### Timestamped action blocks for multi-reference shots
+
+When a Seedance 2.0 or later shot uses a storyboard plus separate subject or environment references, structure the motion direction as a short chronological timeline. Use one primary visible action per block and give each block an approximate start and end time. This is especially useful for complex shots and multi-beat storyboard segments because it tells the model when an action should occur instead of presenting several actions as an undifferentiated paragraph.
+
+Example pattern:
+
+```text
+Reference roles:
+@Image1 = the robot character sheet
+@Image2 = the 16:9 storyboard segment
+
+Action timeline:
+[00:00-00:04] The scientist stands still beside the robot at the edge of the forest.
+[00:04-00:08] The robot turns its body toward the forest and gestures forward, indicating the path ahead.
+[00:08-00:12] The scientist nods and follows the robot along the narrow forest path.
+```
+
+Keep the timeline grounded in what the storyboard actually shows. Do not use timestamps to force extra events into a shot, and do not describe every storyboard panel as a literal freeze-frame. Add camera, audio, and continuity constraints separately after the action timeline. Preserve the starting state, subject count, environment geometry, and camera language unless the shot explicitly changes them.
+
+This format is a prompting improvement, not a new API mode. It can be adapted to any provider that accepts free-text prompts, but the reference syntax and available input fields remain provider- and version-specific.
+
+### Reference-mode compatibility by platform
+
+The Higgsfield demonstration shows a workflow that may combine separate reference images, ordinal tags such as `@Image1` and `@Image2`, and timestamped action blocks. Treat that as a platform-specific workflow until the exact endpoint schema is verified.
+
+- **Kie.ai:** Seedance 2.0 multi-reference inputs support ordinal image tags, but `reference_image_urls` cannot be combined with `first_frame_url` or `last_frame_url` on the confirmed endpoint. Choose multi-reference mode or first/last-frame mode for each call.
+- **Higgsfield:** The demonstrated interface appears to support separate reference images and timestamped prompting. API compatibility, parameter names, and whether first/last frames can be combined with those references require a live schema check before use.
+- **WaveSpeed:** The currently recorded Seedance 2.0 schema exposes `image` and `last_image`, but does not confirm a separate multi-reference array. Do not assume the Higgsfield/Kie multi-reference workflow works there until the live WaveSpeed schema verifies it.
+
+Never generalize a platform's reference behavior to another provider just because both advertise the same Seedance model version.
+
+### Preventing face-bleed between two characters in one shot — a second technique alongside `@Image` tagging
+
+Even with correct ordinal/named tagging, two characters sharing a shot can still have their identities "bleed" into each other (features swapping, faces blending). A second, complementary technique observed: mask/black out all but one face across a multi-image reference sheet before passing it in, so the model only has one clear face to lock onto per reference. Tested finding from the source: no measurable difference for single-character shots, but a real reduction in identity-swap errors specifically for multi-character shots. Worth trying alongside `@Image` tagging (not instead of it) if Titanic-Stoker-style face duplication/bleed shows up again. (Source: "The Secret to AI Character Sheets," `Universal_Case_Studies/006_The_Secret_To_AI_Character_Sheets/ANALYSIS.md`)
+
+### One composite "cast sheet" with multiple named people — confirmed for GPT-Image-2; Seedance 2.0 side unverified, corrected 2026-08-07
+
+**The question:** can a single reference image containing several distinct people (a "cast sheet" — e.g. Jim, Bob, and Ed on one sheet with visible name labels) be handed to the model with a prompt like "add Jim and Bob as background extras," instead of one reference image per person?
+
+**GPT-Image-2 (image generation stage): yes, this is a real, documented technique.** If the name is baked into the image itself as visible text (e.g. "Jim" printed under his portrait), the model can read the label and associate it with that person — confirmed practitioner pattern: label the reference, then reference the person by that name in the prompt ("Kristina is sitting at her desk" — the model knows who Kristina is because it can see her name). Use this at the image-generation stage, when building a shot's specific starting frame with named background extras placed correctly.
+
+**Seedance 2.0 (video generation stage): correction — an earlier version of this entry claimed a specific "twins bug" caused by multi-view reference sheets. That claim could not be verified and has been retracted** (checked directly against sagnikbhattacharya.com, abdullahyahya.com, seedance2pro.io, and vicsee.com — none of them state it; it came from a search-tool synthesis that wasn't checked against the source pages before being written down here, which shouldn't have happened). **What IS actually confirmed from those sources, about related-but-different scenarios:**
+- `10b.ai`: multiple separate reference uploads of the *same* person from different angles get averaged by the model into a morphing effect, rather than reinforcing one clean identity.
+- `vicsee.com`: two *different* characters placed in separate reference slots with similar framing/angle can get misread as "the same character being reinforced" rather than two distinct people — fix suggested is using visibly different angles/framing per character slot.
+- `sagnikbhattacharya.com`: recommends uploading a single clean view as the actual reference rather than a full multi-angle sheet, without stating a specific failure mode for why.
+
+None of this confirms or denies what happens with one *composite multi-person* sheet fed to Seedance specifically — that scenario remains genuinely untested. **Until tested, the documented-safe path for Seedance video generation is separate single-person reference images tagged by `@Image1`/`@Image2` ordinal position** (see above) — not because the composite-sheet approach is confirmed bad, but because it's unconfirmed either way and the ordinal-tagging approach IS confirmed via ByteDance's own docs.
+
+### Character sheets — yes, build one, even for POV
+
+Even though POV shots rarely show a face, identity drift shows up in **hands, forearms, skin tone, build, and visible props/clothing** — exactly what a POV camera does show constantly. Research-backed practice (GitHub `CHARACTER_CONSISTENCY.md` writeups, WaveSpeed/Medium guides) converges on:
+
+1. Generate a small reference set, not one image — one hero/close-up (hands + forearms for POV), one mid-shot (torso/build), one showing any recurring props (sandals, tools, jewelry) — 2-3 stills max, same lighting/session.
+2. Reuse that exact set across every shot in the sequence:
+   - 1.5 Pro: pass the closest-angle reference still as `image` for each shot (limits you to one anchor per call).
+   - 2.0 (via kie.ai): choose supported reference mode with `reference_image_urls`, or temporal mode with clean start/end frames. Never combine those modes on Kie.
+3. Known failure modes even with a reference set: hair/skin-tone shift mid-sequence, costume/prop details changing between cuts, facial or hand proportions drifting subtly by the 4th-5th shot — reference images reduce drift, they don't eliminate it. Continue running Video-Analyzer's continuity-anomaly check as a QA pass after generation regardless.
+4. **Keep sheets minimal — more panels isn't more consistent.** One practitioner's own multi-week retrospective across 5 real productions found that elaborate, heavily-annotated multi-panel sheets were "wasted space... just for looking pretty," not more effective for identity consistency than a minimal front/side/back + face-closeup + clothing-closeup set. This is one detailed, evidence-based account, not a cross-validated industry consensus — but it's specific and worth defaulting to: build the minimal set first, and only add a detail call-out for a garment/prop with small details prone to error. (Source: "Storyboards to Consistent Videos Using Seedance 2.0," `Universal_Case_Studies/005_Storyboards_To_Consistent_Videos_Seedance_2.0/ANALYSIS.md`)
+5. **A face-only close-up as the sole starting image can trigger Seedance's content-safety filter** (likely tuned against single-face-photo-to-video, to reduce deepfake-style misuse) — a full multi-angle character sheet or a non-face starting image avoids this. Not an action item for our pipeline specifically, since GPT Image 2 already composes each shot's starting frame with full-body/environment context rather than a bare face close-up — noted here only so a blocked-generation error is recognizable if it ever happens. (Source: "How to Fix Character & Environment Consistency," `Universal_Case_Studies/002_Seedance_2.0_GPT_Image_2_Character_Environment_Consistency/ANALYSIS.md`)
+
+### Environment/location reference sheets
+
+Environment identity drifts across separate generations the same way character identity does — and more visually complex locations drift more (a plain room holds together across cuts better than an ornate palace or a crowded market). Our pipeline already avoids most of this by never handing Seedance an open-ended prompt: the environment sheet and character sheet get composited into one fully-realized starting frame via GPT Image 2 *before* Seedance ever runs, so Seedance is animating a locked composition, not improvising the scene itself. **This pre-composition step is the correct mitigation — keep it as standard practice.** The only new consideration: budget extra reference detail specifically for locations that are inherently complex, since even a well-built environment sheet won't fully cancel out that extra drift risk. (Source: "How to Turn Storyboards into Consistent Videos Using Seedance 2.0," `Universal_Case_Studies/005_Storyboards_To_Consistent_Videos_Seedance_2.0/ANALYSIS.md`)
+
+**Alternative confirmed 2026-08-15: environment sheet as its own tagged reference, passed directly into Seedance.** ByteDance's own "Storyboard + subject reference" worked example (see below) tags a *separate* environment image as `@Image2` alongside character references — meaning environment consistency doesn't strictly require the GPT-Image-2 pre-compositing step above; it can also be handed to Seedance directly as its own ordinal-tagged reference in the same call as the character sheet(s) and storyboard. Both paths are now sourced; pre-compositing remains the safer default (locks the composition before Seedance runs at all), while direct environment-reference-tagging is the newer, less-tested option worth piloting alongside the single-panel storyboard test below.
+
+### Storyboard-to-video (one multi-panel image + a character sheet, in a single generation call)
+
+**Seedance never generates the storyboard image itself — that's an image-generation model's job (GPT Image 2, Nano Banana, or Midjourney), not Seedance's.** Seedance's role only starts once a storyboard (or any other static image) already exists; it turns static images into moving video, it doesn't draw them. Keep storyboard-construction conventions (panel count, annotation style, layout) in whichever skill governs image-generation prompting — not duplicated here. This section is specifically about feeding an already-built storyboard image into Seedance as an option worth testing, alongside the per-shot method our pipeline uses today.
+
+**Storyboard preflight comes before video generation.** Inspect the storyboard for
+repeated panels, impossible state changes, ambiguous object positions, and camera
+angles that do not support the intended action. Correct those problems in the
+image-generation stage before spending video credits. A storyboard is a visual
+continuity reference, not a literal panel layout for Seedance to reproduce.
+
+**Do not send an oversized unsplit storyboard when panel-by-panel progression is
+required.** Split it into smaller sequential sections, generally three or four
+panels at a time, and assign each section a clear beginning and ending state.
+The exact panel count is production-specific; this is a control safeguard, not
+a universal fixed grid size.
+
+**Confirmed workflow, transcribed word-for-word off a real demo** (Video-Analyzer run with full transcription against [this tutorial](https://www.youtube.com/watch?v=7qBYe_VX_lE), full ANALYSIS.md saved at `Case_Studies/004_Seedance_Storyboard_Character_Consistency_Tutorial/` under Reimagined Realms — Tony pre-screened the video before this was run). This is the actual mechanism, not a guess:
+
+1. **Build the storyboard image**: write a story/panel-count prompt in an LLM (he used Claude — "make me a prompt for GPT Image 2, a storyboard of 5x5 panels"), then generate ONE image containing all N panels via an image model (compared Nano Banana 2 vs. GPT Image 2 side by side; preferred GPT Image 2's more realistic/contrasty look for this use).
+2. **Build a character sheet** (see above) — a 3x3 grid of yourself from multiple angles/expressions, restyled into the story's costume via the same image model.
+3. **Merge them**: feed the character sheet back into the image model along with the original storyboard prompt — "give me the same storyboard but with the character I've attached" — producing a single storyboard image where your likeness is baked into every panel already, before any video generation happens.
+4. **Generate video from BOTH images in one call**: upload the merged storyboard image AND the character sheet image as two separate image inputs to the video model, with a prompt structured as: *"Generate a photorealistic cinematic video following the attached storyboard panel by panel, using the attached character sheet to maintain character consistency. No music, just sound effects."* Duration was set long enough to cover multiple story beats in one generation (14s for a multi-panel astronaut sequence, 12s for a simpler one) — **this produces one continuous multi-beat clip from a single call, not 13 separate ~5s clips.** For a storyboard with no personal character (e.g. a product ad), the character-sheet image and its prompt clause are simply omitted — same mechanism, one fewer input.
+5. He names the video tool in the demo as "Seed-TTS 2.0" on Hugging Face — this is almost certainly a transcription/mishearing of **Seedance 2.0** (there is no ByteDance video model called Seed-TTS; TTS = text-to-speech, unrelated to what's shown on screen). Treat the tool identity as Seedance 2.0, not confirmed as literally "Seed-TTS."
+
+**Quality still isn't perfect, and the creator says so himself:** even with the character sheet baked in, the resulting video still had minor artifacts — fingers warping/blending at one hand-object interaction, eyes rendering an unnaturally solid glow, a flashlight beam not perfectly tracking hand movement. Overall character *identity* held consistent (same face throughout, unlike our 1.5 Pro POV drift), but small-scale limb/physics artifacts persisted. **His own stated conclusion, verbatim:** storyboard-to-video is good for speed/credits and for sending a client a fast concept proof, but *"if you want to have more control and make it a little bit better... the matter of generating frame by frame or just using two or three images for one portion of the video is still, in my opinion, a bit better because you have more control over it... more time-consuming and more credits, but you will have a better output."* For a real channel production (not a proof-of-concept), this is a real trade-off to weigh, not just a shortcut win.
+
+**Recommendation for the POV Shorts pipeline specifically:** two options worth testing against each other before committing:
+- **(a)** kie.ai's `bytedance_seedance_video` (Seedance 2.0) per-shot, with a locked 2-3-image character-sheet reference set passed via `reference_image_urls` on every shot call (finer control, matches our existing 13-shot structure).
+- **(b)** the storyboard+character-sheet merged-image method above, generating multi-beat clips in fewer, longer calls (faster/cheaper, but per the creator's own admission, less controllable and likely to carry its own small artifacts).
+Both require kie.ai (not WaveSpeed) for the reference-image capability, and neither has been tested on our own production yet — **do not implement either into the live pipeline without Tony's go-ahead; the next step there is a versioned pipeline duplicate (v2), not an in-place edit.**
+
+### A third option — single-panel storyboard + character sheet(s) combined in one normal-length shot (confirmed 2026-08-15, untested by anyone)
+
+Distinct from option (b) above, which always covers a *multi*-panel storyboard in one long multi-beat clip. This is the same underlying mechanism applied to a *single* shot (5–8s, matching our per-beat clip structure) instead.
+
+**Confirmed directly from ByteDance's own BytePlus ModelArk docs** (`docs.byteplus.com/en/docs/ModelArk/2607689`): ByteDance names and documents a task type called **"Storyboard + subject reference"** as a supported combination in one request, with a worked example tagging five reference images by distinct role in a single call: `@Image1` = storyboard/composition, `@Image2` = environment, `@Image3`/`@Image4` = characters, `@Image5` = object. The request schema places every reference image under the same generic field (`"role": "reference_image"` — no per-item type distinction), so nothing in the schema blocks a single-panel version; the composition-vs-identity split is done entirely by the `@ImageN` ordinal tags in the prompt text.
+
+**What this means for a normal shot like a per-beat live-footage clip:** one call can plausibly carry a small single-panel composition/blocking reference (what the shot looks like, how the camera moves) PLUS one or more character/environment identity sheets, e.g.:
+`@Image1` = this shot's storyboard panel (composition + camera move), `@Image2` = the shark's character sheet, `@Image3` = the environment sheet — one `reference_image_urls` array, one prompt distinguishing each role by ordinal tag.
+
+**The honest caveat:** every worked example ByteDance publishes for "Storyboard + subject reference" is multi-panel → multi-shot. Nobody — not ByteDance, not any third-party guide found, not us — has published or confirmed a working single-panel + single-shot version. The mechanism is architecturally supported and not contradicted anywhere; it is simply untested. Treat it as a promising, sourced hypothesis to pilot on one isolated shot before relying on it for a full production, same as every other technique in this section that hasn't run on our own pipeline yet.
+
+**Update, confirmed live 2026-09-19 — see the dedicated "Confirmed recipe" section immediately below.** The adjacent-but-distinct combination (locked environment plate standing in for the composition reference, plus two separate character sheets, plus a timestamped multi-beat action block, no literal storyboard panel involved) ran successfully end-to-end on a real production shot and was graded A by Tony on the first attempt. This doesn't confirm the exact literal single-panel-storyboard version described above, but it does confirm the broader "environment + multiple character sheets + ordinal tags in one `reference_image_urls` call" pattern this section was theorizing about — promote that broader pattern from hypothesis to our own locked default per the section below.
+
+### Confirmed recipe — environment sheet + character sheet(s) + timestamped action timeline in one Seedance 2.0 call (field-tested and graded A, 2026-09-19)
+
+**This is now the default starting process for any fixed-camera, multi-subject, multi-beat Neon Parcel shot.** Full worked example: Test Shot 03 (Kangaroo Doorbell AU) — a 14-second, 6-beat, two-subject (human + animal) shot with strict continuity constraints, generated correctly on the first attempt. Full detail in `0002_Delivery-Wildlife-Encounters-Compilation/Shot-02-Kangaroo-Doorbell-AU/Data/Report_Card.md` and `Generation_Log.json`.
+
+**The process, in order:**
+
+1. **Build the environment sheet first, using the locked generation order** — top-down plan view → front/reverse elevation → photoreal POV, each chained from and checked against the previous one (see `Environment-Sheet-Generation/SKILL.md`). Do this before any character work; the environment is the one element every subsequent call depends on.
+2. **Pass the pipeline's full environment sheet as a reference (corrected 2026-09-20; the earlier 'clean unlabeled panel only' wording was wrong).** What panels/labels go into a call is defined by the channel's own pipeline SKILL.md, not by this general model guide. For Neon Parcel, see `Neon_Parcel_Longform_Compilation_v2/SKILL.md`'s Operating Rules: the labeled sheet is sent as a spatial cue, and the finished video is checked for label bleed.
+3. **No separate environment-only validation clip once the environment sheet itself is approved (corrected 2026-09-20, overrides this step's original form).** This step originally called for a cheap single-reference empty-scene test before the full shot. Tony rejected this outright: once he has already reviewed and approved the environment sheet (the actual generated photo), a video that should just reproduce that same static photo in motion tells him nothing new and burns money for no reason. **Do not run a separate environment-validation video.** Go straight from the approved environment sheet + character sheet(s) to the full multi-reference action shot. This does reintroduce the risk the validation step existed to catch (an environment-level defect baked into a more expensive call) — mitigate that by reviewing the environment sheet itself carefully before presenting it for approval, not by spending on a second video to re-check what a still image already showed.
+4. **Once the environment passes, build the full call:** pass the environment plate plus every subject's character sheet together in one `reference_image_urls` array (Seedance 2.0/kie.ai — mutually exclusive with `first_frame_url`, see "Version-specific API parameters" above), and assign each one's role explicitly with `@Image1`/`@Image2`/`@Image3` ordinal tags at the top of the prompt, e.g. `@Image1 = the fixed doorbell-camera environment plate ... @Image2 = the delivery driver character sheet ... @Image3 = the kangaroo character sheet ...`.
+5. **Structure the action as a timestamped block list**, one beat per bracketed time range covering the shot's full duration (`[00:00-00:02] ... [00:02-00:04] ...`), each describing one concrete physical state change — not a paragraph of undifferentiated action. This is the same technique documented in "Timestamped action blocks for multi-reference shots" above, now confirmed working at 6 beats / 14 seconds in one call, which is a longer and more complex sequence than anything previously tested on this pipeline.
+6. **State hard continuity constraints inline, at the point in the timeline where they apply** (e.g. "the bag itself stays gripped in his hand the whole time, never set down," stated directly in the beat where it matters), in addition to — not instead of — the closing dash-led negative-prompt line. Repeating a constraint at its relevant beat, not just once at the end, is part of why every constraint held in this result.
+7. **Close with the standard negative-prompt line**, naming every forbidden element concretely (dialogue, music, on-screen text, logos, duplicate subjects, etc.) rather than a vague "keep it clean."
+8. **Review the result frame-by-frame, not from the generation log alone** — extract stills at each beat boundary and actually look at them (subject count, constraint compliance, environment fidelity) before presenting to Tony. This is what caught the "kangaroo holds its pose slightly too statically" note on an otherwise-A-grade result; a log-only review would have missed it.
+
+**What this confirms, precisely:** Seedance 2.0 via kie.ai can reliably hold a fixed-camera scene's geometry, two independent subjects' identities, and six sequential, tightly-constrained physical state changes across a single 14-second generation, when given a clean locked environment reference, per-subject character sheets, ordinal `@ImageN` tagging, and a timestamped action timeline. This was previously several separate untested hypotheses in this guide (ordinal multi-character tagging, timestamped action blocks, storyboard+subject-reference combination) — they are now confirmed to work together, in combination, on a real production shot.
+
+**Important scoping note (2026-09-19):** the confirmation above ran on the standard `bytedance/seedance-2` model at 720p via `kie-cli bytedance_seedance_video` — not on `bytedance/seedance-2-mini`, even though Test Shot 02 (the movers/couch shot) had used Mini via `kie_market_api.py`. Switching to the standard model mid-pipeline was an undocumented deviation, not a deliberate choice, and it broke the pipeline's ability to attribute Shot 03's result to the recipe versus just the model tier. **Going forward: use the same tool/model tier the pipeline already used for the previous shot unless a change is explicitly discussed and approved — never switch tools silently because one happens to be the more full-featured default.**
+
+**Mini confirmed and now the locked default (2026-09-19):** the same full recipe (environment plate + character sheet in `reference_image_urls`, ordinal `@ImageN` tagging, timestamped action beats, inline continuity constraints) was piloted on `bytedance/seedance-2-mini` via `kie_market_api.py` — a 14s, 480p multi-reference action shot (Shot 03, moose calf crossing a highway in front of a stopped van) — and passed, graded **C** by Tony (a real, usable result, not an A-tier result — the honest quality gap between tiers). Given the roughly 80-90% cost reduction per second versus standard Seedance-2 at matching resolution, **Seedance-2-Mini via `kie_market_api.py` is now the locked default for every new Neon Parcel shot specifically** (see `Neon_Parcel_Longform_Compilation_v2/SKILL.md`'s "Video model default" section — this does not change any other channel's own locked model/version choice, e.g. Anomalous Wild's Seedance 1.5 Pro). Standard Seedance-2 via `kie-cli` remains available as a deliberate, stated upgrade for a specific Neon Parcel shot that needs it — never a silent default.
+
+### `@ImageN` ordinal tagging confirmed on Seedance 2.0 Mini specifically (verified 2026-09-19)
+
+Before this date, this guide could only confirm `@ImageN` ordinal tagging via ByteDance's own docs for the 2.0/2.5 series generally — Mini specifically was an open, unconfirmed question (see the "Important scoping note" above; a websearch/webfetch pass across kie.ai's docs, BytePlus's ModelArk pages, and independent guides found no explicit statement either way for Mini).
+
+**Directly verified by opening kie.ai's own `bytedance/seedance-2-mini` playground** (`kie.ai/seedance-2-0-mini`): the page's own default loaded example prompt uses `@Image 1`, `@Image 2`, and `@Image 3` ordinal tags, e.g. *"...perspective reference @Image 1. Shot 1: ... the page content is @Image 2. Shot 3: ... apple pie reference @Image 3..."* — a real, official, provider-authored example specific to Mini, not a third-party guess or a carryover assumption from the standard model. The page's marketing copy separately confirms this isn't incidental: it explicitly lists **"Consistent Character and Multi-Reference Video Generation... Seedance 2.0 Mini supports multi-image references"** as a named, marketed capability of the Mini tier specifically.
+
+**One loose end worth knowing before relying on this:** in the loaded example, `reference_image_urls` was actually empty — only `first_frame_url`/`last_frame_url` were populated — even though the prompt text references three `@Image` slots. This is either a playground hydration quirk (the reference assets didn't load in that particular page state) or a hint that `@ImageN` numbering spans frames and references together in one combined index rather than only `reference_image_urls`. Confirm the actual indexing behavior on a real submitted call before assuming it works identically to the standard model's indexing.
+
+**Net effect:** the multi-reference/ordinal-tagging technique this guide's "Confirmed recipe" section validated on the standard model is very likely available on Mini too, now with real provider-side evidence instead of just an architectural inference — but the recipe itself has still only been run end-to-end on the standard model. Pilot one shot on Mini via `kie_market_api.py` before moving a full production over to it.
+
+### Never use a face/person photo directly as the video starting frame (field-tested, 2026-09-19)
+
+A reviewed tutorial states this as a direct, named rule: **using a face
+photo as a Seedance starting frame is "a massive gamble"** — this is the
+same face-detection/face-block failure mode this pipeline has already hit
+independently (see `Neon_Parcel_Longform_Compilation_v2/SKILL.md`'s
+Seedance-provider policy notes). Using an object or environment image as
+the starting frame is reported as consistently safe. **If a person must be
+referenced, pass a multi-angle character sheet (per this section's
+existing guidance) rather than a single face photo** — reported as usually
+enough on its own to avoid triggering the face-block filter, without
+needing any other workaround. Treat this as confirming and generalizing a
+failure mode already known from direct experience, not a brand-new
+discovery — but it's now a named, citable rule rather than only an
+internal observation.
+
+### Recovering a localized anatomy defect without re-rolling the whole clip — "Inpaint Bridge" (field-tested, 2026-09-19)
+
+A tested, step-by-step recovery procedure for a video that's otherwise
+good except for one localized defect (a hallucinated/deformed hand is the
+worked example, but the technique generalizes to any small, localized
+anatomy or object defect):
+
+1. **Screenshot the defective frame** directly from the generated video —
+   not a fresh generation, the actual frame with the defect.
+2. **Inpaint just the defective region.** Using an image-editing tool with
+   a brush/mask selection (e.g. GPT-Image-2's edit mode), select only the
+   defective area and prompt narrowly for the fix (e.g. "fix the hands to
+   look normal") — a targeted edit, not a full-image regeneration.
+3. **Check for and remove any AI-generation watermark** the inpaint step
+   may leave behind (e.g. prompt "remove the AI tag"). Easy to miss and
+   worth checking every time an inpaint tool is used for this purpose.
+4. **Re-inject the corrected frame into Seedance as an explicit starting-
+   frame anchor**, using the phrasing `Starting frame matches [imageN]` in
+   the prompt, referencing the corrected image as one of the call's
+   reference images. This is a tutorial-reported prompt technique, not a guaranteed temporal
+   anchor. For an actual start-frame guarantee at the API boundary, use the
+   endpoint’s temporal start-image field in a separate compatible mode;
+   never use reference tags on Seedance below 2.0. It may let and lets the rest of the shot's motion regenerate cleanly from a
+   now-correct base — without re-rolling and re-paying for the entire
+   clip. Reported to have saved a full re-roll in the source production.
+
+**Not yet tested on our own pipeline** — sourced from a reviewed tutorial's
+own worked example (full source: `GPT-Image-2-Seedance-Character-
+Environment-Consistency` tutorial archive under
+`007_Resource_Library/Tutorials/`), not independently confirmed here yet.
+Treat as a documented, promising recovery option to pilot next time a
+localized defect shows up in an otherwise-good Seedance clip, same
+evidentiary standing as the other field-tested-but-unconfirmed techniques
+in this section.
+
+## Complex action shots: storyboard and camera lock
+
+Use this structure whenever a shot requires several physical steps, precise
+object interaction, or continuity that Seedance 1.5 is likely to mishandle:
+
+**Cost-aware fallback:** when the shot is too complex for reliable Seedance 1.5
+start/end-frame interpolation, use Kie.ai's Seedance 2 Mini at 480p or 720p
+with storyboard/reference guidance. The current Kie.ai catalog lists Mini at
+`$0.019/second` for 480p without video input and `$0.041/second` for 720p
+without video input. For the approved 480p workflow, use Topaz Video Upscaler
+2x at `$0.04/second`, then use FFmpeg to normalize the final output to
+1920x1080. This is a fallback for complex shots, not a universal replacement
+for Seedance 1.5.
+
+1. **Lock the capture source first.** State the exact camera owner/source and
+   physical placement: for example, "a high-mounted fixed gas-station security
+   camera, above the vehicle, looking down at a 20-degree angle." Include lens
+   character such as "wide-angle security lens with mild fisheye/barrel
+   distortion" when that look matters.
+2. **Lock what must not change.** Name the single subject count, vehicle/room,
+   horizon, framing, camera height, lens distortion, lighting, and visible
+   geometry. Explicitly preserve doors, windows, anchors, handles, and fixed
+   receivers involved in the action.
+3. **Translate the storyboard into ordered states.** Describe one visible
+   state per beat: initial state, contact, object movement, completed
+   interaction, and natural exit. Use concrete physical relationships rather
+   than shorthand such as "buckles it" or "handles the belt."
+4. **Describe object physics.** Identify where an object begins, what it is
+   attached to, the path it follows, where it ends, and what confirms success.
+   For a seat belt: retracted shoulder anchor -> pulled latch plate -> belt
+   across chest/lap -> fixed hip-level receiver -> audible click.
+5. **Keep the camera instruction separate from the action.** Say "the camera
+   remains fixed; no reframing, zoom, tracking, or eye-level viewpoint" before
+   the action sequence. Do not use contradictory movement language.
+6. **Use positive constraints in the relevant sentence and a short negative
+   closer.** Repeat only the details that must survive the motion. End with
+   concrete failure exclusions: no duplicate people/animals, no skipped states,
+   no object appearing from the ground, no disappearing geometry, no camera
+   movement, and no cuts unless requested.
+
+For a multi-panel storyboard, treat the panels as ordered visual checkpoints,
+not decorative inspiration. If the model starts copying the grid, repeating
+panels, or drifting the camera, split the action into fewer panels per call or
+use adjacent start/end frames instead. A storyboard does not guarantee correct
+physics; review the complete generated clip for state order, object continuity,
+camera drift, and geometry changes before accepting it.
+
+## Chaining multiple generations into one continuous scene
+
+Seedance has a hard per-call duration cap (well under a minute even on 2.5). For anything longer, or for a multi-panel storyboard too large to cover in one call, don't force it into a single generation — chain several generations together instead.
+
+**Technique 1 — last-frame-passing for a seamless cut:** generate clip 1, extract its literal last frame, and use that frame as the starting image for clip 2 (using the selected endpoint’s temporal-frame mode; do not attach contextual sheets on legacy versions or combine them with temporal frames on Kie). Because clip 2 starts on the exact pixels clip 1 ended on, the stitched result reads as one continuous shot instead of two generations awkwardly cut together. (Source: "Create Seamless AI Films of Any Length," `Universal_Case_Studies/007_Create_Seamless_AI_Films_Of_Any_Length/ANALYSIS.md`)
+
+**Technique 2 — row/panel-cropping a storyboard:** crop one row (or a few panels) of a multi-panel storyboard at a time, animate just that crop in its own generation call with the relevant character sheet attached, and repeat per row/section. Combine with Technique 1 between each row for a seamless join. (Source: same case study above)
+
+**Failure mode to avoid:** sending an entire multi-panel storyboard into one generation call without splitting it can cause the model to replicate the whole storyboard's content across every segment of the output instead of progressing through it panel-by-panel — confirmed independently on a second platform testing "direct" vs. "agent-split" generation modes against the same storyboard. Splitting first (Technique 2) avoids this. (Source: "Ultimate Seedance Control - Storyboards With GPT Image 2," `Universal_Case_Studies/010_Ultimate_Seedance_Control_Storyboards_GPT_Image_2/ANALYSIS.md`)
+
+## Version-specific API parameters
+
+**Confirm which version this build targets before writing the prompt or picking parameters — capabilities differ meaningfully between 1.5 Pro, 2.0/2.0 Fast, and 2.5. Never apply a newer version's capabilities (e.g. 2.5's 50-reference/30-second capacity) to a 1.5 or 2.0 build, or vice versa.**
+
+> ⚠️ **THE #1 MISTAKE TO NOT REPEAT — read this before passing more than one reference image to ANY Seedance call.**
+> - **1.5 Pro has NO style/consistency reference mechanism at all.** Its only image inputs are `image` (first-frame) and `last_image` (last-frame interpolation target) — on kie.ai these are exposed as a single `input_urls` array, where **element 0 = first frame, element 1 = last frame, full stop.** Passing a character sheet as a second image does NOT give the model "extra context for consistency" — it makes the video literally morph into and end on that image. Confirmed live 2026-08-17/18 on a real production call: a character sheet passed as `input_urls[1]` became the video's literal final frame (a static shot of the multi-panel reference grid), reproduced identically on a second attempt with different prompt wording — this is parameter behavior, not something prompt text can override. **For 1.5 Pro: pass exactly ONE image (whatever single frame should open the shot). If you need identity consistency across separate 1.5 Pro calls, the only workaround is reusing that same single image as `image` on every call — there is no second reference slot.**
+> - **Seedance 2.0/2.0 Fast is different: it has a genuine, separate multi-reference field, `reference_image_urls` (up to 9 images)** — but it is **mutually exclusive with `first_frame_url`/`last_frame_url`** on kie.ai's endpoint (the API rejects a call using both — see 2026-08-08 entry in `Global_Agent_Memory.md`). If you want a specific starting composition (e.g. a storyboard panel) AND separate identity/anatomy references (e.g. a character sheet) in one 2.0 call, put ALL of them into `reference_image_urls` together and assign each one's role with `@Image1`/`@Image2` ordinal tags in the prompt text (see "Multi-character scenes" below) — do not try to split them across `first_frame_url` + `reference_image_urls`.
+> - **Bottom line: "how many images, and what do they mean" is answered entirely by which version and which parameter you're using — never assume a second image is a safe way to add "extra context" without checking this section first.**
+
+**Seedance 1.5 Pro** (confirmed live via `wavespeed schema bytedance/seedance-v1.5-pro/image-to-video`, 2026-08-01; kie.ai's `input_urls` first/last-frame behavior confirmed live 2026-08-17/18):
+
+| Field | Type | Notes |
+|---|---|---|
+| `prompt` | string | required |
+| `image` | string | required — first-frame reference (image-to-video mode). On kie.ai, exposed as `input_urls[0]`. |
+| `last_image` | string | optional — last-frame reference for interpolation. On kie.ai, exposed as `input_urls[1]`. **Not a style/consistency reference slot — see warning above.** |
+| `aspect_ratio` | enum | `21:9`, `16:9`, `4:3`, `1:1`, `3:4`, `9:16` |
+| `duration` | integer | default 5, range 4-12 (seconds) |
+| `resolution` | enum | `480p`, `720p` (default), `1080p` |
+| `generate_audio` | boolean | default `true`. **Even with explicit negative-prompt language against dialogue/narration, a documentary-style prompt (e.g. "National Geographic documentary lighting") can still bias the model toward generating a narrator voiceover** — confirmed live 2026-08-17/18, reproduced twice with different negative-prompt phrasing before it actually resolved. Fix that worked: keep the prompt's sound section to concrete named foley/ambient events only (no genre-signaling language like "documentary") plus this guide's exact dash-led negative-prompt closer — see "Ambient / foley-only sound" and "Negative prompts" sections above. |
+| `camera_fixed` | boolean | default `false` |
+| `seed` | integer | `-1` = random |
+
+**Seedance 2.0 / 2.0 Fast** (confirmed live via kie.ai `docs.kie.ai/market/bytedance/seedance-2.md`, 2026-08-18):
+
+| Field | Type | Notes |
+|---|---|---|
+| `prompt` | string | required |
+| `first_frame_url` | string | optional — mutually exclusive with `reference_image_urls` |
+| `last_frame_url` | string | optional — requires `first_frame_url`, mutually exclusive with `reference_image_urls` |
+| `reference_image_urls` | array | optional, up to 9 images — genuine multi-reference field, distinct from first/last frame. Use `@Image1`/`@Image2` ordinal tags in the prompt to assign each one's role. |
+| `reference_video_urls` | array | optional, up to 3 |
+| `reference_audio_urls` | array | optional, up to 3 |
+| `generate_audio` | boolean | default `true` |
+| `resolution` | enum | `480p`, `720p` (default), `1080p`, `4k` |
+| `aspect_ratio` | enum | e.g. `16:9` |
+| `duration` | integer | default 5, range 4-15 (seconds) |
+
+Same core prompting philosophy applies (4-layer structure, quote-triggered dialogue, dash-led negative-prompt closer). **Never hardcode assumed parameter values from these tables into new code without a live schema check first** (`docs.kie.ai/market/bytedance/<model>.md`, or `wavespeed schema <model-id>`) — these tables are a snapshot, not a guarantee, and ByteDance ships frequent version updates.
+
+### Evaluate resolution and motion separately
+
+When comparing Seedance variants, score at least these dimensions separately:
+motion and physics, subject/identity continuity, camera continuity, visual
+detail and text clarity, and audio quality. A higher-resolution result is not
+automatically better at motion or physical behavior, and a cheaper variant
+may be the better production choice when its motion passes while the premium
+variant only improves detail. Record the model version, platform wrapper,
+resolution, and prompt/reference configuration for each comparison so the
+result is not generalized across versions.
+
+### Minimum duration is a hard floor — generate at the floor, then trim (locked 2026-08-28)
+
+Both duration ranges above have a **minimum**, not just a maximum: 1.5 Pro won't accept anything under 4 seconds, 2.0/2.0 Fast won't accept anything under 4 seconds either (only the max differs, 12 vs. 15). This is easy to miss because most attention goes to the upper cap (the 8s live-footage ceiling this pipeline enforces) — but a real beat can legitimately need *less* than 4 seconds (a quick glitch-cut hook, a single flash-frame tease), and submitting that duration directly to the API fails.
+
+**Confirmed live 2026-08-28** on an Anomalous Wild production: a hook beat's real narration duration was 3.855s. Submitting `duration_s: 3.855` (or even `4` as a float-truncated string) to `bytedance/seedance-1.5-pro` failed twice before the fix was found — the API requires an **integer** at or above the floor.
+
+**The fix, as a standing rule for any pipeline building a Seedance manifest:** the generation-time duration and the beat's real on-screen duration are two different numbers, and the pipeline stage that plans clip boundaries should record **only** the real one (`target_duration_s`, from narration timestamps). The stage that builds the API call derives the request duration from it: **`ceil(target) + 1s`, clamped to the model's `[4, max]` range, as an integer** — never submit a sub-minimum or non-integer duration, and never stretch/slow the beat's real timing to fill the generated length. Then **trim the rendered clip back down to `target_duration_s`** (head-trim — keep the first `target_s`). The +1s pad matters because Seedance undershoots the requested integer by ~0.1–0.9s; a clip that ends up shorter than its beat causes a loop-back flash-cut in Remotion assembly (incident 0003_Glass_Frog_Transparency, 2026-08-30). A clip that still comes back shorter than target is regenerated, never looped. In the Anomalous Wild pipeline this is all enforced in `clip_durations.py` + `pipeline_supervisor.py` — the manifest carries `target_duration_s` only.
+
+### Start and end frame must be visually distinct (locked 2026-08-19)
+
+Any call using both a first-frame and a last-frame reference (`image`/`last_image` on 1.5 Pro, `first_frame_url`/`last_frame_url` on 2.0) needs the two frames to actually differ — same subject pose, same framing, only minor differences gives the model almost no delta to interpolate motion from, and produces a flat, low-motion, or near-static result. This isn't a prompt-wording problem; it's a reference-image selection problem. Caught on a real production: a scene's storyboard opened and closed on the same wide, full-body framing of the subject (different narrative moment, same composition) — using panel 1 and the final panel as a single clip's start/end pair would have handed the model almost nothing to animate between.
+
+**Choose start/end frame pairs with a real compositional difference** — wide vs. close, a different subject position, a different framing angle — not just a different narrative beat that happens to render the same way visually. When splitting a storyboard into sub-clips (see [`Production-Asset-Planner`](../Production-Asset-Planner/SKILL.md) Step 6), this is one more reason a span with too little visual change from start to end should be folded into an adjacent clip or re-split, rather than generated as-is.
+
+### Validated storyboard handoff
+
+For Neon Parcel storyboard-route shots, Seedance prompt construction must occur
+only after the selected storyboard has passed the structured visual-QA and
+three-candidate regeneration gates. The handoff adapter is
+`001_Architecture/Tools/Video-Generation/Channels/Neon_Parcel/storyboard_handoff.py`.
+It converts the validated frame sequence into chronological physical beats and
+preserves the five-layer prompt order. In Seedance 2 reference mode, the storyboard is a contextual
+`reference_image_urls` input. A temporal-mode call instead uses clean scene
+frames in `first_frame_url`/`last_frame_url` and omits the reference array.
+Legacy models use only their supported temporal-frame fields. Never construct a Seedance prompt from the original shot
+idea alone after storyboard QA, because that can reintroduce assumptions the
+accepted storyboard disproved.
+
+## Related but distinct tool: Seed Audio 1.0
+
+ByteDance also ships **Seed Audio 1.0** (`bytedance/seed-audio-1.0` on fal.ai) — a standalone audio-only generation model, not part of Seedance video generation. It produces multi-character dialogue, sound effects, ambience, and music from a single text prompt, independent of any video. Two modes: text-to-speech (dialogue only) and text-to-audio (full cinematic mix with dialogue + sound design). Useful as a future option for post-hoc full audio-scene generation decoupled from video generation, but **not currently used in any Agent-OS pipeline** — Seedance's own `generate_audio` (synced to the video it's generating) is what we use today. Source: [How to Use Seed Audio 1.0 (fal.ai)](https://fal.ai/learn/tools/how-to-use-seed-audio), [What Is Seed Audio 1.0? (MindStudio)](https://www.mindstudio.ai/blog/what-is-seed-audio-1-0-bytedance)
+
+## Style 1: POV / First-Person (our locked convention — Reimagined Realms POV Shorts)
+
+For the POV Shorts pipeline (`001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/`), every Seedance prompt must:
+
+1. Never include quoted spoken dialogue — these videos have no dialogue by design.
+2. Name specific foley/ambient events concretely (footsteps, sloshing, birds, wind, crowd murmur) rather than vague mood words.
+3. End with a negative-prompt closing line: `- No dialogue, no spoken words, no voiceover, no lip sync, no music, no on-screen text.` (the "no music" clause matters specifically for us — Suno generates the separate music layer, so Seedance's native audio should stay foley/ambient-only, not compete with its own score). This also matches a more general rule worth keeping in mind for any per-shot (not single-long-take) pipeline: audio baked into a generation can't be cleanly stripped back out later, so if shots get stitched together afterward, leave music out of the Seedance call entirely and add it once, separately, across the whole edit.
+4. Use `generate_audio=true` (this pipeline uses Seedance's native audio instead of a separate Foley-model step — see `001_Architecture/Superpowers/Specs/2026-08-01-RR-POV-Shorts-Pipeline-Design.md` for the decision history).
+5. Set `camera_fixed` per the shot: `true` for static POV vignettes (eating, sitting, watching), `false` for walking/handheld/tracking shots — per `POV_Style_Guide.md`'s camera conventions.
+
+## Style 2: Cinematic Narrative / Multi-Character
+
+Third-person storytelling with multiple named characters interacting and speaking (e.g. a commander giving orders to a lieutenant, two characters facing off before a fight). Full guidance lives in a separate file to keep this main reference lean: see [`Cinematic-Narrative-Multi-Character.md`](./Cinematic-Narrative-Multi-Character.md) in this same folder. **Not currently used by any pipeline** — `Reimagined_Realms_Video_Pipeline` has a documented placeholder for future character dialogue ("not in scope for the current voiceover-only pipeline") that this style would serve whenever that gets built.
+
+## Style 3: Documentary / Narration-Driven
+
+Third-person footage where characters never speak — a narrator describes what's happening over the visuals. Can include characters performing silent action, or pure environment/B-roll shots with no characters at all (including timelapses). No dedicated techniques beyond the Core sections above: character/environment sheets (if characters are present), camera language, negative-prompt conventions. The one hard rule specific to this style: never write quoted spoken dialogue into the prompt. **Current pipeline using this style:** `Reimagined_Realms_Video_Pipeline` ("voiceover-only, characters never speak").
+
+## Style 4: UGC / Talking Presenter
+
+One character, camera-facing, actively talking — usually while holding/promoting a product. Voice comes from a pre-generated voiceover (e.g. ElevenLabs), not Seedance voice-cloning — Seedance's job here is lip-syncing the character's mouth to that already-made audio track, not generating the voice itself. **Not currently used by any pipeline** (Neon-Parcel's TikTok Shop pipeline currently edits real footage rather than generating AI presenters), documented here for if that changes.
+
+Practical notes from a real UGC-mode platform (Enhancor):
+- A separate "Lipsyncing" input mode exists, distinct from that platform's Text-to-Video/Image-to-Video modes — feed it a video/image plus your pre-generated audio file directly, rather than trying to trigger lip-sync through quoted dialogue text the way Style 1/2 do.
+- "UGC mode" (one character image, single-shot talking-product ad) and "Multi-reference mode" (full character sheet, needed for anything more cinematic — multiple angles, camera moves) are different tools on the same platform. Pick UGC mode for a quick single-shot talking ad, multi-reference mode for anything requiring more than one angle.
+
+(Source: "She Isn't Real - Definitive AI Influencer Pipeline," `Universal_Case_Studies/004_She_Isnt_Real_AI_Influencer_Pipeline/ANALYSIS.md`)
+
+## Style 5: Portal / Transition / Effect-Driven
+
+Real filmed footage stays completely unchanged — same face, clothes, movement, camera framing — except one specific element gets replaced by AI (most commonly: what's revealed when a door/window/threshold opens). This is video-to-video on real source footage, not character-sheet-driven generation from scratch, so none of the character-consistency guidance above applies.
+
+**Prompt pattern — state what stays constant before describing what changes.** Lock everything about the real footage first (face, hair, outfit, body movement identical to the source, camera completely static — no panning/zooming/shake), THEN describe the one thing that changes with its own inline negative constraints. Verbatim real example, written by Claude (Sonnet 5):
+
+> A woman opens a door in a static, completely unchanged real-world interior scene. Her face, hair, outfit, and body movements remain exactly identical to the original footage up until the moment the door opens. The camera is completely static and locked throughout the entire shot — no panning, no zooming, no camera shake, no movement of any kind. As the door swings open, instead of revealing the original background, the doorway opens directly onto a photorealistic outdoor location: a wide green valley with a fairytale stone castle with tall Gothic spires perched on a distant hill... There are no fantasy visual effects of any kind — no glowing edges, no light flashes, no sparkles, no particle effects, no warping or distortion around the doorway. The transition must look like a completely ordinary door opening onto a real physical place, strictly photorealistic...
+
+(Source: "How I Got 11M Views and 30K Subscribers," `Universal_Case_Studies/008_How_I_Got_11M_Views_30K_Subscribers/Keyframes/013.jpg`)
+
+**Not currently used by any pipeline** — documented here for when a channel wants this format.
+
+## Un-reviewed reference material (ingested 2026-08-29, not yet case-studied)
+
+5 YouTube tutorials on Seedance 2.0/2.5 + GPT-Image-2 workflows were ingested but only
+raw-captured (description/links), not yet distilled into technique the way
+`Universal_Case_Studies/` entries above are. They live in
+`007_Resource_Library/Tutorials/`:
+`Claude-Replaced-Higgsfield-with-This-FREE-MCP.md`,
+`How-to-Turn-Images-into-Motion-Graphics-using-Seedance-2.0.md`,
+`How-to-Turn-Storyboards-into-AI-Videos-with-GPT-Image-2-Seedance-2.0.md`,
+`I-Can't-Believe-ChatGPT-Work-Made-This-Whole-Video-From-One-Image.md`,
+`Create-Seamless-AI-Films-of-ANY-Length-GPT-Image-2-Seedance-2.0.md`.
+Worth a real case-study pass (watch + extract technique, per the Case Study Pipeline
+pattern) before treating anything in them as validated — flagging here so they
+don't get forgotten as just links.

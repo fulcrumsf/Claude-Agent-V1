@@ -1,0 +1,16 @@
+{
+ "sheet_type": "character",
+ "name": "Bicycle Courier",
+ "role": "the bicycle parcel courier",
+ "subject_description": "An adult East African man in his late 20s to 30s, average build, plain navy short-sleeve collared shirt with a chest pocket, dark trousers, black sandals, black crossbody shoulder bag. He carries a small pale beige clipboard in his right hand, and his plain dark-steel parcel bicycle (rear cargo rack, kickstand down) appears with him in the wide row; no logos, no readable text",
+ "hands": "both",
+ "extra_panels": [
+  {
+   "title": "Holding the clipboard",
+   "description": "the courier holding the pale beige clipboard in his right hand at hip height, as he does when he sets it on the counter"
+  }
+ ],
+ "out": "Character_Sheets/Courier_Character_Sheet_v1.png",
+ "prompt_out": "Prompts/Courier-Character-Sheet-Spec-v1.md",
+ "title_out": "Character_Sheets/Courier_Character_Sheet_v1_Titled.png"
+}

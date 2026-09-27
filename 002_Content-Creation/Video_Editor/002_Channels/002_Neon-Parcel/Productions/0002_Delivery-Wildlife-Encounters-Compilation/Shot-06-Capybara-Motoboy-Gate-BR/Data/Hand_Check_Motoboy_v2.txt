@@ -1,0 +1,2 @@
+   GATE: PASS score=1.0 (need 0.8) RIGHT->RIGHT; LEFT->LEFT; LEFT->LEFT; RIGHT->RIGHT; RIGHT->RIGHT; LEFT->LEFT; RIGHT->RIGHT; LEFT->LEFT
+Expectations: front image-left=RIGHT, front image-right=LEFT, side (faces LEFT so we see his LEFT side)=LEFT, back-view image-right=RIGHT, 'Right hand holding the helmet' close-up=RIGHT, 'Left hand relaxed' close-up=LEFT, 4th top-row panel image-left=RIGHT & image-right=LEFT. Helmet is in the RIGHT hand in the front/back panels.

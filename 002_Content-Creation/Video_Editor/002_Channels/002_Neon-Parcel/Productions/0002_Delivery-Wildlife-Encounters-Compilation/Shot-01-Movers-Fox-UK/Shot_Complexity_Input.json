@@ -1,0 +1,16 @@
+{
+  "shot_id": "test_shot_02_movers_fox_uk",
+  "description": "Two movers carry a red couch along a front path toward an open truck ramp; a red fox trots through the ramp threshold at their feet as they step onto it; the bystander's handheld phone whips toward the fox in a reflexive reaction, framing loosens and shakes, then partially re-settles as the fox exits frame. Mover 1 walks backward facing Mover 2 the entire shot.",
+  "semantic_assessment": {
+    "action_count": 3,
+    "physics": 2,
+    "object_continuity": 2,
+    "precision": 3,
+    "character_interaction": 2,
+    "spatial_continuity": 2,
+    "timing_precision": 3,
+    "dialogue_sync": 0,
+    "failure_risk": 3,
+    "storyboard_value": 3
+  }
+}

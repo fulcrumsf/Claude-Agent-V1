@@ -1,0 +1,130 @@
+{
+  "production": "0002_Delivery-Wildlife-Encounters-Compilation/Shot-05-Vervet-Monkey-Shopfront-KE",
+  "pipeline": "neon-parcel-longform-compilation-v2",
+  "assets": [
+    {
+      "shot_id": "Monkey-African-Messenger-Full-Action",
+      "version": "v3",
+      "prompt_file": "Prompts/Full-Action-Seedance-2-Mini-480p-v3.md",
+      "prompt_sha256": "1e667dad1f1351f27faa87ad6df7bf3b9ece80aabc6b58d31a2f2f541784bfff",
+      "prior_attempts": 0,
+      "model": "bytedance/seedance-2-mini",
+      "status": "success",
+      "reserved_at": "2026-09-20T23:06:27.714317+00:00",
+      "task_id": "81a9089d775ba75f0664f60d730d665c",
+      "submitted_at": "2026-09-20T23:06:28Z"
+    },
+    {
+      "shot_id": "Monkey-African-Messenger-Full-Action",
+      "version": "v4",
+      "prompt_file": "Prompts/Full-Action-Seedance-2-Mini-480p-v4.md",
+      "prompt_sha256": "a936f2b8c11b1eb5910d91b519c65584e96befefd51cb5f98330f6ac625e42b8",
+      "prior_attempts": 0,
+      "model": "bytedance/seedance-2-mini",
+      "status": "success",
+      "reserved_at": "2026-09-21T01:46:23.561669+00:00",
+      "task_id": "73f2f54f11fae8f21381730279e76a23",
+      "submitted_at": "2026-09-21T01:46:23Z"
+    },
+    {
+      "shot_id": "Monkey-African-Messenger-Full-Action",
+      "version": "v5",
+      "prompt_file": "Prompts/Full-Action-Seedance-2-Mini-480p-v5.md",
+      "prompt_sha256": "4f0c348d39be55002807102befe770b0d483d5f7749ce246c37ab1d256846da1",
+      "prior_attempts": 0,
+      "model": "bytedance/seedance-2-mini",
+      "status": "success",
+      "reserved_at": "2026-09-21T02:03:36.323889+00:00",
+      "task_id": "178f0efaada3e528f2d32f7c27bcddf5",
+      "submitted_at": "2026-09-21T02:03:36Z",
+      "grade": "F",
+      "grade_note": "Tony: F. Wrong location (shop far in background), roof/foreground-table geometry; action closer to story"
+    },
+    {
+      "shot_id": "Monkey-African-Messenger-Full-Action",
+      "version": "v7",
+      "prompt_file": "Prompts/Full-Action-Seedance-2-Mini-480p-v7.md",
+      "prompt_sha256": "b48af8cc4555dbbdc10f911681f30fdf4d2cd1a31efd6ad2c3714eefdaf280b9",
+      "prior_attempts": 0,
+      "model": "bytedance/seedance-2-mini",
+      "status": "approved",
+      "reserved_at": "2026-09-21T02:21:49.639845+00:00",
+      "task_id": "45cde107631d8de7ac1bfb331c4b1f82",
+      "submitted_at": "2026-09-21T02:21:50Z",
+      "grade": "B+",
+      "grade_note": "Tony: B+, the winning formula. Remaining: brief camera reframe around 2.5-4.5s, monkey reaches counter earlier than scripted, courier half out of frame at t=0",
+      "magnific_task_id": "e278b6ea-7622-4652-94d0-4e91fed42e4e",
+      "magnific_output": "Data/Seedance_Mini_v7_Magnific_1k.mp4",
+      "final_output": "Data/Seedance_Mini_v7_1080p_FINAL.mp4",
+      "resolution": "1920x1080",
+      "postprocess": "magnific-1k-(one-off, Kie Topaz down)-then-ffmpeg-1920x1080"
+    }
+  ],
+  "processing": [
+    {
+      "stage": "topaz-2x",
+      "attempt": 1,
+      "task_id": "140a704dbf19793fd55ef888f48a6ec9",
+      "status": "provider_failed",
+      "error": "500 internal error, 0 credits consumed"
+    },
+    {
+      "stage": "topaz-2x",
+      "attempt": 2,
+      "task_id": "bd037d3cd6b3efb99795469fd86c033a",
+      "status": "provider_failed",
+      "error": "Task bd037d3cd6b3efb99795469fd86c033a failed: {'taskId': 'bd037d3cd6b3efb99795469fd86c033a', 'model': 'topaz/video-upscale', 'state': 'fail', 'param': '{\"input\":\"{\\\\\"video_url\\\\\":\\\\\"https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Seedance_Mini_v7_Labeled_Sheets.mp4\\\\\",\\\\\"upscale_factor\\\\\":\\\\"
+    },
+    {
+      "stage": "topaz-2x",
+      "attempt": 3,
+      "task_id": "c2b112e07b130fa4ce40b6e6f013672e",
+      "status": "provider_failed",
+      "error": "Task c2b112e07b130fa4ce40b6e6f013672e failed: {'taskId': 'c2b112e07b130fa4ce40b6e6f013672e', 'model': 'topaz/video-upscale', 'state': 'fail', 'param': '{\"input\":\"{\\\\\"video_url\\\\\":\\\\\"https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Seedance_Mini_v7_Labeled_Sheets.mp4\\\\\",\\\\\"upscale_factor\\\\\":\\\\"
+    },
+    {
+      "stage": "topaz-2x",
+      "attempt": 4,
+      "task_id": "142e4de95a861d513149878589e24054",
+      "status": "provider_failed",
+      "error": "Task 142e4de95a861d513149878589e24054 failed: {'taskId': '142e4de95a861d513149878589e24054', 'model': 'topaz/video-upscale', 'state': 'fail', 'param': '{\"input\":\"{\\\\\"video_url\\\\\":\\\\\"https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Seedance_Mini_v7_Labeled_Sheets.mp4\\\\\",\\\\\"upscale_factor\\\\\":\\\\"
+    },
+    {
+      "stage": "topaz-2x-diagnostic-4s",
+      "task_id": "9990bba640e386eaaeaf3e72019d9193",
+      "status": "provider_failed",
+      "error": "Task 9990bba640e386eaaeaf3e72019d9193 failed: {'taskId': '9990bba640e386eaaeaf3e72019d9193', 'model': 'topaz/video-upscale', 'state': 'fail', 'param': '{\"input\":\"{\\\\\"video_url\\\\\":\\\\\"https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Seedance_Mini_v7_TopazTest_4s.mp4\\\\\",\\\\\"upscale_factor\\\\\":\\\\\"2"
+    },
+    {
+      "stage": "magnific-video-upscaler-oneoff",
+      "provider": "magnific",
+      "params": {
+        "video": "https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Seedance_Mini_v7_Labeled_Sheets.mp4",
+        "resolution": "1k",
+        "creativity": 0,
+        "fps_boost": false,
+        "sharpen": 0,
+        "smart_grain": 0,
+        "flavor": "natural"
+      },
+      "http": 200,
+      "task_id": "e278b6ea-7622-4652-94d0-4e91fed42e4e",
+      "note": "Tony one-off after Kie Topaz failed 5x"
+    },
+    {
+      "stage": "magnific-video-upscaler-oneoff",
+      "task_id": "e278b6ea-7622-4652-94d0-4e91fed42e4e",
+      "status": "COMPLETED",
+      "result": [
+        "https://cdn-magnific.freepik.com/videos/video_upscaler_tango_e278b6ea-7622-4652-94d0-4e91fed42e4e.mp4?token=exp=1789965236~hmac=5c3eddc9161e82b325d241fec4995a3d934986b89b55f264628d4ff815800f7d"
+      ],
+      "error": null
+    },
+    {
+      "stage": "ffmpeg-normalize-1920x1080",
+      "source": "Data/Seedance_Mini_v7_Magnific_1k.mp4",
+      "output": "Data/Seedance_Mini_v7_1080p_FINAL.mp4",
+      "status": "success"
+    }
+  ]
+}

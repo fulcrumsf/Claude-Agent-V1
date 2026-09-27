@@ -1,0 +1,51 @@
+{
+ "title": "CREATURE SHEET",
+ "headline": "VERVET MONKEY",
+ "subtitle": "Shot 05 - Vervet Monkey Shopfront (KE) - assembled from separately generated panels (6 of 11 planned)",
+ "rows": [
+  {
+   "items": [
+    {
+     "type": "panel",
+     "num": 1,
+     "title": "FRONT",
+     "image": "Character_Sheets/Panels/Monkey/01_Front.png"
+    },
+    {
+     "type": "panel",
+     "num": 2,
+     "title": "SIDE",
+     "image": "Character_Sheets/Panels/Monkey/02_Side.png"
+    },
+    {
+     "type": "panel",
+     "num": 3,
+     "title": "BACK",
+     "image": "Character_Sheets/Panels/Monkey/03_Back.png"
+    }
+   ]
+  },
+  {
+   "items": [
+    {
+     "type": "panel",
+     "num": 4,
+     "title": "FULL BODY",
+     "image": "Character_Sheets/Panels/Monkey/04_FullBody.png"
+    },
+    {
+     "type": "panel",
+     "num": 5,
+     "title": "ALERT POSE",
+     "image": "Character_Sheets/Panels/Monkey/06_Alert.png"
+    },
+    {
+     "type": "panel",
+     "num": 6,
+     "title": "EYES + FACE",
+     "image": "Character_Sheets/Panels/Monkey/07_EyesFace.png"
+    }
+   ]
+  }
+ ]
+}

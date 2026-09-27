@@ -25,7 +25,7 @@ Flags:
 API parameter reference (confirmed from https://kie.ai/seedance-1-5-pro):
   input_urls: [image_url]  — reference frame (array, 0-2 images)
   prompt: str
-  aspect_ratio: "16:9"
+  aspect_ratio: production's aspect ratio (16:9 or 9:16; see resolve_aspect)
   resolution: "1080p"
   duration: int (seconds)
   nsfw_checker: bool
@@ -54,6 +54,7 @@ MIN_GEN_S    = 4   # Seedance minimum supported duration
 MAX_1_5_S    = 12  # Seedance 1.5 Pro maximum — above this, switch to 2.0
 
 RESOLUTION = "1080p"
+ASPECT = "16:9"   # set per production in main(): --aspect_ratio, else Beatmap.json "aspect_ratio", else inferred from the first start image
 AUDIO      = False   # overridden by --audio flag; doubles cost ($0.075/s vs $0.0375/s)
 
 load_dotenv(Path.home() / ".env-secrets")
@@ -130,6 +131,26 @@ def upload_to_cloudinary(image_path, public_id):
     )
     return result["secure_url"]
 
+def resolve_aspect(production_root, override=None):
+    """Aspect ratio for this production: CLI override > Beatmap.json 'aspect_ratio' > first start image shape > 16:9.
+    Fixes the old hard-coded 16:9 that ignored a 9:16 (vertical) intake choice."""
+    if override:
+        return override
+    try:
+        ar = json.loads((production_root / "Data" / "Beatmap.json").read_text()).get("aspect_ratio")
+        if ar in ("16:9", "9:16"):
+            return ar
+    except Exception:
+        pass
+    try:
+        from PIL import Image
+        first = sorted((production_root / "Images").glob("C*.png"))[0]
+        w, h = Image.open(first).size
+        return "9:16" if h > w else "16:9"
+    except Exception:
+        return "16:9"
+
+
 # ── Generate one video ─────────────────────────────────────────────────────────
 
 def generate_video(image_url, prompt, output_path, model, duration, enable_audio=False):
@@ -138,7 +159,7 @@ def generate_video(image_url, prompt, output_path, model, duration, enable_audio
         "input": {
             "prompt": prompt,
             "input_urls": [image_url],
-            "aspect_ratio": "16:9",
+            "aspect_ratio": ASPECT,
             "resolution": RESOLUTION,
             "duration": duration,
             "nsfw_checker": True,
@@ -201,6 +222,7 @@ def main():
     parser.add_argument("--clips", nargs="+", help="Only process specific clips (e.g. --clips C1 C2 C3)")
     parser.add_argument("--audio", action="store_true", help="Enable ambient environmental audio (doubles cost: $0.075/s vs $0.0375/s)")
     parser.add_argument("--overwrite", action="store_true", help="Regenerate clips even if output file already exists")
+    parser.add_argument("--aspect_ratio", choices=["16:9", "9:16"], help="Override the production's aspect ratio (default: Beatmap.json, else start-image shape, else 16:9)")
     args = parser.parse_args()
     enable_audio = args.audio
 
@@ -208,6 +230,9 @@ def main():
     if not production_root.exists():
         sys.exit(f"ERROR: Folder not found: {production_root}")
 
+    global ASPECT
+    ASPECT = resolve_aspect(production_root, args.aspect_ratio)
+    print(f"Aspect ratio for this production: {ASPECT}")
     clip_map, duration_map = build_clip_map(production_root)
     prompts  = parse_video_prompts(production_root)
     images_dir     = production_root / "Images"

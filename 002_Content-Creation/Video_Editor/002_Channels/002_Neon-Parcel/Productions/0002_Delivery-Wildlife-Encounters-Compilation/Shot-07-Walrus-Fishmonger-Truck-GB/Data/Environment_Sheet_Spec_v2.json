@@ -1,0 +1,79 @@
+{
+ "_readme": "Shot 07 spec v2 (harbour quay, Tony's layout 2026-09-22) for build_environment_sheet.py",
+ "title": "ENVIRONMENT SHEET",
+ "headline": "SHOT 07  |  WALRUS IN THE FISHMONGER'S VAN  |  SCOTTISH HARBOUR QUAY",
+ "subtitle": "FIXED HARBOURSIDE CCTV FACING THE BAY   -   OVERCAST MIDDAY, DAMP, 2012   -   PANEL 1 IS THE CAMERA'S VIEW (16:9)",
+ "cols": 2,
+ "panels": [
+  {"num": 1, "type": "camera_pov", "title": "CAMERA POV",
+   "subtitle": "The static CCTV view - exactly what the video frame shows",
+   "image": "Data/Env_Panel_3_CameraPOV_v3.png",
+   "legend": ["CAMERA'S VIEW  |  16:9, fixed, ~3 m up on the harbourside building, wide lens, looking out over the quay to the bay",
+              "The van drives in from the right edge, turns right into the empty centre space, rear toward the camera. See panel 2."],
+   "marks": [
+    {"fx": 0.51, "fy": 0.56, "label": "VAN'S SPACE (EMPTY AT START)", "side": "R", "accent": "orange"},
+    {"fx": 0.95, "fy": 0.72, "label": "VAN ENTERS HERE FROM OFF-FRAME RIGHT", "side": "R", "accent": "orange"},
+    {"fx": 0.50, "fy": 0.72, "label": "ICE + FISH HEADS LAND HERE (ROAD BEHIND VAN)", "side": "L", "accent": "orange"},
+    {"fx": 0.08, "fy": 0.52, "label": "SLIPWAY (WALRUS EXITS TO WATER)", "side": "L", "accent": "orange"},
+    {"fx": 0.29, "fy": 0.52, "label": "PARKED HATCHBACK", "side": "L", "accent": "teal"},
+    {"fx": 0.20, "fy": 0.30, "label": "BREAKWATER", "side": "L", "accent": "teal"},
+    {"fx": 0.60, "fy": 0.43, "label": "QUAY WALL + RAILING", "side": "R", "accent": "teal"},
+    {"fx": 0.83, "fy": 0.47, "label": "FISH BOXES + ROPE", "side": "R", "accent": "teal"},
+    {"fx": 0.75, "fy": 0.18, "label": "FAR-SHORE COTTAGES", "side": "R", "accent": "teal"}
+   ]},
+  {"num": 2, "type": "top_down", "title": "TOP-DOWN VIEW",
+   "subtitle": "Bird's-eye site plan - the single source of truth for positions and the van's path",
+   "image": "Data/Env_Panel_1_TopDown_v3_Annotated.png",
+   "legend": ["PLAN VIEW  |  the camera sits at the BOTTOM of this plan (on the building roofline) looking UP toward the bay",
+              "Orange = the van's path (straight in from the right, right turn into the space) and action points. Teal = fixed structure."],
+   "marks": [
+    {"fx": 0.50, "fy": 0.59, "label": "VAN FRONT/CAB: FACES THE WATER", "side": "R", "accent": "orange"},
+    {"fx": 0.50, "fy": 0.70, "label": "VAN REAR/ROLLER DOOR: FACES CAMERA", "side": "R", "accent": "orange"},
+    {"fx": 0.90, "fy": 0.82, "label": "VAN PATH: IN FROM RIGHT, TURNS RIGHT", "side": "R", "accent": "orange"},
+    {"fx": 0.08, "fy": 0.58, "label": "SLIPWAY (WALRUS ROUTE TO WATER)", "side": "L", "accent": "orange"},
+    {"fx": 0.31, "fy": 0.63, "label": "PARKED HATCHBACK", "side": "L", "accent": "teal"},
+    {"fx": 0.36, "fy": 0.28, "label": "MOORED BOATS", "side": "L", "accent": "teal"},
+    {"fx": 0.80, "fy": 0.57, "label": "FISH BOXES + ROPE", "side": "R", "accent": "teal"},
+    {"fx": 0.80, "fy": 0.07, "label": "FAR-SHORE COTTAGES", "side": "R", "accent": "teal"},
+    {"fx": 0.30, "fy": 0.95, "label": "CAMERA BUILDING (CCTV ON ITS FRONT WALL)", "side": "L", "accent": "teal"}
+   ]},
+  {"num": 3, "type": "reverse", "title": "REVERSE VIEW",
+   "subtitle": "Spatial reference ONLY - NOT camera output. From the quay railing, looking back at the camera",
+   "image": "Data/Env_Panel_2_Reverse_v3b.png",
+   "legend": ["REVERSE ANGLE  |  standing at the quay railing, looking back across the parking and road at the building",
+              "Left and right are swapped vs. the camera's view. The real camera never sees this."],
+   "marks": [
+    {"fx": 0.54, "fy": 0.31, "label": "CCTV CAMERA (THE SHOT'S CAMERA)", "side": "R", "accent": "orange"},
+    {"fx": 0.50, "fy": 0.39, "label": "DELIVERY BUILDING DOOR", "side": "L", "accent": "teal"},
+    {"fx": 0.48, "fy": 0.72, "label": "VAN'S SPACE (EMPTY HERE)", "side": "L", "accent": "orange"},
+    {"fx": 0.75, "fy": 0.70, "label": "PARKED HATCHBACK", "side": "R", "accent": "teal"},
+    {"fx": 0.07, "fy": 0.73, "label": "FISH BOXES + ROPE", "side": "L", "accent": "teal"},
+    {"fx": 0.30, "fy": 0.55, "label": "HARBOUR ROAD", "side": "L", "accent": "teal"}
+   ]},
+  {"num": 4, "type": "landmark_detail", "title": "LANDMARK DETAIL",
+   "subtitle": "The recurring set objects the video prompts refer to by name",
+   "image": "Data/Env_Panel_4_LandmarkDetail_v3.png",
+   "legend": ["A VAN'S PARKING SPACE  |  B SLIPWAY  |  C VAN REAR (ROLLER DOOR CLOSED, LIFT STOWED)  |  D FISH BOXES + ROPE",
+              "These objects must look identical in every frame of the video."],
+   "marks": [
+    {"fx": 0.25, "fy": 0.27, "label": "A  VAN'S SPACE + QUAY WALL", "side": "L", "accent": "orange"},
+    {"fx": 0.26, "fy": 0.74, "label": "C  VAN REAR: DOOR CLOSED, LIFT STOWED", "side": "L", "accent": "orange"},
+    {"fx": 0.73, "fy": 0.27, "label": "B  SLIPWAY (WALRUS EXIT)", "side": "R", "accent": "orange"},
+    {"fx": 0.73, "fy": 0.74, "label": "D  FISH BOXES + ROPE", "side": "R", "accent": "teal"}
+   ]}
+ ],
+ "materials": [
+  {"name": "STONE QUAY WALL", "image": "Data/Env_Panel_3_CameraPOV_v3.png", "crop": [137, 452, 547, 643]},
+  {"name": "WET TARMAC", "image": "Data/Env_Panel_3_CameraPOV_v3.png", "crop": [410, 1094, 958, 1272]},
+  {"name": "FLAGSTONE PAVEMENT", "image": "Data/Env_Panel_3_CameraPOV_v3.png", "crop": [410, 1313, 1231, 1505]},
+  {"name": "COTTAGES", "image": "Data/Env_Panel_3_CameraPOV_v3.png", "crop": [1505, 137, 2189, 397]}
+ ],
+ "palette": {"image": "Data/Env_Panel_3_CameraPOV_v3.png", "count": 8},
+ "details": [
+  {"name": "VAN'S SPACE", "image": "Data/Env_Panel_4_LandmarkDetail_v3.png", "crop": [134, 68, 1293, 735], "size": [250, 150]},
+  {"name": "SLIPWAY", "image": "Data/Env_Panel_4_LandmarkDetail_v3.png", "crop": [1443, 68, 2599, 735], "size": [250, 150]},
+  {"name": "VAN REAR", "image": "Data/Env_Panel_4_LandmarkDetail_v3.png", "crop": [134, 800, 1293, 1467], "size": [250, 150]},
+  {"name": "FISH BOXES", "image": "Data/Env_Panel_4_LandmarkDetail_v3.png", "crop": [1443, 800, 2599, 1467], "size": [250, 150]}
+ ],
+ "key": "KEY:  ORANGE = the van's path and action points     TEAL = fixed set structure     Labels sit in the margins and never cover the images."
+}

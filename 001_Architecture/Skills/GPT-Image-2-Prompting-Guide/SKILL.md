@@ -55,6 +55,35 @@ Consistent guidance across OpenAI's own Cookbook and fal.ai's independent guide:
 
 Sources: [OpenAI Cookbook prompting guide](https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide), [fal.ai prompting guide](https://fal.ai/learn/tools/prompting-gpt-image-2)
 
+## Multi-reference calls: label every reference image's role (mandatory, locked 2026-09-18)
+
+**Real failure that produced this rule:** a Neon Parcel storyboard call
+attached 3 reference images (a character sheet, a second character sheet,
+and an environment plate) via `input_urls` but never named any of them in
+the prompt text — no "reference image 1 is X," nothing. The result was a
+confirmed real defect: a subject that should only have appeared starting
+partway through the sequence bled into an earlier panel where it explicitly
+should not have existed, most plausibly because the model had no textual
+signal for which reference governed which part of the scene and leaned on
+whichever reference was visually strongest. This guide already documented
+the underlying best practice (see "Format flexibility" and the character-
+anchor pattern below) but never stated it as a hard requirement, and it was
+skipped in practice as a result.
+
+**The rule, not just a suggestion:** whenever a call attaches more than one
+reference image via `input_urls`, the prompt text must explicitly state
+what each one is and what it governs — e.g. "Reference image 1 is the
+delivery driver's exact appearance," "Reference image 2 is the kangaroo's
+exact appearance and proportions," "Reference image 3 is the environment/
+location — match it exactly." GPT-Image-2 does not require a rigid `@Image
+N` tag syntax (that convention is Seedance-specific, not this model's) —
+plain prose naming each reference's role satisfies this, but *some*
+explicit textual mapping is mandatory, never silently implied by upload
+order alone. This applies to every multi-reference call: character sheets
+with a shared prop-sheet reference, storyboards with character + environment
+references, video-generation prompts with a storyboard + character
+reference, all of it.
+
 ## Character/creature reference sheets
 
 The "character anchor" pattern, converging across OpenAI's own cookbook example and a field-tested third-party workflow:
@@ -63,9 +92,10 @@ The "character anchor" pattern, converging across OpenAI's own cookbook example 
 2. **Attach that sheet as an input image on every later generation**, and restate invariant traits explicitly every time: "same coloring, same proportions, same markings, do not redesign the character."
 3. **For animals/creatures** (this workspace's primary use case, e.g. Anomalous Wild): the same pattern applies directly — a labeled multi-angle sheet of "the mantis shrimp" or "the shark," reused as an input image on every subsequent shot-generation call for that creature.
 4. **Two-sheet technique for stronger control:** a head/face-detail sheet for identity, plus a separate full-body sheet when body markings, coloration, or proportions matter beyond the head. Default to the head sheet; add the full-body sheet only when the shot needs it.
-5. **Fresh session per generation** is recommended by one field report, attaching only the reference sheet(s) actually needed for that call — this avoids context-accumulation drift and matches how this workspace's pipelines already call the API statelessly per-shot.
+5. **Fresh session per generation** is recommended by one field report, attaching only the reference sheet(s) actually needed for that call — this avoids context-accumulation drift and matches how this workspace's pipelines already call the API statelessly per-shot. **Independently confirmed by a second source (2026-09-19):** a reviewed tutorial demonstrated this exact failure directly — repeated regeneration inside the same chat thread visibly degraded output into noise/artifacts, fixed by starting a brand-new chat per attempt. No longer single-sourced.
+6. **Vision-LLM prompt-drafting intermediary (2026-09-19, field-tested, non-official):** rather than hand-writing the multi-angle sheet prompt from memory of the reference image, upload the base reference image plus a bracketed template (e.g. `[CHARACTER DESCRIPTION]`, `[OUTFIT DESCRIPTION]`, `[DETAIL 1]`) to a vision-capable LLM (e.g. Claude) and let it fill in every bracket from what it actually sees in the image, not from a human's recollection of the subject. Use that model's output as the literal GPT-Image-2 prompt. This adds a verification layer that can catch a detail a human would otherwise transcribe wrong or leave vague. Close the drafting prompt with an explicit trigger sentence: **"Fill in this prompt using the attached [character/reference] image."** This specific phrasing is what pushes the drafting model into feature-extraction mode instead of generic creative writing — reported as a deliberate, named technique, not incidental wording.
 
-Sources: [OpenAI Cookbook — image-gen-1.5 prompting guide](https://developers.openai.com/cookbook/examples/multimodal/image-gen-1.5-prompting_guide) (character-anchor workflow), [How to Get Consistent Character Images in ChatGPT Images 2.0](https://aimeetsgirlboss.substack.com/p/how-to-get-consistent-character-images) (two-sheet technique, field-tested, non-official)
+Sources: [OpenAI Cookbook — image-gen-1.5 prompting guide](https://developers.openai.com/cookbook/examples/multimodal/image-gen-1.5-prompting_guide) (character-anchor workflow), [How to Get Consistent Character Images in ChatGPT Images 2.0](https://aimeetsgirlboss.substack.com/p/how-to-get-consistent-character-images) (two-sheet technique, field-tested, non-official), [GPT Image 2 + Seedance 2.0 Character/Environment Consistency tutorial](../../../007_Resource_Library/Tutorials/GPT-Image-2-Seedance-Character-Environment-Consistency/) (vision-LLM intermediary + trigger-sentence technique, field-tested, non-official — full analysis and prompt templates archived there)
 
 ## Environment sheets
 

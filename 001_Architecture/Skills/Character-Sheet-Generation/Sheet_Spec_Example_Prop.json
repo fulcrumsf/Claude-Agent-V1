@@ -1,0 +1,19 @@
+{
+ "sheet_type": "prop",
+ "name": "Courier Clipboard",
+ "props": [
+  {
+   "name": "Courier Clipboard",
+   "front": "small pale beige rigid clipboard, silver clip, exactly one white paper slip, black pen on a short string; no logos",
+   "back": "plain pale beige back, underside of the clip, pen string looped around it",
+   "held_right": "gripped by a right hand from the first-person point of view, four fingers under the lower edge, thumb on the paper"
+  }
+ ],
+ "holder_reference": {
+  "file": "Character_Sheets/Courier_Character_Sheet_v1_Titled.png",
+  "role": "the courier's character sheet: the holder whose exact hand, skin tone, build and sleeve the held panel must show"
+ },
+ "out": "Character_Sheets/Clipboard_Prop_Sheet_v1.png",
+ "prompt_out": "Prompts/Clipboard-Prop-Sheet-Spec-v1.md",
+ "title_out": "Character_Sheets/Clipboard_Prop_Sheet_v1_Titled.png"
+}

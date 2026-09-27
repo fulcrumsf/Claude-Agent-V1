@@ -1,0 +1,150 @@
+{
+  "shot_id": "Shot-07-Clip-1",
+  "reference_images": [
+    "Reference image 1 is the fishmonger's character sheet: use it ONLY for his exact face, build, grey hair, navy knit jumper, navy oilskin bib apron and black wellington boots. Do not reproduce the sheet's panel layout or title.",
+    "Reference image 2 is the walrus's creature sheet: use it ONLY for its exact size and shape: a subadult walrus about 2.0-2.3 m long, grey-brown wrinkled skin, dense white whisker pad, SMALL just-emerging tusks (not long adult tusks), no external ears. Do not reproduce the sheet's panel layout or its printed text.",
+    "Reference image 3 is the delivery van's prop sheet: use it ONLY for the van's exact look: small kei-truck-proportioned white cab, white refrigerated box body with the refrigeration unit on the front of the box, roller-shutter rear door, hydraulic tail lift folded flat under the rear sill. Do not reproduce the sheet's panel layout.",
+    "Reference image 4 is the environment sheet for this Scottish harbour quay. Panel 1, CAMERA POV, is exactly what the camera sees in every frame. Panel 2, TOP-DOWN VIEW, shows the van's path (orange arrow): in from the right along the near side of the road, then a right turn into the centre parking space, nose to the water. The other panels are spatial reference only and are never the camera view."
+  ],
+  "overall_summary": "Fixed harbourside CCTV looking out over a Scottish harbour quay. A fishmonger's small white refrigerated van drives in from the right, turns right and parks nose-in in the empty space directly in front of the camera, rear door facing the camera. He gets out, rolls the rear door up and finds a walrus lying in the crushed ice, surrounded by fish heads: it ate the whole delivery. He jumps back. The walrus burps, slumps out onto the road in a cascade of ice and fish heads, and heaves off to the left toward the slipway down to the water. This storyboard is Clip 1 and ends with the walrus at the top of the slipway.",
+  "tone": "Unplanned real-life security-camera footage: ordinary, observational, deadpan and believable, never cinematic, staged, polished, promotional or commercial.",
+  "capture_style": "A fixed, wall-mounted CCTV security camera about 3 m up, wide-angle lens with only mild curvature, slightly soft ordinary CCTV image quality and natural exposure. Completely locked off: no operator, no handheld movement, no pan, tilt or zoom.",
+  "visual_style": "Authentic harbourside CCTV footage, wide fixed framing, flat overcast midday light, damp stone and wet tarmac, muted grey-blue harbour palette, documentary realism.",
+  "visual_realism": "Real-world documentary observation with natural overcast light, a real working Scottish harbour, realistic vehicle and animal motion and real-world scale, no professional colour grade or advertising polish.",
+  "audio_policy": "Atmospheric location sound and physical foley only: the van's engine and door, the roller shutter rattling up, the walrus's burp and grunts, crushed ice sliding and clattering onto tarmac, the fishmonger's startled wordless exclamation, gulls and lapping water.",
+  "audio_exclusions": ["music", "commercial soundtrack", "dramatic scoring", "voiceover", "narration", "intelligible dialogue", "synthetic sound effects"],
+  "camera_lock": "The exact CAMERA POV of reference image 4, panel 1, in all six frames: same position, height, wide angle, framing, horizon and background. The harbour road runs left-right across the lower frame and continues off both edges; the nose-in parking row sits beyond it with the empty centre space directly in front of the camera; the stone quay wall with a black iron railing runs across the frame beyond the parking row; the slipway is at the far left; moored boats, the stone breakwater (left) and the far-shore whitewashed and stone cottages (right) sit in the distance. No cuts, pans, tilts, zooms or alternate views.",
+  "continuity_invariants": [
+    "Exactly one fishmonger, one walrus and one delivery van; the only other vehicle is the dark hatchback parked nose-in two spaces to the LEFT of the centre space, which never moves.",
+    "The van comes in from off-frame right along the NEAR side of the road, turns right across the road, and parks nose-in in the centre space; once parked it never moves again.",
+    "Parked van orientation by literal visible parts: its front bumper, headlights and windscreen face the WATER (away from the camera); its rear bumper, roller-shutter rear door and folded tail lift face the CAMERA, square-on.",
+    "The walrus is inside the closed cargo box from the start and becomes visible only when the rear door is rolled up; it never appears from nowhere.",
+    "The walrus is a subadult about 2.0-2.3 m long: it looks huge inside the cargo box, filling most of it, and is about as long as the fishmonger is tall, lying down.",
+    "The roller-shutter door rolls UP into the top of the box; it is not a hinged or barn door.",
+    "The hydraulic tail lift stays folded flat under the rear sill in every frame; it is never lowered or used.",
+    "The fishmonger gets out of the driver's door on the camera-RIGHT side of the van (UK right-hand drive).",
+    "Only ice and fish heads spill out: no blood anywhere.",
+    "The stack of blue fish boxes and rope stays by the quay wall to the right of the centre space throughout."
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "visible_subjects": [
+        "The small white refrigerated delivery van from reference image 3, just entering from the right edge of the frame",
+        "The fishmonger is inside the cab, driving (only a dim shape through the windscreen)"
+      ],
+      "object_states": [
+        "The centre parking space directly in front of the camera is empty",
+        "The van's rear roller door is closed; the tail lift is folded"
+      ],
+      "spatial_relationships": [
+        "The van is on the near side of the harbour road, travelling from right to left, its right-hand side toward the water and its left-hand side toward the camera",
+        "The dark hatchback is parked two spaces left of the empty centre space"
+      ],
+      "action": "Establishing frame: the empty quay; the van drives in from off-frame right along the near side of the road.",
+      "caption": "1. The van drives in from the right."
+    },
+    {
+      "frame": 2,
+      "visible_subjects": [
+        "The same van, mid-turn"
+      ],
+      "object_states": [
+        "The rear door is still closed; the tail lift is folded"
+      ],
+      "spatial_relationships": [
+        "The van has turned right and is angled across the road, its nose swinging toward the empty centre space and the water, its rear swinging toward the camera"
+      ],
+      "action": "The van turns right across the road toward the centre space, nose toward the water.",
+      "transition_from_previous": "The van continues straight along the near side of the road until it is just right of the centre space, then begins a smooth right turn.",
+      "caption": "2. It turns right into the space in front of the camera."
+    },
+    {
+      "frame": 3,
+      "visible_subjects": [
+        "The same van, parked",
+        "The fishmonger from reference image 1, stepping out of the driver's door"
+      ],
+      "object_states": [
+        "The van is parked straight, nose-in, in the centre space; engine off",
+        "The rear roller door is closed; the tail lift is folded",
+        "The driver's door on the camera-right side of the van is open"
+      ],
+      "spatial_relationships": [
+        "The van's rear faces the camera square-on; its front is at the quay wall",
+        "The fishmonger stands at the camera-right side of the van, by the driver's door"
+      ],
+      "action": "The van is parked; the fishmonger climbs out of the driver's door on the right-hand side and starts walking back toward the rear.",
+      "transition_from_previous": "The van completes its turn and stops nose-in in the centre space; it never moves again.",
+      "caption": "3. Parked. The fishmonger gets out and walks to the back."
+    },
+    {
+      "frame": 4,
+      "visible_subjects": [
+        "The same fishmonger at the rear of the van, recoiling",
+        "The walrus from reference image 2, lying inside the cargo box"
+      ],
+      "object_states": [
+        "The roller door is rolled fully UP, the cargo box wide open",
+        "Inside: the walrus fills most of the box, lying in a bed of crushed ice, surrounded by scattered fish heads and nothing else (the fish bodies are gone)",
+        "The tail lift is still folded"
+      ],
+      "spatial_relationships": [
+        "The fishmonger has jumped back from the open door, a step toward the camera and to the right, one hand raised",
+        "The walrus's head and whiskers face out of the door toward the camera"
+      ],
+      "action": "He has rolled the door up and found the walrus in the ice among the fish heads; he jumps back, startled.",
+      "transition_from_previous": "The fishmonger reaches the rear, grips the bottom of the roller door and rolls it up into the top of the box.",
+      "caption": "4. Door up: a walrus in the ice. Only fish heads left. He jumps back."
+    },
+    {
+      "frame": 5,
+      "visible_subjects": [
+        "The same walrus, halfway out of the van",
+        "The same fishmonger, standing back to the right"
+      ],
+      "object_states": [
+        "A cascade of crushed ice pours out of the doorway with the walrus, tumbling over the folded tail lift onto the wet tarmac, fish heads scattered through it",
+        "The tail lift is still folded; no blood anywhere"
+      ],
+      "spatial_relationships": [
+        "The walrus's front half and front flippers are down on the road directly behind the van; its back half is still in the doorway",
+        "The fishmonger stands clear, to the camera-right of the ice"
+      ],
+      "action": "The walrus burps, then heaves forward and slumps out of the doorway onto the road, pushing a cascade of ice and fish heads out with it.",
+      "transition_from_previous": "The walrus burps, then pushes forward on its front flippers; its bulk shoves the ice out ahead of it.",
+      "caption": "5. It burps, then slumps out in a cascade of ice and fish heads."
+    },
+    {
+      "frame": 6,
+      "visible_subjects": [
+        "The same walrus on the road, heading left",
+        "The same fishmonger, standing by the open van, staring after it"
+      ],
+      "object_states": [
+        "A pile of crushed ice with fish heads lies on the road behind the van",
+        "The cargo box is open and empty apart from wet ice; the tail lift is folded"
+      ],
+      "spatial_relationships": [
+        "The walrus has turned to its left and heaved along the far side of the road, past the empty space and behind the parked hatchback, and has reached the top of the slipway at the far left of the frame, facing the water",
+        "The fishmonger is beside the ice pile, to the right of the open rear door"
+      ],
+      "action": "The walrus heaves along the road to the top of the slipway at the far left; the fishmonger is left by the empty van. Clip 1 ends here.",
+      "transition_from_previous": "The walrus fully leaves the van, turns to its left and rolls and heaves along the road toward the slipway.",
+      "caption": "6. It heads for the slipway. He's left with the ice and fish heads."
+    }
+  ],
+  "panel_convention": "Six chronological landscape panels in 3 columns x 2 rows (frames 1-3 top row, 4-6 bottom row), each with a true 16:9 image area and a clean white caption band beneath with only the frame number and caption. No text inside any image area.",
+  "hard_constraints": [
+    "Keep the exact CAMERA POV framing, horizon, quay wall, parking lines, slipway, boats and background identical in all six panels.",
+    "Never show the van in the centre space before frame 3, and never show it moving after frame 3.",
+    "Never show the van's front toward the camera once parked; the rear roller door faces the camera.",
+    "Never lower or deploy the tail lift.",
+    "Never show the walrus before the door is rolled up in frame 4.",
+    "Never give the walrus long adult tusks or external ears.",
+    "No blood, no gore: only crushed ice and fish heads.",
+    "No extra people, no duplicate walrus or van, no camera cuts, teleportation or morphing.",
+    "No text, signs, timestamps or logos inside any image area.",
+    "Do not turn the storyboard sheet into a video frame, title card or finished cinematic composition."
+  ]
+}

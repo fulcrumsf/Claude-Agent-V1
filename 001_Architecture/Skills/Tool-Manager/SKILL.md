@@ -41,6 +41,7 @@ The Tool Manager is a real CLI. Invoke it directly before answering any tool que
 # Model recommendation for a task
 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Tool-Manager/tm recommend --type image
 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Tool-Manager/tm recommend --type video
+/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Tool-Manager/tm recommend --type upscale   # video upscalers: locked route first, then tested, then price
 
 # Capability-aware recommendation from the actual task
 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Tool-Manager/tm recommend --type video --task "Seedance 2 Mini storyboard reference, timestamped complex physical action, native audio, 480p"

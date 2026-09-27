@@ -1,0 +1,292 @@
+{
+ "_readme": "Shot 07 spec for build_environment_sheet.py",
+ "title": "ENVIRONMENT SHEET",
+ "headline": "SHOT 07  |  WALRUS AT THE FISHMONGER'S VAN  |  SCOTTISH COASTAL VILLAGE",
+ "subtitle": "FIXED SHOPFRONT CCTV   -   OVERCAST MIDDAY, DAMP, 2012   -   PANEL 1 IS THE CAMERA'S VIEW (16:9)",
+ "cols": 2,
+ "panels": [
+  {
+   "num": 1,
+   "type": "camera_pov",
+   "title": "CAMERA POV",
+   "subtitle": "The static CCTV view - exactly what the video frame shows",
+   "image": "Data/Env_Panel_3_CameraPOV_v1.png",
+   "legend": [
+    "CAMERA'S VIEW  |  16:9, fixed, mounted above the shop door, looking across the street",
+    "The van enters from off-frame and parks at a diagonal, rear toward the camera. See panel 2 for the full path."
+   ],
+   "marks": [
+    {
+     "fx": 0.36,
+     "fy": 0.22,
+     "label": "SHOP DISPLAY WINDOW",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.55,
+     "fy": 0.28,
+     "label": "SHOP DOOR (FISHMONGER'S ORIGIN)",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.5,
+     "fy": 0.62,
+     "label": "VAN PARKING SPOT (DIAGONAL, REAR TOWARD CAMERA)",
+     "side": "R",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.18,
+     "fy": 0.75,
+     "label": "LAMP POST",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.15,
+     "fy": 0.4,
+     "label": "CRAB POTS + ROPE",
+     "side": "L",
+     "accent": "teal"
+    }
+   ]
+  },
+  {
+   "num": 2,
+   "type": "top_down",
+   "title": "TOP-DOWN VIEW",
+   "subtitle": "Bird's-eye site plan - the single source of truth for positions and the van's entry path",
+   "image": "Data/Env_Panel_1_TopDown_v2.png",
+   "legend": [
+    "PLAN VIEW  |  the camera sits at the bottom of this plan looking up toward the shop",
+    "Orange = the van's path (enters right, turns, parks rear-toward-camera) and its final resting spot. Teal = fixed structure."
+   ],
+   "marks": [
+    {
+     "fx": 0.28,
+     "fy": 0.14,
+     "label": "SHOPFRONT + WINDOW",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.53,
+     "fy": 0.15,
+     "label": "SHOP DOOR",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.45,
+     "fy": 0.5,
+     "label": "VAN: FRONT/CAB TOWARD SHOP",
+     "side": "L",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.62,
+     "fy": 0.62,
+     "label": "VAN: REAR/ROLL-DOOR TOWARD CAMERA",
+     "side": "R",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.25,
+     "fy": 0.85,
+     "label": "LAMP POST",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.88,
+     "fy": 0.4,
+     "label": "OTHER PARKED CAR",
+     "side": "R",
+     "accent": "teal"
+    }
+   ]
+  },
+  {
+   "num": 3,
+   "type": "reverse",
+   "title": "REVERSE VIEW",
+   "subtitle": "Spatial reference ONLY - NOT camera output. From the shop's own doorstep, looking out",
+   "image": "Data/Env_Panel_4_Reverse_v1.png",
+   "legend": [
+    "REVERSE ANGLE  |  standing at the shop door, looking out at the street and lamp post",
+    "Shows the door threshold and the shop's own steps from the opposite side. The real camera never sees this."
+   ],
+   "marks": [
+    {
+     "fx": 0.08,
+     "fy": 0.5,
+     "label": "SHOP DOOR + THRESHOLD",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.52,
+     "fy": 0.25,
+     "label": "LAMP POST",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.5,
+     "fy": 0.55,
+     "label": "STREET (VAN PARKS HERE, OFF TO THIS VIEW'S RIGHT)",
+     "side": "R",
+     "accent": "orange"
+    }
+   ]
+  },
+  {
+   "num": 4,
+   "type": "landmark_detail",
+   "title": "LANDMARK DETAIL",
+   "subtitle": "The recurring set objects the video prompts refer to by name",
+   "image": "Data/Env_Panel_5_LandmarkDetail_v1.png",
+   "legend": [
+    "A SHOP DOORWAY  |  B VAN PARKING SPOT + LAMP POST  |  C VAN REAR (ROLLER DOOR, LIFT STOWED)  |  D SHOP WINDOW (FISH ON ICE)",
+    "These objects must look identical in every frame of the video."
+   ],
+   "marks": [
+    {
+     "fx": 0.25,
+     "fy": 0.27,
+     "label": "A  SHOP DOORWAY + STEP",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.28,
+     "fy": 0.74,
+     "label": "C  VAN REAR: ROLLER DOOR CLOSED, LIFT STOWED",
+     "side": "L",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.73,
+     "fy": 0.27,
+     "label": "B  PARKING SPOT + LAMP POST",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.73,
+     "fy": 0.74,
+     "label": "D  SHOP WINDOW: FISH ON ICE",
+     "side": "R",
+     "accent": "teal"
+    }
+   ]
+  }
+ ],
+ "materials": [
+  {
+   "name": "STONE FACADE",
+   "image": "Data/Env_Panel_3_CameraPOV_v1.png",
+   "crop": [
+    600,
+    60,
+    1600,
+    420
+   ]
+  },
+  {
+   "name": "WET ASPHALT",
+   "image": "Data/Env_Panel_3_CameraPOV_v1.png",
+   "crop": [
+    300,
+    700,
+    1200,
+    950
+   ]
+  },
+  {
+   "name": "DAMP PAVEMENT",
+   "image": "Data/Env_Panel_3_CameraPOV_v1.png",
+   "crop": [
+    300,
+    980,
+    1200,
+    1200
+   ]
+  },
+  {
+   "name": "SHOP DOOR",
+   "image": "Data/Env_Panel_3_CameraPOV_v1.png",
+   "crop": [
+    1400,
+    180,
+    1750,
+    600
+   ]
+  }
+ ],
+ "palette": {
+  "image": "Data/Env_Panel_3_CameraPOV_v1.png",
+  "count": 8
+ },
+ "details": [
+  {
+   "name": "DOORWAY",
+   "image": "Data/Env_Panel_5_LandmarkDetail_v1.png",
+   "crop": [
+    180,
+    40,
+    900,
+    520
+   ],
+   "size": [
+    250,
+    150
+   ]
+  },
+  {
+   "name": "VAN REAR",
+   "image": "Data/Env_Panel_5_LandmarkDetail_v1.png",
+   "crop": [
+    320,
+    570,
+    760,
+    1080
+   ],
+   "size": [
+    250,
+    150
+   ]
+  },
+  {
+   "name": "SHOP WINDOW",
+   "image": "Data/Env_Panel_5_LandmarkDetail_v1.png",
+   "crop": [
+    1080,
+    570,
+    1820,
+    1080
+   ],
+   "size": [
+    250,
+    150
+   ]
+  },
+  {
+   "name": "LAMP POST",
+   "image": "Data/Env_Panel_5_LandmarkDetail_v1.png",
+   "crop": [
+    1080,
+    40,
+    1820,
+    520
+   ],
+   "size": [
+    250,
+    150
+   ]
+  }
+ ],
+ "key": "KEY:  ORANGE = the van's path and action points     TEAL = fixed set structure     Labels sit in the margins and never cover the images."
+}

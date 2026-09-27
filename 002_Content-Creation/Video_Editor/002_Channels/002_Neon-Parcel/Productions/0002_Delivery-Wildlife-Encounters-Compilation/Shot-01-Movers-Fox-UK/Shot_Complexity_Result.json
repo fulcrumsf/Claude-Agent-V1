@@ -1,0 +1,35 @@
+{
+  "shot_id": "test_shot_02_movers_fox_uk",
+  "route": "seedance_2_mini_storyboard",
+  "status": "auto",
+  "complexity_score": 18,
+  "complexity_scale": "0-20",
+  "qa_intensity": "enhanced",
+  "dimension_scores": {
+    "action_count": 2,
+    "physics": 2,
+    "object_continuity": 2,
+    "precision": 2,
+    "character_interaction": 2,
+    "spatial_continuity": 2,
+    "timing_precision": 2,
+    "dialogue_sync": 0,
+    "failure_risk": 2,
+    "storyboard_value": 2
+  },
+  "reasons": [
+    "action count",
+    "physics",
+    "object continuity",
+    "precision",
+    "character interaction",
+    "spatial continuity",
+    "timing precision",
+    "failure risk",
+    "storyboard value"
+  ],
+  "hard_triggered": false,
+  "assessment_source": "semantic_assessment",
+  "human_override": null,
+  "generation_policy": "Use the storyboard for planning and QA only; do not send a composite storyboard sheet to Kie until a provider adapter is verified. Use approved clean temporal frames for video conditioning."
+}

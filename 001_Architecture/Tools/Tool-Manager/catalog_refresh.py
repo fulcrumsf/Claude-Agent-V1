@@ -169,6 +169,9 @@ def refresh_fal_prices(catalog):
         model_id = fal.get("model_id")
         if not model_id:
             continue
+        if fal.get("pinned"):  # tiered pricing the API can't express (it returns only the first tier); keep the verified price
+            print(f"  = {model['name']}: pinned at ${fal.get('price')} ({fal['pinned']})")
+            continue
         time.sleep(1.5)
         price, unit = fetch_fal_price(model_id)
         if price is not None:

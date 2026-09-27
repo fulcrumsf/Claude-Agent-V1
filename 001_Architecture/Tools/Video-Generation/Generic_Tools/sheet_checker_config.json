@@ -1,0 +1,8 @@
+{
+ "global_for_human_characters": false,
+ "enabled_pipelines": [
+  "Neon_Parcel"
+ ],
+ "pass_threshold": 0.8,
+ "foot_filter": true
+}

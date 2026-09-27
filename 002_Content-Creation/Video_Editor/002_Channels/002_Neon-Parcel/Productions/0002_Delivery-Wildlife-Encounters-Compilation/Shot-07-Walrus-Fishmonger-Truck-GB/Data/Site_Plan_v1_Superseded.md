@@ -1,0 +1,15 @@
+# Site Plan + Architectural Plausibility Check — Shot 07 (written BEFORE any environment image)
+This location's key plausibility risk is the VEHICLE PATH (a moving subject), not a building — per the Environment-Sheet skill's architectural-check rule, applied here to the drivable route instead of a fixed structure.
+
+## Top-down plan. x = left/right as the CAMERA sees; y = depth from the camera toward the shopfront
+- **Camera:** on the shopfront (left side of frame), moderate height, looking across the street.
+- **Shopfront + curb:** the shop facade runs along the far/upper side of the frame at y≈4-5 m; a curb and narrow sidewalk in front of it at y≈3.5 m; the street/parking lane at y≈1-3.5 m; near curb/sidewalk (camera side) at y≈0-1 m.
+- **Van entry path:** enters at the RIGHT edge (x≈9 m) at y≈2 m, driving left (decreasing x) along the street at that depth; at around x≈2-3 m it executes a shallow right turn/reverse-angle maneuver to swing its rear toward the shop and bring the vehicle parallel to the curb, coming to rest at x≈-1 to 2 m, y≈2.5-3.5 m, its LONG axis parallel to the curb, its REAR (roll-up door) facing the camera (toward y=0), its FRONT/cab facing away (toward the shopfront side, y increasing... note: rear faces camera means front faces AWAY from camera, i.e., toward the far/shop side is not right either — clarify: rear faces the camera means the back of the van points toward y=0 (near/camera side), so the van's front/cab points toward y increasing (toward the shopfront), parked broadside with its tail end swung toward the middle of the street/toward camera). Simplify: van parks ACROSS the lane, nose angled toward the shop side, tail swung out toward the street/camera side, so the rear roll-door is the part most visible and most square to the camera.
+- **Walrus exit route:** from the open rear door (at the van's tail, facing the camera) down onto the street/curb area directly behind the van (toward the camera, y≈1-2 m), then continuing off toward frame-edge (implying the harbor) — a short, unobstructed, flush path with no steps or barriers.
+
+## Plausibility check against the written plan (not against an image)
+- The turn described is a normal shallow-angle park maneuver a small van can execute in a village street; no impossible turning radius. PASS
+- The rear door and lift gate (stowed) are the part of the van closest to and most square to the camera, matching Tony's requirement that the rear-facing roll-up door faces the camera. PASS
+- The walrus's exit path is flush and continuous, no steps, no barrier, nothing blocking it. PASS
+- Depth ordering: near curb/street (camera side, nearest) -> van parked mid-street -> shopfront curb and facade (farthest). Consistent, no contradictory overlaps.
+- Orientation facts (literal visible parts): the van's REAR BUMPER, ROLL-UP DOOR AND (STOWED) LIFT GATE face the camera; its CAB, WINDSCREEN AND HEADLIGHTS face away, toward the shopfront side. The walrus's head/snout points toward the camera/street side as it exits (the same direction the open door faces).

@@ -1,0 +1,8 @@
+Analyze the entire composition of the attached reference images and generate ONE single clean photographic frame - not a grid, not a storyboard, not multiple panels.
+
+@Image 1 = Mover 1 (front carrier) - match face, build, and uniform hoodie/logo exactly.
+@Image 2 = Mover 2 (rear carrier) - match face, build, and uniform hoodie/logo exactly (identical logo to @Image 1).
+@Image 3 = the location environment plate - match the door, path, gate post, wall, ramp, truck, and parked-car layout and dusk lighting exactly.
+@Image 4 = the approved storyboard - use ONLY its Frame 1 (top-left panel) as the exact composition, pose, and framing to reproduce as a single clean frame.
+
+Generate: movers just stepping out of the house doorway carrying a red couch, couch just clearing the threshold, the open truck ramp small and distant down the front path. Mover 1 walking backward facing Mover 2. Dusk lighting, handheld phone POV, mid-2000s/2011-era phone camera quality, no people other than the two movers, no fox yet, no on-screen text or graphics. This is a single clean temporal first-frame image for video generation - one continuous photographic moment, not a comic panel or a labeled diagram.

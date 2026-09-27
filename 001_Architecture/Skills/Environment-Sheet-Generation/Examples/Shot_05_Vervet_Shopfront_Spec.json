@@ -1,0 +1,347 @@
+{
+ "_readme": "Template spec for build_environment_sheet.py. Image paths are relative to --base (the production folder). marks: fx/fy = fractions (0-1) of the panel image; side L/R = margin the label sits in; accent orange = gag/action points, teal = fixed structure. panels: minimum 4 (camera POV first, top-down, reverse, landmark detail); add more if the location needs them. materials/palette/details are optional bottom rows.",
+ "title": "ENVIRONMENT SHEET",
+ "headline": "SHOT 05  |  VERVET MONKEY SHOPFRONT  |  CENTRAL KENYA",
+ "subtitle": "FIXED STATIC SHOPFRONT CCTV   -   CLEAR HOT MIDDAY SUN, DRY SEASON   -   PANEL 1 IS THE CAMERA'S VIEW (16:9)",
+ "cols": 2,
+ "panels": [
+  {
+   "num": 1,
+   "type": "camera_pov",
+   "title": "CAMERA POV",
+   "subtitle": "The static CCTV view - exactly what the video frame shows",
+   "image": "Data/Shopfront_Panel_3_POV.png",
+   "legend": [
+    "CAMERA'S VIEW  |  16:9, fixed, high under the awning edge, looking down at the counter and apron",
+    "Every landmark here is in frame. The counter TOP is barely visible from this angle - see panels 3 and 4."
+   ],
+   "marks": [
+    {
+     "fx": 0.245,
+     "fy": 0.135,
+     "label": "CCTV BOX",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.22,
+     "fy": 0.3,
+     "label": "AWNING POST (MONKEY PERCH)",
+     "side": "L",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.35,
+     "fy": 0.85,
+     "label": "DIRT APRON",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.55,
+     "fy": 0.2,
+     "label": "CORRUGATED-IRON AWNING",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.52,
+     "fy": 0.43,
+     "label": "CLIPBOARD SET-DOWN (COUNTER TOP)",
+     "side": "R",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.52,
+     "fy": 0.58,
+     "label": "WOODEN COUNTER (FRONT PANEL)",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.75,
+     "fy": 0.78,
+     "label": "BICYCLE STOP POINT",
+     "side": "R",
+     "accent": "orange"
+    }
+   ]
+  },
+  {
+   "num": 2,
+   "type": "top_down",
+   "title": "TOP-DOWN VIEW",
+   "subtitle": "Bird's-eye site plan - the single source of truth for positions",
+   "image": "Data/Shopfront_Panel_1_TopDown_Unlabeled.png",
+   "legend": [
+    "PLAN VIEW  |  the camera sits under the awning edge and looks toward the bottom of this plan (the apron)",
+    "Orange = action points for the gag (perch, clipboard, bicycle).  Teal = fixed set structure."
+   ],
+   "marks": [
+    {
+     "fx": 0.5,
+     "fy": 0.2,
+     "label": "SHOP INTERIOR",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.3,
+     "fy": 0.355,
+     "label": "AWNING POST (MONKEY PERCH)",
+     "side": "L",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.4,
+     "fy": 0.555,
+     "label": "WOODEN COUNTER",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.5,
+     "fy": 0.42,
+     "label": "CORRUGATED-IRON AWNING",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.489,
+     "fy": 0.563,
+     "label": "CLIPBOARD SET-DOWN POINT",
+     "side": "R",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.66,
+     "fy": 0.77,
+     "label": "BICYCLE STOP POINT",
+     "side": "R",
+     "accent": "orange"
+    }
+   ]
+  },
+  {
+   "num": 3,
+   "type": "reverse",
+   "title": "REVERSE VIEW",
+   "subtitle": "Spatial reference ONLY - NOT camera output. Behind the counter, looking out",
+   "image": "Data/Shopfront_Panel_4_Reverse.png",
+   "legend": [
+    "REVERSE ANGLE  |  standing inside the shop behind the counter, looking out at the apron and street wall",
+    "Shows the flat counter top and the awning post from the opposite side. The real camera never sees this."
+   ],
+   "marks": [
+    {
+     "fx": 0.125,
+     "fy": 0.17,
+     "label": "CCTV BOX",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.145,
+     "fy": 0.42,
+     "label": "AWNING POST (MONKEY PERCH ON TOP)",
+     "side": "L",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.62,
+     "fy": 0.2,
+     "label": "AWNING (UNDERSIDE)",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.57,
+     "fy": 0.3,
+     "label": "STREET GATE + BOUNDARY WALL",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.5,
+     "fy": 0.52,
+     "label": "DIRT APRON",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.5,
+     "fy": 0.76,
+     "label": "COUNTER TOP (CLIPBOARD SET-DOWN)",
+     "side": "R",
+     "accent": "orange"
+    }
+   ]
+  },
+  {
+   "num": 4,
+   "type": "landmark_detail",
+   "title": "LANDMARK DETAIL",
+   "subtitle": "The recurring set objects the video prompts refer to by name",
+   "image": "Data/Shopfront_Panel_5_LandmarkDetail.png",
+   "legend": [
+    "A COUNTER + clipboard point  |  B POST + monkey perch  |  C BICYCLE ON KICKSTAND  |  D CCTV BOX",
+    "These objects must look identical in every frame of the video."
+   ],
+   "marks": [
+    {
+     "fx": 0.25,
+     "fy": 0.25,
+     "label": "A  WOODEN COUNTER + CLIPBOARD POINT",
+     "side": "L",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.25,
+     "fy": 0.75,
+     "label": "C  PARCEL BICYCLE ON KICKSTAND (NEVER FLOATS)",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.75,
+     "fy": 0.25,
+     "label": "B  AWNING POST WITH MONKEY PERCH ON TOP",
+     "side": "R",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.75,
+     "fy": 0.75,
+     "label": "D  CCTV CAMERA BOX UNDER AWNING",
+     "side": "R",
+     "accent": "teal"
+    }
+   ]
+  }
+ ],
+ "materials": [
+  {
+   "name": "CORRUGATED IRON",
+   "image": "Data/Shopfront_Panel_5_LandmarkDetail.png",
+   "crop": [
+    1800,
+    790,
+    2250,
+    1000
+   ]
+  },
+  {
+   "name": "WEATHERED WOOD",
+   "image": "Data/Shopfront_Panel_5_LandmarkDetail.png",
+   "crop": [
+    450,
+    400,
+    900,
+    620
+   ]
+  },
+  {
+   "name": "DRY DIRT",
+   "image": "Data/Shopfront_Panel_3_POV.png",
+   "crop": [
+    820,
+    1160,
+    1230,
+    1370
+   ]
+  },
+  {
+   "name": "BLOCK WALL",
+   "image": "Data/Shopfront_Panel_4_Reverse.png",
+   "crop": [
+    720,
+    290,
+    1020,
+    410
+   ]
+  },
+  {
+   "name": "RUSTED STEEL POST",
+   "image": "Data/Shopfront_Panel_5_LandmarkDetail.png",
+   "crop": [
+    1897,
+    320,
+    2097,
+    520
+   ]
+  },
+  {
+   "name": "CLIPBOARD BEIGE",
+   "image": "Data/Shopfront_Panel_5_LandmarkDetail.png",
+   "crop": [
+    240,
+    190,
+    470,
+    290
+   ]
+  }
+ ],
+ "palette": {
+  "image": "Data/Shopfront_Panel_3_POV.png",
+  "count": 8
+ },
+ "details": [
+  {
+   "name": "AWNING ROOF",
+   "image": "Data/Shopfront_Panel_5_LandmarkDetail.png",
+   "crop": [
+    1640,
+    770,
+    2325,
+    1070
+   ],
+   "size": [
+    250,
+    150
+   ]
+  },
+  {
+   "name": "PLANK COUNTER",
+   "image": "Data/Shopfront_Panel_5_LandmarkDetail.png",
+   "crop": [
+    350,
+    330,
+    1250,
+    700
+   ],
+   "size": [
+    250,
+    150
+   ]
+  },
+  {
+   "name": "POST + PERCH",
+   "image": "Data/Shopfront_Panel_5_LandmarkDetail.png",
+   "crop": [
+    1900,
+    25,
+    2090,
+    410
+   ],
+   "size": [
+    150,
+    150
+   ]
+  },
+  {
+   "name": "CCTV BOX",
+   "image": "Data/Shopfront_Panel_5_LandmarkDetail.png",
+   "crop": [
+    1710,
+    1067,
+    2030,
+    1313
+   ],
+   "size": [
+    150,
+    150
+   ]
+  }
+ ],
+ "key": "KEY:  ORANGE = gag action points (monkey perch, clipboard set-down, bicycle stop)     TEAL = fixed set structure     Labels sit in the margins and never cover the images."
+}

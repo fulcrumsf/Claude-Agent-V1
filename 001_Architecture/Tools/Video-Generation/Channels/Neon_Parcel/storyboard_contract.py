@@ -11,6 +11,7 @@ from typing import Any
 
 REQUIRED_TOP_LEVEL = (
     "shot_id",
+    "reference_images",
     "overall_summary",
     "tone",
     "capture_style",
@@ -56,7 +57,7 @@ def validate_spec(spec: dict[str, Any]) -> dict[str, Any]:
         raise ValueError("missing required storyboard fields: " + ", ".join(missing))
 
     for field in REQUIRED_TOP_LEVEL:
-        if field in {"continuity_invariants", "hard_constraints", "audio_exclusions"}:
+        if field in {"continuity_invariants", "hard_constraints", "audio_exclusions", "reference_images"}:
             _require_list(spec[field], field)
         elif field != "frames":
             _require_text(spec[field], field)
@@ -104,6 +105,13 @@ def render_prompt(spec: dict[str, Any]) -> str:
         "Create a planning storyboard sheet for the shot below.",
         "Do not invent a different prompt structure. Follow every numbered frame literally.",
         "",
+        "REFERENCE IMAGES (attached in this exact order via input_urls -- match each",
+        "one to its stated role, do not blend or infer roles from upload order alone;",
+        "per GPT-Image-2-Prompting-Guide's mandatory multi-reference labeling rule):",
+    ]
+    lines.extend(f"{i}. {desc}" for i, desc in enumerate(spec["reference_images"], start=1))
+    lines.extend([
+        "",
         "OVERALL SUMMARY:",
         spec["overall_summary"],
         "",
@@ -127,7 +135,7 @@ def render_prompt(spec: dict[str, Any]) -> str:
         spec["camera_lock"],
         "",
         "CONTINUITY INVARIANTS:",
-    ]
+    ])
     lines.extend(f"- {item}" for item in spec["continuity_invariants"])
     lines.extend(["", "FRAME-BY-FRAME STORYBOARD SEQUENCE:"])
 

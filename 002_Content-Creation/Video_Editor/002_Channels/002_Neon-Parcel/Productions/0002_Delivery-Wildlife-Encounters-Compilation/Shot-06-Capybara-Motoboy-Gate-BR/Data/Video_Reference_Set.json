@@ -1,0 +1,42 @@
+{
+ "storyboard": "Storyboard_v1.png",
+ "environment_sheet": "Character_Sheets/Environment_Sheet_v1.png",
+ "character_sheets": [
+  {
+   "file": "Character_Sheets/Motoboy_Character_Sheet_v2_Titled.png",
+   "label": "MOTOBOY"
+  },
+  {
+   "file": "Character_Sheets/Capybara_Creature_Sheet_v1_Titled.png",
+   "label": "CAPYBARA"
+  }
+ ],
+ "prop_sheets": [
+  {
+   "file": "Character_Sheets/Motorcycle_Prop_Sheet_v2_Titled.png",
+   "label": "MOTORCYCLE"
+  }
+ ],
+ "not_sent": [
+  {
+   "glob": "Character_Sheets/Motoboy_Character_Sheet_v1*",
+   "reason": "superseded: hand-gate hard-fail on a close-up panel"
+  },
+  {
+   "glob": "Character_Sheets/Motoboy_Character_Sheet_v2.png",
+   "reason": "unlabeled source of the labeled final"
+  },
+  {
+   "glob": "Character_Sheets/Capybara_Creature_Sheet_v1.png",
+   "reason": "unlabeled source of the labeled final"
+  },
+  {
+   "glob": "Character_Sheets/Motorcycle_Prop_Sheet_v1*",
+   "reason": "superseded: invented generic-hand held panels (tool bug, fixed)"
+  },
+  {
+   "glob": "Character_Sheets/Motorcycle_Prop_Sheet_v2.png",
+   "reason": "unlabeled source of the labeled final"
+  }
+ ]
+}

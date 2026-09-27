@@ -1,0 +1,146 @@
+{
+ "shot_id": "Monkey-African-Messenger-Shot",
+ "reference_images": [
+  "Reference image 1 is the bicycle courier's character sheet: use it ONLY for his exact face, build, navy short-sleeve collared shirt with chest pocket, dark trousers, black sandals, black crossbody bag, and his plain dark-steel parcel bicycle. Do not reproduce the sheet's panel layout.",
+  "Reference image 2 is the vervet monkey's character sheet: use it ONLY for its exact species look, grey-green fur, black face with white brow band, pale cheek fur, long tail with darker tip, and small cat-sized body. Do not reproduce the sheet's panel layout or its text.",
+  "Reference image 3 is the shopfront environment plate (the CCTV point-of-view): the counter, corrugated-iron awning, awning support post at the left, goods on the counter, and dirt apron must match it exactly in every frame."
+ ],
+ "overall_summary": "A bicycle courier stops at a small shop, sets his clipboard down on the counter to free his hands, and a vervet monkey drops from the awning post, grabs it, scratches the pen across the paper like signing, holds it just out of his reach, and escapes up the post with it, leaving the courier empty-handed.",
+ "tone": "Unplanned real-life shopfront CCTV footage: ordinary, observational, imperfect, funny because the event is unexpectedly real, never cinematic or commercial.",
+ "capture_style": "Fixed static shopfront CCTV mounted high under the awning edge, looking slightly down at the counter and apron, exactly the same high slightly-downward viewpoint as reference image 3. Modest dynamic range, no artificial sharpening, no pan, tilt or zoom.",
+ "visual_style": "Central Kenya trading-center shopfront, clear hot midday sun, hard awning shadow, dry dusty apron, no cinematic lighting. Real-world scale: counter top about 1.0 m high; awning eave and top of the awning post about 2.3 m; the courier about 1.7 m tall with his head clearly below the awning eave; the monkey's body about 45 cm long (cat-sized), tail extra.",
+ "visual_realism": "Photorealistic consumer-grade CCTV footage of a real place; the counter, awning, post, wall and apron stay in one continuous physical layout with realistic scale and contact.",
+ "audio_policy": "Natural location sound only: street ambience, bicycle, footsteps, the clipboard on the counter, the monkey's movement and calls.",
+ "audio_exclusions": [
+  "music",
+  "commercial soundtrack",
+  "dramatic scoring",
+  "voiceover",
+  "dialogue",
+  "synthetic advertising audio"
+ ],
+ "camera_lock": "Same fixed high, slightly-downward CCTV viewpoint, framing, zoom, camera height and background in all six frames: same counter position, same awning, same post, same wall, same apron. No cuts, pans, tilts, zooms or alternate views. Only the courier, monkey, bicycle and clipboard change.",
+ "continuity_invariants": [
+  "Exactly one courier and one monkey in every frame; no other people or animals.",
+  "The parcel bicycle is parked upright on its kickstand (kickstand visibly down) on the dirt apron to the right of the courier in every frame it is visible; it never floats or leans on nothing.",
+  "The clipboard is always the pale beige clipboard (silver clip, exactly one white paper sheet covering the whole board, black pen on a short string, about 23 x 32 cm), one paper sheet and an attached pen in every frame it appears.",
+  "The monkey is cat-sized, never person-sized, and its identity matches reference image 2 in every frame.",
+  "The courier's identity matches reference image 1 in every frame; his head stays below the awning eave."
+ ],
+ "frames": [
+  {
+   "frame": 1,
+   "visible_subjects": [
+    "courier",
+    "bicycle",
+    "monkey"
+   ],
+   "object_states": [
+    "bicycle on kickstand on the apron",
+    "courier holds the clipboard",
+    "monkey perched on top of the awning post"
+   ],
+   "spatial_relationships": [
+    "monkey on the very top of the awning post at the awning's left corner, top at eave height, small in frame",
+    "courier on the apron beside his bicycle"
+   ],
+   "action": "The courier dismounts his parcel bicycle on the dirt apron holding the clipboard. The monkey is already perched on top of the awning post, unnoticed.",
+   "caption": "Courier arrives, monkey already watching from the post."
+  },
+  {
+   "frame": 2,
+   "visible_subjects": [
+    "courier",
+    "monkey",
+    "bicycle"
+   ],
+   "object_states": [
+    "clipboard set down flat on the counter edge",
+    "monkey still on top of the post"
+   ],
+   "spatial_relationships": [
+    "courier at the counter",
+    "monkey on the same awning post"
+   ],
+   "action": "At the counter, the courier sets the clipboard down flat on the counter edge and turns his head toward the shop interior.",
+   "caption": "Clipboard set down, courier turns away."
+  },
+  {
+   "frame": 3,
+   "visible_subjects": [
+    "courier",
+    "monkey"
+   ],
+   "object_states": [
+    "clipboard on the counter",
+    "courier's back still turned"
+   ],
+   "spatial_relationships": [
+    "monkey mid-leap between the top of the awning post and the counter, along the awning's left edge, a short drop of about 1.3 m"
+   ],
+   "action": "The monkey is mid-leap from the top of the awning post down toward the counter, body stretched, tail trailing.",
+   "caption": "Monkey drops toward the counter."
+  },
+  {
+   "frame": 4,
+   "visible_subjects": [
+    "courier",
+    "monkey"
+   ],
+   "object_states": [
+    "monkey gripping the clipboard",
+    "pen still attached, dragging across the paper"
+   ],
+   "spatial_relationships": [
+    "monkey crouched on the counter",
+    "courier turning back, startled"
+   ],
+   "action": "The monkey crouches on the counter gripping the clipboard, dragging the attached pen across the paper in a scribble, head turned to glance at the courier; the courier is turning back, startled.",
+   "caption": "Monkey signs the slip."
+  },
+  {
+   "frame": 5,
+   "visible_subjects": [
+    "courier",
+    "monkey"
+   ],
+   "object_states": [
+    "monkey holds the clipboard just out of reach"
+   ],
+   "spatial_relationships": [
+    "courier's open hand reaching toward the monkey, not touching it",
+    "monkey weight shifted back, tail flicking"
+   ],
+   "action": "The courier lunges an open hand toward the monkey; the monkey holds the clipboard just out of reach.",
+   "caption": "Just out of reach."
+  },
+  {
+   "frame": 6,
+   "visible_subjects": [
+    "courier",
+    "monkey"
+   ],
+   "object_states": [
+    "monkey clutching the clipboard against its chest",
+    "courier's hands empty"
+   ],
+   "spatial_relationships": [
+    "monkey back on top of the same awning post",
+    "courier at the counter looking up"
+   ],
+   "action": "The monkey is back on top of the same awning post clutching the clipboard against its chest; the courier stands at the counter with empty hands half-raised, looking up.",
+   "caption": "Monkey escapes, courier empty-handed."
+  }
+ ],
+ "panel_convention": "Six chronological landscape panels in 3 columns x 2 rows (frames 1-3 top row, 4-6 bottom row), each with a true 16:9 image area and a clean white caption band beneath with only the frame number and caption. No text inside any image area.",
+ "hard_constraints": [
+  "No duplicate courier or monkey",
+  "No teleportation",
+  "No floating bicycle",
+  "No alternate camera angle",
+  "No commercial look",
+  "Monkey stays cat-sized",
+  "Clipboard keeps one paper sheet and an attached pen",
+  "No text or logos inside any image area"
+ ]
+}

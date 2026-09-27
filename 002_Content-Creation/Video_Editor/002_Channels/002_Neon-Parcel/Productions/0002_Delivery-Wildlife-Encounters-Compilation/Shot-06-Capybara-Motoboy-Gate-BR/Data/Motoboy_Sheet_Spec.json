@@ -1,0 +1,20 @@
+{
+ "sheet_type": "character",
+ "name": "Motoboy",
+ "role": "the motoboy, a Brazilian motorcycle food-delivery courier",
+ "subject_description": "An adult Brazilian man in his late 20s to early 30s (a Sao Paulo motoboy in 2016), medium-brown skin, short dark wavy hair, a short trimmed beard stubble, lean average build about 1.70 m tall. Clothing, all plain and unbranded: a dark navy zip-up work jacket with silver reflective stripes across the chest and shoulders, dark jeans, black sneakers, thin black riding gloves tucked into a jacket pocket. He wears a plain black rectangular insulated delivery backpack (about 40 cm cube) on his back, and at the start of the shot he holds an open-face matte-black motorcycle helmet with a small reflective strip by its chin strap in his RIGHT hand at hip height. The natural-setting pose shows him standing under a concrete guardhouse awning at dusk in a light drizzle. No company logos, no brand marks, no readable text anywhere",
+ "hands": "both",
+ "extra_panels": [
+  {
+   "title": "Holding the helmet",
+   "description": "the motoboy standing relaxed and holding the open-face helmet by its chin strap in his right hand at hip height, waiting"
+  },
+  {
+   "title": "Putting the helmet on",
+   "description": "the motoboy raising the open-face helmet with both hands above his head to put it on, drizzle on his jacket shoulders"
+  }
+ ],
+ "out": "../Character_Sheets/Motoboy_Character_Sheet_v1.png",
+ "prompt_out": "../Prompts/Motoboy-Character-Sheet-Spec-v1.md",
+ "title_out": "../Character_Sheets/Motoboy_Character_Sheet_v1_Titled.png"
+}

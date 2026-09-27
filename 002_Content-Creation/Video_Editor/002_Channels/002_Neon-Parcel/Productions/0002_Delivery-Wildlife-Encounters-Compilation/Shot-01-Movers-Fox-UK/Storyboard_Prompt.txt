@@ -1,0 +1,93 @@
+Create a planning storyboard sheet for the shot below.
+Do not invent a different prompt structure. Follow every numbered frame literally.
+
+OVERALL SUMMARY:
+Two movers carry a red couch across a front yard from the house doorway toward an open moving-truck ramp; just as they step onto the ramp, a red fox trots through the ramp threshold at their feet, and a bystander filming the move on their phone whips the camera toward the fox in surprise.
+
+TONE:
+Candid, unscripted, mildly startling then charming - real found-footage energy, not staged or comedic-timed.
+
+CAPTURE STYLE:
+Handheld smartphone video shot by a bystander/neighbor casually filming the move, held at chest height, dusk light, mid-2000s/2011-era phone camera sensor quality - not a modern flagship phone look.
+
+VISUAL STYLE:
+Naturalistic UK suburban terraced street at dusk, muted overcast color grade, practical streetlight and porch-light sources only, no cinematic lighting rig.
+
+VISUAL REALISM:
+Ordinary consumer phone image quality: mild motion blur on handheld movement, visible compression softness, limited dynamic range, slight sensor noise in the shadow areas, no artificial sharpening or stabilization.
+
+AUDIO POLICY:
+Diegetic only - ambient street sound, footsteps, couch friction/creak, fox's paws on the pavement, the bystander's own surprised exhale/gasp.
+Audio exclusions: no music or score; no non-diegetic sound effects; no narrator voiceover; no scripted dialogue.
+
+CAMERA LOCK:
+UNLOCKED (v2 test) - the camera is not locked off. It reacts like a real untrained bystander: a reflexive whip-pan toward the fox's motion at the trigger moment, with natural handheld shake and a partial re-settle afterward. This is the specific behavior this test shot exists to validate.
+
+CONTINUITY INVARIANTS:
+- Exactly two movers, one red couch, one red fox, and one open truck ramp appear across every frame - never duplicated, never an extra copy of any subject
+- The truck ramp stays open and in the same curb position in every frame
+- The couch's position advances measurably forward each frame along one continuous path from the house doorway to the ramp - never resets, never jumps backward, never stays visually static between consecutive frames
+- The fox enters from the same side it is first seen on and continues in one consistent direction of travel
+- Camera viewpoint is the bystander's phone the entire time - never cuts to a different capture device
+- Mover 1 (the front carrier, closer to the truck) walks BACKWARD facing Mover 2 for the entire shot, in every single frame - this is how two people naturally carry a couch, so they can see each other. Mover 1 never turns around and never switches to a forward-facing grip. Mover 2 (the rear carrier) walks forward facing Mover 1's back the entire time. This exact orientation is fixed starting in frame 1 and does not change in any later frame.
+
+FRAME-BY-FRAME STORYBOARD SEQUENCE:
+FRAME 1:
+Visible subjects: Mover 1 (front, carrying couch); Mover 2 (rear, carrying couch); red couch; open moving-truck ramp (distant); house doorway.
+Object states: couch held waist-height, still within two steps of the house doorway; truck ramp fully extended and open, empty, roughly 15 meters ahead down the front path; no fox visible yet; Mover 1 walking backward facing Mover 2, back toward the truck; Mover 2 walking forward facing Mover 1.
+Spatial relationships: movers positioned right at the house doorway, couch just clearing the threshold; ramp small and distant at the far end of the front path; phone POV loosely centered on the movers, slight handheld drift.
+Action/state: Movers step out of the doorway carrying the couch, just beginning the walk down the front path; the bystander's phone follows at a casual pace.
+Caption (render this exact text in the caption band): Frame 1 - movers step out the doorway with the couch, ramp still distant
+
+FRAME 2:
+Visible subjects: Mover 1; Mover 2; red couch; open moving-truck ramp (midground, larger than frame 1).
+Object states: couch now roughly halfway along the front path between the doorway and the ramp; ramp visibly larger/closer in frame than frame 1, still empty; Mover 1 still walking backward facing Mover 2, unchanged from frame 1; Mover 2 still walking forward facing Mover 1.
+Spatial relationships: movers now at the path's midpoint, house doorway behind them out of frame, ramp ahead and growing closer.
+Action/state: Movers continue walking the couch along the path at a steady pace, now clearly past the halfway point toward the ramp.
+Caption (render this exact text in the caption band): Frame 2 - couch reaches the midpoint of the path, ramp closing in
+
+FRAME 3:
+Visible subjects: Mover 1; Mover 2; red couch; open moving-truck ramp (close, filling much of the frame).
+Object states: couch's front edge now at the base of the ramp, about to be lifted onto the incline; ramp fills a much larger portion of the frame than frames 1-2, still empty; Mover 1 still walking/stepping backward facing Mover 2, unchanged orientation; Mover 2 still facing Mover 1.
+Spatial relationships: movers standing directly at the ramp's base, couch front edge touching the ramp surface, no fox yet.
+Action/state: Movers arrive at the ramp base and begin angling the couch upward onto the incline.
+Caption (render this exact text in the caption band): Frame 3 - the couch reaches the base of the ramp, about to go up
+
+FRAME 4:
+Visible subjects: Mover 1; Mover 2; red couch; open moving-truck ramp; red fox (entering from the side, mid-stride).
+Object states: couch's front end now lifted partway up the ramp incline, mover 1 stepping onto the ramp itself; fox mid-stride, low to the ground, entering from the side of frame; Mover 1 still walking backward onto the ramp facing Mover 2, unchanged orientation; Mover 2 still facing Mover 1.
+Spatial relationships: fox crossing the ramp threshold directly beneath/beside the movers' feet as they step onto it; movers not yet reacted, still focused on lifting the couch.
+Action/state: Just as the movers step onto the ramp with the couch's front end lifted, the fox trots into frame from the side, crossing directly through the ramp threshold at their feet.
+Caption (render this exact text in the caption band): Frame 4 - a fox trots through the ramp threshold as the movers step onto it
+Transition from previous frame: Couch has advanced from the ramp's base onto the incline itself; the fox is a new element entering from off-frame.
+
+FRAME 5:
+Visible subjects: Mover 1; Mover 2; red couch; open moving-truck ramp; red fox (centered, mid-crossing).
+Object states: couch frozen at the same lifted position on the ramp incline, movers paused mid-step; fox now centered in the ramp threshold, mid-crossing; Mover 1 still facing Mover 2 (backward orientation unchanged) as he glances toward the fox; Mover 2 still facing Mover 1.
+Spatial relationships: phone framing has whipped toward the fox, fox now off-center in a looser, shakier frame; movers' heads turning down/toward the fox, couch held stationary on the incline.
+Action/state: The bystander's phone whips toward the fox's motion in a reflexive, untrained reaction - framing loosens and shakes; movers freeze mid-step on the ramp, couch held at the same lifted position, not set down.
+Caption (render this exact text in the caption band): Frame 5 - the camera whips toward the fox as the movers freeze on the ramp
+Transition from previous frame: Camera framing shifts abruptly from the steady follow of frames 1-3 into the reactive whip-pan; couch position is held static from frame 4.
+
+FRAME 6:
+Visible subjects: Mover 1; Mover 2; red couch; open moving-truck ramp; red fox (partially exiting the far side of frame).
+Object states: couch still held at the same paused position on the ramp incline; fox continuing its travel direction, now partially exiting the far side of frame; Mover 1 still facing Mover 2 (backward orientation unchanged throughout the entire shot); Mover 2 still facing Mover 1.
+Spatial relationships: phone framing has partially re-settled but remains looser than frames 1-3; fox moving away from the movers, continuing its original direction of travel.
+Action/state: The camera partially re-settles as the fox continues past and begins exiting frame; the movers remain frozen on the ramp, couch still held at the same position, watching it go.
+Caption (render this exact text in the caption band): Frame 6 - the fox moves on as the movers stay frozen, couch still on the ramp
+Transition from previous frame: Camera settles from the whip-pan shake; fox has advanced further along its consistent travel direction; couch position remains unchanged from frame 5.
+
+PANEL CONVENTION:
+Six 16:9 landscape frames arranged in a 3-column by 2-row grid (frames 1-3 top row left to right, frames 4-6 bottom row left to right), each individual cell followed immediately by its own clean white caption band containing only the frame number and the one-sentence caption text - no text, numbers, or graphics inside the image area itself. This matches the workspace's standard Neon Parcel storyboard grid layout exactly. This is a continuity planning reference for a video model, not a comic layout to be reproduced literally.
+
+HARD CONSTRAINTS:
+- No on-screen text, logos, watermarks, or graphics inside any image area
+- No duplicate movers, couches, fox, or ramp in any single frame
+- Preserve one consistent phone-POV camera viewpoint throughout - never switch to a different capture device mid-sequence
+- Dusk lighting and UK suburban terraced-street setting must stay consistent across all six frames
+- The couch and movers must be in a visibly, measurably different position in every one of frames 1 through 4 - no two consecutive frames may show them in the same spot
+- Mover 1's body orientation (walking backward, facing Mover 2) must be identical in every single frame - do not let him face forward or switch grip in any frame
+- Do not add a caption, subtitle, or label to the couch, fox, or movers beyond the white caption band text specified per frame
+
+Before finishing, check every panel against its frame number, visible subjects, object state, action, and exact caption.
+This is a storyboard reference image only, not a video frame and not a clean temporal first frame.

@@ -200,6 +200,11 @@ def generate_seedance_mini(
     last_frame_url: str | None = None,
 ) -> Path:
     """bytedance/seedance-2-mini -- not wrapped by kie-cli as of 2026-08-17."""
+    if reference_image_urls:
+        from check_seedance_prompt_refs import lint  # hard gate: every reference tagged and used by tag in the action beats
+        failures = lint(prompt, len(reference_image_urls))
+        if failures:
+            raise ValueError("Seedance reference-tag check failed, no paid call made:\n - " + "\n - ".join(failures))
     input_params = build_seedance_mini_input(
         prompt,
         first_frame_url=first_frame_url,
@@ -283,10 +288,19 @@ if __name__ == "__main__":
 
     if args.command == "seedance_mini":
         out = generate_seedance_mini(
-            args.prompt, Path(args.output), args.first_frame_url, args.resolution, args.duration, args.generate_audio,
-            args.generation_log, args.shot_id, args.version, args.prompt_file, args.retry_reason,
-            args.reference_image_urls,
-            args.last_frame_url,
+            args.prompt,
+            Path(args.output),
+            first_frame_url=args.first_frame_url,
+            resolution=args.resolution,
+            duration=args.duration,
+            generate_audio=args.generate_audio,
+            generation_log=args.generation_log,
+            shot_id=args.shot_id,
+            version=args.version,
+            prompt_file=args.prompt_file,
+            retry_reason=args.retry_reason,
+            reference_image_urls=args.reference_image_urls,
+            last_frame_url=args.last_frame_url,
         )
         print(f"Saved {out}")
     elif args.command == "grok_upscale":

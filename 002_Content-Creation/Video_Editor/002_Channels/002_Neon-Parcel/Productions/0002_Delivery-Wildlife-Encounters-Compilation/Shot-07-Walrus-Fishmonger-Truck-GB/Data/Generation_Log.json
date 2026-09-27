@@ -1,0 +1,122 @@
+{
+ "production": "0002_Delivery-Wildlife-Encounters-Compilation/Shot-07-Walrus-Fishmonger-Truck-GB",
+ "pipeline": "neon-parcel-longform-compilation-v2",
+ "assets": [
+  {
+   "shot_id": "Walrus-Fishmonger-Harbour-GB-Clip-1",
+   "version": "v1",
+   "prompt_file": "Prompts/Clip-1-Seedance-2-Mini-480p-v1.md",
+   "prompt_sha256": "8abd86be2044730b0095fcbe7209f41e2738a351c51efdebba79023fc0c162b1",
+   "prior_attempts": 0,
+   "model": "bytedance/seedance-2-mini",
+   "status": "failed_qa",
+   "reserved_at": "2026-09-23T04:01:22.323205+00:00",
+   "task_id": "f060198369cd459323618fd019f77664",
+   "submitted_at": "2026-09-23T04:01:22Z",
+   "qa_note": "2026-09-23: sheet/grid reproduction. Every frame is a tiled grid of small scene panels (storyboard-layout contamination) instead of one continuous shot. Not upscaled, not extended. Raw kept at Data/Seedance_Mini_Clip1_v1.mp4.",
+   "refs": [
+    "Storyboard_Clip1_v1.png",
+    "Environment_Sheet_v2.png",
+    "Fishmonger_Character_Sheet_v1_Titled.png",
+    "Walrus_Creature_Sheet_v1_Titled.png",
+    "Van_Prop_Sheet_v1_Titled.png"
+   ],
+   "settings": "Kie Seedance 2 Mini, 480p, 15 s, reference mode"
+  },
+  {
+   "shot_id": "Walrus-Fishmonger-Harbour-GB-Clip-1",
+   "version": "v2",
+   "prompt_file": "Prompts/Clip-1-Seedance-2-Mini-480p-v2.md",
+   "prompt_sha256": "5e07a1340f294b9c1186255565733159ababb0a6784ea31db502cb3193252944",
+   "prior_attempts": 0,
+   "model": "bytedance/seedance-2-mini",
+   "status": "failed_qa",
+   "reserved_at": "2026-09-23T20:16:16.253649+00:00",
+   "task_id": "380f2c81d351c99d84a60bc69f3e819f",
+   "submitted_at": "2026-09-23T20:16:16Z",
+   "qa_note": "2026-09-23: sheet-template reproduction. The whole clip sits inside a dark character-sheet frame with a garbled title bar (\"CREATURE SHEET ... VAN\") and a panel badge; the scene is a single view (no grid) and the action is on-script. Inner scene area ~ x57-806, y52-472 of 864x496 (about 16:9). Not upscaled, not extended.",
+   "refs": [
+    "Storyboard_Clip1_v2.png",
+    "Environment_Sheet_v2.png",
+    "Fishmonger_Character_Sheet_v1_Titled.png",
+    "Walrus_Creature_Sheet_v1_Titled.png",
+    "Van_Prop_Sheet_v1_Titled.png"
+   ]
+  },
+  {
+   "shot_id": "Walrus-Fishmonger-Harbour-GB-Clip-1",
+   "version": "v2-cropped",
+   "source": "Data/Seedance_Mini_Clip1_v2.mp4",
+   "output": "Data/Seedance_Mini_Clip1_v2_Cropped.mp4",
+   "tool": "ffmpeg crop=746:418:59:53, libx264 crf 14, audio copied",
+   "status": "approved_salvage",
+   "note": "Tony chose option 1 (crop out the sheet frame/title bar) 2026-09-23. Verified clean across all 15 s. Input for the Clip 2 WaveSpeed extend."
+  },
+  {
+   "shot_id": "Walrus-Fishmonger-Harbour-GB-Clip-2",
+   "version": "v1",
+   "model": "bytedance/seedance-2.0-mini/video-extend (WaveSpeed)",
+   "prompt_file": "Prompts/Clip-2-WaveSpeed-Mini-Extend-480p-v1.md",
+   "inputs": {
+    "video": "Data/Seedance_Mini_Clip1_v2_Cropped.mp4 (via Cloudinary)",
+    "last_image": "Data/Clip2_End_Frame_v2.png"
+   },
+   "settings": "480p, 6 s, audio on",
+   "output": "Data/WaveSpeed_Mini_Extend_Clip2_v1.mp4 (21.05 s, 864x496, joined)",
+   "est_cost_usd": 0.36,
+   "status": "failed_qa",
+   "qa_note": "Join at 15 s is clean. At ~18 s the walrus 'splashes' into a pool of water that appears ON THE TARMAC beside the hatchback and swims in it: the end frame's harbour position was interpolated onto the road. Impossible physics."
+  },
+  {
+   "shot_id": "Walrus-Fishmonger-Harbour-GB-Clip-2",
+   "version": "v2",
+   "model": "bytedance/seedance-2.0-mini/video-extend (WaveSpeed)",
+   "prompt_file": "Prompts/Clip-2-WaveSpeed-Mini-Extend-480p-v2.md",
+   "inputs": {
+    "video": "Data/Seedance_Mini_Clip1_v2_Cropped.mp4 (via Cloudinary)",
+    "last_image": null
+   },
+   "settings": "480p, 8 s, audio on",
+   "output": "Data/WaveSpeed_Mini_Extend_Clip2_v2.mp4 (23.07 s, 864x496, joined)",
+   "est_cost_usd": 0.48,
+   "status": "approved",
+   "gemini_inspection": "Data/Gemini_Inspection_Clip2_v2.json (confidence 0.95, no error findings; notes whole fish in the spill)",
+   "qa_note": "Clean join; the walrus goes between the hatchback and the van, rears at the railing and flops over (railing intact), splash beyond the wall at ~20.7 s; road stays dry; the fishmonger watches, then looks down. Audio peaks at the grunt and splash. Flags: the walrus rears almost fully upright on its hind flippers at the railing; the spilled fish read as whole fish, not just heads (inherited from Clip 1).",
+   "grade": "B+",
+   "grade_note": "Tony 2026-09-23: action and comedic beats B+, overall B+. For an A: the van, characters and walrus render about 1.5-2x too large vs the environment, and the van doesn't pull fully into its bay. Upscale via Magnific by Tony's one-off choice (Kie Topaz skipped)."
+  },
+  {
+   "shot_id": "Walrus-Fishmonger-Harbour-GB-Full",
+   "version": "v2-upscale",
+   "source": "Data/WaveSpeed_Mini_Extend_Clip2_v2.mp4",
+   "attempts": [
+    {
+     "tool": "upscale_video.py --skip-kie (Magnific basic API, 1k natural, creativity 0)",
+     "magnific_task": "f2b78397-ad8a-43c5-9a1d-e88287651dbc",
+     "status": "provider_failed",
+     "error": "Video upscaling failed: 1/2 chunks did not succeed"
+    },
+    {
+     "tool": "Magnific MCP video_upscale, mode topaz, enhancementModel astra2, targetResolution 1920, 24 fps, astraCreativity 0.3, astraRealism 0.5, astraSharp 0.5 (Tony chose; creativity lowered from his 0.5 to reduce face warping)",
+     "creation": "3zBCYm1REY",
+     "credits": 5580,
+     "status": "success",
+     "output": "Data/Shot07_Full_v2_Topaz_Astra2_1920.mp4 (1920x1102)"
+    }
+   ],
+   "final": "Data/Shot07_Full_v2_1080p_FINAL_NoBars.mp4 (scale to fill + crop to 1920x1080, per Tony; replaces the padded version)",
+   "qa_note": "Face check: the fishmonger's face is clean and consistent at 9/12/16/22.5 s, no warping, far sharper than raw. The walrus detail holds at 10.5 and 19.2 s. Number plates stay gibberish (never real text). Pad adds ~20 px side bars (1881 px image width).",
+   "status": "final",
+   "grade": "B+"
+  }
+ ],
+ "processing": [
+  {
+   "stage": "magnific-1k",
+   "provider": "magnific",
+   "task_id": "f2b78397-ad8a-43c5-9a1d-e88287651dbc",
+   "status": "failed",
+   "error": "Video upscaling failed: 1/2 chunks did not succeed"
+  }
+ ]
+}

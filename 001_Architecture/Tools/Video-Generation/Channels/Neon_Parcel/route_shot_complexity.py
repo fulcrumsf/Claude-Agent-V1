@@ -147,7 +147,7 @@ def route_shot(shot: dict[str, Any]) -> dict[str, Any]:
         "human_override": override,
         "generation_policy": {
             "seedance_1_5_start_end": "Use start and end frames; preserve natural duration.",
-            "seedance_2_mini_storyboard": "Use the storyboard for planning and QA only; do not send a composite storyboard sheet to Kie until a provider adapter is verified. Use approved clean temporal frames for video conditioning.",
+            "seedance_2_mini_storyboard": "Send the approved storyboard sheet to Kie as a bound reference image (reference_image_urls, tagged @Image 1 in the prompt via 'REFERENCE ORDER: @Image 1 = the approved N-panel storyboard'), NEVER as first_frame_url - binding it as first_frame_url causes Seedance to animate the storyboard grid itself instead of the scene (confirmed real failure, Neon Parcel Shot 12 v1, 'storyboard was animated as the temporal starting frame'). The prompt must explicitly state the storyboard is 'a sequence of action instructions, not a collage or tiled layout to reproduce' and instruct it not to show panels/captions/borders in the output. This exact route/technique is production-proven and Tony-approved (Shot 12 v8, see Prompts/Shot-12-Seedance-2-Mini-v8.md for the reference template) - it is not experimental and does not need a separate clean-frame fallback.",
             "manual_review": "Do not generate automatically; ask for a human route decision or clarify the shot.",
         }[route],
     }

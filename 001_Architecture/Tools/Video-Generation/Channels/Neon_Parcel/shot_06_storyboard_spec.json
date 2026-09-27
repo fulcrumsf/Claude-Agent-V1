@@ -1,12 +1,24 @@
 {
   "shot_id": "Shot-06",
+  "reference_images": [
+    "Reference image 1 is the recurring bear character -- its exact coloration, proportions, and markings must match this reference in every frame it appears in.",
+    "Reference image 2 is the environment/location plate -- the driveway, gate, and yard must match this reference exactly in every frame."
+  ],
   "overall_summary": "A neighbor's handheld phone observes an older woman approaching an ordinary suburban driveway gate while one large black bear already occupies the gate opening from the other side. The woman opens the gate, gestures for the bear to move, and walks around it while the bear remains calm.",
   "tone": "Unplanned real-life neighbor footage: ordinary, observational, awkward, and believable, never cinematic, staged, polished, promotional, or commercial.",
   "capture_style": "Consumer smartphone recording by an ordinary person, with natural exposure, imperfect framing, and subtle human handheld movement unless the shot explicitly requires a locked-off camera. No tripod or professional camera rig by default.",
   "visual_style": "Authentic neighbor-filmed smartphone video, medium-wide framing, natural late-afternoon daylight, ordinary suburban driveway, modest phone exposure and handheld imperfection, documentary realism.",
   "visual_realism": "Real-world documentary observation with natural light, ordinary locations, realistic motion, and no professional color grade or advertising polish.",
   "audio_policy": "Atmospheric location sound and physical foley only: sounds must come from the real environment or visible actions.",
-  "audio_exclusions": ["music", "commercial soundtrack", "dramatic scoring", "promotional audio", "voiceover", "dialogue", "synthetic sound effects"],
+  "audio_exclusions": [
+    "music",
+    "commercial soundtrack",
+    "dramatic scoring",
+    "promotional audio",
+    "voiceover",
+    "dialogue",
+    "synthetic sound effects"
+  ],
   "camera_lock": "One continuous viewpoint from the edge of the neighboring driveway. Keep the gate, driveway, path, parked car, woman, and bear spatially consistent across all panels. No camera cut and no change to a cinematic viewpoint.",
   "continuity_invariants": [
     "Exactly one older woman and one large black bear remain the only characters in every frame.",

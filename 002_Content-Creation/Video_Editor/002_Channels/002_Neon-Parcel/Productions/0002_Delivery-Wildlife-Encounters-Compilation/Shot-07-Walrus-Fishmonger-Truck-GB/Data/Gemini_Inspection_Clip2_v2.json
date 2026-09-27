@@ -1,0 +1,48 @@
+{
+  "provider": "gemini_direct",
+  "model": "gemini-3.7-flash",
+  "processing_mode": "static",
+  "sampling_fps": 3.0,
+  "video": "Data/WaveSpeed_Mini_Extend_Clip2_v2.mp4",
+  "report": {
+    "summary": "A locked-off static shot captures a refrigerated delivery truck backing into a seaside parking lot. The driver opens the rear shutter, revealing a CGI walrus inside with packed ice and fish. The walrus exits the truck bed, crawls across the asphalt, climbs over the harbor wall, and plunges into the water with a large splash, leaving the driver watching.",
+    "overall_confidence": 0.95,
+    "findings": [
+      {
+        "timestamp": "00:00.000",
+        "category": "camera continuity",
+        "severity": "note",
+        "observation": "Camera remains locked-off on a static wide framing of the parking lot and harbor for the duration of the clip.",
+        "confidence": 0.98
+      },
+      {
+        "timestamp": "00:06.667",
+        "category": "spatial geometry",
+        "severity": "note",
+        "observation": "A photorealistic CGI walrus is revealed inside the refrigerated compartment on top of crushed ice.",
+        "confidence": 0.95
+      },
+      {
+        "timestamp": "00:09.333",
+        "category": "object continuity",
+        "severity": "note",
+        "observation": "As the walrus slides out of the truck, crushed ice and whole fish spill onto the asphalt under its weight.",
+        "confidence": 0.95
+      },
+      {
+        "timestamp": "00:14.000",
+        "category": "character eyelines and gestures",
+        "severity": "note",
+        "observation": "The driver's eyeline tracks the walrus consistently as it moves leftward toward the harbor wall.",
+        "confidence": 0.92
+      },
+      {
+        "timestamp": "00:19.667",
+        "category": "chronology and causality",
+        "severity": "note",
+        "observation": "The walrus breaches the stone barrier wall and drops into the water, triggering an immediate large water splash effect in the harbor basin at 00:20.667.",
+        "confidence": 0.96
+      }
+    ]
+  }
+}

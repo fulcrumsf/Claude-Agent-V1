@@ -1,0 +1,21 @@
+{
+ "shots": [
+  {
+   "shot_id": "Shot-07-Clip-1",
+   "duration_s": 15,
+   "description": "Fixed harbourside CCTV. A small white refrigerated van drives in from frame-right, turns right and parks nose-in in the space in front of the camera. The fishmonger gets out, closes the driver's door, walks to the rear and rolls the roller-shutter door up, revealing a walrus lying in crushed ice among fish heads. He jumps back startled. The walrus burps, then slumps out of the cargo box onto the road, pushing a cascade of crushed ice and fish heads out with it, and heaves along the road to the top of the slipway at the far left. Multi-step ordered action, vehicle turning and parking, door mechanism, spill of ice, two subjects interacting, object continuity of a parked car.",
+   "semantic_assessment": {
+    "action_count": 2,
+    "physics": 2,
+    "object_continuity": 2,
+    "precision": 1,
+    "character_interaction": 1,
+    "spatial_continuity": 2,
+    "timing_precision": 2,
+    "dialogue_sync": 0,
+    "failure_risk": 2,
+    "storyboard_value": 2
+   }
+  }
+ ]
+}

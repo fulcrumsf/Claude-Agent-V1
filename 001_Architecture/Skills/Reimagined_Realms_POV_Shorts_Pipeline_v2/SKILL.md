@@ -15,6 +15,11 @@ Vertical (9:16), historical "day in the life" POV videos with no dialogue for th
 
 See the original design at `001_Architecture/Superpowers/Specs/2026-08-01-RR-POV-Shorts-Pipeline-Design.md` and the distilled reference conventions at `POV_Style_Guide.md` in this folder (unchanged from v1).
 
+
+## Format and image-input mode (locked 2026-09-20, Tony)
+- **Format: 9:16 vertical ONLY.** This pipeline is first-person POV ("point of view") historical Shorts. It never makes 16:9 (the long-form Reimagined Realms pipeline is the separate one that can).
+- **Start-image mode by design, no storyboard needed.** Each beat starts from its own start image, and the video plays out from there into the next beat of the POV storyline. In effect the per-beat start images already are the storyboard, just not laid out as one sheet. So this pipeline stays on Seedance 2 in `first_frame_url` mode, and is deliberately EXEMPT from the global Seedance 2 reference-image process (`Generic_Tools/seedance2_call.py`). Keep it that way unless Tony changes it.
+
 ## What's new in v2 vs. v1
 
 | | v1 | v2 |

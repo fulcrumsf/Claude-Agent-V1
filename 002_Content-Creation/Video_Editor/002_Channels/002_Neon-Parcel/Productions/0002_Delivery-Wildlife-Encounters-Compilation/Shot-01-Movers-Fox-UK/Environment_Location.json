@@ -1,0 +1,7 @@
+{
+  "location": "UK terraced street front path, house door to curb, dusk, moving day - must match the house, wall, gate, and truck exactly as they appear in the attached approved storyboard reference",
+  "scenes": [
+    {"scene": 1, "description": "Wide establishing shot from the street/curb looking back toward the house - shows the full spatial layout in one frame: front door, the full length of the path, the low wall and gate post, and the truck with its open ramp at the curb, all visible at once. No people, no couch, no fox."},
+    {"scene": 2, "description": "Wide establishing shot from beside the truck looking back up the path toward the house - the reverse angle from scene 1, same layout, confirming the same geography from the opposite direction: ramp, gate post, wall, full path, house door all visible. No people, no couch, no fox."}
+  ]
+}

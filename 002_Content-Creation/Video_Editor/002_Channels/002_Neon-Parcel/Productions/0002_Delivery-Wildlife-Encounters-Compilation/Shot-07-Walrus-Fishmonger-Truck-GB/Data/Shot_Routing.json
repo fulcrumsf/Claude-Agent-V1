@@ -1,0 +1,57 @@
+{
+  "shots": [
+    {
+      "shot_id": "Shot-07-Clip-1",
+      "duration_s": 15,
+      "description": "Fixed harbourside CCTV. A small white refrigerated van drives in from frame-right, turns right and parks nose-in in the space in front of the camera. The fishmonger gets out, closes the driver's door, walks to the rear and rolls the roller-shutter door up, revealing a walrus lying in crushed ice among fish heads. He jumps back startled. The walrus burps, then slumps out of the cargo box onto the road, pushing a cascade of crushed ice and fish heads out with it, and heaves along the road to the top of the slipway at the far left. Multi-step ordered action, vehicle turning and parking, door mechanism, spill of ice, two subjects interacting, object continuity of a parked car.",
+      "semantic_assessment": {
+        "action_count": 2,
+        "physics": 2,
+        "object_continuity": 2,
+        "precision": 1,
+        "character_interaction": 1,
+        "spatial_continuity": 2,
+        "timing_precision": 2,
+        "dialogue_sync": 0,
+        "failure_risk": 2,
+        "storyboard_value": 2
+      }
+    }
+  ],
+  "routing": [
+    {
+      "shot_id": "Shot-07-Clip-1",
+      "route": "seedance_2_mini_storyboard",
+      "status": "auto",
+      "complexity_score": 16,
+      "complexity_scale": "0-20",
+      "qa_intensity": "enhanced",
+      "dimension_scores": {
+        "action_count": 2,
+        "physics": 2,
+        "object_continuity": 2,
+        "precision": 1,
+        "character_interaction": 1,
+        "spatial_continuity": 2,
+        "timing_precision": 2,
+        "dialogue_sync": 0,
+        "failure_risk": 2,
+        "storyboard_value": 2
+      },
+      "reasons": [
+        "action count",
+        "physics",
+        "object continuity",
+        "spatial continuity",
+        "timing precision",
+        "failure risk",
+        "storyboard value",
+        "hard physics/ordered-action trigger"
+      ],
+      "hard_triggered": true,
+      "assessment_source": "semantic_assessment",
+      "human_override": null,
+      "generation_policy": "Send the approved storyboard sheet to Kie as a bound reference image (reference_image_urls, tagged @Image 1 in the prompt via 'REFERENCE ORDER: @Image 1 = the approved N-panel storyboard'), NEVER as first_frame_url - binding it as first_frame_url causes Seedance to animate the storyboard grid itself instead of the scene (confirmed real failure, Neon Parcel Shot 12 v1, 'storyboard was animated as the temporal starting frame'). The prompt must explicitly state the storyboard is 'a sequence of action instructions, not a collage or tiled layout to reproduce' and instruct it not to show panels/captions/borders in the output. This exact route/technique is production-proven and Tony-approved (Shot 12 v8, see Prompts/Shot-12-Seedance-2-Mini-v8.md for the reference template) - it is not experimental and does not need a separate clean-frame fallback."
+    }
+  ]
+}

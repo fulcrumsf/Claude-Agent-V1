@@ -1,0 +1,16 @@
+{
+ "sheet_type": "character",
+ "name": "Fishmonger",
+ "role": "the fishmonger, a Scottish shopkeeper",
+ "subject_description": "An adult Scottish man in his 40s to 50s (2012, coastal fishing village), average build, pale-to-ruddy weathered skin, short greying hair, wearing a waterproof bib-front oilskin apron in dark navy or dull yellow over a plain wool jumper, dark work trousers, black rubber wellington boots, no company logo or readable text anywhere. The natural-setting pose shows him standing beside his small refrigerated delivery van on a damp coastal village street under overcast midday light.",
+ "hands": "both",
+ "extra_panels": [
+  {
+   "title": "Startled reaction",
+   "description": "the fishmonger half-stepped back with one hand raised instinctively in front of him, eyes wide, a startled expression, as if he has just opened a door onto something unexpected"
+  }
+ ],
+ "out": "../Character_Sheets/Fishmonger_Character_Sheet_v1.png",
+ "prompt_out": "../Prompts/Fishmonger-Character-Sheet-Spec-v1.md",
+ "title_out": "../Character_Sheets/Fishmonger_Character_Sheet_v1_Titled.png"
+}

@@ -215,6 +215,56 @@ Publishing slots are time-gated: minimum 3 hours between posts per channel per p
 - **Always ask pre-production questions** before generating assets — do not assume
 - **Always present ideas with scores and hooks** — not just topic names
 - **Measure outcomes** — after 2 weeks, pull analytics and score the video. Use that data to improve the next one. The goal is a system that gets better, not one that just repeats.
+- **Always read the model's own prompting-guide skill before calling it** — see Mandatory Prompting-Guide Check below. This applies to every generation tool in every pipeline, not just the channel that happened to build the guide.
+
+---
+
+## Mandatory Prompting-Guide Check Before Any Generation Call (locked 2026-09-18)
+
+Real, repeated failure that led to this rule: a Neon Parcel v2 storyboard prompt
+(GPT-Image-2, multiple reference images) never explicitly labeled which
+reference image was which subject in the prompt text — no "reference image
+1 is the driver," nothing. `GPT-Image-2-Prompting-Guide` already documented
+this exact best practice. It was never consulted before writing that
+prompt; the prompt instead reused an existing template built earlier in the
+session. The result was a real defect (a subject bleeding into frames it
+shouldn't have appeared in) that took several regeneration cycles and
+direct user review to catch — a cost this rule exists to avoid paying
+again, on this or any other model.
+
+**Before writing any prompt for any generation tool — image, video, audio,
+or otherwise, in any channel or pipeline:**
+
+1. **Search first.** Check `001_Architecture/Skills/` for a prompting-guide
+   skill matching the specific model/tool about to be called (e.g.
+   `GPT-Image-2-Prompting-Guide`, `Seedance-Prompting-Guide`). Match by
+   model, not by channel — the same model's guide applies everywhere it's
+   used, Neon Parcel, Anomalous Wild, Reimagined Realms, or any future one.
+2. **If a guide exists, read/invoke it before writing the prompt — every
+   single time**, not only the first time that tool is used in a session
+   and not from memory of having read it earlier. A prompt built by reusing
+   an old template without re-checking the guide is exactly the failure
+   this rule exists to close.
+3. **If no guide exists for that specific tool, say so out loud before
+   prompting** — "I don't have a prompting guide for [tool], so I don't
+   know its real conventions" — rather than guessing from a generic
+   template, a different model's conventions, or general intuition.
+4. **When a guide is missing, escalate to Tool-Manager** to build one,
+   sourced from the model creator's own real documentation (official API
+   docs, official prompting guides) — never invented, and never copied
+   wholesale from a different model's guide on the assumption the
+   conventions transfer.
+
+This rule exists so prompting quality for a given model is consistent no
+matter which pipeline is calling it, and so "the brain doing the prompting"
+(the agent) is structurally required to check, not just expected to
+remember.
+
+---
+
+## Mandatory Seedance 2 / Seedance 2 Mini Call Process (GLOBAL, locked 2026-09-20)
+
+Any time Seedance 2.0 (standard or Fast) or Seedance 2 Mini runs in reference-image mode for a channel that is ENABLED in `001_Architecture/Tools/Video-Generation/Generic_Tools/seedance2_gate_config.json` (all 13 channels are listed there with a true/false switch; currently only Neon Parcel is true), the call must follow the winning process in `001_Architecture/Skills/Seedance-Prompting-Guide/SKILL.md` ("Mandatory process for EVERY Seedance 2 / Seedance 2 Mini call"): send the final storyboard, the full labeled environment sheet, and every final labeled character/creature/prop sheet built for that clip (a sheet may be omitted only if none was built for it); reference block first; five prompt sections in order; every action beat names its subject by `@Image N` tag. Run it through `001_Architecture/Tools/Video-Generation/Generic_Tools/seedance2_call.py`, which builds the reference list from the clip's `Data/Video_Reference_Set.json` and blocks the paid call when a rule is broken. Never hand-build a Seedance 2 call. NOT covered: anything below Seedance 2 (Seedance 1.5 Pro and every earlier flavor, e.g. Anomalous Wild), which accepts only a start frame and an end frame and never reference images; and any Seedance 2 pipeline that deliberately runs in start/end-frame mode (reference images and start/end frames are mutually exclusive in one call), until Tony decides to move it. See the version table at the top of `Seedance-Prompting-Guide/SKILL.md`.
 
 ---
 
@@ -222,9 +272,14 @@ Publishing slots are time-gated: minimum 3 hours between posts per channel per p
 
 These are mandatory rules derived from post-production critique. Violations repeat the same mistakes.
 
-### Folder Naming
-- All video output folders: zero-padded sequence prefix — `001_`, `002_`, `003_`
-- Format: `outputs/<NNN_channelname>/<NNN_slug>/`
+### Folder Naming (Neon Parcel v2 scaffolding locked 2026-09-19 — read this before creating any production folder, never ask Tony to re-derive it)
+
+**The number belongs to the compilation, not the shot.** Every `NNNN_` folder directly under a channel's `Productions/` directory is one finished/in-progress compilation video — the unit that eventually gets published — never an individual clip or test shot. `0001_Grandma-And-Bear-Compilation` is the reference pattern: one compilation folder, sequence-numbered, with every individual shot living **inside** it as its own subfolder, never as a sibling `NNNN_` folder at the `Productions/` root.
+
+- **Compilation folder:** `Productions/<NNNN>_<Compilation-Name>/` — 4-digit zero-padded (`0001_`, `0002_`, `0003_`...), continuing the single running count already established by `0001_Grandma-And-Bear-Compilation`. Name it for the compilation's actual theme/content (e.g. `0002_Delivery-Wildlife-Encounters-Compilation` for a compilation whose Diversity Matrix spans delivery/service workers encountering wildlife) — never a generic placeholder, and never "Test_Shot_..." (these are real iterations that go into a real compilation, not disposable tests, even before the compilation is finished).
+- **Individual shot subfolder, inside the compilation folder:** `Shot-NN-<Subject-Descriptor>/` (e.g. `Shot-01-Movers-Fox-UK`, `Shot-02-Kangaroo-Doorbell-AU`), sequential within that compilation, starting at 01.
+- **Do not create a new top-level `NNNN_` folder for a new shot.** A new shot within the same in-progress compilation is a new `Shot-NN-.../` subfolder inside the existing compilation folder. A new top-level `NNNN_` folder is only for starting an entirely new, separate compilation.
+- If a compilation's name needs to change after shots already exist inside it (e.g. the working theme shifts), rename the compilation folder and update every path reference to it across the repo in the same pass — `SKILL.md`s, logs, feedback files, `Generation_Log.json` — don't leave stale paths pointing at the old name.
 
 ### Audio Is the Master Clock
 1. Generate narration TTS first
@@ -353,6 +408,8 @@ The video production pipeline uses **6 production methodologies** (cinematic sty
 4. Fallback: `tm recommend --type video` for next best option
 
 **Rule:** If unsure which version is current or which is cheapest, do not guess — run the Tool Manager.
+
+**This is the workspace-wide default only.** Individual channels/pipelines may lock their own model/tier choice that overrides this default for their own productions — e.g. Neon Parcel locks Seedance-2-Mini as its default (see `002_Channels/002_Neon-Parcel`'s own pipeline `SKILL.md`), Anomalous Wild locks Seedance 1.5 Pro (see workspace memory). **Check the specific channel's own pipeline documentation before assuming this general order applies** — never carry one channel's locked choice over into another's without checking first.
 
 **Full documentation:**
 - **CINEMATIC_STYLE_GUIDE.md** — Complete guide to all 6 styles, visual identity, generation workflows, post-processing rules

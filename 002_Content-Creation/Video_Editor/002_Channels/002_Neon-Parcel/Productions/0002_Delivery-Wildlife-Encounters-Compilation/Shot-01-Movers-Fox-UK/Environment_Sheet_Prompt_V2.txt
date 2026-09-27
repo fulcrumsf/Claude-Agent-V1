@@ -1,0 +1,11 @@
+Analyze the entire composition of the attached reference images. The first reference is a real photograph of an actual UK terraced street - treat its architecture, brick color, window style, and general proportions as the ground truth for this location. The second reference is an approved storyboard showing this same fictional property with a front door, a low wall with a single gate post, a straight front path, and a moving truck with an open ramp parked at the curb - treat the SPATIAL LAYOUT shown there (door-to-path-to-gate-to-ramp relationship, and which side of the path the gate post sits on) as the ground truth for this scene's geography.
+
+Generate a 2-panel contact sheet, side by side, of this single combined location - the real street's architecture merged with the storyboard's established layout - shown from two different camera positions:
+
+PANEL 1 - Extreme Long Shot: from the street/curb, camera facing the house, showing the full spatial layout in one frame - front door, the complete length of the path, the low wall and its single gate post, and the truck with open ramp at the curb, all visible at once, left-to-right in that same real spatial order.
+
+PANEL 2 - Extreme Long Shot, reverse angle: from directly beside the truck, camera facing back up the path toward the house - the same door, same wall, same gate post, same path, now seen from the opposite direction, confirming it is physically the same space as Panel 1 just viewed from the other end.
+
+Ensure strict consistency: both panels show the exact same door position, the exact same wall height and gate post position and shape, the exact same path length and width, and the exact same truck/ramp position relative to the curb. Lighting must match exactly between panels - same dusk light level, same light sources, same shadows direction (do not let one panel be lit differently than the other). No people, no couch, no fox, no vehicles other than the truck and the parked cars already established in the reference.
+
+Generate at a 1:1 aspect ratio so both panels sit in a balanced 2-panel grid. Before finishing, check Panel 2 against Panel 1: would a person walking from the position in Panel 1 to the position in Panel 2 actually end up seeing this exact same wall, gate, and door in the same relative positions? If not, correct it before output.

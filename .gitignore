@@ -101,3 +101,9 @@ graphify-out/
 # regenerated on every run, not vault content)
 007_Resource_Library/_*.md
 007_Resource_Library/_*.json
+
+# Model weights: downloaded by ultralytics / mediapipe / opencv; stay on disk, never committed (Tony, 2026-09-27)
+*.pt
+*.onnx
+*.task
+001_Architecture/Tools/Video-Generation/Generic_Tools/models/.cache/

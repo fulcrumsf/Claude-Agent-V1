@@ -1,0 +1,46 @@
+{
+ "storyboard": "Storyboard_Clip1_v2.png",
+ "environment_sheet": "Character_Sheets/Environment_Sheet_v2.png",
+ "character_sheets": [
+  {
+   "file": "Character_Sheets/Fishmonger_Character_Sheet_v1_Titled.png",
+   "label": "FISHMONGER"
+  },
+  {
+   "file": "Character_Sheets/Walrus_Creature_Sheet_v1_Titled.png",
+   "label": "WALRUS"
+  }
+ ],
+ "prop_sheets": [
+  {
+   "file": "Character_Sheets/Van_Prop_Sheet_v1_Titled.png",
+   "label": "DELIVERY VAN"
+  }
+ ],
+ "not_sent": [
+  {
+   "glob": "Character_Sheets/Environment_Sheet_v1.png",
+   "reason": "superseded: wrong layout (village street), rejected by Tony 2026-09-22"
+  },
+  {
+   "glob": "Character_Sheets/Fishmonger_Character_Sheet_v1.png",
+   "reason": "unlabeled source of the labeled final"
+  },
+  {
+   "glob": "Character_Sheets/Walrus_Creature_Sheet_v1.png",
+   "reason": "unlabeled source of the labeled final"
+  },
+  {
+   "glob": "Character_Sheets/Van_Prop_Sheet_v1.png",
+   "reason": "unlabeled source of the labeled final"
+  },
+  {
+   "glob": "Data/Fishmonger_Sheet_Harbour_BG_Crop_*.png",
+   "reason": "background crops used only as environment-panel style references, not sheets"
+  },
+  {
+   "glob": "Storyboard_Clip1_v1.png",
+   "reason": "superseded storyboard: Tony redo (scale, zoom, door); video v1 from it reproduced the grid"
+  }
+ ]
+}

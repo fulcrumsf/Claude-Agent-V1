@@ -1,0 +1,30 @@
+{
+ "sheet_type": "prop",
+ "name": "Motorcycle",
+ "references": [
+  {
+   "file": "../Research/Reference_Images/Honda_CG_Motorcycle_01.jpg",
+   "role": "a real photograph of the exact motorcycle model to depict, a Honda CG 150 Titan-class commuter (match its round headlight, flat one-piece seat, silver tank and side covers, exposed chrome-and-black engine and spoked wheels)"
+  }
+ ],
+ "props": [
+  {
+   "name": "Motorcycle",
+   "front": "front view of a Honda CG 150-class commuter motorcycle: round headlight, wide flat handlebars, front fork and spoked front wheel, silver tank visible behind; plain, no logos or readable text",
+   "back": "rear view of the same motorcycle: small plain black rear top-box on its rear rack, tail light, rear spoked wheel; plain, no logos or readable text"
+  }
+ ],
+ "extra_panels": [
+  {
+   "title": "LEFT side (the side that faces the security camera in the shot)",
+   "description": "the whole motorcycle seen from its LEFT side with its FRONT wheel, headlight and handlebars pointing to the LEFT of the panel and its rear wheel and black top-box to the right, parked on its sidestand which is down on this left side, leaning slightly toward the viewer, on wet dark asphalt in a light drizzle"
+  },
+  {
+   "title": "RIGHT side",
+   "description": "the whole motorcycle seen from its RIGHT side with its front wheel pointing to the RIGHT of the panel, no sidestand visible, standing upright-leaning on the far side stand, the same silver-and-black colors and small black top-box"
+  }
+ ],
+ "out": "../Character_Sheets/Motorcycle_Prop_Sheet_v1.png",
+ "prompt_out": "../Prompts/Motorcycle-Prop-Sheet-Spec-v1.md",
+ "title_out": "../Character_Sheets/Motorcycle_Prop_Sheet_v1_Titled.png"
+}

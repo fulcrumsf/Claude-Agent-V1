@@ -1,0 +1,79 @@
+{
+  "shot_id": "Shot-07-Clip-1",
+  "max_attempts": 3,
+  "events": [
+    {
+      "timestamp": "2026-09-23T11:35:06.668592+00:00",
+      "shot_id": "Shot-07-Clip-1",
+      "event": "reserved",
+      "attempt": 1,
+      "prompt_path": "Prompts/Storyboard-Clip-1-GPT-Image-2-v1.md",
+      "prompt_sha256": "8cefc607cc1eec3672b9a8c1246ea1dc44aac3d812ae05100b1a60da0dd4a1af",
+      "spec_path": "Data/Storyboard_Spec_Clip1_v1.json",
+      "spec_sha256": "80d20cd8a8f6f5323946e3c643051dce81379dc731c6d3054bd50081d45481fd",
+      "retry_reason": null
+    },
+    {
+      "timestamp": "2026-09-23T11:35:06.673418+00:00",
+      "shot_id": "Shot-07-Clip-1",
+      "event": "candidate_generated",
+      "attempt": 1,
+      "image_path": "Storyboard_Clip1_v1.png",
+      "image_sha256": "1c314a1b9348af94f15c00773b6d296a3798fb16f72f7b9ac313adc949cc1f6a"
+    },
+    {
+      "timestamp": "2026-09-23T11:35:06.673633+00:00",
+      "shot_id": "Shot-07-Clip-1",
+      "event": "qa_recorded",
+      "attempt": 1,
+      "qa_status": "fail",
+      "qa_path": "Data/Continuity_Flags.md",
+      "qa_sha256": "582f19af8c0767620aa7a31f0f26f293787ee520c768908ff506d705ac9e4e2b",
+      "finding_count": 3,
+      "findings": [
+        "Tony 2026-09-23: fishmonger too large (f4-6), walrus overbearingly large (f5), frames 4-6 zoomed in, driver door left open (f3)",
+        "Own QA: hatchback missing f6, slipway not visible",
+        "Video v1 from this storyboard reproduced the grid layout"
+      ]
+    },
+    {
+      "timestamp": "2026-09-23T11:35:06.673874+00:00",
+      "shot_id": "Shot-07-Clip-1",
+      "event": "reserved",
+      "attempt": 2,
+      "prompt_path": "Prompts/Storyboard-Clip-1-GPT-Image-2-v2.md",
+      "prompt_sha256": "e102bccef107dfc89b23f26976eb73c3107d3fd0e01344006db08c53c5fbe1f1",
+      "spec_path": "Data/Storyboard_Spec_Clip1_v2.json",
+      "spec_sha256": "0205ab64d526278b745e77f9a29d2b1bd9f7dba4a189982d20c2d77a4f810841",
+      "retry_reason": "tony_revision: scale, zoom, driver door, hatchback, slipway"
+    },
+    {
+      "timestamp": "2026-09-23T20:15:42.568138+00:00",
+      "shot_id": "Shot-07-Clip-1",
+      "event": "candidate_generated",
+      "attempt": 2,
+      "image_path": "Storyboard_Clip1_v2.png",
+      "image_sha256": "3271e70502042b2ae01c55707545f8c4de62b095bbe9e4f2084e5aa6891722e5"
+    },
+    {
+      "timestamp": "2026-09-23T20:15:42.568621+00:00",
+      "shot_id": "Shot-07-Clip-1",
+      "event": "qa_recorded",
+      "attempt": 2,
+      "qa_status": "pass",
+      "qa_path": "Data/Continuity_Flags.md",
+      "qa_sha256": "51e41295be345eab6b4d92fee1f2536aaa4fa4b872c6367a47cedcec1b06bee6",
+      "finding_count": 1,
+      "findings": [
+        "Approved by Tony 2026-09-23; minor flags in Data/Continuity_Flags.md (van width f3 vs f4-6; f6 walrus short of slipway)"
+      ]
+    },
+    {
+      "timestamp": "2026-09-23T20:15:42.568774+00:00",
+      "shot_id": "Shot-07-Clip-1",
+      "event": "selected",
+      "attempt": 2,
+      "active_path": "Storyboard_Clip1_v2.png"
+    }
+  ]
+}

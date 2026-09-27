@@ -1,0 +1,27 @@
+# Pipeline Checklist — Shot 07 (Walrus / fishmonger's van, Scotland)
+Started 2026-09-22. Tony dictated this concept directly.
+- [x] Diversity Matrix built and checked for duplicate combinations
+- [x] Concept filters answered (one grounding correction: walrus sized as a real subadult, disclosed to Tony)
+- [x] Grounding Audit complete (Phase 1 + Phase 2)
+- [x] Reference images gathered
+- [x] Blocking & Capture-Device pass done (incl. vehicle entry path)
+- [x] Architectural/vehicle-path plausibility check + site plan written before any environment image (revised once: van's park angle corrected)
+- [x] Blocking Plan + Grounding Audit re-read before each generation prompt
+- [x] Grounding Coverage Check run (Data/Grounding_Coverage_Check.md)
+- [x] Prop ledger
+- [x] Character/creature/prop sheets (fishmonger passed hand gate 4/4; walrus; van)
+- [x] Environment sheet (top-down first, chained; global template)
+- [x] STOP: present finished sheets to Tony
+- [x] 2026-09-22 Tony review: fishmonger/walrus/van sheets APPROVED; subadult walrus OK; ice + fish heads cascade onto the road behind the van; environment REJECTED (wrong layout)
+- [x] Blocking Plan v2 + Site Plan v2 rewritten to Tony's harbour-quay layout (v1s kept as *_v1_Superseded.md); 6 harbour reference photos added
+- [x] Environment sheet v2 rebuilt (top-down first, chained; global template): Character_Sheets/Environment_Sheet_v2.png
+- [x] Environment_Sheet_v2 APPROVED by Tony 2026-09-22 (slipway exit confirmed). Two-clip plan: Clip 1 Kie Mini (all refs) + Clip 2 WaveSpeed Mini Extend (video + prompt + end frame; no sheets, accepted by Tony)
+- [x] Storyboard Clip 1 v2 APPROVED by Tony 2026-09-23 (attempt 2 of 3; v1 redone for scale/zoom/door; video v1 failed with grid reproduction)
+- [x] (history) Storyboard Clip 1 v1 (contract spec, 4 labeled refs) + Body-Orientation Check; APPROVED by Tony 2026-09-22 with notes (Data/Continuity_Flags.md)
+- [x] Video via seedance2_call.py (winning template, everything sent, tags in every beat): see Clip 1 lines below
+- [x] Raw video inspected (frame-by-frame + Gemini); upscale and grade below
+- [x] Clip 1 video: v1 failed (grid), v2 failed (sheet frame) → salvaged by crop (Tony option 1)
+- [x] Clip 2 WaveSpeed extend: v1 failed (water on the tarmac), v2 (railing exit, no end frame) APPROVED
+- [x] Gemini evidence pass (0.95, no errors)
+- [x] Upscale: Magnific basic API failed (chunk error) → Magnific MCP Topaz Astra 2 (0.3/0.5/0.5) → FFmpeg 1920x1080: Data/Shot07_Full_v2_1080p_FINAL.mp4
+- [x] Report card + Tony grade: **B+** (2026-09-23): beats good; scale 1.5-2x too large; the van isn't fully in its bay

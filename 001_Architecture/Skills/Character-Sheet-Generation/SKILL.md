@@ -13,6 +13,25 @@ Production-proven origin: this generalizes `character_sheet_generation.py` from 
 
 Read [`GPT-Image-2-Prompting-Guide`](../GPT-Image-2-Prompting-Guide/SKILL.md) first for the underlying model's prompting conventions (no negative prompts, reference-image limits, etc.) — this skill applies those conventions to one specific job (character sheets), it doesn't re-document the model itself.
 
+## Shared wardrobe/branding across multiple characters (real failure, logged 2026-09-17)
+
+When two or more characters need to share a matching wardrobe element (same
+uniform, same company logo), do not rely on independent text-only
+character-sheet generations to agree — they won't. Confirmed real failure
+(Neon Parcel): two movers' character sheets, generated separately with
+prompts that never mentioned a logo at all, each independently invented their
+own fictional company hoodie logo, and the two logos didn't match. Text
+silence on a detail does not prevent the model from inventing one, and
+separate generation calls have no shared memory to invent the *same* one.
+
+**Fix:** generate a [`Prop-Sheet-Generation`](../Prop-Sheet-Generation/SKILL.md)
+sheet for the shared wardrobe/logo item first — it already exists for exactly
+this ("a recurring worn object that needs to look identical every time").
+Pass that prop sheet as an `--input_urls` reference into every character
+sheet that needs to match it, with an explicit instruction to match that
+design exactly. This conditions every character on the same literal image
+instead of hoping independent generations coincidentally agree.
+
 ## When to build one
 
 Identify recurring subjects by reading the finished shot list, the way a human storyboard artist would — any character or creature named in more than one scene needs a sheet. A one-off background element does not.
@@ -72,3 +91,36 @@ workflows (`007_Resource_Library/Tutorials/Create-Seamless-AI-Films-of-ANY-Lengt
 `I-Can't-Believe-ChatGPT-Work-Made-This-Whole-Video-From-One-Image.md`) — see
 [`Seedance-Prompting-Guide`](../Seedance-Prompting-Guide/SKILL.md)'s "Un-reviewed
 reference material" section before treating either as validated technique.
+
+## Sheet presentation template (GLOBAL — approved by Tony 2026-09-20, all channels)
+
+Character, creature, and prop sheets are each generated in **ONE prompt** with this skill's own script (never assembled panel-by-panel), then given the standard dark **title bar** so every sheet in every pipeline looks the same and is easy to reference.
+
+```bash
+python3 scripts/title_sheet.py <sheet.png> --kind character|creature|prop --name "<Subject Name>" --out <titled.png> [--subtitle "<short note>"]
+```
+
+- **Title = the subject's name.** A named character: `Alexander the Great`. An animal: `Pistol Shrimp`; if a production has several, number them `Pistol Shrimp 1`, `Pistol Shrimp 2`. The `--kind` sets the small heading above it (CHARACTER SHEET / CREATURE SHEET / PROP SHEET).
+- **Why the name matters:** video prompts refer to the sheet by it ("image 1 = Pistol Shrimp 1 sheet"), so the label is what ties the reference to the subject.
+- **Look:** same dark presentation-board style as the environment sheet (`Environment-Sheet-Generation`, "Sheet presentation template"). Renderer: `scripts/build_reference_sheet.py`; `title_sheet.py` is the one-command wrapper.
+- **Panels inside the sheet:** minimum set per subject type (below), plus extra panels whenever the shot's action needs to see a detail (e.g. a subject swinging an axe → a panel of them holding it). Panels are never fewer than the minimum.
+- **Approved examples (reference for the look):** the Bicycle Courier and Vervet Monkey sheets in Neon Parcel `Productions/0002_Delivery-Wildlife-Encounters-Compilation/Shot-05-Vervet-Monkey-Shopfront-KE/Character_Sheets/` (the `*_Titled.png` files).
+- **Checker status:** left/right hands can be measured with `Generic_Tools/check_sheet_hands.py` (v1, human hands only; see TOOLBOX for limits). Still unverified by any tool: extra fingers/deformity, animal anatomy, facing direction on close-ups. A human reviews those during iteration.
+
+## JSON spec template (GLOBAL, 2026-09-21): one spec drives one prompt
+
+Every character, creature and prop sheet is built from a JSON spec with `scripts/sheet_spec.py`, so the structure never depends on how a prompt was worded that day. The fixed style wording stays in the approved scripts; the spec fills only the per-subject parts (name, role, description, anatomy notes, labeled reference images) and **adds** panels the shot's action needs on top of the locked minimum set.
+
+```bash
+python3 scripts/sheet_spec.py <spec.json> --validate       # check the spec
+python3 scripts/sheet_spec.py <spec.json> --print-prompt   # show the exact prompt (writes nothing)
+python3 scripts/sheet_spec.py <spec.json> --generate       # saves the prompt FIRST, one generation, then the title bar (paid)
+```
+Examples in this folder: `Sheet_Spec_Example_Character.json`, `..._Creature.json`, `..._Prop.json`.
+
+- **Locked minimum panels** (from this skill): person = front, side, back, full body, neutral + exertion expression, face close-up, hands, feet, clothing/props, natural-setting pose; creature = its own set above. For a person, `hands: "both"` (default) turns the single hands close-up into TWO: the character's own LEFT and RIGHT hand and forearm.
+- **`extra_panels`** = what this shot's action needs (a character swinging an axe gets a "holding the axe" panel; the prop sheet shows the axe). Never fewer than the minimum.
+- **`references`** = labeled reference images; the tool states each one's role in the prompt (multi-reference rule).
+- **Prop sheets:** if any prop has a held panel, `holder_reference` (the holder's character sheet) is REQUIRED, so the hand is that character's hand, never a generic one.
+- **Checked by the tool:** the prompt for a spec with no extras equals the approved base prompt exactly; the tool never overwrites an output, never creates a folder, and saves the prompt before any paid call.
+- Left/right on the finished sheet can be checked with `Generic_Tools/check_sheet_hands.py`.

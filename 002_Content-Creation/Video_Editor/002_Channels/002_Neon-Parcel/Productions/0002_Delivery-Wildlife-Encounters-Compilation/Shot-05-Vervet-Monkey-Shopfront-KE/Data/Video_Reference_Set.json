@@ -1,0 +1,65 @@
+{
+ "storyboard": "Storyboard_v3.png",
+ "environment_sheet": "Character_Sheets/Environment_Sheet_v2.png",
+ "character_sheets": [
+  {
+   "file": "Character_Sheets/Courier_Character_Sheet_Skill_v2_BikeFixed_LabeledClean.png",
+   "label": "BICYCLE COURIER"
+  },
+  {
+   "file": "Character_Sheets/Vervet_Monkey_Character_Sheet_Skill_v3_LabeledClean.png",
+   "label": "VERVET MONKEY"
+  }
+ ],
+ "prop_sheets": [],
+ "not_sent": [
+  {
+   "glob": "Character_Sheets/Bicycle_Courier_Character_Sheet.png",
+   "reason": "old 3-panel sheet, non-compliant with the skill, superseded"
+  },
+  {
+   "glob": "Character_Sheets/Vervet_Monkey_Character_Sheet.png",
+   "reason": "old 3-panel sheet, non-compliant with the skill, superseded"
+  },
+  {
+   "glob": "Character_Sheets/*_Skill_v1*",
+   "reason": "first skill-built versions, superseded"
+  },
+  {
+   "glob": "Character_Sheets/*_Sheet_Assembled_v2*",
+   "reason": "panel-by-panel assembled trial, superseded"
+  },
+  {
+   "glob": "Character_Sheets/Courier_Character_Sheet_Skill_v2.png",
+   "reason": "unlabeled, contains 3-wheel bicycle panel, superseded"
+  },
+  {
+   "glob": "Character_Sheets/*BikeFixed.png",
+   "reason": "unlabeled source of the labeled final"
+  },
+  {
+   "glob": "Character_Sheets/Vervet_Monkey_Character_Sheet_Skill_v2*",
+   "reason": "superseded by v3"
+  },
+  {
+   "glob": "Character_Sheets/Vervet_Monkey_Character_Sheet_Skill_v3.png",
+   "reason": "unlabeled source of the labeled final"
+  },
+  {
+   "glob": "Character_Sheets/*_Titled.png",
+   "reason": "trial title-bar versions with placeholder subtitle, superseded by the LabeledClean finals"
+  },
+  {
+   "glob": "Character_Sheets/Environment_Sheet_v1.png",
+   "reason": "superseded by approved v2"
+  },
+  {
+   "glob": "Character_Sheets/Props_Sheet_Skill_v1.png",
+   "reason": "superseded: wrong-skin-tone hand; no separate prop sheet needed (Data/Prop_Ledger.md)"
+  },
+  {
+   "glob": "Data/Hand_Check/*",
+   "reason": "QA overlay images from the hand checker, not sheets"
+  }
+ ]
+}

@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-09-15
+created: 2026-09-26
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-09-15T08:18:45-04:00
+Generated: 2026-09-26T23:40:40-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -41,13 +41,14 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | gpt-image-2-prompting-guide | Use whenever writing or reviewing a prompt for OpenAI's GPT-Image-2 (image generation/editing) via kie.ai or the OpenAI API directly. Triggers on "write a GPT-Image-2 prompt", "ge… | `001_Architecture/Skills/GPT-Image-2-Prompting-Guide/SKILL.md` |
 | Motion-Graphics-Compositing | Use whenever a beat needs an animated diagram, infographic, data-viz, or collage-style motion graphic — never ask a video-generation model (Seedance or otherwise) to animate this… | `001_Architecture/Skills/Motion-Graphics-Compositing/SKILL.md` |
 | neon-parcel-longform-compilation | Use when Tony asks to create a Neon Parcel long-form animal compilation, analyze reference animal videos for Neon Parcel, or generate Shorts from a Neon Parcel long-form compilati… | `001_Architecture/Skills/Neon_Parcel_Longform_Compilation/SKILL.md` |
+| neon-parcel-longform-compilation-v2 | Use when building a Neon Parcel long-form animal compilation on the v2 architecture — a versioned duplicate of Neon_Parcel_Longform_Compilation (v1), which remains untouched and i… | `001_Architecture/Skills/Neon_Parcel_Longform_Compilation_v2/SKILL.md` |
 | Production-Asset-Planner | Invoke once a production's shot list/beat breakdown exists, on ANY channel — reads the script and beats in one combined pass to decide (1) which conditional image assets (prop/env… | `001_Architecture/Skills/Production-Asset-Planner/SKILL.md` |
 | Production-Research-Agent | Invoke right after a video production's topic/subject is chosen, on ANY channel — gathers real-world facts, reference images, and Pexels B-roll footage for that subject before scr… | `001_Architecture/Skills/Production-Research-Agent/SKILL.md` |
 | prop-sheet-generation | Use whenever a video production has a recurring handheld/worn object that appears in more than one scene and needs to look and orient identically every time — "build a prop sheet"… | `001_Architecture/Skills/Prop-Sheet-Generation/SKILL.md` |
 | reimagined-realms-pov-shorts-pipeline | Use when building Reimagined Realms POV Shorts (vertical historical "day in the life" videos with no dialogue), planning beats/scenes, generating a shot list, generating/trimming… | `001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/SKILL.md` |
 | reimagined-realms-pov-shorts-pipeline-v2 | Use when building Reimagined Realms POV Shorts on the v2 (Seedance 2.0 / character-sheet + environment-sheet) architecture — a versioned duplicate of Reimagined_Realms_POV_Shorts_… | `001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline_v2/SKILL.md` |
 | Reimagined_Realms_Video_Pipeline | Invoke when Tony says /reimagined-realms, make a Reimagined Realms video, build me a video for the history channel, run the video pipeline, or start the RR pipeline. Orchestrates… | `001_Architecture/Skills/Reimagined_Realms_Video_Pipeline/SKILL.md` |
-| seedance-prompting-guide | Use whenever writing or reviewing a prompt for ByteDance Seedance (any version — 1.5 Pro, 2.0, 2.0 Fast, and future releases) — image-to-video or text-to-video generation via kie.… | `001_Architecture/Skills/Seedance-Prompting-Guide/SKILL.md` |
+| seedance-prompting-guide | This skill should be used when writing or reviewing Seedance prompts, choosing reference images versus start/end frames, directing camera movement or audio, or troubleshooting sto… | `001_Architecture/Skills/Seedance-Prompting-Guide/SKILL.md` |
 | storyboard-generation | Use whenever a video production needs a per-scene storyboard — a single image showing 6-12 sequential frames of a shot's progression, used to plan shot composition and camera move… | `001_Architecture/Skills/Storyboard-Generation/SKILL.md` |
 | tiktok-shop-affiliate-video | Use when Tony has raw product footage and voiceover clips and wants to produce TikTok Shop or YouTube Shorts affiliate videos. Triggers on "create affiliate video", "edit product… | `001_Architecture/Skills/TikTok-Shop-Affiliate-Video/SKILL.md` |
 | tool-manager | > | `001_Architecture/Skills/Tool-Manager/SKILL.md` |
@@ -225,6 +226,14 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | social-content | When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, Facebook, or other platforms. Also use when the user… | `001_Architecture/Skills/social-content/SKILL.md` |
 | software-design-philosophy | Manage software complexity through deep modules, information hiding, and strategic programming. Use when the user mentions "module design", "API too complex", "shallow class", "co… | `001_Architecture/Skills/software-design-philosophy/SKILL.md` |
 | storybrand-messaging | Clarify brand messaging using narrative structure that positions the customer as hero. Use when the user mentions "brand message", "website copy", "elevator pitch", "one-liner", "… | `001_Architecture/Skills/storybrand-messaging/SKILL.md` |
+| docs | docs (living docs people share, comment on and edit; use only when the user asks for one: names a doc, document, page, memo, spec, PRD, runbook or write-up, asks for somewhere to… | `001_Architecture/Skills/synced/29776a52-6b34-4c65-90f4-01929f5aa245_67507ce8-c0f9-442e-bfed-029ce8c0c23b/docs/SKILL.md` |
+| docx | Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of Microsoft Word Docum… | `001_Architecture/Skills/synced/29776a52-6b34-4c65-90f4-01929f5aa245_67507ce8-c0f9-442e-bfed-029ce8c0c23b/docx/SKILL.md` |
+| import-memory | Import a memory export from another AI assistant into Claude's memory — conversationally, additively, and with the content treated as data. | `001_Architecture/Skills/synced/29776a52-6b34-4c65-90f4-01929f5aa245_67507ce8-c0f9-442e-bfed-029ce8c0c23b/import-memory/SKILL.md` |
+| morning | Render the user's morning brief as a styled HTML artifact, or set it up as a recurring weekday task. Use only when the user explicitly asks to run, see, or set up their morning br… | `001_Architecture/Skills/synced/29776a52-6b34-4c65-90f4-01929f5aa245_67507ce8-c0f9-442e-bfed-029ce8c0c23b/morning/SKILL.md` |
+| pdf | Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, split… | `001_Architecture/Skills/synced/29776a52-6b34-4c65-90f4-01929f5aa245_67507ce8-c0f9-442e-bfed-029ce8c0c23b/pdf/SKILL.md` |
+| pptx | Use this skill any time a .pptx or .potx file is involved in any way — as input, output, or both. This includes: creating slide decks, pitch decks, or presentations as PowerPoint… | `001_Architecture/Skills/synced/29776a52-6b34-4c65-90f4-01929f5aa245_67507ce8-c0f9-442e-bfed-029ce8c0c23b/pptx/SKILL.md` |
+| skill-creator | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run… | `001_Architecture/Skills/synced/29776a52-6b34-4c65-90f4-01929f5aa245_67507ce8-c0f9-442e-bfed-029ce8c0c23b/skill-creator/SKILL.md` |
+| xlsx | Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .… | `001_Architecture/Skills/synced/29776a52-6b34-4c65-90f4-01929f5aa245_67507ce8-c0f9-442e-bfed-029ce8c0c23b/xlsx/SKILL.md` |
 | system-design | Design scalable distributed systems using structured approaches for load balancing, caching, database scaling, and message queues. Use when the user mentions "system design", "sca… | `001_Architecture/Skills/system-design/SKILL.md` |
 | template_skill | A template skill to demonstrate how skills are structured and how you can create your own. | `001_Architecture/Skills/template_skill/SKILL.md` |
 | three-brain | Three-Brain Auto-Router — intelligently routes tasks across Claude (orchestrator/builder), OpenAI Codex (reviewer/rescue), and Gemini (video/audio/PDF/long-context). Invoke this s… | `001_Architecture/Skills/three-brain/SKILL.md` |

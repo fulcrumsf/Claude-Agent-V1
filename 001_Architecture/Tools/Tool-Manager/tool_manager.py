@@ -257,8 +257,8 @@ def cost(pipeline, verbose):
 
 
 @cli.command()
-@click.option("--type", "media_type", required=True, type=click.Choice(["image", "video", "audio", "video-to-audio"]),
-              help="image or video")
+@click.option("--type", "media_type", required=True, type=click.Choice(["image", "video", "audio", "video-to-audio", "upscale"]),
+              help="image, video, audio, video-to-audio, or upscale (video upscalers)")
 @click.option("--need", default="", help="What the task needs, e.g. photorealism, character-consistency")
 @click.option("--task", default="", help="Plain-language task requirements for capability-aware routing")
 def recommend(media_type, need, task):
@@ -285,7 +285,10 @@ TASK_REQUIREMENT_ALIASES = {
     "native_1080p": ("1080p", "1920x1080", "full hd"),
     "native_audio": ("native audio", "audio generated", "synchronized audio", "sync audio"),
     "storyboard_timeline": ("timestamp", "time-stamped", "action timeline", "storyboard timeline"),
+    "model_choice": ("proteus", "model choice", "choose the model", "face-safe", "face safe", "faces"),
 }
+# Requirements only meaningful for one kind of tool: generation traits don't apply to upscalers and vice versa.
+UPSCALE_ONLY_REQUIREMENTS = {"model_choice"}
 
 
 def parse_task_requirements(task: str, need: str = "") -> set[str]:
@@ -374,6 +377,7 @@ def _recommend_from_catalog(catalog, media_type, need, task=""):
         "image": ["text-to-image"],
         "audio": ["text-to-speech", "text-to-sfx", "text-to-music"],
         "video-to-audio": ["video-to-audio"],
+        "upscale": ["video-upscaling"],
     }
     target_types = type_map.get(media_type, [media_type])
 
@@ -384,6 +388,10 @@ def _recommend_from_catalog(catalog, media_type, need, task=""):
     ]
 
     requirements = parse_task_requirements(task, need)
+    if media_type == "upscale":
+        requirements &= UPSCALE_ONLY_REQUIREMENTS
+    else:
+        requirements -= UPSCALE_ONLY_REQUIREMENTS
     capability_notes = []
     task_text = f"{task} {need}".lower()
     requested_model = next(
@@ -414,6 +422,14 @@ def _recommend_from_catalog(catalog, media_type, need, task=""):
             min((_platform_price(m.get("pricing", {}), p) or 999)
                 for p in m.get("_eligible_platforms", [])),
         ))
+    elif media_type == "upscale":
+        # Upscalers have little community rating data: the locked pipeline route wins, then models
+        # already tested on our footage, then price. An untested cheap model never outranks the route.
+        candidates.sort(key=lambda m: (
+            -(1 if m.get("route_default") else 0),
+            -(1 if m.get("tested") else 0),
+            m["pricing"].get("cheapest_price") or 999,
+        ))
     else:
         candidates = [m for m in candidates if m.get("rating") is not None]
         candidates.sort(key=lambda m: (
@@ -441,12 +457,16 @@ def _recommend_from_catalog(catalog, media_type, need, task=""):
             cheapest = str(pricing.get("cheapest") or "needs-pricing")
             price = pricing.get("cheapest_price")
         price_str = f"${price}" if price is not None else "price unknown"
-        rating = m.get("rating", "?")
+        rating = m.get("rating") if m.get("rating") is not None else "?"
         click.echo(f"\n  {label}: {m['name']}")
         click.echo(f"     Type:      {m.get('type','')}")
         click.echo(f"     Rating:    {rating}/10")
         click.echo(f"     Platform:  {cheapest} ({price_str})")
         click.echo(f"     Use for:   {m.get('description','')[:80]}")
+        if m.get("route_default"):
+            click.echo(f"     Route:     {m['route_default']}")
+        if media_type == "upscale" and not m.get("tested"):
+            click.echo("     Tested:    NO - not yet tried on our footage (check faces before adopting)")
         if m.get("notes"):
             click.echo(f"     Notes:     {m['notes'][:80]}")
 
@@ -463,14 +483,15 @@ def _recommend_from_catalog(catalog, media_type, need, task=""):
                        + ", ".join(capability_notes))
 
     # Show full ranked list
-    click.echo(f"\n  All {media_type} models (by rating):")
+    click.echo(f"\n  All {media_type} models ({'route default, tested, then price per 5 s' if media_type == 'upscale' else 'by rating'}):")
     for m in candidates[:6]:
         pricing = m.get("pricing", {})
         price = pricing.get("cheapest_price")
         price_str = f"${price}" if price is not None else "N/A"
         platform = str(pricing.get("cheapest") or "needs-pricing")
         rating = m.get("rating") if m.get("rating") is not None else "?"
-        click.echo(f"    {str(rating):>4}/10  {m['name']:<30} {platform:<18} {price_str}")
+        flag = ("  [route default]" if m.get("route_default") else "") + ("" if m.get("tested") or media_type != "upscale" else "  [untested]")
+        click.echo(f"    {str(rating):>4}/10  {m['name']:<30} {platform:<18} {price_str}{flag}")
     click.echo()
 
 

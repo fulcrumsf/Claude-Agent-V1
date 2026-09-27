@@ -1,0 +1,4 @@
+Hand check, Courier_Character_Sheet_Skill_v2_BikeFixed.png (2026-09-20)
+GATE: PASS score=1.0 (need 0.8): front RIGHT->RIGHT; side LEFT->LEFT; back LEFT->LEFT; clipboard hand RIGHT->RIGHT (last one fixed by the prompt, not by anatomy)
+Toes at [681,1416,783,1470] dropped as a foot.
+Not checked (tool limits): finger count/deformity, the front panel's other hand (missed by tool).

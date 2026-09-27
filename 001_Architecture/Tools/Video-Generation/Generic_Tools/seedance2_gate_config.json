@@ -1,0 +1,22 @@
+{
+ "_note": "Which channels the Seedance 2 / Mini reference-image process (seedance2_call.py) is ENFORCED for. Flip a channel to true to enable it. Anything below Seedance 2 (start/end frame only) can never use it.",
+ "channels": {
+  "Anomalous_Wild": false,
+  "Neon_Parcel": true,
+  "Reimagined_Realms": false,
+  "Kingdoms_And_Conquerors": false,
+  "Glyphary": false,
+  "Polyoculis": false,
+  "Robotto_Gato": false,
+  "Board_Nomad": false,
+  "Unomas_Creative": false,
+  "Room_Portal": false,
+  "Ikigai_Digital_Studios": false,
+  "Business_Origin_Stories": false,
+  "The_Brain_Blueprint": false
+ },
+ "notes": {
+  "Anomalous_Wild": "Seedance 1.5 Pro (start/end frame only): can never use references",
+  "Reimagined_Realms": "disabled for now: POV v2 uses Seedance 2 in start-image mode by design (each beat's start image is its storyboard); long-form storyboards deferred until tested"
+ }
+}

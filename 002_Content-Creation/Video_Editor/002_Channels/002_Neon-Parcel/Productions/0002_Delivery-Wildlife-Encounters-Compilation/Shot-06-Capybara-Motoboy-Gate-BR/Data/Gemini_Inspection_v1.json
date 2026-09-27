@@ -1,0 +1,41 @@
+{
+  "provider": "gemini_direct",
+  "model": "gemini-3.7-flash",
+  "processing_mode": "static",
+  "sampling_fps": 3.0,
+  "video": "Data/Seedance_Mini_v1_Winning_Formula.mp4",
+  "report": {
+    "summary": "Locked-off wide exterior night shot outside a security gatehouse on wet pavement. A capybara walks in from screen right, stops, and lies down beside the building entrance while a delivery courier finishes business at the window and walks toward his motorcycle putting on his helmet.",
+    "overall_confidence": 0.95,
+    "findings": [
+      {
+        "timestamp": "00:01.000",
+        "category": "spatial geometry",
+        "severity": "note",
+        "observation": "A large capybara enters the frame from the right background along the walkway, moving smoothly into the illuminated area near the guardhouse.",
+        "confidence": 0.95
+      },
+      {
+        "timestamp": "00:06.000",
+        "category": "spatial geometry",
+        "severity": "note",
+        "observation": "The capybara sits and rests on the pavement next to the guardhouse wall while maintaining consistent grounding and lighting contact with the wet surface.",
+        "confidence": 0.92
+      },
+      {
+        "timestamp": "00:06.667",
+        "category": "character eyelines and gestures",
+        "severity": "note",
+        "observation": "The courier turns around, notices the capybara resting beside him, and begins walking toward the foreground holding his helmet.",
+        "confidence": 0.94
+      },
+      {
+        "timestamp": "00:13.333",
+        "category": "character eyelines and gestures",
+        "severity": "note",
+        "observation": "The courier lifts his helmet over his head to put it on while walking forward toward the parked motorcycle.",
+        "confidence": 0.96
+      }
+    ]
+  }
+}

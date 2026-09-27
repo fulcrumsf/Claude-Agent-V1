@@ -1,0 +1,37 @@
+{
+  "production": "0002_Delivery-Wildlife-Encounters-Compilation/Shot-04-Tanuki-Camcorder-JP",
+  "pipeline": "neon-parcel-longform-compilation-v2-test-shot",
+  "assets": [
+    {
+      "shot_id": "Shot-04-Full-Action",
+      "version": "v1",
+      "model": "bytedance/seedance-2-mini",
+      "tool": "kie_market_api.py seedance_mini",
+      "status": "approved",
+      "inputs": {
+        "first_frame_url": null,
+        "reference_image_urls": [
+          "Data/Village_Panel_3_POV.png (@Image1 -- environment plate)",
+          "Character_Sheets/Tanuki_Character_Sheet.png (@Image2 -- tanuki, correct canid build)"
+        ]
+      },
+      "duration_seconds": 14,
+      "resolution": "480p",
+      "prompt_structure": "Reference-role preamble (@Image1/@Image2) + timestamped action-block timeline (6 beats) + inline continuity constraints + closing dash negative-prompt line. No separate validation clip run first, per the 2026-09-20 process correction.",
+      "output": "Data/Seedance_Mini_v1_Full_Action_Test.mp4",
+      "grade": "C",
+      "approval_note": "Tony: approved, grade C. Technically clean (scooter arrives/delivers/departs, tanuki emerges at correct scale, natural camera reaction, real physical tell before retreat) but narratively flat -- 'wasn't that great,' just sequential passive observation with no interaction or gag. Root cause identified as the matrix cell/story premise, not execution quality.",
+      "issues": [
+        {
+          "severity": "🟠 Major",
+          "note": "Story/premise issue, not a technical defect: the arrive-notice-watch-leave structure has no built-in comedic engine. Worked better on Shot 02 (kangaroo) where the animal itself carried the scene; failed here because a tanuki quietly retreating isn't inherently funny. Future matrix cells need an explicit, deliberately chosen comedic hook (interaction, mimicry, misunderstanding, behavioral gag), not just axis variation."
+        },
+        {
+          "severity": "🟡 Minor",
+          "note": "Mid-2000s SD camcorder look still didn't render even with the aesthetic pushed directly into the video prompt -- likely a real Seedance limitation rather than a prompt-wording gap. Did not block approval."
+        }
+      ]
+    }
+  ],
+  "processing": []
+}

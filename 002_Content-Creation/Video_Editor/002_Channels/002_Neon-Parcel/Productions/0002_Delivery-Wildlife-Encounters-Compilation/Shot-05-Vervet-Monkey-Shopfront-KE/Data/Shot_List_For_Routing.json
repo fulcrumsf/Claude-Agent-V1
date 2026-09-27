@@ -1,0 +1,20 @@
+{
+ "shots": [
+  {
+   "shot_id": "Monkey-African-Messenger-Full-Action",
+   "description": "Courier sets a clipboard on a shop counter; a vervet monkey leaps from the awning post, grabs it, scribbles the pen across the paper, holds it out of the courier's reach as he lunges, then flees back up the post with it.",
+   "semantic_assessment": {
+    "action_count": 2,
+    "physics": 2,
+    "object_continuity": 2,
+    "precision": 1,
+    "character_interaction": 2,
+    "spatial_continuity": 2,
+    "timing_precision": 1,
+    "dialogue_sync": 0,
+    "failure_risk": 2,
+    "storyboard_value": 2
+   }
+  }
+ ]
+}

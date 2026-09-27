@@ -1,0 +1,389 @@
+{
+ "_readme": "Shot 06 spec for Environment-Sheet-Generation/scripts/build_environment_sheet.py (global template). Image paths relative to the shot folder.",
+ "title": "ENVIRONMENT SHEET",
+ "headline": "SHOT 06  |  CAPYBARA AT THE CONDO GATE  |  SAO PAULO SUBURB, BRAZIL",
+ "subtitle": "FIXED CONDO PERIMETER CCTV   -   DUSK, LIGHT DRIZZLE, 2016   -   PANEL 1 IS THE CAMERA'S VIEW (16:9)",
+ "cols": 2,
+ "panels": [
+  {
+   "num": 1,
+   "type": "camera_pov",
+   "title": "CAMERA POV",
+   "subtitle": "The static CCTV view - exactly what the video frame shows",
+   "image": "Data/Env_Panel_1_CameraPOV_v1.png",
+   "legend": [
+    "CAMERA'S VIEW  |  16:9, fixed, ~3 m up on a lamp-post bracket at the near curb, looking across the bay at the guardhouse",
+    "Every landmark here is in frame. The dry slab under the awning is the lighter ground; everything beyond the drip line is wet."
+   ],
+   "marks": [
+    {
+     "fx": 0.378,
+     "fy": 0.34,
+     "label": "SERVICE WINDOW + PARCEL DRAWER",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.38,
+     "fy": 0.5,
+     "label": "COURIER WAIT POINT (AT THE WINDOW)",
+     "side": "L",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.33,
+     "fy": 0.57,
+     "label": "DRY SLAB UNDER THE AWNING",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.07,
+     "fy": 0.77,
+     "label": "MOTORCYCLE STOP POINT",
+     "side": "L",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.31,
+     "fy": 0.22,
+     "label": "CONCRETE AWNING + LIGHT",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.72,
+     "fy": 0.35,
+     "label": "PERIMETER WALL",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.73,
+     "fy": 0.52,
+     "label": "CAPYBARA START (GRASS VERGE)",
+     "side": "R",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.56,
+     "fy": 0.57,
+     "label": "FLUSH RAMP: SLAB TO GRASS (NO CURB)",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.47,
+     "fy": 0.56,
+     "label": "CAPYBARA LIE-DOWN SPOT (DRY SLAB)",
+     "side": "R",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.44,
+     "fy": 0.72,
+     "label": "WET DELIVERY BAY",
+     "side": "R",
+     "accent": "teal"
+    }
+   ]
+  },
+  {
+   "num": 2,
+   "type": "top_down",
+   "title": "TOP-DOWN VIEW",
+   "subtitle": "Bird's-eye site plan - the single source of truth for positions",
+   "image": "Data/Env_Panel_2_TopDown_v2.png",
+   "legend": [
+    "PLAN VIEW  |  the camera post stands at the bottom-center of this plan and looks UP the plan at the guardhouse",
+    "Orange = action points for the gag (motorcycle stop, capybara start).  Teal = fixed set structure."
+   ],
+   "marks": [
+    {
+     "fx": 0.32,
+     "fy": 0.17,
+     "label": "GUARDHOUSE ROOF",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.37,
+     "fy": 0.35,
+     "label": "SERVICE WINDOW",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.36,
+     "fy": 0.47,
+     "label": "DRY SLAB UNDER THE AWNING",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.16,
+     "fy": 0.65,
+     "label": "MOTORCYCLE STOP POINT",
+     "side": "L",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.79,
+     "fy": 0.22,
+     "label": "PERIMETER WALL",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.79,
+     "fy": 0.41,
+     "label": "GRASS VERGE (CAPYBARA START)",
+     "side": "R",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.57,
+     "fy": 0.45,
+     "label": "FLUSH RAMP",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.64,
+     "fy": 0.67,
+     "label": "WET DELIVERY BAY",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.51,
+     "fy": 0.81,
+     "label": "LAMP POST + CCTV CAMERA",
+     "side": "R",
+     "accent": "teal"
+    }
+   ]
+  },
+  {
+   "num": 3,
+   "type": "reverse",
+   "title": "REVERSE VIEW",
+   "subtitle": "Spatial reference ONLY - NOT camera output. On the slab, looking back at the camera post",
+   "image": "Data/Env_Panel_4_Reverse_v1.png",
+   "legend": [
+    "REVERSE ANGLE  |  standing on the dry slab beside the service window, looking back across the bay at the near curb",
+    "Shows the awning underside and the camera post from the guardhouse side. The real camera never sees this."
+   ],
+   "marks": [
+    {
+     "fx": 0.08,
+     "fy": 0.52,
+     "label": "GRASS VERGE + SHRUBS",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.28,
+     "fy": 0.63,
+     "label": "WET DELIVERY BAY",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.33,
+     "fy": 0.75,
+     "label": "DRIP LINE (EDGE OF THE DRY SLAB)",
+     "side": "L",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.73,
+     "fy": 0.1,
+     "label": "AWNING UNDERSIDE + LIGHT",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.92,
+     "fy": 0.3,
+     "label": "SERVICE WINDOW",
+     "side": "R",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.46,
+     "fy": 0.375,
+     "label": "LAMP POST + CCTV CAMERA (THE REAL CAMERA)",
+     "side": "R",
+     "accent": "teal"
+    }
+   ]
+  },
+  {
+   "num": 4,
+   "type": "landmark_detail",
+   "title": "LANDMARK DETAIL",
+   "subtitle": "The recurring set objects the video prompts refer to by name",
+   "image": "Data/Env_Panel_5_LandmarkDetail_v1.png",
+   "legend": [
+    "A SERVICE WINDOW  |  B FLUSH RAMP  |  C MOTORCYCLE, LEFT SIDE  |  D CCTV POST + STREETLIGHT",
+    "These objects must look identical in every frame of the video."
+   ],
+   "marks": [
+    {
+     "fx": 0.26,
+     "fy": 0.27,
+     "label": "A  SERVICE WINDOW + PARCEL DRAWER",
+     "side": "L",
+     "accent": "teal"
+    },
+    {
+     "fx": 0.28,
+     "fy": 0.74,
+     "label": "C  MOTORCYCLE (LEFT SIDE TO CAMERA, FRONT WHEEL LEFT)",
+     "side": "L",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.73,
+     "fy": 0.27,
+     "label": "B  FLUSH RAMP: DRY SLAB TO GRASS (NO CURB)",
+     "side": "R",
+     "accent": "orange"
+    },
+    {
+     "fx": 0.73,
+     "fy": 0.74,
+     "label": "D  CCTV POST + STREETLIGHT",
+     "side": "R",
+     "accent": "teal"
+    }
+   ]
+  }
+ ],
+ "materials": [
+  {
+   "name": "CONCRETE AWNING",
+   "image": "Data/Env_Panel_4_Reverse_v1.png",
+   "crop": [
+    560,
+    30,
+    1370,
+    215
+   ]
+  },
+  {
+   "name": "WET ASPHALT",
+   "image": "Data/Env_Panel_1_CameraPOV_v1.png",
+   "crop": [
+    820,
+    1045,
+    1640,
+    1260
+   ]
+  },
+  {
+   "name": "PAVED SLAB (DRY)",
+   "image": "Data/Env_Panel_1_CameraPOV_v1.png",
+   "crop": [
+    765,
+    770,
+    1370,
+    890
+   ]
+  },
+  {
+   "name": "GRASS",
+   "image": "Data/Env_Panel_1_CameraPOV_v1.png",
+   "crop": [
+    1800,
+    770,
+    2325,
+    860
+   ]
+  },
+  {
+   "name": "PERIMETER WALL",
+   "image": "Data/Env_Panel_1_CameraPOV_v1.png",
+   "crop": [
+    1640,
+    460,
+    2325,
+    615
+   ]
+  },
+  {
+   "name": "TINTED GLASS",
+   "image": "Data/Env_Panel_1_CameraPOV_v1.png",
+   "crop": [
+    900,
+    430,
+    1150,
+    570
+   ]
+  }
+ ],
+ "palette": {
+  "image": "Data/Env_Panel_1_CameraPOV_v1.png",
+  "count": 8
+ },
+ "details": [
+  {
+   "name": "SERVICE WINDOW",
+   "image": "Data/Env_Panel_5_LandmarkDetail_v1.png",
+   "crop": [
+    420,
+    120,
+    1200,
+    650
+   ],
+   "size": [
+    250,
+    150
+   ]
+  },
+  {
+   "name": "FLUSH RAMP",
+   "image": "Data/Env_Panel_5_LandmarkDetail_v1.png",
+   "crop": [
+    1500,
+    300,
+    2500,
+    700
+   ],
+   "size": [
+    250,
+    150
+   ]
+  },
+  {
+   "name": "MOTORCYCLE",
+   "image": "Data/Env_Panel_5_LandmarkDetail_v1.png",
+   "crop": [
+    200,
+    850,
+    1250,
+    1450
+   ],
+   "size": [
+    250,
+    150
+   ]
+  },
+  {
+   "name": "CCTV POST",
+   "image": "Data/Env_Panel_5_LandmarkDetail_v1.png",
+   "crop": [
+    1450,
+    830,
+    2400,
+    1450
+   ],
+   "size": [
+    250,
+    150
+   ]
+  }
+ ],
+ "key": "KEY:  ORANGE = gag action points (motorcycle stop, capybara start, dry slab)     TEAL = fixed set structure     Labels sit in the margins and never cover the images."
+}

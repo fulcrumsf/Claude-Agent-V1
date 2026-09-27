@@ -1,0 +1,34 @@
+{
+  "provider": "gemini_direct",
+  "model": "gemini-3.7-flash",
+  "processing_mode": "static",
+  "sampling_fps": 3.0,
+  "video": "Data/Seedance_Mini_v7_Labeled_Sheets.mp4",
+  "report": {
+    "summary": "The video contains synthetic/AI-generated animal animation where a monkey exhibits anthropomorphic behavior (signing/inspecting documents with a pen) and physically unnatural jumping trajectories between a post and a kiosk counter.",
+    "overall_confidence": 0.95,
+    "findings": [
+      {
+        "timestamp": "00:04.000",
+        "category": "physics_and_movement",
+        "severity": "error",
+        "observation": "The monkey displays unnatural leap physics, stretching, and motion artifacts while jumping from the post to the kiosk ledge.",
+        "confidence": 0.95
+      },
+      {
+        "timestamp": "00:06.000",
+        "category": "subject_behavior",
+        "severity": "warning",
+        "observation": "The monkey demonstrates surreal anthropomorphic behavior, holding a writing utensil and examining/writing on the clipboard.",
+        "confidence": 0.92
+      },
+      {
+        "timestamp": "00:11.667",
+        "category": "physics_and_movement",
+        "severity": "error",
+        "observation": "The monkey performs an impossible reverse leap with synthetic acceleration onto the narrow wooden post while seamlessly clutching the clipboard.",
+        "confidence": 0.95
+      }
+    ]
+  }
+}

@@ -58,3 +58,11 @@ python3 scripts/prop_sheet_generation.py <props.json> \
 ## Feeding the sheet forward
 
 Pass this sheet as an input reference (`reference_image_urls` / `@ImageN` ordinal tag) on any shot-generation call where the prop appears — see [`Seedance-Prompting-Guide`](../Seedance-Prompting-Guide/SKILL.md) for how multi-reference calls combine a prop sheet with character and storyboard references in one request.
+
+## Sheet presentation and routing notes (GLOBAL — approved by Tony 2026-09-20, all channels)
+
+- **One prompt:** the prop sheet is generated in ONE prompt with this skill's script, then given the standard title bar with `Character-Sheet-Generation/scripts/title_sheet.py --kind prop --name "<Prop or set name>"` (same look as the character and environment sheets).
+- **A held or worn panel that shows a hand, arm, or foot MUST be generated with that subject's character sheet attached as a labeled reference image**, with the role stated in the prompt (e.g. "Reference image 1 is the courier: the hand must be this exact person's hand"). Describing skin tone or build in text alone is never enough: it produces a generic hand that doesn't match. If the character sheet doesn't exist yet, build it first, then the prop sheet.
+- **A separate prop sheet is not always needed.** If the prop already appears with its holder on the character sheet and no side or orientation is hidden or matters, skip the prop sheet. Make one when the prop is in the story but on no character sheet, has a hidden side or a specific hold, recurs across clips, or must match between characters (a small single-item asset). Neon Parcel's "Prop Routing" section is a ready-to-copy version of this rule.
+
+- **Build it from a JSON spec** (`Character-Sheet-Generation/scripts/sheet_spec.py`, `"sheet_type": "prop"`): held panels require a `holder_reference`, which is stated in the prompt, so the hand matches the holder. See the "JSON spec template" section of the Character-Sheet-Generation skill.

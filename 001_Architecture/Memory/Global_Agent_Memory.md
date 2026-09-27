@@ -132,6 +132,7 @@ Tony wants screenshot renaming to use Gemini vision first, then OpenAI vision as
 - If a tool needs a key, it reads it from the environment after `source ~/.env-secrets` has been run via `~/.agent-bootstrap.sh`
 - Any agent that finds a hardcoded key in a file must replace it with a placeholder immediately and flag it to Tony
 - This holds even when Tony asks for the end result (e.g. "switch claude-mem to Gemini for me"). If a tool's installer/config wants a literal key, add an **alias export** in `~/.env-secrets` pointing at the existing var (`export CLAUDE_MEM_GEMINI_API_KEY="$GEMINI_API_KEY"`) and rely on the tool's env-var fallback; leave the tool's own key field blank. Never duplicate a key into a second file — each copy is another leak/rotation surface. (Correction logged 2026-09-05: Claude wrote GEMINI key into `~/.claude-mem/settings.json`, then remediated.)
+- **Correction 2026-09-22:** that alias never reached claude-mem — it reads keys only from `~/.claude-mem/.env` or `settings.json`, not the shell env, so it silently fell back to billing Tony's Claude plan. Working fix: `~/.claude-mem/.env` is a symlink to `~/.env-secrets` (still one key file). Never put an `ANTHROPIC_API_KEY` in `~/.env-secrets` without checking — claude-mem would pick it up.
 
 ### 2026-05-03 — Shared Agent Bootstrap Draft
 
@@ -1309,3 +1310,30 @@ Tony judged Part 1 of the Grandma-And-Bear compilation's original manual-crop Sh
 - **New Blotato Shorts publish flow** (also in SKILL.md, "Validated Blotato Shorts Upload"): one presigned upload, then `blotato_create_post` to all 4 Neon Parcel accounts from the same media URL — YouTube `25731` (public, `shouldNotifySubscribers: true`), TikTok `27763` (`PUBLIC_TO_EVERYONE`, `isAiGenerated: true`), Instagram `29334` (`mediaType: reel`), Facebook `18651`/pageId `888301901041580` (`mediaType: reel`). Shared caption + 2 hashtags across all four; still requires Tony's per-Short approval of the specific title/caption before publishing — not a standing authorization.
 - **First execution:** Part 1 published live 2026-09-15 to all four platforms. Parts 2 and 3 of this production still need to go through the locked pipeline.
 - Full detail: `~/.claude/projects/-Users-tonymacbook2025-Documents-Agent-OS/memory/project_neon_parcel_shorts_pipeline.md` and `feedback_neon_parcel_shorts_hybrid_default.md`.
+
+## 2026-09-21 durable rules (Neon Parcel + global video)
+- **Seedance 2 / Mini calls** (any channel enabled in `Generic_Tools/seedance2_gate_config.json`; only Neon Parcel now) go through `Generic_Tools/seedance2_call.py`: send storyboard + full labeled environment sheet + every FINAL labeled character/prop sheet built for the clip; every action beat names its subject by `@Image N`. Anything below Seedance 2 accepts only start/end frames, never references.
+- **Winning formula** (Neon Parcel, v7 graded B+): template in Neon v2 `Templates/Seedance_Winning_Prompt_Template_v7.md`.
+- **Upscale** (order changed 2026-09-23, Tony): fal Topaz Proteus 2x (default, half Kie's price) x2 attempts, then Kie Topaz x2 attempts, then Magnific (`MAGNIFIC_API_KEY`), then FFmpeg 1920x1080: `Generic_Tools/upscale_video.py`.
+- **Approved shots are final**; never redo/spend on them. Shorts upload one at a time; per-Short title/caption approval; AI-disclosure paragraph goes at the END of descriptions.
+- Sheets: JSON spec (`Character-Sheet-Generation/scripts/sheet_spec.py`) + title bar (`title_sheet.py`); prop sheet held panels need the holder's character sheet as reference.
+
+### 2026-09-23 — Session close (Shot 07 done, claude-mem fixed, upscale order changed)
+- **Neon Parcel Shot 07** (walrus/fishmonger, Scottish harbour) FINAL, B+. The gap to an A is scale: subjects/vehicles render 1.5-2x too large vs the environment; anchor sizes to in-frame objects and check on the storyboard.
+- **WaveSpeed `bytedance/seedance-2.0-mini/video-extend`** is proven for >15 s shots (clean join). Use NO end frame unless its state is close to the last frame; host multi-MB inputs on Cloudinary (the `wavespeed upload` CLI aborts at ~10 s). It takes no reference sheets (Tony accepted this for that step).
+- **Seedance 2 Mini reference mode can reproduce reference layouts** (a tiled grid; a sheet frame with a garbled title). Inspect frame 1 before anything else; crop-salvage works if the scene sits in a clean 16:9 area.
+- **Upscale order:** fal Topaz Proteus 2x → Kie Topaz → Magnific basic → FFmpeg (`Generic_Tools/upscale_video.py`). Magnific/Topaz Astra 2 via the Magnific MCP is a Tony one-off only; not a pipeline step (saving credits).
+- **claude-mem** runs on Gemini via the `~/.claude-mem/.env` → `~/.env-secrets` symlink. Never add an ANTHROPIC key to `~/.env-secrets`.
+- Handoff: `001_Architecture/Logs/Handoffs/2026-09-23_Session-Handoff_Claude.md`. Next agenda: video pipeline / saving money / optimizing (TBD).
+
+## Codex Seedance clarification — 2026-09-23
+- Accepting a visual defect does not authorize inserting “ignore it” into a model prompt. Keep Seedance <2.0 temporal-frame workflows separate from modern reference workflows and provider mode restrictions.
+
+## Seedance audit decisions — 2026-09-26
+- Preserve Tony's full labeled character/environment/prop sheets and required tag workflow: accumulated production experience matters even when absent from official docs. Separate API constraints, official recommendations, local methods, and experiments. Comparison tests are optional, not permission to strip labels.
+- “Every panel of @Image 1” was an agent trial, not Tony's rule; its independent benefit is unknown. Use v7 as a fixed-camera historical scaffold. Camera behavior may be fixed or handheld with continuous reactive whip pans; do not freeze all prompts to CCTV.
+- Scope older-model guidance specifically to 1.5 Pro (no contextual reference slot); versions below 1.5 are out of scope. This corrects earlier blanket “anything below 2” wording. Inspect depth, world positions, scale, and orientation across sheet views, not just screen left/right.
+- Active guide and Examples.md live together in 001_Architecture/Skills/Seedance-Prompting-Guide/. Updates explicitly authorized after discussion; no paid test generations were requested or run.
+
+- **Neon Parcel storyboard-failure fallback order (Tony, 2026-09-26):** 1) crop edge-only leftovers, 2) keyframe fallback — `Channels/Neon_Parcel/extract_storyboard_keyframes.py` cuts the storyboard's panels (native ratio, no text, free) → `seedance2_call.py --keyframes` (storyboard not sent but kept; slots: keyframes > character sheets > environment > props, 9 max on Kie Mini), 3) clean first/last-frame route. Details in the Neon Parcel v2 SKILL.md storyboard paragraph.
+- **Neon Parcel scale hard stop (Tony, 2026-09-26):** every storyboard needs `Data/Scale_Spec.json` + a passing `Channels/Neon_Parcel/check_storyboard_scale.py` run (local YOLOE, free) before `seedance2_call.py` will spend. Exaggerate only what the prompt says ("large walrus"), still bound by physical rules (fits in the van). Tolerance = what the eye notices.

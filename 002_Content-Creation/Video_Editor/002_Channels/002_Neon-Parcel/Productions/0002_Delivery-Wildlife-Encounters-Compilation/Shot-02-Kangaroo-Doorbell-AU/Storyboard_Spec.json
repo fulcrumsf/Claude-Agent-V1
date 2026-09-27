@@ -1,0 +1,171 @@
+{
+  "shot_id": "test_shot_03_kangaroo_doorbell_au",
+  "reference_images": [
+    "Reference image 1 is the delivery driver -- his exact face, build, and clothing must match this reference in every frame he appears in.",
+    "Reference image 2 is the kangaroo -- its exact species, coloration, and proportions must match this reference in every frame it appears in (frames 4-6 only, never frames 1-3).",
+    "Reference image 3 is the environment/location plate -- the porch, steps, house, driveway, car, yard, and letterbox must match this reference exactly in every frame."
+  ],
+  "overall_summary": "A local takeaway shop's delivery driver takes a food item out of his insulated bag and places it on a regional-Australian front porch doormat, keeping the bag in hand, then turns to leave; as he reaches the bottom of the steps, a grey kangaroo hops into the yard from the garden bed, and the two pause to watch each other before both continue on their own way.",
+  "tone": "Candid, unscripted, quietly charming - real doorbell-camera found footage, not staged or comedic-timed.",
+  "capture_style": "Fixed wide-angle fisheye doorbell-camera view, mounted at door height, motion-triggered clip framing, mainstream 2018/2019-era Ring-style consumer hardware - modest dynamic range and color rendering, no artificial sharpening, no pan/tilt/zoom.",
+  "visual_style": "Naturalistic regional-Australian suburban-fringe front yard at midday, clear dry sunlight, hard shadows, single-story brick-veneer/weatherboard house with corrugated-iron roof, native/bushland-style garden plantings, a Hills Hoist clothesline and a rainwater tank visible as static yard set dressing, the driver's own parked older-model car stationary at the driveway/screen-right edge throughout, no cinematic lighting rig.",
+  "visual_realism": "Ordinary consumer doorbell-camera image quality: fisheye lens distortion at frame edges, modest dynamic range, no artificial stabilization or sharpening beyond what mainstream 2018/2019 doorbell hardware produced.",
+  "audio_policy": "Diegetic only - ambient yard/bushland sound, footsteps on the porch/steps, the kangaroo's paws/thump on the lawn, the driver's own surprised exhale, built-in doorbell-camera microphone quality, not professional.",
+  "audio_exclusions": [
+    "no music or score",
+    "no non-diegetic sound effects",
+    "no narrator voiceover",
+    "no scripted dialogue"
+  ],
+  "camera_lock": "LOCKED - fixed doorbell-mount camera, first true test of the Fixed/mounted device branch (Test Shot 02 tested Handheld/reactive). The frame never pans, tilts, or zooms; only the subjects move through the fixed frame.",
+  "continuity_invariants": [
+    "Exactly one delivery driver and one kangaroo appear across every frame - never duplicated, no other people or animals, explicitly no dog",
+    "The doorbell camera frame is completely static - same mat, steps, house, hedge line, letterbox position, parked car, Hills Hoist, and water tank in every frame, never pans, tilts, or zooms",
+    "The driver's car is visible and stationary at the driveway/screen-right edge of frame in every single frame from 1 through 6 - it is a fixed background element, never off-frame and never moving",
+    "The driver's screen position advances monotonically from screen-right/porch toward screen-right/driveway on exit; the kangaroo's screen position advances monotonically from screen-left/garden bed across the lawn toward its own exit - neither subject resets or jumps position between frames",
+    "Clear, dry, midday lighting and hard shadows stay consistent across all frames - no weather change",
+    "The kangaroo is a grey kangaroo (Macropus giganteus), realistic wild proportions, adult standing height roughly chest/shoulder height on the driver - never house-cat/dog-sized, never larger than the driver",
+    "Once the kangaroo first appears in frame 4, it must remain visible somewhere in frame in every subsequent frame (5 and 6) - it may never be silently dropped or omitted from a frame after it has entered, even while the driver is the focus of that frame's action"
+  ],
+  "frames": [
+    {
+      "frame": 1,
+      "visible_subjects": [
+        "delivery driver (carrying the insulated bag, still closed/full)",
+        "doormat",
+        "porch steps",
+        "house facade",
+        "parked car (background, driveway, screen-right edge)"
+      ],
+      "object_states": [
+        "driver mid-approach across the porch, insulated bag held by its handle",
+        "doormat empty, no food item placed yet",
+        "the kangaroo has NOT entered yet and must not be drawn anywhere in this frame -- it only exists starting in frame 4, nowhere on the lawn, nowhere near the letterbox, nowhere in the yard in this frame",
+        "car stationary in the driveway"
+      ],
+      "spatial_relationships": [
+        "driver entering from screen-right toward the doormat centered below the camera",
+        "car visible at the far screen-right edge, background"
+      ],
+      "action": "The delivery driver crosses the porch from screen-right, carrying the insulated delivery bag by its handle, approaching the doormat directly below the camera.",
+      "caption": "Frame 1 - driver approaches the porch with the order"
+    },
+    {
+      "frame": 2,
+      "visible_subjects": [
+        "delivery driver",
+        "doormat",
+        "insulated bag (open, in the driver's other hand)",
+        "food item/container being placed on the doormat",
+        "parked car (background, driveway, screen-right edge)"
+      ],
+      "object_states": [
+        "driver bent slightly, one hand holding the open insulated bag, the other hand placing just the food item/container from inside it onto the doormat -- the bag itself is NOT set down or left behind",
+        "no kangaroo visible",
+        "car stationary in the driveway"
+      ],
+      "spatial_relationships": [
+        "driver directly over the doormat, centered in frame, bag still in his grip"
+      ],
+      "action": "The driver opens the insulated bag and takes out the food item/container, placing only that item on the doormat -- the bag stays in his hand the entire time, never left on the porch.",
+      "caption": "Frame 2 - the food is taken from the bag and placed on the doormat",
+      "transition_from_previous": "Driver has closed the distance from the porch entry to directly over the doormat."
+    },
+    {
+      "frame": 3,
+      "visible_subjects": [
+        "delivery driver (still carrying the now-lighter insulated bag)",
+        "doormat (food item/container now placed)",
+        "porch steps",
+        "parked car (background, driveway, screen-right edge)"
+      ],
+      "object_states": [
+        "food item/container left on the doormat, driver upright again and turning, bag still in his hand, his feet still on the smooth gray porch concrete surface -- he has not yet stepped onto the tan/pink step tile",
+        "no kangaroo visible",
+        "car stationary in the driveway"
+      ],
+      "spatial_relationships": [
+        "driver turning away from the doormat, still on the porch concrete, beginning to move toward the top of the tan step tile staircase and screen-right, bag in hand"
+      ],
+      "action": "The driver turns and starts toward the porch steps, still on the smooth porch concrete, still carrying his insulated bag -- only the food item was left behind, order delivered.",
+      "caption": "Frame 3 - the driver turns to leave, bag still in hand",
+      "transition_from_previous": "Driver has straightened up from placing the food item and begun moving back toward the steps, bag never set down."
+    },
+    {
+      "frame": 4,
+      "visible_subjects": [
+        "delivery driver",
+        "porch steps",
+        "kangaroo (just entering from garden bed)",
+        "parked car (background, driveway, screen-right edge)"
+      ],
+      "object_states": [
+        "driver's feet are on the light gray speckled gravel/pebble driveway surface -- the SAME surface the parked car is sitting on, standing directly beside the car's front wheel. His feet are NOT on the smooth gray porch concrete and NOT on the tan/pink step tile -- he has completely finished descending the entire staircase, both feet flat on the gravel",
+        "kangaroo mid-hop, only just landing on the lawn right at the garden-bed edge on screen-left - not yet advanced toward the center of the lawn, and NOT overlapping, touching, or near the letterbox",
+        "car stationary on the gravel driveway"
+      ],
+      "spatial_relationships": [
+        "driver standing ON THE GRAVEL, beside the car's front wheel, screen-right side of frame -- fully off the staircase, fully off the porch; kangaroo entering right at the screen-left garden-bed boundary, close to the hedge, clearly separated from the letterbox which sits further along screen-left, not centered on the lawn"
+      ],
+      "action": "As the driver finishes descending the entire staircase onto the gravel driveway surface beside the car, a grey kangaroo hops into frame from the garden bed on screen-left, just landing at the edge of the lawn, well clear of the letterbox.",
+      "caption": "Frame 4 - a kangaroo hops into the yard",
+      "transition_from_previous": "Driver has advanced from the doormat to the base of the steps; the kangaroo is a new element entering from off-frame, positioned at the garden-bed edge, not mid-lawn yet."
+    },
+    {
+      "frame": 5,
+      "visible_subjects": [
+        "delivery driver (bag still in hand)",
+        "kangaroo (upright, watching, must be clearly visible in this frame)",
+        "parked car (background, driveway, screen-right edge)"
+      ],
+      "object_states": [
+        "driver's feet are STILL on the light gray speckled gravel/pebble driveway surface, the exact same ground material as frame 4, standing in the same spot beside the car -- he has NOT moved back onto the tan/pink step tile and has NOT moved back onto the smooth gray porch concrete. If his feet are drawn on either of those two other surfaces instead of the gravel, that is wrong. He is frozen mid-stride on the gravel, half-turned toward the kangaroo with a stutter-step in his stance, bag still in hand",
+        "kangaroo upright on open lawn, weight settled back on its haunches and tail, ears rotated toward the driver, now further onto the lawn than frame 4 but still clearly visible on screen-left, standing clear of the letterbox -- not overlapping, touching, or merged with it",
+        "car stationary on the gravel driveway"
+      ],
+      "spatial_relationships": [
+        "driver and kangaroo facing each other across the lawn, both paused - the kangaroo MUST be present and visible in this frame, not omitted - the driver's feet MUST still be on the gravel driveway surface, the same surface as frame 4, not the step tile and not the porch concrete"
+      ],
+      "action": "The driver notices the kangaroo mid-stride and freezes, half-turning to look with a stutter-step; the kangaroo pauses too, upright, watching the driver - a real held moment, not a scripted standoff. The kangaroo is a required visible element of this frame.",
+      "caption": "Frame 5 - driver and kangaroo pause, watching each other",
+      "transition_from_previous": "Both subjects have stopped their forward motion from frame 4 and are now holding a mutual-watch pose; the kangaroo has moved slightly further onto the lawn from its frame-4 entry point but remains clearly visible."
+    },
+    {
+      "frame": 6,
+      "visible_subjects": [
+        "delivery driver (resuming exit, bag still in hand)",
+        "kangaroo (exiting toward rear/side yard, still visible before it fully leaves frame)",
+        "parked car (background, driveway, screen-right edge)"
+      ],
+      "object_states": [
+        "driver's feet remain on the light gray speckled gravel/pebble driveway surface, now walking further along the gravel toward the car and exiting screen-right -- still the same ground material as frames 4 and 5, never the step tile, never the porch concrete, bag still in hand -- never set down anywhere in this shot",
+        "kangaroo continuing across the lawn toward the rear/side of the yard, clear of the letterbox throughout, visibly further along its path than frame 5, only now beginning to exit frame",
+        "car stationary on the gravel driveway"
+      ],
+      "spatial_relationships": [
+        "driver and kangaroo moving apart toward their own exit sides of frame"
+      ],
+      "action": "The kangaroo continues on its own path across the lawn toward the rear/side of the yard, still visibly present as it begins exiting frame; the driver resumes walking toward the driveway and exits frame opposite.",
+      "caption": "Frame 6 - both go their separate ways",
+      "transition_from_previous": "The mutual-watch pause from frame 5 breaks, and each subject resumes movement toward its own exit side; the kangaroo has advanced further along the lawn from its frame-5 position."
+    }
+  ],
+  "panel_convention": "Six 16:9 landscape frames arranged in a 3-column by 2-row grid (frames 1-3 top row left to right, frames 4-6 bottom row left to right), each individual cell followed immediately by its own clean white caption band containing only the frame number and the one-sentence caption text - no text, numbers, or graphics inside the image area itself. This matches the workspace's standard Neon Parcel storyboard grid layout exactly. This is a continuity planning reference for a video model, not a comic layout to be reproduced literally.",
+  "hard_constraints": [
+    "No on-screen text, logos, watermarks, or graphics inside any image area",
+    "No duplicate drivers, kangaroos, or extra animals/people in any single frame",
+    "Preserve one consistent fixed doorbell-camera viewpoint throughout - never pan, tilt, zoom, or switch to a different capture device",
+    "Clear/dry midday lighting and the regional-Australian house/yard setting must stay consistent across all six frames",
+    "The driver and kangaroo must be in a visibly, measurably different position in every one of frames 1 through 4 - no two consecutive frames may show them in the same spot",
+    "The kangaroo's scale relative to the driver must stay consistent in every frame it appears in - chest/shoulder height on the driver, never resized between frames",
+    "The kangaroo must physically appear, rendered and visible, in frames 4, 5, and 6 - a frame where it is described as present but not actually drawn is a failed frame",
+    "The parked car must appear, rendered and visible, at the driveway/screen-right edge in every one of frames 1 through 6",
+    "The driver must be shown carrying the insulated bag in every frame he appears in, including frames 3 through 6 after the food item has been left on the doormat - the bag is never set down, dropped, or left behind anywhere in the shot",
+    "Only the food item/container taken out of the bag is ever left on the doormat - never the whole insulated bag itself",
+    "The kangaroo must never overlap, touch, collide with, or visually merge into the letterbox post or any other object in any frame - maintain clear, unambiguous spatial separation between the kangaroo's body and the letterbox at all times",
+    "The kangaroo must NOT appear anywhere in frames 1, 2, or 3 - it does not exist in this shot until frame 4. A frame 1-3 panel containing any kangaroo, anywhere in the yard, is a failed frame",
+    "This shot has three distinct, differently-textured ground surfaces: (1) smooth gray porch concrete, (2) tan/pink step tile forming the staircase, (3) light gray speckled gravel driveway where the car sits. These are visually distinct materials, not the same surface under different lighting",
+    "The driver's feet must be rendered on the gravel driveway surface specifically -- the same material the car sits on -- in frames 4, 5, and 6 alike. Once he reaches the gravel in frame 4, he does not move back onto the step tile or the porch concrete in frame 5, frame 6, or any later frame. His position on the gravel may shift slightly but he never returns to the tile or the concrete",
+    "Do not add a caption, subtitle, or label to the driver, kangaroo, or any object beyond the white caption band text specified per frame"
+  ]
+}

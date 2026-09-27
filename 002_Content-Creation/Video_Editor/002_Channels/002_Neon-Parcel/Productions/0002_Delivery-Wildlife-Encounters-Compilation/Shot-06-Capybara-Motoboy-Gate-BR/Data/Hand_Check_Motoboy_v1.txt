@@ -1,0 +1,4 @@
+   GATE: FAIL score=0.8888888888888888 (need 0.8) RIGHT->RIGHT; LEFT->LEFT; RIGHT->RIGHT; RIGHT->RIGHT; LEFT->LEFT; RIGHT->RIGHT; LEFT->LEFT; LEFT->LEFT; RIGHT->LEFT HARD-FAIL
+Expectations (anatomy/spec): front image-left=RIGHT, front image-right=LEFT, side (faces right)=RIGHT, holding-helmet panel image-left=RIGHT / image-right=LEFT, putting-helmet-on image-left=RIGHT / image-right=LEFT, close-up 1 (hanging hand)=LEFT, close-up 2 (holds the helmet strap; story = helmet in RIGHT hand)=RIGHT.
+RESULT: close-up 2 detected LEFT at 0.99 -> hard fail. Sheet v1 FAILS the hand gate. Action: regenerate (attempt 2 of max 3), new file name, prompt tightened with explicit right-hand/left-hand close-ups.
+Also noted (not a gate item): back-view right hand missed by the tool; wide panel hand low confidence (0.29).

@@ -659,6 +659,34 @@ use a single-clip title or overlay unless the entire video is genuinely about
 that clip. Keep the packaging bright, eye-catching, vivid, and poppy while
 remaining truthful to the complete clip set.
 
+### AI-Fiction Disclosure (Title + Description)
+
+**Added 2026-09-17** after a YouTube automated-system copyright warning landed
+on a realistic-looking rescue/encounter video that did not actually infringe —
+the system read the footage as potentially real. Per YouTube's own guidance on
+distinguishing fictional content
+([support.google.com/youtube/answer/2802008](https://support.google.com/youtube/answer/2802008)),
+titles and descriptions are part of how both the automated system and viewers
+judge whether footage is understood as fictional. This is a hook-then-reveal
+channel by design — footage should still look real on first watch — the
+disclosure lives in text metadata, not a burned-in overlay, so it never
+undercuts the visual hook itself.
+
+- **Title:** for any title that reads as a real rescue/bodycam/security-cam
+  moment (the channel's normal register), include a short qualifier — "AI
+  Fiction" or "AI Comedy" — rather than wording that could pass as a real-event
+  claim (e.g. avoid bare "Real Hero Moment" framing).
+- **Description:** every long-form and Shorts description opens with:
+  > This is a fictional, AI-generated scene made for entertainment — not
+  > footage of a real event. No real animals or people were placed in danger
+  > or harmed during its creation.
+- **Blotato AI-disclosure toggle:** keep this set alongside the text
+  disclosure, not instead of it (per the "set synthetic-media disclosure where
+  applicable" step below) — the checkbox and the text description are two
+  separate signals YouTube considers, neither substitutes for the other.
+- This is a mitigation, not a guarantee against a false-positive warning — it
+  is the concrete step available without reworking the visual hook.
+
 ### Mandatory Thumbnail Template
 
 Every Neon Parcel long-form compilation thumbnail must use the structured

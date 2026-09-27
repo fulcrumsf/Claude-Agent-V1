@@ -1,0 +1,57 @@
+{
+ "title": "CHARACTER SHEET",
+ "headline": "BICYCLE COURIER",
+ "subtitle": "Shot 05 - Vervet Monkey Shopfront (KE) - assembled from separately generated panels (7 of 11 planned)",
+ "rows": [
+  {
+   "items": [
+    {
+     "type": "panel",
+     "num": 1,
+     "title": "FRONT",
+     "image": "Character_Sheets/Panels/Courier/01_Front.png"
+    },
+    {
+     "type": "panel",
+     "num": 2,
+     "title": "SIDE",
+     "image": "Character_Sheets/Panels/Courier/02_Side.png"
+    },
+    {
+     "type": "panel",
+     "num": 3,
+     "title": "BACK",
+     "image": "Character_Sheets/Panels/Courier/03_Back.png"
+    },
+    {
+     "type": "panel",
+     "num": 4,
+     "title": "FULL BODY",
+     "image": "Character_Sheets/Panels/Courier/04_FullBody.png"
+    }
+   ]
+  },
+  {
+   "items": [
+    {
+     "type": "panel",
+     "num": 5,
+     "title": "NEUTRAL EXPRESSION",
+     "image": "Character_Sheets/Panels/Courier/05_Neutral.png"
+    },
+    {
+     "type": "panel",
+     "num": 6,
+     "title": "EXERTION EXPRESSION",
+     "image": "Character_Sheets/Panels/Courier/06_Effort.png"
+    },
+    {
+     "type": "panel",
+     "num": 7,
+     "title": "FACE",
+     "image": "Character_Sheets/Panels/Courier/07_Face.png"
+    }
+   ]
+  }
+ ]
+}

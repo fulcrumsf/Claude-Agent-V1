@@ -297,6 +297,36 @@ Field rules:
 - tags: 1-2 values EXACTLY from the Tag Vocabulary list above — see that section, not this one.
 """
 
+MAX_IMAGE_DIMENSION = 2000  # px, longest edge
+
+
+def _prepare_image_b64(image_path, mime_type):
+    """Base64-encode an image for the vision API, downscaling first if its
+    longest edge exceeds MAX_IMAGE_DIMENSION. Full-resolution phone/monitor
+    screenshots (multi-MB) were timing out against OpenRouter's request
+    timeout and then tripping OpenAI's per-request rate limit on fallback -
+    every retry sent the same oversized payload, so the file never ingested.
+    Resizing keeps the request fast and small without losing anything the
+    model needs to read on-screen text."""
+    from PIL import Image
+    import io
+
+    with open(image_path, "rb") as f:
+        raw = f.read()
+
+    with Image.open(io.BytesIO(raw)) as img:
+        if max(img.size) <= MAX_IMAGE_DIMENSION:
+            return base64.b64encode(raw).decode("utf-8")
+        img = img.copy()
+        img.thumbnail((MAX_IMAGE_DIMENSION, MAX_IMAGE_DIMENSION), Image.LANCZOS)
+        buf = io.BytesIO()
+        save_format = "PNG" if mime_type == "image/png" else "JPEG"
+        if save_format == "JPEG" and img.mode in ("RGBA", "P"):
+            img = img.convert("RGB")
+        img.save(buf, format=save_format)
+        return base64.b64encode(buf.getvalue()).decode("utf-8")
+
+
 def process_image(image_path):
     ext = image_path.lower().split('.')[-1]
     if ext in ('jpg', 'jpeg'):
@@ -309,8 +339,7 @@ def process_image(image_path):
         return None
 
     try:
-        with open(image_path, "rb") as f:
-            b64_data = base64.b64encode(f.read()).decode("utf-8")
+        b64_data = _prepare_image_b64(image_path, mime_type)
     except Exception as e:
         print(f"Error reading {image_path}: {e}")
         return None

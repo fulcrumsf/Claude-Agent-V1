@@ -6,6 +6,11 @@ trigger: User invokes /reimagined-realms or asks to produce a Reimagined Realms 
 
 # Reimagined Realms — Video Pipeline Skill
 
+
+## Video generation mode and format notes (2026-09-20, Tony)
+- **Format follows the Phase 1 intake** (16:9 or 9:16). `batch_generate_videos.py` now follows it too (fixed 2026-09-20: it used to force 16:9 whatever was chosen). It uses `--aspect_ratio`, else `Data/Beatmap.json` `aspect_ratio`, else the shape of the start images. The separate POV Shorts v2 pipeline is 9:16 only.
+- **No storyboard / reference-image process yet.** Clips up to 12 s use Seedance 1.5 Pro (start/end frame only); clips over 12 s use Seedance 2 in start-image mode. Adopting storyboards and the Seedance 2 reference-image process for the long clips is deliberately deferred until it has been tested. Reimagined Realms is currently DISABLED in `Generic_Tools/seedance2_gate_config.json`.
+
 ## Optional Global Storytelling Consultation
 
 Reimagined Realms' tailored storytelling system, including its channel tone, story arcs, 7-part template, and DAIPBR mechanics, remains authoritative. If a future concept or scene needs a storytelling decision not covered by those rules, optionally consult [`Visual-Storytelling`](../Visual-Storytelling/SKILL.md) for an additional pattern. Do not substitute the global skill for the existing Reimagined Realms structure.

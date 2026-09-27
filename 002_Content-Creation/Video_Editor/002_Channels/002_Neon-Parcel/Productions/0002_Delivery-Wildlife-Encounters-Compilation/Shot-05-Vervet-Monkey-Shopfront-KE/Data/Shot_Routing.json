@@ -1,0 +1,55 @@
+{
+  "shots": [
+    {
+      "shot_id": "Monkey-African-Messenger-Full-Action",
+      "description": "Courier sets a clipboard on a shop counter; a vervet monkey leaps from the awning post, grabs it, scribbles the pen across the paper, holds it out of the courier's reach as he lunges, then flees back up the post with it.",
+      "semantic_assessment": {
+        "action_count": 2,
+        "physics": 2,
+        "object_continuity": 2,
+        "precision": 1,
+        "character_interaction": 2,
+        "spatial_continuity": 2,
+        "timing_precision": 1,
+        "dialogue_sync": 0,
+        "failure_risk": 2,
+        "storyboard_value": 2
+      }
+    }
+  ],
+  "routing": [
+    {
+      "shot_id": "Monkey-African-Messenger-Full-Action",
+      "route": "seedance_2_mini_storyboard",
+      "status": "auto",
+      "complexity_score": 16,
+      "complexity_scale": "0-20",
+      "qa_intensity": "enhanced",
+      "dimension_scores": {
+        "action_count": 2,
+        "physics": 2,
+        "object_continuity": 2,
+        "precision": 1,
+        "character_interaction": 2,
+        "spatial_continuity": 2,
+        "timing_precision": 1,
+        "dialogue_sync": 0,
+        "failure_risk": 2,
+        "storyboard_value": 2
+      },
+      "reasons": [
+        "action count",
+        "physics",
+        "object continuity",
+        "character interaction",
+        "spatial continuity",
+        "failure risk",
+        "storyboard value"
+      ],
+      "hard_triggered": false,
+      "assessment_source": "semantic_assessment",
+      "human_override": null,
+      "generation_policy": "Send the approved storyboard sheet to Kie as a bound reference image (reference_image_urls, tagged @Image 1 in the prompt via 'REFERENCE ORDER: @Image 1 = the approved N-panel storyboard'), NEVER as first_frame_url - binding it as first_frame_url causes Seedance to animate the storyboard grid itself instead of the scene (confirmed real failure, Neon Parcel Shot 12 v1, 'storyboard was animated as the temporal starting frame'). The prompt must explicitly state the storyboard is 'a sequence of action instructions, not a collage or tiled layout to reproduce' and instruct it not to show panels/captions/borders in the output. This exact route/technique is production-proven and Tony-approved (Shot 12 v8, see Prompts/Shot-12-Seedance-2-Mini-v8.md for the reference template) - it is not experimental and does not need a separate clean-frame fallback."
+    }
+  ]
+}
