@@ -25,10 +25,12 @@ import os
 import re
 import shlex
 import sys
+import time
 from pathlib import Path
 
 AGENT_OS = Path("/Users/tonymacbook2025/Documents/Agent-OS")
 TEMP_PREFIXES = ("/tmp/", "/private/tmp/", "/var/folders/", "/private/var/folders/")
+LOG = Path.home() / "Library" / "Logs" / "Agent-OS-Guard.jsonl"
 
 # Folder names any agent may create without asking (backup/version conventions + tooling caches).
 ALLOWED_NEW_DIR_NAMES = re.compile(
@@ -284,27 +286,51 @@ def evaluate(payload: dict) -> Verdict | None:
     return None
 
 
+def log(harness: str, tool_name: object, decision: str) -> None:
+    """Append one line per hook call. Deny/ask are always logged (rare, worth a
+    permanent audit trail). Plain allows are logged only for antigravity, whose
+    real hook wiring hadn't been verified yet (2026-09-27) -- Claude Code fires
+    this hook on nearly every Bash/Write, so logging every allow there would
+    flood the file during normal use."""
+    if decision == "allow" and harness != "antigravity":
+        return
+    try:
+        with open(LOG, "a", encoding="utf-8") as fh:
+            fh.write(json.dumps({"t": time.strftime("%Y-%m-%dT%H:%M:%S"), "harness": harness,
+                                 "tool": tool_name if isinstance(tool_name, str) else None,
+                                 "decision": decision}) + "\n")
+    except OSError:
+        pass
+
+
 def main() -> int:
     harness = sys.argv[sys.argv.index("--harness") + 1] if "--harness" in sys.argv else "claude"
     try:
         payload = json.load(sys.stdin)
     except Exception:
+        log(harness, None, "parse_error")
         return 0
     if harness == "antigravity":
         payload = normalize_antigravity(payload)
     if not isinstance(payload, dict):
+        log(harness, None, "malformed_payload")
         return 0
+    tool_name = payload.get("tool_name")
     v = evaluate(payload)
     if v is None:
+        log(harness, tool_name, "allow")
         return 0
     if harness == "antigravity":
+        log(harness, tool_name, v.kind)
         print(json.dumps({"decision": v.kind, "reason": v.reason}))
         return 0
     if v.kind == "ask" and harness == "claude":
+        log(harness, tool_name, "ask")
         print(json.dumps({"hookSpecificOutput": {
             "hookEventName": "PreToolUse", "permissionDecision": "ask",
             "permissionDecisionReason": v.reason}}))
         return 0
+    log(harness, tool_name, "deny")
     print(v.reason, file=sys.stderr)
     return 2
 
