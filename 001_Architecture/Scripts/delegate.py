@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""delegate: hand a chore to a cheap OpenRouter Auto Router worker (Option B, 2026-09-27).
+"""delegate: hand a chore to a cheap worker on Jev Router (Option B, 2026-09-27; switched
+from OpenRouter's generic Auto Router to TypeSafe's Jev Router, which adapts model choice
+per-request rather than per-session, still constrained by the workspace's cost-tier allowlist).
 
 Usage: delegate.py "<task>" [--skill Skill_Name] [--cwd PATH] [--dry-run]
 The worker is `codex exec` on OpenRouter (key OPENROUTER_CHORES_KEY, capped by Tony),
@@ -27,7 +29,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from jev_route import load_secret  # noqa: E402
 
 AGENT_OS = "/Users/tonymacbook2025/Documents/Agent-OS"
-MODEL = "openrouter/auto"
+MODEL = "typesafe/jev-router"
 WORKER_TIMEOUT = 1800  # seconds; chores that run longer are stopped and reported
 CODEX_CONFIG = Path.home() / ".codex" / "config.toml"
 # Codex features switched off for the worker: plugins (and the MCP servers they bring),
@@ -79,8 +81,9 @@ def mcp_server_names(config_path: Path = CODEX_CONFIG) -> list[str]:
     return sorted(servers) if isinstance(servers, dict) else []
 
 
-def isolation_overrides(servers: list[str]) -> list[str]:
-    out = ['model_reasoning_effort="low"']
+def isolation_overrides(servers: list[str], effort: str = "low") -> list[str]:
+    """`effort` lets frontier.py reuse the same isolation at medium/high effort."""
+    out = [f'model_reasoning_effort="{effort}"']
     out += [f"features.{f}=false" for f in DISABLED_FEATURES]
     out += [f"mcp_servers.{n}.enabled=false" for n in servers if re.fullmatch(r"[A-Za-z0-9_-]+", n)]
     return out
@@ -94,18 +97,18 @@ def build_command(prompt: str, cwd: str, last_msg_file: str, servers: list[str] 
     return cmd + ["-m", MODEL, "--output-last-message", last_msg_file, prompt]
 
 
-def open_log(stamp: str):
-    """Open the worker's full-output log for writing. Prefers ~/Library/Logs (so Tony
+def open_log(stamp: str, prefix: str = "Agent-OS-Delegate"):
+    """Open the worker's full-output log for writing (`prefix` lets frontier.py name its own logs). Prefers ~/Library/Logs (so Tony
     finds every run in one place); falls back to the system temp dir if that's not
     writable -- some sandboxes (Codex Desktop, seen 2026-09-27) block writes outside
     the workspace and /tmp, and this must never crash the chore over a log location.
     Returns (log_path, last_msg_path, open file handle)."""
-    primary = Path.home() / "Library" / "Logs" / f"Agent-OS-Delegate-{stamp}.log"
+    primary = Path.home() / "Library" / "Logs" / f"{prefix}-{stamp}.log"
     try:
         return primary, str(primary.with_suffix(".last.txt")), open(primary, "w", encoding="utf-8")
     except OSError:
         pass
-    fd, path = tempfile.mkstemp(prefix=f"Agent-OS-Delegate-{stamp}-", suffix=".log")
+    fd, path = tempfile.mkstemp(prefix=f"{prefix}-{stamp}-", suffix=".log")
     log_path = Path(path)
     return log_path, str(log_path.with_suffix(".last.txt")), os.fdopen(fd, "w", encoding="utf-8")
 
