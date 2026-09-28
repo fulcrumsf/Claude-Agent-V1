@@ -24,7 +24,7 @@ Do not load every memory or log file by default. Use `claude-mem` for relevant m
 
 **Model routing (Option B, 2026-09-27):** start every task on this harness's cheap default model. A `[Agent-OS router, Jev]` note may appear with your prompt; follow it.
 - Answer questions and small edits yourself.
-- Frontier work goes to this harness's frontier subagent (Claude: `opus-standard` / `opus-deep`; Codex: `sol-standard` / `sol-deep` (pending setup)).
+- Frontier work: don't do it inline yourself — delegate it. Claude: dispatch the `opus-standard` (or `opus-deep`) subagent. Codex: spawn the custom agent named `sol-standard` (or `sol-deep`) by that exact name — Codex only delegates when told to spawn a named agent directly, not when told where work "goes."
 - Chores (ingest, sorting, tagging, renaming, bulk summaries) go to `python3 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/delegate.py "<task>" --skill <Skill_Name>`. Chores can take minutes, so run it in the background or with the maximum shell timeout (it stops the worker after 30 minutes). Then check the changed-files list it returns before reporting done.
 - Brain dumps: split them into tasks and route each one. Never use Fable.
 

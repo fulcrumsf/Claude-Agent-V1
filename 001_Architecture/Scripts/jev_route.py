@@ -112,8 +112,9 @@ def hint_for(d: Decision, harness: str) -> str | None:
         parts.append("This message holds several tasks. Split it into separate tasks and route each one on its own "
                      "(answer it yourself / frontier subagent / delegate chore).")
     if d.confidence >= MIN_CONFIDENCE and d.route == "frontier":
-        parts.append(f"This needs frontier-level reasoning. Hand it to {FRONTIER.get(harness, FRONTIER['gemini'])} "
-                     "with the full goal, file paths, prior attempts and the output you need back.")
+        parts.append(f"This needs frontier-level reasoning. Do not do it yourself: delegate it now by spawning "
+                     f"{FRONTIER.get(harness, FRONTIER['gemini'])}, handing it the full goal, file paths, prior "
+                     "attempts and the output you need back.")
     elif d.confidence >= MIN_CONFIDENCE and d.route == "chore":
         parts.append(f"This is a chore. Do not do it yourself: run `{DELEGATE} \"<task>\" --skill <Skill_Name>`, "
                      "then check the changed-files list it returns before telling Tony it is done.")
