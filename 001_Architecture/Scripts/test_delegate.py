@@ -46,7 +46,29 @@ class CommandTests(unittest.TestCase):
             f.write('model = "x"\n[mcp_servers.alpha]\ncommand = "a"\n[mcp_servers.beta]\nurl = "b"\n')
         self.addCleanup(os.unlink, f.name)
         self.assertEqual(delegate.mcp_server_names(delegate.Path(f.name)), ["alpha", "beta"])
-        self.assertEqual(delegate.mcp_server_names(delegate.Path(f.name + ".missing")), [])
+
+    def test_missing_config_file_is_safe_empty(self):
+        # No config at all -> nothing is configured -> [] is a safe answer, not a failure.
+        self.assertEqual(delegate.mcp_server_names(delegate.Path("/nonexistent/config.toml")), [])
+
+    def test_unreadable_config_fails_closed(self):
+        # A config that EXISTS but can't be parsed must not be treated as "no servers":
+        # servers may be configured and we just can't see their names, so this must raise.
+        with tempfile.NamedTemporaryFile("w", suffix=".toml", delete=False) as f:
+            f.write("this is not valid toml [[[")
+        self.addCleanup(os.unlink, f.name)
+        with self.assertRaises(delegate.ConfigReadError):
+            delegate.mcp_server_names(delegate.Path(f.name))
+
+    def test_main_refuses_to_run_when_config_unreadable(self):
+        with mock.patch.object(delegate, "load_secret", return_value="sk-test"), \
+             mock.patch.object(delegate, "mcp_server_names", side_effect=delegate.ConfigReadError("boom")), \
+             mock.patch.object(subprocess, "run") as run, \
+             mock.patch.dict("os.environ", {"AGENT_OS_DELEGATE_WORKER": ""}), \
+             contextlib.redirect_stderr(io.StringIO()) as err:
+            self.assertEqual(delegate.main(["Summarize TOOLBOX.md"]), 4)
+        self.assertIn("refused", err.getvalue())
+        run.assert_not_called()
 
     def test_refuses_without_chores_key(self):
         with mock.patch.object(delegate, "load_secret", return_value=None), \

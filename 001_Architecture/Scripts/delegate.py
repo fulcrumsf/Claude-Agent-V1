@@ -56,14 +56,25 @@ def build_prompt(task: str, skill: str | None) -> str:
     return "\n".join(parts)
 
 
+class ConfigReadError(Exception):
+    """The Codex config exists but couldn't be read/parsed, so its MCP server names
+    are unknown. Callers must fail closed (refuse to run the worker) rather than
+    silently proceeding as if there were no servers to disable."""
+
+
 def mcp_server_names(config_path: Path = CODEX_CONFIG) -> list[str]:
-    """Names of MCP servers in the Codex config (read-only; values are never printed)."""
+    """Names of MCP servers in the Codex config (read-only; values are never printed).
+    No config file at all means no servers are configured -> []  is safe.
+    A config file that exists but can't be read/parsed raises ConfigReadError:
+    servers may be configured but we can't see their names to disable them."""
+    if not config_path.exists():
+        return []
     try:
         import tomllib
         with open(config_path, "rb") as fh:
             servers = tomllib.load(fh).get("mcp_servers")
-    except Exception:
-        return []
+    except Exception as exc:
+        raise ConfigReadError(f"could not read/parse {config_path}: {exc}") from exc
     return sorted(servers) if isinstance(servers, dict) else []
 
 
@@ -192,10 +203,16 @@ def main(argv: list[str]) -> int:
     if not key:
         print("delegate: OPENROUTER_CHORES_KEY missing from ~/.env-secrets (see plan Task 0).", file=sys.stderr)
         return 2
+    try:
+        servers = mcp_server_names()
+    except ConfigReadError as exc:
+        print(f"delegate: refused — {exc}. Can't confirm which MCP servers to disable for the worker, "
+              "so it will not run isolated. Fix ~/.codex/config.toml and retry.", file=sys.stderr)
+        return 4
     stamp = time.strftime("%Y-%m-%d_%H-%M-%S")
     log_path = Path.home() / "Library" / "Logs" / f"Agent-OS-Delegate-{stamp}.log"
     last_msg = str(log_path.with_suffix(".last.txt"))
-    cmd = build_command(build_prompt(" ".join(args), skill), cwd, last_msg)
+    cmd = build_command(build_prompt(" ".join(args), skill), cwd, last_msg, servers=servers)
     if dry:
         print(" ".join(cmd[:-1]) + " <prompt>"); return 0
     before_git = git_status(cwd)
