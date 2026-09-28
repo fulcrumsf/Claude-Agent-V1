@@ -19,6 +19,7 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 import time
 from pathlib import Path
 
@@ -91,6 +92,22 @@ def build_command(prompt: str, cwd: str, last_msg_file: str, servers: list[str] 
     for o in isolation_overrides(mcp_server_names() if servers is None else servers):
         cmd += ["-c", o]
     return cmd + ["-m", MODEL, "--output-last-message", last_msg_file, prompt]
+
+
+def open_log(stamp: str):
+    """Open the worker's full-output log for writing. Prefers ~/Library/Logs (so Tony
+    finds every run in one place); falls back to the system temp dir if that's not
+    writable -- some sandboxes (Codex Desktop, seen 2026-09-27) block writes outside
+    the workspace and /tmp, and this must never crash the chore over a log location.
+    Returns (log_path, last_msg_path, open file handle)."""
+    primary = Path.home() / "Library" / "Logs" / f"Agent-OS-Delegate-{stamp}.log"
+    try:
+        return primary, str(primary.with_suffix(".last.txt")), open(primary, "w", encoding="utf-8")
+    except OSError:
+        pass
+    fd, path = tempfile.mkstemp(prefix=f"Agent-OS-Delegate-{stamp}-", suffix=".log")
+    log_path = Path(path)
+    return log_path, str(log_path.with_suffix(".last.txt")), os.fdopen(fd, "w", encoding="utf-8")
 
 
 def git_status(cwd: str) -> set[str] | None:
@@ -210,15 +227,16 @@ def main(argv: list[str]) -> int:
               "so it will not run isolated. Fix ~/.codex/config.toml and retry.", file=sys.stderr)
         return 4
     stamp = time.strftime("%Y-%m-%d_%H-%M-%S")
-    log_path = Path.home() / "Library" / "Logs" / f"Agent-OS-Delegate-{stamp}.log"
-    last_msg = str(log_path.with_suffix(".last.txt"))
-    cmd = build_command(build_prompt(" ".join(args), skill), cwd, last_msg, servers=servers)
     if dry:
+        last_msg = str(Path.home() / "Library" / "Logs" / f"Agent-OS-Delegate-{stamp}.last.txt")
+        cmd = build_command(build_prompt(" ".join(args), skill), cwd, last_msg, servers=servers)
         print(" ".join(cmd[:-1]) + " <prompt>"); return 0
+    log_path, last_msg, log = open_log(stamp)
+    cmd = build_command(build_prompt(" ".join(args), skill), cwd, last_msg, servers=servers)
     before_git = git_status(cwd)
     before_snap = snapshot(cwd, before_git)
     note = ""
-    with open(log_path, "w", encoding="utf-8") as log:
+    try:
         try:
             rc = subprocess.run(cmd, stdout=log, stderr=subprocess.STDOUT, timeout=WORKER_TIMEOUT,
                                 env=dict(os.environ, OPENROUTER_CHORES_KEY=key,
@@ -227,6 +245,8 @@ def main(argv: list[str]) -> int:
             rc = 124
             note = (f"\nWORKER TIMED OUT after {WORKER_TIMEOUT} s and was stopped. The chore may be half done; "
                     "check the changed files below.\n")
+    finally:
+        log.close()
     report = Path(last_msg).read_text(encoding="utf-8") if Path(last_msg).exists() else "(no final report)"
     after_git = git_status(cwd)
     changes = change_report(before_git, after_git, before_snap, snapshot(cwd, before_git))

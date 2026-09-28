@@ -132,6 +132,58 @@ class AntiRecursionTests(unittest.TestCase):
         self.assertIn("== Files changed during the run ==", out)
 
 
+class LogFallbackTests(unittest.TestCase):
+    """Some sandboxes (Codex Desktop, seen 2026-09-27) block writes outside the
+    workspace and /tmp, so ~/Library/Logs isn't always writable. delegate.py must
+    fall back to the system temp dir instead of crashing the whole chore."""
+
+    def test_primary_location_used_when_writable(self):
+        with mock.patch("builtins.open", mock.mock_open()):
+            log_path, last_msg, log = delegate.open_log("2099-01-01_00-00-00")
+        log.close()
+        self.assertIn("Library/Logs", str(log_path))
+        self.assertTrue(last_msg.endswith(".last.txt"))
+
+    def test_falls_back_to_tmp_when_primary_unwritable(self):
+        real_open = open
+
+        def fake_open(path, *a, **kw):
+            if "Library" in str(path):
+                raise PermissionError("Operation not permitted")
+            return real_open(path, *a, **kw)
+
+        with mock.patch("builtins.open", side_effect=fake_open):
+            log_path, last_msg, log = delegate.open_log("2099-01-01_00-00-00")
+        try:
+            self.assertNotIn("Library/Logs", str(log_path))
+            log.write("test"); log.close()
+            self.assertTrue(log_path.exists())
+        finally:
+            log_path.unlink(missing_ok=True)
+            delegate.Path(last_msg).unlink(missing_ok=True)
+
+    def test_main_still_reports_when_primary_log_unwritable(self):
+        real_open = open
+
+        def fake_open(path, *a, **kw):
+            if "Library" in str(path):
+                raise PermissionError("Operation not permitted")
+            return real_open(path, *a, **kw)
+
+        out = io.StringIO()
+        with mock.patch.object(delegate, "load_secret", return_value="fake-key"), \
+             mock.patch.dict("os.environ", {"AGENT_OS_DELEGATE_WORKER": ""}), \
+             mock.patch.object(delegate, "git_status", return_value=set()), \
+             mock.patch.object(delegate, "snapshot", return_value={}), \
+             mock.patch.object(delegate.subprocess, "run", return_value=mock.Mock(returncode=0)), \
+             mock.patch("builtins.open", side_effect=fake_open), \
+             contextlib.redirect_stdout(out):
+            rc = delegate.main(["Summarize TOOLBOX.md"])
+        self.assertEqual(rc, 0)
+        self.assertIn("Worker exit code: 0", out.getvalue())
+        self.assertNotIn("Library/Logs", out.getvalue())
+
+
 class ChangedFilesTests(unittest.TestCase):
     def setUp(self):
         tmp = tempfile.TemporaryDirectory()  # system temp dir, not inside Agent-OS
