@@ -1,0 +1,15 @@
+{
+  "agent-os": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {"type": "command", "command": "python3 \"/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/fs_guard.py\" --harness antigravity", "timeout": 10}
+        ]
+      }
+    ],
+    "PreInvocation": [
+      {"type": "command", "command": "python3 \"/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/jev_route.py\" --harness antigravity", "timeout": 5}
+    ]
+  }
+}
