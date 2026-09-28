@@ -93,6 +93,17 @@ Grounded in real, already-documented pain points — not built yet, logged for l
 4. **Neon Parcel scale-check trust gate.** A single, small, reviewed Jev noul question ("is this scale result trustworthy enough to skip human review?") — a much smaller version of the frontier-enforcement system attempted and rolled back on 2026-09-27/28 (see `001_Architecture/Plans/Frontier_Enforcement_Plan.md`, parked, not live).
 5. **Storyline-vs-execution scoring for Neon Parcel.** Two separate Jev scores per shot (storyline strength, execution quality), matching the existing locked rule that these are different axes — flags a weak storyline before spending on generation.
 
+### Jev fan-out / complexity-triage design (opus-deep review, 2026-09-28 8:35am)
+
+Tony's brain-dump question — "can Jev decide whether a prompt should be split into sub-agents vs. answered inline, not just whether it's a chore" — got a full design pass. Full report is in this session's transcript; summary for planning:
+
+- **Not a new layer.** `jev_route.py` already makes one call per prompt with `route` (answer/chore/frontier) + `multi_task`. Proposal adds a 4th signal, `fan_out` (0–1 probability: "does this split into 3+ independent parallel parts?"), to that same call — no second round-trip, no new latency/cost.
+- **Jev can decide to split, but can't write the sub-tasks** — Decisions API only returns typed choices/scores, no free text. The model doing the work still writes the actual breakdown.
+- **The retry-loop waste Tony actually described (a model retrying the same failed approach over and over) is a different problem** — that happens mid-turn, after the prompt's already been routed. Proposed fix is a separate `loop_guard.py`: a cheap after-tool-call hook, no Jev call, that counts repeated failures on the same command/file and injects a "stop retrying, hand this to opus-standard/sol-standard" note after 3 strikes. Flagged as the bigger win of the two.
+- **Rollout:** ship `fan_out` in shadow mode first (log the score, don't act on it) for ~1 week, then set the real threshold (proposed starting point 0.75, vs. 0.6 for `route`) from `~/Library/Logs/Agent-OS-Router.jsonl` data instead of guessing.
+- **Open questions for Tony before build:** (1) does Codex 0.157 / Antigravity expose an after-tool hook event (needed for `loop_guard.py` there)? (2) approve creating `~/.codex/agents/luna-standard.toml` as Codex's cheap named fan-out agent?
+- **Not started** — this is a proposal only, no code written, nothing wired in. Needs Tony's go-ahead per the `openrouter-jev-calls` skill's own rule against modifying `jev_route.py` without sign-off.
+
 **Also noted (not Jev-specific):** the "30-day log audit" idea from the tutorials — prompting an agent to mine `claude-mem` history for 5 concrete skills worth automating — is doable right now with existing tools, no new infrastructure needed.
 
 ---
