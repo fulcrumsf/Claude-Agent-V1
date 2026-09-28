@@ -1,0 +1,75 @@
+{
+  "production": "0002_Delivery-Wildlife-Encounters-Compilation/Production/Shot-06-Capybara-Motoboy-Gate-BR",
+  "pipeline": "neon-parcel-longform-compilation-v2",
+  "assets": [
+    {
+      "shot_id": "Capybara-Motoboy-Gate-BR",
+      "version": "v1",
+      "prompt_file": "Prompts/Full-Action-Seedance-2-Mini-480p-v1.md",
+      "prompt_sha256": "958561556560c6aba5fbccbc4778abcc2b1069e697c684517bc79581d5eaf212",
+      "prior_attempts": 0,
+      "model": "bytedance/seedance-2-mini",
+      "status": "approved",
+      "reserved_at": "2026-09-22T12:15:02.580058+00:00",
+      "task_id": "0ef5001ad988a92d98412fa3ca79db7e",
+      "submitted_at": "2026-09-22T12:15:03Z",
+      "grade": "B+",
+      "grade_note": "Tony: B+ overall, approved and passes. Look and movement correctness earned the B+; storyline is a minus. Autonomous full-pipeline run."
+    },
+    {
+      "shot_id": "Capybara-Motoboy-Gate-BR",
+      "version": "v1",
+      "model": "bytedance/seedance-2-mini",
+      "tool": "seedance2_call.py (winning formula)",
+      "status": "approved",
+      "inputs": {
+        "reference_image_urls": [
+          "Storyboard_v1.png",
+          "Environment_Sheet_v1.png",
+          "Motoboy_Character_Sheet_v2_Titled.png",
+          "Capybara_Creature_Sheet_v1_Titled.png",
+          "Motorcycle_Prop_Sheet_v2_Titled.png"
+        ]
+      },
+      "duration_seconds": 14,
+      "resolution": "1920x1080 (upscaled via Magnific after Kie Topaz failed 2x)",
+      "raw_output": "Data/Seedance_Mini_v1_Winning_Formula.mp4",
+      "final_output": "Data/Seedance_Mini_v1_1080p_FINAL.mp4",
+      "gemini_inspection": "Data/Gemini_Inspection_v1.json (confidence 0.95, no error-severity findings)",
+      "autonomous_run": "Tony authorized this shot to run pipeline-to-completion without per-step approval, 2026-09-22",
+      "grade": "B+",
+      "grade_note": "Tony: B+ overall, approved and passes. Look and movement correctness earned the B+; storyline is a minus. Autonomous full-pipeline run."
+    }
+  ],
+  "processing": [
+    {
+      "stage": "topaz-2x",
+      "provider": "kie",
+      "attempt": 1,
+      "status": "provider_failed",
+      "error": "Task b9af20e31e6a7f6f46ffe17a22cc1cd0 failed: {'taskId': 'b9af20e31e6a7f6f46ffe17a22cc1cd0', 'model': 'topaz/video-upscale', 'state': 'fail', 'param': '{\"input\":\"{\\\\\"video_url\\\\\":\\\\\"https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Seedance_Min"
+    },
+    {
+      "stage": "magnific-1k",
+      "provider": "magnific",
+      "task_id": "6b296917-7577-4598-a03b-167b7cd2a608",
+      "params": {
+        "video": "https://tempfile.redpandaai.co/kieai/289685/neon-parcel/Seedance_Mini_v1_Winning_Formula.mp4",
+        "resolution": "1k",
+        "creativity": 0,
+        "fps_boost": false,
+        "sharpen": 0,
+        "smart_grain": 0,
+        "flavor": "natural"
+      },
+      "status": "success",
+      "output": "Data/Seedance_Mini_v1_Magnific_1k.mp4"
+    },
+    {
+      "stage": "ffmpeg-normalize-1920x1080",
+      "source": "Data/Seedance_Mini_v1_Magnific_1k.mp4",
+      "output": "Data/Seedance_Mini_v1_1080p_FINAL.mp4",
+      "status": "success"
+    }
+  ]
+}

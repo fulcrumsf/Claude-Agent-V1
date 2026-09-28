@@ -1,0 +1,56 @@
+{
+  "production": "0002_Delivery-Wildlife-Encounters-Compilation/Production/Shot-02-Kangaroo-Doorbell-AU",
+  "pipeline": "neon-parcel-longform-compilation-v2-test-shot",
+  "assets": [
+    {
+      "shot_id": "Shot-03-Establishing-Test",
+      "version": "v1",
+      "model": "bytedance/seedance-2",
+      "status": "approved",
+      "task_id": "95ac14b19a7aa9b851844d35730a2990",
+      "submitted_at": "2026-09-20T01:06:15Z",
+      "completed_at": "2026-09-20T01:10:05Z",
+      "credits_consumed": 205,
+      "inputs": {
+        "first_frame_url": "Character_Sheets/POV_Panel_Final_Tony_Edit.png (clean, unlabeled -- never the labeled reference-sheet copy)",
+        "reference_image_urls": null
+      },
+      "duration_seconds": 5,
+      "resolution": "720p",
+      "output": "Data/Seedance_v1_Establishing_Test.mp4",
+      "purpose": "Cheap single-reference test to validate the final environment plate holds up in motion (car orientation, hedge extent, no label bleed, camera lock) before spending credits on the full multi-subject shot.",
+      "approval_note": "Tony confirmed environment looked fine off this test; car orientation, hedge extent, and static camera all held across all 5s, zero label bleed.",
+      "issues": []
+    },
+    {
+      "shot_id": "Shot-03-Full-Action",
+      "version": "v1",
+      "model": "bytedance/seedance-2",
+      "status": "approved",
+      "task_id": "3ae68d07b866d9dcc09815d80be75c1b",
+      "submitted_at": "2026-09-20T01:14:33Z",
+      "completed_at": "2026-09-20T01:19:08Z",
+      "credits_consumed": 574,
+      "inputs": {
+        "first_frame_url": null,
+        "reference_image_urls": [
+          "Character_Sheets/POV_Panel_Final_Tony_Edit.png (@Image1 -- environment plate, clean/unlabeled)",
+          "Character_Sheets/Delivery_Driver_Character_Sheet.png (@Image2)",
+          "Character_Sheets/Kangaroo_Character_Sheet.png (@Image3)"
+        ]
+      },
+      "duration_seconds": 14,
+      "resolution": "720p",
+      "prompt_structure": "Reference-role preamble (@Image1/@Image2/@Image3) + timestamped action-block timeline (6 beats mapped to [00:00-00:02] ... [00:11-00:14]) + inline continuity constraints + closing dash negative-prompt line",
+      "output": "Data/Seedance_v1_Full_Action_Test.mp4",
+      "approval_note": "Tony: 'That did extremely well... grade that an A.' First-attempt success verified frame-by-frame: correct subject count throughout, bag never set down, food correctly separated, car stationary/correct orientation, kangaroo clear of letterbox, both subjects visible together for the watch beat, driver exits screen-right.",
+      "issues": [
+        {
+          "severity": "🟡 Minor",
+          "note": "Kangaroo holds its mid-hop pose fairly static for ~2s during the watch beat (00:08-00:11) -- reads slightly staged rather than a natural weight-settling motion. Did not affect the A grade."
+        }
+      ]
+    }
+  ],
+  "processing": []
+}

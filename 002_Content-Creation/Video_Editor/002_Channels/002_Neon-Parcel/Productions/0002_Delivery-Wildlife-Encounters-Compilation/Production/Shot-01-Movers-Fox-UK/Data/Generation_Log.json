@@ -1,0 +1,28 @@
+{
+  "production": "0002_Delivery-Wildlife-Encounters-Compilation/Production/Shot-01-Movers-Fox-UK",
+  "pipeline": "neon-parcel-longform-compilation-v2-test-shot",
+  "assets": [
+    {
+      "shot_id": "Shot-02",
+      "version": "v1",
+      "prompt_file": "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Production/Shot-01-Movers-Fox-UK/Shot-02-Seedance-2-Mini-v1.md",
+      "prompt_sha256": "70756a89682a853f01fafcb3ef7cd4ea56da6bc644ab4ccf5f3be1971c54e413",
+      "prior_attempts": 0,
+      "model": "bytedance/seedance-2-mini",
+      "status": "submitted",
+      "reserved_at": "2026-09-19T00:24:40.468110+00:00",
+      "task_id": "3d971c541b2b0420577bfaf48d13fc82",
+      "submitted_at": "2026-09-19T00:24:40Z",
+      "output": "Video_Clips/Shot-02-Seedance-2-Mini-480p-v1.mp4",
+      "status": "approved_with_notes",
+      "approval_note": "Tony approved: storyboard-as-reference_image_urls binding technique confirmed working again (v2 pipeline test), consistency good, not overcomplicated. Not a pixel-exact match to the storyboard but close enough.",
+      "issues": [
+        {"severity": "🟡 Minor", "note": "Movers oversized relative to the couch."},
+        {"severity": "🟡 Minor", "note": "Movers oversized relative to the moving truck."},
+        {"severity": "🟡 Minor", "note": "Truck ramp/lift gate rendered far larger/wider than that vehicle class would actually carry; should be a narrow fold-out ramp, not a full-width semi lift gate."},
+        {"severity": "🟠 Major", "note": "Carrying motion and startled reaction read as robotic/staged AI slop -- no physical nuance (weight shift, grip adjustment, flinch/settle arc), just named end-state action and a frozen expression."}
+      ]
+    }
+  ],
+  "processing": []
+}

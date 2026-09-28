@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scaffold_new_production import FOLDERS, scaffold
+from scaffold_new_production import FOLDERS, SHOT_FOLDERS, scaffold, scaffold_shot
 
 
 class ScaffoldTests(unittest.TestCase):
@@ -26,6 +26,22 @@ class ScaffoldTests(unittest.TestCase):
             self.assertEqual(
                 manifest_path.read_text(encoding="utf-8"), "user-approved-manifest\n"
             )
+
+    def test_shot_scaffold_is_standard_and_non_destructive(self):
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            root = scaffold(Path(temporary_directory) / "0003_Test-Compilation")
+            shot = scaffold_shot(root, "Shot-08-Otter-Doorstep-NZ")
+            self.assertEqual(shot, root / "Production" / "Shot-08-Otter-Doorstep-NZ")
+            for relative_folder in SHOT_FOLDERS:
+                self.assertTrue((shot / relative_folder).is_dir())
+
+            kept = shot / "Data" / "Generation_Log.json"
+            kept.write_text("keep-me\n", encoding="utf-8")
+            scaffold_shot(root, "Shot-08-Otter-Doorstep-NZ")
+            self.assertEqual(kept.read_text(encoding="utf-8"), "keep-me\n")
+
+            with self.assertRaises(ValueError):
+                scaffold_shot(root, "otter shot")
 
 
 if __name__ == "__main__":

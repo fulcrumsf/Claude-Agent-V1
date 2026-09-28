@@ -37,6 +37,18 @@ FOLDERS = (
     "Data/History",
 )
 
+# Every shot lives in Production/Shot-NN-Name/ with this same layout (Tony, 2026-09-27).
+# v2 tools (neon_seedance_call.py, check_storyboard_scale.py, ...) take this shot folder
+# as <shot_dir> and read its own Data/, so shots stay self-contained.
+SHOT_FOLDERS = (
+    "Character_Sheets",
+    "Data",
+    "Prompts",
+    "Research/Reference_Images",
+    "Video_Clips",
+    "Video_Clips/Archived",
+)
+
 
 def _write_if_missing(path: Path, content: str) -> None:
     if not path.exists():
@@ -116,10 +128,27 @@ def scaffold(production_root: Path) -> Path:
     return production_root
 
 
+def scaffold_shot(production_root: Path, shot_name: str) -> Path:
+    """Create (or complete) Production/<shot_name>/ with the standard shot layout. Never overwrites."""
+    if not re.match(r"^Shot-\d{2}[A-Z]?-[A-Za-z0-9-]+$", shot_name):
+        raise ValueError(f"Shot folder must look like Shot-08-Otter-Doorstep-NZ, got {shot_name!r}")
+    shot_root = Path(production_root).resolve() / "Production" / shot_name
+    for relative in SHOT_FOLDERS:
+        (shot_root / relative).mkdir(parents=True, exist_ok=True)
+    return shot_root
+
+
 def main() -> None:
-    if len(sys.argv) != 2:
-        raise SystemExit("Usage: scaffold_new_production.py <production_folder>")
-    root = scaffold(Path(sys.argv[1]))
+    args = sys.argv[1:]
+    if len(args) == 3 and args[1] == "--shot":
+        shot = scaffold_shot(scaffold(Path(args[0])), args[2])
+        print(f"Scaffolded Neon Parcel shot at {shot}")
+        return
+    if len(args) != 1:
+        raise SystemExit(
+            "Usage: scaffold_new_production.py <production_folder> [--shot Shot-NN-Name]"
+        )
+    root = scaffold(Path(args[0]))
     print(f"Scaffolded Neon Parcel production at {root}")
 
 
