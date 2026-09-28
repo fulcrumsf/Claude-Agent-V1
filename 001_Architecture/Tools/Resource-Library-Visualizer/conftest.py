@@ -3,7 +3,7 @@ import pathlib
 import pytest
 from PIL import Image
 
-TOOL = pathlib.Path("001_Architecture/Tools/Resource-Library-Visualizer")
+TOOL = pathlib.Path(__file__).resolve().parent
 
 
 def load(name):

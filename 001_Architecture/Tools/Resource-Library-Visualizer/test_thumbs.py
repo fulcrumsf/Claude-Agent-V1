@@ -1,15 +1,8 @@
-import importlib.util
 import pathlib
+
 from PIL import Image
 
-TOOL = pathlib.Path("001_Architecture/Tools/Resource-Library-Visualizer")
-
-
-def load(name):
-    spec = importlib.util.spec_from_file_location(name, TOOL / f"{name}.py")
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
+from conftest import load
 
 
 thumbs = load("thumbs")

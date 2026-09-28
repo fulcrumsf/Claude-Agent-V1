@@ -89,7 +89,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 - Click a card → note rendered Obsidian-style (inline images, playable YouTube embeds, callouts, wikilinks). Per-card: **Edit** (title/summary/url/tags/body → rewrites the `.md` in place), **Re-run AI** (re-runs `process_image_ingest` vision, shows before/after, apply or discard), **Add Comment** (queued for the agent).
 - Bulk select → **Delete** (moves note + sibling image to `~/Desktop/delete/`, card vanishes — never a hard delete) or **Re-run AI**.
 - Comments + edit requests append to `~/Desktop/Resource_Library_Review/Review_Queue.md`; **Finalize Queue** seals a batch (copy/download) to hand to the agent.
-- Nothing is committed to git. Source-type labels are heuristic (~90%). Tests: `tests/resource_library_visualizer/` (39, pytest).
+- Nothing is committed to git. Source-type labels are heuristic (~90%). Tests: `001_Architecture/Tools/Resource-Library-Visualizer/test_*.py` (45, pytest — moved here 2026-09-27, co-located with the tool like every other Skill/Tool in the workspace).
 
 **Skill registry sync script:** `001_Architecture/Scripts/sync_skill_index.py`
 - Regenerates `001_Architecture/Skills/Skill-Index.md` from every `SKILL.md` in the skills tree

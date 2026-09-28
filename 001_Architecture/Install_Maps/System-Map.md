@@ -6,7 +6,7 @@ tags: [system-map, install-map, tools, assets]
 
 # System Map
 
-> **Auto-generated:** 2026-09-27 01:02  
+> **Auto-generated:** 2026-09-27 21:36  
 > Do not edit manually. Refresh by running:
 > `python3 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/generate_system_map.py`
 
@@ -223,7 +223,7 @@ tags: [system-map, install-map, tools, assets]
 | CEPHtmlEngine Helper (Renderer) | 12.0.0.14 | `/Applications/Adobe Photoshop 2026/Adobe Photoshop 2026.app/Contents/MacOS/CEPHtmlEngine.app/Contents/Frameworks/CEPHtmlEngine Helper (Renderer).app` |
 | CEPHtmlEngine Helper (Renderer) | 12.0.1.2 | `/Applications/Adobe Premiere Pro (Beta)/Adobe Premiere Pro (Beta).app/Contents/MacOS/CEPHtmlEngine.app/Contents/Frameworks/CEPHtmlEngine Helper (Renderer).app` |
 | CEPHtmlEngine Helper (Renderer) | 12.0.1.2 | `/Applications/Adobe Premiere Pro 2026/Adobe Premiere Pro 2026.app/Contents/MacOS/CEPHtmlEngine.app/Contents/Frameworks/CEPHtmlEngine Helper (Renderer).app` |
-| ChatGPT | 26.908.70816 | `/Applications/ChatGPT.app` |
+| ChatGPT | 26.915.31945 | `/Applications/ChatGPT.app` |
 | ChatGPT | 26.818.61809 | `/Applications/Codex.app` |
 | ChatGPT Classic | 1.2026.184 | `/Applications/ChatGPT Classic.app` |
 | Chrome | 154.0.8037.57 | `/Applications/Google Chrome.app` |
@@ -257,23 +257,27 @@ tags: [system-map, install-map, tools, assets]
 | Claude Helper (Renderer) | 2.9939.2 | `/Applications/Claude.app/Contents/Frameworks/Claude Helper (Renderer).app` |
 | Claude iOS Sim | — | `/Applications/Claude.app/Contents/Helpers/Claude iOS Sim.app` |
 | Clocker - World Clock | 26.12 | `/Applications/Clocker.app` |
-| Code | 1.136.2 | `/Applications/Visual Studio Code.app` |
+| Code | 1.139.1 | `/Applications/Visual Studio Code.app` |
 | Code Helper | — | `/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper.app` |
 | Code Helper (GPU) | — | `/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (GPU).app` |
 | Code Helper (Plugin) | — | `/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Plugin).app` |
 | Code Helper (Renderer) | — | `/Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Renderer).app` |
-| Codex | 152.0.7977.83 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/152.0.7977.83/Helpers/Codex (Alerts).app` |
-| Codex | 152.0.7977.83 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/152.0.7977.83/Helpers/Codex (GPU).app` |
-| Codex | 152.0.7977.83 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/152.0.7977.83/Helpers/Codex (Renderer).app` |
-| Codex | 152.0.7977.83 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/152.0.7977.83/Helpers/Codex (Service).app` |
+| Codex | 153.0.8010.48 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/153.0.8010.48/Helpers/Codex (Alerts).app` |
+| Codex | 153.0.8010.48 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/153.0.8010.48/Helpers/Codex (Aperitif Alerts).app` |
+| Codex | 153.0.8010.48 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/153.0.8010.48/Helpers/Codex (Aperitif GPU).app` |
+| Codex | 153.0.8010.48 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/153.0.8010.48/Helpers/Codex (Aperitif Renderer).app` |
+| Codex | 153.0.8010.48 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/153.0.8010.48/Helpers/Codex (Aperitif).app` |
+| Codex | 153.0.8010.48 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/153.0.8010.48/Helpers/Codex (GPU).app` |
+| Codex | 153.0.8010.48 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/153.0.8010.48/Helpers/Codex (Renderer).app` |
+| Codex | 153.0.8010.48 | `/Applications/ChatGPT.app/Contents/Frameworks/Codex Framework.framework/Versions/153.0.8010.48/Helpers/Codex (Service).app` |
 | Codex | 151.0.7922.170 | `/Applications/Codex.app/Contents/Frameworks/Codex Framework.framework/Versions/151.0.7922.170/Helpers/Codex (Alerts).app` |
 | Codex | 151.0.7922.170 | `/Applications/Codex.app/Contents/Frameworks/Codex Framework.framework/Versions/151.0.7922.170/Helpers/Codex (GPU).app` |
 | Codex | 151.0.7922.170 | `/Applications/Codex.app/Contents/Frameworks/Codex Framework.framework/Versions/151.0.7922.170/Helpers/Codex (Renderer).app` |
 | Codex | 151.0.7922.170 | `/Applications/Codex.app/Contents/Frameworks/Codex Framework.framework/Versions/151.0.7922.170/Helpers/Codex (Service).app` |
-| Codex Computer Use | 26.913.1001067 | `/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app` |
+| Codex Computer Use | 26.916.1001103 | `/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app` |
 | Codex Computer Use | 26.823.1000854 | `/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app` |
 | Codex Computer Use | 26.814.1000740 | `/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/bin/mac/normal/Codex Computer Use.app` |
-| Codex Computer Use Installer | 26.913.1001067 | `/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app/Contents/SharedSupport/Codex Computer Use Installer.app` |
+| Codex Computer Use Installer | 26.916.1001103 | `/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app/Contents/SharedSupport/Codex Computer Use Installer.app` |
 | Codex Computer Use Installer | 26.823.1000854 | `/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app/Contents/SharedSupport/Codex Computer Use Installer.app` |
 | Codex Computer Use Installer | 26.814.1000740 | `/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/bin/mac/normal/Codex Computer Use.app/Contents/SharedSupport/Codex Computer Use Installer.app` |
 | Comet | 152.0.7977.197 | `/Applications/Comet.app` |
@@ -302,7 +306,7 @@ tags: [system-map, install-map, tools, assets]
 | Creative Cloud UI Helper (Renderer) | 6.10.0.253 | `/Applications/Utilities/Adobe Creative Cloud/ACC/Creative Cloud.app/Contents/Frameworks/Creative Cloud UI Helper (Renderer).app` |
 | Creative Cloud Uninstaller | 6.10.0.253 | `/Applications/Utilities/Adobe Creative Cloud/Utils/Creative Cloud Uninstaller.app` |
 | Cryptomator | 1.19.2 | `/Applications/Cryptomator.app` |
-| CUALockScreenGuardian | 26.913.1001067 | `/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app/Contents/SharedSupport/CUALockScreenGuardian.app` |
+| CUALockScreenGuardian | 26.916.1001103 | `/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app/Contents/SharedSupport/CUALockScreenGuardian.app` |
 | CUALockScreenGuardian | 26.823.1000854 | `/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app/Contents/SharedSupport/CUALockScreenGuardian.app` |
 | CUALockScreenGuardian | 26.814.1000740 | `/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/bin/mac/normal/Codex Computer Use.app/Contents/SharedSupport/CUALockScreenGuardian.app` |
 | DaVinci Control Panels Setup |  | `/Applications/DaVinci Resolve/DaVinci Control Panels Setup.app` |
@@ -583,7 +587,7 @@ tags: [system-map, install-map, tools, assets]
 | screenrec | — | `/Applications/screenrec/screenrec.app` |
 | screenrec | — | `/Applications/screenrec.app` |
 | Silicio | 3.7.2 | `/Applications/Silicio.app` |
-| SkyComputerUseClient | 26.913.1001067 | `/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app` |
+| SkyComputerUseClient | 26.916.1001103 | `/Applications/ChatGPT.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app` |
 | SkyComputerUseClient | 26.823.1000854 | `/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app` |
 | SkyComputerUseClient | 26.814.1000740 | `/Applications/Codex.app/Contents/Resources/cua_node/lib/node_modules/@oai/sky/bin/mac/normal/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app` |
 | Slack | 4.51.180 | `/Applications/Slack.app` |
@@ -903,7 +907,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `graphify` | graphify 0.9.55 | `/Library/Frameworks/Python.framework/Versions/3.13/bin/graphify` |
 | `obsidian` | Obsidian CLI | `/Applications/Obsidian.app/Contents/MacOS/obsidian` |
 | `claude` | 2.1.170 (Claude Code) | `/opt/homebrew/bin/claude` |
-| `codex` | codex-cli 0.137.0 | `/opt/homebrew/bin/codex` |
+| `codex` | codex-cli 0.157.1 | `/opt/homebrew/bin/codex` |
 | `gemini` | 0.45.2 | `/opt/homebrew/bin/gemini` |
 | `kubectl` | Client Version: v1.34.1 | `/usr/local/bin/kubectl` |
 | `jq` | jq-1.7.1-apple | `/usr/bin/jq` |
@@ -3231,6 +3235,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `configTools.py` | Code of the config system; not related to fontTools or fonts in particular. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/FqT79BeXzzdXK7SRsjov1/fontTools/misc/configTools.py` |
 | `conflict.py` | only case is if a is empty and b is variadic | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torch/fx/experimental/unification/multipledispatch/conflict.py` |
 | `conflict.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/multipledispatch/conflict.py` |
+| `conftest.py` | youtube id only in frontmatter, not the body | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Resource-Library-Visualizer/conftest.py` |
 | `conftest.py` | config is initialized here rather than in pytest.ini so that `pytest | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/UO5ECqNUvAEt-ZeVr-X3O/matplotlib/testing/conftest.py` |
 | `conftest.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/UO5ECqNUvAEt-ZeVr-X3O/matplotlib/tests/conftest.py` |
 | `conftest.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/UO5ECqNUvAEt-ZeVr-X3O/mpl_toolkits/axes_grid1/tests/conftest.py` |
@@ -3241,7 +3246,6 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `conftest.py` | Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/npJ2BictLLJsNX2UnMFUa/tests/conftest.py` |
 | `conftest.py` | Pytest configuration and fixtures for the Numpy test suite. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/r6ctG75T8xt6VJSEPRjPT/numpy/conftest.py` |
 | `conftest.py` | nx_loopback backend is only available when testing with a backend | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/conftest.py` |
-| `conftest.py` | youtube id only in frontmatter, not the body | `/Users/tonymacbook2025/Documents/Agent-OS/tests/resource_library_visualizer/conftest.py` |
 | `connected.py` | Connected components. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/algorithms/components/connected.py` |
 | `connection.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/DrRsidzlewxE6P6vgneAk/httpcore/_async/connection.py` |
 | `connection.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/DrRsidzlewxE6P6vgneAk/httpcore/_sync/connection.py` |
@@ -3550,6 +3554,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `deform_conv.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/dvWtUMi-XoENwsIHow6EI/torchvision/ops/deform_conv.py` |
 | `degree_alg.py` | Degree centrality measures. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/algorithms/centrality/degree_alg.py` |
 | `degree_seq.py` | Generate graphs with a given degree sequence or expected degree sequence. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/generators/degree_seq.py` |
+| `delegate.py` | delegate: hand a chore to a cheap OpenRouter Auto Router worker (Option B, 2026-09-27). | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/delegate.py` |
 | `deloperator.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/vector/deloperator.py` |
 | `delta.py` | This module implements sums and products containing the Kronecker Delta function. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/concrete/delta.py` |
 | `delta_functions.py` | DELTA FUNCTION ############################### | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/functions/special/delta_functions.py` |
@@ -4016,6 +4021,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `frontend_utils.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torch/_functorch/_aot_autograd/frontend_utils.py` |
 | `frv.py` | Finite Discrete Random Variables Module | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/stats/frv.py` |
 | `frv_types.py` | Finite Discrete Random Variables - Prebuilt variable types | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/stats/frv_types.py` |
+| `fs_guard.py` | Agent-OS filesystem guard — one pre-tool hook shared by Claude Code, Codex and Gemini CLI. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/fs_guard.py` |
 | `fsdp.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torch/_inductor/fx_passes/fsdp.py` |
 | `FtexImagePlugin.py` | A Pillow loader for .ftc and .ftu files (FTEX) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/LujOXHPXCRFAnseSSNk9Y/PIL/FtexImagePlugin.py` |
 | `ftp.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/dg_lRoj6rO8MD7gpKuVcn/fsspec/implementations/ftp.py` |
@@ -4148,11 +4154,11 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `gen_lazy_tensor.py` | ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ # | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torchgen/gen_lazy_tensor.py` |
 | `gen_mobile_upgraders.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torchgen/operator_versions/gen_mobile_upgraders.py` |
 | `gen_mobile_upgraders_constant.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torchgen/operator_versions/gen_mobile_upgraders_constant.py` |
-| `gen_panel.py` | Shot 06 environment-panel generator: reads a saved prompt file (front matter stripped), calls GPT-Image-2 via the skill's image_generation, never overwrites. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Shot-06-Capybara-Motoboy-Gate-BR/Data/gen_panel.py` |
-| `gen_panel.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Shot-07-Walrus-Fishmonger-Truck-GB/Data/gen_panel.py` |
+| `gen_panel.py` | Shot 06 environment-panel generator: reads a saved prompt file (front matter stripped), calls GPT-Image-2 via the skill's image_generation, never overwrites. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Production/Shot-06-Capybara-Motoboy-Gate-BR/Data/gen_panel.py` |
+| `gen_panel.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Production/Shot-07-Walrus-Fishmonger-Truck-GB/Data/gen_panel.py` |
 | `gen_pyi.py` | mypy: allow-untyped-defs | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torch/utils/data/datapipes/gen_pyi.py` |
 | `gen_python_functions.py` | Generates Python bindings for ATen functions | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torchgen/packaged/autograd/gen_python_functions.py` |
-| `gen_ref_panels.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Shot-05-Vervet-Monkey-Shopfront-KE/Data/gen_ref_panels.py` |
+| `gen_ref_panels.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Production/Shot-05-Vervet-Monkey-Shopfront-KE/Data/gen_ref_panels.py` |
 | `gen_schema_utils.py` | Note: These aren't actually used in torchgen, they're some utilities for generating a schema | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torchgen/gen_schema_utils.py` |
 | `gen_static_runtime_ops.py` | Given a list of `grouped_native_functions` sorted by their op names, return a list of | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torchgen/static_runtime/gen_static_runtime_ops.py` |
 | `gen_storyboards.py` | Revision Round 1 — regenerate storyboards for the shots being re-shot. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/0003_Glass_Frog_Transparency/Scripts/gen_storyboards.py` |
@@ -4556,6 +4562,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `iup.py` | if cython not installed, use mock module with no-op decorators and types | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/FqT79BeXzzdXK7SRsjov1/fontTools/varLib/iup.py` |
 | `J_S_T_F_.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/FqT79BeXzzdXK7SRsjov1/fontTools/ttLib/tables/J_S_T_F_.py` |
 | `jagged_lowerings.py` | mypy: allow-untyped-defs | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torch/_inductor/jagged_lowerings.py` |
+| `jev_route.py` | Jev router hint for every harness (Tony, Option B, 2026-09-27). | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/jev_route.py` |
 | `jit.py` | Persistent ``.o`` cache for CuTe DSL compiled kernels. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torch/_vendor/quack/cache/jit.py` |
 | `jit_metaprogramming_utils.py` | mypy: ignore-errors | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torch/testing/_internal/jit_metaprogramming_utils.py` |
 | `jit_utils.py` | Utilities for manipulating the torch.Graph object and the torchscript. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/WIRiSpJRFZ-UqhpISPCew/torch/onnx/_internal/torchscript_exporter/jit_utils.py` |
@@ -5845,9 +5852,9 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `run_offline.py` | Launch the diagnostic CLI with OS-enforced network denial and a clean environment. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/run_offline.py` |
 | `run_remaining_batch.py` | Generate and finish the unreviewed Neon Parcel clips exactly once. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Scripts/run_remaining_batch.py` |
 | `run_shots_08_12.py` | Generate and finish Neon Parcel shots 8-12 without approval pauses. | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0001_Grandma-And-Bear-Compilation/Scripts/run_shots_08_12.py` |
-| `run_skill_char_sheets.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Shot-05-Vervet-Monkey-Shopfront-KE/Data/run_skill_char_sheets.py` |
-| `run_skill_char_sheets_v2.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Shot-05-Vervet-Monkey-Shopfront-KE/Data/run_skill_char_sheets_v2.py` |
-| `run_skill_char_sheets_v3.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Shot-05-Vervet-Monkey-Shopfront-KE/Data/run_skill_char_sheets_v3.py` |
+| `run_skill_char_sheets.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Production/Shot-05-Vervet-Monkey-Shopfront-KE/Data/run_skill_char_sheets.py` |
+| `run_skill_char_sheets_v2.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Production/Shot-05-Vervet-Monkey-Shopfront-KE/Data/run_skill_char_sheets_v2.py` |
+| `run_skill_char_sheets_v3.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/0002_Delivery-Wildlife-Encounters-Compilation/Production/Shot-05-Vervet-Monkey-Shopfront-KE/Data/run_skill_char_sheets_v3.py` |
 | `run_tts_batch.py` | Batch TTS runner — reads narration_tts.json, generates ElevenLabs audio for each scene. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/run_tts_batch.py` |
 | `run_tts_batch.py` | Batch TTS runner — reads narration_tts.json, generates ElevenLabs audio for each scene. | `/Users/tonymacbook2025/Documents/Reconstruct/Migrated-App-Building/App Building/002_Content-Creation/Video-Editor/004_Tools/run_tts_batch.py` |
 | `run_video_gen_batch.py` | Batch AI video generator — reads ai_prompts.json, generates Kling/Veo videos for each scene. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/run_video_gen_batch.py` |
@@ -6302,7 +6309,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `test_abstract_interface.py` | Test gh18403 | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/r6ctG75T8xt6VJSEPRjPT/numpy/f2py/tests/test_abstract_interface.py` |
 | `test_abstract_nodes.py` | contrary to python's built-in list, we can call e.g. "replace" on List. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/codegen/tests/test_abstract_nodes.py` |
 | `test_accumulationbounds.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/calculus/tests/test_accumulationbounds.py` |
-| `test_actions.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/tests/resource_library_visualizer/test_actions.py` |
+| `test_actions.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Resource-Library-Visualizer/test_actions.py` |
 | `test_activation.py` | Tests for the ``sympy.physics.biomechanics.activation.py`` module. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/physics/biomechanics/tests/test_activation.py` |
 | `test_actuator.py` | Tests for the ``sympy.physics.mechanics.actuator.py`` module. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/physics/mechanics/tests/test_actuator.py` |
 | `test_adjacency.py` | Ensure input is unmodified by deserialisation | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/readwrite/json_graph/tests/test_adjacency.py` |
@@ -6595,6 +6602,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `test_defmatrix.py` | Check for ValueError when called with invalid string data. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/r6ctG75T8xt6VJSEPRjPT/numpy/matrixlib/tests/test_defmatrix.py` |
 | `test_degree_centrality.py` | Unit tests for degree centrality. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/algorithms/centrality/tests/test_degree_centrality.py` |
 | `test_degree_seq.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/generators/tests/test_degree_seq.py` |
+| `test_delegate.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/test_delegate.py` |
 | `test_delta.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/concrete/tests/test_delta.py` |
 | `test_delta_functions.py` | FIXME: this is generally undefined @ x=0 | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/functions/special/tests/test_delta_functions.py` |
 | `test_deltafunctions.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/integrals/tests/test_deltafunctions.py` |
@@ -6614,7 +6622,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `test_deprecations.py` | Test deprecation and future warnings. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/r6ctG75T8xt6VJSEPRjPT/numpy/linalg/tests/test_deprecations.py` |
 | `test_deprecations.py` | Test deprecation and future warnings. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/r6ctG75T8xt6VJSEPRjPT/numpy/ma/tests/test_deprecations.py` |
 | `test_derivatives.py` | Some examples have been taken from: | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/matrices/expressions/tests/test_derivatives.py` |
-| `test_detect.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/tests/resource_library_visualizer/test_detect.py` |
+| `test_detect.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Resource-Library-Visualizer/test_detect.py` |
 | `test_determinant.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/matrices/expressions/tests/test_determinant.py` |
 | `test_determinant.py` | Evaluating these directly because they are never reached via M.det() | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/matrices/tests/test_determinant.py` |
 | `test_determinism.py` | Test output reproducibility. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/UO5ECqNUvAEt-ZeVr-X3O/matplotlib/tests/test_determinism.py` |
@@ -6888,6 +6896,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `test_item_selection.py` | Currently all types but object, use the same function generation. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/r6ctG75T8xt6VJSEPRjPT/numpy/_core/tests/test_item_selection.py` |
 | `test_iterables.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/utilities/tests/test_iterables.py` |
 | `test_jax.py` | Unlike NumPy which will aggressively promote operands to double precision, | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/printing/tests/test_jax.py` |
+| `test_jev_route.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/test_jev_route.py` |
 | `test_joint.py` | Using PinJoint to access Joint's coordinate generation method | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/physics/mechanics/tests/test_joint.py` |
 | `test_joint_degree_seq.py` | valid joint degree that satisfies all five conditions | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/generators/tests/test_joint_degree_seq.py` |
 | `test_joint_rv.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/stats/tests/test_joint_rv.py` |
@@ -7067,7 +7076,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `test_normalforms.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/matrices/tests/test_normalforms.py` |
 | `test_normalforms.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/polys/matrices/tests/test_normalforms.py` |
 | `test_normalize_loudness.py` | A -30dB sine tone should measure well below the -14 LUFS target | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Skills/TikTok-Shop-Affiliate-Video/scripts/test_normalize_loudness.py` |
-| `test_notes.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/tests/resource_library_visualizer/test_notes.py` |
+| `test_notes.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Resource-Library-Visualizer/test_notes.py` |
 | `test_nseries.py` | https://github.com/sympy/sympy/issues/21075 | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/series/tests/test_nseries.py` |
 | `test_ntheory.py` | issue 12709 | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/external/tests/test_ntheory.py` |
 | `test_nullspace.py` | DomainMatrix.nullspace can have a divided answer or can return an undivided | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/polys/matrices/tests/test_nullspace.py` |
@@ -7218,7 +7227,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `test_quaternion.py` | calculating the inverse cached the norm which caused problems | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/algebras/tests/test_quaternion.py` |
 | `test_qubit.py` | issue 9136 | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/physics/quantum/tests/test_qubit.py` |
 | `test_query.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/assumptions/tests/test_query.py` |
-| `test_queue.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/tests/resource_library_visualizer/test_queue.py` |
+| `test_queue.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Resource-Library-Visualizer/test_queue.py` |
 | `test_quiver.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/UO5ECqNUvAEt-ZeVr-X3O/matplotlib/tests/test_quiver.py` |
 | `test_quoted_character.py` | See https://github.com/numpy/numpy/pull/10676. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/r6ctG75T8xt6VJSEPRjPT/numpy/f2py/tests/test_quoted_character.py` |
 | `test_quotientring.py` | Tests for quotient rings. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/polys/domains/tests/test_quotientring.py` |
@@ -7263,7 +7272,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `test_relational.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/core/tests/test_relational.py` |
 | `test_reloading.py` | gh-7844. Also check that relevant globals retain their identity. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/r6ctG75T8xt6VJSEPRjPT/numpy/tests/test_reloading.py` |
 | `test_removed_functions_exception_messages.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/tests/test_removed_functions_exception_messages.py` |
-| `test_render.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/tests/resource_library_visualizer/test_render.py` |
+| `test_render.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Resource-Library-Visualizer/test_render.py` |
 | `test_repmatrix.py` | https://github.com/sympy/sympy/issues/27663 | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/matrices/tests/test_repmatrix.py` |
 | `test_reportviews.py` | odd case where NodeView calls NodeDataView with data=False | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/classes/tests/test_reportviews.py` |
 | `test_repr.py` | eval(srepr(expr)) == expr has to succeed in the right environment. The right | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/printing/tests/test_repr.py` |
@@ -7328,7 +7337,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `test_sequences.py` | SeqExpr is a baseclass and does not take care of | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/series/tests/test_sequences.py` |
 | `test_series.py` | verify that adaptive-related keywords produces the expected results | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/plotting/tests/test_series.py` |
 | `test_series.py` | the following test is exact so no need for x -> x - 1 replacement | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/series/tests/test_series.py` |
-| `test_serve.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/tests/resource_library_visualizer/test_serve.py` |
+| `test_serve.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Resource-Library-Visualizer/test_serve.py` |
 | `test_setexpr.py` | TODO: add support for more functions in the future: | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/sets/tests/test_setexpr.py` |
 | `test_sets.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/matrices/expressions/tests/test_sets.py` |
 | `test_sets.py` | issue 16878a | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/sets/tests/test_sets.py` |
@@ -7454,7 +7463,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 | `test_textplot.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/plotting/tests/test_textplot.py` |
 | `test_theanocode.py` | Important note on tests in this module - the Theano printing functions use a | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/nP7UjpGhzgnCM9artvjiQ/sympy/printing/tests/test_theanocode.py` |
 | `test_threshold.py` | Threshold Graphs | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/algorithms/tests/test_threshold.py` |
-| `test_thumbs.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/tests/resource_library_visualizer/test_thumbs.py` |
+| `test_thumbs.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Resource-Library-Visualizer/test_thumbs.py` |
 | `test_ticker.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/UO5ECqNUvAEt-ZeVr-X3O/matplotlib/tests/test_ticker.py` |
 | `test_tightlayout.py` | (no description) | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/UO5ECqNUvAEt-ZeVr-X3O/matplotlib/tests/test_tightlayout.py` |
 | `test_time_dependent.py` | Unit testing for time dependent algorithms. | `/Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/.cache/uv/archive-v0/sbI5k1CO7PXtAGDuBH-DW/networkx/algorithms/tests/test_time_dependent.py` |
@@ -8112,7 +8121,7 @@ _(Served via `MCP_DOCKER` gateway — `docker mcp gateway run`)_
 ├── @felores/kie-cli@0.2.0
 ├── @google/gemini-cli@0.45.2
 ├── @musistudio/claude-code-router@2.0.0
-├── @openai/codex@0.137.0
+├── @openai/codex@0.157.1
 ├── @playwright/cli@0.1.13
 ├── @wavespeed/cli@0.2.3
 ├── corepack@0.35.0

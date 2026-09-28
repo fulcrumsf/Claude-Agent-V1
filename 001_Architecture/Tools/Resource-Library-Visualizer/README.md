@@ -42,4 +42,4 @@ Nothing is ever hard-deleted and nothing is committed to git.
 
 ## Tests
 
-    python3 -m pytest tests/resource_library_visualizer/ -v
+    python3 -m pytest 001_Architecture/Tools/Resource-Library-Visualizer/ -v
