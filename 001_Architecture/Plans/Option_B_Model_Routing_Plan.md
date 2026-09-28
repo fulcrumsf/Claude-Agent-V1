@@ -391,7 +391,7 @@ def antigravity_prompt(payload: dict) -> str:
 Run: `cd 001_Architecture/Scripts && python3 -m unittest test_jev_route -v`
 Expected: all 13 tests PASS
 
-- [ ] **Step 5: Register the hook in all three harnesses. (pending Tony)** Back up each file first as `<file>.bak-<date>-pre-jev-route`. Merge; never replace existing hooks.
+- [x] **Step 5: Register the hook in all three harnesses.** Back up each file first as `<file>.bak-<date>-pre-jev-route`. Merge; never replace existing hooks.
 
 ```bash
 cp ~/.claude/settings.json ~/.claude/settings.json.bak-$(date +%F)-pre-jev-route
@@ -557,7 +557,7 @@ Add the test:
 Run: `cd 001_Architecture/Scripts && python3 -m unittest test_jev_route -v`
 Expected: all 14 tests PASS
 
-- [ ] **Step 5: Create `~/.gemini/config/hooks.json` (pending Tony)**
+- [x] **Step 5: Create `~/.gemini/config/hooks.json`**
 
 ```bash
 test -e ~/.gemini/config/hooks.json && echo "EXISTS - merge by hand, do not overwrite" || cat > ~/.gemini/config/hooks.json <<'EOF'
@@ -779,7 +779,7 @@ Expected: the report says the command was blocked by the Agent-OS guard.
 
 Format (developers.openai.com/codex/subagents): standalone TOML with `name`, `description`, `developer_instructions`, and optional `model` and `model_reasoning_effort`. Cheap default: `gpt-6-luna`. Frontier: `gpt-6-sol`.
 
-- [ ] **Step 1: Create both files (pending Tony)**
+- [x] **Step 1: Create both files**
 
 ```toml
 # ~/.codex/agents/sol-standard.toml
@@ -807,7 +807,7 @@ Think the problem through first, do the task fully, verify the real result, then
 """
 ```
 
-- [ ] **Step 2: Verify that Codex loads them (pending Tony)**
+- [x] **Step 2: Verify that Codex loads them**
 
 Run: `codex exec -m gpt-6-luna --skip-git-repo-check "List the custom agents you can spawn, names only."`
 Expected: the output includes `sol-standard` and `sol-deep`.
