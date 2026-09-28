@@ -103,3 +103,15 @@ Grounded in real, already-documented pain points — not built yet, logged for l
 - `delegate.py`'s chore worker now runs on `typesafe/jev-router` instead of `openrouter/auto` (Tony's explicit call: quality over a fixed cheap-model ceiling; the real safety net is now the monthly OpenRouter cap, not a model-family restriction).
 - The official `typesafe-ai` skill and a workspace-customized `openrouter-jev-calls` skill (routes Jev calls through OpenRouter instead of TypeSafe's own direct API) are both installed and confirmed live in Claude Code, Codex, and Gemini CLI.
 - A frontier-enforcement system (force real delegation to a stronger model, not just hint at it) was built, found unsafe on review, and rolled back to the safe hint-only state. The code is parked, untouched, at `001_Architecture/Scripts/route_gate.py` / `frontier.py` plus `001_Architecture/Plans/Frontier_Enforcement_Plan.md` — not wired into anything live.
+
+---
+
+## Part 3: Housekeeping queue (2026-09-28, not acted on — review when picked up)
+
+Found sitting uncommitted in the working tree this session. NOT touched (per Tony: leave for later except the Neon Parcel scaffold restructure, which was committed separately as `dea0a6e4`, and the 3 Jev tutorial ingests, delegated separately).
+
+1. **New case study: `Youtube_Studio_Ask_AI`.** Untracked folder at `002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Case_Studies/Youtube_Studio_Ask_AI/` — a multi-file case study (e.g. `3-Beat-Formula.md` and others) on structuring a YouTube Shorts mini-series using the Zeigarnik effect / 3-beat escalation formula. Needs review + commit; unclear if it still needs cross-linking into a wiki article the way other case studies get treated.
+2. **Uncommitted diff: `001_Architecture/Graphify/REGISTRY.md`** (6 lines changed). Leftover modification, not yet committed — check what changed before committing (may be stale from an interrupted graphify run).
+3. **Uncommitted diff: `001_Architecture/Skills/Character-Sheet-Generation/SKILL.md`** (2 lines changed). Same — small uncommitted edit, needs a look before committing.
+4. **Untracked: `.tmp.driveupload/`** at workspace root. Looks like a transient Google Drive sync artifact, not a real deliverable — probably safe to gitignore or delete, but confirm with Tony first (no unapproved deletions).
+5. **`.obsidian/workspace.json`** — routine Obsidian UI-state diff (open panes/tabs), not a content change. Normally fine to commit whenever, low priority, no action needed unless it's noisy in status.
