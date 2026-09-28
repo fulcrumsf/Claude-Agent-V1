@@ -15,6 +15,33 @@ This is the single source of truth for all pre-installed tools, CLIs, MCPs, skil
 
 ---
 
+## Agent Safety Guard (fs_guard.py, 2026-09-27)
+
+`001_Architecture/Scripts/fs_guard.py` is a pre-tool hook shared by Claude Code (`~/.claude/settings.json`), Codex (`~/.codex/hooks.json` + `~/.codex/rules/agent_os_guard.rules`) and Gemini CLI (`~/.gemini/settings.json`). It hard-blocks every agent delete (rm, rmdir, find -delete, git clean, rsync --delete, inline Python/Node deletes, MCP delete-note tools); temp paths are exempt. It also stops new folders inside Agent-OS: Claude shows Tony a prompt, and Codex/Gemini must ask. Always-allowed new folder names: `Archived`, `Rejected`, `vN`, caches, anything under `000_Ingest/`, and item folders inside an existing `007_Resource_Library/<Folder>/`. Test: `python3 001_Architecture/Scripts/fs_guard.py --self-test`.
+
+---
+
+## Model Routing (Option B, 2026-09-27)
+
+Every harness starts each prompt on its own cheap default model; a shared Jev call decides whether it stays there, escalates to a frontier subagent, or gets delegated as a chore. Built and unit-tested (uncommitted); harness hook registration is pending Tony (see below).
+
+- **`001_Architecture/Scripts/jev_route.py`** — the "before the prompt" hook. Calls Jev (OpenRouter Decisions API, model `typesafe/jev-1.13`) with a 1.0 s request timeout, plus a 1.5 s wall-clock guard on the whole hook run (which also bounds the Antigravity transcript read); fails open (exit 0, no hint, prompt continues) on timeout, missing key, malformed input, or any error. Adds a `[Agent-OS router, Jev]` hint telling the model to answer it directly, hand it to a frontier subagent, or run `delegate.py`. Also flags brain dumps (multiple tasks in one message) and asks the model to split and route each one separately. Logs every decision to `~/Library/Logs/Agent-OS-Router.jsonl`. 18 unit tests in `test_jev_route.py`, all passing.
+- **`001_Architecture/Scripts/delegate.py`** — the shared chore command: `python3 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/delegate.py "<task>" --skill <Skill_Name>` (run it in the background or with the maximum shell timeout; chores take minutes). Runs a headless `codex exec` worker on OpenRouter Auto Router (`openrouter/auto`, key `OPENROUTER_CHORES_KEY`, capped at $20/month, workspace-limited to `deepseek/*`, `qwen/*`, `z-ai/*`, `moonshotai/*` and a few Gemini Flash models), inside the existing `fs_guard.py` + Codex-rules protection so a cheap worker still can't delete files or make folders. Returns the worker's report plus only what changed during the run: `git status` entries added/removed, and a bounded before/after mtime+size snapshot of every file under `000_Ingest/` (gitignored) and of files already dirty before the run (added / changed / missing) — the calling model must check that list before telling Tony a chore is done. Worker restrictions (all via `codex exec -c` overrides; `~/.codex/config.toml` is never edited): Codex plugins, remote plugins, apps, browser use, computer use and image generation off; every MCP server in `~/.codex/config.toml` disabled; `model_reasoning_effort="low"`; stopped after 30 minutes (`WORKER_TIMEOUT`); refuses to run inside another delegated worker. Hooks stay on, so the `fs_guard.py` PreToolUse hook still blocks deletes (verified live 2026-09-27). Exit codes: the worker's own code, `1` usage error, `2` no `OPENROUTER_CHORES_KEY`, `3` refused (already inside a delegated worker), `124` worker timed out (report + changed files still printed). 14 unit tests in `test_delegate.py`, all passing.
+- **`fs_guard.py` Antigravity adapter** — `normalize_antigravity()` maps Antigravity's `PreToolUse` payload (`run_command` / `write_to_file`) onto the same shape the Claude/Codex/Gemini guard already evaluates, so the same delete/new-folder blocks apply there too. Malformed payloads are treated as nothing to check. Self-test now covers 49 cases (`python3 001_Architecture/Scripts/fs_guard.py --self-test`).
+- **`opus-standard` / `opus-deep`** (Claude Code, global subagents in `~/.claude/agents/`) — Opus at medium/high effort respectively, for work too hard for Sonnet but never for chores.
+- **`sol-standard` / `sol-deep`** (Codex, planned) — the Codex-side equivalent of the Opus subagents; not yet created (`~/.codex/agents/` is outside Agent-OS, needs Tony's go-ahead to create the folder).
+- **Anti-recursion:** `delegate.py` sets `AGENT_OS_DELEGATE_WORKER=1` in its worker's environment; `jev_route.decide()` skips routing entirely when that variable is set, so the delegated worker's own prompts never get re-routed, and `delegate.py` itself refuses to start (exit 3) when that variable is set.
+- **Off switch:** `touch ~/.agent_os_router_off` disables Jev routing everywhere (delete the file to re-enable). Routing is a hint only — no harness lets a hook force a model switch mid-session.
+- **Pending Tony:**
+  - Register the `jev_route.py` hook in `~/.claude/settings.json`, `~/.codex/hooks.json`, `~/.gemini/settings.json` (blocked on Claude Code's auto-mode safety check).
+  - Create `~/.gemini/config/hooks.json` (Antigravity `PreToolUse`/`PreInvocation` wiring).
+  - Create `~/.codex/agents/sol-standard.toml` + `sol-deep.toml` (needs the `~/.codex/agents/` folder approved).
+  - Run the live brain-dump tests in fresh Claude Code, Codex, and Antigravity sessions.
+  - Set `"model": "sonnet"` as the Claude Code default in `~/.claude/settings.json`.
+  - Fix the Python 3.13 CA bundle if not already done (`Install Certificates.command`) — without it Jev fails open silently.
+
+---
+
 ## System Maps (Install Maps)
 
 Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the system map"** or **"look at the install map"**, read the appropriate file.

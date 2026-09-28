@@ -18,6 +18,8 @@ This is Tony's operating system — a unified workspace for all business operati
 
 ## Preservation Rule
 
+**Hard-enforced file rules (2026-09-27):** agents never delete files or folders (Tony deletes) and never create a new folder on their own: place work in an existing folder per `001_Architecture/Directory.md` and the nearest `Directory.md`, or ask Tony. Enforced for Claude Code, Codex and Gemini CLI by `001_Architecture/Scripts/fs_guard.py`; a block means stop and ask Tony, never find a workaround.
+
 Do not trash or destructively delete source files during ingest or cleanup. Preserve originals unless the routing decision is explicit and points to an existing destination. If something is no longer active, move it only when Tony has approved the destination; otherwise leave it in place and ask. Nothing should be thrown in the trash as part of normal workspace operations.
 
 ### Iteration Archive Rule
@@ -29,6 +31,12 @@ matching project `Archived/` folder rather than deleting or overwriting it.
 Preserve its original version number and assign the replacement the next
 version number. Active folders should contain only current working or approved
 artifacts.
+
+**Model routing (Option B, 2026-09-27):** start every task on this harness's cheap default model. A `[Agent-OS router, Jev]` note may appear with your prompt; follow it.
+- Answer questions and small edits yourself.
+- Frontier work goes to this harness's frontier subagent (Claude: `opus-standard` / `opus-deep`; Codex: `sol-standard` / `sol-deep` (pending setup)).
+- Chores (ingest, sorting, tagging, renaming, bulk summaries) go to `python3 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/delegate.py "<task>" --skill <Skill_Name>`. Chores can take minutes, so run it in the background or with the maximum shell timeout (it stops the worker after 30 minutes). Then check the changed-files list it returns before reporting done.
+- Brain dumps: split them into tasks and route each one. Never use Fable.
 
 ---
 
@@ -206,11 +214,13 @@ Wiki/Asset Note: [path to new file created]
 
 ### Step 7: Run Graphify
 
+Update only the domain graph the ingested files landed in (find its folder in `001_Architecture/Graphify/REGISTRY.md`), for example:
+
 ```bash
-cd /Users/tonymacbook2025/Documents/Agent-OS && graphify update .
+cd /Users/tonymacbook2025/Documents/Agent-OS && graphify update 007_Resource_Library
 ```
 
-`graphify update .` is the fast AST-only path for code-bearing domains. For docs-only or wiki-heavy domains, use the interactive `/graphify <domain> --update` flow so semantic extraction runs too.
+Never run `graphify update .` from the workspace root: that builds an unused whole-workspace graph in the root `graphify-out/` (retired 2026-09-27). `graphify update <domain-folder>` is the fast AST-only path for code-bearing domains. For docs-only or wiki-heavy domains, use the interactive `/graphify <domain> --update` flow so semantic extraction runs too.
 Do not graphify `000_Ingest/`; it is a temporary staging area and only becomes graph targets after ingest routes files into durable folders.
 
 ---

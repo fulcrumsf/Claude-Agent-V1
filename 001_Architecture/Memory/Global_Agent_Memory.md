@@ -409,7 +409,7 @@ Project: `000_Ingest/Love_Hate/`
 ### 2026-05-29 — Graphify Output Location Locked
 
 - Canonical location: `001_Architecture/Graphify/Graphify-Out/`
-- No symlink at root — agents always run: `graphify update . && rsync -a graphify-out/ 001_Architecture/Graphify/Graphify-Out/ && rm -rf graphify-out`
+- No symlink at root — agents always run: `graphify update . && rsync -a graphify-out/ 001_Architecture/Graphify/Graphify-Out/` (the old trailing `&& rm -rf graphify-out` is retired 2026-09-27: agents never delete, the fs_guard hook blocks it; the leftover root `graphify-out/` is gitignored and Tony clears it himself)
 - `graphify-out/` is in `.gitignore`
 - `001_Architecture/Graphify/Hooks/` (capital H) contains the federation hooks
 
@@ -1341,3 +1341,6 @@ Tony judged Part 1 of the Grandma-And-Bear compilation's original manual-crop Sh
 - **Anomalous Wild Seedance 2 override (2026-09-27):** set a beat's `model` to `bytedance/seedance-2` (or `-2-fast`); pipeline_supervisor sends a real Seedance 2 call in frames mode or reference mode (never both). It no longer silently runs 1.5.
 - **Latest handoff (2026-09-27):** `001_Architecture/Logs/Handoffs/2026-09-27_Session-Handoff_Claude.md` — only open item is the cloudflare-api sign-in when website work starts. Handoff/to-do lists hold only real open items (no ingest backlog, background jobs, or closed decisions).
 - **Secret scan before commit (2026-09-27):** run the key scan, read it, then commit — never in the same command.
+- **Hard-enforced file rules (2026-09-27):** agents never delete files or folders (Tony deletes) and never create a new folder on their own: place work in an existing folder per `001_Architecture/Directory.md` and the nearest `Directory.md`, or ask Tony. Enforced for Claude Code, Codex and Gemini CLI by `001_Architecture/Scripts/fs_guard.py`; a block means stop and ask Tony, never find a workaround. Backups of the edited configs: `~/.claude/settings.json.bak-2026-09-27-pre-fs-guard`, `~/.gemini/settings.json.bak-2026-09-27-pre-fs-guard`. Codex (CLI updated to 0.157.1; hook also covers apply_patch file deletes) also has `~/.codex/rules/agent_os_guard.rules` (forbidden rm/rmdir/unlink/shred/srm/trash/git clean).
+- **Latest handoff (2026-09-27 pm):** `001_Architecture/Logs/Handoffs/2026-09-27_Session-Handoff_Claude_Option-B.md`. Next session runs on Sonnet and executes `001_Architecture/Plans/Option_B_Model_Routing_Plan.md` from Task 1.
+- **Option B model routing built (2026-09-27, Tasks 1-6):** `jev_route.py` + `delegate.py` in `001_Architecture/Scripts/` (32 unit tests passing) route every prompt to answer-yourself, a frontier subagent (`opus-standard`/`opus-deep`; Codex `sol-*` still pending), or a chore worker on OpenRouter Auto Router; `fs_guard.py` gained the Antigravity adapter (49/49 self-test). Off switch: `touch ~/.agent_os_router_off`. Still pending Tony: harness hook registrations (Claude/Codex/Gemini/Antigravity), `~/.codex/agents/sol-*.toml`, and the live brain-dump tests — see TOOLBOX.md's "Model Routing (Option B)" section.

@@ -12,6 +12,8 @@ This workspace is Tony's operating system for all business operations. The same 
 
 ## Start Here
 
+**Hard-enforced file rules (2026-09-27):** agents never delete files or folders (Tony deletes) and never create a new folder on their own: place work in an existing folder per `001_Architecture/Directory.md` and the nearest `Directory.md`, or ask Tony. Enforced for Claude Code, Codex and Gemini CLI by `001_Architecture/Scripts/fs_guard.py`; a block means stop and ask Tony, never find a workaround.
+
 1. Read `001_Architecture/Install_Maps/Workspace-Map.md` — full folder map with explanations
 2. Read `001_Architecture/Install_Maps/System-Map.md` — installed apps, CLIs, Homebrew packages, npm globals, MCPs, scripts, skills, and local tool paths
 3. Read `001_Architecture/Memory/Core_Memory.md` — tiny always-read memory
@@ -19,6 +21,12 @@ This workspace is Tony's operating system for all business operations. The same 
 5. Read `TOOLBOX.md` before writing scripts or installing tools
 
 Do not load every memory or log file by default. Use `claude-mem` for relevant memory injection/search, then targeted file reads based on `Memory_Index.md`.
+
+**Model routing (Option B, 2026-09-27):** start every task on this harness's cheap default model. A `[Agent-OS router, Jev]` note may appear with your prompt; follow it.
+- Answer questions and small edits yourself.
+- Frontier work goes to this harness's frontier subagent (Claude: `opus-standard` / `opus-deep`; Codex: `sol-standard` / `sol-deep` (pending setup)).
+- Chores (ingest, sorting, tagging, renaming, bulk summaries) go to `python3 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/delegate.py "<task>" --skill <Skill_Name>`. Chores can take minutes, so run it in the background or with the maximum shell timeout (it stops the worker after 30 minutes). Then check the changed-files list it returns before reporting done.
+- Brain dumps: split them into tasks and route each one. Never use Fable.
 
 ## Skills Registry
 
