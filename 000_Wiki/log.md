@@ -2766,3 +2766,19 @@ Duplicate removal: explicitly deleted `000_Ingest/Claude Replaced Higgsfield wit
 ## [2026-09-05] ingest | How To Make Viral Thumbnails (99% Do This Wrong)
 Source: How To Make Viral Thumbnails (99% Do This Wrong).md -> 007_Resource_Library/Tutorials/How-To-Make-Viral-Thumbnails-99-Do-This-Wrong.md
 Wiki/Asset Note: Not created; source is a routed tutorial reference note. Case study: 002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Case_Studies/How-To-Make-Viral-Thumbnails-99-Do-This-Wrong/Case-Study.md
+
+## [2026-09-27] ingest | How to Use Jev Instantly in Claude Code with OpenRouter (No Waitlist)
+Source: `000_Ingest/How to Use Jev Instantly in Claude Code with OpenRouter (No Waitlist).md` → `007_Resource_Library/Tutorials/How-To-Use-Jev-Instantly-In-Claude-Code-With-OpenRouter/Original-Ingest-Note.md`
+Package: `007_Resource_Library/Tutorials/How-To-Use-Jev-Instantly-In-Claude-Code-With-OpenRouter/`
+Artifacts: `Video.mp4`, `Transcript.srt`, 10 Keyframes (`001.jpg`–`010.jpg`), `ANALYSIS.md` (with on-screen keyframe extraction), `How-To-Use-Jev-Instantly-In-Claude-Code-With-OpenRouter-Tutorial.md`, `How-To-Use-Jev-Instantly-In-Claude-Code-With-OpenRouter-Transcript.md`.
+
+## [2026-09-27] ingest | Jev will 10x your Claude Code (Here's How)
+Source: `000_Ingest/Jev will 10x your Claude Code (Here's How).md` → `007_Resource_Library/Tutorials/Jev-Will-10x-Your-Claude-Code/Original-Ingest-Note.md`
+Package: `007_Resource_Library/Tutorials/Jev-Will-10x-Your-Claude-Code/`
+Artifacts: `Video.mp4`, `Transcript.srt`, 18 Keyframes (`001.jpg`–`018.jpg`), `ANALYSIS.md` (with on-screen keyframe extraction), `Jev-Will-10x-Your-Claude-Code-Tutorial.md`, `Jev-Will-10x-Your-Claude-Code-Transcript.md`.
+
+## [2026-09-27] ingest | This NEW Jev + Claude OS Just Changed Every AI Workflow
+Source: `000_Ingest/This NEW Jev + Claude OS Just Changed Every AI Workflow.md` → `007_Resource_Library/Tutorials/This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow/Original-Ingest-Note.md`
+Package: `007_Resource_Library/Tutorials/This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow/`
+Artifacts: `Video.mp4`, `Transcript.srt`, 9 Keyframes (`001.jpg`–`009_packaging_ui.jpg`), `ANALYSIS.md` (with on-screen keyframe extraction), `This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow-Tutorial.md`, `This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow-Transcript.md`.
+

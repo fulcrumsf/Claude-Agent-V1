@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-09-27
+created: 2026-09-28
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-09-27T00:59:09-04:00
+Generated: 2026-09-28T00:44:52-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -200,6 +200,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | obviously-awesome | Define product positioning by mapping competitive alternatives, unique attributes, and best-fit customers to the right market category. Use when the user mentions "positioning", "… | `001_Architecture/Skills/obviously-awesome/SKILL.md` |
 | onboarding-cro | When the user wants to optimize post-signup onboarding, user activation, first-run experience, or time-to-value. Also use when the user mentions "onboarding flow," "activation rat… | `001_Architecture/Skills/onboarding-cro/SKILL.md` |
 | one-page-marketing | Build a complete marketing plan covering the full customer journey from stranger to raving fan. Use when the user mentions "marketing plan", "target market", "USP", "lead nurture"… | `001_Architecture/Skills/one-page-marketing/SKILL.md` |
+| openrouter-jev-calls | > | `001_Architecture/Skills/openrouter-jev-calls/SKILL.md` |
 | page-cro | When the user wants to optimize, improve, or increase conversions on any marketing page — including homepage, landing pages, pricing pages, feature pages, or blog posts. Also use… | `001_Architecture/Skills/page-cro/SKILL.md` |
 | paid-ads | When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other ad platforms. Also use when the user mentions 'PPC… | `001_Architecture/Skills/paid-ads/SKILL.md` |
 | paywall-upgrade-cro | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the user mentions "paywall," "upgrade screen," "upgrade… | `001_Architecture/Skills/paywall-upgrade-cro/SKILL.md` |
