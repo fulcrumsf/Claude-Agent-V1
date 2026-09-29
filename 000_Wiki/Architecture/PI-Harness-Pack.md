@@ -35,3 +35,4 @@ Use this as the starting reference when Tony wants to evaluate or adapt PI for f
 - [[Contract-And-Amendment]]
 - [[../../007_Resource_Library/Tools/PI-Harness-Pack/README.md]]
 - [[../../007_Resource_Library/Tools/PI-Harness-Pack/PI-Agent-Starter.md]]
+- [[../AI-Agents/Jev-OpenRouter-Router]]

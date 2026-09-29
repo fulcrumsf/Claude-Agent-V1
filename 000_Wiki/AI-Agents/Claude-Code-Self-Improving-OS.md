@@ -32,4 +32,4 @@ Use this as a design pattern for any AI ops dashboard that needs to explain what
 - [[The-4-Levels-Of-Obsidian]]
 - [[Graphify]]
 - [[007_Resource_Library/Tutorials/Claude-Code-Agentic-OS-Self-Improves.md]]
-
+- [[Jev-OpenRouter-Router]]

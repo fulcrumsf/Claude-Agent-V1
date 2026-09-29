@@ -26,6 +26,7 @@ Master catalog of all wiki pages by category. Updated on every ingest.
 - [[AI-Agents/Claude-Code-Self-Improving-OS]] — This is a reference page for a self-improving Claude Code operating system built around cost, memory, skills, and ROI visibility.
 - [[AI-Agents/Hermes-Agent]] — This is a reference page for Hermes Agent, an autonomous agent system with persistent memory and self-improvement loops.
 - [[AI-Agents/Printing-Press]] — This is a reference page for the Printing Press pattern, where APIs and websites are packaged into agent-friendly CLIs, skills, and MCPs.
+- [[AI-Agents/Jev-OpenRouter-Router]] — Jev (TypeSafe AI System 1 decision model) via OpenRouter: typed bool/choice/score decisions used as a pre-flight model router, bulk classifier, and 3-tier Agentic OS dispatcher; synthesizes three Jev tutorials and maps them to Option B routing.
 
 ## RAG Systems
 

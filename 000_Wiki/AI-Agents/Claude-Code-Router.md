@@ -28,3 +28,4 @@ Use this when Tony needs a quick orientation to the tool or wants to connect it 
 ## Related
 - [[Graphify]]
 - [[Memsearch]]
+- [[Jev-OpenRouter-Router]]

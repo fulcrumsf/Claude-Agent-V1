@@ -2782,3 +2782,7 @@ Source: `000_Ingest/This NEW Jev + Claude OS Just Changed Every AI Workflow.md` 
 Package: `007_Resource_Library/Tutorials/This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow/`
 Artifacts: `Video.mp4`, `Transcript.srt`, 9 Keyframes (`001.jpg`–`009_packaging_ui.jpg`), `ANALYSIS.md` (with on-screen keyframe extraction), `This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow-Tutorial.md`, `This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow-Transcript.md`.
 
+## [2026-09-28] ingest | Jev OpenRouter Router (wikify pass for three Jev tutorials)
+Source: `007_Resource_Library/Tutorials/How-To-Use-Jev-Instantly-In-Claude-Code-With-OpenRouter/`, `007_Resource_Library/Tutorials/Jev-Will-10x-Your-Claude-Code/`, `007_Resource_Library/Tutorials/This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow/` (already routed 2026-09-27; no files moved)
+Wiki/Asset Note: `000_Wiki/AI-Agents/Jev-OpenRouter-Router.md`
+Cross-links: added to `000_Wiki/AI-Agents/Claude-Code-Router.md`, `000_Wiki/AI-Agents/Claude-Code-Self-Improving-OS.md`, `000_Wiki/AI-Agents/Claude-Code-And-Karpathys-System-10000-Skills.md`, `000_Wiki/Architecture/Claude-And-Obsidian-Full-AI-Operating-System.md`, `000_Wiki/Architecture/PI-Harness-Pack.md`; each `*-Tutorial.md` links back to the wiki page. Index updated; `graphify update` run on `000_Wiki/` and `007_Resource_Library/`.

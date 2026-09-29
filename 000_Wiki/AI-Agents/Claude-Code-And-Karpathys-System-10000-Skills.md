@@ -28,3 +28,4 @@ Use this as a reference when Tony wants to reproduce the workflow or understand 
 ## Related
 - [[Prompt-Best-Practices]]
 - [[Cinematic-Styles]]
+- [[Jev-OpenRouter-Router]]

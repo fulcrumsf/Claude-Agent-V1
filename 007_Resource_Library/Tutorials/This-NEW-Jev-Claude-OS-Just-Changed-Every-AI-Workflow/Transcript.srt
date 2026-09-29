@@ -1,0 +1,2176 @@
+1
+00:00:00,000 --> 00:00:04,320
+You need an agentic OS, but it's not for the reasons you think.
+
+2
+00:00:04,320 --> 00:00:08,880
+It's not because you need fancy dashboards like this or visual interfaces like this one,
+
+3
+00:00:08,880 --> 00:00:10,800
+even though I'll show you how to create them.
+
+4
+00:00:10,800 --> 00:00:17,040
+It's instead about building a custom system that takes the best of all the AI tools at your disposal,
+
+5
+00:00:17,040 --> 00:00:25,440
+whether that's GPT-6 Astra or Claude Opus 5.5 or Jev and builds it around you and your work
+
+6
+00:00:25,440 --> 00:00:27,440
+in a way you just can't get inside the terminal.
+
+7
+00:00:27,440 --> 00:00:32,960
+That is what this agentic OS does, and today I'm going to show you not only how it works,
+
+8
+00:00:32,960 --> 00:00:35,520
+but how you can build something like this for yourself.
+
+9
+00:00:35,520 --> 00:00:38,960
+And along the way, I'm going to show you how to create a fully local voice system,
+
+10
+00:00:38,960 --> 00:00:43,280
+how to integrate Jev as a virtually free, virtually instant model router,
+
+11
+00:00:43,280 --> 00:00:49,600
+how to create a customized skill backbone that is built around how you actually work in your day to day.
+
+12
+00:00:49,600 --> 00:00:54,160
+We'll also talk about how to use Obsidian as a memory layer that actually provides value,
+
+13
+00:00:54,160 --> 00:00:57,440
+and at the end, I'll even show you how you can package something like this,
+
+14
+00:00:57,440 --> 00:01:01,200
+not just for you, but for teammates and even sell the clients.
+
+15
+00:01:01,200 --> 00:01:06,080
+This is going to be all about showing you how to create an agentic OS that provides real value
+
+16
+00:01:06,080 --> 00:01:09,200
+beyond the visual spectacle, so let's get started.
+
+17
+00:01:09,200 --> 00:01:13,440
+So let's begin by talking about what an agentic OS, what a Claude OS even is.
+
+18
+00:01:13,440 --> 00:01:17,680
+So it is a three-layer system, and the first layer is the visual layer.
+
+19
+00:01:17,680 --> 00:01:19,600
+And that's what we're looking at here.
+
+20
+00:01:19,680 --> 00:01:22,320
+For me, this has a lot of stuff to do with my social media.
+
+21
+00:01:22,320 --> 00:01:24,160
+What's going on on my different accounts?
+
+22
+00:01:24,160 --> 00:01:26,000
+I have it hooked up to my calendar.
+
+23
+00:01:26,000 --> 00:01:29,520
+I can look at all my different skills and automations and run them from here.
+
+24
+00:01:29,520 --> 00:01:33,600
+And speaking of running it, I can run it either on Claude or Codex.
+
+25
+00:01:33,600 --> 00:01:36,080
+Now, this is all happening inside of my browser.
+
+26
+00:01:36,080 --> 00:01:38,400
+This is a web app, but there are no rules here.
+
+27
+00:01:38,400 --> 00:01:40,000
+This doesn't have to be a web app.
+
+28
+00:01:40,000 --> 00:01:42,960
+In fact, as you see here, I've ported it over to Obsidian.
+
+29
+00:01:42,960 --> 00:01:48,640
+This is also an Obsidian plugin that just like you saw can run on Claude or Codex.
+
+30
+00:01:48,640 --> 00:01:53,040
+But I get all the advantages of being inside the Obsidian desktop app.
+
+31
+00:01:53,040 --> 00:01:55,680
+I still have access to a terminal here.
+
+32
+00:01:55,680 --> 00:02:00,160
+I can click on any of these buttons, which are linked to different skills and automations.
+
+33
+00:02:00,160 --> 00:02:03,920
+I have different tabs that dive deeper into what's going on with my audience,
+
+34
+00:02:03,920 --> 00:02:06,480
+what's going on in AI in general, right?
+
+35
+00:02:06,480 --> 00:02:09,520
+I have a whole research tab that takes a look at like the GitHub trending,
+
+36
+00:02:09,520 --> 00:02:12,240
+outliers on YouTube, as well as things like hacker news.
+
+37
+00:02:12,240 --> 00:02:16,320
+The big thing with the visual side is this is ultimately 100% custom.
+
+38
+00:02:16,320 --> 00:02:21,840
+And you can edit this so it makes sense for you and your work or your team's work or your client's work.
+
+39
+00:02:21,840 --> 00:02:24,320
+Now, the second layer is the memory system.
+
+40
+00:02:24,320 --> 00:02:26,240
+And for that, I use Obsidian.
+
+41
+00:02:26,240 --> 00:02:28,800
+And the value here is not these knowledge graphs.
+
+42
+00:02:28,800 --> 00:02:32,000
+Like these knowledge graphs look cool, but that's about where the functionality ends
+
+43
+00:02:32,000 --> 00:02:34,240
+because this is not a rag system.
+
+44
+00:02:34,240 --> 00:02:38,400
+What the memory layer is really about is creating a file and folder structure
+
+45
+00:02:38,400 --> 00:02:42,480
+that makes sense for you, the human being, and for your AIOS,
+
+46
+00:02:42,480 --> 00:02:46,000
+so that you can get answers quickly and accurately,
+
+47
+00:02:46,000 --> 00:02:48,880
+even when we're talking about thousands and thousands of thousands of files.
+
+48
+00:02:48,880 --> 00:02:52,480
+And this is going to be based on the Carpathi Obsidian rag system.
+
+49
+00:02:52,480 --> 00:02:54,880
+I mean, we will dive into that in much more detail later.
+
+50
+00:02:54,880 --> 00:02:58,640
+And last but not least, for the third layer, we have the skill architecture.
+
+51
+00:02:58,640 --> 00:03:00,880
+This is the backbone of everything we do.
+
+52
+00:03:00,880 --> 00:03:02,480
+If you get nothing else from this video,
+
+53
+00:03:02,480 --> 00:03:04,080
+if you ignore the memory layer stuff,
+
+54
+00:03:04,080 --> 00:03:05,680
+if you ignore the visual layer stuff,
+
+55
+00:03:05,680 --> 00:03:09,680
+I want you to listen to this section when we dive into it in more detail.
+
+56
+00:03:09,680 --> 00:03:14,240
+And that is, how do we go from somebody who just uses AI to sort of help us
+
+57
+00:03:14,240 --> 00:03:18,080
+in our day-to-day task and offload virtually all of it to AI?
+
+58
+00:03:18,080 --> 00:03:19,280
+In a way that makes sense.
+
+59
+00:03:19,280 --> 00:03:22,720
+Because you have things you do every single day, week to week,
+
+60
+00:03:22,720 --> 00:03:24,080
+in your life, in your business,
+
+61
+00:03:24,080 --> 00:03:26,240
+that we should not only be turning into skills,
+
+62
+00:03:26,240 --> 00:03:28,320
+but then turning into automations.
+
+63
+00:03:28,320 --> 00:03:30,400
+And from those automations and from those skills,
+
+64
+00:03:30,400 --> 00:03:32,320
+we get certain deliverables and outputs.
+
+65
+00:03:32,320 --> 00:03:37,120
+Those deliverables and outputs are what is fed back into the AIOS.
+
+66
+00:03:37,200 --> 00:03:39,440
+All the reports you see here, all these graphics,
+
+67
+00:03:39,440 --> 00:03:43,040
+all of these are driven by the different skills we run.
+
+68
+00:03:43,040 --> 00:03:45,360
+So not only understanding that in a theoretical sense,
+
+69
+00:03:45,360 --> 00:03:49,600
+but having the practical know-how of how to create something like this from scratch
+
+70
+00:03:49,600 --> 00:03:50,720
+is what we're going to talk about.
+
+71
+00:03:50,720 --> 00:03:54,480
+But before we do that, a quick word from today's sponsor, me.
+
+72
+00:03:54,480 --> 00:03:55,920
+So inside of Chase AI Plus,
+
+73
+00:03:55,920 --> 00:03:59,120
+you not only can get my exact Cloud OS setup,
+
+74
+00:03:59,120 --> 00:04:03,280
+but you also get access to my Cloud Code and Codex Masterclass.
+
+75
+00:04:03,280 --> 00:04:06,880
+And these are the best and easiest way to go from zero to AI Dev
+
+76
+00:04:07,200 --> 00:04:09,120
+no matter your technical background.
+
+77
+00:04:09,120 --> 00:04:10,880
+We focus on real use cases.
+
+78
+00:04:10,880 --> 00:04:12,880
+It gets updated every single week.
+
+79
+00:04:12,880 --> 00:04:15,440
+So if you want to get more serious about this stuff,
+
+80
+00:04:15,440 --> 00:04:16,880
+definitely check us out.
+
+81
+00:04:16,880 --> 00:04:19,680
+There is a link to it down in the pinned comment.
+
+82
+00:04:19,680 --> 00:04:22,960
+So the Cloud OS has three layers, visual memory and skills.
+
+83
+00:04:22,960 --> 00:04:24,640
+But how does this thing actually work?
+
+84
+00:04:24,640 --> 00:04:27,200
+How do all these pieces come together?
+
+85
+00:04:27,200 --> 00:04:29,120
+Well, let's go through the architecture.
+
+86
+00:04:29,120 --> 00:04:31,360
+So let's do some examples.
+
+87
+00:04:31,360 --> 00:04:33,360
+So let's say I tell my Cloud OS,
+
+88
+00:04:33,360 --> 00:04:34,880
+which also works with voice.
+
+89
+00:04:35,840 --> 00:04:38,000
+Go ahead and bring up the morning until brief.
+
+90
+00:04:40,640 --> 00:04:42,240
+It instantly brings it up.
+
+91
+00:04:42,240 --> 00:04:44,400
+But if I say something like
+
+92
+00:04:45,440 --> 00:04:47,840
+what was the biggest news in AI today.
+
+93
+00:04:50,400 --> 00:04:52,720
+From today's morning brief,
+
+94
+00:04:52,720 --> 00:04:54,880
+a model that can't write a sentence
+
+95
+00:04:54,880 --> 00:04:56,720
+is beating models that can.
+
+96
+00:04:56,720 --> 00:05:00,960
+Jev from type say for I went into early access step 15.
+
+97
+00:05:02,000 --> 00:05:04,240
+We get a response like that and I cut it off.
+
+98
+00:05:04,320 --> 00:05:06,480
+But now if I ask you for a more complex task,
+
+99
+00:05:06,480 --> 00:05:07,120
+something like,
+
+100
+00:05:08,080 --> 00:05:11,600
+can you create me some sort of report or explainer
+
+101
+00:05:11,600 --> 00:05:14,320
+that kind of illustrates the difference between
+
+102
+00:05:14,320 --> 00:05:16,880
+Jev, that new AI system everyone's talking about
+
+103
+00:05:16,880 --> 00:05:18,640
+and your standard large language models
+
+104
+00:05:18,640 --> 00:05:20,240
+like Babel or Astra.
+
+105
+00:05:23,280 --> 00:05:24,800
+Okay, I'll get to work.
+
+106
+00:05:26,480 --> 00:05:27,760
+It'll do something like that.
+
+107
+00:05:27,760 --> 00:05:29,760
+You will see with this more complex task,
+
+108
+00:05:29,760 --> 00:05:32,880
+it actually pulled up the terminal.
+
+109
+00:05:32,960 --> 00:05:34,960
+So what was actually going on under the hood there?
+
+110
+00:05:34,960 --> 00:05:37,680
+And why did I show three different seemingly random examples?
+
+111
+00:05:37,680 --> 00:05:40,960
+Well, it sort of illustrates how this AIOS routes
+
+112
+00:05:40,960 --> 00:05:43,120
+your different requests to different models,
+
+113
+00:05:43,120 --> 00:05:45,520
+depending on the nature of your task.
+
+114
+00:05:45,520 --> 00:05:48,960
+And this is where stuff like Jev kind of comes into play,
+
+115
+00:05:48,960 --> 00:05:50,000
+which we see right here.
+
+116
+00:05:50,000 --> 00:05:51,360
+So let's focus on that third example
+
+117
+00:05:51,360 --> 00:05:52,560
+where I asked our Cloud OS,
+
+118
+00:05:52,560 --> 00:05:54,480
+hey, come with like this visual explainer
+
+119
+00:05:54,480 --> 00:05:56,560
+sort of illustrating the difference between Jev
+
+120
+00:05:56,560 --> 00:05:58,320
+and stuff like Babel.
+
+121
+00:05:58,320 --> 00:05:59,840
+Well, we started over here.
+
+122
+00:05:59,840 --> 00:06:02,560
+I simply gave it an audio request.
+
+123
+00:06:02,560 --> 00:06:05,440
+Now, this then went to our Obsidian plugin,
+
+124
+00:06:05,440 --> 00:06:08,160
+but this just as easily could have gone to our Jarvis hood.
+
+125
+00:06:08,160 --> 00:06:10,080
+Everything you just saw in that Obsidian plugin
+
+126
+00:06:10,080 --> 00:06:11,760
+also works exactly the same here.
+
+127
+00:06:11,760 --> 00:06:13,680
+This also is able to pull up a terminal.
+
+128
+00:06:13,680 --> 00:06:16,720
+That request then went to the bridge.
+
+129
+00:06:16,720 --> 00:06:18,960
+And the bridge does two things.
+
+130
+00:06:18,960 --> 00:06:20,960
+One, it takes our request
+
+131
+00:06:20,960 --> 00:06:23,120
+and it records all this inside of Obsidian.
+
+132
+00:06:23,920 --> 00:06:28,400
+Two, it then starts engaging our local voice system.
+
+133
+00:06:28,400 --> 00:06:29,840
+So all that speech you heard,
+
+134
+00:06:29,840 --> 00:06:31,920
+all the transcription, all the actual audio,
+
+135
+00:06:31,920 --> 00:06:34,800
+it's done locally on your machine.
+
+136
+00:06:34,800 --> 00:06:37,680
+So we use an open source program called Whisper,
+
+137
+00:06:37,680 --> 00:06:40,000
+which essentially acts as the ears of our model.
+
+138
+00:06:40,000 --> 00:06:42,320
+So when I said, hey, give me that explainer,
+
+139
+00:06:42,320 --> 00:06:44,160
+you know, Jev versus the LLMs,
+
+140
+00:06:44,160 --> 00:06:47,440
+it took the audio and it transcribed that into text using Whisper.
+
+141
+00:06:48,080 --> 00:06:51,680
+Now the audio you heard back with that sort of like Jarvis voice,
+
+142
+00:06:51,680 --> 00:06:53,680
+that also was a local model.
+
+143
+00:06:53,680 --> 00:06:56,320
+That was Kokoro, totally open source.
+
+144
+00:06:56,320 --> 00:06:58,480
+You could change that voice to be whatever you want.
+
+145
+00:06:58,480 --> 00:07:03,120
+That transcription then got sent to Jev.
+
+146
+00:07:03,120 --> 00:07:05,120
+And we'll do a little Jev explainer here in a second.
+
+147
+00:07:05,760 --> 00:07:09,760
+Jev is amazing when it acts as a classifier.
+
+148
+00:07:09,760 --> 00:07:11,520
+And what we want to do with Jev
+
+149
+00:07:11,520 --> 00:07:13,520
+is we want it to sort our requests.
+
+150
+00:07:13,520 --> 00:07:16,240
+And there's really three tiers of requests we can handle.
+
+151
+00:07:16,240 --> 00:07:18,800
+Their tier number one are for extremely simple requests
+
+152
+00:07:18,800 --> 00:07:20,960
+that we want pretty much instant responses to.
+
+153
+00:07:20,960 --> 00:07:23,120
+So when I asked it to bring up
+
+154
+00:07:23,920 --> 00:07:25,520
+that morning report, that morning,
+
+155
+00:07:25,520 --> 00:07:28,720
+until brief, this was a tier one request that Jev classified.
+
+156
+00:07:28,720 --> 00:07:30,560
+AI isn't even brought into the system.
+
+157
+00:07:30,560 --> 00:07:33,040
+If it's tier one, which is why it's able to be so fast,
+
+158
+00:07:33,040 --> 00:07:34,720
+we're talking about hundreds of a millisecond
+
+159
+00:07:34,720 --> 00:07:35,760
+to bring up these things.
+
+160
+00:07:35,760 --> 00:07:37,120
+And this could be something, like you saw,
+
+161
+00:07:37,120 --> 00:07:38,400
+I say, bring up a report
+
+162
+00:07:38,400 --> 00:07:41,280
+or these didn't even be commands inside of Obsidian itself,
+
+163
+00:07:41,280 --> 00:07:42,880
+where I say, like, hey, bring up the terminal
+
+164
+00:07:42,880 --> 00:07:44,160
+or something to that effect.
+
+165
+00:07:44,160 --> 00:07:45,760
+Then we have tier number two.
+
+166
+00:07:45,760 --> 00:07:48,720
+These are for non complex tasks,
+
+167
+00:07:48,720 --> 00:07:51,760
+but they aren't so simple that we put it into tier one.
+
+168
+00:07:51,760 --> 00:07:53,280
+So when I asked it something like,
+
+169
+00:07:53,440 --> 00:07:55,440
+hey, what was the biggest news in AI today?
+
+170
+00:07:55,440 --> 00:07:57,840
+I want some thinking involved.
+
+171
+00:07:57,840 --> 00:08:01,920
+So Jev then calls on the smallest models available to us.
+
+172
+00:08:01,920 --> 00:08:03,840
+This is Haiku or Luna,
+
+173
+00:08:03,840 --> 00:08:06,480
+depending on if I'm using the astroversion
+
+174
+00:08:06,480 --> 00:08:07,760
+or the cloud code version.
+
+175
+00:08:07,760 --> 00:08:09,200
+This is cheap, this is fast.
+
+176
+00:08:09,200 --> 00:08:11,200
+And if you really wanted to go into a full local setup,
+
+177
+00:08:11,200 --> 00:08:12,400
+you could swap these out for something
+
+178
+00:08:12,400 --> 00:08:13,840
+that's just running on your machine.
+
+179
+00:08:13,840 --> 00:08:17,040
+And then third, we have more complex real work,
+
+180
+00:08:17,040 --> 00:08:20,160
+which is what you saw when I asked it to create that explainer.
+
+181
+00:08:20,240 --> 00:08:23,600
+This is actually going to then pull up cloud code
+
+182
+00:08:23,600 --> 00:08:26,720
+or codex inside of your terminal, like you just saw.
+
+183
+00:08:26,720 --> 00:08:29,280
+This gives you the ability, if you're inside,
+
+184
+00:08:29,280 --> 00:08:32,000
+whether it's the Obsidian plugin or the web app,
+
+185
+00:08:32,000 --> 00:08:34,240
+to actually interact with the terminal in those spaces
+
+186
+00:08:34,240 --> 00:08:35,280
+if you want to.
+
+187
+00:08:35,280 --> 00:08:38,720
+So the idea is your tasks require different models
+
+188
+00:08:38,720 --> 00:08:41,600
+and Jev is really, really good at classifying them appropriately.
+
+189
+00:08:41,600 --> 00:08:43,760
+From there, all the deliverables, all the conversations,
+
+190
+00:08:43,760 --> 00:08:47,120
+everything you do with your AIOS is then logged back in Obsidian.
+
+191
+00:08:47,120 --> 00:08:49,840
+Now a real quick explanation for why we have Jev in there.
+
+192
+00:08:49,920 --> 00:08:51,600
+If you're not familiar with how Jev works,
+
+193
+00:08:51,600 --> 00:08:52,960
+because it's still new to a lot of people.
+
+194
+00:08:52,960 --> 00:08:56,400
+And unfortunately, a lot of sort of the discourse around it
+
+195
+00:08:56,400 --> 00:08:59,120
+is kind of confusing because it's an AI system,
+
+196
+00:08:59,120 --> 00:09:02,240
+but it's not an LLM, but people are saying it's a replacement
+
+197
+00:09:02,240 --> 00:09:04,000
+in some cases for cloud code or codex,
+
+198
+00:09:04,000 --> 00:09:06,080
+which is sort of true in certain situations,
+
+199
+00:09:06,080 --> 00:09:07,360
+but in general, it's not true whatsoever.
+
+200
+00:09:07,360 --> 00:09:10,800
+So this is like the 90 second explanation for Jev
+
+201
+00:09:10,800 --> 00:09:13,440
+and why it makes sense in our AIOS.
+
+202
+00:09:13,440 --> 00:09:15,680
+So the big thing with Jev is it allows you
+
+203
+00:09:15,680 --> 00:09:18,880
+to ask this AI model fuzzy questions
+
+204
+00:09:18,960 --> 00:09:21,600
+and get specific numbers in response,
+
+205
+00:09:21,600 --> 00:09:24,240
+get probabilities in response.
+
+206
+00:09:24,240 --> 00:09:25,760
+So here's an example.
+
+207
+00:09:25,760 --> 00:09:28,400
+Imagine you were using this in some sort of customer service
+
+208
+00:09:28,400 --> 00:09:30,720
+situation, and you have a customer that says,
+
+209
+00:09:30,720 --> 00:09:32,800
+I canceled my subscription last month,
+
+210
+00:09:32,800 --> 00:09:35,200
+but you charge me again, and you want to know
+
+211
+00:09:35,200 --> 00:09:36,880
+which team should handle this.
+
+212
+00:09:36,880 --> 00:09:39,600
+So normally, if we sent this to large language models
+
+213
+00:09:39,600 --> 00:09:41,040
+and they can handle this just fine,
+
+214
+00:09:41,040 --> 00:09:42,000
+it would say something like,
+
+215
+00:09:42,000 --> 00:09:44,480
+hey, this is a billing issue route to stick to the billing.
+
+216
+00:09:44,480 --> 00:09:46,240
+And that would be the correct answer.
+
+217
+00:09:46,240 --> 00:09:48,080
+Jev also does something similar,
+
+218
+00:09:48,080 --> 00:09:50,240
+but it doesn't give us a sentence in response.
+
+219
+00:09:50,240 --> 00:09:52,720
+There's no back and forth chat with Jev.
+
+220
+00:09:52,720 --> 00:09:54,640
+It instead gives us the probability
+
+221
+00:09:54,640 --> 00:09:57,520
+that there's a 92% chance this should go to billing,
+
+222
+00:09:58,560 --> 00:10:00,080
+which is also the correct answer.
+
+223
+00:10:00,080 --> 00:10:01,840
+So if we both get the correct answers,
+
+224
+00:10:01,840 --> 00:10:03,040
+why the heck should we care?
+
+225
+00:10:03,040 --> 00:10:05,520
+Well, we should care because Jev does this
+
+226
+00:10:05,520 --> 00:10:08,720
+extremely quickly and way cheaper.
+
+227
+00:10:08,720 --> 00:10:12,480
+We're talking like 200x, like faster and cheaper.
+
+228
+00:10:12,480 --> 00:10:13,680
+That's why we love Jev.
+
+229
+00:10:13,680 --> 00:10:16,000
+Cheap, fast, perfect for these situations
+
+230
+00:10:16,000 --> 00:10:19,600
+where you're handling what should I do in this scenario,
+
+231
+00:10:19,600 --> 00:10:22,000
+where there are predefined choices.
+
+232
+00:10:22,000 --> 00:10:25,920
+Like in our model routing scenario, right?
+
+233
+00:10:25,920 --> 00:10:27,600
+What are the predefined choices?
+
+234
+00:10:27,600 --> 00:10:29,520
+One, two, three.
+
+235
+00:10:29,520 --> 00:10:30,880
+Could I put Hiku here?
+
+236
+00:10:30,880 --> 00:10:32,160
+Could I put Lunar here?
+
+237
+00:10:32,160 --> 00:10:34,800
+Sure, but there's no point in doing that anymore
+
+238
+00:10:34,800 --> 00:10:37,440
+with Jev, which is why it's been integrated.
+
+239
+00:10:37,440 --> 00:10:41,120
+So that is how all of this works
+
+240
+00:10:41,120 --> 00:10:43,040
+from an architecture point of view.
+
+241
+00:10:43,040 --> 00:10:46,000
+Now, let's dive a little bit deeper into each of those three layers,
+
+242
+00:10:46,000 --> 00:10:48,000
+the visual, the memory, and the skills,
+
+243
+00:10:48,000 --> 00:10:50,960
+so you understand how you could create something like this on your own.
+
+244
+00:10:50,960 --> 00:10:52,320
+So let's go from the ground up,
+
+245
+00:10:52,320 --> 00:10:54,240
+beginning with the skill backbone.
+
+246
+00:10:54,240 --> 00:10:56,720
+This is the most important thing of the entire video.
+
+247
+00:10:56,720 --> 00:10:58,240
+And if you do nothing else,
+
+248
+00:10:58,240 --> 00:10:59,920
+what I'm about to show you here,
+
+249
+00:10:59,920 --> 00:11:02,000
+you're going to be ahead of like 99% of the people
+
+250
+00:11:02,000 --> 00:11:04,400
+who use Cloud Code or Codex.
+
+251
+00:11:04,400 --> 00:11:06,400
+Now, the idea is simple.
+
+252
+00:11:06,400 --> 00:11:09,440
+We are going to take all the tasks you do in your day-to-day
+
+253
+00:11:09,440 --> 00:11:11,280
+in your week-to-week, whether it's in your personal life
+
+254
+00:11:11,280 --> 00:11:13,600
+or your business and turn them into skills.
+
+255
+00:11:13,600 --> 00:11:16,800
+And if it makes sense, turn those skills into automations.
+
+256
+00:11:16,800 --> 00:11:18,880
+The value of doing that seems obvious
+
+257
+00:11:18,880 --> 00:11:20,720
+yet most people don't do that at all.
+
+258
+00:11:20,720 --> 00:11:23,120
+They do it with a few of the things they do in their day-to-day
+
+259
+00:11:23,120 --> 00:11:25,520
+and they certainly don't systematically go
+
+260
+00:11:25,520 --> 00:11:29,040
+through everything they do and break it down in this manner.
+
+261
+00:11:29,040 --> 00:11:30,640
+Because while this looks kind of crazy,
+
+262
+00:11:30,640 --> 00:11:31,920
+you probably have something similar.
+
+263
+00:11:31,920 --> 00:11:32,880
+If it was actually written out,
+
+264
+00:11:32,880 --> 00:11:35,280
+you do things related to productivity research.
+
+265
+00:11:35,280 --> 00:11:37,280
+Maybe it's not content in a community,
+
+266
+00:11:37,280 --> 00:11:40,720
+but you certainly have stuff related to clients and sales and finance
+
+267
+00:11:40,880 --> 00:11:43,840
+in some manner in your business life.
+
+268
+00:11:43,840 --> 00:11:47,200
+So why haven't we codified this into something
+
+269
+00:11:47,200 --> 00:11:48,560
+Cloud can help us with?
+
+270
+00:11:48,560 --> 00:11:50,800
+And the answer is, it just seems like too much damn work.
+
+271
+00:11:50,800 --> 00:11:52,080
+It seems like it would take too much time
+
+272
+00:11:52,080 --> 00:11:53,840
+and you don't even know where to begin.
+
+273
+00:11:53,840 --> 00:11:56,560
+Well, luckily, creating something like this,
+
+274
+00:11:56,560 --> 00:11:58,480
+breaking them all down to skills is actually relatively easy.
+
+275
+00:11:58,480 --> 00:12:00,560
+And there's just two things you have to do.
+
+276
+00:12:00,560 --> 00:12:03,520
+The first thing we're going to do is have your AI system
+
+277
+00:12:03,520 --> 00:12:05,280
+of choice, simply look at your logs.
+
+278
+00:12:05,280 --> 00:12:08,560
+Cloud Code and Codex keep a written history
+
+279
+00:12:08,800 --> 00:12:10,800
+of every single conversation you have with it
+
+280
+00:12:10,800 --> 00:12:12,720
+over the last 30 plus days.
+
+281
+00:12:12,720 --> 00:12:16,080
+So instead of us guessing about how Cloud or Codex
+
+282
+00:12:16,080 --> 00:12:17,760
+should help us in our day to day,
+
+283
+00:12:17,760 --> 00:12:20,720
+why don't we just have them look at how we actually use them
+
+284
+00:12:20,720 --> 00:12:24,400
+in reality and ask, hey, based on everything
+
+285
+00:12:24,400 --> 00:12:26,480
+I've done over the last 30 days,
+
+286
+00:12:26,480 --> 00:12:29,240
+are there any skills we could create?
+
+287
+00:12:29,240 --> 00:12:31,680
+That is literally the entirety of the prompt
+
+288
+00:12:31,680 --> 00:12:32,520
+you have to give it.
+
+289
+00:12:32,520 --> 00:12:35,080
+There's no special things, no crazy sort of workflow.
+
+290
+00:12:35,080 --> 00:12:36,920
+It's literally just, look at how I've used you
+
+291
+00:12:36,920 --> 00:12:40,600
+for the last 30 days, can we turn those into skills?
+
+292
+00:12:40,600 --> 00:12:44,200
+The second thing we are going to do is we are going to
+
+293
+00:12:44,200 --> 00:12:46,560
+sort of just take that idea a step further.
+
+294
+00:12:46,560 --> 00:12:48,200
+And instead of giving it a log,
+
+295
+00:12:48,200 --> 00:12:50,280
+we are just going to sit in front of Cloud Code,
+
+296
+00:12:50,280 --> 00:12:52,480
+sit in front of Codex, open up our microphone,
+
+297
+00:12:52,480 --> 00:12:55,480
+and you are going to talk nonstop for like 10 to 20 minutes.
+
+298
+00:12:55,480 --> 00:12:57,160
+And also going to do is you are going to explain
+
+299
+00:12:57,160 --> 00:12:59,520
+what you do in your day to day or your week to week.
+
+300
+00:12:59,520 --> 00:13:01,520
+After you dump all that information into Cloud,
+
+301
+00:13:01,520 --> 00:13:02,640
+and it doesn't have to be coherent.
+
+302
+00:13:02,640 --> 00:13:04,040
+Again, stream of consciousness.
+
+303
+00:13:04,040 --> 00:13:07,280
+It can get through your inability to talk correctly.
+
+304
+00:13:07,280 --> 00:13:08,960
+You are then going to ask it,
+
+305
+00:13:08,960 --> 00:13:11,840
+hey, based on everything I just told you,
+
+306
+00:13:11,840 --> 00:13:14,440
+what are some ways where we could create some skills
+
+307
+00:13:14,440 --> 00:13:16,480
+or automations to take some work off my plate?
+
+308
+00:13:16,480 --> 00:13:19,280
+How could we take all these tasks I've talked about
+
+309
+00:13:19,280 --> 00:13:23,120
+and give them to you this AI system to execute in my step?
+
+310
+00:13:23,120 --> 00:13:25,200
+Simply by doing that.
+
+311
+00:13:25,200 --> 00:13:27,720
+And neither of these scenarios require you
+
+312
+00:13:27,720 --> 00:13:29,240
+to have the answers beforehand.
+
+313
+00:13:29,240 --> 00:13:31,400
+You don't have to know what you want to turn into skills.
+
+314
+00:13:31,400 --> 00:13:34,920
+We'll get you pretty much 90% of the way here
+
+315
+00:13:34,920 --> 00:13:38,560
+of creating these skills that will make your life
+
+316
+00:13:38,560 --> 00:13:39,920
+infinitely better.
+
+317
+00:13:39,920 --> 00:13:42,600
+Now, the question of which one should be turned into automation
+
+318
+00:13:42,600 --> 00:13:44,200
+should be relatively straightforward.
+
+319
+00:13:44,200 --> 00:13:46,160
+And when it comes to turning them into automations,
+
+320
+00:13:46,160 --> 00:13:48,200
+yes, simply ask Cloud Codex to do that.
+
+321
+00:13:48,200 --> 00:13:50,880
+We can always do that manually through things like routines
+
+322
+00:13:50,880 --> 00:13:52,880
+or schedule tasks inside of Codex,
+
+323
+00:13:52,880 --> 00:13:55,120
+but these systems also have the ability to turn those into
+
+324
+00:13:55,120 --> 00:13:57,680
+automations that are triggered by your machine itself.
+
+325
+00:13:57,680 --> 00:13:59,160
+So we have a lot of flexibility here.
+
+326
+00:13:59,160 --> 00:14:01,080
+And again, like so many of these things,
+
+327
+00:14:01,080 --> 00:14:03,240
+you don't even have to have the answer
+
+328
+00:14:03,240 --> 00:14:04,320
+when you walk into the space.
+
+329
+00:14:04,320 --> 00:14:07,400
+You just have to ask Cloud or Codex to do it.
+
+330
+00:14:07,400 --> 00:14:09,080
+Now, how does this whole skill backbone tie
+
+331
+00:14:09,080 --> 00:14:11,040
+into the AIOS at large?
+
+332
+00:14:11,040 --> 00:14:12,880
+Well, like I talked about earlier,
+
+333
+00:14:12,880 --> 00:14:15,760
+the idea is we've created all these systems
+
+334
+00:14:15,760 --> 00:14:17,240
+with the skills and with the automations
+
+335
+00:14:17,240 --> 00:14:18,320
+to create things for us.
+
+336
+00:14:18,320 --> 00:14:20,080
+Many times they are going to be reports
+
+337
+00:14:20,080 --> 00:14:21,600
+and they're going to be deliverables.
+
+338
+00:14:21,600 --> 00:14:24,480
+Instead of having them spread in a million different places,
+
+339
+00:14:24,480 --> 00:14:27,320
+why don't we just consolidate them into one place?
+
+340
+00:14:27,320 --> 00:14:29,520
+This is where a lot of the value from the dashboard
+
+341
+00:14:29,520 --> 00:14:32,040
+in the visual side is actually harnessed.
+
+342
+00:14:32,040 --> 00:14:33,480
+For me, that's metrics.
+
+343
+00:14:33,480 --> 00:14:34,560
+That's a look at my schedule.
+
+344
+00:14:34,560 --> 00:14:36,040
+That's breaking it down into tasks.
+
+345
+00:14:36,040 --> 00:14:37,520
+That's the morning headlines.
+
+346
+00:14:37,520 --> 00:14:39,000
+That's audience metrics.
+
+347
+00:14:39,000 --> 00:14:42,320
+That's deeper research into things that are relevant for me.
+
+348
+00:14:42,320 --> 00:14:44,880
+Again, this has to be 100% customized
+
+349
+00:14:44,880 --> 00:14:47,960
+because you're not going to care about your YouTube subs, right?
+
+350
+00:14:47,960 --> 00:14:49,640
+But you undoubtedly have a lot of metrics
+
+351
+00:14:49,640 --> 00:14:51,520
+and on a lot of deliverables that you would like
+
+352
+00:14:51,520 --> 00:14:53,880
+all in one place that are easy to access
+
+353
+00:14:53,880 --> 00:14:55,640
+and ask questions about.
+
+354
+00:14:55,640 --> 00:14:58,520
+And that sort of thing can be a little bit difficult to do
+
+355
+00:14:58,520 --> 00:15:00,600
+even inside of the desktop applications
+
+356
+00:15:00,600 --> 00:15:03,080
+and definitely kind of a pain inside of the terminal.
+
+357
+00:15:03,080 --> 00:15:05,240
+Even if you want to argue about the value
+
+358
+00:15:05,240 --> 00:15:07,440
+of having that all in one sort of visual dashboard
+
+359
+00:15:07,440 --> 00:15:08,720
+that you can customize,
+
+360
+00:15:08,720 --> 00:15:10,640
+I don't think there's any argument about creating
+
+361
+00:15:10,640 --> 00:15:13,960
+some sort of skill backbone in your greater
+
+362
+00:15:13,960 --> 00:15:16,560
+cloud or codex ecosystem like this.
+
+363
+00:15:16,560 --> 00:15:18,480
+Now let's talk about the second layer of our system
+
+364
+00:15:18,480 --> 00:15:21,760
+which is the obsidian memory system.
+
+365
+00:15:21,760 --> 00:15:23,560
+When we talk about the high level architecture,
+
+366
+00:15:23,560 --> 00:15:26,280
+you could tell everything kind of touches this layer,
+
+367
+00:15:26,280 --> 00:15:27,680
+whatever goes in, whatever comes out,
+
+368
+00:15:27,680 --> 00:15:30,520
+gets recorded inside of our vault.
+
+369
+00:15:30,520 --> 00:15:32,320
+Now if we've never used obsidian before,
+
+370
+00:15:32,320 --> 00:15:36,000
+it is a completely free, simple to use desktop application
+
+371
+00:15:36,000 --> 00:15:39,600
+that gives you insights into your Markdown files
+
+372
+00:15:39,600 --> 00:15:41,320
+essentially helps with organization.
+
+373
+00:15:41,320 --> 00:15:43,280
+Now obsidian and things like cloud coding codex
+
+374
+00:15:43,280 --> 00:15:44,920
+are often used together to create
+
+375
+00:15:44,920 --> 00:15:47,440
+what is called a second brain.
+
+376
+00:15:47,440 --> 00:15:49,160
+And the second brain is the idea
+
+377
+00:15:49,160 --> 00:15:50,680
+that there's all these files and folders
+
+378
+00:15:50,680 --> 00:15:53,200
+that have to do with you or your business.
+
+379
+00:15:53,200 --> 00:15:55,520
+We put them in these series of files
+
+380
+00:15:55,520 --> 00:15:57,920
+that we have called the obsidian vault.
+
+381
+00:15:57,920 --> 00:16:00,640
+We run cloud code inside of those folders
+
+382
+00:16:00,640 --> 00:16:02,800
+and it has access to all this information about us.
+
+383
+00:16:02,800 --> 00:16:05,880
+Now this obsidian second brain has kind of gotten a bad rap
+
+384
+00:16:05,880 --> 00:16:08,280
+as of late because people have sort of over hyped
+
+385
+00:16:08,280 --> 00:16:10,200
+what it is obsidian does in this structure
+
+386
+00:16:10,200 --> 00:16:11,960
+and like what the second brain even means.
+
+387
+00:16:11,960 --> 00:16:14,880
+The reality is obsidian isn't giving cloud
+
+388
+00:16:14,880 --> 00:16:17,280
+codex any sort of like magic upgrade.
+
+389
+00:16:17,280 --> 00:16:19,960
+Just because this AIOS system uses obsidian,
+
+390
+00:16:19,960 --> 00:16:22,520
+that doesn't mean it gets like a better memory jump
+
+391
+00:16:22,520 --> 00:16:23,840
+or remembers things better.
+
+392
+00:16:23,840 --> 00:16:25,960
+That's not what obsidian does.
+
+393
+00:16:25,960 --> 00:16:28,360
+The obsidian desktop app just makes it very easy
+
+394
+00:16:28,360 --> 00:16:30,880
+to navigate those files and folders
+
+395
+00:16:30,880 --> 00:16:32,960
+that we have designated the vault.
+
+396
+00:16:32,960 --> 00:16:35,120
+And that's a subtle but important difference
+
+397
+00:16:35,120 --> 00:16:37,520
+because it means the power of an obsidian
+
+398
+00:16:37,520 --> 00:16:39,400
+second brain, the power of bringing obsidian
+
+399
+00:16:39,400 --> 00:16:41,880
+in the memory layer is not an obsidian itself.
+
+400
+00:16:41,880 --> 00:16:44,480
+The power of the system depends 100%
+
+401
+00:16:44,480 --> 00:16:47,400
+on simply how you organize your files and folders.
+
+402
+00:16:47,400 --> 00:16:49,720
+Right, if I just have one folder called the vault
+
+403
+00:16:49,720 --> 00:16:52,440
+and I put 10 million just random files
+
+404
+00:16:52,440 --> 00:16:54,640
+and there's one folder and it's completely unorganized,
+
+405
+00:16:54,640 --> 00:16:56,640
+but it's obsidian does that help me at all?
+
+406
+00:16:56,640 --> 00:16:58,360
+The answer is no, absolutely not.
+
+407
+00:16:58,360 --> 00:17:00,240
+So what we have to do is we need to set up
+
+408
+00:17:00,240 --> 00:17:02,680
+some sort of folder structure that makes sense.
+
+409
+00:17:02,680 --> 00:17:04,440
+And that's what you see here.
+
+410
+00:17:04,440 --> 00:17:06,280
+This all comes from Carpathi.
+
+411
+00:17:06,280 --> 00:17:10,000
+Carpathi is an AI researcher who works within
+
+412
+00:17:10,000 --> 00:17:12,240
+thropic now I believe and he sort of coined
+
+413
+00:17:12,240 --> 00:17:14,240
+this structure with obsidian cloud code
+
+414
+00:17:14,240 --> 00:17:16,040
+and this like obsidian rag idea.
+
+415
+00:17:16,040 --> 00:17:17,760
+And the idea is relatively simple.
+
+416
+00:17:17,760 --> 00:17:19,920
+You have this folder that you have designated
+
+417
+00:17:19,920 --> 00:17:22,200
+as the vault in your system where everything's going
+
+418
+00:17:22,200 --> 00:17:25,120
+to live just a folder on your computer.
+
+419
+00:17:25,120 --> 00:17:27,360
+Underneath that folder, we have three subfolders.
+
+420
+00:17:27,360 --> 00:17:31,680
+We have raw, we have wiki and we have outputs.
+
+421
+00:17:31,680 --> 00:17:34,360
+And the idea is raw data goes in the raw folder.
+
+422
+00:17:34,360 --> 00:17:37,880
+The wiki, folks of folder is where we sort of organize
+
+423
+00:17:37,880 --> 00:17:41,120
+that raw data and create like Wikipedia style articles
+
+424
+00:17:41,120 --> 00:17:43,440
+about them and then three is the outputs.
+
+425
+00:17:43,440 --> 00:17:45,600
+You know, let's say I wanted to make a slide deck
+
+426
+00:17:45,600 --> 00:17:48,840
+about something that was a wikipedia article.
+
+427
+00:17:48,840 --> 00:17:51,240
+So for example, let's say I wanted our AIOS
+
+428
+00:17:51,240 --> 00:17:53,200
+to find information about AI agents, right?
+
+429
+00:17:53,200 --> 00:17:55,320
+Do a bunch of research on AI agents.
+
+430
+00:17:55,320 --> 00:17:57,800
+So it does that and it creates a bunch of information
+
+431
+00:17:57,800 --> 00:17:59,920
+or downloads a bunch of information about AI agents
+
+432
+00:17:59,920 --> 00:18:01,840
+which goes in the raw folder.
+
+433
+00:18:01,840 --> 00:18:04,800
+Then let's imagine we have this AI agents folder
+
+434
+00:18:04,800 --> 00:18:06,640
+in the raw section and I want to turn it
+
+435
+00:18:06,640 --> 00:18:08,520
+into some sort of organized data.
+
+436
+00:18:08,520 --> 00:18:12,480
+Well, then it creates an AI agent subfolder down here
+
+437
+00:18:12,480 --> 00:18:14,480
+with all the information about AI agents
+
+438
+00:18:14,480 --> 00:18:16,720
+including things about autonomous coding
+
+439
+00:18:16,720 --> 00:18:18,680
+and tool use patterns.
+
+440
+00:18:18,680 --> 00:18:22,280
+And then let's say I told our cloud OS
+
+441
+00:18:22,280 --> 00:18:25,000
+create a PowerPoint slide deck about this.
+
+442
+00:18:25,000 --> 00:18:29,160
+Well, then it makes the AI agents slide deck, okay?
+
+443
+00:18:29,160 --> 00:18:31,240
+And that would go into the outputs.
+
+444
+00:18:31,240 --> 00:18:33,640
+Simple enough, that's sort of the idea.
+
+445
+00:18:33,640 --> 00:18:36,960
+And the cell here is that because it's set up in this way
+
+446
+00:18:36,960 --> 00:18:39,440
+where it's very organized and I know where everything goes
+
+447
+00:18:39,440 --> 00:18:43,960
+when I ask, Claude, something about anything
+
+448
+00:18:43,960 --> 00:18:46,560
+that's inside of my vault, it has a clear map,
+
+449
+00:18:46,560 --> 00:18:48,760
+a clear path of where to find that information.
+
+450
+00:18:48,760 --> 00:18:51,800
+So it finds it quickly and it finds it efficiently.
+
+451
+00:18:51,800 --> 00:18:53,640
+You know, it doesn't have to go through 10 million
+
+452
+00:18:53,640 --> 00:18:54,840
+folders and subfolders to get there.
+
+453
+00:18:54,840 --> 00:18:55,920
+There's a clear path.
+
+454
+00:18:55,920 --> 00:18:58,160
+And the other side of the equation is because it's organized
+
+455
+00:18:58,160 --> 00:19:00,800
+and that way it's easy for me, the human being
+
+456
+00:19:00,800 --> 00:19:02,560
+to find it if I want to.
+
+457
+00:19:02,560 --> 00:19:05,400
+So with that being said, how should you set up
+
+458
+00:19:05,400 --> 00:19:09,120
+your folder system with your AIOS, your Claude OS
+
+459
+00:19:09,120 --> 00:19:10,680
+inside of a vault?
+
+460
+00:19:10,680 --> 00:19:12,200
+Does it have to be like this, where it's raw,
+
+461
+00:19:12,200 --> 00:19:13,680
+where it's wiki, where it's outputs?
+
+462
+00:19:13,680 --> 00:19:15,560
+The answer's absolutely not.
+
+463
+00:19:15,560 --> 00:19:17,520
+You can kind of set it up any way you want to.
+
+464
+00:19:17,520 --> 00:19:20,600
+It just needs to be organized in some manner that makes sense
+
+465
+00:19:20,600 --> 00:19:22,720
+so that you, the human being, can navigate it
+
+466
+00:19:22,720 --> 00:19:26,840
+and Claude or Codex can navigate it.
+
+467
+00:19:26,840 --> 00:19:28,280
+Now, like so many of these things,
+
+468
+00:19:28,280 --> 00:19:29,920
+you don't need to have the answer.
+
+469
+00:19:29,920 --> 00:19:33,080
+It is as simple as telling your AIOS,
+
+470
+00:19:33,080 --> 00:19:35,320
+hey, this is the folder I'm using as my vault,
+
+471
+00:19:35,320 --> 00:19:38,000
+help me come up with some sort of organizational structure.
+
+472
+00:19:38,000 --> 00:19:40,480
+And it will map it out and move files and folders
+
+473
+00:19:40,480 --> 00:19:41,480
+as it sees fit.
+
+474
+00:19:41,480 --> 00:19:43,880
+The only other thing I would add to this is
+
+475
+00:19:43,880 --> 00:19:46,400
+in whatever folder you designate as the vault,
+
+476
+00:19:46,400 --> 00:19:49,680
+I highly suggest in whether it's a Claude.md or Agents.md,
+
+477
+00:19:49,680 --> 00:19:51,840
+you tell it what the vault structure looks like.
+
+478
+00:19:51,840 --> 00:19:55,160
+So you give it instructions of how to add new files
+
+479
+00:19:55,160 --> 00:19:57,160
+and content to your system.
+
+480
+00:19:57,160 --> 00:19:59,320
+So it never kind of gets out of whack or drifts.
+
+481
+00:19:59,320 --> 00:20:01,200
+And that's really all there is to the memory layer.
+
+482
+00:20:01,200 --> 00:20:02,280
+It just needs to be structured.
+
+483
+00:20:02,280 --> 00:20:03,880
+It just needs to be organized.
+
+484
+00:20:03,880 --> 00:20:05,880
+It just needs to make sense for you.
+
+485
+00:20:05,880 --> 00:20:07,600
+And lastly, we have the visual piece,
+
+486
+00:20:07,600 --> 00:20:09,240
+which we've kind of already hit on a lot here,
+
+487
+00:20:09,240 --> 00:20:11,440
+where the big cell for the visual piece
+
+488
+00:20:11,440 --> 00:20:13,640
+is all these skills have deliverables.
+
+489
+00:20:13,640 --> 00:20:16,240
+We have a bunch of metrics that you need to be in charge of.
+
+490
+00:20:16,240 --> 00:20:17,840
+And we're going to put them all in one dashboard
+
+491
+00:20:17,840 --> 00:20:19,040
+that we customize.
+
+492
+00:20:19,040 --> 00:20:22,520
+A lot of the value of sort of these custom dashboard setups
+
+493
+00:20:22,520 --> 00:20:25,760
+as well, though, is seen when we bring different team members
+
+494
+00:20:25,760 --> 00:20:27,800
+and clients into the equation.
+
+495
+00:20:27,800 --> 00:20:29,840
+Because there definitely is a subset of people watching
+
+496
+00:20:29,840 --> 00:20:31,680
+that's really like, hey, I could probably
+
+497
+00:20:31,680 --> 00:20:33,640
+generate something like this myself,
+
+498
+00:20:33,640 --> 00:20:35,960
+even if it's some like, you know,
+
+499
+00:20:35,960 --> 00:20:37,840
+mashed up thing inside of the desktop app.
+
+500
+00:20:37,840 --> 00:20:38,840
+Why would I need to do this?
+
+501
+00:20:38,840 --> 00:20:41,080
+Well, if you're someone who's working with team members,
+
+502
+00:20:41,080 --> 00:20:43,040
+or you're someone who wants to bring this to clients,
+
+503
+00:20:43,040 --> 00:20:45,360
+it's not as easy to bring something
+
+504
+00:20:45,360 --> 00:20:48,520
+you've built inside the terminal specifically to them.
+
+505
+00:20:48,520 --> 00:20:50,720
+On the other hand, I can create something like this
+
+506
+00:20:50,720 --> 00:20:52,720
+that is custom made for anybody
+
+507
+00:20:52,720 --> 00:20:54,480
+and set it up extremely easily.
+
+508
+00:20:54,480 --> 00:20:59,160
+On top of that, I can even pour in a lot of my workflows,
+
+509
+00:20:59,160 --> 00:21:01,120
+a lot of my skills, a lot of my automations.
+
+510
+00:21:01,120 --> 00:21:02,720
+And if I put them inside of the dashboard,
+
+511
+00:21:02,720 --> 00:21:04,200
+like you see here, where they are simply
+
+512
+00:21:04,200 --> 00:21:06,240
+a button one person has to press,
+
+513
+00:21:06,240 --> 00:21:08,880
+well, the way this works is in the background,
+
+514
+00:21:08,880 --> 00:21:10,680
+it's simply calling a headless version
+
+515
+00:21:10,680 --> 00:21:13,640
+of Cloud Coder Codex to execute those tasks.
+
+516
+00:21:13,640 --> 00:21:15,600
+So I could have someone sit in this chair right here
+
+517
+00:21:15,600 --> 00:21:16,680
+in front of my dashboard,
+
+518
+00:21:16,680 --> 00:21:18,440
+whether this is the city and plugin,
+
+519
+00:21:18,440 --> 00:21:19,640
+or the web app version,
+
+520
+00:21:19,640 --> 00:21:22,040
+and I can start having them just running all sorts of skills
+
+521
+00:21:22,040 --> 00:21:23,680
+that do a lot of work.
+
+522
+00:21:23,680 --> 00:21:26,720
+And they're pretty much harnessing 90, 95% of the power
+
+523
+00:21:26,720 --> 00:21:29,640
+of Cloud Coder Codex without even knowing how to open it up.
+
+524
+00:21:29,640 --> 00:21:32,800
+So on top of all the information consolidation,
+
+525
+00:21:32,800 --> 00:21:34,040
+when we talk about selling this
+
+526
+00:21:34,040 --> 00:21:36,520
+and bringing other members of our team into the fold,
+
+527
+00:21:36,520 --> 00:21:39,640
+the visual dashboard can actually help them ate on,
+
+528
+00:21:39,640 --> 00:21:42,400
+which can't be undersold even if you're someone
+
+529
+00:21:42,400 --> 00:21:44,640
+who's technical enough to kind of do this on your own.
+
+530
+00:21:44,640 --> 00:21:47,600
+And a lot of that has to do with the custom nature of it.
+
+531
+00:21:47,600 --> 00:21:50,520
+This is not a one size fits all thing,
+
+532
+00:21:50,520 --> 00:21:52,040
+which is why it's so powerful.
+
+533
+00:21:52,040 --> 00:21:54,280
+No matter what you need to be listed here,
+
+534
+00:21:54,280 --> 00:21:56,960
+no matter what you need access to all in one place,
+
+535
+00:21:56,960 --> 00:21:58,160
+you can build it that way.
+
+536
+00:21:58,160 --> 00:22:01,000
+So that's the rundown on this Cloud OS.
+
+537
+00:22:01,000 --> 00:22:02,760
+I hope I was able to give you a better understanding
+
+538
+00:22:02,760 --> 00:22:04,920
+of how you could build something like this for yourself.
+
+539
+00:22:04,920 --> 00:22:06,480
+If you want to get my exact setup,
+
+540
+00:22:06,480 --> 00:22:07,680
+whether it's the web app version
+
+541
+00:22:07,680 --> 00:22:09,240
+or the city and plugin,
+
+542
+00:22:09,240 --> 00:22:11,120
+you can find that inside of Chase AI Plus.
+
+543
+00:22:11,120 --> 00:22:13,480
+I'll put a link to that down in the description.
+
+544
+00:22:13,480 --> 00:22:15,800
+But besides that, I'll see you around.
+

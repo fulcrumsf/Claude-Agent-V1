@@ -1,0 +1,1300 @@
+1
+00:00:00,000 --> 00:00:06,600
+There's a new AI model in town from the co-inventor of ChatGPT and it is insanely cheap and incredibly fast.
+
+2
+00:00:06,600 --> 00:00:12,560
+It's called Jev and just to show you how fast it is, I'll send this prompt and that is real time.
+
+3
+00:00:12,560 --> 00:00:16,880
+It gave me an output for less than a second and a diffraction of the cost.
+
+4
+00:00:16,880 --> 00:00:22,080
+So today I'll explain Jev for you simply and also some of the best ways by which you can integrate Jev
+
+5
+00:00:22,080 --> 00:00:27,280
+with the agentic harnesses you use like Cloud Code to make your set of faster, your systems cheaper
+
+6
+00:00:27,280 --> 00:00:32,080
+and even build new things and automate parts of your business that weren't possible before.
+
+7
+00:00:32,080 --> 00:00:32,880
+Let's dive into it.
+
+8
+00:00:32,880 --> 00:00:34,640
+So first of all, what is Jev?
+
+9
+00:00:34,640 --> 00:00:40,240
+And I won't go super deep into this, but basically Jev is a new AI model that is quite interesting
+
+10
+00:00:40,240 --> 00:00:43,840
+because it was released by a co-inventor of ChatGPT.
+
+11
+00:00:43,840 --> 00:00:48,560
+So this person, Diogo, he made this post that already has something like 38 million views
+
+12
+00:00:48,560 --> 00:00:54,720
+and he says here that Jev is a new type of frontier AI model that is 20 to 200 times faster
+
+13
+00:00:54,720 --> 00:00:57,040
+and 40 to 400 times cheaper.
+
+14
+00:00:57,040 --> 00:01:00,240
+And if you look at the rate card for this model, that is indeed the case.
+
+15
+00:01:00,240 --> 00:01:05,440
+It is around 24 times cheaper than Haiku and around 230 times cheaper than Fabo5.1.
+
+16
+00:01:05,440 --> 00:01:08,800
+And a big part of why that is is because it's output tokens,
+
+17
+00:01:08,800 --> 00:01:12,800
+basically it's response to you as the user is always free.
+
+18
+00:01:12,800 --> 00:01:16,720
+And they only charge for the input tokens, which is essentially your prompt.
+
+19
+00:01:16,720 --> 00:01:19,920
+And it's super cheap, it's only 4 cents per million tokens.
+
+20
+00:01:19,920 --> 00:01:23,200
+Now a big part of why it's so fast and so inexpensive
+
+21
+00:01:23,200 --> 00:01:26,240
+is because Jev can only answer in three shapes.
+
+22
+00:01:26,240 --> 00:01:29,360
+So when you ask a question, it can either give you a binary response,
+
+23
+00:01:29,360 --> 00:01:31,280
+whether that statement is true or false.
+
+24
+00:01:31,280 --> 00:01:34,480
+It can provide a selection against a menu of options.
+
+25
+00:01:34,480 --> 00:01:38,960
+Or it can also give you a response that is based on scale, let's say from 0 to 10.
+
+26
+00:01:38,960 --> 00:01:41,840
+And even though this sounds like a big limitation for the model,
+
+27
+00:01:41,840 --> 00:01:46,560
+this is actually the genius behind why it's so effective in the use cases that we'll go through later.
+
+28
+00:01:46,560 --> 00:01:49,920
+But before we go to that, one key thing to remember is that Jev
+
+29
+00:01:49,920 --> 00:01:52,480
+is not actually a large language model.
+
+30
+00:01:52,560 --> 00:01:55,920
+And the way that typesafe, which is the company behind Jev talks about this,
+
+31
+00:01:55,920 --> 00:01:59,120
+is that they're saying that Jev is the first system one model,
+
+32
+00:01:59,120 --> 00:02:03,200
+whereas all the other AI models like Fable, Astra, and the others
+
+33
+00:02:03,200 --> 00:02:05,440
+are what they're called in system two models.
+
+34
+00:02:05,440 --> 00:02:08,160
+Now in case you've read this book called Thinking Fast and Slow,
+
+35
+00:02:08,160 --> 00:02:12,400
+that system one and system two dichotomy of how humans and people think
+
+36
+00:02:12,400 --> 00:02:13,600
+might be familiar to you.
+
+37
+00:02:13,600 --> 00:02:16,800
+But essentially the difference between these systems is that system one
+
+38
+00:02:16,800 --> 00:02:19,600
+is all about thinking fast and making snap decisions.
+
+39
+00:02:19,600 --> 00:02:22,800
+And so Jev as an AI model just optimizes against this.
+
+40
+00:02:22,800 --> 00:02:26,640
+And so it just outputs classifications and can do that really, really fast
+
+41
+00:02:26,640 --> 00:02:28,080
+and really, really cheaply.
+
+42
+00:02:28,080 --> 00:02:31,920
+Whereas LLMs and other general purpose models like Fable or Astra,
+
+43
+00:02:31,920 --> 00:02:35,440
+they can output text and they do that by writing each word one by one.
+
+44
+00:02:35,440 --> 00:02:38,880
+But it gives them more flexibility of what it can output, obviously.
+
+45
+00:02:38,880 --> 00:02:41,920
+But that would have the drawback of these system two models
+
+46
+00:02:41,920 --> 00:02:44,960
+thinking slower versus its system one counterparts.
+
+47
+00:02:44,960 --> 00:02:47,200
+And so really if there's one takeaway from all of this,
+
+48
+00:02:47,280 --> 00:02:50,000
+I think the best way that you can use Jev right now
+
+49
+00:02:50,000 --> 00:02:51,120
+is to combine both.
+
+50
+00:02:51,120 --> 00:02:54,400
+Combine a system one model like Jev with a system two model
+
+51
+00:02:54,400 --> 00:02:55,920
+like the Claude models.
+
+52
+00:02:55,920 --> 00:02:58,240
+And so I'll show you some use cases of how you can get started
+
+53
+00:02:58,240 --> 00:03:00,000
+and actually get value from this today.
+
+54
+00:03:00,000 --> 00:03:02,880
+But first let's get you set up so that you can actually use Jev.
+
+55
+00:03:02,880 --> 00:03:04,560
+And as with any other AI model,
+
+56
+00:03:04,560 --> 00:03:07,440
+it's actually available to a variety of platforms.
+
+57
+00:03:07,440 --> 00:03:09,760
+You can obviously use it by connecting to type, save,
+
+58
+00:03:09,760 --> 00:03:11,680
+who is the company behind Jev.
+
+59
+00:03:11,680 --> 00:03:14,960
+And as per their ex-post at the time of this recording today,
+
+60
+00:03:14,960 --> 00:03:17,600
+they just announced that Jev is now actually available to everyone
+
+61
+00:03:17,600 --> 00:03:19,600
+because previous two days just hours ago,
+
+62
+00:03:19,600 --> 00:03:21,680
+there used to be a wait list to access it.
+
+63
+00:03:21,680 --> 00:03:22,960
+So if you go to this URL,
+
+64
+00:03:22,960 --> 00:03:24,080
+you'll be able to sign up there
+
+65
+00:03:24,080 --> 00:03:27,200
+and actually get your API key to connect it to Claude.
+
+66
+00:03:27,200 --> 00:03:28,800
+At least when I was testing it personally
+
+67
+00:03:28,800 --> 00:03:30,800
+and throughout the use cases that I'll go through here,
+
+68
+00:03:30,800 --> 00:03:32,880
+I connected to Jev via OpenRouter,
+
+69
+00:03:32,880 --> 00:03:34,960
+which is the service that always gets updated
+
+70
+00:03:34,960 --> 00:03:37,200
+with the newest AI models as they get released.
+
+71
+00:03:37,200 --> 00:03:39,120
+So you can just access that to this URL.
+
+72
+00:03:39,120 --> 00:03:41,360
+And so to set it up with Claude or any agentic harness
+
+73
+00:03:41,360 --> 00:03:43,920
+that you're using is just one prompt away as usual.
+
+74
+00:03:43,920 --> 00:03:45,520
+And you can just take a screenshot of this
+
+75
+00:03:45,520 --> 00:03:47,600
+if you need a starter prompt to set that up.
+
+76
+00:03:47,600 --> 00:03:49,200
+Or if you want to prompt and the setup guide
+
+77
+00:03:49,200 --> 00:03:51,920
+for everything that I'll cover here in this lesson,
+
+78
+00:03:51,920 --> 00:03:53,200
+I also made this PDF guide,
+
+79
+00:03:53,200 --> 00:03:54,880
+which you can just grab for free below
+
+80
+00:03:54,880 --> 00:03:56,480
+and you can just send it to your agent
+
+81
+00:03:56,480 --> 00:03:59,440
+for all of the good nuggets that you can pick up in this video.
+
+82
+00:03:59,440 --> 00:04:01,680
+So once you set that up and you confirm with Claude
+
+83
+00:04:01,680 --> 00:04:03,680
+that you have access to Jev, like what I did here,
+
+84
+00:04:03,680 --> 00:04:05,680
+now we can get to actually using it.
+
+85
+00:04:05,680 --> 00:04:07,920
+And I'll actually talk about this through three levels
+
+86
+00:04:07,920 --> 00:04:09,520
+by which you can use Jev.
+
+87
+00:04:09,520 --> 00:04:12,160
+And by the way, if you want to learn how to build and sell AI systems
+
+88
+00:04:12,320 --> 00:04:14,080
+that businesses actually pay for,
+
+89
+00:04:14,080 --> 00:04:15,520
+then that's pretty much all we do
+
+90
+00:04:15,520 --> 00:04:17,040
+over at the RoboNuggets community.
+
+91
+00:04:17,040 --> 00:04:20,080
+We are not only do you get access to the Claude Living Master class,
+
+92
+00:04:20,080 --> 00:04:22,320
+which we update every week and takes you from zero
+
+93
+00:04:22,320 --> 00:04:24,000
+to a mastery with the latest on AI,
+
+94
+00:04:24,000 --> 00:04:26,720
+but you also get access to our agents as a service course,
+
+95
+00:04:26,720 --> 00:04:28,960
+which walks you to how to actually get paid
+
+96
+00:04:28,960 --> 00:04:31,120
+for all these AI skills that you are learning.
+
+97
+00:04:31,120 --> 00:04:33,760
+You also get to be part of a genuinely great community
+
+98
+00:04:33,760 --> 00:04:34,720
+of AI builders.
+
+99
+00:04:34,720 --> 00:04:36,640
+In fact, you can see just some of the recent wins
+
+100
+00:04:36,640 --> 00:04:38,880
+our members are getting from the program right here.
+
+101
+00:04:38,880 --> 00:04:40,320
+So if you want to start earning from AI,
+
+102
+00:04:40,320 --> 00:04:42,000
+then check that just in the pinned comment below.
+
+103
+00:04:42,000 --> 00:04:43,200
+Now back to the video.
+
+104
+00:04:43,200 --> 00:04:44,960
+And the first one is to integrate Jev
+
+105
+00:04:44,960 --> 00:04:46,720
+with your own agentic operating system,
+
+106
+00:04:46,720 --> 00:04:48,720
+basically the way you work with your agents
+
+107
+00:04:48,720 --> 00:04:51,920
+so that you can get faster results and cheaper systems.
+
+108
+00:04:51,920 --> 00:04:53,280
+So less token burn.
+
+109
+00:04:53,280 --> 00:04:55,040
+Now because the way we use agents differ
+
+110
+00:04:55,040 --> 00:04:56,720
+depending on the work that we do,
+
+111
+00:04:56,720 --> 00:04:58,640
+I'm sure that you can also find ways to use Jev
+
+112
+00:04:58,640 --> 00:05:00,160
+outside of what I'll talk about.
+
+113
+00:05:00,160 --> 00:05:01,360
+But just to give you an idea,
+
+114
+00:05:01,360 --> 00:05:03,600
+here are two use cases that I am testing out
+
+115
+00:05:03,600 --> 00:05:05,360
+so far using this model.
+
+116
+00:05:05,360 --> 00:05:07,200
+The first one is around model routing,
+
+117
+00:05:07,200 --> 00:05:09,120
+which is basically letting Jev automate
+
+118
+00:05:09,120 --> 00:05:10,560
+the choice of the model,
+
+119
+00:05:10,560 --> 00:05:12,800
+depending on the task that we are giving Claude.
+
+120
+00:05:12,800 --> 00:05:14,400
+And this is important because remember,
+
+121
+00:05:14,400 --> 00:05:16,560
+it is not really practical for you to use
+
+122
+00:05:16,560 --> 00:05:18,800
+Fable all the time because out of all the models,
+
+123
+00:05:18,800 --> 00:05:20,240
+that is the most expensive.
+
+124
+00:05:20,240 --> 00:05:21,040
+Same thing with Opus,
+
+125
+00:05:21,040 --> 00:05:23,200
+if you just default to Opus every time,
+
+126
+00:05:23,200 --> 00:05:25,520
+then that can also drain your usage quite a lot.
+
+127
+00:05:25,520 --> 00:05:26,560
+And for a lot of tasks,
+
+128
+00:05:26,560 --> 00:05:28,640
+sometimes Sonnet and Haiku,
+
+129
+00:05:28,640 --> 00:05:30,160
+which are the cheaper models,
+
+130
+00:05:30,160 --> 00:05:31,440
+are actually enough.
+
+131
+00:05:31,440 --> 00:05:32,560
+But the problem there is,
+
+132
+00:05:32,560 --> 00:05:34,480
+for you to switch to these models
+
+133
+00:05:34,480 --> 00:05:36,640
+and decide the right model for each task,
+
+134
+00:05:36,720 --> 00:05:39,360
+that the decision usually lies with you as the user.
+
+135
+00:05:39,360 --> 00:05:40,880
+And so there wasn't really a quick
+
+136
+00:05:40,880 --> 00:05:43,680
+and cost-effective way for us to automate model routing
+
+137
+00:05:43,680 --> 00:05:44,880
+up until Jev.
+
+138
+00:05:44,880 --> 00:05:45,760
+And so to set this up,
+
+139
+00:05:45,760 --> 00:05:47,920
+you can just use this prompt for you to get started.
+
+140
+00:05:47,920 --> 00:05:49,600
+And just to give you a visual demo
+
+141
+00:05:49,600 --> 00:05:51,120
+of the tasks that I set up,
+
+142
+00:05:51,120 --> 00:05:52,800
+essentially what I ask Claude to do,
+
+143
+00:05:52,800 --> 00:05:56,240
+is to do a comparison of around 12 prompts with Jev,
+
+144
+00:05:56,240 --> 00:05:57,440
+and another one where it's running
+
+145
+00:05:57,440 --> 00:05:59,040
+with Fable 5.1 every time.
+
+146
+00:05:59,040 --> 00:06:00,880
+And you can see here that because of Jev,
+
+147
+00:06:00,880 --> 00:06:02,640
+and the fact that it's actually routing
+
+148
+00:06:02,640 --> 00:06:03,680
+to the right model,
+
+149
+00:06:03,680 --> 00:06:04,640
+depending on the task,
+
+150
+00:06:04,800 --> 00:06:07,120
+it actually resulted to 70% savings,
+
+151
+00:06:07,120 --> 00:06:09,200
+because nine out of those 12 tasks
+
+152
+00:06:09,200 --> 00:06:10,960
+never needed the top model anyway.
+
+153
+00:06:10,960 --> 00:06:12,160
+So that is quite useful,
+
+154
+00:06:12,160 --> 00:06:13,440
+but obviously you have to try it out
+
+155
+00:06:13,440 --> 00:06:15,360
+for the work that you do specifically.
+
+156
+00:06:15,360 --> 00:06:17,120
+Just to see if the output that you are getting
+
+157
+00:06:17,120 --> 00:06:18,800
+is still good enough in exchange
+
+158
+00:06:18,800 --> 00:06:20,480
+for the tokens that you are saving.
+
+159
+00:06:20,480 --> 00:06:22,560
+But it's just great that we now have this new class
+
+160
+00:06:22,560 --> 00:06:24,400
+of AI models that can actually do
+
+161
+00:06:24,400 --> 00:06:26,160
+these types of decisions for us.
+
+162
+00:06:26,160 --> 00:06:27,920
+Now in practice, if you're testing this out,
+
+163
+00:06:27,920 --> 00:06:30,400
+I do advise you to make a skill command first,
+
+164
+00:06:30,400 --> 00:06:32,560
+where you can switch Jev off or on.
+
+165
+00:06:32,560 --> 00:06:34,080
+For example, here in this Claude session,
+
+166
+00:06:34,160 --> 00:06:36,400
+you can see I typed in slash Jev on.
+
+167
+00:06:36,400 --> 00:06:37,360
+And so for this whole session,
+
+168
+00:06:37,360 --> 00:06:38,880
+whenever I assign it tasks,
+
+169
+00:06:38,880 --> 00:06:40,960
+Claude will now use Jev in order to find
+
+170
+00:06:40,960 --> 00:06:42,560
+the right model for that task.
+
+171
+00:06:42,560 --> 00:06:44,640
+One example of that is this where I ask it
+
+172
+00:06:44,640 --> 00:06:45,760
+to find the file path,
+
+173
+00:06:45,760 --> 00:06:47,520
+where the Jev router script lives.
+
+174
+00:06:47,520 --> 00:06:49,120
+You can see that for that task,
+
+175
+00:06:49,120 --> 00:06:51,120
+Jev actually assigned a high-go helper,
+
+176
+00:06:51,120 --> 00:06:52,400
+which is the cheapest model,
+
+177
+00:06:52,400 --> 00:06:53,760
+to find that file path,
+
+178
+00:06:53,760 --> 00:06:56,240
+which is much more efficient for your token usage.
+
+179
+00:06:56,240 --> 00:06:58,880
+Because if Jev wasn't there routing to high-go,
+
+180
+00:06:58,880 --> 00:07:00,640
+then we would have used Opus 5 here,
+
+181
+00:07:00,640 --> 00:07:02,880
+which is the default that I'm using for this session.
+
+182
+00:07:02,960 --> 00:07:05,440
+The second use case is making Claude become more efficient
+
+183
+00:07:05,440 --> 00:07:06,960
+when finding the right skills.
+
+184
+00:07:06,960 --> 00:07:09,920
+So again, this is just a visual demo of a test that I ran.
+
+185
+00:07:09,920 --> 00:07:13,120
+But essentially, what this shows is 14 tests,
+
+186
+00:07:13,120 --> 00:07:14,640
+where if you send it a prompt,
+
+187
+00:07:14,640 --> 00:07:17,920
+and you ask it to find a specific skill in my workspace,
+
+188
+00:07:17,920 --> 00:07:20,640
+you can see here that Jev takes much less time
+
+189
+00:07:20,640 --> 00:07:22,080
+to find the right skills,
+
+190
+00:07:22,080 --> 00:07:26,000
+versus if you just default to something like Opus 5, for example.
+
+191
+00:07:26,000 --> 00:07:28,640
+And so in total, for those 14 tests,
+
+192
+00:07:28,640 --> 00:07:31,280
+Jev was able to find the right skill within five seconds,
+
+193
+00:07:31,360 --> 00:07:33,680
+while Opus 5 took around 30 seconds.
+
+194
+00:07:33,680 --> 00:07:35,520
+And just to show you how Jev was used
+
+195
+00:07:35,520 --> 00:07:37,120
+in this specific use case,
+
+196
+00:07:37,120 --> 00:07:39,840
+basically your input is the test that you are trying to do.
+
+197
+00:07:39,840 --> 00:07:41,200
+Jev then looks at that,
+
+198
+00:07:41,200 --> 00:07:43,280
+and the options that it can choose from
+
+199
+00:07:43,280 --> 00:07:44,720
+would be your skills itself.
+
+200
+00:07:44,720 --> 00:07:46,400
+So at least for me, if you can see,
+
+201
+00:07:46,400 --> 00:07:49,840
+I have something like 145 skills in my workspace.
+
+202
+00:07:49,840 --> 00:07:51,440
+And so because Jev is really quick,
+
+203
+00:07:51,440 --> 00:07:54,000
+it can almost instantly output the right skill
+
+204
+00:07:54,000 --> 00:07:56,480
+from that list, which Claude then loads.
+
+205
+00:07:56,480 --> 00:07:58,320
+And so if you want to test that out for yourself,
+
+206
+00:07:58,320 --> 00:07:59,840
+then you can just copy this prompt
+
+207
+00:07:59,840 --> 00:08:01,040
+and send it to your agent.
+
+208
+00:08:01,120 --> 00:08:02,960
+Now beyond just level one of giving you
+
+209
+00:08:02,960 --> 00:08:04,320
+faster and cheaper systems,
+
+210
+00:08:04,320 --> 00:08:05,440
+if we get to level two,
+
+211
+00:08:05,440 --> 00:08:07,360
+this is actually how we use Jev
+
+212
+00:08:07,360 --> 00:08:09,120
+for more business use cases.
+
+213
+00:08:09,120 --> 00:08:11,120
+Because with Jev, you can actually make automations
+
+214
+00:08:11,120 --> 00:08:12,880
+that are almost at lightning speed
+
+215
+00:08:12,880 --> 00:08:15,840
+and doesn't cost as much as the other AI models.
+
+216
+00:08:15,840 --> 00:08:17,120
+And just to give a visual demo,
+
+217
+00:08:17,120 --> 00:08:19,040
+let's say you have 800 emails,
+
+218
+00:08:19,040 --> 00:08:20,560
+and the automation that you are building
+
+219
+00:08:20,560 --> 00:08:22,240
+needs to answer a business question,
+
+220
+00:08:22,240 --> 00:08:23,040
+which for this case,
+
+221
+00:08:23,040 --> 00:08:24,720
+we want to know which of these emails
+
+222
+00:08:24,720 --> 00:08:26,560
+are actually leads that we can contact.
+
+223
+00:08:26,560 --> 00:08:27,840
+But obviously it can be others,
+
+224
+00:08:27,840 --> 00:08:29,760
+like if these are customer support tickets,
+
+225
+00:08:29,840 --> 00:08:30,720
+then you can triage,
+
+226
+00:08:30,720 --> 00:08:32,560
+which ones are needing the most support.
+
+227
+00:08:32,560 --> 00:08:33,760
+But at least for this demo,
+
+228
+00:08:33,760 --> 00:08:36,560
+what will show is Jev doing the classification here
+
+229
+00:08:36,560 --> 00:08:37,360
+in this column,
+
+230
+00:08:37,360 --> 00:08:40,320
+and then we'll also use Haikou as well as Fable
+
+231
+00:08:40,320 --> 00:08:41,760
+in order to show the difference
+
+232
+00:08:41,760 --> 00:08:44,400
+between the speed and cost of these models.
+
+233
+00:08:44,400 --> 00:08:45,360
+So when I click run,
+
+234
+00:08:45,360 --> 00:08:47,040
+these will now show the time it took
+
+235
+00:08:47,040 --> 00:08:50,400
+for these models to classify each of these emails in full.
+
+236
+00:08:50,400 --> 00:08:51,920
+So let's go ahead and run that.
+
+237
+00:08:51,920 --> 00:08:52,880
+And as you can see,
+
+238
+00:08:52,880 --> 00:08:54,800
+that took Jev like no time at all.
+
+239
+00:08:54,800 --> 00:08:56,320
+Within less than a second,
+
+240
+00:08:56,320 --> 00:08:58,640
+it was able to classify all of those leads,
+
+241
+00:08:58,640 --> 00:08:59,520
+whether they're warm,
+
+242
+00:08:59,520 --> 00:09:00,480
+whether it's not a lead,
+
+243
+00:09:00,480 --> 00:09:01,360
+whether it's cold,
+
+244
+00:09:01,360 --> 00:09:03,600
+which is much faster and much cheaper
+
+245
+00:09:03,600 --> 00:09:05,360
+versus these other models.
+
+246
+00:09:05,360 --> 00:09:07,120
+And so when it comes to business automations,
+
+247
+00:09:07,120 --> 00:09:09,040
+that is where Jev really shines.
+
+248
+00:09:09,040 --> 00:09:11,200
+If you have a huge volume of things,
+
+249
+00:09:11,200 --> 00:09:12,480
+and there's a business question
+
+250
+00:09:12,480 --> 00:09:14,160
+that's associated to those things,
+
+251
+00:09:14,160 --> 00:09:16,880
+then this is a good candidate for you to use Jev in.
+
+252
+00:09:16,880 --> 00:09:18,480
+So for example, in Enterprise,
+
+253
+00:09:18,480 --> 00:09:19,600
+there's a huge industry
+
+254
+00:09:19,600 --> 00:09:21,680
+with regard to detecting invoice fraud,
+
+255
+00:09:21,680 --> 00:09:22,880
+spam detection software,
+
+256
+00:09:22,880 --> 00:09:24,720
+also has a good use case for this.
+
+257
+00:09:24,720 --> 00:09:26,640
+Community moderation is another,
+
+258
+00:09:26,720 --> 00:09:28,640
+saying when it comes to high volume requests
+
+259
+00:09:28,640 --> 00:09:29,600
+for any refunds,
+
+260
+00:09:29,600 --> 00:09:31,520
+and even classifying your customers
+
+261
+00:09:31,520 --> 00:09:32,960
+if they are churning or not.
+
+262
+00:09:32,960 --> 00:09:35,040
+If you're running a subscription software business,
+
+263
+00:09:35,040 --> 00:09:36,640
+for example, and so that's the pattern
+
+264
+00:09:36,640 --> 00:09:38,320
+that I think would be good for you to think about
+
+265
+00:09:38,320 --> 00:09:40,000
+in your company or in your business.
+
+266
+00:09:40,000 --> 00:09:42,400
+What are the things that you are receiving in volume
+
+267
+00:09:42,400 --> 00:09:43,680
+that you need to classify?
+
+268
+00:09:43,680 --> 00:09:45,040
+And if you introduce Jev in there,
+
+269
+00:09:45,040 --> 00:09:47,440
+and because it is so quick and it is so cheap,
+
+270
+00:09:47,440 --> 00:09:49,840
+then you'll be able to upgrade your automations
+
+271
+00:09:49,840 --> 00:09:51,440
+to just a few prompts.
+
+272
+00:09:51,440 --> 00:09:53,120
+And finally, we get to level three,
+
+273
+00:09:53,120 --> 00:09:54,480
+which is building apps
+
+274
+00:09:54,480 --> 00:09:56,080
+that have now just become possible
+
+275
+00:09:56,080 --> 00:09:57,200
+and cost effective
+
+276
+00:09:57,200 --> 00:09:59,600
+because of system one models like Jev.
+
+277
+00:09:59,600 --> 00:10:01,040
+And again, this differs per person,
+
+278
+00:10:01,040 --> 00:10:02,240
+but just to give you an idea
+
+279
+00:10:02,240 --> 00:10:04,240
+of what I immediately use it for.
+
+280
+00:10:04,240 --> 00:10:06,000
+In our line of work, as you might expect,
+
+281
+00:10:06,000 --> 00:10:08,800
+I generate a lot of images as well as videos.
+
+282
+00:10:08,800 --> 00:10:10,480
+And I put them all here in my OS,
+
+283
+00:10:10,480 --> 00:10:11,920
+which I name as rubric.
+
+284
+00:10:11,920 --> 00:10:14,320
+Now, because I have hundreds of images on here,
+
+285
+00:10:14,320 --> 00:10:15,440
+it's often the case that I need
+
+286
+00:10:15,440 --> 00:10:17,280
+to search for specific images.
+
+287
+00:10:17,280 --> 00:10:19,280
+And let's say if I type in cloud in here,
+
+288
+00:10:19,280 --> 00:10:21,280
+unfortunately, what this will give me
+
+289
+00:10:21,280 --> 00:10:24,080
+are images where the file names contain the word cloud.
+
+290
+00:10:24,240 --> 00:10:26,480
+So it's sort of like your standard control F.
+
+291
+00:10:26,480 --> 00:10:28,880
+But if we integrate Jev into that image search,
+
+292
+00:10:28,880 --> 00:10:30,080
+and this is just a quick demo
+
+293
+00:10:30,080 --> 00:10:31,920
+so that I can show you side by side,
+
+294
+00:10:31,920 --> 00:10:33,360
+five-type cloud in here,
+
+295
+00:10:33,360 --> 00:10:34,960
+you can see that the file name search here
+
+296
+00:10:34,960 --> 00:10:36,880
+returns only a few results,
+
+297
+00:10:36,880 --> 00:10:39,520
+but the search powered by Jev actually enables us
+
+298
+00:10:39,520 --> 00:10:41,840
+to search images and videos by meaning
+
+299
+00:10:41,840 --> 00:10:43,280
+instead of just the file name.
+
+300
+00:10:43,280 --> 00:10:44,480
+And so if you have an application
+
+301
+00:10:44,480 --> 00:10:46,560
+where users need to search for things a lot,
+
+302
+00:10:46,560 --> 00:10:48,320
+then Jev might be good to try to see
+
+303
+00:10:48,320 --> 00:10:51,680
+if that is going to improve user experience for your app.
+
+304
+00:10:51,680 --> 00:10:52,960
+Another application that I found
+
+305
+00:10:53,120 --> 00:10:55,760
+that is powered by Jev is this one from Kitsi,
+
+306
+00:10:55,760 --> 00:10:57,680
+who made this app called Unclutter.
+
+307
+00:10:57,680 --> 00:11:00,240
+And basically what it does is it's a Chrome extension
+
+308
+00:11:00,240 --> 00:11:01,880
+where whenever you toggle it on,
+
+309
+00:11:01,880 --> 00:11:05,120
+it basically auto cleans up pages from any elements
+
+310
+00:11:05,120 --> 00:11:06,960
+that are classified as Slop.
+
+311
+00:11:06,960 --> 00:11:09,040
+And the one that is doing that classifying
+
+312
+00:11:09,040 --> 00:11:10,240
+is Jev under the hood.
+
+313
+00:11:10,240 --> 00:11:12,040
+And it basically just looks at all of the elements
+
+314
+00:11:12,040 --> 00:11:13,800
+in the page, gives a quick decision
+
+315
+00:11:13,800 --> 00:11:15,920
+if they are ads, if they are cookie banners,
+
+316
+00:11:15,920 --> 00:11:17,360
+and it just removes all of that
+
+317
+00:11:17,360 --> 00:11:18,680
+when this switch is toggled.
+
+318
+00:11:18,680 --> 00:11:20,480
+And so there you go, that is what Jev is
+
+319
+00:11:20,480 --> 00:11:23,760
+and a few use cases and ideas for you to take advantage
+
+320
+00:11:23,760 --> 00:11:27,760
+of this new paradigm by which AI models are created and used.
+
+321
+00:11:27,760 --> 00:11:29,360
+I hope that was useful and as usual,
+
+322
+00:11:29,360 --> 00:11:30,720
+thanks for watching until the end.
+
+323
+00:11:30,720 --> 00:11:33,480
+And I'm also curious like what would you use Jev for?
+
+324
+00:11:33,480 --> 00:11:35,680
+Let me know down below and I'll see you all next time.
+
+325
+00:11:35,680 --> 00:11:36,520
+Cheers.
+
