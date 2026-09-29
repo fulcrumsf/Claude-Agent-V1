@@ -1,0 +1,89 @@
+Follow along as I build a Claude Code agent that connects to OpenRouter and automatically picks the best AI model for whatever you're building, so you're not stuck manually choosing (or overpaying) every time.
+
+Full build walkthrough, then a head-to-head test: 4 models (Kimi 3, Sol 5.6, Opus 5, Fable 5) each generate the same 30-second explainer video from an identical prompt, so you can see how they compare on cost, speed, and quality side by side. The results aren't what you'd expect.
+
+Set this up once, and it keeps saving you money on every build after.
+
+The written version of this build — every step, every setting, and what breaks:
+https://goautomatedmarketer.substack.com
+
+🤖 Join our Claude Code Workshop here:
+       https://go.vcinc.ai/claudecode
+
+🚀 Join the Vibe Coding Incubator community:
+       https://vcinc.ai/
+
+#Claude Code #OpenRouter   #AI model comparison #AI agents #Token optimization #ClaudeAI
+
+TIMESTAMPS
+00:00 Why paying for the most expensive AI isn't always worth it
+00:24 Build an AI model router that selects the best LLM
+00:54 Project overview: Claude Code + OpenRouter
+01:54 Testing Kimi, GPT, Claude Opus & Fable 5
+02:40 Creating the AI agent in VS Code
+03:25 Designing the model selection skill
+04:54 Adding OpenRouter documentation & leaderboards
+06:07 Building the agent before connecting the API
+07:00 Creating an OpenRouter API key
+08:38 Configuring the .env file
+09:10 Scheduling weekly model updates
+10:40 Running the AI model comparison test
+11:19 Testing four AI models with the same prompt
+12:26 Cost and speed comparison results
+13:22 Fable 5 output review
+13:59 Claude Opus 5 output review
+14:25 GPT Soul 5.6 output review
+15:02 Kimi 3 output review
+15:42 Comparing quality vs cost
+16:06 Which AI model should you use?
+16:26 Final thoughts on saving tokens and money
+
+🎓 GoHighLevel Masterclass + Plug-and-Play Templates. Enroll Now 
+       https://www.udemy.com/course/gohighlevel-masterclass-from-beginner-to-expert/?couponCode=GHLMASTERCLASS
+
+📣 Join Our Free Skool Community For HighLevel, Claude, n8n, AI & Automation. 
+       https://www.skool.com/automatedmarketer
+
+🚀 From Strategy to Deployment, We Build the Technology That Powers Scalable Growth
+       https://rapidactivemarketing.com/
+
+🔥 Steal My Best Strategies
+https://substack.com/@nunotavares1
+
+🛠️ Want a Done-For-You HighLevel system or need staffing for your SaaS?
+Let our team do the heavy lifting for you →
+       https://arcytex.com/
+
+📩  Get our weekly newsletter – GHL, AI, Tech & Growth Tips 
+       https://live.automatedmarketer.net/newsletter
+
+🚨 VIP Office Hours – Live Expert Help
+       https://live.automatedmarketer.net/vipaccess
+
+💡 Weekly Blog – Tools, Tips, Strategies
+       https://automatedmarketer.net/blog/
+
+#nunotavares #nunomtavares #automatedmarketer #gohighlevel #gohighlevelexpert  #AI #techupdates 
+
+🧠 Must-Have Tools We Use & Love
+💲 HighLevel (Main Tool)
+       https://live.automatedmarketer.net/automated-marketer-ghl
+😍 FGFunnels (for Coaches & Creators)
+       https://www.fgfunnels.com/backdoor?fpr=nuno-25
+🥇 HLProTools (Top 3rd-Party Add-ons)
+       https://go.hlprotools.com/hlpt?_go=nuno62
+🧠 Lovable AI (Build Smart AI Bots)
+       https://lovable.dev/?via=nuno-tavares
+🚀 Vibe Coding Incubator (AI Dev Skills)
+       https://vcinc.ai/
+📞 Wavv (Triple Calls, Block Spam) Get 10% off Your First Month, make sure to put in the promo code at the checkout: NEW-WUK2W
+       https://refer.wavv.com/?fpr=wuk2w
+💥 SocialBee (Social Media Scheduler)
+       https://get.socialbee.io/iiu661jano2g
+🛡️ AccessiBe (Instant ADA Compliance)
+       https://accessibe.com/a/a3e0cya
+
+⚡️ BUSINESS INQUIRIES ⚡️
+team@automatedmarketer.net
+
+Results not guaranteed.

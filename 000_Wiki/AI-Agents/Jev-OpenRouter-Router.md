@@ -38,6 +38,7 @@ This page synthesizes three video tutorials ingested on 2026-09-27 and connects 
 - [[../../007_Resource_Library/Tutorials/How-To-Use-Jev-Instantly-In-Claude-Code-With-OpenRouter/How-To-Use-Jev-Instantly-In-Claude-Code-With-OpenRouter-Tutorial]] (philippacsany, setup via OpenRouter and a customized Claude Code skill)
 - [[../../007_Resource_Library/Tutorials/Jev-Will-10x-Your-Claude-Code/Jev-Will-10x-Your-Claude-Code-Tutorial]] (RoboNuggets, three levels of Jev implementation)
 - [[../../007_Resource_Library/Tutorials/This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow/This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow-Tutorial]] (Chase AI, three-layer Agentic OS with Jev tiered routing)
+- [[../../007_Resource_Library/Tutorials/Claude-Code-And-OpenRouter-Auto-Pick-The-Best-Model/Claude-Code-And-OpenRouter-Auto-Pick-The-Best-Model-Tutorial]] (OpenRouter leaderboard-driven model router with scheduled rankings/pricing updates and a four-model benchmark)
 
 ## Related
 - [[Claude-Code-Router]]

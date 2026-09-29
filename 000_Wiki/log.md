@@ -2786,3 +2786,10 @@ Artifacts: `Video.mp4`, `Transcript.srt`, 9 Keyframes (`001.jpg`–`009_packagin
 Source: `007_Resource_Library/Tutorials/How-To-Use-Jev-Instantly-In-Claude-Code-With-OpenRouter/`, `007_Resource_Library/Tutorials/Jev-Will-10x-Your-Claude-Code/`, `007_Resource_Library/Tutorials/This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow/` (already routed 2026-09-27; no files moved)
 Wiki/Asset Note: `000_Wiki/AI-Agents/Jev-OpenRouter-Router.md`
 Cross-links: added to `000_Wiki/AI-Agents/Claude-Code-Router.md`, `000_Wiki/AI-Agents/Claude-Code-Self-Improving-OS.md`, `000_Wiki/AI-Agents/Claude-Code-And-Karpathys-System-10000-Skills.md`, `000_Wiki/Architecture/Claude-And-Obsidian-Full-AI-Operating-System.md`, `000_Wiki/Architecture/PI-Harness-Pack.md`; each `*-Tutorial.md` links back to the wiki page. Index updated; `graphify update` run on `000_Wiki/` and `007_Resource_Library/`.
+
+## [2026-09-29] ingest | Claude Code + OpenRouter: Auto-Pick the Best Model
+Source: `000_Ingest/Claude Code + OpenRouter Auto-Pick the Best Model.md` → `007_Resource_Library/Tutorials/Claude-Code-And-OpenRouter-Auto-Pick-The-Best-Model/Original-Ingest-Note.md`
+Wiki/Asset Note: `000_Wiki/AI-Agents/Jev-OpenRouter-Router.md`
+Cross-links: added the new tutorial to the existing wiki page's Source Tutorials section; index updated.
+Artifacts: `Transcript.srt`, `Claude-Code-And-OpenRouter-Auto-Pick-The-Best-Model-Transcript.md`, `Claude-Code-And-OpenRouter-Auto-Pick-The-Best-Model-Tutorial.md`, `ANALYSIS.md`, `Build-Prompts-From-Description.md`, `Original-Ingest-Note.md`.
+Incomplete: `Video.mp4` and keyframes not produced because the sandbox could not resolve YouTube; no OCR attempted. Actual YouTube description and linked build prompts/plan not fetched for the same network reason; no content fabricated. Model-name typos in the captured transcript were corrected to Kimi 3 and GPT Sole 5.6.
