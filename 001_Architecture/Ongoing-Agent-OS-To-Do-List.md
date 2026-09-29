@@ -137,3 +137,21 @@ Found sitting uncommitted in the working tree this session. NOT touched (per Ton
 3. **Uncommitted diff: `001_Architecture/Skills/Character-Sheet-Generation/SKILL.md`** (2 lines changed). Same — small uncommitted edit, needs a look before committing.
 4. **Untracked: `.tmp.driveupload/`** at workspace root. Looks like a transient Google Drive sync artifact, not a real deliverable — probably safe to gitignore or delete, but confirm with Tony first (no unapproved deletions).
 5. **`.obsidian/workspace.json`** — routine Obsidian UI-state diff (open panes/tabs), not a content change. Normally fine to commit whenever, low priority, no action needed unless it's noisy in status.
+
+---
+
+## Part 4: OpenRouter middle-lane picker — design locked, not built (opus-deep, 2026-09-29)
+
+Tony's evolving idea: chores stay on `openrouter/auto` untouched; add a new middle lane for non-chore, multi-step work that today either gets answered inline or escalated to opus-standard/opus-deep — route it to OpenRouter instead, but via a deliberately-picked model (leaderboard + price), not `auto`'s crowd vote. Tony correctly objected that pure log-only shadow mode (just recording what the picker *would* choose) gives no signal on output quality, since the task never actually runs. Full design below, nothing built yet.
+
+**Verdict: dual-run shadow, not log-only shadow.** Every eligible task runs twice — the normal path (what Tony sees, unchanged) and the picker's chosen OpenRouter model in a read-only sandbox (output saved to a log only, never shown, never able to touch files). Gives real output-quality data at ~zero risk. At ~7 eligible prompts/day, 2-3 weeks ≈ 100-150 dual-runs, single-digit-to-low-tens of dollars on a separately capped key.
+
+**"Non-critical" is defined by construction, not by asking a classifier to judge stakes** (Jev can't reason or weigh consequences — a confident wrong "how critical is this" score would be the exact failure mode that got the earlier frontier-enforcement system rolled back). Instead: the lane is made safe by the sandbox itself (output-only, no file writes, no commits/publishes/paid APIs, isolation flags already used by `delegate.py`). Jev only judges task *form* (`needs_changes` yes/no, `work_now` yes/no — reusing the one question from the parked enforcement build that tested well: 4/4 real jobs caught, 0/7 false positives), and code checks (action-word blocklist, off-switch, too-short-to-be-self-contained) can only ever demote a task back to today's normal behavior, never escalate into the picker lane. Every failure mode from the earlier rollback was checked against and mapped to a specific rule here (see full report in session transcript — table of 5 rollback causes → 5 corresponding safeguards).
+
+**Two-phase rollout:**
+- **Phase 1 (shadow, Claude Code only, 2-3 weeks or ~60 graded pairs):** dual-run + log to a new `~/Library/Logs/Agent-OS-Picker.jsonl` (this is the results-log gap identified in the earlier model-selector review). Grading: a cheap automatic Jev pairwise check as a noisy filter, plus Tony blind-grading ~10 randomized A/B pairs a week (his grades are ground truth). A task *type* graduates to Phase 2 only after ≥20 graded pairs, ≥80% tie-or-win rate, and 0 "would have mattered" wrong grades in the last 15.
+- **Phase 2 (live, per-graduated-type only):** router adds an unenforced hint (same mechanism as chores), output always labeled with which model produced it, falls back to normal path on any failure/timeout, 1-in-10 live tasks keeps dual-running to catch quality drift (auto-reverts to shadow if grades drop).
+
+**Honest limit:** a fully automatic gate can guarantee no damage to files/money/session — it cannot guarantee "no wrong answer ever reaches Tony," since a bad-but-plausible answer he acts on is a Tony-decision risk, not a file/money risk, and no classifier can see that coming. Small human-in-the-loop step (model label + one-word "redo on opus" + the weekly grading) is unavoidable in Phase 2, same as it already is for inline Sonnet today.
+
+**Open items for Tony before any of this gets built:** (1) spend cap for the dedicated picker OpenRouter key, (2) is ~10 blind-graded pairs/week acceptable ongoing effort, (3) rollout order — Claude Code only for Phase 1, other harnesses only after.
