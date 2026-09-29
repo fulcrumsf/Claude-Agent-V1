@@ -29,7 +29,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from jev_route import load_secret  # noqa: E402
 
 AGENT_OS = "/Users/tonymacbook2025/Documents/Agent-OS"
-MODEL = "typesafe/jev-router"
+MODEL = "openrouter/auto"
 WORKER_TIMEOUT = 1800  # seconds; chores that run longer are stopped and reported
 CODEX_CONFIG = Path.home() / ".codex" / "config.toml"
 # Codex features switched off for the worker: plugins (and the MCP servers they bring),
