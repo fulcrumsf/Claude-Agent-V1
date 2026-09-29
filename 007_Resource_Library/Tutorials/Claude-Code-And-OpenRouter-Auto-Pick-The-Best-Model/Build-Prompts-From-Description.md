@@ -82,6 +82,37 @@ Same prompt sent to 4 models in parallel, via the router, for a Remotion 30-seco
 
 Quality notes: Fable 5 "set the bar" (smooth, correct install command, wrote ~40% less code than Opus 5 to get there). Opus 5 close behind. GPT-5.6 Sol skipped one visual but added one the author liked. Kimi K3 fastest/cheapest but used an *older* version of the install command — "needs a check before it ships."
 
+## What the Video/Article Don't Mention (found in keyframes, not in the polished text)
+
+Two of the extracted keyframes show the author's own raw working notes (a `COMPARISON.md` open in VS Code, mid-project) that undercut the clean "$0.06 wins" headline:
+
+- **Kimi's actual run wasn't clean.** Its first attempt burned 32k reasoning tokens, returned empty output, and cost $0.48 — before a bounded-effort retry succeeded in 26s for the ~$0.06 shown in the video. Real total spend for Kimi including the failed attempt was **$0.50–1.00 on top of** the $1.09 total the video reports. The "cheapest model" headline number is the successful retry only, not the true all-in cost.
+- **The author's own caveat, verbatim from his notes:** *"my quality read comes from two sampled frames per model plus reading the source, not from watching all four end to end. Watch the MP4s before treating the ranking as settled."* — the quality comparison in the video is a first-pass impression, not a rigorous review.
+- Two real bugs got fixed in `run.py` mid-test: a UTF-8 encoding crash on a `✓` character that killed stdout, and a race condition where one model's crash destroyed another model's already-generated (already-paid-for) output before it could be saved.
+
+**Takeaway for Tony's own build:** budget for retries/failures in any real cost comparison — don't take a single-run headline number (from this video or from our own future tests) as the true cost without accounting for failed attempts.
+
+## Confirmed Project Structure (from a file-explorer keyframe)
+
+A keyframe of the author's actual project folder (`model-router/`) shows the real skeleton, matching the Substack article's steps concretely:
+
+```
+model-router/
+├── .claude/              # agent definitions
+├── logs/
+├── .gitignore
+├── catalog.json          # model list data
+├── CLAUDE.md
+├── config.json
+├── core.md               # skill's core instructions
+├── MODELS-CHANGELOG.md
+├── MODELS.md              # the leaderboard/model reference doc
+├── refresh.py             # the weekly cron/scheduled-task refresh script
+└── run.py                 # the test runner (sends the same prompt to N models)
+```
+
+Also visible: `openrouter.ai/api/v1/models` is a **JSON** endpoint (not literally Markdown as the transcript describes it — "MD file" appears to be the author's shorthand for "machine-readable," not the actual format). And OpenRouter's own `/models` page surfaces several *other* purpose-built routers worth knowing about beyond plain `openrouter/auto`, seen open in a browser tab during the walkthrough: **OpenRouter Fusion** (sends a prompt to a panel of models in parallel plus web search, then a judge model synthesizes one answer — relevant to the earlier brainstorm idea of "ask two models and compare"), and **Pareto Code Router** (a tiered coding-specific router with a `min_coding_score` parameter to control how strong/expensive a coding model it picks).
+
 Author's verdict: not literally as good as the top model, but "close enough for most sub-tasks, drafts, and first passes."
 
 ## Gotchas (author's own list)
