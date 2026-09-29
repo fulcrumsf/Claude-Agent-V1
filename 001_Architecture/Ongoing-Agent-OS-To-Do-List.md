@@ -104,6 +104,17 @@ Tony's brain-dump question — "can Jev decide whether a prompt should be split 
 - **Open questions for Tony before build:** (1) does Codex 0.157 / Antigravity expose an after-tool hook event (needed for `loop_guard.py` there)? (2) approve creating `~/.codex/agents/luna-standard.toml` as Codex's cheap named fan-out agent?
 - **Not started** — this is a proposal only, no code written, nothing wired in. Needs Tony's go-ahead per the `openrouter-jev-calls` skill's own rule against modifying `jev_route.py` without sign-off.
 
+### Model-selector idea vs. fan_out (opus-deep review, 2026-09-28 later)
+
+Tony saw a tutorial screenshot proposing a "skill + agent that acts as a model selector" (fed OpenRouter docs + leaderboard, cron-refreshed, benchmarks cost/time per model). Asked how it fits what's already built. Verdict: **mostly redundant, don't build now.**
+
+- `openrouter/auto` already does live market-based model selection per request — a custom selector fed docs/leaderboard would just be a slower, staler copy of the same data.
+- The one real gap: **no results log exists**. Every `delegate.py` run currently only logs `model: openrouter/auto` — never which model auto actually picked, cost, time, or success. Nothing to learn from yet.
+- Tony's actual idea — "spin off specialized subagents that each pick their own best OpenRouter model for tougher multi-step work" — **is not possible as a Claude Code subagent** (Task-tool subagents are always Anthropic models; the only way around that is a proxy like `ccr`, already rejected). It's already what `delegate.py`/Codex workers do today. So the idea = `fan_out`'s "answer + fan_out=yes" branch, but routing each fanned-out piece through its own `delegate.py` call (each gets its own `openrouter/auto` pick) instead of identical cheap Claude subagents.
+- **Build order recommended** (in priority order, none started): (1) log resolved model/cost/time/success per `delegate.py` run — small, blocks everything else; (2) ship `fan_out` in shadow mode as already designed, routing pieces through `delegate.py` + a new medium-effort "sub-task worker" profile instead of the mechanical chore-worker profile; (3) after ~50+ real runs, review the log for task types where `auto` picks badly, add manual pins only there via a new `--model` flag + a pin-table file (this pin table *is* the real "model selector" — a lookup file, not an agent); (4) only add a weekly-review `model-scout` agent if the pin table grows big enough to need upkeep.
+- **Also needed if fan_out ships:** parallel `delegate.py` runs currently break the changed-files report (compares whole-repo git status, so two workers running at once each see the other's edits as their own) — needs per-piece folder/worktree isolation before real parallel fan-out is safe.
+- **Stale docs found, not fixed yet:** `openrouter-jev-calls/SKILL.md` and `delegate.py`'s own docstring still describe the old `typesafe/jev-router` chore-worker setup — both need updating now that it's back on `openrouter/auto`. Also: `jev_route.py`'s classification calls actually use `typesafe/jev-1.13` (Decisions API), not `typesafe/jev-router` (that's the chat-completions model) — worth double-checking wherever documentation says "jev-router" for classification.
+
 **Also noted (not Jev-specific):** the "30-day log audit" idea from the tutorials — prompting an agent to mine `claude-mem` history for 5 concrete skills worth automating — is doable right now with existing tools, no new infrastructure needed.
 
 ---
