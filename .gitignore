@@ -32,6 +32,7 @@ venv/
 # Working/staging folders — not ready for repo
 000_Ingest/
 Notion-Edit/
+001_Architecture/Lab/
 
 # Auto-generated data files (map .md is sufficient)
 001_Architecture/Install_Maps/system_map_data.json
