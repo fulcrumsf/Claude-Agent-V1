@@ -225,3 +225,7 @@ A 4th command, closing a real gap: nothing previously named *how* Tony's first r
 ### `/lab-promote` scope confirmed (2026-09-30)
 
 Beyond the one-folder file checkout, `/lab-promote` now also: updates `TOOLBOX.md`, wikifies + cross-links the new pipeline into `000_Wiki/` (same convention as the standing `ingest` skill), runs `graphify update` on the affected domain(s), and commits + pushes to GitHub. All of this is done by the harness (the Claude Code session) directly — never the sandboxed `/lab-build` worker, consistent with the existing rule that wiring/publishing steps sit outside the sandbox guarantee. **RESOLVED:** no separate approval gate — Tony typing `/lab-promote` with his own description of what's being promoted (e.g. "this caption tool we just built in lab gets promoted") IS the approval; the command itself is the diff review, nothing further to show him first.
+
+### Spend cap — final confirmation (2026-09-30)
+
+**$2/lab-project stays as the default, confirmed.** If a project is about to go over, the script stops and asks Tony to approve going higher — never a hard kill, never a silent overspend. This was already the recommended safety valve; Tony confirmed it as the actual behavior to build. **All open items for `/lab` are now resolved.** Ready to build once the 3 remaining technical checks (Gemini/Claude headless auth, one more live network-off confirmation on the exact build path) are done.
