@@ -57,6 +57,7 @@ A multi-stream digital business spanning content creation, e-commerce, affiliate
 ## Session Memory — Read First
 
 Before starting work, scan these folders for logs and past decisions so Tony never has to repeat himself:
+- **Handoffs (always, every session, every harness):** `001_Architecture/Logs/Handoffs/` — read the most recent dated file before anything else. This is the one memory source every session checks by default, not only when relevant — it's written specifically to carry context forward.
 - **Core Memory:** `001_Architecture/Memory/Core_Memory.md` — tiny bootstrap memory
 - **Memory Index:** `001_Architecture/Memory/Memory_Index.md` — routing layer for which memory to load
 - **Logs:** `001_Architecture/Logs/` — session summaries, read only when relevant
@@ -98,6 +99,10 @@ Also update `001_Architecture/Memory/Global_Agent_Memory.md` with durable memori
 Also update `~/.claude/.../memory/MEMORY.md` with the system — user preferences go to user feedback entries, project decisions go to project entries, external references go to reference entries.
 
 **Trigger:** When Tony says "I'm about to close this session" or similar, write all four memory/log layers. Also, update all Workspace Maps, System Maps, TOOLBOX.md, and directory definitions to include any new folders, scripts, skills, or configurations. Write incrementally throughout the session — don't batch everything at the end.
+
+### Handoff File (standing rule, every session, every harness, 2026-09-30)
+
+At the same close-out trigger, also write a dated handoff file to `001_Architecture/Logs/Handoffs/YYYY-MM-DD_Session-Handoff_<Harness>_<short-topic>.md`. This is separate from the session log: the session log is a record of what happened, the handoff is written *for the next session* — what's still open, what's half-done, what decisions are waiting on Tony, and what the next agent should read first. Any harness can write one and any harness should be able to pick one up. Every session reads the most recent file in this folder before anything else (see Session Memory — Read First, above) — this is the one context source that's always checked, not only when relevant.
 
 ---
 

@@ -32,8 +32,8 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Daily | `000_Daily/` | `000_Daily/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
 | Project Ideas | `000_Project-Ideas/` | `000_Project-Ideas/graphify-out/` | 0 | pending build | — |
 | Wiki | `000_Wiki/` | `000_Wiki/graphify-out/` | 126 | built | 2026-09-15T09:11Z |
-| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 8382 | built | 2026-09-27T04:34Z|
-| Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 3306 | built | 2026-09-20T03:09Z|
+| Architecture | `001_Architecture/` | `001_Architecture/graphify-out/` | 8976 | built | 2026-10-01T03:58Z|
+| Video Editor | `002_Content-Creation/Video_Editor/` | `002_Content-Creation/Video_Editor/graphify-out/` | 3613 | built | 2026-09-28T02:16Z|
 | Whop Clipping | `002_Content-Creation/Whop_Clipping/` | `002_Content-Creation/Whop_Clipping/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
 | Apps | `003_Apps/` | `003_Apps/graphify-out/` | 10 | built (263n/373e) | 2026-09-08T16:00Z |
@@ -123,7 +123,7 @@ If a question spans domains, query each relevant graph separately and merge find
 ## Maintenance
 
 - After substantial edits to MD files in a domain, run `graphify update <domain>` (AST-only, free)
-- After major refactors or new tutorial content, rerun `/graphify . --update` (incremental semantic extract)
+- After major refactors or new tutorial content, rerun `/graphify <domain-folder> --update` (incremental semantic extract). Never run graphify on `.` (the workspace root): the root `graphify-out/` is retired (2026-09-27)
 - Federation hooks in `001_Architecture/Graphify/hooks/` mark domains dirty on file edits and rebuild on session Stop — see `hooks/README.md`
 
 ## Files
