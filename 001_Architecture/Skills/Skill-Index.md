@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-09-28
+created: 2026-09-30
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-09-28T00:44:52-04:00
+Generated: 2026-09-30T22:39:54-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -168,6 +168,8 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | ios-hig-design | Design native iOS interfaces following Apple Human Interface Guidelines. Use when the user mentions "iPhone app", "iPad layout", "SwiftUI", "UIKit", "Dynamic Island", "safe areas"… | `001_Architecture/Skills/ios-hig-design/SKILL.md` |
 | jobs-to-be-done | Discover what customers truly need by analyzing the "job" they hire your product to do. Use when the user mentions "customer discovery", "why customers churn", "what job does this… | `001_Architecture/Skills/jobs-to-be-done/SKILL.md` |
 | json-canvas | Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files, creating visual canvases, mind maps, flowcharts, or wh… | `001_Architecture/Skills/json-canvas/SKILL.md` |
+| lab | Background reference for Tony's /lab system (/lab-plan, /lab-build, /lab-run, /lab-promote) - a middle lane where a picked cheap OpenRouter model drafts and builds new things in a… | `001_Architecture/Skills/lab/SKILL.md` |
+| lab-plan | Claude Code only. Runs when Tony types /lab-plan <question> - a cheap picked OpenRouter model drafts a build plan read-only, then an opus-standard subagent scores the raw draft 0-… | `001_Architecture/Skills/lab-plan/SKILL.md` |
 | launch-strategy | When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,' 'Product Hunt,' 'feature release,' 'announcement… | `001_Architecture/Skills/launch-strategy/SKILL.md` |
 | lead-magnets | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentions "lead magnet," "gated content," "content upgra… | `001_Architecture/Skills/lead-magnets/SKILL.md` |
 | lean-startup | Design MVPs, validated learning experiments, and pivot-or-persevere decisions using Build-Measure-Learn. Use when the user mentions "MVP scope", "validated learning", "pivot or pe… | `001_Architecture/Skills/lean-startup/SKILL.md` |

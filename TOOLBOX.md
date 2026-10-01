@@ -44,6 +44,16 @@ Every harness starts each prompt on its own cheap default model; a shared Jev ca
 
 ---
 
+## `/lab` — OpenRouter middle lane (2026-09-30, `/lab-plan` built, Claude Code only)
+
+A separate lane from Model Routing above: for non-chore, multi-step builds (new tools/pipelines), a deliberately-picked cheap OpenRouter model drafts first, inside hard containment, with Opus reviewing and scoring every step before anything reaches the real workspace. Explicit trigger only — Jev never routes into `/lab`. Full design: `001_Architecture/Ongoing-Agent-OS-To-Do-List.md`, "Part 4". Build state + file contracts: `001_Architecture/Skills/lab/SKILL.md`.
+
+- **`/lab-plan <question>`** (built, Claude Code only) — `001_Architecture/Scripts/lab_plan_draft.py` picks a model (small curated table, checked against OpenRouter's live list/prices each run) and drafts a plan read-only (`codex exec -s read-only`, no file writes possible). The `/lab-plan` command then spawns `opus-standard` to score the RAW draft 0-100, write acceptance checks for a future build, and lock (≥80) or regenerate once (<80) the plan — all mechanically verified after (`--verify`: raw draft hash unchanged, score written before the lock, ≥3 well-formed checks). Existing `OPENROUTER_CHORES_KEY`, $2/project cap (asks Tony before going over, never silent), $1 always reserved so Jev routing can't starve. Output: `001_Architecture/Lab/YYYY-MM-DD_Title_Slug/` (gitignored).
+- **`/lab-build`, `/lab-run`, `/lab-promote`** — not built yet.
+- **Codex / Gemini CLI** — not wired. Codex's reviewer path would be `frontier.py` (already proven); Gemini CLI is blocked entirely right now — checked live 2026-09-30, no OAuth creds file and no API key configured, `gemini -p` fails outright. `claude -p` (the programmatic flag) is also currently broken separately — `-p` returns an expired-OAuth error even though normal interactive `claude` login is active — which is why `/lab-plan`'s review step uses Claude Code's native Agent tool instead of shelling out to `-p`, not a workaround, the more reliable path anyway.
+
+---
+
 ## System Maps (Install Maps)
 
 Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the system map"** or **"look at the install map"**, read the appropriate file.
