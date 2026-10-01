@@ -75,8 +75,8 @@ overrides.
   draft + review worst case over the project cap stops and asks Tony (`--cap`).
 - How Tony runs it in Antigravity: type `/lab-plan <question>` in the IDE agent chat; the agent runs
   the script (it can run terminal commands and waits for long ones) and relays the printed report.
-  This needs the trigger skill `lab-plan-antigravity` in `Agent-OS/.agents/skills/`, the only skill
-  folder the IDE loads besides its plugins (checked in its live system prompt 2026-09-30: it does
-  NOT read `001_Architecture/Skills/` or the `~/.gemini/skills` symlinks). That folder is not
-  created yet; it needs Tony's OK. Until then, run the command above in any terminal.
+  The trigger skill is `.agents/skills/lab-plan-antigravity/SKILL.md` — the one skill folder the IDE
+  actually loads besides its plugins (checked in its live system prompt 2026-09-30: it does NOT read
+  `001_Architecture/Skills/` or the `~/.gemini/skills` symlinks). **Built 2026-09-30, Tony approved.**
+  Running the script directly from any terminal also still works, same as before.
 - Do not run `lab-plan` (the Claude skill) from Codex or Antigravity; it needs Claude Code's Agent tool.
