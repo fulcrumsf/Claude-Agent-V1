@@ -13,6 +13,7 @@ This directory is the **unified brain** and **single source of truth** for all a
 *   **Install_Maps:** Holds `System-Map.md` (the registry of all installed tools/apps) and `Workspace-Map.md` (the overarching folder layout).
 *   **Logs:** Compact daily session records showing what work was done, decisions made, and files modified.
 *   **Memory:** The core routing system for agent context, including `Core_Memory.md` and `Global_Agent_Memory.md`.
+*   **Plans:** Standing-rule folder (see its own `README.md`) — holds plans not yet implemented. Once a plan is implemented and finalized, move it into `Plans/Archive/` (holding pen for Tony to delete later; agents never delete).
 *   **Scripts:** The global repository for all Python automation and helper scripts. Any script written to assist the user or an agent must be placed here.
 *   **Self_Learning_Loop:** Periodic review documents where agents synthesize patterns from recent sessions to improve future performance.
 *   **Skills:** The global repository for all AI agent capabilities. Whether you are Codex, Gemini, or Claude, any new skill (e.g., `gsd-plan-phase`, `video-ingest`) must be saved here. 
