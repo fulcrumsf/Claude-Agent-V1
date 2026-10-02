@@ -28,6 +28,7 @@ Master catalog of all wiki pages by category. Updated on every ingest.
 - [[AI-Agents/Printing-Press]] — This is a reference page for the Printing Press pattern, where APIs and websites are packaged into agent-friendly CLIs, skills, and MCPs.
 - [[AI-Agents/Jev-OpenRouter-Router]] — Jev (TypeSafe AI System 1 decision model) via OpenRouter: typed bool/choice/score decisions used as a pre-flight model router, bulk classifier, and 3-tier Agentic OS dispatcher; synthesizes three Jev tutorials and maps them to Option B routing.
 - [[AI-Agents/Claude-Code-And-OpenRouter-Auto-Pick-The-Best-Model-Tutorial]] — Claude Code OpenRouter model-router tutorial: reads model docs and leaderboards, selects cost-effective models, schedules weekly updates, and benchmarks four models.
+- [[AI-Agents/Find-Skills]] — Vercel Labs' meta-skill that searches skills.sh (`npx skills find`) and installs agent skills on request; installed 2026-10-01, paired with SkillSpector as the safety gate.
 
 ## RAG Systems
 
@@ -50,6 +51,7 @@ Master catalog of all wiki pages by category. Updated on every ingest.
 - [[Content-Strategy/ProfitTree-Etsy-Research]] — This is a reference page for Etsy product research and profit tracking.
 - [[Content-Strategy/ShopCreatorSpy]] — This is a reference page for TikTok Shop competitive intelligence and hook analysis.
 - [[Content-Strategy/YouTube-Channel-Growth-Playbook]] — This is a reference page for reverse-engineering viral YouTube channels into reusable growth systems.
+- [[Content-Strategy/Humanizer]] — Agent skill that rewrites AI-sounding prose (scripts, listings, descriptions) using numbered AI-writing tells from Wikipedia's Signs of AI writing; installed 2026-10-01.
 
 ## Architecture
 

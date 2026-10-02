@@ -13,7 +13,7 @@ generated_by: sync_skill_index.py
 
 # Skill Index
 
-Generated: 2026-10-01T00:08:05-04:00
+Generated: 2026-10-01T23:56:27-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -71,6 +71,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | claude-md-improver | Audit and improve CLAUDE.md files in repositories. Use when user asks to check, audit, update, improve, or fix CLAUDE.md files. Scans for all CLAUDE.md files, evaluates quality ag… | `001_Architecture/Skills/claude-md-improver/SKILL.md` |
 | clean-architecture | Structure software around the Dependency Rule: source code dependencies point inward from frameworks to use cases to entities. Use when the user mentions "architecture layers", "d… | `001_Architecture/Skills/clean-architecture/SKILL.md` |
 | clean-code | Write readable, maintainable code through disciplined naming, small functions, and clean error handling. Use when the user mentions "code review", "naming conventions", "function… | `001_Architecture/Skills/clean-code/SKILL.md` |
+| cloudflare | Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), networking (Tunnel, Spectrum), security (WAF, DDoS),… | `001_Architecture/Skills/cloudflare/SKILL.md` |
 | codex-agent-os-hardening | Use this skill whenever Codex or any OpenAI-compatible agent starts work in Agent-OS, when Tony says Codex is missing Claude Code habits, when a task touches memory/logs/feedback/… | `001_Architecture/Skills/codex-agent-os-hardening/SKILL.md` |
 | cold-email | Write B2B cold emails and follow-up sequences that get replies. Use when the user wants to write cold outreach emails, prospecting emails, cold email campaigns, sales development… | `001_Architecture/Skills/cold-email/SKILL.md` |
 | command-development | This skill should be used when the user asks to "create a slash command", "add a command", "write a custom command", "define command arguments", "use command frontmatter", "organi… | `001_Architecture/Skills/command-development/SKILL.md` |
@@ -86,15 +87,26 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | defuddle | Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens. Use instead of WebFetch when the user provides a URL to read or a… | `001_Architecture/Skills/defuddle/SKILL.md` |
 | design-everyday-things | Apply foundational design principles: affordances, signifiers, constraints, feedback, and conceptual models. Use when the user mentions "why is this confusing", "affordance", "err… | `001_Architecture/Skills/design-everyday-things/SKILL.md` |
 | design-sprint | Run a structured 5-day process to prototype, test, and validate product ideas with real users. Use when the user mentions "design sprint", "validate in a week", "rapid prototype",… | `001_Architecture/Skills/design-sprint/SKILL.md` |
+| design-taste-frontend | Senior UI/UX Engineer. Architect digital interfaces overriding default LLM biases. Enforces metric-based rules, strict component architecture, CSS hardware acceleration, and balan… | `001_Architecture/Skills/design-taste-frontend/SKILL.md` |
 | domain-driven-design | Model software around the business domain using bounded contexts, aggregates, and ubiquitous language. Use when the user mentions "domain modeling", "bounded context", "aggregate… | `001_Architecture/Skills/domain-driven-design/SKILL.md` |
 | drive-motivation | Design motivation systems using Autonomy, Mastery, and Purpose (AMP) for products and teams. Use when the user mentions "intrinsic motivation", "gamification isn''t working", "tea… | `001_Architecture/Skills/drive-motivation/SKILL.md` |
 | email-sequence | When the user wants to create or optimize an email sequence, drip campaign, automated email flow, or lifecycle email program. Also use when the user mentions "email sequence," "dr… | `001_Architecture/Skills/email-sequence/SKILL.md` |
 | excalidraw-diagram | Create Excalidraw diagram JSON files that make visual arguments. Use when the user wants to visualize workflows, architectures, or concepts. | `001_Architecture/Skills/excalidraw-diagram/SKILL.md` |
 | excalidraw-diagram | Create Excalidraw diagram JSON files that make visual arguments. Use when the user wants to visualize workflows, architectures, or concepts. | `001_Architecture/Skills/excalidraw-diagram-skill/SKILL.md` |
 | explain-code | Explains code with visual diagrams and analogies. Use when explaining how code works, teaching about a codebase, or when the user asks "how does this work? | `001_Architecture/Skills/explain-code/SKILL.md` |
+| find-skills | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is there a skill that can...", or express interest in extending… | `001_Architecture/Skills/find-skills/SKILL.md` |
+| firecrawl | | | `001_Architecture/Skills/firecrawl/SKILL.md` |
+| firecrawl-agent | | | `001_Architecture/Skills/firecrawl-agent/SKILL.md` |
+| firecrawl-browser | | | `001_Architecture/Skills/firecrawl-browser/SKILL.md` |
+| firecrawl-crawl | | | `001_Architecture/Skills/firecrawl-crawl/SKILL.md` |
+| firecrawl-download | | | `001_Architecture/Skills/firecrawl-download/SKILL.md` |
+| firecrawl-map | | | `001_Architecture/Skills/firecrawl-map/SKILL.md` |
+| firecrawl-scrape | | | `001_Architecture/Skills/firecrawl-scrape/SKILL.md` |
+| firecrawl-search | | | `001_Architecture/Skills/firecrawl-search/SKILL.md` |
 | form-cro | When the user wants to optimize any form that is NOT signup/registration — including lead capture forms, contact forms, demo request forms, application forms, survey forms, or che… | `001_Architecture/Skills/form-cro/SKILL.md` |
 | free-tool-strategy | When the user wants to plan, evaluate, or build a free tool for marketing purposes — lead generation, SEO value, or brand awareness. Also use when the user mentions "engineering a… | `001_Architecture/Skills/free-tool-strategy/SKILL.md` |
 | frontend-design | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates cre… | `001_Architecture/Skills/frontend-design/SKILL.md` |
+| full-output-enforcement | Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaus… | `001_Architecture/Skills/full-output-enforcement/SKILL.md` |
 | gemini-api-dev | Use this skill when building applications with Gemini models, Gemini API, working with multimodal content (text, images, audio, video), implementing function calling, using struct… | `001_Architecture/Skills/gemini-api-dev/SKILL.md` |
 | google_veo_kie_api | Best practices for using Google Veo 3, Kling, Runway, and Kie AI APIs for video and image generation. | `001_Architecture/Skills/google_veo_kie_api/SKILL.md` |
 | graphify | Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ exists, where the question should be treated as a g… | `001_Architecture/Skills/graphify/SKILL.md` |
@@ -149,9 +161,11 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | gsd-update | Update GSD to latest version with changelog display | `001_Architecture/Skills/gsd-update/SKILL.md` |
 | gsd-validate-phase | Retroactively audit and fill Nyquist validation gaps for a completed phase | `001_Architecture/Skills/gsd-validate-phase/SKILL.md` |
 | gsd-verify-work | Validate built features through conversational UAT | `001_Architecture/Skills/gsd-verify-work/SKILL.md` |
+| high-end-visual-design | Teaches the AI to design like a high-end agency. Defines the exact fonts, spacing, shadows, card structures, and animations that make a website feel expensive. Blocks all the comm… | `001_Architecture/Skills/high-end-visual-design/SKILL.md` |
 | high-perf-browser | Optimize web performance through network protocols, resource loading, and browser rendering internals. Use when the user mentions "page load speed", "Core Web Vitals", "HTTP/2", "… | `001_Architecture/Skills/high-perf-browser/SKILL.md` |
 | hook-development | This skill should be used when the user asks to "create a hook", "add a PreToolUse/PostToolUse/Stop hook", "validate tool use", "implement prompt-based hooks", "use ${CLAUDE_PLUGI… | `001_Architecture/Skills/hook-development/SKILL.md` |
 | hooked-ux | Design habit-forming product loops using the Hook Model (Trigger, Action, Variable Reward, Investment). Use when the user mentions "users aren''t coming back", "engagement loops",… | `001_Architecture/Skills/hooked-ux/SKILL.md` |
+| humanizer | | | `001_Architecture/Skills/humanizer/SKILL.md` |
 | hundred-million-offers | Create irresistible offers using the Value Equation, bonus stacking, risk-reversing guarantees, and ethical scarcity. Use when the user mentions "pricing strategy", "irresistible… | `001_Architecture/Skills/hundred-million-offers/SKILL.md` |
 | hyperframes | > | `001_Architecture/Skills/hyperframes/SKILL.md` |
 | hyperframes-animation | All animation knowledge for HyperFrames — atomic motion rules, multi-phase scene blueprints, scene transitions, broader motion-design techniques, AND the seven runtime adapters (G… | `001_Architecture/Skills/hyperframes-animation/SKILL.md` |
@@ -162,6 +176,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | hyperframes-keyframes | > | `001_Architecture/Skills/hyperframes-keyframes/SKILL.md` |
 | hyperframes-registry | Search, install, and wire registry blocks and components into HyperFrames compositions. Use BEFORE hand-building any named visual — whenever a brief, a user, or a storyboard names… | `001_Architecture/Skills/hyperframes-registry/SKILL.md` |
 | improve-retention | Diagnose and fix retention problems using behavior design (B=MAP). Use when the user mentions "users drop off", "activation rate", "onboarding friction", "retention metrics", or "… | `001_Architecture/Skills/improve-retention/SKILL.md` |
+| industrial-brutalist-ui | Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics. Rigid grids, extreme type scale contrast, utilitarian color, analog degradation effects… | `001_Architecture/Skills/industrial-brutalist-ui/SKILL.md` |
 | influence-psychology | Apply the six principles of ethical persuasion (reciprocity, commitment, social proof, authority, liking, scarcity) to product design, copy, and sales. Use when the user mentions… | `001_Architecture/Skills/influence-psychology/SKILL.md` |
 | ingest | Process files from the 000_Ingest/ folder into the vault. Triggers when the user says \"ingest\", \"process ingest\", \"ingest this file\", \"process the ingest folder\", \"what's… | `001_Architecture/Skills/ingest/SKILL.md` |
 | inspired-product | Build empowered product teams using discovery and delivery dual-track. Use when the user mentions "product discovery", "empowered teams", "feature factory", "product roadmap", "op… | `001_Architecture/Skills/inspired-product/SKILL.md` |
@@ -183,6 +198,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | mcp-integration | This skill should be used when the user asks to "add MCP server", "integrate MCP", "configure MCP in plugin", "use .mcp.json", "set up Model Context Protocol", "connect external s… | `001_Architecture/Skills/mcp-integration/SKILL.md` |
 | media-use | Agent Media OS, the single skill for every media need in a HyperFrames project. Resolve BGM, SFX, image, icon, brand logo, voice, color grade, or LUT into a frozen local file or p… | `001_Architecture/Skills/media-use/SKILL.md` |
 | microinteractions | Design the small details — triggers, rules, feedback, loops and modes — that separate good products from great ones. Use when the user mentions "microinteraction", "button feedbac… | `001_Architecture/Skills/microinteractions/SKILL.md` |
+| minimalist-ui | Clean editorial-style interfaces. Warm monochrome palette, typographic contrast, flat bento grids, muted pastels. No gradients, no heavy shadows. | `001_Architecture/Skills/minimalist-ui/SKILL.md` |
 | mom-test | Talk to customers without leading them using Mom Test rules: discuss their life not your idea, ask about specifics in the past, and talk less. Use when the user mentions "customer… | `001_Architecture/Skills/mom-test/SKILL.md` |
 | motion-graphics | > | `001_Architecture/Skills/motion-graphics/SKILL.md` |
 | mythology-research | Deep research skill for mythology, folklore, ancient mysteries, and strange historical events. Tailored for Glyphary, Polyoculis, Reimagined Realms, and Kingdoms & Conquerors chan… | `001_Architecture/Skills/mythology-research/SKILL.md` |
@@ -216,6 +232,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | product-marketing-context | When the user wants to create or update their product marketing context document. Also use when the user mentions 'product context,' 'marketing context,' 'set up context,' 'positi… | `001_Architecture/Skills/product-marketing-context/SKILL.md` |
 | programmatic-seo | When the user wants to create SEO-driven pages at scale using templates and data. Also use when the user mentions "programmatic SEO," "template pages," "pages at scale," "director… | `001_Architecture/Skills/programmatic-seo/SKILL.md` |
 | prompt-engineering-patterns | Master advanced prompt engineering techniques to maximize LLM performance, reliability, and controllability in production. Use when optimizing prompts, improving LLM outputs, or d… | `001_Architecture/Skills/prompt-engineering-patterns/SKILL.md` |
+| redesign-existing-projects | Upgrades existing websites and apps to premium quality. Audits current design, identifies generic AI patterns, and applies high-end design standards without breaking functionality… | `001_Architecture/Skills/redesign-existing-projects/SKILL.md` |
 | refactoring-patterns | Apply named refactoring transformations to improve code structure without changing behavior. Use when the user mentions "refactor this", "code smells", "extract method", "replace… | `001_Architecture/Skills/refactoring-patterns/SKILL.md` |
 | refactoring-ui | Audit and fix visual hierarchy, spacing, color, and depth in web UIs. Use when the user mentions "my UI looks off", "fix the design", "Tailwind styling", "color palette", or "visu… | `001_Architecture/Skills/refactoring-ui/SKILL.md` |
 | referral-program | When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use when the user mentions 'referral,' 'affiliate,' 'amb… | `001_Architecture/Skills/referral-program/SKILL.md` |
@@ -230,8 +247,10 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | site-architecture | When the user wants to plan, map, or restructure their website's page hierarchy, navigation, URL structure, or internal linking. Also use when the user mentions "sitemap," "site m… | `001_Architecture/Skills/site-architecture/SKILL.md` |
 | skill-creator | Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, update or optimize an existing skill, run… | `001_Architecture/Skills/skill-creator/SKILL.md` |
 | skill-development | This skill should be used when the user wants to "create a skill", "add a skill to plugin", "write a new skill", "improve skill description", "organize skill content", or needs gu… | `001_Architecture/Skills/skill-development/SKILL.md` |
+| skillspector | Security-scan an AI agent skill before installing or trusting it, using NVIDIA SkillSpector (static scan) plus a source-aware semantic review. Use when Tony types /skillspector <p… | `001_Architecture/Skills/skillspector/SKILL.md` |
 | social-content | When the user wants help creating, scheduling, or optimizing social media content for LinkedIn, Twitter/X, Instagram, TikTok, Facebook, or other platforms. Also use when the user… | `001_Architecture/Skills/social-content/SKILL.md` |
 | software-design-philosophy | Manage software complexity through deep modules, information hiding, and strategic programming. Use when the user mentions "module design", "API too complex", "shallow class", "co… | `001_Architecture/Skills/software-design-philosophy/SKILL.md` |
+| stitch-design-taste | Semantic Design System Skill for Google Stitch. Generates agent-friendly DESIGN.md files that enforce premium, anti-generic UI standards — strict typography, calibrated color, asy… | `001_Architecture/Skills/stitch-design-taste/SKILL.md` |
 | storybrand-messaging | Clarify brand messaging using narrative structure that positions the customer as hero. Use when the user mentions "brand message", "website copy", "elevator pitch", "one-liner", "… | `001_Architecture/Skills/storybrand-messaging/SKILL.md` |
 | docs | docs (living docs people share, comment on and edit; use only when the user asks for one: names a doc, document, page, memo, spec, PRD, runbook or write-up, asks for somewhere to… | `001_Architecture/Skills/synced/29776a52-6b34-4c65-90f4-01929f5aa245_67507ce8-c0f9-442e-bfed-029ce8c0c23b/docs/SKILL.md` |
 | docx | Use this skill whenever the user wants to create, read, edit, or manipulate Word documents (.docx) or Word templates (.dotx). Triggers include: any mention of Microsoft Word Docum… | `001_Architecture/Skills/synced/29776a52-6b34-4c65-90f4-01929f5aa245_67507ce8-c0f9-442e-bfed-029ce8c0c23b/docx/SKILL.md` |

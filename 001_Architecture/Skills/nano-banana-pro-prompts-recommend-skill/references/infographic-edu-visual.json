@@ -56,6 +56,1087 @@
     "needReferenceImages": false
   },
   {
+    "id": 35743,
+    "content": "Turning random objects into buildings.\n\n2x2 grid, do this for 4 different random objects. Concept: Turn objects into a landmark building that could exist.\n\n1. ANALYZE INPUT (Massing & Structure):\n\nMass: (Monolithic/Fragmented/Stacked/Spindly)\n\nSurface: (Reflective/Porous/Layered/Patterned)\n\nMechanism: (Static/Kinetic/Modular)\n\n2. AUTO-SELECT BUILDING TYPE:\n\nIF Monolithic + Stone-like → Museum\n\nIF Reflective + Aerodynamic → Skyscraper\n\nIF Modular + Stacked → Housing complex\n\nIF Porous + Organic → Botanical conservatory\n\nIF Kinetic + Mechanical → Transit hub\n\n3. EXECUTE:\nGolden-hour exterior render, people for scale, plausible materials, cinematic wide lens.",
+    "title": "Object-to-Building Transformation Prompt",
+    "description": "A logical workflow prompt for Nano Banana Pro that analyzes random objects and converts them into plausible landmark buildings based on massing and structure.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1790836512083_wy8lhe_HTRW_GWWEAAnc7S.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 35049,
+    "content": "Analyze the product and create a high-resolution, photorealistic, professional advertising reference sheet containing these four sections, on a clean white/neutral studio background, premium commercial product photography, soft controlled lighting, realistic materials, sharp details, subtle shadows, and a professional editorial grid.\n1. PRODUCT OVERVIEW; name, category, materials, dimensions/size, key features, and brand colors.\n2. PRODUCT USAGE/HERO VIEWS - front, back, side, 3/4, and functional/use view where relevant.\n3. PRODUCT CLOSE-UPS - logo/label, texture/material, key components, packaging details, and other important identifying features.\n4. PACKAGING / CONSTRUCTION - relevant packaging or structural views where applicable. \nThe entire sheet must function as a visual continuity bible for AI image/video production. Every product view must depict the exact same physical product with absolute consistency. Do not redesign, add variants, alter branding, or change proportions. Use cean typography, clear section labels, thin dividers, balanced spacing, sophisticated production-design aesthetic.",
+    "title": "Product Reference Sheet Workflow",
+    "description": "A detailed prompt and workflow for creating professional advertising reference sheets for products using Nano Banana.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1789885863707_jbcusb_HSmZa1AWsAEcqd1.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 34455,
+    "content": "[Input Data]\n- Dish Name (Left Page): {argument name=\"dish name left\" default=\"Green Curry\"}\n- Ingredients List (Left Page): {ingredientsLeft}\n- Cooking Steps (Left Page): ①{stepLeft1} → ②{stepLeft2} → ③{stepLeft3}\n- Dish Name (Right Page): {argument name=\"dish name right\" default=\"Tom Yum Goong\"}\n- Ingredients List (Right Page): {ingredientsRight}\n- Cooking Steps (Right Page): ①{stepRight1} → ②{stepRight2} → ③{stepRight3}\n- Color Theme: {argument name=\"color theme\" default=\"organic natural colors\"}\n\n[Structure and Layout Specifications]\n- Style: A flat 2D handwritten-style infographic recipe illustration drawn on a piece of rustic off-white notepad paper (grid paper) with thin grid lines and warm paper texture.\n- Background and Composition Constraints: Do not draw physical books, three-dimensional notebook outlines, page thickness, shadows, or realistic photo background elements like wooden tables (Absolutely NO wooden table, NO realistic book mockup, NO book thickness, NO notebook pages, NO realistic photo background. It must be a flat 2D vector layout directly on the textured grid notepad paper canvas).\n- Left Side Layout:\n  - Large handwritten Japanese title \"{dishLeft}\" at the top.\n  - Below that, the ingredient list \"{ingredientsLeft}\" drawn with neat vertical bullet points in handwritten Japanese and simple food illustrations.\n  - The lower half features cooking steps \"①{stepLeft1} → ②{stepLeft2} → ③{stepLeft3}\" arranged in a horizontal or vertical arrow flow. Include cute hand-drawn illustrations that match each step's content (e.g., cutting, stir-frying, simmering).\n  - A delicious-looking illustration of the finished \"{dishLeft}\" dish in the bottom left.\n- Right Side Layout:\n  - Large handwritten Japanese title \"{dishRight}\" at the top.\n  - Below that, the ingredient list \"{ingredientsRight}\" drawn in handwritten Japanese with simple food illustrations.\n  - The lower half features cooking steps \"①{stepRight1} → ②{stepRight2} → ③{stepRight3}\" arranged in a horizontal or vertical arrow flow. Include cute hand-drawn illustrations matching each step's content.\n  - A delicious-looking illustration of the finished \"{dishRight}\" dish in the bottom right.\n- Colors: A gentle, warm organic tone based on \"{colorTheme}\".\n\n[Quality and Exclusion Constraints (Mandatory)]\n- Absolutely no date-related elements like dates (e.g., \"8/7\"), days of the week (e.g., \"SUN\"), calendar frames, or date stamps (NO date stamp, NO calendar, NO day of the week, NO timeline stamp).\n- Fonts should be friendly handwritten-style Japanese (Gothic or rounded) accurately drawing the input Japanese without distortion or spelling errors.\n\n- Aspect Ratio: --ar 4:3",
+    "title": "Handwritten Memo Recipe Illustration",
+    "description": "A prompt for generating warm, 2D handwritten infographic recipe pages on grid paper, featuring ingredients and step-by-step instructions with charming illustrations.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1789195068455_wg7zzd_HR94WawagAESFAJ.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 34456,
+    "content": "[Input Data]\n- Overall Title: {argument name=\"main title\" default=\"3-Step Flowchart for Night Shift Introduction\"}\n- Step 1: Title \"{argument name=\"step 1 title\" default=\"Day Shift Mastery\"}\" / Period \"{step1Period}\" / Description \"{step1Desc}\"\n- Step 2: Title \"{step2Title}\" / Period \"{step2Period}\" / Description \"{step2Desc}\"\n- Step 3: Title \"{step3Title}\" / Period \"{step3Period}\" / Description \"{step3Desc}\"\n- Color Theme: {argument name=\"color theme\" default=\"green\"}\n\n[Structure and Layout Specifications]\n- Style: A clean and friendly 3-step flowchart illustration suitable for Japanese business slides, educational manuals, or internal documents. 16:9 landscape slide configuration.\n- Background: Clean off-white or solid white background.\n- Top Title:\n  - Place \"Figure 3\" or a step badge in the upper left, and to its right, draw a large Japanese main title \"{mainTitle}\" in a bold, easy-to-read Gothic font. Place a small, clean abstract logo mark at the right edge.\n- Step Card Arrangement:\n  - Three beautiful rectangular cards arranged side-by-side. Placed in order from left to right, connected by thick arrows. Each card border is color-coded neatly according to the color theme ({colorTheme}).\n- Card 1 (Left) Interior:\n  - Draw a circular badge \"1\" and the Japanese title \"{step1Title}\" prominently. Below that, a capsule label saying \"{step1Period}\".\n  - In the center, place an illustration of a Japanese woman with a gentle hand-drawn touch taking notes, and a window showing the sun.\n  - At the bottom, place the Japanese description \"{step1Desc}\".\n- Card 2 (Center) Interior:\n  - Draw a circular badge \"2\" and the Japanese title \"{step2Title}\" prominently. Below that, a capsule label saying \"{step2Period}\".\n  - In the center, place an illustration of two Japanese women with a flashlight, night sky, and buildings.\n  - At the bottom, place the Japanese description \"{step2Desc}\".\n- Card 3 (Right) Interior:\n  - Draw a circular badge \"3\" and the Japanese title \"{step3Title}\" prominently. Below that, a capsule label saying \"{step3Period}\".\n  - In the center, place an illustration of the night sky and crescent moon, and a Japanese woman smiling with a victory pose.\n  - At the bottom, place the Japanese description \"{step3Desc}\".\n\n[Quality and Font Specifications]\n- Simple, clean 2D illustration, flat design, crisp clear line art.\n- All text must be accurately drawn in readable Japanese fonts (Gothic) without spelling errors.\n- Exclude all 3D effects, shadows, laptop mockup backgrounds, or camera tilt; display the flat diagram itself across the entire screen.\n\n- Aspect Ratio: --ar 16:9",
+    "title": "Handwritten Style 3-Step Process Slide",
+    "description": "A prompt for creating a clean, friendly Japanese business slide featuring a 3-step process flowchart with cute illustrations and professional layout.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1789195068235_67ks05_HR9NC4KasAAWshq.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 33793,
+    "content": "A vintage British caricature depicts a woman with an elaborate hairstyle adorned with a sailing ship, flowers, and feathers. She is seated in an ornate chair, wearing a richly decorated dress and holding a fan. The background shows a lavish interior with a fireplace, clock, and a window overlooking a harbor scene. A small dog sits on a cushion to her right. The overall style is that of a 18th-century satirical print.",
+    "title": "Vintage British Caricature Satire",
+    "description": "An 18th-century satirical style drawing of a woman with an elaborate hairstyle incorporating a sailing ship.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788849680107_zum17n_HRNLLI_WsAMl_sU.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 33285,
+    "content": "Create a clean infographic summarizing {argument name=\"subject\" default=\"Teva’s revenue report\"}, with clear headings and a {argument name=\"chart type\" default=\"chart showing annual growth\"}.",
+    "title": "Corporate Revenue Report Infographic",
+    "description": "A clean and professional infographic prompt for presenting financial data, such as a company's revenue report. It includes clear headings and charts for annual growth visualization.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788418046936_8ijwch_HRMjI63X0AEYwgg.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 32985,
+    "content": "Create a premium vintage Japanese travel-journal editorial collage in vertical 4:5 format, featuring four distinct city sections—Bangkok, Thailand; Lisbon, Portugal; Marrakech, Morocco; Istanbul, Turkey. Each section combines a warm photorealistic documentary street photograph with a matching imperfect hand-drawn screen-print illustration, arranged asymmetrically on aged cream paper with torn-paper layers, archival borders, subtle pencil marks, typewriter captions, faded ink, paper fibers, and authentic 35mm analog grain. Bangkok: shrine, tangled wires, tropical greenery, teal motorbike; Lisbon: yellow tram, steep cobblestone street, balconies and river view; Marrakech: terracotta medina, palms, rugs and ornate minaret; Istanbul: steep stone street, Galata Tower, Bosphorus and vintage scooter. Use a restrained palette of sage, ochre, terracotta, mustard, charcoal and warm ivory, with sophisticated editorial art direction, muted contrast, natural light, handmade imperfections, and museum-quality travel-zine aesthetic.",
+    "title": "Vintage Travel Journal Editorial Collage",
+    "description": "A prompt for a complex, vertical travel editorial collage combining documentary photography with hand-drawn illustrations.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788159793398_hgiv0u_HRB6ttpa8AA8pm3.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 32986,
+    "content": "Create a vertical 4:5 cooking storyboard with exactly 10 panels in a {argument name=\"grid\" default=\"2×5 grid\"}. {argument name=\"surface\" default=\"warm wooden tabletop\"}, perfect top-down view, thin white borders, dusty-pink rounded headers, cream caption boxes, numbered circles and black handwritten typography.\\n\\nShow the exact sequence: {argument name=\"dish\" default=\"dish\"} packet → packet opens → noodles enter silver pot → noodles boil → seasoning sachets come out → cooked noodles enter black bowl → seasonings fall in → noodles mix → fried egg placed on top → finished mie goreng with egg and garnishes.\\n\\nUse clear white curved arrows, motion lines and sparkles to show every movement. Keep identical object continuity, realistic food, warm lighting, clean cute editorial storyboard style, sharp details and balanced spacing. No people, no hands, no extra panels.",
+    "title": "Editorial Cooking Storyboard Layout",
+    "description": "A detailed storyboard prompt for a cooking sequence featuring mie goreng, styled for editorial food photography with technical annotations.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788159793558_g5uwid_HQ9c_qzagAA6XNE.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 32913,
+    "content": "Create a premium vintage Japanese travel-journal editorial collage in vertical 4:5 format, featuring four distinct city sections—{argument name=\"locations\" default=\"Bangkok, Thailand; Lisbon, Portugal; Marrakech, Morocco; Istanbul, Turkey\"}. Each section combines a warm photorealistic documentary street photograph with a matching imperfect hand-drawn screen-print illustration, arranged asymmetrically on aged cream paper with torn-paper layers, archival borders, subtle pencil marks, typewriter captions, faded ink, paper fibers, and authentic 35mm analog grain. Bangkok: shrine, tangled wires, tropical greenery, teal motorbike; Lisbon: yellow tram, steep cobblestone street, balconies and river view; Marrakech: terracotta medina, palms, rugs and ornate minaret; Istanbul: steep stone street, Galata Tower, Bosphorus and vintage scooter. Use a restrained palette of sage, ochre, terracotta, mustard, charcoal and warm ivory, with sophisticated editorial art direction, muted contrast, natural light, handmade imperfections, and museum-quality travel-zine aesthetics. Small archival labels: “Bangkok / Field Note 052”, “Lisbon / Field Note 031”, “Marrakech / Field Note 017”, “Istanbul / Field Note 039”. No logos, watermark, HDR, oversaturation, or modern clutter.",
+    "title": "Vintage Travel Journal Collage",
+    "description": "Generates a multi-city travel editorial collage featuring photorealistic street photography and screen-print illustrations on aged paper.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788071771404_uu1ujl_HQ4rl-GbcAER37m.jpg",
+      "https://cms-assets.youmind.com/media/1788071772880_aaf3xm_HQ4rl-Na4AA14EQ.jpg",
+      "https://cms-assets.youmind.com/media/1788071772890_knzhxx_HQ4rl-NbkAAFN1H.jpg",
+      "https://cms-assets.youmind.com/media/1788071772609_0xhs0d_HQ4rl-KagAAwsio.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 32847,
+    "content": "2x2 grid, 16:9, do this for 4 under rated breakfasts of Southern hemisphere: INPUT = [{argument name=\"category\" default=\"TOPIC_CATEGORY\"} / {argument name=\"region\" default=\"REGION_SET\"} / {argument name=\"criteria\" default=\"SELECTION_CRITERIA\"} / {argument name=\"mood\" default=\"MOOD\"}]\nMODE = no_hardcoding / inference_only\n\nRun REGIONAL_CULTURAL_ATLAS_EXTRACTION:\n\nCATEGORY_DNA := infer what type of thing is being compared, how it is used, why it matters, and what makes it visually recognizable\n\nREGION_DNA[each] := infer local environment, visual culture, palette, typography attitude, textures, symbols, landscapes, tools, rituals, and social context\n\nITEM_SELECTION[each] := infer one overlooked or representative item that fits TOPIC_CATEGORY + REGION + SELECTION_CRITERIA\n\nHERO_VISUAL[each] := infer the best visual treatment:\nplated food, product close-up, ritual scene, tool layout, garment portrait, object still life, landscape-backed artifact, map-backed diagram, or symbolic vignette\n\nCOPY_SYSTEM[each] := generate:\n- large item title\n- short emotional tagline\n- origin/location label\n- 2–4 tiny descriptors\n- stamp or badge phrase\n- small contextual note\n\nGRAPHIC_SYSTEM := infer torn paper, printed grid, muted color blocks, topographic lines, stamps, borders, halftone, atlas marks, and editorial spacing\n\nRender:\nA premium regional comparison poster where each panel feels locally specific but belongs to one unified cultural theme.\n\nForbidden:\nhard-coded Southern Hemisphere, fixed breakfasts, fixed foods, fixed countries, fixed beige/red/green palette, fake local facts, random travel-poster clichés.",
+    "title": "Regional Cultural Atlas Poster",
+    "description": "An advanced prompt for creating a structured 2x2 grid poster that compares regional cultural aesthetics through food and artifacts.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1787985296015_yhzvl7_HQsNGCaXMAA-Hsp.jpg",
+      "https://cms-assets.youmind.com/media/1787985295956_xuicyq_HQsNGCOWgAAy1fH.jpg",
+      "https://cms-assets.youmind.com/media/1787985296026_osei01_HQsNGCRXgAA0TSo.jpg",
+      "https://cms-assets.youmind.com/media/1787985296715_n3x13b_HQsNGCZXUAAJAcb.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 32501,
+    "content": "A black and white line drawing features the text \"{argument name=\"quote\" default=\"DOING MY BEST RESULTS MAY VARY\"}\" in large, bold, bubble-style lettering. The text is surrounded by various cute and whimsical elements, including smiling stars, a cat face, clouds, daisies, hearts, cupcakes, a boba tea, and sparkly starbursts. The overall composition is dense and playful, designed as a coloring page.",
+    "title": "Whimsical Coloring Page Illustration",
+    "description": "A playful black and white line drawing prompt for a dense, sticker-style coloring page with customizable text.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1787639835929_41tdel_HPMiazuWYAA5e7F.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 32322,
+    "content": "A high-quality professional product photograph of three premium loaded beef tacos arranged neatly on a dark ceramic plate, centered against a warm terracotta-orange seamless studio background. Each taco features a crisp golden corn shell filled with juicy seasoned grilled beef, melted cheddar cheese, fresh shredded lettuce, diced tomatoes, purple onions, jalapeño slices, and creamy lime sauce. The beef has realistic grilled texture and subtle char marks, while the vegetables appear fresh and vibrant with natural moisture. Soft cinematic studio lighting creates rich highlights and subtle shadows beneath the plate. Ultra-sharp focus, DSLR macro food photography, premium Mexican fast-food advertisement style, hyper realistic, clean commercial composition, 8K. Aspect Ratio: 1:1 Create a hyper-realistic exploded vertical infographic composition of a premium loaded beef taco. Top → Bottom structure: Fresh Cilantro Garnish → Lime Crema → Jalapeño Slices → Diced Tomato & Onion → Shredded Lettuce → Melted Cheddar Cheese → Seasoned Grilled Beef → Crispy Corn Shell Every element must be perfectly centered, evenly spaced, and aligned vertically. Show realistic grilled beef texture, melted cheese, crisp vegetables, fresh herbs, creamy sauce, and a detailed crunchy corn shell. Use a warm terracotta-orange seamless studio background, soft commercial lighting, subtle realistic shadows beneath every floating element, ultra-sharp DSLR macro food photography, premium fast-food infographic aesthetic, clean professional composition, hyper realistic, 8K. Add clean minimalist infographic text labels with thin pointer lines using these exact labels: \"Cilantro\" \"Lime Crema\" \"Jalapeños\" \"Tomato & Onion\" \"Lettuce\" \"Cheddar Cheese\" \"Grilled Beef\" \"Corn Shell\" Aspect Ratio: 1:1 The tacos start to slowly spin while the ingredients separate gently and precisely, maintaining alignment and scale. The motion is smooth, appetizing, and controlled with no extra effects.",
+    "title": "Professional Beef Taco Product Photography",
+    "description": "A high-end food photography prompt designed to create appetizing commercial visuals of loaded beef tacos with cinematic studio lighting.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1787466537773_lhlib8_HQVoTC-a0AAbNyI.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 32099,
+    "content": "A high-quality professional product photograph of a premium {argument name=\"flavor\" default=\"strawberry\"} milkshake served in a tall transparent glass, centered against a soft {argument name=\"background color\" default=\"pastel pink\"} seamless studio background. The milkshake has a thick creamy texture, glossy syrup dripping inside the glass, a generous swirl of whipped cream on top, fresh fruit slices, and delicate sugar sprinkles. Realistic condensation droplets cover the glass with soft reflections from the studio lights. Elegant soft lighting creates subtle natural shadows beneath the glass. Ultra-sharp focus, DSLR macro beverage photography, premium café advertisement style, hyper realistic, clean commercial composition, 8K. \n\nCreate a hyper-realistic exploded vertical infographic composition of a premium strawberry milkshake. \nTop → Bottom structure: \nFresh Strawberry Garnish \n→ Whipped Cream \n→ Strawberry Syrup \n→ Creamy Strawberry Shake \n→ Crushed Ice \n→ Transparent Glass Base \nAll elements must be perfectly centered, evenly spaced, and vertically aligned. Show realistic strawberry texture, fluffy whipped cream, glossy syrup, thick creamy milkshake consistency, translucent ice, and realistic glass reflections. Use a soft pastel pink seamless studio background with elegant café lighting and subtle realistic shadows beneath each floating element. Ultra-sharp DSLR macro beverage photography, premium dessert drink infographic aesthetic, clean professional composition, hyper realistic, 8K. \nAdd clean minimalist infographic text labels with thin pointer lines using these exact labels: \n\"Strawberry\" \n\"Whipped Cream\" \n\"Strawberry Syrup\" \n\"Milkshake\" \n\"Ice\" \n\"Glass\"",
+    "title": "Strawberry Milkshake Product and Infographic",
+    "description": "Comprehensive prompts for both a professional product shot of a strawberry milkshake and a hyper-realistic vertical exploded infographic of the ingredients.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1787379854342_tnj7s4_HQOIyO5bMAAfMOO.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 30813,
+    "content": "A close-up, eye-level shot captures a {argument name=\"animal type\" default=\"European hamster\"} in a field of dry grass. The {argument name=\"animal type\" default=\"hamster\"}, with its distinctive brown and black fur, is positioned slightly to the left of the frame, facing right. Its tiny paws are holding a {argument name=\"food item\" default=\"small green leaf\"}, which it appears to be eating. The {argument name=\"animal type\" default=\"hamster\"}'s dark, beady eyes are sharp and focused, and its long whiskers are prominent.",
+    "title": "European Hamster Wildlife Photography",
+    "description": "A close-up wildlife photography prompt capturing a European hamster feeding in a field, designed for Nano Banana 2.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1786344499918_eo7cpi_HO4FP3kXkAAl5eH.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 30817,
+    "content": "a {argument name=\"bird species\" default=\"dodo bird\"}. Its body is plump and rounded, covered in {argument name=\"feather colors\" default=\"dark gray and brown feathers\"} with lighter, intricate patterns. The bird's legs and feet are visible, with scaly skin and sharp claws. The head is a lighter gray, with a prominent, curved beak that has a {argument name=\"beak texture\" default=\"cracked texture\"}.",
+    "title": "Realistic Dodo Bird Illustration",
+    "description": "A detailed animal prompt for a dodo bird with natural feather textures and a distinctive cracked-texture beak, optimized for Nano Banana 2.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1786257242691_8zff74_HO4FJ_2XYAA8VPb.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 30563,
+    "content": "A single, continuous, and complete mobile e-commerce detail page for an ergonomic office chair, with an aspect ratio of {argument name=\"aspect ratio\" default=\"3:7\"}. The product is the \"{argument name=\"product name\" default=\"Axis M3 Ergonomic Chair\"}\" concept model, featuring a dark graphite grey mesh back, black frame, silver-grey five-star base, visible headrest, armrests, seat cushion, and lumbar support, maintaining structural consistency across all perspectives. The overall design uses a vertical grid system combining architectural blueprints with modern office spaces, featuring {argument name=\"color scheme\" default=\"paper white, graphite grey, steel blue, and subtle orange\"} annotations, clear narrow sans-serif, and monospace parameter fonts. The first screen shows the identity of the product with a 3/4 angle view; followed by front, side, back, and top-down auxiliary angles; using human sitting postures and desk relationships to show scale without inferring specific height suitability ranges; labeling headrest, backrest, armrests, seat cushion, lumbar support, and chair feet by outline without providing internal exploded structures; showcasing office, reading, and brief rest scenarios; the evidence section only shows structural descriptions and sources provided by the user, with missing items marked \"information to be confirmed\"; the parameter section includes full chair dimensions, seat height range, load capacity, materials, and adjustment items, with unknown values not guessed; the packaging section shows the chair body, confirmed accessories, installation instructions, and care information, with missing accessories marked \"information to be confirmed\"; and ends with a summary of confirmed structures and a \"view dimensions and installation instructions\" note. Every parameter unit, dimension line, and information card must be fully filled out. Fictional ergonomic certifications, load-bearing values, adjustment levels, health improvements, patents, or test results are prohibited.",
+    "title": "Ergonomic Office Chair E-commerce Mobile Detail Page",
+    "description": "A comprehensive prompt for generating a mobile-optimized e-commerce product page for an ergonomic office chair. It includes multiple angles, structural callouts, and usage scenarios with a clean, blueprint-inspired aesthetic.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1785654882513_3vc9ml_HOrtQQ_bAAAeu64.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 30214,
+    "content": "2x2 grid, 16:9, do this for 4 important {argument name=\"subject\" default=\"Asian cities\"}: Generate a photoreal miniature pop-up book diorama for {argument name=\"subject\" default=\"Asian cities\"}.Rules:- infer SUBJECT_DNA automatically- use BASE_DOCUMENT as the physical foundation- the subject must rise from the page as a paper-engineered 3D world- include inferred landmarks, architecture, terrain, infrastructure, cultural motifs, and small scale cues- show folded platforms, stairs, slots, hinges, support struts, and hidden paper mechanics- integrate the subject name or symbolic typography as raised paper letters or structural forms- the base page should contain an inferred map, diagram, blueprint, or printed context relevant to {argument name=\"subject\" default=\"Asian cities\"}- everything must feel crafted from paper, cardstock, ink, miniature model materials, and precise pop-up engineering- no hard-coded city, landmark, tower, temple, map, color, or text unless supplied",
+    "title": "Miniature Pop-up Book Diorama",
+    "description": "A detailed prompt for generating photorealistic miniature pop-up book dioramas of cities, featuring intricate paper-engineered landmarks and structural paper mechanics.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1785395942795_27fdn3_HOCZo_5WoAAiXCa.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 29664,
+    "content": "A collection of alphabet letters, {argument name=\"letters\" default=\"A through Z\"} and decorative elements are arranged in rows against a {argument name=\"background color\" default=\"white background\"}. The letters are in a playful, rounded font with thick black outlines and vibrant, pastel colors. Many of the letters are stylized with accompanying graphics: flowers, starbursts, hearts, bows, sparkles. There are also scattered floral and starburst elements throughout the composition. The overall style is reminiscent of {argument name=\"design era\" default=\"1970s\"} graphic design, with a cheerful and whimsical aesthetic.",
+    "title": "Retro 1970s Alphabet Graphic Design",
+    "description": "A detailed prompt for generating a whimsical alphabet set in a 1970s graphic style, featuring playful rounded fonts, thick outlines, and vibrant pastel decorations.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1784963088586_p7yftd_HN5zRI_WAAABKw4.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 29465,
+    "content": "2x2 grid, 16:9, do this for public space, non copyrighted books:   { \"Scene_Type\": \"Macro Photography of an Open Magazine Spread\", \"Topic\": \"{argument name=\\\"franchise\\\" default=\\\"[FRANCHISE]\\\"} - {argument name=\\\"scene\\\" default=\\\"[SCENE]\\\"}\", \"AI_Semantic_Inference\": { \"The_Pop_Up\": \"A 3D, isometric, highly detailed voxel/clay block of the [SCENE] rising out of the glossy magazine pages.\", \"The_Layout\": \"Left and Right margins feature editorial text columns, bold headlines, and 'Secret Stats' boxes.\", \"The_Callouts\": \"Red circles drawn around AI_INFER(hidden easter eggs in the 3D model), with red lines connecting them to the 2D margin text.\" }, \"Aesthetic\": \"Slightly glossy paper texture, vibrant colors, satisfying tactile blend of 2D print media and 3D isometric art.\" }",
+    "title": "Voxel Magazine Pop-up Art",
+    "description": "A creative macro photography prompt for a magazine spread featuring a 3D voxel or clay model rising from the pages.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1784790709051_m3gcao_HNEgWh8XsAAGxv2.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 27859,
+    "content": "An ultra-detailed {argument name=\"style\" default=\"geometric mosaic portrait illustration\"} blending cubist abstraction, architectural blueprint aesthetics, and contemporary editorial pop-art design. Constructed from thousands of interlocking angular polygon fragments with no color lines, fragmented planes, segmented colorless contours, and intricate line grids. The highly structured composition, with layered technical drawing details embedded throughout, creates a complex look that blends schematic and artwork. Bold {argument name=\"colors\" default=\"complementary color blocks are dominated by saturated cobalt blue, yellow, turquoise, vibrant golden earth tones, warm orange, and sharp white accents\"}. The color treatment is flat yet dimensional, with a balanced contrast between large color fields and subtle geometric micro-details. Clean, vector-like precision combines with the imperfection of hand-drawn sketches and the texture of architectural drawings. Expressive contemporary {argument name=\"subject\" default=\"character design with stylized facial construction, exaggerated eyeglass shapes, and fragmented surface geometry\"}. A dense network of thin construction lines, blueprint markings, technical annotations, abstract map-like divisions, and layered polygonal textures seamlessly integrate into the subject and background. A mixed-media blend of cubism, urban mural art, technical illustration, generative geometry, and modern magazine cover aesthetics. Sharp edge definition, highly detailed surface articulation, intricate tessellation patterns, crystalline segmentation, and sophisticated visual rhythms. The background and subject are treated as a unified geometric ecosystem, with forms flowing continuously throughout. Premium gallery-quality digital artwork, razor-sharp linework, complex layered depth, contemporary design language, architectural abstraction, vibrant modernist color harmonies, highly detailed geometric storytelling, and a visually rich yet clean and organized composition. R 9:16.",
+    "title": "Geometric Mosaic Portrait Illustration",
+    "description": "Generates a detailed geometric mosaic portrait with cubist abstraction and technical drawing elements.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1783494609811_n7jihn_HMmrkkCXkAAHuEx.jpg",
+      "https://cms-assets.youmind.com/media/1783494609787_u8n6yo_HMmrkwYXkAAhA3H.jpg",
+      "https://cms-assets.youmind.com/media/1783494609760_jyeujd_HMmrk35W8AAHq5V.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 27529,
+    "content": "Cutaway diagram of a {argument name=\"object\" default=\"mechanical device\"}, detailed with interior component, on a white background. High-resolution, with a focused technique and text callouts providing information about each part. Interior details, hyper-realistic appearance.",
+    "title": "Technical Cutaway Diagram",
+    "description": "A professional prompt for generating hyper-realistic technical cutaway diagrams with labels and interior details against a clean background.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1783149741330_an29tc_HMUlkZJXYAADL8_.jpg",
+      "https://cms-assets.youmind.com/media/1783149741300_cb1pfr_HMUlkksWsAAl3fH.jpg",
+      "https://cms-assets.youmind.com/media/1783149741421_xmb6up_HMUlkw8XUAEnCeX.jpg",
+      "https://cms-assets.youmind.com/media/1783149742149_oc6fvg_HMUlk8mXMAAecVN.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 27131,
+    "content": "Create a crisp, clean infographic storyboard poster for {argument name=\"subject\" default=\"THE FIREFIGHTER\"}. Wide 16:9 layout, white background, black borders, bold black typography, {argument name=\"rendering style\" default=\"premium Pixar 3D stylized rendering\"}, intense dramatic colors — fiery deep oranges, emergency red",
+    "title": "Firefighter Storyboard Infographic",
+    "description": "A detailed prompt for generating a high-quality 3D infographic storyboard for a firefighter character in a stylized Pixar-inspired aesthetic.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1782805352550_gwpv55_HL9UHBJbAAAj7yr.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 26398,
+    "content": "A ultra-detailed, hyper-realistic 3D rendering of {argument name=\"subject\" default=\"human waist\"}, presented against a {argument name=\"background\" default=\"smooth, clean white-to-light-grey gradient background\"}. The style must mimic that of an advanced, glowing medical scan (like an fMRI combined with a CT). The entire structure is composed of luminous, semi-transparent green tissue (fascia, muscles, nerves), with skeletal elements and major neural pathways rendered in a {argument name=\"glow color\" default=\"brilliant, glowing electric green light\"}. The texture is that of a complex, interwoven network of lit fibers and nodes. The aesthetic is clean, technological, and medicinal, with the green structures appearing to emit light. The composition must be high-focus and minimalist, with a single, clear subject and no text.",
+    "title": "3D Medical Glow Scan Rendering",
+    "description": "A highly technical prompt for creating semi-transparent, luminous 3D medical visualizations of human anatomy with radiant fiber textures.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1782117036837_n3f07d_HLUol_YWoAA1ntQ.png",
+      "https://cms-assets.youmind.com/media/1782117036897_rj26kj_HLUooI4XUAAUGKw.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 25462,
+    "content": "{\n  \"image_description\": {\n    \"overall_theme\": \"High-technology augmented reality analysis of a scenic outdoor portrait\",\n    \"resolution\": \"4K UHD, hyper-realistic with sharp data overlay\",\n    \"subject\": {\n      \"name\": \"Woman_Model_A\",\n      \"pose\": \"Seated_profile, looking_left, side\",\n      \"attire\": {\n        \"garment\": \"Draped_One_Shoulder Pleated_Silk_Green_Dress\",\n        \"color_hex\": \"#1E6641\",\n        \"footwear\": \"Boots_Maroon\",\n        \"accessory\": {\n          \"type\": \"Bag_Two-Tone Leather/Metal\",\n          \"details\": \"Gold_Buckle_feature\"\n        }\n      }\n    },\n    \"environment\": {\n      \"location\": \"Nusa_Penida_Cliffside\",\n      \"terrain\": \"Rocky_Path\",\n      \"details\": {\n        \"main_trees\": {\n          \"type\": \"Fern_Tree\",\n          \"count\": 3\n        },\n        \"vegetation\": \"Lush mossy trees, vibrant red flowers, exotic plants\",\n        \"boundary\": \"Wooden fence posts with thick rope rail\",\n        \"background\": \"Distant tree-covered cliffs partially obscured by mist, with birds in flight\",\n        \"specific_sign\": \"Small sign on a fence post with the text 'Kelingking'\"\n      }\n    },\n    \"data_overlay\": {\n      \"style\": \"Translucent cyan digital interface with glowing gridlines and panel outlines\",\n      \"panels\": [\n        {\n          \"position\": \"Top-Left (Stacked Vertical)\",\n          \"content\": [\n            \"ANALYSIS: SUBJECT_DETECT\",\n            \"POSE: SEATED_PROFILE\",\n            \"OUTFIT: DRAPED_ONE_SHOULDER\",\n            \"COLOR: #1E6641_SILK_GREEN\",\n            \"ACCESSORY_1: BAG_TWO-TONE\",\n            \"MATERIAL: LEATHER/METAL\",\n            \"HEEL: BOOTS_MAROON\"\n          ]\n        },\n        {\n          \"position\": \"Top-Center (Floating Block)\",\n          \"content\": \"COORDINATES: -8.7495° S, 115.0934° E\"\n        },\n        {\n          \"position\": \"Center-Left (Embedded Annotation)\",\n          \"linked_to\": \"Leftmost Fern Tree\",\n          \"content\": \"FERN_TREE (count: 3)\"\n        },\n        {\n          \"position\": \"Center-Right (Embedded Annotation)\",\n          \"linked_to\": \"Rightmost Fern Tree\",\n          \"content\": \"FERN_TREE (count: 3)\"\n        },\n        {\n          \"position\": \"Top-Right (Annotation)\",\n          \"linked_to\": \"Cliffs\",\n          \"content\": \"CLIFF_DISTANCE (approx: 450m)\"\n        },\n        {\n          \"position\": \"Bottom-Right (Formatted JSON Block)\",\n          \"content\": \"{\\n  \\\"model\\\": {\\n    \\\"name\\\": \\\"Woman_Model_A\\\",\\n    \\\"pose\\\": \\\"Seated_left_looking_side\\\"\\n  },\\n  \\\"apparel\\\": {\\n    \\\"garment\\\": \\\"Pleated_Silk_Green_Dress\\\",\\n    \\\"style\\\": \\\"One-Shoulder_Draped\\\"\\n  },\\n  \\\"bag\\\": {\\n    \\\"type\\\": \\\"Two-Tone_Leather_Gold-Buckle\\\",\\n    \\\"brand\\\": \\\"Luxury_Accessory\\\"\\n  },\\n  \\\"location\\\": \\\"Nusa_Penida_Cliffside\\\",\\n  \\\"terrain\\\": \\\"Rocky_Path\\\"\\n}\"\n        }\n      ]\n    }\n  }\n}",
+    "title": "AR Scenic Cliffside Portrait Analysis",
+    "description": "A highly technological prompt for an augmented reality analysis of a scenic portrait on a Nusa Penida cliffside with data overlays.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1781424058640_02zl8s_HKrYUBHbMAAq3Be.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 25309,
+    "content": "Please summarize the {argument name=\"subject\" default=\"Zabi family from Gundam Origin\"} in an {argument name=\"style\" default=\"infographic style\"}.",
+    "title": "Gundam Origin Infographic Generation",
+    "description": "A prompt designed to create an infographic summary of the Zabi family from Gundam Origin, testing the model's ability to organize complex character information visually.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1781336389547_4ks6y9_HKmng28a8AAucIT.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 25140,
+    "content": "{argument name=\"car\" default=\"Chevrolet Corvette\"} designed in {argument name=\"location\" default=\"East Germany\"} by Trabant engineers in {argument name=\"era\" default=\"1957\"}, retro GDR automotive design, socialist industrial aesthetics, realistic alternate history",
+    "title": "GDR Alternate History Car Design",
+    "description": "A conceptual design prompt for an alternate history automotive mashup, blending iconic American car models with Socialist industrial aesthetics.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1781251728390_576hrf_HKkCITCWMAEsNke.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 25133,
+    "content": "{argument name=\"subject\" default=\"Alligator\"} lurking in a {argument name=\"setting\" default=\"swamp\"} at {argument name=\"time\" default=\"dusk\"}",
+    "title": "Alligator in Swamp Wildlife Photo",
+    "description": "A wildlife-style prompt for an alligator lurking in a swamp at dusk, usable for horror movie poster aesthetics or realistic photography.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1781251724797_czvqqf_HKc-ITKW8AEJHpO.png",
+      "https://cms-assets.youmind.com/media/1781251724844_3wz1mb_HKc-JdNXUAAsHrx.png"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 25105,
+    "content": "Ultra-detailed Neo-Parametric Editorial Illustration, combining elegant painterly character rendering with futuristic architectural blueprint aesthetics. Refined flowing linework, intricate cross-hatching, contour mapping, technical drafting overlays, geometric construction grids, engineering schematics, dimensional annotations, organic parametric curves, layered wireframe structures, subtle topographic patterns, intelligent negative space composition. Soft cinematic lighting with warm golden highlights balanced by cool gray-blue technical elements. Delicate skin-like shading transitions, luminous depth, atmospheric perspective, premium magazine illustration quality. Harmonious blend of artistic realism and scientific visualization, featuring highly controlled line density, precision ink detailing, transparent design diagrams, flowing structural rhythms, sophisticated visual hierarchy. Muted ivory, warm beige, champagne gold, graphite gray, steel blue, and soft slate palette. Clean luxury aesthetic, intellectual futuristic mood, museum-quality craftsmanship, elegant complexity, ultra-sharp details, high-end concept art, 8K masterpiece. Hyper-detailed Parametric Renaissance Fusion, where organic forms emerge from engineering blueprints and computational design structures. Elegant realistic rendering fused with mathematical line networks, contour meshes, drafting grids, architectural annotations, generative curves, topological flow lines, technical sketch layers, precision pen-and-ink detailing, intelligent wireframe geometry, scientific visualization aesthetics. Warm cinematic glow illuminating soft volumetric forms against sophisticated monochromatic technical frameworks. Rich micro-details, layered transparency effects, flowing construction diagrams, luxury editorial illustration, visionary futurism meets classical artistry, highly refined craftsmanship, intricate line architecture, museum-grade visual sophistication, ultra-premium 8K artwork. 60% realistic and cinematic editorial illustration. 40% parametric blueprint, wireframe, and engineering drawing. COLOR: (champagne, beige, steel blue, graphite).",
+    "title": "Neo-parametric architectural illustration",
+    "description": "A sophisticated prompt that blends realistic character rendering with futuristic engineering schematics and blueprint aesthetics.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1781251713408_9ricqa_HKgyIIbXIAA3p01.jpg",
+      "https://cms-assets.youmind.com/media/1781251713439_x4l54c_HKgyINuWoAAUJFw.jpg",
+      "https://cms-assets.youmind.com/media/1781251713423_xp0xs9_HKgyISXXQAAbg01.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 24561,
+    "content": "a detailed layout of {argument name=\"subject\" default=\"various beetles and insects\"} created in a {argument name=\"style\" default=\"soft pastel chalk art style\"}, with subtle chalk dust and textured paper grain visible. Harmonious, gently blended colors on a {argument name=\"background\" default=\"lime-green background\"}, arranged in a precise knolling style grid of hand-drawn beetles and insects, with one large, intricately rendered beetle in the center acting as the focal point, high-resolution illustration, clean negative space, top-down view.",
+    "title": "Pastel Chalk Insect Knolling",
+    "description": "A top-down chalk art illustration of various insects and beetles in a grid layout on a lime-green background.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780905983936_3w3qrl_HKIEo3HWIAAIUwY.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 24381,
+    "content": "A beautiful, watercolor-style lifestyle mood board and illustration collage capturing the essence of travel, craftsmanship, and European aesthetic. The central figure is a {argument name=\"subject\" default=\"handsome young man with wavy brown hair, a light beard, wearing a green field jacket\"}. He is carrying a leather-trimmed canvas duffel bag and holding a water bottle. Surrounding him are various artistic vignettes: a man taking a photograph, a scenic panoramic sketch of {argument name=\"location\" default=\"Florence, Italy\"}, the same young man at a cafe, and a French leather shop. The artwork features elegant handwritten script titles like \"Journey of a Craftsman\" and \"Explore the Textures,\" paired with bullet points emphasizing artisanal details. The overall color palette consists of earthy tones, greens, browns, and warm watercolor washes on an off-white paper texture background.",
+    "title": "European Travel Lifestyle Moodboard",
+    "description": "A watercolor-style illustration collage capturing European travel, craftsmanship, and artisanal details.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780818187770_vnjco3_HKHowzHXgAAaTSq.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 24219,
+    "content": "Ultra-detailed technical engineering infographic, clean {argument name=\"background color\" default=\"white\"} background, divided into a precise {argument name=\"grid layout\" default=\"2×2 grid\"} by sharp black separator lines. Blueprint-style industrial design visualization featuring photorealistic 3D renders, transparent cutaways, exploded views, dimensional annotations, technical callout boxes, measurement guides, and color-coded engineering arrows (red, blue, green, orange). Professional product design presentation, Apple-style industrial design documentation, high-end technical illustration. TOP LEFT: {argument name=\"primary subject\" default=\"Modern smartphone\"} shown in angled perspective with display removed, exposing densely packed internal components. Visible L-shaped battery, advanced logic board, processor chip, camera module, Face ID sensors, Taptic Engine, thermal pathways, ribbon cables, screws, connectors, and cooling architecture. Precise engineering labels and dimension lines surrounding components. TOP RIGHT: Professional mirrorless camera with large zoom lens. Longitudinal cutaway through lens assembly revealing multiple glass elements, optical groups, aperture mechanism, image sensor, shutter system, electronic components, and viewfinder structure. Additional exploded sub-diagram illustrating aperture blade construction and assembly sequence. Detailed optical engineering annotations. BOTTOM LEFT: Premium wireless earbud charging case displayed partially transparent and split open. One earbud seated inside, second earbud floating above in exploded-view configuration. Internal lithium-polymer battery, miniature logic board, charging contacts, wiring channels, magnets, and compact electronic architecture clearly visible through transparent shell. Technical callouts and component identification markers. BOTTOM RIGHT: Modern mechanical keyboard with charcoal-gray keycaps and single red accent key. Horizontal transparent cutaway sections exposing mechanical switches, switch housings, springs, stabilizers, PCB circuitry, LEDs, and internal frame structure. Lower margin includes enlarged switch cross-section diagram and geometric PCB schematic blueprint. Engineering measurements and component annotations throughout. Highly detailed CAD visualization, industrial design presentation board, precision engineering drawing, exploded assembly diagrams, transparent materials, photorealistic rendering, ultra-sharp focus, clean typography, scientific infographic aesthetics, professional product teardown documentation, white paper style, 8K resolution, museum-quality technical illustration, symmetrical layout, exceptional clarity.",
+    "title": "Engineering Product Infographic Design",
+    "description": "A detailed prompt for creating professional engineering infographics with a grid layout, featuring exploded views and technical annotations of various electronic products.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780730531515_a71pno_HKEHL3YbsAAFhpN.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 23880,
+    "content": "Introduce the characters in the photo and generate an artistic photo of different perspectives of the {argument name=\"subject\" default=\"Chinese rural fields\"} in a {argument name=\"layout\" default=\"nine-square grid\"}. The background features {argument name=\"background details\" default=\"rice paddies, blue sky, and white clouds\"}, with a slightly blurred distant view. The characters are photographed from different angles, including distant, medium, and close-up views",
+    "title": "Rural Fields Multi-Perspective Grid",
+    "description": "An artistic prompt generating a nine-square grid layout of Chinese rural fields from various camera angles.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780560145231_oltsdz_HJ3unhkaoAEzb3G.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 23911,
+    "content": "Convert this image into an {argument name=\"format\" default=\"information visualization guide\"} describing this location.",
+    "title": "Image to Infographic Guide",
+    "description": "Transforms a visual image of a location into an informative infographic or visual guide describing that place.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780560163372_nepo00_HJ3Bf2XbgAExD8e.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 23393,
+    "content": "- A premium beverage product photograph of a {argument name=\"fruit\" default=\"mango\"} smoothie in a tall transparent glass centered against a bright tropical yellow seamless studio background. The smoothie has a rich creamy mango texture with fresh mango slices garnish, condensation droplets, and vibrant color. Soft commercial lighting creates clean reflections and realistic shadows beneath the glass. Ultra-sharp focus, premium beverage advertisement style, hyper realistic, 8K.\nAspect Ratio: 1:1\n\nCreate a hyper-realistic exploded vertical infographic composition of a mango smoothie.\nTop → Bottom structure:\nCream Foam Layer (light airy cream texture)\n→ Mango Puree Layer (rich vibrant mango texture)\n→ Fresh Mango Chunks (juicy fruit detail)\n→ Ice Cube Layer (clear realistic ice texture)\n→ Glass Base (minimal transparent glass)\nPerfect alignment, tropical yellow background, soft realistic shadows, premium beverage infographic design.\nAdd clean infographic text labels with thin pointer lines using these exact labels:\n“Cream”\n“Mango Puree”\n“Mango”\n“Ice”\n“Glass”\nUltra-realistic drink detail, premium commercial photography, 8K.\nAspect Ratio: 1:1",
+    "title": "Mango Smoothie Infographic and Commercial Photography",
+    "description": "A set of prompts for a premium beverage advertisement and an exploded vertical infographic of a mango smoothie with realistic textures and studio lighting.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780301400416_nn1i04_HJo97qLbAAAaQ98.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 23265,
+    "content": "Create a hyper-realistic age progression portrait sequence of the same male individual across {argument name=\"stages\" default=\"4 major life stages: child (age 6), young adult (age 25), middle-aged man (age 45), and elderly man (age 75+)\"}. Use the attached child’s face as the exact identity reference for the youngest stage and ensure every age stage looks like the exact same person naturally aging over time, preserving identical facial structure, nose shape, eye color, jawline, skin tone, eyebrow structure, lips, and facial proportions consistently across all ages. Arrange all four faces in a tightly compressed overlapping side-stacked composition exactly like a professional photographic age progression lineup. Each face should be front-facing, tightly cropped, and positioned slightly behind the previous one from front to back, creating a smooth layered progression from youngest to oldest. Maintain nearly equal face scale across all stages with minimal perspective distortion. Faces should overlap naturally and remain very close together with clean simple spacing, similar to a studio portrait stacking composition. No geometric panels, no cinematic scene composition, no excessive depth effect, no dramatic perspective. Pure white seamless studio background, soft neutral studio lighting, realistic skin texture, natural aging details, plain neutral clothing, ultra photo-realistic, highly detailed, sharp focus, professional portrait photography, seamless identity consistency across all ages. No corp. Aspect ratio 4:5, no text, no logo.",
+    "title": "Male Age Progression Portrait",
+    "description": "A hyper-realistic prompt for generating an age progression sequence of a male individual across four life stages, maintaining consistent facial identity and a clean studio aesthetic.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780213128061_ev8v6q_HJkU-l_bAAEBco2.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 22788,
+    "content": "An {argument name=\"collection name\" default=\"AMZ Collection\"} fashion design spec sheet and product layout presented as a tall, vertical infographic for men's technical outerwear. On the left side, a full-body shot features a 32-year-old male model with a short beard and a faded haircut, wearing a rugged, multi-pocketed utility jacket and matching cargo pants in deep olive green and slate grey with bright orange accents. The top of the sheet prominently displays the title \"{argument name=\"title\" default=\"AMZLECTION - URBAN FRONTIER SERIES\"}\" and \"AERO SHELL PARKA SYSTEM\" in a bold, clean sans-serif typeface, accompanied by a bio detailing his occupation as a systems engineer and urban explorer. The right side features a technical \"Articulation & Layer Study\" breakdown showing multiple back and front silhouette angles detailing the zip-in system, articulated sleeves, and hood stowage. The center section provides macro close-up macro shots highlighting the technical textures, including ripstop tech fabric, a seal-zip closure, and a grip-liner sleeve cuff. Below, a \"Modular Styling\" column showcases alternative ways to style the garment, such as a full protection system or a light urban shell. The bottom of the layout features grid sections labeled \"Modular Add-Ons\" displaying accessories like a utility belt, touchscreen-compatible tech gloves, an EDC multi-tool, and a headlamp. Adjacent to this is an \"Urban Palette & Mats\" swatch color bar showing slate grey, olive green, night black, blaze orange, and technical ivory, followed by a comprehensive \"Technical Specifications\" block outlining the fabric, insulation, closures, pockets, and features of the high-performance gear.",
+    "title": "Technical Outerwear Design Sheet",
+    "description": "A detailed fashion design spec sheet and product layout for men's technical outerwear with modular styling and technical textures.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779954402372_liq6q6_HJUQCtgWcAQ8xE1.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 22670,
+    "content": "Create a diagram explaining {argument name=\"topic\" default=\"how to prepare a basic roll of sushi\"}",
+    "title": "Sushi Roll Instruction Diagram",
+    "description": "A prompt designed to test model logic and layout by generating a diagram explaining sushi preparation.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779867921311_leubsp_HJR2N70bEAADYms.jpg",
+      "https://cms-assets.youmind.com/media/1779867921378_ggo637_HJR2P2_bwAADfNy.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 22464,
+    "content": "A beautifully detailed watercolor and ink journal illustration capturing a culinary travel diary titled \"...and a taste of Greece in {argument name=\"location\" default=\"LA\"}.\" The scene is set on a rustic wooden table by a window overlooking a classic Los Angeles street lined with tall palm trees stretching into distant hazy mountains. The layout features a masterfully plated dish in the foreground on a ceramic plate flanked by a vintage fork and cloth napkin, with a larger baking pan of the same food resting just behind it. In the corners, there are taped-down parchment paper scraps with handwritten notes detailing the recipe layers, along with elegant Chinese calligraphy and a stamped seal. The artwork blends a warm, nostalgic paper texture with vibrant, glossy food rendering, creating a cozy and mouthwatering atmosphere that transitions from a \"Day 1 (lunch) {argument name=\"dish one\" default=\"Spicy L.A. Burger\"}\" layered with melting pepper jack, chili patty, jalapeños, and dripping chili oil on a brioche bun, to a \"Day 2 (dinner) {argument name=\"dish two\" default=\"L.A. Spicy Wings\"}\" showcasing crispy-fried, double-drenched chicken wings glistening in a habanero-honey-lime glaze, topped with smoked chili flakes and served with a side of creamy blue cheese dip and celery sticks.",
+    "title": "Watercolor Culinary Travel Diary Illustration",
+    "description": "A cozy watercolor and ink journal illustration of a food diary, featuring dishes from Los Angeles and Greece with handwritten notes and calligraphy.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779780727700_e5gl1q_HJJwNQbWMAA9jUr.jpg",
+      "https://cms-assets.youmind.com/media/1779780727638_sv59tw_HJJwNTFXQAEow4W.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 22232,
+    "content": "A vintage-inspired digital scrapbook collage celebrating a journey through {argument name=\"country\" default=\"England\"}, designed with a soft, romanticized watercolor aesthetic in pastel tones of blush pink, cream, beige, and sepia. The main focus is an elegant young woman with {argument name=\"hair style\" default=\"long, wavy dark hair\"}, wearing a {argument name=\"outfit\" default=\"pink cable-knit sweater\"} and a silk neck scarf, leaning on a stone ledge with a soft-focus view of Big Ben and the Palace of Westminster behind her. Surrounding her are various travel elements, including a watercolor map of England, an old train ticket for the Flying Scotsman, a rustic brass hotel key, vintage postage stamps, a London Underground logo, and a menu from a tea house in Bath. The composition is completed with an old black-and-white photograph of a traditional thatched-roof cottage, handwritten cursive elements, and elegant script typography featuring the quote, \"O, to be in England, now that April's there\" by R. Browning.",
+    "title": "Vintage England Travel Scrapbook",
+    "description": "A nostalgic and romanticized watercolor digital scrapbook prompt celebrating a journey through England, complete with vintage travel ephemera and literary quotes.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779695942462_0wz0zb_HJFLLxGWAAAggM_.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 21815,
+    "content": "A unique infographic poster prompt showcasing a highly detailed miniature Parisian diorama with material breakdowns, city snapshots, and construction details.",
+    "title": "Parisian Diorama Infographic Blueprint",
+    "description": "A unique infographic poster prompt showcasing a highly detailed miniature Parisian diorama with material breakdowns, city snapshots, and construction details.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779435495840_xuh4vi_HI1rYhZXQAApH3A.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 21797,
+    "content": "Create a matching pair of \"{argument name=\"title\" default=\"Aero & Chic - Nursery Style Blueprint\"}\" infographic concept posters, each featuring a full-body cartoon child in a curated outfit surrounded by illustrated fashion breakdowns. The first poster, titled \"The Look for Tiny Dreamers,\" showcases a whimsical style with a girl wearing a {argument name=\"outfit 1\" default=\"peach ballerina dress\"} under an oversized cloud blue cardigan, complete with soft velvet flats, a crown clip, and a fairy wand bag, using a pastel color palette (stardust gold, peach blush, cloud blue, dusty rose, and olive twig). The second poster, titled \"The Look for Tiny Artists,\" showcases a creative, functional style with a boy wearing a {argument name=\"outfit 2\" default=\"splattered mustard paint smock\"} over a striped studio shirt and green trousers, paired with leather ankle boots and a cat canvas tote bag, utilizing an earthy color palette (forest green, mushroom brown, slate blue, cream beige, and rust orange). Both posters must feature identical structural layouts, including side panels for clothing items, close-up details, accessories like beads, fabric swatches (such as organic cotton and wool blends), a color palette row, and a \"Style Notes\" text box at the bottom.",
+    "title": "Nursery Fashion Style Blueprint Infographic",
+    "description": "Creative concept posters for children's fashion, featuring whimsical and functional nursery styles in infographic format.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779435486945_fba7f5_HI1aV17X0AADJRq.jpg",
+      "https://cms-assets.youmind.com/media/1779435486939_ltaoct_HI1aV4rW0AA4cOj.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 21457,
+    "content": "Create a vibrant 3D illustrated travel infographic map of *{argument name=\"country\" default=\"Italy\"}* titled “{argument name=\"title\" default=\"ITALY: Land of History and Passion.\"}”Show the Italian peninsula, Sicily, and Sardinia in a bright Mediterranean Sea with sailboats, lush landscapes, Alps, vineyards, and volcanoes. Include miniature landmarks like St. Peter’s Basilica, the Colosseum, Venice canals, Florence Cathedral, Amalfi Coast villages, and Tuscan hills.\n\nLabel major cities with elegant typography:\nMilan, Venice, Turin, Bologna, Florence, Rome, Naples, Bari, Lecce, Calabria, Sicily, Sardinia, and Ancona, each with short tourism-style taglines.\n\nAdd a stylish infographic sidebar with:\nPopulation 59M, Language Italian, Currency Euro, Highest Peak Gran Paradiso, National Flower Stella di Betlemme.\n\nAt the bottom, include cinematic travel scenes: Colosseum sunset, Vespa scooter, Italian pasta, Tuscan countryside, Amalfi Coast, opera house, and glowing city nightlife.\n\nDecorate with lemons, olive branches, and red poppies. Style: ultra-detailed, cinematic lighting, luxury travel poster, fantasy cartography, colorful editorial illustration, miniature-map aesthetic, premium 8k quality.",
+    "title": "Detailed 3D Travel Infographic Map of Italy",
+    "description": "A rich, vibrant prompt for creating a luxury travel-style 3D map of Italy with landmarks, city labels, and stylistic decorations.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779262458757_1gibhq_HIqjbmWaEAA3dh3.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 20996,
+    "content": "mosaic made from tiny randomly cut colored wood shapes, colored wood shapes are edgy with various geometrical shapes, they form traditional Chinese dragon. dragon body is shaped out of tiny colored wood pieces forming a mosaic. pale colored wood surface with intricate thin black outlines dividing the mosaic pieces. background is traditional nature Sakura bloom garden surrounding the dragon.",
+    "title": "Chinese Dragon Wood Mosaic",
+    "description": "An artistic prompt for a traditional Chinese dragon created from random colored wood mosaic shapes with intricate outlines.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779090346446_49oz8n_HIgf1RqWMAAw0ue.jpg",
+      "https://cms-assets.youmind.com/media/1779090346412_btyocp_HIgf1RrWAAAhJ6l.jpg",
+      "https://cms-assets.youmind.com/media/1779090346682_ybrijh_HIgf1RqWUAAey6a.jpg",
+      "https://cms-assets.youmind.com/media/1779090348094_wbphhc_HIgf1RtWoAAE46N.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 21016,
+    "content": "An AI-generated watercolor travel poster in a detailed sketch style by \"A. Moreau 2024, TRAVELSKETCH.\" The artwork features a bustling, historic street scene filled with people, a {argument name=\"subject\" default=\"couple walking a Shiba Inu dog\"} in the foreground, and patrons sitting outside a cafe. The background seamlessly blends the colonial hill-station charm of {argument name=\"first location\" default=\"Murree\"}—complete with wooden balconies, a red double-decker bus, a horse handler, and a distant church spire—with the urban identity of {argument name=\"second location\" default=\"Toronto\"}, showcasing modern skyscrapers, the CN Tower, and a red TTC streetcar on King Street. The text at the top reads \"A JOURNEY through HIDDEN LANES & CHARACTER\" in elegant typography.",
+    "title": "Watercolor Travel Poster Fusion",
+    "description": "A watercolor travel poster in a detailed sketch style that seamlessly blends the historical architecture of Murree with the modern urban identity of Toronto.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779090358858_sm6gow_HIgfoSoXgAAlUWk.jpg",
+      "https://cms-assets.youmind.com/media/1779090358220_14lvaw_HIgfoWWWQAAwxmM.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 21009,
+    "content": "Exploded view {argument name=\"camera\" default=\"Canon DSLR camera\"} infographic, fully disassembled camera parts floating in perfect alignment, ultra detailed breakdown of every internal and external component, Canon DSLR body separated into layers showing lens mount, CMOS sensor, shutter mechanism, mirror assembly, pentaprism, autofocus module, processor chip, motherboard, battery compartment, memory card slot, buttons, dials, LCD display, internal wiring, cooling structure, lens elements, screws and mechanical parts, futuristic infographic labels connected with clean white lines, cinematic {argument name=\"branding\" default=\"red and black Canon branding\"} aesthetic, {argument name=\"background\" default=\"dark studio background\"} background, glowing HUD interface elements, ultra realistic product engineering visualization, premium industrial design presentation, high precision mechanical detailing, floating exploded technical render, dramatic lighting, glossy reflections, modern typography, luxury technology showcase, creator and photography focused design, cyberpunk inspired UI overlays, realistic textures and materials, depth of field, highly organized component layout, engineering blueprint meets commercial advertisement style, 8k hyper realistic infographic poster, professional tech magazine aesthetic",
+    "title": "Exploded View DSLR Infographic",
+    "description": "A technical prompt for a futuristic exploded view infographic of a DSLR camera with HUD elements and mechanical detailing.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779090356579_1os64q_HIfQ3GyaAAEPWCI.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 20429,
+    "content": "Vintage 1920s laboratory blueprint illustration of a giant {argument name=\"subject\" default=\"strawberry shortcake\"} styled as technical scientific diagram on {argument name=\"paper type\" default=\"aged tea-stained parchment\"}. Central dessert with precise callouts: “Aerated Dairy Matrix”, “Granulated Sucrose Dusting”, “Moisture Absorbency Graph”, “Flavor Profile Hexagon”, “Texture Hardness Scale”. Ornate Victorian borders, technical sketches of beakers and thermometers, “Registered No. 1923” stamp. Retro-futurism Da Vinci meets old-school soda shop menu aesthetic, high detail on layers and textures.",
+    "title": "Vintage Scientific Blueprint Dessert",
+    "description": "A retro-futuristic scientific diagram of a strawberry shortcake on aged parchment, blending 1920s laboratory aesthetics with technical sketches.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778915256913_ahx8g0_HIX3blZa4AAept_.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 20416,
+    "content": "Vintage travel journal watercolor illustrations of {argument name=\"locations\" default=\"two cities\"} on aged paper with stamps, handwritten notes, and maps. First: {argument name=\"city one\" default=\"Los Angeles street scene\"} with palm trees, City Hall, Wiltern Theatre, classic cars, bicycles, and pedestrians, capturing the scent of jasmine and ocean breeze. Second: {argument name=\"city two\" default=\"Artisan City inspired by Japanese culture\"} with Mount Fuji in the background, showcasing lacquerware, tea bowls, geta sandals, kimonos, and a pagoda temple blended with modern elements like vending machines. Both use soft watercolor washes, ink details, warm earthy tones, and a mix of cultural landmarks, local crafts, and urban life in a scrapbook, postcard-like style.",
+    "title": "Vintage travel journal watercolor",
+    "description": "Watercolor illustrations for a travel journal featuring city scenes on aged paper with stamps and handwritten notes.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778915250805_vvv4ng_HIXiQD1XgAAqMxH.jpg",
+      "https://cms-assets.youmind.com/media/1778915250843_kasuwj_HIXiQAkXoAETW9e.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 20425,
+    "content": "Create a hyper-realistic, ultra-detailed, DSLR-quality vertical portrait scene using the provided reference image, keeping the face, identity, facial structure, skin tone, hairstyle, soft expression, and authentic {argument name=\"ethnicity\" default=\"Asian\"} features exactly the same with no distortion or stylization, featuring a {argument name=\"subject\" default=\"young woman in her early 20s\"} with glowing natural skin, long slightly wavy dark hair, minimal influencer-style makeup, wearing a stylish modest {argument name=\"outfit color\" default=\"lavender-purple\"} full-sleeve influencer suit with soft white embroidery details, paired with light blue denim and minimal silver accessories, standing or sitting confidently in a {argument name=\"setting\" default=\"cozy modern bedroom\"} creator setup with a wooden desk, smartphone, ring light, laptop, aesthetic neutral decor, plants, shelves, warm daylight from a window, shallow depth of field, and soft cinematic lighting, while multiple cute glowing 3D chibi mini versions of the same girl float around the scene in kawaii cartoon style showing different content creation stages including a sad chibi with blank notebook and text “No ideas 😩”, excited chibi with bulb and text “Had an idea! 💡”, recording chibi using phone and ring light, editing chibi on laptop with text “Editing... ✂️”, celebrating upload chibi with text “Posted! ✅”, sad ignored chibi with text “Nobody’s seeing it 😭”, shocked happy viral chibi with text “Went viral 🔥”, sleepy exhausted chibi with text “Exhausted... 😴”, and successful final chibi holding a phone with huge engagement numbers and text “Success! ✨”, all rendered in ultra-realistic 8K quality with cinematic composition, vibrant details, soft shadows, influencer aesthetic, clean modern atmosphere, realistic textures, and highly engaging viral social media poster style in 4:5 portrait orientation.",
+    "title": "Content creator journey infographic",
+    "description": "A portrait of a young woman surrounded by floating 3D chibi versions of herself representing content creation stages.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778915255264_e9b3e3_HIU35nxaUAA_jj9.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 19976,
+    "content": "Identify 6 sports moments   => reconstructed as dynamic scrap-metal dioramas where athletes are forged from [{argument name=\"metal materials\" default=\"rusted gears, bicycle chains, or sheet metal\"}], motion trails rendered in [{argument name=\"trail materials\" default=\"spray-painted stencils or wire mesh\"}], and stadium energy implied by [scattered ticket stubs or crushed aluminum]. Each scene channels the moment’s intensity — triumph, heartbreak, or shock — through metal tension and composition flow. Style: high-contrast monochrome, dramatic side lighting, gritty industrial texture. Output: One image, 3x2 grid",
+    "title": "Scrap Metal Sports Dioramas",
+    "description": "Creative prompt for generating industrial sports dioramas using materials like rusted gears and bicycle chains in a high-contrast monochrome style.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778743482638_sromnb_HIFjF-HXkAIW9uR.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19987,
+    "content": "Minimalist ultra-high-resolution travel sketch poster of {argument name=\"city\" default=\"New York City\"}, on clean white sketchbook paper with subtle paper grain texture. Style: refined pen drawing + loose watercolor sketch. Delicate black ink linework, airy watercolor washes, elegant urban details. Show a {argument name=\"scene\" default=\"calm everyday NYC street scene — small cafés, yellow taxis, bicycles, crosswalks, brownstone buildings, subtle local signage, fashionable pedestrians, soft morning light\"}. Spacious editorial composition with generous negative space. Mood: calm, modern, sophisticated, poetic. Typography: {argument name=\"text\" default=\"“[NEW YORK]” “Everyday Urban Rhythm”\"} Premium travel sketch aesthetic, minimal and stylish, ultra-realistic watercolor + ink travel journal style, ultra-high-resolution, 9:16.",
+    "title": "Minimalist NYC Sketch Poster",
+    "description": "A prompt for a refined pen and watercolor travel sketch of a New York City street, featuring delicate linework and a poetic, modern atmosphere.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778743488695_dosyf6_HINKEgZawAAv0jh.jpg",
+      "https://cms-assets.youmind.com/media/1778743488722_x4u3xl_HINKEgDawAA40Hk.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19771,
+    "content": "Create high-fashion couture sketches for an \"{argument name=\"collection name\" default=\"Aria of Frost\"}\" and \"Lumina Papilio\" collection, featuring ethereal, butterfly-inspired evening gowns. The designs should showcase sleek mermaid silhouettes, architectural ruffled sleeves that mimic lepidoptera wings, and intricate silver filigree wirework. Use a luxurious color palette of {argument name=\"color palette\" default=\"iridescent amethyst, frozen lilac, and deep cerulean blue\"} accented with metallic gold and silver threads. The mood board should include technical details like fabric swatches of silk-satin, silver mesh, and seed pearl clusters, presented in a professional atelier style with elegant calligraphy and butterfly reference anatomy.",
+    "title": "Ethereal Butterfly Couture Sketches",
+    "description": "High-fashion couture sketches for an evening gown collection inspired by butterfly wings and frozen lilac tones.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778657216069_ebztnx_HIGND9UWoAA-Z0E.jpg",
+      "https://cms-assets.youmind.com/media/1778657216109_rx0c3b_HIGND_8XoAAQ4P6.jpg",
+      "https://cms-assets.youmind.com/media/1778657216101_f0lbba_HIGNECpWYAAdUdr.jpg",
+      "https://cms-assets.youmind.com/media/1778657217143_rb15c1_HIGNETZXsAEu1Fc.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19621,
+    "content": "{\n  \"project\": \"professional 3D female character design sheet infographic\",\n  \"style\": {\n    \"aesthetic\": [\"elegant\", \"cinematic\", \"modern\", \"polished\", \"luxury editorial\"],\n    \"render\": \"high-end 3D animated film style\",\n    \"lighting\": \"soft warm cinematic lighting\",\n    \"textures\": \"smooth realistic skin, glossy hair, detailed strands\",\n    \"composition\": \"clean infographic layout, organized, premium concept art sheet\"\n  },\n  \"character\": {\n    \"gender\": \"female\",\n    \"features\": {\n      \"hair\": \"{argument name=\"hair style\" default=\"dark sleek bob, blunt bangs above eyes, glossy strands\"}\",\n      \"face\": \"plump soft shape, rosy cheeks, small button nose\",\n      \"eyes\": \"very large dark expressive eyes, long lashes, glossy reflections\",\n      \"skin\": \"fair smooth skin with warm undertones\",\n      \"proportions\": \"soft feminine, doll-like aesthetic\"\n    }\n  },\n  \"sections\": {\n    \"turnaround\": {\n      \"title\": \"THREE-VIEW CHARACTER TURNAROUND\",\n      \"views\": [\"front\", \"side\", \"back\"],\n      \"extras\": [\"height scale\", \"neutral pose\", \"full body proportions\", \"studio background\"]\n    },\n    \"palette\": {\n      \"title\": \"OVERALL COLOR PALETTE\",\n      \"colors\": [\"{argument name=\"color palette\" default=\"cream, beige, warm brown, black, burgundy, soft gold\"}\"]\n    },\n    \"outfit\": {\n      \"title\": \"OUTFIT & ACCESSORY DETAILS\",\n      \"style\": [\"{argument name=\"outfit style\" default=\"oversized blazer, tailored bottoms, luxury handbag, leather shoes, minimal jewelry\"}\"],\n      \"vibe\": [\"old money\", \"minimalist luxury\", \"modern professional\"]\n    }\n  }\n}",
+    "title": "3D Character Design Infographic",
+    "description": "A structured prompt for creating a professional character turnaround sheet and design infographic in a high-end 3D animated film style.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778570426827_gj6y88_HIDvYoBaYAAO5f3.jpg",
+      "https://cms-assets.youmind.com/media/1778570426854_6ym2m3_HIDvy-ObAAACBIF.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19607,
+    "content": "2x2 grid, do this for 4 hardest type of handmade art style\n1. infer the 4 most common artistic motifs of {argument name=\"art style\" default=\"[art_style]\"}. generate them as 2d flat cards floating at the top of the image with text labels.\n2. infer the typical fashion, hairstyle, and tattoo coverage of an artist who specializes in {argument name=\"art style\" default=\"[art_style]\"}.\n3. generate a 3d vinyl toy character matching this fashion, sitting at a wooden desk drawing.\n4. infer the specific tools used to create {argument name=\"art style\" default=\"[art_style]\"}. generate them as flat 2d black silhouettes floating in the air.\n5. generate a 3d product box in the background matching the theme.\n6. render all on a clean white studio background.\nexecute.",
+    "title": "Handmade Art Style Visualizer Grid",
+    "description": "A complex multi-step prompt designed to visualize specific handmade art styles using motif cards, artist characteristics, and product packaging.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778570419904_w6gl7c_HHrLYYZXgAkWJ2Z.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19389,
+    "content": "do this for {argument name=\"animal count\" default=\"3 random animals\"} for a {argument name=\"product\" default=\"shoe\"} IMAGE = Σ(w_i × β_i) → target render   // Σ(w_i) = 1.0  BASIS_DECOMPOSITION FROM {product} + {bio_sources}:    β1 : INFER(product_category_aesthetic FROM product. design_language)        w = INFER(weight FROM product.visual_identity_strength)    β2 : INFER(biological_intelligence FROM bio_sources[].evolutionary_solutions)        w = INFER(weight FROM bio_sources[].advantage_significance)    β3 : INFER(engineering_translation FROM biomimicry_methodology)        w = INFER(weight FROM product.technical_complexity)    β4 : INFER(industrial_design_presentation FROM portfolio_aesthetic)        w = INFER(weight FROM audience.professional_level)    β5 : INFER(educational_diagram FROM design_process_documentation)        w = INFER(weight FROM instructional_clarity_need)  INTERSECTION_RULES:   β[bio] ∩ β[product]       = naive_prototype_v1  // literal translation   β[bio] ∩ β[engineering]   = refined_prototype_v2  // working solution   β[v2] ∩ β[product]        = final_components  // production parts   β[presentation] ∩ β[education] = grid_layout  // 4-column progression    FOR EACH bio_source:     col_1 = β[bio]     col_2 = β[bio] ∩ β[product] → ❌ failure     col_3 = β[bio] ∩ β[engineering] → ✓ success     col_4 = β[v2] ∩ β[product]  GLOBAL_CONSTRAINT:   layout    = 4_columns × N_rows (N = count bio_sources)   footer    = integrated_product (ALL col_4 components combined)   style     = β[presentation] — clean, white bg, professional  OUTPUT_CONSTRAINTS:   resolution : 8K landscape   render     : Octane | industrial_design_board   typography : sans_serif | hierarchical | callouts + annotations   lighting   : INFER(studio_rig FROM β[product])   negative_β : INFER(anti_patterns FROM β1..β5)  // TUNING KNOBS: // β[bio]++          → more nature photography, less product renders // β[engineering]++  → more technical diagrams, failure analysis detail // β[presentation]++ → more portfolio polish, less educational scaffolding // β[education]++    → more annotations, process transparency",
+    "title": "Bio-Inspired Industrial Shoe Design Board",
+    "description": "A highly technical and programmatic prompt for generating industrial design boards for shoes inspired by biological structures.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778486138709_txnn4a_HHriMtKWwAE-cTb.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19396,
+    "content": "An intricate, highly detailed and clean 3D illustration and cross-section diagram of a massive horizontal-axis wind turbine, rendered on a crisp white background with a ground landscape and a distant power grid. The style is an illustrative technical schematic with clear lines and subtle textures. The overall title, positioned at the top-center in a professional sans-serif font, is \"{argument name=\"title\" default=\"Wind Turbine Components\"}\". The composition is dominated by the tall turbine, which is positioned slightly to the left, and its cutaway nacelle. The turbine stands on a detailed gray modular tower (Component 6), which rests on a ground plane of green rolling hills and foliage, alongside a detailed grey Transformer (Component 7). To the far right, two detailed steel lattice power pylons connect the transformer via high-voltage lines, labeled \"To Power Grid\". At the top of the tower sits the large nacelle, with a detailed internal cutaway revealing a visible multi-stage Gearbox (Component 4) with internal blue gears and a complex copper-coil Generator (Component 5), both cut to show their internal structure. The Generator housing is cut away to show the stator and rotor coils. Leading from the front is the Hub (Component 2), connecting three enormous, clean white aerodynamically-shaped Rotor Blades (Component 1) (labeled with bullet points: \"Capture the wind energy.\", \"Designed like airplane wings...\", \"When wind passes over them...\"). Inside the cutaway, the Hub leads to a detailed blue Main Shaft (Component 3, labeled with bullet points: \"Transfers mechanical energy from rotor to the gearbox.\", \"Uses Direct Drive in some modern turbines.\") that connects to the Gearbox. Multiple distinct, precise gray call-out lines with blue circular numbered bullet points (1 through 7) and corresponding text blocks are positioned around the diagram, connected to specific components. A large, blue-to-white gradient angled banner at the bottom-left features the bold, white text \"{argument name=\"banner text\" default=\"Power systems protection\"}\". The text for each component and its function is perfectly transcribed and legible as in image_1.png. The entire scene is sharply focused, like a technical patent illustration, with clean lighting.",
+    "title": "Wind Turbine Technical Schematic",
+    "description": "A detailed 3D technical illustration of a wind turbine, showing its cross-section and internal components in a professional schematic style.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778486141781_1gh8iz_HH7wWN9bMAAKY3p.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19399,
+    "content": "A vintage, technical scientific diagram of [{argument name=\"subject\" default=\"A GIANT STRAWBERRY SHORTCAKE\"}], styled as a {argument name=\"style\" default=\"1920s laboratory blueprint\"}. The central dessert is highly detailed with scientific callouts using pseudo-intellectual terms like 'Aerated Dairy Matrix' or 'Granulated Sucrose Dusting.' The image features several data visualizations: a 'Moisture Absorbency Graph,' a 'Flavor Profile Hexagon,' and a 'Texture Hardness Scale' similar to the Mohs scale. The background is aged, tea-stained parchment with ornate Victorian borders, technical sketches of beakers and thermometers, and a 'Registered No. 1923' stamp at the bottom. Aesthetic: Retro-futurism, Da Vinci sketch meets old-school soda shop menu.",
+    "title": "Scientific Dessert Blueprint",
+    "description": "A retro-futuristic scientific diagram of a dessert, styled as a 1920s laboratory blueprint with technical data visualizations.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778486142905_dyesu0_HH7bLyCbMAAOvY6.jpg",
+      "https://cms-assets.youmind.com/media/1778486142957_kravz1_HH7bLyPbkAAnROo.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19182,
+    "content": "Side-by-side comparative AI-generated visual study showing two variations of the same {argument name=\"subject\" default=\"African woman\"} in {argument name=\"location\" default=\"Lagos café environment\"}. Both images simulate different generation styles: one highly polished commercial fashion realism, the other raw iPhone candid realism with imperfections. Subject wears {argument name=\"outfit\" default=\"elegant neutral dress\"}, gold jewelry, seated at outdoor restaurant table. Include iced drink, phone, sunglasses, and subtle background crowd blur. Lighting is bright afternoon sunlight with realistic exposure variation between both images. Skin detail must include pores, natural texture, slight blemishes, sweat shine. Composition intentionally tests realism perception for educational purposes in AI content creation. Designed to demonstrate prompt control differences, not character storytelling.",
+    "title": "Lagos Cafe Realism Study",
+    "description": "A comparative prompt designed to test realism between polished commercial aesthetics and raw candid iPhone photography.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778397987735_jvebyx_HH4wKkeXoAcheZe.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19168,
+    "content": "A comprehensive scientific educational infographic for {argument name=\"subject\" default=\"an Orchid Mantis\"}. The style is a vintage nature field guide with a cream-colored parchment background. The layout features a large, detailed central illustration of the creature with anatomical labels (e.g., 'Raptorial Legs', 'Petal-like Flanges'). Surrounding the center are various boxed sections including: a 'Quick Profile' with scientific name and habitat, a 'Classification' tree, a 'Knowledge Score' with star ratings, 'Life Cycle' diagrams showing egg to adult, and a 'Size Comparison' against a human hand. Include a 'Diet' section with small illustrations of prey, a 'Habitat' section with photos of rainforests, and a bottom 'Did You Know?' banner. The aesthetic is clean, professional, and highly detailed, resembling a high-end museum poster.",
+    "title": "Vintage Encyclopedia Infographic",
+    "description": "A comprehensive museum-style poster prompt for creating vintage educational infographics with anatomical labels and detailed illustrations.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778397979412_1g6mrb_HH4O1OAaEAAp0IL.jpg",
+      "https://cms-assets.youmind.com/media/1778397978062_a2ileh_HH4O1MnaAAE25ZI.jpg",
+      "https://cms-assets.youmind.com/media/1778397979589_n5ctje_HH4O1SPaEAAhXsb.jpg",
+      "https://cms-assets.youmind.com/media/1778397980110_gzgixl_HH4O1XZbIAAY78W.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19170,
+    "content": "An ultra-detailed, vertical infographic poster for a fictional {argument name=\"subject\" default=\"luxury cruise ship\"} named \"{argument name=\"ship name\" default=\"Titan of the Seas\"}.\" The central focus is a massive, multi-deck ship rendered in a sophisticated {argument name=\"color scheme\" default=\"deep red and gold\"} color scheme.",
+    "title": "Luxury Cruise Ship Infographic",
+    "description": "An ultra-detailed infographic poster prompt for a fictional luxury cruise ship, featuring a red and gold color scheme.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778397981045_iuvhy5_HH3XaaYXAAEL0Mf.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19196,
+    "content": "These detailed {argument name=\"subject\" default=\"infographics\"} illustrate the complex sensory systems of the {argument name=\"target\" default=\"human eye and human ear\"}, highlighting their roles as the body's primary units for visual and auditory/vestibular processing. Both charts utilize a {argument name=\"layout\" default=\"structured, clinical layout\"} featuring anatomical diagrams, \"Quick Profiles,\" and \"Knowledge Scores\" to break down biological functions like photoreception and sound detection. By juxtaposing the eye's delicate internal structures, such as the retina and lens, with the ear's intricate ossicles and cochlea, the images emphasize the sophisticated mechanical and neural pathways required for humans to navigate and perceive their environment.",
+    "title": "Human Eye and Ear Sensory Infographic",
+    "description": "A structured clinical infographic prompt illustrating the complex biological structures and mechanical pathways of the human eye and ear.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778397994859_vkz6wn_HH2zOPuWQAAg5jW.jpg",
+      "https://cms-assets.youmind.com/media/1778397994901_t95ygv_HH2zOLsWcAInF-I.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19197,
+    "content": "An ultra-detailed, {argument name=\"format\" default=\"vertical infographic poster\"} for a fictional luxury cruise ship named \"{argument name=\"ship name\" default=\"Titan of the Seas\"}.\" The central focus is a massive, multi-deck ship rendered in a sophisticated {argument name=\"color scheme\" default=\"deep red and gold\"} color scheme. The layout features various data visualization elements, including technical specification tables, deck plan cutaways, interior highlight photos, and performance gauges. The aesthetic is clean and editorial, utilizing a soft cream background with professional typography to create a high-luxury informational moodboard.",
+    "title": "Luxury Cruise Ship Editorial Infographic",
+    "description": "An editorial-style infographic poster for a fictional cruise ship, featuring technical specs and interior highlights in a deep red and gold scheme.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778397995841_ob166j_HH2fQ-KWIAMnfi9.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 18747,
+    "content": "This combination infographic, based on images of the {argument name=\"subjects\" default=\"human heart and brain\"}, provides a comparative and complementary look at the body’s most vital organs. Following a consistent and clean illustrative style with detailed callouts and key summary cards, it presents a comprehensive \"Human Anatomy: Heart and Brain\" profile. The central section features a detailed internal cross-section of the heart on the left and a detailed, regionalized map of the brain (Frontal, Parietal, Temporal, and Occipital lobes) on the right. Below the heart, the \"Cardiac Cycle\" and \"Blood Flow Path\" diagrams are presented. To the left, a vertical sequence detailing the brain’s \"Frontal Lobe,\" \"Temporal Lobe,\" and \"Cerebellum\" (with descriptions of functions like memory, motor control, and reasoning) matches the structure of the cardiac information. Above the brain diagram, a revised \"Key Regions & Functions\" list replaces the chambers and valves, and below it, a revised \"Top 5 Brain Functions\" list includesCognition & Thinking, Sensory Processing, and Emotion Regulation. Both columns share common \"Optimization Tips,\" \"Risks & Warnings\" (tailored to each organ's respective risks, such as cardiovascular disease vs. neurodegenerative disease), and \"Quick Summary Cards,\" highlighting the heart as the body's pump and the brain as its control center, emphasizing their integrated nature and critical roles. The entire layout is structured to facilitate a direct side-by-side analysis, making it an exhaustive and cohesive educational tool.",
+    "title": "Human Anatomy Educational Infographic",
+    "description": "A comprehensive infographic prompt for comparing the human heart and brain, featuring anatomical diagrams and summary cards in a clean illustrative style.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778223945690_ai08gx_HHtIzJoXwAU-3RC.jpg",
+      "https://cms-assets.youmind.com/media/1778223945684_p2wfho_HHtIzMRWoAgigYw.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 18746,
+    "content": "This image is a professional promotional infographic for the {argument name=\"product\" default=\"ASH Collection Stylist Bag\"}, featuring a clean, editorial layout with a warm, earth-toned aesthetic. It showcases a central model holding a {argument name=\"bag color\" default=\"cognac-colored\"} leather handbag, surrounded by detailed sections including \"Bag Features,\" a \"Bag Guide\" with technical dimensions, and a \"Colour Collection\" displaying the bag in {argument name=\"shades count\" default=\"six\"} shades: Black, Cognac Tan, Emerald Green, Navy Blue, Burgundy, and Cream White. The bottom of the graphic includes a \"Style Guide\" with lifestyle photography illustrating how to pair each color with specific outfits for occasions ranging from business meetings to evening parties.",
+    "title": "Luxury Handbag Promotional Infographic",
+    "description": "A clean, editorial infographic prompt for a leather handbag collection, including feature sections, color guides, and style pairing lifestyle photos.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778223944981_t7zdgp_HHsYqEtXsAA4IVm.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 18509,
+    "content": "Do this for {argument name=\"product\" default=\"B2 plane\"}: inputs ::= product ::= [any product / device / tool / appliance / machine] functions ::= [ai infer 3 to 7 core functional systems of product] subsystem_count ::= [ai infer] material_logic ::= [ai infer likely materials and mechanical parts] era_bias ::= [{argument name=\"style\" default=\"industrial / retro-futurist / modern / luxury engineering\"}] sketch_style ::= [{argument name=\"sketch type\" default=\"patent sketch / engineering notebook / blueprint engraving / industrial concept sheet\"}] hero_style ::= [studio product photo / cinematic workshop render / luxury catalog shot] layout ::= +----------------------------------------------------------------------------------+ | top panel :: invention / research board | | | | [orthographic sketch] [section cutaway] [component studies] [functional diagram]| | [gauge / chart / equation / small notes] [exploded parts] [form variants] | | | | goal: show how product might have been invented, refined, tested, and iterated. | | | |----------------------------------------------------------------------------------| | bottom panel :: polished final product | | | | [hero shot of fully realized product] | | [beautiful materials] [precise machining] [studio/warm workshop lighting] | | | +----------------------------------------------------------------------------------+ instruction ::= generate a two-panel invention inspiration board for product. the top half must look like a dense r&d archive showing ai-inferred mechanisms, studies, performance ideas, component experiments, and form exploration. the bottom half must show the final refined product as a premium finished object. make the whole image feel like \"from concept science to product realization.\" no hard-coded product details unless provided by the user.",
+    "title": "Product Design Innovation Board",
+    "description": "A sophisticated design prompt for generating a two-panel board that showcases both R&D sketches and a polished final product render.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778139359864_f9adc0_HHOQR7PW8AAUbtd.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 18508,
+    "content": "2x2 grid, do this for {argument name=\"scene\" default=\"4 famous manga scenes\"}: [scene_material_translation_engine]\n\nvector_g (scene geometry) = [variable_scene]\nmatrix_m (material world) = \"{argument name=\"materials\" default=\"walnut, maple, ebony-stained wood, veneer layers, carved wood, sawdust\"}\"\n\nvariables:\n[variable_scene] = \"[insert any scene here]\"\n\nequation:\nvector_g ⊗ matrix_m = render_target\n\n[scene_decomposition_rules]\nthe ai must infer all major and minor components of [variable_scene] and re-create them entirely using woodcraft and marquetry logic.\n\n[mapping_constraints]\n- replace 100% of the original materials with wood-based materials only.\n- no real metal, glass, fabric, stone, rubber, plastic, or water may remain.\n- every object must appear carved, laminated, veneered, inlaid, polished, or dusted with sawdust.\n- grain direction and wood type should help define structure and detail.\n\n[composition]\nmacro artisan-object photography.\nthe scene is displayed as a miniature handcrafted wood diorama on a dark lacquered base.\n\n[visual_execution]\nrender the render_target.\nlighting: {argument name=\"lighting\" default=\"warm premium workshop lighting\"}.\ntexture: visible wood grain, layered veneer edges, polished surfaces, fine carved detail, sawdust residue.\nthe scene must read instantly, while clearly existing as wooden craftsmanship.",
+    "title": "Manga Scene Woodcraft Diorama",
+    "description": "A structured design prompt to transform manga scenes into handcrafted woodcraft dioramas using marquetry logic and artisan wood textures.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778139358569_v9xuqd_HHgZgpoXQAAXdHq.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 18273,
+    "content": "A realistic, candid photograph of a {argument name=\"subject\" default=\"petite Asian woman\"} with a detailed, lifelike face and hairstyle (referencing the provided image for specific features), captured during a soft afternoon. She is wearing the specific clothing from the reference image. She is happily and intently hugging a {argument name=\"prop\" default=\"gigantic wooden pencil\"} adorned with cute, kawaii cartoon patterns with both hands, using it to draw on a massive sketchbook spread before her on a cozy room floor. The scene is full of warmth, with a soft, diffused sunlight filtering in. The floor is covered in pastel-colored (light pink, light blue) oversized toys, stationery, and a cute colored pencil box. A small, fluffy cat plush sits nearby. The room background features warm-toned wooden bookshelves filled with charming books and collectibles, all glowing with soft afternoon light. A minimal white doodle outline loosely traces the woman's figure. Cute, minimal white handwritten text on the side reads \"{argument name=\"text\" default=\"Happy Monday\"}\", and pink handwritten text reads \"Hello\". Small, simple white doodle elements like stars, flowers, cats, and bunnies are scattered around. Four distinct, miniature 3D chibi-style figures, exact miniature replicas of the woman in the same clothing but in playful, mischievous poses, are placed around her on the shelves, books, and among the giant stationery. The entire image has a soft, dreamy, and warm glow, with pastel tones in the surroundings contrasting with natural wood and cream background colors. Shot on a Canon EOS R5 with a 35mm f/1.4 lens, natural grain, cinematic lighting. Aspect Ratio: 4:5 Style: Realistic Photo, Candid, Warm, Dreamy Lighting: Soft Afternoon Sunlight, Diffused",
+    "title": "Dreamy Studio Creative Illustration",
+    "description": "A whimsical and warm prompt featuring a woman hugging a giant pencil in a room filled with cute stationery and chibi replicas.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777965778540_fhvj7y_HHd-GQsbYAAgwMB.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 18007,
+    "content": "A vibrant, {argument name=\"theme\" default=\"fitness-themed\"} digital collage featuring a central photo of a {argument name=\"subject action\" default=\"smiling woman jogging along a park path\"}, surrounded by a series of expressive \"chibi-style\" stickers. The woman and her animated counterparts are dressed in matching {argument name=\"outfit colors\" default=\"black and pink\"} athletic gear. Each sticker depicts a stage of a workout journey—from the energy of a \"Morning Run!\" and the determination of a deep stretch, to the exhaustion of being \"Almost There\" and the final triumph of crossing a line. The composition is decorated with playful pink hearts, sparkles, and motivational text like \"Just Do It!\" and \"Crushing Goals!\", creating a cheerful and inspiring narrative.",
+    "title": "Fitness Journey Digital Collage",
+    "description": "A vibrant digital collage prompt featuring a fitness narrative with a central jogger and cute chibi stickers representing workout stages.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777965768377_li2s3t_HHdPudaWYAAtDfG.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 18252,
+    "content": "A professional cosmetic brand infographic in a soft aesthetic style. The color palette features {argument name=\"colors\" default=\"muted rose, cream, and champagne gold\"}. At the top center, a high-fashion portrait of a woman with glowing skin and soft makeup, wearing a {argument name=\"outfit\" default=\"cream turtleneck\"}. Below her, a clean grid of isolated makeup products: a glass foundation bottle with a liquid swatch, a sleek black mascara wand, and a rose-gold blush compact. The background is a clean, minimal gradient. Professional studio lighting, soft shadows, high-end commercial photography style, 8k resolution.",
+    "title": "Luxury Cosmetic Brand Infographic",
+    "description": "A high-end commercial infographic prompt for a cosmetic brand, featuring a soft aesthetic with rose and champagne gold tones and a product grid.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777965765747_i09qen_HHc8vbVXwAAkHtr.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 18014,
+    "content": "A vibrant and whimsical conceptual image centered on a smiling young woman with {argument name=\"hair\" default=\"blonde wavy hair\"}, her eyes closed in a moment of serene joy as she cradles her face with both hands. She is set against a solid {argument name=\"background color\" default=\"lilac\"} background adorned with faint stars, hearts, and the word \"LILAC\" scattered throughout. The composition features several \"miniature\" versions of herself interacting with her and her surroundings, creating a surreal narrative of self-care and positivity.\n​On her shoulders, tiny versions of her work together to stack hearts and style her hair, while another group walks across a floating purple ledge carrying glowing stars. To the right, miniature figures engage with a chalkboard that reads \"{argument name=\"text\" default=\"SELF-LOVE CLUB\"},\" and one sits nestled in the crook of her arm, admiring a small purple heart. At the bottom, a thought bubble containing the word \"HAPPINESS\" floats near another version of her waving cheerfully. The overall aesthetic is bright, playful, and heartwarming, utilizing a consistent palette of white, denim, and various shades of purple to emphasize themes of mental wellness and inner peace.",
+    "title": "Lilac Whimsical Self-Love Concept",
+    "description": "A whimsical conceptual image featuring miniature versions of a subject interacting with a lilac-colored dreamscape focused on self-love.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777879971700_y24otv_HHZpibpWYAAYbFe.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 18022,
+    "content": "{argument name=\"architecture\" default=\"Azuchi-Momoyama style castle tower\"} {argument name=\"drawing type\" default=\"floor plan, blueprint, and area notation\"}",
+    "title": "Azuchi-Momoyama Castle Floor Plan",
+    "description": "Generates architectural floor plans and blueprints of an Azuchi-Momoyama period castle tower with area measurements.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777879975641_x5xfcp_HHXvlvZbIAAx2Vv.jpg",
+      "https://cms-assets.youmind.com/media/1777879975639_k8ece2_HHXvpEfaIAA4JZQ.jpg",
+      "https://cms-assets.youmind.com/media/1777879975563_wq2x21_HHXvrl0bYAAGKe3.jpg",
+      "https://cms-assets.youmind.com/media/1777879976311_eoeuls_HHXvuSRaMAArqpn.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 17741,
+    "content": "Design a square (1:1) aesthetic personal color analysis board in a {argument name=\"board style\" default=\"soft beige, minimalist style\"}.\n\nPlace a close-up portrait of a {argument name=\"subject\" default=\"young woman\"} at the center, featuring natural makeup and soft daylight lighting.\n\nAdd the title “Personal Color Analysis” above or beside the portrait.\n\nInclude a section labeled “Color Profile: {argument name=\"color profile\" default=\"Soft Autumn (warm, muted, soft)\"}”.\n\nDisplay clean color swatches featuring warm neutrals, earthy tones, muted greens, soft blues, and terracotta shades.\n\nAdd a “Best Colors” grid along with an “Avoid Colors” grid highlighting overly bright or cool tones.\n\nAt the bottom, include 4–5 small images of the same woman styled in outfits that match the recommended palette.\n\nUse a refined combination of elegant serif and minimal sans-serif fonts, soft shadows, and a clean editorial layout.\n\nThe background should be warm beige with a subtle texture.\n\nEnsure the design feels spacious, polished, and Instagram-ready.",
+    "title": "Minimalist Personal Color Analysis Board",
+    "description": "A clean and aesthetic prompt for designing a professional personal color analysis board with color swatches and style recommendations.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777792418587_b0s512_HHTpbd7aAAAwyIc.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 17512,
+    "content": "Ancient Egyptian profile portrait of the person in the reference image, side-facing pose (strict profile view), inspired by {argument name=\"style source\" default=\"traditional tomb paintings\"}, {argument name=\"features\" default=\"almond-shaped eye, elongated eyeliner, sharp nose and chin\"}, wearing a {argument name=\"headwear\" default=\"nemes headdress\"} and ornate gold jewelry, flat perspective, stylized proportions, warm sandstone and gold color palette, hieroglyphic background, smooth matte texture, soft even lighting, highly detailed, clean lines, 4k, museum-quality artwork",
+    "title": "Ancient Egyptian Profile Portrait",
+    "description": "Transforms a reference photo into a stylized Ancient Egyptian tomb painting style portrait with traditional headdress and jewelry.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777705647333_4rn0so_HHPShtLaMAABunr.jpg",
+      "https://cms-assets.youmind.com/media/1777705647325_ntjuod_HHPSiAJaEAAP2wj.jpg",
+      "https://cms-assets.youmind.com/media/1777705647311_bnaltr_HHPSiOwaEAAt4xf.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 17504,
+    "content": "clean {argument name=\"style\" default=\"whiteboard animation style\"} illustration of the person from the reference image, drawn as a simple {argument name=\"medium\" default=\"black marker sketch\"} on a pure white background. Use bold hand-drawn outlines, minimal shading, and a slightly exaggerated cartoon-like style while still preserving the person’s recognizable facial features, hairstyle, and expression. Add subtle motion lines and sketch imperfections to mimic real hand-drawn animation. The character should appear as if being drawn on a whiteboard, with a casual, engaging, and educational vibe. Keep the composition minimal, high contrast, and visually clear, with no complex background elements",
+    "title": "Clean Whiteboard Animation Illustration",
+    "description": "A prompt for creating whiteboard-style marker sketches on a pure white background. It aims for bold hand-drawn outlines and a cartoon-like style while maintaining recognizable facial features and adding sketch imperfections.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777705642948_3ues41_HHO3JSYaoAAPvDf.jpg",
+      "https://cms-assets.youmind.com/media/1777705642988_rdf58c_HHO3Je2bEAAX5W5.jpg",
+      "https://cms-assets.youmind.com/media/1777705642957_h2624r_HHO3JpFawAA1cLY.jpg",
+      "https://cms-assets.youmind.com/media/1777705643686_4ympe6_HHO3JycbgAAcuTK.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 16998,
+    "content": "A black and white line drawing of a {argument name=\"flower type\" default=\"stylized flower\"} with {argument name=\"pattern style\" default=\"intricate patterns\"} fills the frame. The flower's center is an oval shape with smaller circles inside, surrounded by eight large petals. Each petal is decorated with parallel lines and some have a leaf-like shape. The background is a complex arrangement of geometric and organic patterns, including semicircles, zigzags, swirls, and a grid of dots. The overall composition is symmetrical, with the flower as the central focus, and the surrounding patterns radiating outwards.",
+    "title": "Flower Mandala Coloring Page",
+    "description": "A black and white line art prompt for creating intricate, symmetrical floral patterns suitable for a coloring book.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777533363635_i3ksks_HF76eO-aMAAlanY.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 16976,
+    "content": "This high-fashion marketing infographic, titled {argument name=\"title\" default=\"Elegance Defined\"} by {argument name=\"brand\" default=\"Vogue Vista\"}, showcases a sophisticated bespoke collection of modern classic dresses. A central model poses in a {argument name=\"dress description\" default=\"terracotta, tea-length, semi-fitted A-line dress featuring a boat neck and cap sleeves\"}, set against a neutral, minimalist background. The layout includes a \"Fit & Style Guide,\" a \"Premium Attributes\" section highlighting the luxurious crepe fabric and artisanal finish, and a {argument name=\"color collection\" default=\"\"Color Collection\" featuring six shades like Seafoam Green and Midnight Plum\"}. At the bottom, an \"Occasion Pairing Guide\" uses a series of lifestyle thumbnails to demonstrate the dress's versatility for events ranging from garden parties and art openings to formal evening galas.",
+    "title": "High-Fashion Marketing Infographic",
+    "description": "A detailed prompt for creating a sophisticated fashion infographic including layout elements like style guides and color collections.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777533349739_ztdb83_HHFVydabMAA6FXF.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 16770,
+    "content": "{\n  \"camera_settings\": {\n    \"lens\": \"85mm f/1.8\",\n    \"perspective\": \"Eye-level portrait\",\n    \"depth_of_field\": \"Shallow with soft background bokeh\"\n  },\n  \"lighting\": {\n    \"type\": \"Soft natural morning light\",\n    \"mood\": \"Clean, airy, optimistic\",\n    \"highlights\": \"Subtle sheen on hair and product bottle\"\n  },\n  \"subject_details\": {\n    \"hair\": \"{argument name=\"hair style\" default=\"Voluminous beach waves, honey blonde, high shine\"}\",\n    \"expression\": \"{argument name=\"expression\" default=\"Joyful, authentic smile\"}\",\n    \"wardrobe\": \"{argument name=\"clothing\" default=\"Cream-colored knit sweater\"}\"\n  },\n  \"graphic_design\": {\n    \"layout\": \"Infographic overlay on the right\",\n    \"elements\": [\"Keratin powder\", \"Argan oil bottle\", \"Green leaves\", \"Oat stalks\"],\n    \"typography\": \"Clean sans-serif labels in white boxes\"\n  }\n}",
+    "title": "Hair Care Product Infographic",
+    "description": "A structured JSON prompt for a commercial-style infographic featuring a model in a knit sweater with hair product elements.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777533359475_85towv_HHDiO5BbEAADeKO.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 16743,
+    "content": "A lush, cinematic photorealistic depiction of a {argument name=\"environment\" default=\"dense tropical rainforest ecosystem\"}, bursting with diverse wildlife. The central focus is a {argument name=\"main animal\" default=\"majestic Bengal tiger\"} walking towards the viewer on a dirt path, surrounded by rich green ferns, orchids, and massive moss-covered trees. In the mid-ground, on the left, a mother Asian elephant and her calf are drinking from a rocky, flowing river that leads back to a small waterfall in the distance. The jungle canopy is thick with vines and air plants. Perched on a thick branch on the right are a vibrant Great Hornbill and a black Siamang gibbon, while a Macaque monkey sits further down. A spotted Chital deer grazes near the tiger, and a wild boar is visible on the right. Various colorful birds, including a Kingfisher, a Hummingbird, and a Macaw, are flying or perched throughout the scene, along with several species of parakeets. The forest floor features a {argument name=\"reptile\" default=\"large python\"} resting on a log. The air is slightly humid, with soft, ambient light filtering through the canopy, and the environment is dense with layers of vegetation.",
+    "title": "Tropical Rainforest Wildlife Ecosystem",
+    "description": "An expansive prompt for a photorealistic scene of a tropical jungle featuring a Bengal tiger, elephants, and exotic birds.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777447789470_j9ng4c_HG_GhvwbYAAigOy.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 16466,
+    "content": "Top-down flat lay on a rustic wooden table, cozy aesthetic, soft natural light. A glass of iced tea with lemon slices and ice cubes, a glazed donut, a small succulent plant in a white pot, a vintage book, and eyeglasses. A sleeping tabby cat curled on a blanket at the edge. White hand-drawn doodle outlines and arrows around each object with playful handwritten labels like “refreshing iced tea,” “sweet treat,” “little green friend,” “afternoon read,” and “cutest thing in the world – cat.” Warm tones, minimal shadows, lifestyle photography, high detail, Instagram aesthetic. Cozy tabletop scene from a slight angle, warm natural lighting. A glass of iced tea with lemon and mint, a chocolate-glazed donut on a ceramic plate, a small succulent plant, a worn notebook with a pen on top, and a framed photo of a sleeping cat. Clean wooden surface background. White doodle-style outlines and arrows pointing to each item with handwritten captions like “refreshing iced tea with a kick,” “the sweetest morning treat,” “little green friend,” “a good read… eventually,” and “cutest thing in the world.” Soft focus, warm color grading, aesthetic lifestyle composition, high realism.",
+    "title": "Cozy Tabletop Flat Lay with Doodles",
+    "description": "A creative prompt for a cozy rustic flat lay scene featuring food, plants, and a cat, decorated with hand-drawn white doodles and labels.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777361050578_7gdlao_HG6JSWoboAAl6lL.jpg",
+      "https://cms-assets.youmind.com/media/1777361050594_9cp2wl_HG6JSWvbQAAs4uS.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 16164,
+    "content": "A prompt that generates a horizontal progression of golf swing sketches, moving from realistic ink drawings to minimalist abstract art, allowing for customization of the subject, art style, and artist signature.",
+    "title": "Progressive Golf Swing Artistic Sketch",
+    "description": "A prompt that generates a horizontal progression of golf swing sketches, moving from realistic ink drawings to minimalist abstract art.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777274445787_l1t0ih_HG2V44pbAAAp-tR.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 16195,
+    "content": "create a product design, {argument name=\"object\" default=\"mazda rx7 fc3s\"}, exploded view diagram, white background, three-dimensional, highly detailed internal components, studio lighting, product photography, best quality",
+    "title": "Exploded View Product Diagram Prompt",
+    "description": "A technical prompt designed to create detailed exploded view diagrams for industrial design or consumer electronics, showcasing internal structures on a clean white background.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777274456944_qeb5n3_HG1pAxxaAAAUTq8.jpg",
+      "https://cms-assets.youmind.com/media/1777274456929_jv98s7_HG1pJ93aQAARDza.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 16170,
+    "content": "A prompt for a wide horizontal frame composed of five distinct vertical panels, each featuring a different character with specific styling, including customizable background colors and foreground elements.",
+    "title": "Multi-Panel Cinematic Studio Shot",
+    "description": "A prompt for a wide horizontal frame composed of five distinct vertical panels, each featuring a different character with specific styling.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777274447847_6n82rj_HG1GnvVa8AAUsXg.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 16185,
+    "content": "{\n  \"scene\": \"a young woman taking a selfie while walking on a quiet urban street\",\n  \"composition\": {\n    \"camera_angle\": \"handheld selfie, slightly above eye level\",\n    \"lens\": \"wide-angle smartphone lens\",\n    \"framing\": \"upper body centered, extended arm visible\"\n  },\n  \"subject\": {\n    \"appearance\": \"woman with {argument name=\"hair style\" default=\"long wavy deep black hair\"}, fair skin, wearing sunglasses\",\n    \"expression\": \"smiling\",\n    \"outfit\": {\n      \"top\": \"{argument name=\"outfit\" default=\"black sleeveless top\"}\",\n      \"bottom\": \"black jeans\",\n      \"shoes\": \"white sneakers\",\n      \"accessories\": [\n        \"brown textured crossbody bag\",\n        \"coffee cup\"\n      ]\n    }\n  },\n  \"environment\": {\n    \"location\": \"{argument name=\"location\" default=\"narrow street with brick and modern buildings\"}\",\n    \"details\": [\n      \"parked cars\",\n      \"overhead wires\",\n      \"clean asphalt road\"\n    ]\n  },\n  \"lighting\": {\n    \"type\": \"natural daylight\",\n    \"condition\": \"bright sunny day\"\n  },\n  \"style\": {\n    \"aesthetic\": \"casual lifestyle selfie\",\n    \"color\": \"natural tones\"\n  },\n  \"overlays\": {\n    \"style\": \"hand-drawn white doodles and annotations\",\n    \"elements\": [\n      \"arrows pointing to hair, coffee cup, shoes, bag\",\n      \"text labels like 'deep black hair', 'coffee cup', 'textured crossbody', 'shoes well complexion'\"\n    ]\n  }\n}",
+    "title": "Street Style Selfie with Doodles",
+    "description": "A detailed structured prompt for a casual urban selfie featuring a woman with deep black hair, complete with hand-drawn white doodle annotations and labels.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777274453096_4myp1a_HG0jRJHbkAAgLpB.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 15826,
+    "content": "Professional high-end medical aesthetic before/after comparison blueprint, left panel \"{argument name=\"left label\" default=\"Pre-Procedure Analysis\"}\" with natural unedited face showing realistic imperfections (subtle asymmetry, softer jawline, mild under-eye shadows, natural skin texture). Red precise arrows and {argument name=\"language label\" default=\"Chinese labels\"} pointing to improvements. Right panel \"{argument name=\"right label\" default=\"Post-Procedure Result\"}\" showing same person with noticeably refined nose bridge, sharper jawline, brighter under-eyes, smoother yet natural skin, more defined contours. Clean clinical white/gray background, identical angle/lighting/expression, realistic photography style, professional clinic aesthetic, strong but believable transformation.",
+    "title": "Medical Aesthetic Analysis Comparison Prompt",
+    "description": "A professional prompt for a high-end clinical comparison showing realistic before-and-after results for facial aesthetic procedures.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777187081881_rv5foq_HGwGqFraEAMr9Bg.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 15471,
+    "content": "Produce a circular infographic — like an astronomical orrery — with {argument name=\"language count\" default=\"7,000\"} of the world's languages arranged in concentric rings by endangerment status: extinct at the center, critically endangered, endangered, vulnerable, safe at the outer ring. Each language represented by a small typographic tile showing its name in its own native script. Color gradient from deep red (extinct) to vivid green (safe). The rings are labeled with speaker population ranges. Five spotlight callouts pull out a specific dying language and show its geographic origin on a miniature globe, with one surviving sentence rendered in that script.",
+    "title": "Circular Language Infographic",
+    "description": "Creates an astronomical-style infographic mapping the world's languages by endangerment status in concentric rings.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777099770258_ne76t1_HGd96q9XYAAb6Oq.jpg",
+      "https://cms-assets.youmind.com/media/1777099770336_88dydn_HGd97T6WwAAUXBd.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 14710,
+    "content": "Hyper-realistic exploded vertical infographic composition of a {argument name=\"food or product\" default=\"gourmet cheeseburger\"}. All ingredients evenly spaced and perfectly aligned vertically. {argument name=\"background color\" default=\"Warm yellow\"} seamless studio background, soft commercial food lighting, subtle realistic shadows under each floating element, ultra-sharp focus, DSLR macro food photography, premium fast-food ad aesthetic, 8K. Clean infographic text labels with thin pointer lines.",
+    "title": "Vertical Exploded Food Infographic",
+    "description": "A professional studio-style prompt for creating hyper-realistic vertical exploded infographics of food items or products, featuring clean labeling and macro photography aesthetics.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777014241630_j719xr_HGjTt6DbYAATsYp.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13226,
+    "content": "Create a cosmic/space scene where various Indian street foods are floating in deep space as if they are planets, moons, and celestial objects in a delicious galaxy.\n\nTHE FOOD SOLAR SYSTEM:\n- CENTER (Sun): A massive round tandoori roti, glowing from within like a star, with charred spots resembling sunspots, radiating warm golden light outward\n- PLANET 1 (closest): A perfect round golgappa/pani puri — crispy shell glistening, filled with spiced water visible through the opening. Tiny orbit ring of sev and chutney droplets.\n- PLANET 2: A round vada (medu vada) as a donut-shaped planet with a ring system made of coconut chutney\n- PLANET 3: A plate of round gulab jamuns as a cluster of sweet brown planets with syrup nebula around them\n- ASTEROID BELT: Dozens of floating samosas, pakoras, and bhel pieces scattered in a ring\n- PLANET 4 (gas giant): A huge round dahi vada — white yogurt surface like a cloudy gas giant, with tempering (tadka) marks resembling Jupiter's storms\n- COMET: A kebab skewer streaking across the scene with a trail of spice smoke and sparks\n- MOON: A round idli orbiting the dahi vada planet\n- NEBULA: A colorful cloud of turmeric (yellow), chili (red), and coriander (green) powders mixing in space, forming a stunning spice nebula\n\nBACKGROUND:\n- Deep space black with thousands of tiny stars (mustard seeds and cumin seeds floating as stars)\n- Distant galaxies made of swirling masala powder\n- The Milky Way visible but made of a stream of white lassi/buttermilk\n\nLIGHTING:\n- The tandoori roti \"sun\" provides warm orange light illuminating nearby foods\n- Each food item has its own subtle glow — the hot items emit warm light, the cold items (lassi, curd) emit cool blue light\n- Dramatic space lighting: stark bright highlights, deep black shadows, no atmosphere\n\nSTYLE: Photorealistic food photography meets NASA space photography. Every food item is rendered with appetite-triggering detail — crispy textures, steam, glistening oil, fresh garnishes — but floating in actual outer space with real stars and cosmic phenomena. This surreal combination is the kind of image people share saying \"this is the most Indian thing I've ever seen.\" 8K resolution.",
+    "title": "The Food Galaxy: Cosmic Indian Street Food Solar System",
+    "description": "A creative and detailed prompt for Nano Banana 2 to generate a surreal, photorealistic image of Indian street food floating in deep space, where each food item represents a celestial body (e.g., tandoori roti as the sun, golgappa as a planet, samosas as asteroids). The prompt specifies lighting, background elements (spice nebula, lassi Milky Way), and style.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1775284657172_qor3qr_HE81-SpWAAAmvxM.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13133,
+    "content": "① Menu Style\nCreate a diagram of \"5 selected {argument name=\"side job skills\" default=\"skills to earn money with side jobs\"}\" in the style of a Japanese restaurant menu. Use vertical writing, brush strokes, and a Japanese paper-like background.\n\n② Prescription Style\nCreate a diagram of \"{argument name=\"AI usage\" default=\"correct way to use AI\"}\" in the style of a medical prescription. Include an Rx mark, white background, and medical blue color.\n\n③ Boarding Pass Style\nCreate a diagram of \"{argument name=\"departure point\" default=\"life without AI\"} → {argument name=\"destination\" default=\"life after AI utilization\"}\" in the style of an airline boarding pass. Include departure point, destination, and a barcode.\n\n④ Dashboard UI Style\nCreate a diagram comparing the performance of \"{argument name=\"comparison subjects\" default=\"ChatGPT vs Claude\"}\" in the style of a dark mode dashboard UI. Include KPI cards and graphs.\n\n⑤ Diagnosis Chart Style\nCreate a diagnosis chart for \"{argument name=\"AI tool\" default=\"AI tool\"}\" that suits you, in the style of a Yes/No branching flowchart. Include arrows and color-coded nodes.",
+    "title": "Diagram Style Prompts for Nano Banana 2",
+    "description": "A set of five style templates for generating stable, structured diagrams using Nano Banana 2. Users can replace the content within brackets to create different types of visual aids, such as menu-style lists, prescription forms, boarding passes, dashboard UIs, and diagnostic flowcharts.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1775112288342_6nv3zt_HE2QnibbMAAf3cI.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13047,
+    "content": "Carefully study Figure 1, and redraw Figure 2 according to its requirements. Place Figure 2 and the redrawn version on the left and right sides of the same white background image, ensuring the logo is not visible.",
+    "title": "Image Redrawing and Style Transfer Prompt",
+    "description": "A prompt designed for Nano Banana to analyze two figures (Figure 1 for style, Figure 2 for content) and redraw Figure 2 in the style of Figure 1, placing both the original Figure 2 and the redrawn version side-by-side on a white background without showing the logo.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1775026344158_mh1ljp_HEthF1BaYAAkRb-.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 13055,
+    "content": "do this for Artemis II mission: class Artemis_Journal_Diorama:\n    def __init__(self, subject=\"Artemis II Mission\"):\n        # AI infers the correct materials, textures, and desk environment\n        self.stage = \"AI‑inferred astronaut’s mission‑planning journal lying open on an AI‑inferred technical workstation.\"\n        self. lighting = \"AI‑inferred mixed illumination: task‑lamp warmth + cool instrument‑panel spill.\"\n\n    def semantic_2D_to_3D_growth(self):\n        # AI infers what '2D mission sketches' look like for this subject\n        page_texture = (\n            f\"AI‑inferred handwritten notes, trajectory arcs, module schematics, \"\n            f\"and mission annotations related to {self.subject}, rendered as precise 2D graphite diagrams.\"\n        )\n\n        # AI infers what physical 3D elements should emerge from those sketches\n        diorama_pop = (\n            f\"2D mission diagrams transition into physical 3D miniatures: \"\n            f\"AI‑inferred spacecraft components, crew figures, lunar geometry, \"\n            f\"and mission‑specific hardware rising seamlessly from the paper.\"\n        )\n\n        return [page_texture, diorama_pop]\n\n    def scatter_ephemera(self):\n        # AI infers mission‑relevant desk objects without hard‑coding categories\n        return infer_aerospace_ephemera(self.subject)\n        # Examples (AI‑inferred, not fixed): mission patches, navigation tools,\n        # micro‑scale lunar models, printed telemetry, procedural checklists,\n        # archival headlines, engineering pencils, etc.\n\nrender(Artemis_Journal_Diorama())",
+    "title": "Artemis II Mission Journal Diorama",
+    "description": "A complex, structured prompt for Nano Banana using Python-like class definitions to generate a hyper-detailed diorama visualization of an astronaut's mission-planning journal for the Artemis II mission, focusing on the transition of 2D sketches into physical 3D miniatures.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1775026348576_nceyfl_HEso4rBacAA3ZI3.jpg",
+      "https://cms-assets.youmind.com/media/1775026348582_fruhxc_HEso3CkagAAKgQD.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13031,
+    "content": "A 2x2 grid of 4 random famous cities turned into looping kinetic sculptures on museum plinths\n[Top Left: random real European city as a vertical kinetic skyline with moving trams and tiny lights]\n[Top Right: random real Asian megacity as a multi-layered kinetic light grid with sliding blocks]\n[Bottom Left: random real coastal city with rolling wave mechanisms and rotating landmarks]\n[Bottom Right: random real desert or inland city with lifting arms and spinning towers]\nPhotoreal miniature kinetic sculptures made of brass, glass, and polished wood, subtle motion implied by blurred rods and tracks, illuminated display plinths in a gallery setting, soft museum lighting, gentle reflections on the floor, 60mm perspective for elegant compression, shallow depth of field isolating each sculpture, warm white seamless backdrop, crisp focus on intricate mechanics.",
+    "title": "Cities as Kinetic Sculptures Grid",
+    "description": "A prompt for generating a 2x2 grid of four different famous cities transformed into unique, looping kinetic sculptures. It specifies the materials (brass, glass, polished wood), the mechanisms for each city type (vertical skyline, light grid, rolling waves, spinning towers), and the museum gallery setting and lighting.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774939640406_b4ds87_HEdzuqEacAAnZX-.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13029,
+    "content": "<instruction> Input A is a famous dish (photo or dish name). Analyze the dish's ingredient taxonomy, preparation methodology, cultural preparation setting, and historical documentation style.\nOptional Input B is a style reference (3d mod designer toy luxury product packaging).  \nGoal: Three-panel folding display (12\" tall, 36\" wide when open) structured like a medieval altarpiece, with each panel revealing different aspects of the dish's story through museum-quality presentation.\nRules:\nLeft panel: 15-20 ingredients mounted as specimens in tiny bottles with handwritten Latin/scientific labels\nCenter panel: 3D pop-up kitchen diorama with cultural figure preparing dish, architectural elements from origin region\nRight panel: 6-8 precise preparation steps as 3d mod designer toy style\nCloses into protective case with magnetic closure and embossed exterior\nExterior: ornate typography with dish name in gold foil\nSmall drawer at base containing actual spice sample or \"secret ingredient\"\nColor palette drawn from traditional pottery/textiles of origin culture\nInclude tiny rolled \"scroll\" with full recipe in calligraphy\nOutput: ONE image, 16:9 showing triptych fully opened, shot straight-on, museum exhibition lighting </instruction>",
+    "title": "Medieval Altarpiece Display of Ghormeh Sabzi",
+    "description": "A complex, multi-panel prompt designed to visualize an international dish (Ghormeh Sabzi) as a medieval altarpiece. It details the structure of the three panels, requiring elements like ingredient specimens, a 3D pop-up diorama, and preparation steps rendered in a 3D designer toy style, all within a museum exhibition setting.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774939639285_clddgz_HEd1ZZRaAAAnsZB.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 12996,
+    "content": "Image 1 : High-quality professional product photography of a chilled {argument name=\"beverage brand\" default=\"Pepsi\"} can with condensation water droplets and a refreshing, icy look. The aluminum can appears crisp and glossy with realistic highlights, subtle reflections, and visible cold texture. Shot in a minimalist commercial beverage advertising style against a pure white background with soft natural shadows. Sharp focus, ultra-clean composition, modern aesthetic.\n\nImage 2 : Create a hyper-realistic vertical exploded infographic illustrating the ingredients of a Pepsi soft drink. At the top, clear carbonated water shown as sparkling liquid with fine rising bubbles. Below it, floating white sugar crystals with sharp crystalline texture. Beneath that, a rich amber-brown caramel color layer with glossy, syrup-like depth. Next, a subtle translucent layer representing phosphoric acid with a clean liquid look. Below it, abstract aromatic particles symbolizing natural flavors, light and minimal. Further down, small dark caffeine granules suspended mid-air. At the bottom, a chilled blue aluminum cola can standing upright with realistic condensation droplets and metallic reflections. Pure solid white background, soft studio lighting, subtle realistic shadows under each floating layer, ultra-sharp focus, DSLR macro photography look. Clean minimalist infographic labels with thin pointer lines for each ingredient. Premium beverage advertising aesthetic, modern, photorealistic.",
+    "title": "Hyper-Realistic Product Photography and Infographic Prompts for Pepsi",
+    "description": "Two image generation prompts: one for high-quality product photography of a chilled Pepsi can, and another for a hyper-realistic vertical exploded infographic illustrating the ingredients of the soft drink with detailed textures and minimalist styling.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774939622894_abmpx7_HEpcCEDbMAAA7YY.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 12947,
+    "content": "Technical architectural blueprint of a Classic Smash Burger on deep navy drafting paper. Hyperrealistic food hero centered-left, dramatically lit from upper left, warm studio spotlight, cross-section view revealing every layer in precise stack order, lacy-edged patties visible in full photorealistic color, cheese mid-cascade, bun toasted golden, sauce pooling at base catching warm light. Blueprint linework in electric blue, precise measurement lines, stack height callouts, patty thickness cross-section, bun diameter diagram, sauce trajectory arc, grid overlay. Labels connected by thin glowing CAD elbow-joint lines, no crossovers: \"{argument name=\"label 1\" default=\"BRIOCHE BUN sesame-crowned, butter-toasted, 11cm diameter\"}\" \"{argument name=\"label 2\" default=\"SMASH PATTY ×2  80/20 chuck, 85g each, crust-temp 220°C\"}\"  \"{argument name=\"label 3\" default=\"AMERICAN CHEESE  single-fold melt, 2 slices, full cascade}\"  \"CARAMELIZED ONION  45min low-heat, moisture-reduced, dark\"  \"BREAD & BUTTER PICKLE  4mm slice, brine-bright, translucent\"  \"HOUSE SAUCE  thousand island base, 18g applied, amber\". Labels clustered right and top, white Helvetica Neue Light uppercase, thin italic descriptors below. Compass rose bottom-left, scale bar bottom-center, revision block top-right. Title block double-border bottom-right: \"DISH: THE SMASH // CLASSIFICATION: AMERICAN CLASSIC // BUILD SPEC: Engineered to be the last burger you ever need.\" 4K, tack sharp, electric blue linework glowing softly, warm golden burger tones popping against cool navy. Craveable.",
+    "title": "Technical Architectural Blueprint of a Smash Burger",
+    "description": "A highly specific prompt for Nano Banana Pro to generate a technical architectural blueprint of a classic smash burger on deep navy drafting paper. The prompt demands hyperrealistic food rendering with precise measurement lines, stack height callouts, and detailed labels connected by glowing CAD lines, showcasing the model's ability to handle complex text and technical fidelity.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774853727476_vzwqfl_HEl-TT4XYAAoOW2.jpg",
+      "https://cms-assets.youmind.com/media/1774853727475_u638wj_HEl-Po3XAAAHgZr.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 12988,
+    "content": "How settlement and budget figures change their appearance through political magic.\n\nJust by rephrasing a deficit as an investment, behold the wonder.",
+    "title": "Four-Panel Manga: The Magic of Numbers",
+    "description": "A prompt used with Nano Banana Pro (Gemini 3 Pro Image) to generate a four-panel manga titled 'The Magic of Numbers,' illustrating how financial figures like deficits and budgets can be politically manipulated or reframed as investments.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774853752508_6gtj87_HElV3IRaAAAWdPa.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 12925,
+    "content": "Use the Uploaded photo as reference, Vintage engraving illustration style, highly detailed black ink linework, dense parallel hatching and cross-hatching, precise contour engraving lines, woodcut and etching influence, classical printmaking aesthetic, monochrome black and white palette, intricate line density variation to create depth and volume, curved line flow following form anatomy, stippling accents for soft shading, old master engraving technique, baroque illustration feel, antique scientific illustration style, ultra fine (line precision), high contrast with clean negative space, ornamental yet anatomical rendering, hand-engraved texture simulation, timeless classical art style, meticulous craftsmanship, no color, no gradients, purely line-based shading.",
+    "title": "Monochrome Engraving Portrait Style",
+    "description": "A detailed prompt for Gemini Nano Banana Pro 2.0 to generate a portrait in the style of a vintage engraving illustration, emphasizing black ink linework, cross-hatching, and classical printmaking aesthetics, based on an uploaded reference photo.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774766201498_o4hur3_HEh58mObYAA2GPX.jpg",
+      "https://cms-assets.youmind.com/media/1774766201530_feqb35_HEh58mRaAAArGfU.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 12920,
+    "content": "( Deconstructed_Ingredients_{argument name=\"dish name\" default=\"[DISH_NAME]\"} * 1.5 ) + \n( Miniature_Plastic_Toy_Chef * 1.2 ) + \n( Floating_Frosted_Glass_AR_UI_Panels * 1.5 ) + \n( Flavor_Profile_Radar_Charts * 1.0 ) + \n( Slate_Serving_Board * 1.0 ) +\n( Blurred_Cookbook_Background_{argument name=\"dish name 2\" default=\"[DISH_NAME]\"} * 0.8 ) +\n( Pure_White_Studio_Void * 1.0 ) - \n( Human_Sized_Chef / 2.0 ) - \n( Messy_Plating / 2.0 )",
+    "title": "Deconstructed Ingredients Visualization",
+    "description": "A mathematical-style prompt for Nano Banana to visualize the deconstructed ingredients of a famous international dish, combining elements like miniature toy chefs, floating AR UI panels, and radar charts on a slate serving board.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774766197462_4smifr_HEYWiLEbYAA3lky.jpg",
+      "https://cms-assets.youmind.com/media/1774766197515_q4iibh_HEYWiKjXgAA90yj.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 12879,
+    "content": "[NATURAL OBJECT] dissected as if by a master naturalist who found it in the wild. Split and pinned open like a specimen, but lit as if Caravaggio worked for National Geographic. Every internal structure glowing with its own material truth. Cross-section so sharp it feels violent. Interior so beautiful it feels sacred. The full object present, one half intact, one half opened to its core, every layer at the resolution of obsession. Background: pure black velvet. The object floats in it like something precious and dangerous. Labels pressed close, handwritten-weight serif, never floating: \"[STRUCTURE]\" / \"[MATERIAL TRUTH]\" / \"[AGE OR SCALE]\" \"[OBJECT] DISSECTED\" title in warm ivory caps, upper left. \"[One line that makes you lean closer]\" italic beneath. Mood: Audubon illustration meets Caravaggio meets the most beautiful science photograph ever taken. 4K, specimen lighting, extraordinary interior detail, nothing clinical, everything alive.",
+    "title": "Caravaggio Meets National Geographic Dissection",
+    "description": "A highly descriptive and conceptual prompt for Nano Banana Pro, instructing the generation of a dissected natural object (specimen) lit dramatically like a Caravaggio painting but with the detail of National Geographic photography. It requires specific text overlays and a mood blending science and sacred beauty.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774679864588_1sottm_HEcBXn-bAAArfLY.jpg",
+      "https://cms-assets.youmind.com/media/1774679864873_1vxwyl_HEcBXNEXYAAPe9J.jpg",
+      "https://cms-assets.youmind.com/media/1774679864595_xa5ist_HEcBYGtb0AAcICq.jpg",
+      "https://cms-assets.youmind.com/media/1774679865263_kr86t5_HEcBZpuWMAAm3Ld.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 12870,
+    "content": "[DISH] at the precise moment of a dramatic [LIQUID] pour in ultra high-speed photography, liquid cascade frozen mid-fall in perfect clarity. Hero [DISH] center on matte [COLOR] surface, [LIQUID] pouring from above in one cinematic ribbon catching warm single-source light, splitting and branching into suspended droplets and threads as it hits the surface. Splatter crown frozen at moment of impact, droplets suspended in perfect arcs. Every surface texture hyperreal: glistening, steaming, sauce pooling in slow motion. Each element labeled with ultra-thin lines in clean uppercase: \"[INGREDIENT] [descriptor]\". Dish name in elegant editorial typography: \"[DISH NAME]\". Subtitle: \"[TAGLINE]\". Mood: Albert Watson food photography meets Harold Edgerton fluid dynamics meets Michelin-star editorial. 4K, tack sharp every thread and droplet, warm single-source light, extraordinary and craveable.",
+    "title": "Slow Motion Pour Food Photography Prompt for Nano Banana 2",
+    "description": "A detailed prompt for Nano Banana 2 designed to generate ultra high-speed food photography, freezing a dramatic liquid pour over a dish. It specifies cinematic lighting, hyperreal textures, and editorial typography, mimicking the style of Albert Watson and Harold Edgerton.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774679860151_6dlyu4_HEbyUG5bAAAKfFb.jpg",
+      "https://cms-assets.youmind.com/media/1774679860125_ubx5hs_HEbyM0QaUAAm4Pv.jpg",
+      "https://cms-assets.youmind.com/media/1774679860188_s32eqa_HEbybM0WcAEH2y4.jpg",
+      "https://cms-assets.youmind.com/media/1774679860798_lfrfkh_HEby2-wbAAA51Zn.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 12865,
+    "content": "A detailed technical blueprint of a high-performance AI GPU cluster placed on a polished brass drafting table, with a photorealistic miniature AI server system self-assembling from it — multiple GPU accelerator units (sleek black and metallic modules with neon green accents) rising from the dimension lines, high-speed interconnect bridges threading through the tolerance annotations, and dense compute nodes forming from the grid layout.\n\nStacks of GPU cards slide into server chassis above the parts list, each unit locking in with precision. NVLink-style connectors and high-bandwidth interconnects assemble seamlessly between GPUs, forming a powerful parallel compute network. Rack-mounted AI servers emerge vertically, with layered compute blades building upward in perfect alignment.\n\nA liquid cooling system forms from exploded-diagram callouts — transparent cooling pipes with glowing coolant flowing through them, cold plates attaching to GPUs, and radiators assembling with high-performance fans. Heat dissipation fins and airflow channels dynamically shape around the system.\n\nA tiny engineer in futuristic protective gear stands on a GPU module inspecting circuits with a holographic diagnostic interface, while another miniature technician connects high-speed data cables into a switch unit. Fiber optic lines glow faintly, representing active data transfer.\n\nFunctional details illuminate — GPU core lights pulsing softly, status LEDs blinking in synchronized patterns, data streams visualized as glowing lines moving between nodes, and monitoring panels activating during assembly.\n\nSignature tools of the trade — precision screwdriver, thermal paste applicator, anti-static tools, fiber connectors, and a digital diagnostic tablet — rest across the blueprint’s title block, partially integrated into the scene.\n\nAll elements grow organically from the blueprint like a 3D mechanical diorama — circuit traces rising from printed schematics, GPU modules emerging from drawn outlines, cables threading through pencil grid lines. Seamless transformation from 2D blueprint into a fully operational AI infrastructure.\n\nLIGHTING:\nSoft studio lighting combined with strong neon green and cool blue glows from GPUs and data pathways. Subtle reflections from the brass surface and volumetric light enhancing depth.\n\nCAMERA & LENS:\nShot on a full-frame camera, 35mm lens. Slight low-angle perspective to emphasize scale and power. Cinematic depth of field with focus on central GPU cluster.\n\nCOMPOSITION:\nVertical 2:3 format. Central stacked GPU cluster rising upward with symmetrical balance. Clean negative space around edges with layered depth.\n\nSTYLE & MOOD:\nFuturistic, cinematic, high-end AI infrastructure aesthetic inspired by NVIDIA design language. Powerful, clean, and cutting-edge.\n\nDETAILS:\nUltra-detailed textures — matte black metal, glowing accents, micro circuitry, cooling liquid reflections, cable braiding, LED indicators. 8K resolution, HDR,",
+    "title": "Technical Blueprint of an AI GPU Cluster",
+    "description": "A highly detailed prompt for Gemini Nano Banana Pro to generate a futuristic, cinematic image of a technical blueprint transforming into a photorealistic, self-assembling AI GPU cluster on a polished brass drafting table, emphasizing technical details, lighting, and composition.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774679857399_jv9q38_HEaKU1hbwAEfD6i.jpg",
+      "https://cms-assets.youmind.com/media/1774679857294_y04bz4_HEaKUj8boAAwom8.jpg",
+      "https://cms-assets.youmind.com/media/1774679857480_8u44l4_HEaKUo4a4AA3nBr.jpg",
+      "https://cms-assets.youmind.com/media/1774679858065_i1yw3n_HEaKU3HbkAAXfqi.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 12840,
+    "content": "<instructions>\n[Use the UNIVERSAL WRAPPER above exactly as-is.]\n\nIf input includes ingredients, pick 4 distinct countries with famous dishes that fit those ingredients (hidden gems welcome). Output one 2x2 grid: each panel shows an open book spread for that country.\n\nPer panel:\n- Left page: 2D vintage sepia sketches (timeline/illustrated recipe flow, minimal text).\n- Right page: 3D pop-up diorama of the finished steaming dish emerging from the page.\n- A tiny chef mini stands beside the dish.\n- All 4 books look like one cohesive atlas series.\n- Only readable text: engraved plate “Dish ({argument name=\"country name\" default=\"Country\"})”.\n\nStyle: Cinematic top-down lighting emphasizing 2D vs 3D depth, macro detail, cohesive atlas design, clean background, shallow DOF, no logos, no long text.\n</instructions>",
+    "title": "2x2 Grid Pop-Up Cookbook Diorama Prompt for Nano Banana",
+    "description": "A structured instruction set for Nano Banana to generate a 2x2 grid, where each panel represents an open book spread for a different country's dish, featuring 2D vintage sketches on the left page and a 3D pop-up diorama of the finished dish on the right, all styled as a cohesive atlas series.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774594333696_3c0r8k_HEKnYm6bMAA3jf9.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 12812,
+    "content": "Dessert (AR shopping UI)\n\nPOV shot inside a modern supermarket aisle, hands holding a small gourmet dessert with cream and berries, futuristic augmented reality (AR) interface overlay showing calories, sugar, fats, freshness score, expiry date, and recipe suggestions, soft depth of field, cinematic lighting, ultra-realistic, 4K, tech-inspired UI, clean glassmorphism design\n\n⸻\n\n2. Apple (AR nutrition UI)\n\nFirst-person view in a grocery store holding a fresh red apple, augmented reality interface displaying calories, vitamin C, fiber, freshness bar, and recipe ideas, minimal futuristic UI panels floating around the object, bright supermarket lighting, shallow depth of field, hyper-realistic, modern tech aesthetic, 4K\n\n⸻\n\n3. Orange Soda Bottle (AR data UI)\n\nPOV shot of hands holding an orange soda bottle in a supermarket aisle, futuristic AR overlay showing calories, sugar content, caffeine level, freshness score, expiry date, and drink recipes, sleek holographic interface, glassmorphism UI, vibrant colors, cinematic lighting, ultra-detailed, photorealistic, 4K",
+    "title": "Augmented Reality UI Overlays on Food Items",
+    "description": "A set of three prompts for Gemini Nano Banana Pro to generate photorealistic POV shots of hands holding food items (dessert, apple, soda bottle) in a supermarket, overlaid with futuristic Augmented Reality (AR) user interfaces displaying nutritional and product data. The prompts specify lighting, depth of field, and UI design style (glassmorphism, tech-inspired).",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774594318134_6o2j64_HEUklRCbwAA9iI-.jpg",
+      "https://cms-assets.youmind.com/media/1774594318201_ep44op_HEUklQ8a0AA5Sl-.jpg",
+      "https://cms-assets.youmind.com/media/1774594318277_sb6yht_HEUklQzaIAA41v1.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 12766,
+    "content": "Anchor: The word \"{argument name=\"word to construct\" default=\"Tesla\"}\" :: constructed entirely from printed circuit board traces, where each letterform is a functional-looking PCB layout — solder pads as terminals, vias as joints, trace paths forming the strokes ::4 Morphology: Technical PCB illustration. Letter strokes are traces of varying widths. Circular vias punctuate stroke junctions. Solder pad rectangles anchor stroke terminals. The letters read as living circuit diagrams. Monochrome technical vector ::3 Material Physics: Jet black trace lines on white substrate, exposed copper-pad circles with concentric detail rings, uniform stroke weight with deliberate corner chamfers (45°) ::3 Illumination: Flat technical illustration lighting, no depth, pure 2D schematic clarity ::2 Render Stack: Electronics schematic aesthetic, hardware documentation style, Gerber file visual output ::1 Negative: [Silhouette shapes, actual electronic components, chip illustrations, realistic PCB green color, perspective, photographic textures, solder reflections] ::-1",
+    "title": "PCB Word Art Schematic for 'Tesla'",
+    "description": "A technical prompt for Nano Banana Pro using weighted terms (::) to generate a 2D schematic illustration of the word 'Tesla' constructed entirely from printed circuit board (PCB) traces. It specifies monochrome coloring, technical vector style, and flat lighting, while using a negative prompt to exclude realistic textures or colors.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774508262762_4ktyii_HEFZC2sXUAAg6AE.jpg",
+      "https://cms-assets.youmind.com/media/1774508262843_2dluf1_HEFZC4NbAAAu4kU.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
     "id": 12711,
     "content": "<instruction>\n \nInput A is a Complex Machine (e.g., {argument name=\"machine type\" default=\"A Space Shuttle\"}, A Grand Piano, A Clockwork Watch).\nDeconstruct into   3 Assembly Phases  :\n   Phase 1:  Raw chassis/frame.\n   Phase 2:  Internal gears/wires.\n   Phase 3:  Finished exterior.\n2. Container (The Geometric Unfold):\nGoal: \"Kinetic Blueprint\" Photography.\nThe Object: A series of Triangular Acrylic Wedges attached to a central hinge, opening like a blooming flower or a tool-kit.\nThe Layout: The wedges are partially unfolded across a drafting table surface.\n3. The Dioramas (The Exploded View):\nInternal Content: Each wedge holds a different \"Phase\" of the machine.\nVisual Link: Real copper wires or brass chains physically cross the gaps between the acrylic wedges, \"connecting\" the assembly line.\n4. Visual \nBackground: A cluttered workshop desk with blueprints and calipers.\nLighting: Hard side-lighting to cast shadows of the internal gears through the clear acrylic walls onto the table.\nOutput: ONE image, 16:9 Aspect Ratio, 3D Macro Render, \"Technical Art\" aesthetic.\n</instruction>",
     "title": "Complex Machine Deconstruction Blueprint Prompt",
@@ -4595,6 +5676,16 @@
     "needReferenceImages": false
   },
   {
+    "id": 31357,
+    "content": "Please create an infographic based on the {argument name=\"topic\" default=\"input content\"}, highlighting key themes and essential points:\n\n- Simplify information, emphasizing keywords and core concepts, leaving ample whitespace for clarity.\n\n- Include minimalistic {argument name=\"illustration style\" default=\"cartoon\"}",
+    "title": "Minimalist Information Infographic Layout",
+    "description": "A structural prompt for creating clean, minimalist infographics that simplify complex information into core concepts with plenty of whitespace.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1786690138671_gi0hgz_G6k9JGhXIAAOker.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
     "id": 753,
     "content": "Based on the following article, create a professional Chinese PPT for me.\nFirst write a PPT outline and plan the content of each slide.\nThen feed the content of each slide to Nano Banana Pro to generate the corresponding PPT page, ensuring a consistent style.\n\nThe specific PPT style should be an “Anthropic/Claude-style” warm academic humanistic design.\nBackground: use warm beige/cream (#F3F0E9) as a solid base color, with a slightly premium paper texture.\nFonts: use an elegant serif font for titles and a modern sans-serif font for body text.\nColor palette: the main colors are terracotta red (#D67052) and mustard yellow (#F0B857), accented with deep navy blue. Avoid neon colors or pure black.\nVisual elements: use a grid layout that emphasizes typography. Illustration style should be abstract, organic black hand-drawn line art placed on solid terracotta red blocks. You must use illustrations and decorative elements very sparingly, and they should serve the content.\nCharts: flat and minimal charts that emphasize data comparison, removing unnecessary borders.\n\nBoth text and images are generated by Nano Banana Pro. Also, do not turn the PPT into one single large image; it should be one image per slide.\n\nThe article content is:",
     "title": "Anthropic-style warm academic PPT workflow prompt",
@@ -5414,5 +6505,15 @@
       "https://cms-assets.youmind.com/media/1763886148404_ux93qq_G6NT8ycXcAAUnTW.jpg"
     ],
     "needReferenceImages": false
+  },
+  {
+    "id": 27410,
+    "content": "turn this into an {argument name=\"type\" default=\"infographic\"}",
+    "title": "Automated Infographic Creation from Photos",
+    "description": "Converts photos of locations or objects into stylized infographics without needing to name the specific subjects.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1783063708820_pv44ns_GzumhA9WIAA44Aa.jpg"
+    ],
+    "needReferenceImages": true
   }
 ]

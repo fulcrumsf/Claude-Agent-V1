@@ -1,5 +1,650 @@
 [
   {
+    "id": 33663,
+    "content": "2D flat illustration, unveiled Middle Eastern woman, full body, long open kimono-style robe in {argument name=\"color\" default=\"deep lapis blue\"} with gold embroidered {argument name=\"symbols\" default=\"Egyptian scarab, eye of Horus, and geometric border patterns\"}, plain cream inner dress, minimal warm beige background with faint temple column motif, statuesque pose, 3:4",
+    "title": "Ancient Egyptian Print Illustration",
+    "description": "A 2D flat illustration prompt for a statuesque Middle Eastern woman in a lapis blue kimono-style robe featuring traditional Egyptian motifs.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788764291727_9tmu5d_HRTpOG5WUAAP29B.jpg",
+      "https://cms-assets.youmind.com/media/1788764293237_86z4s5_HRTpOGnWQAUImFo.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 33664,
+    "content": "Ar 9:16! Expressive loose watercolor illustration style, ultra-detailed watercolor portrait rendering, soft translucent paint layering, wet-on-wet watercolor diffusion, natural pigment bleeding effects, delicate brushstroke textures, airy hand-painted aesthetic, realistic anatomy blended with painterly abstraction, subtle ink-like edge definition, elegant unfinished watercolor splashes around the composition, soft feathered transitions between colors, luminous paper texture visible through transparent paint layers, warm natural skin tones with gentle blush highlights, cinematic soft lighting, flowing organic brush movement, refined watercolor realism with emotional fine art atmosphere, smooth facial rendering contrasted with loose expressive edges, handcrafted traditional painting aesthetic, watercolor bloom effects, fluid color gradients, lightly desaturated palette with {argument name=\"colors\" default=\"earthy warm neutrals and muted blues\"}, premium {argument name=\"medium\" default=\"sketchbook\"} illustration style, visible artistic spontaneity, delicate strand-like hair strokes, atmospheric white negative space, minimal background detail, soft focus depth, editorial fine art watercolor aesthetic, subtle accidental paint marks and organic imperfections, elegant composition balance, painter’s hand holding a {argument name=\"brush type\" default=\"thin paintbrush\"} visible in foreground, immersive artist-at-work perspective, realistic brush and hand rendering, museum-quality watercolor artwork, timeless classical painting mood, sophisticated contemporary watercolor portrait style, ultra refined paper-and-pigment texture, dreamy and poetic visual tone, handcrafted artistic realism, master-level watercolor detailing.",
+    "title": "Detailed Watercolor Portrait Illustration",
+    "description": "A highly detailed prompt for creating expressive, loose watercolor illustrations with realistic anatomy and hand-painted textures.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788764291777_d7yul0_HRhngZ6bUAA3TJD.jpg",
+      "https://cms-assets.youmind.com/media/1788764293172_waf3i1_HRhngZ0a4AANTT2.jpg",
+      "https://cms-assets.youmind.com/media/1788764291722_37unmi_HRhngZ7akAA294l.jpg",
+      "https://cms-assets.youmind.com/media/1788764292289_hd49id_HRhngZpbsAAj2wJ.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 33562,
+    "content": "{argument name=\"style\" default=\"Sophisticated contemporary oil portrait painting\"} with expressive loose brushwork, combining refined semi-realistic portraiture, classical fine-art painting, and modern editorial painterly aesthetics. The subject is rendered with highly controlled yet visibly handcrafted oil strokes, layered pigments, soft impasto, delicate dry-brush marks, and expressive directional brushwork that follows the natural anatomy and volume of the face.\nFacial features are detailed and semi-realistic, with luminous skin, natural texture, expressive eyes, carefully modeled nose and lips, and richly layered hair built from flowing individual brushstrokes. Use {argument name=\"color palette\" default=\"warm brown, deep umber, burnt sienna, ochre, muted peach, cream, ivory, soft gray-blue, charcoal, and subtle muted gold accents\"}, matching the reference palette precisely. Highlights are predominantly warm ivory and creamy white, while shadows remain deep but soft and painterly.\nThe background uses the same desaturated blue-gray and warm ivory palette, appearing like an unfinished classical painted canvas. Broad vertical and horizontal brushstrokes, translucent paint layers, softly scraped areas, subtle dry-brush textures, and irregular painterly patches create an atmospheric studio-like backdrop. Keep the background simple, quiet, and organically integrated with the portrait rather than sharply separated.\nThe lower portion of the figure intentionally becomes unfinished and gradually dissolves into loose white and ivory brushstrokes. Clothing, shoulders, chest, and lower contours progressively lose definition, breaking into scattered semi-transparent strokes and fading pigment. Edges become incomplete, soft, irregular, and partially disappear into the background, creating the unmistakable impression of an intentionally unfinished oil painting. Do not create a hard bottom edge.\nMaintain a refined balance between highly detailed facial realism and deliberately unfinished painterly abstraction. Visible brushwork, layered oil pigments, soft impasto, subtle canvas texture, natural imperfections, elegant tonal transitions, museum-quality portrait painting, cinematic atmosphere, timeless fine-art character.\nNo photorealistic photography, no 3D CGI, no vector appearance, no hard digital outlines, no glossy rendering, no completely finished lower body, no sharp background separation. --ar {argument name=\"aspect ratio\" default=\"9:16\"}",
+    "title": "Sophisticated Oil Portrait Painting",
+    "description": "An artistic prompt for creating contemporary oil paintings with expressive brushwork and an intentionally unfinished aesthetic.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788764293775_1uzw7b_HRd-SxAawAE07jJ.jpg",
+      "https://cms-assets.youmind.com/media/1788764293794_9r1lpl_HRd-SxDakAEfGmZ.jpg",
+      "https://cms-assets.youmind.com/media/1788764293782_s7q3hh_HRd-SxKaQAAULJ_.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 33478,
+    "content": "2D editorial illustration inspired by Egyptian North Coast summer, unveiled {argument name=\"ethnicity\" default=\"Middle Eastern woman\"}, wide-leg breezy trousers in {argument name=\"trouser color\" default=\"sandy beige\"} with hand-drawn wave prints, embroidered blouse with {argument name=\"blouse motif\" default=\"palm frond motifs\"}, warm sun-drenched palette, minimal background suggesting sea and dune, elegant relaxed pose, 3:4",
+    "title": "Egyptian Summer Fashion Illustration",
+    "description": "A 2D fashion editorial illustration of a Middle Eastern woman in breezy, summer attire with palm and wave motifs.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788591093052_z1yxqf_HRTR1PhbcAAEJx6.jpg",
+      "https://cms-assets.youmind.com/media/1788591092820_veqcgk_HRTR2JwaIAEwfkL.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 33400,
+    "content": "2D flat vector fashion illustration, {argument name=\"subject\" default=\"unveiled Middle Eastern woman\"}, full body, wearing {argument name=\"trousers\" default=\"wide-leg trousers in mustard yellow with geometric print\"}, {argument name=\"blouse\" default=\"embroidered cream blouse with floral motifs\"}, minimal shadows, clean bold outlines, soft beige background, editorial fashion pose, 3:4",
+    "title": "2D Flat Vector Fashion Illustration",
+    "description": "Generates clean, 2D flat vector illustrations of Middle Eastern fashion with geometric prints and bold outlines.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788504578464_m2g14w_HRTNkZxa8AA_NVq.jpg",
+      "https://cms-assets.youmind.com/media/1788504578316_lujm1f_HRTNkZwbcAAZTqx.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 33398,
+    "content": "Modern fashion line art illustration, {argument name=\"subject\" default=\"unveiled Middle Eastern woman\"}, single-weight black linework, flat color blocks in ochre and sage green, {argument name=\"trousers\" default=\"wide-leg patterned trousers\"}, {argument name=\"blouse\" default=\"embroidered off-shoulder blouse\"}, negative space composition, soft cream background, walking pose, 3:4",
+    "title": "Modern Fashion Line Art",
+    "description": "A clean line art prompt for modern fashion illustrations using flat color blocks and negative space compositions.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788504577643_nlngf1_HRTM3bka4AAkD64.jpg",
+      "https://cms-assets.youmind.com/media/1788504577620_3oqffs_HRTM3bpa4AA-dDj.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 33270,
+    "content": "{argument name=\"setting\" default=\"Glass studio\"}, {argument name=\"canvas\" default=\"holographic canvas\"}, {argument name=\"lighting\" default=\"mixed tungsten and cyan light\"}.",
+    "title": "Holographic Canvas Glass Studio",
+    "description": "A minimalist prompt for a cinematic glass studio scene featuring a holographic canvas with mixed tungsten and cyan lighting.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1788418033881_eocfo7_HROwLtrbwAAm8dQ.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 32503,
+    "content": "{\n  \"image_generation_prompt\": {\n    \"shot_type\": \"exterior shot, photo\",\n    \"subject\": \"{argument name=\"subject\" default=\"A luxurious retrofuturistic train\"}\",\n    \"color_palette\": [\n      \"{argument name=\"primary color\" default=\"pastel pink\"}\",\n      \"{argument name=\"secondary color\" default=\"mint green\"}\"\n    ],\n    \"interior_design\": {\n      \"style\": \"Zaha Hadid\",\n      \"elements\": \"filled with flowers\",\n      \"features\": \"large windows\"\n    },\n    \"setting\": \"{argument name=\"environment\" default=\"overlooking Paris during cherry blossom season\"}\",\n    \"focus\": \"train exterior\",\n    \"parameters\": {\n      \"aspect_ratio\": \"9:16\",\n      \"version\": 7\n    }\n  }\n}",
+    "title": "Luxurious Retrofuturistic Train Exterior",
+    "description": "A structured JSON prompt for generating a high-end retrofuturistic train exterior inspired by Zaha Hadid, set against a Parisian cherry blossom background.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1787639837859_idlxzp_HQf9rFua4AEdqW1.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 32411,
+    "content": "A sophisticated {argument name=\"subject\" default=\"hybrid human portrait style\"} that seamlessly combines the whimsical, glossy dimensional rendering of a premium 3D fantasy illustration with the clean, elegant simplicity of contemporary flat vector portraiture. Depict the human subject with recognizable anatomy, natural facial proportions, authentic expression, and clearly identifiable features, while transforming the overall appearance into a refined stylized illustration. The face should combine smooth dimensional modeling with simplified graphic planes: softly sculpted skin, subtle volumetric shading, delicate highlights, clean angular shapes, and carefully controlled flat-color regions. Use the visual language of premium digital character illustration: luminous expressive eyes, softly rendered skin, smooth flowing hair with layered strands, polished highlights, gentle depth, tactile surfaces, and subtle painterly transitions. At the same time, simplify the rendering with elegant vector-like shapes, clean silhouettes, controlled linework, minimal visual noise, and clearly defined color planes inspired by modern editorial portrait illustration. Integrate {argument name=\"artistic elements\" default=\"flowing artistic elements around the human figure, such as fluid paint splashes, soft liquid ribbons, abstract organic shapes\"}. These elements should feel energetic and three-dimensional, organically emerging from the portrait rather than appearing as a separate background decoration. Hair should combine clean graphic masses with silky dimensional strands and sweeping flowing shapes. Facial features should remain refined and human, enhanced with subtle geometric simplification rather than exaggerated cartoon distortion. Clothing should use bold simplified silhouettes with restrained geometric detailing, maintaining an elegant contemporary fashion-illustration appearance. Color treatment should merge the warm, restrained palette of modern vector portraiture with the {argument name=\"color scheme\" default=\"vibrant tropical energy of whimsical fantasy illustration\"}: warm coral, orange, cream, peach, turquoise, cyan, sky blue, deep navy, emerald, red, golden yellow, and subtle lavender accents. Use mostly clean saturated color fields, enhanced selectively with soft gradients, glossy highlights, translucent edges, and gentle volumetric illumination. Background should remain clean and uncluttered, preferably a simple warm solid or softly textured backdrop, allowing the human subject and surrounding artistic splashes to remain the primary focus. The final aesthetic should feel like an original fusion of elegant editorial vector portrait, contemporary digital painting, whimsical 3D character illustration, premium fashion artwork, and colorful fluid fantasy art — clean yet richly dimensional, sophisticated yet playful, expressive, polished, tactile, modern, artistic, and visually distinctive.",
+    "title": "Hybrid 3D Vector Illustration Style",
+    "description": "A unique stylistic prompt blending glossy 3D rendering with flat vector simplicity for artistic portraits, featuring vibrant colors and fluid organic elements.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1787552793135_75pudi_HQZ5lDnbMAAjjNN.jpg",
+      "https://cms-assets.youmind.com/media/1787552793140_0ibsb7_HQZ5lD9bAAApjg8.jpg",
+      "https://cms-assets.youmind.com/media/1787552793095_nx9jpa_HQZ5lDlaIAAKtp0.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 32186,
+    "content": "A tranquil digital landscape featuring a vibrant, glowing sunset over distant mountains, with the sun casting {argument name=\"reflections\" default=\"pastel reflections of pink, purple, and turquoise\"} across a calm lake. Two small, forested islands with tall pine trees frame the foreground, and the overall mood is serene and dreamlike, with soft gradients and minimalistic composition set against a muted, hazy background.\n\nA surreal landscape featuring a lone figure standing beneath a large tree with {argument name=\"tree details\" default=\"glowing purple leaves\"} on a cliff edge, overlooking a distant mountain at sunset. A stream of luminous turquoise water flows down the cliff, emitting magical sparkles. The scene is bathed in soft pastel colors, creating a tranquil and mystical atmosphere.",
+    "title": "Serene Landscape and Surreal Figure at Sunset",
+    "description": "Two dreamlike landscape prompts, one featuring a vibrant mountain lake with pastel reflections and another with a lone figure under a glowing purple tree.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1787379851536_v99f1l_HQQ44bQXoAAEdYz.jpg",
+      "https://cms-assets.youmind.com/media/1787379851506_zj81ft_HQQ46uPW0AAavV9.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 31570,
+    "content": "Apply an ASCII-art rendering effect to the reference image, where the ASCII character density and placement is driven by the underlying tonal contrast and edges of the photo, like a true edge-aware ASCII-art conversion. Dense character clusters follow the natural contours, silhouette lines, and high-detail areas (such as hair strands, fabric folds, and background structure), while flatter, low-contrast areas (such as smooth skin) stay comparatively clean with minimal or no texture. The effect should look like the ASCII characters are tracing the actual shapes and edges present in the photo, not a uniform overlay pasted on top of everything equally. Use a classic {argument name=\"color scheme\" default=\"green-on-black or grayscale\"} terminal character set ({argument name=\"character set\" default=\"@ # % & * + . :\"}), {argument name=\"density\" default=\"medium\"} overall density, with the original photo still legible underneath.",
+    "title": "Edge Aware ASCII Art Conversion",
+    "description": "A technical prompt designed to transform a reference image into an edge-aware ASCII art rendering using specific character sets.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1786947851995_vupmgp_HPzCszWbkAAcggR.jpg",
+      "https://cms-assets.youmind.com/media/1786947851956_8bzhi2_HPzCwxTasAARNuf.jpg",
+      "https://cms-assets.youmind.com/media/1786947853667_fc61wc_HPzC1VOboAAvKbB.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 31468,
+    "content": "A DETAILED 3D INSTALLATION OF THE UPLOADED LOGO MOUNTED ON A SOLID CONCRETE WALL. ONLY THE LOGO ITSELF IS VACUUM-SEALED AND WRAPPED TIGHTLY IN A LAYER OF GLOSSY {argument name=\"color\" default=\"COLOR\"} PLASTIC SHRINK-WRAP, FOLLOWING THE EXACT CONTOUR OF EVERY LETTER AND SHAPE. THE PLASTIC FILM TIGHTLY HUGS THE EDGES OF THE LOGO, CREATING REALISTIC CRINKLES AND SHARP SPECULAR HIGHLIGHTS ON THE LOGO'S SURFACE. THE BACKGROUND WALL IS CLEAN CONCRETE, FREE OF ANY PLASTIC WRAPPING OR FRAMES. STUDIO SPOTLIGHTS CAST SOFT, REALISTIC DROP SHADOWS: FROM THE WRAPPED LOGO ONTO THE WALL. RATIO 1080X1350 VERTICAL.",
+    "title": "Vacuum Sealed Logo Installation",
+    "description": "A 3D installation prompt that places an uploaded logo on a concrete wall, wrapped in glossy plastic shrink-wrap for a realistic crinkle effect.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1786774865701_c02f05_HPsDnRIbkAAlDge.jpg",
+      "https://cms-assets.youmind.com/media/1786774865865_w6ta19_HPsDnREbAAA14PB.jpg",
+      "https://cms-assets.youmind.com/media/1786774865686_nwd4t2_HPsDnRDaEAA__S8.jpg",
+      "https://cms-assets.youmind.com/media/1786774866499_8h6ujx_HPsDnRFboAAcm7T.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 31339,
+    "content": "{argument name=\"subject\" default=\"<subject>\"} in this style={argument name=\"transformation\" default=\"<transformation>\"} - Preserve the subject’s recognizable structure, but reinterpret it as a stylized editorial composition where drawing and miniature object-world logic coexist. - Convert some forms into sparse grainy line illustration while converting other forms into soft pastel miniatures or still-life objects. - Reinterpret texture-rich or detailed areas as small clusters of plants, props, vessels, terrain fragments, or decorative micro-world motifs. - Convert smooth surfaces into matte pastel color fields, while using graphic linework to describe edges, volume, and texture selectively. - Reduce complexity into a limited color system with one dominant graphic ink tone and a few quiet pastel support colors. - Replace deep realism with poster-like clarity, paper-print tactility, and curated tabletop arrangement. - Allow the subject to feel partially drawn and partially physically staged, creating a deliberate ambiguity between illustration and object. - Use negative space and sparse composition to keep the image clean, modern, and highly readable. </transformation> <shape_language> - Favor simple containers, rounded objects, leaves, stems, pebbles, tabletop silhouettes, miniature clusters, and clean abstract forms. - Use a mix of flat contour areas and soft low-relief sculptural accents. - Keep repetition rhythmic and decorative. - Let small details feel intentional and editorial rather than busy. </shape_language> <rendering_rules> - Use visibly grainy printed or crayon-like marks for lines and texture accents. - Keep volumetric forms soft, simplified, and pastel. - Limit the palette aggressively for a designed, print-friendly look. - Use {argument name=\"depth\" default=\"shallow spatial depth\"} with subtle diorama hints. - Make the final result feel like an art print, a magazine illustration, and a miniature set all at once. </rendering_rules> <finish> - Graphic limited-palette editorial hybrid. - Printmaking texture fused with soft pastel mini-world staging. - Smart, modern, collectible, and quietly distinctive. </finish> <avoid> - Avoid photoreal rendering. - Avoid deep cinematic perspective or strong realism. - Avoid overstuffing with too many tiny details. - Avoid using too many colors; keep it controlled and designed. </avoid>",
+    "title": "Stylized Editorial Hybrid Composition",
+    "description": "A complex structural prompt for creating editorial illustrations that blend linework, soft miniatures, and print-friendly textures.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1786774883701_7370ff_HPcPNsEXYAA95EP.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 30941,
+    "content": "A highly refined contemporary mixed-media portrait style combining an ethereal high-key fashion aesthetic with intricate concentric contour-line artwork inspired by natural growth rings and fingerprint-like topographic patterns. The human subject should retain an elegant, soft, luminous, almost dreamlike presence while the entire visual structure is organically constructed through hundreds of delicate continuous concentric and flowing contour lines. Replace conventional flat shading and ordinary outlines with dense nested curved lines that follow the anatomy and three-dimensional structure of the human form. The lines should naturally conform to the contours of the face, forehead, cheeks, nose, lips, jaw, neck, shoulders, clothing, and hair, creating the illusion that the entire subject is sculpted from flowing rings and fine engraved contours. The line patterns should behave like organic topographic growth rings rather than geometric circles. Lines continuously expand, contract, bend, merge, separate, and change direction according to the underlying form. Around the eyes, nose, lips, and facial planes, the contours become tightly concentrated and delicately curved; across larger surfaces they gradually spread into wider flowing rings. Hair should be constructed from extremely fine flowing contour strands, with hundreds of elongated curved lines sweeping outward and merging into larger concentric patterns. The hair should feel weightless and fluid, almost dissolving into the surrounding background while maintaining an intricate line-based structure. Preserve the reference's soft luminous skin, delicate facial modeling, subtle blush, translucent highlights, pale neutral tones, and graceful editorial beauty. The human form should remain recognizable and aesthetically refined beneath the contour-line construction rather than becoming an abstract pattern. Introduce selective high-density black and charcoal contour areas to create depth and visual emphasis. Lines become progressively darker and closer together in recessed areas and shadow regions, while highlights contain sparse, extremely fine pale-gray lines and larger areas of negative space. This creates tonal values entirely through line density and spacing, rather than conventional painted shading. Allow portions of the contour lines to extend beyond the silhouette, forming expansive organic rings and flowing arcs around the subject. These external lines should gradually fade, break apart, become thinner, and dissolve into the background, creating an atmospheric transition between the human figure and the surrounding space. Use a predominantly luminous ivory, white, soft gray, pale beige, and subtle natural skin-tone palette, with deep charcoal-black lines providing controlled contrast. Maintain a clean, airy, almost monochromatic elegance while preserving subtle full-color skin undertones. The surface should have a fine tactile paper or archival-art texture",
+    "title": "Topographic Contour Line Portrait",
+    "description": "An ethereal mixed-media portrait that replaces traditional shading with intricate, organic topographic contour lines inspired by growth rings.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1786344502610_xvq442_HPU_tBzbEAApHG0.jpg",
+      "https://cms-assets.youmind.com/media/1786344503219_as3r0u_HPU_t_2bcAAsxVq.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 30211,
+    "content": "{argument name=\"style\" default=\"Hyper-detailed engraved illustration style\"}, cross-hatching and fine line pen drawing technique, classical engraving mixed with modern illustration, ultra-dense linework forming realistic human face and upper body, tactile woven texture across skin and fabric, baroque and rococo influence, ornate clothing details, gold embroidery and chain accents, dramatic chiaroscuro lighting, {argument name=\"color palette\" default=\"muted yet bold color accents (pink, gold, blue, cream, black)\"}, painterly ink texture, vintage print aesthetic blended with contemporary surreal portrait art, high contrast, museum-grade detail, editorial illustration quality, {argument name=\"background\" default=\"dark textured background\"}, intellectual and artistic mood.",
+    "title": "Engraved Surreal Illustration Portrait",
+    "description": "A dense, cross-hatched engraving illustration style prompt blending classical engraving techniques with modern surreal portrait art.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1785395940190_a3ah3o_HOXfowAXUAE2Bt0.jpg",
+      "https://cms-assets.youmind.com/media/1785395939808_d8xuu0_HOXfpWQWEAAcEMC.jpg",
+      "https://cms-assets.youmind.com/media/1785395939708_5lxtd7_HOXfqE5XIAA-VrW.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 30088,
+    "content": "High-end 3D render aesthetic with hyper-realistic {argument name=\"material\" default=\"vinyl/latex\"} texture and soft diffused studio lighting.",
+    "title": "Hyper-Realistic 3D Vinyl Aesthetic",
+    "description": "Creates a high-end 3D render with a focus on hyper-realistic textures like vinyl or latex, featuring soft diffused studio lighting for a premium product photography look.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1785309333524_003lyl_HOVVOX2bAAA3oQV.jpg",
+      "https://cms-assets.youmind.com/media/1785309333534_d59m1t_HOVVPAXbIAAdnXa.jpg",
+      "https://cms-assets.youmind.com/media/1785309333558_cdihvd_HOVVPqQagAADGYL.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 29270,
+    "content": "Convert a user's short image request, attached image, or combination of text and images into one finished prompt for GPT Image Gen V2 or Nano Banana Pro.\n\nApply the Redphase Survey visual system defined below. Do not explain the system, show analysis, or add commentary. Return only the finished image prompt in the selected model's format.\n\nUse the model named by the user or supplied by the host application. If neither names one, use GPT Image Gen V2.\n\nFor GPT Image Gen V2, return natural language prose only.\n\nFor Nano Banana Pro, return one valid JSON object only.\n\nWhen both are explicitly requested, return the GPT prompt first under the line \"GPT IMAGE GEN V2\", then the JSON under the line \"NANO BANANA PRO\". Add no other text.\n\nWrite prompt content in the user's language unless another language is requested. Keep Nano Banana Pro keys in English. Preserve exact in-image text in its required script.\n\nCORE LOGIC\n\nEvery image contains two simultaneous records.\n\nThe survey record describes what occupies the scene. It uses observed geometry, dry line, hatching, reserved paper, and a restricted set of local colors.\n\nThe red phase describes what is active through the scene. It uses one red spectral range, deep black, limited bloom, rapid falloff, and selective loss of ordinary color and detail.\n\nThe survey record answers: What is present?\n\nThe red phase answers: What is acting, passing, gathering, or changing?\n\nDo not average the two records into red-tinted illustration. Give each record a separate job.\n\nBefore writing the final prompt, silently determine:\n\n1. The literal subject and setting.\n2. The stable material structure that belongs to the survey record.\n3. One active condition that belongs to the red phase.\n4. The source of that condition.\n5. The path or relation through which it travels.\n6. The receiving subject, object, region, or surface.\n7. The visible consequence.\n8. Two or three transition sites where the records meet.\n\nChoose the active condition from the user's request. It may be physical, social, temporal, or perceptual. Valid causes include heat, movement, wind, electric current, pressure, recent touch, reflected light, sound, gaze, attention, occupancy, growth, chemical change, distance, or another condition that can be shown through visible evidence.\n\nIf the request names no active condition, use the strongest existing process already implied by the subject or action. Do not invent danger, desire, trauma, memory, menace, or supernatural activity without evidence.\n\nRed is a measurement channel, not a mood label. Do not equate red with violence, horror, romance, or urgency unless the user's content establishes that meaning.\n\nThe active condition must have one source, one route or relation, and one consequence. Do not scatter red accents without a causal structure.\n\nCONTENT CONTROL\n\nPreserve the user's explicit subject, count, identity requirements, action or state, setting, era, clothing, objects,",
+    "title": "Redphase Survey Prompt Generator",
+    "description": "A detailed system prompt for creating structured image prompts based on the Redphase Survey visual system, utilizing a dual-record logic of scene occupancy and active conditions.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1784618421126_zq7aq7_HNrV2vbXgAA3MWd.jpg",
+      "https://cms-assets.youmind.com/media/1784618421528_a0o9ar_HNrV2wDXwAASDvL.jpg",
+      "https://cms-assets.youmind.com/media/1784618421072_762tvp_HNrV2vbWMAAfIl3.jpg",
+      "https://cms-assets.youmind.com/media/1784618421734_pgxrry_HNrV2viXkAA_n-d.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 29263,
+    "content": "Extreme macro photograph of the {argument name=\"monitor area\" default=\"bottom-left corner of a computer monitor\"}, shot at a slight angle from the right. The sheet tab bar of a spreadsheet fills the frame — three tabs legible and sharp, reading \"{argument name=\"tab 1\" default=\"Quotes\"}\", \"{argument name=\"tab 2\" default=\"Copy of Invoices\"}\", and \"FINAL_dont_delete\", with \"FINAL_dont_delete\" the active white tab. Visible pixel structure in the screen surface at this magnification, a fine layer of dust, one small fingerprint smudge on the glass. Very shallow depth of field so the tabs at the left edge blur out. Soft window light from the side raking across the screen surface. Natural colour, macro photography, no device bezel visible beyond the lower edge.",
+    "title": "Macro Monitor Screen Texture",
+    "description": "An extreme macro photography prompt for capturing the pixel structure, dust, and spreadsheet details of a computer monitor.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1784618417941_4t9wn9_HNpR2vOWQAAMeul.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 29049,
+    "content": "I want to create an emotional design with handwritten characters. Beautiful and cute flowing characters drawn by a young woman. It has a scribbled diagonal accent but the cuteness wins out. Use only a white background as it will be used as a material. No decoration, the beauty of the characters stands out. The text is: {argument name=\"text to express\" default=\"please enter the text you want to express here\"}",
+    "title": "Emotional Handwritten Aesthetic Design",
+    "description": "A prompt designed to create beautiful, emotional handwritten text styles that look like they were drawn by a young woman. It focuses on a clean white background with a cute and flowing script aesthetic.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1784445182085_5p9kn4_HNf0RkTbwAAXE_5.png"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 28091,
+    "content": "Create a highly detailed clean vector illustration of a {argument name=\"subject\" default=\"young Kerala woman\"} in a {argument name=\"clothing style\" default=\"modern branded streetwear style\"}, inspired by high-end anime vector aesthetics with crisp linework, smooth gradient shading, bold color separation, and ultra-sharp edges. She is shown from a low-angle three-quarter portrait, upper body only, with her head turned slightly over her shoulder toward the viewer. She has a subtle confident smirk with relaxed lips, half-open calm eyes, slightly raised eyebrows, soft eyelids, and a composed, self-assured expression. Her posture is relaxed with shoulders naturally lowered, neck gently extended, and chin slightly raised. Long jet-black hair is tied into a messy low bun with loose flowing strands moving naturally in the wind. Add a few thin front bangs framing the face, gently falling across the forehead and cheeks without covering the eyes.She wears matte black circular ear gauges and a premium oversized black high-collar windbreaker jacket with realistic stitched seams, snap buttons, structured folds, smooth nylon texture, subtle reflective highlights, and premium outdoor fashion branding inspired by Kerala urban street culture. A bright golden-yellow premium backpack with padded straps is worn over both shoulders, matching the background while remaining visually distinct through contrast and shading.The {argument name=\"background color\" default=\"background is a completely flat vibrant golden-yellow (#FFD400)\"} with no texture, patterns, gradients, or objects, creating a bold minimalist composition. Use strong color harmony with deep black clothing, rich golden-yellow accents, natural warm skin tones, and clean neutral shadows. Apply high-contrast vector lighting from the upper left, producing sharp highlights on the face, hair, jacket, and backpack while maintaining smooth gradient transitions. Skin tones should be soft warm beige with gentle blush around the cheeks, nose, and ears. Hair should have glossy blue-black highlights. The overall image should have a premium modern branding aesthetic, ultra-clean composition, high visual impact, perfectly balanced negative space, ultra-high resolution, commercial-quality vector artwork, sharp silhouette, flawless proportions, and professional graphic design finish.",
+    "title": "Kerala Woman Anime Vector Illustration",
+    "description": "A clean, high-end vector illustration of a Kerala woman in modern streetwear with sharp linework and vibrant yellow background.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1783668712726_zietzu_HMzIqXRbQAAfsGM.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 27857,
+    "content": "Logo for '{argument name=\"country and tagline\" default=\"Living in Country: Tagline\"}' set against a backdrop of {argument name=\"landscape\" default=\"specific landscape or cityscape\"}. Utilize the {argument name=\"flag colors\" default=\"colors of the country's flag\"} and include imagery that represents [the country’s renowned aspects – cultural, culinary, natural, etc.], [desired style or mood]",
+    "title": "National Identity Logo Generator",
+    "description": "A specialized prompt designed to create clean, professional brand logos that incorporate specific country landscapes, flag colors, and cultural elements.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1783494607769_h5ss64_HMpL7TZXUAAs6yN.jpg",
+      "https://cms-assets.youmind.com/media/1783494608198_kfxme5_HMpL7hdWsAApWBg.jpg",
+      "https://cms-assets.youmind.com/media/1783494607814_y0pdbh_HMpL7wuWUAEPJpm.jpg",
+      "https://cms-assets.youmind.com/media/1783494608892_awq0c0_HMpL8AcXYAA2D3c.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 27532,
+    "content": "Transform this rough hand-drawn interior sketch into a realistic {argument name=\"interior style\" default=\"Scandinavian luxury interior\"}. Preserve the layout exactly while replacing the drawing with photorealistic architecture, {argument name=\"flooring type\" default=\"warm oak flooring\"}, premium furniture, soft daylight, elegant textures and magazine-quality interior photography.",
+    "title": "Sketch to Realistic Interior Transformation",
+    "description": "A prompt to transform hand-drawn room sketches into photorealistic Scandinavian luxury interiors with high-end textures.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1783149743581_ipb620_HMUUZ5-WIAAOV9w.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 27235,
+    "content": "a minimal flat animated scene of {argument name=\"subject\" default=\"something neutral but interesting\"}, {argument name=\"character count\" default=\"a single character\"}, pick an unusual animation style and palette. {argument name=\"art style\" default=\"Javanese style\"}.",
+    "title": "Minimal Flat Javanese Animation",
+    "description": "A prompt for generating stylized, minimal flat animated scenes with specific cultural aesthetics using Nano Banana 2 Lite.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1782892526285_6jxtjt_HMGXZNub0AA7OMa.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 27233,
+    "content": "Vercel {argument name=\"subject\" default=\"container ship\"} 8-bit",
+    "title": "8-Bit Tech Container Ship",
+    "description": "A prompt for generating stylized 8-bit pixel art of a shipping container, inspired by Vercel's branding.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1782892525119_7ma4ao_HMFAA5_bIAAwopT.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 27126,
+    "content": "Make a same object 100%. {argument name=\"style description\" default=\"Intricate multi-layered paper relief art with a luxurious handcrafted paper sculpture aesthetic, featuring strong dimensional 3D depth\"}. Built from dozens of individually cut paper layers stacked at varying heights to create pronounced shadows, realistic thickness, and sculptural volume. Smooth flowing contour lines divide every section into organic paper segments with clean precision. Surfaces display subtle handmade paper fibers, fine embossed grain, delicate cracked parchment textures, soft matte finish, and lightly pressed paper details. Raised elements cast natural ambient shadows, emphasizing the layered construction and realistic paper thickness. Decorative circular motifs, flowing organic curves, and elegant botanical-inspired shapes are integrated seamlessly throughout the composition. Rich color palette dominated by {argument name=\"color palette\" default=\"warm ivory, cream, soft beige, sand, muted gold, deep forest green, olive green, charcoal outlines, and vivid crimson red accents\"}. Lighting is soft and directional from above, enhancing every paper edge, bevel, elevation, and shadow to maximize the sculptural 3D effect. Highly refined handcrafted papercut artwork with premium gallery-quality craftsmanship, elegant composition, tactile layered textures, cinematic depth, and ultra-detailed dimensional realism. R {argument name=\"aspect ratio\" default=\"9:16\"}.",
+    "title": "Multi-Layered Paper Relief Sculpture",
+    "description": "A detailed prompt for generating intricate, three-dimensional paper relief artwork with luxurious textures and organic botanical shapes.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1782805349570_udhspx_HL8_0GAasAAfFiR.jpg",
+      "https://cms-assets.youmind.com/media/1782805349514_jwwz16_HL8_0bGa0AAHU34.jpg",
+      "https://cms-assets.youmind.com/media/1782805349417_m7urnc_HL8_0pCboAA13ag.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 25748,
+    "content": "masterpiece, realistic photo, landscape, {argument name=\"subject\" default=\"Aerial bamboo grove\"}, swirling canopy, {argument name=\"feature\" default=\"stone lanterns\"}, dappled emerald, summer breeze",
+    "title": "Realistic Aerial Bamboo Grove Landscape",
+    "description": "A realistic landscape prompt for generating an aerial view of a bamboo grove with stone lanterns and a swirling canopy under a summer breeze.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1781598286107_g4a8j6_HK4Zo6pbYAARktn.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 25753,
+    "content": "Replace {argument name=\"original object\" default=\"the simple arrangement of rectangular parallelepipeds\"} with {argument name=\"new subject\" default=\"a group of buildings\"} while keeping the UI as it is.",
+    "title": "Structural Image Inpainting Prompt",
+    "description": "An image transformation prompt used to replace simple blocks with complex buildings while keeping the UI elements static.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1781598288853_6wujdv_HK3O0sTa4AAtR04.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 24865,
+    "content": "{argument name=\"number\" default=\"30183\"} with a rainbow gradient, {argument name=\"style\" default=\"Cyberpunk\"}",
+    "title": "Cyberpunk Rainbow Impression Counter",
+    "description": "Generates a cyberpunk-style image featuring a specific numerical impression count with a rainbow gradient.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1781078033129_5nfa1t_HKaFKxpbUAAPGwp.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 24727,
+    "content": "A highly detailed, {argument name=\"art style\" default=\"stylized illustration of a majestic West Indian manatee carrying a quaint coastal village on its back, rendered in a clean, modern vector-art style\"}. The {argument name=\"subject\" default=\"manatee\"} is predominantly {argument name=\"color palette\" default=\"soft blue and white with intricate, swirling patterns in shimmering gold and deep navy blue along its body and tail\"}, giving it an ornate, almost ceremonial appearance. On its broad back rest several small, crisp white houses with steep, dark slate roofs, tiny windows glowing warmly, clustered around a tall lighthouse painted in bold black and gold stripes with a radiant beacon shining outward. The manatee gently floats in a calm, abstract suggestion of water at the bottom edge, while its tail fin is elaborately decorated with blue filigree patterns. The background is a plain, light beige color with subtle grain for texture, creating a serene, minimalist backdrop that makes the manatee and village stand out in sharp contrast.",
+    "title": "Majestic Manatee Village Illustration",
+    "description": "A stylized, detailed vector illustration of a manatee carrying a coastal village on its back.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780990829200_6ezk6p_HKSISX8XIAAUmUI.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 24572,
+    "content": "A {argument name=\"setting\" default=\"neon megacity transit control nexus\"} in an {argument name=\"style\" default=\"artistic cyberpunk style\"}",
+    "title": "Artistic Cyberpunk Neon Megacity",
+    "description": "A prompt for generating a futuristic cyberpunk scene featuring a neon-lit transit control nexus within a sprawling megacity.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780905989849_hezwee_HKOMptmaUAAX72n.png"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 24399,
+    "content": "A photorealistic mid-century modern interior scene featuring a young girl sitting naturally on a sculptural {argument name=\"furniture\" default=\"cream boucle sofa\"}. The girl has long, softly curled dark hair and is wearing a {argument name=\"outfit\" default=\"light green floral traditional outfit\"} with a sheer dupatta. She is centered in the frame, looking calmly at the camera with a gentle smile.\nThe interior is designed in authentic mid-century modern style: clean lines, warm natural wood tones, and minimalist architecture. Include a wooden coffee table with stacked design books, a ceramic bowl, and subtle decor. A brass arc floor lamp stands beside the sofa. In the background, a modern fireplace with textured stone or brick wall, and a framed abstract artwork.\nLarge floor-to-ceiling windows allow bright, cinematic natural sunlight to flood the room, casting soft shadows and highlighting textures—fabric, wood grain, and stone surfaces. Add indoor plants for warmth and realism.\nColor palette: warm neutrals, beige, tan, soft browns, muted greens.\nLighting: soft golden-hour sunlight, editorial interior photography style.\nCamera: eye-level shot, shallow depth of field, 50mm lens, ultra-detailed, high dynamic range.\nStyle: high-end editorial interior photography, ultra-realistic, natural skin tones, fine textures, no artificial or CGI look.",
+    "title": "Mid-Century Modern Interior Girl Portrait",
+    "description": "A high-end interior photography prompt featuring a young girl in traditional floral attire seated in an authentic mid-century modern living room.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780818198315_l8aznp_HKF-ZHqbAAARbCf.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 23407,
+    "content": "Portrait of a young woman sitting cross-legged on a {argument name=\"furniture\" default=\"modern gray sofa\"} in a bright contemporary living room, holding a {argument name=\"object\" default=\"gaming controller\"} and playfully sticking out her tongue at the camera. Long dark brown wavy hair, natural makeup, expressive blue eyes, casual black tie-front crop top and black leggings, layered gold necklaces. Soft natural daylight streaming through large windows, cozy {argument name=\"decor\" default=\"pink faux-fur blanket\"} draped over the couch, bouquet of pink roses on a side table, elegant crystal chandelier overhead, modern staircase in the background. Pink neon wall sign glowing behind her, relaxed playful mood, candid home interior photography, shallow depth of field, realistic skin texture, high detail, Sony A7R V, 50mm lens, f/1.8, cinematic lighting, ultra-realistic, editorial lifestyle photography, clean luxury apartment aesthetic, 8K quality.",
+    "title": "Playful Luxury Apartment Gaming Portrait",
+    "description": "A high-detail lifestyle photography prompt for a playful home interior shot of a woman with a gaming controller in a luxury setting.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780301406366_nx9yus_HJp5h8qaMAAlzj3.jpg",
+      "https://cms-assets.youmind.com/media/1780301406407_lk16vl_HJp5iEza8AABU4c.jpg",
+      "https://cms-assets.youmind.com/media/1780301406369_9gcjl7_HJp5iSwaYAE7Q1U.jpg",
+      "https://cms-assets.youmind.com/media/1780301407122_dswk9f_HJp5iaSa8AA-GOC.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 22962,
+    "content": "{\\n\"prompt\": \"Convert the uploaded image into a soft handcrafted paper-cut layered illustration style inspired by premium papercraft diorama aesthetics. Preserve the exact same person, pose, long wavy hair, clothing details, garden environment, trees, leaves, flowers, pathways, and classical columns from the uploaded image, but reinterpret everything as a cozy handcrafted layered paper artwork. Use smooth rounded shapes, simplified cute proportions, minimal facial features with tiny dot eyes, soft blush cheeks, and charming storybook-style expressions. Create stacked paper layers with strong dimensional depth, visible separation between layers, soft realistic shadows, and clean laser-cut paper edges. Add a distinct thick white outer outline around the main character like a realistic sticker border or layered cut-paper backing, clearly separating the subject from the background. The white border must appear like a real physical paper layer, not a glow effect. Use matte tactile textures resembling thick cardstock, craft foam, and premium colored paper. Apply a soft pastel color palette using muted greens, warm creams, light browns, beige tones, dusty pinks, and gentle neutral shades. Lighting should be soft, diffused, even, and calming, enhancing the layered-paper dimensional look without harsh contrast. Keep the environment whimsical, wholesome, elegant, playful, and visually soothing like a luxury children’s storybook illustration or handcrafted decorative paper art scene. Ultra detailed layered papercraft diorama, realistic paper texture, cozy aesthetic, premium handmade illustration style.\",\\n\\n\"negative_prompt\": \"photorealistic skin, sharp realistic eyes, harsh shadows, neon colors, glossy plastic texture, metallic surfaces, blurry details, extra people, distorted hands, text, watermark, low quality, messy edges, dark horror mood, realistic facial anatomy, overexposed lighting\",\\n\\n\"style\": \"handcrafted papercut diorama illustration\",\\n\"aspect_ratio\": \"4:5\",\\n\"quality\": \"high\",\\n\"lighting\": \"soft diffused lighting\",\\n\"texture\": \"matte layered cardstock paper\",\\n\"color_palette\": \"soft pastel muted tones\",\\n\"outline\": \"thick white layered paper border\"\\n}",
+    "title": "Layered Papercraft Diorama Prompt",
+    "description": "A complex structured prompt for creating 3D-effect handcrafted paper-cut illustrations with deep layers and soft textures.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780040642222_fufkrv_HJaHV5gaMAA9rux.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 22977,
+    "content": "A professional fashion brand mood board and style catalog layout titled \"{argument name=\"collection title\" default=\"AMZ COLLECTION - THE LYRA LINE\"}\". The clean, grid-style layout features a beautiful Brazilian-Italian female model with long, wavy dark brown hair and a radiant complexion. The catalog showcases versatile wardrobe options, including a floor-length emerald green velvet evening gown shown in different poses, a professional office look with a {argument name=\"blouse\" default=\"cream-colored silk bow blouse\"} and black wide-leg trousers, a corporate meeting outfit with a black dress and structured grey wool blazer, and a sophisticated draped {argument name=\"dress color\" default=\"plum-purple\"} cocktail dress. The design features elegant sections labeled \"STYLE FLEXIBILITY\", \"FULL LOOK GALLERY\", \"MOOD IMAGES\", and \"ACCESSORY COMPLEMENTS,\" which display minimalist silver jewelry like a geometric necklace, hoop earrings, and a sleek cuff ring. The overall aesthetic is highly editorial, sophisticated, and modern, using a color palette of rich jewel tones, charcoal greys, warm ivories, and minimal metallics set against a clean, neutral beige background.",
+    "title": "Fashion Brand Mood Board Layout",
+    "description": "A prompt for a professional fashion catalog grid layout featuring diverse outfits and elegant jewelry sections.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1780040650801_ez84da_HJZdhzRXEAA_K6I.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 22667,
+    "content": "{\\\"image_settings\\\": {\\\"aspect_ratio\\\": \\\"3:4\\\", \\\"resolution\\\": {\\\"width\\\": 1152, \\\"height\\\": 1536}}, \\\"prompt\\\": {\\\"identity_lock\\\": {\\\"reference\\\": \\\"input_photo\\\", \\\"preserve\\\": [\\\"face\\\", \\\"facial proportions\\\", \\\"eye shape\\\", \\\"nose\\\", \\\"lips\\\", \\\"skin tone\\\", \\\"skin texture\\\", \\\"hairline\\\", \\\"overall identity\\\"], \\\"rules\\\": [\\\"no face swap\\\", \\\"no beautify\\\", \\\"no smoothing\\\", \\\"no reshaping\\\", \\\"no AI look\\\"]}, \\\"scene\\\": {\\\"camera_angle\\\": \\\"high-angle downward shot, POV\\\", \\\"composition\\\": \\\"MacBook screen fills most of the frame, thin strip of physical keyboard visible at the bottom\\\", \\\"screen_surface\\\": [\\\"visible RGB pixel grid\\\", \\\"subtle moire effect\\\", \\\"micro dust on glass\\\", \\\"faint fingerprints\\\", \\\"soft ambient reflections\\\"]}, \\\"digital_interface\\\": {\\\"os\\\": \\\"macOS dark mode\\\", \\\"background_app\\\": {\\\"name\\\": \\\"{argument name=\"background app\" default=\"Spotify\"}\\\", \\\"view\\\": \\\"Liked Songs\\\", \\\"visible_tracks\\\": [{argument name=\"song list\" default=\"\\\"Blank Space – Taylor Swift\\\", \\\"Shake It Off – Taylor Swift\\\", \\\"Cruel Summer – Taylor Swift\\\", \\\"Love Story – Taylor Swift\\\"\"}]}, \\\"foreground_app\\\": {\\\"name\\\": \\\"Photo Booth\\\", \\\"state\\\": \\\"live preview window\\\", \\\"position\\\": \\\"floating, center-right\\\"}}, \\\"photo_booth_content\\\": {\\\"environment\\\": {\\\"room\\\": \\\"dim bedroom\\\", \\\"background\\\": \\\"off-white wall, rumpled bedding\\\", \\\"lighting\\\": \\\"low-light, nocturnal, cool screen glow mixed with warm skin tones\\\"}, \\\"subject\\\": {\\\"pose\\\": \\\"lying down, relaxed, candid\\\", \\\"expression\\\": \\\"natural, slightly relaxed\\\", \\\"outfit\\\": \\\"{argument name=\"outfit\" default=\"light-colored tank top\"}\\\", \\\"prop\\\": {\\\"item\\\": \\\"iPhone 15 Pro\\\", \\\"hand\\\": \\\"right hand\\\"}}}, \\\"realism_rules\\\": [\\\"this is a photo of a screen, not a screenshot\\\", \\\"raw smartphone photo look\\\", \\\"natural noise\\\", \\\"imperfect glass\\\", \\\"no studio lighting\\\", \\\"no HD polish\\\"]}, \\\"negative_prompt\\\": [\\\"screenshot\\\", \\\"flat UI\\\", \\\"perfect screen\\\", \\\"clean glass\\\", \\\"studio lighting\\\", \\\"beauty filter\\\", \\\"cartoon\\\", \\\"3d render\\\", \\\"painting\\\", \\\"watermark\\\", \\\"blurred face\\\"]}",
+    "title": "Realistic MacBook Screen POV",
+    "description": "A technical JSON-based prompt for generating a hyper-realistic photo-of-a-screen look, featuring a MacBook interface with music apps and personal bedroom lighting.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779867919646_8xxs8y_HJPsBRZWQAA-Yrr.jpg",
+      "https://cms-assets.youmind.com/media/1779867919605_lihhbn_HJPsBuCXwAAfeIj.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 22031,
+    "content": "2x2 grid, do this for {argument name=\"city name\" default=\"mecca\"} and 3 other cities: {\n  \"Scene_Aesthetic\": \"Physical Desktop Art Installation, Masterpiece Papercraft\",\n  \"Target_Location\": \"[CITY_NAME]\",\n  \"Geometry\": {\n    \"Structure\": \"Three interlocking, concentric circular tracks (Gyroscopic gimbal) made of thick ivory parchment.\",\n    \"Axis\": \"Resting upright on a vintage desk, casting complex circular shadows.\"\n  },\n  \"AI_Semantic_Inference\": {\n    \"Outer_Ring\": \"AI_INFER(The modern skyline and bridges of [CITY_NAME] folded out of the paper, pointing outward)\",\n    \"Inner_Rings\": \"AI_INFER(Historical districts and transit systems of [CITY_NAME] lining the inside of the rings, pointing inward toward the hollow center)\",\n    \"Texture\": \"Visible paper grain, delicate fold lines, sepia ink text stamped onto the flat surfaces.\"\n  }\n}",
+    "title": "Concentric Papercraft City Installation",
+    "description": "A structural papercraft art prompt that generates a complex gyroscopic gimbal installation representing a city's history and skyline.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1779520923268_djby16_HIzdweEWkAAMmws.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19782,
+    "content": "A hyper-realistic cinematic elevator mirror-selfie poster featuring a stylish young creator inside a luxury chrome elevator with reflective metallic walls, LED ceiling strips, glossy black floors, and moody ambient lighting. The subject wears a customizable high-fashion outfit inspired by luxury streetwear, futuristic techwear, or minimalist designer aesthetics. Clothing should include layered textures, premium fabrics, oversized silhouettes, accessories, and visually strong styling suitable for viral social-media fashion edits. The character takes a casual mirror selfie while holding a smartphone close to the mirror, creating realistic selfie-lens distortion with the phone appearing large in the foreground. One hand adjusts the jacket, chain, glasses, or bag strap naturally. Add cinematic reflections, subtle motion blur, realistic flash lighting, luxury shadows, detailed skin texture, and editorial-quality realism. Surround the composition with futuristic UI overlays: Floating notifications, Music-player widgets, Minimal app panels, Story-frame previews, Upload-progress bars, Glassmorphism elements, Social interaction popups. Overall mood: luxury creator lifestyle, mysterious, stylish, futuristic, internet-native, cinematic, premium fashion campaign energy. Negative Prompt: bad anatomy, extra fingers, blurry face, distorted reflections, broken elevator perspective, low realism, cartoon style, messy UI, unreadable text, low-detail clothing, warped proportions. A realistic cozy late-night mirror-selfie collage featuring a young creator inside a dimly lit bedroom studio with RGB ambient lighting, monitors glowing in the background, messy creative workspace energy, and soft cinematic shadows. The subject wears relaxed creator-fashion styling: oversized hoodie, loose sweatpants, layered jewelry, headphones, graphic tee, or casual streetwear. The selfie feels natural and spontaneous, captured during a late-night editing or content-creation session. Add: Floating Spotify-style music widgets, Camera-roll previews, Editing timeline overlays, Chat notifications, Social-media UI cards, Blur effects, Digital collage layers. Lighting should feel realistic with: phone flash, monitor glow, subtle grain, cinematic realism, slightly imperfect textures. Mood: creative chaos, relatable creator life, internet culture, authentic late-night productivity aesthetic. Negative Prompt: overexposed lighting, bad anatomy, fake reflections, low-quality textures, outdated UI, cartoon visuals, distorted hands, unrealistic proportions. A hyper-realistic airport mirror-selfie collage poster featuring a stylish digital creator inside a modern luxury airport terminal or private lounge with large glass windows, polished floors, travel bags, LED lighting, and premium travel aesthetics. The subject wears customizable travel-fashion styling: designer hoodie, varsity jacket, cargos, sneakers, layered accessories, sunglasses, or luxury casualwear. The selfie is captured casually in an airport restroom or reflective glass surface while holding a smartphone with realistic wide-angle perspective distortion. Include: Flight information UI, Boarding-pass overlays, Map widgets, Notification popups, Travel-app interface elements, Floating photo previews, Minimal futuristic graphics. Lighting: bright airport LEDs mixed with realistic smartphone flash. Mood: successful creator lifestyle, travel aesthetic, modern digital nomad, luxury social-media campaign vibes. Negative Prompt: distorted airport reflections, blurry face, low-detail clothing, unrealistic hands, messy composition, outdated graphics, low realism, duplicate subject.",
+    "title": "Cinematic Elevator Selfie Fashion Poster",
+    "description": "A detailed prompt for creating high-fashion cinematic mirror selfies inside luxury elevators, featuring customizable outfits and futuristic social media UI overlays.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778657222271_a60cpm_HIJjNCjXUAApA6X.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19777,
+    "content": "A hyper-realistic modern mirror-selfie collage poster featuring a stylish young digital creator in a clean contemporary bathroom, studio restroom, or minimalist apartment space with soft ambient lighting, reflective mirrors, and a premium aesthetic environment.\n\nThe subject wears a fully customizable fashion-forward outfit based on user preference, such as oversized streetwear, techwear, casual luxury, minimal monochrome fits, or bold expressive creator styling. The clothing should feel modern, visually striking, and suitable for a social-media fashion campaign or personal brand identity.\n\nCustom branding should be incorporated based on the user’s selected name or identity, appearing as subtle high-end fashion details like embroidered logos, stitched labels, sleeve patches, or minimalist brand marks integrated naturally into the outfit design.\n\nPose & Composition\n\nThe character is taking a close-range mirror selfie with a smartphone held near the mirror, creating realistic wide-angle distortion where the phone appears large in the foreground. The pose is natural and candid — one hand relaxed at the side, in a pocket, or adjusting clothing.\n\nThe posture leans slightly toward the mirror, giving a spontaneous, behind-the-scenes lifestyle feel.\n\nExpression\n\nConfident, relaxed, slightly playful expression with natural imperfections — like a real unplanned social-media moment captured during a daily routine.\n\nOptional Lifestyle Elements\n\nPersonalizable props depending on theme:\n\nPhone accessories\n\nHeadphones or earbuds\n\nCoffee or drink cup\n\nFashion accessories (rings, chains, watches)\n\nCamera or creative tools\n\nSkincare or grooming items\n\nVisual Style Direction\n\nA 2025 modern digital collage aesthetic inspired by:\n\nCreator economy visuals\n\nLuxury editorial photography\n\nSocial media interface design\n\nMobile app UI overlays\n\nClean futuristic branding aesthetics\n\nAvoid retro, outdated, or cluttered visual styles.\n\nUI & Graphic Layers\n\nSurround the subject with floating modern interface elements:\n\nGlassmorphism UI panels\n\nNotification bubbles\n\nApp-style story frames\n\nMinimal profile cards\n\nSwipe and interaction indicators\n\nFloating social media widgets\n\nSoft blurred background overlays\n\nClean modular content blocks\n\nAdd a subtle glow outline or color edge lighting around the subject for separation.\n\nLighting & Camera\n\nRealistic smartphone flash effect\n\nSoft ambient indoor lighting\n\nSharp mirror reflections\n\nSlight lens distortion for realism\n\nHigh-detail skin and fabric textures\n\nSubtle film grain\n\nCinematic editorial finish\n\nUltra-realistic rendering\n\nOverall Mood\n\nStylish, authentic, playful, internet-native, expressive, modern, premium, creative, and slightly chaotic in a natural lifestyle way.\n\nTypography\n\nInclude customizable branding text such as:\n\nUser’s name or creator tag\n\nPersonal brand identity\n\nShort slogan or motto\n\nTypography should be clean, modern, minimal, and seamlessly integrated into the poster design.\n\nNegative Prompt\n\nbad anatomy, extra fingers, distorted hands, broken reflection, blurry face, low quality, duplicate subject, messy UI, unreadable typography, outdated interface style, cartoon rendering, overexposed lighting, warped perspective, incorrect proportions, distorted phone, low-detail clothing, unrealistic textures, awkward pose, low realism",
+    "title": "Digital Creator Mirror Selfie Poster",
+    "description": "A creative collage-style prompt for generating social-media inspired mirror selfies with customizable fashion and UI elements.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778657219858_abc4jz_HIIxv-VXkAEIjRh.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19617,
+    "content": "{\"meta\":{\"image_quality\":\"High\",\"image_type\":\"Screenshot\",\"resolution_estimation\":\"1920x1080\",\"file_characteristics\":{\"compression_artifacts\":\"Low\",\"noise_level\":\"Low\",\"lens_type_estimation\":\"Medium telephoto\"}},\"global_context\":{\"scene_description\":\"A medium shot of a young woman with long dark hair sitting in a crowded arena, likely a basketball game, with an ESPN broadcast overlay at the bottom and top right.\",\"environment_type\":\"Indoor arena\",\"time_of_day\":\"Unknown\",\"weather_atmosphere\":\"Crowded, indoor lighting\",\"lighting\":{\"source\":\"Artificial arena lighting\",\"direction\":\"Frontal, slightly overhead\",\"quality\":\"Soft, diffused\",\"color_temperature\":\"Neutral\"},\"color_palette\":{\"dominant_hex_estimates\":[\"#1a1a1a\",\"#333333\",\"#ffffff\"],\"accent_colors\":[\"#fdb927\",\"#007a33\"],\"contrast_level\":\"Medium\"}},\"composition\":{\"camera_angle\":\"Eye-level\",\"framing\":\"Medium shot\",\"depth_of_field\":\"Shallow\",\"focal_point\":\"The woman's face\",\"symmetry_type\":\"None\",\"rule_of_thirds_alignment\":\"Woman's face is positioned in the upper right quadrant\"},\"objects\":[{\"id\":\"obj_001\",\"label\":\"Woman\",\"category\":\"Person\",\"location\":{\"relative_position\":\"Center\",\"bounding_box_percentage\":{\"x\":0.25,\"y\":0.05,\"width\":0.5,\"height\":0.9}},\"dimensions_relative\":\"Large\",\"distance_from_camera\":\"Near\",\"pose_orientation\":\"Facing slightly right, head turned towards the left\",\"material\":\"Skin, hair, fabric\",\"surface_properties\":{\"texture\":\"Smooth skin, wavy hair\",\"reflectivity\":\"Low\",\"micro_details\":\"Natural skin texture, subtle makeup\",\"wear_state\":\"N/A\"},\"color_details\":{\"base_color_hex\":\"#d2b48c\",\"secondary_colors\":[\"#000000\"],\"gradient_or_pattern\":\"None\"},\"interaction_with_light\":{\"shadow_casting\":\"Soft shadows under chin and nose\",\"highlight_zones\":\"Cheekbones, nose bridge, lips\",\"translucency\":\"None\"},\"text_content\":null,\"relationships\":[]},{\"id\":\"obj_002\",\"label\":\"ESPN Scoreboard Overlay\",\"category\":\"UI elements\",\"location\":{\"relative_position\":\"Bottom center\",\"bounding_box_percentage\":{\"x\":0.25,\"y\":0.85,\"width\":0.5,\"height\":0.15}},\"dimensions_relative\":\"Medium\",\"distance_from_camera\":\"Overlay\",\"pose_orientation\":\"Flat\",\"material\":\"Digital graphic\",\"surface_properties\":{\"texture\":\"Smooth\",\"reflectivity\":\"None\",\"micro_details\":\"Sharp typography\",\"wear_state\":\"N/A\"},\"color_details\":{\"base_color_hex\":\"#000000\",\"secondary_colors\":[\"#fdb927\",\"#007a33\",\"#ffffff\"],\"gradient_or_pattern\":\"Solid color blocks\"},\"interaction_with_light\":{\"shadow_casting\":\"None\",\"highlight_zones\":\"None\",\"translucency\":\"Slightly opaque\"},\"text_content\":{\"raw_text\":\"{argument name=\"scoreboard text\" default=\"LAL 51 BOS 43 2ND 3:31 24 NBA WEDNESDAY\"}\",\"font_style\":\"Sans-serif\",\"font_weight\":\"Bold\",\"text_case\":\"Uppercase\",\"alignment\":\"Center\",\"color_hex\":\"#ffffff\"},\"relationships\":[]}],\"background_details\":{\"texture\":\"Blurred crowd\",\"patterns\":\"None\",\"lighting_behavior\":\"Out of focus\",\"additional_elements\":[\"Person holding a plastic cup on the left\",\"Person on the right\"]}}",
+    "title": "NBA Broadcast Stadium Screenshot",
+    "description": "A complex structured prompt designed to simulate an ESPN broadcast screenshot of a woman in a basketball arena crowd.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778570424885_79ec0a_HIBLNbhaIAAs2Td.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 19181,
+    "content": "Create a premium 3:4 vertical cinematic AR poster of a stylish young man holding a smartphone. He looks modern, confident, and effortlessly cool, with sharp facial features, slightly messy hair, and a relaxed yet focused expression, as if curating his music vibe. His posture is natural - one hand holding the phone, the other slightly relaxed, conveying calm control and presence. Surround him with floating 3D music UI cards (inspired by Spotify / Apple Music), placed at different depths - some in the foreground partially blurred, some behind him, creating strong cinematic depth and motion. Each UI card must clearly display one track title (sharp, readable, correctly spelled): Midnight Riot, Electric Bones, Wild Echo, Neon Crash, Broken Anthem, Black Voltage, Storm Signal, Rebel Hearts. Design the UI in a glassmorphism style — translucent frosted glass panels with soft rounded corners, subtle reflections, glowing neon edges ({argument name=\"neon colors\" default=\"red, pink, electric blue tones\"}). Each card includes: Album artwork (dark, moody, cyberpunk aesthetic) Play/pause buttons Progress bars Animated equalizer bars Audio waveforms Lighting: studio-quality cinematic lighting with soft glow from the floating UI illuminating his face naturally. Add subtle rim light around his silhouette for depth. Maintain realistic skin tones with a premium editorial look. Background: {argument name=\"background\" default=\"dark, moody gradient\"} (charcoal, deep red, black tones) with soft haze and minimal noise, keeping it clean and high-end. Style & Quality: ultra-realistic, high-end fashion-tech aesthetic, cinematic composition, 8K resolution, sharp focus on the subject with depth-of-field blur on some UI elements. Slight motion blur on a few cards for realism. Overall vibe: futuristic, premium, music-driven identity - like a digital DJ or vibe curator controlling sound in a cinematic tech universe.",
+    "title": "Futuristic Music UI Poster",
+    "description": "A futuristic poster prompt featuring a young man surrounded by floating 3D music UI cards with glowing neon edges.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778397987414_m7r3w2_HH0h2fJXYAYFK7-.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 18753,
+    "content": "do this for {argument name=\"subject\" default=\"Mecca\"} : G = (V, E) where:\n\nV = {\n  v₁: Torus(radius=R, layers=8, material={argument name=\"material\" default=\"wood\"}),\n  v₂: City(landmarks={l₁...lₙ}, scale=1:100),\n  v₃: Workshop(tools, bench, lighting),\n  v₄: Camera(macro, f/2.8, 45°)\n}\n\nE = {\n  (v₁, v₂, \"surface_embedding\"),\n  (v₁, v₃, \"located_in\"),\n  (v₁, v₄, \"viewed_by\"),\n  (v₂.landmarks, v₁.layers, \"distributed_across\")\n}\n\nConstraints:\n  ∀l ∈ landmarks: position(l) ∈ torus_surface\n  ∀layer ∈ layers: wood_grain(layer) ≠ wood_grain(layer+1)\n  \nGenerate(G) → Image",
+    "title": "Abstract Geometric City Visualization",
+    "description": "A unique graph-based prompt structure for visualizing complex scenes. This example uses mathematical nodes and edges to define layers, materials, and camera settings for a stylized representation of a city.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1778223947796_fiujdy_HHhn4uFXQAAnD25.jpg",
+      "https://cms-assets.youmind.com/media/1778223948770_3iqcox_HHhn4uEWAAkKJfH.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 18022,
+    "content": "{argument name=\"architecture\" default=\"Azuchi-Momoyama style castle tower\"} {argument name=\"drawing type\" default=\"floor plan, blueprint, and area notation\"}",
+    "title": "Azuchi-Momoyama Castle Floor Plan",
+    "description": "Generates architectural floor plans and blueprints of an Azuchi-Momoyama period castle tower with area measurements.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777879975641_x5xfcp_HHXvlvZbIAAx2Vv.jpg",
+      "https://cms-assets.youmind.com/media/1777879975639_k8ece2_HHXvpEfaIAA4JZQ.jpg",
+      "https://cms-assets.youmind.com/media/1777879975563_wq2x21_HHXvrl0bYAAGKe3.jpg",
+      "https://cms-assets.youmind.com/media/1777879976311_eoeuls_HHXvuSRaMAArqpn.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 17741,
+    "content": "Design a square (1:1) aesthetic personal color analysis board in a {argument name=\"board style\" default=\"soft beige, minimalist style\"}.\n\nPlace a close-up portrait of a {argument name=\"subject\" default=\"young woman\"} at the center, featuring natural makeup and soft daylight lighting.\n\nAdd the title “Personal Color Analysis” above or beside the portrait.\n\nInclude a section labeled “Color Profile: {argument name=\"color profile\" default=\"Soft Autumn (warm, muted, soft)\"}”.\n\nDisplay clean color swatches featuring warm neutrals, earthy tones, muted greens, soft blues, and terracotta shades.\n\nAdd a “Best Colors” grid along with an “Avoid Colors” grid highlighting overly bright or cool tones.\n\nAt the bottom, include 4–5 small images of the same woman styled in outfits that match the recommended palette.\n\nUse a refined combination of elegant serif and minimal sans-serif fonts, soft shadows, and a clean editorial layout.\n\nThe background should be warm beige with a subtle texture.\n\nEnsure the design feels spacious, polished, and Instagram-ready.",
+    "title": "Minimalist Personal Color Analysis Board",
+    "description": "A clean and aesthetic prompt for designing a professional personal color analysis board with color swatches and style recommendations.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777792418587_b0s512_HHTpbd7aAAAwyIc.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 17773,
+    "content": "A collection of {argument name=\"object\" default=\"whimsical, hand-drawn teacups and mugs\"} are scattered across a textured, {argument name=\"background color\" default=\"light beige\"} background. Each cup features a unique design, with many adorned with floral motifs, berries, hearts, or abstract patterns. The color palette is soft and cheerful, with pastels and earthy tones dominating. Some cups are filled with dark liquid, suggesting tea or coffee, while others are empty. The overall style is charming and illustrative, evoking a sense of cozy comfort and artistic flair.",
+    "title": "Whimsical Hand-Drawn Teacups",
+    "description": "A charming and illustrative prompt for a collection of unique, floral-patterned teacups and mugs.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777792440476_ztqpuu_HHBJtnrbAAAbpBN.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 17488,
+    "content": "A highly realistic, photorealistic close-up macro photography of a used, physically weathered {argument name=\"bank name\" default=\"JP Morgan Chase\"} bank check resting on a scratched wooden desk. The check is completely filled out with a blue ballpoint pen. The handwriting is distinctly human, messy, slightly slanted, and uniquely stylized with inconsistent ink pressure and minor skips, completely avoiding any uniform or computerized script-font appearance. The date written is '{argument name=\"date\" default=\"May 1, 2026\"}'. The signature on the bottom right clearly reads '{argument name=\"signature\" default=\"iqrasaifiii\"}' in a fast, authentic, slightly erratic cursive scrawl. The paper of the check shows significant physical wear and tear: noticeable horizontal and vertical folding creases, bent and frayed corners, faint dirt smudges, and subtle, faded coffee spots. A cheap black ballpoint pen lies slightly out of focus in the background. Shot on DSLR, 50mm lens, natural daylight casting soft, realistic shadows, 8k resolution.",
+    "title": "Photorealistic Bank Check Macro",
+    "description": "A hyper-realistic macro photography prompt for a weathered, used JP Morgan Chase bank check with authentic human handwriting.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777705635773_3m09um_HHPk2sRaEAEjJxv.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 17481,
+    "content": "This aesthetic identity board features a central full-body portrait of a {argument name=\"subject\" default=\"woman in a tailored sage green power suit\"} and satin camisole, characterized by a \"clean girl\" aesthetic with glowing skin and minimalist silver jewelry. The composition is a curated 9:16 lifestyle collage that balances {argument name=\"color palette\" default=\"soft mint, lavender, and neutral tones\"}. Surrounding the central figure are high-quality, close-up vignettes: premium skincare bottles in pastel packaging, an iced matcha latte on a white marble surface, textured linen fabrics, and a plush lavender throw blanket. Elegant serif typography overlays the image with phrases like \"{argument name=\"text\" default=\"Effortless Elegance\"}\" and \"Clean Beauty Rituals,\" all set against a clean, airy background with soft, natural lighting that emphasizes a luxurious, minimalist brand identity.",
+    "title": "Clean Girl Aesthetic Identity Board",
+    "description": "A detailed layout prompt for a minimalist lifestyle mood board focusing on the 'clean girl' aesthetic and luxury branding.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777705632807_frkp70_HHPTIShW4AA1ry7.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 17262,
+    "content": "highly detailed 3d game start screen of a {argument name=\"game type\" default=\"fitness game\"}, on the left side the the {argument name=\"character\" default=\"woman sits on a fitness bench with some fitness weights on the ground and a towl over the bench\"}, on the right side are {argument name=\"UI elements\" default=\"5 skill buttons that let the player select some special powers\"}, on a white background",
+    "title": "Fitness Game Start Screen UI Render",
+    "description": "A detailed prompt for creating a 3D game start screen layout featuring a character on a bench and UI elements on the right.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777620062836_fbh6hr_HHLBkuvboAAYTQa.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 16170,
+    "content": "A prompt for a wide horizontal frame composed of five distinct vertical panels, each featuring a different character with specific styling, including customizable background colors and foreground elements.",
+    "title": "Multi-Panel Cinematic Studio Shot",
+    "description": "A prompt for a wide horizontal frame composed of five distinct vertical panels, each featuring a different character with specific styling.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777274447847_6n82rj_HG1GnvVa8AAUsXg.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 15131,
+    "content": "Subject: image1 - use the uploaded photo as the exact face reference (100% facial accuracy). Do not change facial features, proportions, skin texture, or expression. Keep my natural dark facial tone, no extra brightness or whitening.\n\n(Use face reference exactly.)\n\nA dreamlike, movie-quality augmented-reality street scene. I am {argument name=\"pose\" default=\"leaning casually against a streetlight on an Indian city street, wearing an open yellow hoodie, black jeans, and white sneakers, holding a phone and looking at its screen\"}.\n\nAround me, multiple floating Spotify/Apple-Music style player cards orbit in full 3D space. Some cards appear in front, partially overlapping my body, while others float behind and beside me at varying depths. The UI cards have rounded corners, slight perspective tilt, translucent frosted-glass look, soft glowing edges, playback bars, and album art featuring songs by {argument name=\"artist\" default=\"[Artist Name]\"}.\n\nLighting is {argument name=\"lighting\" default=\"cool-to-neutral with preserved shadows, subtle cinematic bloom, and natural interaction between Ul glow and street lighting\"}. Foreground cards are sharp; distant cards softly blurred for depth. Medium-high contrast, realistic motion accents.\n\nPhotorealistic subject, central composition, seamless blend of real environment and AR visuals.",
+    "title": "AR Augmented Reality Street Scene",
+    "description": "A cinematic prompt that merges a real street scene with floating digital AR elements like music player cards, using a reference for facial accuracy.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1777014236208_kim2nc_HGlomLvaQAETCSv.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 14295,
+    "content": "geometric low-poly 3D art style made of triangles,\nclean vector-like lines,\nsoft pastel color palette,\nmodern minimalist wallpaper aesthetic,\nhigh resolution,\nsoft lighting,\nsmooth shading,\n{argument name=\"character description\" default=\"cute and charming character\"},\ncentered composition",
+    "title": "Low-Poly Geometric Character Art",
+    "description": "A stylized prompt for creating minimalist low-poly 3D characters using geometric triangles and soft pastel colors.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1776841962246_8azhgm_HGZgK-JbgAAFRl2.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13414,
+    "content": "A surreal, ethereal landscape at night featuring a serene body of water reflecting a large, luminous full moon in the center of a misty, soft-toned sky. On the left, a {argument name=\"plant\" default=\"delicate tree with glowing pink and cyan blossoms\"} stands on a rocky islet. On the right, an {argument name=\"building\" default=\"ornate, multi-tiered traditional Japanese pagoda\"} glows with vibrant pink and teal neon light, perched atop a rocky formation. A graceful, arched bridge connects the two islets, also glowing with a soft pink light. The entire scene is bathed in a {argument name=\"style\" default=\"dreamy, vaporwave-inspired color palette of soft pinks, cyans, and hazy grays\"}, with a gentle, magical atmosphere, high-detail 3D render, cinematic lighting, and a calm, tranquil aesthetic.",
+    "title": "Surreal Vaporwave Night Landscape",
+    "description": "A surreal night landscape prompt featuring a Japanese pagoda, glowing trees, and a full moon in a vaporwave color palette.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1776495135615_grnwcw_HGG-DD6XwAAeyLo.jpg",
+      "https://cms-assets.youmind.com/media/1776495135641_47rudu_HGG-DsCWAAA7-tb.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13384,
+    "content": "Charming 3D paper-cut illustration, smooth rounded shapes, minimal character features ({argument name=\"character features\" default=\"dot eyes, blush cheeks\"}), {argument name=\"border style\" default=\"thick white sticker border\"} around subjects, {argument name=\"color palette\" default=\"gentle pastel colors\"}, soft even lighting, matte tactile art paper texture.",
+    "title": "3D Paper-Cut Illustration Style",
+    "description": "This prompt transforms photos into charming 3D paper-cut illustrations using the Nano Banana model. It features a tactile paper texture, soft pastel colors, and a distinctive sticker-style border, perfect for creating stylized avatars or creative ID photos.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1776237760395_6swed3_HF4CSdqasAQMxSJ.jpg",
+      "https://cms-assets.youmind.com/media/1776237760646_n0as4x_HF4CSeFasAcEerx.jpg",
+      "https://cms-assets.youmind.com/media/1776237760672_g3fcfb_HF4CSdtasAE68ly.jpg",
+      "https://cms-assets.youmind.com/media/1776237761611_8citrz_HF4CSd7bwAAHq6L.jpg"
+    ],
+    "needReferenceImages": true
+  },
+  {
+    "id": 13383,
+    "content": "{argument name=\"style\" default=\"line art illustration style\"},\nclean black outline, no color fill,\n{argument name=\"line weight\" default=\"thin and consistent\"} line weight,\nwhite background,\nminimalist, highly refined,\nvector-like precision, high resolution",
+    "title": "Line Art Illustration Style",
+    "description": "A professional-grade prompt for creating clean, minimalist line art with vector-like precision.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1776237760378_zucc1q_HF1Yd3AasAAEASu.jpg",
+      "https://cms-assets.youmind.com/media/1776237760354_ofwawy_HF1Ye6GbgAAZs6d.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13372,
+    "content": "3d squishy kawaii letters from {argument name=\"letters\" default=\"A to Z\"}, {argument name=\"theme\" default=\"candyland\"} theme, glossy pastel colors, soft rounded shapes like marshmallows and gummies, each letter made of different sweets such as lollipops, jelly beans, cotton candy, and chocolate, arranged in alphabetical order on a {argument name=\"background\" default=\"plain blank white background\"}, soft studio lighting, high-resolution, ultra-cute and whimsical style",
+    "title": "3D Squishy Candy Alphabet",
+    "description": "A whimsical prompt for creating cute, candy-themed 3D letters from A to Z with soft textures and pastel colors.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1776137526525_pcxhx1_HFusUUNW8AA8eKX.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13377,
+    "content": "A bold, experimental typographic poster featuring the large centered word '{argument name=\"text\" default=\"design\"}' in lowercase, ultra-heavy geometric sans-serif font with thick slab-like strokes and perfectly rounded edges, reminiscent of modern brutalist. The same letters are being shown blurry under the main letters and duplicated many times going down with a blur effect. {argument name=\"background colors\" default=\"Blue and purple soft gradient\"} background.",
+    "title": "Experimental Typographic Poster",
+    "description": "A graphic design prompt for a brutalist typographic poster featuring blurred geometric text and gradients.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1776137530321_zpd5sb_HFuTOJobUAAEAu8.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13172,
+    "content": "Create a premium smartphone wallpaper in vertical 9:16 format, Japanese minimal editorial aesthetic, quiet and refined, inspired by modern notebook-grid design and clean infographic illustration. Background: warm off-white paper texture with a very subtle light gray square grid across the whole canvas, soft natural paper feel, elegant and minimal, bright but not stark white. Composition: very sparse layout with large breathing room for a phone wallpaper, asymmetric balance, main illustration placed slightly below center, top and upper-middle area kept relatively open and calm, include only {argument name=\"subject\" default=\"one young woman\"} in a warm, friendly composition, she should be clearly integrated with the central machine and actively operating it, overall look should feel sophisticated, mature, and uncluttered. Illustration: a single minimalist isometric line-art machine / creative device / abstract workflow object, drawn with thin dark gray to black outlines, soft cream and pale gray fills, tiny accent details in muted {argument name=\"accent color\" default=\"sage green\"}, small geometric blocks or paper-like modules flowing through the device, include only one young woman placed naturally around the central object, interacting closely and affectionately, she should feel friendly, relaxed, and connected, show exactly one person only, no adults other than her, she should be clearly using and operating the machine, for example, her hand gently pressing or adjusting a control panel or button while receiving paper-like modules coming from the machine, her hands and posture should visibly connect to the machine so the interaction feels intentional and functional, the machine and the woman should feel like one unified scene rather than separate elements, the illustration should feel intelligent, stylish, and poetic rather than technical, high-end Japanese design taste, simple, neat, and tasteful. Typography: include only one very short English phrase \"{argument name=\"text\" default=\"WEEL\"}\" set in bold modern sans-serif typography, clean black text, medium size, not oversized, placed with strong alignment and generous spacing, the text should feel like part of the design, not like a poster headline. Color palette: off-white, soft gray, black, muted sage green only, low-saturation, elegant contrast, avoid loud neon colors. Style direction: minimal, premium, calm, smart, editorial, Japanese taste, beautiful negative space, clean geometry, subtle stationery mood, slightly futuristic but warm, suitable as a stylish wallpaper for adults. Output quality: ultra clean composition, high clarity, refine",
+    "title": "Premium Minimalist Japanese Smartphone Wallpaper",
+    "description": "A highly detailed prompt for generating a premium, minimalist, editorial-style smartphone wallpaper (9:16 vertical format) with a Japanese aesthetic. It features a single young woman interacting with a subtle, abstract machine illustration, using a muted sage green and off-white color palette. The prompt is a customized version of a template found online, demonstrating how to change elements like the subject, text, and color.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1775198518685_iyrf90_HE4uDBcawAApJY5.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13133,
+    "content": "① Menu Style\nCreate a diagram of \"5 selected {argument name=\"side job skills\" default=\"skills to earn money with side jobs\"}\" in the style of a Japanese restaurant menu. Use vertical writing, brush strokes, and a Japanese paper-like background.\n\n② Prescription Style\nCreate a diagram of \"{argument name=\"AI usage\" default=\"correct way to use AI\"}\" in the style of a medical prescription. Include an Rx mark, white background, and medical blue color.\n\n③ Boarding Pass Style\nCreate a diagram of \"{argument name=\"departure point\" default=\"life without AI\"} → {argument name=\"destination\" default=\"life after AI utilization\"}\" in the style of an airline boarding pass. Include departure point, destination, and a barcode.\n\n④ Dashboard UI Style\nCreate a diagram comparing the performance of \"{argument name=\"comparison subjects\" default=\"ChatGPT vs Claude\"}\" in the style of a dark mode dashboard UI. Include KPI cards and graphs.\n\n⑤ Diagnosis Chart Style\nCreate a diagnosis chart for \"{argument name=\"AI tool\" default=\"AI tool\"}\" that suits you, in the style of a Yes/No branching flowchart. Include arrows and color-coded nodes.",
+    "title": "Diagram Style Prompts for Nano Banana 2",
+    "description": "A set of five style templates for generating stable, structured diagrams using Nano Banana 2. Users can replace the content within brackets to create different types of visual aids, such as menu-style lists, prescription forms, boarding passes, dashboard UIs, and diagnostic flowcharts.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1775112288342_6nv3zt_HE2QnibbMAAf3cI.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13091,
+    "content": "format: \"self_intro_sheet\"\ntext:\n  title: \"Self-Introduction Sheet\"\n  fields:\n    名前: \"{argument name=\"name\" default=\"Your Name\"}\"\n    家族: \"{argument name=\"family\" default=\"Father, Mother, Younger Sister\"}\"\n    血液型: \"Type A\"\n    趣味: \"Cafe hopping, taking photos\"\n    性格: \"Cheerful, laughs often, works at my own pace\"\n    休日は: \"Going out with friends, searching for cute shops\"\n    好きな物: \"Pudding, strawberries, cute clothes, stylish cafes\"\n    好みのタイプ: \"Kind and considerate person\"\n    嫌いな物: \"Bitter things\"\n    一言メッセージ: \"I'd be happy if we could be friends\"\n\nfont:\n  title: \"Fluffy, thick rounded font\"\n  label: \"Gentle handwriting style\"\n  body: \"Pop, easy-to-read rounded font\"\n  color: \"Pink\"\n\nvibe:\n  overall: \"Yumekawa (dreamy cute), girly, gentle and sweet atmosphere\"\n  colors:\n    - \"Pink\"\n    - \"Lavender\"\n    - \"Baby Blue\"\n  decorations:\n    - \"Dog\"\n    - \"Bear\"\n    - \"Lion\"\n    - \"Cat\"",
+    "title": "Self-Introduction Sheet Generation Prompt for Nano Banana Pro",
+    "description": "This is a detailed structured prompt template designed for the nano banana image generation model to create a 'Self-Introduction Sheet' image. It specifies the format, text fields (name, family, hobbies, personality, etc.), font styles, color palette, and decorative elements to achieve a 'Yumekawa' (dreamy cute) and girly aesthetic.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1775026365180_zwse4r_HExDlwsaoAABrCX.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 13068,
+    "content": "editorial magazine spread concept, muted earth tones with raw linen texture, large-scale serif headline at 200pt in deep charcoal, off-white margins with subtle grain overlay, geometric rule lines in terracotta, cinematic side lighting casting long shadows across the layout, high-end editorial print finish",
+    "title": "Editorial Magazine Spread Concept Prompt",
+    "description": "An editorial design prompt idea for Nano Banana Pro, focusing on creating a magazine spread concept using muted earth tones, raw linen texture, large serif headlines, geometric rule lines in terracotta, and cinematic side lighting for a high-end print finish.",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1775026354421_z0tyoq_HEtEaA3WQAAO6i-.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
+    "id": 12812,
+    "content": "Dessert (AR shopping UI)\n\nPOV shot inside a modern supermarket aisle, hands holding a small gourmet dessert with cream and berries, futuristic augmented reality (AR) interface overlay showing calories, sugar, fats, freshness score, expiry date, and recipe suggestions, soft depth of field, cinematic lighting, ultra-realistic, 4K, tech-inspired UI, clean glassmorphism design\n\n⸻\n\n2. Apple (AR nutrition UI)\n\nFirst-person view in a grocery store holding a fresh red apple, augmented reality interface displaying calories, vitamin C, fiber, freshness bar, and recipe ideas, minimal futuristic UI panels floating around the object, bright supermarket lighting, shallow depth of field, hyper-realistic, modern tech aesthetic, 4K\n\n⸻\n\n3. Orange Soda Bottle (AR data UI)\n\nPOV shot of hands holding an orange soda bottle in a supermarket aisle, futuristic AR overlay showing calories, sugar content, caffeine level, freshness score, expiry date, and drink recipes, sleek holographic interface, glassmorphism UI, vibrant colors, cinematic lighting, ultra-detailed, photorealistic, 4K",
+    "title": "Augmented Reality UI Overlays on Food Items",
+    "description": "A set of three prompts for Gemini Nano Banana Pro to generate photorealistic POV shots of hands holding food items (dessert, apple, soda bottle) in a supermarket, overlaid with futuristic Augmented Reality (AR) user interfaces displaying nutritional and product data. The prompts specify lighting, depth of field, and UI design style (glassmorphism, tech-inspired).",
+    "sourceMedia": [
+      "https://cms-assets.youmind.com/media/1774594318134_6o2j64_HEUklRCbwAA9iI-.jpg",
+      "https://cms-assets.youmind.com/media/1774594318201_ep44op_HEUklQ8a0AA5Sl-.jpg",
+      "https://cms-assets.youmind.com/media/1774594318277_sb6yht_HEUklQzaIAA41v1.jpg"
+    ],
+    "needReferenceImages": false
+  },
+  {
     "id": 12723,
     "content": "CONCEPT:\nA futuristic architectural blueprint of the Burj Khalifa projected as a glowing hologram, actively constructing itself in mid-air through robotic precision and digital intelligence.\n\nSUBJECT:\nA semi-transparent holographic version of the Burj Khalifa floating above a sleek glass smart table. The lower portion appears as a glowing blue wireframe blueprint, while the upper portion transitions into a fully photorealistic skyscraper with reflective glass panels and metallic structure as it builds itself in real-time.\n\nENVIRONMENT:\nA high-tech architectural lab with a dark, minimal interior. The blueprint originates from a glossy black glass table embedded with touch controls, glowing UI panels, and soft neon edges. Subtle reflections of the hologram appear on the table surface. Background is clean, futuristic, and slightly blurred.\n\nSTRUCTURAL DETAILS:\nThe central spire rises as glowing gridlines before solidifying into steel and glass  \nTiered setbacks of the tower assemble through hovering robotic drones  \nGlass facade panels lock into place with precise alignment and reflections  \nLaser beams scan and map each level during construction  \nSmall AI drones orbit around the structure, actively building and welding components  \nMaterials transition from holographic light into real textures — polished glass, steel beams, and concrete core  \nFloating UI overlays show measurements, grids, and rotating architectural schematics\n\nVISUAL MECHANIC:\nThe blueprint exists in layered form — base is a glowing grid, mid-layer is a semi-transparent wireframe, and top layer is fully realistic. Certain sections flicker between hologram and solid material, emphasizing the transformation.\n\nLIGHTING:\nDark environment with strong neon blue and cyan holographic glow. Subtle rim lighting created by reflections from the hologram. Volumetric light beams and soft particles enhance depth.\n\nCAMERA & LENS:\nShot on a full-frame camera, 35mm lens. Slight low-angle perspective to emphasize scale and height. Sharp focus on the hologram core with slight background blur.\n\nCOMPOSITION:\nVertical 2:3 format. The Burj Khalifa hologram is centered, rising upward. UI elements orbit symmetrically around it. Clean negative space enhances the futuristic aesthetic.\n\nSTYLE & MOOD:\nFuturistic, cinematic, high-tech, and minimal. Feels like advanced AI-driven architecture and innovation. Clean, premium, and visually striking.\n\nDETAILS:\nUltra-sharp holographic lines, glowing particles, realistic glass reflections, smooth transitions between digital and physical materials, micro UI details, 8K resolution, HDR, cinematic color grading with blue/cyan tones and deep contrast.\n\nNEGATIVE PROMPT:\ncluttered environment, low detail, dull lighting, messy UI, cartoon style, distorted structure, blurry hologram, watermark",
     "title": "Futuristic Holographic Burj Khalifa Blueprint",

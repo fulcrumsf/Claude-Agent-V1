@@ -31,4 +31,5 @@ Use this when Tony wants to analyze a channel, build a repeatable content format
 - [[Story-Ideation]]
 - [[Video-Production-Workflow]]
 - [[007_Resource_Library/Tutorials/I-Blew-Up-a-YouTube-Channel-in-24-Hours-with-AI.md]]
+- [[Humanizer]]
 

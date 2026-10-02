@@ -2793,3 +2793,13 @@ Wiki/Asset Note: `000_Wiki/AI-Agents/Jev-OpenRouter-Router.md`
 Cross-links: added the new tutorial to the existing wiki page's Source Tutorials section; index updated.
 Artifacts: `Transcript.srt`, `Claude-Code-And-OpenRouter-Auto-Pick-The-Best-Model-Transcript.md`, `Claude-Code-And-OpenRouter-Auto-Pick-The-Best-Model-Tutorial.md`, `ANALYSIS.md`, `Build-Prompts-From-Description.md`, `Original-Ingest-Note.md`.
 Incomplete: `Video.mp4` and keyframes not produced because the sandbox could not resolve YouTube; no OCR attempted. Actual YouTube description and linked build prompts/plan not fetched for the same network reason; no content fabricated. Model-name typos in the captured transcript were corrected to Kimi 3 and GPT Sole 5.6.
+
+## [2026-10-01] ingest | Find Skills (Vercel Labs agent skill)
+Source: `000_Ingest/Find Skills — AI Agent Skill by Vercel Labs.md` → `007_Resource_Library/Tools/Find-Skills-Vercel-Labs-Agent-Skill.md`
+Wiki/Asset Note: `000_Wiki/AI-Agents/Find-Skills.md`
+Cross-links: added to `000_Wiki/AI-Agents/Claude-Code-And-Karpathys-System-10000-Skills.md`. Skill installed to `001_Architecture/Skills/find-skills/` + mirrored to `.agents/skills/find-skills/` (SkillSpector static scan 12/100 SAFE).
+
+## [2026-10-01] ingest | Humanizer (blader/humanizer agent skill)
+Source: `000_Ingest/bladerhumanizer Agent skill that removes signs of AI-generated writing from text.md` → `007_Resource_Library/Tools/Humanizer-Blader-Agent-Skill.md`
+Wiki/Asset Note: `000_Wiki/Content-Strategy/Humanizer.md`
+Cross-links: added to `000_Wiki/Content-Strategy/YouTube-Channel-Growth-Playbook.md` and `000_Wiki/Content-Strategy/Story-Ideation.md`. Skill installed to `001_Architecture/Skills/humanizer/` + mirrored to `.agents/skills/humanizer/` (SkillSpector static scan 42/100 CAUTION, all findings false positives).

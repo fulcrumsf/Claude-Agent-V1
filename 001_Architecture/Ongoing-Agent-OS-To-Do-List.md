@@ -20,14 +20,7 @@
 
 ### 🚀 Domain 1: Multi-Agent Infrastructure, Routing & Core Skills (Save Tokens & Automate)
 
-| Rank | Type | Tool / Resource Link | Score | What It Does in Agent-OS | Status / Notes |
-| :---: | :---: | :--- | :---: | :--- | :--- |
-| **1** | ⚙️ | **The Always-On Global AI Gateway**<br>*(Local Daemon + Jev via OpenRouter API)* | **99** | **Master Router.** Runs silently on `localhost:4000` (or `localhost:3456`). Auto-routes every harness (Antigravity, Claude Code, Codex) via Jev in ~70ms to the cheapest competent model. Zero manual switching, zero 5-hour lockouts. | 🔴 Architecture plan ready; pending implementation |
-| **2** | 🟢 | [`Find Skills — AI Agent Skill by Vercel Labs`](file:///Users/tonymacbook2025/Documents/Agent-OS/000_Ingest/Find%20Skills%20%E2%80%94%20AI%20Agent%20Skill%20by%20Vercel%20Labs.md) | **96** | **Meta-Skill Discovery.** Teaches agents to autonomously search (`npx skills find`) and install skills from `skills.sh` mid-task without stopping. | 🟢 Ready in `000_Ingest/` |
-| **3** | 🟢 | [`blader/humanizer`](file:///Users/tonymacbook2025/Documents/Agent-OS/000_Ingest/bladerhumanizer%20Agent%20skill%20that%20removes%20signs%20of%20AI-generated%20writing%20from%20text.md) | **94** | **AI Writing De-Roboter.** Strips AI markers, robotic cadence, and corporate fluff from video scripts, Etsy descriptions, and articles so they read 100% human. | 🟢 Ready in `000_Ingest/` |
-| **4** | 🔴 | [`How to Use Jev Instantly (OpenRouter)`](file:///Users/tonymacbook2025/Documents/Agent-OS/007_Resource_Library/Tutorials/How-To-Use-Jev-Instantly-In-Claude-Code-With-OpenRouter/How-To-Use-Jev-Instantly-In-Claude-Code-With-OpenRouter-Tutorial.md) | **92** | **YouTube Guide (Ingested).** Complete tutorial on connecting Claude Code to Jev directly through OpenRouter API with zero waitlist. | 🟢 Fully ingested & packaged |
-| **5** | 🔴 | [`Jev will 10x your Claude Code`](file:///Users/tonymacbook2025/Documents/Agent-OS/007_Resource_Library/Tutorials/Jev-Will-10x-Your-Claude-Code/Jev-Will-10x-Your-Claude-Code-Tutorial.md) | **88** | **YouTube Guide (Ingested).** Pre-flight hook router setup (`tools/jev-router/router.mjs`) to offload mechanical triage and preserve tokens. | 🟢 Fully ingested & packaged |
-| **6** | 🔴 | [`This NEW Jev + Claude OS`](file:///Users/tonymacbook2025/Documents/Agent-OS/007_Resource_Library/Tutorials/This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow/This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow-Tutorial.md) | **85** | **YouTube Guide (Ingested).** Multi-agent personal OS architecture uniting Jev, Claude Opus, Codex, and Obsidian RAG memory. | 🟢 Fully ingested & packaged |
+*All Domain 1 items are done; see ✅ Completed below. (Ranks are not renumbered.)*
 
 ---
 
@@ -83,6 +76,19 @@
 
 ---
 
+## ✅ Completed
+
+- ✅ ⚙️ **Option B model routing** (Jev routing hook + `delegate.py` chore worker) — live and tested in Claude Code, Codex (CLI + Desktop), Gemini CLI, and Antigravity. (2026-09-27/28; moved here from "Also built/changed tonight" below.)
+- ✅ ⚙️ **#1 — Always-On Global AI Gateway** — originally spec'd as a literal `localhost` daemon that every harness calls into; delivered instead via Option B's per-harness Jev routing hooks (no standalone daemon, hooks live inside each harness's own config). Same underlying goal achieved — auto-route every harness to the cheapest competent model, zero manual switching — just a different architecture than originally envisioned. Marking done on that basis; flag if a literal standalone daemon is still separately wanted.
+- ✅ 🔴 **#4 — How to Use Jev Instantly (OpenRouter)** — YouTube guide on connecting Claude Code to Jev through the OpenRouter API, no waitlist. Fully ingested and packaged in `007_Resource_Library/Tutorials/How-To-Use-Jev-Instantly-In-Claude-Code-With-OpenRouter/`; synthesized into `000_Wiki/AI-Agents/Jev-OpenRouter-Router.md`. (Ingested 2026-09-27, wikified 2026-09-28; moved here 2026-10-01.)
+- ✅ 🔴 **#5 — Jev will 10x your Claude Code** — YouTube guide on the pre-flight hook router that offloads mechanical triage to Jev. Fully ingested and packaged in `007_Resource_Library/Tutorials/Jev-Will-10x-Your-Claude-Code/`; synthesized into the same Jev wiki page. (Ingested 2026-09-27; moved here 2026-10-01.)
+- ✅ 🔴 **#6 — This NEW Jev + Claude OS** — YouTube guide on a multi-agent personal OS uniting Jev, Claude Opus, Codex and Obsidian RAG memory. Fully ingested and packaged in `007_Resource_Library/Tutorials/This-NEW-Jev-Claude-OS-Just-Changed-Every-AI-Workflow/`; synthesized into the same Jev wiki page. (Ingested 2026-09-27; moved here 2026-10-01.)
+- ✅ 🟢 **#2 — Find Skills (Vercel Labs)** — meta-skill for searching skills.sh and installing skills with `npx skills`. Ingested (`007_Resource_Library/Tools/Find-Skills-Vercel-Labs-Agent-Skill.md`, wiki `000_Wiki/AI-Agents/Find-Skills.md`) and installed in `001_Architecture/Skills/find-skills/` + `.agents/skills/find-skills/`. SkillSpector static scan 12/100 SAFE (only unpinned-`npx` notes). Use pinned `npx -y skills@1.7.0 ... --agent claude-code` for installs; see `001_Architecture/Skills/Skill_Install_Rules.md`. (2026-10-01.)
+- ✅ 🟢 **#3 — blader/humanizer** — skill that strips AI-writing tells from scripts, listings and articles. Ingested (`007_Resource_Library/Tools/Humanizer-Blader-Agent-Skill.md`, wiki `000_Wiki/Content-Strategy/Humanizer.md`) and installed (v3.1.0) in `001_Architecture/Skills/humanizer/` + `.agents/skills/humanizer/`; answers to `/humanizer`. SkillSpector static scan 42/100 CAUTION, all findings false positives (example prose and README install lines). (2026-10-01.)
+- ✅ 🟢 **NVIDIA SkillSpector** (not on the ranked list; added alongside #2/#3) — security scanner for agent skills. CLI `skillspector` v2.12.0 via `uv tool install`; `/skillspector` skill in `001_Architecture/Skills/skillspector/` + `.agents/skills/skillspector/`. Now the standard gate before any skill install. (2026-10-01.)
+
+---
+
 ## Part 2: Jev Future Ideas (added 2026-09-28, after Option B build)
 
 Grounded in real, already-documented pain points — not built yet, logged for later:
@@ -121,7 +127,6 @@ Tony saw a tutorial screenshot proposing a "skill + agent that acts as a model s
 
 ## Also built/changed tonight (2026-09-27/28), for context when reviewing this list
 
-- Option B model routing (Jev routing hook + `delegate.py` chore worker) is live and tested in Claude Code, Codex (CLI + Desktop), Gemini CLI, and Antigravity — a different architecture than item #1 above (no `localhost` daemon; per-harness hooks instead), but the same underlying goal.
 - `delegate.py`'s chore worker now runs on `typesafe/jev-router` instead of `openrouter/auto` (Tony's explicit call: quality over a fixed cheap-model ceiling; the real safety net is now the monthly OpenRouter cap, not a model-family restriction).
 - The official `typesafe-ai` skill and a workspace-customized `openrouter-jev-calls` skill (routes Jev calls through OpenRouter instead of TypeSafe's own direct API) are both installed and confirmed live in Claude Code, Codex, and Gemini CLI.
 - A frontier-enforcement system (force real delegation to a stronger model, not just hint at it) was built, found unsafe on review, and rolled back to the safe hint-only state. The code is parked, untouched, at `001_Architecture/Scripts/route_gate.py` / `frontier.py` plus `001_Architecture/Plans/Frontier_Enforcement_Plan.md` — not wired into anything live.
@@ -237,3 +242,12 @@ Live: `001_Architecture/Scripts/lab_plan_draft.py` + `test_lab_plan_draft.py` (1
 **Both headless CLI auths checked live and found broken** — not routed around silently: `gemini -p` has zero auth configured (no OAuth creds, no API key); `claude -p` (the programmatic flag specifically) returns an expired-OAuth error despite normal interactive `claude` login working fine. Real architecture fix, not a workaround: `/lab-plan`'s Opus review step uses Claude Code's own Agent tool directly (spawns `opus-standard`) instead of shelling out to a CLI flag — this doesn't depend on the broken `-p` auth at all, and is arguably more reliable than the flag-based approach would have been anyway.
 
 **Not yet done, explicitly out of scope for this build:** `/lab-build`, `/lab-run`, `/lab-promote` (next, in that order, per the locked build sequence). Codex's trigger (would use `frontier.py`, already proven elsewhere) and Gemini's trigger (blocked on the auth gap above) — not wired. **Nobody has run a real `/lab-plan` yet end-to-end including the live Opus review step** — the draft-script half was tested for real tonight, but the Opus-review half (spawning `opus-standard`, scoring, locking) has only been traced/reasoned through, never actually executed in a live session. Tony should run one real `/lab-plan <question>` to confirm that half works as written before trusting it fully.
+
+### Two new plans from a parallel Antigravity session (2026-09-30), not yet reviewed or built
+
+Written outside this Claude Code session's own work — flagged, not vetted. Live in `001_Architecture/Plans/`:
+
+- **`Multi_Agent_Bridge_MCP_Slack_Plan.md`** — "Multi-Agent Bridge (MCP + Slack)" plan. Three-phase roadmap: **Phase 1** (this plan's actual scope) is a Core Bridge + Slack War Room — an `agent-bridge-mcp` MCP server plus Antigravity/Codex worker scripts so agents can be dispatched and monitored from Slack. Phase 2 (department action APIs/autonomous tool handlers) and Phase 3 (the Command Center visual dashboard below) are future, out of scope for Phase 1.
+- **`Agent_OS_Command_Center_Dashboard_Roadmap.md`** — "Agent-OS Command Center Visual Dashboard" roadmap. A 6-module web dashboard (war room/agent chat, video pipeline hub, social/TikTok Shop desk, e-commerce matrix, brand/affiliate sites, resource library/ingest inspector) with a phased rollout plan and tech-stack direction.
+
+Needs: a real read-through and review pass (these were written by a parallel session, not checked against this workspace's actual conventions/tools), then a decision on priority relative to `/lab-build`/`/lab-run`/`/lab-promote` and the rest of this list.

@@ -29,3 +29,4 @@ Use this as a reference when Tony wants to reproduce the workflow or understand 
 - [[Prompt-Best-Practices]]
 - [[Cinematic-Styles]]
 - [[Content-Strategy-Framework]]
+- [[Humanizer]]
