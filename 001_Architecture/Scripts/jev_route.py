@@ -12,6 +12,8 @@ Timeouts: 1.0 s per Jev request, plus a 1.5 s wall-clock guard on the whole hook
 Off switch: create the file ~/.agent_os_router_off
 Also skipped when the environment variable AGENT_OS_DELEGATE_WORKER is set (non-empty) —
 this stops a delegate.py worker (Task 4) from recursively triggering its own routing.
+Paper trail (2026-10-06): also hands each prompt to action_log.py (the "why" for the
+action log) and runs its tracked-file deletion sentinel. Both are fail-silent.
 """
 from __future__ import annotations
 
@@ -216,12 +218,38 @@ def _run() -> int:
     if not isinstance(payload, dict):
         return 0
     start = time.time()
-    d = decide(prompt_from(payload, harness))
+    prompt = prompt_from(payload, harness)
+    trail_prompt(harness, payload, prompt)
+    d = decide(prompt)
     log(harness, d, int((time.time() - start) * 1000))
     out = render(harness, hint_for(d, harness) if d else None)
     if out:
         print(out)
+        sys.stdout.flush()
+    trail_deletions(harness, payload, prompt)
     return 0
+
+
+def trail_prompt(harness: str, payload: dict, prompt: str) -> None:
+    """Paper trail (2026-10-06): record the prompt -- the "why" behind later tool calls -- in
+    Agent-OS-Actions.jsonl. Runs even when routing is off or inside a delegate worker.
+    Can never raise or change the hint."""
+    try:
+        import action_log
+        action_log.record_prompt(harness, payload, prompt)
+    except Exception:
+        pass
+
+
+def trail_deletions(harness: str, payload: dict, prompt: str) -> None:
+    """Deletion sentinel, once per real prompt (after the hint is out, so it never delays it)."""
+    if not (prompt or "").strip():
+        return
+    try:
+        import action_log
+        action_log.check_deletions(harness, payload)
+    except Exception:
+        pass
 
 
 if __name__ == "__main__":

@@ -8,6 +8,17 @@ from unittest import mock
 
 import jev_route
 
+_ACTION_LOG_ENV = mock.patch.dict("os.environ", {"AGENT_OS_ACTION_LOG": "off"})
+
+
+def setUpModule():
+    # Keep test prompts out of Tony's real paper trail (action_log.py, 2026-10-06).
+    _ACTION_LOG_ENV.start()
+
+
+def tearDownModule():
+    _ACTION_LOG_ENV.stop()
+
 
 def fake_response(route="chore", conf=0.9, multi=0.1):
     body = {"answers": {

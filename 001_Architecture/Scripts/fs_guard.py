@@ -17,6 +17,11 @@ Protocol: reads the hook JSON on stdin. Block = reason on stderr + exit 2 (all t
 harnesses honor this). Claude "ask" = permissionDecision JSON on stdout + exit 0.
 Known gaps: scripts run from files (python3 foo.py) are not inspected; Codex apply_patch
 file deletions are not hookable. Test: python3 fs_guard.py --self-test
+
+Paper trail (2026-10-06): every call is also handed to action_log.record_tool(), which
+writes state-changing calls and every deny/ask (with target, session, subagent) to
+~/Library/Logs/Agent-OS-Actions.jsonl. Purely additive: it cannot change a verdict, and if
+action_log.py is missing or fails, the guard behaves exactly as before.
 """
 from __future__ import annotations
 
@@ -27,6 +32,11 @@ import shlex
 import sys
 import time
 from pathlib import Path
+
+try:  # paper-trail logger; optional, the guard never depends on it
+    import action_log
+except Exception:  # pragma: no cover
+    action_log = None
 
 AGENT_OS = Path("/Users/tonymacbook2025/Documents/Agent-OS")
 TEMP_PREFIXES = ("/tmp/", "/private/tmp/", "/var/folders/", "/private/var/folders/")
@@ -303,13 +313,24 @@ def log(harness: str, tool_name: object, decision: str) -> None:
         pass
 
 
+def trail(harness: str, raw: object, payload: dict, v: Verdict | None) -> None:
+    """Hand the call to the paper-trail logger. Can never raise or change the verdict."""
+    if action_log is None:
+        return
+    try:
+        action_log.record_tool(harness, raw, payload, v.kind if v else "allow", v.reason if v else "")
+    except Exception:
+        pass
+
+
 def main() -> int:
-    harness = sys.argv[sys.argv.index("--harness") + 1] if "--harness" in sys.argv else "claude"
+    harness =sys.argv[sys.argv.index("--harness") + 1] if "--harness" in sys.argv else "claude"
     try:
         payload = json.load(sys.stdin)
     except Exception:
         log(harness, None, "parse_error")
         return 0
+    raw = payload
     if harness == "antigravity":
         payload = normalize_antigravity(payload)
     if not isinstance(payload, dict):
@@ -317,6 +338,7 @@ def main() -> int:
         return 0
     tool_name = payload.get("tool_name")
     v = evaluate(payload)
+    trail(harness, raw, payload, v)
     if v is None:
         log(harness, tool_name, "allow")
         return 0
@@ -400,7 +422,58 @@ def self_test() -> int:
         failures += not ok
         print(f"{'PASS' if ok else 'FAIL'}  expected={expected!s:5} got={got!s:5}  {tool}: {str(tin)[:90]}")
     print(f"\n{len(cases) - failures}/{len(cases)} passed")
-    return 1 if failures else 0
+    return 1 if failures + trail_self_test() else 0
+
+
+def trail_self_test() -> int:
+    """Paper-trail cases: what fs_guard hands action_log ends up in the log (synthetic payloads,
+    written to a temp file, never the real log). Returns the failure count."""
+    import tempfile
+    if action_log is None:
+        print("FAIL  paper trail: action_log.py could not be imported")
+        return 1
+    AO = str(AGENT_OS)
+    cases = [
+        # (harness, raw payload, expect a line?, expected fields)
+        ("claude", {"tool_name": "Write", "tool_input": {"file_path": AO + "/TOOLBOX.md"}, "cwd": AO,
+                    "session_id": "s1", "agent_id": "a1", "agent_type": "opus-standard"},
+         True, {"action": "write", "decision": "allow", "session": "s1", "agent_type": "opus-standard"}),
+        ("claude", {"tool_name": "Bash", "tool_input": {"command": "rm -rf 000_Wiki"}, "cwd": AO,
+                    "session_id": "s2"}, True, {"action": "shell", "decision": "deny", "command": "rm -rf 000_Wiki"}),
+        ("claude", {"tool_name": "Bash", "tool_input": {"command": "git status && ls -la"}, "cwd": AO},
+         False, {}),
+        ("codex", {"tool_name": "apply_patch", "tool_input": {"command": "*** Begin Patch\n*** Update File: "
+                   "TOOLBOX.md\n@@\n-a\n+b\n*** End Patch"}, "cwd": AO, "session_id": "c1", "turn_id": "t9",
+                   "model": "gpt-x"}, True, {"action": "patch", "paths": [AO + "/TOOLBOX.md"], "turn": "t9"}),
+        ("antigravity", {"toolCall": {"name": "write_to_file", "args": {"TargetFile": AO + "/Brand_New_Ag/x.md"}},
+                         "workspacePaths": [AO], "conversationId": "g1"}, True,
+         {"action": "write", "decision": "ask", "session": "g1"}),
+        ("claude", {"tool_name": "Read", "tool_input": {"file_path": AO + "/TOOLBOX.md"}, "cwd": AO}, False, {}),
+    ]
+    failures = 0
+    td = tempfile.mkdtemp(prefix="fs_guard_trail_")  # left for the OS to clear: no deletes, even in tests
+    logf = os.path.join(td, "actions.jsonl")
+    old = os.environ.get("AGENT_OS_ACTION_LOG")
+    os.environ["AGENT_OS_ACTION_LOG"] = logf
+    try:
+        for harness, raw, expect_line, fields in cases:
+            before = open(logf).read().count("\n") if os.path.exists(logf) else 0
+            payload = normalize_antigravity(raw) if harness == "antigravity" else raw
+            trail(harness, raw, payload, evaluate(payload))
+            lines = open(logf).read().splitlines() if os.path.exists(logf) else []
+            got_line = len(lines) > before
+            rec = json.loads(lines[-1]) if got_line else {}
+            ok = got_line == expect_line and all(rec.get(k) == v for k, v in fields.items())
+            failures += not ok
+            print(f"{'PASS' if ok else 'FAIL'}  trail {harness}:{payload.get('tool_name')} "
+                  f"logged={got_line} {({k: rec.get(k) for k in fields} if fields else '')}")
+    finally:
+        if old is None:
+            os.environ.pop("AGENT_OS_ACTION_LOG", None)
+        else:
+            os.environ["AGENT_OS_ACTION_LOG"] = old
+    print(f"\npaper trail: {len(cases) - failures}/{len(cases)} passed")
+    return failures
 
 
 if __name__ == "__main__":
