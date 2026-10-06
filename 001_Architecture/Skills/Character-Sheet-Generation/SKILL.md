@@ -114,7 +114,7 @@ python3 scripts/title_sheet.py <sheet.png> --kind character|creature|prop --name
 - **Why the name matters:** video prompts refer to the sheet by it ("image 1 = Pistol Shrimp 1 sheet"), so the label is what ties the reference to the subject.
 - **Look:** same dark presentation-board style as the environment sheet (`Environment-Sheet-Generation`, "Sheet presentation template"). Renderer: `scripts/build_reference_sheet.py`; `title_sheet.py` is the one-command wrapper.
 - **Panels inside the sheet:** minimum set per subject type (below), plus extra panels whenever the shot's action needs to see a detail (e.g. a subject swinging an axe → a panel of them holding it). Panels are never fewer than the minimum.
-- **Approved examples (reference for the look):** the Bicycle Courier and Vervet Monkey sheets in Neon Parcel `Productions/0002_Delivery-Wildlife-Encounters-Compilation/Shot-05-Vervet-Monkey-Shopfront-KE/Character_Sheets/` (the `*_Titled.png` files).
+- **Approved examples (reference for the look):** the Bicycle Courier and Vervet Monkey sheets in Neon Parcel `Productions/0002_Delivery-Wildlife-Encounters-Compilation/Production/Shot-05-Vervet-Monkey-Shopfront-KE/Character_Sheets/` (the `*_Titled.png` files).
 - **Checker status:** left/right hands can be measured with `Generic_Tools/check_sheet_hands.py` (v1, human hands only; see TOOLBOX for limits). Still unverified by any tool: extra fingers/deformity, animal anatomy, facing direction on close-ups. A human reviews those during iteration.
 
 ## JSON spec template (GLOBAL, 2026-09-21): one spec drives one prompt

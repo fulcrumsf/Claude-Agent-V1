@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-10-02
+created: 2026-10-06
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-10-02T00:33:01-04:00
+Generated: 2026-10-06T01:12:32-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -29,7 +29,6 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | --- | --- | --- |
 | imagegen | Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts.… | `001_Architecture/Skills/.system/imagegen/SKILL.md` |
 | openai-docs | Use for Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, customization, automations, and self-knowledge—including 'you,' 'your,' 'this app,' or 'th… | `001_Architecture/Skills/.system/openai-docs/SKILL.md` |
-| plugin-creator | Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, valid manifest defaults, and personal-marketplace entr… | `001_Architecture/Skills/.system/plugin-creator/SKILL.md` |
 | review-agent | Perform a read-only, defect-first review of a specified code change and return every actionable finding. Use when another agent delegates review of uncommitted changes, a base-bra… | `001_Architecture/Skills/.system/review-agent/SKILL.md` |
 | skill-creator | Create or update a Codex skill with appropriately scoped instructions and any needed supporting resources. | `001_Architecture/Skills/.system/skill-creator/SKILL.md` |
 | skill-installer | Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skil… | `001_Architecture/Skills/.system/skill-installer/SKILL.md` |
@@ -43,6 +42,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | director-packet-framework | Use when a complex cinematic, episodic, or long-form scene needs coordinated character, wardrobe, prop, environment, spatial camera, and storyboard references before video generat… | `001_Architecture/Skills/Director-Packet-Framework/SKILL.md` |
 | environment-sheet-generation | Use whenever a video production has a location that appears in more than one scene and needs to look identical every time — "build an environment sheet", "location reference sheet… | `001_Architecture/Skills/Environment-Sheet-Generation/SKILL.md` |
 | gpt-image-2-prompting-guide | Use whenever writing or reviewing a prompt for OpenAI's GPT-Image-2 (image generation/editing) via kie.ai or the OpenAI API directly. Triggers on "write a GPT-Image-2 prompt", "ge… | `001_Architecture/Skills/GPT-Image-2-Prompting-Guide/SKILL.md` |
+| higgsfield-genjutsu | API reference and usage guide for Higgsfield's Genjutsu Motion Transfer model (video2video motion transfer using image references). Use when Tony asks to transform/restyle an exis… | `001_Architecture/Skills/Higgsfield-Genjutsu/SKILL.md` |
 | Motion-Graphics-Compositing | Use whenever a beat needs an animated diagram, infographic, data-viz, or collage-style motion graphic — never ask a video-generation model (Seedance or otherwise) to animate this… | `001_Architecture/Skills/Motion-Graphics-Compositing/SKILL.md` |
 | neon-parcel-longform-compilation | Use when Tony asks to create a Neon Parcel long-form animal compilation, analyze reference animal videos for Neon Parcel, or generate Shorts from a Neon Parcel long-form compilati… | `001_Architecture/Skills/Neon_Parcel_Longform_Compilation/SKILL.md` |
 | neon-parcel-longform-compilation-v2 | Use when building a Neon Parcel long-form animal compilation on the v2 architecture — a versioned duplicate of Neon_Parcel_Longform_Compilation (v1), which remains untouched and i… | `001_Architecture/Skills/Neon_Parcel_Longform_Compilation_v2/SKILL.md` |
@@ -184,7 +184,10 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | jobs-to-be-done | Discover what customers truly need by analyzing the "job" they hire your product to do. Use when the user mentions "customer discovery", "why customers churn", "what job does this… | `001_Architecture/Skills/jobs-to-be-done/SKILL.md` |
 | json-canvas | Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files, creating visual canvases, mind maps, flowcharts, or wh… | `001_Architecture/Skills/json-canvas/SKILL.md` |
 | lab | Background reference for Tony's /lab system (/lab-plan, /lab-build, /lab-run, /lab-promote) - a middle lane where a picked cheap OpenRouter model drafts and builds new things in a… | `001_Architecture/Skills/lab/SKILL.md` |
+| lab-build | Claude Code only. Runs when Tony types /lab-build [plan folder] - a cheap picked OpenRouter model builds a locked /lab-plan inside a network-off sandbox and a git worktree under 0… | `001_Architecture/Skills/lab-build/SKILL.md` |
 | lab-plan | Claude Code only. Runs when Tony types /lab-plan <question> - a cheap picked OpenRouter model drafts a build plan read-only, then an opus-standard subagent scores the raw draft 0-… | `001_Architecture/Skills/lab-plan/SKILL.md` |
+| lab-promote | Claude Code only. Runs when Tony types /lab-promote [project, or his own description of what is being promoted] - the last /lab step. Takes a build Tony graded 80+ in /lab-run, co… | `001_Architecture/Skills/lab-promote/SKILL.md` |
+| lab-run | Claude Code only. Runs when Tony types /lab-run [project] - Tony's own first real use of a build that /lab-build already cleared (score 80+), with real network and real paid APIs… | `001_Architecture/Skills/lab-run/SKILL.md` |
 | launch-strategy | When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,' 'Product Hunt,' 'feature release,' 'announcement… | `001_Architecture/Skills/launch-strategy/SKILL.md` |
 | lead-magnets | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentions "lead magnet," "gated content," "content upgra… | `001_Architecture/Skills/lead-magnets/SKILL.md` |
 | lean-startup | Design MVPs, validated learning experiments, and pivot-or-persevere decisions using Build-Measure-Learn. Use when the user mentions "MVP scope", "validated learning", "pivot or pe… | `001_Architecture/Skills/lean-startup/SKILL.md` |

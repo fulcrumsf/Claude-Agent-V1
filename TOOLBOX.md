@@ -44,12 +44,14 @@ Every harness starts each prompt on its own cheap default model; a shared Jev ca
 
 ---
 
-## `/lab` — OpenRouter middle lane (2026-09-30, `/lab-plan` built, Claude Code only)
+## `/lab` — OpenRouter middle lane (2026-09-30, `/lab-plan` built; 2026-10-03, `/lab-build`, `/lab-run` and `/lab-promote` built, all four commands exist; Claude Code only)
 
 A separate lane from Model Routing above: for non-chore, multi-step builds (new tools/pipelines), a deliberately-picked cheap OpenRouter model drafts first, inside hard containment, with Opus reviewing and scoring every step before anything reaches the real workspace. Explicit trigger only — Jev never routes into `/lab`. Full design: `001_Architecture/Ongoing-Agent-OS-To-Do-List.md`, "Part 4". Build state + file contracts: `001_Architecture/Skills/lab/SKILL.md`.
 
 - **`/lab-plan <question>`** (built, Claude Code only) — `001_Architecture/Scripts/lab_plan_draft.py` picks a model (small curated table, checked against OpenRouter's live list/prices each run) and drafts a plan read-only (`codex exec -s read-only`, no file writes possible). The `/lab-plan` command then spawns `opus-standard` to score the RAW draft 0-100, write acceptance checks for a future build, and lock (≥80) or regenerate once (<80) the plan — all mechanically verified after (`--verify`: raw draft hash unchanged, score written before the lock, ≥3 well-formed checks). Existing `OPENROUTER_CHORES_KEY`, $2/project cap (asks Tony before going over, never silent), $1 always reserved so Jev routing can't starve. Output: `001_Architecture/Lab/YYYY-MM-DD_Title_Slug/` (gitignored).
-- **`/lab-build`, `/lab-run`, `/lab-promote`** — not built yet.
+- **`/lab-build [plan folder]`** (built 2026-10-03, Claude Code only) — `001_Architecture/Scripts/lab_build.py` builds a locked plan with the picked model inside `codex exec -s workspace-write`, the one new folder in a git worktree under the plan's `001_Architecture/Lab/` folder as its only writable place, network forced off (proven live each run by a free `--preflight`), then a git check fails the run on any write outside that folder (no fixes). Runs the plan's acceptance checks for real in the same sandbox and scores 60 + 15; `opus-standard` adds a cited 25-point audit; 80+ = cleared for `/lab-run`. One fix round + one rebuild max. Same key and $2/project cap. Contract: `001_Architecture/Skills/lab-build/SKILL.md`.
+- **`/lab-run [project]`** (built 2026-10-03, Claude Code only) — Tony's first real use of a build `/lab-build` cleared (80+): no sandbox, real network and the tool's own paid calls behind its own cost pauses. The session shows him how to try it (from the project's `Plan_Locked.md`), he gives notes + a 0-100 grade, `001_Architecture/Scripts/lab_run_log.py log` appends the round to `Run_Log.jsonl` in the project folder; below 80 the harness (the session or `opus-standard`, never `/lab-build` or any OpenRouter model, $0 from the /lab budget) fixes the build folder in place and he tries again until 80+. `lab_run_log.py status` = is it cleared + rounds so far; `checks` = free re-run of the acceptance checks after a fix. Contract: `001_Architecture/Skills/lab-run/SKILL.md`.
+- **`/lab-promote [project]`** (built 2026-10-03, Claude Code only) — only for a build Tony graded 80+ in `/lab-run` (folder unchanged since). `001_Architecture/Scripts/lab_promote.py` commits the worktree's on-disk folder (the uncommitted `/lab-run` fixes) to its own lab branch, then `git checkout <that commit> -- <folder>` into the path `Plan_Locked.md` names; the session adds the tool's TOOLBOX.md entry and wiki page + cross-links (ingest convention); `finish` runs `graphify update` on the affected domains, makes one commit on main with only those changes (other sessions' uncommitted edits stay out) and pushes. Tony typing it is the approval. Cleanup commands are printed, never run. `plan` = read-only review, `list` = what is cleared. Contract: `001_Architecture/Skills/lab-promote/SKILL.md`.
 - **Codex / Gemini CLI** — not wired. Codex's reviewer path would be `frontier.py` (already proven); Gemini CLI is blocked entirely right now — checked live 2026-09-30, no OAuth creds file and no API key configured, `gemini -p` fails outright. `claude -p` (the programmatic flag) is also currently broken separately — `-p` returns an expired-OAuth error even though normal interactive `claude` login is active — which is why `/lab-plan`'s review step uses Claude Code's native Agent tool instead of shelling out to `-p`, not a workaround, the more reliable path anyway.
 
 ---
@@ -725,7 +727,7 @@ Multi-platform affiliate marketing operations. 18 programs tracked across travel
 | Stay22 | Direct | Accommodation |
 | Digistore24 | Digistore24 | Digital products |
 | 12Go | Direct | Asia transport |
-| Higgsfield | Direct | AI video tool |
+| Higgsfield | Direct | AI video tool — see `001_Architecture/Skills/Higgsfield-Genjutsu/SKILL.md` for the Genjutsu motion-transfer API |
 | Magnific | Direct | AI upscaler |
 | OpusClip | Direct | Video clipping |
 | VidIQ | Direct | YouTube tools |
@@ -818,6 +820,11 @@ Multi-platform affiliate marketing operations. 18 programs tracked across travel
 - **Purpose:** Living reference for prompting any ByteDance Seedance version (1.5 Pro, 2.0, 2.0 Fast, future) — dialogue vs. ambient/foley-only audio control, camera movement/cinematic shot language, negative-prompt conventions. Update in place as new versions ship; never fork a per-version copy.
 - **Key facts:** quoted speech in the prompt triggers lip-synced dialogue (omit quotes for no-dialogue); `generate_audio` boolean controls native audio generation; negative prompts are a single dash-led closing line naming forbidden elements (e.g. `- No dialogue, no music, no text on screen.`).
 - **When to use:** Any time a prompt is being written for Seedance video generation, for any pipeline/channel.
+
+### Higgsfield Genjutsu — Motion Transfer (Global — `001_Architecture/Skills/Higgsfield-Genjutsu/`, added 2026-10-02)
+- **Purpose:** API reference for Higgsfield's Genjutsu Motion Transfer model (video2video) — swaps characters/locations/style in an existing video via 1-8 reference images while preserving original motion, camera movement, and timing.
+- **Key fact:** `HF_KEY` and `HF_CREDENTIALS` are both set in `~/.env-secrets`, matching the official docs' expected names exactly.
+- **When to use:** Tony asks to transform/restyle an existing video with Genjutsu or Higgsfield motion transfer.
 
 ### Reimagined Realms — POV Shorts Pipeline (`001_Architecture/Skills/Reimagined_Realms_POV_Shorts_Pipeline/`)
 - **Purpose:** Vertical (9:16), historical "day in the life" POV Shorts for Reimagined Realms — no dialogue, Seedance native audio (foley/ambient) + Suno music. Separate from the long-form Reimagined Realms pipeline above.
