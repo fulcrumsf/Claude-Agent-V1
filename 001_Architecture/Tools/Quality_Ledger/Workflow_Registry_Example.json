@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "note": "Example registry. Copy to Workflow_Registry.json and add the workflows Tony wants covered first. A skill name maps to a workflow_id, a ledger path rule and the step names the agent uses.",
+  "workflows": {
+    "Neon_Parcel_Longform_Compilation_v2": {
+      "workflow_id": "neon_parcel_longform",
+      "ledger": "002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/{run_id}/Data/History/Quality_Ledger.jsonl",
+      "steps": ["shot_list", "storyboard", "storyboard.scale", "character_sheet", "video", "audio", "assembly", "final"]
+    },
+    "Anomalous_Wild_Video_Pipeline": {
+      "workflow_id": "anomalous_wild",
+      "ledger": "002_Content-Creation/Video_Editor/002_Channels/001_Anomalous-Wild/Productions/{run_id}/Data/History/Quality_Ledger.jsonl",
+      "steps": ["shot_list", "storyboard", "video", "audio", "final"]
+    },
+    "Reimagined_Realms_Video_Pipeline": {
+      "workflow_id": "reimagined_realms",
+      "ledger": "002_Content-Creation/Video_Editor/002_Channels/003_Reimagined-Realms/Productions/{run_id}/Data/History/Quality_Ledger.jsonl",
+      "steps": ["shot_list", "storyboard", "video", "audio", "final"]
+    },
+    "TikTok-Shop-Affiliate-Video": {
+      "workflow_id": "tiktok_shop_affiliate",
+      "ledger": "001_Architecture/Logs/Quality_Ledger.jsonl",
+      "steps": ["script", "footage", "edit", "final"]
+    },
+    "social-content": {
+      "workflow_id": "social_content",
+      "ledger": "001_Architecture/Logs/Quality_Ledger.jsonl",
+      "steps": ["brief", "copy", "visual", "final"]
+    },
+    "etsy_listing": {
+      "workflow_id": "etsy_listing",
+      "ledger": "001_Architecture/Logs/Quality_Ledger.jsonl",
+      "steps": ["copy", "photos", "final"]
+    },
+    "blog_post": {
+      "workflow_id": "blog_post",
+      "ledger": "001_Architecture/Logs/Quality_Ledger.jsonl",
+      "steps": ["outline", "draft", "final"]
+    },
+    "pinterest_post": {
+      "workflow_id": "pinterest_post",
+      "ledger": "001_Architecture/Logs/Quality_Ledger.jsonl",
+      "steps": ["image", "copy", "final"]
+    },
+    "tshirt_design": {
+      "workflow_id": "tshirt_design",
+      "ledger": "001_Architecture/Logs/Quality_Ledger.jsonl",
+      "steps": ["concept", "design", "final"]
+    },
+    "instagram_carousel": {
+      "workflow_id": "instagram_carousel",
+      "ledger": "001_Architecture/Logs/Quality_Ledger.jsonl",
+      "steps": ["copy", "design", "final"]
+    }
+  }
+}

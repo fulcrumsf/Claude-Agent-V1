@@ -1,0 +1,16 @@
+{
+  "storyboard": "Storyboard_Clip2_v1.png",
+  "storyboard_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "spec": "Scale_Spec.json",
+  "passed": false,
+  "failures": [
+    "VS ENVIRONMENT: van in P4 is 210px; the anchors say 2.5 m at that spot should be about 124px (+70% too big)"
+  ],
+  "warnings": [
+    "NOT MEASURED: fishmonger not found in P1 (not visible, or detector missed it)"
+  ],
+  "measurements": [
+    {"panel": 1, "van": {"box": [10, 20, 130, 140], "h": 120}},
+    {"panel": 4, "van": {"box": [10, 20, 220, 230], "h": 210, "expected_px": 124}}
+  ]
+}

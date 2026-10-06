@@ -1,0 +1,6 @@
+{
+  "threshold": 87,
+  "window": 10,
+  "min_runs": 3,
+  "max_recent_redo": 0
+}

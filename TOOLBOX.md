@@ -56,6 +56,14 @@ A separate lane from Model Routing above: for non-chore, multi-step builds (new 
 
 ---
 
+## Quality_Ledger (promoted via `/lab`, 2026-10-06)
+
+`001_Architecture/Tools/Quality_Ledger/` — a channel-agnostic, append-only quality log (stdlib-only CLI: `quality_ledger.py`) plus a fail-open hook adapter (`ledger_hook.py` for Claude/Codex/Gemini) that fills it without anyone remembering to call it. Distinguishes `mechanical_check` (script/gate measured something, `pass`/`fail`/`error`) from `director_judgment` (Tony's own verbatim grade/decision — only his chat text can write one), `agent_self_correction`, and `director_edit`. Fixed closed-list `failure_type` (`spatial_layout`, `scale`, `continuity`, `subject_count`, `plausibility`, `camera`, `motion`, `render_artifact`, `story`, `other`) covers the real recurring defect categories across Neon Parcel and other channels. Readiness = latest final grade per run only; `mechanical_check` attempts against the same artifact collapse by sha256 fingerprint instead of inflating the attempt count. 124 tests passing, 34+ real bugs found and fixed in adversarial hardening before promotion; `/lab-run` grade 87. First real project to go through the entire `/lab` pipeline end to end — see "`/lab`" above and `000_Wiki/Architecture/Quality-Ledger.md`.
+
+**Not yet wired into any live pipeline** — Tony's remaining steps: register `ledger_hook.py` in each harness's hook config, copy `Workflow_Registry_Example.json` to a live `Workflow_Registry.json`, paste `Agent_Instructions.md` into each channel skill, add `quality_ledger.py check` calls to shared checkers, create a central no-production-folder ledger at `001_Architecture/Logs/Quality_Ledger.jsonl`, and backfill the 17 existing Report Cards. The real first test is the next new Neon Parcel video run through the wired pipeline, not a replay of already-approved footage.
+
+---
+
 ## System Maps (Install Maps)
 
 Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the system map"** or **"look at the install map"**, read the appropriate file.

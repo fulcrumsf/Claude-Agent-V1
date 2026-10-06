@@ -1,0 +1,7 @@
+{
+  "session_id": "fixture-session",
+  "transcript_path": "/private/tmp/claude-fixture-transcript.jsonl",
+  "cwd": "/Users/tonymacbook2025/Documents/Agent-OS/002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Productions/fixture-run",
+  "hook_event_name": "UserPromptSubmit",
+  "prompt": "honestly that one is a B+, the van is still too big"
+}

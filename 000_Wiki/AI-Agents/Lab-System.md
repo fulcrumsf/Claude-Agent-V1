@@ -35,7 +35,7 @@ Scripts: `001_Architecture/Scripts/lab_plan_draft.py`, `lab_build.py`, `lab_run_
 
 ## First Real Project Through The Whole Pipeline
 
-**Quality_Ledger** — a universal, pipeline-agnostic logging/grading tool distinguishing `mechanical_check` / `director_judgment` / `agent_self_correction` / `director_edit` events, meant to replace the empty/inconsistent per-production logs found across Neon Parcel. Went through 7 real hardening rounds (124 tests, 34+ bugs found-and-fixed in one adversarial pass). As of this page's creation, **not yet promoted** — see `001_Architecture/Logs/Handoffs/2026-10-06_Session-Handoff_Claude_Lab-System-And-Quality-Ledger.md` for current state.
+**Quality_Ledger** — a universal, pipeline-agnostic logging/grading tool distinguishing `mechanical_check` / `director_judgment` / `agent_self_correction` / `director_edit` events, meant to replace the empty/inconsistent per-production logs found across Neon Parcel. Went through 7 real hardening rounds (124 tests, 34+ bugs found-and-fixed in one adversarial pass), graded 87 in `/lab-run`, and **promoted** to `001_Architecture/Tools/Quality_Ledger/` on 2026-10-06. See [[Quality-Ledger]] for the tool itself; wiring into live pipelines is still Tony's to-do.
 
 ## Key Decisions, Don't Re-Litigate
 

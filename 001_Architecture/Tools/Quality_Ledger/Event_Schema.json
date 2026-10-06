@@ -1,0 +1,179 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Quality_Ledger event line",
+  "description": "One append-only ledger line: exactly one of mechanical_check, director_judgment, agent_self_correction or director_edit. Unsigned numbers and enums are pinned so a dashboard column never changes type between lines.",
+  "type": "object",
+  "required": [
+    "event_id",
+    "timestamp",
+    "workflow_id",
+    "run_id",
+    "step",
+    "level",
+    "attempt",
+    "source",
+    "actor",
+    "reason"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "uuid4 string, unique per line",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "description": "ISO-8601 timestamp with a timezone (written as UTC); validate rejects garbage or a time with no timezone"
+    },
+    "workflow_id": {
+      "type": "string",
+      "description": "kind of pipeline, e.g. neon_parcel_longform, etsy_listing",
+      "minLength": 1
+    },
+    "run_id": {
+      "type": "string",
+      "description": "this production or item",
+      "minLength": 1
+    },
+    "step": {
+      "type": "string",
+      "description": "dotted, e.g. character_sheet.motoboy, or final",
+      "minLength": 1
+    },
+    "level": {
+      "enum": [
+        "sub_step",
+        "step",
+        "final"
+      ]
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "goes up when the output is regenerated (or Tony edits it), not per check; checks on the same artifact_sha256 share one attempt"
+    },
+    "source": {
+      "enum": [
+        "mechanical_check",
+        "director_judgment",
+        "agent_self_correction",
+        "director_edit"
+      ],
+      "description": "director_edit = Tony edited/fixed the asset himself; actor must be Tony, reason (what he changed) required, no check or director object"
+    },
+    "actor": {
+      "type": "string",
+      "description": "script name, harness name, or Tony (always Tony for director_judgment and director_edit)",
+      "minLength": 1
+    },
+    "reason": {
+      "type": "string",
+      "description": "may be empty for a mechanical pass or a director_judgment (an empty reason on a mechanical fail/error is a warning); required non-empty for agent_self_correction and director_edit"
+    },
+    "failure_type": {
+      "enum": [
+        "spatial_layout",
+        "scale",
+        "continuity",
+        "subject_count",
+        "plausibility",
+        "camera",
+        "motion",
+        "render_artifact",
+        "story",
+        "other"
+      ],
+      "description": "optional, fixed list (never free text): what kind of thing went wrong; omit the key when nothing failed"
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "result": {
+          "enum": [
+            "pass",
+            "fail",
+            "error"
+          ]
+        },
+        "measured": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "the deciding value; finite number or null only (no NaN/Infinity)"
+        },
+        "threshold": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "finite number or null only (no NaN/Infinity)"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "report_path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "result"
+      ]
+    },
+    "director": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "grade": {
+          "type": "string",
+          "description": "key of Grade_Scale.json, e.g. B+"
+        },
+        "decision": {
+          "enum": [
+            "accept",
+            "accept_with_flaws",
+            "redo"
+          ]
+        },
+        "verbatim": {
+          "type": "string",
+          "description": "Tony's own words, never empty"
+        },
+        "below_threshold_override": {
+          "type": "boolean",
+          "description": "tool-set; Tony never types it"
+        }
+      }
+    },
+    "corrects_event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_path": {
+      "type": "string",
+      "description": "the generated file a check measured, or Tony's edited file (as given on the command line)",
+      "minLength": 1
+    },
+    "artifact_sha256": {
+      "type": "string",
+      "description": "sha256 of that file's bytes; mechanical checks with the same fingerprint as an event on the step's latest attempt share that attempt (a regenerated file is a new attempt)",
+      "minLength": 1
+    },
+    "cost_usd": {
+      "type": "number",
+      "minimum": 0,
+      "description": "finite, 0 or more"
+    },
+    "harness": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

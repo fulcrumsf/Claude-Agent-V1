@@ -1,0 +1,1 @@
+{"event_id": "bad-self", "timestamp": "2026-10-02T10:00:00+00:00", "workflow_id": "neon_parcel_longform", "run_id": "r1", "step": "storyboard.scale", "level": "step", "attempt": 2, "source": "agent_self_correction", "actor": "claude", "reason": ""}
