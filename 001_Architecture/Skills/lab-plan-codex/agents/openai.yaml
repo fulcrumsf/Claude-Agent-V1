@@ -1,0 +1,5 @@
+interface:
+  display_name: "/lab-plan (Codex)"
+  short_description: "Cheap model drafts a /lab plan, sol locks it"
+policy:
+  allow_implicit_invocation: false

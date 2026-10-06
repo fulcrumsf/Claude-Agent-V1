@@ -1,0 +1,5 @@
+interface:
+  display_name: "/lab-promote (Codex)"
+  short_description: "Promote a /lab build Tony graded 80+, commit, push"
+policy:
+  allow_implicit_invocation: false

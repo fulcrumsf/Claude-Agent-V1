@@ -21,10 +21,10 @@ never routes into `/lab`, and there is no "lab mode" left switched on across mes
 
 | Command | What it does | State |
 |---------|--------------|-------|
-| `/lab-plan <question>` | Picked model drafts a plan read-only. `opus-standard` scores the RAW draft 0-100, writes acceptance checks, then locks (80+) or regenerates once on Opus (below 80). | **Built 2026-09-30: Claude Code (`lab-plan` skill) + Gemini/Antigravity (`lab_plan_gemini.py`)** |
-| `/lab-build [plan]` | Sandboxed, network-off build of the locked plan: new files in one new folder only, inside a git worktree under `001_Architecture/Lab/`. Runner scores it on the plan's acceptance checks (60 + 15); `opus-standard` audits (25, cited); one fix round + one rebuild max; 80+ = cleared for `/lab-run`. | **Built 2026-10-03: Claude Code (`lab-build` skill). Not yet run on a real plan.** |
-| `/lab-run [project]` | Tony's own real (paid if the tool needs it) use of a cleared build, no sandbox, in his normal session. Each round: his notes + 0-100 grade appended to `Run_Log.jsonl`; below 80 the harness (this session or `opus-standard`, never `/lab-build` or OpenRouter) fixes the build folder in place and he tries again; 80+ = cleared for `/lab-promote`. | **Built 2026-10-03: Claude Code (`lab-run` skill). Not yet run on a real build.** |
-| `/lab-promote [project]` | Only after a `/lab-run` grade of 80+ (folder unchanged since). Commits the worktree's on-disk folder (the uncommitted `/lab-run` fixes) to its own lab branch, then `git checkout <that commit> -- <folder>` into the plan's real path; the session adds the TOOLBOX.md entry and the wiki page + cross-links (ingest convention); `graphify update` on the affected domains; one commit on main holding only those changes, pushed. Tony typing it is the approval. Cleanup commands printed, never run. | **Built 2026-10-03: Claude Code (`lab-promote` skill). Not yet run on a real build.** |
+| `/lab-plan <question>` | Picked model drafts a plan read-only. `opus-standard` scores the RAW draft 0-100, writes acceptance checks, then locks (80+) or regenerates once on Opus (below 80). | **Built 2026-09-30: Claude Code (`lab-plan` skill) + Gemini/Antigravity (`lab_plan_gemini.py`); Codex (`lab-plan-codex`) 2026-10-06** |
+| `/lab-build [plan]` | Sandboxed, network-off build of the locked plan: new files in one new folder only, inside a git worktree under `001_Architecture/Lab/`. Runner scores it on the plan's acceptance checks (60 + 15); `opus-standard` audits (25, cited); one fix round + one rebuild max; 80+ = cleared for `/lab-run`. | **Built 2026-10-03: Claude Code (`lab-build` skill), first real build 2026-10-03 (Quality_Ledger). Codex (`lab-build-codex`) + Antigravity (`lab_build_gemini.py`) 2026-10-06, not yet run on a real plan.** |
+| `/lab-run [project]` | Tony's own real (paid if the tool needs it) use of a cleared build, no sandbox, in his normal session. Each round: his notes + 0-100 grade appended to `Run_Log.jsonl`; below 80 the harness (this session or `opus-standard`, never `/lab-build` or OpenRouter) fixes the build folder in place and he tries again; 80+ = cleared for `/lab-promote`. | **Built 2026-10-03: Claude Code (`lab-run` skill), used for Quality_Ledger. Codex (`lab-run-codex`) + Antigravity (`lab-run-antigravity`) 2026-10-06.** |
+| `/lab-promote [project]` | Only after a `/lab-run` grade of 80+ (folder unchanged since). Commits the worktree's on-disk folder (the uncommitted `/lab-run` fixes) to its own lab branch, then `git checkout <that commit> -- <folder>` into the plan's real path; the session adds the TOOLBOX.md entry and the wiki page + cross-links (ingest convention); `graphify update` on the affected domains; one commit on main holding only those changes, pushed. Tony typing it is the approval. Cleanup commands printed, never run. | **Built 2026-10-03: Claude Code (`lab-promote` skill), Quality_Ledger promoted 2026-10-06. Codex (`lab-promote-codex`) + Antigravity (`lab-promote-antigravity`) 2026-10-06.** |
 
 ## Where things live
 
@@ -98,9 +98,17 @@ overrides.
 
 ## Other harnesses
 
-- Codex: not wired yet (separate task; its reviewer path would be `frontier.py`).
+- Codex (wired 2026-10-06): `lab-plan-codex`, `lab-build-codex`, `lab-run-codex`, `lab-promote-codex`
+  in this folder (Codex reads it through `~/.codex/skills`). Each tells the Codex session to follow the
+  Claude command's SKILL.md unchanged, with `spawn_agent` (`agent_type: "sol-standard"`,
+  `fork_turns: "none"`) in place of the `opus-standard` Agent call and `followup_task` in place of
+  SendMessage. Same scripts, no new code. Explicit only: `agents/openai.yaml` sets
+  `allow_implicit_invocation: false`, so Tony types `$lab-plan-codex` etc. Every `/lab` script runs
+  outside Codex's own sandbox (escalated): they start their own codex sandbox, and macOS refuses a
+  sandbox inside a sandbox (checked live 2026-10-06).
 - Gemini: the standalone `gemini` CLI is dead for Tony's account (`IneligibleTierError`, all modes,
-  any tier; do not try to log in or route around it). Tony uses Gemini only inside the Antigravity
+  any tier; re-checked 2026-10-06: `UNSUPPORTED_CLIENT`, "migrate to Antigravity"; do not try to log
+  in or route around it). Tony uses Gemini only inside the Antigravity
   IDE, whose chat has no headless mode, so there is no Gemini session to follow `lab-plan/SKILL.md`.
   Instead one self-contained script does the whole command:
   `python3 /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/lab_plan_gemini.py "<question>"`
@@ -120,6 +128,16 @@ overrides.
   actually loads besides its plugins (checked in its live system prompt 2026-09-30: it does NOT read
   `001_Architecture/Skills/` or the `~/.gemini/skills` symlinks). **Built 2026-09-30, Tony approved.**
   Running the script directly from any terminal also still works, same as before.
-- Do not run `lab-plan`, `lab-build`, `lab-run` or `lab-promote` (the Claude skills) from Codex or
-  Antigravity; they need Claude Code's Agent tool (and `/lab-run`'s fixes must stay on one harness
-  every round). `/lab-build`, `/lab-run` and `/lab-promote` have no Gemini or Codex trigger yet.
+- Antigravity `/lab-build` (2026-10-06): `.agents/skills/lab-build-antigravity/SKILL.md` runs
+  `lab_build_gemini.py` (+ `test_lab_build_gemini.py`), which calls `lab_build.py` unchanged for the
+  build and every score and uses Gemini for the three opus-standard steps: the cited audit (read-only
+  tools, the script writes `Build_Audit*.json` / `Build_Review.md`), the one fix round and the one
+  rebuild (write tools only inside the build folder, no commands; checks through `lab_build.py`'s
+  own sandbox). Resumable from any stop. Gemini stage costs count against the project cap and are
+  recorded in `<project>/Build_Gemini.json`. `/lab-run` and `/lab-promote` have no reviewer step,
+  so `lab-run-antigravity` and `lab-promote-antigravity` just tell the IDE agent to follow the
+  Claude SKILL.md itself.
+- `/lab-run` on several harnesses: Codex and Antigravity rounds start `--changes` with `[Codex]` /
+  `[Antigravity]` (untagged = Claude Code), and both ask Tony before continuing a loop another
+  harness started. Do not run the Claude skills themselves from Codex or Antigravity; use the
+  `-codex` / `-antigravity` ones.

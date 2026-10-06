@@ -1,0 +1,5 @@
+interface:
+  display_name: "/lab-run (Codex)"
+  short_description: "Tony tries a cleared /lab build, grades, Codex fixes"
+policy:
+  allow_implicit_invocation: false

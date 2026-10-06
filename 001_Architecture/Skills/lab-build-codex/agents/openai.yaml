@@ -1,0 +1,5 @@
+interface:
+  display_name: "/lab-build (Codex)"
+  short_description: "Sandboxed build of a locked /lab plan, sol audits"
+policy:
+  allow_implicit_invocation: false
