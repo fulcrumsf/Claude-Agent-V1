@@ -46,6 +46,7 @@ Master catalog of all wiki pages by category. Updated on every ingest.
 ## Content Strategy
 
 - [[Content-Strategy/Story-Ideation]] — This is a walkthrough for Story Ideation, focused on setup, workflow, and practical use rather than abstract theory.
+- [[Content-Strategy/Robotto-Gato-Channel-Strategy]] — Future AI creator-tech YouTube channel strategy: positioning, three content pillars, 90-day publishing plan, monetization ladder, and metrics; awaiting Tony's go/no-go decision.
 - [[Content-Strategy/Claude-SEO-Automation-Toolkit]] — This is a reference page for an AI SEO workflow built around Claude Code and DataForSEO.
 - [[Content-Strategy/Carly-Socialcheatsheet]] — This is a reference page for a creator-economy digital product storefront and offer stack.
 - [[Content-Strategy/ProfitTree-Etsy-Research]] — This is a reference page for Etsy product research and profit tracking.
@@ -122,6 +123,7 @@ Master catalog of all wiki pages by category. Updated on every ingest.
 - [[Video-Production/Hyperframes-Video-Rendering]] — Hyperframes is an installed HTML-native video renderer by HeyGen. Write HTML compositions, render to MP4. Used for motion graphics, captions, text overlays, and card animations on top of already-cut footage.
 - [[Video-Production/Motion-Graphics-Design-Principles]] — Composition/design-taste knowledge for motion graphics (diagram callout placement, non-parallel radial leader lines, materialize-not-pop reveals, spring-pulse beats, color judgment). Points to the `Motion-Graphics` skill and the growing, production-corrected `design-rules-learned.md` ledger.
 - [[Video-Production/Anomalous-Wild-Pipeline-Scripts]] — Anomalous Wild's full pipeline script inventory (active/superseded), the `/anomalous-wild` orchestrator build, and the Scientific Diagram sub-pipeline (research → illustrate → detect coordinates → label).
+- [[Video-Production/Neon-Parcel-YouTube-Studio-Ask-AI-Case-Study]] — Neon Parcel analytics case study captured from YouTube Studio's In Analytics AI, framed so any agent can understand what is pushing growth and build videos for more viewers/watch time toward monetization.
 - [[Video-Production/Seedance-Character-Environment-Consistency-Workflows]] — Reference-sheet generation, hallucination-fix-without-regenerating, and face-block-bypass techniques for Seedance 2.0/2.5.
 - [[Video-Production/Storyboards-To-Consistent-Videos-Using-Seedance-2.0]] — A creator's multi-week evolution of storyboard + character/location sheet consistency techniques, with concrete "less is more" lessons on reference sheet design.
 - [[Video-Production/The-Secret-To-AI-Character-Sheets]] — Head-to-head test of character-sheet consistency methods: 360° video turnaround, blacked-out-faces trick, first-frame vs. Omni-reference.

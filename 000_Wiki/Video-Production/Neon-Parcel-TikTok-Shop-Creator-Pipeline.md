@@ -51,3 +51,4 @@ Invoke the `TikTok-Shop-Affiliate-Video` skill for any new TikTok Shop Creator p
 - [[../Affiliate-Marketing/TikTok-Shop-Affiliate-Compliance]]
 - [[../Affiliate-Marketing/TikTok-Shop-Affiliate-Do-Dont-Cheat-Sheet]]
 - [[She-Isnt-Real-Definitive-AI-Influencer-Pipeline]] — Seedance 2 UGC/multi-reference mode, voice cloning + lip sync, product-holding AI influencer workflow (potential future extension)
+- [[Neon-Parcel-YouTube-Studio-Ask-AI-Case-Study]] — Neon Parcel analytics case study from YouTube Studio's In Analytics AI: growth drivers and the 3-beat/Zeigarnik Shorts structure, aimed at more viewers/watch time toward monetization

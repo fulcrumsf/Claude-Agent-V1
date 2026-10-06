@@ -2803,3 +2803,13 @@ Cross-links: added to `000_Wiki/AI-Agents/Claude-Code-And-Karpathys-System-10000
 Source: `000_Ingest/bladerhumanizer Agent skill that removes signs of AI-generated writing from text.md` → `007_Resource_Library/Tools/Humanizer-Blader-Agent-Skill.md`
 Wiki/Asset Note: `000_Wiki/Content-Strategy/Humanizer.md`
 Cross-links: added to `000_Wiki/Content-Strategy/YouTube-Channel-Growth-Playbook.md` and `000_Wiki/Content-Strategy/Story-Ideation.md`. Skill installed to `001_Architecture/Skills/humanizer/` + mirrored to `.agents/skills/humanizer/` (SkillSpector static scan 42/100 CAUTION, all findings false positives).
+
+## [2026-10-06] wikify | Robotto Gato Channel Strategy
+Source: `001_Architecture/Plans/robotto-gato-channel-strategy.md` (read-only; file not moved)
+Wiki/Asset Note: `000_Wiki/Content-Strategy/Robotto-Gato-Channel-Strategy.md`
+To-do: added item 6 to `001_Architecture/Ongoing-Agent-OS-To-Do-List.md` Part 3 — future channel strategy needing Tony's review/decision. Index updated.
+
+## [2026-10-06] wikify | Neon Parcel YouTube Studio Ask AI Case Study
+Source: `002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Case_Studies/Youtube_Studio_Ask_AI/3-Beat-Formula.md` (read-only; file not moved)
+Wiki/Asset Note: `000_Wiki/Video-Production/Neon-Parcel-YouTube-Studio-Ask-AI-Case-Study.md`
+To-do: updated item 1 in `001_Architecture/Ongoing-Agent-OS-To-Do-List.md` Part 3 — case study now wikified, purpose per Tony confirmed. Index updated.
