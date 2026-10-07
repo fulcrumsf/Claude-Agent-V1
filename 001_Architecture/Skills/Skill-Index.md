@@ -13,7 +13,7 @@ generated_by: sync_skill_index.py
 
 # Skill Index
 
-Generated: 2026-10-06T01:12:32-04:00
+Generated: 2026-10-06T20:40:07-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -29,6 +29,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | --- | --- | --- |
 | imagegen | Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts.… | `001_Architecture/Skills/.system/imagegen/SKILL.md` |
 | openai-docs | Use for Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, customization, automations, and self-knowledge—including 'you,' 'your,' 'this app,' or 'th… | `001_Architecture/Skills/.system/openai-docs/SKILL.md` |
+| plugin-creator | Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, valid manifest defaults, and personal-marketplace entr… | `001_Architecture/Skills/.system/plugin-creator/SKILL.md` |
 | review-agent | Perform a read-only, defect-first review of a specified code change and return every actionable finding. Use when another agent delegates review of uncommitted changes, a base-bra… | `001_Architecture/Skills/.system/review-agent/SKILL.md` |
 | skill-creator | Create or update a Codex skill with appropriately scoped instructions and any needed supporting resources. | `001_Architecture/Skills/.system/skill-creator/SKILL.md` |
 | skill-installer | Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skil… | `001_Architecture/Skills/.system/skill-installer/SKILL.md` |
@@ -185,9 +186,13 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | json-canvas | Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files, creating visual canvases, mind maps, flowcharts, or wh… | `001_Architecture/Skills/json-canvas/SKILL.md` |
 | lab | Background reference for Tony's /lab system (/lab-plan, /lab-build, /lab-run, /lab-promote) - a middle lane where a picked cheap OpenRouter model drafts and builds new things in a… | `001_Architecture/Skills/lab/SKILL.md` |
 | lab-build | Claude Code only. Runs when Tony types /lab-build [plan folder] - a cheap picked OpenRouter model builds a locked /lab-plan inside a network-off sandbox and a git worktree under 0… | `001_Architecture/Skills/lab-build/SKILL.md` |
+| lab-build-codex | Codex only. Runs when Tony types $lab-build-codex [plan folder] (or "/lab-build" in Codex) - a cheap picked OpenRouter model builds a locked /lab-plan inside a network-off sandbox… | `001_Architecture/Skills/lab-build-codex/SKILL.md` |
 | lab-plan | Claude Code only. Runs when Tony types /lab-plan <question> - a cheap picked OpenRouter model drafts a build plan read-only, then an opus-standard subagent scores the raw draft 0-… | `001_Architecture/Skills/lab-plan/SKILL.md` |
+| lab-plan-codex | Codex only. Runs when Tony types $lab-plan-codex <question> (or "/lab-plan" in Codex) - a cheap picked OpenRouter model drafts a build plan read-only, then a sol-standard subagent… | `001_Architecture/Skills/lab-plan-codex/SKILL.md` |
 | lab-promote | Claude Code only. Runs when Tony types /lab-promote [project, or his own description of what is being promoted] - the last /lab step. Takes a build Tony graded 80+ in /lab-run, co… | `001_Architecture/Skills/lab-promote/SKILL.md` |
+| lab-promote-codex | Codex only. Runs when Tony types $lab-promote-codex [project, or his own words for what is being promoted] (or "/lab-promote" in Codex) - the last /lab step for a build he graded… | `001_Architecture/Skills/lab-promote-codex/SKILL.md` |
 | lab-run | Claude Code only. Runs when Tony types /lab-run [project] - Tony's own first real use of a build that /lab-build already cleared (score 80+), with real network and real paid APIs… | `001_Architecture/Skills/lab-run/SKILL.md` |
+| lab-run-codex | Codex only. Runs when Tony types $lab-run-codex [project] (or "/lab-run" in Codex) - Tony's own first real use of a build /lab-build cleared (80+), graded 0-100 each round, with t… | `001_Architecture/Skills/lab-run-codex/SKILL.md` |
 | launch-strategy | When the user wants to plan a product launch, feature announcement, or release strategy. Also use when the user mentions 'launch,' 'Product Hunt,' 'feature release,' 'announcement… | `001_Architecture/Skills/launch-strategy/SKILL.md` |
 | lead-magnets | When the user wants to create, plan, or optimize a lead magnet for email capture or lead generation. Also use when the user mentions "lead magnet," "gated content," "content upgra… | `001_Architecture/Skills/lead-magnets/SKILL.md` |
 | lean-startup | Design MVPs, validated learning experiments, and pivot-or-persevere decisions using Build-Measure-Learn. Use when the user mentions "MVP scope", "validated learning", "pivot or pe… | `001_Architecture/Skills/lean-startup/SKILL.md` |
@@ -241,6 +246,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | referral-program | When the user wants to create, optimize, or analyze a referral program, affiliate program, or word-of-mouth strategy. Also use when the user mentions 'referral,' 'affiliate,' 'amb… | `001_Architecture/Skills/referral-program/SKILL.md` |
 | release-it | Build production-ready systems with stability patterns: circuit breakers, bulkheads, timeouts, and retry logic. Use when the user mentions "production outage", "circuit breaker",… | `001_Architecture/Skills/release-it/SKILL.md` |
 | remotion-best-practices | Best practices for Remotion - Video creation in React | `001_Architecture/Skills/remotion-best-practices/SKILL.md` |
+| repo-audit | Security-audit an arbitrary third-party GitHub repo (CLI tool, library, app, MCP server, script collection) before Tony installs, builds or runs it, using OpenSSF Scorecard (repo… | `001_Architecture/Skills/repo-audit/SKILL.md` |
 | revops | When the user wants help with revenue operations, lead lifecycle management, or marketing-to-sales handoff processes. Also use when the user mentions 'RevOps,' 'revenue operations… | `001_Architecture/Skills/revops/SKILL.md` |
 | sales-enablement | When the user wants to create sales collateral, pitch decks, one-pagers, objection handling docs, or demo scripts. Also use when the user mentions 'sales deck,' 'pitch deck,' 'one… | `001_Architecture/Skills/sales-enablement/SKILL.md` |
 | schema-markup | When the user wants to add, fix, or optimize schema markup and structured data on their site. Also use when the user mentions "schema markup," "structured data," "JSON-LD," "rich… | `001_Architecture/Skills/schema-markup/SKILL.md` |
