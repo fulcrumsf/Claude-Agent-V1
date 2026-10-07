@@ -33,6 +33,52 @@ Project `antigravity-claude-491002` ("Antigravity-Claude"). Checked live in Goog
 
 **Future to-do, flagged not scheduled (2026-10-06):** if 2-3 more Google APIs get connected (Google Analytics being the next obvious one), revisit publishing this project to Production — one privacy policy covers every Google API under this one project, not per-API. Planned host: **unomascreative.com** (Tony's main LLC page) once that's live. **Hard constraint: the public privacy-policy page must never reveal anything that could help someone else access this Google Cloud project** — no project ID, no client ID, no internal URLs, no account-linkage specifics. Generic, standard privacy-policy language only (what data is accessed, why, how it's stored) — the same kind any small app publishes, nothing identifying the underlying infrastructure.
 
+## Credential inventory — what Tony actually has in 1Password (2026-10-06)
+
+**Purpose: stop relying on Tony's memory for this.** Built from Tony dictating his 1Password list live — names only, **never values**, not even partial. Where he gave a last-4 reference tag, it's recorded the same way a credit card statement shows one (last 4 chars reveal nothing about the real key). Several rows below are honestly uncertain — marked, not guessed at. Confirm with Tony before treating an uncertain row as fact.
+
+### Personal Google account (fulcrumsf@gmail.com — the account used all night, project `antigravity-claude-491002`)
+
+| Label (Tony's own words) | Best-guess identity | Status |
+|---|---|---|
+| Client secret (`client_secret.json`) | The OAuth app's client secret for `youtube_analytics_auth.py`, at `~/.config/agent-os-youtube/client_secret.json` | Confirmed — this is the one Agent-OS actually uses |
+| "Antigravity/Claude Code credentials" + "another client secret.json for that" | Possibly a second, separate OAuth client (unclear if duplicate of the one above or genuinely different) | **Unconfirmed — ask Tony which app this backs before touching it** |
+| "Antigravity Claude API key" | Likely the current value of `GOOGLE_API_KEY` or `GEMINI_API_KEY` in `~/.env-secrets` | **Unconfirmed which variable** |
+| "YouTube Analytics and Data V3" | `YOUTUBE_ANALYTICS_API_KEY` + `YOUTUBE_DATA_API_KEY` in `~/.env-secrets` | Confirmed, both exist as env var names |
+| "Antigravity Claude secret, new September [17]" | Likely `YOUTUBE_CLIENT_SECRET` — date matches the Sept 17, 2026 original OAuth token creation found earlier tonight | Likely match, not fully confirmed |
+| "Antigravity Claude YouTube data API key" | `YOUTUBE_DATA_API_KEY` | Confirmed, exists |
+| Gemini API key, created 2026-10-06 (tonight), ref tag ends **...5oI4** | The new key created under `antigravity-claude-491002` after the Firebase-shadow-project discovery. **Decision: goes into `GOOGLE_API_KEY`** (see below) | Created, not yet placed in `~/.env-secrets` as of this writing |
+
+### BoredNomad business account (a separate Google identity — its own Google Cloud + its own Google AI Studio, not the same as above)
+
+| App / Project | Uses | Status |
+|---|---|---|
+| **AI Character and Video Generator** (Tony's own app, built in Antigravity) | Gemini 2.5 Flash for image generation; "3.1 Flash Generate Preview" for video (likely a Veo model — confirm exact name) | Has its own Gemini API key under the BoredNomad GCP account, separate from everything above |
+| **Upkeeply** (`003_Apps/Upkeeply/` in this workspace, built in Antigravity ~2025) | Gemini API | Has its own key, separate account |
+| An n8n-connected app under BoredNomad | Gemini API key + a client ID (OAuth) | Separate from Agent-OS's own `n8n-automation-460016` project (the one flagged for deletion earlier) — **do not confuse the two** |
+
+**Open items for Tony, not yet resolved:**
+1. Confirm which `.env-secrets` variable ("Antigravity Claude API key") the row above maps to.
+2. Clarify the second/duplicate `client_secret.json` mentioned — same app or genuinely separate?
+3. BoredNomad's credentials live entirely outside this workspace's `~/.env-secrets` right now (different Google account) — decide if/when those should also get Agent-OS access, especially since Upkeeply already has a folder in this workspace.
+
+## Spend caps — confirmed live, 2026-10-06
+
+Checked and set directly in each platform's own console, not assumed:
+
+| Key / Account | Cap | Enforcement | Notes |
+|---|---|---|---|
+| Google Gemini API (`antigravity-claude-491002`) | **$10/month** | Real hard pause (Google's own "spend cap enforcement," Preview feature) — pauses the Gemini API specifically until the next month or manually lifted | New as of tonight; was uncapped before |
+| OpenRouter — `Antigravity-ClaudeCode` key (Jev routing + chores) | **$20/month** (Tony's explicit call, reverted from a brief $10 test) | Real hard stop ("key stops working") | Current pace ~$1.81 in 6 days of October — $20 gives headroom; this is the key the whole Option B routing system depends on |
+| OpenRouter — `n8n` key | $5/month | Real hard stop | Already tighter than $10, left alone, barely used (last active 8 months ago) |
+| OpenAI (`Uno Mas Creative` org) | **$10/month**, hard enforcement toggled ON | Real hard stop (429 errors once hit) | Was $120/month with hard-limit OFF (soft/informational only) before tonight |
+| Google AI Studio — personal (fulcrumsf) | $10/month | Set by Tony directly | |
+| Google AI Studio — BoredNomad (info@borednomad.com) | $10/month | Set by Tony directly | |
+| Blotato | $20/month | Set by Tony directly | |
+| Upkeeply app | $1/month | Set by Tony directly | Tony's likely deleting this app |
+
+**Not capped — prepaid/credit-based, can't overspend by design:** kie.ai, fal.ai, WaveSpeed, Higgsfield, Magnific. **No spend-cap concept applies:** ElevenLabs, Cloudinary, Notion, Airtable, Obsidian, Perplexity, Firecrawl (flat subscription/tier-based).
+
 ## Watch list — categories Tony has mentioned, not yet started
 
 Not full entries since names/final picks aren't locked in — tracked here so nothing gets lost, add a real row above once one is actually chosen and connected.
