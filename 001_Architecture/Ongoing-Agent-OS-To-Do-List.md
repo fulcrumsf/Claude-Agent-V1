@@ -5,6 +5,23 @@
 
 ---
 
+## Top priority — pending plans (future builds)
+
+Every plan currently sitting in `001_Architecture/Plans/` (top level, not `Archive/`) that hasn't been built yet, ranked by priority. This section is the first thing to check when picking up new work — keep it in sync with the Plans folder (see "Plans folder sync" below for how).
+
+1. **🔴 Xero Receipt Automation Plan** (`Agent-OS-Xero-Receipt-Automation-Plan.md`, created 2026-10-03, handoff from Codex) — **Tony's explicit top priority (2026-10-06).** Phase 1: local receipt intake → match to an *existing* Xero transaction → attach → verify → archive by month, with a dry-run mode and a full audit trail. Explicitly does not create transactions, auto-reconcile, or change tax/account coding. Needs Tony's approval before Claude Code creates the proposed `Agent-OS/Accounting/Xero/` folder structure — see the plan's own section 1 for the approval gate.
+2. **Multi-Agent Bridge (MCP + Slack)** (`Multi_Agent_Bridge_MCP_Slack_Plan.md`, 2026-09-30, from a parallel Antigravity session, not yet reviewed) — Phase 1 scope: `agent-bridge-mcp` MCP server + Antigravity/Codex worker scripts so agents can be dispatched/monitored from Slack. Full detail in Part 3 below.
+3. **Agent-OS Command Center Visual Dashboard** (`Agent_OS_Command_Center_Dashboard_Roadmap.md`, 2026-09-30, same parallel session, not yet reviewed) — 6-module web dashboard roadmap. Full detail in Part 3 below.
+4. **Robotto Gato channel strategy** (`Robotto-Gato-Channel-Strategy.md`, 2026-10-02) — proposed future YouTube channel, needs Tony's review/decision before it's an execution project, not a system build. Full detail in Part 3 below.
+
+---
+
+## 🆕 New plans detected (auto, needs Tony's priority call)
+
+Added automatically by `sync_plans_to_todo.py` (daily cron, 6am local, set up 2026-10-07 — see `001_Architecture/Scripts/sync_plans_to_todo.py` and crontab). Mechanical only — a filename-presence check against this file, never a read of the plan's content, never archives or deletes anything. Move an entry up into "Top priority" once Tony has set its priority, and delete the line here when that's done. Logs to `001_Architecture/Scripts/sync_plans_to_todo.log`.
+
+---
+
 ## Part 1: The Candidate Shortlist (30 items, ranked, with status dots)
 
 *Legend:*
