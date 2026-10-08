@@ -13,7 +13,7 @@ generated_by: sync_skill_index.py
 
 # Skill Index
 
-Generated: 2026-10-07T01:40:16-04:00
+Generated: 2026-10-07T21:43:04-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -29,7 +29,6 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | --- | --- | --- |
 | imagegen | Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts.… | `001_Architecture/Skills/.system/imagegen/SKILL.md` |
 | openai-docs | Use for Codex models/pricing, scheduled tasks, skills, settings, setup, troubleshooting, customization, automations, and self-knowledge—including 'you,' 'your,' 'this app,' or 'th… | `001_Architecture/Skills/.system/openai-docs/SKILL.md` |
-| plugin-creator | Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, valid manifest defaults, and personal-marketplace entr… | `001_Architecture/Skills/.system/plugin-creator/SKILL.md` |
 | review-agent | Perform a read-only, defect-first review of a specified code change and return every actionable finding. Use when another agent delegates review of uncommitted changes, a base-bra… | `001_Architecture/Skills/.system/review-agent/SKILL.md` |
 | skill-creator | Create or update a Codex skill with appropriately scoped instructions and any needed supporting resources. | `001_Architecture/Skills/.system/skill-creator/SKILL.md` |
 | skill-installer | Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skil… | `001_Architecture/Skills/.system/skill-installer/SKILL.md` |
