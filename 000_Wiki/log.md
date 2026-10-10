@@ -3,6 +3,13 @@
 Append-only. One entry per ingest operation.
 Format: `## [YYYY-MM-DD] ingest | Title`
 
+## [2026-10-10] lab-promote | Xero Receipt Automation
+Source: `001_Architecture/Lab/2026-10-09_Design_Phase_1_Xero_Receipt_Automation` → `001_Architecture/Tools/Xero_Receipt_Automation/`
+Wiki/Asset Note: `000_Wiki/Architecture/Xero-Receipt-Automation.md`
+Cross-links: none
+
+---
+
 ## [2026-05-28] ingest | Amazon Associates Program Operating Agreement
 Source: `000_Ingest/Associates_Program_Operating_Agreement.md` → `007_Resource_Library/Docs/Affiliate_Marketing/Amazon-Associates-Program-Operating-Agreement.md`
 Wiki: pending — wiki page + graphify to run after affiliate marketing agent is created

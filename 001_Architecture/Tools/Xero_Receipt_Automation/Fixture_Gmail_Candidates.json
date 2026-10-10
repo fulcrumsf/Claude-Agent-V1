@@ -1,0 +1,77 @@
+{
+  "run_id": "fixture",
+  "items": {
+    "BankTransactions:t1-adobe": [
+      {
+        "account_label": "tony_personal",
+        "message_id": "gm-adobe",
+        "thread_id": "th-adobe",
+        "sender": "receipts@adobe.com",
+        "subject": "Adobe Creative Cloud receipt",
+        "date": "2026-05-12",
+        "label_ids": [],
+        "view_url": "https://mail.google.com/mail/u/0/#inbox/gm-adobe",
+        "body_text": "Adobe Creative Cloud invoice date 2026-05-12 Total $57.99",
+        "attachments": [{"filename": "adobe.pdf", "mime": "application/pdf", "size": 116}],
+        "staged_fixture": "Fixture_Attachment_Adobe.pdf"
+      }
+    ],
+    "BankTransactions:t2-openai": [
+      {
+        "account_label": "tony_personal",
+        "message_id": "gm-openai",
+        "thread_id": "th-openai",
+        "sender": "billing@openai.com",
+        "subject": "OpenAI invoice",
+        "date": "2026-05-01",
+        "label_ids": [],
+        "view_url": "https://mail.google.com/mail/u/0/#inbox/gm-openai",
+        "body_text": "OpenAI invoice date 2026-05-01 Total $20.00",
+        "attachments": [{"filename": "openai.pdf", "mime": "application/pdf", "size": 102}],
+        "staged_fixture": "Fixture_Attachment_OpenAI.pdf"
+      }
+    ],
+    "Invoices:t3-anthropic": [
+      {
+        "account_label": "tony_personal",
+        "message_id": "gm-anthropic-a",
+        "thread_id": "th-anthropic-a",
+        "sender": "invoice@anthropic.com",
+        "subject": "Anthropic invoice A",
+        "date": "2026-05-20",
+        "label_ids": [],
+        "view_url": "https://mail.google.com/mail/u/0/#inbox/gm-anthropic-a",
+        "body_text": "Anthropic invoice date 2026-05-20 Total $20.00",
+        "attachments": [{"filename": "a.pdf", "mime": "application/pdf", "size": 105}],
+        "staged_fixture": "Fixture_Attachment_Anthropic_A.pdf"
+      },
+      {
+        "account_label": "tony_personal",
+        "message_id": "gm-anthropic-b",
+        "thread_id": "th-anthropic-b",
+        "sender": "invoice@anthropic.com",
+        "subject": "Anthropic invoice B",
+        "date": "2026-05-21",
+        "label_ids": [],
+        "view_url": "https://mail.google.com/mail/u/0/#inbox/gm-anthropic-b",
+        "body_text": "Anthropic invoice date 2026-05-21 Total $20.00",
+        "attachments": [{"filename": "b.pdf", "mime": "application/pdf", "size": 105}],
+        "staged_fixture": "Fixture_Attachment_Anthropic_B.pdf"
+      }
+    ],
+    "BankTransactions:t5-pge": [
+      {
+        "account_label": "tony_personal",
+        "message_id": "gm-pge",
+        "thread_id": "th-pge",
+        "sender": "service@pge.com",
+        "subject": "PG&E statement",
+        "date": "2026-05-08",
+        "label_ids": [],
+        "view_url": "https://mail.google.com/mail/u/0/#inbox/gm-pge",
+        "body_text": "Pacific Gas and Electric statement Total $83.01",
+        "attachments": [{"filename": "statement.pdf", "mime": "application/pdf", "size": 100}]
+      }
+    ]
+  }
+}

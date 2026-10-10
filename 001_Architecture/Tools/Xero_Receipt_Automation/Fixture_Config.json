@@ -1,0 +1,38 @@
+{
+  "tenant_alias": "uno_moss",
+  "tenant_id": "fixture-tenant",
+  "timezone": "America/New_York",
+  "data_dir": "/tmp/xero-receipt-data",
+  "intake_dir": "/tmp/xero-receipt-intake",
+  "archive_dir": "/tmp/xero-receipt-archive",
+  "live_enabled": false,
+  "xero_targets": {
+    "bank_transactions": {
+      "type": "SPEND",
+      "statuses": ["AUTHORISED"]
+    },
+    "invoices": {
+      "type": "ACCPAY",
+      "statuses": ["AUTHORISED", "PAID"]
+    }
+  },
+  "weekly_lookback_days": 45,
+  "gmail_window_days": 7,
+  "gmail_accounts": ["tony_personal"],
+  "gmail_byte_source": "gmail_api",
+  "thresholds": {
+    "auto_min_score": 0.90,
+    "auto_min_lead": 0.15,
+    "review_min_score": 0.50
+  },
+  "max_auto_attach_per_run": 10,
+  "correction_hold_days": 90,
+  "max_file_mb": 10,
+  "max_attachments_per_doc": 10,
+  "archive_date_format": "%m-%d-%Y",
+  "archive_gmail_sourced": false,
+  "notify": {
+    "channel": "macos",
+    "once_per_iso_week": true
+  }
+}

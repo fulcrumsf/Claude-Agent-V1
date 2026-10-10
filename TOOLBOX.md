@@ -73,6 +73,15 @@ A separate lane from Model Routing above: for non-chore, multi-step builds (new 
 
 ---
 
+### Xero Receipt Automation (`001_Architecture/Tools/Xero_Receipt_Automation/`, promoted from /lab 2026-10-10)
+
+- **Purpose:** Phase 1 of the receipt-matching pipeline for Xero — searches Gmail for receipts, scores and byte-verifies the matches, and attaches only confident, hash-verified ones to **existing** Xero expense transactions. Hard boundary (locked, never changes): never creates a transaction, payment, contact, journal, or bill; never touches account codes, categories, tax, amounts, dates, or reconciliation state; never marks a bill paid; the only Xero write is `POST /Attachments/{Filename}`; a file moves to `Archive/` only after downloaded Xero bytes hash-match the local copy (Xero has no attachment-delete endpoint — undo is manual).
+- **Usage:** `python3 xero_receipts.py config-check --config config.example.json`, `auth-xero` / `auth-gmail --account <label>` to connect credentials, `run --dry-run --live --config config.example.json` to preview a range before any write, `run --scheduled --live` for the normal weekly pass, `review --json` / `notify-check --json` to inspect state. Offline fixtures: `--fixtures-dir . --offline` with `Fixture_Config.json`. `config.example.json` ships with `live_enabled: false`; a real Xero write needs both that flag and `--live`, and the auto-attach cap is 10 (raising it needs `calibration-report` evidence and Tony's explicit yes).
+- **Built via `/lab`:** `/lab-build` score 87 (`z-ai/glm-5.3`); two real `/lab-run` rounds against the live Uno Mas Creative LLC Xero tenant and two real Gmail accounts, both graded 90 — see "`/lab`" above and `000_Wiki/Architecture/Xero-Receipt-Automation.md`. Five real bugs found and fixed during the live run (missing `auth-gmail` command, wrong Xero token URL, an env-secrets parser that choked on this workspace's `export KEY=value` convention, OCR'd screenshot receipts always failing hash verification, and an `already_attached` item never reaching `Archive/`) — all fixed in the promoted code, not just noted.
+- **Wiring still pending (each a separate Tony-approved change):** register a Xero developer app and run `auth-xero` for real use outside this session's already-connected tenant; create `~/.config/agent-os-xero/` (or name another data dir); copy `SKILL_xero.md` to `001_Architecture/Skills/xero/SKILL.md` and add `/xero` to `Skill-Index.md`; decide the `intake_dir`/`archive_dir` relative-path question (they only resolve from the Agent-OS root, not from the promoted folder — flagged, unresolved); create the Saturday 08:00 scheduled task from `Weekly_Run_Prompt.md`; add a Gmail API row to `API_Directory.md` if a second business-account scope is needed; mark the superseded 2026-10-03 plan archived.
+
+---
+
 ## System Maps (Install Maps)
 
 Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the system map"** or **"look at the install map"**, read the appropriate file.

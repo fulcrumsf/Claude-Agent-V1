@@ -1,0 +1,62 @@
+[
+  {
+    "ID": "t1-adobe",
+    "Type": "SPEND",
+    "Status": "AUTHORISED",
+    "Date": "2026-05-12",
+    "Total": 57.99,
+    "CurrencyCode": "USD",
+    "ContactName": "Adobe",
+    "Reference": "T1",
+    "IsReconciled": true,
+    "HasAttachments": false
+  },
+  {
+    "ID": "t2-openai",
+    "Type": "SPEND",
+    "Status": "AUTHORISED",
+    "Date": "2026-05-03",
+    "Total": 20.00,
+    "CurrencyCode": "USD",
+    "ContactName": "OpenAI",
+    "Reference": "T2",
+    "IsReconciled": true,
+    "HasAttachments": false
+  },
+  {
+    "ID": "t4-jshad",
+    "Type": "SPEND",
+    "Status": "AUTHORISED",
+    "Date": "2026-05-15",
+    "Total": 49.00,
+    "CurrencyCode": "USD",
+    "ContactName": "Jshad",
+    "Reference": "T4",
+    "IsReconciled": true,
+    "HasAttachments": false
+  },
+  {
+    "ID": "t5-pge",
+    "Type": "SPEND",
+    "Status": "AUTHORISED",
+    "Date": "2026-05-08",
+    "Total": 83.10,
+    "CurrencyCode": "USD",
+    "ContactName": "PG&E",
+    "Reference": "T5",
+    "IsReconciled": true,
+    "HasAttachments": false
+  },
+  {
+    "ID": "t6-mystery",
+    "Type": "SPEND",
+    "Status": "AUTHORISED",
+    "Date": "2026-05-09",
+    "Total": 12.00,
+    "CurrencyCode": "USD",
+    "ContactName": "Mystery LLC",
+    "Reference": "T6",
+    "IsReconciled": true,
+    "HasAttachments": false
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "adobe": {
+    "display_name": "Adobe-Creative-Cloud",
+    "sender_domains": ["adobe.com", "mail.adobe.com"],
+    "name_aliases": ["Adobe", "Creative Cloud"],
+    "gmail_less": false,
+    "portal_hint": ""
+  },
+  "openai": {
+    "display_name": "OpenAI",
+    "sender_domains": ["openai.com", "billing.openai.com"],
+    "name_aliases": ["OpenAI"],
+    "gmail_less": false,
+    "portal_hint": ""
+  },
+  "anthropic": {
+    "display_name": "Anthropic",
+    "sender_domains": ["anthropic.com", "invoice.anthropic.com"],
+    "name_aliases": ["Anthropic", "Claude"],
+    "gmail_less": false,
+    "portal_hint": ""
+  },
+  "jshad": {
+    "display_name": "Jshad",
+    "sender_domains": ["jshad.com"],
+    "name_aliases": ["Jshad"],
+    "gmail_less": true,
+    "portal_hint": "Paddle"
+  },
+  "pge": {
+    "display_name": "PG-and-E",
+    "sender_domains": ["pge.com", "pgne.com"],
+    "name_aliases": ["PG&E", "Pacific Gas and Electric"],
+    "gmail_less": false,
+    "portal_hint": ""
+  }
+}

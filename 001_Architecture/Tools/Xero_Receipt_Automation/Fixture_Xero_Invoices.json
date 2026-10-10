@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "t3-anthropic",
+    "Type": "ACCPAY",
+    "Status": "AUTHORISED",
+    "Date": "2026-05-20",
+    "Total": 20.00,
+    "CurrencyCode": "USD",
+    "ContactName": "Anthropic",
+    "Reference": "T3",
+    "IsReconciled": false,
+    "HasAttachments": false
+  }
+]

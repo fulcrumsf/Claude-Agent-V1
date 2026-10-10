@@ -65,6 +65,7 @@ Master catalog of all wiki pages by category. Updated on every ingest.
 - [[Architecture/The-4-Levels-Of-Obsidian]] — This is a walkthrough for The 4 Levels of Obsidian, focused on setup, workflow, and practical use rather than abstract theory.
 - [[Architecture/Obsidian-Agentic-Workspace-Design]] — This is a reference page for turning Obsidian into an agent-driven workspace with plugins, dashboards, and local automation.
 - [[Architecture/Agent-OS-Validation-System]] — PostToolUse + Stop hook system that blocks Claude from declaring builds done without verification. Includes validate_build.py for type-aware checks and data-fetch completeness reporting.
+- [[Architecture/Xero-Receipt-Automation]] — Deterministic Gmail-to-Xero receipt-matching pipeline: byte-verified hash matching before any attachment, write-restricted to never touch transactions/amounts/reconciliation. Promoted via /lab, graded 90.
 
 ## Video Production
 
