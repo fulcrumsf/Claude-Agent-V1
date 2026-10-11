@@ -204,8 +204,12 @@ class XeroClient:
 
     @staticmethod
     def normalize(raw):
-        """Map Xero's JSON shape to the flat fields the pipeline uses."""
+        """Map Xero's JSON shape to the flat fields the pipeline uses.
+        BankAccount (BankTransactions only) is {AccountID, Code, Name}; Xero says Code/Name may be absent."""
+        bank = raw.get("BankAccount") or {}
         return {
+            "BankAccount": {key: bank.get(key, "") for key in ("AccountID", "Code", "Name")} if bank else None,
+            "Description": " ".join(line.get("Description", "") for line in raw.get("LineItems") or [] if line.get("Description")),
             "ID": raw.get("BankTransactionID") or raw.get("InvoiceID"),
             "Type": raw.get("Type", ""),
             "Status": raw.get("Status", ""),

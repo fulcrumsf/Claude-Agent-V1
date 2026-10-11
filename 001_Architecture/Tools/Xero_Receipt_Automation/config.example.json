@@ -3,27 +3,47 @@
   "tenant_id": "a8b7ec28-0f11-48d2-bfd1-378033872daa",
   "timezone": "America/New_York",
   "data_dir": "~/.config/agent-os-xero",
-  "intake_dir": "000_Ingest/Xero_Receipts",
-  "archive_dir": "000_Ingest/Xero_Receipts/Archive",
-  "live_enabled": false,
+  "intake_dir": "/Users/tonymacbook2025/Documents/Agent-OS/000_Ingest/Xero_Receipts",
+  "archive_dir": "/Users/tonymacbook2025/Documents/Agent-OS/000_Ingest/Xero_Receipts/Archive",
+  "live_enabled": true,
+  "auto_archive_enabled": false,
+  "max_auto_archive_per_run": 10,
+  "eligible_bank_accounts": [
+    {
+      "name": "Chase Ink Unlimited",
+      "account_id": ""
+    },
+    {
+      "name": "Capital One Spark Miles",
+      "account_id": ""
+    }
+  ],
   "xero_targets": {
     "bank_transactions": {
       "type": "SPEND",
-      "statuses": ["AUTHORISED"]
+      "statuses": [
+        "AUTHORISED"
+      ]
     },
     "invoices": {
       "type": "ACCPAY",
-      "statuses": ["AUTHORISED", "PAID"]
+      "statuses": [
+        "AUTHORISED",
+        "PAID"
+      ]
     }
   },
   "weekly_lookback_days": 45,
   "gmail_window_days": 7,
-  "gmail_accounts": ["tony_personal", "borednomad_business"],
+  "gmail_accounts": [
+    "tony_personal",
+    "borednomad_business"
+  ],
   "gmail_byte_source": "gmail_api",
   "thresholds": {
-    "auto_min_score": 0.90,
+    "auto_min_score": 0.87,
     "auto_min_lead": 0.15,
-    "review_min_score": 0.50
+    "review_min_score": 0.5
   },
   "max_auto_attach_per_run": 10,
   "correction_hold_days": 90,

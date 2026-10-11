@@ -9,54 +9,96 @@
     "ContactName": "Adobe",
     "Reference": "T1",
     "IsReconciled": true,
-    "HasAttachments": false
+    "HasAttachments": false,
+    "BankAccount": {
+      "AccountID": "acct-chase-ink",
+      "Code": "CHASE",
+      "Name": "Chase Ink"
+    }
   },
   {
     "ID": "t2-openai",
     "Type": "SPEND",
     "Status": "AUTHORISED",
     "Date": "2026-05-03",
-    "Total": 20.00,
+    "Total": 20.0,
     "CurrencyCode": "USD",
     "ContactName": "OpenAI",
     "Reference": "T2",
     "IsReconciled": true,
-    "HasAttachments": false
+    "HasAttachments": false,
+    "BankAccount": {
+      "AccountID": "acct-chase-ink",
+      "Code": "CHASE"
+    }
   },
   {
     "ID": "t4-jshad",
     "Type": "SPEND",
     "Status": "AUTHORISED",
     "Date": "2026-05-15",
-    "Total": 49.00,
+    "Total": 49.0,
     "CurrencyCode": "USD",
     "ContactName": "Jshad",
     "Reference": "T4",
     "IsReconciled": true,
-    "HasAttachments": false
+    "HasAttachments": false,
+    "BankAccount": {
+      "AccountID": "acct-cap1-spark",
+      "Code": "CAP1",
+      "Name": "CapitalOne Spark Miles"
+    }
   },
   {
     "ID": "t5-pge",
     "Type": "SPEND",
     "Status": "AUTHORISED",
     "Date": "2026-05-08",
-    "Total": 83.10,
+    "Total": 83.1,
     "CurrencyCode": "USD",
     "ContactName": "PG&E",
     "Reference": "T5",
     "IsReconciled": true,
-    "HasAttachments": false
+    "HasAttachments": false,
+    "BankAccount": {
+      "AccountID": "acct-cap1-spark",
+      "Code": "CAP1",
+      "Name": "CapitalOne Spark Miles"
+    }
   },
   {
     "ID": "t6-mystery",
     "Type": "SPEND",
     "Status": "AUTHORISED",
     "Date": "2026-05-09",
-    "Total": 12.00,
+    "Total": 12.0,
     "CurrencyCode": "USD",
     "ContactName": "Mystery LLC",
     "Reference": "T6",
     "IsReconciled": true,
-    "HasAttachments": false
+    "HasAttachments": false,
+    "BankAccount": {
+      "AccountID": "acct-chase-ink",
+      "Code": "CHASE",
+      "Name": "Chase Ink"
+    }
+  },
+  {
+    "ID": "t7-etsy-phantom",
+    "Type": "SPEND",
+    "Status": "AUTHORISED",
+    "Date": "2026-05-01",
+    "Total": 10.98,
+    "CurrencyCode": "USD",
+    "ContactName": "Etsy",
+    "Reference": "",
+    "Description": "Bank Transfer to Etsy Payment Balance",
+    "IsReconciled": false,
+    "HasAttachments": false,
+    "BankAccount": {
+      "AccountID": "acct-relay-checking",
+      "Code": "RELAY",
+      "Name": "Relay Business Checking"
+    }
   }
 ]

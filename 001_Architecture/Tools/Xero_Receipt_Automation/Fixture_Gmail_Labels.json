@@ -1,0 +1,18 @@
+{
+  "gm-adobe": [
+    "INBOX",
+    "UNREAD",
+    "CATEGORY_UPDATES",
+    "Label_12"
+  ],
+  "gm-openai": [
+    "INBOX",
+    "IMPORTANT",
+    "STARRED",
+    "CATEGORY_PROMOTIONS"
+  ],
+  "gm-etsy": [
+    "INBOX",
+    "Label_3"
+  ]
+}

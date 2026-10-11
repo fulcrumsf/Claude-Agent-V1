@@ -11,4 +11,6 @@ Run this in Claude Desktop every Saturday at 08:00 local time (`0 8 * * 6`).
 7. Record delivery with `python3 xero_receipts.py notify --sent macos --result "<tool result>"`.
 8. Stop. No retries and no second notification in the same ISO week.
 
+Before step 2, confirm `auto_archive_enabled` is `false` in config. Gmail archiving happens only in a run Tony approved in chat, never in the scheduled pass.
+
 Do **not** use `PushNotification`; the macOS banner is the one and only delivery channel. Do not call any Gmail or Xero write tool. If an outage occurs, record the failure and wait for the next scheduled run.

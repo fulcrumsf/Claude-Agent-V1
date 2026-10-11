@@ -4,21 +4,21 @@
     "sender_domains": ["adobe.com", "mail.adobe.com"],
     "name_aliases": ["Adobe", "Creative Cloud"],
     "gmail_less": false,
-    "portal_hint": ""
+    "portal_hint": "Manual download, per Tony — no receipt email arrives; download the invoice from account.adobe.com > Plans > Billing history."
   },
   "openai": {
     "display_name": "OpenAI",
     "sender_domains": ["openai.com", "billing.openai.com"],
     "name_aliases": ["OpenAI"],
     "gmail_less": false,
-    "portal_hint": ""
+    "portal_hint": "Manual download, per Tony — download the invoice from platform.openai.com > Billing > Invoice history."
   },
   "anthropic": {
     "display_name": "Anthropic",
-    "sender_domains": ["anthropic.com", "invoice.anthropic.com"],
+    "sender_domains": ["anthropic.com", "invoice.anthropic.com", "mail.anthropic.com"],
     "name_aliases": ["Anthropic", "Claude"],
     "gmail_less": false,
-    "portal_hint": ""
+    "portal_hint": "Receipt email lands at the business inbox (info@borednomad.com), per Tony."
   },
   "jshad": {
     "display_name": "Jshad",
@@ -33,5 +33,110 @@
     "name_aliases": ["PG&E", "Pacific Gas and Electric"],
     "gmail_less": false,
     "portal_hint": ""
+  },
+  "kie.ai": {
+    "display_name": "Kie.ai",
+    "sender_domains": ["kie.ai"],
+    "name_aliases": ["Kie.ai"],
+    "gmail_less": false,
+    "portal_hint": ""
+  },
+  "google": {
+    "display_name": "Google",
+    "sender_domains": ["google.com"],
+    "name_aliases": ["Google", "Google Play", "Google One", "Google Cloud", "Google Workspace"],
+    "gmail_less": false,
+    "portal_hint": "Google Play/One receipt emails have no file attached; download from play.google.com/store/account/orderhistory or payments.google.com. Google Cloud and Google Workspace receipts arrive by email, per Tony — check both personal (fulcrumsf@gmail.com) and business (info@borednomad.com) inboxes."
+  },
+  "apple": {
+    "display_name": "Apple",
+    "sender_domains": ["email.apple.com", "apple.com"],
+    "name_aliases": ["Apple", "iCloud"],
+    "gmail_less": false,
+    "portal_hint": "Receipt emails have no file attached; download from Apple purchase history (reportaproblem.apple.com)"
+  },
+  "elevenlabs": {
+    "display_name": "ElevenLabs",
+    "sender_domains": ["elevenlabs.io"],
+    "name_aliases": ["ElevenLabs", "Eleven Labs"],
+    "gmail_less": false,
+    "portal_hint": "Invoices arrive via Stripe (stripe.com) at the business inbox (info@borednomad.com), per Tony."
+  },
+  "perplexity": {
+    "display_name": "Perplexity",
+    "sender_domains": ["perplexity.ai"],
+    "name_aliases": ["Perplexity"],
+    "gmail_less": false,
+    "portal_hint": "Likely manual download (Tony's recollection, unconfirmed) — check perplexity.ai account billing page."
+  },
+  "spectrum": {
+    "display_name": "Spectrum",
+    "sender_domains": ["spectrumemails.com", "spectrum.net", "charter.com"],
+    "name_aliases": ["Spectrum", "Charter"],
+    "gmail_less": false,
+    "portal_hint": "A notice email lands in personal Gmail (fulcrumsf@gmail.com) but has no receipt attached — per Tony, the real document is the monthly statement PDF at spectrum.net > Billing. Use the statement as the receipt, not the email. The bill auto-drafts around the 18th of each month, after which Tony expects a statement email with the document attached — confirmed working for the September statement, 2026-10-10."
+  },
+  "blotato": {
+    "display_name": "Blotato",
+    "sender_domains": ["blotato.com"],
+    "name_aliases": ["Blotato"],
+    "gmail_less": false,
+    "portal_hint": "Likely manual download (Tony's recollection, unconfirmed) — check blotato.com account billing page."
+  },
+  "cloudways": {
+    "display_name": "Cloudways",
+    "sender_domains": ["cloudways.com"],
+    "name_aliases": ["Cloudways"],
+    "gmail_less": false,
+    "portal_hint": "Receipt generally emailed to the business inbox (info@borednomad.com), per Tony."
+  },
+  "etsy": {
+    "display_name": "Etsy",
+    "sender_domains": ["etsy.com"],
+    "name_aliases": ["Etsy", "Etsy Billing", "Etsy, Inc"],
+    "gmail_less": false,
+    "portal_hint": "billing@etsy.com 'Your payment of $X has been received' emails have no file attached; screenshot the email itself as the receipt. These are ad spend or listing fee settlements even when the email doesn't itemize which."
+  },
+  "higgsfield": {
+    "display_name": "Higgsfield",
+    "sender_domains": ["higgsfield.ai"],
+    "name_aliases": ["Higgsfield", "Higgsfield Inc"],
+    "gmail_less": false,
+    "portal_hint": "sender_domains is a guess, not confirmed against a real receipt email yet (Tony's account code: 6001 Software & AI Tools)"
+  },
+  "printful": {
+    "display_name": "Printful",
+    "sender_domains": ["printful.com", "info.printful.com"],
+    "name_aliases": ["Printful"],
+    "gmail_less": false,
+    "portal_hint": "Order confirmation/receipt emails land in personal Gmail (fulcrumsf@gmail.com) — confirmed real sender fulfillment@info.printful.com. Tony says there are about 5 real Printful receipts there."
+  },
+  "anytime_mailbox": {
+    "display_name": "Anytime-Mailbox",
+    "sender_domains": ["anytimemailbox.com"],
+    "name_aliases": ["Anytime Mailbox"],
+    "gmail_less": false,
+    "portal_hint": "Manual download, per Tony — download from anytimemailbox.com account billing. sender_domains is an unconfirmed guess."
+  },
+  "tiktok_shop": {
+    "display_name": "TikTok-Shop",
+    "sender_domains": ["tiktok.com"],
+    "name_aliases": ["Tiktok Shop", "TikTok Shop"],
+    "gmail_less": false,
+    "portal_hint": "Paid via credit card, per Tony. Look for an order confirmation/receipt email across both inboxes — sender_domains is an unconfirmed guess."
+  },
+  "suno": {
+    "display_name": "Suno",
+    "sender_domains": ["suno.com", "suno.ai"],
+    "name_aliases": ["Suno"],
+    "gmail_less": false,
+    "portal_hint": "Per Tony, receipt emails land at the business inbox (info@borednomad.com). No current Xero transaction for this vendor — added proactively since Tony named it. sender_domains is an unconfirmed guess."
+  },
+  "credit_card_interest": {
+    "display_name": "Credit-Card-Interest",
+    "sender_domains": [],
+    "name_aliases": ["Credit Card Interest"],
+    "gmail_less": false,
+    "portal_hint": "Never has a receipt, per Tony — these are interest/fee charges, not vendor purchases. Always leave as no_candidate; don't search for one."
   }
 }

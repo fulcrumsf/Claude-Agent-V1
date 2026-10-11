@@ -8,6 +8,48 @@ from xr_extract import extract_text, parse_extraction
 RECEIPT_SUBJECT = re.compile(r"(receipt|invoice|payment|order|billing)", re.I)
 
 
+PHANTOM_TRANSFER_NOTE = (
+    "Likely a known Etsy-integration phantom transfer (Etsy ad spend exceeded sales, the real charge is on a "
+    "credit card, and the integration also booked a fake 'Transfer to Etsy Payment Balance' line here). "
+    "Do not attach, categorize, or reconcile it. Tony deletes these manually in Xero."
+)
+
+
+def phantom_transfer_reason(transaction):
+    """Flag the Etsy-integration bug line: 'Bank Transfer to <Store> Payment Balance' (the store name need
+    not contain 'Etsy') or 'Transfer to Etsy', booked on a bank account that is not the Etsy Payment Balance
+    account itself. It never happened, so it has no receipt and no account code. Deliberately broad: a false
+    positive only sends the item to Tony instead of attaching."""
+    text = " ".join(
+        str(transaction.get(field) or "") for field in ("contact_name", "reference", "description")
+    ).lower()
+    bank_name = ((transaction.get("bank_account") or {}).get("name") or "").lower()
+    looks_phantom = "payment balance" in text or "transfer to etsy" in text
+    on_etsy_side = "etsy" in bank_name or "payment balance" in bank_name
+    if looks_phantom and not on_etsy_side:
+        return PHANTOM_TRANSFER_NOTE
+    return None
+
+
+def _normalized(value):
+    return re.sub(r"[^a-z0-9]", "", (value or "").lower())
+
+
+def bank_account_eligible(bank_account, allowlist):
+    """True only for a bank account named in config eligible_bank_accounts (Tony's expense credit cards).
+    An entry with account_id matches on the Xero AccountID only; otherwise on the name, ignoring case,
+    spaces and punctuation ('CapitalOne Spark Miles' == 'Capital One Spark Miles'). Unknown account: False."""
+    if not bank_account:
+        return False
+    for entry in allowlist or []:
+        if entry.get("account_id"):
+            if entry["account_id"] == bank_account.get("account_id"):
+                return True
+        elif entry.get("name") and _normalized(entry["name"]) == _normalized(bank_account.get("name")):
+            return True
+    return False
+
+
 def load_aliases(path):
     return Path(path).read_text(encoding="utf-8")
 
@@ -35,8 +77,10 @@ def date_score(candidate_date, transaction_date):
     if not candidate_date:
         return 0.0
     try:
-        delta = abs((datetime.fromisoformat(candidate_date) - datetime.fromisoformat(transaction_date)).days)
-    except ValueError:
+        candidate_day = datetime.fromisoformat(candidate_date.replace("Z", "+00:00")).date()
+        transaction_day = datetime.fromisoformat(transaction_date).date()
+        delta = abs((candidate_day - transaction_day).days)
+    except (ValueError, AttributeError):
         return 0.0
     if delta <= 2:
         return 0.20

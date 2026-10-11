@@ -18,6 +18,9 @@ def review_json(state):
             "filename": item.get("filename"),
             "attachment_id": item.get("attachment_id"),
             "runner_up_score": item.get("runner_up_score"),
+            "bank_account": (item.get("transaction") or {}).get("bank_account"),
+            "gmail_archive": item.get("gmail_archive"),
+            "flags": item_flags(item),
         }
         if item["state"] == "pending_review":
             needs.append(entry)
@@ -32,7 +35,23 @@ def review_json(state):
         "auto_attached_this_week": auto,
         "manual_portal": manual,
         "other": other,
+        "flagged": [entry for entry in needs + auto + manual + other if entry["flags"]],
     }
+
+
+def item_flags(item):
+    """Plain-language notes Tony should see under an item in /xero."""
+    flags = []
+    if item.get("phantom_transfer"):
+        flags.append(item.get("reason", "Likely Etsy-integration phantom transfer; do not reconcile."))
+    if item.get("ineligible_bank_account"):
+        flags.append(item.get("reason", "Not on an eligible expense credit card; receipts are never attached here."))
+    archive = item.get("gmail_archive") or {}
+    if archive.get("status") == "untagged":
+        flags.append(archive.get("note"))
+    elif archive.get("status") == "failed":
+        flags.append(f"Gmail archive failed: {archive.get('reason')}")
+    return flags
 
 
 def render_markdown(review):
@@ -49,6 +68,11 @@ def render_markdown(review):
         lines.append(f"- {item['item_id']} {item.get('filename')} score {item.get('score')}")
     lines.extend(["", f"Manual portal lookups: {len(review['manual_portal'])}"])
     lines.extend(["", f"No candidate / failures / verified-not-archived: {len(review['other'])}"])
+    lines.extend(["", f"Flagged for Tony: {len(review.get('flagged', []))}"])
+    for item in review.get("flagged", []):
+        transaction = item["transaction"]
+        for flag in item["flags"]:
+            lines.append(f"- {transaction.get('date')} {transaction.get('contact_name')} ${transaction.get('total')}: {flag}")
     return "\n".join(lines) + "\n"
 
 

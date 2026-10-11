@@ -23,6 +23,7 @@ REQUIRED_CONFIG = {
     "archive_date_format": str,
     "archive_gmail_sourced": bool,
     "notify": dict,
+    "eligible_bank_accounts": list,
 }
 
 
@@ -33,6 +34,21 @@ def load_config(path, data_dir=None, intake_dir=None, archive_dir=None):
         raise ValueError("config missing or invalid fields: " + ", ".join(missing))
     if config["gmail_byte_source"] not in {"none", "gmail_api"}:
         raise ValueError("gmail_byte_source must be none or gmail_api")
+    # Receipts attach only to Spend Money lines on these accounts (Tony's expense credit cards). Fails closed.
+    for entry in config["eligible_bank_accounts"]:
+        if not isinstance(entry, dict) or not (entry.get("account_id") or entry.get("name")):
+            raise ValueError("each eligible_bank_accounts entry needs a name or an account_id")
+    # Optional, default off. Like live_enabled: flip to true only for one approved run, then back to false.
+    if not isinstance(config.get("auto_archive_enabled", False), bool):
+        raise ValueError("auto_archive_enabled must be true or false")
+    cap = config.get("max_auto_archive_per_run", 10)
+    if not isinstance(cap, int) or isinstance(cap, bool) or cap < 0:
+        raise ValueError("max_auto_archive_per_run must be a whole number")
+    if "auto_reconcile_enabled" in config:
+        raise ValueError(
+            "auto_reconcile_enabled is not supported: Xero's public API cannot read the Reconcile queue, "
+            "read Bank Rules, or reconcile statement lines (see README 'Auto-reconcile'). Remove the key."
+        )
     thresholds = config["thresholds"]
     for name in ("auto_min_score", "auto_min_lead", "review_min_score"):
         if not isinstance(thresholds.get(name), (int, float)):

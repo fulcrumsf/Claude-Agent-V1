@@ -16,13 +16,20 @@ import xr_report
 import xr_secrets
 import xr_state
 import xr_gmail_api
-from xr_gmail_api import FakeGmailSource
+from xr_gmail_api import FakeGmailClient, FakeGmailSource
 from xr_xero_api import FakeXeroClient, XeroClient
 
 
 SCOPES = "offline_access accounting.banktransactions.read accounting.invoices.read accounting.contacts.read accounting.attachments"
 CANDIDATE_FIELDS = ("account_label", "message_id", "thread_id", "sender", "subject", "date", "body_text", "attachments")
 ALLOWED_DROPS = {".pdf", ".jpg", ".jpeg", ".png", ".heic"}
+# Only receipts already attached to Xero AND hash-verified can ever have their email archived.
+# Every one of these states is reachable only through a downloaded-bytes hash match.
+ARCHIVE_ELIGIBLE_STATES = {"verified", "verified_not_archived", "archived", "already_attached"}
+GMAIL_UNTAGGED_NOTE = (
+    "Receipt attached and verified, but the email has no Gmail label. "
+    "Add a Gmail filter/label for this vendor so it can be archived next time."
+)
 
 
 def parse_args():
@@ -43,10 +50,11 @@ def parse_args():
     common.add_argument("--json", dest="json_output", action="store_true")
     parser = argparse.ArgumentParser(prog="xero_receipts.py", parents=[common], description="Attach receipts to existing Xero expenses only.")
     commands = parser.add_subparsers(dest="command", required=True)
-    for name in ("config-check", "auth-xero", "auth-gmail", "xero-fetch", "plan-search", "ingest-candidates", "fetch-bytes", "scan-drops", "match", "attach", "verify", "archive", "run", "review", "approve", "reject", "correct", "confirm-removed", "vendor-trust", "notify-check", "notify", "calibration-report", "verify-state"):
+    for name in ("config-check", "auth-xero", "auth-gmail", "xero-fetch", "plan-search", "ingest-candidates", "fetch-bytes", "scan-drops", "match", "attach", "verify", "archive", "run", "review", "approve", "reject", "correct", "confirm-removed", "vendor-trust", "notify-check", "notify", "calibration-report", "verify-state", "gmail-archive"):
         commands.add_parser(name, parents=[common])
     commands.choices["auth-gmail"].add_argument("--account", default=None, help="gmail_accounts label this token is for (defaults to the config's first entry)")
-    for command in ("approve", "reject", "correct", "confirm-removed", "attach", "verify", "archive"):
+    commands.choices["auth-gmail"].add_argument("--allow-archive", action="store_true", help="request gmail.modify (needed only for the gated gmail-archive step) instead of gmail.readonly")
+    for command in ("approve", "reject", "correct", "confirm-removed", "attach", "verify", "archive", "gmail-archive"):
         subparser = getattr(commands, "choices", {}).get(command)
         if subparser is not None:
             subparser.add_argument("--item", required=(command == "approve"))
@@ -77,7 +85,13 @@ class Pipeline:
         self.state = xr_state.StateStore(self.paths["data"])
         self.aliases = json.loads((self.fixtures_dir / ("Fixture_Vendor_Aliases.json" if args.offline else "Vendor_Aliases.example.json")).read_text(encoding="utf-8"))
         self._client = None
-        self.write_enabled = args.simulate_live or (args.live and self.config["live_enabled"])
+        self._gmail_clients = {}
+        self.excluded_bank_accounts = {}
+        # --simulate-live only means something against the offline fakes; with --live it must never bypass the flag.
+        simulated = bool(args.offline and args.simulate_live)
+        self.write_enabled = simulated or bool(args.live and self.config["live_enabled"])
+        # Separate gate for the one Gmail write (archive = remove INBOX label). Independent of live_enabled.
+        self.archive_write_enabled = simulated or bool(args.live and self.config.get("auto_archive_enabled", False))
         self.already_attached_this_call = []
         self.summary = {
             "auto_eligible": 0,
@@ -90,6 +104,12 @@ class Pipeline:
             "already_attached": 0,
             "xero_write_calls": 0,
             "xero_put_calls": 0,
+            "gmail_archived": 0,
+            "gmail_untagged": 0,
+            "gmail_write_calls": 0,
+            "phantom_transfers": 0,
+            "excluded_by_bank_account": 0,
+            "excluded_bank_accounts": {},
         }
 
     @property
@@ -124,8 +144,23 @@ class Pipeline:
         raw_items.extend(self.client.list_invoices(where=f'Type=="{targets["invoices"]["type"]}" AND Date>={cutoff}'))
         statuses_bank = set(self.config["xero_targets"]["bank_transactions"]["statuses"])
         statuses_invoice = set(self.config["xero_targets"]["invoices"]["statuses"])
+        bank_names = self._known_bank_names(raw_items)
         for raw in raw_items:
             endpoint = "BankTransactions" if raw.get("Type") == "SPEND" else "Invoices"
+            bank_account = self._bank_account(raw, endpoint, bank_names)
+            existing = self.state.index["items"].get(f"{endpoint}:{raw['ID']}")
+            if existing is not None and bank_account and existing["transaction"].get("bank_account") != bank_account:
+                existing["transaction"]["bank_account"] = bank_account  # backfill badges on already-known items, incl. finished ones
+            if endpoint == "BankTransactions" and not xr_match.bank_account_eligible(bank_account, self.config["eligible_bank_accounts"]):
+                # Revenue / transfer accounts (Relay, Mercury, Wise, PayPal, Etsy Payment Balance...) never get receipts.
+                name = (bank_account or {}).get("name") or (bank_account or {}).get("account_id") or "unknown account"
+                self.excluded_bank_accounts[name] = self.excluded_bank_accounts.get(name, 0) + 1
+                if existing is not None and existing["state"] in xr_state.CLASSES:
+                    self._mark_ineligible(existing, name)
+                continue
+            if existing is not None and existing.pop("ineligible_bank_account", None):
+                if str(existing.get("reason", "")).startswith("Not on an eligible expense credit card"):
+                    existing.pop("reason")  # allowlist fixed: the item is matched normally again
             status = raw.get("Status", "AUTHORISED")
             allowed = statuses_bank if endpoint == "BankTransactions" else statuses_invoice
             if status not in allowed or raw.get("HasAttachments"):
@@ -140,13 +175,45 @@ class Pipeline:
                 "currency": raw.get("CurrencyCode", "USD"),
                 "contact_name": raw.get("ContactName", raw.get("Contact", {}).get("Name", "")),
                 "reference": raw.get("Reference", ""),
+                "description": raw.get("Description", ""),
                 "is_reconciled": raw.get("IsReconciled", False),
+                "bank_account": bank_account,
                 "archive_date_format": self.config["archive_date_format"],
             }
             record = self.state.discover(self.run_id, transaction, self.args.dry_run)
             if record is not None:
                 active.append(record)
         return active
+
+    def _mark_ineligible(self, record, account_name):
+        """An item found before the allowlist existed: park it where it can never be approved or uploaded."""
+        reason = f"Not on an eligible expense credit card ({account_name}); receipts are never attached on this account."
+        if record["state"] != "no_candidate":
+            self.state.transition(record["item_id"], "no_candidate", self.run_id, self.args.dry_run, auto=False, reason=reason, ineligible_bank_account=True)
+        else:
+            record.update(auto=False, reason=reason, ineligible_bank_account=True)
+
+    def _known_bank_names(self, raw_items):
+        """AccountID -> Name, from this fetch and from earlier runs, for lines where Xero omits Name."""
+        names = {}
+        for item in self.state.index["items"].values():
+            bank = (item.get("transaction") or {}).get("bank_account") or {}
+            if bank.get("account_id") and bank.get("name"):
+                names[bank["account_id"]] = bank["name"]
+        for raw in raw_items:
+            bank = raw.get("BankAccount") or {}
+            if bank.get("AccountID") and bank.get("Name"):
+                names[bank["AccountID"]] = bank["Name"]
+        return names
+
+    @staticmethod
+    def _bank_account(raw, endpoint, bank_names):
+        """Which Xero bank account a Spend Money line sits on. Bills (Invoices) have none: null."""
+        bank = raw.get("BankAccount") or {}
+        if endpoint != "BankTransactions" or not bank:
+            return None
+        account_id = bank.get("AccountID", "")
+        return {"account_id": account_id, "code": bank.get("Code", ""), "name": bank.get("Name") or bank_names.get(account_id, "")}
 
     def plan_search(self, records):
         plan = {"run_id": self.run_id, "items": {}}
@@ -215,21 +282,13 @@ class Pipeline:
 
     def fetch_gmail_bytes(self, records):
         """Byte-exact Gmail attachments (read-only API) staged as data_dir/staged_<sha12>.<ext>."""
-        clients = {}
         for record in records:
             for candidate in record.get("candidates", []):
                 label = candidate.get("account_label")
-                if label not in clients:
-                    token = xr_secrets.read_refresh_token(label, xr_gmail_api.GMAIL_KEYCHAIN_SERVICE)
-                    if not token:
-                        print(f"warning: no Gmail token in Keychain ({xr_gmail_api.GMAIL_KEYCHAIN_SERVICE}/{label}); its candidates can only go to review", file=sys.stderr)
-                        clients[label] = None
-                    else:
-                        access = xr_gmail_api.access_token(xr_secrets.required_secret("GMAIL_CLIENT_ID"), xr_secrets.required_secret("GMAIL_CLIENT_SECRET"), token)
-                        clients[label] = xr_gmail_api.GmailClient(access, label)
-                if clients[label] is None or not candidate.get("attachments"):
+                client = self.gmail_client(label)
+                if client is None or not candidate.get("attachments"):
                     continue
-                fetched = xr_gmail_api.fetch_candidate_bytes(clients[label], candidate)
+                fetched = xr_gmail_api.fetch_candidate_bytes(client, candidate)
                 if not fetched or len(fetched[1]) > self.config["max_file_mb"] * 1024 * 1024:
                     continue
                 digest = hashlib.sha256(fetched[1]).hexdigest()
@@ -237,6 +296,21 @@ class Pipeline:
                 if not staged.exists():
                     staged.write_bytes(fetched[1])
                 candidate["staged_path"] = str(staged)
+
+    def gmail_client(self, label):
+        """One client per Gmail account label (offline: fixture fake). None when no Keychain token exists."""
+        if label not in self._gmail_clients:
+            if self.args.offline:
+                self._gmail_clients[label] = FakeGmailClient(self.fixtures_dir, label, self.args.simulate_live)
+            else:
+                token = xr_secrets.read_refresh_token(label, xr_gmail_api.GMAIL_KEYCHAIN_SERVICE) if label else ""
+                if not token:
+                    print(f"warning: no Gmail token in Keychain ({xr_gmail_api.GMAIL_KEYCHAIN_SERVICE}/{label}); its candidates can only go to review", file=sys.stderr)
+                    self._gmail_clients[label] = None
+                else:
+                    access, scopes = xr_gmail_api.access_token_info(xr_secrets.required_secret("GMAIL_CLIENT_ID"), xr_secrets.required_secret("GMAIL_CLIENT_SECRET"), token)
+                    self._gmail_clients[label] = xr_gmail_api.GmailClient(access, label, scopes)
+        return self._gmail_clients[label]
 
     def scan_drops(self, records):
         drops = []
@@ -276,6 +350,11 @@ class Pipeline:
                 continue
             transaction = record["transaction"]
             candidates = record.get("candidates", [])
+            phantom = xr_match.phantom_transfer_reason(transaction)
+            if phantom:
+                # Never score, never attach: no_candidate cannot be approved or uploaded. Tony deletes these in Xero.
+                results.append([record, "no_candidate", {"auto": False, "phantom_transfer": True, "reason": phantom, "top_candidates": [], "lead": 0.0}])
+                continue
             classification, scored, best, lead = xr_match.classify(
                 transaction,
                 candidates,
@@ -326,6 +405,15 @@ class Pipeline:
                 continue
             transaction = record["transaction"]
             current = self.client.get_transaction(transaction["endpoint"], transaction["guid"])
+            if transaction["endpoint"] == "BankTransactions":
+                bank = current.get("BankAccount") or {}
+                current_bank = {"account_id": bank.get("AccountID", ""), "name": bank.get("Name") or (transaction.get("bank_account") or {}).get("name", "")}
+                if not xr_match.bank_account_eligible(current_bank, self.config["eligible_bank_accounts"]):
+                    reason = f"Not on an eligible expense credit card ({current_bank['name'] or current_bank['account_id'] or 'unknown account'}); not attached."
+                    next_state = "pending_review" if record["state"] == "approved" else "no_candidate"
+                    self.state.transition(record["item_id"], next_state, self.run_id, self.args.dry_run, auto=False, reason=reason, ineligible_bank_account=True)
+                    record["state"] = next_state
+                    continue
             if (
                 current.get("Total", current.get("Amount")) != transaction["total"]
                 or current.get("Date") != transaction["date"]
@@ -410,6 +498,70 @@ class Pipeline:
             archived.append(record)
         return archived
 
+    def gmail_archive_candidates(self, item_id=None):
+        """Items whose receipt came from a Gmail message and is already attached + hash-verified in Xero."""
+        items = [self.state.index["items"][item_id]] if item_id else list(self.state.index["items"].values())
+        eligible = []
+        for item in items:
+            if item.get("state") not in ARCHIVE_ELIGIBLE_STATES or item.get("verify_failed"):
+                continue
+            if item.get("source_kind") not in {"gmail", "fixture"}:  # manual drops have no email to archive
+                continue
+            if not (item.get("gmail_message_id") and item.get("source") and item.get("attachment_id") and item.get("sha256")):
+                continue
+            if (item.get("gmail_archive") or {}).get("status") in {"archived", "already_out_of_inbox"}:
+                continue
+            eligible.append(item)
+        return eligible
+
+    def gmail_archive(self, item_id=None):
+        """Archive (remove INBOX, nothing else) the email behind each hash-verified receipt, only if the
+        email carries a real user label. Writes only with auto_archive_enabled + --live and not --dry-run;
+        otherwise it is a read-only preview that is not saved."""
+        writes = self.archive_write_enabled and not self.args.dry_run
+        cap = self.config.get("max_auto_archive_per_run", 10)
+        results = []
+        archived_count = 0
+        for item in self.gmail_archive_candidates(item_id):
+            label, message_id = item["source"], item["gmail_message_id"]
+            outcome = {"account": label, "message_id": message_id, "run_id": self.run_id, "at": self.now}
+            client = self.gmail_client(label)
+            labels = client.message_labels(message_id) if client is not None else None
+            if client is None:
+                outcome.update(status="failed", reason=f"no Gmail token in Keychain for account label {label}")
+            elif labels is None:
+                outcome.update(status="failed", reason="Gmail message not found (deleted or moved account)")
+            elif "TRASH" in labels or "SPAM" in labels:
+                outcome.update(status="skipped", reason="message is in Trash or Spam; left alone")
+            elif "INBOX" not in labels:
+                outcome.update(status="already_out_of_inbox")
+            elif not xr_gmail_api.user_labels(labels):
+                outcome.update(status="untagged", note=GMAIL_UNTAGGED_NOTE)
+            elif not writes:
+                outcome.update(status="would_archive")
+            elif not client.can_modify:
+                outcome.update(status="failed", reason=f"Gmail token for {label} is read-only; run auth-gmail --account {label} --allow-archive")
+            elif archived_count >= cap:
+                outcome.update(status="would_archive", reason=f"max_auto_archive_per_run ({cap}) reached; next run")
+            else:
+                client.remove_inbox_label(message_id)
+                self.summary["gmail_write_calls"] += 1
+                after = client.message_labels(message_id) or []
+                if "INBOX" in after:
+                    outcome.update(status="failed", reason="INBOX label still present after the archive call")
+                else:
+                    outcome.update(status="archived")
+                    archived_count += 1
+            if labels is not None:
+                outcome["user_labels"] = xr_gmail_api.user_labels(labels)
+            if writes and outcome["status"] != "would_archive":
+                item["gmail_archive"] = outcome
+                self.state.append({"event": "gmail_archive", "item_id": item["item_id"], **outcome})
+            results.append({"item_id": item["item_id"], **outcome})
+        self.summary["gmail_archived"] = sum(1 for row in results if row["status"] == "archived")
+        self.summary["gmail_untagged"] = sum(1 for row in results if row["status"] == "untagged")
+        return results
+
     def run(self):
         records = self.fetch()
         self.plan_search(records)
@@ -426,6 +578,8 @@ class Pipeline:
                 "verified": len(verified),
                 "archived": len(archived),
             })
+            if self.archive_write_enabled:
+                self.gmail_archive()
         active_states = {record["state"] for record in records}
         self.state.index["last_run"] = self.run_id
         self.state.index["last_run_time"] = self.now
@@ -444,6 +598,9 @@ class Pipeline:
             "already_attached": counts.get("already_attached", 0),
             "xero_write_calls": sum(1 for method, _ in (self._client.call_log if self._client else []) if method == "POST"),
             "xero_put_calls": 0,
+            "phantom_transfers": sum(1 for record in records if record.get("phantom_transfer")),
+            "excluded_by_bank_account": sum(self.excluded_bank_accounts.values()),
+            "excluded_bank_accounts": dict(sorted(self.excluded_bank_accounts.items())),
         })
         review = xr_report.review_json(self.state)
         report_path = xr_report.write_report(self.paths["data"], self.run_id, review)
@@ -478,7 +635,7 @@ def main():
 def dispatch(args):
     if args.command == "config-check":
         pipeline = Pipeline(args)
-        emit(args, {"ok": True, "tenant_alias": pipeline.config["tenant_alias"], "live_enabled": pipeline.config["live_enabled"]})
+        emit(args, {"ok": True, "tenant_alias": pipeline.config["tenant_alias"], "live_enabled": pipeline.config["live_enabled"], "auto_archive_enabled": pipeline.config.get("auto_archive_enabled", False)})
         return 0
     if args.command == "auth-xero":
         if args.offline:
@@ -508,13 +665,16 @@ def dispatch(args):
             if not accounts:
                 raise RuntimeError("no gmail_accounts in config and no --account given")
             account_label = accounts[0]
-        gmail_token = xr_gmail_api.authorize(client_id, gmail_secret)
+        scope = xr_gmail_api.MODIFY_SCOPE if args.allow_archive else xr_gmail_api.READONLY_SCOPE
+        gmail_token = xr_gmail_api.authorize(client_id, gmail_secret, scope=scope)
         xr_secrets.save_refresh_token(account_label, gmail_token, service=xr_gmail_api.GMAIL_KEYCHAIN_SERVICE)
-        print(f"Connected Gmail account label: {account_label}")
+        print(f"Connected Gmail account label: {account_label} (scope: {scope.rsplit('/', 1)[-1]})")
         return 0
     pipeline = Pipeline(args)
     if args.command == "xero-fetch":
         records = pipeline.fetch()
+        if pipeline.excluded_bank_accounts:
+            print(f"notice: skipped lines on non-eligible bank accounts: {dict(sorted(pipeline.excluded_bank_accounts.items()))}", file=sys.stderr)
         emit(args, [record["transaction"] for record in records])
         return 0
     if args.command in {"plan-search", "ingest-candidates", "fetch-bytes", "scan-drops", "match"}:
@@ -564,6 +724,12 @@ def dispatch(args):
         archived = pipeline.archive(records)
         pipeline.state.save()
         emit(args, {"archived": len(archived)})
+        return 0
+    if args.command == "gmail-archive":
+        results = pipeline.gmail_archive(args.item)
+        pipeline.state.save()
+        mode = "live" if pipeline.archive_write_enabled and not args.dry_run else "preview (no Gmail writes: needs auto_archive_enabled true and --live, without --dry-run)"
+        emit(args, {"mode": mode, "results": results, "gmail_write_calls": pipeline.summary["gmail_write_calls"]})
         return 0
     if args.command == "correct":
         item = pipeline.state.index["items"][args.item]

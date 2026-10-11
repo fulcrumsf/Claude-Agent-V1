@@ -6,6 +6,12 @@
   "intake_dir": "/tmp/xero-receipt-intake",
   "archive_dir": "/tmp/xero-receipt-archive",
   "live_enabled": false,
+  "auto_archive_enabled": false,
+  "max_auto_archive_per_run": 10,
+  "eligible_bank_accounts": [
+    {"name": "Chase Ink", "account_id": "acct-chase-ink"},
+    {"name": "Capital One Spark Miles", "account_id": ""}
+  ],
   "xero_targets": {
     "bank_transactions": {
       "type": "SPEND",
