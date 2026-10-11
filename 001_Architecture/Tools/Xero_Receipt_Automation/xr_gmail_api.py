@@ -226,6 +226,34 @@ def attachment_parts(payload):
             yield part["filename"], part.get("mimeType", ""), body["attachmentId"]
 
 
+def message_text(payload, limit=20000):
+    """Plain-text body of a Gmail message payload. Prefers text/plain; falls back to
+    HTML with tags stripped (receipt-style marketing/notice emails are often HTML-only)."""
+    import re
+
+    def decode(data):
+        return base64.urlsafe_b64decode(data + "=" * (-len(data) % 4)).decode("utf-8", "replace")
+
+    plain, html = [], []
+    stack = [payload or {}]
+    while stack:
+        part = stack.pop()
+        stack.extend(part.get("parts", []))
+        data = part.get("body", {}).get("data")
+        if not data:
+            continue
+        if part.get("mimeType") == "text/plain":
+            plain.append(decode(data))
+        elif part.get("mimeType") == "text/html":
+            html.append(decode(data))
+    if plain:
+        return "\n".join(plain)[:limit]
+    if html:
+        text = re.sub(r"<[^>]+>", " ", "\n".join(html))
+        return re.sub(r"\s+", " ", text).strip()[:limit]
+    return ""
+
+
 def fetch_candidate_bytes(client, candidate):
     """Exact bytes of the first PDF/image attachment named in the candidate, or None."""
     wanted = {item.get("filename") for item in candidate.get("attachments", [])}

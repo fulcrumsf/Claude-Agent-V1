@@ -7,6 +7,7 @@ import os
 import sys
 import time
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 
 import xr_config
@@ -233,16 +234,81 @@ class Pipeline:
                 self.state.transition(record["item_id"], "search_planned", self.run_id, self.args.dry_run)
         path = self.paths["data"] / f"Run_{self.run_id}_Search_Plan.json"
         path.write_text(json.dumps(plan, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        self._last_plan = plan
         return plan
 
-    def load_candidates(self, records):
-        """Offline: fixtures. Otherwise Run_<id>_Gmail_Candidates.json written by the Claude layer (if present)."""
+    def search_gmail_live(self, records, plan):
+        """Real, in-process Gmail search across every account in config.gmail_accounts —
+        read-only (search/message/attachment GET, same Keychain token as fetch_gmail_bytes).
+        Replaces the old 'Claude layer writes Gmail_Candidates.json' handoff, which only ever
+        reached whichever single Gmail account a chat session's own connector was bound to."""
+        items = {}
+        for record in records:
+            if record["state"] != "search_planned":
+                continue
+            item_id = record["item_id"]
+            queries = plan["items"].get(item_id, {}).get("queries", [])
+            candidates = []
+            seen_message_ids = set()
+            for label in self.config["gmail_accounts"]:
+                client = self.gmail_client(label)
+                if client is None:
+                    continue
+                for query in queries:
+                    try:
+                        result = client.search(query, page_size=5)
+                    except Exception as error:
+                        print(f"warning: Gmail search failed for {item_id} ({label}): {error}", file=sys.stderr)
+                        continue
+                    for thread in result.get("threads", [])[:3]:
+                        message_id = thread["id"]
+                        if message_id in seen_message_ids:
+                            continue
+                        seen_message_ids.add(message_id)
+                        try:
+                            message = client.message(message_id, "full")
+                        except Exception as error:
+                            print(f"warning: Gmail fetch failed for {message_id} ({label}): {error}", file=sys.stderr)
+                            continue
+                        headers = {h["name"]: h["value"] for h in message.get("payload", {}).get("headers", [])}
+                        date_header = headers.get("Date", "")
+                        try:
+                            date = parsedate_to_datetime(date_header).date().isoformat()
+                        except (TypeError, ValueError):
+                            date = record["transaction"]["date"]
+                        attachments = [
+                            {"filename": filename, "mime": mime}
+                            for filename, mime, _ in xr_gmail_api.attachment_parts(message.get("payload"))
+                        ]
+                        candidates.append({
+                            "account_label": label,
+                            "message_id": message_id,
+                            "thread_id": thread.get("threadId", message_id),
+                            "sender": headers.get("From", ""),
+                            "subject": headers.get("Subject", ""),
+                            "date": date,
+                            "body_text": xr_gmail_api.message_text(message.get("payload")),
+                            "attachments": attachments,
+                        })
+                    if len(candidates) >= 5:
+                        break
+                if len(candidates) >= 5:
+                    break
+            if candidates:
+                items[item_id] = candidates
+        return items
+
+    def load_candidates(self, records, plan=None):
+        """Offline: fixtures. Otherwise a real, in-process Gmail search across both accounts
+        (search_gmail_live), written to Run_<id>_Gmail_Candidates.json as an audit record.
+        A pre-existing, already-valid candidates file for this run_id is used as-is (manual
+        override path kept for debugging/edge cases) rather than searched again."""
         if self.args.offline:
             return FakeGmailSource(self.fixtures_dir).candidates()
         path = self.paths["data"] / f"Run_{self.run_id}_Gmail_Candidates.json"
         if not path.exists():
-            print(f"notice: no {path.name} yet; Gmail candidates skipped this pass (Claude layer writes it, then re-run with --run-id {self.run_id})", file=sys.stderr)
-            return {}
+            items = self.search_gmail_live(records, plan or {"items": {}})
+            path.write_text(json.dumps({"run_id": self.run_id, "items": items}, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         data = json.loads(path.read_text(encoding="utf-8"))
         if not isinstance(data, dict) or data.get("run_id") != self.run_id or not isinstance(data.get("items"), dict):
             raise ValueError(f"{path.name}: needs run_id {self.run_id} and an items object")
@@ -259,7 +325,7 @@ class Pipeline:
         return data["items"]
 
     def ingest_candidates(self, records):
-        fixture_candidates = self.load_candidates(records)
+        fixture_candidates = self.load_candidates(records, getattr(self, "_last_plan", None))
         for record in records:
             candidates = fixture_candidates.get(record["item_id"], [])
             record["candidates"] = candidates
