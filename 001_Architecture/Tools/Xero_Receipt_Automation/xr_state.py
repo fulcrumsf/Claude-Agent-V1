@@ -4,7 +4,7 @@ import os
 from datetime import datetime, timezone
 
 
-TERMINAL = {"archived", "already_attached", "excluded", "rejected"}
+TERMINAL = {"archived", "already_attached", "excluded"}
 # Classification outcomes; a later run (new Gmail candidates, a manual drop) may re-classify between them.
 CLASSES = {"auto_eligible", "pending_review", "needs_manual_portal_lookup", "no_candidate"}
 FAILED = {"failed_retryable", "failed_permanent"}
@@ -22,6 +22,12 @@ TRANSITIONS = {
     "pending_review": CLASSES | {"approved", "rejected", "correction_logged"},
     "needs_manual_portal_lookup": CLASSES | {"correction_logged"},
     "no_candidate": CLASSES | {"correction_logged"},
+    # Not terminal (changed 2026-10-10): a reject just means "this proposed match was wrong,"
+    # not "never look at this item again." A later run with a new/different candidate (a fresh
+    # Gmail search, a manual drop) can reclassify it like any other CLASSES state — see
+    # RECLASSIFIABLE below. Real incident: reject was used tonight to clear 7 wrongly-matched
+    # items and permanently stranded 4 of them that turned out to have real receipts waiting.
+    "rejected": CLASSES | {"correction_logged"},
     "verified_not_archived": {"archived"} | FAILED,
     "correction_logged": {"removed_confirmed"},
     "removed_confirmed": {"pending_review", "excluded"},
@@ -29,7 +35,7 @@ TRANSITIONS = {
     "failed_permanent": set(),
 }
 # States that `match` may (re-)classify on a later run.
-RECLASSIFIABLE = {"candidates_received", "failed_retryable"} | CLASSES
+RECLASSIFIABLE = {"candidates_received", "failed_retryable", "rejected"} | CLASSES
 
 
 def utc_now():

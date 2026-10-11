@@ -292,6 +292,28 @@ class XeroReceiptTests(unittest.TestCase):
             self.assertFalse((intake / "jshad-Invoice.pdf").exists())
             self.assertTrue((archive / "05-15-2026_Jshad_49.00.pdf").is_file())
 
+    def test_attach_always_sets_sha256_from_the_real_uploaded_bytes(self):
+        """Regression test, 2026-10-10: attach() used to trust an upstream
+        byte_evidence.sha256 that match() doesn't always populate for manual-drop
+        candidates, so verify() could falsely fail (None never equals a real hash) even
+        when the uploaded bytes were byte-perfect. attach() must now always compute the
+        hash itself from the exact bytes it uploads, so verify() can never falsely fail
+        a correct manual-drop upload for this reason again."""
+        import hashlib
+
+        with patch("xero_receipts.time.sleep", lambda _: None), TemporaryPaths() as (data, intake, archive):
+            fixture_bytes = (ROOT / "Fixture_Manual_Jshad_Invoice.pdf").read_bytes()
+            (intake / "jshad-Invoice.pdf").write_bytes(fixture_bytes)
+            pipeline = Pipeline(args(data_dir=str(data), intake_dir=str(intake), archive_dir=str(archive), simulate_live=True))
+            result = pipeline.run()
+            self.assertEqual(result["summary"]["archived"], 3)
+            jshad_item = next(
+                record for record in pipeline.state.index["items"].values()
+                if record["transaction"]["contact_name"] == "Jshad"
+            )
+            self.assertEqual(jshad_item["state"], "archived")
+            self.assertEqual(jshad_item["sha256"], hashlib.sha256(fixture_bytes).hexdigest())
+
     def test_notification_once_per_iso_week(self):
         common = [
             PYTHON,

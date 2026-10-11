@@ -509,9 +509,15 @@ class Pipeline:
             self.state.transition(record["item_id"], "upload_pending", self.run_id, self.args.dry_run, filename=filename)
             content = source.read_bytes()
             mime = mimetypes.guess_type(filename)[0] or "application/pdf"
+            # Always the real hash of what's actually being uploaded — never trust an upstream
+            # byte_evidence.sha256 that may be missing or stale (manual-drop matches don't always
+            # get one populated during match()). verify() compares against this value, so it must
+            # reflect these exact bytes or a correct upload can falsely fail hash verification.
+            sha256 = hashlib.sha256(content).hexdigest()
             attachment = self.client.post_attachment(transaction["endpoint"], transaction["guid"], filename, content, mime)
-            self.state.transition(record["item_id"], "uploaded_unverified", self.run_id, self.args.dry_run, filename=filename, attachment_id=attachment["AttachmentID"])
+            self.state.transition(record["item_id"], "uploaded_unverified", self.run_id, self.args.dry_run, filename=filename, attachment_id=attachment["AttachmentID"], sha256=sha256)
             record["state"] = "uploaded_unverified"
+            record["sha256"] = sha256
             uploaded.append(record)
         return uploaded
 

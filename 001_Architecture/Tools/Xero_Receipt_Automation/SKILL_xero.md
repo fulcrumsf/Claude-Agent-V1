@@ -20,7 +20,7 @@ For a fresh weekly pass, run `python3 xero_receipts.py run --scheduled --live`. 
 Tony's chat words are still the only approval for anything below that bar:
 
 - `approve 3` → confirm the item, then run `approve --item 3 --by tony`, followed by `run --live` (or `attach --item 3 --live` + verify + archive).
-- `reject 3` → reject that item. **Warning:** `rejected` is a terminal state in `xr_state.py` (no outgoing transition) — if the real receipt turns up later, don't use `reject`; just leave it `pending_review`/`no_candidate`, or an item already wrongly `rejected` needs a direct state-file fix, not a retry.
+- `reject 3` → reject that item. `rejected` is no longer terminal (fixed 2026-10-10, see Operating notes) — a later `run`/`match` pass can reclassify it if a real receipt turns up, same as `no_candidate`/`pending_review`.
 - `run now` → run the full live pipeline.
 - `you tagged this one wrong`, `wrong receipt`, or `personal expense` → confirm the item number, then run `correct` with Tony's words verbatim.
 - `snooze` → run `notify-check --ack`.
@@ -49,4 +49,4 @@ Still never: trash, delete, send, draft, forward, reply, mark spam, add any labe
 - `--simulate-live` only works with `--offline` fakes; it can no longer bypass either flag on a real run.
 - Items whose email has no PDF/image attachment (Google Play, Apple) can never be auto-attached. Tell Tony to download the receipt from the vendor portal and drop it in `000_Ingest/Xero_Receipts/`.
 - Gmail-sourced receipts end at `verified_not_archived` because `archive_gmail_sourced` is `false` (the file stays in Gmail; `Archive/` is for manual drops). The Xero hash check is the proof.
-- **`attach()` does not always populate `record["sha256"]` for manual-drop matches**, which makes `verify()` falsely fail (`None` never equals a real hash) even when the uploaded bytes are byte-perfect. Seen twice, 2026-10-10 (Adobe, Spectrum). Before assuming a real corruption: re-download the attachment via `list_attachments`/`get_attachment` and hash-compare to the local file yourself. If they match, the upload was fine — only the state record's `sha256`/`state` fields are wrong and need a direct fix. This is a real bug in `attach()`, not yet patched in code.
+- **Fixed, 2026-10-10:** `attach()` used to not always populate `record["sha256"]` for manual-drop matches, which made `verify()` falsely fail (`None` never equals a real hash) even when the uploaded bytes were byte-perfect. Hit twice (Adobe, Spectrum), both confirmed correct by independently re-downloading and hash-comparing. `attach()` now always computes the hash from the exact bytes it uploads, right before uploading — covered by `test_attach_always_sets_sha256_from_the_real_uploaded_bytes` in `test_xero_receipts.py`. If a verify failure ever recurs after this fix, it's worth taking seriously as a real mismatch, not assuming it's the old bug.
