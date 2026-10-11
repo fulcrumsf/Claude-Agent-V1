@@ -1,6 +1,6 @@
 ---
 name: ingest
-description: "Process files from the 000_Ingest/ folder into the vault. Triggers when the user says \"ingest\", \"process ingest\", \"ingest this file\", \"process the ingest folder\", \"what's in ingest\", or when starting a session and files are present in 000_Ingest/. This skill governs the full pipeline: classify → (media: analyze & rename) → format → route → create wiki page or asset note → cross-link → log → graphify. Always use this skill for any ingest-related task — do not improvise the procedure."
+description: "Process files from the 000_Ingest/ folder into the vault. Triggers when the user says \"ingest\", \"process ingest\", \"ingest this file\", \"process the ingest folder\", \"what's in ingest\", or when starting a session and files are present in 000_Ingest/. This skill governs the full pipeline: classify → dedup check → (media: analyze & rename) → format → route → feed the Tool Catalog (if applicable) → create wiki page or asset note → cross-link → log → graphify. Always use this skill for any ingest-related task — do not improvise the procedure."
 ---
 
 # Vault Ingest Pipeline
@@ -12,8 +12,10 @@ When files land in `000_Ingest/` (via Obsidian Web Clipper, manual drop, or any 
 0. **Markitdown** — convert any PDF, Word, PowerPoint, or Excel files to `.md` before processing
 1. **Classify** — determine content type and topic domain
 1.5. **Media Analysis** — if image or unreadable binary: use vision to describe and rename descriptively
+1.6. **Dedup check** — if the file has a source URL, check it's not already in the vault before creating anything
 2. **Format** — add YAML frontmatter to text files; media gets a routed note instead
-3. **Route** — move original to the correct `007_Resource_Library/` subfolder
+3. **Route** — move original to the correct `007_Resource_Library/` subfolder (already-ingested originals go to `000_Ingest/TO_BE_DELETED/`, agents cannot delete)
+3b. **Tool Catalog** — if the file is itself a tool, or names specific tools, dedup-check and add them to the local Tool Catalog
 4. **Wiki page or routed note** — synthesized wiki page in `000_Wiki/` (text) or a categorized note in the correct `007_Resource_Library/` subfolder for media references
 5. **Cross-link** — link to related existing wiki pages (text files only)
 6. **Log** — append to `000_Wiki/log.md`
@@ -60,6 +62,8 @@ Skip straight to the relevant step if the trigger message already answers it (e.
 
 **Never delete subfolders inside `000_Ingest/` (non-negotiable):** Ingest processing moves/routes the *files* inside a subfolder to their destinations, but the subfolder itself always stays — even if it ends up empty after processing. Do not `rmdir`, `rm -rf`, or otherwise remove any subfolder under `000_Ingest/` for any reason, including "cleanup" at the end of a batch. Tony deliberately keeps these subfolders as standing drop zones (e.g. `Tiktok-TOS/`, `PDF/`, `Screenshots/`) because he re-uses the same folder structure for future ingests and organizes drops into them in a specific way. Only Tony deletes an ingest subfolder himself, manually, when he decides it's no longer needed. This applies to every subfolder at every nesting depth, not just top-level ones.
 
+**`000_Ingest/TO_BE_DELETED/` is a special drop zone, never a source (standing rule, 2026-10-09):** this is where fully-ingested originals go once their content lives elsewhere (see Step 3's note below) — it is a destination only. Never recurse into it looking for new work, on any trigger including "ingest everything including subfolders." Only Tony empties it.
+
 ---
 
 ## Step 0: Markitdown Pre-Processing
@@ -72,7 +76,7 @@ Before classifying, scan for binary file types that need conversion to `.md`:
 ```bash
 markitdown "/path/to/file.pdf" -o "/path/to/file.md"
 ```
-Then delete the original binary. The resulting `.md` file proceeds through Steps 1–8 as normal.
+Then move the original binary into `000_Ingest/TO_BE_DELETED/` (agents cannot delete — see Step 3's standing rule). The resulting `.md` file proceeds through Steps 1–8 as normal.
 
 **Skip this step for:** `.md`, `.txt`, `.json`, `.csv`, images, videos — they are handled by their own pipelines.
 
@@ -174,6 +178,23 @@ The script uses OpenRouter vision first (qwen model), then OpenAI vision as the 
 
 ---
 
+## Step 1.6: Dedup Check (Text Files With a Source URL)
+
+**Before writing frontmatter or creating any new note, check whether this exact source already exists in the vault.** Skipping this is how the Resource Library ended up with duplicate clusters (n8n×13, Arcads×6, Nano Banana×8) — every one of those is wasted ingest effort (and, for anything that triggers a paid API call during classification, wasted money).
+
+If the file has a visible/reconstructable source URL (the product's own URL, or the YouTube/TikTok video URL):
+
+```bash
+python3 001_Architecture/Scripts/dedup_check.py "<the url>"
+```
+
+- **`DUPLICATE: <path>`** → a note for this exact source already exists. Do not create a second note. Instead: open the existing note, add the incoming file's path to a short "Also seen in" line (or just leave it — the point is not creating a duplicate, not necessarily rewriting the existing note), then move the incoming raw file straight to `000_Ingest/TO_BE_DELETED/` (per Step 3's standing rule) and skip the rest of the pipeline for this file.
+- **`NO MATCH`** → proceed normally to Step 2.
+
+No visible URL to check (e.g. a pure text note with nothing identifying it)? Skip this step — there's nothing to dedup against yet.
+
+---
+
 ## Step 2: Add YAML Frontmatter (Text Files Only)
 
 For `.md`, `.txt`, `.json`, `.csv`, and other text-readable files — add YAML frontmatter before moving.
@@ -231,6 +252,8 @@ source: https://... or local
 
 > **DIRECTORY REFERENCE:** Before routing, you MUST read `007_Resource_Library/Directory.md` to understand the exact definitions and constraints of each destination folder.
 
+> **Standing rule (2026-10-09):** agents cannot delete files (`fs_guard.py` blocks it, no workaround). In practice, "routing" a text file usually means writing a NEW synthesized/frontmatter'd note at the destination rather than literally relocating the raw clip — which leaves the original clip in `000_Ingest/` doing nothing. Once that destination note exists and the original file is no longer needed, move the original into `000_Ingest/TO_BE_DELETED/` (create this folder once if it doesn't exist — it's a standing drop zone now, not a one-off). Never leave a fully-ingested file sitting loose at `000_Ingest/` top level, and never attempt `rm`/delete on it. Tony empties `TO_BE_DELETED/` himself whenever he gets to it.
+
 Move (not copy) the file to the correct subfolder based on the definitions in `Directory.md`:
 
 | Content Type | Destination |
@@ -259,6 +282,29 @@ This script will automatically generate a descriptive `Title-Case-With-Dashes` p
 **Naming rule:** the video folder, MP4, transcript scaffold, and tutorial scaffold must all share the same descriptive stem. Acronyms stay uppercase (`AI`, `API`, `MCP`), and the first letter of every other word is capitalized.
 
 All files: use `Title-Case-With-Dashes` naming. No exceptions — images, notes, and text files all follow this rule.
+
+---
+
+## Step 3b: Feed the Tool Catalog
+
+**Trigger:** the file being ingested IS a tool/app/API/SaaS/GitHub-repo/skill/plugin itself (`type: tool-doc`, or `form` is `github-repo`/`saas-tool`/`api-service`/`desktop-app`/`browser-extension`/`open-source-project`), OR it's a tutorial video whose description/transcript **names specific tools with their own identity** (a product name, a GitHub repo, a URL) — not every tutorial, only ones that are actually about or showcasing named tools. A plain how-to with no named product is not a trigger here, same as the main Tool Catalog scans already excluded those.
+
+For each real tool found (a tutorial can name several — catalog each one separately):
+
+```bash
+python3 001_Architecture/Tools/Tool-Manager/tool_catalog.py add \
+  --name "Tool Name" --url "https://..." --category "YouTube / Content" \
+  --does "one-line description" --source "<path this was routed to>" [--kind github-repo]
+```
+
+The command dedup-checks by URL automatically before adding anything:
+- **Already in the catalog** → it just appends this file as a new source on the existing row. No duplicate row, nothing further to do.
+- **Not in the catalog yet** → check the output isn't `NOTE ALREADY EXISTS` (meaning a Resource Library note for this exact URL exists but somehow isn't catalogued — rare; investigate before using `--force` rather than reflexively forcing it through).
+- **New row added** → done.
+
+Never hand-edit `001_Architecture/Tools/Tool-Manager/data/Tool_Catalog.json` directly — always go through `tool_catalog.py add` so the dedup gate actually runs. The published artifact (`https://claude.ai/artifact/3D9QHYnL7EZ8eunDsHRz4R`) is a generated view of this file — it goes stale the moment this file changes and is republished separately (by a live Claude session, when Tony wants the visual version refreshed), not automatically by this step.
+
+No specific named tool in the file? Skip this step entirely — most ingested files are not catalog material (same exclusions as the original Tool Catalog scans: pure tutorials/how-tos with no named product, generic news, inspiration-only screenshots).
 
 ---
 
@@ -423,11 +469,13 @@ Create `index.md` with category headers if it doesn't exist. Skip for media/asse
 
 ## Step 7: Run Graphify
 
-After all files are processed, run from the workspace root:
+After all files are processed, update only the domain graph the ingested files actually landed in (look up the right domain folder in `001_Architecture/Graphify/REGISTRY.md`) — never the workspace root:
 
 ```bash
-cd /Users/tonymacbook2025/Documents/Agent-OS && graphify update .
+cd /Users/tonymacbook2025/Documents/Agent-OS && graphify update 007_Resource_Library
 ```
+
+**Never run `graphify update .` from the workspace root** (fixed 2026-10-09 — this line previously said to, which contradicted `REGISTRY.md` and the already-correct version of this same rule in `AGENTS.md`). Root produces an unused whole-workspace graph. `graphify update <domain-folder>` is the fast AST-only path; for docs-only or wiki-heavy domains, use the interactive `/graphify <domain> --update` flow so semantic extraction runs too. Never graphify `000_Ingest/` itself — it's a temporary staging area.
 
 ---
 

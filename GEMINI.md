@@ -65,27 +65,7 @@ Let `claude-mem` handle episodic memory. Do not turn markdown memory into a tran
 
 ## Ingest Procedure
 
-When Tony says "ingest" or files are in `000_Ingest/`, follow the procedure in `AGENTS.md` exactly. The steps are identical for all agents.
-
-**Recurse into all subfolders by default** unless told otherwise.
-
-**Media rule:** When ingesting images (`.png`, `.jpg`, `.jpeg`, `.webp`, `.gif`, `.svg`) or word docs (`.docx`, `.doc`):
-
-1. **Lookup-first gate** — run before any vision call:
-   ```bash
-   python /Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Scripts/check_vision_needed.py "/path/to/images"
-   ```
-   Files with real Asset Note descriptions → skip vision, proceed to routing.
-   Files with filler descriptions or no note → continue to vision.
-
-2. **Vision** — for flagged files only: use your multimodal capabilities (Gemini has native vision) to analyze the image, generate a descriptive kebab-case filename, and create a proper Asset Note in `007_Resource_Library/Asset_Notes/`. A good Asset Note includes the specific subject, platform (TikTok, Instagram, GitHub, etc.), key text/data visible, and business relevance to Tony's workflow.
-
-PDFs go to `007_Resource_Library/Docs/` with no companion file (Obsidian can display them natively).
-
-**Notion exports:** Skip top-level database container `.md` files; ingest individual record files normally.
-
-Full flow: Classify → (If media: Analyze & Rename) → Add YAML or Create Asset Note → Route to `007_Resource_Library/` → Create wiki page in `000_Wiki/` (text only) → Cross-link → Update log + index → Run `graphify update .` for code-bearing domains, and use the interactive `/graphify <domain> --update` flow for docs-only wiki-heavy domains.
-Do not graphify `000_Ingest/`; it is a temporary staging area and only becomes graph targets after ingest routes files into durable folders.
+**Follow `001_Architecture/Skills/ingest/SKILL.md` directly — not a summary of it.** It's the one canonical procedure, shared by Claude Code, Codex, and Gemini/Antigravity via the same symlinked `Skills/` folder (`~/.gemini/antigravity/skills` points at `001_Architecture/Skills`, confirmed 2026-10-09). This section previously restated the procedure from memory and that summary had already gone stale in a couple of places (wrong graphify scoping among them) — removed to stop re-summarizing something that changes over time. Use Gemini's native multimodal vision for the Step 1.5 image-analysis call where the skill asks for vision; everything else in the file applies exactly as written, including the newer dedup-check and Tool Catalog steps.
 
 ## File Naming
 

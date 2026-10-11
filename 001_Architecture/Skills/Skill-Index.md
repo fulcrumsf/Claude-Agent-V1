@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-10-07
+created: 2026-10-11
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-10-07T21:43:04-04:00
+Generated: 2026-10-11T17:13:57-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -282,6 +282,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | web-asset-generator | Generate web assets including favicons, app icons (PWA), and social media meta images (Open Graph) for Facebook, Twitter, WhatsApp, and LinkedIn. Use when users need icons, favico… | `001_Architecture/Skills/web-asset-generator/SKILL.md` |
 | web-typography | Select, pair, and implement typefaces for web projects. Use when the user mentions "font pairing", "which typeface", "line height", "responsive typography", "web font loading", or… | `001_Architecture/Skills/web-typography/SKILL.md` |
 | writing-hookify-rules | This skill should be used when the user asks to "create a hookify rule", "write a hook rule", "configure hookify", "add a hookify rule", or needs guidance on hookify rule syntax a… | `001_Architecture/Skills/writing-rules/SKILL.md` |
+| xero | Weekly Xero receipt review for Tony. Invoke when Tony says /xero, "xero review", "what receipts need approval", "approve N", "reject N", or asks about receipts attached to Xero ex… | `001_Architecture/Skills/xero/SKILL.md` |
 | youtube-thumbnail-design | YouTube thumbnail design with specific dimensions, contrast rules, and mobile preview optimization. Covers safe zones, text placement, face expression psychology, and A/B testing.… | `001_Architecture/Skills/youtube-thumbnail-design/SKILL.md` |
 | youtube-transcript | Extract transcripts from YouTube videos. Use when the user asks for a transcript, subtitles, or captions of a YouTube video and provides a YouTube URL (youtube.com/watch?v=, youtu… | `001_Architecture/Skills/youtube-transcript/SKILL.md` |
 

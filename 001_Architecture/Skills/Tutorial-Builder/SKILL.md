@@ -51,4 +51,14 @@ Save outputs alongside the subject being tutorialized where possible (e.g. insid
 - What counts as "done" gathering source material — is there a point where more session history stops adding value?
 - Should this become a two-way door with the `notebooklm` skill (i.e., does Tutorial-Builder eventually call it directly), or stay a manual handoff indefinitely?
 
+## Packaging tiers (brain dump 2026-10-08, not designed yet — needs a discovery conversation with Tony before building)
+
+Tony wants the eventual output packaged at multiple tiers, not just one blueprint doc:
+
+1. **Free PDF guide** — straightforward lead magnet, no gate.
+2. **Free lead magnet, gated by community join** — same or similar content, but requires joining his Skool community to access.
+3. **Paid, behind a paywall** — more advanced version, part of the paid Skool tier.
+
+None of this is scoped yet — still needs real answers to at least: how much content differs between tiers (same blueprint at different depth, or genuinely different material?), what triggers which tier for a given subject, and whether this is a Tutorial-Builder output option or a separate downstream packaging step. Treat as a direction to design toward, not a spec to implement literally. Revisit this section once Tony is ready to discuss it properly — don't start building the packaging logic from this brain dump alone.
+
 Update this file after each real invocation based on what worked, what didn't, and what Tony corrects.
