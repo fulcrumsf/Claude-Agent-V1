@@ -61,9 +61,13 @@ def main() -> int:
         )
 
     if SECTION_HEADER in todo_text:
-        # Append under the existing section's intro line, before the next "---" or "##".
+        # Append under the existing section's intro paragraph, before the next "---" or "##".
+        # Found by the first blank line after the header, not an exact-text match on the
+        # intro sentence — that sentence gets hand-edited over time and a literal match
+        # silently crashes the whole script the moment the wording drifts (happened 2026-10-08).
         idx = todo_text.index(SECTION_HEADER)
-        after_intro = todo_text.index("\n", todo_text.index(SECTION_INTRO, idx))
+        intro_end = todo_text.index("\n\n", idx) + 1
+        after_intro = todo_text.index("\n", intro_end)
         rest = todo_text[after_intro + 1:]
         next_break = re.search(r"\n(---|\n##)", rest)
         insert_at = after_intro + 1 + (next_break.start() if next_break else len(rest))

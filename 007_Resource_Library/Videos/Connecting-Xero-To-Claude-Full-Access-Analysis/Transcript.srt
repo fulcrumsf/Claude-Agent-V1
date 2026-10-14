@@ -1,0 +1,412 @@
+1
+00:00:00,000 --> 00:00:05,160
+Hey guys welcome back to another video and today I'm going to show you how to connect
+
+2
+00:00:05,160 --> 00:00:12,360
+zero to Claude and what I'm not going to show you is how to do the standard default
+
+3
+00:00:12,360 --> 00:00:17,000
+Claude zero connection and why is because it's not very good.
+
+4
+00:00:17,000 --> 00:00:23,280
+So the reason we're not going to use this zero connection that's native to Claude is
+
+5
+00:00:23,280 --> 00:00:28,680
+because you can only really get these things from it which is cool but I feel it's a little
+
+6
+00:00:28,680 --> 00:00:33,920
+bit novel for most accountants and CFOs like okay you can get some cash position profit
+
+7
+00:00:33,920 --> 00:00:40,960
+and loss but also it's not giving you the full range of what you can get from the usual
+
+8
+00:00:40,960 --> 00:00:45,640
+connection like a deep connection with a zero mcp server it's very narrowed and I think
+
+9
+00:00:45,640 --> 00:00:51,800
+they're doing that to keep it safe so instead we're going to use what's called zero mcp
+
+10
+00:00:51,800 --> 00:00:56,600
+and it's available through the zero developer platform you'll be able to log in with
+
+11
+00:00:56,600 --> 00:01:00,200
+your usual credentials and we'll do a little bit of setup and configuration and what
+
+12
+00:01:00,200 --> 00:01:07,560
+that will allow us to do is to get all of this information over here so yes still get
+
+13
+00:01:07,560 --> 00:01:13,160
+profit and loss but you can compare it with multi periods monthly quarterly between date
+
+14
+00:01:13,160 --> 00:01:18,160
+ranges you can give it literally anything on that within those query parameters, balance
+
+15
+00:01:18,160 --> 00:01:23,400
+e-trial balance you can create list invoices, quiz bank transactions as you can see there's
+
+16
+00:01:23,400 --> 00:01:28,840
+a lot that you can do obviously all of your payroll stuff you can then also create which
+
+17
+00:01:28,840 --> 00:01:33,920
+is invoices, quotes, bank transactions that stuff that you can say like hey lord turn this
+
+18
+00:01:33,920 --> 00:01:41,120
+into contacts on zero so that could be as something like create new contact for Bob or you
+
+19
+00:01:41,120 --> 00:01:45,960
+could just drop in a CSV file of all your contacts from a different system and say can
+
+20
+00:01:45,960 --> 00:01:52,000
+you start creating those in zero so that's the kinds of different things that are available
+
+21
+00:01:52,000 --> 00:01:56,320
+which aren't going to be available with the native connection so you're getting the ability
+
+22
+00:01:56,320 --> 00:02:02,400
+to unlock a lot more power out of this connection once you've got it connected as well you can also
+
+23
+00:02:02,400 --> 00:02:08,320
+then with cloud cover you can schedule stuff which I think is really cool so schedule profit and
+
+24
+00:02:08,320 --> 00:02:16,080
+loss with the variance column on the furthest right hand side and schedule that to go to the client
+
+25
+00:02:16,080 --> 00:02:21,840
+on this day of the month with to this email address and then you said that schedule it fetched the
+
+26
+00:02:21,840 --> 00:02:27,600
+new bank transactions and notify the bookkeeper or any new transactions notify the client create
+
+27
+00:02:27,600 --> 00:02:31,760
+bank transactions from like third party sales system maybe that's coming in from like Amazon or
+
+28
+00:02:31,760 --> 00:02:36,080
+something like that or Shopify you then you just fetch it with cloud co-work and then you can
+
+29
+00:02:36,080 --> 00:02:42,160
+also have it then automatically create it and yeah converting invoices if you have like invoices
+
+30
+00:02:42,160 --> 00:02:48,160
+from your construction system and then you want to turn that into invoices for that fit zero's
+
+31
+00:02:48,160 --> 00:02:53,840
+parameters you can just drop those in as a CSV file or as a PDF and it'll create those one by one
+
+32
+00:02:53,840 --> 00:02:59,040
+so some other things to know before we actually kick in is this is only available in US,
+
+33
+00:02:59,040 --> 00:03:04,400
+NZ, UK, AU and I think CA I will confirm that a little bit later and they are going to charge you
+
+34
+00:03:04,400 --> 00:03:10,960
+five dollars x tax to make the connection still a little bit frustrating but for five dollars I think
+
+35
+00:03:10,960 --> 00:03:15,920
+you're getting your money's worth and this is quite a it's not a technical setup but if you don't
+
+36
+00:03:16,320 --> 00:03:21,680
+do the especially with the permissions if you don't do them exactly the same as I do it's not going to
+
+37
+00:03:21,680 --> 00:03:29,200
+work and I did this a few times when I first set this up a month ago is I rushed through tutorials
+
+38
+00:03:29,200 --> 00:03:33,120
+I was following online and I just said I'll just give it all the permissions because I couldn't be
+
+39
+00:03:33,120 --> 00:03:37,280
+bothered to select them on by one and it didn't work and then it took me a long time to figure it out
+
+40
+00:03:37,280 --> 00:03:41,760
+so hopefully this will be saving you some time if you found this video okay let's get into it so
+
+41
+00:03:41,760 --> 00:03:48,480
+from the developer platform when I log in I'm going to see my apps if you don't have an app I'm
+
+42
+00:03:48,480 --> 00:03:58,000
+just going to go new app here MCP connection 2 it's a custom connection I won't be using it's
+
+43
+00:03:58,000 --> 00:04:07,920
+train AI yes and then you can just go HTTPS sample this is just it's not really required
+
+44
+00:04:07,920 --> 00:04:17,280
+okay then the scopes that we're going to select I'm going to just jump over to my existing one to
+
+45
+00:04:17,280 --> 00:04:24,240
+see the scopes if at the time of this video it's been a while maybe worth coming over to this
+
+46
+00:04:24,240 --> 00:04:30,960
+GitHub repository it's going to be called zero MCP server open up the readme file and you should see
+
+47
+00:04:30,960 --> 00:04:37,520
+somewhere about the permissions that it needs so this is kind of ever evolving so if it's long
+
+48
+00:04:37,520 --> 00:04:43,600
+and future you may need to adjust what I'm showing you to match this list exactly don't miss any
+
+49
+00:04:43,600 --> 00:04:51,040
+and don't include them if they say depreciated so let's go back to our config so once you've got
+
+50
+00:04:51,040 --> 00:04:58,080
+the scopes selected you're going to say authorized user and then what you will do is go save and connect
+
+51
+00:04:59,440 --> 00:05:06,160
+and then you're going to send this authorization email open that email and log into zero with this
+
+52
+00:05:06,160 --> 00:05:13,200
+email over here so guys to note over here if you don't have a custom connection you have to come
+
+53
+00:05:13,200 --> 00:05:19,520
+into connected apps in zero and then you'll be able to buy a custom connection this has been
+
+54
+00:05:19,520 --> 00:05:24,880
+moving around a little bit so I maybe you also might just want to go buy zero custom connection put
+
+55
+00:05:24,880 --> 00:05:28,560
+that in Google take you right to the the exact page I've struggled because they've moved it
+
+56
+00:05:28,560 --> 00:05:33,040
+around a few times now that I've got one I can always just change plan to increase it or decrease it
+
+57
+00:05:33,040 --> 00:05:38,400
+see it's about five 45 a month and then that will allow you to maybe finalize that authentication
+
+58
+00:05:38,400 --> 00:05:44,320
+process that you got in the email so now I'm going to just jump over to the screen and once you've
+
+59
+00:05:44,320 --> 00:05:49,600
+logged in it's just going to change it to connected and you're going to have a section over here
+
+60
+00:05:49,600 --> 00:05:54,240
+with a client ID and then you're going to have to generate a secret if you haven't generated one
+
+61
+00:05:54,240 --> 00:05:59,440
+for the first time so what you're going to do with that client ID and that client secret is paste them
+
+62
+00:05:59,440 --> 00:06:05,760
+into this piece of code and this should be available in the link below but it's also going to be on
+
+63
+00:06:05,760 --> 00:06:13,680
+this MCP server information it's usually just on the home page this is published by zero by the way
+
+64
+00:06:13,680 --> 00:06:18,640
+here we go integrating with code desktop so this is where I'm getting it from so this link will be
+
+65
+00:06:18,640 --> 00:06:24,400
+in the description what you want to do is just keeping the quotation marks you'll just enter
+
+66
+00:06:24,560 --> 00:06:30,320
+in like that and your secret will go in here and you're going to copy this whole thing and you're
+
+67
+00:06:30,320 --> 00:06:35,040
+going to go to Claude then all the way at the bottom you're going to have this section called developer
+
+68
+00:06:35,760 --> 00:06:40,320
+and you're going to go to edit config this is your config file so you're going to have to open this
+
+69
+00:06:40,320 --> 00:06:48,880
+up and then you're going to paste in that piece of code and save the file close the text editor
+
+70
+00:06:48,960 --> 00:06:56,240
+and then close Claude completely so come down to the bottom right click quit and then reopen it
+
+71
+00:06:56,240 --> 00:07:00,160
+again and then what's that what that's going to do is then that's going to authenticate in the
+
+72
+00:07:00,160 --> 00:07:05,360
+background to that server I'm not going to open it up now because it's got my my live credentials in
+
+73
+00:07:05,360 --> 00:07:13,840
+there so that brings me to a chat over here that I have just spun up quickly with Claude co-work
+
+74
+00:07:13,840 --> 00:07:18,960
+you can use this as Claude but primarily co-work is going to be a little bit better because
+
+75
+00:07:18,960 --> 00:07:22,960
+we're going to be able to schedule stuff and have sort of live artifacts if you want to connect
+
+76
+00:07:22,960 --> 00:07:28,080
+this to a dashboard and then under connectors you're going to want to go to manage connectors
+
+77
+00:07:28,080 --> 00:07:32,000
+and then you're just going to want to see that there is something over here called Claude
+
+78
+00:07:32,000 --> 00:07:36,000
+local dev this is your connection that you just created if you want to do multiple
+
+79
+00:07:37,120 --> 00:07:42,640
+you'll have to create another mcp connection and then you'll just give it a different name
+
+80
+00:07:43,280 --> 00:07:49,200
+in this part you can change the name over there so once you've verified that you've got that zero
+
+81
+00:07:49,200 --> 00:07:54,480
+connection there you are then able to do something like can you get me a 12 month profit and loss
+
+82
+00:07:54,480 --> 00:08:00,560
+from the zero connection and add the variance to the last column and compose that as a draft email
+
+83
+00:08:00,560 --> 00:08:06,880
+to in this case I'm just putting my email then it works for a little bit you can see it fetches
+
+84
+00:08:06,880 --> 00:08:13,360
+some different information and it generates the email so as you can see it has generated
+
+85
+00:08:13,360 --> 00:08:19,280
+a email sorry I've had to blur quite a bit of this information but it's yeah puts it through
+
+86
+00:08:19,280 --> 00:08:23,440
+it drafts it I actually would have just told it maybe to make it relative to last month which
+
+87
+00:08:23,440 --> 00:08:28,400
+would have just been a little bit simpler a little bit more standard for like accounted and then
+
+88
+00:08:28,400 --> 00:08:32,720
+when you're ready to schedule something like this just say hey let's create a schedule to do this
+
+89
+00:08:32,800 --> 00:08:37,760
+every month or every two weeks every day it depends on on what you want to do and how you want to
+
+90
+00:08:37,760 --> 00:08:44,480
+send that the email is great for drafts but if you want to send I prefer the outlook connector
+
+91
+00:08:44,480 --> 00:08:50,480
+then that one will actually let you send without you know will actually let you send straight away
+
+92
+00:08:50,480 --> 00:08:57,600
+there's lots of potential to be unlocked with this and what I do want to leave you on is that I'm
+
+93
+00:08:57,680 --> 00:09:02,960
+putting together a whole bunch of resources that add on to this in my school community which you
+
+94
+00:09:02,960 --> 00:09:10,000
+can join the link will also be below the video what I do in there specifically is I'm taking this
+
+95
+00:09:10,000 --> 00:09:16,400
+process a couple steps further right because this hasn't got access to everything but what we
+
+96
+00:09:16,400 --> 00:09:24,800
+can do is use something like make very simply set up a small scenario like this connect make to
+
+97
+00:09:24,800 --> 00:09:31,680
+Claude desktop and then also have the ability to customize the end point that we want to use
+
+98
+00:09:31,680 --> 00:09:37,120
+with zero which means that means we can basically get anything that's available with zeros api
+
+99
+00:09:37,120 --> 00:09:43,440
+back into Claude so there's a lot of potential to add this on even something as simple as listing
+
+100
+00:09:43,440 --> 00:09:49,600
+journals unfortunately zeros in CP won't let you list journals so if you add this element on then
+
+101
+00:09:49,600 --> 00:09:54,320
+you are able to list journals so I'm going to do a little bit more detail about that I'm going to
+
+102
+00:09:54,320 --> 00:09:58,720
+put that in the school community and yeah if you guys like these videos make sure to stay
+
+103
+00:09:58,720 --> 00:10:03,520
+tuned like and subscribe and I'll see you all in another one
+

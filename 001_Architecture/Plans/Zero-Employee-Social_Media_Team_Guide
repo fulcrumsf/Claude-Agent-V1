@@ -1,0 +1,194 @@
+# Practical Guide: Building an AI-Assisted Social Media Team for One Person
+
+**Based on ReStructure AI’s “The AI Social Media Team That Runs on One Person”**  
+Prepared October 9, 2026
+
+> **Source fidelity note:** The five screenshots attached to the referenced ChatGPT conversation were not available as image files in this workspace. This guide reconstructs the framework from ReStructure AI’s matching published article and indexed company post. The article preserves the same module descriptions, but exact screenshot wording, visual labels, diagrams, and ordering could not be checked against the images. ReStructure AI’s claims about a zero-employee team are presented as claims, not proven results.
+
+## 1. Framework at a glance
+
+The source describes three execution modules and a coordinating layer. The person remains responsible for brand voice and approval of public content.
+
+| Layer | Source framework | Practical output |
+| --- | --- | --- |
+| 1. Research | Find current niche signals, strong competitor posts, audience questions, and effective short-video hooks. Organize the hook patterns into a brief. | A sourced weekly research brief with links, evidence, audience questions, and testable angles. |
+| 2. Content | Turn the brief into a week of short videos, carousels, and captions in the brand voice. Use patterns as inspiration without copying. Route each item to a human approval queue. | Drafts, scripts, captions, creative assets, and a review record for every post. |
+| 3. Posting and community | Schedule approved content by platform; handle comments and DMs; recognize buying intent and flag it as a lead. | Platform-specific publishing tasks, a triaged inbox, and qualified leads with context. |
+| Orchestration and reporting | Claude Code coordinates the work, connects content to downstream outcomes, and prepares a concise morning report. Public publishing remains gated by a human approval. | A workflow controller, audit trail, outcome dashboard, and daily decision brief. |
+
+**What is a source claim:** ReStructure AI says this setup can let one person run a full social media team with no employees, and that it can track outcomes from posts through clicks to paying customers. Those are promotional claims from the source, not independently verified performance findings. The source does not specify all platforms, integrations, permissions, attribution implementation, operational safeguards, or measured results.
+
+## 2. Practical operating model
+
+Treat the AI as a production and coordination system, with a person owning decisions that affect the public, customers, money, or reputation.
+
+### Roles
+
+- **Human owner:** Defines strategy and voice; approves public posts and material edits; handles complaints, sensitive topics, unusual promises, and high-value leads.
+- **Research workflow:** Collects permitted sources and turns them into a cited brief. It summarizes evidence; it does not invent market facts.
+- **Content workflow:** Drafts channel-specific assets against the approved brief and brand guide. It flags unsupported claims and missing disclosures.
+- **Review queue:** Shows the complete post as it will appear, the target account, platform, scheduled time, media, caption, links, disclosure, and relevant source notes. Approval applies only to that version.
+- **Publishing workflow:** Publishes only an approved, unchanged version using an official platform API or an authorized scheduling provider. It records the result and retries safely.
+- **Community workflow:** Classifies incoming messages and drafts routine replies. It escalates uncertainty, complaints, safety concerns, refund requests, legal or medical questions, press inquiries, and sensitive personal information.
+- **Orchestrator:** Moves records between steps, checks gates, assigns due dates, and reports failures. It cannot turn an unapproved draft into a public post.
+
+### Reference architecture
+
+```text
+Allowed sources
+      ↓
+Research collector → evidence-backed weekly brief
+      ↓
+Content drafter ← approved brand guide and offers
+      ↓
+Policy and quality checks
+      ↓
+Human review queue ── reject/edit → revision
+      ↓ approve exact version
+Publisher adapter → platform status and post URL
+      ↓
+Inbox triage → safe draft reply / human escalation / lead record
+      ↓
+Analytics and attribution → morning report
+
+Orchestrator controls states, permissions, logs, and alerts across the flow.
+```
+
+### Suggested content record
+
+Store each idea and its approval state in a small database, project board, or structured files. At minimum, include:
+
+- `content_id`, campaign, owner, status, and creation/update timestamps
+- target platform and account; planned publish time and timezone
+- format, caption, script, media location, alt text, and link/UTM parameters
+- source brief and evidence URLs; claims that need fact-checking
+- disclosure requirements and rights/consent notes for media, music, quotes, and likenesses
+- reviewer, approval timestamp, and hash/version of the approved content
+- publish attempt, platform response, live URL, errors, and retry count
+- outcome window and metrics: reach, watch time, saves, meaningful replies, link clicks, leads, conversions, and revenue where consented and measurable
+
+Do not put access tokens, passwords, customer secrets, or sensitive personal data in prompts, logs, shared Markdown files, or analytics exports.
+
+## 3. Implementation plan
+
+### Step 1 — Pick one audience and one business outcome
+
+Choose one audience, one primary channel, and one measurable outcome for a four-week pilot. Examples include qualified inquiries, newsletter signups, or product-page visits. Set a baseline before automating; otherwise, the report will show activity without showing whether the workflow helped.
+
+### Step 2 — Write the brand and safety guide
+
+Create a short, version-controlled guide covering:
+
+- audience, positioning, offers, proof points, and approved calls to action
+- voice examples and words or claims to avoid
+- facts that require a source or owner review, including pricing, guarantees, performance, health, finance, and legal claims
+- customer privacy rules and prohibited use of private messages
+- disclosure rules for sponsorships, affiliate links, gifted products, and other material relationships
+- escalation contacts and what must never be answered automatically
+
+Use real, approved examples. Label facts, opinions, hypotheses, and testimonials distinctly. Have the owner approve this guide before it becomes a drafting reference.
+
+### Step 3 — Build a repeatable research brief
+
+On a weekly cadence, collect only sources the account is allowed to access: first-party analytics, public trend tools, platform-approved data, public competitor content, and customer questions the business is permitted to use. Keep a URL and capture date for each finding. Summarize:
+
+1. recurring audience questions and objections;
+2. topics gaining attention, with evidence and date range;
+3. a small sample of relevant posts and what is observable about their openings, format, and engagement;
+4. three to five original angles the brand can credibly address;
+5. uncertainty, conflicting evidence, and topics requiring owner review.
+
+Do not scrape private areas or copy a competitor’s wording, distinctive creative, footage, music, or branding. A pattern is a prompt for an original idea, not permission to reproduce another creator’s work.
+
+### Step 4 — Draft a modest weekly batch
+
+Start with three to five posts per week, not “content at scale.” Generate a script or outline, caption, visual direction, platform-specific version, accessibility text, and a source list. Reuse the core idea across formats only after adapting the framing, length, and calls to action for each channel.
+
+Run checks for factual support, brand fit, originality, accessibility, spelling, rights, disclosure, link correctness, and platform formatting. A failed check sends the item back to draft; it must not silently pass.
+
+### Step 5 — Add a real approval gate
+
+The review screen should show the final media and exact caption together. Ask the owner to approve the specific account, version, and schedule. If text, media, destination, disclosure, or timing changes after approval, invalidate approval and return the item to review. Keep a record of who approved what and when.
+
+### Step 6 — Pilot publishing with a person present
+
+Begin with manual publishing or a supported scheduler. Confirm that account type, permissions, and API review requirements fit the intended workflow. Test one post per channel in a low-risk setting; inspect the rendered post, links, disclosure, and status. Keep a pause switch and alert on failures, duplicates, expired credentials, or unexpected content changes.
+
+Platform access varies. For example, TikTok’s official Content Posting API has app-review and authorization requirements; unaudited direct-post clients have restricted visibility, and its developer guidelines require user awareness and control. Instagram publishing and comment access also depend on professional-account and permission setup. Check the current official docs before selecting an integration.
+
+### Step 7 — Triage community messages safely
+
+Use a small label set: routine question, purchase intent, existing customer issue, complaint, spam, sensitive/high-risk, and uncertain. The system may draft a routine answer from approved FAQs, but initially require a person to send every reply. After reviewing a sample, narrowly allow only low-risk, factual responses that stay within the FAQ. Escalate anything involving money disputes, personal data, safety, legal/medical advice, threats, harassment, press, or uncertainty. Never let an AI invent a price, discount, delivery date, refund decision, or product capability.
+
+For lead capture, store only the minimum needed, record the source and consent context, and route the lead to the business’s approved CRM or inbox. Do not infer sensitive traits or treat casual engagement as permission for marketing outreach.
+
+### Step 8 — Measure outcomes and improve weekly
+
+Use consistent campaign tags and a defined attribution window. Report what the available data supports; distinguish observed clicks and tracked conversions from inferred influence. A useful one-page daily or weekly report includes:
+
+- posts published, failed, awaiting review, and next due;
+- reach and retention by format, with a comparison to baseline;
+- clicks, inquiries, qualified leads, and attributable sales where reliable;
+- top audience questions and recurring objections;
+- experiments and what the evidence does or does not show;
+- risks, escalations, platform/API issues, and approvals needed;
+- one recommended next action, with its rationale and owner.
+
+Do not describe likes or views as revenue. If conversion tracking is incomplete, say so plainly.
+
+## 4. Platform integration reality
+
+“Every platform” is a goal in the source description, not a universal capability guarantee. Build one adapter per network and make each adapter report the actions it can actually perform for the connected account. If an API or permission is unavailable, stop and route the task to a person for native/manual publishing. Do not use browser scraping or credential-sharing as a workaround.
+
+| Network | Practical constraint to check | Design implication |
+| --- | --- | --- |
+| TikTok | Direct Post requires user authorization and an approved scope; unaudited clients are restricted. TikTok’s guidelines also limit intended use and require creator awareness/control. | Verify the current app-review rules before choosing Direct Post. For a personal one-account internal tool, confirm eligibility; otherwise use an approved workflow or manual upload. |
+| Instagram | Publishing and inbox capabilities depend on professional account status, selected login flow, and permissions. Instagram messaging API access is permission-gated and user-initiated conversations are an important boundary. | Check eligible account type and approved scopes. Start with comments or publishing only where approved; don’t assume cold-DM capability. |
+| X | Automated replies and DMs have consent and opt-out rules; X states that AI-powered automated reply bots require prior explicit written approval. | Keep replies click-to-send unless written approval and policy-compliant consent flows are in place. |
+| LinkedIn | Community Management access is vetted and tiered; posting and comment access depend on app approval and organizational permissions. | Treat API access as a project prerequisite, not a default. Use manual scheduling until access is confirmed. |
+
+Official references: [TikTok Content Sharing Guidelines](https://developers.tiktok.com/docs/en/content-sharing-guidelines), [Meta Instagram API collection](https://www.postman.com/meta/instagram/documentation/6yqw8pt/instagram-api), [X Automation Rules](https://help.x.com/en/rules-and-policies/x-automation?lang=browser), and [LinkedIn Community Management overview](https://learn.microsoft.com/en-us/linkedin/marketing/community-management/community-management-overview?view=li-lms-2026-06). These can change; review the current rules for the exact account, API product, and use case before launch.
+
+## 5. Safeguards and launch checklist
+
+### Before the pilot
+
+- [ ] Owner approved the brand guide, offers, claims, and escalation rules.
+- [ ] Every research item has a source and date; private or restricted data is excluded.
+- [ ] Media, music, quotes, likenesses, and customer stories have documented rights or permission.
+- [ ] Platform terms, account eligibility, permissions, and current API requirements were checked.
+- [ ] Credentials are stored in a secrets manager; access is limited and revocable.
+- [ ] Approval is bound to the exact content version, account, and scheduled time.
+- [ ] A human can pause publishing and disable automated replies quickly.
+- [ ] Drafts, approvals, sends, edits, failures, and escalations are logged with minimal personal data.
+- [ ] Retention and deletion rules are set for inbox and lead data.
+- [ ] Disclosures and accessibility checks are included in pre-publish review.
+
+### Autonomy levels
+
+1. **Assist:** Research and draft; human publishes. Recommended starting point.
+2. **Approved scheduling:** Human approves each exact post; system schedules and confirms status.
+3. **Narrow routine replies:** Human-approved FAQ templates may be sent for a small, tested set of low-risk intents; monitor and sample regularly.
+4. **Never delegate without a separate, explicit policy:** Sensitive advice, crisis response, complaints/refunds, financial commitments, ad spend, account changes, or public claims outside approved sources.
+
+Treat every approval as permission for one specific action, not blanket permission for future posts or replies.
+
+## 6. What is verified, and what is not
+
+### Claims represented by the source
+
+The ReStructure AI article describes the sequence of research, content, posting/community, and orchestration/reporting, with a person approving public posts. It also describes hook analysis, a brand-voice file, a research brief, an approval queue, lead-intent detection, and a morning report. The article is the source for this framework; its headline claim that one person can run a “full” team is promotional positioning, not a demonstrated benchmark.
+
+### Independently checkable implementation facts
+
+- TikTok documents a Content Posting API with direct-post and draft-upload flows, authorization scopes, app review/audit constraints, creator settings, and user-facing control requirements. See [TikTok: Get Started — Direct Post](https://developers.tiktok.com/docs/en/content-posting-api-get-started) and [TikTok: Content Sharing Guidelines](https://developers.tiktok.com/docs/en/content-sharing-guidelines).
+- Meta’s official [Instagram API documentation collection](https://www.postman.com/meta/instagram/documentation/6yqw8pt/instagram-api) describes publishing and comment-management capabilities for professional accounts and the permissions involved. Available endpoints and eligibility depend on the chosen login path and current permissions.
+- The U.S. Federal Trade Commission explains that endorsements may require disclosure of a material connection and that disclosures should be clear and hard to miss. See [FTC: Disclosures 101 for Social Media Influencers](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers).
+
+These sources verify that APIs and disclosure guidance exist; they do not verify that the ReStructure AI workflow has been deployed as described, works across every platform, or produces a particular business result. Platform rules change, so re-check official documentation at implementation time. For X and LinkedIn capability limits, see the official references in the platform integration table.
+
+## 7. Source
+
+- ReStructure AI, [“The AI Social Media Team That Runs on One Person”](https://re-structure.ai/newsletter/the-ai-social-media-team-that-runs-on-one-person/), accessed October 9, 2026.
+- ReStructure AI company updates, [LinkedIn](https://ca.linkedin.com/company/restructureai), matching indexed post text.
+- Official implementation and disclosure references linked above.

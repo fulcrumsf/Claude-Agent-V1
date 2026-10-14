@@ -1,0 +1,468 @@
+1
+00:00:00,000 --> 00:00:03,680
+What if your AI agent could access thousands of live tools without
+
+2
+00:00:03,680 --> 00:00:08,640
+you manually connecting a different API for every task?
+
+3
+00:00:08,640 --> 00:00:13,200
+Introducing TREG, the open router for agent tools, which allows you to turn your
+
+4
+00:00:13,200 --> 00:00:18,800
+agent into an SDR, a social media manager, a media buyer, an SEO expert,
+
+5
+00:00:18,800 --> 00:00:23,760
+and much more. We're going to be connecting TREG directly to Gropbot by
+
+6
+00:00:23,760 --> 00:00:30,160
+SpaceX AI and give it one real job. And that is to find backlink opportunities
+
+7
+00:00:30,160 --> 00:00:34,320
+for my software as a service, compare the different data providers by price and
+
+8
+00:00:34,320 --> 00:00:39,280
+reliability, choose the best one, make the live calls, and return the strongest
+
+9
+00:00:39,280 --> 00:00:43,280
+prospects. A quick disclaimer, this video is actually sponsored by TREG,
+
+10
+00:00:43,280 --> 00:00:48,000
+and they specifically asked me to build a practical workflow to show you what
+
+11
+00:00:48,000 --> 00:00:52,640
+works, what doesn't, and all of the tasks being done, how much they cost.
+
+12
+00:00:52,640 --> 00:00:58,000
+They currently have access to 3,600 endpoints, and it is open source.
+
+13
+00:00:58,000 --> 00:01:02,000
+So you can connect up all the different APIs, like such as SEMRUSH,
+
+14
+00:01:02,000 --> 00:01:07,120
+MOs, Majestic, SERP API for all of your SEO data, including TikTok,
+
+15
+00:01:07,120 --> 00:01:12,880
+Instagram, YouTube, Reddit, LinkedIn, Hunter, and so many more APIs.
+
+16
+00:01:12,880 --> 00:01:16,640
+They're always adding more. All you have to do to get started with TREG
+
+17
+00:01:16,640 --> 00:01:21,440
+is to copy this one line command right here into your agent. So you just click on
+
+18
+00:01:21,440 --> 00:01:26,800
+copy and you can come over to something like Codex and you'll just run that
+
+19
+00:01:26,800 --> 00:01:31,920
+command. So what that's going to do is it's going to set up TREG for Codex in
+
+20
+00:01:31,920 --> 00:01:36,400
+this particular case, reading the LMS.tex file over here,
+
+21
+00:01:36,400 --> 00:01:40,720
+and it's just going to pull in all of the instructions in order to install it
+
+22
+00:01:40,720 --> 00:01:45,680
+into your coding harness, which is exactly what we're doing over here inside Codex.
+
+23
+00:01:45,680 --> 00:01:50,160
+And if that wasn't already easy enough, they also have a plugin which you can
+
+24
+00:01:50,160 --> 00:01:56,960
+install directly into GROKBOT. It will open up the official plugin page on x.ai.
+
+25
+00:01:56,960 --> 00:02:01,920
+It's just going to open up GROKBOT and install the plugin directly into your
+
+26
+00:02:01,920 --> 00:02:06,560
+AI agent harness over here. You can see it's already available inside the marketplace.
+
+27
+00:02:06,560 --> 00:02:10,240
+You also have the option to just bring up the marketplace and select TREG.
+
+28
+00:02:10,240 --> 00:02:15,200
+And you can see mine is already connected. We've got all of the available tools.
+
+29
+00:02:15,200 --> 00:02:20,320
+From here, it's just a simple matter of issuing it, some type of command, and then it will
+
+30
+00:02:20,320 --> 00:02:27,200
+automatically find the right API for that specific use case and call it inside TREG.
+
+31
+00:02:27,200 --> 00:02:31,680
+You can see all of the different live API calls that you're making,
+
+32
+00:02:31,680 --> 00:02:38,960
+as well as the post JSON and the responses over here as well. You can keep an eye on all of the
+
+33
+00:02:39,040 --> 00:02:45,840
+different tasks. I've mostly been using the Google search console API, as well as data for SEO,
+
+34
+00:02:45,840 --> 00:02:50,560
+because that's one that I really like for pulling in all of the relevant SEO data.
+
+35
+00:02:51,360 --> 00:02:56,400
+I've also been pulling in some Google's SERP data as well, and all of these are available
+
+36
+00:02:56,400 --> 00:03:02,960
+over here inside the catalog. The 2800 plus tools for agents that are included and built directly
+
+37
+00:03:02,960 --> 00:03:09,360
+into TREG. This is the complete list of all the different APIs that they provide,
+
+38
+00:03:09,360 --> 00:03:13,520
+including Apollo. If you're doing lead generation, you just connect up your API key.
+
+39
+00:03:14,080 --> 00:03:19,040
+TikTok, if you want to search your videos on TikTok, followers, and engagement, all that sort of
+
+40
+00:03:19,040 --> 00:03:24,480
+stuff. They also have bright data built directly in here to scrape social platforms through their
+
+41
+00:03:24,480 --> 00:03:30,880
+web scraper API. That one could be really useful. And meta ads, if you want to pull all of your
+
+42
+00:03:30,880 --> 00:03:36,480
+ad data, you can do that with the meta ads API. There's a bunch of different options in here,
+
+43
+00:03:36,480 --> 00:03:42,560
+including SCM Rush. So all you need to do is click on Connect. And if you already have a paid
+
+44
+00:03:42,560 --> 00:03:48,800
+subscription to SCM Rush, you can just go ahead and enter in your API key right here. But one of the
+
+45
+00:03:48,800 --> 00:03:55,840
+main advantages of using something like TREG versus the paid subscription tools, which often cost
+
+46
+00:03:55,840 --> 00:04:00,240
+hundreds and hundreds of dollars per month, it's completely free to use. And all you need to do
+
+47
+00:04:00,880 --> 00:04:06,560
+is to top up your balance. So you can add as many credits to your balance as you want. I've
+
+48
+00:04:06,560 --> 00:04:12,160
+currently got a hundred dollars in here right now because I'm doing a paid collaboration with TREG.
+
+49
+00:04:12,160 --> 00:04:18,240
+So that's going to last a very long time. And then you only pay for the API calls that you make.
+
+50
+00:04:18,800 --> 00:04:24,640
+So if you're not using one of the APIs like SCM Rush, very often, you're going to be paying a very,
+
+51
+00:04:24,640 --> 00:04:32,560
+very small amount versus a monthly fee subscription fee every single month. And if you do want to
+
+52
+00:04:32,560 --> 00:04:37,680
+request another tool, something that they're missing, you also have the option to do that as well
+
+53
+00:04:37,680 --> 00:04:44,080
+directly from that over here. And you can also apply to be a vendor. You would just list your API
+
+54
+00:04:44,080 --> 00:04:50,000
+in the catalog, which I may decide to do for my own startup as well. So all of these are now
+
+55
+00:04:50,000 --> 00:04:56,000
+connected directly from within TREG. And if I wanted to, let's say, for example, get Google
+
+56
+00:04:56,000 --> 00:05:02,160
+Keyword Data. I can just click on Keyword Data and we can select one of the providers from over here.
+
+57
+00:05:02,160 --> 00:05:08,800
+So in this case, I've already added Data for SEO. I just supplied my API key. So now it's connected.
+
+58
+00:05:08,800 --> 00:05:15,200
+And TREG is able to pull all that data for that specific API. Another really nice thing about TREG
+
+59
+00:05:15,280 --> 00:05:20,080
+is that if you come over to, let's say, Google Keyword Data, for example, and this is something that
+
+60
+00:05:20,080 --> 00:05:26,000
+you want to build into your app, you have the option to select many of the props that they've
+
+61
+00:05:26,000 --> 00:05:32,480
+already supplied over here. And also shows you the cost for each one of the APIs. So this one
+
+62
+00:05:32,480 --> 00:05:38,080
+to get organic search results for a keyword, for example, is going to cost, you know, a very,
+
+63
+00:05:38,080 --> 00:05:43,440
+very small amount using Serbstat. This is the cost for any API. This is the cost for TREG.
+
+64
+00:05:43,440 --> 00:05:50,160
+And then we can also go through and drill down into each one of the APIs here as well to see which
+
+65
+00:05:50,160 --> 00:05:57,120
+one is the cheapest. So let's say I want to do this one, for example, to get organic search results
+
+66
+00:05:57,120 --> 00:06:04,560
+for a keyword. I could just select, you know, Data for SEO. And we can bring up the request. It says
+
+67
+00:06:04,560 --> 00:06:10,320
+TREG called Data for SEO method post. So you basically would just copy this and you would put it
+
+68
+00:06:10,320 --> 00:06:17,440
+into, you know, either Grapbot or Codex or a Cloud Code, whatever you're using. And we're going to
+
+69
+00:06:17,440 --> 00:06:25,600
+call that specific API through TREG, which it should now have access to since I've already installed
+
+70
+00:06:25,600 --> 00:06:32,000
+the MCP directly into Codex. You can see here it's going to check the endpoints price and parameters.
+
+71
+00:06:32,000 --> 00:06:36,640
+And then it's just going to go ahead and run that request. So that's exactly what we're doing here.
+
+72
+00:06:37,280 --> 00:06:44,720
+And you can see the request cost 0.002 dollars roughly through the connected Data for SEO account,
+
+73
+00:06:44,720 --> 00:06:50,080
+which I've already got credits on. We can also check the activity over here as well and bring that
+
+74
+00:06:50,080 --> 00:06:55,200
+up. And you can see right here, right away, it has searched for the keyword coffee, which isn't
+
+75
+00:06:55,200 --> 00:07:00,480
+exactly what I wanted. I should have actually supplied the keyword that I wanted. But you can see
+
+76
+00:07:00,480 --> 00:07:06,320
+it just selected coffee over here because I think that was in the prompt that I put here. So I
+
+77
+00:07:06,800 --> 00:07:12,080
+forgot to replace this coffee with keyword that I actually want to search for. But you can see over
+
+78
+00:07:12,080 --> 00:07:18,720
+here inside the dashboard that it has now gotten the post request. And it's also generated the
+
+79
+00:07:18,720 --> 00:07:26,400
+response, which is in JSON over here directly from within Data for SEO. And I didn't have to use a
+
+80
+00:07:26,400 --> 00:07:32,720
+specific MCP for Data for SEO to do that. It was able to automatically figure all of that out for
+
+81
+00:07:32,720 --> 00:07:38,480
+me using Trek back to the original topic of the video. If I wanted to search for backlinks, for
+
+82
+00:07:38,480 --> 00:07:47,920
+example, I could use one of these. So SEO and I can pull up open web SEO data. And I can find the
+
+83
+00:07:47,920 --> 00:07:54,080
+backlink profile of a domain or URL. In this case, I'll just use Data for SEO because it's already
+
+84
+00:07:54,080 --> 00:08:01,200
+connected up to Trek. And you can see it's very, very cheap. It's like 0.024 dollars per call.
+
+85
+00:08:01,200 --> 00:08:06,480
+And if I want to go ahead and try it, I can just click on try. And it will actually just go ahead and
+
+86
+00:08:06,480 --> 00:08:12,960
+give me the prompt right here to set it up with my agent. Use Trek to call Data for SEO web
+
+87
+00:08:12,960 --> 00:08:18,640
+web backlinks summary and aggregate the backlink profile of a domain. If I wanted to do that,
+
+88
+00:08:18,640 --> 00:08:22,960
+I'll just copy it and come over here to Codex. And I'm just going to paste that in.
+
+89
+00:08:24,080 --> 00:08:30,560
+And once again, that's going to call the Data for SEO API, which is built into Trek. And it's going
+
+90
+00:08:30,560 --> 00:08:37,040
+to get my backlink profile for my domain, which is tube analytics.net. It's going to pull in all
+
+91
+00:08:37,040 --> 00:08:42,640
+of the data. And it's just going to return a response over here quick and easy. You can see the call
+
+92
+00:08:42,640 --> 00:08:50,080
+is 0.024 plus the fraction of a sin per return row is going to query it. And then it's going to
+
+93
+00:08:50,080 --> 00:08:55,840
+return a result. And this is the response. So I was able to get my backlink profile. So it says
+
+94
+00:08:55,840 --> 00:09:04,080
+Data for SEO reports 353 backlinks from 259 referring domains. Its backlink rank is 241.
+
+95
+00:09:04,080 --> 00:09:09,600
+It also shows the backlink spam score over here and all of that information, which is very,
+
+96
+00:09:09,600 --> 00:09:14,480
+very cool. They've got a bunch of other ones over here as well, like Bing keyword data.
+
+97
+00:09:14,480 --> 00:09:18,560
+If you want to search your keyword data through Bing, they've also got a whole bunch of
+
+98
+00:09:18,640 --> 00:09:23,120
+prompts to do that as well. Duck.go is also in here. If you want to use duck.go.
+
+99
+00:09:24,320 --> 00:09:30,000
+Bydo, which is the Chinese version of Google, you can get a lot of that data for Bydo as well.
+
+100
+00:09:30,000 --> 00:09:34,640
+If I wanted to use Bydo, I could just pass it in this prompt and it would do the exact same thing.
+
+101
+00:09:35,360 --> 00:09:40,400
+To wrap things up, I just wanted to go through a super practical example of an automation that you
+
+102
+00:09:40,400 --> 00:09:48,240
+can build inside Grapbot using Treg. This is an SEO auditor. And it gave me the report right away.
+
+103
+00:09:48,240 --> 00:09:53,760
+It also says the total spend is 13 cents using Treg. And it's just going to go ahead and pull the
+
+104
+00:09:53,760 --> 00:09:59,600
+rank keywords, competitors, backlinks, and LLM mentions. And then it created this report, which I
+
+105
+00:09:59,600 --> 00:10:06,160
+can easily preview directly from within Grap. It's got my organic keywords, which are going up.
+
+106
+00:10:06,160 --> 00:10:11,920
+Definitely good news as well as my overall position on Google estimated traffic referring
+
+107
+00:10:11,920 --> 00:10:19,120
+to domains. My Google LLM mentions also going up. And then it suggests the next actions down here
+
+108
+00:10:19,120 --> 00:10:24,560
+as well. I could just go ahead and start implementing those right away. It's automatically going to
+
+109
+00:10:24,560 --> 00:10:30,960
+kick off a cursor cloud agent and fix up all the code for me, just as it's doing right now.
+
+110
+00:10:30,960 --> 00:10:35,920
+This is a super practical automation that you can build out within a couple minutes inside Grapbot.
+
+111
+00:10:36,560 --> 00:10:40,880
+If you want to get started with Treg, go ahead and check the link in the description below.
+
+112
+00:10:40,880 --> 00:10:46,800
+It is an affiliate link. So if you sign up and you put $10 in, you'll get $5 in credits.
+
+113
+00:10:46,800 --> 00:10:52,080
+And I will also get $5. Always appreciate it if you use my link. With that being said,
+
+114
+00:10:52,080 --> 00:10:57,360
+thank you so much for watching this full demo video of Treg, the open router for AI agent tools.
+
+115
+00:10:57,360 --> 00:11:01,280
+I'm excited to hear about some of the things that you're building with Treg. Go ahead and drop
+
+116
+00:11:01,280 --> 00:11:05,680
+them in the comments below. Please subscribe to the channel if you haven't already. I will see you in
+
+117
+00:11:05,680 --> 00:11:07,040
+the next one. Sign it off.
+

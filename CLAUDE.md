@@ -121,7 +121,7 @@ Before asking the user for context:
 
 - **000_Skills/** — Reusable workflows (NotebookLM protocol, case study analysis, cinematic styles, video production workflow, content strategy framework)
 - **001_Administration/** — Business strategy, revenue streams, ecosystem map, roadmap
-- **002_Brands/** — Brand guidelines, content systems, case studies for: Anomalous-Wild, Board-Nomad, Unamoss-Creative, Ikigai-Digital-Studios
+- **002_Brands/** — Brand guidelines, content systems, case studies for: Anomalous-Wild, Bored-Nomad, Unomas-Creative, Ikigai-Digital-Studios
 - **003_Tools/** — Tool documentation, model catalogs, pricing matrices, TOOLBOX
 - **004_Research/** — Raw web clippings (auto-ingested), reference material
 - **005_Wikis/** — Compiled knowledge articles by concept (Video-Production, Content-Strategy, AI-Agents, RAG-Systems)
@@ -146,7 +146,7 @@ Start every session by reading the federation registry at `/Users/tonymacbook202
 | `002_Content-Creation/Video_Editor/` | YouTube content production for 12 channels. AI-assisted pipeline: research → script → assets → Remotion composition → publish. Has case-study skill and cinematic style system (6 production methodologies with model pricing). | Active |
 | `002_Content-Creation/Whop_Clipping/` | Long-form video → Shorts pipeline for client brands. Tony posts on theme pages, earns per-view. | Planned |
 | `002_Content-Creation/Social_Media_Marketing/` | Static image + carousel strategy for Pinterest and Instagram. Fashion/clothing niche focus. | Planned |
-| `005_Ecommerce/POD/` | Print-on-demand Etsy store. Tony designs; fulfillment via POD service. Brands: Board-Nomad, Unamoss-Creative. | Active |
+| `005_Ecommerce/POD/` | Print-on-demand Etsy store. Tony designs; fulfillment via POD service. Brands: Bored-Nomad, Unomas-Creative. | Active |
 | `005_Ecommerce/Digital_Products/` | Digital downloadable wall art Etsy store + guides, downloads, funnels. Distribution via Gumroad, own website (Next.js + Sanity + Lemon Squeezy), email marketing. | Planned |
 | `005_Ecommerce/KDP/` | Book publishing on Amazon Kindle Direct Publishing. | Active |
 | `005_Ecommerce/Amazon_Merch/` | T-shirt designs on Amazon Merch on Demand. | Planned |
@@ -167,7 +167,7 @@ Start every session by reading the federation registry at `/Users/tonymacbook202
 |--------|--------|-------|
 | **YouTube (12 channels)** | Current | Ad revenue + sponsorships |
 | **Whop clipping** | Current | Per-view income from client brands via theme pages |
-| **Etsy POD** | Current | Print-on-demand (Board-Nomad, Unamoss-Creative) |
+| **Etsy POD** | Current | Print-on-demand (Bored-Nomad, Unomas-Creative) |
 | **Etsy Digital** | Current | Downloadable wall art |
 | **Travel affiliate** | Current | Amazon Associates, Impact, travel programs |
 | **Amazon KDP** | Current | Book royalties |

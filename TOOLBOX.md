@@ -603,7 +603,7 @@ Two maps live at `001_Architecture/Install_Maps/`. When Tony says **"look at the
 
 ### Meta Graph API
 - **What it does:** Facebook/Instagram publishing and analytics
-- **API Key:** `META_GRAPH_API_KEY`
+- **API Key:** `META_GRAPH_API_KEY` — **planned, not yet acquired (confirmed by Tony, 2026-10-12).** Not a stale/dead reference — he intends to get this key, just hasn't yet. Not present in `~/.env-secrets` as of 2026-10-12.
 
 ---
 
@@ -1056,3 +1056,21 @@ This is the single source of truth. If it's not here, agents won't know it exist
 - **MCP Launchpad (`mcpl`) — NOT installed (audited 2026-10-06, APPROVE, risk 22/100, Layer 1 unavailable).** Not adopted: Claude Code already defers MCP tool schemas and loads them on demand (ToolSearch), so mcpl adds little there and routes tool calls through Bash, around per-tool MCP permissions and `fs_guard.py`'s MCP delete-tool check. If ever wanted (e.g. for a harness without deferred tool loading), pin the audited commit: `uv tool install git+https://github.com/kenneth-liao/mcp-launchpad.git@0eb8d8192c61ebff43ec7b8fd83e4fbbb4f71e9e`.
 - **Skill `find-skills`** (`vercel-labs/skills@find-skills`) — teaches agents to search skills.sh with `npx skills find <query>` and offer `npx skills add` installs. `001_Architecture/Skills/find-skills/` + `.agents/skills/find-skills/`. Pin the CLI (`npx -y skills@1.7.0`) and add `--agent claude-code` for global installs; bare `-g` leaves a broken symlink in this layout. An older March copy also sits at `~/.agents/skills/find-skills/` (outside the repo, not loaded by any harness here).
 - **Skill `humanizer`** (`blader/humanizer` v3.1.0, `/humanizer`) — rewrites AI-sounding prose without changing facts; 26 numbered AI-writing tells, voice matching from a sample, file mode edits prose only. Use for scripts, narration, listing copy and descriptions. `001_Architecture/Skills/humanizer/` + `.agents/skills/humanizer/`. Wiki: `000_Wiki/Content-Strategy/Humanizer.md`.
+
+## Agent tool aggregators & registries — researched 2026-10-13, none connected yet
+
+Found while scoping the new Ikigai pipeline build. Full detail and Ikigai-specific relevance: `005_Ecommerce/Etsy-Ikigai/Prior-Pipeline-Research-Consolidated.md` sections 5-6. Not installed/connected — research only.
+
+- **Treg** (`github.com/superdesigndev/treg`, treg.to) — "OpenRouter for agent tools." One base URL + one token gives an agent access to 3,600+ priced-per-call endpoints across 86-94 providers (SEO/backlinks, social/trends, people/company enrichment, ads, scraping, image/video gen), billed per call from a cent, no per-provider signup required. Self-hostable (Apache 2.0 + additional terms) or hosted. Claude Code plugin: `/plugin marketplace add superdesigndev/treg` then `/plugin install treg@treg`. Doc: `007_Resource_Library/Tools/Treg-OpenRouter-For-Agent-Tools.md`.
+- **Composio Universal CLI** (`composio.dev`) — agent-facing CLI (not MCP) to 1000+ SaaS apps; handles OAuth/API-key/token-refresh so agents just call `composio tools execute <TOOL_NAME>`. Confirmed covers Canva (create designs, list brand templates, manage folders) — relevant to the Ikigai mockup/design step. Note: **Rube (Composio's older MCP server) was discontinued May 16, 2026** — the Universal CLI is a separate, still-live product from the same company, not the same thing. Doc: `007_Resource_Library/Tools/Canva-CLI-for-AI-Agents.md`.
+- **Printing Press Library** (`printingpress.dev`, `github.com/mvanhorn/printing-press-library`) — catalog of 58 pre-built, agent-native Go CLIs + matching Claude skills, one-command install (`npx -y @mvanhorn/printing-press install <name>`). Relevant entries for this workspace: `tiktok-shop` (safe v1 Seller API), `shopify`, `amazon-seller`, `google-ads`, `scrape-creators` (scrapes Pinterest/Instagram/TikTok/etc. — useful for niche/competitor research). No Etsy-specific or Pinterest-ads CLI in the catalog as of this check. Doc: `007_Resource_Library/Tools/Printing-Press-Library.md`.
+- **Pipedream "string alpha"** — thin, unverified bookmark (a TikTok video screenshot, not a real doc) about an AI agent tool on Pipedream.com. Flagged as needing its own research pass before relying on it. Doc: `007_Resource_Library/Tools/Pipedream-Com-String.md`.
+
+## PhotoCraft — open-source Photoshop alternative, researched 2026-10-13, not installed
+
+Tony wants to replace Adobe Photoshop (to drop Creative Cloud) for the Ikigai mockup pipeline specifically. Full detail: `005_Ecommerce/Etsy-Ikigai/Prior-Pipeline-Research-Consolidated.md` section 8.
+
+- **What it is:** open-source, cross-platform (Windows/macOS/Linux/FreeBSD/web) image editor written in Rust, by the ArtCraft project. MIT/Apache-2.0. Built by having an AI agent exercise every Photoshop tool/panel and rebuilding the observed behavior from scratch — framed as a "clean-room reimplementation," specifically to avoid copyright issues. Repo: `github.com/storytold/photocraft`.
+- **Feature parity:** layers, masks, layer styles, smart objects, brush engine, adjustment layers, type, vectors. **Opens real PSD files** — Tony's purchased Photoshop mockup templates should open directly.
+- **Automation (the key finding):** headless CLI (`photocraft-cli run <file> --cmd <command> --params '{...}' --out <file>`), built-in batch processing (`photocraft-cli batch --actions <file>.json --in <folder> --out <folder>`), a JSON control channel, and a **native MCP server** — ~500-700 commands shared across one registry. This is arguably better-suited to agent-driven automation than Photoshop's ExtendScript.
+- **The gap:** **no ExtendScript (`.jsx`) or `.atn` action support, no third-party plugin support** (uses a sandboxed WebAssembly plugin runtime instead). Tony's existing `Ikigai_Batch_StaticOnly.jsx` and `Ikigai_Zoom_Mockup.jsx` scripts (`/Users/tonymacbook2025/Documents/Automations/IkigaiDigital/`) cannot be ported as-is — the same logic (place art into template, swap smart-object content, batch-export) needs rebuilding as PhotoCraft CLI/batch commands or MCP calls.

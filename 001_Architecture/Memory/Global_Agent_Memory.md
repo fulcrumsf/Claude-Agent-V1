@@ -20,6 +20,36 @@ Do not load this file by default once it grows large. Agents should always read 
 
 ## Memory Entries
 
+### 2026-10-13 — Real-data revenue scoring enforced; Ikigai pipeline rebuild started; new Ikigai research consolidated
+
+- **Revenue-stream scoring must be grounded in real pulls, not LLM-plausible numbers — Tony enforced this hard this session.** First scoring pass (section 7b of `Agent-OS-Monetization-Strategy-Plan.md`) was rejected outright: "What you're giving me back is what your LLM is just telling you to give me back." Rebuilt (section 7c) using real business numbers already on file plus cited web research for every market claim, published as two Dashboard-type Artifacts with a sources table. Apply this bar to any future scoring/ranking/comparison task in this workspace.
+- **Ikigai gets a new, purpose-built production pipeline — NOT a reuse of the existing n8n workflows.** Tony's explicit correction: existing n8n workflows (`_Ikigai_Art_Creator`, `Ikigai_Wall_Art_Token_Creator`, `Ikigai_Mockup_Gen_Rooms`) are reference architecture only. He will walk through the real design himself in a future session — "too much detail for one session," deferred, don't chase it. New master reference for everything found so far: `005_Ecommerce/Etsy-Ikigai/Prior-Pipeline-Research-Consolidated.md`.
+- **Treg identified** (`github.com/superdesigndev/treg`, treg.to) — "OpenRouter for agent tools," one token/base-URL access to 3,600+ priced-per-call endpoints across 86-94 providers. This was the tool Tony was trying to remember from a bookmark. Not connected yet.
+- **PhotoCraft researched as a Photoshop/Creative-Cloud replacement candidate** — open-source (Rust, MIT/Apache-2.0), opens real PSD files, has CLI + batch + a native MCP server (good agent-automation fit). Gap: no ExtendScript/`.jsx`/`.atn` support, so Tony's existing `Ikigai_Batch_StaticOnly.jsx` / `Ikigai_Zoom_Mockup.jsx` scripts would need rebuilding (same logic, different scripting surface) — Tony confirmed that tradeoff is acceptable. Not installed/tested yet.
+- **Antigravity's local chat storage located and searching method established:** real conversation data lives in `~/.gemini/antigravity/conversations/*.pb` (encrypted, not text-searchable) and `~/.gemini/antigravity/brain/<session-id>/` (readable `task.md`/`walkthrough.md`/`implementation_plan.md` per session). Binary-safe grep (`grep -qai <term> *.pb`) is the right method for searching the encrypted conversations by content presence; the `brain/` folder is directly greppable. Reuse this for any future "I talked to an LLM about X, find it" request.
+- **Etsy mockup-photo pattern confirmed by direct observation** (2 live Ikigai listings checked): position 2 is always a fixed video mockup, position 3 is always a fixed flat "poster" mockup, position 4+ varies by art style/room staging. Full detail: consolidated file section 7.
+
+### 2026-10-12 — Affiliate/Monetization System Is Now a Top-Priority, Living "Shared Brain"
+
+Tony's explicit framing (2026-10-12): this isn't a one-off research task, it's becoming **the system** for reaching his $1,000/month net profit by December 2026 goal, and he wants it to function as a persistent "trainer/assistant" that any agent, any session, any harness can pick up with full context — "it's like I've told you my life story... you just know it word for word." Treat the files below as living, authoritative, and expected to keep growing — read them before any affiliate/monetization/revenue-stream question, don't re-derive from scratch.
+
+**Read in this order for anything affiliate/revenue-related:**
+1. `001_Architecture/Plans/Agent-OS-Monetization-Strategy-Plan.md` — the master plan. Every revenue stream's real status, the $1,000/mo Dec-2026 goal, section 5b for API/content-link automation strategy.
+2. `005_Affiliate_Marketing/CLAUDE.md` — the affiliate department brief, "Direction Update — 2026-10-12" section has the locked workflow/consolidation decisions.
+3. `001_Architecture/API_Directory.md` — "Connection potential" section: per-platform API/MCP availability, both earnings and content-link dimensions.
+4. Live interactive artifacts (Claude Artifact tool, `action: "read"` on the URL): **Affiliate & Referral Audit** (`https://claude.ai/artifact/5CCTGiT16yFwEAiK4csjpt`, 76 items) and **Stock Portfolio Audit** (`https://claude.ai/artifact/KpJ549B9wWNMGJ6UQ2kYW1`, 14 items) — each item has real research notes, not placeholders.
+
+**Locked decisions as of 2026-10-12 (don't re-litigate without Tony reopening):**
+- Workflow: **write content first, link after** — never pick affiliate products before/during writing.
+- Default hub networks, no brand loyalty beyond ease/earnings: **Stay22 → Travelpayouts → Impact**, in that order, for building links into a draft. **Travelpayouts Drive** (a free on-site script) is the strongest fully-automatic "scan finished posts and link them" tool found — stronger than Impact's Publisher Tag, which only upgrades links already present, doesn't create new ones from text.
+- Consolidation is a *direction*, not an action — nothing is being cancelled now; old one-off programs fade out only if/when Tony stops wanting to manage them.
+- **12Go is a deliberate keep**, not redundant — it's the only real Southeast Asia ground-transport (bus/train/ferry) specialist Tony has; Stay22 has zero ground-transport capability. Bookaway (12Go's sister company) is the actual redundant one.
+- The borednomad.com rebuild is **fully from scratch** — no old code/scripts/HTML carry over, only text/images, rebuilt into new markup.
+- API keys live in `~/.env-secrets` for: Amazon Associates (tested live 2026-10-12, valid PA-API 5 credentials, gated on 10-qualifying-sales/30-days eligibility, not deprecated as first guessed), Stay22, Travelpayouts (both added by Tony, not yet live-tested). Impact is OAuth-connected (Tony configured scopes himself 2026-10-12: enabled Actions/Conversions/Reports/Catalogs/Products/Tracking Links/Programs/Media Properties/Invoices and most others; left off Withdrawal Settings, Identity Verification, and a couple more).
+- Impact's API **cannot** search/discover/apply to new brand programs — confirmed against official docs. Only already-joined programs are API-accessible; discovering and applying to new ones is UI/app-only on Impact's side, for everyone, not a missing scope.
+
+See [[feedback_dont_ask_findable_info]] and [[project_monetization_plan_questionnaire_closed_2026-10-12]] in Claude's own cross-session memory (`~/.claude/projects/.../memory/`) for the Claude-specific behavioral notes from this work.
+
 ### 2026-09-04 — Recommendation Requests Require Approval Before Acting
 
 When Tony asks for a recommendation, suggestion, options, or where something should be saved, agents must provide the recommendation and wait for Tony's reply before creating directories, scaffolding, files, or moving anything. Do not interpret "give me a suggestion" as permission to implement. This is a cross-agent rule for Claude Code, Codex, Gemini, and other Agent-OS agents.

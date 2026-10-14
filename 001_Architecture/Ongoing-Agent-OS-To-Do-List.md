@@ -5,6 +5,27 @@
 
 ---
 
+## Flagged, not prioritized — official Xero MCP server (added 2026-10-11)
+
+Tony recalled a saved tutorial (`007_Resource_Library/Videos/Connecting-Xero-To-Claude-Full-Access-Analysis/`) about Xero's own official `xero-mcp-server`, connected via Claude Desktop (not this workspace) with a Xero-billed "Custom Connection" fee (~$5.45/mo). Never actually installed here — only the narrower custom receipt-automation tool exists (`001_Architecture/Tools/Xero_Receipt_Automation/`, read-only scopes, no reports access). Tony's call, 2026-10-11: not worth it yet for occasional P&L pulls — browser login works fine for now. Logged for later.
+
+**Quick pros/cons:**
+- **Pros:** full read/write Xero API access (P&L with custom date ranges/comparisons, balance sheet, trial balance, invoices, bank transactions, contacts) instead of browser-only; could be scripted/scheduled (e.g. monthly P&L email); would unblock automating the $1,000/mo tracking in the monetization plan; one-time setup, not per-pull effort.
+- **Cons:** ~$5.45/month recurring Xero-side fee; Claude Desktop only (not this Claude Code session — would need separate integration work to reach here, or stay Desktop-only); setup is fiddly (OAuth scopes must match exactly, Tony's source tutorial warns about this); write access to Xero is a bigger blast radius than today's read-only tool — needs careful scoping if ever built.
+
+---
+
+## Top priority — monetization strategy + Etsy store automation (added 2026-10-11, Tony's explicit top priority)
+
+1. **Agent-OS monetization strategy.** Strategize the best path to making money with Agent-OS overall — POD, Etsy, YouTube monetization, and the rest of the revenue streams. Decide which path(s) are the best bet.
+   - **Living plan (read first):** `001_Architecture/Plans/Agent-OS-Monetization-Strategy-Plan.md` (first draft 2026-10-11, major pass 2026-10-12): every revenue stream's real status, Xero P&L baseline, Bored Nomad website rebuild, questionnaire fully closed.
+   - **2026-10-12: full affiliate/referral API-connection system built** — real keys added for Amazon Associates/Stay22/Travelpayouts/Impact, content-link automation researched for ~90 programs, workflow and consolidation decisions locked. See `001_Architecture/Logs/Handoffs/2026-10-12_Session-Handoff_Claude_Affiliate-API-System-Built.md` and `005_Affiliate_Marketing/CLAUDE.md`.
+   - **Still blocked / not done: the actual scoring step** — every stream now has real data, but nothing has yet scored each one on "how fast and easily can this add $X/month by December." This is the next real step.
+2. **Bored-Nomad Etsy store automation.**
+3. **Ikigai Digital Studios Etsy store automation.**
+
+---
+
 ## Top priority — pending plans (future builds)
 
 Every plan currently sitting in `001_Architecture/Plans/` (top level, not `Archive/`) that hasn't been built yet, ranked by priority. This section is the first thing to check when picking up new work — keep it in sync with the Plans folder (see "Plans folder sync" below for how).
@@ -16,9 +37,26 @@ Every plan currently sitting in `001_Architecture/Plans/` (top level, not `Archi
 
 ---
 
+## High priority — maintenance (not a Plans-folder item, added by Tony 2026-10-10)
+
+1. **Compact the Claude cross-session memory index.** `~/.claude/projects/-Users-tonymacbook2025-Documents-Agent-OS/memory/MEMORY.md` is 20KB, approaching its 24.4KB read-limit. Trim to under ~17KB: keep one line per entry, move detail into the topic files it already links to, merge or drop stale entries.
+2. **Skill wiki-folder restructure audit.** Go through the skills in `001_Architecture/Skills/` and find any whose main `SKILL.md` is too long/bloats context on load. For those, restructure into a wiki pattern: keep `SKILL.md` short, move detail into supporting `.md` files living in that same skill's folder, and link to them from `SKILL.md` so the agent only pulls a supporting file in when it actually needs that detail, instead of loading one large file every time. Note: a prior related pass exists — `001_Architecture/Audit_Reports/` has a 2026-10-02 skill efficiency audit (235-skill scorecard) that concluded skills weren't the main context-bloat risk overall (MCP servers were) — this new check is narrower and more specific: individual oversized SKILL.md files, not aggregate bloat ranking. Read that prior audit first before redoing work it already covers.
+
+---
+
 ## 🆕 New plans detected (auto, needs Tony's priority call)
 
 Added automatically by `sync_plans_to_todo.py` (daily cron, 6am local, set up 2026-10-07 — see `001_Architecture/Scripts/sync_plans_to_todo.py` and crontab). Mechanical only — a filename-presence check against this file, never a read of the plan's content, never archives or deletes anything. Move an entry up into "Top priority" once Tony has set its priority, and delete the line here when that's done. Logs to `001_Architecture/Scripts/sync_plans_to_todo.log`.
+- **Implementation Brief: AI Fashion Affiliate Carousel and Video Workflow** (`AI-Fashion-Affiliate-Implementation-Brief.md`, detected 2026-10-08) — not yet reviewed or prioritized.
+- **Tool Catalog Maintenance Plan** (`Tool_Catalog_Maintenance_Plan.md`, detected 2026-10-08) — not yet reviewed or prioritized.
+- **Tool Catalog Tagging Plan** (`Tool_Catalog_Tagging_Plan.md`, detected 2026-10-08) — not yet reviewed or prioritized.
+
+---
+
+## Brain-dumped, not yet scoped (manual, not auto-detected)
+
+- **Package Tutorial-Builder's output into sellable/giveaway tiers** (brain dump 2026-10-08). Tony wants the eventual tutorial output (e.g. the Neon Parcel pipeline build, with its real iteration/YOLO history) packaged at multiple tiers: a free PDF guide, a free lead magnet gated behind joining his Skool community, and a more advanced paid version behind the Skool paywall. Added as new scope to the existing `Tutorial-Builder` skill (`001_Architecture/Skills/Tutorial-Builder/SKILL.md` — alpha since 2026-07-05, never run against a real subject) rather than a new skill. **Vague on purpose** — needs a real discovery conversation with Tony (how much content differs per tier, what triggers which tier, where this plugs into NotebookLM/PDF rendering) before any of it gets built. Not prioritized, no deadline.
+- **Package Agent-OS itself as a sellable Railway deploy template** (brain dump 2026-10-09). Tony wants to turn this workspace's underlying system into a product: a configured Agent-OS repo on GitHub, deployable via a Railway template. Two tiers floated: (a) free — give away the repo, buyer sets it up themselves; (b) paid — a one-click Railway deploy template with extra features already configured. **Vague on purpose** — needs a real scoping conversation (what's actually genericizable vs. Tony-specific/hardcoded — e.g. the ~74 scripts already known to hardcode his absolute workspace path per the `/lab` design notes; what the "extra features" in the paid tier would be; how credentials/secrets get handled for a buyer's own deploy; licensing). Not prioritized, no deadline.
 
 ---
 

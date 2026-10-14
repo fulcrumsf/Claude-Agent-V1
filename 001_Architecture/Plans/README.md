@@ -22,3 +22,5 @@ Any agent (Claude Code, Codex, Gemini CLI, Antigravity) that finishes implementi
 | `Agent_OS_Command_Center_Dashboard_Roadmap.md` | Draft/brain-dump roadmap, not started |
 | `Multi_Agent_Bridge_MCP_Slack_Plan.md` | Draft/planned, not started |
 | `robotto-gato-channel-strategy.md` | Untracked, appeared 2026-10-02, not yet reviewed by this session's lineage |
+| `Tool_Catalog_Maintenance_Plan.md` | Draft for discussion, 9 open decisions pending Tony's sign-off (2026-10-08) |
+| `Tool_Catalog_Tagging_Plan.md` | Deferred by Tony's explicit call — not a current priority, parked until after the online/vector-DB migration (2026-10-08) |

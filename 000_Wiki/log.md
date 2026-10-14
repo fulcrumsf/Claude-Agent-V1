@@ -2820,3 +2820,11 @@ To-do: added item 6 to `001_Architecture/Ongoing-Agent-OS-To-Do-List.md` Part 3 
 Source: `002_Content-Creation/Video_Editor/002_Channels/002_Neon-Parcel/Case_Studies/Youtube_Studio_Ask_AI/3-Beat-Formula.md` (read-only; file not moved)
 Wiki/Asset Note: `000_Wiki/Video-Production/Neon-Parcel-YouTube-Studio-Ask-AI-Case-Study.md`
 To-do: updated item 1 in `001_Architecture/Ongoing-Agent-OS-To-Do-List.md` Part 3 — case study now wikified, purpose per Tony confirmed. Index updated.
+
+## [2026-10-08] ingest | Treg (OpenRouter for Agent Tools)
+Source: `000_Ingest/superdesigndevtreg OpenRouter for agent tools. Join community here httpsdiscord.gg6mQYYfFMAn.md` → `007_Resource_Library/Tools/Treg-OpenRouter-For-Agent-Tools.md`
+Note: GitHub repo bookmark, form `github-repo`, category `ai-agents`. Cross-linked to the Grok Bot tutorial note below. Original file still sitting in `000_Ingest/` — agents cannot delete; flagged for Tony to remove himself.
+
+## [2026-10-08] ingest | Treg.to Inside Grok Bot Is A Game Changer! (tutorial)
+Source: `000_Ingest/Treg.to Inside Grok Bot Is A Game Changer!.md` → `007_Resource_Library/Tutorials/Treg-Inside-Grok-Bot-Is-A-Game-Changer.md`
+Note: YouTube tutorial, form `youtube-video`, category `ai-agents`. Ran through Video-Analyzer per Tony's explicit request (category `tutorial`, threshold 0.5) — full scene-by-scene + transcript + 27 keyframes at `007_Resource_Library/Videos/Treg-Grok-Bot-Demo-Analysis/`. Original file still sitting in `000_Ingest/` — agents cannot delete; flagged for Tony to remove himself.
