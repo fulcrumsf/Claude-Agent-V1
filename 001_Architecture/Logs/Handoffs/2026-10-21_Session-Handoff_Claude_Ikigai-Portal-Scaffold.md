@@ -19,3 +19,13 @@ Branch `claude/ikigai-portal-pipeline` (pushed, NOT merged to main, no PR). Main
 
 ## Rules learned
 Rollback label per milestone; plan/scaffold in cloud, Mac tools later; ask before creating folders.
+
+## Deferred to the next Mac session (standing rule for this handoff)
+This session ran in the cloud, so anything it could not do belongs to the next session, when Tony is on the Mac. The next Mac session should do all of these first, before new work:
+- Run the Graphify refresh (`graphify update 005_Ecommerce`) and update the REGISTRY build state.
+- Update `~/.claude/projects/.../memory/MEMORY.md` from the 2026-10-21 additions in `Global_Agent_Memory.md`.
+- Check whether `DEPARTMENTS.md` should get an Ikigai row (not added from the cloud; ask Tony).
+- Write the wiki article for the Ikigai portal once the pipeline steps are real.
+- Connect PhotoCraft, Upscayl, Drive, Etsy API and the Mac-only n8n/automation files (see Still open item 2).
+- Push the real git tag `rollback/ikigai-01-brief` if wanted (created only inside the cloud container; tag pushes returned 403 there).
+- Anything else found undone because of cloud limits: do it, then tick it off here.
