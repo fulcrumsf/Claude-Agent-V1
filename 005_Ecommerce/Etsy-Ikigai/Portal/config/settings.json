@@ -1,0 +1,12 @@
+{
+  "visible_ideas": 10,
+  "pool_target": 40,
+  "pool_low_warning": 10,
+  "idea_mix": {"gap_first": 3, "mixed": 2, "proven": 1},
+  "price_default": 6.50,
+  "price_with_extra_ratio": 8.50,
+  "output_root": "data/output",
+  "etsy_images_max": 10,
+  "storage_backend": "local_folder",
+  "upscaler": "upscayl"
+}

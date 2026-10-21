@@ -1,0 +1,11 @@
+{
+  "todo": "Read the 5 real sizes from a live Ikigai listing, then fill in. Placeholders below are NOT verified.",
+  "dpi": 300,
+  "sizes": [
+    {"name": "2x3", "w_in": 24, "h_in": 36},
+    {"name": "3x4", "w_in": 18, "h_in": 24},
+    {"name": "4x5", "w_in": 16, "h_in": 20},
+    {"name": "11x14", "w_in": 11, "h_in": 14},
+    {"name": "ISO_A", "w_in": 11.69, "h_in": 16.54}
+  ]
+}

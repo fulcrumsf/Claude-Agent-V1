@@ -1,0 +1,8 @@
+services:
+  portal:
+    build: .
+    ports: ["127.0.0.1:8800:8800"]
+    env_file: [.env]
+    volumes:
+      - ./data:/srv/data
+      - ./config:/srv/config
