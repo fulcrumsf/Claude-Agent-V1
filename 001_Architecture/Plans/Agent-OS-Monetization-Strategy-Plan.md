@@ -472,6 +472,70 @@ Tony pushed back on section 7b's first-pass scoring as LLM opinion, not real dat
 
 ---
 
+## 7d. Revenue Priority Board v5, 2026-10-20 (supersedes v4 and the 7b/7c ranking)
+
+**v5 update (same URL):**
+
+- Every leaderboard row now expands to four parts:
+  - what it is
+  - a ranked sub-niche table
+  - a strategy strip: first 5 to make, format/price, keywords, production route, 30-day checklist
+  - risks, each with a number
+- The group / cruise / reunion / matching-shirt thread was **discarded**. Tony means ready-made place or experience designs that a trip organizer links and a group buys.
+- It was replaced by a 96-place opportunity map (Alura "[place] shirt", Google trip intent, NPS/IAATO/Iceland visitor counts).
+
+| Rank | Candidate (v5) | Potential | Likely months to $1k | Ceiling |
+|---|---|---|---|---|
+| 1 | Ikigai painterly abstract: gouache, olive color-field, Japandi abstract + Frame TV | 73.4 | 11 | $1,400 |
+| 2 | Neon Parcel faceless TikTok Shop demos of $15-35 gadgets | 70.2 | 12 | $1,500 |
+| 3 | Ikigai Japanese & Japandi prints | 63.7 | 15 | $800 |
+| 4 | Ikigai Christmas & winter printables | 60.0 | 13 | $500 |
+| 5 | Bored Nomad place designs (Smoky Mtns, Zion, Iceland, Yosemite) | 57.7 | 14 | $700 |
+
+- **Top places:**
+  1. Smoky Mountains: 3,183 searches/mo vs 3,614 listings; title-matched top sellers 70.5 sales/mo; 11.5M visitors
+  2. Zion
+  3. Iceland: Google "iceland trip" +169% YoY
+  4. Yosemite
+  5. Grand Canyon
+  6. Rocky Mtn
+  7. Olympic
+  8. Yellowstone
+  9. Glacier
+  10. Antarctica
+- **Seeds:**
+  - Zion #2, Antarctica #10, Northern Lights #11, Banff #19
+  - Fairy Festival #35, Badlands #42, Sedona #70, Minnewanka #93 (0 searches)
+- **Format:** "national park leggings" and "rash guard" get 0 searches/mo, while "national park sweatshirt" gets 22,738. Lead with a searchable sweatshirt or tee; AOP is a variant in the same listing.
+- **Gaps:** Pinterest planning index, eRank/EverBee place cross-check, Banff visitor counts.
+
+### v4 record (kept for history)
+
+Published: `https://claude.ai/artifact/E73MchsKgTboPkxetViTXv`. Only candidates that fit Tony's model are ranked: existing storefronts, Ikigai = printable art only, KDP low-content allowed, no new stores, no nurse stream. Scores measure potential if each stream is worked at the stated cadence. Effort to date is shown separately and does not lower a score. Every channel was built breadth-first: 126 seeds expanded into 5,062 Etsy keywords (Alura), plus 30 Amazon low-content categories.
+
+| Rank | Candidate | Potential | Likely months to first $1k net month | 12-mo ceiling, net |
+|---|---|---|---|---|
+| 1 | Ikigai abstract / mid-century sets + Frame TV art | 73.4 | 11 | $1,400 |
+| 2 | Neon Parcel TikTok Shop affiliate videos (1/day) | 70.2 | 12 | $1,500 |
+| 3 | Bored Nomad group & couples trip matching apparel | 69.8 | 10 | $1,300 |
+| 4 | Ikigai Japandi / Japanese digital gaps | 63.7 | 15 | $800 |
+| 5 | Ikigai minimalist seasonal sets | 60.0 | 13 (low case Dec 2026) | $500 |
+
+- Group-location hypothesis: **partly supported.**
+  - Supporting: group-trip demand is large but generic. "matching friends vacation shirts" gets 113,142 searches/mo, +68% yr, with 5.2 sales/mo per top listing (Alura).
+  - Weakening: single obscure places are tiny (Minnewanka 383 searches/mo, Badlands 258, Tromso 100). Only 13 of 155 own orders had 2+ units. Aurora items are in 99 of 155 orders, 47 of those in Q4.
+- Ikigai first 5:
+  1. Gouache sets
+  2. Maximalist/eclectic gallery sets
+  3. Minimalist Christmas set + Frame TV version
+  4. Frame TV versions of the abstract line
+  5. Vintage cherry blossom prints
+- Ikigai catalog: the abstract cluster gets the views; the Japandi leaf print converts best.
+- KDP: the weak-incumbent outlier is party-game / score-sheet logbooks (39 of the top 50 have under 100 reviews). Adult coloring is dominated by 2-3 publishers.
+- TikTok affiliate benchmark: a faceless creator with 15k followers made $1.28M GMV in 30 days on 104.6M views (Kalodata). $1k net needs roughly 250k-690k product-video views/mo.
+
+---
+
 ## 8. Open questions for Tony
 
 ### Resolved on 2026-10-11
@@ -532,6 +596,33 @@ Tony's concept, as he described it on 2026-10-11:
 2. **An agent that scans his blog posts and content** and converts plain product/service mentions into the correct affiliate links automatically.
 
 Context for when the discussion happens (not a decision): `005_Affiliate_Marketing/CLAUDE.md` already describes a target state close to this (an Airtable link catalog tagged by program, topic, content type and platform, plus a link-injection workflow with per-program compliance checks). The per-program folders it expects are still empty.
+
+---
+
+## 9b. Dashboard architecture idea — Tony's brain note, 2026-10-15
+
+> **NOT YET SCOPED. IDEA ONLY.** Captured as Tony dictated it, not a design decision — don't build against this until he opens it as a real task.
+
+Tony's concept, as described 2026-10-15, in two parts:
+
+1. **The scraping/snapshot workaround, for any platform with no real API** (Etsy is the current example — no API/MCP path exists, confirmed in this plan). The idea: a Claude Code script, run on a schedule, that logs into the account, takes a snapshot of the analytics shown in the UI, and converts that snapshot into structured data — the same role Firecrawl-scraped Etsy competitor data already plays in the scorecard artifact, but running automatically and routinely against Tony's **own** accounts (not just one-off competitor checks).
+2. **One dashboard per revenue stream, built so they can later roll up into one main dashboard.** Tony asked about "Claude mods" as a possible mechanism for this — **checked 2026-10-15: Claude Code Mods are real (launched 2026-10-01), but they're TypeScript plugins that change Claude Code's own CLI behavior (intercept tool calls, rewrite prompts, restyle the terminal UI) — a developer customization layer for the coding tool itself, not a data-dashboard product.** What actually fits this idea is the **Dashboard Artifact type already in use for the revenue-stream scorecard** (`https://claude.ai/artifact/MtqzUXukXTVvaNdbqQ3JgL`) — each new revenue-stream process (Digistore24, Ikigai, Unomas-Creative, etc.) could get its own Dashboard Artifact, each independently real-data-driven the same way the scorecard is, with a future option to pull them together into one master view once several exist.
+
+Nothing built yet. When Tony opens this for real: decide per-stream whether a scheduled scraping script is actually needed (only for platforms genuinely lacking an API/MCP — check the live connection status table in the scorecard artifact first, several of these turned out to have a real API where none was assumed) before investing in browser-automation snapshotting, which is more fragile than a direct API/MCP pull.
+
+---
+
+## 9c. Pinterest + TikTok Shop tool research, 2026-10-16
+
+Tony confirmed the official **Pinterest API** is worth connecting — not yet done, flagged in `001_Architecture/Ongoing-Agent-OS-To-Do-List.md`. Confirmed live capabilities: pin creation (`pins:write`/`boards:write`) and own-pin/board analytics (`analytics:read`). The API has a hard limitation — it cannot read competitor pins/boards at all, by design, not a missing scope. Composio's `pinterest_ads` toolkit is deferred until actually running paid Pinterest ad campaigns.
+
+**Competitor pin analysis tools found** (official API can't do this): already bookmarked **PinClicks** (`007_Resource_Library/Tools/Pin-Clicks.md`); newly found, not vetted — **PinRadar**, **Pinalysis**, **RankMyPin**, **Tailwind**, **SocialCrawl**. Full detail in `TOOLBOX.md` under "Social/competitor research tools."
+
+**Amazon affiliate click attribution (2026-10-16)** — Tony's real go-forward strategy for this stream is YouTube video reviews, not the borednomad.com blog (where the historical 595 clicks likely came from — not representative going forward). His question: how to see which video drives which click, since Amazon's own reports don't break this out by default. Real answer, free and native: Amazon Associates supports up to 100 Tracking IDs per account — one per video, filtered in Associates Central reports. Also researched: Geniuslink (confirmed still active) and alternatives JotURL/useClick/Flyn/Replug/BetterLink, plus Lasso (WordPress, multi-Tracking-ID + SubID reports) for his stated future plan of an auto-generated companion blog post per video. Full detail in `TOOLBOX.md`.
+
+**TikTok Shop shoppable-video automation** — checked whether any tool can auto-tag a product on an uploaded video. None does: Blotato's post-creation tool has no product-tagging field for TikTok; Composio has no TikTok Shop toolkit. Apify has pay-per-use competitor-research scrapers (Shoppable Video & Creative Finder, Affiliate Video Scraper, product/catalog trackers) but none publish or tag. Confirmed Blotato *can* upload a TikTok video as a draft (`isDraft: true`) — the remaining gap is the manual product-tag step in-app, which TikTok's own Partner API (seller-gated, OAuth + request signing) would close.
+
+**Browser-automation route ruled out, phone-automation route found (2026-10-16):** confirmed via TikTok's own Content Posting API docs that API-uploaded drafts land only in the TikTok app's inbox, never on web/desktop — so browser automation (Claude Browser / Claude in Chrome) cannot pick up a Blotato draft; there's nothing on the web to find. Real alternative found: **[Phone Harness](https://github.com/ShawnPana/phone-harness)** — drives a real iPhone via macOS's iPhone Mirroring (no jailbreak), OCR + touch/keyboard input, so it can act on the actual TikTok app including drafts. 3.7k stars, actively maintained, not yet tried against a real task here. Same account-flag/ToS risk as any automation on a live commerce account — **decision rule (both routes): don't build until Unomas-Creative shop videos pass ~10/week or manual tagging costs more than ~1hr/week**; until then, tag manually (Blotato draft → open app → tag → post, ~1 min each). Full detail in `TOOLBOX.md`.
 
 ---
 

@@ -1,0 +1,20 @@
+{
+  "pulled_at": "2026-10-19T23:03:46.315228",
+  "window_days": 28,
+  "results": [
+    {
+      "label": "board_nomad",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py board_nomad",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "neon_parcel",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py neon_parcel",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    }
+  ]
+}

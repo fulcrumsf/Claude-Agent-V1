@@ -119,6 +119,19 @@ docs — never add an entry without a cited source).
 
 ---
 
+## External Tool/SaaS Discovery Protocol (not just models/APIs — added 2026-10-14)
+
+**Failure that caused this:** on 2026-10-13, asked to research "what tools exist for the Ikigai pipeline," the research pass used `find-skills` (the Claude skill marketplace search) plus web lookups on tool names already known by name, and concluded coverage was done. It missed **Agent Reach**, which was already sitting in `007_Resource_Library/Tools/` (bookmarked 2026-09-13, over a month earlier) — a local grep would have found it in seconds. It also never ran a single broad category web search ("best TikTok Shop analytics tools 2026," "best YouTube research tools 2026"), so it missed NexLev, Kalodata, FastMoss and every other category tool entirely. The next session found all of it in under five minutes once asked directly. Tony's own words: "the agent that you sent out to do the research is useless."
+
+**The fix — both steps are mandatory, in this order, before telling Tony a tool-research pass is complete:**
+
+1. **Local-first: check what's already bookmarked.** `grep -rli "<topic keywords>" 007_Resource_Library/Tools/ 000_Wiki/` before any external search. Tony bookmarks things he finds interesting whether or not they're acted on yet — the answer is frequently already sitting in the vault, unsurfaced. Never report "not found" on a tool-category question without running this first.
+2. **Broad, not just narrow, web search.** Run genuine category-level queries — "best tools for `<category>` 2026," "`<known tool>` alternatives/competitors," "top `<category>` tools comparison" — not only searches for specific tool names already in hand. `find-skills` only covers the Claude skill marketplace (installable agent skills); it does **not** cover standalone SaaS platforms, Chrome extensions, or CLIs, and a `find-skills`-only pass must never be reported as "tool research done."
+
+Applies to any "what tools/options exist for X" question, not just Ikigai-specific research — this is the same mandate as the rest of this skill (don't answer tool-availability questions from memory or a narrow pass), just naming the two concrete steps that were skipped.
+
+---
+
 ## Live Sources of Truth (Read These, In This Order)
 
 ### 1. Active API Keys

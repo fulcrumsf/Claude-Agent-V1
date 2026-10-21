@@ -105,6 +105,20 @@ When Tony is ready to construct this dashboard, the recommended stack is:
 
 ---
 
+## 3b. Build-path research, 2026-10-16 (not built — documented only)
+
+Tony restated this vision independently this session (hadn't connected it back to this file), prompting a fresh architecture pass. Findings:
+
+- **Claude Artifacts ruled out as the main interface.** Explored at length: no localhost/self-hosting, can't embed in Obsidian (claude.ai blocks iframing), and the `sample` capability (in-page Claude chat) has no memory between calls and no real tool access — nothing like a persistent agent session. Artifacts remain the right tool for narrower review dashboards (the Revenue Stream Scorecard, a future video-review-with-timestamped-comments tool), just not for "my actual Claude Code session running inside a tab."
+- **The real build for "chat exactly like my Claude Code session, inside a tab" is the Claude Agent SDK** (TypeScript/Python, the same engine Claude Code itself runs on) with a custom Next.js/Vite frontend — not shelling out to `claude -p` and parsing output. Setting `cwd` to a department folder + `settingSources: ['user','project']` loads that department's own CLAUDE.md, skills, hooks (`fs_guard` included) and MCP servers automatically, so each tab = one persistent SDK session scoped to that department's folder, no separate router agent needed.
+- **Billing risk, confirmed real (2026-10-16):** the Claude Agent SDK requires API-key billing and explicitly cannot run on a claude.ai subscription (Pro/Max) — it's pay-per-token, separate from Tony's plan. Must be sized/budgeted before any SDK build, not treated as a footnote.
+- **A free existing alternative exists and should be tried first:** [`siteboon/claudecodeui`](https://github.com/siteboon/claudecodeui) (14.1k stars, actively maintained, AGPL-3.0) — a web/mobile UI that wraps the existing Claude Code CLI session (no SDK rewrite, no separate API billing, no per-token cost). Install via `npx @siteboon/claude-code-ui`, no setup. Worth testing against this exact use case before building anything custom.
+- **Where it runs:** localhost only, not deployed — the agent needs Tony's real filesystem, ffmpeg, Python scripts and `~/.env-secrets`; Vercel/Cloudflare can't host that. If remote/phone access is wanted later, a Cloudflare Tunnel + Access in front of the local server is the right shape, not a cloud deploy.
+- **Effort reality check:** a working first version (chat, tabs, session resume, approvals) is roughly 1–2 weekends with Claude building it; matching Claude Code's actual polish (tool-call display, diffs, interrupts, media previews) is several weeks; after that it's ongoing solo-maintained upkeep as the SDK changes.
+- **Recommendation, not yet acted on:** before building anything, set up one pinned Claude Code session per department in named sidebar groups (zero build, available today) and try `claudecodeui` against that for about a week. Only build the SDK version — starting with one department, e.g. Video Editor, never all at once — if a real, written-down gap remains after that trial.
+
+---
+
 ## 4. Phased Rollout Plan
 
 - [ ] **Phase 1 (Active Pre-requisite):** Build the Multi-Agent Bridge MCP + Slack Channel (`Multi_Agent_Bridge_MCP_Slack_Plan.md`) so agents can execute tasks and communicate headlessly.

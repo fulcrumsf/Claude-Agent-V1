@@ -27,6 +27,24 @@ FailArmy (animal edition) · The Dodo (unhinged version) · viral compilation ac
 
 ---
 
+## MONETIZATION STRATEGY — Viral-to-Buyer-Intent Funnel (TikTok Shop Affiliate, confirmed by Tony 2026-10-17)
+
+**This is deliberate strategy, not a content mismatch.** Do not flag the viral animal/meme content as off-brand or disconnected from the TikTok Shop affiliate business — it is the intentional top-of-funnel.
+
+**The mechanism:** Neon Parcel posts viral-style animal/AI-generated clips (the kind that took off after Sora 2 launched — Tony personally had one hit ~2M views on YouTube Shorts) specifically to build subscriber count and feed TikTok's discovery algorithm. These are mixed with a growing share of actual affiliate product videos (e.g. Colorsmart Pens, Glass Guard screen protector) tagged with real TikTok Shop products. The plan is to keep posting both — viral clips for reach, product videos for sales — so TikTok's algorithm gradually shifts who it shows Neon Parcel's content to: away from pure meme/animal-content viewers, toward viewers with actual purchase intent for the products being promoted.
+
+**What this means for analysis:** the channel's top-performing videos being animal/wildlife clips (e.g. "Dog Saves Florida Man From Alligator," 532K+ views) with $0 directly attributable affiliate revenue is the expected, working state of this strategy mid-transition — not a sign the content strategy is broken or misaligned with the audience. Judge this channel's TikTok Shop affiliate performance by whether the mix is shifting toward product-video traction over time, not by whether 100% of views already come from product videos.
+
+**Platform scope — this funnel strategy is TikTok-only (confirmed by Tony 2026-10-17):**
+- **Neon Parcel TikTok** — the only platform running the viral-to-buyer-intent funnel. Viral animal/meme content continues alongside a growing mix of TikTok Shop affiliate product videos, with the explicit goal of shifting TikTok's algorithm toward buyer-intent viewers over time.
+- **Neon Parcel Instagram, Facebook, and YouTube** — stay pure viral animal/meme content. No affiliate-product funnel strategy applies to these platforms; do not expect or push a buyer-intent content mix there, and do not treat low product-video share on these platforms as underperformance against this strategy — it was never the goal on these platforms.
+
+**Source:** Tony's own direct explanation, 2026-10-17, during real-data revenue-scorecard work — see `001_Architecture/Plans/Agent-OS-Monetization-Strategy-Plan.md` and the Revenue Stream Scorecard artifact for the live financial side of this stream.
+
+**Video-level status check, 2026-10-17 (confirmed live in TikTok Studio Content):** only 2 of 222 posts are actual TikTok Shop product videos — Glass Guard (726 views, Jul 31 2025) and Colorsmart Pens (184 views, Jul 12 2025). Both predate the account's two biggest view spikes (Dec 2025, May 2026), which were confirmed to be pure viral/meme content — consistent with this funnel strategy, not a contradiction of it. No new product video has been posted since July 2025, despite the account gaining 1.4K/73% of its all-time followers in that same window. **This is the open gap in the funnel, not conversion rate or the offer itself:** the audience-building half (viral/meme content → followers) has been running continuously; the content-shift half (serving that grown audience actual product videos) has gone dormant for over a year. Don't re-derive this from account-level view/follower data again — check it here first.
+
+---
+
 ## COLOR SYSTEM
 
 - **Neon Orange:** `#FF8C00`

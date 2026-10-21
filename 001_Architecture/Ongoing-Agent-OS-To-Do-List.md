@@ -5,6 +5,14 @@
 
 ---
 
+## Flagged, not prioritized — TikTok Shop product-tag automation via Phone Harness (added 2026-10-16)
+
+Tony's ask: automate the manual "tag a product on an uploaded TikTok Shop video" step. Confirmed 2026-10-16 that browser automation can't do it (TikTok API drafts land in the app inbox only, never on web). Real candidate: [Phone Harness](https://github.com/ShawnPana/phone-harness) — drives a real iPhone via macOS iPhone Mirroring (no jailbreak), OCR + touch/keyboard, so it can act on the actual TikTok app. 3.7k stars, actively maintained, not yet tried. Full writeup in `TOOLBOX.md` and `001_Architecture/Plans/Agent-OS-Monetization-Strategy-Plan.md` section 9c.
+
+**Don't build yet** — same decision rule as the rest of this item: wait until Unomas-Creative TikTok Shop videos pass ~10/week or manual tagging costs more than ~1hr/week. Until then, tag manually (Blotato draft → open app → tag product → post).
+
+---
+
 ## Flagged, not prioritized — official Xero MCP server (added 2026-10-11)
 
 Tony recalled a saved tutorial (`007_Resource_Library/Videos/Connecting-Xero-To-Claude-Full-Access-Analysis/`) about Xero's own official `xero-mcp-server`, connected via Claude Desktop (not this workspace) with a Xero-billed "Custom Connection" fee (~$5.45/mo). Never actually installed here — only the narrower custom receipt-automation tool exists (`001_Architecture/Tools/Xero_Receipt_Automation/`, read-only scopes, no reports access). Tony's call, 2026-10-11: not worth it yet for occasional P&L pulls — browser login works fine for now. Logged for later.
@@ -12,6 +20,18 @@ Tony recalled a saved tutorial (`007_Resource_Library/Videos/Connecting-Xero-To-
 **Quick pros/cons:**
 - **Pros:** full read/write Xero API access (P&L with custom date ranges/comparisons, balance sheet, trial balance, invoices, bank transactions, contacts) instead of browser-only; could be scripted/scheduled (e.g. monthly P&L email); would unblock automating the $1,000/mo tracking in the monetization plan; one-time setup, not per-pull effort.
 - **Cons:** ~$5.45/month recurring Xero-side fee; Claude Desktop only (not this Claude Code session — would need separate integration work to reach here, or stay Desktop-only); setup is fiddly (OAuth scopes must match exactly, Tony's source tutorial warns about this); write access to Xero is a bigger blast radius than today's read-only tool — needs careful scoping if ever built.
+
+---
+
+## Flagged, not prioritized — Pinterest API connection (added 2026-10-16)
+
+Tony confirmed the official Pinterest API is worth connecting. Real capabilities confirmed live 2026-10-16: pin creation (`POST /v5/pins`, needs `pins:write`/`boards:write` scopes) and analytics on your own pins/boards (`analytics:read` scope). **Does not** cover competitor pin analysis — that's a hard limitation of the official API, not a missing scope; see the third-party tools list below for that. Composio's `pinterest_ads` toolkit is a separate, later decision — only relevant once actually running paid Pinterest ad campaigns, not for organic pin creation/analytics.
+
+**Setup path:** register app at developers.pinterest.com → Trial access (free, auto-granted) → apply for Standard access (free, requires a demo video of the full OAuth flow + a live privacy policy link) for production write access.
+
+**Third-party tools for competitor Pinterest pin analysis (official API can't do this — found 2026-10-16):**
+- Already bookmarked in the vault: [PinClicks](007_Resource_Library/Tools/Pin-Clicks.md) — keyword research + competitor/ranking tracking.
+- Found via research, not yet bookmarked: **PinRadar** (real-time stats on any pin incl. competitors, Chrome extension), **Pinalysis** (competitor research/reverse-engineering), **RankMyPin** (free competitor pin audit tool + keyword research), **Tailwind** (scheduling + competitor analysis), **SocialCrawl** (unified data API across platforms incl. Pinterest, no OAuth review needed, pay-per-call).
 
 ---
 
@@ -50,6 +70,7 @@ Added automatically by `sync_plans_to_todo.py` (daily cron, 6am local, set up 20
 - **Implementation Brief: AI Fashion Affiliate Carousel and Video Workflow** (`AI-Fashion-Affiliate-Implementation-Brief.md`, detected 2026-10-08) — not yet reviewed or prioritized.
 - **Tool Catalog Maintenance Plan** (`Tool_Catalog_Maintenance_Plan.md`, detected 2026-10-08) — not yet reviewed or prioritized.
 - **Tool Catalog Tagging Plan** (`Tool_Catalog_Tagging_Plan.md`, detected 2026-10-08) — not yet reviewed or prioritized.
+- **Revenue Stream Pipeline Outlines** (`Revenue-Stream-Pipeline-Outlines.md`, detected 2026-10-14) — not yet reviewed or prioritized.
 
 ---
 
@@ -57,6 +78,7 @@ Added automatically by `sync_plans_to_todo.py` (daily cron, 6am local, set up 20
 
 - **Package Tutorial-Builder's output into sellable/giveaway tiers** (brain dump 2026-10-08). Tony wants the eventual tutorial output (e.g. the Neon Parcel pipeline build, with its real iteration/YOLO history) packaged at multiple tiers: a free PDF guide, a free lead magnet gated behind joining his Skool community, and a more advanced paid version behind the Skool paywall. Added as new scope to the existing `Tutorial-Builder` skill (`001_Architecture/Skills/Tutorial-Builder/SKILL.md` — alpha since 2026-07-05, never run against a real subject) rather than a new skill. **Vague on purpose** — needs a real discovery conversation with Tony (how much content differs per tier, what triggers which tier, where this plugs into NotebookLM/PDF rendering) before any of it gets built. Not prioritized, no deadline.
 - **Package Agent-OS itself as a sellable Railway deploy template** (brain dump 2026-10-09). Tony wants to turn this workspace's underlying system into a product: a configured Agent-OS repo on GitHub, deployable via a Railway template. Two tiers floated: (a) free — give away the repo, buyer sets it up themselves; (b) paid — a one-click Railway deploy template with extra features already configured. **Vague on purpose** — needs a real scoping conversation (what's actually genericizable vs. Tony-specific/hardcoded — e.g. the ~74 scripts already known to hardcode his absolute workspace path per the `/lab` design notes; what the "extra features" in the paid tier would be; how credentials/secrets get handled for a buyer's own deploy; licensing). Not prioritized, no deadline.
+- **Auto-generate a companion blog post per YouTube video, with trackable Amazon links** (brain dump 2026-10-16). Tony's stated future plan for the Bored Nomad YouTube → Amazon stream: create the video first, then have an agent automatically generate a blog post for borednomad.com (or its successor site) that mirrors the video's content, inserting the same products with their own auto-created Amazon Tracking IDs for per-video/per-link attribution. **Vague on purpose** — needs real scoping (what triggers generation, how the agent gets the video's transcript/product list, whether it posts to WordPress via Lasso or a custom site, how Tracking IDs get minted and matched 1:1 to links). Related tool research (Amazon's native 100-Tracking-ID system, Lasso, Geniuslink and alternatives) is in `TOOLBOX.md` and `001_Architecture/Plans/Agent-OS-Monetization-Strategy-Plan.md` section 9c. Not prioritized, no deadline.
 
 ---
 

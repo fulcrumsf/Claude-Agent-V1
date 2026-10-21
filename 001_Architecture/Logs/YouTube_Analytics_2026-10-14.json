@@ -1,0 +1,90 @@
+{
+  "pulled_at": "2026-10-14T22:21:21.668923",
+  "window_days": 90,
+  "results": [
+    {
+      "label": "anomalous_wild",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py anomalous_wild",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "board_nomad",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py board_nomad",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "business_blueprint",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py business_blueprint",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "business_origin_stories",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py business_origin_stories",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "glyphary",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py glyphary",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "ikigai_digital_studios",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py ikigai_digital_studios",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "kingdoms_and_conquerors",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py kingdoms_and_conquerors",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "neon_parcel",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py neon_parcel",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "polyoculis",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py polyoculis",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "reimagined_realms",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py reimagined_realms",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "room_portal",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py room_portal",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    },
+    {
+      "label": "unomas_creative",
+      "ok": false,
+      "error": "login expired or revoked",
+      "fix": "python3 001_Architecture/Scripts/youtube_analytics_auth.py unomas_creative",
+      "detail": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+    }
+  ]
+}

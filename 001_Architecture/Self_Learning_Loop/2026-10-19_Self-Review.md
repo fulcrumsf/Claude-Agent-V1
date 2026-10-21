@@ -1,0 +1,5 @@
+# Self-Review 2026-10-19 (Claude)
+**Went wrong:** copied a handoff's scope instead of auditing all products; mirrored Tony's examples back as candidates (twice); labeled his group-trip idea as custom/matching; first board ranked items that didn't fit his model and let low effort depress scores; summarized subagent reports before viewing the rendered artifact myself.
+**Worked:** per-product re-read verification caught five silent save failures; reading all 97 Etsy listings gave a real match check; delegating research with a full brief and resuming the agent after rate limits kept state; showing a plan before the second research pass got immediate approval; turning the method into a reusable skill.
+**Recurring:** UI automation silently fails when clicking before page load; fix is wait-then-verify. Float math in Printful increments leaves .98 prices.
+**Automate next:** live data feeds (GA4, Xero, YouTube API, affiliate dashboards) for the board; a Printful margin-audit script (read-only) so repricing never needs manual clicking checks.

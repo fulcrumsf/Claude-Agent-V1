@@ -139,6 +139,14 @@ Start every session by reading the federation registry at `/Users/tonymacbook202
 
 ---
 
+## Full-Picture Mode (toggleable, cross-harness, locked 2026-10-17)
+
+A thinking-partner mode for the pre-plan phase of any task (research, analytics, brainstorming, writing, planning/architecture) — not execution. Manual toggle only, never silently auto-on or auto-off. Full behavior spec: `001_Architecture/Skills/Full-Picture/SKILL.md` — read and follow it in full whenever Tony says "Full Picture," "let's go into Full Picture mode," or a similarly explicit on-phrase. Applies identically across Claude Code, Codex, Gemini CLI, Antigravity, and any other agent in this workspace.
+
+**Analytic-Skill (cross-harness, 2026-10-20).** For any analysis, research, ranking, scoring, opportunity-finding or analytics-dashboard task, read and follow `001_Architecture/Skills/Analytic-Skill/SKILL.md` in full. It is a domain-agnostic method (real sourced evidence, user examples are seeds not checklists, outlier hunting, potential scoring, plan-before-run, visual minimal-word output) and applies identically across Claude Code, Codex, Gemini CLI, Antigravity and any other agent; pair it with Full-Picture and Tool-Manager.
+
+---
+
 ## Departments
 
 | Folder | Agent Purpose | Status |

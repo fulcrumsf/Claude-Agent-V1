@@ -47,6 +47,12 @@ This plan designs the **Multi-Agent Bridge**:
 
 ---
 
+## 2b. Note on the dashboard layer, 2026-10-16
+
+Tony independently restated the Phase 3 vision this session before reconnecting it to this plan. Deeper build-path research on the dashboard/UI layer specifically (Claude Artifacts ruled out, Claude Agent SDK as the real path with a confirmed API-billing risk, the free `siteboon/claudecodeui` alternative, effort estimate) now lives in [`Agent_OS_Command_Center_Dashboard_Roadmap.md`](file:///Users/tonymacbook2025/Documents/Agent-OS/001_Architecture/Plans/Agent_OS_Command_Center_Dashboard_Roadmap.md) section 3b. This Phase 1 Slack/MCP bridge design is unaffected by that research and remains the named prerequisite before any dashboard work, per Phase 3 above. **Status: documented, not building yet** — Tony's call 2026-10-16 was to keep this queued and try Claude Code's own sidebar groups/pinned sessions for about a week first, not start Phase 1 immediately.
+
+---
+
 ## 3. Phase 1 Detailed Design
 
 ### 3.1 Architecture Diagram

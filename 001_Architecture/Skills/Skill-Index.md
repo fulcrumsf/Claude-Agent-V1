@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-10-13
+created: 2026-10-20
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-10-13T23:11:48-04:00
+Generated: 2026-10-20T23:06:49-04:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -36,11 +36,13 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | 21st-ui-build | Build or substantially change production UI using the current project's design context, existing components, and grounded 21st inspiration. Use when implementing a page, section,… | `001_Architecture/Skills/21st-ui-build/SKILL.md` |
 | 21st-ui-explore | Explore and compare multiple meaningfully different UI directions grounded in the current project's design system and 21st inspiration. Use when the user wants options, variants,… | `001_Architecture/Skills/21st-ui-explore/SKILL.md` |
 | 21st-ui-review | Review existing UI against the project's design context, accessibility expectations, responsive behavior, interaction quality, and high-confidence production rules. Use for UI aud… | `001_Architecture/Skills/21st-ui-review/SKILL.md` |
+| Analytic-Skill | General-purpose method for doing analytics and opportunity research on ANY topic (market/niche research, SEO, revenue streams, content or product strategy, audience/retention anal… | `001_Architecture/Skills/Analytic-Skill/SKILL.md` |
 | Anomalous_Wild_Video_Pipeline | Invoke when Tony says /anomalous-wild, make an Anomalous Wild video, build me a video for the nature/science channel, run the Anomalous Wild pipeline, or start an AW production. O… | `001_Architecture/Skills/Anomalous_Wild_Video_Pipeline/SKILL.md` |
 | character-sheet-generation | Use whenever a video production has a recurring character or creature that appears in more than one scene and needs to look identical every time — "build a character sheet", "crea… | `001_Architecture/Skills/Character-Sheet-Generation/SKILL.md` |
 | diagram-generation | Use whenever a video production needs a labeled scientific/technical diagram — "build a diagram", "generate a scientific illustration", "animate this diagram", or any beat compari… | `001_Architecture/Skills/Diagram-Generation/SKILL.md` |
 | director-packet-framework | Use when a complex cinematic, episodic, or long-form scene needs coordinated character, wardrobe, prop, environment, spatial camera, and storyboard references before video generat… | `001_Architecture/Skills/Director-Packet-Framework/SKILL.md` |
 | environment-sheet-generation | Use whenever a video production has a location that appears in more than one scene and needs to look identical every time — "build an environment sheet", "location reference sheet… | `001_Architecture/Skills/Environment-Sheet-Generation/SKILL.md` |
+| Full-Picture | A toggleable thinking-partner mode for the pre-plan phase of any task (research, analytics, brainstorming, writing, architecture/planning) — not execution. Invoke when the user sa… | `001_Architecture/Skills/Full-Picture/SKILL.md` |
 | gpt-image-2-prompting-guide | Use whenever writing or reviewing a prompt for OpenAI's GPT-Image-2 (image generation/editing) via kie.ai or the OpenAI API directly. Triggers on "write a GPT-Image-2 prompt", "ge… | `001_Architecture/Skills/GPT-Image-2-Prompting-Guide/SKILL.md` |
 | higgsfield-genjutsu | API reference and usage guide for Higgsfield's Genjutsu Motion Transfer model (video2video motion transfer using image references). Use when Tony asks to transform/restyle an exis… | `001_Architecture/Skills/Higgsfield-Genjutsu/SKILL.md` |
 | Motion-Graphics-Compositing | Use whenever a beat needs an animated diagram, infographic, data-viz, or collage-style motion graphic — never ask a video-generation model (Seedance or otherwise) to animate this… | `001_Architecture/Skills/Motion-Graphics-Compositing/SKILL.md` |
