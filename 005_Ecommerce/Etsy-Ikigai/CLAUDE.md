@@ -21,3 +21,7 @@ Digital downloadable wall art shop on Etsy, same owner as Bored Nomad (the two s
 ## Why this matters for the monetization plan
 
 Zero marginal production cost per sale (digital-only) makes this the structurally easiest stream to scale toward the $1,000/month-by-December goal — no POD fulfillment partner, no shipping, no inventory. See `001_Architecture/Plans/Agent-OS-Monetization-Strategy-Plan.md` for the full revenue-stream comparison.
+
+## Portal + listing pipeline (scaffolded 2026-10-21)
+
+Brief: `Ikigai_Portal_Pipeline_Brief.md`. Code: `Portal/` (FastAPI, SQLite, Docker; tool steps are stubs until connected on the Mac, see `Portal/README.md`). Pinterest style dumps: `Creative_Inspiration/`. Nothing publishes without Tony; Etsy listings are drafts only.
