@@ -2828,3 +2828,6 @@ Note: GitHub repo bookmark, form `github-repo`, category `ai-agents`. Cross-link
 ## [2026-10-08] ingest | Treg.to Inside Grok Bot Is A Game Changer! (tutorial)
 Source: `000_Ingest/Treg.to Inside Grok Bot Is A Game Changer!.md` → `007_Resource_Library/Tutorials/Treg-Inside-Grok-Bot-Is-A-Game-Changer.md`
 Note: YouTube tutorial, form `youtube-video`, category `ai-agents`. Ran through Video-Analyzer per Tony's explicit request (category `tutorial`, threshold 0.5) — full scene-by-scene + transcript + 27 keyframes at `007_Resource_Library/Videos/Treg-Grok-Bot-Demo-Analysis/`. Original file still sitting in `000_Ingest/` — agents cannot delete; flagged for Tony to remove himself.
+
+## [2026-10-21] build | Ikigai portal + listing pipeline scaffold
+Brief recovered from archived Mac-side session and committed (`005_Ecommerce/Etsy-Ikigai/Ikigai_Portal_Pipeline_Brief.md`); app scaffolded in `005_Ecommerce/Etsy-Ikigai/Portal/`. No wiki article yet; write one once the pipeline steps are real. Graphify refresh pending (Mac).

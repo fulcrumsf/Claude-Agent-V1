@@ -1125,3 +1125,7 @@ Used live to build the Revenue Priority Board (`https://claude.ai/artifact/E73Mc
 
 ## Analytic-Skill (general analytics method, 2026-10-20)
 - `001_Architecture/Skills/Analytic-Skill/SKILL.md`: domain-agnostic method for analytics/opportunity research (real sourced evidence, seeds-not-checklists, outlier hunting, potential scoring, plan-before-run, visual output). Compose with Full-Picture, Tool-Manager, artifact-design. First applied to the Revenue Priority Board.
+
+## Ikigai Portal (local app, scaffolded 2026-10-21)
+
+`005_Ecommerce/Etsy-Ikigai/Portal/` — localhost FastAPI + SQLite app (Docker-ready) for reviewing ideas, approving art and running the Ikigai listing pipeline to an Etsy draft. Run: `pip install -r requirements.txt && python -m app.seed && uvicorn app.main:app --port 8800`. Engines are listed in `config/engines.json`; pipeline steps in `app/pipeline/steps.py` are stubs awaiting PhotoCraft, Upscayl, Drive, Etsy API on the Mac. Brief: `005_Ecommerce/Etsy-Ikigai/Ikigai_Portal_Pipeline_Brief.md`.

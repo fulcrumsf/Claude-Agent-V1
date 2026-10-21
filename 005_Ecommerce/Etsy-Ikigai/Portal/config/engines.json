@@ -1,0 +1,10 @@
+{
+  "engines": [
+    {"id": "nano-banana", "label": "Nano Banana", "provider": "fal", "env_key": "FAL_KEY"},
+    {"id": "nano-banana-2", "label": "Nano Banana 2", "provider": "fal", "env_key": "FAL_KEY"},
+    {"id": "nano-banana-pro", "label": "Nano Banana Pro", "provider": "fal", "env_key": "FAL_KEY"},
+    {"id": "flux", "label": "Flux", "provider": "fal", "env_key": "FAL_KEY"},
+    {"id": "gpt-image-2", "label": "GPT Image 2", "provider": "openai", "env_key": "OPENAI_API_KEY"}
+  ],
+  "note": "Edit this list to add engines. Model ids are placeholders; verify current ids before wiring adapters."
+}
