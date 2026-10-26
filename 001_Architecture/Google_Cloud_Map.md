@@ -35,7 +35,7 @@ flowchart LR
 |---|---|---|---|
 | **Agent OS** (renamed 2026-10-25 from "Blotato - Antigravity") | `gen-lang-client-0251496109` | Gemini API key; Desktop OAuth client for Drive; Drive, YouTube Data, YouTube Analytics, Gmail APIs enabled; consent screen **Internal** (no 7-day expiry) | Keep. The single home for everything Agent-OS. |
 
-- Billing account `01AF23-B42882-ADD61A`. Budget "Blotato-Antigravity $20 Hard Cap Monthly" on Gemini API: **spend cap enforced since Oct 11 2026 (~$20.33 / $20.00)**, so Gemini calls from this project return 403 until the cap resets at the start of next month (or Tony lifts it). Check any tool that depends on this key.
+- Billing account `01AF23-B42882-ADD61A`. Budget **"Agent-OS $30 hard cap"** on Gemini API: the $20 cap was reached Oct 11 2026 (~$20.33 spend, mostly an Obsidian ingest using Gemini), and on 2026-10-25 Tony raised it to $30. Gemini keys in `~/.env-secrets` return HTTP 200 again. Check any tool that depends on this key.
 - Shut down 2026-10-25 by Tony (30-day restore window, then permanent): Upkeeply App (`gen-lang-client-0368503082`; will get a fresh project if restarted), Gemini API (`gen-lang-client-0553978373`; only backed the retired character-sheet test app in `~/Documents/Docker/ai-character-sheet-generator`), Make (`fine-program-454108-r9`; Make.com automations retired), BoredNomad WooCommerce Website (`theta-eon-450804-c2`; site gone).
 
 ## Personal account: fulcrumsf@gmail.com
