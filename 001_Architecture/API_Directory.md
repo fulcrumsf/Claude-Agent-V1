@@ -208,3 +208,5 @@ Tony's own words (2026-10-06): "where do we save a list so you don't have to con
 ## Maintenance rule
 
 Any session that connects, disconnects, or discovers the real status of an API/platform integration updates this file in the same turn — same standing rule as `TOOLBOX.md`.
+
+> **2026-10-25:** the Google Cloud section above is superseded by `001_Architecture/Google_Cloud_Map.md` (business project renamed "Agent OS"; Upkeeply, Gemini API, Make and WooCommerce projects shut down; Drive login added; Gemini spend cap enforced since Oct 11).
