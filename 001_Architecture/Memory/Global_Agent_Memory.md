@@ -1457,3 +1457,8 @@ Tony judged Part 1 of the Grandma-And-Bear compilation's original manual-crop Sh
 - Analytic-Skill (`001_Architecture/Skills/Analytic-Skill/SKILL.md`) is the general analytics method for all agents: real sourced evidence, user examples are seeds, outlier hunting, potential scoring, plan-before-run, visual minimal-word output.
 - Store model: Ikigai = printable art only; no new Etsy stores; KDP low-content allowed. Score potential, not past effort. Revenue board: https://claude.ai/artifact/E73MchsKgTboPkxetViTXv.
 - All BoredNomad Printful products repriced to ~42-47% margin (2026-10-19). Never publish from Printify (it resets TikTok edits).
+
+## 2026-10-21 additions (Claude)
+- Ikigai portal + listing pipeline: brief at `005_Ecommerce/Etsy-Ikigai/Ikigai_Portal_Pipeline_Brief.md`, scaffold at `005_Ecommerce/Etsy-Ikigai/Portal/` (branch `claude/ikigai-portal-pipeline`, unmerged). Tool steps are stubs until PhotoCraft, Upscayl, Drive, Etsy API are connected on the Mac. Pinterest style dumps go in `005_Ecommerce/Etsy-Ikigai/Creative_Inspiration/`.
+- Rollback labels: Tony wants one per milestone. Tag pushes return 403 in cloud sessions; use `claude/rollback-<project>-NN-<name>` branches.
+- Remote Control sessions run on Tony's Mac; their files are local until pushed. Recover lost work via `list_sessions` / `list_events` on the old session.

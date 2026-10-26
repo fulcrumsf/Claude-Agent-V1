@@ -1,0 +1,21 @@
+<!doctype html><meta charset="utf-8"><title>Ikigai Portal</title>
+<style>body{font:15px system-ui;max-width:980px;margin:2rem auto;padding:0 1rem}
+section{margin-bottom:2rem}.card{border:1px solid #ccc;border-radius:8px;padding:.6rem .8rem;margin:.4rem 0}
+.tag{font-size:12px;padding:1px 6px;border-radius:9px;background:#eee}.warn{background:#fde;padding:.5rem;border-radius:6px}
+form{display:inline}small{color:#666}</style>
+<h1>Ikigai Portal</h1>
+{% if pool_low %}<p class="warn">Idea pool low ({{ pool }}). Run the research job.</p>{% else %}<small>Pool: {{ pool }}</small>{% endif %}
+<section><h2>Ideas</h2>
+{% for i in ideas %}<div class="card"><b>{{ i.title }}</b> <span class="tag">{{ i.lane }}</span> <span class="tag">{{ i.status }}</span>
+<div>{{ i.description }}</div><small>{{ i.evidence }}</small><br>
+{% if i.status == 'shown' %}<form method="post" action="/ideas/{{ i.id }}/approve"><button>Approve</button></form>
+<form method="post" action="/ideas/{{ i.id }}/deny"><button>Deny</button></form>{% endif %}</div>
+{% else %}<p>No ideas yet. Seed some: <code>python -m app.seed</code></p>{% endfor %}</section>
+<section><h2>Prompts</h2>
+{% for p in prompts %}<div class="card"><b>{{ p.title }}</b><p>{{ p.text }}</p>
+<form method="post" action="/prompts/{{ p.id }}/run"><select name="engine">
+{% for e in engines %}<option value="{{ e.id }}">{{ e.label }}{% if not e.ready %} (no key){% endif %}</option>{% endfor %}
+</select> <button>Run prompt</button></form></div>{% endfor %}</section>
+<section><h2>Listings in production</h2>
+{% for l in listings %}<div class="card">Listing #{{ l.id }} (idea {{ l.idea_id }})<ul>
+{% for s in steps if s.listing_id == l.id %}<li>{{ s.name }}: <b>{{ s.status }}</b> <small>{{ s.message }}</small></li>{% endfor %}</ul></div>{% endfor %}</section>

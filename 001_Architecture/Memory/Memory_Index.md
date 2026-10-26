@@ -45,5 +45,5 @@ Use this as the routing layer. Do not load every memory file unless Tony explici
 - Video production: search `000_Wiki/Video-Production/`, `002_Content-Creation/Video_Editor/`, and `claude-mem`.
 - Connect a channel to Shorts / short-form clipping / global reframing: read `001_Architecture/Tools/Video-Generation/Generic_Tools/Subject-Aware-Reframer/Future-Channel-Integration-Handoff-v1.md` first. Framing is built; automatic clip selection and controller/channel integration are deferred.
 - App development: search relevant folder under `003_Apps/` and `claude-mem`.
-- E-commerce: search relevant folder under `005_Ecommerce/` and `claude-mem`.
+- E-commerce: search relevant folder under `005_Ecommerce/` and `claude-mem`. Ikigai portal/pipeline: read `005_Ecommerce/Etsy-Ikigai/Ikigai_Portal_Pipeline_Brief.md` and `Portal/README.md`.
 - Agent behavior or recurring corrections: read latest `Feedback_Loop/` entries and search `claude-mem`.
