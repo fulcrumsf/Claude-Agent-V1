@@ -19,5 +19,5 @@ Also pending: research job feeding `ideas.add_to_pool`, performance feedback int
 - PhotoCraft: CONNECTED. `photocraft-cli` 0.16.0 opens the 3 mockup PSDs headless; smart-object art swap recipe still to build (`steps.mockups`).
 - Upscayl: CONNECTED via `upscayl-ncnn` (see TOOLBOX.md); models from /Applications/Upscayl.app. `steps.upscale` still to wire.
 - PDF: `pdfcraft-cli`; vectors: `vectorcraft-cli` (Illustrator equivalent).
-- Drive: works through the Claude connector in sessions; the Portal itself needs Google OAuth (not set up).
+- Drive: CONNECTED. Login saved (info@borednomad.com, Agent OS Cloud project, Internal); `app/drive.py` lists the Ikigai folder and makes the next `NNNNN-Title` folder. PDF template still needed for `steps.package`.
 - Etsy API: waiting on Tony's developer app application.

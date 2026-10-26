@@ -11,8 +11,8 @@ def generate_art(ctx):
 
 def upscale(ctx):
     # Default Upscayl; check headless CLI. Backup: Magnific MCP. Two stages: generate -> upscale -> quality check.
-    if not shutil.which("upscayl-bin"):
-        raise NotConfigured("upscale: Upscayl CLI not found; connect on the Mac")
+    if not shutil.which("upscayl-ncnn"):
+        raise NotConfigured("upscale: upscayl-ncnn not on PATH (see TOOLBOX.md)")
     raise NotConfigured("upscale: adapter not implemented")
 
 

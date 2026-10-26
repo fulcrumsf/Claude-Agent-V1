@@ -31,3 +31,10 @@ def test_approve_makes_prompt(tmp_path):
     i = con.execute("SELECT id FROM ideas WHERE status='shown'").fetchone()[0]
     ideas.approve(con, i)
     assert con.execute("SELECT COUNT(*) FROM prompts").fetchone()[0] == 1
+
+
+def test_drive_sequence_and_name():
+    from app.drive import next_sequence, folder_name
+    assert next_sequence(["00083-A", "00120-Pastel Waves", "notes"]) == 121
+    assert next_sequence([]) == 1
+    assert folder_name(121, " Sage Leaf ") == "00121-Sage Leaf"
