@@ -2831,3 +2831,6 @@ Note: YouTube tutorial, form `youtube-video`, category `ai-agents`. Ran through 
 
 ## [2026-10-21] build | Ikigai portal + listing pipeline scaffold
 Brief recovered from archived Mac-side session and committed (`005_Ecommerce/Etsy-Ikigai/Ikigai_Portal_Pipeline_Brief.md`); app scaffolded in `005_Ecommerce/Etsy-Ikigai/Portal/`. No wiki article yet; write one once the pipeline steps are real. Graphify refresh pending (Mac).
+
+## [2026-10-25] infra | Google Cloud cleanup + tools connected
+Google Cloud consolidated (business project renamed Agent OS, dead projects deleted, Drive login added); map at `001_Architecture/Google_Cloud_Map.md`. ArtCraft CLIs, Upscayl CLI and Drive connected for the Ikigai Portal. No wiki article yet; write one once the pipeline steps are real.

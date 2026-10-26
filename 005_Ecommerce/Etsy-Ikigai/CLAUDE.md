@@ -25,3 +25,7 @@ Zero marginal production cost per sale (digital-only) makes this the structurall
 ## Portal + listing pipeline (scaffolded 2026-10-21)
 
 Brief: `Ikigai_Portal_Pipeline_Brief.md`. Code: `Portal/` (FastAPI, SQLite, Docker; tool steps are stubs until connected on the Mac, see `Portal/README.md`). Pinterest style dumps: `Creative_Inspiration/`. Nothing publishes without Tony; Etsy listings are drafts only.
+
+## Etsy reference links (keep current, added 2026-10-25)
+- Etsy Open API v3 docs: https://developers.etsy.com/documentation/ (developer app application still to file; next task).
+- Etsy Seller Handbook: https://www.etsy.com/seller-handbook. Etsy keeps changing AI and seller policies; pull the latest before any listing/automation work and on a regular schedule so Tony never risks a ban. Follow handbook best practices in the Portal listing text and AI disclosure.

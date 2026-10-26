@@ -1,0 +1,9 @@
+# Session Log 2026-10-25 (Claude Desktop, Mac, after phone/cloud session)
+- Read both sides: Mac last commit 0b743300 was already on GitHub; cloud Ikigai portal work was merged to main (PR #1). Committed Mac graph/Skill-Index edits, merged origin/main (no conflicts), pushed (7d4d2081). Interview-session brief was identical on both sides.
+- Memory: added Ikigai portal + feedback entries; DEPARTMENTS.md and root CLAUDE.md now list Etsy Ikigai (plus Etsy Bored Nomad, TikTok Shop Uno Mas Creative).
+- Tools connected: photocraft-cli 0.16.0 (opens the 3 mockup PSDs headless; flattens on convert), vectorcraft-cli 0.13.1 (Illustrator equivalent), pdfcraft-cli, lightcraft/filmcraft/effectcraft in ~/.local/bin; Upscayl via `upscayl-ncnn` (bundled bin is App-Sandbox-only and crashes). TOOLBOX updated.
+- Drive: login script `001_Architecture/Scripts/google_drive_auth.py`; token at ~/.config/agent-os-drive/ (info@borednomad.com); Portal `app/drive.py` (NNNNN-Title folders, last 00120); tests 4/4.
+- Google Cloud: business project renamed "Agent OS" (gen-lang-client-0251496109); APIs Drive/YouTube/Gmail enabled; consent screen Internal; Desktop client created. Tony shut down Upkeeply, Gemini API, Make, WooCommerce; deleted My Project 29633 and n8n automation on the personal side. Personal project renamed "YouTube and Gmail". Stitch project (nimble-question-9v9qn) is Google-managed, cannot be renamed. Map: `001_Architecture/Google_Cloud_Map.md`.
+- Gemini: $20 hard cap reached Oct 11 (Obsidian ingest); Tony raised to $30 ("Agent-OS $30 hard cap"); keys in ~/.env-secrets return 200.
+- Rollback tag `rollback/ikigai-01-brief` pushed. claude-mem login refreshed (`claude auth login`, info@borednomad.com).
+- Pending: see handoff `2026-10-25_Session-Handoff_Claude_Google-Cloud-Cleanup-Tools-Connected.md`.

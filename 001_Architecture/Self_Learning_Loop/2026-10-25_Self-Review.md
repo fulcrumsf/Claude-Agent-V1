@@ -1,0 +1,5 @@
+# Self-Review 2026-10-25 (Claude)
+**Went wrong:** picked an empty project (WooCommerce) for the Drive login without asking where Tony wanted things; he wanted everything under "Agent OS". Suggested moving YouTube logins despite a standing reason they stay personal. Asked a permission question about DEPARTMENTS.md that was obvious. Misread my own handoff-style claim "branch unmerged" (it was already merged) until I checked origin.
+**Worked:** compared Mac vs GitHub before touching anything (no overwrite); found the real Upscayl crash cause from the crash report instead of guessing; verified keys by status code and last-4 only; stopped at terms checkbox and at the blocked key reveal; used the Chrome extension for console steps; checked file diffs after delegating the doc edit.
+**Recurring:** voice-dictated names and key suffixes are unreliable; Google Cloud/account layout confuses Tony, so state which account owns what up front. Mac-side Remote Control sessions strand uncommitted work.
+**Automate next:** session-start check that origin/main is merged before Mac work; a monthly Etsy seller-handbook pull (see handoff) so policy changes never go stale.

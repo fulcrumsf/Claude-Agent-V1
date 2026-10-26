@@ -1462,3 +1462,9 @@ Tony judged Part 1 of the Grandma-And-Bear compilation's original manual-crop Sh
 - Ikigai portal + listing pipeline: brief at `005_Ecommerce/Etsy-Ikigai/Ikigai_Portal_Pipeline_Brief.md`, scaffold at `005_Ecommerce/Etsy-Ikigai/Portal/` (branch `claude/ikigai-portal-pipeline`, unmerged). Tool steps are stubs until PhotoCraft, Upscayl, Drive, Etsy API are connected on the Mac. Pinterest style dumps go in `005_Ecommerce/Etsy-Ikigai/Creative_Inspiration/`.
 - Rollback labels: Tony wants one per milestone. Tag pushes return 403 in cloud sessions; use `claude/rollback-<project>-NN-<name>` branches.
 - Remote Control sessions run on Tony's Mac; their files are local until pushed. Recover lost work via `list_sessions` / `list_events` on the old session.
+
+## 2026-10-25 additions (Claude)
+- Google accounts: info@borednomad.com = business (Claude login, Drive, Cloud project "Agent OS" `gen-lang-client-0251496109`, Internal consent, Gemini $30 hard cap). fulcrumsf@gmail.com = personal, owns ALL YouTube channels on purpose (AdSense safety); project "YouTube and Gmail" `antigravity-claude-491002` + Google-managed Stitch project `nimble-question-9v9qn`. Never move YouTube. Map: `001_Architecture/Google_Cloud_Map.md`.
+- Installed CLIs in ~/.local/bin: photocraft-cli, vectorcraft-cli (Illustrator equivalent), pdfcraft-cli, lightcraft/filmcraft/effectcraft-cli, upscayl-ncnn (use this, not the Upscayl.app binary). Drive login: `google_drive_auth.py`; Portal helper `Portal/app/drive.py`.
+- Etsy reference links to keep current: API v3 docs https://developers.etsy.com/documentation/ and Seller Handbook https://www.etsy.com/seller-handbook (re-pull regularly; Etsy changes AI/seller rules often; goal is never getting banned).
+- Don't ask obvious confirmation questions; do the obvious step and report.

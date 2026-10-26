@@ -1137,3 +1137,8 @@ Installed in `~/.local/bin` (on PATH). Source downloads: `~/Downloads/ArtCraft/`
 - `pdfcraft-cli` 0.9.0: PDF info/render/text/edit/combine/split/OCR (use for the Ikigai download PDF). `lightcraft-cli` 0.9.1 (Lightroom-style), `filmcraft-cli` 0.9.0, `effectcraft-cli` 0.11.1 also installed, untested.
 - `upscayl-ncnn` (official CLI from github.com/upscayl/upscayl-ncnn): `upscayl-ncnn -i in.png -o out.png -m /Applications/Upscayl.app/Contents/Resources/models -n upscayl-standard-4x -s 4`. Needs sandbox off in Claude Code (GPU). The binary inside Upscayl.app is App-Sandbox-only and crashes when run directly; do not use it. Models: digital-art-4x, high-fidelity-4x, remacri-4x, ultramix-balanced-4x, ultrasharp-4x, upscayl-lite/standard-4x.
 - Google Drive: CONNECTED locally. `~/.config/agent-os-drive/token.json` (info@borednomad.com, Agent OS project, Internal consent, 2026-10-25); login script `001_Architecture/Scripts/google_drive_auth.py`; Portal helper `Portal/app/drive.py`. Ikigai folder id 16zSQOE4UeRYvMyZrE5llaNgR-ZWZ4YsQ (folders named NNNNN-Title, last 00120). The Claude Drive connector also works in sessions.
+
+## Etsy reference links (2026-10-25)
+- Open API v3 docs: https://developers.etsy.com/documentation/ (for `Portal/app/pipeline/steps.py etsy_draft`; developer app not yet applied for).
+- Seller Handbook: https://www.etsy.com/seller-handbook (policy source; re-pull often, Etsy changes AI rules). Scrape with `firecrawl scrape`/`firecrawl-crawl`.
+- Google Cloud map: `001_Architecture/Google_Cloud_Map.md`; Drive login `001_Architecture/Scripts/google_drive_auth.py`.
