@@ -20,13 +20,13 @@ flowchart LR
     D --> F["Drive folder Ikigai Digital Studio<br/>folders NNNNN-Title"]
   end
   subgraph PS["fulcrumsf@gmail.com (personal, no org)"]
-    P["Antigravity-Claude<br/>antigravity-claude-491002"]
+    P["YouTube and Gmail (was Antigravity-Claude)<br/>antigravity-claude-491002"]
     P --> P1["Desktop client Antigravity-ClaudeCode<br/>External / Testing, 7-day tokens"]
     P1 --> Y["13 YouTube channel logins<br/>~/.config/agent-os-youtube/"]
     P --> P2["Gmail OAuth (Xero receipts)"]
     X1["My Project 29633 (flowing-digit-293015)"]
     X2["n8n automation (n8n-automation-460016)"]
-    X3["nimble-question-9v9qn (Firebase shadow)"]
+    X3["Stitch (nimble-question-9v9qn, Google-managed)"]
   end
 ```
 
@@ -41,10 +41,10 @@ flowchart LR
 ## Personal account: fulcrumsf@gmail.com
 | Project | ID | Holds | Status |
 |---|---|---|---|
-| **Antigravity-Claude** | `antigravity-claude-491002` | YouTube Data + Analytics API; Desktop client `Antigravity-ClaudeCode`; External/Testing consent (tokens expire every 7 days); Gmail OAuth | Keep. Home of all YouTube logins. |
+| **YouTube and Gmail** (renamed 2026-10-25 from "Antigravity-Claude") | `antigravity-claude-491002` | YouTube Data + Analytics API; Desktop client `Antigravity-ClaudeCode`; External/Testing consent (tokens expire every 7 days); Gmail OAuth | Keep. Home of all YouTube logins. |
 | My Project 29633 | `flowing-digit-293015` | dead/unused (Oct 6 check) | Delete candidate, Tony's call |
 | n8n automation | `n8n-automation-460016` | dead/unused (Oct 6 check) | Delete candidate, Tony's call |
-| nimble-question-9v9qn | no id shown | Auto-provisioned Firebase/AI-Studio shadow project behind an old key | Leave alone |
+| **Stitch** (shown as `nimble-question-9v9qn`; Google blocks renaming it) | `nimble-question-9v9qn` | Auto-created Mar 29 2026 when Tony first used Google Stitch ("express mode"): keys "Auto-generated Stitch API Key" + "gcp-api-key1" and an `express-mode` service account. Claude config `stitch` MCP sends this key. | Keep while Stitch is used |
 
 ## Rules of thumb
 - Anything Agent-OS or Claude Code related goes in **Agent OS** (business account). New app = new project, so deleting an app later is clean.
