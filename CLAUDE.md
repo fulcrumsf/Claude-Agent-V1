@@ -155,6 +155,7 @@ A thinking-partner mode for the pre-plan phase of any task (research, analytics,
 | `002_Content-Creation/Whop_Clipping/` | Long-form video → Shorts pipeline for client brands. Tony posts on theme pages, earns per-view. | Planned |
 | `002_Content-Creation/Social_Media_Marketing/` | Static image + carousel strategy for Pinterest and Instagram. Fashion/clothing niche focus. | Planned |
 | `005_Ecommerce/POD/` | Print-on-demand Etsy store. Tony designs; fulfillment via POD service. Brands: Bored-Nomad, Unomas-Creative. | Active |
+| `005_Ecommerce/Etsy-Ikigai/` | Ikigai Digital Studio Etsy shop (printable digital wall art) plus the Ikigai Portal (local FastAPI app) and listing pipeline to Etsy drafts. Marketing arm: Ikigai Digital Studios YouTube channel. | Active |
 | `005_Ecommerce/Digital_Products/` | Digital downloadable wall art Etsy store + guides, downloads, funnels. Distribution via Gumroad, own website (Next.js + Sanity + Lemon Squeezy), email marketing. | Planned |
 | `005_Ecommerce/KDP/` | Book publishing on Amazon Kindle Direct Publishing. | Active |
 | `005_Ecommerce/Amazon_Merch/` | T-shirt designs on Amazon Merch on Demand. | Planned |

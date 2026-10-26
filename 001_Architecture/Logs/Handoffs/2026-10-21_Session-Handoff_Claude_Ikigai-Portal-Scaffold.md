@@ -29,3 +29,10 @@ This session ran in the cloud, so anything it could not do belongs to the next s
 - Connect PhotoCraft, Upscayl, Drive, Etsy API and the Mac-only n8n/automation files (see Still open item 2).
 - Push the real git tag `rollback/ikigai-01-brief` if wanted (created only inside the cloud container; tag pushes returned 403 there).
 - Anything else found undone because of cloud limits: do it, then tick it off here.
+
+## Ticked off 2026-10-25 (Mac session)
+- Graphify refresh of 005_Ecommerce: done 2026-10-21 (REGISTRY updated, committed).
+- MEMORY.md updated with the Ikigai portal and a new feedback entry.
+- DEPARTMENTS.md and root CLAUDE.md: Etsy Ikigai added (plus Etsy Bored Nomad and TikTok Shop Uno Mas Creative, which were also missing).
+- Branch merged to main (PR #1) and Mac main merged and pushed (7d4d2081).
+- Still open: connect PhotoCraft, Upscayl, Drive, Etsy API; real rollback tag; wiki article once pipeline steps are real.
