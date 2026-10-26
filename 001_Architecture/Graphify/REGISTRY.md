@@ -38,7 +38,7 @@ Each graph query is ~70x cheaper than raw grep/file reads.
 | Social Media | `002_Content-Creation/Social_Media_Marketing/` | `002_Content-Creation/Social_Media_Marketing/graphify-out/` | 1 | built | 2026-09-08T16:00Z |
 | Apps | `003_Apps/` | `003_Apps/graphify-out/` | 10 | built (263n/373e) | 2026-09-08T16:00Z |
 | Games | `004_Games/` | `004_Games/graphify-out/` | 2 | built | 2026-09-08T16:00Z |
-| Ecommerce | `005_Ecommerce/` | `005_Ecommerce/graphify-out/` | 54 | built | 2026-10-21T20:29Z|
+| Ecommerce | `005_Ecommerce/` | `005_Ecommerce/graphify-out/` | 54 | built (118n/173e) | 2026-10-26T02:58Z|
 | Affiliate Marketing | `005_Affiliate_Marketing/` | `005_Affiliate_Marketing/graphify-out/` | 36 | built | 2026-09-06T02:00Z |
 | Resource Library | `007_Resource_Library/` | `007_Resource_Library/graphify-out/` | 8586 | built | 2026-10-09T03:33Z|
 
