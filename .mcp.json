@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "digistore24": {
+      "command": "bash",
+      "args": [
+        "-c",
+        "source ~/.env-secrets && exec npx -y mcp-remote https://mcp.digistore24.com/ --header \"Authorization: Bearer $DIGISTORE24_API_KEY\""
+      ]
+    }
+  }
+}

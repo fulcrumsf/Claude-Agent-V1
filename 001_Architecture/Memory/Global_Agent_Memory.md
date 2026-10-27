@@ -1468,3 +1468,5 @@ Tony judged Part 1 of the Grandma-And-Bear compilation's original manual-crop Sh
 - Installed CLIs in ~/.local/bin: photocraft-cli, vectorcraft-cli (Illustrator equivalent), pdfcraft-cli, lightcraft/filmcraft/effectcraft-cli, upscayl-ncnn (use this, not the Upscayl.app binary). Drive login: `google_drive_auth.py`; Portal helper `Portal/app/drive.py`.
 - Etsy reference links to keep current: API v3 docs https://developers.etsy.com/documentation/ and Seller Handbook https://www.etsy.com/seller-handbook (re-pull regularly; Etsy changes AI/seller rules often; goal is never getting banned).
 - Don't ask obvious confirmation questions; do the obvious step and report.
+
+- 2026-10-26: Tony's dashboard must be fully automated (no manual exports or pasted screenshots). Etsy per-shop search terms have no API anywhere; use Alura's official API (Growth plan, 20,000 credits/mo) for keyword and competitor data and Etsy API for own sales. Alura terms: no keeping its data over 24h, no using the website's internal endpoints. Details in TOOLBOX.md.

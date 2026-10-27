@@ -29,3 +29,9 @@ Brief: `Ikigai_Portal_Pipeline_Brief.md`. Code: `Portal/` (FastAPI, SQLite, Dock
 ## Etsy reference links (keep current, added 2026-10-25)
 - Etsy Open API v3 docs: https://developers.etsy.com/documentation/ (developer app application still to file; next task).
 - Etsy Seller Handbook: https://www.etsy.com/seller-handbook. Etsy keeps changing AI and seller policies; pull the latest before any listing/automation work and on a regular schedule so Tony never risks a ban. Follow handbook best practices in the Portal listing text and AI disclosure.
+
+## Alura API (added 2026-10-26)
+Tony's Alura workspace (Growth plan) has an official API and MCP: market keywords, competitor shops, and "Your shop" reads/writes via Alura's Etsy connection. Docs `https://docs.alura.io`; details and terms limits in TOOLBOX.md ("Alura official API + MCP"). BoredNomad's Alura connection is expired and needs a reconnect. Plan and decisions: `Etsy_API_V3_Application_Plan.md`.
+
+## Etsy developer app approved (2026-10-26)
+App "agent-OS" approved (personal use). Keys in `~/.env-secrets` (`ETSY_CLIENT_ID`, `ETSY_CLIENT_SECRET`). Limits 10 QPS / 10,000 QPD. Scopes to request: listings_w, listings_r, shops_r. Redirect URI still to register. Drafts only, never `state=active`. See `Etsy_API_V3_Application_Plan.md` and TOOLBOX.md.
