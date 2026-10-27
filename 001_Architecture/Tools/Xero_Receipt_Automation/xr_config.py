@@ -38,6 +38,8 @@ def load_config(path, data_dir=None, intake_dir=None, archive_dir=None):
     for entry in config["eligible_bank_accounts"]:
         if not isinstance(entry, dict) or not (entry.get("account_id") or entry.get("name")):
             raise ValueError("each eligible_bank_accounts entry needs a name or an account_id")
+    if not isinstance(config.get("no_receipt_contacts", []), list):
+        raise ValueError("no_receipt_contacts must be a list of contact names")
     # Optional, default off. Like live_enabled: flip to true only for one approved run, then back to false.
     if not isinstance(config.get("auto_archive_enabled", False), bool):
         raise ValueError("auto_archive_enabled must be true or false")

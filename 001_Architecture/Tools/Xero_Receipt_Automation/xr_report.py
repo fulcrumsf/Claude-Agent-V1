@@ -2,13 +2,16 @@ import json
 from pathlib import Path
 
 
-def review_json(state):
+def review_json(state, hidden_contacts=()):
+    hidden = {name.strip().lower() for name in hidden_contacts}
     needs = []
     auto = []
     manual = []
     other = []
     for item_id in sorted(state.index["items"]):
         item = state.index["items"][item_id]
+        if (item.get("transaction", {}).get("contact_name") or "").strip().lower() in hidden:
+            continue
         entry = {
             "item_id": item_id,
             "transaction": item.get("transaction", {}),

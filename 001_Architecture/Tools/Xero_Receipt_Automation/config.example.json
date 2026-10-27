@@ -54,5 +54,9 @@
   "notify": {
     "channel": "macos",
     "once_per_iso_week": true
-  }
+  },
+  "no_receipt_contacts": [
+    "CapitalOne",
+    "Credit Card Interest"
+  ]
 }

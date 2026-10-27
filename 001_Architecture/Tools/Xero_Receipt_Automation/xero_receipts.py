@@ -148,6 +148,8 @@ class Pipeline:
         bank_names = self._known_bank_names(raw_items)
         for raw in raw_items:
             endpoint = "BankTransactions" if raw.get("Type") == "SPEND" else "Invoices"
+            if (raw.get("ContactName") or "").strip().lower() in {n.strip().lower() for n in self.config.get("no_receipt_contacts", [])}:
+                continue  # interest charges etc.: never have receipts, never attached
             bank_account = self._bank_account(raw, endpoint, bank_names)
             existing = self.state.index["items"].get(f"{endpoint}:{raw['ID']}")
             if existing is not None and bank_account and existing["transaction"].get("bank_account") != bank_account:
@@ -491,6 +493,11 @@ class Pipeline:
             if len(attachments) >= self.config["max_attachments_per_doc"]:
                 self.state.transition(record["item_id"], "pending_review", self.run_id, self.args.dry_run, reason="attachment limit")
                 continue
+            if not record.get("source_path"):
+                # Approved on a match whose email carried no receipt file: nothing to upload. Send it back for review instead of crashing the run.
+                self.state.transition(record["item_id"], "pending_review", self.run_id, self.args.dry_run, reason="No receipt file to attach; download it from the vendor portal and drop it in 000_Ingest/Xero_Receipts/")
+                record["state"] = "pending_review"
+                continue
             source = Path(record["source_path"]).expanduser()
             extension = source.suffix.lower().lstrip(".")
             vendor = xr_match.vendor_for(transaction["contact_name"], self.aliases)
@@ -674,7 +681,7 @@ class Pipeline:
             "excluded_by_bank_account": sum(self.excluded_bank_accounts.values()),
             "excluded_bank_accounts": dict(sorted(self.excluded_bank_accounts.items())),
         })
-        review = xr_report.review_json(self.state)
+        review = xr_report.review_json(self.state, self.config.get("no_receipt_contacts", []))
         report_path = xr_report.write_report(self.paths["data"], self.run_id, review)
         if self.args.scheduled:
             self.state.index["scheduled_summary"] = {
@@ -767,7 +774,7 @@ def dispatch(args):
             print(json.dumps(result, indent=2, sort_keys=True))
         return 0
     if args.command == "review":
-        emit(args, xr_report.review_json(pipeline.state))
+        emit(args, xr_report.review_json(pipeline.state, pipeline.config.get("no_receipt_contacts", [])))
         return 0
     if args.command == "approve":
         pipeline.state.transition(args.item, "approved", pipeline.run_id, False, by=args.by)
