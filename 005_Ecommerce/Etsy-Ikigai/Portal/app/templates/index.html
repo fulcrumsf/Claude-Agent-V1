@@ -1,21 +1,711 @@
-<!doctype html><meta charset="utf-8"><title>Ikigai Portal</title>
-<style>body{font:15px system-ui;max-width:980px;margin:2rem auto;padding:0 1rem}
-section{margin-bottom:2rem}.card{border:1px solid #ccc;border-radius:8px;padding:.6rem .8rem;margin:.4rem 0}
-.tag{font-size:12px;padding:1px 6px;border-radius:9px;background:#eee}.warn{background:#fde;padding:.5rem;border-radius:6px}
-form{display:inline}small{color:#666}</style>
-<h1>Ikigai Portal</h1>
-{% if pool_low %}<p class="warn">Idea pool low ({{ pool }}). Run the research job.</p>{% else %}<small>Pool: {{ pool }}</small>{% endif %}
-<section><h2>Ideas</h2>
-{% for i in ideas %}<div class="card"><b>{{ i.title }}</b> <span class="tag">{{ i.lane }}</span> <span class="tag">{{ i.status }}</span>
-<div>{{ i.description }}</div><small>{{ i.evidence }}</small><br>
-{% if i.status == 'shown' %}<form method="post" action="/ideas/{{ i.id }}/approve"><button>Approve</button></form>
-<form method="post" action="/ideas/{{ i.id }}/deny"><button>Deny</button></form>{% endif %}</div>
-{% else %}<p>No ideas yet. Seed some: <code>python -m app.seed</code></p>{% endfor %}</section>
-<section><h2>Prompts</h2>
-{% for p in prompts %}<div class="card"><b>{{ p.title }}</b><p>{{ p.text }}</p>
-<form method="post" action="/prompts/{{ p.id }}/run"><select name="engine">
-{% for e in engines %}<option value="{{ e.id }}">{{ e.label }}{% if not e.ready %} (no key){% endif %}</option>{% endfor %}
-</select> <button>Run prompt</button></form></div>{% endfor %}</section>
-<section><h2>Listings in production</h2>
-{% for l in listings %}<div class="card">Listing #{{ l.id }} (idea {{ l.idea_id }})<ul>
-{% for s in steps if s.listing_id == l.id %}<li>{{ s.name }}: <b>{{ s.status }}</b> <small>{{ s.message }}</small></li>{% endfor %}</ul></div>{% endfor %}</section>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ikigai Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f2ede3; --paper-2:#ebe4d6; --card:#faf7f1; --ink:#1e1c19; --ink-2:#4a463f; --muted:#8c8578;
+  --line:#ddd4c3; --line-2:#cfc4b0;
+  --rising:#c4462c; --steady:#2f4c6e; --test:#b0832a; --ok:#3e6b4a;
+  --serif:"Shippori Mincho", "Hiragino Mincho ProN", Georgia, serif;
+  --sans:"Zen Kaku Gothic New", "Hiragino Sans", "Helvetica Neue", sans-serif;
+  --mono:"DM Mono", ui-monospace, Menlo, monospace;
+  --r:10px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--paper);color:var(--ink);font:15px/1.5 var(--sans);-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(rgba(30,28,25,.035) 1px,transparent 1px);background-size:3px 3px}
+button{font:inherit;color:inherit;cursor:pointer}
+/* layout: nav across the top; left 60% = panel + chat bar, right 40% = details */
+.shell{display:grid;grid-template-columns:minmax(0,3fr) minmax(320px,2fr);grid-template-rows:auto minmax(0,1fr);height:100vh}
+.shell.solo{grid-template-columns:minmax(0,1fr)}
+.shell.solo .details{display:none}
+.work{display:flex;flex-direction:column;min-width:0;min-height:0}
+
+/* ---------- top: brand + tabs ---------- */
+.top{grid-column:1/-1;display:flex;align-items:flex-end;gap:28px;padding:22px 36px 0;border-bottom:1px solid var(--line);min-width:0}
+.brand{display:flex;align-items:center;gap:10px;padding-bottom:14px;margin-right:10px}
+.brand svg{color:var(--ink)}
+.brand b{font:700 19px/1 var(--serif);letter-spacing:.02em}
+.brand small{display:block;font:500 10.5px/1 var(--mono);color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:4px}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tab{background:none;border:0;padding:10px 14px 13px;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;white-space:nowrap;position:relative;top:1px}
+.tab:hover{color:var(--ink-2)}
+.tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--ink)}
+.tab .soon{font:500 9.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);border-radius:20px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+.panel{flex:1;min-height:0;overflow:auto;padding:26px 36px 36px}
+.panel[hidden]{display:none}
+
+/* ---------- placeholders ---------- */
+.ph{max-width:520px;margin:12vh auto;text-align:center;color:var(--muted)}
+.ph svg{color:var(--line-2)}
+.ph h3{font:700 24px var(--serif);color:var(--ink-2);margin:14px 0 4px}
+.ph .badge{display:inline-block;font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;border:1px dashed var(--line-2);border-radius:20px;padding:3px 10px;margin-top:12px}
+
+/* ---------- studio: meter ---------- */
+.studio{max-width:1080px}
+.studio > script{display:none}
+.meter{display:flex;flex-wrap:wrap;align-items:center;gap:22px 32px;padding:4px 0 26px;border-bottom:1px solid var(--line);margin-bottom:24px}
+.nums{display:flex;gap:26px}
+.num b{display:block;font:500 34px/1 var(--serif);letter-spacing:-.01em}
+.num span{white-space:nowrap;font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.num.dim b{color:var(--muted)}
+.cap{display:grid;grid-template-columns:repeat(25,1fr);gap:3px;flex:1 1 200px;max-width:330px;min-width:180px}
+.cap i{aspect-ratio:1;border-radius:2px;border:1px solid var(--line-2);background:transparent}
+.cap i.on{background:var(--ink);border-color:var(--ink)}
+.cap i.wait{background:var(--line-2);border-color:var(--line-2)}
+.act{display:flex;flex-direction:column;align-items:flex-end;gap:6px;margin-left:auto}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 15px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);font-weight:500;transition:transform .15s,background .15s}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover:not(:disabled){background:var(--ink);color:var(--paper)}
+.btn:disabled{opacity:.35;cursor:default}
+.btn small{font:500 11px var(--mono);opacity:.7}
+.when{font:400 11px var(--mono);color:var(--muted)}
+.low{font:500 11px var(--mono);color:var(--rising);letter-spacing:.03em}
+
+/* ---------- studio: lists ---------- */
+.block h2{font:700 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin:0 0 12px;display:flex;align-items:center;gap:10px}
+.count{font:500 11px var(--mono);color:var(--muted);border:1px solid var(--line-2);border-radius:20px;padding:0 8px;letter-spacing:0}
+.ideas{list-style:none;margin:0;padding:0;border:1px solid var(--line);border-radius:var(--r);background:var(--card);scroll-behavior:smooth}
+.idea{border-bottom:1px solid var(--line);transition:background .2s;animation:rise .45s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(min(var(--d), 12) * 30ms)}
+.idea:last-child{border-bottom:0}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.idea.out{animation:out .32s ease forwards}
+.idea.out.ok{background:rgba(62,107,74,.08)}
+@keyframes out{to{opacity:0;transform:translateX(18px);height:0;padding:0}}
+.row{display:grid;grid-template-columns:72px minmax(0,1fr) auto auto auto;align-items:center;gap:14px;padding:11px 14px 11px 0;position:relative;cursor:pointer}
+.row::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:0 3px 3px 0;background:var(--lane);transition:width .2s,top .2s,bottom .2s}
+.idea:hover{background:rgba(235,228,214,.45)}
+.idea.sel{background:var(--paper-2)}
+.idea.sel .row::before{width:5px;top:0;bottom:0;border-radius:0}
+.lane-rising{--lane:var(--rising)} .lane-steady{--lane:var(--steady)} .lane-test{--lane:var(--test)}
+.lane{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--lane);padding-left:16px}
+.title{all:unset;cursor:pointer;min-width:0;display:flex;flex-direction:column;gap:1px}
+.title .t{font:700 16px/1.3 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.title .d{color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.title:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:3px}
+.stamp{font:700 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--rising);border:1.5px solid var(--rising);border-radius:4px;padding:2px 6px;transform:rotate(-3deg);white-space:nowrap;opacity:.9}
+.stamp.sm{font-size:9px;padding:0 4px;transform:none}
+.flag{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font:700 11px var(--mono);color:var(--test);border:1.5px solid var(--test);cursor:help}
+.score{font:500 13px var(--mono);color:var(--ink-2);min-width:24px;text-align:right}
+.ctl{display:flex;gap:6px}
+.ctl button{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-2);background:transparent;transition:all .15s}
+.ctl .yes:hover{background:var(--ok);border-color:var(--ok);color:#fff}
+.ctl .no:hover{background:var(--rising);border-color:var(--rising);color:#fff}
+.ctl button:active{transform:scale(.92)}
+.empty{list-style:none;text-align:center;color:var(--muted);padding:48px 20px}
+.empty svg{color:var(--line-2)}
+.empty p{margin:8px 0 0}
+.bankblock{margin-top:34px}
+.bank{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
+.bank li{animation:rise .4s both;min-width:0}
+.bank .pick{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px;transition:border-color .15s,box-shadow .15s}
+.bank .pick:hover{border-color:var(--line-2)}
+.bank .pick:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.bank li.sel .pick{border-color:var(--ink);box-shadow:inset 3px 0 0 var(--lane)}
+.bank .dot{width:8px;height:8px;border-radius:50%;background:var(--lane);flex:none}
+.bank .t{font:700 14px/1.3 var(--serif);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bank time{font:400 10.5px var(--mono);color:var(--muted)}
+.muted{color:var(--muted);margin:0}
+
+/* ---------- right: details ---------- */
+.details{grid-column:2;grid-row:2;min-height:0;overflow:auto;border-left:1px solid var(--line);padding:26px 32px 40px;
+  background:linear-gradient(180deg,rgba(250,247,241,.55),rgba(250,247,241,0) 320px)}
+.details > h2,.dt h3{font:700 13px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin:0 0 18px}
+.dt-empty{margin:14vh auto 0;max-width:260px;text-align:center;color:var(--muted);font-size:14px}
+.dt-empty svg{color:var(--line-2);display:block;margin:0 auto 10px}
+.dt{animation:rise .35s cubic-bezier(.2,.7,.2,1) both}
+.dt-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dt-lane{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--lane);border:1px solid var(--lane);border-radius:20px;padding:1px 9px}
+.dt-meta{font:400 11px var(--mono);color:var(--muted);letter-spacing:.03em}
+.dt .dt-title{display:block;font:700 24px/1.25 var(--serif);color:var(--ink);text-transform:none;margin:12px 0 8px;letter-spacing:.005em;overflow-wrap:anywhere}
+.dt-desc{margin:0 0 20px;color:var(--ink-2);font-size:14.5px}
+.dt-note{margin:0;padding:12px 14px;border:1px dashed var(--line-2);border-radius:8px;color:var(--ink-2);font-size:14px;background:var(--card)}
+.dt-ev{margin:0;display:flex;flex-direction:column;gap:2px}
+.dt-ev div{padding:12px 0 12px 14px;border-left:2px solid var(--line)}
+.dt-ev dt{font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.dt-ev dd{margin:0;font-size:14px;line-height:1.55;color:var(--ink)}
+.dt-ev .warn{border-left-color:var(--test)}
+.dt-ev .warn dt{color:var(--test)}
+.dt h3{margin:24px 0 10px;font-size:11px}
+.dt-src{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;counter-reset:src}
+.dt-src li{counter-increment:src;display:grid;grid-template-columns:22px 1fr;font:400 12px/1.5 var(--mono);color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:7px 10px;overflow-wrap:anywhere}
+.dt-src li::before{content:counter(src,decimal-leading-zero);color:var(--muted)}
+.ev-inline{list-style:none;padding:4px 16px 18px;background:var(--paper-2);border-bottom:1px solid var(--line)}
+.bank .ev-inline{grid-column:1/-1;border:1px solid var(--line);border-radius:8px;padding:16px}
+.ev-inline .dt .dt-title{font-size:19px;margin-top:8px}
+
+/* ---------- left bottom: chat bar ---------- */
+.chat{flex:0 0 25%;display:flex;flex-direction:column;min-height:180px;max-height:300px;border-top:1px solid var(--line);background:var(--paper-2)}
+.chat header{padding:8px 20px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:12px}
+.chat header b{font:700 15px var(--serif)}
+.chat header span{font:400 11px var(--mono);color:var(--muted)}
+.log{flex:1;min-height:0;overflow:auto;padding:10px 16px 6px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:86%;padding:8px 12px;border-radius:12px;font-size:13.5px;line-height:1.45;animation:rise .3s both;white-space:pre-wrap;overflow-wrap:anywhere}
+.msg.tony{align-self:flex-end;background:var(--ink);color:var(--paper);border-bottom-right-radius:4px}
+.msg.portal{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:4px}
+.msg.invite{border-color:var(--rising);box-shadow:inset 3px 0 0 var(--rising)}
+.hello{color:var(--muted);font-size:13px;text-align:center;margin:auto 10px}
+.msg.thinking{color:var(--muted);display:inline-flex;align-items:center;gap:8px}
+.msg.thinking i{display:inline-flex;gap:3px}
+.msg.thinking i b{width:5px;height:5px;border-radius:50%;background:var(--muted);animation:blink 1.2s infinite ease-in-out}
+.msg.thinking i b:nth-child(2){animation-delay:.15s}.msg.thinking i b:nth-child(3){animation-delay:.3s}
+@keyframes blink{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-2px)}}
+.msg.error{border-color:var(--rising);color:var(--rising)}
+.compose button:disabled{opacity:.4;cursor:default}
+.chips{display:flex;gap:6px;padding:0 16px 6px;flex-wrap:wrap}
+.chips button{font:500 11px var(--mono);border:1px solid var(--line-2);background:transparent;border-radius:20px;padding:3px 10px;color:var(--ink-2)}
+.chips button:hover{border-color:var(--ink)}
+.compose{display:flex;gap:8px;padding:8px 14px 10px;border-top:1px solid var(--line)}
+.compose textarea{flex:1;resize:none;border:1px solid var(--line-2);border-radius:12px;background:var(--card);padding:8px 12px;font:14px/1.4 var(--sans);color:var(--ink);height:38px;max-height:140px}
+.compose textarea:focus{outline:none;border-color:var(--ink)}
+.compose textarea.ask{border-color:var(--rising);box-shadow:0 0 0 3px rgba(196,70,44,.12)}
+.compose button{width:44px;height:38px;border-radius:12px;border:0;background:var(--ink);color:var(--paper);display:grid;place-items:center}
+
+/* ---------- art (Details panel of a banked idea) ---------- */
+.artpill{font:500 9.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line-2);color:var(--ink-2);border-radius:20px;padding:1px 7px;white-space:nowrap}
+.artpill.ok{border-color:var(--ok);color:var(--ok)}
+.art{margin-top:26px;padding-top:20px;border-top:1px solid var(--line)}
+.art-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.art-head h3{margin:0!important}
+.art-lead{color:var(--ink-2);font-size:14px;margin:0 0 14px}
+.art .btn{padding:9px 16px}
+.art .btn.sm{padding:6px 12px;font-size:13px}
+.art-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+.art-sub{font:500 10px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px;display:flex;justify-content:space-between;gap:8px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.card{all:unset;box-sizing:border-box;cursor:pointer;border:1px solid var(--line);background:var(--card);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .15s,box-shadow .15s,transform .15s}
+.card:hover{border-color:var(--line-2);transform:translateY(-1px)}
+.card:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.card[aria-pressed=true]{border-color:var(--ink);box-shadow:0 0 0 1.5px var(--ink)}
+.card svg{display:block;width:100%;height:auto;aspect-ratio:2/1}
+.card b{font:700 14px/1.25 var(--serif);padding:9px 10px 2px}
+.card span{font-size:11.5px;line-height:1.4;color:var(--muted);padding:0 10px 10px}
+.chipgrp{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:8px}
+.chipgrp > i{font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-style:normal;width:100%}
+.chip{font:500 12px var(--sans);border:1px solid var(--line-2);background:transparent;border-radius:20px;padding:4px 10px;color:var(--ink-2);display:inline-flex;align-items:center;gap:5px}
+.chip:hover:not(:disabled){border-color:var(--ink)}
+.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.chip:disabled{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.chip .dots{display:inline-flex}
+.chip .dots u{width:9px;height:9px;border-radius:50%;margin-left:-3px;border:1px solid rgba(0,0,0,.15)}
+.chip .dots u:first-child{margin-left:0}
+.art select{font:13px var(--sans);border:1px solid var(--line-2);border-radius:8px;background:var(--card);padding:7px 9px;color:var(--ink);max-width:100%}
+.cost{font:400 11.5px var(--mono);color:var(--muted)}
+.round{margin-top:6px}
+.round-meta{font:400 11px var(--mono);color:var(--muted);line-height:1.6}
+.round-fb{margin:8px 0 0;padding:8px 12px;border-left:2px solid var(--rising);background:var(--card);font-size:13.5px;color:var(--ink-2)}
+.steps{display:flex;gap:6px;margin:12px 0 4px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.steps b{font-weight:500;padding:3px 8px;border:1px solid var(--line-2);border-radius:20px}
+.steps b.on{border-color:var(--ink);color:var(--ink);animation:blink 1.6s infinite ease-in-out}
+.steps b.ok{border-color:var(--ok);color:var(--ok)}
+.grid4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+.tile{all:unset;box-sizing:border-box;position:relative;cursor:pointer;border-radius:8px;overflow:hidden;background:var(--paper-2);border:1px solid var(--line);aspect-ratio:2/3;display:block}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.tile:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.tile.picked{border-color:var(--ink);box-shadow:0 0 0 2.5px var(--ink)}
+.tile.passed img{opacity:.55;filter:saturate(.6)}
+.tile .cap2{position:absolute;left:0;right:0;bottom:0;padding:16px 8px 6px;background:linear-gradient(transparent,rgba(30,28,25,.72));color:#fff;font:500 10.5px/1.3 var(--mono);letter-spacing:.02em}
+.tile .badge2{position:absolute;top:6px;left:6px;background:var(--ink);color:var(--paper);font:700 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;border-radius:4px;padding:2px 6px}
+.tile .full{position:absolute;top:6px;right:6px;background:rgba(250,247,241,.9);color:var(--ink);border-radius:50%;width:24px;height:24px;display:grid;place-items:center;text-decoration:none;font-size:13px}
+.tile.wait{cursor:default;background:linear-gradient(110deg,var(--paper-2) 30%,var(--card) 50%,var(--paper-2) 70%);background-size:220% 100%;animation:shimmer 1.6s infinite linear}
+.tile.fail{cursor:default;display:grid;place-items:center;text-align:center;color:var(--rising);font-size:12px;padding:10px}
+@keyframes shimmer{to{background-position:-220% 0}}
+.art details{margin-top:12px}
+.art summary{cursor:pointer;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.art details p{font:400 12px/1.55 var(--mono);color:var(--ink-2);background:var(--card);border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin:8px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.art details p b{display:block;font-weight:500;color:var(--muted);margin-bottom:3px}
+.art-err{color:var(--rising);font-size:13.5px;margin:10px 0 0}
+.art-hint{font-size:13px;color:var(--ink-2);margin:10px 0 0}
+.final{margin-top:4px}
+.final img{width:100%;border-radius:8px;border:1px solid var(--line);display:block}
+.final .ok{display:flex;gap:10px;align-items:center;margin:10px 0 2px;color:var(--ok);font-weight:500}
+.prod{font:500 11px var(--mono);letter-spacing:.06em;color:var(--muted);border:1px dashed var(--line-2);border-radius:8px;padding:8px 10px;margin-top:10px}
+/* ---------- prints: upscale + resize (Art tab + Details) ---------- */
+.artgal{max-width:1080px}
+.artgal h2{font:700 24px var(--serif);margin:0 0 4px}
+.artgal .lead{color:var(--muted);margin:0 0 22px;font-size:13.5px}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.gcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.gcard > img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
+.gcard .gb{padding:12px 14px 14px}
+.gcard h3{font:700 15px/1.3 var(--serif);margin:0 0 2px}
+.gcard .gt{font-size:12px;color:var(--muted);margin:0 0 6px}
+.pr-steps{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pr-steps b{font-weight:500;padding:3px 8px;border:1px solid var(--line-2);border-radius:20px}
+.pr-steps b.running,.pr-steps b.queued{border-color:var(--ink);color:var(--ink);animation:blink 1.6s infinite ease-in-out}
+.pr-steps b.done{border-color:var(--ok);color:var(--ok)}
+.pr-steps b.blocked,.pr-steps b.failed{border-color:var(--rising);color:var(--rising)}
+.pr-msg{font-size:12.5px;color:var(--ink-2);margin:6px 0 0}
+.pr-msg.bad{color:var(--rising)}
+.pr-path{font:400 11px/1.5 var(--mono);color:var(--muted);overflow-wrap:anywhere;margin-top:8px;user-select:all}
+.pr-files{width:100%;border-collapse:collapse;margin-top:8px;font:400 11px var(--mono);color:var(--ink-2)}
+.pr-files td{padding:3px 4px 3px 0;border-top:1px solid var(--line);vertical-align:top}
+.pr-files td.w{color:var(--rising)}
+.pr-name{font:13px var(--sans);border:1px solid var(--line-2);border-radius:8px;background:var(--paper);padding:6px 8px;color:var(--ink);width:100%;margin-top:8px}
+.prod.live{border-style:solid}
+.older{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin-top:8px}
+.older img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;border:1px solid var(--line)}
+.older img.picked{box-shadow:0 0 0 2px var(--ink)}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .details{display:none}
+  .chat{flex-basis:240px;max-height:none}
+  .chat header{padding:8px 16px}
+  .top{padding:14px 16px 0;gap:12px}.brand small{display:none}
+  .panel{padding:18px 16px 32px}
+  .act{align-items:flex-start;margin-left:0}
+  .nums{gap:18px}.num b{font-size:26px}
+  .row{grid-template-columns:56px minmax(0,1fr) auto auto;gap:8px}.score,.flag{display:none}.stamp{font-size:8.5px;padding:1px 4px}.cap{max-width:none}
+    .lane{padding-left:12px;font-size:9.5px}
+  .dt-ev div{padding:10px 0 10px 12px}
+}
+</style>
+</head>
+<body>
+<div class="shell" id="shell">
+    <nav class="top">
+      <div class="brand">
+        <svg viewBox="0 0 40 40" width="30" height="30" aria-hidden="true"><path d="M31 9.5A15 15 0 1 0 35 22" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="31.5" cy="9" r="1.6" fill="#c4462c"/></svg>
+        <div><b>Ikigai</b><small>Business dashboard</small></div>
+      </div>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" aria-selected="true" data-tab="{{ tab.id }}">{{ tab.label }}</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="art">Art</button>
+        {% for p in placeholders %}<button class="tab" role="tab" aria-selected="false" data-tab="{{ p.id }}">{{ p.label }}<span class="soon">not built</span></button>{% endfor %}
+      </div>
+    </nav>
+
+  <div class="work">
+
+    <main class="panel" id="panel-{{ tab.id }}" role="tabpanel" data-panel-url="{{ prefix }}/panel">
+      {% include tab.panel_template %}
+    </main>
+    <main class="panel" id="panel-art" role="tabpanel" hidden>
+      <div class="artgal"><h2>Approved art</h2>
+        <p class="lead">Upscale + resize turns approved art into the 5 print JPGs at 300 DPI in the design folder. Mockups, listing text, packaging and the Etsy draft come later (Production).</p>
+        <div class="gal" id="gal"><p class="lead">Loading…</p></div></div>
+    </main>
+    {% for p in placeholders %}
+    <main class="panel" id="panel-{{ p.id }}" role="tabpanel" hidden>
+      <div class="ph">
+        <svg viewBox="0 0 64 64" width="52" height="52" aria-hidden="true"><rect x="10" y="10" width="44" height="44" rx="6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 5"/></svg>
+        <h3>{{ p.label }}</h3>
+        <div>{{ p.note }}</div>
+        <span class="badge">Not built yet</span>
+      </div>
+    </main>
+    {% endfor %}
+
+  <aside class="chat" aria-label="Chat">
+    <header><b>Studio chat</b><span>talk in plain words · approve, deny, seed, taste, art feedback</span></header>
+    <div class="log" id="log">
+      {% for m in messages %}<div class="msg {{ m.role }}{% if m.role == 'portal' and m.text.startswith('Denied') %} invite{% endif %}">{{ m.text }}</div>
+      {% else %}<p class="hello">Ask about the ideas, approve or deny one, or tell me what you like.</p>{% endfor %}
+    </div>
+    <div class="chips"><button data-say="refresh">refresh</button><button data-say="status">status</button><button data-say="help">help</button></div>
+    <form class="compose" id="compose">
+      <textarea id="say" name="text" placeholder="Talk to the studio…" rows="1" autocomplete="off"></textarea>
+      <button aria-label="Send" id="send"><svg viewBox="0 0 20 20" width="18" height="18"><path d="M3.5 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </form>
+  </aside>
+  </div>
+
+  <aside class="details" id="details" aria-label="Idea details" aria-live="polite"></aside>
+</div>
+
+<script>
+(() => {
+  const panel = document.getElementById("panel-{{ tab.id }}");
+  const prefix = "{{ prefix }}";
+  const log = document.getElementById("log");
+  const box = document.getElementById("say");
+  const DEFAULT_PH = "Talk to the studio…";
+  const send = document.getElementById("send");
+  let busy = false;
+
+  const post = (url, body) => fetch(url, {method: "POST", headers: {"Content-Type": "application/json"},
+    body: body ? JSON.stringify(body) : undefined}).then(r => r.ok ? r.json() : Promise.reject(r));
+
+  async function reloadPanel() {
+    const html = await fetch(panel.dataset.panelUrl).then(r => r.text());
+    const keep = panel.scrollTop;
+    panel.innerHTML = html;
+    renderDetails();
+    panel.scrollTop = keep;
+  }
+
+  // ---------- details panel (right column; inline under the selected row on phones) ----------
+  const details = document.getElementById("details");
+  const shell = document.getElementById("shell");
+  const narrow = matchMedia("(max-width: 900px)");
+  const LANES = {rising: "Rising", steady: "Steady", test: "Test"};
+  let selected = null;                      // idea id (string); kept across panel reloads while the idea exists
+
+  const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]));
+  const data = () => { try { return JSON.parse(panel.querySelector("#studio-data")?.textContent || "{}"); } catch { return {}; } };
+  const EMPTY = `<h2>Details</h2><div class="dt-empty"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><path d="M50 18A22 22 0 1 0 54 34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>Select an idea to see why it is on the list</div>`;
+
+  function detailHTML(d) {
+    const ev = d.evidence || {};
+    const status = d.status === "approved" ? "In bank" + (d.decided_at ? " · " + d.decided_at.slice(0, 10) : "") : "On list";
+    const meta = [status, d.source === "seed" ? "Tony's seed" : "score " + Math.round(d.score || 0)].join(" · ");
+    let body;
+    if (d.source === "seed") body = `<p class="dt-note">Your seed, not researched yet. The research job checks demand before it moves on.</p>`;
+    else if (ev.summary) body = `<p class="dt-note">${esc(ev.summary)}</p>`;
+    else {
+      const f = (k, label, cls = "") => `<div class="${cls}"><dt>${label}</dt><dd>${esc(ev[k] || "—")}</dd></div>`;
+      body = `<dl class="dt-ev">${f("why_buyer", "Why a buyer wants it")}${f("why_now", "Why now")}${f("competitors", "Who sells it")}${f("warning", "Watch out", "warn")}</dl>`;
+      if ((ev.sources || []).length) body += `<h3>Source numbers</h3><ol class="dt-src">${ev.sources.map(x => `<li>${esc(x)}</li>`).join("")}</ol>`;
+    }
+    const artBox = d.status === "approved" ? `<section class="art" data-art-idea="${esc(d.id)}">${artHTML(String(d.id))}</section>` : "";
+    return `<article class="dt lane-${esc(d.lane)}"><div class="dt-top"><span class="dt-lane">${esc(LANES[d.lane] || d.lane)}</span><span class="dt-meta">${esc(meta)}</span></div>
+      <h2 class="dt-title">${esc(d.title)}</h2>${d.description ? `<p class="dt-desc">${esc(d.description)}</p>` : ""}${artBox}${body}</article>`;
+  }
+
+  // ---------- art: Build art -> style cards + chips -> 4 images -> pick -> chat feedback -> approve ----------
+  let artOpts = null, artBalance = null, artTimer = null;
+  const artUI = {};                         // idea id -> {mode, cards, chips, engine, data, err}
+  const ui = id => artUI[id] || (artUI[id] = {mode: "idle", cards: [], chips: {}, engine: null, data: null, err: ""});
+  const cardsById = () => Object.fromEntries((artOpts?.cards || []).map(c => [c.id, c]));
+
+  function lum(h) { const n = parseInt(h.slice(1), 16); return (0.299 * (n >> 16) + 0.587 * (n >> 8 & 255) + 0.114 * (n & 255)) / 255; }
+  function sat(h) { const n = parseInt(h.slice(1), 16), r = n >> 16, g = n >> 8 & 255, b = n & 255; return (Math.max(r, g, b) - Math.min(r, g, b)) / 255; }
+  // A small painted-looking swatch per card: its own palette (from the style profiles) in its own motif.
+  function swatch(c) {
+    const cols = (c.swatch || ["#eee", "#333", "#c44"]).slice();
+    const byL = cols.slice().sort((a, b) => lum(b) - lum(a));
+    const light = byL[0], dark = byL[byL.length - 1], mid = byL[Math.floor(byL.length / 2)];
+    const acc = cols.slice().sort((a, b) => sat(b) - sat(a))[0];
+    const f = `<filter id="g${c.id}"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/><feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .22 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>`;
+    let art = "";
+    if (c.motif === "stripes") art = `<rect width="120" height="60" fill="${light}"/><path d="M-5 60C10 20 40 8 70 14s45 30 55 46z" fill="${dark}"/>` +
+      [0, 1, 2, 3, 4].map(k => `<path d="M${6 + k * 9} 60C${20 + k * 6} ${30 - k * 2} ${46 + k * 4} ${20 + k} ${70 + k * 3} ${24 + k * 3}" fill="none" stroke="${light}" stroke-width="1.1" opacity=".8"/>`).join("") +
+      `<circle cx="92" cy="18" r="3.2" fill="${acc}"/>`;
+    else if (c.motif === "halo") art = `<rect width="120" height="60" fill="${dark}"/><circle cx="74" cy="26" r="20" fill="${light}" opacity=".85"/><circle cx="74" cy="26" r="27" fill="${light}" opacity=".18"/><rect y="40" width="120" height="20" fill="${mid}"/><path d="M0 40h120" stroke="${light}" stroke-width=".6" opacity=".5"/><rect x="34" y="31" width="2.4" height="9" fill="${dark}"/><circle cx="35.2" cy="30" r="1.8" fill="${acc}"/>` +
+      [10, 28, 52, 88, 104].map(x => `<path d="M${x} 0v60" stroke="${light}" stroke-width=".5" opacity=".18"/>`).join("");
+    else if (c.motif === "hatch") art = `<rect width="120" height="60" fill="${light}"/><rect x="30" y="10" width="60" height="44" rx="22" fill="${mid}"/>` +
+      Array.from({length: 13}, (_, k) => `<path d="M${36 + k * 4} 14v36" stroke="${dark}" stroke-width=".8" opacity=".55"/>`).join("") +
+      `<path d="M30 54h60" stroke="${dark}" stroke-width="2"/><circle cx="48" cy="28" r="2" fill="${dark}"/><circle cx="72" cy="28" r="2" fill="${dark}"/>`;
+    else if (c.motif === "facets") { const k = cols.length; art = `<rect width="120" height="60" fill="${light}"/>` +
+      [[0,0,50,0,30,34],[50,0,120,0,84,30],[30,34,84,30,60,60],[0,0,30,34,0,60],[84,30,120,0,120,60],[0,60,30,34,60,60],[60,60,84,30,120,60]]
+        .map((p, i) => `<polygon points="${p.join(" ")}" fill="${cols[i % k]}" stroke="${light}" stroke-width="1.4" stroke-linejoin="round"/>`).join(""); }
+    else if (c.motif === "blocks") art = `<rect width="120" height="60" fill="${light}"/><circle cx="70" cy="44" r="16" fill="${acc}"/><path d="M28 60V38a18 18 0 0 1 36 0v22z" fill="${dark}"/><path d="M38 34l3-6 3 6M50 34l3-6 3 6" fill="${dark}"/>`;
+    else art = `<rect width="120" height="60" fill="${light}"/><path d="M26 50c4-22 16-34 30-30s14 22 30 18 10-20 20-24" fill="none" stroke="${dark}" stroke-width="1.6" stroke-linecap="round"/><circle cx="56" cy="22" r="7" fill="${acc}"/>` +
+      Array.from({length: 18}, (_, k) => `<circle cx="${80 + (k % 6) * 4}" cy="${12 + Math.floor(k / 6) * 4}" r="1.1" fill="${acc}"/>`).join("");
+    return `<svg viewBox="0 0 120 60" aria-hidden="true"><defs>${f}</defs><g>${art}</g><rect width="120" height="60" filter="url(#g${c.id})" fill="#000"/></svg>`;
+  }
+
+  function engineLabel(e) {
+    const tag = e.default ? " · default (cheapest)" : "";
+    return `${e.label} · ${e.credits_per_image} cr ($${e.usd_per_image.toFixed(2)})${tag}${e.verified ? " · tested " + e.verified : ""}${e.ready ? "" : " · key missing"}`;
+  }
+
+  function setupHTML(id) {
+    const u = ui(id), o = artOpts;
+    if (!o) return `<p class="art-lead">Loading style cards…</p>`;
+    const sel = u.cards.map(x => cardsById()[x]).filter(Boolean);
+    const cards = o.cards.map(c => `<button class="card" data-art="card" data-v="${c.id}" aria-pressed="${u.cards.includes(c.id)}">${swatch(c)}<b>${esc(c.name)}</b><span>${esc(c.paint)}</span></button>`).join("");
+    const groups = o.chip_groups.map(g => {
+      const chips = g.chips.map(ch => {
+        const off = g.id === "texture" && sel.length && !sel.some(c => c.textures_ok.includes(ch.id));
+        const dots = ch.colors ? `<span class="dots">${ch.colors.map(h => `<u style="background:${h}"></u>`).join("")}</span>` : "";
+        return `<button class="chip" data-art="chip" data-g="${g.id}" data-v="${ch.id}" aria-pressed="${u.chips[g.id] === ch.id}" ${off ? "disabled title=\"Does not suit the picked card\"" : ""}>${dots}${esc(ch.label)}</button>`;
+      }).join("");
+      return `<div class="chipgrp"><i>${esc(g.label)}${g.toggle ? "" : " · optional"}</i>${chips}</div>`;
+    }).join("");
+    const eng = u.engine || o.default_engine;
+    const e = o.engines.find(x => x.id === eng) || o.engines[0];
+    const n = o.images_per_round, cr = e.credits_per_image * n;
+    const plan = !u.cards.length ? `Surprise me: I pick 2 cards that fit, 2 images each` : u.cards.length === 1 ? `${n} variations of ${esc(sel[0]?.name)}` : `2 cards x 2 variations`;
+    return `<p class="art-lead">Pick up to 2 style cards and any chips. Nothing picked = Surprise me.</p>
+      <div class="art-sub"><span>Style cards · ${u.cards.length}/2</span><span>${plan}</span></div><div class="cards">${cards}</div>
+      <div class="art-sub"><span>Chips</span><span>empty = style default</span></div>${groups}
+      <div class="art-sub"><span>Engine</span></div>
+      <select data-art="engine" aria-label="Image engine">${o.engines.map(x => `<option value="${x.id}" ${x.id === eng ? "selected" : ""} ${x.ready ? "" : "disabled"}>${esc(engineLabel(x))}</option>`).join("")}</select>
+      <div class="art-row"><button class="btn" data-art="go">Make ${n} images</button><button class="btn ghost sm" data-art="cancel">Cancel</button>
+        <span class="cost">${n} x ${e.credits_per_image} = ${cr} credits ≈ $${(cr * 0.005).toFixed(2)} · ${o.aspect_ratio} at ${o.resolution}${artBalance != null ? ` · balance ${Math.floor(artBalance)}` : ""}</span></div>
+      ${u.err ? `<p class="art-err">${esc(u.err)}</p>` : ""}`;
+  }
+
+  function roundHTML(r, latest) {
+    const done = r.images.filter(i => i.status === "done").length, total = r.images.length || (artOpts?.images_per_round || 4);
+    const who = r.kind === "iterate" ? "Feedback round" : r.surprise ? "Surprise me" + (r.cards.length ? "" : "") : r.cards.join(" + ");
+    const cost = r.credits_spent != null ? ` · ${r.credits_spent} credits ($${(r.credits_spent * 0.005).toFixed(2)})` : "";
+    let h = `<div class="round"><div class="round-meta">Round ${r.round_no} · ${esc(who)} · ${esc(r.engine_label)}${cost}</div>`;
+    if (r.writer_note) h += `<div class="round-meta">Picked: ${esc(r.writer_note)}</div>`;
+    if (r.feedback) h += `<p class="round-fb">${esc(r.feedback)}</p>`;
+    if (r.status === "writing" || r.status === "generating") {
+      h += `<div class="steps"><b class="${r.status === "writing" ? "on" : "ok"}">Writing prompts</b><b class="${r.status === "generating" ? "on" : ""}">Painting ${done}/${total}</b></div>`;
+    }
+    const tiles = (r.images.length ? r.images : Array.from({length: total}, () => ({status: "queued"}))).map(i => {
+      if (i.status === "done") return `<div class="tile ${i.outcome}" role="button" tabindex="0" data-art="pick" data-v="${i.id}" title="Pick this one" aria-pressed="${i.outcome === "picked"}"><img src="${esc(i.url)}" alt="${esc(i.card_name)} variation ${i.slot}" loading="lazy">${i.outcome === "picked" ? `<span class="badge2">Picked</span>` : ""}<a class="full" href="${esc(i.url)}" target="_blank" rel="noopener" title="Full size" data-art="full">↗</a><span class="cap2">${esc(i.card_name)}${i.note ? " · " + esc(i.note) : ""}</span></div>`;
+      if (i.status === "failed") return `<div class="tile fail">${esc(i.error || "failed")}</div>`;
+      return `<div class="tile wait" aria-label="Painting"></div>`;
+    }).join("");
+    if (latest || r.status !== "failed") h += `<div class="grid4">${tiles}</div>`;
+    if (r.status === "failed" || r.status === "partial") h += `<p class="art-err">${esc(r.message || "Round failed")}</p>`;
+    if (r.images.some(i => i.prompt)) h += `<details><summary>Prompts (${r.images.length})</summary>${r.images.map(i => `<p><b>${i.slot} · ${esc(i.card_name)}${i.note ? " · " + esc(i.note) : ""}</b>${esc(i.prompt)}</p>`).join("")}</details>`;
+    return h + `</div>`;
+  }
+
+  function artHTML(id) {
+    const u = ui(id), a = u.data;
+    const head = (pill) => `<div class="art-head"><h3>Art</h3>${pill}</div>`;
+    if (!a) return head("") + `<p class="art-lead">Loading…</p>`;
+    if (a.art_state === "approved") {
+      const im = a.rounds.flatMap(r => r.images).find(i => i.id === a.art_image_id);
+      return head(`<span class="artpill ok">Art approved</span>`) + `<div class="final">${im ? `<img src="${esc(im.url)}" alt="Approved art">` : ""}
+        <div class="ok">Approved · ${esc(im?.card_name || "")}</div>${im?.prompt ? `<details><summary>Final prompt</summary><p>${esc(im.prompt)}</p></details>` : ""}
+        <div class="prod live">${printsHTML(prState[a.idea_id], false)}</div>
+        <div class="prod">Production: not built yet (mockups, listing text, package, Etsy draft)</div>
+        <div class="art-row"><a class="cost" href="${prefix}/api/art/${a.idea_id}/log" target="_blank" rel="noopener">Oversight log (prompts, picks, feedback)</a></div></div>`;
+    }
+    if (u.mode === "setup") return head(`<span class="artpill">Setup</span>`) + setupHTML(id);
+    if (!a.rounds.length) return head("") + `<p class="art-lead">Pick style cards and chips, then see 4 images. One round costs about $0.12 on the default engine.</p>
+      <button class="btn" data-art="build">Build art</button>${u.err ? `<p class="art-err">${esc(u.err)}</p>` : ""}`;
+    const [last, ...older] = a.rounds;
+    const picked = a.rounds.flatMap(r => r.images).find(i => i.outcome === "picked");
+    let h = head(`<span class="artpill">${a.busy ? "Working" : "In progress"}</span>`) + roundHTML(last, true);
+    if (!a.busy) {
+      h += picked ? `<p class="art-hint">Picked #${picked.id}. Tell the chat what to change (“more muted, less busy”) for 4 new variations, or approve it.</p>`
+                  : (last.images.some(i => i.status === "done") ? `<p class="art-hint">Click the image you like best.</p>` : "");
+      h += `<div class="art-row">${picked ? `<button class="btn" data-art="approve" data-v="${picked.id}">Approve art</button>` : ""}<button class="btn ghost sm" data-art="build">New round</button><a class="cost" href="${prefix}/api/art/${a.idea_id}/log" target="_blank" rel="noopener">Oversight log</a></div>`;
+    }
+    if (u.err) h += `<p class="art-err">${esc(u.err)}</p>`;
+    if (older.length) h += `<details><summary>Earlier rounds (${older.length})</summary>${older.map(r => `<div class="round-meta" style="margin-top:8px">Round ${r.round_no} · ${esc(r.kind === "iterate" ? "feedback: " + r.feedback : (r.cards.join(" + ") || "Surprise me"))} · ${esc(r.status)}</div><div class="older">${r.images.filter(i => i.url).map(i => `<img src="${esc(i.url)}" class="${i.outcome}" alt="" loading="lazy" title="${esc(i.card_name)}">`).join("")}</div>`).join("")}</details>`;
+    return h;
+  }
+
+  // ---------- prints: upscale + resize (Art tab gallery + the approved idea's Details) ----------
+  const prState = {};                       // idea id -> status from /api/prints
+  let prTimer = null, prErr = {};
+  const STEP_LABEL = {"not started": "not started", pending: "waiting", queued: "queued", running: "running", done: "done", blocked: "blocked", failed: "failed"};
+  function printsHTML(st, withName) {
+    if (!st) return `<span class="cost">Upscale + resize: loading…</span>`;
+    const step = (k, label) => { const x = st.steps[k] || {status: "not started"}; return `<b class="${esc(x.status.replace(" ", "-"))}">${label} · ${esc(STEP_LABEL[x.status] || x.status)}</b>`; };
+    let h = `<div class="pr-steps">${step("upscale", "Upscale")}${step("resize", "Resize")}</div>`;
+    for (const k of ["upscale", "resize"]) {
+      const x = st.steps[k]; if (!x || !x.message) continue;
+      h += `<p class="pr-msg ${x.status === "blocked" || x.status === "failed" ? "bad" : ""}">${k === "upscale" ? "Upscale" : "Resize"}: ${esc(x.message)}</p>`;
+    }
+    if (st.folder_rel) h += `<div class="pr-path" title="${esc(st.folder)}">${esc(st.folder_rel)}</div>`;
+    if (st.files.length) h += `<table class="pr-files">${st.files.map(f => `<tr><td>${esc(f.ratio)}</td><td>${f.px[0]}x${f.px[1]}</td><td>${f.dpi} dpi</td><td>${f.mb} MB</td><td class="${f.subject_cut > 0.005 ? "w" : ""}">${f.cut ? "cut " + (f.cut * 100).toFixed(1) + "%" + (f.subject_cut > 0.005 ? " · check" : "") : "full"}</td></tr>`).join("")}</table>`;
+    if (st.can_run) {
+      if (withName && !st.folder_seq) h += `<input class="pr-name" data-prints-name="${st.idea_id}" value="${esc(st.name)}" aria-label="Design name" title="Design name used for the folder and files">`;
+      h += `<div class="art-row"><button class="btn sm" data-prints="run" data-v="${st.idea_id}">${st.files.length || Object.values(st.steps).some(x => x.status !== "not started") ? "Run upscale + resize again" : "Run upscale + resize"}</button></div>`;
+    }
+    if (st.done && !st.busy) h += `<div class="art-row"><button class="btn ghost sm" data-prints="redo" data-v="${st.idea_id}" title="Upscale and resize again; files are replaced in the same folder">Run again</button></div>`;
+    if (prErr[st.idea_id]) h += `<p class="art-err">${esc(prErr[st.idea_id])}</p>`;
+    return h;
+  }
+  const gal = document.getElementById("gal");
+  function paintGallery() {
+    const items = Object.values(prState).filter(x => x.art_state === "approved");
+    gal.innerHTML = items.length ? items.map(st => `<article class="gcard">${st.image_url ? `<img src="${esc(st.image_url)}" alt="Approved art" loading="lazy">` : ""}<div class="gb"><h3>${esc(st.name)}</h3><p class="gt">#${st.idea_id} · ${esc(st.title)}</p>${printsHTML(st, true)}</div></article>`).join("")
+      : `<p class="lead">No approved art yet. Open a banked idea in Ikigai Digital Studio, Build art, then Approve art.</p>`;
+  }
+  async function loadPrints(id) {
+    try {
+      if (id) prState[id] = await fetch(`${prefix}/api/prints/${id}`).then(r => r.ok ? r.json() : Promise.reject(r));
+      else (await fetch(`${prefix}/api/prints`).then(r => r.json())).items.forEach(st => { prState[st.idea_id] = st; });
+    } catch { /* keep the last state */ }
+    paintGallery(); paintArt();
+    clearTimeout(prTimer);
+    if (Object.values(prState).some(x => x.busy)) prTimer = setTimeout(() => loadPrints(), 3000);
+  }
+  document.addEventListener("click", async e => {
+    const el = e.target.closest("[data-prints]");
+    if (!el) return;
+    e.preventDefault(); e.stopPropagation();
+    const id = el.dataset.v; prErr[id] = "";
+    const name = document.querySelector(`[data-prints-name="${CSS.escape(id)}"]`)?.value;
+    el.disabled = true;
+    const body = el.dataset.prints === "redo" ? {redo: true} : (name ? {name} : {});
+    try { prState[id] = await post(`${prefix}/api/prints/${id}/run`, body); }
+    catch (err) { try { prErr[id] = (await err.json()).detail || "That did not work."; } catch { prErr[id] = "That did not work."; } }
+    loadPrints();
+  });
+
+  function paintArt() {
+    document.querySelectorAll("[data-art-idea]").forEach(host => { host.innerHTML = artHTML(host.dataset.artIdea); });
+    const id = selected && document.querySelector(`[data-art-idea="${CSS.escape(selected)}"]`) ? selected : null;
+    const a = id && ui(id).data;
+    const hasPick = a && a.art_state !== "approved" && !a.busy && a.rounds.some(r => r.images.some(i => i.outcome === "picked"));
+    if (!box.classList.contains("ask")) box.placeholder = hasPick ? "Tell me what to change in the picked image…" : DEFAULT_PH;
+    clearTimeout(artTimer);
+    if (a && a.busy) artTimer = setTimeout(() => loadArt(id), 3000);
+  }
+
+  async function loadArt(id) {
+    if (!id) return;
+    try {
+      const j = await fetch(`${prefix}/api/art/${id}`).then(r => r.ok ? r.json() : Promise.reject(r));
+      const wasBusy = ui(id).data?.busy;
+      ui(id).data = j;
+      if (wasBusy && !j.busy) { artBalance = null; reloadPanel(); return; }
+    } catch { /* keep the last state */ }
+    if (id === selected) paintArt();
+  }
+
+  async function ensureOpts() {
+    if (!artOpts) artOpts = await fetch(`${prefix}/api/art/options`).then(r => r.json());
+    if (artBalance == null) fetch(`${prefix}/api/art/balance`).then(r => r.json()).then(j => { artBalance = j.credits; paintArt(); }).catch(() => {});
+  }
+
+  document.addEventListener("click", async e => {
+    const el = e.target.closest("[data-art]");
+    const host = el && el.closest("[data-art-idea]");
+    if (!host) return;
+    const id = host.dataset.artIdea, u = ui(id), k = el.dataset.art, v = el.dataset.v;
+    if (k === "full") return;                       // open full size, don't pick
+    e.preventDefault(); e.stopPropagation();
+    u.err = "";
+    try {
+      if (k === "build") { u.mode = "setup"; await ensureOpts(); }
+      else if (k === "cancel") u.mode = "idle";
+      else if (k === "card") {
+        if (u.cards.includes(v)) u.cards = u.cards.filter(x => x !== v);
+        else if (u.cards.length < 2) u.cards.push(v);
+        else u.err = "Two cards at most in a round. Unselect one first.";
+      }
+      else if (k === "chip") { const g = el.dataset.g; u.chips[g] = u.chips[g] === v ? undefined : v; }
+      else if (k === "go") {
+        el.disabled = true;
+        const chips = Object.fromEntries(Object.entries(u.chips).filter(([, x]) => x));
+        u.data = await post(`${prefix}/api/art/${id}/rounds`, {cards: u.cards, chips, engine: u.engine || artOpts.default_engine});
+        u.mode = "idle"; u.cards = []; u.chips = {};
+        reloadPanel();                                // bank row gets its "Art" badge
+      }
+      else if (k === "pick") u.data = await post(`${prefix}/api/art/images/${v}/pick`);
+      else if (k === "approve") { u.data = await post(`${prefix}/api/art/${id}/approve`, {image_id: Number(v)}); await loadChat(); reloadPanel(); return; }
+    } catch (err) {
+      try { u.err = (await err.json()).detail || "That did not work."; } catch { u.err = "That did not work."; }
+    }
+    paintArt();
+  });
+  document.addEventListener("keydown", e => {
+    const el = e.target.closest?.('[data-art][role="button"]');
+    if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); el.click(); }
+  });
+  document.addEventListener("change", e => {
+    const el = e.target.closest('[data-art="engine"]'); const box = el && el.closest("[data-art-idea]");
+    if (box) { ui(box.dataset.artIdea).engine = el.value; paintArt(); }
+  });
+
+  function renderDetails() {
+    const d = selected && data()[selected];
+    if (!d) selected = null;
+    panel.querySelectorAll("[data-id]").forEach(el => {
+      const on = el.dataset.id === selected;
+      el.classList.toggle("sel", on);
+      el.querySelector('[data-action="select"]')?.setAttribute("aria-pressed", on);
+    });
+    panel.querySelectorAll(".ev-inline").forEach(x => x.remove());
+    if (narrow.matches) {
+      const host = d && panel.querySelector(`[data-id="${CSS.escape(selected)}"]`);
+      if (host) { const li = document.createElement("li"); li.className = "ev-inline"; li.innerHTML = detailHTML(d); host.after(li); }
+      details.innerHTML = "";
+    } else {
+      const same = details.dataset.showing === String(selected);
+      const keep = details.scrollTop;
+      details.innerHTML = d ? "<h2>Details</h2>" + detailHTML(d) : EMPTY;
+      details.dataset.showing = d ? String(selected) : "";
+      details.scrollTop = same ? keep : 0;
+    }
+    paintArt();
+    if (d && d.status === "approved") { ensureOpts().catch(() => {}); loadArt(selected); if (!prState[selected]) loadPrints(selected); }
+  }
+  narrow.addEventListener("change", renderDetails);
+
+  function render(messages) {
+    log.innerHTML = "";
+    for (const m of messages) {
+      const d = document.createElement("div");
+      d.className = "msg " + m.role + (m.role === "portal" && m.text.startsWith("Denied") ? " invite" : "");
+      d.textContent = m.text;
+      log.appendChild(d);
+    }
+    log.scrollTop = log.scrollHeight;
+  }
+  const loadChat = () => fetch("/api/chat").then(r => r.json()).then(j => render(j.messages));
+
+  function ask() { box.classList.add("ask"); box.placeholder = "Why not? (optional)"; box.focus(); }
+  function unask() { box.classList.remove("ask"); box.placeholder = DEFAULT_PH; }
+
+  function bubble(cls, html) {
+    log.querySelector(".hello")?.remove();
+    const d = document.createElement("div");
+    d.className = "msg " + cls; d.innerHTML = html; log.appendChild(d);
+    log.scrollTop = log.scrollHeight; return d;
+  }
+
+  // Replies come from the Claude CLI and take a few seconds: show Tony's line at once plus a thinking bubble.
+  async function say(text) {
+    if (!text.trim() || busy) return;
+    unask();
+    busy = true; send.disabled = true;
+    bubble("tony", esc(text));
+    const wait = bubble("portal thinking", `<i><b></b><b></b><b></b></i>Thinking`);
+    const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 90000);
+    try {
+      const r = await fetch("/api/chat", {method: "POST", headers: {"Content-Type": "application/json"}, signal: ctl.signal,
+        body: JSON.stringify({text, selected_idea_id: selected ? Number(selected) : null})});
+      if (!r.ok) throw r;
+      const j = await r.json();
+      render(j.messages);
+      if (j.refresh) reloadPanel(); else paintArt();
+    } catch (err) {
+      wait.className = "msg portal error";
+      wait.textContent = "No reply (the chat is offline or slow). Your message is kept; try again.";
+    } finally { clearTimeout(timer); busy = false; send.disabled = false; }
+  }
+
+  // tabs
+  document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", x === t));
+    document.querySelectorAll(".panel").forEach(p => p.hidden = p.id !== "panel-" + t.dataset.tab);
+    shell.classList.toggle("solo", t.dataset.tab !== "{{ tab.id }}");
+    if (t.dataset.tab === "art") loadPrints();
+  }));
+
+  // studio actions (delegated, survives panel reloads)
+  panel.addEventListener("click", async e => {
+    if (e.target.closest(".ev-inline")) return;
+    const b = e.target.closest("[data-action]") || e.target.closest(".idea .row");
+    if (!b) return;
+    const li = b.closest(".idea"); const id = li?.dataset.id;
+    const a = b.dataset.action || "select";
+    if (a === "select") {
+      const pick = b.closest("[data-id]")?.dataset.id;
+      selected = pick === selected && narrow.matches ? null : pick;   // phones: tap again to fold it away
+      renderDetails(); return;
+    }
+    b.disabled = true;
+    try {
+      if (a === "approve") { unask(); li.classList.add("out", "ok"); await post(`${prefix}/api/ideas/${id}/approve`); }
+      if (a === "deny") { li.classList.add("out"); await post(`${prefix}/api/ideas/${id}/deny`); await loadChat(); ask(); }
+      if (a === "refresh") { await post(`${prefix}/api/refresh`); }
+      await new Promise(r => setTimeout(r, 260));
+      await reloadPanel();
+    } catch (err) { b.disabled = false; li?.classList.remove("out", "ok"); }
+  });
+
+  // chat
+  document.getElementById("compose").addEventListener("submit", e => { e.preventDefault(); const t = box.value; box.value = ""; say(t); });
+  box.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); document.getElementById("compose").requestSubmit(); }
+    if (e.key === "Escape" && box.classList.contains("ask")) { unask(); say("skip"); } });
+  document.querySelectorAll("[data-say]").forEach(c => c.addEventListener("click", () => say(c.dataset.say)));
+  log.scrollTop = log.scrollHeight;
+  renderDetails();
+})();
+</script>
+</body>
+</html>

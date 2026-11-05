@@ -1,0 +1,73 @@
+{# Ikigai Digital Studio tab: stage 1 ideation. Rendered inside the shell, and alone via GET {{ prefix }}/panel #}
+{% set lane_label = {"rising": "Rising", "steady": "Steady", "test": "Test"} %}
+<div class="studio" data-prefix="{{ prefix }}">
+
+  <header class="meter">
+    <div class="nums">
+      <div class="num"><b>{{ s.shown }}</b><span>on list</span></div>
+      <div class="num"><b>{{ s.pool }}</b><span>pending</span></div>
+      <div class="num"><b>{{ s.banked }}</b><span>in bank</span></div>
+      <div class="num dim"><b>{{ s.room }}</b><span>room of {{ s.cap }}</span></div>
+    </div>
+    <div class="cap" title="{{ s.shown }} on list · {{ s.pool }} pending · {{ s.room }} free (cap {{ s.cap }})" aria-hidden="true">
+      {%- for k in range(s.cap) -%}
+        <i class="{% if k < s.shown %}on{% elif k < s.shown + s.pool %}wait{% endif %}"></i>
+      {%- endfor -%}
+    </div>
+    <div class="act">
+      <button class="btn ghost" data-action="refresh" {% if not s.pool %}disabled title="Nothing pending"{% endif %}>
+        <svg viewBox="0 0 20 20" width="15" height="15"><path d="M16 10a6 6 0 1 1-1.8-4.3M16 3.5v3.2h-3.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Refresh now <small>+{{ [s.batch, s.pool]|min }}</small>
+      </button>
+      <span class="when">{% if s.last_refresh %}last {{ s.last_refresh[:10] }} · weekly{% else %}weekly{% endif %}</span>
+      {% if s.pool_low %}<span class="low">Pool low · run research</span>{% endif %}
+    </div>
+  </header>
+
+  <section class="block">
+    <h2>Ideas <span class="count">{{ s.shown }}</span></h2>
+    <ol class="ideas" role="list">
+      {% for i in s.visible %}
+      {% set ev = i.evidence %}
+      <li class="idea lane-{{ i.lane }}{% if i.source == 'seed' %} is-seed{% endif %}" data-id="{{ i.id }}" style="--d:{{ loop.index0 }}">
+        <div class="row">
+          <span class="lane" title="{{ lane_label[i.lane] }}">{{ lane_label[i.lane] }}</span>
+          <button class="title" data-action="select" aria-pressed="false" aria-controls="details">
+            <span class="t">{{ i.title }}</span>
+            {% if i.description %}<span class="d">{{ i.description }}</span>{% endif %}
+          </button>
+          {% if i.source == 'seed' %}<span class="stamp" title="Tony's seed">Tony's seed</span>
+          {% elif ev.warning %}<span class="flag" title="{{ ev.warning }}">!</span>{% endif %}
+          {% if i.source != 'seed' %}<span class="score" title="Score">{{ i.score|round|int }}</span>{% endif %}
+          <div class="ctl">
+            <button class="yes" data-action="approve" aria-label="Approve {{ i.title }}" title="Approve">
+              <svg viewBox="0 0 20 20" width="16" height="16"><path d="M4.5 10.5l3.6 3.5 7.4-8" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="no" data-action="deny" aria-label="Deny {{ i.title }}" title="Deny">
+              <svg viewBox="0 0 20 20" width="16" height="16"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </li>
+      {% else %}
+      <li class="empty">
+        <svg viewBox="0 0 64 64" width="44" height="44"><path d="M50 18A22 22 0 1 0 54 34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+        <p>{% if s.pool %}Nothing on the list. Press <b>Refresh now</b>.{% else %}No ideas yet. Type a seed in the chat, or import a research batch.{% endif %}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="block bankblock">
+    <h2>Idea bank <span class="count">{{ s.banked }}</span></h2>
+    {% if s.bank %}
+    <ul class="bank" role="list">
+      {% for b in s.bank %}
+      <li class="banked lane-{{ b.lane }}" data-id="{{ b.id }}"><button class="pick" data-action="select" aria-pressed="false" aria-controls="details"><span class="dot"></span><span class="t">{{ b.title }}</span>{% if b.source == 'seed' %}<span class="stamp sm">seed</span>{% endif %}{% if b.art_state == 'approved' %}<span class="artpill ok">Art approved</span>{% elif b.art_state == 'in_progress' %}<span class="artpill">Art</span>{% endif %}<time>{{ (b.decided_at or '')[:10] }}</time></button></li>
+      {% endfor %}
+    </ul>
+    {% else %}<p class="muted">Approved ideas land here.</p>{% endif %}
+  </section>
+  {# Evidence for the Details panel (list + bank), read by the shell script after every render #}
+  <script type="application/json" id="studio-data">{{ s.details|tojson }}</script>
+</div>

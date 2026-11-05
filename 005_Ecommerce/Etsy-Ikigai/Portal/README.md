@@ -1,23 +1,60 @@
-# Ikigai Portal (scaffold)
+# Ikigai Portal
 
-Run locally: `pip install -r requirements.txt && python -m app.seed && uvicorn app.main:app --port 8800`, or `docker compose up --build`. Tests: `pytest`.
+Run locally (no install into the system Python needed):
+`uv run --no-project --with-requirements requirements.txt uvicorn app.main:app --port 8800`, then open http://127.0.0.1:8800.
+Or `pip install -r requirements.txt && uvicorn app.main:app --port 8800`, or `docker compose up --build`.
+Tests: `uv run --no-project --with-requirements requirements.txt python -m pytest -q`.
+Use a scratch database with `PORTAL_DB=/path/test.db` (default `data/portal.db`).
 
-## Status
-Working: 10-idea list, approve/deny with instant refill from pool, pool-low warning, prompt on approve, engine dropdown from config, step tracker per listing.
-Stubs (raise NotConfigured, step shows "blocked"): art engines, Upscayl, PhotoCraft mockups, resize, Drive/PDF package, listing text, Etsy draft.
+## Status (2026-11-04): stage 1 ideation + dashboard BUILT
+Build order (Tony): ideation/dashboard, then art generation, then upscale/resize, then production.
+
+Working:
+- Dashboard shell: main chat window always open on the right; tabs. "Ikigai Digital Studio" and (since 2026-11-05) Art are live; Production and Performance are placeholders marked "not built".
+- Idea list: one-line ideas with Rising / Steady / Test tag, score, warning flag; click a row for the evidence (buyer, now, who sells it, watch, sources). Approve (to the Idea Bank in the same tab, plus the placeholder art prompt row) / Deny (leaves the list).
+- Pool and cap: weekly refresh (on page load when 7 days have passed) and "Refresh now" ADD up to 10 pending ideas to the list, never replace. Hard cap 100 for list + pending; research imports stop at the cap and top back up after approvals/denials. Pool-low warning kept. Titles already seen (including denied) are never re-imported.
+- Chat (2026-11-04: real conversation via the Claude CLI, `app/assistant.py`): Tony writes in plain words and the reply comes from headless `claude -p` on this Mac (his Claude plan, no API key). Each call gets a compact dashboard snapshot (idea list with one-line evidence, bank, counts/cap, `data/Taste_Profile.md`, recent deny reasons, the idea open in Details via `selected_idea_id`) plus the last 20 chat messages. Flags: `-p --safe-mode --tools "" --strict-mcp-config --disable-slash-commands --no-session-persistence --output-format json --model sonnet --fallback-model haiku --system-prompt ...`, run from the temp folder, 60 s timeout (model/timeout in `config/settings.json`: `chat_model`, `chat_fallback_model`, `chat_timeout_s`, `chat_history`). Safe mode means no CLAUDE.md, hooks, plugins, MCP or claude-mem for Portal calls. The model has no tools; it can only ask for dashboard actions in one fenced JSON block `{"actions":[...]}` that the Portal validates and runs: `approve`, `deny` (+reason), `seed` (only accepted when Tony's message asks to add/seed an idea), `refresh`, `taste_note`, `none`; unknown types and bad ids/statuses are refused and reported. Plain chat text never becomes a seed. Remarks on taste/process become a `note` taste event (section "Tony's notes" in the profile). Local commands (no CLI call): `refresh`, `status`, `help`, `skip`, `seed: ...`. After a Deny the next message is saved as the reason and also answered by the CLI. CLI down or slow: a short plain error, the typed text stays in the history. The chat bar shows a "Thinking" bubble while waiting.
+- Taste learning: every approve / deny / deny note / seed / chat note is a row in `taste_events`; `data/Taste_Profile.md` and `.json` are rewritten after each one (`python -m app.taste` prints it). Also `GET /ikigai/api/taste`.
+- Research import (the research job runs outside the Portal and writes a JSON batch; see `app/import_ideas.py` for the format):
+  `python -m app.import_ideas --room` (how many fit), `python -m app.import_ideas batch.json`, or `POST /ikigai/api/ideas/import`.
+- Module: `app/studio.py` is self-contained; `studio.mount(app, con, settings, chat)` adds its routes under `/ikigai` and returns a Tab for a bigger dashboard. Sales channel is behind `app/channels.py` (`sales_channel` in settings; Etsy today).
+- DB migrates in place (new columns + tables added, old `proven` lane read as `steady`); `python -m app.seed` still works.
+
+## Status (2026-11-04): stage 2 idea to art BUILT
+Flow (Details panel of a banked idea, desktop right column or inline on phones):
+- **Build art** opens the setup: the 6 approved style cards (`config/style_cards.json`; CSS/SVG swatches drawn from each card's real Style_Profiles palette), up to 2 cards; optional chips, one per group: palette, single red accent toggle, mood, composition, texture/finish (greyed out when it suits none of the picked cards), subject treatment; engine dropdown from `config/engines.json`. No card = **Surprise me** (the prompt writer picks 2 cards that fit and says why).
+- **Prompt writer** (`app/art.py`, headless `claude -p` through `assistant.run_cli`, no tools, `--safe-mode`, model `art_writer_model`): idea + card fragments + live profile brushwork/paint behaviour/preserve/avoid (read from `../Creative_Inspiration/Style_Profiles/`, setting `style_profiles_dir`) + chips + taste stats -> one painterly prompt per image (scene, subject, composition, palette, paint behaviour, mood, constraints; no text, no artist/brand names, no "digital", no "in the style of"; the Portal also strips those and appends the no-text constraint). One retry on an unusable answer; failure = round failed, nothing spent.
+- **4 images** per round (2 cards x 2 varying composition, or 4 of one card; composition locked -> palette varies). Worker thread, credit check first (`kie.ai /chat/credit`; not enough = nothing spent), 4 kie.ai jobs in parallel, panel polls every 3 s and shows "Writing prompts" / "Painting n/4", then a 2x2 grid with collapsible prompts. Files: `<db folder>/art/<idea_id>/rNN_<slot>_<image id>.png` (real DB: `data/art/`, git-ignored, folders made at runtime). Served at `/ikigai/art-files/...` (path-checked).
+- **Pick** = click an image (others in the round become "passed"). **Feedback** in the chat: the chat gains action `art_iterate {idea_id, feedback, chips?}` -> 4 new variations of the picked image's card from its prompt + Tony's words (verbatim) + chip changes. `art_approve {idea_id, image_id?}` or the **Approve art** button -> idea shows **Art approved** (bank badge), "Production: not built yet". No rounds after approval.
+- **Oversight log** (Etsy individual human-oversight rule): table `art_log`, `GET /ikigai/api/art/{idea}/log` (link in the panel): round (engine, cards, chips Tony set, surprise, source images), every prompt (card, chips with who set them: tony/default/agent, source images), every image (file, kie task id), every pick, every feedback text, approval, round end with credits before/after. Also on `art_rounds`, `prompts` (kind `art`), `images` (round, slot, card, chips, outcome, approved).
+- **Taste**: picks, feedback and approvals are taste events (`art_pick`, `art_feedback`, `art_approve`); `Taste_Profile.md` gets "Art styles (picked vs passed on)" per card + chips on picked images + art feedback; the writer reads those stats.
+- Engines (all on kie.ai, same createTask/recordInfo API as `001_Architecture/Tools/Image-Generation/kie_image_gen.py`, 2:3 at 1K): **GPT Image 2 = default** (6 credits = $0.03/image, cheapest of the three, real round verified 2026-11-04), Nano Banana 2 (8 cr), Nano Banana Pro (18 cr). Keys from env or `~/.env-secrets` / `~/.mcp-secrets.env`, never printed. A restart marks running rounds failed (`art.recover`).
+- Tests: `tests/test_art.py` (fake writer, fake engine, sync worker; one test drives the real kie adapter against an httpx mock transport). No real calls in pytest.
+
+## Status (2026-11-05): stage 3 upscale + resize BUILT (`app/prints.py`, Art tab)
+- **Art tab** (no longer a placeholder): a gallery of every idea with approved art: the image, Upscale / Resize step pills (not started, queued, running, done, blocked, failed) with the step message in plain words, the design folder path, and a table of the 5 files (pixels, DPI, MB, how much was cut). **Run upscale + resize** (design name editable before the first run), **Run again** when done (replaces the files in the same folder). The Details panel of an approved idea shows the same status and button. Production tab stays "not built".
+- Optional auto-run after Approve art: `prints_auto_run` in settings (default false). Otherwise the approve message says "Next: Art tab, Run upscale + resize".
+- Pipeline: `config/pipeline.json` order is now generate_art, upscale, resize, mockups, ... Stage 3 runs the shared runner (`app/pipeline/__init__.py run_listing`, now with `lock`, `stop_after="resize"`, `extra` context) on a `listings` row per idea; `generate_art` checks the approved art, `upscale`/`resize` call `app/prints.py`. A restart marks queued/running steps failed ("run it again").
+- **Upscale**: Upscayl CLI `upscayl-ncnn`, model `upscale_model` = **remacri-4x** (chosen 2026-11-05 on the real Book Club Cat art: keeps impasto ridges and paper texture crisp; high-fidelity-4x softer, ultramix-balanced-4x adds a fake canvas-weave grid, digital-art-4x plastic and shifts colour pinker). One 4x pass (`upscale_passes` 1): a second 4x pass was tested and rejected (wiry, over-combed strokes). A 1024x1536 GPT Image 2 image becomes 4096x6144 in about 16 s; resize adds the last 1.76x with Lanczos, so real detail is about 170-230 ppi even though every file is full 300 DPI pixel size. Upscayl needs GPU access (run the Portal outside the Claude Code sandbox). Intermediate PNG: `data/upscaled/<idea_id>/<Name>_upscaled_<model>.png` (git-ignored).
+- **Resize**: the 5 sizes in `config/print_sizes.json` (verified against Tony's 00120 Pastel Waves printables): 2x3 24x36 = 7200x10800, 3x4 18x24 = 5400x7200, 4x5 24x30 = 7200x9000, 11x14 22x28 = 6600x8400, ISO A1 23.4x33.1 = 7020x9930. JPG quality 95, 300 DPI metadata (each file re-opened and checked). Never stretched or padded: crop to the ratio, then Lanczos. The crop is placed to cut the fewest rows holding subject (thin lines count; 1.5% margin), ties centred; each file reports cut %, by side, and subject cut % ("check by eye" when above 0.5%).
+- **Output**: `../Designs/<NNNNN>-<Name>/01-Printables/<Name>_<ratio>_<size>.jpg` (Tony's scaffold; other subfolders come with later steps). Number = next after the highest of `design_seq_floor` (120 = last Drive folder), the local Designs folders and earlier listings (`drive.next_sequence`); Drive is not called. Name = short Title Case from the idea title, editable. `*.jpg`/`*.png` are git-ignored repo-wide.
+- First real run: idea #3 -> `Designs/00121-Book Club Cat/01-Printables/` (5 JPGs, 15-26 MB each).
+- Routes: `GET /ikigai/api/prints`, `GET /ikigai/api/prints/{idea}`, `POST /ikigai/api/prints/{idea}/run {name?, redo?}`. Tests: `tests/test_prints.py` (fake Upscayl, real crop/resize/JPEG/DPI on tiny images).
+
+Still stubs (raise NotConfigured, step shows "blocked"): PhotoCraft mockups, Drive/PDF package, listing text, Etsy draft. No research job is scheduled yet; it is a Claude session (Alura MCP, Google Trends, etc.) that reads the taste profile and imports a batch.
 
 ## Connect on the Mac, in this order
 1. PhotoCraft CLI: prove it opens the mockup PSDs headless (`steps.mockups`).
-2. Upscayl CLI (`steps.upscale`).
-3. Verify the 5 print sizes from a live listing (`config/print_sizes.json`), then `steps.resize`.
+2. Upscayl CLI (`steps.upscale`): DONE 2026-11-05 (remacri-4x).
+3. Print sizes verified and `steps.resize` built: DONE 2026-11-05.
 4. Supply PDF + description templates, Drive credentials (`steps.package`, `steps.listing_text`).
-5. Engine adapters (`engines.run_prompt`), `.env` keys.
+5. Engine adapters: DONE for kie.ai (GPT Image 2 verified; Nano Banana 2 / Pro wired, not yet test-run).
 6. Etsy developer app, then `steps.etsy_draft`.
-Also pending: research job feeding `ideas.add_to_pool`, performance feedback into idea scoring, Frame TV variant, fidelity check on AI room mockups.
+Also pending: performance feedback into idea scoring, Frame TV variant, fidelity check on AI room mockups.
 
 ## Connection status (2026-10-25, Mac)
 - PhotoCraft: CONNECTED. `photocraft-cli` 0.16.0 opens the 3 mockup PSDs headless; smart-object art swap recipe still to build (`steps.mockups`).
-- Upscayl: CONNECTED via `upscayl-ncnn` (see TOOLBOX.md); models from /Applications/Upscayl.app. `steps.upscale` still to wire.
+- Upscayl: CONNECTED via `upscayl-ncnn` (see TOOLBOX.md); models from /Applications/Upscayl.app. `steps.upscale` wired 2026-11-05 (remacri-4x).
 - PDF: `pdfcraft-cli`; vectors: `vectorcraft-cli` (Illustrator equivalent).
 - Drive: CONNECTED. Login saved (info@borednomad.com, Agent OS Cloud project, Internal); `app/drive.py` lists the Ikigai folder and makes the next `NNNNN-Title` folder. PDF template still needed for `steps.package`.
 - Etsy API: waiting on Tony's developer app application.

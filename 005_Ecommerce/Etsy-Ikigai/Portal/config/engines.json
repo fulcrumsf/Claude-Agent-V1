@@ -1,10 +1,15 @@
 {
+  "default": "gpt-image-2",
+  "usd_per_credit": 0.005,
+  "aspect_ratio": "2:3",
+  "resolution": "1K",
   "engines": [
-    {"id": "nano-banana", "label": "Nano Banana", "provider": "fal", "env_key": "FAL_KEY"},
-    {"id": "nano-banana-2", "label": "Nano Banana 2", "provider": "fal", "env_key": "FAL_KEY"},
-    {"id": "nano-banana-pro", "label": "Nano Banana Pro", "provider": "fal", "env_key": "FAL_KEY"},
-    {"id": "flux", "label": "Flux", "provider": "fal", "env_key": "FAL_KEY"},
-    {"id": "gpt-image-2", "label": "GPT Image 2", "provider": "openai", "env_key": "OPENAI_API_KEY"}
+    {"id": "gpt-image-2", "label": "GPT Image 2", "provider": "kie", "model": "gpt-image-2-text-to-image",
+     "env_key": "KIE_API_KEY", "credits_per_image": 6, "output_format": null, "verified": "2026-11-04"},
+    {"id": "nano-banana-2", "label": "Nano Banana 2", "provider": "kie", "model": "nano-banana-2",
+     "env_key": "KIE_API_KEY", "credits_per_image": 8, "output_format": "png", "verified": null},
+    {"id": "nano-banana-pro", "label": "Nano Banana Pro", "provider": "kie", "model": "nano-banana-pro",
+     "env_key": "KIE_API_KEY", "credits_per_image": 18, "output_format": "png", "verified": null}
   ],
-  "note": "Edit this list to add engines. Model ids are placeholders; verify current ids before wiring adapters."
+  "note": "All three run through kie.ai (createTask + recordInfo, same API as 001_Architecture/Tools/Image-Generation/kie_image_gen.py). Credits per image are kie.ai's live public prices at 1K, read 2026-11-04 from https://api.kie.ai/client/v1/model-pricing/page (GPT Image 2 text-to-image 1K = 6, Nano Banana 2 1K = 8, Nano Banana Pro 1/2K = 18; 1 credit = $0.005). Model ids and params from docs.kie.ai. `default` = cheapest of the three; `verified` = date a real round succeeded. Re-check prices with Tool-Manager before trusting them."
 }

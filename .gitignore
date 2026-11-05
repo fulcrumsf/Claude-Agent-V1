@@ -108,3 +108,7 @@ graphify-out/
 *.onnx
 *.task
 001_Architecture/Tools/Video-Generation/Generic_Tools/models/.cache/
+
+# Ikigai listing mockup copies (large PSD/PNG sets; originals live in iCloud, see 005_Ecommerce/Etsy-Ikigai/Mockup_Originals_Locations.md) (Tony, 2026-10-27)
+005_Ecommerce/Etsy-Ikigai/001-Standard Package/
+005_Ecommerce/Etsy-Ikigai/002-Includes 1to1 Ratio/

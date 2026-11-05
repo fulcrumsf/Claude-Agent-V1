@@ -1,0 +1,114 @@
+{
+  "note": "V1 style cards approved by Tony 2026-11-04 (Style_Cards_Proposal). Fragments are the paint/texture language only: no subject, no palette, no artist or brand names. Brushwork, paint behaviour and palette details are read live from Creative_Inspiration/Style_Profiles/<id>*.md at prompt time; `sources` names those profiles. `avoid_drop` removes profile avoid items that clash with Tony's 'never vector-looking' rule.",
+  "global_avoid": ["vector-perfect edges", "plastic AI sheen", "smooth airbrush gradients", "3D rendering", "photorealism"],
+  "cards": [
+    {
+      "id": "linework_silhouette", "name": "Linework Silhouette", "sources": ["0001", "0006"],
+      "paint": "Flat matte shapes filled with hand-drawn contour stripes, slight hand wobble, paper or linen tooth.",
+      "motif": "stripes",
+      "fragment": "Contemporary minimalist gouache and ink on textured paper or coarse woven linen. Bold flat silhouettes densely patterned with hand-painted contour-following pinstripes and branching organic lines, subtle hand tremor and varied line spacing. Flat matte colour blocking, crisp graphic cut-out edges with organic imperfections, chalky dry-brush translucency inside dark fields, visible fibre tooth.",
+      "default_palette": "terracotta_charcoal", "default_texture": "chalky_paper",
+      "compositions": ["sweeping_edges", "centered_vignette", "tight_fill", "bottom_weighted", "split_horizon"],
+      "textures_ok": ["chalky_paper", "woven_linen", "scraped_spatter", "screenprint_matte"],
+      "avoid_drop": []
+    },
+    {
+      "id": "moonlit_storybook", "name": "Moonlit Storybook", "sources": ["0002"],
+      "paint": "Scraped-back matte layers, dry-brush scumbling and fine spatter; crisp shapes against a soft glow.",
+      "motif": "halo",
+      "fragment": "Magical realism storybook painting in matte gouache and textured oil. Distressed surface with vertical scraped lines, dry-brush scumbling and delicate paint spatter flecks, aged layered-print quality. Sharp graphic silhouettes with subtle volumetric shading against a softly glowing circular light; extreme scale contrast between a tiny focal figure and a massive form.",
+      "default_palette": "moonlit_teal", "default_texture": "scraped_spatter",
+      "compositions": ["split_horizon", "centered_vignette", "sweeping_edges", "bottom_weighted", "tight_fill"],
+      "textures_ok": ["scraped_spatter", "chalky_paper", "woven_linen", "halftone_stipple"],
+      "avoid_drop": []
+    },
+    {
+      "id": "hatched_folk", "name": "Hatched Mid-Century Folk", "sources": ["0003"],
+      "paint": "Flat opaque gouache with dry pencil hatching and linocut-like stripes; chalky, hand-pulled feel.",
+      "motif": "hatch",
+      "fragment": "Mid-century graphic gouache illustration on textured matte paper. Flat opaque fields with chalky cream stripe patterns, hand-drawn dry pencil hatching in vertical contoured strokes, sgraffito-style line drawing, crisp cut-out silhouettes with linocut-style imperfections, flat 2D perspective, minimal tonal shading, generous flat negative space.",
+      "default_palette": "sage_forest", "default_texture": "chalky_paper",
+      "compositions": ["centered_vignette", "bottom_weighted", "tight_fill", "sweeping_edges", "split_horizon"],
+      "textures_ok": ["chalky_paper", "woven_linen", "screenprint_matte", "halftone_stipple"],
+      "avoid_drop": []
+    },
+    {
+      "id": "palette_knife", "name": "Palette Knife Planes", "sources": ["0004"],
+      "paint": "Thick paint pulled flat with a knife: raised ridges between colour facets, drag streaks.",
+      "motif": "facets",
+      "fragment": "Heavy impasto oil and acrylic painting executed with wide flat palette-knife strokes and geometric colour blocking. Dense dimensional paint relief with sharp raised ridges between interlocking faceted planes, visible directional drag and scraping, subtle streaking of unmixed pigment, flat matte background quadrants.",
+      "default_palette": "pastel_burnt_orange", "default_texture": "knife_ridges",
+      "compositions": ["tight_fill", "centered_vignette", "sweeping_edges", "bottom_weighted", "split_horizon"],
+      "textures_ok": ["knife_ridges", "woven_linen", "scraped_spatter"],
+      "avoid_drop": []
+    },
+    {
+      "id": "flat_poster", "name": "Flat Poster Block", "sources": ["0005", "0008"],
+      "paint": "Solid opaque shapes, sharp curved edges, no shading; real paper grain and slight misregistration.",
+      "motif": "blocks",
+      "fragment": "Mid-century minimalist graphic painting in flat opaque designer gouache with a screenprint feel on matte paper. Bold simplified curvilinear and geometric silhouettes, razor-sharp hard edges, solid colour fields with no gradients or shading, generous unbroken negative space. Hand-pulled print character: faint paper grain, slight ink density variation and a hair of edge misregistration, never vector-perfect.",
+      "default_palette": "terracotta_charcoal", "default_texture": "screenprint_matte",
+      "compositions": ["bottom_weighted", "centered_vignette", "tight_fill", "sweeping_edges", "split_horizon"],
+      "textures_ok": ["screenprint_matte", "chalky_paper", "halftone_stipple", "woven_linen"],
+      "avoid_drop": ["brush stroke texture", "loose painterly splatters", "complex detailed textures"]
+    },
+    {
+      "id": "ink_spot", "name": "Ink Line + Spot Colour", "sources": ["0009"],
+      "paint": "Fine even black ink contours on warm paper, one bright spot colour as fills and stipple dots.",
+      "motif": "linedot",
+      "fragment": "Minimalist graphic screenprint illustration: crisp continuous black ink contour lines of even medium-thin weight on warm cream paper. Accents filled with a single punchy spot colour, as flat solid fills and fine stippled halftone dots. Hard clean edges, no gradients, expansive quiet negative space, refined retro editorial poster feel, faint paper grain.",
+      "default_palette": "cream_spot", "default_texture": "halftone_stipple",
+      "compositions": ["centered_vignette", "split_horizon", "bottom_weighted", "sweeping_edges", "tight_fill"],
+      "textures_ok": ["halftone_stipple", "screenprint_matte", "chalky_paper"],
+      "avoid_drop": ["painterly brush textures"]
+    }
+  ],
+  "chip_groups": [
+    {"id": "palette", "label": "Palette", "chips": [
+      {"id": "terracotta_charcoal", "label": "Terracotta & Charcoal", "colors": ["#D35222", "#1D1917", "#E6D7C3"], "text": "a warm earthy palette of burnt terracotta, deep warm charcoal black and a soft cream ground"},
+      {"id": "sage_forest", "label": "Sage & Forest", "colors": ["#5D7A58", "#204627", "#EDE6CE"], "text": "muted sage green, deep forest green and dense charcoal on warm cream ivory, with a little soft ochre"},
+      {"id": "moonlit_teal", "label": "Moonlit Teal", "colors": ["#244D55", "#122E35", "#E3DCB8"], "text": "deep moonlit teal, slate blue-green and dark oceanic navy with a pale moonlight-cream glow"},
+      {"id": "marigold_primaries", "label": "Marigold Primaries", "colors": ["#F5B01D", "#E83A1A", "#3E7DB9"], "text": "marigold yellow, vivid poppy red, cerulean blue and deep slate navy on warm off-white"},
+      {"id": "pastel_burnt_orange", "label": "Pastel + Burnt Orange", "colors": ["#DC6414", "#9C92A7", "#E8DDD7"], "text": "vibrant burnt orange against dusty lilac grey, muted slate teal, warm ochre and chalky blush white, anchored by deep black"},
+      {"id": "cream_spot", "label": "Cream + One Spot Colour", "colors": ["#EBE5D6", "#EE3E1E", "#1B1817"], "text": "warm cream paper, ink black line work and one single punchy spot colour"}
+    ]},
+    {"id": "accent", "label": "Accent", "toggle": true, "chips": [
+      {"id": "red_pop", "label": "Single red pop", "colors": ["#D82A21"], "text": "one single small saturated vermilion red accent as the only bright note in the picture"}
+    ]},
+    {"id": "mood", "label": "Mood", "chips": [
+      {"id": "serene", "label": "Serene", "text": "a serene, quiet, eyes-closed calm"},
+      {"id": "dreamy", "label": "Dreamy", "text": "a dreamy, softly magical, night-time wonder"},
+      {"id": "cheeky", "label": "Cheeky", "text": "a cheeky, playful, slightly mischievous charm"},
+      {"id": "joyful", "label": "Joyful", "text": "a joyful, buoyant, dancing energy"},
+      {"id": "bold", "label": "Bold", "text": "a bold, confident, graphic presence"},
+      {"id": "contemplative", "label": "Contemplative", "text": "a still, contemplative, inward mood"}
+    ]},
+    {"id": "composition", "label": "Composition", "chips": [
+      {"id": "centered_vignette", "label": "Centered + big space", "text": "a centred vignette floating in generous empty negative space"},
+      {"id": "bottom_weighted", "label": "Bottom-weighted, cropped", "text": "bottom-weighted, the main shape large and cropped by the bottom edge, open space above"},
+      {"id": "sweeping_edges", "label": "Sweeping off the edges", "text": "large forms sweeping in from and off the edges of the frame"},
+      {"id": "split_horizon", "label": "Split horizon + scale", "text": "a split horizon with extreme scale contrast between a tiny focal subject and a vast form"},
+      {"id": "tight_fill", "label": "Tight frame fill", "text": "the subject filling the frame tightly, close and cropped"}
+    ]},
+    {"id": "texture", "label": "Texture / finish", "chips": [
+      {"id": "chalky_paper", "label": "Chalky paper tooth", "text": "chalky matte gouache on toothy cold-press paper, dry edges where the brush ran out"},
+      {"id": "woven_linen", "label": "Woven linen", "text": "paint sitting on coarse woven linen, the weave showing through thin passages"},
+      {"id": "scraped_spatter", "label": "Scraped + spattered", "text": "a scraped-back, distressed surface with fine paint spatter and dry-brush scumbling"},
+      {"id": "knife_ridges", "label": "Raised knife ridges", "text": "thick palette-knife paint with raised ridges and drag marks catching the light"},
+      {"id": "screenprint_matte", "label": "Clean screenprint matte", "text": "a hand-pulled screenprint finish, flat matte ink with slight density variation and faint paper grain"},
+      {"id": "halftone_stipple", "label": "Halftone stipple", "text": "fine hand-stippled halftone dots and printed ink texture"}
+    ]},
+    {"id": "treatment", "label": "Subject treatment", "chips": [
+      {"id": "dressed_character", "label": "Dressed character", "text": "the subject as a charming anthropomorphic, dressed character"},
+      {"id": "pure_silhouette", "label": "Pure silhouette", "text": "the subject as a pure, simplified solid silhouette"},
+      {"id": "pattern_filled", "label": "Pattern-filled body", "text": "the subject's body filled with hand-painted contour patterns"},
+      {"id": "faceted_planes", "label": "Faceted planes", "text": "the subject built from faceted, interlocking colour planes"},
+      {"id": "tiny_figure", "label": "Tiny figure, big world", "text": "the subject small within a vast, quiet setting"},
+      {"id": "contour_line", "label": "Contour-line figure", "text": "the subject drawn as a continuous contour-line figure with spot-colour fills"}
+    ]}
+  ],
+  "subject_defaults": {
+    "animal": {"cards": ["flat_poster", "hatched_folk"], "hint": "animal subject: Flat Poster Block + Hatched Mid-Century Folk, Cheeky mood, Bottom-weighted, single red pop"},
+    "seasonal": {"cards": ["ink_spot", "moonlit_storybook"], "hint": "seasonal subject: Ink Line + Spot Colour + Moonlit Storybook, spot colour = the event colour, Centered + big space"}
+  }
+}

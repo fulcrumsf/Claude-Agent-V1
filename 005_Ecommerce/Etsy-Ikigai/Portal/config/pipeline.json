@@ -1,5 +1,22 @@
 {
-  "steps": ["generate_art", "upscale", "mockups", "resize", "package", "listing_text", "etsy_draft"],
-  "mockup_slots": ["hero", "video", "poster_flat", "detail_zoom_20x", "room_scenes"],
-  "frame_tv_variant": {"enabled": false, "todo": "research price and spec from existing Frame TV listings"}
+  "steps": [
+    "generate_art",
+    "upscale",
+    "resize",
+    "mockups",
+    "package",
+    "listing_text",
+    "etsy_draft"
+  ],
+  "mockup_slots": [
+    "hero",
+    "video",
+    "poster_flat",
+    "detail_zoom_20x",
+    "room_scenes"
+  ],
+  "frame_tv_variant": {
+    "enabled": false,
+    "todo": "research price and spec from existing Frame TV listings"
+  }
 }

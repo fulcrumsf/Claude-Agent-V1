@@ -26,6 +26,12 @@ Zero marginal production cost per sale (digital-only) makes this the structurall
 
 Brief: `Ikigai_Portal_Pipeline_Brief.md`. Code: `Portal/` (FastAPI, SQLite, Docker; tool steps are stubs until connected on the Mac, see `Portal/README.md`). Pinterest style dumps: `Creative_Inspiration/`. Nothing publishes without Tony; Etsy listings are drafts only.
 
+## Etsy Rules Bible (added 2026-11-04)
+`Etsy_Rules_Bible.md`: sourced summary of Etsy's AI, listing, digital-item, automation and EU/UK rules, with a checklist at the top and ranked risks for this shop. Read it before any listing or automation work; re-pull monthly and before building (Etsy changed these pages Jul-Oct 2026).
+
+## Niche Research Methods (added 2026-11-04)
+`Niche_Research_Methods.md`: what experienced sellers do to find and validate print niches (patterns, real wall-art examples, validation signals, mistakes, seasonality, candidate skills). Read it before designing or running the idea engine. It is guidance on how to think, not a formula.
+
 ## Etsy reference links (keep current, added 2026-10-25)
 - Etsy Open API v3 docs: https://developers.etsy.com/documentation/ (developer app application still to file; next task).
 - Etsy Seller Handbook: https://www.etsy.com/seller-handbook. Etsy keeps changing AI and seller policies; pull the latest before any listing/automation work and on a regular schedule so Tony never risks a ban. Follow handbook best practices in the Portal listing text and AI disclosure.

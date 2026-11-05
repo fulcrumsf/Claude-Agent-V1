@@ -1,3 +1,6 @@
+"""Dashboard shell: main chat window (always open) + tabs. Today only the Ikigai Digital Studio tab is built;
+it is a self-contained module (app/studio.py) mounted with one call, so the same shell can later host
+other business modules (content, POD, affiliate...)."""
 import threading
 from pathlib import Path
 
@@ -5,8 +8,9 @@ from fastapi import FastAPI, Form, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
-from . import engines, ideas
-from .db import connect, load_config
+from . import chat as chat_mod
+from . import engines, studio
+from .db import DB_LOCK, connect, load_config
 from .pipeline import run_listing
 
 app = FastAPI(title="Ikigai Portal")
@@ -14,35 +18,29 @@ templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 con = connect()
 settings = load_config("settings")
 
+chat = chat_mod.Chat(con)
+app.include_router(chat_mod.router(chat))
+ikigai = studio.mount(app, con, settings, chat)
 
-def home():
-    return RedirectResponse("/", status_code=303)
+# Tabs not built yet are shown as placeholders so the layout is final.
+# The Art tab (stage 3: approved art -> upscale + resize) is built into index.html and reads /ikigai/api/prints.
+PLACEHOLDERS = [
+    {"id": "production", "label": "Production", "note": "Mockups, listing text, Drive/PDF package, Etsy draft."},
+    {"id": "performance", "label": "Performance", "note": "Sales and search feedback into idea scoring."},
+]
 
 
 @app.get("/")
 def index(request: Request):
-    ideas.fill_visible(con, settings["visible_ideas"])
-    rows = con.execute("SELECT * FROM ideas WHERE status IN ('shown','approved') ORDER BY status, score DESC").fetchall()
-    prompts = con.execute("SELECT p.*, i.title FROM prompts p JOIN ideas i ON i.id=p.idea_id ORDER BY p.id DESC").fetchall()
-    listings = con.execute("SELECT * FROM listings ORDER BY id DESC").fetchall()
-    steps = con.execute("SELECT * FROM steps ORDER BY listing_id, id").fetchall()
-    pool = ideas.pool_count(con)
+    with DB_LOCK:
+        prompts = con.execute("SELECT COUNT(DISTINCT idea_id) FROM ideas i JOIN prompts p ON p.idea_id=i.id "
+                              "WHERE i.status='approved' AND i.art_state<>'approved'").fetchone()[0]
     return templates.TemplateResponse(request, "index.html", {
-        "ideas": rows, "prompts": prompts, "engines": engines.list_engines(), "listings": listings,
-        "steps": steps, "pool": pool, "pool_low": pool < settings["pool_low_warning"]})
+        "tab": ikigai, "s": ikigai.context(), "prefix": ikigai.prefix, "placeholders": PLACEHOLDERS,
+        "prompts_waiting": prompts, "messages": chat.history()})
 
 
-@app.post("/ideas/{idea_id}/approve")
-def approve(idea_id: int):
-    ideas.approve(con, idea_id)
-    return home()
-
-
-@app.post("/ideas/{idea_id}/deny")
-def deny(idea_id: int):
-    ideas.deny(con, idea_id, settings["visible_ideas"])
-    return home()
-
+# ---- later stages (kept from the scaffold; UI for them arrives with the Art / Production tabs) ----
 
 @app.post("/prompts/{prompt_id}/run")
 def run(prompt_id: int, engine: str = Form(...)):
@@ -51,7 +49,7 @@ def run(prompt_id: int, engine: str = Form(...)):
         engines.run_prompt(engine, p["text"])
     except Exception as e:  # noqa: BLE001
         print("run_prompt:", e)
-    return home()
+    return RedirectResponse("/", status_code=303)
 
 
 @app.post("/listings/produce")
@@ -60,4 +58,4 @@ def produce(idea_id: int = Form(...), image_id: int = Form(...)):
                       (idea_id, image_id, None, settings["price_default"]))
     con.commit()
     threading.Thread(target=run_listing, args=(connect(), cur.lastrowid, load_config("pipeline")), daemon=True).start()
-    return home()
+    return RedirectResponse("/", status_code=303)

@@ -36,8 +36,8 @@ TOKEN_URL = "https://api.etsy.com/v3/public/oauth/token"
 
 
 def key_var(name):
-    """Each Etsy login owns its own app. borednomad uses the original app's keys."""
-    return "ETSY_CLIENT_ID" if name == "borednomad" else f"ETSY_{name.upper()}_CLIENT_ID"
+    """Each Etsy login owns its own app: ETSY_<NAME>_CLIENT_ID (e.g. ETSY_BOREDNOMAD_, ETSY_IKIGAI_)."""
+    return f"ETSY_{name.upper()}_CLIENT_ID"
 
 
 def keystring(name):

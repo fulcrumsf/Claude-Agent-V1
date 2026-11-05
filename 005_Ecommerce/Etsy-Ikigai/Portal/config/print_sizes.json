@@ -1,11 +1,36 @@
 {
-  "todo": "Read the 5 real sizes from a live Ikigai listing, then fill in. Placeholders below are NOT verified.",
+  "verified": "2026-11-05: pixel sizes and file names match Tony's real 00120-Pastel Waves/01-Printables (7200x10800, 5400x7200, 7200x9000, 6600x8400, 7020x9930). Those originals carry 72 DPI metadata; the Portal writes 300.",
   "dpi": 300,
   "sizes": [
-    {"name": "2x3", "w_in": 24, "h_in": 36},
-    {"name": "3x4", "w_in": 18, "h_in": 24},
-    {"name": "4x5", "w_in": 16, "h_in": 20},
-    {"name": "11x14", "w_in": 11, "h_in": 14},
-    {"name": "ISO_A", "w_in": 11.69, "h_in": 16.54}
+    {
+      "ratio": "2x3",
+      "size": "24x36",
+      "w_in": 24,
+      "h_in": 36
+    },
+    {
+      "ratio": "3x4",
+      "size": "18x24",
+      "w_in": 18,
+      "h_in": 24
+    },
+    {
+      "ratio": "4x5",
+      "size": "24x30",
+      "w_in": 24,
+      "h_in": 30
+    },
+    {
+      "ratio": "11x14",
+      "size": "22x28",
+      "w_in": 22,
+      "h_in": 28
+    },
+    {
+      "ratio": "ISO_A1",
+      "size": "23.4x33.1",
+      "w_in": 23.4,
+      "h_in": 33.1
+    }
   ]
 }
