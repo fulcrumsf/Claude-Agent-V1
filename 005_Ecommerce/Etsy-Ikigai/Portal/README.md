@@ -41,7 +41,7 @@ Flow (Details panel of a banked idea, desktop right column or inline on phones):
 - First real run: idea #3 -> `Designs/00121-Book Club Cat/01-Printables/` (5 JPGs, 15-26 MB each).
 - Routes: `GET /ikigai/api/prints`, `GET /ikigai/api/prints/{idea}`, `POST /ikigai/api/prints/{idea}/run {name?, redo?}`. Tests: `tests/test_prints.py` (fake Upscayl, real crop/resize/JPEG/DPI on tiny images).
 
-Still stubs (raise NotConfigured, step shows "blocked"): PhotoCraft mockups, Drive/PDF package, listing text, Etsy draft. No research job is scheduled yet; it is a Claude session (Alura MCP, Google Trends, etc.) that reads the taste profile and imports a batch.
+Mockups (partly built 2026-11-05, `app/mockups.py`): slots 1, 2, 7 are made from the PSDs with photocraft-cli (art pre-fitted to the smart object's native size) and fixed slots 3-6 and 20 are copied, into `<design>/03-Etsy Images/`; room mockups 8-19 and the video(s) are not built. Still stubs (raise NotConfigured, step shows "blocked"): Drive/PDF package, listing text, Etsy draft. No research job is scheduled yet; it is a Claude session (Alura MCP, Google Trends, etc.) that reads the taste profile and imports a batch.
 
 ## Connect on the Mac, in this order
 1. PhotoCraft CLI: prove it opens the mockup PSDs headless (`steps.mockups`).
@@ -53,7 +53,7 @@ Still stubs (raise NotConfigured, step shows "blocked"): PhotoCraft mockups, Dri
 Also pending: performance feedback into idea scoring, Frame TV variant, fidelity check on AI room mockups.
 
 ## Connection status (2026-10-25, Mac)
-- PhotoCraft: CONNECTED. `photocraft-cli` 0.16.0 opens the 3 mockup PSDs headless; smart-object art swap recipe still to build (`steps.mockups`).
+- PhotoCraft: CONNECTED. `photocraft-cli` 0.16.0 opens the 3 mockup PSDs headless; smart-object art swap built in `app/mockups.py` (`replaceContents`, art fitted to native size first).
 - Upscayl: CONNECTED via `upscayl-ncnn` (see TOOLBOX.md); models from /Applications/Upscayl.app. `steps.upscale` wired 2026-11-05 (remacri-4x).
 - PDF: `pdfcraft-cli`; vectors: `vectorcraft-cli` (Illustrator equivalent).
 - Drive: CONNECTED. Login saved (info@borednomad.com, Agent OS Cloud project, Internal); `app/drive.py` lists the Ikigai folder and makes the next `NNNNN-Title` folder. PDF template still needed for `steps.package`.

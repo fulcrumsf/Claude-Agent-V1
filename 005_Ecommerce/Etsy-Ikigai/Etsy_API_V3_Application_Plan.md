@@ -424,3 +424,10 @@ Every listing image file is named with the number of the slot it occupies. Alway
 - Not built yet: automatic research job, chat answering with a model, Art/Production/Performance tabs.
 - Run locally: `http://localhost:8800` (uv command in `Portal/README.md`). Do NOT run `app/seed.py`: it inserts placeholder ideas.
 - Next: import the first real researched batch (research agent running), then stage 2: art generation.
+
+## MOCKUP STEP PARTLY BUILT (2026-11-05)
+- `Portal/app/mockups.py`: slots 1, 2, 7 built from the PSDs with photocraft-cli `layer.smartObjects.replaceContents`. That command does not scale, so the art is cover-cropped (centre) and resized to the smart object's native size first (main 1931x2732, poster 1664x2348, detail 3039x3031; read at run time). Fixed slots 3, 4, 5, 6, 20 are copied with the slot-number names. Output: `Designs/<NNNNN>-<Name>/03-Etsy Images/` (git-ignored images).
+- Detail PNG came out 27 MB (Etsy limit 20 MB), so over 19 MB it is saved as `07_Detail.jpg` (q95, 2.7 MB).
+- Source art is the ISO A1 print JPG. Detail crops a centre square (about 30% of the art cut); Tony to confirm that is how he wants the detail zoom framed.
+- Not built: room mockups 8-19 (AI, with the aspect-ratio and fidelity checks) and the video(s). 1:1 variants of slots 4/5 not wired (rare).
+- Proven on 00121 Book Club Cat; 55 Portal tests pass.
