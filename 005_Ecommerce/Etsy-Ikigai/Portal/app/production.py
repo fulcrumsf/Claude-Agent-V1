@@ -9,6 +9,7 @@ from . import mockups, prints
 from .db import DB_LOCK as LOCK
 
 FIXED_NAMES = {n for n, _ in mockups.FIXED}
+TEMPLATED_SLOTS = {int(stem[:2]) for stem, _ in mockups.GENERATED}     # 1, 2, 7: art in a PSD, not reviewed here
 DECISIONS = ("approved", "denied", "pending")
 LABELS = {1: "Main", 2: "Poster", 7: "Detail"}
 
@@ -35,8 +36,9 @@ def design(con, settings, idea_id, prefix="/ikigai"):
         return out
     folder = _images_dir(settings, lst)
     approvals = rec.get("mockup_approvals") or {}
-    files = sorted(p for p in folder.glob("*") if p.suffix.lower() in (".jpg", ".png")
-                   and p.name not in FIXED_NAMES and p.name[:2].isdigit()) if folder.is_dir() else []
+    files = sorted(p for p in folder.glob("*.jpg")                      # JPG only; templated slots stay out of sight
+                   if p.name not in FIXED_NAMES and p.name[:2].isdigit()
+                   and int(p.name[:2]) not in TEMPLATED_SLOTS) if folder.is_dir() else []
     made = {f["file"]: f for f in (rec.get("mockups") or {}).get("files", [])}
     for p in files:
         mb = round(p.stat().st_size / 1e6, 1)
@@ -69,7 +71,8 @@ def image_path(con, settings, idea_id, name):
 def decide(con, settings, idea_id, name, decision):
     if decision not in DECISIONS:
         raise ValueError("decision must be approved, denied or pending")
-    if image_path(con, settings, idea_id, name) is None or name in FIXED_NAMES:
+    if (image_path(con, settings, idea_id, name) is None or name in FIXED_NAMES or not name.lower().endswith(".jpg")
+            or int(name[:2]) in TEMPLATED_SLOTS):
         raise KeyError(name)
     with LOCK:
         lst = prints.listing_for(con, idea_id)
@@ -80,3 +83,32 @@ def decide(con, settings, idea_id, name, decision):
         else:
             ap[name] = decision
         prints._save_record(con, lst["id"], rec)
+
+
+# ---------- the one "Run mockups" button (Art tab) ----------
+
+def start(con, settings, idea_id):
+    """Queue the mockups step for a design whose print sizes are done. Returns the listing id."""
+    with LOCK:
+        lst = prints.listing_for(con, idea_id)
+        if lst is None:
+            raise prints.PrintError("run upscale + resize first")
+        st = prints.step_map(con, lst["id"])
+        if any(st.get(n, {}).get("status") != "done" for n in ("upscale", "resize")):
+            raise prints.PrintError("run upscale + resize first, then mockups")
+        if st.get("mockups", {}).get("status") in ("queued", "running"):
+            raise prints.PrintError("mockups are already running for this design")
+        con.execute("INSERT OR IGNORE INTO steps(listing_id, name) VALUES (?,?)", (lst["id"], "mockups"))
+        con.execute("UPDATE steps SET status='queued', message='' WHERE listing_id=? AND name='mockups'", (lst["id"],))
+        con.commit()
+        return lst["id"]
+
+
+def run(con, settings, lid, mockup_build=None):
+    """Worker: the shared pipeline runner, stopped after mockups (earlier steps are already done)."""
+    from .db import load_config
+    from .pipeline import run_listing
+    extra = {"settings": settings}
+    if mockup_build:
+        extra["mockup_build"] = mockup_build
+    return run_listing(con, lid, load_config("pipeline"), lock=LOCK, stop_after="mockups", extra=extra)

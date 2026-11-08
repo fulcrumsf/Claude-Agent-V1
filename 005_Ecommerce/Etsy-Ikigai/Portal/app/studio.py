@@ -208,7 +208,7 @@ def panel_context(con, settings):
 
 
 def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None, adapter=None, spawn=None,
-          upscayl=None):
+          upscayl=None, mockup_build=None):
     """`writer` (prompt text -> raw reply), `adapter` (engine id -> engine adapter), `spawn` (run a worker)
     and `upscayl` (one Upscayl pass: src, out, settings) are injectable for tests; defaults are the Claude CLI,
     kie.ai, a daemon thread and the real upscayl-ncnn."""
@@ -392,6 +392,15 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
     @r.get("/api/production")
     def api_production():
         return {"items": production.overview(con, settings, prefix)}
+
+    @r.post("/api/mockups/{idea_id}/run")
+    def api_mockups_run(idea_id: int):
+        try:
+            lid = production.start(con, settings, idea_id)
+        except prints.PrintError as e:
+            raise HTTPException(422, str(e))
+        spawn(production.run, con, settings, lid, mockup_build)
+        return prints.status(con, idea_id, settings, prefix)
 
     @r.get("/api/production/{idea_id}/file/{name}")
     def api_production_file(idea_id: int, name: str):

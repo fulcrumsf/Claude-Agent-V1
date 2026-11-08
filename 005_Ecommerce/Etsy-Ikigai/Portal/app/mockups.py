@@ -30,7 +30,7 @@ FIXED = [("03_Instant_Download.png", "03_Instant_Download.png"),
          ("05_Wall_Size_Guide.png", "06_Wall_Art_Size_Guide.png"),
          ("06_Important_Notes.png", "05_Important_Notes.png"),
          ("20_Customer_Reviews.png", "06A_Customer_Reviews.png")]
-STILL_TO_BUILD = "the video(s) are not built yet (Etsy only takes videos by hand)"
+STILL_TO_BUILD = "room mockups and the videos are not made by this button yet"
 
 
 def _cfg(settings, key):
@@ -98,19 +98,21 @@ ETSY_MAX_MB = 19   # Etsy rejects listing images over 20 MB
 
 
 def _place(rendered, dest):
-    """Copy a rendered PNG into the design folder. Over the Etsy limit it is written as a high-quality JPG
-    instead (same slot number, .jpg). Nothing is ever deleted: the render lives in a temp folder."""
-    if rendered.stat().st_size <= ETSY_MAX_MB * 1e6:
-        shutil.copyfile(rendered, dest)
-        return dest
+    """Save a rendered PNG into the design folder as a JPG (the only format uploaded to Etsy), quality 95,
+    lowered only if the file would pass Etsy's size limit. `dest` may end in .png; the result is .jpg.
+    The render lives in a temp folder, so nothing is ever deleted."""
     from PIL import Image
     jpg = dest.with_suffix(".jpg")
     with Image.open(rendered) as im:
-        im.convert("RGB").save(jpg, "JPEG", quality=95, dpi=(72, 72))
+        rgb = im.convert("RGB")
+        for q in (95, 92, 88, 84, 80):
+            rgb.save(jpg, "JPEG", quality=q, dpi=(72, 72), optimize=True)
+            if jpg.stat().st_size <= ETSY_MAX_MB * 1e6:
+                break
     return jpg
 
 
-def build(folder, settings, adapter=None, rooms=True):
+def build(folder, settings, adapter=None, rooms=None):
     """Make slots 1, 2, 7 and copy the fixed images into <folder>/03-Etsy Images. Returns the record dict."""
     templates = _abs(_cfg(settings, "mockup_templates"))
     if not templates.is_dir():
@@ -142,6 +144,8 @@ def build(folder, settings, adapter=None, rooms=True):
     for out_name, src_name in FIXED:
         shutil.copy2(templates / src_name, out_dir / out_name)
         made.append({"file": out_name, "slot": int(out_name[:2]), "fixed": True})
+    if rooms is None:
+        rooms = bool((settings or {}).get("mockup_rooms", False))   # off until Tony approves the new room recipe
     if rooms:
         from . import rooms as rooms_mod
         if adapter is None:

@@ -18,13 +18,13 @@ def test_fit_art_cover_crops_never_stretches(tmp_path):
     assert mockups.fit_art(src, (1931, 2732), dest) < 0.01   # same shape as the frame: nothing cropped
 
 
-def test_place_png_under_limit_and_jpg_over_limit(tmp_path, monkeypatch):
+def test_place_always_writes_a_jpg_under_the_limit_and_keeps_the_render(tmp_path, monkeypatch):
     png = tmp_path / "r.png"
     Image.new("RGB", (50, 50), "blue").save(png)
-    assert mockups._place(png, tmp_path / "01.png").suffix == ".png"
-    monkeypatch.setattr(mockups, "ETSY_MAX_MB", 0)
-    out = mockups._place(png, tmp_path / "07.png")
-    assert out.suffix == ".jpg" and out.is_file()
+    out = mockups._place(png, tmp_path / "01_Main_Mockup.png")
+    assert out.name == "01_Main_Mockup.jpg" and out.is_file()
+    monkeypatch.setattr(mockups, "ETSY_MAX_MB", 0)         # too big at every quality: still a JPG, never a PNG
+    assert mockups._place(png, tmp_path / "07_Detail.png").suffix == ".jpg"
     assert png.is_file()                                    # nothing is deleted
 
 

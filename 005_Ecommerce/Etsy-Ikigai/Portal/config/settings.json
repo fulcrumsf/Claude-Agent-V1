@@ -32,5 +32,6 @@
   "upscale_passes": 1,
   "upscale_timeout_s": 900,
   "jpg_quality": 95,
-  "prints_auto_run": false
+  "prints_auto_run": false,
+  "mockup_rooms": false
 }

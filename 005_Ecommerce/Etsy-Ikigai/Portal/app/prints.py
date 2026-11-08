@@ -458,13 +458,15 @@ def status(con, idea_id, settings, prefix="/ikigai"):
     view = {n: steps.get(n, {"status": "not started", "message": ""}) for n in ("upscale", "resize")}
     if lst and steps.get("generate_art", {}).get("status") == "blocked":
         view["upscale"] = {"status": "blocked", "message": steps["generate_art"]["message"]}
-    running = any(v["status"] in ("queued", "running") for v in view.values())
+    mk = steps.get("mockups", {"status": "not started", "message": ""})
+    running = any(v["status"] in ("queued", "running") for v in [*view.values(), mk])
     done = all(v["status"] == "done" for v in view.values())
     return {"idea_id": idea_id, "title": idea["title"], "art_state": idea["art_state"],
             "image_url": file_url(prefix, img["path"]) if img else None,
             "name": name, "folder_seq": seq, "folder": str(folder) if folder else None,
             "folder_rel": f"Designs/{folder.name}/01-Printables" if folder else None,
-            "steps": view, "busy": running, "done": done,
+            "steps": {**view, "mockups": mk}, "busy": running, "done": done,
+            "can_mockups": done and mk["status"] not in ("queued", "running"),
             "upscale": rec.get("upscale"), "files": (rec.get("resize") or {}).get("files", []),
             "can_run": idea["art_state"] == "approved" and not running and not done}
 

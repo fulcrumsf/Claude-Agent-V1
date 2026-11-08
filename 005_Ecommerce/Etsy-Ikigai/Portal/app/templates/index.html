@@ -228,10 +228,10 @@ button{font:inherit;color:inherit;cursor:pointer}
 .final .ok{display:flex;gap:10px;align-items:center;margin:10px 0 2px;color:var(--ok);font-weight:500}
 .prod{font:500 11px var(--mono);letter-spacing:.06em;color:var(--muted);border:1px dashed var(--line-2);border-radius:8px;padding:8px 10px;margin-top:10px}
 /* ---------- prints: upscale + resize (Art tab + Details) ---------- */
-.artgal{max-width:1080px}
+.artgal{max-width:none}
 .artgal h2{font:700 24px var(--serif);margin:0 0 4px}
 .artgal .lead{color:var(--muted);margin:0 0 22px;font-size:13.5px}
-.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
 .gcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
 .gcard > img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
 .gcard .gb{padding:12px 14px 14px}
@@ -263,7 +263,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .pcount{display:flex;gap:6px;margin-top:8px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase}
 .pcount b{font-weight:500;padding:3px 8px;border:1px solid var(--line-2);border-radius:20px;color:var(--muted)}
 .pcount b.ok{border-color:var(--ok);color:var(--ok)}.pcount b.no{border-color:var(--rising);color:var(--rising)}
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
 .pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 .pcard.approved{box-shadow:0 0 0 2px var(--ok)}
 .pcard.denied{opacity:.55}
@@ -514,10 +514,10 @@ button{font:inherit;color:inherit;cursor:pointer}
   function printsHTML(st, withName) {
     if (!st) return `<span class="cost">Upscale + resize: loading…</span>`;
     const step = (k, label) => { const x = st.steps[k] || {status: "not started"}; return `<b class="${esc(x.status.replace(" ", "-"))}">${label} · ${esc(STEP_LABEL[x.status] || x.status)}</b>`; };
-    let h = `<div class="pr-steps">${step("upscale", "Upscale")}${step("resize", "Resize")}</div>`;
-    for (const k of ["upscale", "resize"]) {
+    let h = `<div class="pr-steps">${step("upscale", "Upscale")}${step("resize", "Resize")}${st.done || (st.steps.mockups || {}).status !== "not started" ? step("mockups", "Mockups") : ""}</div>`;
+    for (const k of ["upscale", "resize", "mockups"]) {
       const x = st.steps[k]; if (!x || !x.message) continue;
-      h += `<p class="pr-msg ${x.status === "blocked" || x.status === "failed" ? "bad" : ""}">${k === "upscale" ? "Upscale" : "Resize"}: ${esc(x.message)}</p>`;
+      h += `<p class="pr-msg ${x.status === "blocked" || x.status === "failed" ? "bad" : ""}">${k[0].toUpperCase() + k.slice(1)}: ${esc(x.message)}</p>`;
     }
     if (st.folder_rel) h += `<div class="pr-path" title="${esc(st.folder)}">${esc(st.folder_rel)}</div>`;
     if (st.files.length) h += `<table class="pr-files">${st.files.map(f => `<tr><td>${esc(f.ratio)}</td><td>${f.px[0]}x${f.px[1]}</td><td>${f.dpi} dpi</td><td>${f.mb} MB</td><td class="${f.subject_cut > 0.005 ? "w" : ""}">${f.cut ? "cut " + (f.cut * 100).toFixed(1) + "%" + (f.subject_cut > 0.005 ? " · check" : "") : "full"}</td></tr>`).join("")}</table>`;
@@ -526,6 +526,7 @@ button{font:inherit;color:inherit;cursor:pointer}
       h += `<div class="art-row"><button class="btn sm" data-prints="run" data-v="${st.idea_id}">${st.files.length || Object.values(st.steps).some(x => x.status !== "not started") ? "Run upscale + resize again" : "Run upscale + resize"}</button></div>`;
     }
     if (st.done && !st.busy) h += `<div class="art-row"><button class="btn ghost sm" data-prints="redo" data-v="${st.idea_id}" title="Upscale and resize again; files are replaced in the same folder">Run again</button></div>`;
+    if (st.can_mockups) h += `<div class="art-row"><button class="btn sm" data-mockups="run" data-v="${st.idea_id}" title="Makes the poster, detail and videos; the new ones show up in Production">${(st.steps.mockups || {}).status === "done" ? "Run mockups again" : "Run mockups"}</button></div>`;
     if (prErr[st.idea_id]) h += `<p class="art-err">${esc(prErr[st.idea_id])}</p>`;
     return h;
   }
@@ -584,6 +585,16 @@ button{font:inherit;color:inherit;cursor:pointer}
       prodItems = prodItems.map(x => x.idea_id === d.idea_id ? d : x);
     } catch { /* leave as it was */ }
     paintProd();
+  });
+
+  document.addEventListener("click", async e => {
+    const el = e.target.closest("[data-mockups]");
+    if (!el) return;
+    e.preventDefault(); e.stopPropagation();
+    const id = el.dataset.v; prErr[id] = ""; el.disabled = true;
+    try { prState[id] = await post(`${prefix}/api/mockups/${id}/run`, {}); }
+    catch (err) { try { prErr[id] = (await err.json()).detail || "That did not work."; } catch { prErr[id] = "That did not work."; } }
+    loadPrints();
   });
 
   function paintArt() {
