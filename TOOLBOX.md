@@ -1161,3 +1161,6 @@ Installed in `~/.local/bin` (on PATH). Source downloads: `~/Downloads/ArtCraft/`
   - **Draft-only guard:** never call `updateListing` with `state=active`; Tony publishes by hand. Etsy API Terms: no scraping or bots on etsy.com, no storing Etsy member data, show the Etsy trademark notice in the app. Full detail: `005_Ecommerce/Etsy-Ikigai/Etsy_API_V3_Application_Plan.md`.
 - Seller Handbook: https://www.etsy.com/seller-handbook (policy source; re-pull often, Etsy changes AI rules). Scrape with `firecrawl scrape`/`firecrawl-crawl`.
 - Google Cloud map: `001_Architecture/Google_Cloud_Map.md`; Drive login `001_Architecture/Scripts/google_drive_auth.py`.
+
+### Ikigai room mockup modules (added 2026-11-07)
+- `005_Ecommerce/Etsy-Ikigai/Portal/app/frames.py` (+ `config/frame_styles.json`): tasteful frame chooser. `app/walls.py` (+ `config/wall_palettes.json`): art-directed wall colour chooser. `app/rooms.py`: persona room prompts, magenta panel detection, compositing. Room PSD templates + build scripts: `005_Ecommerce/Etsy-Ikigai/Room_Templates/`. Rules: `Etsy-Ikigai/Mockup_Style_Guide.md`.

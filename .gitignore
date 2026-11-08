@@ -112,3 +112,7 @@ graphify-out/
 # Ikigai listing mockup copies (large PSD/PNG sets; originals live in iCloud, see 005_Ecommerce/Etsy-Ikigai/Mockup_Originals_Locations.md) (Tony, 2026-10-27)
 005_Ecommerce/Etsy-Ikigai/001-Standard Package/
 005_Ecommerce/Etsy-Ikigai/002-Includes 1to1 Ratio/
+# Ikigai room templates: PSDs and images are large; template.json + Directory.md are committed (Tony, 2026-11-07)
+005_Ecommerce/Etsy-Ikigai/Room_Templates/**/*.psd
+005_Ecommerce/Etsy-Ikigai/Room_Templates/**/*.png
+005_Ecommerce/Etsy-Ikigai/Room_Templates/**/*.jpg

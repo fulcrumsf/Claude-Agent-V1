@@ -1,0 +1,22 @@
+{
+  "note": "Realistic interior paint colours only (Tony 2026-11-07: complementary but subtle, tailored to the art and the room's furniture, never random; no purple/pink/neon). Scored by app/walls.py.",
+  "paints": [
+    {"name": "Warm White", "rgb": [240, 233, 220], "family": "warm_neutral", "depth": 0.0},
+    {"name": "Oat",        "rgb": [226, 214, 193], "family": "warm_neutral", "depth": 0.2},
+    {"name": "Warm Sand",  "rgb": [214, 196, 168], "family": "warm_neutral", "depth": 0.4},
+    {"name": "Soft Putty", "rgb": [196, 184, 168], "family": "warm_neutral", "depth": 0.5},
+    {"name": "Greige",     "rgb": [200, 192, 180], "family": "neutral", "depth": 0.4},
+    {"name": "Stone Grey", "rgb": [186, 184, 178], "family": "cool_neutral", "depth": 0.5},
+    {"name": "Muted Clay", "rgb": [200, 168, 148], "family": "earth", "depth": 0.5},
+    {"name": "Soft Sage",  "rgb": [178, 188, 166], "family": "green", "depth": 0.5},
+    {"name": "Blue Grey",  "rgb": [176, 188, 198], "family": "blue", "depth": 0.5},
+    {"name": "Deep Olive", "rgb": [102, 106, 82],  "family": "green", "depth": 0.9},
+    {"name": "Charcoal",   "rgb": [74, 76, 76],    "family": "dark_neutral", "depth": 1.0}
+  ],
+  "furniture_tones": {
+    "warm_wood": {"likes": ["warm_neutral", "earth", "neutral", "green"], "dislikes": ["blue", "cool_neutral"]},
+    "pale_wood": {"likes": ["neutral", "warm_neutral", "green", "blue"], "dislikes": []},
+    "dark_wood": {"likes": ["warm_neutral", "neutral", "green", "dark_neutral"], "dislikes": ["blue"]},
+    "black_metal": {"likes": ["neutral", "cool_neutral", "warm_neutral", "blue"], "dislikes": ["earth"]}
+  }
+}

@@ -1,0 +1,545 @@
+{
+  "note": "Frame chooser rules (Mockup_Style_Guide.md 2.7, 3c, 6.3 and Tony's addition 8, 2026-11-07). Read by app/frames.py. Tags are detected from the idea title/summary, the chosen style cards and their Style_Profiles; each frame scores its fit to those tags, the print's value key and its accent colours. Vetoes and 'requires_any' make ornate frames impossible for modern, graphic, minimal or kids art. Edit weights here, not in code.",
+  "tags": {
+    "vintage": [
+      "vintage",
+      "antique",
+      "victorian",
+      "edwardian",
+      "heirloom",
+      "aged",
+      "old world",
+      "art nouveau"
+    ],
+    "oil": [
+      "oil painting",
+      "oil on canvas",
+      "old master",
+      "glazed oil",
+      "academic painting"
+    ],
+    "classical": [
+      "classical",
+      "renaissance",
+      "baroque",
+      "rococo",
+      "neoclassical",
+      "museum",
+      "old master",
+      "still life with",
+      "dutch"
+    ],
+    "gothic": [
+      "gothic",
+      "raven",
+      "skull",
+      "witch",
+      "occult",
+      "macabre",
+      "haunted",
+      "ghost"
+    ],
+    "dark_moody": [
+      "dark moody",
+      "moody",
+      "dark academia",
+      "chiaroscuro",
+      "candlelit",
+      "brooding",
+      "nocturne"
+    ],
+    "modern_graphic": [
+      "graphic",
+      "bold shapes",
+      "colour blocking",
+      "color blocking",
+      "geometric",
+      "screenprint",
+      "poster",
+      "flat shapes",
+      "cut-out",
+      "cutout",
+      "silhouette"
+    ],
+    "minimal": [
+      "minimal",
+      "minimalist",
+      "simple line",
+      "negative space",
+      "single line"
+    ],
+    "line_art": [
+      "line art",
+      "one line",
+      "continuous line",
+      "linework",
+      "contour line",
+      "line drawing"
+    ],
+    "typographic": [
+      "typographic",
+      "typography",
+      "lettering",
+      "quote",
+      "text print"
+    ],
+    "pop": [
+      "pop art",
+      "pop",
+      "comic",
+      "neon colours",
+      "maximalist",
+      "groovy",
+      "y2k"
+    ],
+    "neon": [
+      "neon",
+      "cyber",
+      "cyberpunk",
+      "synthwave",
+      "anime",
+      "tokyo night"
+    ],
+    "kids": [
+      "kids",
+      "nursery",
+      "children",
+      "baby",
+      "playroom",
+      "toddler",
+      "kawaii"
+    ],
+    "botanical": [
+      "botanical",
+      "flower",
+      "floral",
+      "leaf",
+      "leaves",
+      "plant",
+      "tulip",
+      "daffodil",
+      "fern",
+      "garden",
+      "wildflower",
+      "herb"
+    ],
+    "japandi": [
+      "japandi",
+      "wabi sabi",
+      "wabi-sabi",
+      "zen",
+      "ink wash",
+      "sumi"
+    ],
+    "scandi": [
+      "scandi",
+      "scandinavian",
+      "nordic",
+      "hygge"
+    ],
+    "mid_century": [
+      "mid-century",
+      "mid century",
+      "midcentury",
+      "atomic",
+      "1950s",
+      "1960s",
+      "retro modern"
+    ],
+    "boho": [
+      "boho",
+      "bohemian",
+      "folk",
+      "terracotta",
+      "desert",
+      "earthy",
+      "rattan"
+    ],
+    "farmhouse": [
+      "farmhouse",
+      "rustic",
+      "cottagecore",
+      "country kitchen"
+    ],
+    "art_deco": [
+      "art deco",
+      "deco",
+      "1920s",
+      "gatsby"
+    ],
+    "gouache": [
+      "gouache",
+      "matte paint",
+      "flat opaque"
+    ],
+    "impasto": [
+      "impasto",
+      "palette knife",
+      "palette-knife",
+      "knife ridges",
+      "thick paint"
+    ],
+    "cozy": [
+      "cozy",
+      "cosy",
+      "reading",
+      "book",
+      "books",
+      "tea",
+      "coffee",
+      "mug",
+      "blanket",
+      "nook"
+    ],
+    "animal": [
+      "cat",
+      "kitten",
+      "dog",
+      "puppy",
+      "fox",
+      "bird",
+      "owl",
+      "bunny",
+      "rabbit",
+      "bear"
+    ],
+    "whimsical": [
+      "whimsical",
+      "storybook",
+      "fairytale",
+      "playful",
+      "joyful",
+      "cute"
+    ]
+  },
+  "source_weights": {
+    "idea": 1.0,
+    "card": 0.6,
+    "profile": 0.5
+  },
+  "frames": [
+    {
+      "id": "oak",
+      "name": "Natural oak, about 2 cm",
+      "family": "light_wood",
+      "tone": "light",
+      "warm": true,
+      "base": 1.0,
+      "prompt": "a natural oak frame about 2 cm wide",
+      "fits": {
+        "botanical": 2,
+        "japandi": 2,
+        "scandi": 2,
+        "cozy": 1.5,
+        "boho": 1.5,
+        "kids": 1.5,
+        "mid_century": 1,
+        "gouache": 1,
+        "impasto": 1,
+        "animal": 1,
+        "minimal": 1,
+        "whimsical": 1,
+        "farmhouse": 1
+      },
+      "poor": {
+        "gothic": -2,
+        "dark_moody": -1.5,
+        "classical": -1,
+        "neon": -1
+      },
+      "mat": 1.0
+    },
+    {
+      "id": "walnut",
+      "name": "Slim walnut",
+      "family": "dark_wood",
+      "tone": "mid",
+      "warm": true,
+      "base": 0.8,
+      "prompt": "a slim walnut frame",
+      "fits": {
+        "mid_century": 2.5,
+        "cozy": 1.5,
+        "vintage": 1,
+        "botanical": 1,
+        "impasto": 1.5,
+        "dark_moody": 1,
+        "gouache": 0.5,
+        "boho": 0.5,
+        "animal": 0.5,
+        "art_deco": 0.5
+      },
+      "poor": {
+        "kids": -1,
+        "neon": -1,
+        "pop": -0.5
+      },
+      "mat": 0.8
+    },
+    {
+      "id": "white",
+      "name": "White wood",
+      "family": "white",
+      "tone": "light",
+      "warm": false,
+      "base": 0.8,
+      "prompt": "a white wood frame",
+      "fits": {
+        "minimal": 2,
+        "kids": 2,
+        "scandi": 2,
+        "botanical": 1.5,
+        "japandi": 1.5,
+        "line_art": 1.5,
+        "gouache": 1,
+        "whimsical": 1,
+        "typographic": 0.5,
+        "cozy": 0.5,
+        "animal": 0.5
+      },
+      "poor": {
+        "dark_moody": -2,
+        "gothic": -2,
+        "vintage": -1,
+        "classical": -1,
+        "farmhouse": -0.5
+      },
+      "mat": 1.0
+    },
+    {
+      "id": "black",
+      "name": "Thin matte black",
+      "family": "black",
+      "tone": "dark",
+      "warm": false,
+      "base": 0.3,
+      "prompt": "a thin matte black frame",
+      "fits": {
+        "modern_graphic": 2,
+        "typographic": 2,
+        "pop": 1.5,
+        "neon": 2,
+        "line_art": 1.5,
+        "minimal": 1,
+        "art_deco": 0.5
+      },
+      "poor": {
+        "kids": -1,
+        "botanical": -0.5,
+        "vintage": -0.5,
+        "cozy": -0.5,
+        "farmhouse": -1
+      },
+      "mat": 0.9,
+      "note": "allowed as one option, never the default for everything (Tony 6.3), so its base is low"
+    },
+    {
+      "id": "brass",
+      "name": "Slim brass metal",
+      "family": "metal",
+      "tone": "mid",
+      "warm": true,
+      "base": 0.4,
+      "prompt": "a slim brass metal frame",
+      "fits": {
+        "art_deco": 2.5,
+        "modern_graphic": 1.5,
+        "pop": 1.5,
+        "mid_century": 1,
+        "typographic": 1,
+        "dark_moody": 0.5
+      },
+      "poor": {
+        "kids": -1,
+        "farmhouse": -1,
+        "boho": -0.5,
+        "cozy": -1,
+        "whimsical": -0.5,
+        "animal": -0.5
+      },
+      "mat": 0.7
+    },
+    {
+      "id": "gold_ornate",
+      "name": "Ornate antique gold",
+      "family": "ornate",
+      "tone": "mid",
+      "warm": true,
+      "base": 0.0,
+      "prompt": "an ornate antique gold frame",
+      "fits": {
+        "classical": 3,
+        "oil": 2.5,
+        "vintage": 2,
+        "gothic": 1.5,
+        "dark_moody": 1.5,
+        "art_deco": 0.5
+      },
+      "poor": {},
+      "requires_any": [
+        "vintage",
+        "oil",
+        "classical",
+        "gothic",
+        "dark_moody"
+      ],
+      "veto": [
+        "modern_graphic",
+        "minimal",
+        "kids",
+        "pop",
+        "neon",
+        "japandi",
+        "scandi",
+        "line_art",
+        "typographic"
+      ],
+      "mat": 0.3
+    },
+    {
+      "id": "carved_dark",
+      "name": "Carved dark wood",
+      "family": "ornate",
+      "tone": "dark",
+      "warm": true,
+      "base": 0.0,
+      "prompt": "a carved dark wood frame",
+      "fits": {
+        "gothic": 2.5,
+        "dark_moody": 2,
+        "vintage": 1.5,
+        "classical": 1,
+        "oil": 1
+      },
+      "poor": {},
+      "requires_any": [
+        "vintage",
+        "oil",
+        "classical",
+        "gothic",
+        "dark_moody"
+      ],
+      "veto": [
+        "modern_graphic",
+        "minimal",
+        "kids",
+        "pop",
+        "neon",
+        "japandi",
+        "scandi",
+        "line_art",
+        "typographic"
+      ],
+      "mat": 0.2
+    },
+    {
+      "id": "rustic_wood",
+      "name": "Rustic weathered wood",
+      "family": "dark_wood",
+      "tone": "mid",
+      "warm": true,
+      "base": 0.2,
+      "prompt": "a rustic weathered wood frame",
+      "fits": {
+        "farmhouse": 2.5,
+        "boho": 1,
+        "vintage": 1,
+        "dark_moody": 1,
+        "cozy": 0.5
+      },
+      "poor": {
+        "minimal": -1,
+        "pop": -1
+      },
+      "veto": [
+        "modern_graphic",
+        "neon",
+        "typographic"
+      ],
+      "mat": 0.4
+    }
+  ],
+  "value_fit": {
+    "light": {
+      "oak": 0.5,
+      "walnut": 0.5,
+      "white": 0.0,
+      "black": 0.2,
+      "brass": 0.0,
+      "gold_ornate": 0.0,
+      "carved_dark": -0.3,
+      "rustic_wood": 0.0
+    },
+    "mid": {
+      "oak": 0.3,
+      "walnut": 0.3,
+      "white": 0.2,
+      "black": 0.2,
+      "brass": 0.2,
+      "gold_ornate": 0.2,
+      "carved_dark": 0.0,
+      "rustic_wood": 0.2
+    },
+    "dark": {
+      "oak": 0.0,
+      "walnut": 0.0,
+      "white": 0.4,
+      "black": -0.5,
+      "brass": 0.4,
+      "gold_ornate": 0.5,
+      "carved_dark": 0.2,
+      "rustic_wood": 0.0
+    }
+  },
+  "accent_fit": {
+    "warm": 0.4,
+    "cool": 0.3,
+    "warm_words": [
+      "red",
+      "orange",
+      "ochre",
+      "mustard",
+      "tan",
+      "brown",
+      "walnut",
+      "terracotta",
+      "plum"
+    ],
+    "cool_words": [
+      "teal",
+      "blue",
+      "sage",
+      "green",
+      "violet",
+      "grey"
+    ]
+  },
+  "mat": {
+    "tags_for": [
+      "botanical",
+      "japandi",
+      "minimal",
+      "line_art",
+      "gouache",
+      "classical",
+      "vintage",
+      "typographic",
+      "kids",
+      "scandi",
+      "whimsical"
+    ],
+    "tags_against": [
+      "neon",
+      "pop",
+      "farmhouse"
+    ],
+    "light_art_bonus": 0.5,
+    "same_tone_bonus": 0.5,
+    "per_set": [
+      1,
+      2
+    ]
+  },
+  "set_size": 3,
+  "min_score": 1.0
+}
