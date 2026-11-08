@@ -25,6 +25,8 @@
   "art_poll_s": 4,
   "style_profiles_dir": "../Creative_Inspiration/Style_Profiles",
   "designs_root": "../Designs",
+  "listing_templates_dir": "../Listing_Templates",
+  "rules_dir": "../Rules_And_Policies",
   "design_seq_floor": 120,
   "upscale_model": "remacri-4x",
   "upscayl_bin": "upscayl-ncnn",

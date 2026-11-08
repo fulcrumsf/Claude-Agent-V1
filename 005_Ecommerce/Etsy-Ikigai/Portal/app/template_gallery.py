@@ -13,7 +13,7 @@ matched by PSD file name.
 
 Each tile is the template rendered with a neutral test card (photocraft-cli replaceContents on "Place Artwork Here",
 the same recipe as the contact sheets) and cropped 4:3 landscape centred on the art, the shape Etsy shows listing
-thumbnails in search and shop grids (assumed: Etsy_Rules_Bible.md and Mockup_Style_Guide.md do not state a thumbnail
+thumbnails in search and shop grids (assumed: Rules_And_Policies/Etsy_Rules_Bible.md and Mockup_Docs/Mockup_Style_Guide.md do not state a thumbnail
 crop; 4:3 is also the shape the old room pipeline used, 2733x2050). Thumbnails are cached in data/rooms/ (git-ignored)
 as Gallery_<key>_t.jpg / _l.jpg, keyed by path + PSD size + mtime, so a changed PSD re-renders.
 
@@ -38,7 +38,7 @@ ART_MAT = "Place Artwork Here (Mat)"
 # Archive = "do not use but kept" (Tony 2026-11-08): never a template, never a gap; only counted.
 SKIP_DIRS = {"Archive", "Retired", "Scripts", "Caches", "Plates_And_Masks", "Light_Prompts", "PSD_Templates", "__pycache__",
              "Untemplated_Scenes"}
-# bucket id -> chip label, in buyer-popularity order (Mockup_Style_Guide.md picker weighting)
+# bucket id -> chip label, in buyer-popularity order (Mockup_Docs/Mockup_Style_Guide.md picker weighting)
 BUCKETS = {"2x3": "2x3", "3x4": "3x4", "4x5": "4x5 / 11x14", "5x7": "5x7 / ISO", "other": "Other"}
 RATIO_ALIASES = {"2x3": "2x3", "3x4": "3x4", "4x5": "4x5", "11x14": "4x5", "5x7": "5x7", "iso": "5x7",
                  "all_ratios": "other", "other": "other"}

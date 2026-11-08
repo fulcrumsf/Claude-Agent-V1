@@ -17,7 +17,7 @@ Source tags used below:
 
 Honest note up front: first-hand material about wall art specifically is thin. Most YouTube sellers teach POD apparel or planners, and most "niche lists" are vendor blogs. I kept only what generalizes to printable art and flagged weak sources.
 
-What Tony already has (not repeated here): the Rube head-term method (style x motif x room, scored demand minus competition), the 120-style token table, Alura/Google Trends/Pinterest Trends access, the Funnel rules in `Etsy_API_V3_Application_Plan.md`. This file adds how people think before they open a tool, and what they check after.
+What Tony already has (not repeated here): the Rube head-term method (style x motif x room, scored demand minus competition), the 120-style token table, Alura/Google Trends/Pinterest Trends access, the Funnel rules in `../Pipeline_Docs/Etsy_API_V3_Application_Plan.md`. This file adds how people think before they open a tool, and what they check after.
 
 ---
 
@@ -113,7 +113,7 @@ Combine several; no single signal decides.
 - Sellers repeatedly say: stay away from anything that sounds like a brand, fandom, university logo, or famous character; check trademarks in the USPTO search; alike-sounding spellings still count. **[F]** Brenon transcript; unsaturated-niches video (she deletes IP-sounding keywords and says do your own research for account health); **[S]** eRank fall 2026 tip (avoid university logos and crests).
 - Etsy removes listings on a rightsholder's report and the policy says the reporter's claim is what Etsy acts on; fan art is almost always removed per one POD blog. **[F]** Etsy IP policy (snippet) and **[S]** PSDMate blog 2026.
 - Etsy's own Marketplace Insights warns that the search terms it shows are what buyers type, even if the term isn't allowed on Etsy. So a term appearing in tools is not clearance. **[F]** Etsy handbook (snippet).
-- Etsy AI rules: AI-assisted work goes under "Designed by seller" with disclosure; see `Etsy_Rules_Bible.md` (already in the workspace; I did not re-pull it). **[S]** Artomate blog snippet agrees.
+- Etsy AI rules: AI-assisted work goes under "Designed by seller" with disclosure; see `../Rules_And_Policies/Etsy_Rules_Bible.md` (already in the workspace; I did not re-pull it). **[S]** Artomate blog snippet agrees.
 - Tony's existing traffic-light trademark check in the plan fits this exactly.
 
 ### How researchers confirm a gap is real (not just empty)

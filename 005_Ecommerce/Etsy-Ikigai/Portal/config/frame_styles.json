@@ -1,5 +1,5 @@
 {
-  "note": "Frame chooser rules (Mockup_Style_Guide.md 2.7, 3c, 6.3 and Tony's addition 8, 2026-11-07). Read by app/frames.py. Tags are detected from the idea title/summary, the chosen style cards and their Style_Profiles; each frame scores its fit to those tags, the print's value key and its accent colours. Vetoes and 'requires_any' make ornate frames impossible for modern, graphic, minimal or kids art. Edit weights here, not in code.",
+  "note": "Frame chooser rules (Mockup_Docs/Mockup_Style_Guide.md 2.7, 3c, 6.3 and Tony's addition 8, 2026-11-07). Read by app/frames.py. Tags are detected from the idea title/summary, the chosen style cards and their Style_Profiles; each frame scores its fit to those tags, the print's value key and its accent colours. Vetoes and 'requires_any' make ornate frames impossible for modern, graphic, minimal or kids art. Edit weights here, not in code.",
   "tags": {
     "vintage": [
       "vintage",

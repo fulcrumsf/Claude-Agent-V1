@@ -371,7 +371,7 @@ def build_rooms(out_dir, arts, settings, adapter=None, scenes=None):
 
 
 # =====================================================================================================
-# v2 recipe (Mockup_Style_Guide.md sections 2, 3, 3a, 3b, 4a-4c). v1 SCENES above stay as they are; v2 builds
+# v2 recipe (Mockup_Docs/Mockup_Style_Guide.md sections 2, 3, 3a, 3b, 4a-4c). v1 SCENES above stay as they are; v2 builds
 # a brief per print (room matched to the art), asks for a 3/4 off-axis scene whose magenta paper RECEIVES the
 # window-bar shadow, and composites with the light read from that magenta at full strength.
 # =====================================================================================================

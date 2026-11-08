@@ -1,6 +1,6 @@
 # Room_Templates: Directory
 
-The ONE catalogue for every room-mockup template used for Ikigai listing images (slots 8-19), rendered headless with photocraft-cli. Everything lives under this folder; there is no other Directory file below it (merged 2026-11-08). PSDs and images are git-ignored (large); `room.json`, the template `.json` files, the authoring scripts and this file are committed. Style rules: `../Mockup_Style_Guide.md` (later sections override earlier). Portal code: `../Portal/app/room_templates.py` (renders looks for Run mockups), `frames.py`, `walls.py`, and `template_gallery.py` (the **Templates** tab, which reads the folder tree and the table below).
+The ONE catalogue for every room-mockup template used for Ikigai listing images (slots 8-19), rendered headless with photocraft-cli. Everything lives under this folder; there is no other Directory file below it (merged 2026-11-08). PSDs and images are git-ignored (large); `room.json`, the template `.json` files, the authoring scripts and this file are committed. Style rules: `../Mockup_Docs/Mockup_Style_Guide.md` (later sections override earlier). Portal code: `../Portal/app/room_templates.py` (renders looks for Run mockups), `frames.py`, `walls.py`, and `template_gallery.py` (the **Templates** tab, which reads the folder tree and the table below).
 
 Approved by Tony 2026-11-07 (path `005_Ecommerce/Etsy-Ikigai/Room_Templates/`). Re-organised 2026-11-08 to Tony's layout (below).
 
@@ -44,7 +44,7 @@ Room_Templates/
 
 ## Templates tab (Portal, read-only)
 
-`http://127.0.0.1:8800/` -> **Templates**. Grouped by ROOM TYPE (one section each). Each card shows the template rendered with a neutral test card, cropped **4:3 landscape centred on the art** (the shape Etsy shows listing thumbnails in search and shop grids; assumed, because `Etsy_Rules_Bible.md` and `Mockup_Style_Guide.md` do not state a thumbnail crop), plus two clickable chips: **Style** (e.g. Japandi) and **Ratio** (e.g. 5x7 / ISO), so a card reads "Japandi · 5x7 / ISO" inside Living Room. Chips filter by style or ratio; click the image to enlarge.
+`http://127.0.0.1:8800/` -> **Templates**. Grouped by ROOM TYPE (one section each). Each card shows the template rendered with a neutral test card, cropped **4:3 landscape centred on the art** (the shape Etsy shows listing thumbnails in search and shop grids; assumed, because `../Rules_And_Policies/Etsy_Rules_Bible.md` and `../Mockup_Docs/Mockup_Style_Guide.md` do not state a thumbnail crop), plus two clickable chips: **Style** (e.g. Japandi) and **Ratio** (e.g. 5x7 / ISO), so a card reads "Japandi · 5x7 / ISO" inside Living Room. Chips filter by style or ratio; click the image to enlarge.
 - **Shop styles (style assignment).** The style options are the style/theme sections of Tony's Ikigai Etsy shop (IkigaiDigitalStudio, shop 48637917, fetched 2026-11-08 with Etsy API v3 getShopSections), labels without the "Art Prints - " prefix: Trendy, Abstract, Animals, Botanical, Food-Drink, Game Room, Japan Art, Mid Century, Minimalism, Nature, Nursery, Retro, Travel, Typography, Vintage, Beach Ocean (from "Photos - Beach Ocean"). Left out (not a look): Art Prints - Originals and Art Prints - Reimagined (provenance), Photos - Travel (medium; Travel already covered), Frame TV Art (product format). Click **Styles** on a card to pick one or more; manual choices always win. Without a manual choice the Portal guesses 1-3 styles from the thumbnail (Gemini `gemini-3.5-flash-lite`, about 1,200 tokens per image, classified once per thumbnail) and shows them as dashed amber chips with one-click **confirm**; **back to auto** drops a manual choice.
 - File: `../Portal/config/template_styles.json` (one file: `vocabulary`, the full `shop.all_sections` list, `excluded`, `manual` {template path: [styles]}, `auto` {template path: {styles, key, model, tokens}}). Code: `../Portal/app/template_styles.py`. Re-fetch the sections when Tony changes them in the shop.
 - The room's decor style (Japandi, Boho, Modern ...) is a separate grey chip; it comes from the folder level, the `Style` column below, or the name. Empty template folders show as dashed **gap** cards with the same chips, and the header shows the Library gaps count.
@@ -80,7 +80,7 @@ The tables below are machine-read by the Templates tab (matched by PSD file name
 
 ### Teak Sideboard (AI-built, wired into Run mockups)
 
-Active looks (v3, 2026-11-08: lamp-free, plain book spines, one door pull, stepped 3D frame moulding with contact shadow). Plate made with GPT Image 2 (persona "bookish_renter"), lights relit with image edits; see `Mockup_Style_Guide.md`.
+Active looks (v3, 2026-11-08: lamp-free, plain book spines, one door pull, stepped 3D frame moulding with contact shadow). Plate made with GPT Image 2 (persona "bookish_renter"), lights relit with image edits; see `../Mockup_Docs/Mockup_Style_Guide.md`.
 
 | Template (path in Room_Templates) | Room type | Style | SO px | SO ratio | Visible ratio | Nearest standard | Bucket | Room / look | Status | Toggle / extra layers |
 |---|---|---|---|---|---|---|---|---|---|---|

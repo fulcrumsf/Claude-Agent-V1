@@ -20,7 +20,7 @@ This is the single source of truth for locating department documentation, agent 
 | **Social Media Marketing** | Planned | `002_Content-Creation/Social_Media_Marketing/CLAUDE.md` | Static image + carousel strategy for Pinterest/Instagram, fashion/clothing niche |
 | **POD Store** | Active | `005_Ecommerce/POD/CLAUDE.md` | Print-on-demand store (t-shirts, wall art), design + fulfillment |
 | **Digital Products** | Planned | `005_Ecommerce/Digital_Products/CLAUDE.md` | Digital downloadable products: wall art, guides, templates via Gumroad/own website |
-| **Etsy Ikigai** | Active | `005_Ecommerce/Etsy-Ikigai/CLAUDE.md` | Ikigai Digital Studio Etsy shop (printable digital wall art, IkigaiDigitalStudio). Portal + listing pipeline brief: `Ikigai_Portal_Pipeline_Brief.md`; local app: `Portal/`; style dumps: `Creative_Inspiration/`. Marketing arm: `002_Content-Creation/Video_Editor/002_Channels/011_Ikigai-Digital-Studios/` |
+| **Etsy Ikigai** | Active | `005_Ecommerce/Etsy-Ikigai/CLAUDE.md` | Ikigai Digital Studio Etsy shop (printable digital wall art, IkigaiDigitalStudio). Portal + listing pipeline brief: `Pipeline_Docs/Ikigai_Portal_Pipeline_Brief.md`; local app: `Portal/`; style dumps: `Creative_Inspiration/`. Marketing arm: `002_Content-Creation/Video_Editor/002_Channels/011_Ikigai-Digital-Studios/` |
 | **Etsy Bored Nomad** | Active | `005_Ecommerce/Etsy-Bored_Nomad/CLAUDE.md` | Bored Nomad Etsy print-on-demand shop |
 | **TikTok Shop Uno Mas Creative** | Active | `005_Ecommerce/Tiktok_Shop-Uno_Mas_Creative/CLAUDE.md` | Unomas TikTok Shop apparel listings |
 | **Amazon KDP** | Active | `005_Ecommerce/KDP/CLAUDE.md` | Book publishing on Kindle Direct Publishing |

@@ -77,7 +77,7 @@ Sales figures are Alura estimates (est_).
 
 `Portal/app/rooms.py` asks for "camera faces the wall straight on", "a quarter of the image width" (art too small), "no shadow inside the picture area" (so it can never receive sun or mullion shadows), and uses 12 fixed scenes for every print. The compositing (lines 155-161) clamps the lighting to 0.75-1.2, blurs it with sigma 6 and applies it at 70%. Any shadow pattern is erased and the art stays brighter than the room. `find_frame` rejects frames that touch the edge or are partly covered (fill below 0.88), which rules out close-ups and overlapping props.
 
-### 1e. Etsy rules (`Etsy_Rules_Bible.md`)
+### 1e. Etsy rules (`../Rules_And_Policies/Etsy_Rules_Bible.md`)
 
 - Images must show what the buyer gets. AI or AI-edited mockups are allowed **only if accurate**. No AI edits that make the item look better or different (lines 20, 41-43, 124, 175).
 - Lighting, colour fixes, crops and background replacement are allowed if the product is shown accurately (line 43).

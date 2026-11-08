@@ -67,7 +67,7 @@ def test_cached_scene_needs_no_engine(tmp_path):
     assert rooms.ensure_scene(settings, other, None)[0] is None
 
 
-# ---------- v2 recipe (Mockup_Style_Guide.md 3b, 4a-4c) ----------
+# ---------- v2 recipe (Mockup_Docs/Mockup_Style_Guide.md 3b, 4a-4c) ----------
 def _persp_quad(deg=30, w=200, h=300, f=1200, size=1000):
     X = np.array([[-w, -h, 0], [w, -h, 0], [w, h, 0], [-w, h, 0]], float)
     t = math.radians(deg)

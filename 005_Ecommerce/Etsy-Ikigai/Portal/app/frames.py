@@ -1,4 +1,4 @@
-"""Frame chooser for room mockups (Mockup_Style_Guide.md 2.7, 3c, section 6 item 3 and Tony's addition 8).
+"""Frame chooser for room mockups (Mockup_Docs/Mockup_Style_Guide.md 2.7, 3c, section 6 item 3 and Tony's addition 8).
 
 Frames are chosen by rules, never at random: the print's style tags (from the idea title and summary, the
 style cards it was painted with and those cards' Style_Profiles), its value key and accent colours

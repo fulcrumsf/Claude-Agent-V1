@@ -116,7 +116,7 @@ def build(folder, settings, adapter=None, rooms=None, design=None):
     """Make slots 1, 2, 7 and copy the fixed images into <folder>/03-Etsy Images. Returns the record dict."""
     templates = _abs(_cfg(settings, "mockup_templates"))
     if not templates.is_dir():
-        raise NotConfigured(f"The mockup templates folder is missing ({templates}); see Mockup_Originals_Locations.md.")
+        raise NotConfigured(f"The mockup templates folder is missing ({templates}); see Mockup_Docs/Mockup_Originals_Locations.md.")
     missing = [n for _, n in GENERATED if not (templates / n).is_file()]
     missing += [n for _, n in FIXED if not (templates / n).is_file()]
     if missing:

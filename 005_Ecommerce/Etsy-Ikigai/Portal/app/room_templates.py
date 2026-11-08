@@ -4,7 +4,7 @@ Every folder (any depth, e.g. Portrait_Templates/01_Ratio_2x3/Living_Room/Teak_S
 is a wired room; one PSD per light (the image model relit the same room plate; built by <room>/Scripts/build_template_v2.py).
 PSD/json paths in room.json are relative to the room folder; layer-export caches go to its `cache_dir` (default: the folder).
 A look = room + light + frame + mat + wall paint + glass, rendered headless with photocraft-cli by switching layers and swapping the art into the "Place Artwork Here" smart object.
-The art's own pixels are never redrawn by AI (Etsy accuracy, Mockup_Style_Guide.md 1e).
+The art's own pixels are never redrawn by AI (Etsy accuracy, Mockup_Docs/Mockup_Style_Guide.md 1e).
 
 Choices are made by rules, never at random (Tony 2026-11-07):
   - frames: app/frames.py (scored on the print's style tags, value key, accents; only frames the room PSD has)

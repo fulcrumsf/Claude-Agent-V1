@@ -1,6 +1,6 @@
 # Mockup Originals Locations (Ikigai)
 
-The listing mockup sets are too large for GitHub (about 950 MB each), so the copies in this folder are git-ignored. If they are ever lost or out of date, the originals are here.
+The listing mockup sets are too large for GitHub (about 950 MB each), so the working copies in the Etsy-Ikigai folder (listed below) are git-ignored. If they are ever lost or out of date, the originals are here.
 
 ## Originals (iCloud Drive)
 `~/Library/Mobile Documents/com~apple~CloudDocs/Documents/001-Design Related/002-Mockups/002-Ikigai/000-Ikigai Etsy Listing Mockups/`

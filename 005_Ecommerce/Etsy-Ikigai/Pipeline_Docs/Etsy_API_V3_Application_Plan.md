@@ -183,12 +183,12 @@ Method: read Etsy's OpenAPI spec (`https://www.etsy.com/openapi/generated/oas/3.
 - Both: one real listing end to end (Tony: Copy template, pick "With an AI generator", videos, publish; agent: fill via API).
 
 ## Note to buyers received (Tony, 2026-10-27)
-- Tony pasted the digital note-to-buyers text from the Etsy editor. It matches the shop-level `digital_sale_message` the API returns (same opening, same sections, ~2,360 chars). Saved with its line breaks as `Digital_Note_To_Buyers.md` in this folder; this is the text for the Portal's "Copy note to buyers" button.
+- Tony pasted the digital note-to-buyers text from the Etsy editor. It matches the shop-level `digital_sale_message` the API returns (same opening, same sections, ~2,360 chars). Saved with its line breaks as `../Listing_Templates/Digital_Note_To_Buyers.md`; this is the text for the Portal's "Copy note to buyers" button.
 - It is Markdown (bold, ### headings, numbered lists, links) with emoji. It contains the literal text `&#39;` for apostrophes in "Etsy's"; check how a live listing shows it and fix if it appears as `&#39;`.
 - Still needed from Tony: download PDF template and description template.
 
 ## Description template received (Tony, 2026-10-27)
-- Tony pasted the AI template description; it is identical to the text on the "AI Template |" draft. Saved as `Description_Template_AI.md` (starts with the placeholder `{{OPENING_SEO_SALES_PARAGRAPH}}`, fixed text after it, `&#39;` entities converted to plain apostrophes).
+- Tony pasted the AI template description; it is identical to the text on the "AI Template |" draft. Saved as `../Listing_Templates/Description_Template_AI.md` (starts with the placeholder `{{OPENING_SEO_SALES_PARAGRAPH}}`, fixed text after it, `&#39;` entities converted to plain apostrophes).
 - Structure: per-listing opening paragraph (SEO plus sales pitch for that art, e.g. "if you love abstract art") followed by the fixed template. The leading "Template |" line on the draft was a leftover and is dropped.
 - Headings use Unicode look-alike bold/italic characters, not markup, so they paste as-is.
 - To fix: the "Perfect For" third bullet is CyberTokyo-specific ("modern cityscapes with abstract art"); make it generic or write it per listing. The Originals template is the same minus the AI Disclosure block (build it by removing that block).
@@ -197,7 +197,7 @@ Method: read Etsy's OpenAPI spec (`https://www.etsy.com/openapi/generated/oas/3.
 ## CORRECTION + Originals description template (2026-10-27)
 - Earlier note in this file said the Originals template differs from the AI one by lacking the AI Disclosure block. WRONG: both descriptions contain the same AI Disclosure paragraph (it covers mockups and/or designs made with AI tools).
 - Real differences (diffed via API): (1) AI Disclosure sits before Key Features in the AI template, after Key Features in Originals; (2) the "AI Disclosure" heading uses italic Unicode in AI, plain bold Unicode in Originals; (3) typo "prints shops" in Originals vs "printshops" in AI. Everything else is identical.
-- Saved as `Description_Template_Originals.md` (same `{{OPENING_SEO_SALES_PARAGRAPH}}` placeholder). Tony's pasted Originals text matches the Originals draft.
+- Saved as `../Listing_Templates/Description_Template_Originals.md` (same `{{OPENING_SEO_SALES_PARAGRAPH}}` placeholder). Tony's pasted Originals text matches the Originals draft.
 - Practical meaning: the real difference between the two listing types is the Etsy "How is this digital content created?" choice (Created by me vs With an AI generator), set by hand in the editor, not the description text. Open for Tony: whether the Originals description should keep the AI Disclosure (mockups may be AI) or drop it when only the mockups are AI.
 
 ## DECISION (Tony, 2026-10-27): keep the AI Disclosure in both description templates
@@ -239,7 +239,7 @@ Method: read Etsy's OpenAPI spec (`https://www.etsy.com/openapi/generated/oas/3.
 - Buyer data Tony actually sees on Ikigai digital orders (his report, 2026-10-27): username, what was ordered, and a "ship to" showing only the city. No name, email or street address. So the privacy policy can be very short (what Etsy passes on, no marketing use, no collection outside Etsy). My earlier "name and email" assumption was a guess, not what he sees.
 
 ## DOWNLOAD PDF TEMPLATE received (Tony, 2026-10-27)
-- Reference file saved: `005_Ecommerce/Etsy-Ikigai/Download_PDF_Template_Reference.pdf` (4 pages, letter size; a copy of the Thank You letter from design 00120 Pastel Waves). Tony cannot find the original template source, so this PDF is the template, "based off a different design".
+- Reference file saved: `005_Ecommerce/Etsy-Ikigai/Listing_Templates/Download_PDF_Template_Reference.pdf` (4 pages, letter size; a copy of the Thank You letter from design 00120 Pastel Waves). Tony cannot find the original template source, so this PDF is the template, "based off a different design".
 - Page 1: Ikigai Digital Studio logo, "THANK YOU for your order and supporting a small business.", a black DOWNLOAD button that is a hyperlink to the buyer's Google Drive folder, note "You do NOT need a Google Account to download the zip file", pointer to the next pages, and "reach out via Etsy Messaging". Background is a tropical-leaf design.
 - Page 2: how to download the zip from Google Drive (steps 1 to 3, Mac and PC, example filename `00000-Filename-Example.zip`).
 - Page 3: "Common frame sizes" chart image.
@@ -254,7 +254,7 @@ Method: read Etsy's OpenAPI spec (`https://www.etsy.com/openapi/generated/oas/3.
 - Also update the matching text on PDF page 1 and 2 ("google drive folder", "Google Account", Drive download steps) when the storage changes.
 
 ## Mockup originals (2026-10-27)
-- Mockup sets are large, so they are git-ignored; locations of the originals are in `005_Ecommerce/Etsy-Ikigai/Mockup_Originals_Locations.md`.
+- Mockup sets are large, so they are git-ignored; locations of the originals are in `005_Ecommerce/Etsy-Ikigai/Mockup_Docs/Mockup_Originals_Locations.md`.
 
 ## CORRECTION (checked live via API getShop, 2026-11-03): privacy policy and refund policy already exist
 - The shop already has a full privacy policy (policy_privacy, effective 2024-06-23, Uno Mas Creative LLC dba Ikigai Digital Studio): collection limited to what Etsy provides (username, purchase details, messages), uses, sharing, retention, GDPR rights, security, contact emails and a Raleigh NC address. Also mirrored in policy_additional. Structured policies are on.
@@ -346,7 +346,7 @@ Every listing image file is named with the number of the slot it occupies. Alway
 - AI-generated mockups (Nano Banana, GPT Image 2, etc.) must show the artwork in an aspect ratio the listing actually sells. Normally that means only 2:3, 3:4 or 4:5 on the wall; 11x14 and ISO can appear in the extra room mockups but nobody measures them, so they are not required.
 - Exact ratio is not required. Close enough by eye is the standard. A mockup whose framed art is clearly a different shape from the sizes sold (for example square or wide when the listing is portrait 2:3 to 4:5) is rejected and regenerated.
 - Pipeline check (to build): after each mockup is generated, measure or visually check the framed art's width to height and flag it if it is clearly outside the sold ratios (suggested tolerance: within about 10 percent of the nearest sold ratio, to be tuned by eye). Tony reviews flagged ones; nothing is auto-approved.
-- Also matches Etsy's image rule that mockups must not mislead about what the buyer gets (see Etsy_Rules_Bible.md).
+- Also matches Etsy's image rule that mockups must not mislead about what the buyer gets (see ../Rules_And_Policies/Etsy_Rules_Bible.md).
 
 ## ART WORKFLOW (Tony's answers, 2026-11-04)
 - Inspiration folder: `Creative_Inspiration/`. Tony saves images only: screenshots, photos of art, and sometimes mockups (a painting hung in a living room). The agent must interpret what each image is; when a mockup is dropped, the ART is the reference, never the room.
@@ -389,7 +389,7 @@ Every listing image file is named with the number of the slot it occupies. Alway
 - What IS required: ideas are specific, descriptive and researched. Evidence comes from several real sources (Google Trends, social hashtags/Pinterest, Etsy market data through Alura, since Etsy scraping is banned), and the agent forms a consensus on whether the idea is worth pursuing before it reaches the table.
 - Tony's examples (cats, cat moms, nurses) are illustrations of how to think, not things to build and not a template.
 
-## NICHE RESEARCH FINDINGS (research agent, 2026-11-04): see `Niche_Research_Methods.md`
+## NICHE RESEARCH FINDINGS (research agent, 2026-11-04): see `../Research/Niche_Research_Methods.md`
 - Good niches are a person, a moment and a reason (who hangs this, why now, what they search), not a style. Several ways of noticing, not one pipeline. Validation = several sources agreeing (demand: Alura and Google Trends; mood: Pinterest and Etsy trend report; supply: top-result age, sales, reviews; legal: trademark check); disagreements are flagged, not averaged. Each idea row should carry why this buyer, why now, who else sells it, and one warning sign.
 - Seasonality: list about 3 months ahead (6 weeks minimum). As of 2026-11-04 the Christmas window is mostly closed; January-February and spring events should go live in the next 4 to 12 weeks.
 - No installable skill teaches niche thinking; skills reviewed were shallow or unproven. Tony's rule: only 1K+ installs, SkillSpector first, never the EverBee wrapper. Reddit could not be read by the agent (blocked), so Reddit insight is snippet-only.

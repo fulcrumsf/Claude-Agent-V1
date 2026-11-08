@@ -50,11 +50,14 @@ def mockups(ctx):
 
 def package(ctx):
     # Sequential folder per listing, share link into templated PDF (Tony supplies template).
+    # Template: <listing_templates_dir>/Download_PDF_Template_Reference.pdf (settings, ../Listing_Templates).
     raise NotConfigured("Packaging (zip, Drive, Thank You PDF) is not built yet.")
 
 
 def listing_text(ctx):
     # Template-driven; only the opening SEO paragraph is unique. 13 tags. AI disclosure stays in template.
+    # Templates: <listing_templates_dir>/Description_Template_AI.md / _Originals.md and Digital_Note_To_Buyers.md;
+    # rules: <rules_dir>/Etsy_Rules_Bible.md (settings, ../Listing_Templates and ../Rules_And_Policies).
     raise NotConfigured("Listing text is not built yet.")
 
 

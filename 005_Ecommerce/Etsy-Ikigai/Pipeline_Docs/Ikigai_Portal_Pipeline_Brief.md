@@ -28,7 +28,7 @@ A local portal where Tony reviews ideas, approves them, reviews generated art, a
 1. Ideate (keyword research, gap analysis, what sells, low competition + decent search).
 2. Generate art (selectable engine), upscale. Largest size at 300 DPI.
 3. Upscale: Upscayl (installed at /Applications/Upscayl.app; check headless CLI) as default; Magnific MCP backup; open-source (ComfyUI weights) alternatives. Minimise cost.
-4. Mockups: hero image, product video, hand/poster flat mockup, one fixed zoomed detail shot (~20x), plus several room-scene lifestyle mockups (style of house + count chosen in portal). Etsy allows 10 images. Listing image order confirmed in Prior-Pipeline-Research-Consolidated.md section on listings: pos 1 hero, 2 video, 3 poster, 4+ style-matched rooms/details/size graphics.
+4. Mockups: hero image, product video, hand/poster flat mockup, one fixed zoomed detail shot (~20x), plus several room-scene lifestyle mockups (style of house + count chosen in portal). Etsy allows 10 images. Listing image order confirmed in ../Research/Prior-Pipeline-Research-Consolidated.md section on listings: pos 1 hero, 2 video, 3 poster, 4+ style-matched rooms/details/size graphics.
 5. Static mockups via PhotoCraft (open-source Photoshop clone, headless CLI, batch, MCP, opens PSD). Goal: drop Adobe Creative Cloud. PhotoCraft does NOT run .jsx/.atn; scripts must be rebuilt. photocraft-cli is NOT currently installed/on PATH (checked 2026-10-21); first task is to prove it opens Tony's mockup PSDs headless.
 6. Resize/center-crop to the 5 print sizes (read sizes from a live listing; old scripts: ikigai_cropper_fixed.py).
 7. Package: Google Drive folder per listing, sequential folder naming, share link embedded in a templated PDF (Tony will supply the template) which is the Etsy download file. Later storage/delivery may move off Drive to a database/other store.
@@ -54,7 +54,7 @@ Tony wants `005_Ecommerce/Etsy-Ikigai/Creative_Inspiration/` for Pinterest style
 - Etsy AI-disclosure: shop discloses AI per listing; keep that in the template.
 - Cloud move: PhotoCraft has a Linux build; Upscayl needs GPU/Vulkan (slow on cheap servers) - plan a cloud-friendly upscaler later.
 - Existing n8n/script files on this Mac: /Users/tonymacbook2025/Documents/Docker/n8n-data/workflows/ (Ikigai_Mockup_Gen_Rooms _V4.json, _Ikigai_Art_Creator-Nano-Pro_V5.json, Ikigai_Image_Resize.json, Ikigai_Tokenizer) and /Users/tonymacbook2025/Documents/Automations/IkigaiDigital/ (cropper, thumbnail, mockup launcher, zoom launcher, .jsx scripts). Reference only.
-- Related docs: 005_Ecommerce/Etsy-Ikigai/Prior-Pipeline-Research-Consolidated.md, 007_Resource_Library/Design_Inspiration/Ikigai-Art-Styles-Tokens.md (120-style token table), 007_Resource_Library/Workflows/Ikigai-Digital.md, 001_Architecture/Plans/Revenue-Stream-Pipeline-Outlines.md.
+- Related docs: 005_Ecommerce/Etsy-Ikigai/Research/Prior-Pipeline-Research-Consolidated.md, 007_Resource_Library/Design_Inspiration/Ikigai-Art-Styles-Tokens.md (120-style token table), 007_Resource_Library/Workflows/Ikigai-Digital.md, 001_Architecture/Plans/Revenue-Stream-Pipeline-Outlines.md.
 
 ## Open items for Tony
 - Apply for Etsy developer app (day-one task).

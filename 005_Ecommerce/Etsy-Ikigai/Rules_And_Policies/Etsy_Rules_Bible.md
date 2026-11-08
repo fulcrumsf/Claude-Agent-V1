@@ -136,7 +136,7 @@ Not "designed by a seller": a bundle, collection, scan or PDF of someone else's 
 | Do not manipulate Etsy's systems, including prompt injection or jailbreaking Etsy's AI tools. | Terms of Use sec. F | VERIFIED |
 | API use must be registered; indicate personal (own shop/testing) vs commercial use; account is for your own use only. | API Terms, Aug 18 2026 | VERIFIED |
 | Application Purpose and any updates need Etsy's prior approval; the app must be consistent with the approved purpose. | API Terms | VERIFIED |
-| Rate limits: per API key, QPS then QPD (sliding 24 h window); your exact numbers are in the Developer Portal (Tony's app "agent-OS" is recorded in this folder's CLAUDE.md as 10 QPS / 10,000 QPD; docs show 150 / 100,000 only as an example). Exceed = HTTP 429 with `retry-after`; use exponential backoff and caching. Creating extra keys to get around limits is prohibited; higher limits by emailing developer@etsy.com. | developer.etsy.com Rate Limits; API Terms | VERIFIED |
+| Rate limits: per API key, QPS then QPD (sliding 24 h window); your exact numbers are in the Developer Portal (Tony's app "agent-OS" is recorded in the Etsy-Ikigai CLAUDE.md as 10 QPS / 10,000 QPD; docs show 150 / 100,000 only as an example). Exceed = HTTP 429 with `retry-after`; use exponential backoff and caching. Creating extra keys to get around limits is prohibited; higher limits by emailing developer@etsy.com. | developer.etsy.com Rate Limits; API Terms | VERIFIED |
 | Prohibited API behaviours (selection): supporting listings incompatible with Creativity Standards (including mass-produced items); facilitating copying/infringement; diverting sales off Etsy; excessive burden; collecting more data than needed; transferring/commercialising API access or data; sending order/shipping/tracking messages without written authorization; manipulating shop statistics or reviews; using automated systems/extensions to access, analyze or scrape Etsy data without written authorization; **using the API to collect Etsy content for analytics, ML, AI training, licensing or content removal without written authorization.** | API Terms items 5, 6, 10, 17, 18, 21, 24, 25 | VERIFIED |
 | Display/caching: listing content shown to others must not be older than 6 h, other content 24 h; do not store longer than reasonably necessary. | API Terms | VERIFIED |
 | Draft creation: `createDraftListing` ("Creates a physical draft listing product"; `type` can be download) is a General Release endpoint with scope `listings_w`; publishing a draft is done by setting state to active, which requires an image. Drafts are therefore the safe boundary; the pipeline must never set `state: active`. | developer.etsy.com reference | VERIFIED |
@@ -183,7 +183,7 @@ Not "designed by a seller": a bundle, collection, scan or PDF of someone else's 
 
 ## 8. Conflicts and risks for Tony's shop (ranked by severity)
 
-Reviewed: `Description_Template_AI.md`, `Description_Template_Originals.md`, `Digital_Note_To_Buyers.md`, `Mockup_Originals_Locations.md` in this folder, plus the pipeline plan (drafts only).
+Reviewed: `../Listing_Templates/Description_Template_AI.md`, `../Listing_Templates/Description_Template_Originals.md`, `../Listing_Templates/Digital_Note_To_Buyers.md`, `../Mockup_Docs/Mockup_Originals_Locations.md`, plus the pipeline plan (drafts only).
 
 | # | Severity | Conflict / risk | Why | Recommended action |
 |---|---|---|---|---|

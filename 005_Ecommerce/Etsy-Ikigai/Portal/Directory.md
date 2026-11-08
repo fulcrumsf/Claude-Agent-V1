@@ -1,6 +1,6 @@
 # Portal — Directory
 
-Local Ikigai portal + listing pipeline (FastAPI, SQLite, Docker). Input: `../Ikigai_Portal_Pipeline_Brief.md`.
+Local Ikigai portal + listing pipeline (FastAPI, SQLite, Docker). Input: `../Pipeline_Docs/Ikigai_Portal_Pipeline_Brief.md`.
 
 - `app/` — dashboard shell (`main.py`), Ikigai Studio module (`studio.py`), idea pool logic (`ideas.py`), taste profile (`taste.py`), chat window (`chat.py`), chat brain via headless Claude CLI with validated dashboard actions (`assistant.py`), sales channels (`channels.py`), research import CLI (`import_ideas.py`), image engines on kie.ai (`engines.py`), stage 2 idea-to-art (`art.py`: style cards, prompt writer, rounds, picks, approval, oversight log), stage 3 upscale + resize for the Art tab (`prints.py`), `pipeline/` step runner + steps (generate_art check, upscale, resize built; production steps still stubs)
 - `data/Taste_Profile.md|json` — auto-written taste profile the research job reads (git-ignored with the DB)
