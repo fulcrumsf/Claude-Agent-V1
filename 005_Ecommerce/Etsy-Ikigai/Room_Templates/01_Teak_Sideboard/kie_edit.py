@@ -1,6 +1,6 @@
 """Spike: kie.ai image EDIT (image-to-image) for relighting / repainting a scene plate. Keys never printed.
 
-python kie_edit.py <engine: nb2|gpt|nbpro> <in.png> <out.png> <prompt.txt> [resolution 2K]
+python kie_edit.py <engine: nbpro|nb21|gpt25|gpt25s (preferred) | nb2|gpt (old)> <in.png> <out.png> <prompt.txt> [resolution 2K]
 """
 import json, sys, time
 from pathlib import Path
@@ -12,7 +12,10 @@ from app.engines import secret  # noqa: E402
 
 KIE = "https://api.kie.ai"
 UPLOAD = "https://kieai.redpandaai.co/api/file-stream-upload"
-MODELS = {"nb2": "nano-banana-2", "gpt": "gpt-image-2-image-to-image", "nbpro": "nano-banana-pro"}
+# Tony's rule (2026-11-08): room plates/edits use Nano Banana Pro, Nano Banana 2.1 or GPT Image 2.5 (nbpro best for
+# precise removals / clean-up). nb2 / gpt (2.0) only if none of those is available. Ids checked on docs.kie.ai 2026-11-08.
+MODELS = {"nbpro": "nano-banana-pro", "nb21": "nano-banana-2-1", "gpt25": "gpt-image-2-5-flare-image-to-image",
+          "gpt25s": "gpt-image-2-5-sunburst-image-to-image", "nb2": "nano-banana-2", "gpt": "gpt-image-2-image-to-image"}
 
 
 def hdr():
@@ -42,7 +45,7 @@ def edit(engine, src, out, prompt, res="2K", extra_imgs=()):
     before = credits(c)
     urls = [upload(c, src)] + [upload(c, p) for p in extra_imgs]
     inp = {"prompt": prompt, "aspect_ratio": "1:1"}
-    if engine == "gpt":
+    if engine.startswith("gpt"):              # GPT Image takes input_urls; Nano Banana takes image_input
         inp["input_urls"] = urls
         inp["resolution"] = res
     else:

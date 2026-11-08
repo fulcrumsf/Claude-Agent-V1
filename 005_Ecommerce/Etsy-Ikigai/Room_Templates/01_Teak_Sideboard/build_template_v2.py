@@ -35,7 +35,7 @@ PAINTS = {   # muted real paint chips (approx. sRGB), applied as reflectance swa
     "Dusty Blue": (158, 172, 181), "Charcoal": (84, 84, 82),
 }
 OLD_PAINT = np.array([236, 228, 212], "float32") / 255
-RAIL, MAT = 0.032, 0.085
+RAIL, MAT = 0.040, 0.085   # rail 0.032 -> 0.040 (2026-11-08: frames read flat; a wider moulding shows its profile)
 
 
 def lin(x):
@@ -176,12 +176,17 @@ def main():
     t = np.clip(dmin / r, 0, 1)
     outn = np.array([[-1, 0], [1, 0], [0, -1], [0, 1]], "float32")[rail_id]   # outward direction in board xy
     # profile slope (dz/d-outward): rounded outer arris, flat face, inner bevel facing the opening
-    slope = np.where(t < 0.22, 1.6 * np.clip(1 - t / 0.22, 0, 1) ** 1.5, 0.0) + np.where(t > 0.72, -0.75 * ((t - 0.72) / 0.28), 0.0)
+    # stepped moulding (2026-11-08, Tony: frames looked flat): rounded outer arris, raised flat face, a small step
+    # down (cove) at 45-55 %, a second lower flat, then the inner bevel down to the glazing
+    slope = (np.where(t < 0.18, 1.8 * np.clip(1 - t / 0.18, 0, 1) ** 1.4, 0.0)
+             + np.where((t > 0.44) & (t < 0.50), -2.2, 0.0) + np.where((t >= 0.50) & (t < 0.56), 0.9, 0.0)
+             + np.where(t > 0.74, -1.1 * ((t - 0.74) / 0.26), 0.0))
+    cove = 1 - 0.35 * np.exp(-((t - 0.50) / 0.03) ** 2)              # occlusion at the bottom of the step
     nrm = np.dstack([outn[..., 0] * slope, outn[..., 1] * slope, np.ones_like(t)])
     nrm /= np.linalg.norm(nrm, axis=2, keepdims=True)
     ldir = np.array([-0.55 * sgn, -0.45, 0.70], "float32"); ldir /= np.linalg.norm(ldir)
     lam = np.clip(nrm @ ldir, 0, 1) / float(ldir[2])                 # flat face == 1.0
-    shade = 0.45 + 0.55 * lam
+    shade = (0.28 + 0.72 * lam) * cove                            # stronger profile contrast
     view = np.array([0.0, 0.0, 1.0], "float32"); hv = (ldir + view) / np.linalg.norm(ldir + view)
     spec_base = np.clip(nrm @ hv, 0, 1)
     # mitre seam: thin dark line where rails meet (|dx| == |dy| distance to the corner diagonal)
@@ -224,7 +229,7 @@ def main():
         bshade = shade * mitre * gap
         col = a[None, None, :] * (bshade * tex)[..., None] + (ks * spec_base ** kp)[..., None]
         col_img = warp(col, Hm, W, H)
-        side_col = (a * 0.80)[None, None, :] * np.ones((H, W, 1), "float32")   # the side face, lit by its own L
+        side_col = (a * 0.55)[None, None, :] * np.ones((H, W, 1), "float32")   # the side (depth) face: in its own shade
         full = np.where(((sidef > 0.5) | (fringe > 0))[..., None], side_col, col_img)
         lit = full * illum_n
         save_rgba(lit, frame_a, out / f"L_frame_{name.lower()}.png")
@@ -233,9 +238,28 @@ def main():
     dl = (xx - r) if sgn > 0 else ((BW - r) - xx)
     dt = yy - r
     inside = (xx > r) & (xx < BW - r) & (yy > r) & (yy < BH - r)
-    lip = np.where(inside, (0.80 + 0.20 * np.clip(dl / (0.022 * BH), 0, 1) ** 0.7) *
-                   (0.86 + 0.14 * np.clip(dt / (0.016 * BH), 0, 1) ** 0.7), 1.0)
+    dr = ((BW - r) - xx) if sgn > 0 else (xx - r)
+    db = (BH - r) - yy
+    lip = np.where(inside, (0.62 + 0.38 * np.clip(dl / (0.035 * BH), 0, 1) ** 0.7) *       # moulding shades the art
+                   (0.74 + 0.26 * np.clip(dt / (0.025 * BH), 0, 1) ** 0.7) *               # on the light side + top
+                   (0.93 + 0.07 * np.clip(dr / (0.008 * BH), 0, 1)) *
+                   (0.94 + 0.06 * np.clip(db / (0.008 * BH), 0, 1)), 1.0)
     save_rgba(np.repeat(warp(lip, Hm, W, H)[..., None], 3, 2), warp(inside.astype("float32"), Hm, W, H), out / "L_lip.png")
+
+    # contact shadow on the wall (2026-11-08): soft drop shadow away from the light + tight occlusion at the frame edge,
+    # drawn on an extended wall plane and warped with the panel's own perspective; never over the frame itself
+    ext = 0.25
+    ow_, oh_ = int(bw + 2 * ext * BH), int(bh + 2 * ext * BH)
+    off = ext * BH
+    Y, X = np.mgrid[0:oh_, 0:ow_].astype("float32")
+    def rect(dx, dy, blur):
+        m = ((X - off - dx >= 0) & (X - off - dx <= BW) & (Y - off - dy >= 0) & (Y - off - dy <= BH)).astype("float32")
+        return cv2.GaussianBlur(m, (0, 0), blur * BH)
+    cs = 0.30 * rect(0.012 * BH * sgn, 0.018 * BH, 0.014) + 0.22 * rect(0, 0, 0.004)
+    T = np.array([[1, 0, -off], [0, 1, -off], [0, 0, 1]], "float64")
+    csw = cv2.warpPerspective(np.clip(cs, 0, 0.45).astype("float32"), Hm @ T, (W, H), flags=cv2.INTER_LINEAR, borderValue=0)
+    csw = csw * (1 - np.clip(ga + sidef, 0, 1))
+    save_rgba(np.repeat((1 - csw)[..., None], 3, 2), np.ones((H, W), "float32"), out / "L_contact.png")
 
     # ---- MAT (multiplies over lit white) - as v1, with a slightly stronger bevel
     matm = np.clip(rect_mask(BW, BH, *inner) - rect_mask(BW, BH, *mat_open), 0, 1)
@@ -361,11 +385,12 @@ def assemble(out, meta):
     a += cmd("layer.setProps", {"layer": "MAT", "visible": False})
 
     a += cmd("layer.select", {"name": "MAT"})
+    a += place("L_contact.png", "Frame contact shadow", "Multiply")
     a += place("L_lip.png", "Frame lip shadow", "Multiply")
     for nm in ("white", "black", "walnut", "oak"):
         a += place(f"L_frame_{nm}.png", f"Frame {nm.capitalize()}", "Normal", visible=(nm == "oak"))
     a += cmd("layer.new.group", {"name": "FRAME"})
-    for nm in ("Frame lip shadow", "Frame White", "Frame Black", "Frame Walnut", "Frame Oak"):
+    for nm in ("Frame contact shadow", "Frame lip shadow", "Frame White", "Frame Black", "Frame Walnut", "Frame Oak"):
         a += cmd("layer.moveTo", {"layer": nm, "target": "FRAME", "position": "into"})
 
     last = "FRAME"

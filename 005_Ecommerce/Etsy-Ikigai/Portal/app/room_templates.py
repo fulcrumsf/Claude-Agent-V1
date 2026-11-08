@@ -102,12 +102,13 @@ ALL_TOP = (BASE_LAYER, "WALL COLOUR", ART_LAYER, ART_LAYER_MAT, "MAT", "FRAME", 
 
 
 def export_layer(room, light, layer, settings=None, groups=()):
-    """One layer alone as an RGBA PNG (everything else hidden), cached as Cache_<light>_<layer>.png."""
+    """One layer alone as an RGBA PNG (everything else hidden), cached as Cache_<psd stem>_<layer>.png."""
     safe = "".join(ch if ch.isalnum() else "_" for ch in layer).strip("_")
-    out = room["dir"] / f"Cache_{light['id']}_{safe}.png"
+    psd = room["dir"] / light["psd"]
+    stamp = f"{psd.stat().st_size:x}"                 # keyed by PSD name + size: a rebuilt PSD never reuses a stale cache
+    out = room["dir"] / f"Cache_{psd.stem}_{stamp}_{safe}.png"
     if out.is_file():
         return out
-    psd = room["dir"] / light["psd"]
     args = []
     for top in ALL_TOP:
         if top == "SHADOWS" and not light.get("soft_layer"):
@@ -116,6 +117,8 @@ def export_layer(room, light, layer, settings=None, groups=()):
     if layer not in ALL_TOP:
         if "FRAME" in groups:                          # the frame group also holds the other frames + lip shadow
             args += _vis("Frame lip shadow", False) + [x for f in FRAME_LAYERS for x in _vis(f"Frame {f}", False)]
+            if light.get("contact_layer"):                 # v3 PSDs (2026-11-08) also hold a contact-shadow layer
+                args += _vis("Frame contact shadow", False)
         args += _vis(layer, True)
     _run(settings, ["run", str(psd), *args, "--out", str(out)])
     return out
