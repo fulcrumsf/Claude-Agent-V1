@@ -18,7 +18,7 @@ import cv2
 import numpy as np
 from PIL import Image
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))      # build_template.py (v1 helpers) sits next to this file
 import build_template as bt  # noqa: E402  (spike v1: geometry, warp, masks, assemble helpers)
 from build_template import rooms, luma, save_rgba, warp, rect_edge_dist, rect_mask  # noqa: E402
 

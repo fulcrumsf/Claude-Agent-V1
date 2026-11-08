@@ -1,0 +1,20 @@
+{
+ "note": "Room template manifest, read by Portal/app/room_templates.py. One PSD per light (the image model relit the same room). Lights are ranked per print by 'suits' (rooms.PROFILES_V2 keys) then 'rank'. Frame layers in the PSDs: Oak, Walnut, Black, White (frames.py ids map to these; other frame ids are skipped for this room).",
+ "name": "Teak Sideboard",
+ "furniture": "warm_wood",
+ "value_keys": ["light", "mid"],
+ "frames": {"oak": "Oak", "walnut": "Walnut", "black": "Black", "white": "White"},
+ "reference_paint": {"layer": "Wall Greige", "rgb": [200, 192, 176]},
+ "lights": [
+  {"id": "window_soft", "label": "Window_Light", "kind": "soft window-pane shadow", "psd": "Room_Template_nb2_a_window_soft.psd",
+   "json": "template_nb2_a_window_soft.json", "rank": 1, "suits": ["cute_light", "botanical_calm"]},
+  {"id": "leaf_dapple", "label": "Leaf_Dapple", "kind": "tree-leaf dapple across wall and art", "psd": "Room_Template_leaf_dapple_across.psd",
+   "json": "template_leaf_dapple_across.json", "rank": 2, "suits": ["botanical_calm", "cute_light"], "max_cover": 0.6,
+   "max_cover_why": "dapple is many small soft shadows spread over the art (art stays readable); re-rolled 2026-11-07 because the earlier dapple barely reached the art"},
+  {"id": "golden_bars", "label": "Golden_Hour", "kind": "golden-hour window bars", "psd": "Room_Template_nb2_c_golden_bars.psd",
+   "json": "template_nb2_c_golden_bars.json", "rank": 3, "suits": ["food_drink", "bold_graphic", "dark_moody"]},
+  {"id": "soft", "label": "Soft_Shadow", "kind": "soft cast shadow", "psd": "Room_Template_soft.psd",
+   "json": "template_soft.json", "rank": 4, "suits": [], "soft_layer": true}
+ ],
+ "retired_lights": {"gpt_b2_dapple_lit": "dapple barely reached the art (Tony's weak spot 1, 2026-11-07); replaced by leaf_dapple"}
+}

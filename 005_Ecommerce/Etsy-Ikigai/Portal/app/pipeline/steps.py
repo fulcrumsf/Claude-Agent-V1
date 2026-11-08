@@ -26,12 +26,14 @@ def resize(ctx):
 
 def mockups(ctx):
     # Slots 1, 2, 7 from the PSDs via PhotoCraft (app/mockups.py) plus the fixed images 3-6 and 20.
-    # Still to build: room mockups 8-19 (fidelity + aspect-ratio checks) and the video(s).
+    # Room mockups 8-19 from the PhotoCraft room templates (app/room_templates.py) when mockup_rooms is on.
+    # Still to build: the video(s).
     from .. import mockups, prints
     con, lid, lst, idea, img = prints._ctx_listing(ctx)
     settings = ctx.get("settings") or {}
     folder = prints.design_dir(settings, lst["folder_seq"], lst["title"])
-    rec = (ctx.get("mockup_build") or mockups.build)(folder, settings)
+    design = {"title": lst["title"], "description": f"{idea['title']}. {idea['description'] or ''}"}
+    rec = (ctx.get("mockup_build") or mockups.build)(folder, settings, design=design)
     with prints.LOCK:
         r = prints._record(con, lid)
         r["mockups"] = rec

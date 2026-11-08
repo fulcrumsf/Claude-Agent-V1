@@ -40,12 +40,18 @@ def design(con, settings, idea_id, prefix="/ikigai"):
                    if p.name not in FIXED_NAMES and p.name[:2].isdigit()
                    and int(p.name[:2]) not in TEMPLATED_SLOTS) if folder.is_dir() else []
     made = {f["file"]: f for f in (rec.get("mockups") or {}).get("files", [])}
+    if any(f.get("slot", 0) >= 8 and f.get("room") for f in made.values()):
+        # once the room-template step has made rooms, older room files it did not make (e.g. the rejected v1
+        # AI rooms) are hidden, never deleted
+        files = [p for p in files if int(p.name[:2]) < 8 or int(p.name[:2]) > 19 or p.name in made]
     for p in files:
         mb = round(p.stat().st_size / 1e6, 1)
         status = approvals.get(p.name, "pending")
         info = made.get(p.name, {})
         out["images"].append({"file": p.name, "slot": int(p.name[:2]), "label": _label(p.name), "mb": mb,
                               "status": status, "print": info.get("print"),
+                              "look": ({k: info.get(k) for k in ("room", "light", "frame", "mat", "paint")}
+                                       if info.get("room") else None),
                               "url": f"{prefix}/api/production/{idea_id}/file/{p.name}",
                               "over_limit": mb > 19.5})
         out["counts"][status] += 1

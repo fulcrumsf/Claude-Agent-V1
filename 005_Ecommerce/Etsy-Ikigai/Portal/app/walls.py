@@ -60,6 +60,8 @@ def choose(analysis, furniture="warm_wood", n=3, cfg=None):
             s += 1.0 if p["depth"] <= 0.2 else (-0.5 if p["depth"] >= 0.9 else 0)
         if fam in ("dark_neutral",) and key != "dark":
             s -= 0.5
+        if key == "light":      # tie-break (2026-11-07): among equals, a quiet mid-depth neutral (~0.4) reads best
+            s -= round(0.5 * abs(p["depth"] - 0.4), 2)  # behind light art; oat/warm white are too close to the paper
         out.append({"name": p["name"], "rgb": p["rgb"], "score": round(s, 2), "reasons": why})
     out.sort(key=lambda x: -x["score"])
     return out[:n]

@@ -4,7 +4,7 @@ Per design (written to <design folder>/03-Etsy Images/, file number = slot numbe
   01_Main_Mockup, 02_Poster_Mockup, 07_Detail  - the art is swapped into each PSD's "Place Artwork Here"
                                                   smart object (`layer.smartObjects.replaceContents`)
   03, 04, 05, 06, 20                           - fixed shared images, copied from the template folder
-Room mockups 08-19: app/rooms.py. Not built: the video(s), which Etsy only takes by hand.
+Room mockups 08-19: app/room_templates.py (when settings mockup_rooms is true). Not built: the video(s), which Etsy only takes by hand.
 
 Why the art is pre-fitted: replaceContents places the new file at its own pixel size, it does not scale it to
 the smart object. So the smart object's native size is read (exportContents) and the art is cover-cropped
@@ -30,7 +30,7 @@ FIXED = [("03_Instant_Download.png", "03_Instant_Download.png"),
          ("05_Wall_Size_Guide.png", "06_Wall_Art_Size_Guide.png"),
          ("06_Important_Notes.png", "05_Important_Notes.png"),
          ("20_Customer_Reviews.png", "06A_Customer_Reviews.png")]
-STILL_TO_BUILD = "room mockups and the videos are not made by this button yet"
+STILL_TO_BUILD = "the videos are not made by this button yet (room mockups only when mockup_rooms is on)"
 
 
 def _cfg(settings, key):
@@ -112,7 +112,7 @@ def _place(rendered, dest):
     return jpg
 
 
-def build(folder, settings, adapter=None, rooms=None):
+def build(folder, settings, adapter=None, rooms=None, design=None):
     """Make slots 1, 2, 7 and copy the fixed images into <folder>/03-Etsy Images. Returns the record dict."""
     templates = _abs(_cfg(settings, "mockup_templates"))
     if not templates.is_dir():
@@ -145,19 +145,16 @@ def build(folder, settings, adapter=None, rooms=None):
         shutil.copy2(templates / src_name, out_dir / out_name)
         made.append({"file": out_name, "slot": int(out_name[:2]), "fixed": True})
     if rooms is None:
-        rooms = bool((settings or {}).get("mockup_rooms", False))   # off until Tony approves the new room recipe
+        rooms = bool((settings or {}).get("mockup_rooms", False))   # off until Tony approves the room recipe
     if rooms:
-        from . import rooms as rooms_mod
-        if adapter is None:
-            from . import engines
-            try:
-                adapter = engines.adapter_for(settings.get("room_engine", rooms_mod.DEFAULTS["room_engine"]), settings)
-            except engines.EngineError:
-                adapter = None            # cached scenes still work; missing ones are reported below
-        r_made, r_notes, failed = rooms_mod.build_rooms(out_dir, arts, settings, adapter)
+        # v2 rooms (2026-11-07): PhotoCraft room templates in ../Room_Templates, frame/wall/light chosen per print
+        # (app/room_templates.py). The v1 AI-scene rooms (app/rooms.build_rooms) were rejected by Tony.
+        from . import room_templates
+        design = design or {"title": folder.name.split("-", 1)[-1]}
+        all_prints = sorted((folder / "01-Printables").glob("*.jpg"))
+        r_made, r_notes, failed = room_templates.build_rooms(out_dir, all_prints, settings, design)
         made += r_made
         notes += r_notes
-        if failed:
-            raise NotConfigured(f"{len(failed)} of {len(rooms_mod.SCENES)} room mockups could not be made "
-                                f"(slots {', '.join(map(str, failed))}): " + "; ".join(n for n in r_notes if "not built" in n))
+        if not r_made:
+            raise NotConfigured("No room mockups could be made: " + "; ".join(r_notes))
     return {"folder": str(out_dir), "files": made, "pending": STILL_TO_BUILD, "notes": notes}
