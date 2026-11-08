@@ -4,43 +4,62 @@ The ONE catalogue for every room-mockup template used for Ikigai listing images 
 
 Approved by Tony 2026-11-07 (path `005_Ecommerce/Etsy-Ikigai/Room_Templates/`). Re-organised 2026-11-08 to Tony's layout (below).
 
-## Layout (Tony, 2026-11-08)
+## Layout (Tony's master tree, re-filed 2026-11-08)
+
+Tony's three-digit folders are the masters. Naming convention: every ratio, room-type and style folder starts with a three-digit number `NNN_` (`001_Ratio_ISO`, `001_Living_Rooms`, `002_Modern`); template folders inside them keep their own names. The Portal strips the number and underscores for display (`001_Living_Rooms` -> "Living Rooms", `001_Japandi_Minimalist` -> "Japandi Minimalist"). Folders without the `NNN_` prefix at ratio level are not part of the library (never read as templates or gaps).
 
 ```
 Room_Templates/
-  Directory.md                      this file, the only directory
+  Directory.md                          this file, the only directory
   Portrait_Templates/
-    01_Ratio_2x3/                   nearest standard ratio, in buyer-popularity order
-    02_Ratio_3x4/
-    03_Ratio_4x5/                   includes 11x14
-    04_Ratio_5x7/                   includes ISO / A-series
-    05_Ratio_Other/                 only what fits no ratio (All_Ratios master, untemplated scenes)
-      <Room_Type>/                  Living_Room, Bedroom, Bar_Or_Kitchen, Game_Room, Office, Bathroom, Nursery ...
-        [<Style>/ ...]              optional style level(s) Tony may add, e.g. 04_Ratio_5x7/Bedroom/Japandi/
-          <Template>/               one tidy place per template: PSD + preview (_Preview) + source scene
-            Archive/                not approved, do not use but kept (Original_ backups, old versions)
-    Scripts/                        authoring scripts for the portrait templates (reference)
+    001_Ratio_ISO/                      ISO / A-series AND 5x7 (one bucket)
+    002_Ratio_2x3/
+    003_Ratio_3x4/
+    004_Ratio_4x5/
+    005_Ratio_11x14/                    its own folder (slots nearer 0.786 than 0.800)
+      NNN_<Room_Type>/                  001_Living_Rooms, 002_Bedroom, 003_Bathroom, 004_Kitchen_Bar, 005_Office,
+                                        006_GameRooms_Mancave (ISO also 007_Creative_Space, 008_Kids_Nursery)
+        [NNN_<Style>/]                  optional, Tony makes these (e.g. 001_Living_Rooms/001_Japandi_Minimalist,
+                                        002_Modern, 003_Boho_Colorful; ISO 002_Bedroom/001_Japandi ...)
+          <Template>/                   one tidy place per template: PSD + preview (_Preview) + source scene
+            Archive/                    not approved, do not use but kept (Original_ backups, old versions)
+    Scripts/                            authoring scripts for the portrait templates (reference; old paths inside)
 ```
 
-- Pick the ratio folder by the art slot's **nearest standard ratio**, not the exact slot ratio. 5x7 (0.714) and ISO (0.707) are one bucket; 11x14 (0.786) and 4x5 (0.800) are one bucket.
-- Room type = what the room actually looks like. File names keep old ratio tags (`Game_Room_ISO.psd` is a 2x3 slot); trust the folder and the table, not the name.
-- The Teak Sideboard (AI-built, wired into Run mockups) lives at `Portrait_Templates/01_Ratio_2x3/Living_Room/Teak_Sideboard/` (art slot 0.664-0.673 = 2x3). Its own layout: `room.json` (manifest the Portal reads, any depth), `PSD_Templates/` (current v3 PSD + template json per light; `PSD_Templates/Archive/` = older PSDs + jsons, reasons in `room.json` `retired_lights`), `Caches/` (layer exports made on first render, safe to regenerate; `cache_dir` in room.json; `Caches/Archive/` = exports of older PSDs), `Plates_And_Masks/` (the 4 clean v3 plates + lamp-free wall mask; `Archive/` = raw, lamp and edit intermediates), `Light_Prompts/`, `Scripts/` (`build_template_v2.py` + `build_template.py`, `kie_edit.py`, `remove_object.py`, `quads.py`, `soften_light.py`, `guard.py`, `render_v2.py`).
-- The old `001_Ratio_ISO` ... `007_For_Use` folders are left in place (agents cannot delete). Their files were all moved; the empty ones are listed under "Library gaps" below.
+Current tree (depth 3, template counts; 43 portrait PSDs + 1 Teak Sideboard room with 4 lights):
+
+| Ratio | Room | Style folder (count) | Room level (no style fit) |
+|---|---|---|---|
+| `001_Ratio_ISO` | `001_Living_Rooms` | Japandi_Minimalist 1, Modern 6, Boho_Colorful 1 | 1 (Victorian_Floor) |
+| `001_Ratio_ISO` | `002_Bedroom` | Neutral_Aesthetic 1 (Japandi, Scandinavian empty) | 1 (Girl_Peach_Trendy) |
+| `002_Ratio_2x3` | `001_Living_Rooms` | Japandi_Minimalist 2, Modern 1 + Teak_Sideboard, Boho_Colorful 1 | - |
+| `002_Ratio_2x3` | `002_Bedroom` / `004_Kitchen_Bar` / `006_GameRooms_Mancave` | (no style folders) | 1 / 1 / 1 |
+| `003_Ratio_3x4` | `001_Living_Rooms` | Japandi_Minimalist 1, Modern 3, Boho_Colorful 1 | - |
+| `003_Ratio_3x4` | `002_Bedroom` / `004_Kitchen_Bar` | (no style folders) | 4 / 2 |
+| `004_Ratio_4x5` | `001_Living_Rooms` | Japandi_Minimalist 3, Modern 5, Boho_Colorful 1 | - |
+| `005_Ratio_11x14` | `001_Living_Rooms` | Modern 1, Boho_Colorful 2 (Japandi_Minimalist empty) | - |
+| `005_Ratio_11x14` | `002_Bedroom` / `004_Kitchen_Bar` | (no style folders) | 1 / 1 |
+
+- Pick the ratio folder by the art slot's **nearest standard ratio** (SO ratio column), not the exact slot ratio. 5x7 (0.714) and ISO (0.707) share `001_Ratio_ISO`; 11x14 (0.786) goes to `005_Ratio_11x14`, 4x5 (0.800) to `004_Ratio_4x5`.
+- Room type = what the room actually looks like = the level-2 folder. Decor style = the level-3 folder when the template sits in one (chosen by looking at the preview); templates whose look fits no existing style folder sit directly in the room folder and get their style from the `Style` column / name. Agents never create style or room folders; Tony does. File names keep old ratio tags (`Game_Room_ISO.psd` is a 2x3 slot); trust the folder and the table, not the name.
+- The Teak Sideboard (AI-built, wired into Run mockups, mid-century modern) lives at `Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/` (art slot 0.664-0.673 = 2x3). Its own layout: `room.json` (manifest the Portal reads, any depth; all paths inside are relative), `PSD_Templates/` (current v3 PSD + template json per light; `PSD_Templates/Archive/` = older PSDs + jsons, reasons in `room.json` `retired_lights`), `Caches/` (layer exports made on first render, safe to regenerate; `cache_dir` in room.json; `Caches/Archive/` = exports of older PSDs), `Plates_And_Masks/` (the 4 clean v3 plates + lamp-free wall mask; `Archive/` = raw, lamp and edit intermediates), `Light_Prompts/`, `Scripts/` (`build_template_v2.py` + `build_template.py`, `kie_edit.py`, `remove_object.py`, `quads.py`, `soften_light.py`, `guard.py`, `render_v2.py`).
+- 2026-11-08 re-file: a duplicate tree (`01_Ratio_2x3`, `02_Ratio_3x4`, `03_Ratio_4x5`, `04_Ratio_5x7` with `Living_Room`/`Bedroom`/`Bar_Or_Kitchen`/`Game_Room`) had been created by an agent; all its template folders were moved (mv, intact with PSD, previews and `Archive/`) into the matching master folders (2x3 -> 002, 3x4 -> 003, 4x5 -> 004 or 005 when nearest 11x14, 5x7 -> 001_Ratio_ISO; Living_Room -> 001_Living_Rooms, Bedroom -> 002_Bedroom, Bar_Or_Kitchen -> 004_Kitchen_Bar, Game_Room -> 006_GameRooms_Mancave). The emptied duplicate folders are left for Tony to delete (agents cannot delete); the Templates tab and `--gaps` list them under "empty folders outside the NNN_ layout".
+- `05_Ratio_Other/` (All_Ratios_MASTER guide, Untemplated_Scenes, Early_AI_Drafts) was no longer in the workspace at the 2026-11-08 re-file (not moved by the agent); its catalogue row is kept below as a note only.
 
 ## Standing rule: Archive folders (Tony, 2026-11-08)
 
 - In any template folder (and its sub-folders), anything NOT approved (old, superseded or rejected PSDs, JSONs, plates, versions, `Original_` backups) goes into a sub-folder named `Archive` inside that same folder. Scrolling a folder then shows only usable, approved files; `Archive` = do not use, but kept. Tony approves creating `Archive` folders wherever needed.
 - Nothing in an `Archive` folder is used for production: `room.json` points only at `PSD_Templates/`, the Portal ignores `Archive` (Templates tab shows only a count), and an `Archive` folder is never read as a gap.
-- Left for Tony to delete: the emptied `Portrait_Templates/01_Ratio_2x3/Living_Room/Teak_Sideboard/Retired/` (its contents went to `PSD_Templates/Archive/`).
+- Left for Tony to delete: the emptied `Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/Retired/` (its contents went to `PSD_Templates/Archive/`).
 
 ## Standing rule: the folder tree IS the build plan (Tony, 2026-11-08)
 
-- Tony creates folders (ratio / room type / and any deeper style level, e.g. `04_Ratio_5x7/Bedroom/Japandi/`) knowing a mockup is needed there. **An EMPTY template folder (no PSD) is a missing template that must be built.** Building those to fill the library is the priority for future template work.
+- Tony creates folders (ratio / room type / and any deeper style level, e.g. `001_Ratio_ISO/002_Bedroom/001_Japandi/`) knowing a mockup is needed there. **An EMPTY template folder (no PSD) is a missing template that must be built.** Building those to fill the library is the priority for future template work.
 - Never treat an empty folder as clutter; never remove or rename Tony's empty folders.
 - Before building any template, scan for empty leaf folders and build to fill them, preferring the popular ratios (picker weighting below):
   `cd 005_Ecommerce/Etsy-Ikigai/Portal && python3 -m app.template_gallery --gaps`
-  It lists the gaps (empty leaf folders whose ratio + room + style no template covers yet) and, separately, empty folders already covered by a template (Tony decides on those).
-- Code must handle any depth: `Ratio/Room/[Style/...]/Template/`. `room_templates.py` finds every `room.json` at any depth; `template_gallery.py` reads the style from any level between room type and template folder.
+  It lists the gaps (every empty leaf folder in the `NNN_` tree, at its real depth: ratio / room / style) and, separately, empty folders outside the `NNN_` layout (Tony may delete those).
+- Code must handle any depth: `NNN_Ratio/NNN_Room/[NNN_Style/...]/Template/`. `room_templates.py` finds every `room.json` at any depth; `template_gallery.py` reads the style from any level between room type and template folder.
 
 ## Templates tab (Portal, read-only)
 
@@ -57,12 +76,12 @@ Buyers print living-room/bedroom art mostly at 2x3, then 3x4, then 4x5, then 5x7
 
 | Bucket (nearest standard) | Folder | Weight | Templates now |
 |---|---|---|---|
-| 2x3 (0.667) | `01_Ratio_2x3` | 35% | 11 (7 portrait + 4 Teak Sideboard lights) |
-| 3x4 (0.750) | `02_Ratio_3x4` | 25% | 11 |
-| 4x5 / 11x14 (0.800 / 0.786) | `03_Ratio_4x5` | 25% | 14 |
-| 5x7 (0.714) | `04_Ratio_5x7` | 10% | 11 (shared ISO/5x7 bucket) |
-| ISO / A-series (0.707) | `04_Ratio_5x7` | 5% | (same 11) |
-| none (guide) | `05_Ratio_Other` | - | 1 (All_Ratios_MASTER) |
+| 2x3 (0.667) | `002_Ratio_2x3` | 35% | 11 (7 portrait + 4 Teak Sideboard lights) |
+| 3x4 (0.750) | `003_Ratio_3x4` | 25% | 11 |
+| 4x5 (0.800) | `004_Ratio_4x5` | 25% | 9 |
+| 11x14 (0.786) | `005_Ratio_11x14` | 5% | 5 |
+| 5x7 (0.714) | `001_Ratio_ISO` | 10% | 11 (shared ISO/5x7 bucket) |
+| ISO / A-series (0.707) | `001_Ratio_ISO` | 5% | (same 11) |
 
 Templates whose slot sits closer to 0.714 than 0.707 (true 5x7): Modern_Moody_Beige 0.715, LVRM_Modern_Blue_2x3_Template 0.715, LVRM_Modern_BLue_ISO_Template 0.716, LVRM_Boho_Neautral_ISO_Template 0.718, LVRM_Modern_Leather_4x5_Template 0.721. The library is still thin on 2x3 against a 35% weight; more 2x3 rooms are the top gap.
 
@@ -76,7 +95,7 @@ Templates whose slot sits closer to 0.714 than 0.707 (true 5x7): Modern_Moody_Be
 
 ## Catalogue
 
-The tables below are machine-read by the Templates tab (matched by PSD file name): keep the column layout when adding rows. `Room type` must match the folder; `Style` is optional (folder level wins).
+The tables below are machine-read by the Templates tab (matched by PSD file name): keep the column layout when adding rows. `Room type` = the room folder without its number; `Style` is optional (the style folder level wins).
 
 ### Teak Sideboard (AI-built, wired into Run mockups)
 
@@ -84,10 +103,10 @@ Active looks (v3, 2026-11-08: lamp-free, plain book spines, one door pull, stepp
 
 | Template (path in Room_Templates) | Room type | Style | SO px | SO ratio | Visible ratio | Nearest standard | Bucket | Room / look | Status | Toggle / extra layers |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `Portrait_Templates/01_Ratio_2x3/Living_Room/Teak_Sideboard/PSD_Templates/Room_Template_window_soft_v3.psd` | Living_Room | Mid_Century | 1601x2400 | 0.667 | 0.667 | 2x3 | 2x3 | Bookish renter: teak sideboard, books, greige wall, soft window-pane light (rank 1) | ready (wired) | frames Oak/Walnut/Black/White, MAT, WALL COLOUR (any paint), GLASS, contact shadow |
-| `Portrait_Templates/01_Ratio_2x3/Living_Room/Teak_Sideboard/PSD_Templates/Room_Template_leaf_dapple_across_v3.psd` | Living_Room | Mid_Century | 1594x2400 | 0.664 | 0.664 | 2x3 | 2x3 | Teak sideboard room, tree-leaf dapple across wall and art (rank 2) | ready (wired) | same as above; guard shadow limit 60% |
-| `Portrait_Templates/01_Ratio_2x3/Living_Room/Teak_Sideboard/PSD_Templates/Room_Template_golden_bars_v3.psd` | Living_Room | Mid_Century | 1615x2400 | 0.673 | 0.673 | 2x3 | 2x3 | Teak sideboard room, golden-hour window bars (rank 3) | ready (wired) | same as above |
-| `Portrait_Templates/01_Ratio_2x3/Living_Room/Teak_Sideboard/PSD_Templates/Room_Template_soft_v3.psd` | Living_Room | Mid_Century | 1600x2400 | 0.667 | 0.667 | 2x3 | 2x3 | Teak sideboard room, soft cast shadow (rank 4) | ready (wired) | same as above + `Soft cast shadow` |
+| `Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/PSD_Templates/Room_Template_window_soft_v3.psd` | Living_Rooms | Mid_Century | 1601x2400 | 0.667 | 0.667 | 2x3 | 2x3 | Bookish renter: teak sideboard, books, greige wall, soft window-pane light (rank 1) | ready (wired) | frames Oak/Walnut/Black/White, MAT, WALL COLOUR (any paint), GLASS, contact shadow |
+| `Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/PSD_Templates/Room_Template_leaf_dapple_across_v3.psd` | Living_Rooms | Mid_Century | 1594x2400 | 0.664 | 0.664 | 2x3 | 2x3 | Teak sideboard room, tree-leaf dapple across wall and art (rank 2) | ready (wired) | same as above; guard shadow limit 60% |
+| `Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/PSD_Templates/Room_Template_golden_bars_v3.psd` | Living_Rooms | Mid_Century | 1615x2400 | 0.673 | 0.673 | 2x3 | 2x3 | Teak sideboard room, golden-hour window bars (rank 3) | ready (wired) | same as above |
+| `Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/PSD_Templates/Room_Template_soft_v3.psd` | Living_Rooms | Mid_Century | 1600x2400 | 0.667 | 0.667 | 2x3 | 2x3 | Teak sideboard room, soft cast shadow (rank 4) | ready (wired) | same as above + `Soft cast shadow` |
 
 ### Portrait templates (Tony's own PSDs, 44)
 
@@ -95,56 +114,55 @@ A COPY of Tony's Photoshop portrait room mockups; the originals live in iCloud (
 
 | Template (path in Room_Templates) | Room type | Style | SO px | SO ratio | Visible ratio | Nearest standard | Bucket | Room / look | Status | Toggle / extra layers |
 |---|---|---|---|---|---|---|---|---|---|---|
-| `Portrait_Templates/01_Ratio_2x3/Bar_Or_Kitchen/003_BC_White_Bar_Cart/003_BC_White_Bar_Cart.psd` | Bar_Or_Kitchen | Food_and_Drink | 734x1099 | 0.668 | 0.670 | 2x3 | 2x3 | White panelled wall, black bar cart, pampas | ready (renamed) | `Reflection`, `Soft Shadow`, `Hard Edge Shadow`, 3 adjustments |
-| `Portrait_Templates/01_Ratio_2x3/Bedroom/BDRM_Girl_Pink_Modern_2x3/BDRM_Girl_Pink_Modern_2x3_Template.psd` | Bedroom | Trendy | 620x921 | 0.673 | 0.672 | 2x3 | 2x3 | Dusty-pink bedroom, pink nightstand, sun streaks | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/01_Ratio_2x3/Game_Room/Game_Room_ISO/Game_Room_ISO.psd` | Game_Room | Gamer | 423x671 | 0.630 | 0.656 | 2x3 | 2x3 | Warm attic gaming room, monitors, LED glow | ready (renamed) | `Brightness/Contrast 1` |
-| `Portrait_Templates/01_Ratio_2x3/Living_Room/002_TealTiki_LVRM_ISO/002_TealTiki_LVRM_ISO.psd` | Living_Room | Boho | 591x861 | 0.686 | 0.681 | 2x3 | 2x3 | Moody teal plaster wall, burnt-orange armchair, monstera | ready (renamed) | group `Shadows` (4 Multiply shadow layers) |
-| `Portrait_Templates/01_Ratio_2x3/Living_Room/001_Walnut_LVRM_ISO/001_Walnut_LVRM_ISO.psd` | Living_Room | Japandi | 594x867 | 0.685 | 0.684 | 2x3 | 2x3 | Bright Japandi living room, grey sofa, walnut table, slat wall | ready (renamed) | none (frame/shadow baked; hidden leftover `Group 1`) |
-| `Portrait_Templates/01_Ratio_2x3/Living_Room/LVRM_Midcentury_Walnut_2x3/LVRM_Midcentury_Walnut_2x3.psd` | Living_Room | Mid_Century | 697x1071 | 0.651 | 0.651 | 2x3 | 2x3 | Sunny mid-century, two frames (right one is the slot; left keeps baked sample art) | ready (shape converted) | SHADOWS, GLARE |
-| `Portrait_Templates/01_Ratio_2x3/Living_Room/LVRM_Minimal_ISO/LVRM_Minimal_ISO_Template.psd` | Living_Room | Minimal | 306x458 | 0.668 | 0.667 | 2x3 | 2x3 | Minimal warm living room, doorway, black mushroom lamp, hard sun | made-from-PNG | SHADOWS, GLARE (blank insert shows as mat) |
-| `Portrait_Templates/02_Ratio_3x4/Bar_Or_Kitchen/001_BC_Teal_Closeup/001_BC_Teal_Closeup.psd` | Bar_Or_Kitchen | Food_and_Drink | 921x1200 | 0.767 | 0.769 | 3x4 | 3x4 | Teal wall bar close-up, wine glasses + bottle | ready (renamed) | none (art SO is Multiply over the scene) |
-| `Portrait_Templates/02_Ratio_3x4/Bar_Or_Kitchen/Barcart_Green_Gold_3x4/Barcart_Green_Gold_3x4.psd` | Bar_Or_Kitchen | Food_and_Drink | 872x1139 | 0.766 | 0.765 | 3x4 | 3x4 | Dark-green hallway, gold bar cart, checker rug | ready (shape converted) | SHADOWS, GLARE |
-| `Portrait_Templates/02_Ratio_3x4/Bedroom/BDRM_Japandi_Beige_4x5/BDRM_Japandi_Beige_4x5.psd` | Bedroom | Japandi | 497x660 | 0.753 | 0.752 | 3x4 | 3x4 | Japandi bedroom, oak frame, soft sun | ready (shape converted) | SHADOWS, GLARE |
-| `Portrait_Templates/02_Ratio_3x4/Bedroom/BDRM_Girl_Pink_4x5/BDRM_Girl_Pink_4x5.psd` | Bedroom | Trendy | 613x814 | 0.753 | 0.753 | 3x4 | 3x4 | Pink bedroom, sun streaks | ready (shape converted) | SHADOWS, GLARE |
-| `Portrait_Templates/02_Ratio_3x4/Bedroom/BDRM_Girl_Pink_Anime_4x5/BDRM_Girl_Pink_Anime_4x5.psd` | Bedroom | Trendy | 615x803 | 0.766 | 0.766 | 3x4 | 3x4 | Pink bedroom, sun streaks (anime set) | ready (shape converted) | SHADOWS, GLARE |
-| `Portrait_Templates/02_Ratio_3x4/Bedroom/BDRM_Wabi_Vertical/BDRM_Wabi_Vertical_Template.psd` | Bedroom | Wabi_Sabi | 562x750 | 0.749 | 0.750 | 3x4 | 3x4 | Wabi-sabi neutral bedroom, linen bed, curtains, sun diagonal | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/02_Ratio_3x4/Living_Room/LVRM_Modern_Color_3x4/LVRM_Modern_Color_3x4.psd` | Living_Room | Modern | 790x1074 | 0.736 | 0.736 | 3x4 | 3x4 | Bright modern living room, cream tufted sofa, olive tree | ready (renamed) | `Reflection`, `Light Reflection`, `Exposure 1`, `Levels 1` |
-| `Portrait_Templates/02_Ratio_3x4/Living_Room/LVRM_Walnut_Beige_3x4/LVRM_Walnut_Beige_3x4.psd` | Living_Room | Modern | 982x1330 | 0.738 | 0.698 | 3x4 | 3x4 | Japandi-modern, walnut shelf, tan leather chair | ready (renamed) | group `Picture Matte` (mat + `Matte Shadow`), group `Picture Glass` |
-| `Portrait_Templates/02_Ratio_3x4/Living_Room/LVRM_Trendy_Girl_5x7/LVRM_Trendy_Girl_5x7.psd` | Living_Room | Trendy | 539x725 | 0.743 | 0.744 | 3x4 | 3x4 | Same Parisian room, tighter crop | ready (shape converted) | SHADOWS, GLARE |
-| `Portrait_Templates/02_Ratio_3x4/Living_Room/LVRM_Floor_ISO/LVRM_Floor_ISO_Template.psd` | Living_Room | Unstyled | 805x1087 | 0.741 | 0.744 | 3x4 | 3x4 | Large leaning floor frame, black lounge chair, sunny window | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/02_Ratio_3x4/Living_Room/LVRM_Wabi_ISO/LVRM_Wabi_ISO_Template.psd` | Living_Room | Wabi_Sabi | 460x617 | 0.746 | 0.746 | 3x4 | 3x4 | Wabi-sabi loft, beams, brick, olive sofa, dried branches | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/03_Ratio_4x5/Bar_Or_Kitchen/002_BC_Teal_ISO/002_BC_Teal_ISO.psd` | Bar_Or_Kitchen | Food_and_Drink | 925x1198 | 0.772 | 0.770 | 11x14 | 4x5/11x14 | Wide teal hallway, pink-brass bar cart | ready (shape converted) | SHADOWS, GLARE |
-| `Portrait_Templates/03_Ratio_4x5/Bedroom/BDRM-MidCentury_ISO/BDRM-MidCentury_ISO_Template.psd` | Bedroom | Mid_Century | 420x541 | 0.776 | 0.774 | 11x14 | 4x5/11x14 | Mid-century bedroom, cream wall, walnut nightstands, rust cushions | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/001_Colorful_LVRM_ISO/001_Colorful_LVRM_ISO.psd` | Living_Room | Boho | 621x790 | 0.786 | 0.775 | 11x14 | 4x5/11x14 | Colourful retro/boho living room, mustard sofa, turquoise arch | ready (renamed) | group `WITH MATTE BORDER` (mat + `Shadow Overlay`), `Picture Fame` (frame), group `Glass Reflection` (hidden) |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/LVRM_Colorful_3x4/LVRM_Colorful_3x4.psd` | Living_Room | Boho | 875x1134 | 0.772 | 0.757 | 11x14 | 4x5/11x14 | Saturated retro boho, coral brick + teal wall | ready (renamed) | `Picture Matte`, `Shadow`, `Glass Reflection`, `Levels 1` |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/LVRM_Gray_Japandi_4x5/LVRM_Gray_Japandi_4x5.psd` | Living_Room | Japandi | 1131x1367 | 0.827 | 0.826 | 4x5 | 4x5/11x14 | Calm grey-white Japandi living room | ready (renamed) | group `Glass Reflection` |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/LVRM_Japandi_Soft_Colors/LVRM_Japandi_Soft_Colors_Template.psd` | Living_Room | Japandi | 812x1015 | 0.800 | 0.801 | 4x5 | 4x5/11x14 | Bright Japandi living room, beams, terracotta cushions, plants | made-from-PNG | MAT, SHADOWS, GLARE |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/LVRM_Mint_Japandi_4x5/LVRM_Mint_Japandi_4x5.psd` | Living_Room | Japandi | 1302x1584 | 0.822 | 0.824 | 4x5 | 4x5/11x14 | Sage/mint wall, grey-green sofa, orange cushions | ready (renamed) | group `Glass Reflection`, `Blank Canvas` |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/LVRM_Midcentury_Wood/LVRM_Midcentury_Wood_Template.psd` | Living_Room | Mid_Century | 441x551 | 0.800 | 0.799 | 4x5 | 4x5/11x14 | Mid-century living room, walnut side tables, lamps, sunny | made-from-PNG | MAT, SHADOWS, GLARE |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/LVRM_Beige_4x5/LVRM_Beige_4x5.psd` | Living_Room | Modern | 451x534 | 0.845 | 0.785 | 4x5 | 4x5/11x14 | Dim beige living room, blind-stripe shadows | ready (renamed) | `Shadow Overlay` (Multiply), `Matte` |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/LVRM_Modern_Nook_4x5/LVRM_Modern_Nook_4x5.psd` | Living_Room | Modern | 1275x1486 | 0.858 | 0.858 | 4x5 | 4x5/11x14 | Reading nook, wood frame + big mat, plant | ready (shape converted) | SHADOWS, GLARE, FOREGROUND (leaf over corner) |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/LVRM_Modern_Walnut/LVRM_Modern_Walnut_Template.psd` | Living_Room | Modern | 823x1028 | 0.801 | 0.801 | 4x5 | 4x5/11x14 | Sunny mid-century living room, walnut shelves, pink chair | made-from-PNG | MAT, SHADOWS, GLARE |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/LVRM_Walnut_Modern_4x5/LVRM_Walnut_Modern_4x5.psd` | Living_Room | Modern | 1123x1347 | 0.834 | 0.810 | 4x5 | 4x5/11x14 | Sunlit modern corner, leather chair, cactus | ready (renamed) | `Picture Matte`, group `Shadows` |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/LVRM_Modern_Dark_4x5/LVRM_Modern_Dark_4x5_Template.psd` | Living_Room | Moody | 739x938 | 0.788 | 0.788 | 11x14 | 4x5/11x14 | Dark grey wall living room, cream sofa, teal/orange cushions, lamp | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/03_Ratio_4x5/Living_Room/LVRM_Trendy_Girl_4x5/LVRM_Trendy_Girl_4x5.psd` | Living_Room | Trendy | 598x744 | 0.804 | 0.805 | 4x5 | 4x5/11x14 | Pink/mustard Parisian panelled living room | ready (shape converted) | SHADOWS, GLARE |
-| `Portrait_Templates/04_Ratio_5x7/Bedroom/BDRM_Girl_Peach_Trendy_2x3/BDRM_Girl_Peach_Trendy_2x3.psd` | Bedroom | Trendy | 598x861 | 0.695 | 0.696 | ISO | ISO/5x7 | Dusty-pink teen bedroom, peach chair, retro radio | ready (shape converted) | SHADOWS, GLARE |
-| `Portrait_Templates/04_Ratio_5x7/Bedroom/BDRM_Trendy_Nuetral_4x5/BDRM_Trendy_Nuetral_4x5_Template.psd` | Bedroom | Trendy | 362x516 | 0.702 | 0.703 | ISO | ISO/5x7 | Warm sunlit teen bedroom desk corner, oak frame + mat | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/04_Ratio_5x7/Living_Room/LVRM_Boho_Neautral_ISO/LVRM_Boho_Neautral_ISO_Template.psd` | Living_Room | Boho | 869x1210 | 0.718 | 0.718 | 5x7 | ISO/5x7 | Soft boho-neutral living room, beige sofa, pendant, wall hoops | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/04_Ratio_5x7/Living_Room/LVRM_Japandi_Simple_ISO/LVRM_Japandi_Simple_ISO_Template.psd` | Living_Room | Japandi | 442x625 | 0.707 | 0.707 | ISO | ISO/5x7 | Japandi living room, linen sofa, blossom branches, wood shelves | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/04_Ratio_5x7/Living_Room/LVRM_Modern_BLue_ISO/LVRM_Modern_BLue_ISO_Template.psd` | Living_Room | Modern | 486x679 | 0.716 | 0.716 | 5x7 | ISO/5x7 | Sky-blue wall living room, teal chesterfield, palms | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/04_Ratio_5x7/Living_Room/LVRM_Modern_Blue_2x3/LVRM_Modern_Blue_2x3_Template.psd` | Living_Room | Modern | 396x554 | 0.715 | 0.716 | 5x7 | ISO/5x7 | Teal-blue wall living room, teal sofa, pendant | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/04_Ratio_5x7/Living_Room/LVRM_Modern_Cradenza_Angled_ISO/LVRM_Modern_Cradenza_Angled_ISO_Template.psd` | Living_Room | Modern | 501x708 | 0.708 | 0.532 | ISO | ISO/5x7 | Angled view, walnut credenza, vases, big leaning frame, window light | made-from-PNG | SHADOWS, GLARE, FOREGROUND |
-| `Portrait_Templates/04_Ratio_5x7/Living_Room/LVRM_Modern_Leather_4x5/LVRM_Modern_Leather_4x5_Template.psd` | Living_Room | Modern | 427x592 | 0.721 | 0.719 | 5x7 | ISO/5x7 | White wall, tan leather wingback chair, fiddle-leaf plant, black frame + mat | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/04_Ratio_5x7/Living_Room/LVRM_Modern_Walnut_5x7/LVRM_Modern_Walnut_5x7_Template.psd` | Living_Room | Modern | 728x1045 | 0.697 | 0.697 | ISO | ISO/5x7 | Walnut console, tan leather chair, tall windows, oak frame + mat | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/04_Ratio_5x7/Living_Room/Modern_Moody_Beige/Modern_Moody_Beige.psd` | Living_Room | Modern | 462x646 | 0.715 | 0.716 | 5x7 | ISO/5x7 | Moody warm-beige living room, tan sectional, striped sun | ready (renamed) | `Reflections` (SO, Multiply 79%) |
-| `Portrait_Templates/04_Ratio_5x7/Living_Room/LVRM_Victorian_Floor_ISO/LVRM_Victorian_Floor_ISO_Template.psd` | Living_Room | Victorian | 204x296 | 0.689 | 0.686 | ISO | ISO/5x7 | Empty Victorian panelled room, gilt frame leaning on herringbone floor | made-from-PNG | SHADOWS, GLARE |
-| `Portrait_Templates/05_Ratio_Other/Living_Room/All_Ratios_MASTER/All_Ratios_MASTER.psd` | Living_Room | Mid_Century | 584x814 | 0.717 | 0.584 | 5x7 | ISO/5x7 | Five-frame gallery wall guide, mid-century room | ready (guide, 5 slots) | groups `Picture Mattes`, `Picture Frames` (+ shadows), `Reflections`; extra SOs `Extra Art 2x3/4x5/11x14/3x4` |
+| `Portrait_Templates/002_Ratio_2x3/004_Kitchen_Bar/003_BC_White_Bar_Cart/003_BC_White_Bar_Cart.psd` | Kitchen_Bar | Food_and_Drink | 734x1099 | 0.668 | 0.670 | 2x3 | 2x3 | White panelled wall, black bar cart, pampas | ready (renamed) | `Reflection`, `Soft Shadow`, `Hard Edge Shadow`, 3 adjustments |
+| `Portrait_Templates/002_Ratio_2x3/002_Bedroom/BDRM_Girl_Pink_Modern_2x3/BDRM_Girl_Pink_Modern_2x3_Template.psd` | Bedroom | Trendy | 620x921 | 0.673 | 0.672 | 2x3 | 2x3 | Dusty-pink bedroom, pink nightstand, sun streaks | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/002_Ratio_2x3/006_GameRooms_Mancave/Game_Room_ISO/Game_Room_ISO.psd` | GameRooms_Mancave | Gamer | 423x671 | 0.630 | 0.656 | 2x3 | 2x3 | Warm attic gaming room, monitors, LED glow | ready (renamed) | `Brightness/Contrast 1` |
+| `Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/003_Boho_Colorful/002_TealTiki_LVRM_ISO/002_TealTiki_LVRM_ISO.psd` | Living_Rooms | Boho | 591x861 | 0.686 | 0.681 | 2x3 | 2x3 | Moody teal plaster wall, burnt-orange armchair, monstera | ready (renamed) | group `Shadows` (4 Multiply shadow layers) |
+| `Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/001_Japandi_Minimalist/001_Walnut_LVRM_ISO/001_Walnut_LVRM_ISO.psd` | Living_Rooms | Japandi | 594x867 | 0.685 | 0.684 | 2x3 | 2x3 | Bright Japandi living room, grey sofa, walnut table, slat wall | ready (renamed) | none (frame/shadow baked; hidden leftover `Group 1`) |
+| `Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/002_Modern/LVRM_Midcentury_Walnut_2x3/LVRM_Midcentury_Walnut_2x3.psd` | Living_Rooms | Mid_Century | 697x1071 | 0.651 | 0.651 | 2x3 | 2x3 | Sunny mid-century, two frames (right one is the slot; left keeps baked sample art) | ready (shape converted) | SHADOWS, GLARE |
+| `Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Minimal_ISO/LVRM_Minimal_ISO_Template.psd` | Living_Rooms | Minimal | 306x458 | 0.668 | 0.667 | 2x3 | 2x3 | Minimal warm living room, doorway, black mushroom lamp, hard sun | made-from-PNG | SHADOWS, GLARE (blank insert shows as mat) |
+| `Portrait_Templates/003_Ratio_3x4/004_Kitchen_Bar/001_BC_Teal_Closeup/001_BC_Teal_Closeup.psd` | Kitchen_Bar | Food_and_Drink | 921x1200 | 0.767 | 0.769 | 3x4 | 3x4 | Teal wall bar close-up, wine glasses + bottle | ready (renamed) | none (art SO is Multiply over the scene) |
+| `Portrait_Templates/003_Ratio_3x4/004_Kitchen_Bar/Barcart_Green_Gold_3x4/Barcart_Green_Gold_3x4.psd` | Kitchen_Bar | Food_and_Drink | 872x1139 | 0.766 | 0.765 | 3x4 | 3x4 | Dark-green hallway, gold bar cart, checker rug | ready (shape converted) | SHADOWS, GLARE |
+| `Portrait_Templates/003_Ratio_3x4/002_Bedroom/BDRM_Japandi_Beige_4x5/BDRM_Japandi_Beige_4x5.psd` | Bedroom | Japandi | 497x660 | 0.753 | 0.752 | 3x4 | 3x4 | Japandi bedroom, oak frame, soft sun | ready (shape converted) | SHADOWS, GLARE |
+| `Portrait_Templates/003_Ratio_3x4/002_Bedroom/BDRM_Girl_Pink_4x5/BDRM_Girl_Pink_4x5.psd` | Bedroom | Trendy | 613x814 | 0.753 | 0.753 | 3x4 | 3x4 | Pink bedroom, sun streaks | ready (shape converted) | SHADOWS, GLARE |
+| `Portrait_Templates/003_Ratio_3x4/002_Bedroom/BDRM_Girl_Pink_Anime_4x5/BDRM_Girl_Pink_Anime_4x5.psd` | Bedroom | Trendy | 615x803 | 0.766 | 0.766 | 3x4 | 3x4 | Pink bedroom, sun streaks (anime set) | ready (shape converted) | SHADOWS, GLARE |
+| `Portrait_Templates/003_Ratio_3x4/002_Bedroom/BDRM_Wabi_Vertical/BDRM_Wabi_Vertical_Template.psd` | Bedroom | Wabi_Sabi | 562x750 | 0.749 | 0.750 | 3x4 | 3x4 | Wabi-sabi neutral bedroom, linen bed, curtains, sun diagonal | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/003_Ratio_3x4/001_Living_Rooms/002_Modern/LVRM_Modern_Color_3x4/LVRM_Modern_Color_3x4.psd` | Living_Rooms | Modern | 790x1074 | 0.736 | 0.736 | 3x4 | 3x4 | Bright modern living room, cream tufted sofa, olive tree | ready (renamed) | `Reflection`, `Light Reflection`, `Exposure 1`, `Levels 1` |
+| `Portrait_Templates/003_Ratio_3x4/001_Living_Rooms/002_Modern/LVRM_Walnut_Beige_3x4/LVRM_Walnut_Beige_3x4.psd` | Living_Rooms | Modern | 982x1330 | 0.738 | 0.698 | 3x4 | 3x4 | Japandi-modern, walnut shelf, tan leather chair | ready (renamed) | group `Picture Matte` (mat + `Matte Shadow`), group `Picture Glass` |
+| `Portrait_Templates/003_Ratio_3x4/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_5x7/LVRM_Trendy_Girl_5x7.psd` | Living_Rooms | Trendy | 539x725 | 0.743 | 0.744 | 3x4 | 3x4 | Same Parisian room, tighter crop | ready (shape converted) | SHADOWS, GLARE |
+| `Portrait_Templates/003_Ratio_3x4/001_Living_Rooms/002_Modern/LVRM_Floor_ISO/LVRM_Floor_ISO_Template.psd` | Living_Rooms | Unstyled | 805x1087 | 0.741 | 0.744 | 3x4 | 3x4 | Large leaning floor frame, black lounge chair, sunny window | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/003_Ratio_3x4/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Wabi_ISO/LVRM_Wabi_ISO_Template.psd` | Living_Rooms | Wabi_Sabi | 460x617 | 0.746 | 0.746 | 3x4 | 3x4 | Wabi-sabi loft, beams, brick, olive sofa, dried branches | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/005_Ratio_11x14/004_Kitchen_Bar/002_BC_Teal_ISO/002_BC_Teal_ISO.psd` | Kitchen_Bar | Food_and_Drink | 925x1198 | 0.772 | 0.770 | 11x14 | 4x5/11x14 | Wide teal hallway, pink-brass bar cart | ready (shape converted) | SHADOWS, GLARE |
+| `Portrait_Templates/005_Ratio_11x14/002_Bedroom/BDRM-MidCentury_ISO/BDRM-MidCentury_ISO_Template.psd` | Bedroom | Mid_Century | 420x541 | 0.776 | 0.774 | 11x14 | 4x5/11x14 | Mid-century bedroom, cream wall, walnut nightstands, rust cushions | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/005_Ratio_11x14/001_Living_Rooms/003_Boho_Colorful/001_Colorful_LVRM_ISO/001_Colorful_LVRM_ISO.psd` | Living_Rooms | Boho | 621x790 | 0.786 | 0.775 | 11x14 | 4x5/11x14 | Colourful retro/boho living room, mustard sofa, turquoise arch | ready (renamed) | group `WITH MATTE BORDER` (mat + `Shadow Overlay`), `Picture Fame` (frame), group `Glass Reflection` (hidden) |
+| `Portrait_Templates/005_Ratio_11x14/001_Living_Rooms/003_Boho_Colorful/LVRM_Colorful_3x4/LVRM_Colorful_3x4.psd` | Living_Rooms | Boho | 875x1134 | 0.772 | 0.757 | 11x14 | 4x5/11x14 | Saturated retro boho, coral brick + teal wall | ready (renamed) | `Picture Matte`, `Shadow`, `Glass Reflection`, `Levels 1` |
+| `Portrait_Templates/004_Ratio_4x5/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Gray_Japandi_4x5/LVRM_Gray_Japandi_4x5.psd` | Living_Rooms | Japandi | 1131x1367 | 0.827 | 0.826 | 4x5 | 4x5/11x14 | Calm grey-white Japandi living room | ready (renamed) | group `Glass Reflection` |
+| `Portrait_Templates/004_Ratio_4x5/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Japandi_Soft_Colors/LVRM_Japandi_Soft_Colors_Template.psd` | Living_Rooms | Japandi | 812x1015 | 0.800 | 0.801 | 4x5 | 4x5/11x14 | Bright Japandi living room, beams, terracotta cushions, plants | made-from-PNG | MAT, SHADOWS, GLARE |
+| `Portrait_Templates/004_Ratio_4x5/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Mint_Japandi_4x5/LVRM_Mint_Japandi_4x5.psd` | Living_Rooms | Japandi | 1302x1584 | 0.822 | 0.824 | 4x5 | 4x5/11x14 | Sage/mint wall, grey-green sofa, orange cushions | ready (renamed) | group `Glass Reflection`, `Blank Canvas` |
+| `Portrait_Templates/004_Ratio_4x5/001_Living_Rooms/002_Modern/LVRM_Midcentury_Wood/LVRM_Midcentury_Wood_Template.psd` | Living_Rooms | Mid_Century | 441x551 | 0.800 | 0.799 | 4x5 | 4x5/11x14 | Mid-century living room, walnut side tables, lamps, sunny | made-from-PNG | MAT, SHADOWS, GLARE |
+| `Portrait_Templates/004_Ratio_4x5/001_Living_Rooms/002_Modern/LVRM_Beige_4x5/LVRM_Beige_4x5.psd` | Living_Rooms | Modern | 451x534 | 0.845 | 0.785 | 4x5 | 4x5/11x14 | Dim beige living room, blind-stripe shadows | ready (renamed) | `Shadow Overlay` (Multiply), `Matte` |
+| `Portrait_Templates/004_Ratio_4x5/001_Living_Rooms/002_Modern/LVRM_Modern_Nook_4x5/LVRM_Modern_Nook_4x5.psd` | Living_Rooms | Modern | 1275x1486 | 0.858 | 0.858 | 4x5 | 4x5/11x14 | Reading nook, wood frame + big mat, plant | ready (shape converted) | SHADOWS, GLARE, FOREGROUND (leaf over corner) |
+| `Portrait_Templates/004_Ratio_4x5/001_Living_Rooms/002_Modern/LVRM_Modern_Walnut/LVRM_Modern_Walnut_Template.psd` | Living_Rooms | Modern | 823x1028 | 0.801 | 0.801 | 4x5 | 4x5/11x14 | Sunny mid-century living room, walnut shelves, pink chair | made-from-PNG | MAT, SHADOWS, GLARE |
+| `Portrait_Templates/004_Ratio_4x5/001_Living_Rooms/002_Modern/LVRM_Walnut_Modern_4x5/LVRM_Walnut_Modern_4x5.psd` | Living_Rooms | Modern | 1123x1347 | 0.834 | 0.810 | 4x5 | 4x5/11x14 | Sunlit modern corner, leather chair, cactus | ready (renamed) | `Picture Matte`, group `Shadows` |
+| `Portrait_Templates/005_Ratio_11x14/001_Living_Rooms/002_Modern/LVRM_Modern_Dark_4x5/LVRM_Modern_Dark_4x5_Template.psd` | Living_Rooms | Moody | 739x938 | 0.788 | 0.788 | 11x14 | 4x5/11x14 | Dark grey wall living room, cream sofa, teal/orange cushions, lamp | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/004_Ratio_4x5/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_4x5/LVRM_Trendy_Girl_4x5.psd` | Living_Rooms | Trendy | 598x744 | 0.804 | 0.805 | 4x5 | 4x5/11x14 | Pink/mustard Parisian panelled living room | ready (shape converted) | SHADOWS, GLARE |
+| `Portrait_Templates/001_Ratio_ISO/002_Bedroom/BDRM_Girl_Peach_Trendy_2x3/BDRM_Girl_Peach_Trendy_2x3.psd` | Bedroom | Trendy | 598x861 | 0.695 | 0.696 | ISO | ISO/5x7 | Dusty-pink teen bedroom, peach chair, retro radio | ready (shape converted) | SHADOWS, GLARE |
+| `Portrait_Templates/001_Ratio_ISO/002_Bedroom/003_Neutral_Aesthetic/BDRM_Trendy_Nuetral_4x5/BDRM_Trendy_Nuetral_4x5_Template.psd` | Bedroom | Trendy | 362x516 | 0.702 | 0.703 | ISO | ISO/5x7 | Warm sunlit teen bedroom desk corner, oak frame + mat | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/001_Ratio_ISO/001_Living_Rooms/003_Boho_Colorful/LVRM_Boho_Neautral_ISO/LVRM_Boho_Neautral_ISO_Template.psd` | Living_Rooms | Boho | 869x1210 | 0.718 | 0.718 | 5x7 | ISO/5x7 | Soft boho-neutral living room, beige sofa, pendant, wall hoops | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/001_Ratio_ISO/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Japandi_Simple_ISO/LVRM_Japandi_Simple_ISO_Template.psd` | Living_Rooms | Japandi | 442x625 | 0.707 | 0.707 | ISO | ISO/5x7 | Japandi living room, linen sofa, blossom branches, wood shelves | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_BLue_ISO/LVRM_Modern_BLue_ISO_Template.psd` | Living_Rooms | Modern | 486x679 | 0.716 | 0.716 | 5x7 | ISO/5x7 | Sky-blue wall living room, teal chesterfield, palms | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Blue_2x3/LVRM_Modern_Blue_2x3_Template.psd` | Living_Rooms | Modern | 396x554 | 0.715 | 0.716 | 5x7 | ISO/5x7 | Teal-blue wall living room, teal sofa, pendant | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Cradenza_Angled_ISO/LVRM_Modern_Cradenza_Angled_ISO_Template.psd` | Living_Rooms | Modern | 501x708 | 0.708 | 0.532 | ISO | ISO/5x7 | Angled view, walnut credenza, vases, big leaning frame, window light | made-from-PNG | SHADOWS, GLARE, FOREGROUND |
+| `Portrait_Templates/001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Leather_4x5/LVRM_Modern_Leather_4x5_Template.psd` | Living_Rooms | Modern | 427x592 | 0.721 | 0.719 | 5x7 | ISO/5x7 | White wall, tan leather wingback chair, fiddle-leaf plant, black frame + mat | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Walnut_5x7/LVRM_Modern_Walnut_5x7_Template.psd` | Living_Rooms | Modern | 728x1045 | 0.697 | 0.697 | ISO | ISO/5x7 | Walnut console, tan leather chair, tall windows, oak frame + mat | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/001_Ratio_ISO/001_Living_Rooms/002_Modern/Modern_Moody_Beige/Modern_Moody_Beige.psd` | Living_Rooms | Modern | 462x646 | 0.715 | 0.716 | 5x7 | ISO/5x7 | Moody warm-beige living room, tan sectional, striped sun | ready (renamed) | `Reflections` (SO, Multiply 79%) |
+| `Portrait_Templates/001_Ratio_ISO/001_Living_Rooms/LVRM_Victorian_Floor_ISO/LVRM_Victorian_Floor_ISO_Template.psd` | Living_Rooms | Victorian | 204x296 | 0.689 | 0.686 | ISO | ISO/5x7 | Empty Victorian panelled room, gilt frame leaning on herringbone floor | made-from-PNG | SHADOWS, GLARE |
 
-Not templated (kept): `Portrait_Templates/05_Ratio_Other/Living_Room/Untemplated_Scenes/` holds the 3 multi-frame scene PNGs (`2x3_4x5_LVRM_Walnut_Modern.png`, `LVRM_Modern_Reading_4x5.png`, `Multiframes_Floor_Loft.png`) and `Early_AI_Drafts/` (9 early AI drafts, unreviewed, + `Upscaled_4x/` copies). Moved to `~/Desktop/Delete/` for Tony: the 5 rejected `Unusable` scenes (now `Unusable_<name>`), and earlier `BDRM_Purple_Desk_2x3.psd` + preview and `Duplicate_Copy_All_Ratios_MASTER.psd`.
+Not in the workspace since the 2026-11-08 re-file (was `Portrait_Templates/05_Ratio_Other/`): `All_Ratios_MASTER.psd` (five-frame gallery guide, 584x814 slot, 0.717, ready (guide, 5 slots)), `Untemplated_Scenes/` (3 multi-frame scene PNGs + `Early_AI_Drafts/`). Moved to `~/Desktop/Delete/` for Tony earlier: the 5 rejected `Unusable` scenes (now `Unusable_<name>`), `BDRM_Purple_Desk_2x3.psd` + preview and `Duplicate_Copy_All_Ratios_MASTER.psd`.
 
 ## Library gaps (empty template folders = templates to build)
 
-Run `python3 -m app.template_gallery --gaps` (from `Portal/`) for the live list; the Templates tab shows them as gap cards. On 2026-11-08 after the move: 0 empty folders in the new layout, 34 gaps in Tony's old `00N_Ratio_*` folders (e.g. 5x7 Bedroom Japandi / Scandinavian / Neutral_Aesthetic, 5x7 Bathroom Minimal / Monochrome / Botanical, 5x7 Office, Nursery, Creative_Space, Bathroom and Office in every ratio, 2x3 Living Room Modern), and 19 empty old folders already covered by a template. Tony to decide: recreate the gap folders in the new layout (e.g. `04_Ratio_5x7/Bedroom/Japandi/`) or keep them where they are; both are read as gaps.
+Run `python3 -m app.template_gallery --gaps` (from `Portal/`) for the live list; the Templates tab shows them as gap cards at their real depth. On 2026-11-08 after the re-file: 30 gaps, all Tony's empty master folders: ISO Bedroom Japandi / Scandinavian; ISO Bathroom Minimal / Monochrome / Botanical; ISO Kitchen_Bar Food_and_Drink / Retro_Kitchen / Rustic_Farmhouse; ISO Office Modern / Neutral_Workspace / Motivational; ISO GameRooms Gamer / Retro_Arcade / Mancave; ISO Creative_Space and Kids_Nursery; 11x14 Living Rooms Japandi_Minimalist; Bathroom and Office in 2x3, 3x4, 4x5, 11x14; GameRooms in 3x4, 4x5, 11x14; 4x5 Bedroom and Kitchen_Bar.
 
 ## Layer structure of the portrait templates (what to edit by hand)
 
@@ -165,7 +183,7 @@ Run `python3 -m app.template_gallery --gaps` (from `Portal/`) for the live list;
 
 Nothing was flattened or merged. New shadow/glare layers are pixel layers (generated images with blend modes), not adjustment layers, because they carry per-pixel light from the photo. The paper fill is a pixel layer rather than a solid-colour fill layer (headless PhotoCraft cannot mask a fill layer to a quad).
 
-## History: 2026-11-08 standardisation renames and moves (OLD layout paths; superseded by the re-org above)
+## History: 2026-11-08 standardisation renames and moves (paths at that time; superseded by the re-file above)
 
 Leading-space file names (rule E):
 - `003_Ratio_3x4/001_Living_Rooms/002_Modern/ LVRM_Modern_Color_3x4.psd` -> `LVRM_Modern_Color_3x4.psd`
@@ -185,7 +203,7 @@ Misfiled by measured SO ratio, moved to the nearest-ratio folder (with their `Or
 - `001_Ratio_ISO/006_GameRooms_Mancave/001_Gamer/Game_Room_ISO.psd` (0.630) -> `002_Ratio_2x3/006_GameRooms_Mancave/`
 - `003_Ratio_3x4/001_Living_Rooms/003_Boho_Colorful/LVRM_Colorful_3x4.psd` (0.772) -> `005_Ratio_11x14/001_Living_Rooms/003_Boho_Colorful/`
 
-File names keep their old ratio tags (e.g. `Game_Room_ISO.psd` now lives in 2x3); trust the folder and this table, not the name. Later the same day everything was re-filed into the `<NN_Ratio>/<Room_Type>/<Template>/` layout (the Catalogue paths above are current).
+File names keep their old ratio tags (e.g. `Game_Room_ISO.psd` now lives in 2x3); trust the folder and this table, not the name. Later the same day an agent re-filed everything into a duplicate `<NN_Ratio>/<Room_Type>/<Template>/` tree; that was reversed into Tony's `NNN_` master tree (the Catalogue paths above are current).
 
 ## Notes from the standardisation (old layout names)
 

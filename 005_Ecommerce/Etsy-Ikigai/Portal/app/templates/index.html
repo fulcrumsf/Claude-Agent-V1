@@ -645,7 +645,6 @@ button{font:inherit;color:inherit;cursor:pointer}
   let tpl = null, tplSig = "", tplTimer = null;
   const tf = {ratio: "", style: "", decor: ""};
   const editing = new Set();
-  const ROOM_ORDER = ["Living_Room", "Bedroom", "Bar_Or_Kitchen", "Game_Room", "Office", "Bathroom", "Nursery", "Creative_Space", "Any_Room"];
   const nice = v => String(v || "").replace(/_/g, " ");
   const chip = (cls, kind, val, label, title) => `<button class="chip ${cls}${tf[kind] === val ? " on" : ""}" data-tf="${kind}" data-v="${esc(val)}"${title ? ` title="${esc(title)}"` : ""}>${esc(label)}</button>`;
   function tplCard(t) {
@@ -662,13 +661,15 @@ button{font:inherit;color:inherit;cursor:pointer}
       <div class="tc">${styles}${conf}<button class="tlink" data-tedit="${esc(t.rel)}">${editing.has(t.rel) ? "done" : "Styles"}</button></div>${assign}</div></article>`;
   }
   const gapCard = g => `<article class="tcard gap"><div class="wait"><b>Template to build</b><span>${esc(g.rel)}</span></div><div class="tb">
-      <div class="tc">${chip("decor", "decor", g.style, g.style, "room style (folder)")}${chip("ratio", "ratio", g.ratio, g.ratio_label, "ratio folder")}${g.old_layout ? "<i>old layout folder</i>" : ""}</div></div></article>`;
+      <div class="tc">${chip("decor", "decor", g.style, g.style, "room style (folder)")}${chip("ratio", "ratio", g.ratio, g.ratio_label, "ratio folder")}</div></div></article>`;
   function paintTpl() {
     if (!tpl) return;
     const keep = t => (!tf.ratio || t.ratio === tf.ratio) && (!tf.decor || t.style === tf.decor);
     const items = tpl.items.filter(t => keep(t) && (!tf.style || t.styles.includes(tf.style)));
     const gaps = tf.style ? [] : tpl.gaps.filter(keep);
-    const rooms = [...new Set([...items.map(t => t.room), ...gaps.map(g => g.room)])].sort((a, b) => ((ROOM_ORDER.indexOf(a) + 99) % 99) - ((ROOM_ORDER.indexOf(b) + 99) % 99) || a.localeCompare(b));
+    const roomN = {};   // room folders keep Tony's NNN_ order (001_Living_Rooms first)
+    [...tpl.items, ...tpl.gaps].forEach(x => { roomN[x.room] = Math.min(roomN[x.room] ?? 999, x.room_n ?? 999); });
+    const rooms = [...new Set([...items.map(t => t.room), ...gaps.map(g => g.room)])].sort((a, b) => roomN[a] - roomN[b] || a.localeCompare(b));
     const decors = [...new Set(tpl.items.map(t => t.style).concat(tpl.gaps.map(g => g.style)))].sort();
     const ready = tpl.items.filter(t => t.ready).length;
     let h = `<div class="tnums"><span><strong>${tpl.items.length}</strong>templates</span><span><strong>${tpl.gaps.length}</strong>library gaps</span><span><strong>${tpl.items.filter(t => t.styles_source === "manual").length}</strong>styled by you</span><span title="old versions and Original_ backups in Archive folders; never used"><strong>${tpl.archived}</strong>archived files</span>${tpl.building ? `<span>rendering ${tpl.items.length - ready} thumbnails…</span>` : ""}${tpl.classifying ? "<span>guessing styles…</span>" : ""}</div>`;
@@ -679,7 +680,7 @@ button{font:inherit;color:inherit;cursor:pointer}
       const its = items.filter(t => t.room === r), gs = gaps.filter(g => g.room === r);
       return `<section class="tsec"><h3>${esc(nice(r))}<span>${its.length} template${its.length === 1 ? "" : "s"}${gs.length ? " · " + gs.length + " to build" : ""}</span></h3><div class="tgrid">${its.map(tplCard).join("")}${gs.map(gapCard).join("")}</div></section>`;
     }).join("") || `<p class="lead">Nothing matches these filters.</p>`;
-    if (tpl.old_empty.length) h += `<details class="told"><summary>${tpl.old_empty.length} empty old-layout folders already covered by a template (Tony may delete them)</summary><ul>${tpl.old_empty.map(g => `<li>${esc(g.rel)}</li>`).join("")}</ul></details>`;
+    if (tpl.stray_empty.length) h += `<details class="told"><summary>${tpl.stray_empty.length} empty folders outside the NNN_ layout (Tony may delete them)</summary><ul>${tpl.stray_empty.map(g => `<li>${esc(g.rel)}</li>`).join("")}</ul></details>`;
     tplHost.innerHTML = h;
   }
   async function loadTpl(quiet) {

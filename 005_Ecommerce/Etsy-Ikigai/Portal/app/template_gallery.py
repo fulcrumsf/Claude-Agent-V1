@@ -1,13 +1,18 @@
 """Templates tab (read-only): every room template under ../Room_Templates/Portrait_Templates as a visual gallery.
 
-The folder tree IS the library and the build plan (Tony, 2026-11-08):
-    Portrait_Templates/<NN_Ratio_X>/<Room_Type>/[<Style>/...]/<Template>/<files>
+The folder tree IS the library and the build plan (Tony, 2026-11-08). Tony's master folders, numbered NNN_ (three digits):
+    Portrait_Templates/<NNN_Ratio_X>/<NNN_Room_Type>/[<NNN_Style>/...]/<Template>/<files>
+    e.g. 002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/
+- Ratio = level 1 (001_Ratio_ISO = the ISO / 5x7 / A-series bucket; 005_Ratio_11x14 is its own bucket), room type =
+  level 2, decor style = any folder level between room and template (e.g. 001_Japandi_Minimalist), else the Directory
+  `Style` column, else a keyword in the template name / description, else "Unstyled". Display names drop the leading
+  number and underscores ('001_Living_Rooms' -> 'Living Rooms').
 - Anything in an `Archive/` sub-folder is not approved (old versions, `Original_` backups): ignored, only counted.
 - A template = a folder holding a PSD that is not an `Original_` backup (rooms with a room.json: one tile per active
   light PSD listed in it; Retired/ and Scripts/ are skipped). Any depth works.
-- An EMPTY leaf folder = a missing template that must be built (a "gap"). Never removed or renamed by agents.
-- Ratio comes from the top folder, room type from the next one, style from any folder level in between, else from the
-  template's name / Directory description keywords, else "Unstyled".
+- An EMPTY leaf folder in the NNN_ tree = a missing template that must be built (a "gap"), at its real depth
+  (ratio / room / style). Never removed or renamed by agents. Empty folders outside the NNN_ naming (e.g. the emptied
+  2026-11-08 duplicates 01_Ratio_2x3 ...) are listed separately for Tony to delete.
 Tile metadata (SO px, nearest standard, room/look text) is read from the tables in ../Room_Templates/Directory.md,
 matched by PSD file name.
 
@@ -39,13 +44,10 @@ ART_MAT = "Place Artwork Here (Mat)"
 SKIP_DIRS = {"Archive", "Retired", "Scripts", "Caches", "Plates_And_Masks", "Light_Prompts", "PSD_Templates", "__pycache__",
              "Untemplated_Scenes"}
 # bucket id -> chip label, in buyer-popularity order (Mockup_Docs/Mockup_Style_Guide.md picker weighting)
-BUCKETS = {"2x3": "2x3", "3x4": "3x4", "4x5": "4x5 / 11x14", "5x7": "5x7 / ISO", "other": "Other"}
-RATIO_ALIASES = {"2x3": "2x3", "3x4": "3x4", "4x5": "4x5", "11x14": "4x5", "5x7": "5x7", "iso": "5x7",
-                 "all_ratios": "other", "other": "other"}
-ROOM_ALIASES = {"living_rooms": "Living_Room", "living_room": "Living_Room", "bedroom": "Bedroom",
-                "kitchen_bar": "Bar_Or_Kitchen", "bar_or_kitchen": "Bar_Or_Kitchen", "gamerooms_mancave": "Game_Room",
-                "game_room": "Game_Room", "kids_nursery": "Nursery", "nursery": "Nursery", "office": "Office",
-                "bathroom": "Bathroom", "creative_space": "Creative_Space"}
+BUCKETS = {"2x3": "2x3", "3x4": "3x4", "4x5": "4x5", "11x14": "11x14", "iso": "ISO / 5x7", "other": "Other"}
+RATIO_ALIASES = {"2x3": "2x3", "3x4": "3x4", "4x5": "4x5", "11x14": "11x14", "5x7": "iso", "iso": "iso",
+                 "a_series": "iso", "all_ratios": "other", "other": "other"}
+MASTER = re.compile(r"^\d{3}_")             # Tony's master folders: three-digit number prefix (NNN_)
 STYLE_WORDS = [  # first match wins; checked on the template name first, then on the description
     ("Japandi", r"japandi"), ("Wabi_Sabi", r"wabi"), ("Boho", r"boho"), ("Mid_Century", r"mid.?century|teak"),
     ("Victorian", r"victorian"), ("Trendy", r"trendy|girl"), ("Moody", r"moody|dark"), ("Scandinavian", r"scandi"),
@@ -77,14 +79,20 @@ def _norm(seg):
     return re.sub(r"^\d+_", "", seg).strip().lower().replace(" ", "_").replace("-", "_")
 
 
+def label(seg):
+    """Display name of a numbered folder: '001_Living_Rooms' -> 'Living Rooms', '001_Japandi_Minimalist' ->
+    'Japandi Minimalist'."""
+    return re.sub(r"\s+", " ", re.sub(r"^\d+_", "", seg).replace("_", " ")).strip()
+
+
+def number(seg):
+    m = re.match(r"^(\d+)_", seg)
+    return int(m.group(1)) if m else 999
+
+
 def ratio_of(seg):
     m = re.search(r"ratio_(.+)$", _norm(seg))
     return RATIO_ALIASES.get(m.group(1), "other") if m else None
-
-
-def room_of(seg):
-    n = _norm(seg)
-    return ROOM_ALIASES.get(n, re.sub(r"^\d+_", "", seg).replace(" ", "_"))
 
 
 def style_from_text(*texts):
@@ -93,11 +101,6 @@ def style_from_text(*texts):
             if t and re.search(pat, t, re.I):
                 return name
     return None
-
-
-def _style_seg(seg):
-    s = re.sub(r"^\d+_", "", seg).replace(" ", "_")
-    return {"Japandi_Minimalist": "Japandi", "Boho_Colorful": "Boho"}.get(s, s)
 
 
 # ---------- Directory.md tables ----------
@@ -130,15 +133,15 @@ def _col(row, *names):
 # ---------- scan the tree ----------
 
 def scan(settings=None):
-    """(templates, gaps, covered_empty). Templates: dicts with rel path, ratio, room, style, name, desc... Any depth.
-    gaps = empty leaf folders whose ratio + room (+ style, when the folder names one) no template covers yet: the build
-    plan. covered_empty = empty folders (e.g. the old 00N_Ratio_* layout emptied by the 2026-11-08 move) whose ratio +
-    room + style already has a template; Tony decides whether to delete them. Agents never remove or rename either."""
+    """(templates, gaps, stray_empty). Templates: dicts with rel path, ratio, room, style, name, desc... Any depth.
+    gaps = every empty leaf folder in Tony's NNN_ tree (ratio / room / style): the build plan. stray_empty = empty
+    folders outside the NNN_ naming (e.g. the 2026-11-08 duplicates emptied into the masters); Tony decides whether to
+    delete them. Agents never remove or rename either."""
     base = root(settings) / LIBRARY
     rows = directory_rows(settings)
-    templates, gaps, old_empty, empties = [], [], [], []
+    templates, gaps, stray = [], [], []
     if not base.is_dir():
-        return templates, gaps, old_empty
+        return templates, gaps, stray
     for d in sorted(p for p in base.rglob("*") if p.is_dir()):
         rel = d.relative_to(base)
         parts = rel.parts
@@ -147,14 +150,18 @@ def scan(settings=None):
         ratio = ratio_of(parts[0])
         if ratio is None:
             continue
-        old = bool(re.match(r"^\d{3}_Ratio_", parts[0]))       # pre-2026-11-08 layout (001_Ratio_ISO ...)
         kids = [c for c in d.iterdir() if c.name != ".DS_Store"]
-        if not kids:                                          # empty leaf folder = a template still to build
-            room = room_of(parts[1]) if len(parts) > 1 else "Any_Room"
-            style = " / ".join(_style_seg(p) for p in parts[2:]) or "Unstyled"
-            empties.append({"rel": rel.as_posix(), "ratio": ratio, "room": room, "style": style, "old_layout": old})
+        if not MASTER.match(parts[0]):                      # not one of Tony's NNN_ ratio folders
+            if not any(f.is_file() and f.name != ".DS_Store" for f in d.rglob("*")):
+                stray.append({"rel": rel.as_posix()})
             continue
-        if old or len(parts) < 3:
+        if not kids:                                          # empty leaf folder = a template still to build
+            room = label(parts[1]) if len(parts) > 1 else "Any Room"
+            style = " / ".join(label(p) for p in parts[2:]) or "Unstyled"
+            gaps.append({"rel": rel.as_posix(), "ratio": ratio, "room": room, "room_n": number(parts[1]) if len(parts) > 1
+                         else 999, "style": style})
+            continue
+        if len(parts) < 3:
             continue
         man = d / "room.json"
         psds = []
@@ -168,19 +175,15 @@ def scan(settings=None):
             name = (f"{room_json['name']} - {light['label'].replace('_', ' ')}" if light else psd.stem)
             desc = _col(row, "room / look") or (light or {}).get("kind", "")
             mid = parts[2:-1]                                   # optional style level(s) between room and template
-            style = (" / ".join(_style_seg(p) for p in mid) if mid else None) \
-                or _col(row, "style") or style_from_text(name, desc) or "Unstyled"
+            style = (" / ".join(label(p) for p in mid) if mid else None) \
+                or label(_col(row, "style") or style_from_text(name, desc) or "Unstyled")
             templates.append({
                 "rel": psd.relative_to(base).as_posix(), "psd": psd, "name": name, "folder": parts[-1],
-                "ratio": ratio, "room": room_of(parts[1]), "style": style, "desc": desc,
+                "ratio": ratio, "room": label(parts[1]), "room_n": number(parts[1]), "style": style, "desc": desc,
                 "nearest": _col(row, "nearest") or BUCKETS[ratio], "so_px": _col(row, "so px"),
                 "status": _col(row, "status"), "wired": bool(light),
                 "light": light, "room_dir": d})
-    for g in empties:
-        covered = any(t["ratio"] == g["ratio"] and g["room"] in (t["room"], "Any_Room")
-                      and (g["style"] == "Unstyled" or t["style"].lower() == g["style"].lower()) for t in templates)
-        (old_empty if covered else gaps).append(g)
-    return templates, gaps, old_empty
+    return templates, gaps, stray
 
 
 # ---------- render one tile ----------
@@ -339,7 +342,7 @@ def overview(settings=None, prefix="/ikigai", build=True, styles_path=None, clas
     """Tab payload. `style` = the room's decor style (folder level / Directory / name keyword); `styles` = the Etsy
     shop styles (manual wins over auto, app/template_styles.py)."""
     from . import template_styles as ts
-    templates, gaps, old_empty = scan(settings)
+    templates, gaps, stray = scan(settings)
     sdata = ts.load(styles_path)
     items, missing, to_classify = [], 0, []
     errs = _state.get("errors") or {}
@@ -352,7 +355,7 @@ def overview(settings=None, prefix="/ikigai", build=True, styles_path=None, clas
                 and ((sdata.get("auto") or {}).get(t["rel"]) or {}).get("key") != tp.stem[8:24]:
             to_classify.append((t["rel"], tp, tp.stem[8:24]))
         items.append({k: t[k] for k in ("rel", "name", "folder", "ratio", "room", "style", "desc", "nearest", "so_px",
-                                         "status", "wired")}
+                                         "status", "wired", "room_n")}
                      | {"ratio_label": BUCKETS[t["ratio"]], "ready": ready, "error": errs.get(t["rel"], ""),
                         "styles": st["styles"], "styles_source": st["source"], "auto_styles": st["auto"],
                         "thumb": f"{prefix}/api/templates/file/{tp.name}" if ready else None,
@@ -361,9 +364,9 @@ def overview(settings=None, prefix="/ikigai", build=True, styles_path=None, clas
         start_build(settings)
     if to_classify and auto:
         ts.start_auto(to_classify, classify)
-    for g in gaps + old_empty:
+    for g in gaps:
         g["ratio_label"] = BUCKETS[g["ratio"]]
-    return {"items": items, "gaps": gaps, "old_empty": old_empty, "building": _state["running"] or bool(missing and build),
+    return {"items": items, "gaps": gaps, "stray_empty": stray, "building": _state["running"] or bool(missing and build),
             "classifying": ts.job()["running"] or bool(to_classify and auto), "vocabulary": ts.labels(sdata),
             "shop_sections": {v["label"]: v["section"] for v in sdata.get("vocabulary", [])},
             "archived": archived_count(settings), "buckets": BUCKETS, "crop": "4:3"}
@@ -387,13 +390,12 @@ if __name__ == "__main__":
     from .db import load_config
     s = load_config("settings")
     if "--gaps" in sys.argv:
-        _, gaps, old = scan(s)
-        print(f"{len(gaps)} library gap(s): empty template folders no template covers yet (Portrait_Templates/...):")
-        for g in sorted(gaps, key=lambda g: (list(BUCKETS).index(g["ratio"]), g["room"], g["style"])):
-            print(f"  [{BUCKETS[g['ratio']]}] {g['room']} / {g['style']}: {g['rel']}"
-                  + ("  (old layout folder)" if g["old_layout"] else ""))
-        print(f"{len(old)} empty folder(s) already covered by a template (Tony may delete them):")
-        for g in old:
+        _, gaps, stray = scan(s)
+        print(f"{len(gaps)} library gap(s): empty folders in Tony's NNN_ tree = templates to build (Portrait_Templates/...):")
+        for g in sorted(gaps, key=lambda g: (list(BUCKETS).index(g["ratio"]), g["room_n"], g["style"])):
+            print(f"  [{BUCKETS[g['ratio']]}] {g['room']} / {g['style']}: {g['rel']}")
+        print(f"{len(stray)} empty folder(s) outside the NNN_ layout (Tony may delete them):")
+        for g in stray:
             print(f"  {g['rel']}")
     if "--build" in sys.argv:
         print(json.dumps(build_all(s), indent=1) or "{}")
