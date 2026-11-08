@@ -25,7 +25,6 @@ ikigai = studio.mount(app, con, settings, chat)
 # Tabs not built yet are shown as placeholders so the layout is final.
 # The Art tab (stage 3: approved art -> upscale + resize) is built into index.html and reads /ikigai/api/prints.
 PLACEHOLDERS = [
-    {"id": "production", "label": "Production", "note": "Mockups, listing text, Drive/PDF package, Etsy draft."},
     {"id": "performance", "label": "Performance", "note": "Sales and search feedback into idea scoring."},
 ]
 

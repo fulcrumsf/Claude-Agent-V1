@@ -35,6 +35,10 @@ def mockups(ctx):
     with prints.LOCK:
         r = prints._record(con, lid)
         r["mockups"] = rec
+        ap = r.get("mockup_approvals") or {}                  # a file made again goes back to waiting
+        for f in rec["files"]:
+            ap.pop(f["file"], None)
+        r["mockup_approvals"] = ap
         prints._save_record(con, lid, r)
     msg = f"{len(rec['files'])} listing images in {folder.name}/03-Etsy Images (slots 1-20); {rec['pending']}."
     if rec["notes"]:

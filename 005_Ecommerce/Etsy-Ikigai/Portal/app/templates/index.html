@@ -254,6 +254,23 @@ button{font:inherit;color:inherit;cursor:pointer}
 .older img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;border:1px solid var(--line)}
 .older img.picked{box-shadow:0 0 0 2px var(--ink)}
 
+/* ---------- production: listing images, approve / deny ---------- */
+.pdesign{margin:0 0 40px}
+.phead{display:flex;gap:16px;align-items:center;padding:0 0 14px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.phead img{width:84px;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
+.phead h3{font:700 20px/1.2 var(--serif);margin:0 0 3px}
+.phead p{margin:0;font-size:12.5px;color:var(--muted)}
+.pcount{display:flex;gap:6px;margin-top:8px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.pcount b{font-weight:500;padding:3px 8px;border:1px solid var(--line-2);border-radius:20px;color:var(--muted)}
+.pcount b.ok{border-color:var(--ok);color:var(--ok)}.pcount b.no{border-color:var(--rising);color:var(--rising)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.pcard.approved{box-shadow:0 0 0 2px var(--ok)}
+.pcard.denied{opacity:.55}
+.pcard img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
+.pcard .pb{padding:10px 12px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pcard .pt{flex:1 1 100%;font-size:12.5px;color:var(--ink-2);display:flex;justify-content:space-between;gap:8px}
+.pcard .pt span{color:var(--muted);font:400 11px var(--mono)}
 @media (max-width:900px){
   .shell{grid-template-columns:minmax(0,1fr)}
   .details{display:none}
@@ -279,6 +296,7 @@ button{font:inherit;color:inherit;cursor:pointer}
       <div class="tabs" role="tablist">
         <button class="tab" role="tab" aria-selected="true" data-tab="{{ tab.id }}">{{ tab.label }}</button>
         <button class="tab" role="tab" aria-selected="false" data-tab="art">Art</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="production">Production</button>
         {% for p in placeholders %}<button class="tab" role="tab" aria-selected="false" data-tab="{{ p.id }}">{{ p.label }}<span class="soon">not built</span></button>{% endfor %}
       </div>
     </nav>
@@ -292,6 +310,11 @@ button{font:inherit;color:inherit;cursor:pointer}
       <div class="artgal"><h2>Approved art</h2>
         <p class="lead">Upscale + resize turns approved art into the 5 print JPGs at 300 DPI in the design folder. Mockups, listing text, packaging and the Etsy draft come later (Production).</p>
         <div class="gal" id="gal"><p class="lead">Loading…</p></div></div>
+    </main>
+    <main class="panel" id="panel-production" role="tabpanel" hidden>
+      <div class="artgal"><h2>Production</h2>
+        <p class="lead">The new listing images for each design, in one scroll. Images that are the same in every listing are not shown. Approve or deny each one; nothing goes to Etsy from here.</p>
+        <div id="prod"><p class="lead">Loading…</p></div></div>
     </main>
     {% for p in placeholders %}
     <main class="panel" id="panel-{{ p.id }}" role="tabpanel" hidden>
@@ -465,7 +488,7 @@ button{font:inherit;color:inherit;cursor:pointer}
       return head(`<span class="artpill ok">Art approved</span>`) + `<div class="final">${im ? `<img src="${esc(im.url)}" alt="Approved art">` : ""}
         <div class="ok">Approved · ${esc(im?.card_name || "")}</div>${im?.prompt ? `<details><summary>Final prompt</summary><p>${esc(im.prompt)}</p></details>` : ""}
         <div class="prod live">${printsHTML(prState[a.idea_id], false)}</div>
-        <div class="prod">Production: not built yet (mockups, listing text, package, Etsy draft)</div>
+        <div class="prod">Production: mockups are in the Production tab; listing text, package and Etsy draft are not built yet</div>
         <div class="art-row"><a class="cost" href="${prefix}/api/art/${a.idea_id}/log" target="_blank" rel="noopener">Oversight log (prompts, picks, feedback)</a></div></div>`;
     }
     if (u.mode === "setup") return head(`<span class="artpill">Setup</span>`) + setupHTML(id);
@@ -532,6 +555,35 @@ button{font:inherit;color:inherit;cursor:pointer}
     try { prState[id] = await post(`${prefix}/api/prints/${id}/run`, body); }
     catch (err) { try { prErr[id] = (await err.json()).detail || "That did not work."; } catch { prErr[id] = "That did not work."; } }
     loadPrints();
+  });
+
+  // ---------- production: listing images, inline, approve / deny ----------
+  const prodHost = document.getElementById("prod");
+  let prodItems = [];
+  function paintProd() {
+    prodHost.innerHTML = prodItems.length ? prodItems.map(d => {
+      const c = d.counts;
+      const cards = d.images.map(i => `<article class="pcard ${esc(i.status)}"><a href="${esc(i.url)}" target="_blank" rel="noopener" title="Full size"><img src="${esc(i.url)}" alt="${esc(i.label)}" loading="lazy"></a><div class="pb"><div class="pt"><b>${String(i.slot).padStart(2, "0")} · ${esc(i.label)}</b><span>${i.print ? esc(i.print) + " print · " : ""}${i.mb} MB${i.over_limit ? " · over Etsy limit" : ""}</span></div>
+          <button class="btn sm ${i.status === "approved" ? "" : "ghost"}" data-prod="approved" data-v="${d.idea_id}" data-f="${esc(i.file)}">${i.status === "approved" ? "Approved" : "Approve"}</button>
+          <button class="btn ghost sm" data-prod="denied" data-v="${d.idea_id}" data-f="${esc(i.file)}">${i.status === "denied" ? "Denied" : "Deny"}</button>
+          ${i.status !== "pending" ? `<button class="btn ghost sm" data-prod="pending" data-v="${d.idea_id}" data-f="${esc(i.file)}">Undo</button>` : ""}</div></article>`).join("");
+      return `<section class="pdesign"><div class="phead">${d.image_url ? `<img src="${esc(d.image_url)}" alt="">` : ""}<div><h3>${esc(d.name)}</h3><p>#${d.idea_id} · ${esc(d.title)} · ${d.prints} print sizes${d.folder_rel ? " · " + esc(d.folder_rel) : ""}</p>
+        <div class="pcount"><b class="ok">${c.approved} approved</b><b>${c.pending} waiting</b><b class="no">${c.denied} denied</b></div></div></div>
+        ${d.images.length ? `<div class="pgrid">${cards}</div>` : `<p class="lead">No listing images made for this design yet.</p>`}</section>`;
+    }).join("") : `<p class="lead">No designs yet. Approve art in Ikigai Digital Studio first.</p>`;
+  }
+  async function loadProd() {
+    try { prodItems = (await fetch(`${prefix}/api/production`).then(r => r.json())).items; } catch { /* keep the last state */ }
+    paintProd();
+  }
+  prodHost.addEventListener("click", async e => {
+    const b = e.target.closest("[data-prod]"); if (!b) return;
+    b.disabled = true;
+    try {
+      const d = await post(`${prefix}/api/production/${b.dataset.v}/images/${encodeURIComponent(b.dataset.f)}`, {decision: b.dataset.prod});
+      prodItems = prodItems.map(x => x.idea_id === d.idea_id ? d : x);
+    } catch { /* leave as it was */ }
+    paintProd();
   });
 
   function paintArt() {
@@ -674,6 +726,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     document.querySelectorAll(".panel").forEach(p => p.hidden = p.id !== "panel-" + t.dataset.tab);
     shell.classList.toggle("solo", t.dataset.tab !== "{{ tab.id }}");
     if (t.dataset.tab === "art") loadPrints();
+    if (t.dataset.tab === "production") loadProd();
   }));
 
   // studio actions (delegated, survives panel reloads)

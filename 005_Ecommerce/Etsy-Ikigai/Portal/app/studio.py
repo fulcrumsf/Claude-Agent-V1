@@ -43,7 +43,7 @@ from pydantic import BaseModel
 
 from fastapi.responses import FileResponse
 
-from . import art, assistant, ideas, prints, taste
+from . import art, assistant, ideas, production, prints, taste
 from .channels import get_channel
 from .chat import Reply
 from .db import DB_LOCK, get_meta, set_meta
@@ -187,6 +187,10 @@ class IterateIn(BaseModel):
 
 class ApproveIn(BaseModel):
     image_id: int | None = None
+
+
+class DecisionIn(BaseModel):
+    decision: str
 
 
 class PrintsIn(BaseModel):
@@ -382,6 +386,29 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
         except prints.PrintError as e:
             raise HTTPException(422, str(e))
         return prints.status(con, idea_id, settings, prefix)
+
+    # ---------- production: listing images, inline, approve / deny ----------
+
+    @r.get("/api/production")
+    def api_production():
+        return {"items": production.overview(con, settings, prefix)}
+
+    @r.get("/api/production/{idea_id}/file/{name}")
+    def api_production_file(idea_id: int, name: str):
+        f = production.image_path(con, settings, idea_id, name)
+        if f is None:
+            raise HTTPException(404, "no such image")
+        return FileResponse(f)
+
+    @r.post("/api/production/{idea_id}/images/{name}")
+    def api_production_decide(idea_id: int, name: str, body: DecisionIn):
+        try:
+            production.decide(con, settings, idea_id, name, body.decision)
+        except ValueError as e:
+            raise HTTPException(422, str(e))
+        except KeyError:
+            raise HTTPException(404, "no such image")
+        return production.design(con, settings, idea_id, prefix)
 
     @r.get("/art-files/{idea_id}/{name}")
     def art_file(idea_id: int, name: str):
