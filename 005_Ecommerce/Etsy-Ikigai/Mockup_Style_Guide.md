@@ -370,3 +370,8 @@ Add these to the 4a template (they keep the magenta picture area and the composi
 - **Model rule for all room image generation and edits:** use Nano Banana Pro (`nano-banana-pro`), Nano Banana 2.1 (`nano-banana-2-1`) or GPT Image 2.5 (`gpt-image-2-5-flare-image-to-image` / `-sunburst-`). The older nano-banana-2 / gpt-image-2 only if none of these is available. Nano Banana Pro is best for precise removals and clean-up. Ids checked on docs.kie.ai 2026-11-08 (GPT Image 2.6 also exists).
 - Template plate origin: the Teak Sideboard base plate was made by **GPT Image 2 text-to-image on kie.ai** (2K, 1:1, persona prompt "bookish_renter", saved as `Light_Prompts/plate_b_original_gpt_image_2_prompt.txt`), then cropped; the lights were Nano Banana 2 relight edits.
 - Approval: Tony approved the Book Club Cat room image with the lamp removed; `mockup_rooms` stays `false` until he has seen the corrected v3 image.
+
+### Template picker weighting by print ratio (Tony, 2026-11-08) - proposed starting weight, adjustable, not wired yet
+- When Run mockups picks templates/ratios for a listing, weight toward what buyers actually print for living rooms and bedrooms: **2x3 35%, 3x4 25%, 4x5 25%, 5x7 10%, ISO/A-series and 11x14 5%**.
+- Pick templates by **nearest standard ratio**, not exact slot ratio. 5x7 (0.714) and ISO (0.707) share one bucket (the ISO folder serves 5x7); 11x14 (0.786) is the 4x5 bucket.
+- Library: `Room_Templates/Tony_Portrait_Templates/` (44 ready templates, all with art layer `Place Artwork Here`; per-template bucket table and counts in its `Directory.md`). Thin spot: 2x3 has 7 templates against a 35% weight.
