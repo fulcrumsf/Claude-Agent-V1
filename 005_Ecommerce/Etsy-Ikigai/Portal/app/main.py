@@ -9,7 +9,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from . import chat as chat_mod
-from . import engines, studio
+from . import engines, studio, template_gallery
 from .db import DB_LOCK, connect, load_config
 from .pipeline import run_listing
 
@@ -21,6 +21,7 @@ settings = load_config("settings")
 chat = chat_mod.Chat(con)
 app.include_router(chat_mod.router(chat))
 ikigai = studio.mount(app, con, settings, chat)
+template_gallery.mount(app, settings, ikigai.prefix)   # Templates tab (read-only room-template gallery)
 
 # Tabs not built yet are shown as placeholders so the layout is final.
 # The Art tab (stage 3: approved art -> upscale + resize) is built into index.html and reads /ikigai/api/prints.

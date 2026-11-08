@@ -1,10 +1,12 @@
-"""Authoring script (2026-11-08) for Tony_Portrait_Templates: backs up each PSD as Original_<name>.psd, renames the art
+"""Authoring script (2026-11-08) for Portrait_Templates: backs up each PSD as Original_<name>.psd, renames the art
 smart object to 'Place Artwork Here' (deleting duplicate/hidden leftover art SOs), and converts Rectangle 1 shape slots
 into smart objects with SHADOWS/GLARE layer groups. Ran from a scratch dir (paths orig/ and layers/ are relative to it).
-Helpers: lib.py, build_layers.py. Re-running it is safe: backups are never overwritten."""
+Helpers: lib.py, build_layers.py. Re-running it is safe: backups are never overwritten.
+NOTE (2026-11-08 re-org): this ran once against the OLD layout (00N_Ratio_* / 007_For_Use folders). Those files now
+live in <NN_Ratio_*>/<Room_Type>/<Template>/ folders; the path table is in ../../Directory.md. Kept for reference."""
 import os,sys,json,shutil,subprocess
 import lib,build_layers as BL
-T="/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Room_Templates/Tony_Portrait_Templates/"
+T="/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Room_Templates/Portrait_Templates/"
 C=lib.cmd
 def R(x,y,w,h): return [[x,y],[x+w,y],[x+w,y+h],[x,y+h]]
 RENAME={ # path: (list of layer ids to delete in the Original, (name, occurrence) of the art SO)

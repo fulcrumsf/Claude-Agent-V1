@@ -25,8 +25,8 @@
    "id": "window_soft",
    "label": "Window_Light",
    "kind": "soft window-pane shadow",
-   "psd": "Room_Template_window_soft_v3.psd",
-   "json": "template_window_soft_v3.json",
+   "psd": "PSD_Templates/Room_Template_window_soft_v3.psd",
+   "json": "PSD_Templates/template_window_soft_v3.json",
    "rank": 1,
    "suits": [
     "cute_light",
@@ -38,8 +38,8 @@
    "id": "leaf_dapple",
    "label": "Leaf_Dapple",
    "kind": "tree-leaf dapple across wall and art",
-   "psd": "Room_Template_leaf_dapple_across_v3.psd",
-   "json": "template_leaf_dapple_across_v3.json",
+   "psd": "PSD_Templates/Room_Template_leaf_dapple_across_v3.psd",
+   "json": "PSD_Templates/template_leaf_dapple_across_v3.json",
    "rank": 2,
    "suits": [
     "botanical_calm",
@@ -53,8 +53,8 @@
    "id": "golden_bars",
    "label": "Golden_Hour",
    "kind": "golden-hour window bars",
-   "psd": "Room_Template_golden_bars_v3.psd",
-   "json": "template_golden_bars_v3.json",
+   "psd": "PSD_Templates/Room_Template_golden_bars_v3.psd",
+   "json": "PSD_Templates/template_golden_bars_v3.json",
    "rank": 3,
    "suits": [
     "food_drink",
@@ -67,8 +67,8 @@
    "id": "soft",
    "label": "Soft_Shadow",
    "kind": "soft cast shadow",
-   "psd": "Room_Template_soft_v3.psd",
-   "json": "template_soft_v3.json",
+   "psd": "PSD_Templates/Room_Template_soft_v3.psd",
+   "json": "PSD_Templates/template_soft_v3.json",
    "rank": 4,
    "suits": [],
    "soft_layer": true,
@@ -85,5 +85,7 @@
   "Room_Template_leaf_dapple_across_no_lamp": "lamp-free but had lettered book spines, two door pulls and flat frames; replaced by _v3 (2026-11-08)",
   "Room_Template_golden_bars_no_lamp": "lamp-free but had lettered book spines, two door pulls and flat frames; replaced by _v3 (2026-11-08)",
   "Room_Template_soft_no_lamp": "lamp-free but had lettered book spines, two door pulls and flat frames; replaced by _v3 (2026-11-08)"
- }
+ },
+ "cache_dir": "Caches",
+ "layout": "2026-11-08 tidy-up: PSD_Templates/ = current v3 PSD + template json per light (read by the Portal); PSD_Templates/Archive/ = older PSDs + jsons listed in retired_lights (do not use, kept); Caches/ = layer exports made on first render (safe to regenerate; Caches/Archive = exports of older PSDs); Plates_And_Masks/ = the 4 clean v3 plates + lamp-free wall mask (Archive = raw, lamp and edit intermediates); Light_Prompts/ = image prompts; Scripts/ = authoring scripts. Nothing in an Archive folder is used for production."
 }

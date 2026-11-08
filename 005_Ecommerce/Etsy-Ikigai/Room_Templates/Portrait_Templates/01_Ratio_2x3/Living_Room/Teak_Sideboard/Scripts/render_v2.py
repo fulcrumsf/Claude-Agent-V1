@@ -3,7 +3,7 @@ variant: {"name", "frame": oak|walnut|black|white, "mat": bool, "wall": null|"Sa
 import json, subprocess, sys, time
 from pathlib import Path
 from PIL import Image
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "Portal"))   # Etsy-Ikigai/Portal
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "Portal" / "app").is_dir()) / "Portal"))   # Etsy-Ikigai/Portal
 from app.mockups import fit_art  # noqa: E402
 
 def c(cmd, p): return ["--cmd", cmd, "--params", json.dumps(p)]

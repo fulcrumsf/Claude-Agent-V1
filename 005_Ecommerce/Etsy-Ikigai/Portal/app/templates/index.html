@@ -271,6 +271,42 @@ button{font:inherit;color:inherit;cursor:pointer}
 .pcard .pb{padding:10px 12px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .pcard .pt{flex:1 1 100%;font-size:12.5px;color:var(--ink-2);display:flex;justify-content:space-between;gap:8px}
 .pcard .pt span{color:var(--muted);font:400 11px var(--mono)}
+
+/* ---------- templates: room-template gallery (Etsy 4:3 crop), gaps, style assignment ---------- */
+.tbar{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:0 0 10px}
+.tbar b{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:46px}
+.tnums{display:flex;gap:18px;margin:0 0 16px;font-size:13px;color:var(--ink-2)}.tnums strong{font:700 20px var(--serif);color:var(--ink);margin-right:4px}
+.chip{font:500 11px var(--mono);border:1px solid var(--line-2);background:var(--card);color:var(--ink-2);border-radius:20px;padding:3px 9px;cursor:pointer;line-height:1.4}
+.chip:hover{border-color:var(--ink)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.chip.ratio{border-style:solid;color:var(--steady)}
+.chip.decor{color:var(--muted)}
+.chip.auto{border-style:dashed;color:var(--test);background:transparent}
+.chip.none{color:var(--muted);border-style:dotted;cursor:default}
+.tsec{margin:0 0 34px}
+.tsec h3{font:700 19px var(--serif);margin:0 0 12px;padding:0 0 8px;border-bottom:1px solid var(--line)}
+.tsec h3 span{font:400 12px var(--mono);color:var(--muted);margin-left:8px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.tcard .ti{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--paper-2);border:0;padding:0;cursor:zoom-in}
+.tcard .ti img{width:100%;height:100%;object-fit:cover;display:block}
+.tcard .wait{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--paper-2);color:var(--muted);font-size:12px}
+.tcard .tb{padding:9px 11px 11px;display:flex;flex-direction:column;gap:6px}
+.tcard .tn{font-size:12.5px;color:var(--ink);font-weight:500;word-break:break-word}
+.tcard .td{font-size:11.5px;color:var(--muted);line-height:1.35}
+.tcard .tc{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.tcard .tc i{font:400 10px var(--mono);color:var(--muted);font-style:normal}
+.tcard.gap{border:1.5px dashed var(--line-2);background:transparent}
+.tcard.gap .wait{background:repeating-linear-gradient(45deg,transparent 0 8px,var(--paper-2) 8px 16px);flex-direction:column;gap:4px;color:var(--ink-2)}
+.tassign{display:none;flex-wrap:wrap;gap:4px;padding-top:6px;border-top:1px dashed var(--line)}
+.tcard.edit .tassign{display:flex}
+.tassign .chip{font-size:10.5px;padding:2px 7px}
+.tlink{font:500 11px var(--mono);color:var(--steady);background:none;border:0;padding:0;cursor:pointer;text-decoration:underline}
+.tbox{position:fixed;inset:0;background:rgba(20,18,15,.82);display:flex;align-items:center;justify-content:center;z-index:50;padding:24px;flex-direction:column;gap:10px}
+.tbox[hidden]{display:none}
+.tbox img{max-width:min(1400px,96vw);max-height:84vh;border-radius:6px;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.tbox p{color:#eee;font-size:13px;margin:0}
+.told{font-size:12px;color:var(--muted)}.told li{font-family:var(--mono);font-size:11px}
 @media (max-width:900px){
   .shell{grid-template-columns:minmax(0,1fr)}
   .details{display:none}
@@ -297,6 +333,7 @@ button{font:inherit;color:inherit;cursor:pointer}
         <button class="tab" role="tab" aria-selected="true" data-tab="{{ tab.id }}">{{ tab.label }}</button>
         <button class="tab" role="tab" aria-selected="false" data-tab="art">Art</button>
         <button class="tab" role="tab" aria-selected="false" data-tab="production">Production</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="templates">Templates</button>
         {% for p in placeholders %}<button class="tab" role="tab" aria-selected="false" data-tab="{{ p.id }}">{{ p.label }}<span class="soon">not built</span></button>{% endfor %}
       </div>
     </nav>
@@ -316,6 +353,12 @@ button{font:inherit;color:inherit;cursor:pointer}
         <p class="lead">The new listing images for each design, in one scroll. Images that are the same in every listing are not shown. Approve or deny each one; nothing goes to Etsy from here.</p>
         <div id="prod"><p class="lead">Loading…</p></div></div>
     </main>
+    <main class="panel" id="panel-templates" role="tabpanel" hidden>
+      <div class="artgal"><h2>Room templates</h2>
+        <p class="lead">Every room template, rendered with a neutral test card and cropped 4:3 the way Etsy shows a listing thumbnail (centred on the frame). Grouped by room type; click a chip to filter by style or ratio, click a picture to enlarge. Dashed cards are empty template folders: templates still to build. Shop styles: click "Styles" on a card to set them (yours always win); <span style="color:var(--test)">dashed amber</span> = automatic guess, not confirmed yet.</p>
+        <div id="tpl"><p class="lead">Loading…</p></div></div>
+    </main>
+    <div class="tbox" id="tbox" hidden><img alt=""><p></p></div>
     {% for p in placeholders %}
     <main class="panel" id="panel-{{ p.id }}" role="tabpanel" hidden>
       <div class="ph">
@@ -573,10 +616,18 @@ button{font:inherit;color:inherit;cursor:pointer}
         ${d.images.length ? `<div class="pgrid">${cards}</div>` : `<p class="lead">No listing images made for this design yet.</p>`}</section>`;
     }).join("") : `<p class="lead">No designs yet. Approve art in Ikigai Digital Studio first.</p>`;
   }
-  async function loadProd() {
-    try { prodItems = (await fetch(`${prefix}/api/production`).then(r => r.json())).items; } catch { /* keep the last state */ }
-    paintProd();
+  let prodSig = "";
+  async function loadProd(quiet) {
+    try { prodItems = (await fetch(`${prefix}/api/production`, {cache: "no-store"}).then(r => r.json())).items; } catch { /* keep the last state */ }
+    const sig = JSON.stringify(prodItems);
+    if (quiet && sig === prodSig) return;          // nothing changed: no repaint, no flicker
+    prodSig = sig; paintProd();
   }
+  // keep the tab current: re-read when the window comes back into focus and every 15 s while the tab is open
+  const prodOpen = () => !document.getElementById("panel-production").hidden && !document.hidden;
+  window.addEventListener("focus", () => { if (prodOpen()) loadProd(true); });
+  document.addEventListener("visibilitychange", () => { if (prodOpen()) loadProd(true); });
+  setInterval(() => { if (prodOpen()) loadProd(true); }, 15000);
   prodHost.addEventListener("click", async e => {
     const b = e.target.closest("[data-prod]"); if (!b) return;
     b.disabled = true;
@@ -586,6 +637,83 @@ button{font:inherit;color:inherit;cursor:pointer}
     } catch { /* leave as it was */ }
     paintProd();
   });
+
+
+  // ---------- templates: room-template gallery (read-only) + shop style assignment ----------
+  const tplHost = document.getElementById("tpl");
+  const tbox = document.getElementById("tbox");
+  let tpl = null, tplSig = "", tplTimer = null;
+  const tf = {ratio: "", style: "", decor: ""};
+  const editing = new Set();
+  const ROOM_ORDER = ["Living_Room", "Bedroom", "Bar_Or_Kitchen", "Game_Room", "Office", "Bathroom", "Nursery", "Creative_Space", "Any_Room"];
+  const nice = v => String(v || "").replace(/_/g, " ");
+  const chip = (cls, kind, val, label, title) => `<button class="chip ${cls}${tf[kind] === val ? " on" : ""}" data-tf="${kind}" data-v="${esc(val)}"${title ? ` title="${esc(title)}"` : ""}>${esc(label)}</button>`;
+  function tplCard(t) {
+    const img = t.ready ? `<button class="ti" data-big="${esc(t.large)}" data-cap="${esc(t.name + " · " + t.ratio_label)}"><img src="${esc(t.thumb)}" alt="${esc(t.name)}" loading="lazy"></button>`
+      : `<div class="wait">${t.error ? "Could not render: " + esc(t.error.slice(0, 80)) : "Rendering…"}</div>`;
+    const styles = t.styles.length ? t.styles.map(s => chip(t.styles_source === "auto" ? "auto" : "", "style", s, s, t.styles_source === "auto" ? "automatic guess" : "set by you (" + (tpl.shop_sections[s] || s) + ")")).join("")
+      : `<span class="chip none">${t.styles_source === "manual" ? "no style" : "no style yet"}</span>`;
+    const conf = t.styles_source === "auto" ? `<button class="tlink" data-tconfirm="${esc(t.rel)}">confirm</button>` : "";
+    const assign = `<div class="tassign">${tpl.vocabulary.map(v => `<button class="chip${t.styles_source === "manual" && t.styles.includes(v) ? " on" : ""}" data-tset="${esc(t.rel)}" data-v="${esc(v)}" title="Etsy section: ${esc(tpl.shop_sections[v] || v)}">${esc(v)}</button>`).join("")}
+      ${t.styles_source === "manual" ? `<button class="tlink" data-tauto="${esc(t.rel)}">back to auto</button>` : ""}</div>`;
+    return `<article class="tcard${editing.has(t.rel) ? " edit" : ""}">${img}<div class="tb"><div class="tn">${esc(t.name)}</div>
+      <div class="tc">${chip("decor", "decor", t.style, t.style, "room style")}${chip("ratio", "ratio", t.ratio, t.ratio_label, "nearest standard " + t.nearest + (t.so_px ? " · slot " + t.so_px + " px" : ""))}${t.wired ? `<i>in Run mockups</i>` : ""}</div>
+      <div class="td">${esc(t.desc)}</div>
+      <div class="tc">${styles}${conf}<button class="tlink" data-tedit="${esc(t.rel)}">${editing.has(t.rel) ? "done" : "Styles"}</button></div>${assign}</div></article>`;
+  }
+  const gapCard = g => `<article class="tcard gap"><div class="wait"><b>Template to build</b><span>${esc(g.rel)}</span></div><div class="tb">
+      <div class="tc">${chip("decor", "decor", g.style, g.style, "room style (folder)")}${chip("ratio", "ratio", g.ratio, g.ratio_label, "ratio folder")}${g.old_layout ? "<i>old layout folder</i>" : ""}</div></div></article>`;
+  function paintTpl() {
+    if (!tpl) return;
+    const keep = t => (!tf.ratio || t.ratio === tf.ratio) && (!tf.decor || t.style === tf.decor);
+    const items = tpl.items.filter(t => keep(t) && (!tf.style || t.styles.includes(tf.style)));
+    const gaps = tf.style ? [] : tpl.gaps.filter(keep);
+    const rooms = [...new Set([...items.map(t => t.room), ...gaps.map(g => g.room)])].sort((a, b) => ((ROOM_ORDER.indexOf(a) + 99) % 99) - ((ROOM_ORDER.indexOf(b) + 99) % 99) || a.localeCompare(b));
+    const decors = [...new Set(tpl.items.map(t => t.style).concat(tpl.gaps.map(g => g.style)))].sort();
+    const ready = tpl.items.filter(t => t.ready).length;
+    let h = `<div class="tnums"><span><strong>${tpl.items.length}</strong>templates</span><span><strong>${tpl.gaps.length}</strong>library gaps</span><span><strong>${tpl.items.filter(t => t.styles_source === "manual").length}</strong>styled by you</span><span title="old versions and Original_ backups in Archive folders; never used"><strong>${tpl.archived}</strong>archived files</span>${tpl.building ? `<span>rendering ${tpl.items.length - ready} thumbnails…</span>` : ""}${tpl.classifying ? "<span>guessing styles…</span>" : ""}</div>`;
+    h += `<div class="tbar"><b>Ratio</b>${chip("", "ratio", "", "All")}${Object.entries(tpl.buckets).map(([k, v]) => chip("ratio", "ratio", k, v)).join("")}</div>`;
+    h += `<div class="tbar"><b>Style</b>${chip("", "style", "", "All")}${tpl.vocabulary.map(v => chip("", "style", v, v, "Etsy section: " + (tpl.shop_sections[v] || v))).join("")}</div>`;
+    h += `<div class="tbar"><b>Decor</b>${chip("decor", "decor", "", "All")}${decors.map(d => chip("decor", "decor", d, d)).join("")}</div>`;
+    h += rooms.map(r => {
+      const its = items.filter(t => t.room === r), gs = gaps.filter(g => g.room === r);
+      return `<section class="tsec"><h3>${esc(nice(r))}<span>${its.length} template${its.length === 1 ? "" : "s"}${gs.length ? " · " + gs.length + " to build" : ""}</span></h3><div class="tgrid">${its.map(tplCard).join("")}${gs.map(gapCard).join("")}</div></section>`;
+    }).join("") || `<p class="lead">Nothing matches these filters.</p>`;
+    if (tpl.old_empty.length) h += `<details class="told"><summary>${tpl.old_empty.length} empty old-layout folders already covered by a template (Tony may delete them)</summary><ul>${tpl.old_empty.map(g => `<li>${esc(g.rel)}</li>`).join("")}</ul></details>`;
+    tplHost.innerHTML = h;
+  }
+  async function loadTpl(quiet) {
+    try { tpl = await fetch(`${prefix}/api/templates`, {cache: "no-store"}).then(r => r.json()); } catch { return; }
+    const sig = JSON.stringify(tpl);
+    if (!(quiet && (sig === tplSig || editing.size))) { tplSig = sig; paintTpl(); }   // background refresh never repaints under an open style picker
+    clearTimeout(tplTimer);
+    if ((tpl.building || tpl.classifying) && !document.getElementById("panel-templates").hidden) tplTimer = setTimeout(() => loadTpl(true), 3000);
+  }
+  async function tplPost(body) {
+    try { await post(`${prefix}/api/templates/styles`, body); } catch { /* keep as it was */ }
+    await loadTpl();
+  }
+  tplHost.addEventListener("click", e => {
+    const f = e.target.closest("[data-tf]");
+    if (f) { const k = f.dataset.tf; tf[k] = tf[k] === f.dataset.v ? "" : f.dataset.v; paintTpl(); return; }
+    const b = e.target.closest("[data-big]");
+    if (b) { tbox.querySelector("img").src = b.dataset.big; tbox.querySelector("p").textContent = b.dataset.cap; tbox.hidden = false; return; }
+    const ed = e.target.closest("[data-tedit]");
+    if (ed) { const r = ed.dataset.tedit; editing.has(r) ? editing.delete(r) : editing.add(r); paintTpl(); return; }
+    const c = e.target.closest("[data-tconfirm]");
+    if (c) { tplPost({rel: c.dataset.tconfirm, action: "confirm"}); return; }
+    const a = e.target.closest("[data-tauto]");
+    if (a) { tplPost({rel: a.dataset.tauto, action: "auto"}); return; }
+    const s = e.target.closest("[data-tset]");
+    if (s) {
+      const t = tpl.items.find(x => x.rel === s.dataset.tset);
+      const cur = t.styles_source === "manual" ? t.styles : [];
+      const next = cur.includes(s.dataset.v) ? cur.filter(x => x !== s.dataset.v) : [...cur, s.dataset.v];
+      tplPost({rel: t.rel, styles: next});
+    }
+  });
+  tbox.addEventListener("click", () => { tbox.hidden = true; });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") tbox.hidden = true; });
 
   document.addEventListener("click", async e => {
     const el = e.target.closest("[data-mockups]");
@@ -738,6 +866,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     shell.classList.toggle("solo", t.dataset.tab !== "{{ tab.id }}");
     if (t.dataset.tab === "art") loadPrints();
     if (t.dataset.tab === "production") loadProd();
+    if (t.dataset.tab === "templates") loadTpl();
   }));
 
   // studio actions (delegated, survives panel reloads)

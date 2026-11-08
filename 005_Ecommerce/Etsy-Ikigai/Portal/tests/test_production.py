@@ -49,3 +49,20 @@ def test_run_mockups_button_needs_prints_then_runs_the_step(env):
     assert r.status_code == 200
     st = c.get(f"/ikigai/api/prints/{iid}").json()
     assert st["steps"]["mockups"]["status"] in ("blocked", "failed", "done")   # real step ran (no templates in the test)
+
+
+def test_image_urls_change_when_a_file_is_made_again_and_are_not_cached(env):
+    """Bug 2026-11-08: a re-made room image kept its URL and the browser showed the old picture."""
+    import os
+    c, iid = env["c"], approved_idea(env["con"])
+    folder = _make(env, iid)
+    u1 = c.get("/ikigai/api/production").json()["items"][0]["images"][0]["url"]
+    assert "?v=" in u1
+    f = folder / "08_Living_Room.jpg"
+    Image.new("RGB", (41, 40), (10, 10, 10)).save(f)
+    os.utime(f, ns=(f.stat().st_atime_ns, f.stat().st_mtime_ns + 5_000_000_000))
+    r = c.get("/ikigai/api/production")
+    assert r.headers["cache-control"] == "no-store"
+    u2 = r.json()["items"][0]["images"][0]["url"]
+    assert u2 != u1
+    assert c.get(u2).headers["cache-control"] == "no-cache"

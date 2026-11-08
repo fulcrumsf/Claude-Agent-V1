@@ -1,7 +1,7 @@
 from pathlib import Path
 import sys, numpy as np
 from PIL import Image
-sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "Portal"))   # Etsy-Ikigai/Portal
+sys.path.insert(0, str(next(p for p in Path(__file__).resolve().parents if (p / "Portal" / "app").is_dir()) / "Portal"))   # Etsy-Ikigai/Portal
 from app import rooms
 ref=None
 for f in sys.argv[1:]:

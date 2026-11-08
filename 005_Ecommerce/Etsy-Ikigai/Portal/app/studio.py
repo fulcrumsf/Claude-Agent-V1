@@ -41,7 +41,7 @@ from fastapi import APIRouter, Body, HTTPException, Request
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 
 from . import art, assistant, ideas, production, prints, taste
 from .channels import get_channel
@@ -50,6 +50,10 @@ from .db import DB_LOCK, get_meta, set_meta
 
 TEMPLATES = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 LOCK = DB_LOCK                 # shared with app/art.py workers
+# Listing images are rewritten in place under the same file name (Run mockups again, template fixes). Without these
+# headers the browser kept showing the old picture from its cache (Production tab bug, 2026-11-08).
+NO_STORE = {"Cache-Control": "no-store"}
+REVALIDATE = {"Cache-Control": "no-cache"}
 DENY_COMMENT_WINDOW = timedelta(minutes=20)
 HELP = ("Talk to me in plain words: ask about the ideas, approve or deny one, tell me what you like. "
         "To add your own idea say so, or type seed: <idea>. After a deny, your next message is saved as the reason. "
@@ -391,7 +395,7 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
 
     @r.get("/api/production")
     def api_production():
-        return {"items": production.overview(con, settings, prefix)}
+        return JSONResponse({"items": production.overview(con, settings, prefix)}, headers=NO_STORE)
 
     @r.post("/api/mockups/{idea_id}/run")
     def api_mockups_run(idea_id: int):
@@ -407,7 +411,7 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
         f = production.image_path(con, settings, idea_id, name)
         if f is None:
             raise HTTPException(404, "no such image")
-        return FileResponse(f)
+        return FileResponse(f, headers=REVALIDATE)
 
     @r.post("/api/production/{idea_id}/images/{name}")
     def api_production_decide(idea_id: int, name: str, body: DecisionIn):

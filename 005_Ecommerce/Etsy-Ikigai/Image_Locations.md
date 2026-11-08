@@ -12,4 +12,4 @@ Images are never committed (large). Git ignores `*.jpg`, `*.pdf` and `Portal/dat
 | Pinterest inspiration images | `005_Ecommerce/Etsy-Ikigai/Creative_Inspiration/` |
 
 Designs so far: 00121 Book Club Cat (idea #3, first Portal test, 2026-11-05).
-| Room templates (PSD + plates) | `005_Ecommerce/Etsy-Ikigai/Room_Templates/<NN>_<Room_Name>/` | git-ignored (large); rendered by the Run mockups step |
+| Room templates (PSD + plates) | `005_Ecommerce/Etsy-Ikigai/Room_Templates/Portrait_Templates/<NN_Ratio>/<Room_Type>/[<Style>/]<Template>/` (catalogue: `Room_Templates/Directory.md`) | git-ignored (large); rendered by the Run mockups step |

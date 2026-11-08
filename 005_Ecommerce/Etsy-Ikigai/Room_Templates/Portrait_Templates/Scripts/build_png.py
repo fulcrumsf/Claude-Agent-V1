@@ -1,9 +1,11 @@
 """Authoring script (2026-11-08): builds <Scene>_Template.psd from the flat 007_For_Use scene PNGs listed in specs.py
 (BASE photo, Place Artwork Here smart object with the frame quad, SHADOWS/GLARE groups). Uses snapped.json (edge-snapped
-quads) from the scratch run; specs.py holds the by-eye quads."""
+quads) from the scratch run; specs.py holds the by-eye quads.
+NOTE (2026-11-08 re-org): this ran once against the OLD layout (00N_Ratio_* / 007_For_Use folders). Those files now
+live in <NN_Ratio_*>/<Room_Type>/<Template>/ folders; the path table is in ../../Directory.md. Kept for reference."""
 import json,os,sys,shutil
 import lib,specs,build_layers as BL
-F="/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Room_Templates/Tony_Portrait_Templates/007_For_Use/"
+F="/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Room_Templates/Portrait_Templates/007_For_Use/"
 snapped=json.load(open("snapped.json"))
 
 def R(x0,y0,x1,y1): return [[x0,y0],[x1,y0],[x1,y1],[x0,y1]]

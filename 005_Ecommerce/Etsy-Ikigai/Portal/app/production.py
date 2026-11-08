@@ -45,14 +45,17 @@ def design(con, settings, idea_id, prefix="/ikigai"):
         # AI rooms) are hidden, never deleted
         files = [p for p in files if int(p.name[:2]) < 8 or int(p.name[:2]) > 19 or p.name in made]
     for p in files:
-        mb = round(p.stat().st_size / 1e6, 1)
+        fs = p.stat()
+        mb = round(fs.st_size / 1e6, 1)
         status = approvals.get(p.name, "pending")
         info = made.get(p.name, {})
         out["images"].append({"file": p.name, "slot": int(p.name[:2]), "label": _label(p.name), "mb": mb,
                               "status": status, "print": info.get("print"),
                               "look": ({k: info.get(k) for k in ("room", "light", "frame", "mat", "paint")}
                                        if info.get("room") else None),
-                              "url": f"{prefix}/api/production/{idea_id}/file/{p.name}",
+                              # version stamp: a file made again under the same name gets a new URL, so the
+                              # browser can never show the old picture from its cache (bug 2026-11-08)
+                              "url": f"{prefix}/api/production/{idea_id}/file/{p.name}?v={fs.st_mtime_ns:x}{fs.st_size:x}",
                               "over_limit": mb > 19.5})
         out["counts"][status] += 1
     return out

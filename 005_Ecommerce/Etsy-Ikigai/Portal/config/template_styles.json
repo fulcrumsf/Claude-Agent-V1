@@ -1,0 +1,681 @@
+{
+ "note": "Templates tab style assignment (Tony, 2026-11-08). 'vocabulary' = the style/theme sections of the Ikigai Etsy shop (IkigaiDigitalStudio, shop 48637917), fetched with Etsy API v3 getShopSections on 2026-11-08; labels are the section names without the 'Art Prints - ' prefix, 'section' is the exact Etsy title. 'manual' = Tony's clicks (always win); 'auto' = vision guess per template (Gemini, cached per thumbnail key, classified once). Keys = template path under Room_Templates/Portrait_Templates. Written by app/template_styles.py.",
+ "shop": {
+  "name": "IkigaiDigitalStudio",
+  "shop_id": 48637917,
+  "fetched": "2026-11-08",
+  "all_sections": [
+   {
+    "section_id": 50177234,
+    "title": "Art Prints - Originals",
+    "active_listings": 0
+   },
+   {
+    "section_id": 50189099,
+    "title": "Art Prints - Trendy",
+    "active_listings": 2
+   },
+   {
+    "section_id": 50189105,
+    "title": "Art Prints - Reimagined",
+    "active_listings": 1
+   },
+   {
+    "section_id": 50177260,
+    "title": "Art Prints - Abstract",
+    "active_listings": 2
+   },
+   {
+    "section_id": 50189115,
+    "title": "Art Prints - Animals",
+    "active_listings": 0
+   },
+   {
+    "section_id": 50177242,
+    "title": "Art Prints - Botanical",
+    "active_listings": 2
+   },
+   {
+    "section_id": 50186600,
+    "title": "Art Prints - Food-Drink",
+    "active_listings": 1
+   },
+   {
+    "section_id": 50189157,
+    "title": "Art Prints - Game Room",
+    "active_listings": 0
+   },
+   {
+    "section_id": 50189177,
+    "title": "Art Prints - Japan Art",
+    "active_listings": 3
+   },
+   {
+    "section_id": 50177254,
+    "title": "Art Prints - Mid Century",
+    "active_listings": 4
+   },
+   {
+    "section_id": 50215058,
+    "title": "Art Prints - Minimalism",
+    "active_listings": 3
+   },
+   {
+    "section_id": 50189109,
+    "title": "Art Prints  - Nature",
+    "active_listings": 0
+   },
+   {
+    "section_id": 50189153,
+    "title": "Art Prints - Nursery",
+    "active_listings": 0
+   },
+   {
+    "section_id": 50177280,
+    "title": "Art Prints - Retro",
+    "active_listings": 0
+   },
+   {
+    "section_id": 50189113,
+    "title": "Art Prints  - Travel",
+    "active_listings": 0
+   },
+   {
+    "section_id": 50189143,
+    "title": "Art Prints - Typography",
+    "active_listings": 0
+   },
+   {
+    "section_id": 50177266,
+    "title": "Art Prints - Vintage",
+    "active_listings": 0
+   },
+   {
+    "section_id": 50189181,
+    "title": "Photos - Travel",
+    "active_listings": 0
+   },
+   {
+    "section_id": 50189189,
+    "title": "Photos - Beach Ocean",
+    "active_listings": 0
+   },
+   {
+    "section_id": 54567427,
+    "title": "Frame TV Art",
+    "active_listings": 0
+   }
+  ]
+ },
+ "excluded": {
+  "Art Prints - Originals": "provenance (Tony's own art), not a look",
+  "Art Prints - Reimagined": "provenance (reimagined public-domain art), not a look",
+  "Photos - Travel": "medium; the Travel theme is already covered by 'Art Prints - Travel'",
+  "Frame TV Art": "product format, not a look"
+ },
+ "vocabulary": [
+  {
+   "label": "Trendy",
+   "section": "Art Prints - Trendy",
+   "section_id": 50189099
+  },
+  {
+   "label": "Abstract",
+   "section": "Art Prints - Abstract",
+   "section_id": 50177260
+  },
+  {
+   "label": "Animals",
+   "section": "Art Prints - Animals",
+   "section_id": 50189115
+  },
+  {
+   "label": "Botanical",
+   "section": "Art Prints - Botanical",
+   "section_id": 50177242
+  },
+  {
+   "label": "Food-Drink",
+   "section": "Art Prints - Food-Drink",
+   "section_id": 50186600
+  },
+  {
+   "label": "Game Room",
+   "section": "Art Prints - Game Room",
+   "section_id": 50189157
+  },
+  {
+   "label": "Japan Art",
+   "section": "Art Prints - Japan Art",
+   "section_id": 50189177
+  },
+  {
+   "label": "Mid Century",
+   "section": "Art Prints - Mid Century",
+   "section_id": 50177254
+  },
+  {
+   "label": "Minimalism",
+   "section": "Art Prints - Minimalism",
+   "section_id": 50215058
+  },
+  {
+   "label": "Nature",
+   "section": "Art Prints  - Nature",
+   "section_id": 50189109
+  },
+  {
+   "label": "Nursery",
+   "section": "Art Prints - Nursery",
+   "section_id": 50189153
+  },
+  {
+   "label": "Retro",
+   "section": "Art Prints - Retro",
+   "section_id": 50177280
+  },
+  {
+   "label": "Travel",
+   "section": "Art Prints  - Travel",
+   "section_id": 50189113
+  },
+  {
+   "label": "Typography",
+   "section": "Art Prints - Typography",
+   "section_id": 50189143
+  },
+  {
+   "label": "Vintage",
+   "section": "Art Prints - Vintage",
+   "section_id": 50177266
+  },
+  {
+   "label": "Beach Ocean",
+   "section": "Photos - Beach Ocean",
+   "section_id": 50189189
+  }
+ ],
+ "manual": {},
+ "auto": {
+  "01_Ratio_2x3/Bar_Or_Kitchen/003_BC_White_Bar_Cart/003_BC_White_Bar_Cart.psd": {
+   "styles": [
+    "Food-Drink",
+    "Minimalism",
+    "Trendy"
+   ],
+   "key": "0963131347ad1e37",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1224
+  },
+  "01_Ratio_2x3/Bedroom/BDRM_Girl_Pink_Modern_2x3/BDRM_Girl_Pink_Modern_2x3_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Trendy"
+   ],
+   "key": "5cead08e091563d3",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1222
+  },
+  "01_Ratio_2x3/Game_Room/Game_Room_ISO/Game_Room_ISO.psd": {
+   "styles": [
+    "Game Room",
+    "Minimalism",
+    "Abstract"
+   ],
+   "key": "963afd5f5770d257",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "01_Ratio_2x3/Living_Room/001_Walnut_LVRM_ISO/001_Walnut_LVRM_ISO.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Botanical"
+   ],
+   "key": "078f1563053cccd8",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "01_Ratio_2x3/Living_Room/002_TealTiki_LVRM_ISO/002_TealTiki_LVRM_ISO.psd": {
+   "styles": [
+    "Mid Century",
+    "Abstract",
+    "Minimalism"
+   ],
+   "key": "b340251b3ea79b0c",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "01_Ratio_2x3/Living_Room/LVRM_Midcentury_Walnut_2x3/LVRM_Midcentury_Walnut_2x3.psd": {
+   "styles": [
+    "Mid Century",
+    "Abstract",
+    "Minimalism"
+   ],
+   "key": "21addc15bd34d768",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "01_Ratio_2x3/Living_Room/LVRM_Minimal_ISO/LVRM_Minimal_ISO_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "1f09f3e118137735",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "01_Ratio_2x3/Living_Room/Teak_Sideboard/PSD_Templates/Room_Template_window_soft_v3.psd": {
+   "styles": [
+    "Abstract",
+    "Minimalism",
+    "Mid Century"
+   ],
+   "key": "5419c7a0d9408d14",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1238
+  },
+  "01_Ratio_2x3/Living_Room/Teak_Sideboard/PSD_Templates/Room_Template_leaf_dapple_across_v3.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Botanical"
+   ],
+   "key": "b2ab2e8d20a6e7d6",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "01_Ratio_2x3/Living_Room/Teak_Sideboard/PSD_Templates/Room_Template_golden_bars_v3.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "7d5afd56c32a49d7",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "01_Ratio_2x3/Living_Room/Teak_Sideboard/PSD_Templates/Room_Template_soft_v3.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "952ef8962e998a40",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "02_Ratio_3x4/Bar_Or_Kitchen/001_BC_Teal_Closeup/001_BC_Teal_Closeup.psd": {
+   "styles": [
+    "Abstract",
+    "Mid Century",
+    "Minimalism"
+   ],
+   "key": "26a4a29cb665b504",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "02_Ratio_3x4/Bar_Or_Kitchen/Barcart_Green_Gold_3x4/Barcart_Green_Gold_3x4.psd": {
+   "styles": [
+    "Food-Drink",
+    "Mid Century",
+    "Abstract"
+   ],
+   "key": "2c4740fa79ebd6f4",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1224
+  },
+  "02_Ratio_3x4/Bedroom/BDRM_Girl_Pink_4x5/BDRM_Girl_Pink_4x5.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "6c289d8523a22fe4",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "02_Ratio_3x4/Bedroom/BDRM_Girl_Pink_Anime_4x5/BDRM_Girl_Pink_Anime_4x5.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Trendy"
+   ],
+   "key": "3f51843ef1db5e11",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1222
+  },
+  "02_Ratio_3x4/Bedroom/BDRM_Japandi_Beige_4x5/BDRM_Japandi_Beige_4x5.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Botanical"
+   ],
+   "key": "a323d182c1dfc051",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "02_Ratio_3x4/Bedroom/BDRM_Wabi_Vertical/BDRM_Wabi_Vertical_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "dcf59c1ec3be33c5",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "02_Ratio_3x4/Living_Room/LVRM_Floor_ISO/LVRM_Floor_ISO_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "0fa3124ee76d53e7",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "02_Ratio_3x4/Living_Room/LVRM_Modern_Color_3x4/LVRM_Modern_Color_3x4.psd": {
+   "styles": [
+    "Abstract",
+    "Mid Century",
+    "Minimalism"
+   ],
+   "key": "3120c3de400a405c",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "02_Ratio_3x4/Living_Room/LVRM_Trendy_Girl_5x7/LVRM_Trendy_Girl_5x7.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "7f9ab9c598bc22a7",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "02_Ratio_3x4/Living_Room/LVRM_Wabi_ISO/LVRM_Wabi_ISO_Template.psd": {
+   "styles": [
+    "Abstract",
+    "Minimalism",
+    "Nature"
+   ],
+   "key": "0b4c3bfa989a7d09",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1222
+  },
+  "02_Ratio_3x4/Living_Room/LVRM_Walnut_Beige_3x4/LVRM_Walnut_Beige_3x4.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "7fa68d2382932154",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "03_Ratio_4x5/Bar_Or_Kitchen/002_BC_Teal_ISO/002_BC_Teal_ISO.psd": {
+   "styles": [
+    "Food-Drink",
+    "Mid Century",
+    "Abstract"
+   ],
+   "key": "8fc0f9c3b3fece6b",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1239
+  },
+  "03_Ratio_4x5/Bedroom/BDRM-MidCentury_ISO/BDRM-MidCentury_ISO_Template.psd": {
+   "styles": [
+    "Mid Century",
+    "Minimalism",
+    "Abstract"
+   ],
+   "key": "4ad5ee8b893d9d8a",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "03_Ratio_4x5/Living_Room/001_Colorful_LVRM_ISO/001_Colorful_LVRM_ISO.psd": {
+   "styles": [
+    "Abstract",
+    "Trendy",
+    "Mid Century"
+   ],
+   "key": "8b2c10f08f3d230a",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1222
+  },
+  "03_Ratio_4x5/Living_Room/LVRM_Beige_4x5/LVRM_Beige_4x5.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "796e4af38f509c5e",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "03_Ratio_4x5/Living_Room/LVRM_Colorful_3x4/LVRM_Colorful_3x4.psd": {
+   "styles": [
+    "Abstract",
+    "Mid Century",
+    "Retro"
+   ],
+   "key": "28203269110b71ea",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1237
+  },
+  "03_Ratio_4x5/Living_Room/LVRM_Gray_Japandi_4x5/LVRM_Gray_Japandi_4x5.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "1d86d7b5f73b3f4e",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "03_Ratio_4x5/Living_Room/LVRM_Japandi_Soft_Colors/LVRM_Japandi_Soft_Colors_Template.psd": {
+   "styles": [
+    "Mid Century",
+    "Abstract",
+    "Minimalism"
+   ],
+   "key": "12abbcd06a84657e",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "03_Ratio_4x5/Living_Room/LVRM_Midcentury_Wood/LVRM_Midcentury_Wood_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Mid Century",
+    "Abstract"
+   ],
+   "key": "a25f2ae76bb6e99f",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "03_Ratio_4x5/Living_Room/LVRM_Mint_Japandi_4x5/LVRM_Mint_Japandi_4x5.psd": {
+   "styles": [
+    "Abstract",
+    "Mid Century",
+    "Minimalism"
+   ],
+   "key": "cccb6fc6e3a03aaf",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "03_Ratio_4x5/Living_Room/LVRM_Modern_Dark_4x5/LVRM_Modern_Dark_4x5_Template.psd": {
+   "styles": [
+    "Mid Century",
+    "Abstract",
+    "Minimalism"
+   ],
+   "key": "ec0e66f7ebe157d8",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "03_Ratio_4x5/Living_Room/LVRM_Modern_Nook_4x5/LVRM_Modern_Nook_4x5.psd": {
+   "styles": [
+    "Mid Century",
+    "Abstract",
+    "Minimalism"
+   ],
+   "key": "2eb2fb9e2a7fde46",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "03_Ratio_4x5/Living_Room/LVRM_Modern_Walnut/LVRM_Modern_Walnut_Template.psd": {
+   "styles": [
+    "Abstract",
+    "Mid Century",
+    "Minimalism"
+   ],
+   "key": "a097bb5c6ab22a0c",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1238
+  },
+  "03_Ratio_4x5/Living_Room/LVRM_Trendy_Girl_4x5/LVRM_Trendy_Girl_4x5.psd": {
+   "styles": [
+    "Abstract",
+    "Mid Century",
+    "Minimalism"
+   ],
+   "key": "445a0fb9d00daec7",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "03_Ratio_4x5/Living_Room/LVRM_Walnut_Modern_4x5/LVRM_Walnut_Modern_4x5.psd": {
+   "styles": [
+    "Abstract",
+    "Minimalism",
+    "Mid Century"
+   ],
+   "key": "45a53227b544e52b",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1238
+  },
+  "04_Ratio_5x7/Bedroom/BDRM_Girl_Peach_Trendy_2x3/BDRM_Girl_Peach_Trendy_2x3.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "7aaae59009fbcc6b",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "04_Ratio_5x7/Bedroom/BDRM_Trendy_Nuetral_4x5/BDRM_Trendy_Nuetral_4x5_Template.psd": {
+   "styles": [
+    "Mid Century",
+    "Minimalism",
+    "Abstract"
+   ],
+   "key": "ad2e4849a9de31ba",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "04_Ratio_5x7/Living_Room/LVRM_Boho_Neautral_ISO/LVRM_Boho_Neautral_ISO_Template.psd": {
+   "styles": [
+    "Abstract",
+    "Minimalism",
+    "Mid Century"
+   ],
+   "key": "0abe44e0192eacec",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1238
+  },
+  "04_Ratio_5x7/Living_Room/LVRM_Japandi_Simple_ISO/LVRM_Japandi_Simple_ISO_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Botanical"
+   ],
+   "key": "846513f6251cad1e",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "04_Ratio_5x7/Living_Room/LVRM_Modern_BLue_ISO/LVRM_Modern_BLue_ISO_Template.psd": {
+   "styles": [
+    "Abstract",
+    "Mid Century",
+    "Botanical"
+   ],
+   "key": "52b5988e2dadc3b6",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1238
+  },
+  "04_Ratio_5x7/Living_Room/LVRM_Modern_Blue_2x3/LVRM_Modern_Blue_2x3_Template.psd": {
+   "styles": [
+    "Abstract",
+    "Minimalism",
+    "Trendy"
+   ],
+   "key": "d611d62d3bd3ab99",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1222
+  },
+  "04_Ratio_5x7/Living_Room/LVRM_Modern_Cradenza_Angled_ISO/LVRM_Modern_Cradenza_Angled_ISO_Template.psd": {
+   "styles": [
+    "Mid Century",
+    "Abstract",
+    "Minimalism"
+   ],
+   "key": "cd50cf2e86eb1b63",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1238
+  },
+  "04_Ratio_5x7/Living_Room/LVRM_Modern_Leather_4x5/LVRM_Modern_Leather_4x5_Template.psd": {
+   "styles": [
+    "Abstract",
+    "Minimalism",
+    "Mid Century"
+   ],
+   "key": "0ba3dea940302b68",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1238
+  },
+  "04_Ratio_5x7/Living_Room/LVRM_Modern_Walnut_5x7/LVRM_Modern_Walnut_5x7_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "6c62dddb79d6a7b6",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "04_Ratio_5x7/Living_Room/LVRM_Victorian_Floor_ISO/LVRM_Victorian_Floor_ISO_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Vintage"
+   ],
+   "key": "4594ae4b60ca4fb7",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1222
+  },
+  "04_Ratio_5x7/Living_Room/Modern_Moody_Beige/Modern_Moody_Beige.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "b1f6e7056b71c03a",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "05_Ratio_Other/Living_Room/All_Ratios_MASTER/All_Ratios_MASTER.psd": {
+   "styles": [
+    "Abstract",
+    "Minimalism",
+    "Mid Century"
+   ],
+   "key": "34ffecf4a0167697",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  }
+ }
+}

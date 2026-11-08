@@ -1,8 +1,9 @@
-"""Room mockups (listing slots 8-19) from the PhotoCraft room templates in ../Room_Templates/<NN_Name>/.
+"""Room mockups (listing slots 8-19) from the PhotoCraft room templates under ../Room_Templates/.
 
-Each room folder has a room.json manifest and one PSD per light (the image model relit the same room plate; built by
-Room_Templates/<room>/build_template_v2.py). A look = room + light + frame + mat + wall paint + glass, rendered
-headless with photocraft-cli by switching layers and swapping the art into the "Place Artwork Here" smart object.
+Every folder (any depth, e.g. Portrait_Templates/01_Ratio_2x3/Living_Room/Teak_Sideboard/) that holds a room.json manifest
+is a wired room; one PSD per light (the image model relit the same room plate; built by <room>/Scripts/build_template_v2.py).
+PSD/json paths in room.json are relative to the room folder; layer-export caches go to its `cache_dir` (default: the folder).
+A look = room + light + frame + mat + wall paint + glass, rendered headless with photocraft-cli by switching layers and swapping the art into the "Place Artwork Here" smart object.
 The art's own pixels are never redrawn by AI (Etsy accuracy, Mockup_Style_Guide.md 1e).
 
 Choices are made by rules, never at random (Tony 2026-11-07):
@@ -53,13 +54,11 @@ def enc(x):
 # ---------- templates ----------
 
 def rooms(settings=None):
-    """Every room folder with a room.json, lights resolved to existing PSD + json files."""
+    """Every folder below room_templates_dir (any depth) with a room.json, lights resolved to existing PSD + json files."""
     root = _abs(_cfg(settings, "room_templates_dir"))
     out = []
-    for d in sorted(p for p in root.iterdir() if p.is_dir()) if root.is_dir() else []:
-        man = d / "room.json"
-        if not man.is_file():
-            continue
+    for man in sorted(root.rglob("room.json")) if root.is_dir() else []:
+        d = man.parent
         room = json.loads(man.read_text())
         room["dir"] = d
         room["lights"] = [dict(l, meta=json.loads((d / l["json"]).read_text()))
@@ -106,7 +105,7 @@ def export_layer(room, light, layer, settings=None, groups=()):
     safe = "".join(ch if ch.isalnum() else "_" for ch in layer).strip("_")
     psd = room["dir"] / light["psd"]
     stamp = f"{psd.stat().st_size:x}"                 # keyed by PSD name + size: a rebuilt PSD never reuses a stale cache
-    out = room["dir"] / f"Cache_{psd.stem}_{stamp}_{safe}.png"
+    out = room["dir"] / room.get("cache_dir", "") / f"Cache_{psd.stem}_{stamp}_{safe}.png"
     if out.is_file():
         return out
     args = []
