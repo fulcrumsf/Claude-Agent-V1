@@ -9,7 +9,7 @@
   "price_default": 6.50,
   "price_with_extra_ratio": 8.50,
   "output_root": "data/output",
-  "etsy_images_max": 10,
+  "etsy_images_max": 20,
   "storage_backend": "local_folder",
   "sales_channel": "etsy",
   "upscaler": "upscayl",
@@ -35,5 +35,12 @@
   "upscale_timeout_s": 900,
   "jpg_quality": 95,
   "prints_auto_run": false,
-  "mockup_rooms": false
+  "mockup_rooms": false,
+  "prints_make_listing_images": true,
+  "room_scene_engine": "nbpro",
+  "room_scene_resolution": "2K",
+  "room_scene_aspect": "4:3",
+  "room_slots_first": 8,
+  "room_slots_last": 19,
+  "room_ratio_weights": {"2x3": 35, "3x4": 25, "4x5": 25, "iso": 10, "11x14": 5}
 }

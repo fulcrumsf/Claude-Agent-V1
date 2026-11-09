@@ -32,6 +32,9 @@ Brief: `Pipeline_Docs/Ikigai_Portal_Pipeline_Brief.md`. Code: `Portal/` (FastAPI
 ## Etsy Rules Bible (added 2026-11-04)
 `Rules_And_Policies/Etsy_Rules_Bible.md`: sourced summary of Etsy's AI, listing, digital-item, automation and EU/UK rules, with a checklist at the top and ranked risks for this shop. Read it before any listing or automation work; re-pull monthly and before building (Etsy changed these pages Jul-Oct 2026).
 
+## Etsy attributes + style crosswalk (added 2026-11-08)
+`Rules_And_Policies/Etsy_Attributes_And_Style_Crosswalk.md`: Etsy's real wall-art attribute lists (Room, Home style, Art subject, Occasion, Holiday, colours, aspect ratio) mapped to the shop's styles and the template-library styles. Know it without being asked; when a design carries a style/room/subject tag, check the matching Etsy attribute (names need not match exactly) when building the draft. Digital downloads: never fill Framing, Frame mat, Frame color, size or material attributes. Tony's room check boxes must come from Etsy's Room list; mockup scenes may use extra rooms.
+
 ## Niche Research Methods (added 2026-11-04)
 `Research/Niche_Research_Methods.md`: what experienced sellers do to find and validate print niches (patterns, real wall-art examples, validation signals, mistakes, seasonality, candidate skills). Read it before designing or running the idea engine. It is guidance on how to think, not a formula.
 

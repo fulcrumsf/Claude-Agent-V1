@@ -34,7 +34,10 @@ from .pipeline.base import NotConfigured
 STAGE_STEPS = ("generate_art", "upscale", "resize")
 DEFAULTS = {"designs_root": "../Designs", "design_seq_floor": 120, "upscale_model": "remacri-4x",
             "upscayl_bin": "upscayl-ncnn", "upscayl_models_dir": "/Applications/Upscayl.app/Contents/Resources/models",
-            "upscale_passes": 1, "upscale_timeout_s": 900, "jpg_quality": 95, "prints_auto_run": False}
+            "upscale_passes": 1, "upscale_timeout_s": 900, "jpg_quality": 95, "prints_auto_run": False,
+            "prints_make_listing_images": False}
+LISTING_STEP = "mockups"   # slots 1, 2, 7 + fixed 3-6, 20 (app/mockups.py); with prints_make_listing_images it runs
+                           # right after resize (Tony 2026-11-08: no separate Run mockups button; never reviewed)
 STOPWORDS = {"a", "an", "the", "on", "in", "of", "for", "and", "with", "under", "at", "to", "by", "from", "among",
              "over", "into", "beside", "print", "poster", "wall", "art", "printable", "digital", "download"}
 MAX_NAME_WORDS = 4
@@ -136,8 +139,13 @@ def step_map(con, lid):
             for r in con.execute("SELECT name, status, message FROM steps WHERE listing_id=?", (lid,))}
 
 
+def stage_steps(settings):
+    return STAGE_STEPS + ((LISTING_STEP,) if cfg(settings, "prints_make_listing_images") else ())
+
+
 def busy(con, lid):
-    return any(s["status"] in ("queued", "running") for n, s in step_map(con, lid).items() if n in STAGE_STEPS)
+    return any(s["status"] in ("queued", "running") for n, s in step_map(con, lid).items()
+               if n in STAGE_STEPS + (LISTING_STEP,))
 
 
 def start(con, settings, idea_id, name=None, redo=()):
@@ -153,6 +161,7 @@ def start(con, settings, idea_id, name=None, redo=()):
         lst = listing_for(con, idea_id)
         if lst and busy(con, lst["id"]):
             raise PrintError("upscale + resize is already running for this idea")
+        reset_listing = bool(redo)
         if lst is None:
             nm = clean_name(name) if name else design_name(idea["title"])
             seq = next_seq(con, settings)
@@ -162,6 +171,7 @@ def start(con, settings, idea_id, name=None, redo=()):
         else:
             lid = lst["id"]
             if lst["image_id"] != idea["art_image_id"]:          # art re-approved: redo both steps
+                reset_listing = True
                 con.execute("UPDATE listings SET image_id=? WHERE id=?", (idea["art_image_id"], lid))
                 con.execute("UPDATE steps SET status='pending' WHERE listing_id=? AND name IN ('upscale','resize')",
                             (lid,))
@@ -170,8 +180,10 @@ def start(con, settings, idea_id, name=None, redo=()):
             raise PrintError(f"only upscale and resize can be redone, not {', '.join(sorted(bad))}")
         for n in redo:
             con.execute("UPDATE steps SET status='pending' WHERE listing_id=? AND name=?", (lid, n))
+        if reset_listing:   # new prints: listing images 1, 2, 7 are made again too (room images 8-19 are never touched)
+            con.execute("UPDATE steps SET status='pending' WHERE listing_id=? AND name=?", (lid, LISTING_STEP))
         have = step_map(con, lid)
-        for n in STAGE_STEPS:
+        for n in stage_steps(settings):
             con.execute("INSERT OR IGNORE INTO steps(listing_id, name) VALUES (?,?)", (lid, n))
             if have.get(n, {}).get("status") != "done":
                 con.execute("UPDATE steps SET status='queued', message='' WHERE listing_id=? AND name=?", (lid, n))
@@ -179,14 +191,18 @@ def start(con, settings, idea_id, name=None, redo=()):
         return lid
 
 
-def run(con, settings, lid, upscayl=None):
-    """Worker: the shared pipeline runner, stopped after resize. `upscayl` is injectable for tests."""
+def run(con, settings, lid, upscayl=None, mockup_build=None):
+    """Worker: the shared pipeline runner, stopped after resize (or after the listing images 1, 2, 7 + fixed when
+    prints_make_listing_images is on). `upscayl` / `mockup_build` are injectable for tests."""
     from .pipeline import run_listing
     config = load_config("pipeline")
     extra = {"settings": settings}
     if upscayl:
         extra["upscayl"] = upscayl
-    return run_listing(con, lid, config, lock=LOCK, stop_after="resize", extra=extra)
+    if mockup_build:
+        extra["mockup_build"] = mockup_build
+    stop = LISTING_STEP if cfg(settings, "prints_make_listing_images") else "resize"
+    return run_listing(con, lid, config, lock=LOCK, stop_after=stop, extra=extra)
 
 
 def spawn(fn, *args):
@@ -468,6 +484,7 @@ def status(con, idea_id, settings, prefix="/ikigai"):
             "steps": {**view, "mockups": mk}, "busy": running, "done": done,
             "can_mockups": done and mk["status"] not in ("queued", "running"),
             "upscale": rec.get("upscale"), "files": (rec.get("resize") or {}).get("files", []),
+            "listing_images": bool(cfg(settings, "prints_make_listing_images")),
             "can_run": idea["art_state"] == "approved" and not running and not done}
 
 

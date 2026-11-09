@@ -1,0 +1,39 @@
+{
+ "name": "LVRM_Mint_Japandi_4x5",
+ "kind": "tony_psd",
+ "psd": "LVRM_Mint_Japandi_4x5.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Japandi Minimalist",
+ "ratio": "4x5",
+ "so_px": [
+  1302,
+  1584
+ ],
+ "so_ratio": 0.822,
+ "quad_art": [
+  [
+   1339.0,
+   218.0
+  ],
+  [
+   2639.0,
+   219.0
+  ],
+  [
+   2639.0,
+   1790.0
+  ],
+  [
+   1339.0,
+   1795.0
+  ]
+ ],
+ "canvas": [
+  4096,
+  4096
+ ],
+ "desc": "Sage/mint wall, grey-green sofa, orange cushions",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

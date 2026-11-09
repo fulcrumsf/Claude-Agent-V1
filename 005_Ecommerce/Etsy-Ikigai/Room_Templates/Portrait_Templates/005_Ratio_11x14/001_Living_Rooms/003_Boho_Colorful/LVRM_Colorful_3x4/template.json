@@ -1,0 +1,39 @@
+{
+ "name": "LVRM_Colorful_3x4",
+ "kind": "tony_psd",
+ "psd": "LVRM_Colorful_3x4.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Boho Colorful",
+ "ratio": "11x14",
+ "so_px": [
+  875,
+  1134
+ ],
+ "so_ratio": 0.7716,
+ "quad_art": [
+  [
+   1158.0,
+   267.0
+  ],
+  [
+   1896.0,
+   267.0
+  ],
+  [
+   1896.0,
+   1244.0
+  ],
+  [
+   1158.0,
+   1244.0
+  ]
+ ],
+ "canvas": [
+  3000,
+  2508
+ ],
+ "desc": "Saturated retro boho, coral brick + teal wall",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

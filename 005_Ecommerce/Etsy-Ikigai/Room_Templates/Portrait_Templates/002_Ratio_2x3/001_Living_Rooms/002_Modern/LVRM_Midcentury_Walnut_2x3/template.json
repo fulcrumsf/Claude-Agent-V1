@@ -1,0 +1,39 @@
+{
+ "name": "LVRM_Midcentury_Walnut_2x3",
+ "kind": "tony_psd",
+ "psd": "LVRM_Midcentury_Walnut_2x3.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Modern",
+ "ratio": "2x3",
+ "so_px": [
+  697,
+  1071
+ ],
+ "so_ratio": 0.6508,
+ "quad_art": [
+  [
+   2080.0,
+   1016.0
+  ],
+  [
+   2776.0,
+   1016.0
+  ],
+  [
+   2776.0,
+   2086.0
+  ],
+  [
+   2080.0,
+   2086.0
+  ]
+ ],
+ "canvas": [
+  4096,
+  4096
+ ],
+ "desc": "Sunny mid-century, two frames (right one is the slot; left keeps baked sample art)",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

@@ -1,0 +1,39 @@
+{
+ "name": "BDRM_Girl_Peach_Trendy_2x3",
+ "kind": "tony_psd",
+ "psd": "BDRM_Girl_Peach_Trendy_2x3.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Bedroom",
+ "decor": "Trendy",
+ "ratio": "iso",
+ "so_px": [
+  598,
+  861
+ ],
+ "so_ratio": 0.6945,
+ "quad_art": [
+  [
+   632.0,
+   267.0
+  ],
+  [
+   1229.0,
+   267.0
+  ],
+  [
+   1229.0,
+   1127.0
+  ],
+  [
+   632.0,
+   1127.0
+  ]
+ ],
+ "canvas": [
+  2000,
+  2000
+ ],
+ "desc": "Dusty-pink teen bedroom, peach chair, retro radio",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

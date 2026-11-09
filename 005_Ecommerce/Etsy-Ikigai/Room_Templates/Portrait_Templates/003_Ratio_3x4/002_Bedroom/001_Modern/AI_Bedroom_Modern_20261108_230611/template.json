@@ -1,0 +1,83 @@
+{
+ "name": "AI_Bedroom_Modern_20261108_230611",
+ "kind": "ai_scene",
+ "psd": "AI_Bedroom_Modern_20261108_230611_Template.psd",
+ "scene": "AI_Bedroom_Modern_20261108_230611_Scene.png",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Bedroom",
+ "etsy_room": "Bedroom",
+ "decor": "Modern",
+ "ratio": "3x4",
+ "print_ratio": "3x4",
+ "so_px": [
+  427,
+  569
+ ],
+ "so_ratio": 0.7504,
+ "quad_insert": [
+  [
+   1083.1199951171875,
+   426.5400085449219
+  ],
+  [
+   1480.5999755859375,
+   409.7200012207031
+  ],
+  [
+   1455.6700439453125,
+   1052.510009765625
+  ],
+  [
+   1053.7099609375,
+   1033.1700439453125
+  ]
+ ],
+ "quad_art": [
+  [
+   1081.5799560546875,
+   458.20001220703125
+  ],
+  [
+   1479.300048828125,
+   443.25
+  ],
+  [
+   1457.239990234375,
+   1011.97998046875
+  ],
+  [
+   1055.5699462890625,
+   994.9600219726562
+  ]
+ ],
+ "mode": "mat",
+ "canvas": [
+  2400,
+  1792
+ ],
+ "light_from": "left",
+ "insert": {
+  "aspect": 0.6637,
+  "fill": 1.0,
+  "score": 6.469,
+  "contrast": 0.47,
+  "smooth": 1.05,
+  "screen_aspect": 0.6399,
+  "skew": 1.059
+ },
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "desc": "AI scene: modern bedroom, blank-insert frame (art in a white mat)",
+ "created": "2026-11-08T23:06:11",
+ "prompt": "Photorealistic modern bedroom interior featuring one vertical picture frame with a blank white insert (3:4 ratio). Realistic textures, subtle decor, moody and lived-in detail that feels authentic. Lighting is soft warm daylight, naturally diffused, never harsh. Camera angle: 3/4 corner. Composition should be vertical, focused on the frame and wall area. no other frames. The insert is plain matte white paper, completely empty, no artwork, no text, no logo. No people, no faces, no hands, no pets. No lamps unless the room clearly needs one; only props a real person would leave there, nothing staged.",
+ "engine": "nbpro",
+ "model": "nano-banana-pro",
+ "resolution": "2K",
+ "aspect": "4:3",
+ "credits": 18.0,
+ "made_for": {
+  "idea_id": 3,
+  "design": "Book Club Cat",
+  "slot": 10
+ }
+}

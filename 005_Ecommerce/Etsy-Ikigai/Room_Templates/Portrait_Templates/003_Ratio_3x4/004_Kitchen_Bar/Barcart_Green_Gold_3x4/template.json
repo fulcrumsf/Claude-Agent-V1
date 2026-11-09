@@ -1,0 +1,39 @@
+{
+ "name": "Barcart_Green_Gold_3x4",
+ "kind": "tony_psd",
+ "psd": "Barcart_Green_Gold_3x4.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Kitchen Bar",
+ "decor": "Food and Drink",
+ "ratio": "3x4",
+ "so_px": [
+  872,
+  1139
+ ],
+ "so_ratio": 0.7656,
+ "quad_art": [
+  [
+   2440.0,
+   427.0
+  ],
+  [
+   3308.0,
+   428.0
+  ],
+  [
+   3309.0,
+   1563.0
+  ],
+  [
+   2440.0,
+   1563.0
+  ]
+ ],
+ "canvas": [
+  5760,
+  3840
+ ],
+ "desc": "Dark-green hallway, gold bar cart, checker rug",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

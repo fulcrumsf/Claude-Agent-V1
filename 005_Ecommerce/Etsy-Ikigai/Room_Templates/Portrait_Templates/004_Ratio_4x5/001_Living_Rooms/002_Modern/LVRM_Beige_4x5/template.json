@@ -1,0 +1,39 @@
+{
+ "name": "LVRM_Beige_4x5",
+ "kind": "tony_psd",
+ "psd": "LVRM_Beige_4x5.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Modern",
+ "ratio": "4x5",
+ "so_px": [
+  451,
+  534
+ ],
+ "so_ratio": 0.8446,
+ "quad_art": [
+  [
+   1280.0,
+   278.0
+  ],
+  [
+   1629.0,
+   278.0
+  ],
+  [
+   1630.0,
+   722.0
+  ],
+  [
+   1280.0,
+   722.0
+  ]
+ ],
+ "canvas": [
+  2655,
+  2000
+ ],
+ "desc": "Dim beige living room, blind-stripe shadows",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

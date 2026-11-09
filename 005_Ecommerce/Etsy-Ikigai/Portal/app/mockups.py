@@ -4,7 +4,8 @@ Per design (written to <design folder>/03-Etsy Images/, file number = slot numbe
   01_Main_Mockup, 02_Poster_Mockup, 07_Detail  - the art is swapped into each PSD's "Place Artwork Here"
                                                   smart object (`layer.smartObjects.replaceContents`)
   03, 04, 05, 06, 20                           - fixed shared images, copied from the template folder
-Room mockups 08-19: app/room_templates.py (when settings mockup_rooms is true). Not built: the video(s), which Etsy only takes by hand.
+Room mockups 08-19: the Production tab (app/production.py, app/scene_templates.py), one card at a time; the old
+`mockup_rooms` path (app/room_templates.py, Teak computed frames) stays off. Not built: the video(s).
 
 Why the art is pre-fitted: replaceContents places the new file at its own pixel size, it does not scale it to
 the smart object. So the smart object's native size is read (exportContents) and the art is cover-cropped
@@ -30,7 +31,7 @@ FIXED = [("03_Instant_Download.png", "03_Instant_Download.png"),
          ("05_Wall_Size_Guide.png", "06_Wall_Art_Size_Guide.png"),
          ("06_Important_Notes.png", "05_Important_Notes.png"),
          ("20_Customer_Reviews.png", "06A_Customer_Reviews.png")]
-STILL_TO_BUILD = "the videos are not made by this button yet (room mockups only when mockup_rooms is on)"
+STILL_TO_BUILD = "room images 8-19 are made per card in the Production tab; the videos are not built yet"
 
 
 def _cfg(settings, key):

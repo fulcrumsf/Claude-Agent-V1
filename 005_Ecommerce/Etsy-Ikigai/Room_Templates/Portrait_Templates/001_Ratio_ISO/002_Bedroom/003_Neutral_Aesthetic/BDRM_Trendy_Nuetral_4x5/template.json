@@ -1,0 +1,39 @@
+{
+ "name": "BDRM_Trendy_Nuetral_4x5_Template",
+ "kind": "tony_psd",
+ "psd": "BDRM_Trendy_Nuetral_4x5_Template.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Bedroom",
+ "decor": "Neutral Aesthetic",
+ "ratio": "iso",
+ "so_px": [
+  362,
+  516
+ ],
+ "so_ratio": 0.7016,
+ "quad_art": [
+  [
+   739.0,
+   292.0
+  ],
+  [
+   1100.0,
+   292.0
+  ],
+  [
+   1100.0,
+   807.0
+  ],
+  [
+   739.0,
+   807.0
+  ]
+ ],
+ "canvas": [
+  2048,
+  2048
+ ],
+ "desc": "Warm sunlit teen bedroom desk corner, oak frame + mat",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

@@ -132,6 +132,10 @@ def _col(row, *names):
 
 # ---------- scan the tree ----------
 
+def light_dir(d):
+    return (d / "room.json").is_file()
+
+
 def scan(settings=None):
     """(templates, gaps, stray_empty). Templates: dicts with rel path, ratio, room, style, name, desc... Any depth.
     gaps = every empty leaf folder in Tony's NNN_ tree (ratio / room / style): the build plan. stray_empty = empty
@@ -170,17 +174,24 @@ def scan(settings=None):
             psds = [(d / l["psd"], l) for l in room_json.get("lights", []) if (d / l["psd"]).is_file()]
         else:
             psds = [(p, None) for p in sorted(d.glob("*.psd")) if not p.name.startswith("Original_")]
+        man = {}
+        if not light_dir(d) and (d / "template.json").is_file():     # per-template manifest (app/scene_templates.py)
+            try:
+                man = json.loads((d / "template.json").read_text())
+            except ValueError:
+                man = {}
         for psd, light in psds:
             row = rows.get(psd.name, {})
             name = (f"{room_json['name']} - {light['label'].replace('_', ' ')}" if light else psd.stem)
-            desc = _col(row, "room / look") or (light or {}).get("kind", "")
+            desc = _col(row, "room / look") or (light or {}).get("kind", "") or man.get("desc", "")
             mid = parts[2:-1]                                   # optional style level(s) between room and template
             style = (" / ".join(label(p) for p in mid) if mid else None) \
                 or label(_col(row, "style") or style_from_text(name, desc) or "Unstyled")
             templates.append({
                 "rel": psd.relative_to(base).as_posix(), "psd": psd, "name": name, "folder": parts[-1],
                 "ratio": ratio, "room": label(parts[1]), "room_n": number(parts[1]), "style": style, "desc": desc,
-                "nearest": _col(row, "nearest") or BUCKETS[ratio], "so_px": _col(row, "so px"),
+                "nearest": _col(row, "nearest") or BUCKETS[ratio],
+                "so_px": _col(row, "so px") or ("x".join(str(v) for v in man["so_px"]) if man.get("so_px") else ""),
                 "status": _col(row, "status"), "wired": bool(light),
                 "light": light, "room_dir": d})
     return templates, gaps, stray

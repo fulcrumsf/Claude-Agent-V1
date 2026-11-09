@@ -1,0 +1,39 @@
+{
+ "name": "LVRM_Walnut_Beige_3x4",
+ "kind": "tony_psd",
+ "psd": "LVRM_Walnut_Beige_3x4.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Modern",
+ "ratio": "3x4",
+ "so_px": [
+  982,
+  1330
+ ],
+ "so_ratio": 0.7383,
+ "quad_art": [
+  [
+   1808.0,
+   873.0
+  ],
+  [
+   2539.0,
+   872.0
+  ],
+  [
+   2539.0,
+   1920.0
+  ],
+  [
+   1810.0,
+   1920.0
+  ]
+ ],
+ "canvas": [
+  4096,
+  4096
+ ],
+ "desc": "Japandi-modern, walnut shelf, tan leather chair",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

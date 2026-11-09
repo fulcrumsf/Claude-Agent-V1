@@ -1,0 +1,39 @@
+{
+ "name": "LVRM_Floor_ISO_Template",
+ "kind": "tony_psd",
+ "psd": "LVRM_Floor_ISO_Template.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Modern",
+ "ratio": "3x4",
+ "so_px": [
+  805,
+  1087
+ ],
+ "so_ratio": 0.7406,
+ "quad_art": [
+  [
+   2659.0,
+   782.0
+  ],
+  [
+   3443.0,
+   782.0
+  ],
+  [
+   3470.0,
+   1868.0
+  ],
+  [
+   2646.0,
+   1868.0
+  ]
+ ],
+ "canvas": [
+  4042,
+  2000
+ ],
+ "desc": "Large leaning floor frame, black lounge chair, sunny window",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

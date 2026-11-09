@@ -229,16 +229,25 @@ def render_look(room, light, art, look, out_png, settings=None, work=None):
 def guard(room, light, render_png, fitted_png, mat, settings=None, max_cover=None):
     """Unwarp the art from the render, compare hue of coloured pixels with the fitted source, and measure how much
     of the art lies in shadow (lit-white panel luma < 0.75 x its p95, from the PSD's BASE layer)."""
+    meta = light["meta"]
+    q = meta["quad_mat" if mat else "quad_nomat"]
+    base_png = export_layer(room, light, BASE_LAYER, settings)
+    lim_c = max_cover if max_cover is not None else light.get("max_cover", _cfg(settings, "room_guard_max_cover"))
+    return guard_quad(render_png, fitted_png, q, base_png, lim_c, settings)
+
+
+def guard_quad(render_png, fitted_png, quad, base_png=None, max_cover=None, settings=None):
+    """The accuracy guard on any render (also the Production tab's AI-scene and library templates, 2026-11-08):
+    `quad` = where the art sits in the render (tl, tr, br, bl). `base_png` = the scene without art, where the art
+    area is lit white paper (the AI scene's blank insert, the Teak BASE layer); without it shadow cover is not
+    measured (Tony's own PSDs carry their designed shadows)."""
     import cv2
     from PIL import Image
-    meta = light["meta"]
-    q = np.array(meta["quad_mat" if mat else "quad_nomat"], "float32")
+    q = np.array(quad, "float32")
     src = np.array(Image.open(fitted_png).convert("RGB"))
     h, w = src.shape[:2]
     Hm = cv2.getPerspectiveTransform(q, np.array([[0, 0], [w, 0], [w, h], [0, h]], "float32"))
     ren = cv2.warpPerspective(np.array(Image.open(render_png).convert("RGB")), Hm, (w, h))
-    base_png = export_layer(room, light, BASE_LAYER, settings)
-    base = cv2.warpPerspective(np.array(Image.open(base_png).convert("RGB")), Hm, (w, h)).astype("float32")
     m = np.zeros((h, w), bool)
     mg = int(0.03 * h)
     m[mg:-mg, mg:-mg] = True                        # skip the frame-lip shadow margin
@@ -248,9 +257,12 @@ def guard(room, light, render_png, fitted_png, mat, settings=None, max_cover=Non
     d = (hr[..., 0] - hs[..., 0]) * 360 / 256
     d = (d + 180) % 360 - 180
     hue = float(np.degrees(np.angle(np.mean(np.exp(1j * np.radians(d[col])))))) if col.any() else 0.0
-    lum = base @ np.array([0.299, 0.587, 0.114], "float32")
-    cover = float(((lum < 0.75 * np.percentile(lum[m], 95)) & m).sum() / m.sum())
-    lim_c = float(max_cover if max_cover is not None else light.get("max_cover", _cfg(settings, "room_guard_max_cover")))
+    cover = 0.0
+    if base_png is not None:
+        base = cv2.warpPerspective(np.array(Image.open(base_png).convert("RGB")), Hm, (w, h)).astype("float32")
+        lum = base @ np.array([0.299, 0.587, 0.114], "float32")
+        cover = float(((lum < 0.75 * np.percentile(lum[m], 95)) & m).sum() / m.sum())
+    lim_c = float(max_cover if max_cover is not None else _cfg(settings, "room_guard_max_cover"))
     lim_h = float(_cfg(settings, "room_guard_max_hue"))
     why = []
     if abs(hue) > lim_h:

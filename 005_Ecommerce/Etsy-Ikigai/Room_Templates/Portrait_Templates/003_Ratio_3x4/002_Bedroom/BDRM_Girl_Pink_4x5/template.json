@@ -1,0 +1,39 @@
+{
+ "name": "BDRM_Girl_Pink_4x5",
+ "kind": "tony_psd",
+ "psd": "BDRM_Girl_Pink_4x5.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Bedroom",
+ "decor": "Trendy",
+ "ratio": "3x4",
+ "so_px": [
+  613,
+  814
+ ],
+ "so_ratio": 0.7531,
+ "quad_art": [
+  [
+   634.0,
+   368.0
+  ],
+  [
+   1246.0,
+   368.0
+  ],
+  [
+   1246.0,
+   1181.0
+  ],
+  [
+   634.0,
+   1181.0
+  ]
+ ],
+ "canvas": [
+  2000,
+  2000
+ ],
+ "desc": "Pink bedroom, sun streaks",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

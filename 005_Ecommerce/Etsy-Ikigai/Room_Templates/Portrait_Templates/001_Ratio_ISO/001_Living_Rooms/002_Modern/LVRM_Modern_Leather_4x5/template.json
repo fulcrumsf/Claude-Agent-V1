@@ -1,0 +1,39 @@
+{
+ "name": "LVRM_Modern_Leather_4x5_Template",
+ "kind": "tony_psd",
+ "psd": "LVRM_Modern_Leather_4x5_Template.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Modern",
+ "ratio": "iso",
+ "so_px": [
+  427,
+  592
+ ],
+ "so_ratio": 0.7213,
+ "quad_art": [
+  [
+   821.0,
+   231.0
+  ],
+  [
+   1247.0,
+   231.0
+  ],
+  [
+   1247.0,
+   822.0
+  ],
+  [
+   821.0,
+   822.0
+  ]
+ ],
+ "canvas": [
+  2048,
+  2048
+ ],
+ "desc": "White wall, tan leather wingback chair, fiddle-leaf plant, black frame + mat",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

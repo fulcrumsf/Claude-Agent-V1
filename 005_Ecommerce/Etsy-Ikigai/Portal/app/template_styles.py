@@ -94,18 +94,21 @@ def _gemini_key():
     return v
 
 
-def gemini_classify(image_path, vocab, model=MODEL, timeout=60):
-    """Ask a cheap vision model which shop styles suit this room. Returns (styles, tokens)."""
+def gemini_classify(image_path, vocab, model=MODEL, timeout=60, prompt=None):
+    """Ask a cheap vision model which shop styles suit this room (or, with `prompt`, anything else picked from the
+    vocabulary). Returns (styles, tokens)."""
     key = _gemini_key()
     if not key:
         raise RuntimeError("GEMINI_API_KEY is not set")
-    prompt = ("This is a room mockup with an empty grey placeholder in a picture frame; the placeholder will hold a "
+    prompt = prompt or ("This is a room mockup with an empty grey placeholder in a picture frame; the placeholder will hold a "
               "wall-art print. Which of these Etsy shop styles would sell well shown in this room? Match the room's "
               "purpose and props first (a bar cart or kitchen suits Food-Drink, a gaming setup suits Game Room, a "
               "child's room suits Nursery), then its decor, mood and colours. Pick 1 to 3, best first, only from "
               "this list: " + "; ".join(vocab) +
               '. Answer JSON only: {"styles": ["..."]}')
-    body = {"contents": [{"parts": [{"text": prompt}, {"inline_data": {"mime_type": "image/jpeg", "data":
+    mime = "image/png" if Path(image_path).suffix.lower() == ".png" else \
+        "image/webp" if Path(image_path).suffix.lower() == ".webp" else "image/jpeg"
+    body = {"contents": [{"parts": [{"text": prompt}, {"inline_data": {"mime_type": mime, "data":
                          base64.b64encode(Path(image_path).read_bytes()).decode()}}]}],
             "generationConfig": {"responseMimeType": "application/json", "temperature": 0}}
     req = urllib.request.Request(
@@ -116,6 +119,19 @@ def gemini_classify(image_path, vocab, model=MODEL, timeout=60):
     text = out["candidates"][0]["content"]["parts"][0]["text"]
     styles = [s for s in json.loads(text).get("styles", []) if s in vocab][:3]
     return styles, int((out.get("usageMetadata") or {}).get("totalTokenCount", 0))
+
+
+ART_PROMPT = ("This is a wall-art print sold as a printable download in an Etsy shop. Which of these shop sections "
+              "does it belong in? Judge the subject first (food or drink -> Food-Drink, animals -> Animals, plants or "
+              "flowers -> Botanical, landscapes -> Nature, words -> Typography, gaming -> Game Room, baby-friendly -> "
+              "Nursery), then the look (era, palette, technique). Pick 1 to 3, best first, only from this list: ")
+
+
+def classify_art(image_path, vocab, model=MODEL, timeout=60):
+    """Production tab (2026-11-08): the design's shop styles from the art itself when Tony ticks none. Same cheap
+    Gemini call as the Templates tab auto-guess, art prompt instead of room prompt. Returns (styles, tokens)."""
+    return gemini_classify(image_path, vocab, model, timeout,
+                           ART_PROMPT + "; ".join(vocab) + '. Answer JSON only: {"styles": ["..."]}')
 
 
 def classify_missing(items, classify=None, path=None):

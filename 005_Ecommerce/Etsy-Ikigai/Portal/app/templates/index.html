@@ -254,23 +254,59 @@ button{font:inherit;color:inherit;cursor:pointer}
 .older img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;border:1px solid var(--line)}
 .older img.picked{box-shadow:0 0 0 2px var(--ink)}
 
-/* ---------- production: listing images, approve / deny ---------- */
-.pdesign{margin:0 0 40px}
-.phead{display:flex;gap:16px;align-items:center;padding:0 0 14px;border-bottom:1px solid var(--line);margin-bottom:16px}
-.phead img{width:84px;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
-.phead h3{font:700 20px/1.2 var(--serif);margin:0 0 3px}
+/* ---------- production: room images 8-19, one card per slot ---------- */
+.pstrip{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 14px;margin:0 0 18px;border-bottom:1px solid var(--line)}
+.pthumb{all:unset;box-sizing:border-box;cursor:pointer;flex:0 0 auto;width:132px;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
+.pthumb:hover{border-color:var(--line-2)}
+.pthumb[aria-pressed=true]{border-color:var(--ink);box-shadow:0 0 0 1.5px var(--ink)}
+.pthumb img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
+.pthumb b{font:700 12.5px/1.25 var(--serif);padding:6px 8px 0}
+.pthumb span{font:400 10.5px var(--mono);color:var(--muted);padding:2px 8px 7px}
+.ppanel{animation:rise .3s both}
+.phead{display:flex;gap:18px;align-items:flex-start;padding:0 0 16px;border-bottom:1px solid var(--line);margin-bottom:16px;flex-wrap:wrap}
+.phead > img{width:110px;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
+.phead h3{font:700 22px/1.2 var(--serif);margin:0 0 3px}
 .phead p{margin:0;font-size:12.5px;color:var(--muted)}
-.pcount{display:flex;gap:6px;margin-top:8px;font:500 10.5px var(--mono);letter-spacing:.06em;text-transform:uppercase}
-.pcount b{font-weight:500;padding:3px 8px;border:1px solid var(--line-2);border-radius:20px;color:var(--muted)}
-.pcount b.ok{border-color:var(--ok);color:var(--ok)}.pcount b.no{border-color:var(--rising);color:var(--rising)}
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
-.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.pcred{margin-left:auto;text-align:right;font:400 11.5px/1.6 var(--mono);color:var(--ink-2)}
+.pcred b{font:700 20px var(--serif);color:var(--ink);display:block}
+.ppick{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:0 0 20px}
+.ppick .grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.ppick .grp > i{font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-style:normal;min-width:120px}
+.rbox{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-2);border-radius:20px;padding:3px 10px 3px 7px;font-size:12.5px;background:var(--card);cursor:pointer}
+.rbox input{margin:0;accent-color:var(--ink)}
+.rbox.on{border-color:var(--ink)}
+.rbox.off{opacity:.4;cursor:not-allowed}
+.rbox em{font:500 10px var(--mono);color:var(--muted);font-style:normal}
+.pnote{font-size:12px;color:var(--muted)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
 .pcard.approved{box-shadow:0 0 0 2px var(--ok)}
-.pcard.denied{opacity:.55}
-.pcard img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-bottom:1px solid var(--line)}
-.pcard .pb{padding:10px 12px 12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.pcard .pt{flex:1 1 100%;font-size:12.5px;color:var(--ink-2);display:flex;justify-content:space-between;gap:8px}
-.pcard .pt span{color:var(--muted);font:400 11px var(--mono)}
+.pcard.denied .pimg img{opacity:.45}
+.pcard .ph2{display:flex;align-items:baseline;gap:8px;padding:9px 11px 7px;flex-wrap:wrap}
+.pcard .ph2 b{font:700 15px var(--serif)}
+.pcard .ph2 span{font:400 11px var(--mono);color:var(--muted)}
+.pcard .who{font:500 9.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line-2);border-radius:20px;padding:0 6px;color:var(--muted)}
+.pcard .who.tony{border-color:var(--ink);color:var(--ink)}
+.pimg{display:block;width:100%;aspect-ratio:4/3;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);position:relative}
+.pimg img{width:100%;height:100%;object-fit:cover;display:block}
+.pimg.empty{display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;color:var(--ink-2);font-size:12.5px;background:repeating-linear-gradient(45deg,transparent 0 8px,var(--paper-2) 8px 16px);border-style:dashed}
+.pimg.run{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;color:var(--ink-2);font-size:12.5px;background:linear-gradient(110deg,var(--paper-2) 30%,var(--card) 50%,var(--paper-2) 70%);background-size:220% 100%;animation:shimmer 1.6s infinite linear}
+.pimg .flag2{position:absolute;left:8px;top:8px;background:var(--rising);color:#fff;font:700 10px var(--mono);letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:2px 6px}
+.pcard .pb{padding:9px 11px 11px;display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.pcard .pmsg{flex:1 1 100%;font-size:12px;color:var(--ink-2);margin:0}
+.pcard .pmsg.bad{color:var(--rising)}
+.pcard .pcost{font:400 11px var(--mono);color:var(--muted);flex:1 1 100%}
+.btn.sm{padding:6px 12px;font-size:13px}
+.plus{width:32px;height:32px;border-radius:50%;border:1px solid var(--line-2);background:transparent;font:500 18px/1 var(--sans);display:grid;place-items:center;margin-left:auto}
+.plus:hover:not(:disabled){border-color:var(--ink)}
+.plus:disabled{opacity:.35;cursor:default}
+.tpick{position:fixed;inset:0;background:rgba(20,18,15,.6);z-index:60;display:flex;align-items:center;justify-content:center;padding:24px}
+.tpick[hidden]{display:none}
+.tpick .box{background:var(--paper);border-radius:12px;max-width:1100px;width:100%;max-height:88vh;overflow:auto;padding:18px 20px}
+.tpick h3{font:700 18px var(--serif);margin:0 0 8px;display:flex;justify-content:space-between;align-items:center}
+.tpick .tgrid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.tpick .tcard{cursor:pointer}
+.tpick .tcard:hover{border-color:var(--ink)}
 
 /* ---------- templates: room-template gallery (Etsy 4:3 crop), gaps, style assignment ---------- */
 .tbar{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:0 0 10px}
@@ -345,13 +381,15 @@ button{font:inherit;color:inherit;cursor:pointer}
     </main>
     <main class="panel" id="panel-art" role="tabpanel" hidden>
       <div class="artgal"><h2>Approved art</h2>
-        <p class="lead">Upscale + resize turns approved art into the 5 print JPGs at 300 DPI in the design folder. Mockups, listing text, packaging and the Etsy draft come later (Production).</p>
+        <p class="lead">Upscale + resize turns approved art into the 5 print JPGs at 300 DPI in the design folder, then makes the listing images that look the same every time (1, 2, 7 and the fixed 3-6, 20). Room images are made in Production.</p>
         <div class="gal" id="gal"><p class="lead">Loading…</p></div></div>
     </main>
     <main class="panel" id="panel-production" role="tabpanel" hidden>
       <div class="artgal"><h2>Production</h2>
-        <p class="lead">The new listing images for each design, in one scroll. Images that are the same in every listing are not shown. Approve or deny each one; nothing goes to Etsy from here.</p>
+        <p class="lead">Room images 8-19 for each upscaled design. Pick up to 5 rooms and the design's styles; the agent plans the rest. Make one card at a time and approve or deny it; nothing goes to Etsy from here.</p>
+        <div class="pstrip" id="prodstrip"></div>
         <div id="prod"><p class="lead">Loading…</p></div></div>
+    <div class="tpick" id="tpick" hidden><div class="box"><h3><span id="tpick-title">Pick a template</span><button class="btn ghost sm" data-tpick-close>Close</button></h3><div id="tpick-body"></div></div></div>
     </main>
     <main class="panel" id="panel-templates" role="tabpanel" hidden>
       <div class="artgal"><h2>Room templates</h2>
@@ -531,7 +569,7 @@ button{font:inherit;color:inherit;cursor:pointer}
       return head(`<span class="artpill ok">Art approved</span>`) + `<div class="final">${im ? `<img src="${esc(im.url)}" alt="Approved art">` : ""}
         <div class="ok">Approved · ${esc(im?.card_name || "")}</div>${im?.prompt ? `<details><summary>Final prompt</summary><p>${esc(im.prompt)}</p></details>` : ""}
         <div class="prod live">${printsHTML(prState[a.idea_id], false)}</div>
-        <div class="prod">Production: mockups are in the Production tab; listing text, package and Etsy draft are not built yet</div>
+        <div class="prod">Production: room images are made in the Production tab; listing text, package and Etsy draft are not built yet</div>
         <div class="art-row"><a class="cost" href="${prefix}/api/art/${a.idea_id}/log" target="_blank" rel="noopener">Oversight log (prompts, picks, feedback)</a></div></div>`;
     }
     if (u.mode === "setup") return head(`<span class="artpill">Setup</span>`) + setupHTML(id);
@@ -557,10 +595,11 @@ button{font:inherit;color:inherit;cursor:pointer}
   function printsHTML(st, withName) {
     if (!st) return `<span class="cost">Upscale + resize: loading…</span>`;
     const step = (k, label) => { const x = st.steps[k] || {status: "not started"}; return `<b class="${esc(x.status.replace(" ", "-"))}">${label} · ${esc(STEP_LABEL[x.status] || x.status)}</b>`; };
-    let h = `<div class="pr-steps">${step("upscale", "Upscale")}${step("resize", "Resize")}${st.done || (st.steps.mockups || {}).status !== "not started" ? step("mockups", "Mockups") : ""}</div>`;
+    const MK = st.listing_images ? "Listing images" : "Mockups";
+    let h = `<div class="pr-steps">${step("upscale", "Upscale")}${step("resize", "Resize")}${st.listing_images || (st.steps.mockups || {}).status !== "not started" ? step("mockups", MK) : ""}</div>`;
     for (const k of ["upscale", "resize", "mockups"]) {
       const x = st.steps[k]; if (!x || !x.message) continue;
-      h += `<p class="pr-msg ${x.status === "blocked" || x.status === "failed" ? "bad" : ""}">${k[0].toUpperCase() + k.slice(1)}: ${esc(x.message)}</p>`;
+      h += `<p class="pr-msg ${x.status === "blocked" || x.status === "failed" ? "bad" : ""}">${k === "mockups" ? MK : k[0].toUpperCase() + k.slice(1)}: ${esc(x.message)}</p>`;
     }
     if (st.folder_rel) h += `<div class="pr-path" title="${esc(st.folder)}">${esc(st.folder_rel)}</div>`;
     if (st.files.length) h += `<table class="pr-files">${st.files.map(f => `<tr><td>${esc(f.ratio)}</td><td>${f.px[0]}x${f.px[1]}</td><td>${f.dpi} dpi</td><td>${f.mb} MB</td><td class="${f.subject_cut > 0.005 ? "w" : ""}">${f.cut ? "cut " + (f.cut * 100).toFixed(1) + "%" + (f.subject_cut > 0.005 ? " · check" : "") : "full"}</td></tr>`).join("")}</table>`;
@@ -569,7 +608,6 @@ button{font:inherit;color:inherit;cursor:pointer}
       h += `<div class="art-row"><button class="btn sm" data-prints="run" data-v="${st.idea_id}">${st.files.length || Object.values(st.steps).some(x => x.status !== "not started") ? "Run upscale + resize again" : "Run upscale + resize"}</button></div>`;
     }
     if (st.done && !st.busy) h += `<div class="art-row"><button class="btn ghost sm" data-prints="redo" data-v="${st.idea_id}" title="Upscale and resize again; files are replaced in the same folder">Run again</button></div>`;
-    if (st.can_mockups) h += `<div class="art-row"><button class="btn sm" data-mockups="run" data-v="${st.idea_id}" title="Makes the poster, detail and videos; the new ones show up in Production">${(st.steps.mockups || {}).status === "done" ? "Run mockups again" : "Run mockups"}</button></div>`;
     if (prErr[st.idea_id]) h += `<p class="art-err">${esc(prErr[st.idea_id])}</p>`;
     return h;
   }
@@ -601,41 +639,127 @@ button{font:inherit;color:inherit;cursor:pointer}
     loadPrints();
   });
 
-  // ---------- production: listing images, inline, approve / deny ----------
+  // ---------- production: room images 8-19 (thumbnail row, big panel, one card per slot) ----------
   const prodHost = document.getElementById("prod");
-  let prodItems = [];
-  function paintProd() {
-    prodHost.innerHTML = prodItems.length ? prodItems.map(d => {
-      const c = d.counts;
-      const cards = d.images.map(i => `<article class="pcard ${esc(i.status)}"><a href="${esc(i.url)}" target="_blank" rel="noopener" title="Full size"><img src="${esc(i.url)}" alt="${esc(i.label)}" loading="lazy"></a><div class="pb"><div class="pt"><b>${String(i.slot).padStart(2, "0")} · ${esc(i.label)}</b><span>${i.print ? esc(i.print) + " print · " : ""}${i.mb} MB${i.over_limit ? " · over Etsy limit" : ""}</span></div>
-          <button class="btn sm ${i.status === "approved" ? "" : "ghost"}" data-prod="approved" data-v="${d.idea_id}" data-f="${esc(i.file)}">${i.status === "approved" ? "Approved" : "Approve"}</button>
-          <button class="btn ghost sm" data-prod="denied" data-v="${d.idea_id}" data-f="${esc(i.file)}">${i.status === "denied" ? "Denied" : "Deny"}</button>
-          ${i.status !== "pending" ? `<button class="btn ghost sm" data-prod="pending" data-v="${d.idea_id}" data-f="${esc(i.file)}">Undo</button>` : ""}</div></article>`).join("");
-      return `<section class="pdesign"><div class="phead">${d.image_url ? `<img src="${esc(d.image_url)}" alt="">` : ""}<div><h3>${esc(d.name)}</h3><p>#${d.idea_id} · ${esc(d.title)} · ${d.prints} print sizes${d.folder_rel ? " · " + esc(d.folder_rel) : ""}</p>
-        <div class="pcount"><b class="ok">${c.approved} approved</b><b>${c.pending} waiting</b><b class="no">${c.denied} denied</b></div></div></div>
-        ${d.images.length ? `<div class="pgrid">${cards}</div>` : `<p class="lead">No listing images made for this design yet.</p>`}</section>`;
-    }).join("") : `<p class="lead">No designs yet. Approve art in Ikigai Digital Studio first.</p>`;
+  const stripHost = document.getElementById("prodstrip");
+  const tpick = document.getElementById("tpick");
+  let prodItems = [], prodSel = null, pan = null, panErr = "", prodTimer = null, credits = null, pickSlot = null;
+  const two = n => String(n).padStart(2, "0");
+  function paintStrip() {
+    stripHost.innerHTML = prodItems.length ? prodItems.map(d => `<button class="pthumb" data-psel="${d.idea_id}" aria-pressed="${String(d.idea_id) === String(prodSel)}">${d.image_url ? `<img src="${esc(d.image_url)}" alt="" loading="lazy">` : ""}<b>${esc(d.name)}</b><span>${d.counts.approved} approved · ${d.counts.pending} waiting</span></button>`).join("")
+      : `<p class="lead">No upscaled designs yet. Run upscale + resize in the Art tab first.</p>`;
+  }
+  function slotCard(c) {
+    const busy = pan.job.running, im = c.image, st = im ? im.status : "";
+    const head = `<div class="ph2"><b>${two(c.slot)} · ${esc(c.room)}</b><span>${esc(c.decor.replace(/_/g, " "))} · ${esc(c.ratio_label)}</span><i class="who ${c.by === "tony" ? "tony" : ""}">${c.by === "tony" ? "your pick" : c.by === "agent" ? "agent" : "earlier"}</i></div>`;
+    let pic;
+    if (c.state === "running") pic = `<div class="pimg run"><b>Making slot ${two(c.slot)}…</b><span>${esc(c.stage || "")}</span></div>`;
+    else if (im) pic = `<a class="pimg" href="${esc(im.url)}" target="_blank" rel="noopener" title="Full size">${im.flagged ? `<span class="flag2">flagged</span>` : ""}<img src="${esc(im.url)}" alt="slot ${two(c.slot)}" loading="lazy"></a>`;
+    else pic = `<div class="pimg empty">${c.next.kind === "new" ? "Generating new template" : c.next.kind === "library" ? esc(c.next.label) : esc(c.next.label)}</div>`;
+    const cost = c.next.kind === "new" ? (c.next.credits ? `next click: new AI scene, about ${c.next.credits} credits` : "next click: new AI scene (credits shown after)")
+      : c.next.kind === "library" ? `next click: ${esc(c.next.label)} (free)` : "";
+    let msg = "";
+    if (c.state === "failed" && c.message) msg = `<p class="pmsg bad">${esc(c.message)}</p>`;
+    else if (im && im.flagged && c.message) msg = `<p class="pmsg bad">${esc(c.message)}. Approve to use it anyway.</p>`;
+    if (c.made_for) msg += `<p class="pmsg">This image was made for ${esc(c.made_for)}.</p>`;
+    if (im && c.template_name && c.state !== "running") msg += `<p class="pmsg">${c.source === "new" ? "New template" : "Template"}: ${esc(c.template_name)}${im.print ? " · " + esc(im.print) : ""}${c.credits_spent ? " · " + c.credits_spent + " credits" : ""}</p>`;
+    const gen = c.next.kind === "none" ? "" : `<button class="btn sm" data-pgen="${c.slot}" ${busy ? "disabled" : ""}>${im ? "Regenerate" : "Generate"}</button>`;
+    const dec = im && c.state !== "running" ? `<button class="btn sm ${st === "approved" ? "" : "ghost"}" data-pdec="approved" data-f="${esc(im.file)}">${st === "approved" ? "Approved" : "Approve"}</button>
+      <button class="btn ghost sm" data-pdec="denied" data-f="${esc(im.file)}">${st === "denied" ? "Denied" : "Deny"}</button>
+      ${st !== "pending" ? `<button class="btn ghost sm" data-pdec="pending" data-f="${esc(im.file)}">Undo</button>` : ""}` : "";
+    return `<article class="pcard ${esc(st)}">${head}${pic}<div class="pb">${msg}${cost && c.state !== "running" ? `<span class="pcost">${cost}</span>` : ""}${gen}${dec}<button class="plus" data-pplus="${c.slot}" title="Pick any template from the library" ${busy ? "disabled" : ""}>+</button></div></article>`;
+  }
+  function paintPanel() {
+    if (!prodSel) { prodHost.innerHTML = prodItems.length ? `<p class="lead">Click a design above.</p>` : ""; return; }
+    if (!pan) { prodHost.innerHTML = panErr ? `<p class="art-err">${esc(panErr)}</p>` : `<p class="lead">Loading…</p>`; return; }
+    const full = pan.rooms.length >= pan.max_rooms;
+    const rooms = pan.rooms_all.map(r => { const k = pan.rooms.indexOf(r), on = k >= 0;
+      return `<label class="rbox ${on ? "on" : ""} ${!on && full ? "off" : ""}"><input type="checkbox" data-proom="${esc(r)}" ${on ? "checked" : ""} ${!on && full ? "disabled" : ""}>${esc(r)}${on ? `<em>${two(8 + k)}</em>` : ""}</label>`; }).join("");
+    const styles = pan.styles_all.map(v => `<button class="chip ${pan.styles.includes(v) ? "on" : ""}" data-pstyle="${esc(v)}">${esc(v)}</button>`).join("");
+    const auto = pan.styles.length ? "" : `<span class="pnote">${pan.styles_auto.length ? "Blank: the agent uses " + esc(pan.styles_auto.join(", ")) + " (read from the art)" : pan.styles_auto_error ? "Blank: the style guess failed (" + esc(pan.styles_auto_error) + "); the agent plans without styles" : "Blank: the agent is reading the art…"}</span>`;
+    const eng = pan.engine.credits_per_scene ? `new AI scene about ${pan.engine.credits_per_scene} credits ($${pan.engine.usd_per_scene})` : "new AI scene: credits shown after";
+    prodHost.innerHTML = `<section class="ppanel"><div class="phead">${pan.image_url ? `<img src="${esc(pan.image_url)}" alt="">` : ""}<div><h3>${esc(pan.name)}</h3><p>#${pan.idea_id} · ${esc(pan.title)}</p><p>${esc(pan.folder_rel)}</p></div>
+      <div class="pcred"><b>${credits == null ? "…" : Math.round(credits)}</b>kie.ai credits left<br>${eng}<br>library templates are free</div></div>
+      <div class="ppick"><div class="grp"><i>Rooms (up to ${pan.max_rooms})</i>${rooms}</div><div class="grp"><i>Styles</i>${styles}${auto}</div></div>
+      ${pan.slots.length ? `<div class="pgrid">${pan.slots.map(slotCard).join("")}</div>` : `<p class="lead">No room fits this art yet. Pick a room above.</p>`}
+      ${panErr ? `<p class="art-err">${esc(panErr)}</p>` : ""}</section>`;
+  }
+  async function loadCredits() {
+    try { const j = await fetch(`${prefix}/api/art/balance`).then(r => r.json()); credits = j.credits; } catch { /* keep */ }
+    paintPanel();
+  }
+  async function loadPanel(quiet) {
+    if (!prodSel) { paintPanel(); return; }
+    try { const r = await fetch(`${prefix}/api/production/${prodSel}/panel`, {cache: "no-store"}); if (!r.ok) throw r; pan = await r.json(); if (!quiet) panErr = ""; }
+    catch (err) { try { panErr = (await err.json()).detail || "Could not load this design."; } catch { panErr = "Could not load this design."; } }
+    paintPanel();
+    clearTimeout(prodTimer);
+    const waiting = pan && (pan.job.running || (!pan.styles.length && !pan.styles_auto.length && !pan.styles_auto_error));
+    if (waiting && prodOpen()) prodTimer = setTimeout(async () => { const was = pan.job.running; await loadPanel(true); if (was && !pan.job.running) { loadCredits(); loadProd(true); } }, 3000);
   }
   let prodSig = "";
   async function loadProd(quiet) {
     try { prodItems = (await fetch(`${prefix}/api/production`, {cache: "no-store"}).then(r => r.json())).items; } catch { /* keep the last state */ }
+    if (!prodSel && prodItems.length) prodSel = prodItems[0].idea_id;
     const sig = JSON.stringify(prodItems);
-    if (quiet && sig === prodSig) return;          // nothing changed: no repaint, no flicker
-    prodSig = sig; paintProd();
+    if (!(quiet && sig === prodSig)) { prodSig = sig; paintStrip(); }
+    if (!quiet) { loadPanel(); if (credits == null) loadCredits(); }
   }
-  // keep the tab current: re-read when the window comes back into focus and every 15 s while the tab is open
   const prodOpen = () => !document.getElementById("panel-production").hidden && !document.hidden;
-  window.addEventListener("focus", () => { if (prodOpen()) loadProd(true); });
-  document.addEventListener("visibilitychange", () => { if (prodOpen()) loadProd(true); });
-  setInterval(() => { if (prodOpen()) loadProd(true); }, 15000);
+  window.addEventListener("focus", () => { if (prodOpen()) { loadProd(true); loadPanel(true); } });
+  setInterval(() => { if (prodOpen() && !(pan && pan.job.running)) loadProd(true); }, 15000);
+  stripHost.addEventListener("click", e => {
+    const b = e.target.closest("[data-psel]"); if (!b) return;
+    prodSel = Number(b.dataset.psel); pan = null; panErr = ""; paintStrip(); loadPanel();
+  });
+  async function panPost(url, body) {
+    panErr = "";
+    try { pan = await post(url, body); }
+    catch (err) { try { panErr = (await err.json()).detail || "That did not work."; } catch { panErr = "That did not work."; } }
+    paintPanel();
+  }
+  prodHost.addEventListener("change", e => {
+    const r = e.target.closest("[data-proom]"); if (!r) return;
+    const v = r.dataset.proom, rooms = pan.rooms.filter(x => x !== v);
+    if (r.checked) rooms.push(v);
+    panPost(`${prefix}/api/production/${prodSel}/tags`, {rooms, styles: pan.styles});
+  });
   prodHost.addEventListener("click", async e => {
-    const b = e.target.closest("[data-prod]"); if (!b) return;
-    b.disabled = true;
-    try {
-      const d = await post(`${prefix}/api/production/${b.dataset.v}/images/${encodeURIComponent(b.dataset.f)}`, {decision: b.dataset.prod});
-      prodItems = prodItems.map(x => x.idea_id === d.idea_id ? d : x);
-    } catch { /* leave as it was */ }
-    paintProd();
+    const s = e.target.closest("[data-pstyle]");
+    if (s) { const v = s.dataset.pstyle, styles = pan.styles.includes(v) ? pan.styles.filter(x => x !== v) : [...pan.styles, v];
+      return panPost(`${prefix}/api/production/${prodSel}/tags`, {rooms: pan.rooms, styles}); }
+    const g = e.target.closest("[data-pgen]");
+    if (g) { g.disabled = true; await panPost(`${prefix}/api/production/${prodSel}/slots/${g.dataset.pgen}/generate`, {}); return loadPanel(true); }
+    const d = e.target.closest("[data-pdec]");
+    if (d) { d.disabled = true;
+      try { await post(`${prefix}/api/production/${prodSel}/images/${encodeURIComponent(d.dataset.f)}`, {decision: d.dataset.pdec}); }
+      catch (err) { try { panErr = (await err.json()).detail || "That did not work."; } catch { panErr = "That did not work."; } }
+      await loadPanel(true); return loadProd(true); }
+    const p = e.target.closest("[data-pplus]");
+    if (p) openPicker(Number(p.dataset.pplus));
+  });
+  // "+" picker: any template from the library (the Templates tab gallery), filtered to the card's ratio first
+  let pickRatio = "";
+  async function openPicker(slot) {
+    pickSlot = slot;
+    const c = pan.slots.find(x => x.slot === slot);
+    pickRatio = c ? c.ratio : "";
+    document.getElementById("tpick-title").textContent = `Pick a template for slot ${two(slot)}`;
+    tpick.hidden = false;
+    if (!tpl) { document.getElementById("tpick-body").innerHTML = `<p class="lead">Loading…</p>`; try { tpl = await fetch(`${prefix}/api/templates`, {cache: "no-store"}).then(r => r.json()); } catch { /* */ } }
+    paintPicker();
+  }
+  function paintPicker() {
+    if (!tpl) return;
+    const items = tpl.items.filter(t => !pickRatio || t.ratio === pickRatio);
+    const bar = `<div class="tbar"><b>Ratio</b><button class="chip ${pickRatio ? "" : "on"}" data-pr="">All</button>${Object.entries(tpl.buckets).map(([k, v]) => `<button class="chip ratio ${pickRatio === k ? "on" : ""}" data-pr="${esc(k)}">${esc(v)}</button>`).join("")}</div>`;
+    document.getElementById("tpick-body").innerHTML = bar + (items.length ? `<div class="tgrid">${items.map(t => `<article class="tcard" data-prel="${esc(t.rel)}">${t.ready ? `<div class="ti"><img src="${esc(t.thumb)}" alt="" loading="lazy"></div>` : `<div class="wait">Rendering…</div>`}<div class="tb"><div class="tn">${esc(t.name)}</div><div class="td">${esc(t.room)} · ${esc(t.style)} · ${esc(t.ratio_label)}</div></div></article>`).join("")}</div>` : `<p class="lead">No template in this ratio.</p>`);
+  }
+  tpick.addEventListener("click", async e => {
+    if (e.target === tpick || e.target.closest("[data-tpick-close]")) { tpick.hidden = true; return; }
+    const r = e.target.closest("[data-pr]"); if (r) { pickRatio = r.dataset.pr; paintPicker(); return; }
+    const t = e.target.closest("[data-prel]");
+    if (t) { tpick.hidden = true; await panPost(`${prefix}/api/production/${prodSel}/slots/${pickSlot}/generate`, {template: t.dataset.prel}); loadPanel(true); }
   });
 
 
@@ -714,17 +838,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     }
   });
   tbox.addEventListener("click", () => { tbox.hidden = true; });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") tbox.hidden = true; });
-
-  document.addEventListener("click", async e => {
-    const el = e.target.closest("[data-mockups]");
-    if (!el) return;
-    e.preventDefault(); e.stopPropagation();
-    const id = el.dataset.v; prErr[id] = ""; el.disabled = true;
-    try { prState[id] = await post(`${prefix}/api/mockups/${id}/run`, {}); }
-    catch (err) { try { prErr[id] = (await err.json()).detail || "That did not work."; } catch { prErr[id] = "That did not work."; } }
-    loadPrints();
-  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") { tbox.hidden = true; tpick.hidden = true; } });
 
   function paintArt() {
     document.querySelectorAll("[data-art-idea]").forEach(host => { host.innerHTML = artHTML(host.dataset.artIdea); });

@@ -1,0 +1,39 @@
+{
+ "name": "002_BC_Teal_ISO",
+ "kind": "tony_psd",
+ "psd": "002_BC_Teal_ISO.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Kitchen Bar",
+ "decor": "Food and Drink",
+ "ratio": "11x14",
+ "so_px": [
+  925,
+  1198
+ ],
+ "so_ratio": 0.7721,
+ "quad_art": [
+  [
+   2427.0,
+   394.0
+  ],
+  [
+   3349.0,
+   394.0
+  ],
+  [
+   3348.0,
+   1589.0
+  ],
+  [
+   2427.0,
+   1589.0
+  ]
+ ],
+ "canvas": [
+  5760,
+  3840
+ ],
+ "desc": "Wide teal hallway, pink-brass bar cart",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

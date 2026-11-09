@@ -30,7 +30,14 @@ Routes (prefix /ikigai):
   Prints (stage 3, app/prints.py; the Art tab):
   GET  /api/prints                approved-art gallery with upscale/resize status per idea
   GET  /api/prints/{idea_id}      one idea's upscale/resize status, files, design folder
-  POST /api/prints/{idea_id}/run  {name?, redo?} -> queue upscale + resize (name: first run only; redo: run again)
+  POST /api/prints/{idea_id}/run  {name?, redo?} -> queue upscale + resize (name: first run only; redo: run again);
+                                  with prints_make_listing_images it also makes listing images 1, 2, 7 + fixed
+  Production (stage 4, app/production.py; room images 8-19):
+  GET  /api/production            upscaled designs (thumbnail row) + the generation job
+  GET  /api/production/{id}/panel tags, slot plan and cards for one design
+  POST /api/production/{id}/tags  {rooms[], styles[]} -> Tony's ticks, saved as tags on the design
+  POST /api/production/{id}/slots/{slot}/generate {template?} -> one card (one job at a time)
+  POST /api/production/{id}/images/{name} {decision} -> approved | denied (-> Archive) | pending (undo)
 """
 import json
 from dataclasses import dataclass
@@ -197,6 +204,15 @@ class DecisionIn(BaseModel):
     decision: str
 
 
+class TagsIn(BaseModel):
+    rooms: list[str] = []
+    styles: list[str] = []
+
+
+class GenerateIn(BaseModel):
+    template: str | None = None    # "+" picker: a library template (rel path under Portrait_Templates)
+
+
 class PrintsIn(BaseModel):
     name: str | None = None
     redo: bool = False             # re-run upscale + resize even when done
@@ -212,21 +228,23 @@ def panel_context(con, settings):
 
 
 def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None, adapter=None, spawn=None,
-          upscayl=None, mockup_build=None):
-    """`writer` (prompt text -> raw reply), `adapter` (engine id -> engine adapter), `spawn` (run a worker)
-    and `upscayl` (one Upscayl pass: src, out, settings) are injectable for tests; defaults are the Claude CLI,
-    kie.ai, a daemon thread and the real upscayl-ncnn."""
+          upscayl=None, mockup_build=None, scene_generator=None, art_classify=None):
+    """`writer` (prompt text -> raw reply), `adapter` (engine id -> engine adapter), `spawn` (run a worker),
+    `upscayl` (one Upscayl pass: src, out, settings), `scene_generator` (kie.ai room scene) and `art_classify`
+    (Gemini style guess) are injectable for tests; defaults are the Claude CLI, kie.ai, a daemon thread, the real
+    upscayl-ncnn, kie_edit.generate and template_styles.classify_art."""
     r = APIRouter(prefix=prefix, tags=["ikigai"])
     spawn = spawn or art.spawn
     art.recover(con)
     prints.recover(con)
+    production.recover(con)
 
     def runner(rid):
         spawn(art.run_round, con, settings, rid, writer, adapter)
 
     def run_prints(idea_id, name=None, redo=()):
         lid = prints.start(con, settings, idea_id, name, redo)
-        spawn(prints.run, con, settings, lid, upscayl)
+        spawn(prints.run, con, settings, lid, upscayl, mockup_build)
         return lid
 
     def auto_prints(idea_id):
@@ -395,7 +413,33 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
 
     @r.get("/api/production")
     def api_production():
-        return JSONResponse({"items": production.overview(con, settings, prefix)}, headers=NO_STORE)
+        return JSONResponse({"items": production.overview(con, settings, prefix), "job": production.job_state()},
+                            headers=NO_STORE)
+
+    def prod_call(fn, *a, **kw):
+        try:
+            return fn(*a, **kw)
+        except production.ProductionError as e:
+            raise HTTPException(422, str(e))
+
+    def start_auto(idea_id):
+        spawn(production.auto_styles, con, settings, idea_id, art_classify)
+
+    @r.get("/api/production/{idea_id}/panel")
+    def api_production_panel(idea_id: int):
+        return JSONResponse(prod_call(production.panel, con, settings, idea_id, prefix, start_auto), headers=NO_STORE)
+
+    @r.post("/api/production/{idea_id}/tags")
+    def api_production_tags(idea_id: int, body: TagsIn):
+        prod_call(production.save_tags, con, settings, idea_id, body.rooms, body.styles)
+        return JSONResponse(prod_call(production.panel, con, settings, idea_id, prefix, start_auto), headers=NO_STORE)
+
+    @r.post("/api/production/{idea_id}/slots/{slot}/generate")
+    def api_production_generate(idea_id: int, slot: int, body: GenerateIn | None = None):
+        tpl = body.template if body else None
+        prod_call(production.start_slot, con, settings, idea_id, slot, tpl)
+        spawn(production.run_slot, con, settings, idea_id, slot, tpl, scene_generator)
+        return JSONResponse(prod_call(production.panel, con, settings, idea_id, prefix), headers=NO_STORE)
 
     @r.post("/api/mockups/{idea_id}/run")
     def api_mockups_run(idea_id: int):

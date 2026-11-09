@@ -72,6 +72,66 @@ def edit(engine, src, out, prompt, res="2K", extra_imgs=()):
     raise SystemExit("timeout")
 
 
+TEXT_TO_IMAGE = {"nbpro", "nb21", "nb2"}     # Nano Banana takes a prompt alone; GPT Image 2.5 here is image-to-image
+
+
+def generate(engine, out, prompt, aspect_ratio="4:3", res="2K", ref_imgs=(), timeout=900, poll=5):
+    """Text-to-image (optionally with reference images) for a NEW room scene; used by the Portal's Production tab
+    (app/scene_templates.py, 2026-11-08). Unlike edit() it raises RuntimeError instead of exiting, so a server
+    thread survives. Returns {"out", "model", "task", "s", "credits", "left"}."""
+    if engine not in MODELS:
+        raise RuntimeError(f"unknown engine {engine}")
+    if engine not in TEXT_TO_IMAGE and not ref_imgs:
+        raise RuntimeError(f"{engine} on kie.ai needs a reference image; use nbpro or nb21 for a new scene")
+    k = secret("KIE_API_KEY")
+    if not k:
+        raise RuntimeError("KIE_API_KEY is not set")
+    c = httpx.Client(timeout=60)
+    try:
+        before = credits(c)
+        urls = [upload(c, p) for p in ref_imgs]
+    except SystemExit as e:                      # upload() keeps the CLI's SystemExit; turn it into an error here
+        raise RuntimeError(str(e))
+    except (httpx.HTTPError, ValueError, KeyError):
+        raise RuntimeError("kie.ai could not be reached (balance or upload)")
+    inp = {"prompt": prompt, "aspect_ratio": aspect_ratio}
+    if engine.startswith("gpt"):
+        inp.update(input_urls=urls, resolution=res)
+    else:
+        inp.update(resolution=res, output_format="png")
+        if urls:
+            inp["image_input"] = urls
+    try:
+        j = c.post(f"{KIE}/api/v1/jobs/createTask", headers={**hdr(), "Content-Type": "application/json"},
+                   json={"model": MODELS[engine], "input": inp}).json()
+    except (httpx.HTTPError, ValueError):
+        raise RuntimeError("kie.ai did not accept the job (network)")
+    task = (j.get("data") or {}).get("taskId") if isinstance(j.get("data"), dict) else None
+    if j.get("code") != 200 or not task:
+        raise RuntimeError(f"kie.ai refused the job: {str(j.get('msg'))[:200]}")
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        try:
+            d = c.get(f"{KIE}/api/v1/jobs/recordInfo", params={"taskId": task}, headers=hdr()).json().get("data") or {}
+        except (httpx.HTTPError, ValueError):
+            time.sleep(poll)
+            continue
+        if d.get("state") == "success":
+            url = json.loads(d["resultJson"])["resultUrls"][0]
+            with c.stream("GET", url, timeout=180, follow_redirects=True) as r:
+                Path(out).write_bytes(r.read())
+            try:
+                after = credits(c)
+            except Exception:  # noqa: BLE001  (the image is made; the balance is only a nicety)
+                after = None
+            return {"out": str(out), "model": MODELS[engine], "task": task, "s": round(time.time() - t0),
+                    "credits": round(before - after, 2) if after is not None else None, "left": after}
+        if d.get("state") == "fail":
+            raise RuntimeError(f"kie.ai could not make it: {str(d.get('failMsg') or d.get('failCode'))[:200]}")
+        time.sleep(poll)
+    raise RuntimeError("kie.ai took too long")
+
+
 if __name__ == "__main__":
     eng, src, out, pf = sys.argv[1:5]
     res = sys.argv[5] if len(sys.argv) > 5 else "2K"

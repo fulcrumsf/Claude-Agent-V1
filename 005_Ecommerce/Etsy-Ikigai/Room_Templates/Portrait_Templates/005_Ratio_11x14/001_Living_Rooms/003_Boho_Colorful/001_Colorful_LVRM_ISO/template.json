@@ -1,0 +1,39 @@
+{
+ "name": "001_Colorful_LVRM_ISO",
+ "kind": "tony_psd",
+ "psd": "001_Colorful_LVRM_ISO.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Boho Colorful",
+ "ratio": "11x14",
+ "so_px": [
+  621,
+  790
+ ],
+ "so_ratio": 0.7861,
+ "quad_art": [
+  [
+   948.0,
+   476.0
+  ],
+  [
+   1555.0,
+   476.0
+  ],
+  [
+   1555.0,
+   1257.0
+  ],
+  [
+   948.0,
+   1257.0
+  ]
+ ],
+ "canvas": [
+  2500,
+  2500
+ ],
+ "desc": "Colourful retro/boho living room, mustard sofa, turquoise arch",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

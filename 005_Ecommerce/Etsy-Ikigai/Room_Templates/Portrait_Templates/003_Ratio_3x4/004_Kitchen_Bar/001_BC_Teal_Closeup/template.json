@@ -1,0 +1,39 @@
+{
+ "name": "001_BC_Teal_Closeup",
+ "kind": "tony_psd",
+ "psd": "001_BC_Teal_Closeup.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Kitchen Bar",
+ "decor": "Food and Drink",
+ "ratio": "3x4",
+ "so_px": [
+  921,
+  1200
+ ],
+ "so_ratio": 0.7675,
+ "quad_art": [
+  [
+   466.0,
+   201.0
+  ],
+  [
+   1388.0,
+   198.0
+  ],
+  [
+   1387.0,
+   1396.0
+  ],
+  [
+   465.0,
+   1398.0
+  ]
+ ],
+ "canvas": [
+  1869,
+  1870
+ ],
+ "desc": "Teal wall bar close-up, wine glasses + bottle",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

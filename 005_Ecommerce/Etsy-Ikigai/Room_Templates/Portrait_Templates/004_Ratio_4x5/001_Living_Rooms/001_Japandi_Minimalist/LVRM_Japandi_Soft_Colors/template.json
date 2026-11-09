@@ -1,0 +1,39 @@
+{
+ "name": "LVRM_Japandi_Soft_Colors_Template",
+ "kind": "tony_psd",
+ "psd": "LVRM_Japandi_Soft_Colors_Template.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Japandi Minimalist",
+ "ratio": "4x5",
+ "so_px": [
+  812,
+  1015
+ ],
+ "so_ratio": 0.8,
+ "quad_art": [
+  [
+   1679.0,
+   832.0
+  ],
+  [
+   2491.0,
+   832.0
+  ],
+  [
+   2491.0,
+   1846.0
+  ],
+  [
+   1679.0,
+   1846.0
+  ]
+ ],
+ "canvas": [
+  4096,
+  4096
+ ],
+ "desc": "Bright Japandi living room, beams, terracotta cushions, plants",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

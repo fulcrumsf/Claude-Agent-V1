@@ -1,0 +1,39 @@
+{
+ "name": "LVRM_Modern_Color_3x4",
+ "kind": "tony_psd",
+ "psd": "LVRM_Modern_Color_3x4.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Modern",
+ "ratio": "3x4",
+ "so_px": [
+  790,
+  1074
+ ],
+ "so_ratio": 0.7356,
+ "quad_art": [
+  [
+   1748.0,
+   860.0
+  ],
+  [
+   2539.0,
+   859.0
+  ],
+  [
+   2539.0,
+   1936.0
+  ],
+  [
+   1748.0,
+   1936.0
+  ]
+ ],
+ "canvas": [
+  4096,
+  4096
+ ],
+ "desc": "Bright modern living room, cream tufted sofa, olive tree",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

@@ -1,0 +1,39 @@
+{
+ "name": "BDRM_Japandi_Beige_4x5",
+ "kind": "tony_psd",
+ "psd": "BDRM_Japandi_Beige_4x5.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Bedroom",
+ "decor": "Japandi",
+ "ratio": "3x4",
+ "so_px": [
+  497,
+  660
+ ],
+ "so_ratio": 0.753,
+ "quad_art": [
+  [
+   1048.0,
+   468.0
+  ],
+  [
+   1539.0,
+   468.0
+  ],
+  [
+   1539.0,
+   1123.0
+  ],
+  [
+   1047.0,
+   1123.0
+  ]
+ ],
+ "canvas": [
+  2655,
+  2000
+ ],
+ "desc": "Japandi bedroom, oak frame, soft sun",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}
