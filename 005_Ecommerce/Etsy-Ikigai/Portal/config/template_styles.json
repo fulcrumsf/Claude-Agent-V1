@@ -676,6 +676,16 @@
    "key": "34ffecf4a0167697",
    "model": "gemini-3.5-flash-lite",
    "tokens": 1223
+  },
+  "003_Ratio_3x4/002_Bedroom/001_Modern/AI_Bedroom_Modern_20261108_230611/AI_Bedroom_Modern_20261108_230611_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "70870c552383fa3b",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1238
   }
  }
 }

@@ -7,26 +7,26 @@
  "decor": "Wabi Sabi",
  "ratio": "3x4",
  "so_px": [
-  562,
-  750
+  542,
+  740
  ],
- "so_ratio": 0.7493,
+ "so_ratio": 0.7324,
  "quad_art": [
   [
-   1041.0,
-   166.0
+   1058.0,
+   162.0
   ],
   [
-   1602.0,
-   166.0
+   1600.0,
+   162.0
   ],
   [
-   1602.0,
-   915.0
+   1600.0,
+   902.0
   ],
   [
-   1041.0,
-   915.0
+   1058.0,
+   902.0
   ]
  ],
  "canvas": [
@@ -35,5 +35,6 @@
  ],
  "desc": "Wabi-sabi neutral bedroom, linen bed, curtains, sun diagonal",
  "guard": "hue only (the template's own shadows are designed)",
- "measured": "2026-11-08: art quad from a black vs white card render"
+ "measured": "2026-11-10: opening fixed by hand-verified live PhotoCraft session; shadows rebuilt from black fills (see Mockup_Docs/Template_Layer_Rules_And_Checker_Spec.md)",
+ "layers_verified": "2026-11-10"
 }
