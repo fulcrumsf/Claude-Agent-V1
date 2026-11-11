@@ -155,18 +155,21 @@ def scan(settings=None):
         if ratio is None:
             continue
         kids = [c for c in d.iterdir() if c.name != ".DS_Store"]
+        only_archive = bool(kids) and all(c.name == "Archive" for c in kids)
         if not MASTER.match(parts[0]):                      # not one of Tony's NNN_ ratio folders
             if not any(f.is_file() and f.name != ".DS_Store" for f in d.rglob("*")):
                 stray.append({"rel": rel.as_posix()})
             continue
-        if not kids:                                          # empty leaf folder = a template still to build
+        # empty leaf folder = a template still to build (also one whose only content is Archive/ after a denied
+        # build; template folders that are not NNN_ named never count)
+        if not kids or (only_archive and MASTER.match(parts[-1]) and len(parts) <= 3):
             room = label(parts[1]) if len(parts) > 1 else "Any Room"
             style = " / ".join(label(p) for p in parts[2:]) or "Unstyled"
             gaps.append({"rel": rel.as_posix(), "ratio": ratio, "room": room, "room_n": number(parts[1]) if len(parts) > 1
                          else 999, "style": style})
             continue
-        if len(parts) < 3:
-            continue
+        if len(parts) < 2:
+            continue                       # a template built into a room-level gap folder sits at depth 2
         man = d / "room.json"
         psds = []
         if man.is_file():
@@ -352,9 +355,12 @@ def start_build(settings=None):
 def overview(settings=None, prefix="/ikigai", build=True, styles_path=None, classify=None, auto=True):
     """Tab payload. `style` = the room's decor style (folder level / Directory / name keyword); `styles` = the Etsy
     shop styles (manual wins over auto, app/template_styles.py)."""
+    from . import template_build as tb
+    from . import template_checker as tc
     from . import template_styles as ts
     templates, gaps, stray = scan(settings)
     sdata = ts.load(styles_path)
+    checks = tc.load((settings or {}).get("template_checks_path"))
     items, missing, to_classify = [], 0, []
     errs = _state.get("errors") or {}
     for t in templates:
@@ -365,8 +371,18 @@ def overview(settings=None, prefix="/ikigai", build=True, styles_path=None, clas
         if ready and t["rel"] not in (sdata.get("manual") or {}) \
                 and ((sdata.get("auto") or {}).get(t["rel"]) or {}).get("key") != tp.stem[8:24]:
             to_classify.append((t["rel"], tp, tp.stem[8:24]))
+        chk = tc.status_for(t["rel"], checks, t["psd"])
+        man = {}
+        if not t["wired"] and (t["psd"].parent / "template.json").is_file():
+            try:
+                man = json.loads((t["psd"].parent / "template.json").read_text())
+            except ValueError:
+                man = {}
         items.append({k: t[k] for k in ("rel", "name", "folder", "ratio", "room", "style", "desc", "nearest", "so_px",
                                          "status", "wired", "room_n")}
+                     | {"check": ({k: chk.get(k) for k in ("status", "reasons", "checked", "stale", "notes")}
+                                  if chk else None),
+                        "awaiting": man.get("kind") == "ai_scene" and man.get("approved") is False}
                      | {"ratio_label": BUCKETS[t["ratio"]], "ready": ready, "error": errs.get(t["rel"], ""),
                         "styles": st["styles"], "styles_source": st["source"], "auto_styles": st["auto"],
                         "thumb": f"{prefix}/api/templates/file/{tp.name}" if ready else None,
@@ -377,10 +393,13 @@ def overview(settings=None, prefix="/ikigai", build=True, styles_path=None, clas
         ts.start_auto(to_classify, classify)
     for g in gaps:
         g["ratio_label"] = BUCKETS[g["ratio"]]
+        g["build"] = tb.gap_plan(g, settings)
     return {"items": items, "gaps": gaps, "stray_empty": stray, "building": _state["running"] or bool(missing and build),
             "classifying": ts.job()["running"] or bool(to_classify and auto), "vocabulary": ts.labels(sdata),
             "shop_sections": {v["label"]: v["section"] for v in sdata.get("vocabulary", [])},
-            "archived": archived_count(settings), "buckets": BUCKETS, "crop": "4:3"}
+            "archived": archived_count(settings), "buckets": BUCKETS, "crop": "4:3",
+            "check_job": tc.job(), "checked_at": checks.get("updated"), "build_job": tb.job(),
+            "proposals": tb.proposals(settings)}
 
 
 def archived_count(settings=None):
@@ -412,13 +431,101 @@ if __name__ == "__main__":
         print(json.dumps(build_all(s), indent=1) or "{}")
 
 
-def mount(app, settings, prefix="/ikigai", styles_path=None, classify=None, auto=True):
-    """Routes for the Templates tab: the gallery is read-only (no generating or editing templates); the only write
-    is Tony's style assignment into config/template_styles.json. styles_path / classify / auto are for tests."""
+def mount(app, settings, prefix="/ikigai", styles_path=None, classify=None, auto=True, generator=None, spawn=None,
+          edit_ask=None, launcher=None, bridge=None):
+    """Routes for the Templates tab: gallery + style assignment (config/template_styles.json), the template checker
+    (config/template_checks.json), "Build this" on gap tiles (app/template_build.py), approving a proposed room
+    folder, Edit with chat and Open in PhotoCraft (app/template_edit.py). styles_path / classify / auto / generator /
+    spawn / edit_ask / launcher / bridge are for tests."""
     from fastapi import APIRouter, Body, HTTPException
     from fastapi.responses import FileResponse, JSONResponse
+    from . import template_build as tb
+    from . import template_checker as tc
+    from . import template_edit as te
     from . import template_styles as ts
     r = APIRouter(prefix=prefix, tags=["templates"])
+    run_bg = spawn or (lambda fn, *a: threading.Thread(target=fn, args=a, daemon=True).start())
+    NS = {"Cache-Control": "no-store"}
+
+    def call(fn, *a, **k):
+        try:
+            return fn(*a, **k)
+        except (tb.BuildError, te.EditError, tc.CheckError) as e:
+            raise HTTPException(422, str(e))
+
+    @r.post("/api/templates/check")
+    def api_check(body: dict = Body(default={})):
+        """{rel?}: run the template checker on one template, or on all (background)."""
+        rels = [str(body["rel"])] if body.get("rel") else None
+        if rels:
+            known(rels[0])
+        if tc.job()["running"]:
+            raise HTTPException(422, "the checker is already running")
+        run_bg(tc.run_all, settings, rels, (settings or {}).get("template_checks_path"), lambda *_: None)
+        return JSONResponse({"started": True, "job": tc.job()}, headers=NS)
+
+    @r.get("/api/templates/check/{rel:path}")
+    def api_check_one(rel: str):
+        known(rel)
+        return JSONResponse(tc.load((settings or {}).get("template_checks_path")).get("results", {}).get(rel) or {},
+                            headers=NS)
+
+    @r.post("/api/templates/build")
+    def api_build(body: dict = Body(...)):
+        """{rel}: one click on a gap tile = approval of about 18 credits; builds a new AI template into the folder."""
+        plan = call(tb.start, str(body.get("rel") or ""), settings)
+        run_bg(tb.run, plan["rel"], settings, generator)
+        return JSONResponse({"plan": plan, "job": tb.job()}, headers=NS)
+
+    @r.post("/api/templates/build/decide")
+    def api_build_decide(body: dict = Body(...)):
+        return JSONResponse(call(tb.decide, str(body.get("rel") or ""), str(body.get("decision") or ""), settings),
+                            headers=NS)
+
+    @r.post("/api/templates/folders")
+    def api_folder(body: dict = Body(...)):
+        """{rel}: Tony approved this exact proposed room-folder path; only listed proposals can be created."""
+        return JSONResponse(call(tb.approve_folder, str(body.get("rel") or ""), settings), headers=NS)
+
+    @r.post("/api/templates/edit/{action}")
+    def api_edit(action: str, body: dict = Body(...)):
+        rel = str(body.get("rel") or "")
+        known(rel)
+        if action == "start":
+            return JSONResponse(call(te.start, rel, settings, prefix), headers=NS)
+        if action == "chat":
+            pt = body.get("point")
+            pt = [float(pt[0]), float(pt[1])] if isinstance(pt, list) and len(pt) == 2 else None
+            return JSONResponse(call(te.chat, rel, str(body.get("text") or "")[:600], pt, settings, prefix, edit_ask),
+                                headers=NS)
+        if action == "confirm":
+            return JSONResponse(call(te.confirm_image_edit, rel, settings, prefix), headers=NS)
+        if action == "undo":
+            return JSONResponse(call(te.undo, rel, settings, prefix), headers=NS)
+        if action == "save":
+            return JSONResponse(call(te.save, rel, settings, prefix), headers=NS)
+        if action == "discard":
+            return JSONResponse(call(te.discard, rel, settings, prefix), headers=NS)
+        raise HTTPException(404, "unknown edit action")
+
+    @r.get("/api/templates/edit")
+    def api_edit_state(rel: str):
+        return JSONResponse(te.state(rel, settings, prefix), headers=NS)
+
+    @r.get("/api/templates/edit-file/{name}")
+    def api_edit_file(name: str):
+        f = te.edit_file(name, settings)
+        if f is None:
+            raise HTTPException(404, "no such file")
+        return FileResponse(f, headers={"Cache-Control": "no-cache"})
+
+    @r.post("/api/templates/open")
+    def api_open(body: dict = Body(...)):
+        """{rel, layer?}: open the template in PhotoCraft (control port + token file) and select the named layer."""
+        rel = str(body.get("rel") or "")
+        known(rel)
+        return JSONResponse(call(te.open_in_photocraft, rel, (body.get("layer") or None), settings, launcher, bridge),
+                            headers=NS)
 
     @r.get("/api/templates")
     def api_templates():

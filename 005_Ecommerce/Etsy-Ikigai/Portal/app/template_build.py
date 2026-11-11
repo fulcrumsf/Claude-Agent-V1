@@ -1,0 +1,183 @@
+"""Templates tab: "Build this" on a gap tile, and proposed room folders (Tony 2026-11-10, build plan section 4 and
+Decisions).
+
+Build this (one click = Tony's approval of the cost, about 18 kie.ai credits on Nano Banana Pro):
+  the gap folder (an EMPTY folder in Tony's NNN_ tree) gets a NEW AI room template, made with the Production recipe
+  (room_slots.scene_prompt -> kie_edit.generate -> scene_templates.build_psd: blank-insert frame, cover-fit art,
+  black-fill shadows measured from the photo). The files go straight INTO that folder (no new folder):
+      AI_<Room>_<Decor>_<stamp>_Template.psd, AI_..._Scene.png, template.json (approved: false)
+  The template checker runs on it at once; the tile then shows it with PASS/FAIL and Approve / Deny.
+  Deny moves the three files into that folder's Archive/ (the folder becomes a gap again). Nothing is deleted.
+Missing room folders (Entryway, Laundry): the tab shows the LITERAL proposed path per ratio and creates a folder only
+when Tony clicks Approve on that exact path. No other folder is ever created here.
+"""
+import json
+import re
+import shutil
+import tempfile
+import threading
+from datetime import datetime
+from pathlib import Path
+
+from . import room_slots as rs
+from . import scene_templates as stp
+from . import template_checker as tc
+from . import template_gallery as tg
+
+FOLDER_ROOM = {v: k for k, v in rs.ROOM_FOLDER.items() if v and k not in ("Dorm", "Kids")}   # bedroom -> Bedroom ...
+FOLDER_ROOM["kids_nursery"] = "Nursery"
+_job = {"running": False, "rel": None, "stage": "", "error": "", "made": None}
+_lock = threading.Lock()
+
+
+class BuildError(Exception):
+    pass
+
+
+def lib(settings=None):
+    return stp.library(settings)
+
+
+def gap_plan(g, settings=None):
+    """What a gap tile would build: room (Etsy/scene room), decor, ratio, prompt, credits, target folder."""
+    parts = g["rel"].split("/")
+    room_key = rs.norm(parts[1]) if len(parts) > 1 else None
+    room = FOLDER_ROOM.get(room_key) or (tg.label(parts[1]) if len(parts) > 1 else "Living room")
+    decor = re.sub(r"\s+", "_", tg.label(parts[-1])) if len(parts) > 2 else "Modern"
+    eng = (settings or {}).get("room_scene_engine", stp.DEFAULTS["room_scene_engine"])
+    return {"rel": g["rel"], "room": room, "decor": decor, "ratio": g["ratio"],
+            "prompt": rs.scene_prompt(room, decor, g["ratio"]) if g["ratio"] in rs.RATIO_VALUE else None,
+            "credits": stp.SCENE_CREDITS.get(eng), "engine": eng,
+            "path": f"Room_Templates/{stp.LIBRARY}/{g['rel']}/"}
+
+
+def proposals(settings=None):
+    """Room folders Tony may approve: {room, path (literal, under Room_Templates), rel} for each ratio folder that
+    lacks it. Nothing is created here."""
+    base = lib(settings)
+    out = []
+    for room, name in rs.PROPOSED_ROOM_FOLDERS.items():
+        for rd in stp._kids(base):
+            if not stp.MASTER.match(rd.name) or tg.ratio_of(rd.name) in (None, "other"):
+                continue
+            if any(rs.norm(c.name) == rs.norm(name) for c in stp._kids(rd)):
+                continue
+            rel = f"{rd.name}/{name}"
+            out.append({"room": room, "ratio": tg.ratio_of(rd.name), "rel": rel,
+                        "path": f"Room_Templates/{stp.LIBRARY}/{rel}/"})
+    return out
+
+
+def approve_folder(rel, settings=None):
+    """Tony approved this exact proposed path: create it (only a listed proposal can be created)."""
+    hit = next((p for p in proposals(settings) if p["rel"] == rel), None)
+    if hit is None:
+        raise BuildError("that folder is not a proposed path (only the listed paths can be approved)")
+    d = lib(settings) / rel
+    d.mkdir()                                   # parent ratio folder exists; never parents=True
+    return {"created": hit["path"]}
+
+
+def job():
+    with _lock:
+        return dict(_job)
+
+
+def start(rel, settings=None):
+    gaps = {g["rel"]: g for g in tg.scan(settings)[1]}
+    if rel not in gaps:
+        raise BuildError("that folder is not an empty template folder any more")
+    plan = gap_plan(gaps[rel], settings)
+    if not plan["prompt"]:
+        raise BuildError("no print ratio for this folder")
+    with _lock:
+        if _job["running"]:
+            raise BuildError(f"still building {_job['rel']}; one at a time")
+        _job.update(running=True, rel=rel, stage="starting", error="", made=None)
+    return plan
+
+
+def _stage(t):
+    with _lock:
+        _job["stage"] = t
+
+
+def run(rel, settings=None, generator=None, check=True):
+    """Worker: draw the room, build the PSD, save it INTO the gap folder, run the checker. Releases the job."""
+    try:
+        gaps = {g["rel"]: g for g in tg.scan(settings)[1]}
+        plan = gap_plan(gaps[rel], settings)
+        folder = lib(settings) / rel
+        with tempfile.TemporaryDirectory() as td:
+            td = Path(td)
+            scene = td / "scene.png"
+            _stage("drawing the room (kie.ai)")
+            gen = stp.generate_scene(plan["prompt"], scene, settings, generator)
+            _stage("finding the frame, building the PSD")
+            (td / "b").mkdir()
+            try:
+                built = stp.build_psd(scene, plan["ratio"], td / "b", settings)
+            except stp.TemplateError as e:
+                arch = folder / "Archive"
+                arch.mkdir(exist_ok=True)               # Archive folders are pre-approved (Tony 2026-11-08)
+                keep = arch / f"Rejected_Scene_{datetime.now():%Y%m%d_%H%M%S}.png"
+                shutil.copy2(scene, keep)
+                raise BuildError(f"{e} (scene kept in Archive as {keep.name}; {gen.get('credits')} credits spent)")
+            stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            short = stp.ROOM_SHORT.get(plan["room"], plan["room"].title().replace(" ", "_"))
+            name = f"AI_{short}_{plan['decor']}_{stamp}"
+            psd = folder / f"{name}_Template.psd"
+            shutil.copy2(built["psd_tmp"], psd)
+            shutil.copy2(scene, folder / f"{name}_Scene.png")
+            man = {"name": name, "kind": "ai_scene", "psd": psd.name, "scene": f"{name}_Scene.png",
+                   "smart_object_layer": stp.ART, "room": plan["room"],
+                   "etsy_room": plan["room"] if plan["room"] in rs.ETSY_ROOMS else None,
+                   "decor": plan["decor"], "ratio": plan["ratio"],
+                   **{k: built[k] for k in ("so_px", "so_ratio", "quad_insert", "quad_art", "mode", "canvas",
+                                            "light_from", "insert", "shadows")},
+                   "base_layer": stp.BASE_NAME, "prompt": plan["prompt"], "engine": plan["engine"],
+                   "model": gen.get("model"), "credits": gen.get("credits"), "built_for": "gap (Templates tab)",
+                   "approved": False, "created": datetime.now().isoformat(timespec="seconds")}
+            (folder / stp.MANIFEST).write_text(json.dumps(man, indent=1) + "\n")
+        rel_psd = psd.relative_to(lib(settings)).as_posix()
+        if check:
+            _stage("checking the template")
+            tc.run_all(settings, [rel_psd], (settings or {}).get("template_checks_path"), log=lambda *_: None)
+        with _lock:
+            _job["made"] = rel_psd
+    except Exception as e:  # noqa: BLE001  (shown on the tile; the job is always released)
+        with _lock:
+            _job["error"] = str(e)[:400]
+    finally:
+        with _lock:
+            _job.update(running=False, stage="")
+
+
+def decide(rel_psd, decision, settings=None):
+    """approved: template.json approved true. denied: the PSD, scene and template.json move into that folder's
+    Archive/ (the folder becomes a gap again)."""
+    psd = lib(settings) / rel_psd
+    man_f = psd.parent / stp.MANIFEST
+    if not psd.is_file() or not man_f.is_file():
+        raise BuildError("no such new template")
+    man = json.loads(man_f.read_text())
+    if man.get("kind") != "ai_scene" or man.get("psd") != psd.name:
+        raise BuildError("only a newly built template can be approved or denied here")
+    if decision == "approved":
+        man["approved"] = True
+        man["approved_at"] = datetime.now().isoformat(timespec="seconds")
+        man_f.write_text(json.dumps(man, indent=1) + "\n")
+        return {"approved": rel_psd}
+    if decision != "denied":
+        raise BuildError("decision must be approved or denied")
+    arch = psd.parent / "Archive"
+    arch.mkdir(exist_ok=True)
+    moved = []
+    for f in (psd, psd.parent / man.get("scene", ""), man_f):
+        if f.is_file():
+            dest = arch / (f.name if f.name != stp.MANIFEST else f"{man['name']}_template.json")
+            if dest.exists():
+                dest = arch / f"{dest.stem}_{datetime.now():%H%M%S}{dest.suffix}"
+            shutil.move(str(f), str(dest))
+            moved.append(dest.name)
+    return {"denied": rel_psd, "archived": moved}

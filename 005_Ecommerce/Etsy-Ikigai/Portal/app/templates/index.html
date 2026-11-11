@@ -49,7 +49,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .ph .badge{display:inline-block;font:500 10.5px var(--mono);letter-spacing:.12em;text-transform:uppercase;border:1px dashed var(--line-2);border-radius:20px;padding:3px 10px;margin-top:12px}
 
 /* ---------- studio: meter ---------- */
-.studio{max-width:1080px}
+.studio{max-width:none;width:100%}
 .studio > script{display:none}
 .meter{display:flex;flex-wrap:wrap;align-items:center;gap:22px 32px;padding:4px 0 26px;border-bottom:1px solid var(--line);margin-bottom:24px}
 .nums{display:flex;gap:26px}
@@ -88,12 +88,12 @@ button{font:inherit;color:inherit;cursor:pointer}
 .lane{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--lane);padding-left:16px}
 .title{all:unset;cursor:pointer;min-width:0;display:flex;flex-direction:column;gap:1px}
 .title .t{font:700 16px/1.3 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.title .d{color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.title .d{color:var(--muted);font-size:13px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;white-space:normal}
 .title:focus-visible{outline:2px solid var(--ink);outline-offset:4px;border-radius:3px}
 .stamp{font:700 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--rising);border:1.5px solid var(--rising);border-radius:4px;padding:2px 6px;transform:rotate(-3deg);white-space:nowrap;opacity:.9}
 .stamp.sm{font-size:9px;padding:0 4px;transform:none}
 .flag{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font:700 11px var(--mono);color:var(--test);border:1.5px solid var(--test);cursor:help}
-.score{font:500 13px var(--mono);color:var(--ink-2);min-width:24px;text-align:right}
+.score{font:700 22px/1 var(--serif);color:var(--ink);min-width:40px;text-align:right;letter-spacing:-.01em}
 .ctl{display:flex;gap:6px}
 .ctl button{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line-2);background:transparent;transition:all .15s}
 .ctl .yes:hover{background:var(--ok);border-color:var(--ok);color:#fff}
@@ -103,15 +103,23 @@ button{font:inherit;color:inherit;cursor:pointer}
 .empty svg{color:var(--line-2)}
 .empty p{margin:8px 0 0}
 .bankblock{margin-top:34px}
-.bank{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
-.bank li{animation:rise .4s both;min-width:0}
-.bank .pick{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px;transition:border-color .15s,box-shadow .15s}
-.bank .pick:hover{border-color:var(--line-2)}
+/* Idea Bank: Pinterest-style masonry, the art as the thumbnail; 4 columns by default, fewer when narrow */
+.bank{list-style:none;margin:0;padding:0;column-count:4;column-gap:12px}
+.bank li{animation:rise .4s both;min-width:0;break-inside:avoid;margin:0 0 12px;display:block}
+.bank .pick{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:border-color .15s,box-shadow .15s,transform .15s}
+.bank .pick:hover{border-color:var(--line-2);transform:translateY(-1px)}
 .bank .pick:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.bank li.sel .pick{border-color:var(--ink);box-shadow:inset 3px 0 0 var(--lane)}
+.bank li.sel .pick{border-color:var(--ink);box-shadow:0 0 0 1.5px var(--ink)}
+.bank .pick > img{width:100%;height:auto;display:block;border-bottom:1px solid var(--line);background:var(--paper-2)}
+.bank .noart{display:flex;align-items:center;justify-content:center;gap:8px;aspect-ratio:4/3;background:repeating-linear-gradient(45deg,transparent 0 8px,var(--paper-2) 8px 16px);color:var(--muted);font:500 10.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--line)}
 .bank .dot{width:8px;height:8px;border-radius:50%;background:var(--lane);flex:none}
-.bank .t{font:700 14px/1.3 var(--serif);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.bank time{font:400 10.5px var(--mono);color:var(--muted)}
+.bank .bt{display:flex;flex-direction:column;gap:5px;padding:9px 11px 10px;box-shadow:inset 3px 0 0 var(--lane)}
+.bank .t{font:700 14.5px/1.3 var(--serif);min-width:0;overflow-wrap:anywhere}
+.bank .bm{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.bank time{font:400 10.5px var(--mono);color:var(--muted);margin-left:auto}
+@media (max-width:1100px){.shell:not(.solo) .bank{column-count:3}}
+@media (max-width:700px){.bank{column-count:2}}
+@media (max-width:420px){.bank{column-count:1}}
 .muted{color:var(--muted);margin:0}
 
 /* ---------- right: details ---------- */
@@ -148,8 +156,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 .chat header span{font:400 11px var(--mono);color:var(--muted)}
 .log{flex:1;min-height:0;overflow:auto;padding:10px 16px 6px;display:flex;flex-direction:column;gap:8px}
 .msg{max-width:86%;padding:8px 12px;border-radius:12px;font-size:13.5px;line-height:1.45;animation:rise .3s both;white-space:pre-wrap;overflow-wrap:anywhere}
-.msg.tony{align-self:flex-end;background:var(--ink);color:var(--paper);border-bottom-right-radius:4px}
-.msg.portal{align-self:flex-start;background:var(--card);border:1px solid var(--line);border-bottom-left-radius:4px}
+/* dark text on light bubbles (Tony 2026-11-10): warm tint for Tony, paper white for the studio */
+.msg.tony{align-self:flex-end;background:#efdfc4;color:var(--ink);border:1px solid #e2cca6;border-bottom-right-radius:4px}
+.msg.portal{align-self:flex-start;background:#fffdf9;color:var(--ink);border:1px solid var(--line);border-bottom-left-radius:4px}
 .msg.invite{border-color:var(--rising);box-shadow:inset 3px 0 0 var(--rising)}
 .hello{color:var(--muted);font-size:13px;text-align:center;margin:auto 10px}
 .msg.thinking{color:var(--muted);display:inline-flex;align-items:center;gap:8px}
@@ -224,7 +233,15 @@ button{font:inherit;color:inherit;cursor:pointer}
 .art-err{color:var(--rising);font-size:13.5px;margin:10px 0 0}
 .art-hint{font-size:13px;color:var(--ink-2);margin:10px 0 0}
 .final{margin-top:4px}
-.final img{width:100%;border-radius:8px;border:1px solid var(--line);display:block}
+.final img{width:100%;max-height:45vh;object-fit:contain;border-radius:8px;border:1px solid var(--line);display:block;background:var(--paper-2);cursor:zoom-in}
+/* sticky action bar at the top of the Details panel */
+.dt-bar{position:sticky;top:-26px;z-index:5;margin:-8px -32px 16px;padding:10px 32px;background:rgba(242,237,227,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center;min-height:20px}
+.dt-bar:empty{display:none}
+.dt-bar .btn{padding:7px 14px;font-size:13.5px}
+.dt-bar .btn.ok{background:var(--ok);border-color:var(--ok)}
+.dt-bar .btn.no{background:transparent;color:var(--rising);border-color:var(--rising)}
+.dt-bar .note{font:400 11.5px var(--mono);color:var(--muted)}
+.ev-inline .dt-bar{margin:0 0 12px;top:0;padding:10px 0}
 .final .ok{display:flex;gap:10px;align-items:center;margin:10px 0 2px;color:var(--ok);font-weight:500}
 .prod{font:500 11px var(--mono);letter-spacing:.06em;color:var(--muted);border:1px dashed var(--line-2);border-radius:8px;padding:8px 10px;margin-top:10px}
 /* ---------- prints: upscale + resize (Art tab + Details) ---------- */
@@ -254,7 +271,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .older img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:4px;border:1px solid var(--line)}
 .older img.picked{box-shadow:0 0 0 2px var(--ink)}
 
-/* ---------- production: room images 8-19, one card per slot ---------- */
+/* ---------- production: room images 3 + 9-19, one card per slot ---------- */
 .pstrip{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 14px;margin:0 0 18px;border-bottom:1px solid var(--line)}
 .pthumb{all:unset;box-sizing:border-box;cursor:pointer;flex:0 0 auto;width:132px;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column}
 .pthumb:hover{border-color:var(--line-2)}
@@ -333,7 +350,55 @@ button{font:inherit;color:inherit;cursor:pointer}
 .tcard .tc{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 .tcard .tc i{font:400 10px var(--mono);color:var(--muted);font-style:normal}
 .tcard.gap{border:1.5px dashed var(--line-2);background:transparent}
-.tcard.gap .wait{background:repeating-linear-gradient(45deg,transparent 0 8px,var(--paper-2) 8px 16px);flex-direction:column;gap:4px;color:var(--ink-2)}
+.tcard.gap .wait{background:repeating-linear-gradient(45deg,transparent 0 8px,var(--paper-2) 8px 16px);flex-direction:column;gap:6px;color:var(--ink-2);padding:10px;text-align:center}
+.tcard.gap .wait span{font:400 10.5px/1.4 var(--mono);overflow-wrap:anywhere}
+.tcard{position:relative}
+.tchk{position:absolute;left:8px;top:8px;z-index:2;font:700 10px var(--mono);letter-spacing:.06em;border-radius:4px;padding:2px 7px;color:#fff;background:var(--ok)}
+.tchk.FAIL{background:var(--rising)}.tchk.none{background:rgba(30,28,25,.55)}.tchk.stale{background:var(--test)}
+.tchk.await{left:auto;right:44px;background:var(--steady)}
+.tfails{margin:0;padding:6px 8px 6px 22px;background:#fbefe9;border:1px solid #efd3c8;border-radius:6px;font-size:11.5px;color:#7a2d1c;line-height:1.4}
+.tfails li{margin:2px 0}
+.tdots{position:absolute;right:8px;top:8px;z-index:3;width:30px;height:30px;border-radius:50%;border:0;background:rgba(250,247,241,.92);font:700 16px/1 var(--sans);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.tmenu{position:absolute;right:8px;top:42px;z-index:4;background:var(--card);border:1px solid var(--line-2);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.16);display:flex;flex-direction:column;min-width:180px;overflow:hidden}
+.tmenu button{all:unset;cursor:pointer;padding:9px 12px;font-size:13px}
+.tmenu button:hover{background:var(--paper-2)}
+.tbuild{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.tbuild .btn{padding:6px 12px;font-size:13px}
+.tprop{border:1.5px dashed var(--test);border-radius:var(--r);padding:10px 14px;margin:0 0 20px;background:rgba(176,131,42,.05)}
+.tprop summary{cursor:pointer;font-size:13.5px}.tprop summary b{font:700 15px var(--serif)}
+.tprop p{margin:8px 0;font-size:12.5px;color:var(--ink-2)}
+.tprop li{display:flex;gap:10px;align-items:center;font:400 11.5px var(--mono);margin:4px 0;flex-wrap:wrap}
+.tprop ul{list-style:none;margin:0;padding:0}
+.tjob{font:400 12px var(--mono);color:var(--ink-2);display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 14px}
+/* Edit with chat overlay: room left, chat right */
+.ted{position:fixed;inset:0;z-index:70;background:rgba(20,18,15,.7);display:flex;align-items:center;justify-content:center;padding:18px}
+.ted[hidden]{display:none}
+.ted .box{background:var(--paper);border-radius:14px;width:min(1500px,100%);height:min(920px,100%);display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,1fr);grid-template-rows:auto minmax(0,1fr);overflow:hidden}
+.ted header{grid-column:1/-1;display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.ted header b{font:700 17px var(--serif);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ted .x{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-2);background:transparent;font-size:18px}
+.ted .room{position:relative;min-height:0;display:flex;flex-direction:column;background:#1f1d1a}
+.ted .room .seg{display:flex;gap:6px;padding:10px 12px}
+.ted .room .seg .chip{background:rgba(250,247,241,.12);color:#eee;border-color:rgba(255,255,255,.25)}
+.ted .room .seg .chip.on{background:var(--paper);color:var(--ink)}
+.ted .pic{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 12px 12px}
+.ted .pic img{max-width:100%;max-height:100%;object-fit:contain;cursor:crosshair;border-radius:4px}
+.ted .mark{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border:2px solid #ff5a3c;border-radius:50%;pointer-events:none;box-shadow:0 0 0 2px rgba(255,255,255,.7)}
+.ted .side{display:flex;flex-direction:column;min-height:0;border-left:1px solid var(--line)}
+.ted .tlog{flex:1;min-height:0;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+.ted .tlayers{font:400 11px var(--mono);color:var(--ink-2);padding:8px 12px;border-top:1px solid var(--line);max-height:140px;overflow:auto}
+.ted .tlayers span{display:inline-block;border:1px solid var(--line-2);border-radius:12px;padding:1px 7px;margin:2px;cursor:pointer;background:var(--card)}
+.ted .tlayers span.off{opacity:.5;text-decoration:line-through}
+.ted .tact{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;border-top:1px solid var(--line)}
+.ted .tact .btn{padding:6px 12px;font-size:13px}
+.ted form{display:flex;gap:8px;padding:8px 12px 12px;border-top:1px solid var(--line)}
+.ted textarea{flex:1;resize:none;border:1px solid var(--line-2);border-radius:12px;background:var(--card);padding:8px 12px;font:14px/1.4 var(--sans);height:58px}
+.ted .ask{position:absolute;inset:0;background:rgba(20,18,15,.55);display:flex;align-items:center;justify-content:center;z-index:5}
+.ted .ask[hidden]{display:none}
+.ted .ask > div{background:var(--paper);border-radius:12px;padding:18px 20px;max-width:380px;display:flex;flex-direction:column;gap:12px}
+.ted .ask div p{margin:0}
+.ted .ask .row2{display:flex;gap:8px;justify-content:flex-end}
+@media (max-width:900px){.ted .box{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) minmax(0,1fr)}.ted .side{border-left:0;border-top:1px solid var(--line)}}
 .tassign{display:none;flex-wrap:wrap;gap:4px;padding-top:6px;border-top:1px dashed var(--line)}
 .tcard.edit .tassign{display:flex}
 .tassign .chip{font-size:10.5px;padding:2px 7px}
@@ -381,12 +446,12 @@ button{font:inherit;color:inherit;cursor:pointer}
     </main>
     <main class="panel" id="panel-art" role="tabpanel" hidden>
       <div class="artgal"><h2>Approved art</h2>
-        <p class="lead">Upscale + resize turns approved art into the 5 print JPGs at 300 DPI in the design folder, then makes the listing images that look the same every time (1, 2, 7 and the fixed 3-6, 20). Room images are made in Production.</p>
+        <p class="lead">Upscale + resize turns approved art into the 5 print JPGs at 300 DPI in the design folder, then makes the listing images that look the same every time (1, 2, 8 and the fixed 4-7, 20). Room images are made in Production.</p>
         <div class="gal" id="gal"><p class="lead">Loading…</p></div></div>
     </main>
     <main class="panel" id="panel-production" role="tabpanel" hidden>
       <div class="artgal"><h2>Production</h2>
-        <p class="lead">Room images 8-19 for each upscaled design. Pick up to 5 rooms and the design's styles; the agent plans the rest. Make one card at a time and approve or deny it; nothing goes to Etsy from here.</p>
+        <p class="lead">Room images (slot 3 and slots 9-19) for each upscaled design. Pick up to 5 rooms and the design's styles; the agent plans the rest. Make one card at a time and approve or deny it; nothing goes to Etsy from here.</p>
         <div class="pstrip" id="prodstrip"></div>
         <div id="prod"><p class="lead">Loading…</p></div></div>
     <div class="tpick" id="tpick" hidden><div class="box"><h3><span id="tpick-title">Pick a template</span><button class="btn ghost sm" data-tpick-close>Close</button></h3><div id="tpick-body"></div></div></div>
@@ -397,6 +462,17 @@ button{font:inherit;color:inherit;cursor:pointer}
         <div id="tpl"><p class="lead">Loading…</p></div></div>
     </main>
     <div class="tbox" id="tbox" hidden><img alt=""><p></p></div>
+    <div class="ted" id="ted" hidden><div class="box">
+      <header><b id="ted-title">Edit with chat</b><span class="cost" id="ted-ver"></span><button class="x" data-ted="close" title="Close">×</button></header>
+      <div class="room"><div class="seg"><button class="chip on" data-ted-view="after">After</button><button class="chip" data-ted-view="before">Before</button><span class="cost" style="color:#ccc;align-self:center">Click the picture to mark a spot (e.g. "remove this").</span></div>
+        <div class="pic" id="ted-pic"><img id="ted-img" alt="Template"><i class="mark" id="ted-mark" hidden></i></div></div>
+      <div class="side"><div class="tlog" id="ted-log"></div>
+        <div class="tlayers" id="ted-layers"></div>
+        <div class="tact" id="ted-act"></div>
+        <form id="ted-form"><textarea id="ted-say" placeholder="e.g. Light Shadow opacity 12% · hide Glass Sheen · blur Frame Edge Shadow 3 · remove this"></textarea><button class="btn" id="ted-send">Send</button></form></div>
+      <div class="ask" id="ted-ask" hidden><div><p><b>Unsaved edits.</b> Save them into the template (the old version goes to its Archive folder) or discard them?</p>
+        <div class="row2"><button class="btn ghost sm" data-ted="cancel">Keep editing</button><button class="btn ghost sm" data-ted="discard">Discard</button><button class="btn sm" data-ted="save">Save</button></div></div></div>
+    </div></div>
     {% for p in placeholders %}
     <main class="panel" id="panel-{{ p.id }}" role="tabpanel" hidden>
       <div class="ph">
@@ -470,9 +546,44 @@ button{font:inherit;color:inherit;cursor:pointer}
       if ((ev.sources || []).length) body += `<h3>Source numbers</h3><ol class="dt-src">${ev.sources.map(x => `<li>${esc(x)}</li>`).join("")}</ol>`;
     }
     const artBox = d.status === "approved" ? `<section class="art" data-art-idea="${esc(d.id)}">${artHTML(String(d.id))}</section>` : "";
-    return `<article class="dt lane-${esc(d.lane)}"><div class="dt-top"><span class="dt-lane">${esc(LANES[d.lane] || d.lane)}</span><span class="dt-meta">${esc(meta)}</span></div>
+    return `<article class="dt lane-${esc(d.lane)}"><div class="dt-bar" data-bar-idea="${esc(d.id)}">${barHTML(String(d.id))}</div><div class="dt-top"><span class="dt-lane">${esc(LANES[d.lane] || d.lane)}</span><span class="dt-meta">${esc(meta)}</span></div>
       <h2 class="dt-title">${esc(d.title)}</h2>${d.description ? `<p class="dt-desc">${esc(d.description)}</p>` : ""}${artBox}${body}</article>`;
   }
+
+  // sticky action bar at the top of Details: Approve/Deny an idea, Approve art, Run upscale + resize
+  function barHTML(id) {
+    const d = data()[id]; if (!d) return "";
+    if (d.status === "shown") return `<button class="btn ok" data-dbar="approve" data-v="${esc(id)}">Approve idea</button><button class="btn no" data-dbar="deny" data-v="${esc(id)}">Deny</button>`;
+    if (d.status !== "approved") return "";
+    const a = ui(id).data;
+    if (a && a.art_state === "approved") {
+      const st = prState[id];
+      if (!st) return `<span class="note">Upscale + resize: loading…</span>`;
+      if (st.busy) return `<span class="note">Upscale + resize running…</span>`;
+      if (st.can_run) return `<button class="btn" data-prints="run" data-v="${esc(id)}">${st.files.length || Object.values(st.steps).some(x => x.status !== "not started") ? "Run upscale + resize again" : "Run upscale + resize"}</button>`;
+      if (st.done) return `<span class="note">Prints done · ${st.files.length} files</span><button class="btn ghost" data-prints="redo" data-v="${esc(id)}" title="Upscale and resize again; files are replaced in the same folder">Run again</button>`;
+      return "";
+    }
+    if (!a) return "";
+    if (a.busy) return `<span class="note">Painting…</span>`;
+    const picked = a.rounds.flatMap(r => r.images).find(i => i.outcome === "picked");
+    return picked ? `<button class="btn ok" data-dbar="art" data-v="${esc(id)}" data-img="${picked.id}">Approve art</button><span class="note">picked #${picked.id}</span>` : "";
+  }
+  document.addEventListener("click", async e => {
+    const b = e.target.closest("[data-dbar]"); if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    const id = b.dataset.v, k = b.dataset.dbar; b.disabled = true;
+    try {
+      if (k === "approve") { await post(`${prefix}/api/ideas/${id}/approve`); }
+      if (k === "deny") { await post(`${prefix}/api/ideas/${id}/deny`); await loadChat(); ask(); }
+      if (k === "art") { ui(id).data = await post(`${prefix}/api/art/${id}/approve`, {image_id: Number(b.dataset.img)}); await loadChat(); }
+      await reloadPanel();
+    } catch { b.disabled = false; }
+  });
+  document.addEventListener("click", e => {
+    const z = e.target.closest("[data-zoom]"); if (!z) return;
+    e.preventDefault(); tbox.querySelector("img").src = z.dataset.zoom; tbox.querySelector("p").textContent = z.alt || ""; tbox.hidden = false;
+  });
 
   // ---------- art: Build art -> style cards + chips -> 4 images -> pick -> chat feedback -> approve ----------
   let artOpts = null, artBalance = null, artTimer = null;
@@ -566,9 +677,9 @@ button{font:inherit;color:inherit;cursor:pointer}
     if (!a) return head("") + `<p class="art-lead">Loading…</p>`;
     if (a.art_state === "approved") {
       const im = a.rounds.flatMap(r => r.images).find(i => i.id === a.art_image_id);
-      return head(`<span class="artpill ok">Art approved</span>`) + `<div class="final">${im ? `<img src="${esc(im.url)}" alt="Approved art">` : ""}
+      return head(`<span class="artpill ok">Art approved</span>`) + `<div class="final">${im ? `<img src="${esc(im.url)}" alt="Approved art" data-zoom="${esc(im.url)}" title="Click for full size">` : ""}
         <div class="ok">Approved · ${esc(im?.card_name || "")}</div>${im?.prompt ? `<details><summary>Final prompt</summary><p>${esc(im.prompt)}</p></details>` : ""}
-        <div class="prod live">${printsHTML(prState[a.idea_id], false)}</div>
+        <div class="prod live">${printsHTML(prState[a.idea_id], false, true)}</div>
         <div class="prod">Production: room images are made in the Production tab; listing text, package and Etsy draft are not built yet</div>
         <div class="art-row"><a class="cost" href="${prefix}/api/art/${a.idea_id}/log" target="_blank" rel="noopener">Oversight log (prompts, picks, feedback)</a></div></div>`;
     }
@@ -592,7 +703,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   const prState = {};                       // idea id -> status from /api/prints
   let prTimer = null, prErr = {};
   const STEP_LABEL = {"not started": "not started", pending: "waiting", queued: "queued", running: "running", done: "done", blocked: "blocked", failed: "failed"};
-  function printsHTML(st, withName) {
+  function printsHTML(st, withName, inBar) {   // inBar: the run buttons live in the Details action bar
     if (!st) return `<span class="cost">Upscale + resize: loading…</span>`;
     const step = (k, label) => { const x = st.steps[k] || {status: "not started"}; return `<b class="${esc(x.status.replace(" ", "-"))}">${label} · ${esc(STEP_LABEL[x.status] || x.status)}</b>`; };
     const MK = st.listing_images ? "Listing images" : "Mockups";
@@ -603,11 +714,11 @@ button{font:inherit;color:inherit;cursor:pointer}
     }
     if (st.folder_rel) h += `<div class="pr-path" title="${esc(st.folder)}">${esc(st.folder_rel)}</div>`;
     if (st.files.length) h += `<table class="pr-files">${st.files.map(f => `<tr><td>${esc(f.ratio)}</td><td>${f.px[0]}x${f.px[1]}</td><td>${f.dpi} dpi</td><td>${f.mb} MB</td><td class="${f.subject_cut > 0.005 ? "w" : ""}">${f.cut ? "cut " + (f.cut * 100).toFixed(1) + "%" + (f.subject_cut > 0.005 ? " · check" : "") : "full"}</td></tr>`).join("")}</table>`;
-    if (st.can_run) {
+    if (st.can_run && !inBar) {
       if (withName && !st.folder_seq) h += `<input class="pr-name" data-prints-name="${st.idea_id}" value="${esc(st.name)}" aria-label="Design name" title="Design name used for the folder and files">`;
       h += `<div class="art-row"><button class="btn sm" data-prints="run" data-v="${st.idea_id}">${st.files.length || Object.values(st.steps).some(x => x.status !== "not started") ? "Run upscale + resize again" : "Run upscale + resize"}</button></div>`;
     }
-    if (st.done && !st.busy) h += `<div class="art-row"><button class="btn ghost sm" data-prints="redo" data-v="${st.idea_id}" title="Upscale and resize again; files are replaced in the same folder">Run again</button></div>`;
+    if (st.done && !st.busy && !inBar) h += `<div class="art-row"><button class="btn ghost sm" data-prints="redo" data-v="${st.idea_id}" title="Upscale and resize again; files are replaced in the same folder">Run again</button></div>`;
     if (prErr[st.idea_id]) h += `<p class="art-err">${esc(prErr[st.idea_id])}</p>`;
     return h;
   }
@@ -639,7 +750,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     loadPrints();
   });
 
-  // ---------- production: room images 8-19 (thumbnail row, big panel, one card per slot) ----------
+  // ---------- production: room images 3 + 9-19 (thumbnail row, big panel, one card per slot) ----------
   const prodHost = document.getElementById("prod");
   const stripHost = document.getElementById("prodstrip");
   const tpick = document.getElementById("tpick");
@@ -674,7 +785,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     if (!pan) { prodHost.innerHTML = panErr ? `<p class="art-err">${esc(panErr)}</p>` : `<p class="lead">Loading…</p>`; return; }
     const full = pan.rooms.length >= pan.max_rooms;
     const rooms = pan.rooms_all.map(r => { const k = pan.rooms.indexOf(r), on = k >= 0;
-      return `<label class="rbox ${on ? "on" : ""} ${!on && full ? "off" : ""}"><input type="checkbox" data-proom="${esc(r)}" ${on ? "checked" : ""} ${!on && full ? "disabled" : ""}>${esc(r)}${on ? `<em>${two(8 + k)}</em>` : ""}</label>`; }).join("");
+      return `<label class="rbox ${on ? "on" : ""} ${!on && full ? "off" : ""}"><input type="checkbox" data-proom="${esc(r)}" ${on ? "checked" : ""} ${!on && full ? "disabled" : ""}>${esc(r)}${on ? `<em>${two((pan.room_slots || [3, 9, 10, 11, 12])[k])}</em>` : ""}</label>`; }).join("");
     const styles = pan.styles_all.map(v => `<button class="chip ${pan.styles.includes(v) ? "on" : ""}" data-pstyle="${esc(v)}">${esc(v)}</button>`).join("");
     const auto = pan.styles.length ? "" : `<span class="pnote">${pan.styles_auto.length ? "Blank: the agent uses " + esc(pan.styles_auto.join(", ")) + " (read from the art)" : pan.styles_auto_error ? "Blank: the style guess failed (" + esc(pan.styles_auto_error) + "); the agent plans without styles" : "Blank: the agent is reading the art…"}</span>`;
     const eng = pan.engine.credits_per_scene ? `new AI scene about ${pan.engine.credits_per_scene} credits ($${pan.engine.usd_per_scene})` : "new AI scene: credits shown after";
@@ -766,8 +877,10 @@ button{font:inherit;color:inherit;cursor:pointer}
   // ---------- templates: room-template gallery (read-only) + shop style assignment ----------
   const tplHost = document.getElementById("tpl");
   const tbox = document.getElementById("tbox");
-  let tpl = null, tplSig = "", tplTimer = null;
+  let tpl = null, tplSig = "", tplTimer = null, menuOpen = null, lastBuild = null;
+  const openFails = new Set();
   const tf = {ratio: "", style: "", decor: ""};
+  let failOnly = false, propOpen = false;
   const editing = new Set();
   const nice = v => String(v || "").replace(/_/g, " ");
   const chip = (cls, kind, val, label, title) => `<button class="chip ${cls}${tf[kind] === val ? " on" : ""}" data-tf="${kind}" data-v="${esc(val)}"${title ? ` title="${esc(title)}"` : ""}>${esc(label)}</button>`;
@@ -779,24 +892,47 @@ button{font:inherit;color:inherit;cursor:pointer}
     const conf = t.styles_source === "auto" ? `<button class="tlink" data-tconfirm="${esc(t.rel)}">confirm</button>` : "";
     const assign = `<div class="tassign">${tpl.vocabulary.map(v => `<button class="chip${t.styles_source === "manual" && t.styles.includes(v) ? " on" : ""}" data-tset="${esc(t.rel)}" data-v="${esc(v)}" title="Etsy section: ${esc(tpl.shop_sections[v] || v)}">${esc(v)}</button>`).join("")}
       ${t.styles_source === "manual" ? `<button class="tlink" data-tauto="${esc(t.rel)}">back to auto</button>` : ""}</div>`;
-    return `<article class="tcard${editing.has(t.rel) ? " edit" : ""}">${img}<div class="tb"><div class="tn">${esc(t.name)}</div>
+    const ck = t.check, cls = !ck ? "none" : ck.stale ? "stale" : ck.status;
+    const badge = `<span class="tchk ${esc(cls)}" title="${esc(!ck ? "not checked yet" : ck.stale ? "the PSD changed since its check" : "checked " + (ck.checked || ""))}">${!ck ? "NOT CHECKED" : ck.stale ? "CHANGED" : esc(ck.status)}</span>`;
+    const fails = ck && ck.status === "FAIL" && (ck.reasons || []).length ? `<details${openFails.has(t.rel) ? " open" : ""} data-tfails="${esc(t.rel)}"><summary class="tlink">${ck.reasons.length} reason${ck.reasons.length === 1 ? "" : "s"}</summary><ul class="tfails">${ck.reasons.map(x => `<li>${esc(x)}</li>`).join("")}</ul></details>` : "";
+    const dots = `<button class="tdots" data-tdots="${esc(t.rel)}" title="Edit with chat, Open in PhotoCraft, Check again">⋯</button>`;
+    const menu = menuOpen === t.rel ? `<div class="tmenu">${t.wired ? "" : `<button data-tm="edit" data-rel="${esc(t.rel)}">Edit with chat</button>`}<button data-tm="open" data-rel="${esc(t.rel)}">Open in PhotoCraft</button>${t.wired ? "" : `<button data-tm="check" data-rel="${esc(t.rel)}">Check again</button>`}</div>` : "";
+    const aw = t.awaiting ? `<span class="tchk await">NEW · approve?</span>` : "";
+    const awb = t.awaiting ? `<div class="tc"><button class="btn sm" data-tbd="approved" data-rel="${esc(t.rel)}">Approve template</button><button class="btn ghost sm" data-tbd="denied" data-rel="${esc(t.rel)}">Deny (to Archive)</button></div>` : "";
+    return `<article class="tcard${editing.has(t.rel) ? " edit" : ""}">${t.wired ? "" : badge}${aw}${dots}${menu}${img}<div class="tb"><div class="tn">${esc(t.name)}</div>${awb}${fails}
       <div class="tc">${chip("decor", "decor", t.style, t.style, "room style")}${chip("ratio", "ratio", t.ratio, t.ratio_label, "nearest standard " + t.nearest + (t.so_px ? " · slot " + t.so_px + " px" : ""))}${t.wired ? `<i>in Run mockups</i>` : ""}</div>
       <div class="td">${esc(t.desc)}</div>
       <div class="tc">${styles}${conf}<button class="tlink" data-tedit="${esc(t.rel)}">${editing.has(t.rel) ? "done" : "Styles"}</button></div>${assign}</div></article>`;
   }
-  const gapCard = g => `<article class="tcard gap"><div class="wait"><b>Template to build</b><span>${esc(g.rel)}</span></div><div class="tb">
-      <div class="tc">${chip("decor", "decor", g.style, g.style, "room style (folder)")}${chip("ratio", "ratio", g.ratio, g.ratio_label, "ratio folder")}</div></div></article>`;
+  function gapCard(g) {
+    const bj = tpl.build_job || {}, me = bj.running && bj.rel === g.rel, b = g.build || {};
+    const cost = b.credits ? `about ${b.credits} credits ($${(b.credits * 0.005).toFixed(2)})` : "credits shown after";
+    const act = me ? `<span class="cost">Building… ${esc(bj.stage || "")}</span>`
+      : `<button class="btn sm" data-tbuild="${esc(g.rel)}" ${bj.running ? "disabled" : ""} title="${esc(b.prompt || "")}">Build this · ${esc(cost)}</button>`;
+    const err = !bj.running && bj.error && lastBuild === g.rel ? `<p class="pmsg bad">${esc(bj.error)}</p>` : "";
+    return `<article class="tcard gap"><div class="wait"><b>Template to build</b><span>${esc(b.path || g.rel)}</span><span>${esc(b.room || "")} · ${esc(nice(b.decor || ""))} · ${esc(g.ratio_label)}</span></div><div class="tb">
+      <div class="tc">${chip("decor", "decor", g.style, g.style, "room style (folder)")}${chip("ratio", "ratio", g.ratio, g.ratio_label, "ratio folder")}</div>
+      <div class="tbuild">${act}<span class="td">One click = your OK to spend it. Saved into this folder, checked, then shown here for approval.</span>${err}</div></div></article>`;
+  }
   function paintTpl() {
     if (!tpl) return;
     const keep = t => (!tf.ratio || t.ratio === tf.ratio) && (!tf.decor || t.style === tf.decor);
-    const items = tpl.items.filter(t => keep(t) && (!tf.style || t.styles.includes(tf.style)));
-    const gaps = tf.style ? [] : tpl.gaps.filter(keep);
+    const items = tpl.items.filter(t => keep(t) && (!tf.style || t.styles.includes(tf.style)) && (!failOnly || (t.check && t.check.status === "FAIL")));
+    const gaps = tf.style || failOnly ? [] : tpl.gaps.filter(keep);
     const roomN = {};   // room folders keep Tony's NNN_ order (001_Living_Rooms first)
     [...tpl.items, ...tpl.gaps].forEach(x => { roomN[x.room] = Math.min(roomN[x.room] ?? 999, x.room_n ?? 999); });
     const rooms = [...new Set([...items.map(t => t.room), ...gaps.map(g => g.room)])].sort((a, b) => roomN[a] - roomN[b] || a.localeCompare(b));
     const decors = [...new Set(tpl.items.map(t => t.style).concat(tpl.gaps.map(g => g.style)))].sort();
     const ready = tpl.items.filter(t => t.ready).length;
-    let h = `<div class="tnums"><span><strong>${tpl.items.length}</strong>templates</span><span><strong>${tpl.gaps.length}</strong>library gaps</span><span><strong>${tpl.items.filter(t => t.styles_source === "manual").length}</strong>styled by you</span><span title="old versions and Original_ backups in Archive folders; never used"><strong>${tpl.archived}</strong>archived files</span>${tpl.building ? `<span>rendering ${tpl.items.length - ready} thumbnails…</span>` : ""}${tpl.classifying ? "<span>guessing styles…</span>" : ""}</div>`;
+    const checked = tpl.items.filter(t => t.check && !t.wired), nf = checked.filter(t => t.check.status === "FAIL").length;
+    const cj = tpl.check_job || {};
+    let h = `<div class="tnums"><span><strong>${tpl.items.length}</strong>templates</span><span title="template checker: PASS / FAIL"><strong>${checked.length - nf}</strong>pass</span><span><strong>${nf}</strong>fail</span><span><strong>${tpl.gaps.length}</strong>library gaps</span><span><strong>${tpl.items.filter(t => t.styles_source === "manual").length}</strong>styled by you</span><span title="old versions and Original_ backups in Archive folders; never used"><strong>${tpl.archived}</strong>archived files</span>${tpl.building ? `<span>rendering ${tpl.items.length - ready} thumbnails…</span>` : ""}${tpl.classifying ? "<span>guessing styles…</span>" : ""}</div>`;
+    h += `<div class="tjob">${cj.running ? `<span>Checking ${cj.done}/${cj.total}… ${esc((cj.current || "").split("/").slice(-1)[0])}</span>` : `<button class="btn ghost sm" data-tcheckall>Run the checker on all</button><span>${tpl.checked_at ? "last run " + esc(tpl.checked_at.replace("T", " ").slice(0, 16)) : "not run yet"} · read-only: the checker never changes a PSD</span>`}<label class="rbox"><input type="checkbox" data-tfailonly ${failOnly ? "checked" : ""}>FAIL only</label></div>`;
+    if (tpl.proposals.length) {
+      const by = {};
+      tpl.proposals.forEach(p => (by[p.room] = by[p.room] || []).push(p));
+      h += `<details class="tprop"${propOpen ? " open" : ""} data-tprop><summary><b>Missing room folders: ${esc(Object.keys(by).join(", "))}</b> · ${tpl.proposals.length} proposed paths</summary><p>These Etsy rooms have no template folder yet. Nothing is created until you approve the exact path (one click = your approval for that one folder); then it shows as a template to build.</p><ul>${Object.entries(by).map(([room, ps]) => ps.map(p => `<li><b>${esc(room)}</b><span>${esc(p.path)}</span><button class="btn ghost sm" data-tfolder="${esc(p.rel)}">Approve this folder</button></li>`).join("")).join("")}</ul></details>`;
+    }
     h += `<div class="tbar"><b>Ratio</b>${chip("", "ratio", "", "All")}${Object.entries(tpl.buckets).map(([k, v]) => chip("ratio", "ratio", k, v)).join("")}</div>`;
     h += `<div class="tbar"><b>Style</b>${chip("", "style", "", "All")}${tpl.vocabulary.map(v => chip("", "style", v, v, "Etsy section: " + (tpl.shop_sections[v] || v))).join("")}</div>`;
     h += `<div class="tbar"><b>Decor</b>${chip("decor", "decor", "", "All")}${decors.map(d => chip("decor", "decor", d, d)).join("")}</div>`;
@@ -812,13 +948,55 @@ button{font:inherit;color:inherit;cursor:pointer}
     const sig = JSON.stringify(tpl);
     if (!(quiet && (sig === tplSig || editing.size))) { tplSig = sig; paintTpl(); }   // background refresh never repaints under an open style picker
     clearTimeout(tplTimer);
-    if ((tpl.building || tpl.classifying) && !document.getElementById("panel-templates").hidden) tplTimer = setTimeout(() => loadTpl(true), 3000);
+    const busy = tpl.building || tpl.classifying || (tpl.check_job || {}).running || (tpl.build_job || {}).running;
+    if (busy && !document.getElementById("panel-templates").hidden) tplTimer = setTimeout(() => loadTpl(true), 3000);
   }
   async function tplPost(body) {
     try { await post(`${prefix}/api/templates/styles`, body); } catch { /* keep as it was */ }
     await loadTpl();
   }
-  tplHost.addEventListener("click", e => {
+  tplHost.addEventListener("change", e => {
+    if (e.target.closest("[data-tfailonly]")) { failOnly = e.target.checked; paintTpl(); }
+  });
+  tplHost.addEventListener("toggle", e => {
+    if (e.target.matches && e.target.matches("[data-tprop]")) { propOpen = e.target.open; return; }
+    const d = e.target.closest ? e.target.closest("[data-tfails]") : null; if (!d) return;
+    if (d.open) openFails.add(d.dataset.tfails); else openFails.delete(d.dataset.tfails);
+  }, true);
+  async function tplAct(url, body) {
+    try { return await post(url, body); }
+    catch (err) { let m = "That did not work."; try { m = (await err.json()).detail || m; } catch { /* */ } alert(m); return null; }
+  }
+  tplHost.addEventListener("click", async e => {
+    const dots = e.target.closest("[data-tdots]");
+    if (dots) { menuOpen = menuOpen === dots.dataset.tdots ? null : dots.dataset.tdots; paintTpl(); return; }
+    const m = e.target.closest("[data-tm]");
+    if (m) {
+      menuOpen = null; paintTpl();
+      const rel = m.dataset.rel;
+      if (m.dataset.tm === "edit") return openEditor(rel);
+      if (m.dataset.tm === "open") {
+        const layer = prompt("Open in PhotoCraft. Select which layer? (e.g. SHADOWS, Light Shadow; empty = none)", "");
+        if (layer === null) return;
+        const r = await tplAct(`${prefix}/api/templates/open`, {rel, layer: layer.trim() || null});
+        if (r) alert(`PhotoCraft ${r.app} on port ${r.port}${r.layer ? (r.selected ? ", layer '" + r.layer + "' selected" : ", could not select '" + r.layer + "'") : ""}. Save there only when you mean to.`);
+        return;
+      }
+      if (m.dataset.tm === "check") { await tplAct(`${prefix}/api/templates/check`, {rel}); return loadTpl(); }
+    }
+    if (e.target.closest("[data-tcheckall]")) { await tplAct(`${prefix}/api/templates/check`, {}); return loadTpl(); }
+    const bu = e.target.closest("[data-tbuild]");
+    if (bu) { bu.disabled = true; lastBuild = bu.dataset.tbuild; await tplAct(`${prefix}/api/templates/build`, {rel: bu.dataset.tbuild}); return loadTpl(); }
+    const bd = e.target.closest("[data-tbd]");
+    if (bd) {
+      if (bd.dataset.tbd === "denied" && !confirm("Move this new template into its folder's Archive (kept, not used)?")) return;
+      await tplAct(`${prefix}/api/templates/build/decide`, {rel: bd.dataset.rel, decision: bd.dataset.tbd}); return loadTpl();
+    }
+    const fo = e.target.closest("[data-tfolder]");
+    if (fo) {
+      if (!confirm("Create this folder?  Room_Templates/Portrait_Templates/" + fo.dataset.tfolder + "/")) return;
+      await tplAct(`${prefix}/api/templates/folders`, {rel: fo.dataset.tfolder}); return loadTpl();
+    }
     const f = e.target.closest("[data-tf]");
     if (f) { const k = f.dataset.tf; tf[k] = tf[k] === f.dataset.v ? "" : f.dataset.v; paintTpl(); return; }
     const b = e.target.closest("[data-big]");
@@ -838,10 +1016,80 @@ button{font:inherit;color:inherit;cursor:pointer}
     }
   });
   tbox.addEventListener("click", () => { tbox.hidden = true; });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") { tbox.hidden = true; tpick.hidden = true; } });
+
+  // ---------- Edit with chat (room left, chat right, before / after; Save / Discard on X) ----------
+  const ted = document.getElementById("ted"), tedImg = document.getElementById("ted-img"), tedMark = document.getElementById("ted-mark");
+  let ed = null, edRel = null, edView = "after", edPoint = null, edBusy = false;
+  async function openEditor(rel) {
+    edRel = rel; ed = null; edPoint = null; edView = "after"; tedMark.hidden = true;
+    ted.hidden = false; document.getElementById("ted-ask").hidden = true;
+    document.getElementById("ted-title").textContent = "Opening the template…";
+    document.getElementById("ted-log").innerHTML = `<p class="lead">Copying the PSD and rendering it (the template itself is not touched until you Save)…</p>`;
+    document.getElementById("ted-act").innerHTML = ""; document.getElementById("ted-layers").innerHTML = ""; tedImg.removeAttribute("src");
+    ed = await tplAct(`${prefix}/api/templates/edit/start`, {rel});
+    if (!ed) { ted.hidden = true; return; }
+    paintEditor();
+  }
+  function paintEditor() {
+    if (!ed) return;
+    document.getElementById("ted-title").textContent = "Edit with chat · " + ed.name;
+    document.getElementById("ted-ver").textContent = ed.dirty ? `${ed.versions} edit${ed.versions === 1 ? "" : "s"}, not saved` : "no changes yet";
+    tedImg.src = edView === "before" ? ed.before : ed.after;
+    document.querySelectorAll("[data-ted-view]").forEach(b => b.classList.toggle("on", b.dataset.tedView === edView));
+    const log = document.getElementById("ted-log");
+    log.innerHTML = ed.log.map(m => `<div class="msg ${m.who === "tony" ? "tony" : "portal"}">${esc(m.text)}</div>`).join("") + (edBusy ? `<div class="msg portal thinking"><i><b></b><b></b><b></b></i>Working</div>` : "");
+    log.scrollTop = log.scrollHeight;
+    document.getElementById("ted-layers").innerHTML = "Layers (click to hide/show): " + ed.layers.filter(l => l.kind !== "Group" || ["SHADOWS", "GLARE"].includes(l.name)).map(l => `<span class="${l.visible ? "" : "off"}" data-tlayer="${esc(l.name)}" title="${esc(l.kind + " · " + (l.blend || "") + " · " + Math.round((l.opacity ?? 1) * 100) + "%")}">${esc(l.name)}</span>`).join("");
+    const p = ed.pending;
+    document.getElementById("ted-act").innerHTML = (p ? `<button class="btn sm" data-ted="confirm">Confirm image edit · about ${p.credits} credits</button>` : "") +
+      `<button class="btn ghost sm" data-ted="undo" ${ed.dirty ? "" : "disabled"}>Undo</button><button class="btn sm" data-ted="save" ${ed.dirty ? "" : "disabled"}>Save into template</button><button class="btn ghost sm" data-ted="discard">Discard</button><button class="btn ghost sm" data-ted="open">Open in PhotoCraft</button>`;
+  }
+  async function edCall(action, body) {
+    edBusy = true; paintEditor();
+    const r = await tplAct(`${prefix}/api/templates/edit/${action}`, Object.assign({rel: edRel}, body || {}));
+    edBusy = false;
+    return r;
+  }
+  async function edSay(text) {
+    if (!text.trim() || edBusy) return;
+    ed.log.push({who: "tony", text});
+    const r = await edCall("chat", {text, point: edPoint});
+    if (r) ed = r;
+    edPoint = null; tedMark.hidden = true; edView = "after"; paintEditor();
+  }
+  function closeEditor(force) {
+    if (!force && ed && ed.dirty) { document.getElementById("ted-ask").hidden = false; return; }
+    ted.hidden = true; ed = null; edRel = null; loadTpl(true);
+  }
+  document.getElementById("ted-form").addEventListener("submit", e => { e.preventDefault(); const t = document.getElementById("ted-say"); const v = t.value; t.value = ""; edSay(v); });
+  document.getElementById("ted-say").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); document.getElementById("ted-form").requestSubmit(); } });
+  tedImg.addEventListener("click", e => {
+    if (!ed) return;
+    const r = tedImg.getBoundingClientRect(), host = document.getElementById("ted-pic").getBoundingClientRect();
+    edPoint = [Math.round((e.clientX - r.left) / r.width * ed.canvas[0]), Math.round((e.clientY - r.top) / r.height * ed.canvas[1])];
+    tedMark.style.left = (e.clientX - host.left) + "px"; tedMark.style.top = (e.clientY - host.top) + "px"; tedMark.hidden = false;
+    document.getElementById("ted-say").placeholder = `Spot marked at ${edPoint[0]}, ${edPoint[1]} px: say "remove this" (or anything else)`;
+  });
+  ted.addEventListener("click", async e => {
+    const v = e.target.closest("[data-ted-view]");
+    if (v) { edView = v.dataset.tedView; paintEditor(); return; }
+    const l = e.target.closest("[data-tlayer]");
+    if (l && !edBusy) { const on = !l.classList.contains("off"); return edSay(`${on ? "hide" : "show"} ${l.dataset.tlayer}`); }
+    const b = e.target.closest("[data-ted]"); if (!b) return;
+    const k = b.dataset.ted;
+    if (k === "close") return closeEditor(false);
+    if (k === "cancel") { document.getElementById("ted-ask").hidden = true; return; }
+    if (k === "discard") { await edCall("discard"); return closeEditor(true); }
+    if (k === "save") { const r = await edCall("save"); if (r) { closeEditor(true); alert(`Saved. The old version is in the template's Archive folder (${r.archived}); the checker is running on it.`); } else paintEditor(); return; }
+    if (k === "undo") { const r = await edCall("undo"); if (r) ed = r; return paintEditor(); }
+    if (k === "confirm") { const r = await edCall("confirm"); if (r) ed = r; return paintEditor(); }
+    if (k === "open") { const layer = prompt("Select which layer in PhotoCraft? (empty = none)", ""); if (layer === null) return; const r = await tplAct(`${prefix}/api/templates/open`, {rel: edRel, layer: layer.trim() || null}); if (r) alert(`PhotoCraft ${r.app} on port ${r.port}.`); }
+  });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") { tbox.hidden = true; tpick.hidden = true; if (!ted.hidden) closeEditor(false); } });
 
   function paintArt() {
     document.querySelectorAll("[data-art-idea]").forEach(host => { host.innerHTML = artHTML(host.dataset.artIdea); });
+    document.querySelectorAll("[data-bar-idea]").forEach(host => { host.innerHTML = barHTML(host.dataset.barIdea); });
     const id = selected && document.querySelector(`[data-art-idea="${CSS.escape(selected)}"]`) ? selected : null;
     const a = id && ui(id).data;
     const hasPick = a && a.art_state !== "approved" && !a.busy && a.rounds.some(r => r.images.some(i => i.outcome === "picked"));

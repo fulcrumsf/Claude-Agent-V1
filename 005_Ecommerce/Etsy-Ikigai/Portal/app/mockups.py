@@ -1,10 +1,14 @@
-"""Production step 1: listing images (slots 1-7 and 20) from Tony's mockup PSDs, headless via photocraft-cli.
+"""Production step 1: the listing images that look the same every listing, from Tony's mockup PSDs (headless via
+photocraft-cli). Slot map (Tony 2026-11-10): 1 main, 1A video, 2 poster, 3 ROOM, 4 Instant Download, 5 what you get
++ sizes, 6 wall diagram, 7 important notes, 8 close-up detail, 9-19 ROOMS, 20 reviews.
 
 Per design (written to <design folder>/03-Etsy Images/, file number = slot number):
-  01_Main_Mockup, 02_Poster_Mockup, 07_Detail  - the art is swapped into each PSD's "Place Artwork Here"
-                                                  smart object (`layer.smartObjects.replaceContents`)
-  03, 04, 05, 06, 20                           - fixed shared images, copied from the template folder
-Room mockups 08-19: the Production tab (app/production.py, app/scene_templates.py), one card at a time; the old
+  01_Main_Mockup, 02_Poster_Mockup, 08_Detail  - the art is swapped into each PSD's "Place Artwork Here"
+                                                  smart object (`layer.smartObjects.replaceContents`); the detail
+                                                  PSD is still named 07_Detail.psd in the Standard Package
+  04, 05, 06, 07, 20                           - fixed shared images, copied from the template folder (whose file
+                                                  numbers are one lower for 4-7; remapped here, never renamed there)
+Room mockups 3 and 9-19: the Production tab (app/production.py, app/scene_templates.py), one card at a time; the old
 `mockup_rooms` path (app/room_templates.py, Teak computed frames) stays off. Not built: the video(s).
 
 Why the art is pre-fitted: replaceContents places the new file at its own pixel size, it does not scale it to
@@ -24,14 +28,14 @@ from .pipeline.base import NotConfigured
 DEFAULTS = {"mockup_templates": "../001-Standard Package", "photocraft_bin": "photocraft-cli",
             "mockup_art_size": "ISO_A1", "mockup_timeout_s": 300, "smart_object_layer": "Place Artwork Here"}
 GENERATED = [("01_Main_Mockup", "01_Main_Mockup.psd"), ("02_Poster_Mockup", "02_Poster_Mockup.psd"),
-             ("07_Detail", "07_Detail.psd")]
-# fixed shared images: output name (= slot number) <- file in the template folder
-FIXED = [("03_Instant_Download.png", "03_Instant_Download.png"),
-         ("04_Download_Contents.png", "04_Download_Contents.png"),
-         ("05_Wall_Size_Guide.png", "06_Wall_Art_Size_Guide.png"),
-         ("06_Important_Notes.png", "05_Important_Notes.png"),
+             ("08_Detail", "07_Detail.psd")]
+# fixed shared images: output name (= slot number) <- file in the template folder (slot map 2026-11-10)
+FIXED = [("04_Instant_Download.png", "03_Instant_Download.png"),
+         ("05_Download_Contents.png", "04_Download_Contents.png"),
+         ("06_Wall_Size_Guide.png", "06_Wall_Art_Size_Guide.png"),
+         ("07_Important_Notes.png", "05_Important_Notes.png"),
          ("20_Customer_Reviews.png", "06A_Customer_Reviews.png")]
-STILL_TO_BUILD = "room images 8-19 are made per card in the Production tab; the videos are not built yet"
+STILL_TO_BUILD = "room images 3 and 9-19 are made per card in the Production tab; the videos are not built yet"
 
 
 def _cfg(settings, key):
@@ -114,7 +118,7 @@ def _place(rendered, dest):
 
 
 def build(folder, settings, adapter=None, rooms=None, design=None):
-    """Make slots 1, 2, 7 and copy the fixed images into <folder>/03-Etsy Images. Returns the record dict."""
+    """Make slots 1, 2, 8 and copy the fixed images into <folder>/03-Etsy Images. Returns the record dict."""
     templates = _abs(_cfg(settings, "mockup_templates"))
     if not templates.is_dir():
         raise NotConfigured(f"The mockup templates folder is missing ({templates}); see Mockup_Docs/Mockup_Originals_Locations.md.")

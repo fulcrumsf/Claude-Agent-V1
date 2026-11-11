@@ -9,7 +9,7 @@ def _make(env, iid):
     c.post(f"/ikigai/api/prints/{iid}/run", json={})
     folder = env["tmp"] / "Designs" / "00121-Book Club Cat" / "03-Etsy Images"
     folder.mkdir(parents=True)
-    for n in ("01_Main_Mockup.jpg", "08_Living_Room.jpg", "09_Bedroom.jpg", "08_Living_Room.png", "03_Instant_Download.png", "notes.txt"):
+    for n in ("01_Main_Mockup.jpg", "03_Living_Room.jpg", "09_Bedroom.jpg", "03_Living_Room.png", "03_Instant_Download.png", "08_Detail.jpg", "04_Instant_Download.png", "notes.txt"):
         Image.new("RGB", (40, 40), (90, 90, 90)).save(folder / n) if n.endswith(("png", "jpg")) else (folder / n).write_text("x")
     return folder
 
@@ -18,14 +18,14 @@ def test_lists_only_new_images_and_decisions_stick(env):
     c, iid = env["c"], approved_idea(env["con"])
     _make(env, iid)
     d = c.get("/ikigai/api/production").json()["items"][0]
-    assert [i["file"] for i in d["images"]] == ["08_Living_Room.jpg", "09_Bedroom.jpg"]   # no slot 1/2/7, no PNG twin
+    assert [i["file"] for i in d["images"]] == ["03_Living_Room.jpg", "09_Bedroom.jpg"]   # no slot 1/2/8 (templated), no fixed, no PNG twin
     assert d["counts"] == {"approved": 0, "denied": 0, "pending": 2}
-    r = c.post(f"/ikigai/api/production/{iid}/images/08_Living_Room.jpg", json={"decision": "denied"}).json()
+    r = c.post(f"/ikigai/api/production/{iid}/images/03_Living_Room.jpg", json={"decision": "denied"}).json()
     assert r["counts"]["denied"] == 1
     c.post(f"/ikigai/api/production/{iid}/images/09_Bedroom.jpg", json={"decision": "approved"})
     d = c.get("/ikigai/api/production").json()["items"][0]
     assert d["counts"] == {"approved": 1, "denied": 1, "pending": 0}
-    r = c.post(f"/ikigai/api/production/{iid}/images/08_Living_Room.jpg", json={"decision": "pending"}).json()
+    r = c.post(f"/ikigai/api/production/{iid}/images/03_Living_Room.jpg", json={"decision": "pending"}).json()
     assert r["counts"]["pending"] == 1
 
 
@@ -36,8 +36,8 @@ def test_rejects_fixed_unknown_and_bad_decisions_and_serves_files(env):
     assert c.post(url + "03_Instant_Download.png", json={"decision": "approved"}).status_code == 404
     assert c.post(url + "01_Main_Mockup.jpg", json={"decision": "approved"}).status_code == 404   # templated slot
     assert c.post(url + "nope.jpg", json={"decision": "approved"}).status_code == 404
-    assert c.post(url + "08_Living_Room.jpg", json={"decision": "maybe"}).status_code == 422
-    assert c.get(f"/ikigai/api/production/{iid}/file/08_Living_Room.jpg").status_code == 200
+    assert c.post(url + "03_Living_Room.jpg", json={"decision": "maybe"}).status_code == 422
+    assert c.get(f"/ikigai/api/production/{iid}/file/03_Living_Room.jpg").status_code == 200
     assert c.get(f"/ikigai/api/production/{iid}/file/..%2Fx.jpg").status_code == 404
 
 
@@ -58,7 +58,7 @@ def test_image_urls_change_when_a_file_is_made_again_and_are_not_cached(env):
     folder = _make(env, iid)
     u1 = c.get("/ikigai/api/production").json()["items"][0]["images"][0]["url"]
     assert "?v=" in u1
-    f = folder / "08_Living_Room.jpg"
+    f = folder / "03_Living_Room.jpg"
     Image.new("RGB", (41, 40), (10, 10, 10)).save(f)
     os.utime(f, ns=(f.stat().st_atime_ns, f.stat().st_mtime_ns + 5_000_000_000))
     r = c.get("/ikigai/api/production")

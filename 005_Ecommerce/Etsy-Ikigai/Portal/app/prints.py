@@ -36,7 +36,7 @@ DEFAULTS = {"designs_root": "../Designs", "design_seq_floor": 120, "upscale_mode
             "upscayl_bin": "upscayl-ncnn", "upscayl_models_dir": "/Applications/Upscayl.app/Contents/Resources/models",
             "upscale_passes": 1, "upscale_timeout_s": 900, "jpg_quality": 95, "prints_auto_run": False,
             "prints_make_listing_images": False}
-LISTING_STEP = "mockups"   # slots 1, 2, 7 + fixed 3-6, 20 (app/mockups.py); with prints_make_listing_images it runs
+LISTING_STEP = "mockups"   # slots 1, 2, 8 + fixed 4-7, 20 (app/mockups.py); with prints_make_listing_images it runs
                            # right after resize (Tony 2026-11-08: no separate Run mockups button; never reviewed)
 STOPWORDS = {"a", "an", "the", "on", "in", "of", "for", "and", "with", "under", "at", "to", "by", "from", "among",
              "over", "into", "beside", "print", "poster", "wall", "art", "printable", "digital", "download"}
@@ -180,7 +180,7 @@ def start(con, settings, idea_id, name=None, redo=()):
             raise PrintError(f"only upscale and resize can be redone, not {', '.join(sorted(bad))}")
         for n in redo:
             con.execute("UPDATE steps SET status='pending' WHERE listing_id=? AND name=?", (lid, n))
-        if reset_listing:   # new prints: listing images 1, 2, 7 are made again too (room images 8-19 are never touched)
+        if reset_listing:   # new prints: listing images 1, 2, 8 are made again too (room images 3, 9-19 are never touched)
             con.execute("UPDATE steps SET status='pending' WHERE listing_id=? AND name=?", (lid, LISTING_STEP))
         have = step_map(con, lid)
         for n in stage_steps(settings):
@@ -192,7 +192,7 @@ def start(con, settings, idea_id, name=None, redo=()):
 
 
 def run(con, settings, lid, upscayl=None, mockup_build=None):
-    """Worker: the shared pipeline runner, stopped after resize (or after the listing images 1, 2, 7 + fixed when
+    """Worker: the shared pipeline runner, stopped after resize (or after the listing images 1, 2, 8 + fixed when
     prints_make_listing_images is on). `upscayl` / `mockup_build` are injectable for tests."""
     from .pipeline import run_listing
     config = load_config("pipeline")

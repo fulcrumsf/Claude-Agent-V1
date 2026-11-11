@@ -8,7 +8,9 @@ ALL.update({"Kids": ["iso"], "Nursery": ["iso"], "Creative space": ["iso"]})
 def test_tony_picks_come_first_in_his_order_and_agent_fills_up_to_19():
     p = rs.plan(["Office", "Bedroom"], ["Mid Century"], "mid-century gouache goat among plum blossoms", "mid",
                 available=ALL)
-    assert [s["slot"] for s in p] == list(range(8, 8 + len(p))) and len(p) <= 12
+    # slot map 2026-11-10: rooms are slot 3 then 9-19 (4-8 are fixed images, never a room)
+    assert [s["slot"] for s in p] == ([3] + list(range(9, 20)))[:len(p)] and len(p) <= 12
+    assert not {s["slot"] for s in p} & {1, 2, 4, 5, 6, 7, 8, 20}
     assert [(s["room"], s["by"]) for s in p[:2]] == [("Office", "tony"), ("Bedroom", "tony")]
     assert all(s["by"] == "agent" for s in p[2:])
     assert p == rs.plan(["Office", "Bedroom"], ["Mid Century"], "mid-century gouache goat among plum blossoms", "mid",
@@ -61,3 +63,9 @@ def test_scene_prompt_follows_tonys_recipe_and_never_names_the_art():
                         "white insert (ISO ratio).")
     for must in ("Camera angle: 3/4 corner", "no other frames", "No people", "No lamps"):
         assert must in t
+
+
+def test_room_slots_are_3_and_9_to_19_and_tonys_picks_fill_3_9_10_11_12():
+    assert rs.ROOM_SLOTS == [3, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] and rs.room_slots({}) == rs.ROOM_SLOTS
+    p = rs.plan(["Office", "Bedroom", "Bathroom", "Living room", "Dorm"], [], "x", available=ALL)
+    assert [(s["slot"], s["by"]) for s in p[:5]] == [(3, "tony"), (9, "tony"), (10, "tony"), (11, "tony"), (12, "tony")]

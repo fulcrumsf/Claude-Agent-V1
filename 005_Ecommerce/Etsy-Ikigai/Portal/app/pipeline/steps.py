@@ -25,8 +25,8 @@ def resize(ctx):
 
 
 def mockups(ctx):
-    # Slots 1, 2, 7 from the PSDs via PhotoCraft (app/mockups.py) plus the fixed images 3-6 and 20. Since 2026-11-08
-    # this runs right after resize (prints_make_listing_images) and never makes room images: rooms 8-19 are made one
+    # Slots 1, 2, 8 from the PSDs via PhotoCraft (app/mockups.py) plus the fixed images 4-7 and 20. Since 2026-11-08
+    # this runs right after resize (prints_make_listing_images) and never makes room images: rooms 3, 9-19 are made one
     # card at a time in the Production tab (app/production.py + app/scene_templates.py). Still to build: the video(s).
     import functools
     from .. import mockups, prints
@@ -43,7 +43,7 @@ def mockups(ctx):
             ap.pop(f["file"], None)
         r["mockup_approvals"] = ap
         prints._save_record(con, lid, r)
-    msg = f"{len(rec['files'])} listing images in {folder.name}/03-Etsy Images (slots 1, 2, 7 made; 3-6 and 20 copied); {rec['pending']}."
+    msg = f"{len(rec['files'])} listing images in {folder.name}/03-Etsy Images (slots 1, 2, 8 made; 4-7 and 20 copied); {rec['pending']}."
     if rec["notes"]:
         msg += " " + "; ".join(rec["notes"]) + "."
     return msg

@@ -63,7 +63,10 @@
     {% if s.bank %}
     <ul class="bank" role="list">
       {% for b in s.bank %}
-      <li class="banked lane-{{ b.lane }}" data-id="{{ b.id }}"><button class="pick" data-action="select" aria-pressed="false" aria-controls="details"><span class="dot"></span><span class="t">{{ b.title }}</span>{% if b.source == 'seed' %}<span class="stamp sm">seed</span>{% endif %}{% if b.art_state == 'approved' %}<span class="artpill ok">Art approved</span>{% elif b.art_state == 'in_progress' %}<span class="artpill">Art</span>{% endif %}<time>{{ (b.decided_at or '')[:10] }}</time></button></li>
+      <li class="banked lane-{{ b.lane }}" data-id="{{ b.id }}"><button class="pick" data-action="select" aria-pressed="false" aria-controls="details">
+        {% if b.art_url %}<img src="{{ b.art_url }}" alt="" loading="lazy">{% else %}<span class="noart"><span class="dot"></span>no art yet</span>{% endif %}
+        <span class="bt"><span class="t">{{ b.title }}</span>
+        <span class="bm">{% if b.source == 'seed' %}<span class="stamp sm">seed</span>{% endif %}{% if b.art_state == 'approved' %}<span class="artpill ok">Art approved</span>{% elif b.art_state == 'in_progress' %}<span class="artpill">Art</span>{% endif %}<time>{{ (b.decided_at or '')[:10] }}</time></span></span></button></li>
       {% endfor %}
     </ul>
     {% else %}<p class="muted">Approved ideas land here.</p>{% endif %}

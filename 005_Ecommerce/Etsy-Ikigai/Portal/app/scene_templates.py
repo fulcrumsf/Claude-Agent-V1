@@ -1,21 +1,24 @@
-"""Room mockups for the Production tab (listing slots 8-19), Tony's recipe of 2026-11-08 (replaces the computed-frame
+"""Room mockups for the Production tab (listing slots 3 and 9-19), Tony's recipe of 2026-11-08 (replaces the computed-frame
 approach): the image model draws the WHOLE room with one real frame holding a BLANK WHITE insert; the art is laid in
 afterwards, so one scene works for any print and the art's pixels are never redrawn.
 
   1. scene: Nano Banana Pro / Nano Banana 2.1 / GPT Image 2.5 through kie_edit.generate() (the workspace script in
      Room_Templates/.../Teak_Sideboard/Scripts/kie_edit.py), prompt from room_slots.scene_prompt (art never in it).
   2. find_insert(): the four corners of the white insert (bright, low-saturation, clean four-sided paper inside a
-     frame; true width:height from the perspective, rooms.true_aspect). If the drawn insert is not the print's ratio,
-     the art goes inside it at the exact ratio and the rest of the insert reads as a white mat (never cropped,
-     never stretched).
+     frame; true width:height from the perspective, rooms.true_aspect). A scene whose insert is more than 3% off the
+     print's ratio is REJECTED (Regenerate), never padded with a mat (Tony 2026-11-10).
   3. PhotoCraft (photocraft-cli, not Photoshop) layered PSD, hand-editable, named:
         GLARE > Glass Sheen (Screen 8%)
-        SHADOWS > Key Light Shadow (Multiply; the scene's own light on the blank insert, so the real key light
-                  (window bars, falloff) crosses the print) [+ Mat Bevel Shadow when the art sits in a mat]
-        Place Artwork Here (smart object on the insert's corners)
+        SHADOWS > Light Shadow (Multiply ~17%) + Frame Edge Shadow (Multiply ~30%). Tony's shadow rule
+                  (Mockup_Docs/Template_Layer_Rules_And_Checker_Spec.md): plain BLACK fill, cut to shape, blurred,
+                  limited to the art opening, angle MEASURED from the photo's own wall sun line
+                  (template_checker.sun_line); without a sun line, a black gradient along the measured light
+                  falloff on the blank insert. Photo pixels are never copied into a shadow.
+        Place Artwork Here (smart object on the insert's corners, native pixels at the insert's true ratio)
         BASE (room photo)
-  4. render: the print pre-fitted to the smart object's pixels (contain: the full art always visible), replaceContents,
-     exported as JPG into 03-Etsy Images under the slot number; then room_templates.guard_quad (hue + shadow cover).
+  4. render: the print COVER-FIT to the smart object's native pixels (centred, the excess clipped, never stretched,
+     never a white border; more than 3% crop is refused), replaceContents, exported as JPG into 03-Etsy Images under
+     the slot number; then room_templates.guard_quad (hue + shadow cover).
   5. AUTO-SAVE: every generated scene becomes a template in Tony's tree
         Portrait_Templates/<NNN_Ratio_*>/<NNN_Room>/<NNN_Style>/<AI_...>/  (PSD, source scene, preview, template.json)
      using his existing NNN_ folders; a style folder is created only when a template first lands in that cell
@@ -446,16 +449,14 @@ def find_insert(rgb, target=None):
 
 
 def art_quad(insert_q, insert_aspect, target, tol=0.03):
-    """Where the art goes: the whole insert when its true shape is within `tol` of the print ratio, else a centred
-    sub-quad at the exact ratio (the rest of the insert shows as a white mat). Returns (quad, mode)."""
-    if abs(insert_aspect / target - 1) <= tol:
+    """Where the art goes: the whole insert, when its true shape is within `tol` of the print ratio (the art is then
+    cover-fit, at most `tol` cropped). Further off = the scene is rejected (Tony 2026-11-10: regenerate, never a mat
+    by accident; mats exist only as template layers). Returns (quad, "full") or raises TemplateError."""
+    off = insert_aspect / target - 1
+    if abs(off) <= tol:
         return np.float32(insert_q), "full"
-    if insert_aspect > target:                       # insert too wide: full height, narrower width
-        w = target / insert_aspect
-        return sub_quad(insert_q, (1 - w) / 2, 0, (1 + w) / 2, 1), "mat"
-    h = insert_aspect / target                       # insert too tall: full width, shorter height (sits a bit high)
-    top = (1 - h) * 0.46
-    return sub_quad(insert_q, 0, top, 1, top + h), "mat"
+    raise TemplateError(f"the drawn frame insert is {insert_aspect:.3f} wide:tall, {off:+.1%} off the print ratio "
+                        f"{target:.3f} (limit {tol:.0%}); Regenerate for a new scene")
 
 
 def so_pixels(q, target):
@@ -484,33 +485,54 @@ def _save_rgba(rgb, alpha, path):
     Image.fromarray((arr * 255 + 0.5).astype("uint8"), "RGBA").save(path)
 
 
-def key_light(img, insert_q, art_q):
-    """The ONE key-light layer (Multiply): the light that fell on the blank paper in the photo, normalised so the
-    brightest paper reads as print white (35% of its colour kept), marks inpainted, lightly smoothed so the paper's
-    grain does not print onto the art. Visible only over the art area."""
-    import cv2
+def light_falloff(img, insert_q):
+    """The blank insert's measured light falloff as a plane (no pixels copied): returns (alpha 0..1 over the canvas,
+    strength = the relative brightness drop across the insert)."""
     H, W = img.shape[:2]
     q = np.float32(insert_q)
-    x0, y0 = np.int32(np.floor(q.min(0)))
-    x1, y1 = np.int32(np.ceil(q.max(0)))
-    x0, y0, x1, y1 = max(x0, 0), max(y0, 0), min(x1, W - 1), min(y1, H - 1)
-    crop = (img[y0:y1 + 1, x0:x1 + 1] * 255).astype("uint8")
-    g = cv2.cvtColor(crop, cv2.COLOR_RGB2GRAY).astype("float32")
-    med = cv2.medianBlur(crop, 31) if min(crop.shape[:2]) > 40 else crop
-    bad = ((cv2.cvtColor(med, cv2.COLOR_RGB2GRAY).astype("float32") - g) > 18).astype("uint8") * 255
-    bad = cv2.dilate(bad, np.ones((7, 7), "uint8"))
-    clean = cv2.inpaint(crop, bad, 9, cv2.INPAINT_TELEA) if bad.any() else crop
-    full = img.copy()
-    full[y0:y1 + 1, x0:x1 + 1] = clean.astype("float32") / 255
-    side = min(math.dist(q[0], q[3]), math.dist(q[0], q[1]))
-    full = cv2.GaussianBlur(full, (0, 0), max(1.0, side * 0.004))
-    Y = full @ W709
-    m_ins = _poly_mask(_expand(q, -0.03), W, H) > 0.5
-    ref = float(np.percentile(Y[m_ins], 97)) if m_ins.any() else 1.0
-    gain = np.clip(Y / max(ref, 1e-3), 0, 1)[..., None]
-    tint = full / np.maximum(Y[..., None], 1e-4)
-    light = np.clip(gain * (1 + 0.35 * (tint - 1)), 0, 1)
-    return light, _poly_mask(art_q, W, H)
+    Y = img @ W709
+    m = _poly_mask(_expand(q, -0.06), W, H) > 0.5
+    ys, xs = np.nonzero(m)
+    if len(xs) < 50:
+        return np.zeros((H, W), "float32"), 0.0
+    A = np.c_[xs, ys, np.ones_like(xs)].astype("float64")
+    coef, *_ = np.linalg.lstsq(A, Y[ys, xs].astype("float64"), rcond=None)
+    gy, gx = np.mgrid[0:H, 0:W].astype("float32")
+    plane = coef[0] * gx + coef[1] * gy + coef[2]
+    vals = plane[m]
+    hi, lo = float(vals.max()), float(vals.min())
+    if hi <= 1e-4 or hi - lo < 1e-4:
+        return np.zeros((H, W), "float32"), 0.0
+    return np.clip((hi - plane) / (hi - lo), 0, 1).astype("float32"), float((hi - lo) / hi)
+
+
+def sun_shade(img, insert_q):
+    """The wall's sun line measured from the photo (template_checker.sun_line), continued across the opening:
+    alpha 1 on the shade side, softened like the photo's penumbra. Returns (alpha, info) or (None, None)."""
+    import cv2
+    from .template_checker import sun_line
+    H, W = img.shape[:2]
+    rgb = img * 255.0
+    sl = sun_line(rgb, insert_q)
+    if not sl:
+        return None, None
+    x1, y1, x2, y2 = sl["line"]
+    gy, gx = np.mgrid[0:H, 0:W].astype("float32")
+    n = np.float32([-(y2 - y1), x2 - x1])
+    n /= max(float(np.linalg.norm(n)), 1e-6)
+    mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+    sd = (gx - mx) * n[0] + (gy - my) * n[1]                    # signed distance to the sun line
+    Y = img @ W709
+    d = max(6, int(0.02 * H))
+
+    def at(px, py):
+        return float(Y[int(np.clip(py, 0, H - 1)), int(np.clip(px, 0, W - 1))])
+    shade_pos = at(mx + n[0] * d, my + n[1] * d) < at(mx - n[0] * d, my - n[1] * d)
+    alpha = ((sd > 0) if shade_pos else (sd < 0)).astype("float32")
+    q = np.float32(insert_q)
+    soft = max(1.5, 0.012 * max(math.dist(q[0], q[3]), math.dist(q[1], q[2])))
+    alpha = cv2.GaussianBlur(alpha, (0, 0), soft)
+    return alpha, sl
 
 
 def edge_shadow(q, W, H, side="left", strength=(0.22, 0.06, 0.16, 0.05), width=0.006):
@@ -551,22 +573,36 @@ def placeholder(w, h, path):
     Image.fromarray(ph).save(path)
 
 
+SHADOW_OPACITY = {"Frame Edge Shadow": 0.30, "Light Shadow": 0.17}
+
+
 def make_layers(img, insert_q, art_q, so_px, mode, outdir):
-    """Full-canvas RGBA layer PNGs into outdir. Returns {name: file}."""
+    """Full-canvas RGBA layer PNGs into outdir (Tony's shadow rule: black fill only, limited to the opening).
+    Returns {name: file} plus "_meta" (how each shadow was measured)."""
     H, W = img.shape[:2]
     outdir = Path(outdir)
-    light, alpha = key_light(img, insert_q, art_q)
-    files = {}
-    _save_rgba(light, alpha, outdir / "L_key.png")
-    files["Key Light Shadow"] = "L_key.png"
-    if mode == "mat":
-        side = light_side(img @ W709, insert_q)
-        b = edge_shadow(art_q, W, H, side)
-        _save_rgba(np.repeat(b[..., None], 3, -1), alpha, outdir / "L_bevel.png")
-        files["Mat Bevel Shadow"] = "L_bevel.png"
-    _save_rgba(np.ones((H, W, 3), "float32"), glass(art_q, W, H) * alpha, outdir / "L_glass.png")
+    opening = _poly_mask(art_q, W, H)
+    black = np.zeros((H, W, 3), "float32")
+    files, meta = {}, {}
+    side = light_side(img @ W709, insert_q)
+    lip = 1 - edge_shadow(art_q, W, H, side, strength=(0.9, 0.15, 0.55, 0.55), width=0.012)
+    _save_rgba(black, np.clip(lip / max(float(lip.max()), 1e-6), 0, 1) * opening, outdir / "L_edge.png")
+    files["Frame Edge Shadow"] = "L_edge.png"
+    alpha, sl = sun_shade(img, insert_q)
+    if alpha is not None:
+        meta["Light Shadow"] = {"kind": "sun line", "deg": sl["deg"], "line": sl["line"],
+                                "opacity": SHADOW_OPACITY["Light Shadow"]}
+    else:
+        alpha, drop = light_falloff(img, insert_q)
+        meta["Light Shadow"] = {"kind": "falloff", "drop": round(drop, 3),
+                                "opacity": round(float(np.clip(drop, 0.04, 0.2)), 3)}
+    _save_rgba(black, alpha * opening, outdir / "L_light.png")
+    files["Light Shadow"] = "L_light.png"
+    meta["Frame Edge Shadow"] = {"kind": "frame lip", "light_from": side, "opacity": SHADOW_OPACITY["Frame Edge Shadow"]}
+    _save_rgba(np.ones((H, W, 3), "float32"), glass(art_q, W, H) * opening, outdir / "L_glass.png")
     files["Glass Sheen"] = "L_glass.png"
     placeholder(so_px[0], so_px[1], outdir / "placeholder.png")
+    files["_meta"] = meta
     return files
 
 
@@ -594,6 +630,8 @@ def assemble(base_png, outdir, files, art_q, out_psd, settings=None):
     """The layered, hand-editable PSD (layer stack in the module docstring)."""
     P = lambda n: str((Path(outdir) / n).resolve())
 
+    meta = files.get("_meta") or {}
+
     def place(f, name, blend="Normal", op=1.0):
         return (_cmd("file.placeEmbedded", {"path": P(f), "smartObject": False, "scale": 100})
                 + _cmd("layer.setProps", {"name": name, "blend": blend, "opacity": op, "visible": True}))
@@ -602,9 +640,9 @@ def assemble(base_png, outdir, files, art_q, out_psd, settings=None):
     a += _cmd("file.placeEmbedded", {"path": P("placeholder.png"), "smartObject": True, "scale": 100})
     a += _cmd("layer.setProps", {"name": ART, "blend": "Normal"})
     a += _cmd("edit.transform", {"quad": [[round(float(x), 2), round(float(y), 2)] for x, y in art_q]})
-    shadows = [n for n in ("Key Light Shadow", "Mat Bevel Shadow") if n in files]
+    shadows = [n for n in ("Light Shadow", "Frame Edge Shadow") if n in files]
     for n in shadows:
-        a += place(files[n], n, "Multiply")
+        a += place(files[n], n, "Multiply", (meta.get(n) or {}).get("opacity", SHADOW_OPACITY.get(n, 0.2)))
     a += _cmd("layer.new.group", {"name": "SHADOWS"})
     for n in shadows:
         a += _cmd("layer.moveTo", {"layer": n, "target": "SHADOWS", "position": "into"})
@@ -628,14 +666,15 @@ def build_psd(scene_png, ratio, work, settings=None):
     q, info = find_insert(rgb, target)
     if q is None:
         raise TemplateError(f"no clean blank frame insert in the scene ({info})")
-    aq, mode = art_quad(q, info["aspect"], target)
-    so = so_pixels(aq, target)
+    aq, mode = art_quad(q, info["aspect"], target)             # >3% off the print ratio: rejected (regenerate)
+    so = so_pixels(aq, info["aspect"])                         # the opening's own true ratio: no stretch
     base = work / "base.png"
     Image.fromarray(rgb).save(base)                   # flat RGB PNG (PhotoCraft opens it as the base layer)
     files = make_layers(rgb.astype("float32") / 255, q, aq, so, mode, work)
     psd = assemble(base, work, files, aq, work / "template.psd", settings)
     return {"psd_tmp": psd, "quad_insert": np.round(q, 2).tolist(), "quad_art": np.round(aq, 2).tolist(),
             "mode": mode, "so_px": so, "so_ratio": round(so[0] / so[1], 4), "insert": info,
+            "shadows": files.get("_meta"),
             "canvas": [rgb.shape[1], rgb.shape[0]], "light_from": light_side(rgb.astype("float32") @ W709, q)}
 
 
@@ -690,9 +729,9 @@ def save_template(settings, room, decor, ratio, scene_png, built, meta):
            "smart_object_layer": ART, "room": room, "etsy_room": room if room in rs.ETSY_ROOMS else None,
            "decor": decor, "ratio": ratio, "print_ratio": rs.PRINT_RATIO_TAG[ratio],
            **{k: built[k] for k in ("so_px", "so_ratio", "quad_insert", "quad_art", "mode", "canvas", "light_from")},
-           "insert": built["insert"], "base_layer": BASE_NAME, "guard_max_cover": _cfg(settings, "room_guard_max_cover"),
+           "insert": built["insert"], "shadows": built.get("shadows"), "base_layer": BASE_NAME, "guard_max_cover": _cfg(settings, "room_guard_max_cover"),
            "desc": f"AI scene: {rs.DECOR_WORDS.get(decor, decor)} {rs.ROOM_WORDS.get(room, room)}, blank-insert frame "
-                   f"({'art in a white mat' if built['mode'] == 'mat' else 'art fills the insert'})",
+                   f"(art cover-fits the insert)",
            "created": datetime.now().isoformat(timespec="seconds"), **meta}
     (tdir / MANIFEST).write_text(json.dumps(man, indent=1) + "\n")
     return tdir, psd
@@ -700,26 +739,23 @@ def save_template(settings, room, decor, ratio, scene_png, built, meta):
 
 # ---------- step 4: render a template with the art ----------
 
-def fit_contain(src, size, dest, pad=(246, 244, 239)):
-    """The full art always visible: scaled to fit inside `size`; a difference of up to 1% is absorbed (invisible),
-    more is padded with paper white (reads as a thin mat). Returns the padded share of the slot (0 = none)."""
+MAX_CROP = 0.03     # Tony 2026-11-10: cover-fit crops at most ~3%; more = wrong template/ratio, rejected
+
+
+def fit_cover(src, size, dest, max_crop=MAX_CROP):
+    """Tony's fit rule (2026-11-10): scale the art up to COVER the whole opening, centre it, clip the excess
+    left/right or top/bottom. Never stretched, never a white border. Returns the share of the art cropped off;
+    raises TemplateError when that is more than `max_crop` (the frame ratio is too far from the art)."""
+    from .mockups import fit_art
     from PIL import Image
-    Image.MAX_IMAGE_PIXELS = None
-    with Image.open(src) as im0:
-        im = im0.convert("RGB")
-    tw, th = size
-    ra, rt = im.width / im.height, tw / th
-    if abs(ra / rt - 1) <= 0.01:
-        im.resize((tw, th), Image.LANCZOS).save(dest)
-        return 0.0
-    if ra > rt:
-        w, h = tw, max(1, round(tw / ra))
-    else:
-        w, h = max(1, round(th * ra)), th
-    canvas = Image.new("RGB", (tw, th), pad)
-    canvas.paste(im.resize((w, h), Image.LANCZOS), ((tw - w) // 2, (th - h) // 2))
-    canvas.save(dest)
-    return round(1 - (w * h) / (tw * th), 3)
+    with Image.open(src) as im:
+        ra = im.width / im.height
+    rt = size[0] / size[1]
+    crop = 1 - min(ra / rt, rt / ra)
+    if max_crop is not None and crop > max_crop + 1e-9:
+        raise TemplateError(f"the frame ratio {rt:.3f} is {crop:.1%} off the print ratio {ra:.3f} (limit "
+                            f"{max_crop:.0%}); pick a template in the print's ratio")
+    return fit_art(src, tuple(size), dest)
 
 
 def print_for(arts, ratio_value, tag=None):
@@ -732,16 +768,22 @@ def print_for(arts, ratio_value, tag=None):
     return pick_art(arts, ratio_value)
 
 
-def render_psd(psd, so_px, art, out_png, settings=None, work=None):
-    """Swap the art into 'Place Artwork Here' and render. Returns {"fitted", "padded"}."""
+def render_psd(psd, so_px, art, out_png, settings=None, work=None, max_crop=MAX_CROP):
+    """Swap the art into 'Place Artwork Here' and render. The art is cover-fit to the smart object's NATIVE pixels
+    (read from the PSD; a template.json so_px can be wrong, e.g. the Wabi bedroom's 542x740 vs native 562x750).
+    Returns {"fitted", "cropped", "so_px"}."""
     work = Path(work or tempfile.mkdtemp())
     fitted = work / "fitted_art.png"
-    padded = fit_contain(art, tuple(so_px), fitted)
+    try:
+        native = so_size(psd, settings, work)
+    except Exception:  # noqa: BLE001  (fall back to the manifest)
+        native = list(so_px)
+    cropped = fit_cover(art, tuple(native), fitted, max_crop)
     _run(settings, ["run", str(psd), *_cmd("layer.select", {"name": ART}),
                     *_cmd("layer.smartObjects.replaceContents", {"path": str(fitted.resolve())}), "--out", str(out_png)])
     if not Path(out_png).is_file():
         raise TemplateError(f"{Path(out_png).name} was not written")
-    return {"fitted": fitted, "padded": padded}
+    return {"fitted": fitted, "cropped": cropped, "so_px": list(native)}
 
 
 # ---------- manifests for Tony's own PSDs ----------

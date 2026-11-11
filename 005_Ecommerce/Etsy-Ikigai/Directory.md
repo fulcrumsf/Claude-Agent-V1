@@ -11,8 +11,8 @@ Ikigai Digital Studio Etsy shop (printable digital wall art): docs, the local Po
 | `Mockup_Docs/` | Mockup rules and where images live: `Mockup_Style_Guide.md`, `Mockup_Originals_Locations.md`, `Image_Locations.md` |
 | `Research/` | Niche and pipeline research: `Niche_Research_Methods.md`, `Prior-Pipeline-Research-Consolidated.md` |
 | `Pipeline_Docs/` | Portal and Etsy API plans: `Ikigai_Portal_Pipeline_Brief.md`, `Etsy_API_V3_Application_Plan.md` |
-| `Portal/` | Local FastAPI app + listing pipeline (see `Portal/README.md`, `Portal/Directory.md`). Since 2026-11-08: Run upscale + resize also makes listing images 1, 2, 7 + fixed 3-6, 20; the Production tab makes room images 8-19 one card at a time (AI scenes auto-saved as templates in `Room_Templates/`) |
-| `Room_Templates/` | Room-mockup templates for listing images 8-19 (catalogue: `Room_Templates/Directory.md`) |
+| `Portal/` | Local FastAPI app + listing pipeline (see `Portal/README.md`, `Portal/Directory.md`). Slot map since 2026-11-10: 1 main, 1A video, 2 poster, 3 room, 4 Instant Download, 5 what you get, 6 wall diagram, 7 notes, 8 detail, 9-19 rooms, 20 reviews. Run upscale + resize makes 1, 2, 8 and copies 4-7, 20; the Production tab makes room images 3 and 9-19 one card at a time; the Templates tab runs the template checker, builds gap templates and edits templates with chat |
+| `Room_Templates/` | Room-mockup templates for listing images 3 and 9-19 (catalogue: `Room_Templates/Directory.md`; checker results: `Portal/config/template_checks.json`) |
 | `Designs/` | One folder per design: `<NNNNN>-<Name>/01-Printables`, `03-Etsy Images` (an `Archive/` subfolder there holds denied, replaced and guard-flagged images and scenes with no usable frame; the Portal shows only its own denied/flagged ones on the cards) |
 | `Creative_Inspiration/` | Pinterest style dumps and Style_Profiles |
 | `001-Standard Package/`, `002-Includes 1to1 Ratio/` | Git-ignored working copies of the listing mockup sets (originals: `Mockup_Docs/Mockup_Originals_Locations.md`) |

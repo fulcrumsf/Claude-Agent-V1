@@ -31,8 +31,8 @@ Routes (prefix /ikigai):
   GET  /api/prints                approved-art gallery with upscale/resize status per idea
   GET  /api/prints/{idea_id}      one idea's upscale/resize status, files, design folder
   POST /api/prints/{idea_id}/run  {name?, redo?} -> queue upscale + resize (name: first run only; redo: run again);
-                                  with prints_make_listing_images it also makes listing images 1, 2, 7 + fixed
-  Production (stage 4, app/production.py; room images 8-19):
+                                  with prints_make_listing_images it also makes listing images 1, 2, 8 + fixed
+  Production (stage 4, app/production.py; room images 3, 9-19):
   GET  /api/production            upscaled designs (thumbnail row) + the generation job
   GET  /api/production/{id}/panel tags, slot plan and cards for one design
   POST /api/production/{id}/tags  {rooms[], styles[]} -> Tony's ticks, saved as tags on the design
@@ -218,10 +218,25 @@ class PrintsIn(BaseModel):
     redo: bool = False             # re-run upscale + resize even when done
 
 
-def panel_context(con, settings):
+def bank_art(con, bank, prefix="/ikigai"):
+    """Thumbnail for each Idea Bank card (Tony 2026-11-10): the approved art, else the picked image, else the latest
+    finished image of the idea; None when no art was made yet."""
+    for b in bank:
+        row = None
+        if b.get("art_image_id"):
+            row = con.execute("SELECT path FROM images WHERE id=? AND status='done'", (b["art_image_id"],)).fetchone()
+        if row is None:
+            row = con.execute("SELECT path FROM images WHERE idea_id=? AND status='done' AND path IS NOT NULL "
+                              "ORDER BY (outcome='picked') DESC, id DESC LIMIT 1", (b["id"],)).fetchone()
+        b["art_url"] = art.file_url(prefix, row["path"]) if row and row["path"] else None
+    return bank
+
+
+def panel_context(con, settings, prefix="/ikigai"):
     with LOCK:
         ideas.maybe_weekly_refresh(con, settings)
         s = ideas.state(con, settings)
+        bank_art(con, s["bank"], prefix)
     s["channel"] = get_channel(settings).label
     s["details"] = ideas.details(s)
     return s
@@ -268,7 +283,7 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
 
     @r.get("/panel")
     def panel(request: Request):
-        return TEMPLATES.TemplateResponse(request, "studio_tab.html", {"s": panel_context(con, settings),
+        return TEMPLATES.TemplateResponse(request, "studio_tab.html", {"s": panel_context(con, settings, prefix),
                                                                        "prefix": prefix})
 
     @r.get("/api/state")
@@ -479,4 +494,4 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
 
     app.include_router(r)
     return Tab(id="ikigai", label="Ikigai Digital Studio", prefix=prefix, panel_template="studio_tab.html",
-               chat_responder=responder, context=lambda: panel_context(con, settings))
+               chat_responder=responder, context=lambda: panel_context(con, settings, prefix))

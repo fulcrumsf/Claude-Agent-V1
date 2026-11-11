@@ -19,7 +19,7 @@ Written 2026-11-10 after a live fix of `BDRM_Wabi_Vertical_Template.psd` (Room_T
 ## Art fit rule
 Cover-fit and center-crop to the opening ratio; never stretch; never leave a white edge. Mats are built into the template as a uniform-width layer with bevel shadow.
 
-## Checker (to build; not built yet). Runs headless with `photocraft-cli`, no window needed
+## Checker (BUILT 2026-11-10: `Portal/app/template_checker.py`, results `Portal/config/template_checks.json`; first run 1 PASS / 42 FAIL, see `Room_Templates/Directory.md`). Runs headless with `photocraft-cli`, no window needed
 Run on all 43 existing templates plus every new template at build time. Result per template: PASS / FAIL with reasons, shown on the Templates tab so Tony never opens files by hand.
 
 1. **Opening vs art area:** hide every layer but BASE, detect the opening (inner frame edges), compare to the smart-object rectangle. FAIL if any edge is off by more than 3 px or if the art overlaps frame wood.

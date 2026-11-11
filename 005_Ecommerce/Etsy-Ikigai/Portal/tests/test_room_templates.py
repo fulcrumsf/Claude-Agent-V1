@@ -110,17 +110,17 @@ def test_production_hides_old_room_files_once_room_step_made_rooms(env):
     from app import prints
     from test_production import _make
     c, iid = env["c"], approved_idea(env["con"])
-    folder = _make(env, iid)                                  # 08_Living_Room.jpg + 09_Bedroom.jpg (old v1 rooms)
+    folder = _make(env, iid)                                  # 03_Living_Room.jpg + 09_Bedroom.jpg (old v1 rooms)
     assert [i["file"] for i in c.get("/ikigai/api/production").json()["items"][0]["images"]] == \
-        ["08_Living_Room.jpg", "09_Bedroom.jpg"]              # no room-step record yet: everything shows
-    Image.new("RGB", (40, 40)).save(folder / "08_Room_Teak_Sideboard_Window_Light.jpg")
+        ["03_Living_Room.jpg", "09_Bedroom.jpg"]              # no room-step record yet: everything shows
+    Image.new("RGB", (40, 40)).save(folder / "03_Room_Teak_Sideboard_Window_Light.jpg")
     con = env["con"]
     lst = prints.listing_for(con, iid)
     rec = prints._record(con, lst["id"])
-    rec["mockups"] = {"files": [{"file": "08_Room_Teak_Sideboard_Window_Light.jpg", "slot": 8, "room": "Teak Sideboard",
+    rec["mockups"] = {"files": [{"file": "03_Room_Teak_Sideboard_Window_Light.jpg", "slot": 3, "room": "Teak Sideboard",
                                  "light": "window_soft", "frame": "walnut", "mat": False, "paint": "Warm Sand"}]}
     prints._save_record(con, lst["id"], rec)
     imgs = c.get("/ikigai/api/production").json()["items"][0]["images"]
-    assert [i["file"] for i in imgs] == ["08_Room_Teak_Sideboard_Window_Light.jpg"]
+    assert [i["file"] for i in imgs] == ["03_Room_Teak_Sideboard_Window_Light.jpg"]
     assert imgs[0]["look"]["paint"] == "Warm Sand"
-    assert (folder / "08_Living_Room.jpg").is_file()          # hidden, never deleted
+    assert (folder / "03_Living_Room.jpg").is_file()          # hidden, never deleted

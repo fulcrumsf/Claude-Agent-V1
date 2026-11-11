@@ -1,0 +1,722 @@
+"""Template checker (Tony 2026-11-10; spec Mockup_Docs/Template_Layer_Rules_And_Checker_Spec.md). Headless, READ-ONLY:
+every check renders the PSD with photocraft-cli (`run <psd> ... --out <png>` into a temp folder) and measures the
+renders; the PSD is never saved (its size + mtime are compared before and after, and a change is reported).
+
+Per template, PASS / FAIL with plain reasons:
+  1 opening   art area vs the frame opening: the opening edge is found on a render with the art and the overlays
+              hidden (inner frame / mat edge nearest to each side of the visible art), FAIL past 3 px
+  2 card      black card vs white card: pixels inside the opening that do not change = a gap (white sliver);
+              pixels outside it that change = art over the frame
+  3 overlay   every shadow / glare layer's effect stays inside the art opening (rendered alone over a grey card)
+  4 purity    every shadow layer is neutral (black fill: R = G = B) and smooth (not copied photo pixels)
+  5 sun       the wall's sun line (light/shade edge measured on the base) vs the shadow layer's edge, within 3 deg
+  6 ratio     opening ratio vs the folder's ratio within 3% (cover-fit crop limit); smart object not stretched
+  7 mat       when a mat exists: uniform width on all four sides, bevel / shadow layer present
+  8 layers    `Place Artwork Here`, SHADOWS and GLARE present; no hidden "OLD ..." layers waiting for Tony
+
+Results: config/template_checks.json ({rel: result}), shown on the Templates tab. CLI:
+    python -m app.template_checker --all            check every template in the library
+    python -m app.template_checker <rel> [<rel>...]  check some (rel = path under Portrait_Templates)
+    python -m app.template_checker --fails          print the FAIL list from the results file
+"""
+import json
+import math
+import shutil
+import subprocess
+import tempfile
+import threading
+from datetime import datetime
+from pathlib import Path
+
+import numpy as np
+
+from .db import ROOT
+
+RESULTS = ROOT / "config" / "template_checks.json"
+ART = "Place Artwork Here"
+TOL_PX = 3              # opening vs art, per side
+TOL_RATIO = 0.03        # cover-fit crop limit
+TOL_DEG = 3.0           # sun angle
+RATIO_TARGETS = {"2x3": [2 / 3], "3x4": [0.75], "4x5": [0.8], "11x14": [11 / 14], "iso": [1 / 2 ** 0.5, 5 / 7]}
+OVERLAY_BLENDS = {"Multiply", "Screen", "Overlay", "Soft Light", "Hard Light", "Linear Burn", "Color Burn",
+                  "Linear Dodge (Add)", "Linear Dodge", "Darken", "Lighten", "Color Dodge"}
+OVERLAY_WORDS = ("shadow", "glare", "reflection", "glass", "sheen", "light", "shade", "highlight")
+STRUCT_WORDS = ("mat", "matte", "frame", "fame", "paper", "foreground", "canvas", "border")
+# layers the 2026-11-08 standardisation script built FROM PHOTO PIXELS (Room_Templates/Directory.md "Layer structure":
+# "Scene Light & Shadow ... is the blank insert from the photo"; spec item 3: Frame Edge Shadow + Scene Light & Shadow
+# were photo copies). Suspect until rebuilt as black fills (template.json "layers_verified" marks a rebuilt template).
+PHOTO_BUILT = {"Scene Light & Shadow", "Frame Edge Shadow"}
+CHECKS = ["opening", "card", "overlay", "purity", "sun", "ratio", "mat", "layers"]
+LABELS = {"opening": "Opening vs art", "card": "Black/white card", "overlay": "Overlay size", "purity": "Overlay purity",
+          "sun": "Sun angle", "ratio": "Ratio", "mat": "Mat", "layers": "Layer names"}
+_job = {"running": False, "done": 0, "total": 0, "current": "", "error": ""}
+_job_lock = threading.Lock()
+
+
+class CheckError(Exception):
+    pass
+
+
+# ---------- photocraft-cli ----------
+
+def _bin(settings=None):
+    return (settings or {}).get("photocraft_bin", "photocraft-cli")
+
+
+def _run(settings, args, timeout=300):
+    b = _bin(settings)
+    if not shutil.which(b):
+        raise CheckError(f"{b} is not on PATH")
+    r = subprocess.run([b, *args], capture_output=True, text=True, timeout=timeout)
+    if r.returncode:
+        raise CheckError(f"PhotoCraft failed: {(r.stderr or r.stdout).strip()[-300:]}")
+    return r.stdout
+
+
+def _cmd(c, p=None):
+    return ["--cmd", c, "--params", json.dumps(p or {})]
+
+
+def info(psd, settings=None):
+    return json.loads(_run(settings, ["info", str(psd)]))
+
+
+def flatten(layers, parents=(), out=None):
+    """Layer tree -> list (top of the stack first) of dicts with `parents` (names) and `shown` (layer and every
+    parent visible)."""
+    out = [] if out is None else out
+    for l in layers or []:
+        kids = l.get("children") or l.get("layers") or []
+        d = {k: v for k, v in l.items() if k not in ("children", "layers")}
+        d["parents"] = list(parents)
+        d["shown"] = bool(l.get("visible", True)) and all(p.get("visible", True) for p in parents)
+        out.append(d)
+        flatten(kids, (*parents, l), out)
+    for d in out:
+        d["parents"] = [p.get("name", "") if isinstance(p, dict) else p for p in d["parents"]]
+    return out
+
+
+def roles(flat):
+    """Which layer is the art, the base, the overlays (shadow / glare above the art), mats, foreground."""
+    idx = {l["id"]: i for i, l in enumerate(flat)}
+    art = next((l for l in flat if l.get("name") == ART and l.get("kind") == "Smart Object"), None) \
+        or next((l for l in flat if l.get("name") == ART), None)
+    pix = [l for l in flat if l.get("kind") in ("Pixel", "Smart Object") and l is not art]
+    base = pix[-1] if pix else None
+    ai = idx[art["id"]] if art else len(flat)
+
+    def low(l):
+        return " ".join([l.get("name", "")] + l.get("parents", [])).lower()
+    fg = [l for l in flat if "foreground" in low(l)]
+    mats = [l for l in flat if any(w in l.get("name", "").lower().split() or l.get("name", "").lower().startswith(w)
+                                   for w in ("mat", "matte", "picture matte")) or l.get("name") in ("MAT",)
+            or "matte" in l.get("name", "").lower() or (l.get("name", "").lower().startswith("paper"))]
+    mats = [l for l in mats if l is not art and "place artwork" not in l.get("name", "").lower()]
+    overlays = []
+    for l in flat[:ai]:
+        if l.get("kind") not in ("Pixel", "Smart Object") or l in fg or not l["shown"]:
+            continue
+        nm = low(l)
+        struct = any(w in l.get("name", "").lower() for w in STRUCT_WORDS) and not any(
+            w in l.get("name", "").lower() for w in ("shadow", "bevel", "reflection", "glass"))
+        if struct:
+            continue
+        if l.get("blend") in OVERLAY_BLENDS or any(w in nm for w in OVERLAY_WORDS):
+            overlays.append(l)
+    return {"art": art, "base": base, "overlays": overlays, "mats": mats, "foreground": fg, "art_index": ai}
+
+
+def _hide(ids):
+    out = []
+    for i in ids:
+        out += _cmd("layer.setProps", {"layer": i, "visible": False})
+    return out
+
+
+def render(psd, out, settings=None, hide=(), card=None, art_hidden=False, art_id=None):
+    args = ["run", str(psd)]
+    if card is not None:
+        args += _cmd("layer.select", {"name": ART}) + _cmd("layer.smartObjects.replaceContents", {"path": str(card)})
+    ids = list(hide) + ([art_id] if art_hidden and art_id is not None else [])
+    args += _hide(ids) + ["--out", str(out)]
+    _run(settings, args)
+    from PIL import Image
+    with Image.open(out) as im:
+        return np.asarray(im.convert("RGB")).astype("float32")
+
+
+def so_size(psd, settings=None, work=None):
+    from PIL import Image
+    out = Path(work or tempfile.mkdtemp()) / "so.png"
+    _run(settings, ["run", str(psd), *_cmd("layer.select", {"name": ART}),
+                    *_cmd("layer.smartObjects.exportContents", {"path": str(out)})])
+    with Image.open(out) as im:
+        return list(im.size)
+
+
+# ---------- geometry ----------
+
+def order_quad(pts):
+    from .rooms import order_quad as oq
+    return oq(pts)
+
+
+def quad_from_mask(m):
+    import cv2
+    from .rooms import _quad_from_hull
+    cs, _ = cv2.findContours(m.astype("uint8") * 255, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    if not cs:
+        return None
+    c = max(cs, key=cv2.contourArea)
+    if cv2.contourArea(c) < 400:
+        return None
+    return order_quad(_quad_from_hull(cv2.convexHull(c)))
+
+
+def poly_mask(q, W, H):
+    import cv2
+    m = np.zeros((H, W), "uint8")
+    cv2.fillPoly(m, [np.int32(np.round(np.float32(q) * 4))], 1, lineType=cv2.LINE_8, shift=2)
+    return m.astype(bool)
+
+
+def offset_quad(q, d):
+    """Move every side of a quad outward by d[i] px (d negative = inward); sides: top, right, bottom, left."""
+    q = np.float32(q)
+    c = q.mean(0)
+    lines = []
+    for i in range(4):
+        a, b = q[i], q[(i + 1) % 4]
+        t = (b - a) / max(np.linalg.norm(b - a), 1e-6)
+        n = np.float32([-t[1], t[0]])
+        if np.dot(c - a, n) > 0:
+            n = -n                       # outward normal
+        k = d[i] if np.ndim(d) else d
+        lines.append((a + n * k, b + n * k))
+    out = []
+    for i in range(4):
+        (p, p2), (s, s2) = lines[(i - 1) % 4], lines[i]
+        r, u = p2 - p, s2 - s
+        cr = r[0] * u[1] - r[1] * u[0]
+        if abs(cr) < 1e-9:
+            return q
+        out.append(p + r * (((s - p)[0] * u[1] - (s - p)[1] * u[0]) / cr))
+    return np.float32(out)
+
+
+def side_profile(img, a, b, n_out, R, t0=0.2, t1=0.8, k=60):
+    """Median colour at offsets -R..R (outward positive) across the side a->b."""
+    H, W = img.shape[:2]
+    ts = np.linspace(t0, t1, k)[:, None]
+    base = a + (b - a) * ts
+    prof = []
+    for d in range(-R, R + 1):
+        p = base + n_out * d
+        xs = np.clip(np.round(p[:, 0]).astype(int), 0, W - 1)
+        ys = np.clip(np.round(p[:, 1]).astype(int), 0, H - 1)
+        prof.append(np.median(img[ys, xs], axis=0))
+    return np.array(prof, "float32")
+
+
+def find_edge(img, q, side, R, prefer="inner", start=0, min_step=14.0):
+    """Offset (px, outward positive) of a strong colour step across one side of quad q, searched over -R..R.
+    prefer='inner': the first strong step met going outward from R px inside (the opening = the INNER edge of the
+    frame or mat; the frame's outer edge lies further out); 'near': the strong step nearest to `start`;
+    'next': the first strong step beyond `start` going outward (a mat's outer edge).
+    Returns (offset or None, strength)."""
+    q = np.float32(q)
+    a, b = q[side], q[(side + 1) % 4]
+    t = (b - a) / max(np.linalg.norm(b - a), 1e-6)
+    n = np.float32([-t[1], t[0]])
+    if np.dot(q.mean(0) - a, n) > 0:
+        n = -n
+    w = 2                                                          # a soft paper->frame edge spreads over ~4 px
+    prof = side_profile(img, a, b, n, R + w)
+    # total colour change across a 2w window centred between offsets d and d+1 (index i <-> offset i - R + 0.5)
+    sm = np.array([np.linalg.norm(prof[i + 2 * w] - prof[i]) for i in range(len(prof) - 2 * w - 1 + 1)], "float32")
+    sm = sm[:2 * R]
+    if sm.size == 0:
+        return None, 0.0
+    top = float(sm.max())
+    if top < min_step:
+        return None, top
+    strong = [i for i in range(len(sm)) if sm[i] >= max(0.3 * top, min_step)
+              and (i == 0 or sm[i] >= sm[i - 1]) and (i == len(sm) - 1 or sm[i] > sm[i + 1])]
+    pos = [i - R + 0.5 for i in strong]
+    if not pos:
+        return None, top
+    if prefer == "inner":                    # the first strong step met going outward from inside the art
+        for p in sorted(pos):
+            if p < -2 and _paper_band(prof, int(p + R + w), R + w):
+                continue      # the band between this edge and the art edge is paper (a sample print's white border
+                              # or the blank insert), not frame wood: the opening is further out
+            return p, top
+        return max(pos), top
+    if prefer == "next":
+        beyond = [p for p in pos if p > start + 2]
+        return (min(beyond), top) if beyond else (None, top)
+    return min(pos, key=lambda p: (abs(p - start), -p)), top
+
+
+def _paper_band(prof, i0, i1):
+    """Is the profile between indexes i0..i1 bright, neutral paper (not a frame)?"""
+    band = prof[max(0, i0 + 2):max(i0 + 3, i1)]
+    if not len(band):
+        return False
+    c = np.median(band, axis=0)
+    mx, mn = float(c.max()), float(c.min())
+    return mx > 0.7 * 255 and (mx - mn) / max(mx, 1) < 0.07
+
+
+def true_aspect(q, size):
+    from .rooms import true_aspect as ta
+    return ta(np.float32(q), size)
+
+
+def side_lengths(q):
+    q = np.float32(q)
+    return [math.dist(q[i], q[(i + 1) % 4]) for i in range(4)]
+
+
+# ---------- sun line ----------
+
+def _lines(gray, mask, min_len, ref_h=None):
+    """Straight edges (full-resolution coordinates). Soft light edges (a sun line's penumbra) only show as edges on
+    a reduced image, so the search runs at about 200 px per art height."""
+    import cv2
+    f = min(1.0, 200.0 / max(ref_h or min_len * 4, 1))
+    g = cv2.resize(gray.astype("float32"), None, fx=f, fy=f, interpolation=cv2.INTER_AREA)
+    m = cv2.resize(mask.astype("uint8"), None, fx=f, fy=f, interpolation=cv2.INTER_NEAREST).astype(bool)
+    g = cv2.GaussianBlur(g, (0, 0), 1.2)
+    e = cv2.Canny(np.clip(g, 0, 255).astype("uint8"), 6, 14)
+    e[~m] = 0
+    L = max(8, int(min_len * f))
+    ls = cv2.HoughLinesP(e, 1, np.pi / 360, threshold=max(8, int(L * 0.35)), minLineLength=L, maxLineGap=6)
+    return [] if ls is None else [[int(round(v / f)) for v in l[0]] for l in ls]
+
+
+def _angle(x1, y1, x2, y2):
+    """Angle of a line in degrees, rising to the right positive, folded to (-90, 90]."""
+    a = math.degrees(math.atan2(-(y2 - y1), x2 - x1))
+    while a <= -90:
+        a += 180
+    while a > 90:
+        a -= 180
+    return a
+
+
+def _step_across(gray, x1, y1, x2, y2, w=6):
+    """Mean brightness difference between the two sides of a segment (relative)."""
+    n = np.float32([-(y2 - y1), x2 - x1])
+    n /= max(np.linalg.norm(n), 1e-6)
+    ts = np.linspace(0.15, 0.85, 30)[:, None]
+    p = np.float32([x1, y1]) + (np.float32([x2, y2]) - np.float32([x1, y1])) * ts
+    H, W = gray.shape
+
+    def at(pts):
+        xs = np.clip(np.round(pts[:, 0]).astype(int), 0, W - 1)
+        ys = np.clip(np.round(pts[:, 1]).astype(int), 0, H - 1)
+        return gray[ys, xs]
+    s1, s2 = at(p + n * w), at(p - n * w)
+    return float(np.median(s1 - s2)) / max(float(np.median(np.maximum(s1, s2))), 1.0)
+
+
+def sun_line(rgb, opening_q, search=1.0):
+    """The wall's light/shade edge near the frame: the longest straight diagonal brightness step in a band around
+    the opening (frame excluded). Returns {deg, line, contrast} or None."""
+    H, W = rgb.shape[:2]
+    gray = rgb @ np.float32([0.299, 0.587, 0.114])
+    q = np.float32(opening_q)
+    x0, y0 = q.min(0)
+    x1, y1 = q.max(0)
+    w, h = x1 - x0, y1 - y0
+    box = np.zeros((H, W), bool)
+    box[int(max(0, y0 - search * h)):int(min(H, y1 + 0.35 * h)), int(max(0, x0 - search * w)):int(min(W, x1 + search * w))] = True
+    frame = poly_mask(offset_quad(q, [0.1 * max(w, h)] * 4), W, H)
+    mask = box & ~frame
+    best = None
+    for x_1, y_1, x_2, y_2 in _lines(gray, mask, 0.22 * h, h):
+        a = _angle(x_1, y_1, x_2, y_2)
+        if not 8 <= abs(a) <= 75:
+            continue
+        L = math.dist((x_1, y_1), (x_2, y_2))
+        if L < 0.3 * h:                          # a real sun line runs a good way across the wall
+            continue
+        st = _step_across(gray, x_1, y_1, x_2, y_2, w=max(6, int(0.012 * h)))
+        if abs(st) < 0.05:
+            continue
+        sc = L * min(abs(st), 0.4)
+        if best is None or sc > best["score"]:
+            best = {"deg": round(a, 1), "line": [int(x_1), int(y_1), int(x_2), int(y_2)], "contrast": round(st, 3),
+                    "score": sc}
+    return best
+
+
+def overlay_edge(effect, inside):
+    """Dominant straight diagonal edge of a shadow layer's effect map inside the art (deg) or None."""
+    if not inside.any():
+        return None
+    e = effect.copy()
+    e[~inside] = 0
+    top = float(np.percentile(e[inside], 99)) or 1.0
+    g = np.clip(e / top * 255, 0, 255)
+    h = inside.any(1).sum()
+    best = None
+    for x1, y1, x2, y2 in _lines(g, inside, 0.2 * h, h):
+        a = _angle(x1, y1, x2, y2)
+        if not 8 <= abs(a) <= 75:
+            continue
+        L = math.dist((x1, y1), (x2, y2))
+        if best is None or L > best[1]:
+            best = (round(a, 1), L, [int(x1), int(y1), int(x2), int(y2)])
+    return {"deg": best[0], "line": best[2]} if best else None
+
+
+# ---------- the checks ----------
+
+def _res(status, reason="", **kw):
+    return {"status": status, "reason": reason, **kw}
+
+
+def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=None):
+    """Run every check on one PSD. Returns the result dict (status PASS/FAIL, reasons, checks, measured)."""
+    from PIL import Image
+    psd = Path(psd)
+    st0 = psd.stat()
+    if manifest is None and (psd.parent / "template.json").is_file():
+        try:
+            manifest = json.loads((psd.parent / "template.json").read_text())
+        except ValueError:
+            manifest = None
+    res = {"psd": psd.name, "checked": datetime.now().isoformat(timespec="seconds"), "psd_size": st0.st_size,
+           "psd_mtime": int(st0.st_mtime), "checks": {}, "measured": {}}
+    with tempfile.TemporaryDirectory() as td:
+        td = Path(keep) if keep else Path(td)
+        td.mkdir(parents=True, exist_ok=True)
+        inf = info(psd, settings)
+        W, H = int(inf["width"]), int(inf["height"])
+        flat = flatten(inf.get("layers"))
+        r = roles(flat)
+        res["measured"]["canvas"] = [W, H]
+        # 8 layers (no render needed)
+        names = [l.get("name", "") for l in flat]
+        why = []
+        if r["art"] is None:
+            why.append(f"no '{ART}' smart object")
+        for g in ("SHADOWS", "GLARE"):
+            if not any(l.get("name", "").strip().upper() == g and l.get("kind") == "Group" for l in flat):
+                why.append(f"no {g} group")
+        old = [l["name"] for l in flat if l.get("name", "").strip().lower().startswith("old") and not l.get("visible", True)]
+        if old:
+            why.append("hidden OLD layer(s) for Tony to delete: " + ", ".join(old))
+        res["checks"]["layers"] = _res("fail" if why else "pass", "; ".join(why),
+                                       overlays=[l["name"] for l in r["overlays"]])
+        if r["art"] is None:
+            for k in CHECKS[:-1]:
+                res["checks"][k] = _res("skip", "no art layer")
+            return _finish(res, psd, st0)
+        art_id = r["art"]["id"]
+        so = so_size(psd, settings, td)                  # always the smart object's NATIVE pixels (the truth)
+        res["measured"]["so_px"] = so
+        man_so = list(so_px or (manifest or {}).get("so_px") or [])
+        if man_so and man_so != so:
+            res.setdefault("notes", []).append(f"template.json so_px {man_so[0]}x{man_so[1]} is not the smart object's "
+                                               f"native {so[0]}x{so[1]}; the Portal renders with the native size")
+        cards = {}
+        for nm, v in (("blk", 0), ("wht", 255), ("gry", 128)):
+            cards[nm] = td / f"card_{nm}.png"
+            Image.new("RGB", tuple(so), (v, v, v)).save(cards[nm])
+        fg = [l["id"] for l in r["foreground"] if l["shown"]]
+        ov = [l["id"] for l in r["overlays"]]
+        bg = render(psd, td / "bg.png", settings, hide=ov + fg, art_hidden=True, art_id=art_id)
+        blk = render(psd, td / "blk.png", settings, hide=fg, card=cards["blk"])
+        wht = render(psd, td / "wht.png", settings, hide=fg, card=cards["wht"])
+        D = (wht - blk).mean(2) > 40
+        V = quad_from_mask(D)
+        if V is None:
+            for k in ("opening", "card", "overlay", "purity", "sun", "ratio", "mat"):
+                res["checks"][k] = _res("fail" if k == "opening" else "skip", "the art is not visible in the render")
+            return _finish(res, psd, st0)
+        res["measured"]["visible_quad"] = np.round(V, 1).tolist()
+        # 1 opening
+        sl = side_lengths(V)
+        R = int(min(40, max(10, round(0.045 * min(sl)))))
+        import cv2
+        bgs = cv2.GaussianBlur(bg, (0, 0), 0.8)
+        offs, found = [], 0
+        for i in range(4):
+            o, _ = find_edge(bgs, V, i, R)
+            offs.append(o)
+            found += o is not None
+        names4 = ["top", "right", "bottom", "left"]
+        res["measured"]["opening_offsets"] = {names4[i]: offs[i] for i in range(4)}
+        if found < 4:
+            missing = [names4[i] for i in range(4) if offs[i] is None]
+            if r["mats"] or (manifest or {}).get("mode") == "mat":
+                # art laid on a flat mat: the mat window is drawn by the art itself (nothing to misalign)
+                res["checks"]["opening"] = _res("skip", "the art sits on a flat mat (no window edge on the " +
+                                                ", ".join(missing) + " side); see the mat check")
+            else:
+                res["checks"]["opening"] = _res("fail", "no frame/opening edge found on the " + ", ".join(missing) +
+                                                " side (frameless, or the art covers the whole frame); check by eye")
+            O = V
+        else:
+            O = offset_quad(V, offs)
+            bad = [f"{names4[i]} {'art covers the frame by' if offs[i] < 0 else 'gap of'} {abs(offs[i]):.0f} px"
+                   for i in range(4) if abs(offs[i]) > TOL_PX]
+            res["checks"]["opening"] = _res("fail" if bad else "pass", "; ".join(bad),
+                                            offsets=[round(float(x), 1) for x in offs])
+        res["measured"]["opening_quad"] = np.round(O, 1).tolist()
+        x, y = O[:, 0].min(), O[:, 1].min()
+        res["measured"]["opening_box"] = [int(round(x)), int(round(y)), int(round(O[:, 0].max() - x)),
+                                          int(round(O[:, 1].max() - y))]
+        # 2 card test
+        inner = poly_mask(offset_quad(O, -1.5), W, H)
+        outer = poly_mask(offset_quad(O, 1.5), W, H)
+        gap = int((inner & ~D).sum())
+        over = int((~outer & D).sum())
+        lim = 30 + 0.002 * inner.sum()
+        why = []
+        if gap > lim:
+            why.append(f"{gap} px inside the opening never show art (white sliver / gap)")
+        if over > lim:
+            why.append(f"{over} px of art outside the opening (art over the frame)")
+        res["checks"]["card"] = _res("fail" if why else "pass", "; ".join(why), gap_px=gap, over_px=over)
+        # 3 + 4 overlays: each alone over a grey card
+        g0 = render(psd, td / "g0.png", settings, hide=ov + fg, card=cards["gry"])
+        bg_l = bg @ np.float32([0.299, 0.587, 0.114]) / 255.0
+        # outside = beyond both the opening and the art pixels actually shown, plus 3 px (anti-aliasing)
+        art_px = cv2.dilate(D.astype("uint8"), np.ones((7, 7), "uint8")).astype(bool)
+        out_band = ~(poly_mask(offset_quad(O, 3), W, H) | art_px)
+        ins = poly_mask(offset_quad(O, -2), W, H)
+        spill, impure, effects = [], [], {}
+        for l in r["overlays"]:
+            gi = render(psd, td / f"o{l['id']}.png", settings, hide=[x for x in ov if x != l["id"]] + fg,
+                        card=cards["gry"])
+            diff = np.abs(gi - g0).max(2)
+            n_out = int((diff[out_band] > 8).sum())          # 8 levels: below that a spill is not visible
+            if n_out > max(300, 0.0005 * W * H):
+                why_c = " (clipping mask: photocraft-cli renders ignore clipping; use a layer mask)" if l.get("clipped") else ""
+                spill.append(f"'{l['name']}' changes {n_out} px outside the art opening{why_c}")
+            dk = (g0 - gi) / np.maximum(g0, 1)                     # darkening share per channel (Multiply-like)
+            br = (gi - g0) / np.maximum(255 - g0, 1)               # brightening share (Screen-like)
+            tint = dk if dk[ins].mean() >= br[ins].mean() else br
+            m = tint.mean(2)
+            eff = ins & (m > 0.03)
+            effects[l["id"]] = (m, tint, l)
+            if eff.sum() < 50:
+                if l.get("name") in PHOTO_BUILT and not (manifest or {}).get("layers_verified"):
+                    impure.append(f"'{l['name']}' built from photo pixels by the 2026-11-08 script (Directory.md)")
+                continue
+            chroma = float(np.median((tint.max(2) - tint.min(2))[eff] / np.maximum(m[eff], 1e-3)))
+            # copied photo pixels: the shadow's fine detail follows the photo's own fine detail at the same place
+            # (grain, paper texture, leftover marks). A blurred black fill does not correlate with the photo.
+            hp_m = m - cv2.GaussianBlur(m, (0, 0), 1.0)
+            hp_b = bg_l - cv2.GaussianBlur(bg_l, (0, 0), 1.0)
+            # away from the opening edges (the frame lip is an edge in both) and only where the photo has grain
+            core = eff & poly_mask(offset_quad(O, -max(6.0, 0.02 * min(side_lengths(O)))), W, H) & (np.abs(hp_b) > 1.5 / 255)
+            tex = 0.0
+            if core.sum() > 200:
+                a_, b_ = hp_m[core], hp_b[core]
+                den = float(np.std(a_) * np.std(b_))
+                tex = abs(float(np.mean((a_ - a_.mean()) * (b_ - b_.mean())) / den)) if den > 1e-9 else 0.0
+            reasons = []
+            if l.get("name") in PHOTO_BUILT and not (manifest or {}).get("layers_verified"):
+                reasons.append("built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill")
+            if chroma > 0.2:
+                reasons.append(f"coloured ({chroma:.2f}, not a black fill)")
+            if tex > 0.35:
+                reasons.append(f"copied photo pixels (detail matches the photo, {tex:.2f})")
+            if reasons and tint is dk:
+                impure.append(f"'{l['name']}' " + " and ".join(reasons))
+            elif chroma > 0.35 and tint is br:
+                impure.append(f"'{l['name']}' glare is coloured ({chroma:.2f})")
+        res["checks"]["overlay"] = _res("fail" if spill else ("pass" if ov else "skip"),
+                                        "; ".join(spill) if spill else ("" if ov else "no shadow/glare layers"))
+        res["checks"]["purity"] = _res("fail" if impure else ("pass" if ov else "skip"),
+                                       "; ".join(impure) if impure else ("" if ov else "no shadow/glare layers"))
+        # 5 sun angle
+        sun = sun_line(bg, O)
+        res["measured"]["sun"] = sun
+        if not sun:
+            res["checks"]["sun"] = _res("skip", "no sun line on the wall near the frame")
+        else:
+            edges = []
+            for lid, (m, tint, l) in effects.items():
+                if l.get("blend") == "Screen":
+                    continue
+                e = overlay_edge(m, ins)
+                if e:
+                    edges.append((l["name"], e))
+            res["measured"]["shadow_edges"] = {n: e for n, e in edges}
+            if not edges:
+                res["checks"]["sun"] = _res("skip", f"wall sun line {sun['deg']:.0f} deg; no shadow layer has a "
+                                                    "straight light edge to compare (soft or no light-source shadow)")
+            else:
+                n, e = min(edges, key=lambda x: abs(x[1]["deg"] - sun["deg"]))
+                d = abs(e["deg"] - sun["deg"])
+                res["checks"]["sun"] = _res("fail" if d > TOL_DEG else "pass",
+                                            (f"'{n}' edge {e['deg']:.0f} deg vs wall sun line {sun['deg']:.0f} deg "
+                                             f"({d:.0f} deg off)") if d > TOL_DEG else "",
+                                            wall_deg=sun["deg"], shadow_deg=e["deg"])
+        # 6 ratio
+        asp = true_aspect(O, (W, H))
+        res["measured"]["opening_ratio"] = round(asp, 4)
+        why = []
+        if ratio in RATIO_TARGETS:
+            tgt = min(RATIO_TARGETS[ratio], key=lambda t: abs(asp / t - 1))
+            off = asp / tgt - 1
+            if abs(off) > TOL_RATIO:
+                why.append(f"opening ratio {asp:.3f} is {off:+.1%} off {ratio} ({tgt:.3f}); the crop limit is 3%")
+        vis = true_aspect(V, (W, H))
+        stretch = (so[0] / so[1]) / vis - 1
+        res["measured"]["so_ratio"] = round(so[0] / so[1], 4)
+        res["measured"]["visible_ratio"] = round(vis, 4)
+        if abs(stretch) > TOL_RATIO and not r["mats"]:
+            why.append(f"the smart object ({so[0]}x{so[1]}) is stretched {stretch:+.1%} to its frame")
+        res["checks"]["ratio"] = _res("fail" if why else "pass", "; ".join(why))
+        # 7 mat
+        if not r["mats"] and (manifest or {}).get("mode") != "mat":
+            res["checks"]["mat"] = _res("skip", "no mat")
+        else:
+            widths = []
+            for i in range(4):
+                o2, _ = find_edge(bgs, O, i, int(0.3 * min(side_lengths(O))) + 4, prefer="next", start=0)
+                widths.append(o2)
+            names_m = ", ".join(l["name"] for l in r["mats"])
+            bevel = any(any(w in l.get("name", "").lower() for w in ("bevel", "shadow")) and
+                        any(w in " ".join([l.get("name", "")] + l["parents"]).lower() for w in ("mat", "matte", "bevel"))
+                        for l in flat)
+            why = []
+            if any(w is None for w in widths):
+                why.append("mat outer edge not found on every side")
+            else:
+                ls = side_lengths(O)
+                a = asp
+                norm = [widths[0] / ls[0] * a, widths[1] / ls[1], widths[2] / ls[2] * a, widths[3] / ls[3]]
+                mean = sum(norm) / 4
+                spread = (max(norm) - min(norm)) / max(mean, 1e-6)
+                res["measured"]["mat_widths_px"] = [round(float(w), 1) for w in widths]
+                if spread > 0.2:
+                    why.append("mat width not uniform (" + ", ".join(f"{n} {w:.0f}px" for n, w in zip(names4, widths)) + ")")
+            if not bevel:
+                why.append("no mat bevel/shadow layer")
+            res["checks"]["mat"] = _res("fail" if why else "pass", "; ".join(why), layers=names_m)
+    return _finish(res, psd, st0)
+
+
+def _finish(res, psd, st0):
+    st1 = Path(psd).stat()
+    if (st1.st_size, st1.st_mtime_ns) != (st0.st_size, st0.st_mtime_ns):
+        res["checks"]["layers"] = _res("fail", "THE PSD CHANGED DURING THE CHECK (it must stay read-only)")
+    for k in CHECKS:
+        res["checks"].setdefault(k, _res("skip", ""))
+    fails = [f"{LABELS[k]}: {v['reason']}" for k, v in res["checks"].items() if v["status"] == "fail"]
+    res["status"] = "FAIL" if fails else "PASS"
+    res["reasons"] = fails
+    return res
+
+
+# ---------- library ----------
+
+def load(path=None):
+    p = Path(path or RESULTS)
+    try:
+        return json.loads(p.read_text())
+    except (OSError, ValueError):
+        return {"results": {}}
+
+
+def save(data, path=None):
+    p = Path(path or RESULTS)
+    tmp = p.with_suffix(".tmp")
+    tmp.write_text(json.dumps(data, indent=1) + "\n")
+    tmp.replace(p)
+
+
+def status_for(rel, data=None, psd=None):
+    """The stored result for a template (None when never checked or the PSD changed since)."""
+    r = (data or load()).get("results", {}).get(rel)
+    if not r:
+        return None
+    if psd is not None:
+        st = Path(psd).stat()
+        if st.st_size != r.get("psd_size") or int(st.st_mtime) != r.get("psd_mtime"):
+            return dict(r, stale=True)
+    return r
+
+
+def templates(settings=None, wired=False):
+    from .scene_templates import load_manifest
+    from .template_gallery import scan
+    return [dict(t, manifest=load_manifest(t["psd"])) for t in scan(settings)[0] if wired or not t.get("wired")]
+
+
+def check_template(t, settings=None):
+    m = t.get("manifest") or {}
+    return check_psd(t["psd"], t["ratio"], settings, so_px=m.get("so_px"), manifest=m)
+
+
+def run_all(settings=None, rels=None, path=None, log=print):
+    data = load(path)
+    data.setdefault("results", {})
+    ts = [t for t in templates(settings) if not rels or t["rel"] in rels]
+    with _job_lock:
+        _job.update(running=True, done=0, total=len(ts), current="", error="")
+    try:
+        for t in ts:
+            with _job_lock:
+                _job["current"] = t["rel"]
+            try:
+                r = check_template(t, settings)
+            except Exception as e:  # noqa: BLE001  (one bad PSD never stops the rest)
+                r = {"psd": t["psd"].name, "status": "FAIL", "reasons": [f"checker error: {str(e)[:200]}"],
+                     "checks": {}, "checked": datetime.now().isoformat(timespec="seconds")}
+            r["rel"] = t["rel"]
+            data["results"][t["rel"]] = r
+            data["updated"] = datetime.now().isoformat(timespec="seconds")
+            save(data, path)
+            log(f"{r['status']}  {t['rel']}" + ("" if r["status"] == "PASS" else "\n      " + "\n      ".join(r["reasons"])))
+            with _job_lock:
+                _job["done"] += 1
+    finally:
+        with _job_lock:
+            _job.update(running=False, current="")
+    return data
+
+
+def job():
+    with _job_lock:
+        return dict(_job)
+
+
+def start(settings=None, rels=None):
+    with _job_lock:
+        if _job["running"]:
+            return False
+        _job["running"] = True
+    threading.Thread(target=run_all, args=(settings, rels, None, lambda *_: None), daemon=True).start()
+    return True
+
+
+if __name__ == "__main__":
+    import sys
+    from .db import load_config
+    s = load_config("settings")
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if "--fails" in sys.argv:
+        d = load()
+        fails = {k: v for k, v in d.get("results", {}).items() if v.get("status") != "PASS"}
+        print(f"{len(fails)} FAIL of {len(d.get('results', {}))}")
+        for k, v in sorted(fails.items()):
+            print(k)
+            for x in v.get("reasons", []):
+                print("   ", x)
+    elif "--all" in sys.argv or args:
+        d = run_all(s, args or None)
+        res = d["results"]
+        n = sum(1 for v in res.values() if v.get("status") == "PASS")
+        print(f"{n} PASS, {len(res) - n} FAIL")
+    else:
+        print(__doc__)

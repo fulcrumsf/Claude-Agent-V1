@@ -1,7 +1,11 @@
-"""Room-slot planning for the Production tab (Tony, 2026-11-08): which room, decor style and print ratio each
-listing image 8-19 shows. Pure logic, no files, no network; app/production.py calls it.
+"""Room-slot planning for the Production tab (Tony, 2026-11-08; slot map corrected 2026-11-10): which room, decor
+style and print ratio each ROOM listing image shows. Pure logic, no files, no network; app/production.py calls it.
 
-  - Slots 8.. take the rooms Tony ticked (up to 5, ONLY from Etsy's Room attribute list), in his order.
+  - Listing slot map (Tony 2026-11-10, memory ikigai-listing-slot-map): 1 main, 1A video (never "slot 2"), 2 poster,
+    3 ROOM, 4 Instant Download, 5 what-you-get + sizes, 6 wall diagram, 7 important notes, 8 close-up detail,
+    9-19 ROOMS, 20 reviews. Rooms = slot 3 + slots 9-19 (12); every other slot is the same every listing.
+  - Room slots in order (3, 9, 10, 11, 12 ...) take the rooms Tony ticked (up to 5, ONLY from Etsy's Room attribute
+    list), in his order.
   - The agent fills the rest (up to slot 19) with rooms that make sense for the art: the art-to-room
     compatibility rule scores every room against the idea text, the shop-style tags and the print itself
     (value key from rooms.analyze_print), using Rules_And_Policies/Etsy_Attributes_And_Style_Crosswalk.md.
@@ -22,6 +26,14 @@ SCENE_ONLY_ROOMS = ["Creative space"]
 SHOP_STYLES = ["Trendy", "Abstract", "Animals", "Botanical", "Food-Drink", "Game Room", "Japan Art", "Mid Century",
                "Minimalism", "Nature", "Nursery", "Retro", "Travel", "Typography", "Vintage", "Beach Ocean"]
 MAX_PICKS = 5
+ROOM_SLOTS = [3] + list(range(9, 20))      # the 12 room images, in fill order
+FIXED_SLOTS = [1, 2, 4, 5, 6, 7, 8, 20]    # same every listing (1A video too); never a Production card
+
+
+def room_slots(settings=None):
+    """The room slot numbers in fill order (settings `room_slots` may override; default 3, 9-19)."""
+    v = (settings or {}).get("room_slots")
+    return [int(x) for x in v] if v else list(ROOM_SLOTS)
 
 # room -> normalised name of the room folder in Room_Templates/Portrait_Templates/<NNN_Ratio>/<NNN_Room> (crosswalk:
 # Living_Rooms -> Living room, Kitchen_Bar -> Kitchen & dining, GameRooms_Mancave -> Game room, Kids_Nursery ->
@@ -29,7 +41,10 @@ MAX_PICKS = 5
 ROOM_FOLDER = {"Living room": "living_rooms", "Bedroom": "bedroom", "Dorm": "bedroom", "Bathroom": "bathroom",
                "Kitchen & dining": "kitchen_bar", "Office": "office", "Game room": "gamerooms_mancave",
                "Kids": "kids_nursery", "Nursery": "kids_nursery", "Creative space": "creative_space",
-               "Entryway": None, "Laundry": None}
+               "Entryway": "entryway", "Laundry": "laundry"}   # folders only after Tony approves them
+# room folders the Templates tab may PROPOSE (Tony 2026-11-10: created only after he approves the exact path).
+# Numbers follow his order: ISO already uses 007_Creative_Space and 008_Kids_Nursery, so new rooms start at 009.
+PROPOSED_ROOM_FOLDERS = {"Entryway": "009_Entryway", "Laundry": "010_Laundry"}
 # what the image model is asked to draw for each room
 ROOM_WORDS = {"Living room": "living room", "Bedroom": "bedroom", "Dorm": "college dorm room", "Bathroom": "bathroom",
               "Kitchen & dining": "kitchen and dining nook", "Office": "home office", "Game room": "game room",
@@ -207,14 +222,16 @@ def assign_ratios(slots, available, weights=None):
     return slots
 
 
-def plan(picked, styles, text, value_key=None, first=8, last=19, available=None, weights=None, locked=None):
-    """The slot plan: [{slot, room, decor, ratio, by: tony|agent, reason}]. `available` = {room: [ratios with a
+def plan(picked, styles, text, value_key=None, slots=None, available=None, weights=None, locked=None):
+    """The slot plan: [{slot, room, decor, ratio, by: tony|agent, reason}] over the room slots in fill order
+    (`slots`, default ROOM_SLOTS = 3, 9-19). `available` = {room: [ratios with a
     room folder]} (rooms missing there can still be picked by Tony; the card then says a folder is needed).
     `locked` = {slot: {room, decor, ratio}} for slots whose image Tony approved; they keep their room."""
     picked = [r for r in (picked or []) if r in ETSY_ROOMS][:MAX_PICKS]
     available = available or {}
     locked = {int(k): v for k, v in (locked or {}).items()}
-    n_max = last - first + 1
+    order = list(slots or ROOM_SLOTS)
+    n_max = len(order)
     scores = score_rooms(text, styles, value_key)
     slots, uses, decor_used = [], {}, {}
 
@@ -241,7 +258,7 @@ def plan(picked, styles, text, value_key=None, first=8, last=19, available=None,
             continue
         add(room, "agent", ", ".join(why[:3]) or "a common room for wall art")
     for i, s in enumerate(slots):
-        s["slot"] = first + i
+        s["slot"] = order[i]
     for i, s in enumerate(slots):
         if s["slot"] in locked:
             s.update({k: locked[s["slot"]][k] for k in ("room", "decor", "ratio") if locked[s["slot"]].get(k)})
@@ -253,14 +270,19 @@ def plan(picked, styles, text, value_key=None, first=8, last=19, available=None,
     return slots
 
 
+def decor_words(decor):
+    """Words for the image model: the known decor styles, else the style folder's own name in plain words."""
+    return DECOR_WORDS.get(decor) or re.sub(r"[_\s]+", " ", str(decor or "modern")).strip().lower()
+
+
 def scene_prompt(room, decor, ratio):
     """Tony's recipe (memory feedback_room_template_recipe_ai_frame_in_scene, 2026-11-08): one real frame with a
     BLANK WHITE insert in the needed ratio; the art is never in the prompt (it is composited later, so the scene
     works for any print). Plus the standing rules: no people, no random lamps, props only when lived-in."""
-    return (f"Photorealistic {DECOR_WORDS.get(decor, 'modern')} {ROOM_WORDS.get(room, room.lower())} interior "
+    return (f"Photorealistic {decor_words(decor)} {ROOM_WORDS.get(room, room.lower())} interior "
             f"featuring one vertical picture frame with a blank white insert ({RATIO_PROMPT[ratio]}). Realistic "
             "textures, subtle decor, moody and lived-in detail that feels authentic. Lighting is soft warm daylight, "
             "naturally diffused, never harsh. Camera angle: 3/4 corner. Composition should be vertical, focused on "
             "the frame and wall area. no other frames. The insert is plain matte white paper, completely empty, no "
-            "artwork, no text, no logo. No people, no faces, no hands, no pets. No lamps unless the room clearly "
+            "artwork, no text, no logo, no glare and no heavy shadow on it. No people, no faces, no hands, no pets. No lamps unless the room clearly "
             "needs one; only props a real person would leave there, nothing staged.")

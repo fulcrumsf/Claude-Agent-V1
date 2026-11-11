@@ -1,11 +1,11 @@
-"""Production tab (stage 4, rebuilt 2026-11-08 to Tony's spec): room images 8-19 for each upscaled design, one card
-per slot, nothing else.
+"""Production tab (stage 4, rebuilt 2026-11-08 to Tony's spec; slot map 2026-11-10): the ROOM images for each upscaled
+design (slot 3 and slots 9-19, app/room_slots.ROOM_SLOTS), one card per slot, nothing else.
 
   - Only designs whose upscale is done appear (thumbnail row on top; click opens the big panel).
   - Panel: up to 5 room check boxes (Etsy's Room list only) and the shop-style tick list; blank styles = the agent
     decides from the art (the Templates tab's cheap Gemini vision guess, app/template_styles.classify_art). The ticks
     are saved as TAGS on the design (listing record `design_tags`, read later by etsy_draft via the crosswalk).
-  - Slot plan: app/room_slots.plan (Tony's rooms first from slot 8, then the agent's by the art-to-room
+  - Slot plan: app/room_slots.plan (Tony's rooms first in slots 3, 9, 10, 11, 12, then the agent's by the art-to-room
     compatibility rule; fewer cards rather than padding). Only slots that need building get a card.
   - Card: Generate / Regenerate (ONE job at a time, global; one click = cost approval), result in the card,
     Approve / Deny, and "+" to pick any library template. Source per click: a matching library template not used
@@ -15,7 +15,9 @@ per slot, nothing else.
     a denied image moves to Archive (Undo / Approve moves it back), a render the accuracy guard flags is written to
     Archive and shown on the card with the reason (Approve moves it in). Denying an image whose template was made
     for it also moves that template folder into its style folder's Archive/ (Tony's rule for denied looks).
-  - Slots 1, 2, 7 and the fixed 3-6, 20 are made by Run upscale + resize and are never shown here.
+  - Slots 1, 2, 8 and the fixed 4-7, 20 are made by Run upscale + resize and are never shown here.
+  - Fit rule (Tony 2026-11-10): art is cover-fit and centre-cropped to the opening, never stretched, never a white
+    border (scene_templates.fit_cover); mats exist only as template layers.
 Decisions live in the listing record (`mockup_approvals`: file -> approved | denied)."""
 import re
 import shutil
@@ -31,9 +33,10 @@ from . import scene_templates as stp
 from .db import DB_LOCK as LOCK
 
 FIXED_NAMES = {n for n, _ in mockups.FIXED}
-TEMPLATED_SLOTS = {int(stem[:2]) for stem, _ in mockups.GENERATED}     # 1, 2, 7: art in a PSD, not reviewed here
+TEMPLATED_SLOTS = {int(stem[:2]) for stem, _ in mockups.GENERATED}     # 1, 2, 8: art in a PSD, not reviewed here
+ROOM_SLOTS = set(rs.ROOM_SLOTS)                                          # 3, 9-19
 DECISIONS = ("approved", "denied", "pending")
-LABELS = {1: "Main", 2: "Poster", 7: "Detail"}
+LABELS = {1: "Main", 2: "Poster", 8: "Detail"}
 ARCHIVE = "Archive"
 _job = {"running": False, "idea_id": None, "slot": None, "stage": "", "started": None}
 _job_lock = threading.Lock()
@@ -62,7 +65,7 @@ def _prod(rec):
 
 def _is_slot_image(name):
     return (name.lower().endswith(".jpg") and name[:2].isdigit() and name not in FIXED_NAMES
-            and int(name[:2]) not in TEMPLATED_SLOTS)
+            and int(name[:2]) in ROOM_SLOTS)
 
 
 def _archive_file(folder, name, rec):
@@ -124,7 +127,7 @@ def design(con, settings, idea_id, prefix="/ikigai"):
         if p.is_file() and not (folder / name).exists():
             found.append((name, p, "flagged" if info.get("was") == "flagged" else "archive"))
     made = {f["file"]: f for f in (rec.get("mockups") or {}).get("files", [])}
-    if any(f.get("slot", 0) >= 8 and f.get("room") for f in made.values()):
+    if any(f.get("slot", 0) in ROOM_SLOTS and f.get("room") for f in made.values()):
         # once the old room-template step made rooms, older room files nobody made (e.g. the rejected v1 AI rooms)
         # are hidden, never deleted; images the Production cards made always show
         ours = set(made) | set(_prod(rec)["archived"])
@@ -305,11 +308,9 @@ def _plan(con, settings, idea, rec, folder, arts):
         name, _, _ = _current_image(folder, int(k), s, rec)
         if name and approvals.get(name) == "approved" and s.get("room"):
             locked[int(k)] = {"room": s["room"], "decor": s.get("decor"), "ratio": s.get("ratio")}
-    first = int(settings.get("room_slots_first", 8))
-    last = int(settings.get("room_slots_last", 19))
     avail = stp.available_rooms(settings)
     text = f"{idea['title']}. {idea['description'] or ''}"
-    return rs.plan(tags.get("rooms") or [], styles, text, an.get("value_key"), first, last, avail,
+    return rs.plan(tags.get("rooms") or [], styles, text, an.get("value_key"), rs.room_slots(settings), avail,
                    settings.get("room_ratio_weights"), locked), avail
 
 
@@ -320,15 +321,24 @@ def _engine(settings):
             "resolution": settings.get("room_scene_resolution", "2K")}
 
 
-def library_picks(plan, slots, lib):
+def checker_fails(settings=None):
+    """Templates the template checker FAILED (app/template_checker.py results; a PSD changed since its check counts
+    as unchecked). They are never picked automatically; Tony can still pick one with "+"."""
+    from . import template_checker as tc
+    data = tc.load((settings or {}).get("template_checks_path"))
+    return {rel for rel, r in (data.get("results") or {}).items() if r.get("status") == "FAIL"}
+
+
+def library_picks(plan, slots, lib, fails=frozenset()):
     """Which library template each card's next click uses, decided in slot order so no two cards (and no template
-    already used in this listing) share one; a template a slot already tried is skipped. {slot: template or None}."""
+    already used in this listing) share one; a template a slot already tried, or one the checker FAILED, is skipped.
+    {slot: template or None}."""
     used = {s.get("template") for s in slots.values() if s.get("template")}
     out = {}
     for c in sorted(plan, key=lambda c: c["slot"]):
         srec = slots.get(str(c["slot"])) or {}
         mine = srec.get("template")
-        cands = [t for t in lib if stp.matches(t, c["room"], c["decor"], c["ratio"])
+        cands = [t for t in lib if stp.matches(t, c["room"], c["decor"], c["ratio"]) and t["rel"] not in fails
                  and t["rel"] not in used and t["rel"] != mine and t["rel"] not in (srec.get("tried") or [])]
         out[c["slot"]] = cands[0] if cands else None
         if cands:
@@ -374,7 +384,7 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None):
               "ratio": s.get("ratio") or "2x3", "by": "earlier", "reason": "not in the current plan",
               "ratio_label": rs.RATIO_LABEL.get(s.get("ratio") or "2x3")}
              for k, s in slots.items() if int(k) not in planned and (s.get("file") or s.get("state"))]
-    picks = library_picks(plan + extra, slots, lib)
+    picks = library_picks(plan + extra, slots, lib, checker_fails(settings))
     for c in sorted(plan + extra, key=lambda c: c["slot"]):
         srec = slots.get(str(c["slot"])) or {}
         name, p, where = _current_image(folder, c["slot"], srec, rec)
@@ -401,6 +411,7 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None):
             "image_url": prints.status(con, idea_id, settings, prefix)["image_url"],
             "folder_rel": f"Designs/{folder.parent.name}/03-Etsy Images",
             "rooms_all": rs.ETSY_ROOMS, "max_rooms": rs.MAX_PICKS, "styles_all": _vocab(),
+            "room_slots": rs.room_slots(settings),
             "rooms": tags.get("rooms") or [], "styles": tags.get("styles") or [],
             "styles_auto": (tags.get("auto_styles") or {}).get("styles") or [],
             "styles_auto_error": (tags.get("auto_styles") or {}).get("error"),
@@ -473,9 +484,8 @@ def job_state():
 def start_slot(con, settings, idea_id, slot, template_rel=None):
     """Claim the single job slot for this card. The caller runs run_slot in a worker. One click = Tony's approval
     of the cost (a library template costs nothing; a new scene costs kie.ai credits)."""
-    first, last = int(settings.get("room_slots_first", 8)), int(settings.get("room_slots_last", 19))
-    if not first <= slot <= last:
-        raise ProductionError(f"room images are slots {first}-{last}")
+    if slot not in rs.room_slots(settings):
+        raise ProductionError("room images are slot 3 and slots 9-19")
     _ctx(con, settings, idea_id)
     if template_rel and template_rel not in {t["rel"] for t in stp.library_templates(settings)}:
         raise ProductionError("no such template in the library")
@@ -520,7 +530,7 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
             source = "picked"
         else:                                   # the same choice the card showed (library_picks, slot order)
             plan_all = plan if any(c["slot"] == slot for c in plan) else plan + [card]
-            t = library_picks(plan_all, _prod(rec)["slots"], lib).get(slot)
+            t = library_picks(plan_all, _prod(rec)["slots"], lib, checker_fails(settings)).get(slot)
             source = "library" if t else "new"
         out = {"room": card["room"], "decor": card["decor"], "ratio": card["ratio"], "source": source,
                "credits": 0, "new_template": None}
@@ -540,12 +550,12 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 (td / "build").mkdir()
                 try:
                     built = stp.build_psd(scene, card["ratio"], td / "build", settings)
-                except stp.TemplateError:
+                except stp.TemplateError as e:
                     folder.joinpath(ARCHIVE).mkdir(parents=True, exist_ok=True)
                     keep = folder / ARCHIVE / f"Scene_No_Insert_{slot:02d}_{datetime.now():%Y%m%d_%H%M%S}.png"
                     shutil.copy2(scene, keep)
-                    raise stp.TemplateError(f"the scene has no clean blank frame insert (kept as {ARCHIVE}/{keep.name});"
-                                            " Regenerate for a new scene")
+                    why = str(e) if "off the print ratio" in str(e) else "the scene has no clean blank frame insert"
+                    raise stp.TemplateError(f"{why} (scene kept as {ARCHIVE}/{keep.name}); Regenerate for a new scene")
                 meta = {"prompt": prompt, "engine": settings.get("room_scene_engine", "nbpro"),
                         "model": gen.get("model"), "resolution": settings.get("room_scene_resolution", "2K"),
                         "aspect": settings.get("room_scene_aspect", "4:3"), "credits": gen.get("credits"),
@@ -558,7 +568,7 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 r = stp.render_psd(psd, man["so_px"], art, render, settings, td)
                 g = rt.guard_quad(render, r["fitted"], man["quad_art"], tdir / man["scene"],
                                   man.get("guard_max_cover"), settings)
-                out.update(template=rel, new_template=rel, print=art.name, padded=r["padded"])
+                out.update(template=rel, new_template=rel, print=art.name, cropped=r["cropped"])
             elif t.get("wired"):                           # Teak Sideboard etc.: only when Tony picks it with +
                 _stage("rendering the art into the room")
                 room = next(x for x in rt.rooms(settings) if x["dir"] == t["room_dir"])
@@ -567,14 +577,14 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 look = {"frame_layer": "Oak", "frame_id": "oak", "mat": False, "paint": None, "glass": True}
                 r = rt.render_look(room, light, art, look, render, settings, td)
                 g = rt.guard(room, light, render, r["fitted"], False, settings)
-                out.update(template=t["rel"], print=art.name, padded=None)
+                out.update(template=t["rel"], print=art.name, cropped=None)
             else:
                 _stage("rendering the art into the room")
                 man = stp.manifest_for_render(t, settings)
                 art = stp.print_for(arts, man["so_px"][0] / man["so_px"][1])
                 r = stp.render_psd(t["psd"], man["so_px"], art, render, settings, td)
                 g = rt.guard_quad(render, r["fitted"], man["quad_art"], None, None, settings)
-                out.update(template=t["rel"], print=art.name, padded=r["padded"])
+                out.update(template=t["rel"], print=art.name, cropped=r["cropped"])
             with LOCK:
                 rec = prints._record(con, lst["id"])
                 prod = _prod(rec)
