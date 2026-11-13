@@ -94,3 +94,16 @@ def test_known_pass_wabi_bedroom_hand_verified_2026_11_10():
     x, y, w, h = r["measured"]["opening_box"]
     assert abs(x - 1058) <= 3 and abs(y - 162) <= 4 and abs(w - 542) <= 4 and abs(h - 740) <= 6
     assert abs(r["measured"]["sun"]["deg"] - 22) <= 3
+
+
+def test_opening_verdict_accepts_the_pad_but_fails_slivers_and_more_overlap():
+    """Tony 2026-11-12: opening = the frame's hard inner edge; the art may run 1-2 px under the frame (the pad the
+    Frame Hard Shadow hides), never short of it."""
+    assert tc.opening_verdict([-1.5, -1.5, -1.5, -1.5]) == []                       # the built pad
+    assert tc.opening_verdict([0.3, -2.4, 0.0, -1.0]) == []                         # within the 0.5 px tolerance
+    gap = tc.opening_verdict([-1.5, -1.5, -1.5, 3.0])                               # the old left-side strip
+    assert len(gap) == 1 and gap[0].startswith("left gap of 3.0 px")
+    over = tc.opening_verdict([-3.2, -1.5, -1.5, -1.5])
+    assert len(over) == 1 and "covers the frame by 3.2 px" in over[0]
+    assert tc.opening_verdict([2.5, -2.9, 0, 0], subpixel=False) == []              # old edge search: +-3 px
+    assert tc.PAD_MAX_PX == 2.0 and tc.EDGE_TOL_PX == 0.5

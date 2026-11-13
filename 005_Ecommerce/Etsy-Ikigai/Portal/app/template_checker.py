@@ -3,10 +3,15 @@ every check renders the PSD with photocraft-cli (`run <psd> ... --out <png>` int
 renders; the PSD is never saved (its size + mtime are compared before and after, and a change is reported).
 
 Per template, PASS / FAIL with plain reasons:
-  1 opening   art area vs the frame opening: the opening edge is found on a render with the art and the overlays
-              hidden (inner frame / mat edge nearest to each side of the visible art), FAIL past 3 px
+  1 opening   art area vs the frame opening, both SUB-PIXEL: the visible art quad is fitted to the anti-aliased
+              black/white card difference; the opening is SAM 2's opening on a render with the art and overlays
+              hidden (sam_opening; 2026-11-10). Since 2026-11-12 the opening is the frame's HARD inner edge with
+              the shadowed paper counted as opening (sam_frames.opening_quad): FAIL on a gap > 0.5 px (baked
+              paper/shadow shows) or art > 2.5 px under the frame (the allowed pad is 1-2 px, hidden by the Frame
+              Hard Shadow layer). Falls back to the old edge search (inner frame / mat edge nearest each side,
+              +-3 px) when SAM is not installed, fails, or the template has a mat.
   2 card      black card vs white card: pixels inside the opening that do not change = a gap (white sliver);
-              pixels outside it that change = art over the frame
+              pixels beyond the opening + the 2 px pad that change = art over the frame
   3 overlay   every shadow / glare layer's effect stays inside the art opening (rendered alone over a grey card)
   4 purity    every shadow layer is neutral (black fill: R = G = B) and smooth (not copied photo pixels)
   5 sun       the wall's sun line (light/shade edge measured on the base) vs the shadow layer's edge, within 3 deg
@@ -34,7 +39,13 @@ from .db import ROOT
 
 RESULTS = ROOT / "config" / "template_checks.json"
 ART = "Place Artwork Here"
-TOL_PX = 3              # opening vs art, per side
+TOL_PX = 3              # opening vs art, per side (old integer edge search only)
+# Tony 2026-11-12: the opening is the frame's HARD inner edge (shadowed paper counted as opening); the art runs
+# 1-2 px under it (scene_templates opening_pad_px 1.5) and the Frame Hard Shadow layer darkens that pad. With the
+# sub-pixel SAM opening: art short of the opening by more than EDGE_TOL_PX = a sliver of baked paper/shadow (FAIL);
+# art under the frame by more than PAD_MAX_PX + EDGE_TOL_PX = art over the frame (FAIL).
+PAD_MAX_PX = 2.0
+EDGE_TOL_PX = 0.5
 TOL_RATIO = 0.03        # cover-fit crop limit
 TOL_DEG = 3.0           # sun angle
 RATIO_TARGETS = {"2x3": [2 / 3], "3x4": [0.75], "4x5": [0.8], "11x14": [11 / 14], "iso": [1 / 2 ** 0.5, 5 / 7]}
@@ -322,9 +333,10 @@ def _step_across(gray, x1, y1, x2, y2, w=6):
     return float(np.median(s1 - s2)) / max(float(np.median(np.maximum(s1, s2))), 1.0)
 
 
-def sun_line(rgb, opening_q, search=1.0):
+def sun_line(rgb, opening_q, search=1.0, wall=None):
     """The wall's light/shade edge near the frame: the longest straight diagonal brightness step in a band around
-    the opening (frame excluded). Returns {deg, line, contrast} or None."""
+    the opening (frame excluded; with `wall` (a SAM wall alpha) only on the wall itself). Returns {deg, line,
+    contrast} or None."""
     H, W = rgb.shape[:2]
     gray = rgb @ np.float32([0.299, 0.587, 0.114])
     q = np.float32(opening_q)
@@ -335,6 +347,9 @@ def sun_line(rgb, opening_q, search=1.0):
     box[int(max(0, y0 - search * h)):int(min(H, y1 + 0.35 * h)), int(max(0, x0 - search * w)):int(min(W, x1 + search * w))] = True
     frame = poly_mask(offset_quad(q, [0.1 * max(w, h)] * 4), W, H)
     mask = box & ~frame
+    if wall is not None:
+        import cv2
+        mask &= cv2.erode((wall > 0.5).astype("uint8"), np.ones((7, 7), "uint8")) > 0   # away from the wall's own edge
     best = None
     for x_1, y_1, x_2, y_2 in _lines(gray, mask, 0.22 * h, h):
         a = _angle(x_1, y_1, x_2, y_2)
@@ -367,10 +382,94 @@ def overlay_edge(effect, inside):
         a = _angle(x1, y1, x2, y2)
         if not 8 <= abs(a) <= 75:
             continue
+        if abs(_step_across(g, x1, y1, x2, y2, w=max(3, int(0.01 * h)))) < 0.12:
+            continue                     # a smooth light falloff has no edge (only a real light/shade line counts)
         L = math.dist((x1, y1), (x2, y2))
         if best is None or L > best[1]:
             best = (round(a, 1), L, [int(x1), int(y1), int(x2), int(y2)])
     return {"deg": best[0], "line": best[2]} if best else None
+
+
+def visible_quad_subpixel(D, V):
+    """Sub-pixel quad of the visible art from the anti-aliased black/white card difference (app/sam_frames.fit_quad);
+    the integer hull quad when the fit fails (a prop clipping a corner)."""
+    from . import sam_frames as sf
+    try:
+        q, _ = sf.fit_quad(np.clip(D, 0, 1).astype("float32"), np.float32(V), R=3.0)
+        return q if np.abs(q - np.float32(V)).max() < 6 else np.float32(V)
+    except Exception:  # noqa: BLE001
+        return np.float32(V)
+
+
+def sam_opening(bg_png, V, settings=None, work=None, psd=None):
+    """The frame opening on the BASE-only render, by SAM 2 (scene_templates.sam_detect: box = the visible art +4%,
+    material-edge refinement, sub-pixel corners, loud failure) plus SAM's wall mask (for the sun-line search).
+    Returns (quad, model, wall alpha or None) or (None, reason, None). A SAM quad that does not overlap the art
+    (IoU < 0.8) is not trusted."""
+    from . import sam_frames as sf
+    from . import scene_templates as stp
+    if (settings or {}).get("checker_use_sam") is False:
+        return None, "switched off", None
+    if psd is not None and any(n in str(psd) for n in sf.NOT_ON):
+        return None, "never on this template (verified by hand)", None
+    V = np.float32(V)
+    x0, y0 = V.min(0)
+    x1, y1 = V.max(0)
+    pad = 0.04 * max(x1 - x0, y1 - y0)
+    try:
+        res, _, wall = stp.sam_detect(bg_png, work, settings, box=[x0 - pad, y0 - pad, x1 + pad, y1 + pad], wall=True)
+    except stp.TemplateError as e:
+        return None, str(e)[:160], None
+    O = np.float32(res["corners"])
+    from PIL import Image
+    with Image.open(bg_png) as im:
+        W, H = im.size
+    a, b = sf.poly_coverage(O, W, H) > 0.5, sf.poly_coverage(V, W, H) > 0.5
+    iou = float((a & b).sum() / max((a | b).sum(), 1))
+    if iou < 0.8:
+        return None, f"SAM found a different region (IoU {iou:.2f} with the art)", None
+    return O, res.get("model", "sam2"), wall
+
+
+def side_offsets(V, O):
+    """Per side (top, right, bottom, left): how far O's side lies OUTSIDE V's side (px, along V's outward normal,
+    mean of the quarter points). Positive = a gap between art and frame, negative = art over the frame."""
+    V, O = np.float32(V), np.float32(O)
+    c = V.mean(0)
+    out = []
+    for i in range(4):
+        a, b = V[i], V[(i + 1) % 4]
+        t = (b - a) / max(np.linalg.norm(b - a), 1e-6)
+        n = np.float32([-t[1], t[0]])
+        if np.dot(c - a, n) > 0:
+            n = -n
+        p, r = O[i], O[(i + 1) % 4] - O[i]
+        ds = []
+        for f in (0.25, 0.75):
+            x = a + (b - a) * f
+            cr = n[0] * r[1] - n[1] * r[0]
+            ds.append(((p - x)[0] * r[1] - (p - x)[1] * r[0]) / cr if abs(cr) > 1e-9 else 0.0)
+        out.append(float(np.mean(ds)))
+    return out
+
+
+def opening_verdict(offs, subpixel=True):
+    """Per side offsets (top, right, bottom, left; + = the opening lies OUTSIDE the art = a gap, - = the art runs
+    under the frame). Sub-pixel SAM opening (the frame's hard inner edge): a gap beyond EDGE_TOL_PX fails (a sliver
+    of baked paper/shadow shows), the art may run under the frame by up to PAD_MAX_PX (+ EDGE_TOL_PX) - the pad the
+    Frame Hard Shadow layer hides - and fails beyond that. The old integer edge search keeps its +-TOL_PX.
+    Returns the list of reasons (empty = pass)."""
+    names4 = ["top", "right", "bottom", "left"]
+    bad = []
+    for n, o in zip(names4, offs):
+        if not subpixel:
+            if abs(o) > TOL_PX:
+                bad.append(f"{n} {'art covers the frame by' if o < 0 else 'gap of'} {abs(o):.1f} px")
+        elif o > EDGE_TOL_PX:
+            bad.append(f"{n} gap of {o:.1f} px between the frame's inner edge and the art (baked paper shows)")
+        elif o < -(PAD_MAX_PX + EDGE_TOL_PX):
+            bad.append(f"{n} art covers the frame by {-o:.1f} px (pad limit {PAD_MAX_PX:g} px)")
+    return bad
 
 
 # ---------- the checks ----------
@@ -439,17 +538,30 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
                 res["checks"][k] = _res("fail" if k == "opening" else "skip", "the art is not visible in the render")
             return _finish(res, psd, st0)
         res["measured"]["visible_quad"] = np.round(V, 1).tolist()
-        # 1 opening
+        Vs = visible_quad_subpixel((wht - blk).mean(2) / 255.0, V)
+        res["measured"]["visible_quad_subpx"] = np.round(Vs, 3).tolist()
+        # 1 opening: SAM 2 on the BASE-only render (Tony 2026-11-10: SAM everywhere); the old edge search only when
+        # SAM is not available, fails, or the template has a mat (art on a flat mat has no window edge to segment)
         sl = side_lengths(V)
         R = int(min(40, max(10, round(0.045 * min(sl)))))
         import cv2
         bgs = cv2.GaussianBlur(bg, (0, 0), 0.8)
-        offs, found = [], 0
-        for i in range(4):
-            o, _ = find_edge(bgs, V, i, R)
-            offs.append(o)
-            found += o is not None
         names4 = ["top", "right", "bottom", "left"]
+        O_sam, sam_why, sam_wall = (None, "the template has a mat", None) if (r["mats"] or (manifest or {}).get("mode")
+                                                                           == "mat") \
+            else sam_opening(td / "bg.png", Vs, settings, td, psd)
+        if O_sam is not None:
+            offs = [round(float(x), 2) for x in side_offsets(Vs, O_sam)]
+            found = 4
+            res["measured"]["opening_source"] = f"SAM 2 ({sam_why})"
+            res["measured"]["opening_quad_sam"] = np.round(O_sam, 3).tolist()
+        else:
+            res["measured"]["opening_source"] = f"edge search (SAM: {sam_why})"
+            offs, found = [], 0
+            for i in range(4):
+                o, _ = find_edge(bgs, V, i, R)
+                offs.append(o)
+                found += o is not None
         res["measured"]["opening_offsets"] = {names4[i]: offs[i] for i in range(4)}
         if found < 4:
             missing = [names4[i] for i in range(4) if offs[i] is None]
@@ -462,18 +574,19 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
                                                 " side (frameless, or the art covers the whole frame); check by eye")
             O = V
         else:
-            O = offset_quad(V, offs)
-            bad = [f"{names4[i]} {'art covers the frame by' if offs[i] < 0 else 'gap of'} {abs(offs[i]):.0f} px"
-                   for i in range(4) if abs(offs[i]) > TOL_PX]
+            O = np.float32(O_sam) if O_sam is not None else offset_quad(V, offs)
+            bad = opening_verdict(offs, subpixel=O_sam is not None)
             res["checks"]["opening"] = _res("fail" if bad else "pass", "; ".join(bad),
-                                            offsets=[round(float(x), 1) for x in offs])
+                                            offsets=[round(float(x), 2) for x in offs])
         res["measured"]["opening_quad"] = np.round(O, 1).tolist()
         x, y = O[:, 0].min(), O[:, 1].min()
         res["measured"]["opening_box"] = [int(round(x)), int(round(y)), int(round(O[:, 0].max() - x)),
                                           int(round(O[:, 1].max() - y))]
-        # 2 card test
-        inner = poly_mask(offset_quad(O, -1.5), W, H)
-        outer = poly_mask(offset_quad(O, 1.5), W, H)
+        # 2 card test (sub-pixel SAM opening: no gap past 1 px inside it; the art's 1-2 px pad under the frame is
+        # allowed, anything beyond PAD_MAX_PX + 1 counts as art over the frame)
+        sub = O_sam is not None
+        inner = poly_mask(offset_quad(O, -1.0 if sub else -1.5), W, H)
+        outer = poly_mask(offset_quad(O, PAD_MAX_PX + 1.0 if sub else 1.5), W, H)
         gap = int((inner & ~D).sum())
         over = int((~outer & D).sum())
         lim = 30 + 0.002 * inner.sum()
@@ -537,8 +650,9 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
         res["checks"]["purity"] = _res("fail" if impure else ("pass" if ov else "skip"),
                                        "; ".join(impure) if impure else ("" if ov else "no shadow/glare layers"))
         # 5 sun angle
-        sun = sun_line(bg, O)
+        sun = sun_line(bg, O, wall=sam_wall)                 # only on SAM's wall mask when SAM ran (no props)
         res["measured"]["sun"] = sun
+        res["measured"]["sun_searched_on"] = "SAM wall mask" if sam_wall is not None else "band around the frame"
         if not sun:
             res["checks"]["sun"] = _res("skip", "no sun line on the wall near the frame")
         else:

@@ -135,6 +135,9 @@ def run(rel, settings=None, generator=None, check=True):
                    "decor": plan["decor"], "ratio": plan["ratio"],
                    **{k: built[k] for k in ("so_px", "so_ratio", "quad_insert", "quad_art", "mode", "canvas",
                                             "light_from", "insert", "shadows")},
+                   **{k: built[k] for k in ("quad_paper", "opening_pad_px") if k in built},
+                   "card_test": built.get("card_test"),
+                   "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
                    "base_layer": stp.BASE_NAME, "prompt": plan["prompt"], "engine": plan["engine"],
                    "model": gen.get("model"), "credits": gen.get("credits"), "built_for": "gap (Templates tab)",
                    "approved": False, "created": datetime.now().isoformat(timespec="seconds")}

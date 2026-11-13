@@ -1,7 +1,7 @@
 """Room mockups (listing slots 8-19) from the PhotoCraft room templates under ../Room_Templates/.
 
-Every folder (any depth, e.g. Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/) that holds a room.json manifest
-is a wired room; one PSD per light (the image model relit the same room plate; built by <room>/Scripts/build_template_v2.py).
+Every folder (any depth) that holds a room.json manifest is a wired room, EXCEPT anything inside an `Archive/` folder
+(the Teak Sideboard, the only wired room, was archived by Tony 2026-11-10: 002_Modern/Archive/Teak_Sideboard/); one PSD per light (the image model relit the same room plate; built by <room>/Scripts/build_template_v2.py).
 PSD/json paths in room.json are relative to the room folder; layer-export caches go to its `cache_dir` (default: the folder).
 A look = room + light + frame + mat + wall paint + glass, rendered headless with photocraft-cli by switching layers and swapping the art into the "Place Artwork Here" smart object.
 The art's own pixels are never redrawn by AI (Etsy accuracy, Mockup_Docs/Mockup_Style_Guide.md 1e).
@@ -59,6 +59,8 @@ def rooms(settings=None):
     out = []
     for man in sorted(root.rglob("room.json")) if root.is_dir() else []:
         d = man.parent
+        if "Archive" in man.relative_to(root).parts:      # archived rooms are kept for Tony, never used
+            continue
         room = json.loads(man.read_text())
         room["dir"] = d
         room["lights"] = [dict(l, meta=json.loads((d / l["json"]).read_text()))

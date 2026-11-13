@@ -117,14 +117,19 @@ def test_build_psd_layers_are_named_and_hand_editable(tmp_path, monkeypatch):
     (tmp_path / "w").mkdir()
     b = stp.build_psd(scene(tmp_path / "s.png"), "2x3", tmp_path / "w")
     a = " ".join(craft.calls[0])
-    for name in ("BASE (room photo)", "Place Artwork Here", "Light Shadow", "Frame Edge Shadow", "SHADOWS", "GLARE",
-                 "Glass Sheen", "edit.transform", '"smartObject": true'):
+    for name in ("BASE (room photo)", "Place Artwork Here", "Light Shadow", "Frame Edge Shadow", "Frame Hard Shadow",
+                 "SHADOWS", "GLARE", "Glass Sheen", "edit.transform", '"smartObject": true'):
         assert name in a
-    # Tony's shadow rule: every shadow layer is a BLACK fill (alpha = shape), limited to the art opening
-    for f in ("L_edge.png", "L_light.png"):
+    # Tony's shadow rule: every shadow layer is a BLACK fill (alpha = shape), limited to the art opening. This scene's
+    # paper is flat up to the frame: no soft shadow is measured, so none is invented (L_edge may be empty).
+    for f in ("L_hard.png", "L_edge.png", "L_light.png"):
         im = np.asarray(Image.open(tmp_path / "w" / f))
-        assert im[..., :3].max() == 0 and im[..., 3].max() > 0
+        assert im[..., :3].max() == 0 and (im[..., 3].max() > 0 or f == "L_edge.png")
         assert im[:150, :, 3].max() == 0 and im[:, :480, 3].max() == 0          # nothing outside the frame insert
+    # the art runs 1.5 px under the frame's inner edge (Tony 2026-11-12), the opening is kept separately
+    from app import sam_frames as sf
+    pads = sf.side_offsets(b["quad_insert"], b["quad_art"])
+    assert pads == pytest.approx([1.5] * 4, abs=0.02) and b["opening_pad_px"] == 1.5
     assert b["so_ratio"] == pytest.approx(2 / 3, abs=0.01) and b["psd_tmp"].is_file()
 
 
@@ -296,3 +301,94 @@ def test_two_cards_never_preview_the_same_library_template():
     assert [p and p["name"] for p in (picks[8], picks[9], picks[10])] == ["T1", "T2", None]   # third: new scene
     picks = production.library_picks(plan, {"8": {"template": lib[0]["rel"], "tried": [lib[0]["rel"]]}}, lib)
     assert picks[8]["name"] == "T2" and picks[9] is None      # regenerate moves on; T1 stays with slot 8
+
+
+# ---------- Tony 2026-11-12: opening = the frame's hard inner edge, art pad, hard + soft shadow layers ----------
+
+from app.scene_templates import card_verify as real_card_verify      # bound before conftest replaces it
+
+
+def wall_scene(path=None, size=(900, 800)):
+    """The measured LVRM_Midcentury case in miniature: the frame's dark inner wall left of the opening and a warm,
+    near-flat shadow strip on the paper that blurs out (test_sam_frames.render_wall_frame)."""
+    from test_sam_frames import Q, render_wall_frame
+    rgb = render_wall_frame(Q, size)
+    if path:
+        Image.fromarray(rgb).save(path)
+    return rgb, Q
+
+
+def test_edge_shadows_are_measured_hard_on_the_wall_soft_on_the_paper():
+    from app import sam_frames as sf
+    rgb, q = wall_scene()
+    img = rgb.astype("float32") / 255
+    sides = {s["side"]: s for s in stp.measure_edge_shadows(img, q, 1.5)}
+    L = sides["left"]
+    # the art's pad on the left lies on the dark inner wall: its tone vs the paper (100,72,48 vs 236,234,228)
+    wall = 1 - float(np.float32([100, 72, 48]) @ stp.W709) / float(np.float32([236, 234, 228]) @ stp.W709)
+    assert L["hard_k"] == pytest.approx(wall, abs=0.06)
+    # the drawn strip: 0.5 darkening, band 4 px, blur 1.8 px -> fitted back
+    assert L["soft_k"] == pytest.approx(0.5, abs=0.06) and L["width_px"] == pytest.approx(4.0, abs=0.75)
+    assert L["blur_px"] == pytest.approx(1.8, abs=0.6) and L["fit_rms"] < 0.03
+    for s in ("top", "right", "bottom"):                     # crisp paper up to the frame: no soft shadow invented
+        assert sides[s]["soft_k"] == 0.0 and 0.15 < sides[s]["hard_k"] < 0.45   # the pad lies on the oak face
+
+
+def test_rebuilt_layers_reproduce_the_baked_shadow_over_white_art(tmp_path):
+    """The art covers the baked shadow, so the rebuilt layers must put it back: a white card under the hard + soft
+    layers (Multiply) must match the photo's own paper + wall brightness across the left edge."""
+    from app import sam_frames as sf
+    rgb, q = wall_scene()
+    img = rgb.astype("float32") / 255
+    aq = sf.offset_quad(q, 1.5)
+    files = stp.make_layers(img, q, aq, [400, 600], "full", tmp_path, None, pad=1.5)
+    meta = files["_meta"]
+    a = lambda f: np.asarray(Image.open(tmp_path / f)).astype("float32")[..., 3] / 255
+    mult = (1 - a("L_hard.png") * meta["Frame Hard Shadow"]["opacity"]) * \
+           (1 - a("L_edge.png") * meta["Frame Edge Shadow"]["opacity"])
+    Y = img @ stp.W709
+    paper = float(np.median(Y[sf.poly_coverage(sf.offset_quad(q, -40), 900, 800) > 0.99]))
+    y = 400
+    xl = float(sf.offset_quad(q, 0)[0][0] + (y - q[0][1]) / (q[3][1] - q[0][1]) * (q[3][0] - q[0][0]))
+    for d in (-1.0, 0.5, 1.5, 2.5, 4.0, 6.0, 9.0):              # px inward from the opening (negative = the pad)
+        x = int(round(xl + d - 0.5))
+        assert mult[y, x] * paper == pytest.approx(float(Y[y, x]), abs=0.07), d
+    assert meta["Frame Hard Shadow"]["pad_px"] == 1.5
+
+
+class CardCraft:
+    """Fake photocraft for the card test: the art card shows inside `visible` (anti-aliased) on a grey room."""
+
+    def __init__(self, visible, size=(900, 800)):
+        self.visible, self.size = np.float32(visible), size
+
+    def __call__(self, settings, args):
+        from app import sam_frames as sf
+        if "--out" not in args:                                   # exportContents: the smart object's pixels
+            p = json.loads(args[args.index("layer.smartObjects.exportContents") + 2])["path"]
+            Image.new("RGB", (400, 600), "white").save(p)
+            return "{}"
+        card = json.loads(args[args.index("layer.smartObjects.replaceContents") + 2])["path"]
+        v = np.asarray(Image.open(card).convert("RGB"))[0, 0].astype("float32")
+        W, H = self.size
+        cov = sf.poly_coverage(self.visible, W, H)[..., None]
+        out = np.full((H, W, 3), 120, "float32") * (1 - cov) + v * cov
+        Image.fromarray(np.round(out).astype("uint8")).save(args[args.index("--out") + 1])
+        return "{}"
+
+
+def test_card_test_accepts_the_pad_and_fails_a_sliver_or_more_overlap(tmp_path, monkeypatch):
+    from app import sam_frames as sf
+    from test_sam_frames import Q
+    aq = sf.offset_quad(Q, 1.5)
+    monkeypatch.setattr(stp, "_run", CardCraft(aq))
+    r = real_card_verify(tmp_path / "t.psd", aq, None, tmp_path, opening=Q)
+    assert all(p == pytest.approx(1.5, abs=0.15) for p in r["pad_px"].values()) and r["max_px"] <= 0.3
+    short = sf.offset_quad(Q, [1.5, 1.5, 1.5, -3.0])
+    monkeypatch.setattr(stp, "_run", CardCraft(short))            # left side 3 px short of the frame's inner edge
+    with pytest.raises(stp.TemplateError, match=r"left: a (2\.9|3\.0)\d px sliver"):
+        real_card_verify(tmp_path / "t.psd", short, None, tmp_path, opening=Q)
+    wide = sf.offset_quad(Q, 3.5)
+    monkeypatch.setattr(stp, "_run", CardCraft(wide))             # 3.5 px over the frame on every side
+    with pytest.raises(stp.TemplateError, match="over the frame"):
+        real_card_verify(tmp_path / "t.psd", wide, None, tmp_path, opening=Q)

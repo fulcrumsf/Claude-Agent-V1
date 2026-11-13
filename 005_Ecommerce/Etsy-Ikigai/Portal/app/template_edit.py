@@ -118,7 +118,7 @@ def state(rel, settings=None, prefix="/ikigai"):
     v = s["versions"]
     return {"rel": rel, "open": True, "name": s["name"], "versions": len(v) - 1, "dirty": len(v) > 1,
             "before": _url(prefix, v[0]["jpg"]), "after": _url(prefix, v[-1]["jpg"]), "log": s["log"],
-            "layers": s["layers"], "canvas": s["canvas"], "pending": s.get("pending"), "busy": s.get("busy", False)}
+            "quad": v[-1].get("quad"), "layers": s["layers"], "canvas": s["canvas"], "pending": s.get("pending"), "busy": s.get("busy", False)}
 
 
 def start(rel, settings=None, prefix="/ikigai"):
@@ -138,11 +138,17 @@ def start(rel, settings=None, prefix="/ikigai"):
         so = None
     jpg0 = _render(psd0, c / f"Edit_{k}_v0.jpg", settings, so)
     layers, canvas = layers_of(psd0, settings)
+    quad = None                                       # the art area, for the editor's orange onion-skin tint
+    try:
+        man = json.loads((Path(t["psd"]).parent / "template.json").read_text())
+        quad = man.get("quad_art") or None
+    except Exception:  # noqa: BLE001  (no manifest: no tint)
+        pass
     st = t["psd"].stat()
     with _lock:
         _sessions[rel] = {"name": t["name"], "psd": str(t["psd"]), "so": so, "key": k, "layers": layers,
                           "canvas": canvas, "orig": [st.st_size, st.st_mtime_ns],
-                          "versions": [{"psd": psd0, "jpg": jpg0, "ops": []}],
+                          "versions": [{"psd": psd0, "jpg": jpg0, "ops": [], "quad": quad}],
                           "log": [{"who": "studio", "text": "Tell me what to change: shadows, glare, mat, frame, the "
                                    "art corners, or click the picture to mark a small spot to remove."}]}
     return state(rel, settings, prefix)
@@ -329,7 +335,11 @@ def _apply(s, ops, settings, extra_args=()):
         raise EditError("PhotoCraft did not write the edited copy")
     jpg = _render(psd, c / f"Edit_{s['key']}_v{n}.jpg", settings, s["so"])
     s["layers"], s["canvas"] = layers_of(psd, settings)
-    s["versions"].append({"psd": psd, "jpg": jpg, "ops": ops})
+    quad = s["versions"][-1].get("quad")
+    for o in ops:                                     # moving the art corners moves the tint with them
+        if o["op"] == "corners":
+            quad = o["quad"]
+    s["versions"].append({"psd": psd, "jpg": jpg, "ops": ops, "quad": quad})
 
 
 def confirm_image_edit(rel, settings=None, prefix="/ikigai", editor=None):

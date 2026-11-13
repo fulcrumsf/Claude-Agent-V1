@@ -2,7 +2,7 @@
 
 The folder tree IS the library and the build plan (Tony, 2026-11-08). Tony's master folders, numbered NNN_ (three digits):
     Portrait_Templates/<NNN_Ratio_X>/<NNN_Room_Type>/[<NNN_Style>/...]/<Template>/<files>
-    e.g. 002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/
+    e.g. 002_Ratio_2x3/001_Living_Rooms/002_Modern/LVRM_Midcentury_Walnut_2x3/
 - Ratio = level 1 (001_Ratio_ISO = the ISO / 5x7 / A-series bucket; 005_Ratio_11x14 is its own bucket), room type =
   level 2, decor style = any folder level between room and template (e.g. 001_Japandi_Minimalist), else the Directory
   `Style` column, else a keyword in the template name / description, else "Unstyled". Display names drop the leading
@@ -55,7 +55,7 @@ STYLE_WORDS = [  # first match wins; checked on the template name first, then on
     ("Minimal", r"minimal"), ("Modern", r"modern"),
 ]
 _lock = threading.Lock()
-_state = {"running": False, "error": ""}
+_state = {"running": False, "error": "", "tint_running": False, "tint_errors": {}}
 
 
 def _cfg(settings, key):
@@ -213,6 +213,28 @@ def thumb_paths(t, settings=None):
     return c / f"Gallery_{k}_t.jpg", c / f"Gallery_{k}_l.jpg"
 
 
+def tint_paths(t, settings=None):
+    """Art-area view: the same render with a flat orange card in the smart object, so mats, bevels, shadows and
+    perspective show exactly where the art will (and will not) appear."""
+    k = _key(t)
+    c = cache_dir(settings)
+    return c / f"Gallery_{k}_at.jpg", c / f"Gallery_{k}_al.jpg"
+
+
+TINT_MUL = (0.95, 0.72, 0.02)      # the normal test card x amber: grid, disc and border stay readable
+
+
+def tint_card(w, h, path):
+    """The normal test card tinted amber (multiply), so the render keeps frame, mat, bevels and shadows readable
+    and the amber ends exactly where the art ends."""
+    from PIL import Image
+    test_card(w, h, path)
+    with Image.open(path) as im:
+        r, g, b = im.convert("RGB").split()
+    Image.merge("RGB", (r.point(lambda v: round(v * TINT_MUL[0])), g.point(lambda v: round(v * TINT_MUL[1])),
+                        b.point(lambda v: round(v * TINT_MUL[2])))).save(path)
+
+
 def test_card(w, h, path):
     """Neutral test card: warm light grey, faint grid, a mid-grey disc and a darker inner border (no colour cast)."""
     from PIL import Image, ImageDraw
@@ -286,10 +308,11 @@ def crop_box(canvas_w, canvas_h, art_bounds, aspect=4 / 3):
     return left, top, left + cw, top + ch
 
 
-def render(t, settings=None):
-    """Render one template with the test card, crop 4:3 on the art, write the cached thumb + large JPGs."""
+def render(t, settings=None, tint=False):
+    """Render one template with the test card (tint=True: the flat orange card), crop 4:3 on the art, write the
+    cached thumb + large JPGs."""
     from PIL import Image
-    tp, lp = thumb_paths(t, settings)
+    tp, lp = (tint_paths if tint else thumb_paths)(t, settings)
     if tp.is_file() and lp.is_file():
         return tp, lp
     with tempfile.TemporaryDirectory() as work:
@@ -299,7 +322,7 @@ def render(t, settings=None):
             raise RuntimeError(f"no '{ART}' layer")
         w, h = so_size(t, inf, settings, work)
         card = Path(work) / "card.png"
-        test_card(w, h, card)
+        (tint_card if tint else test_card)(w, h, card)
         args = _cmd("layer.select", {"name": ART}) + _cmd("layer.smartObjects.replaceContents", {"path": str(card)})
         if t.get("light"):                       # wired room PSD: plain oak frame, no mat, reference wall paint
             if _find(inf.get("layers"), ART_MAT):
@@ -334,6 +357,30 @@ def build_all(settings=None):
     return errors
 
 
+def tint_all(settings=None):
+    errors = {}
+    for t in scan(settings)[0]:
+        try:
+            render(t, settings, tint=True)
+        except Exception as e:  # noqa: BLE001
+            errors[t["rel"]] = str(e)[:300]
+    return errors
+
+
+def start_tint_build(settings=None):
+    with _lock:
+        if _state["tint_running"] or _state["running"]:
+            return
+        _state["tint_running"] = True
+
+    def work():
+        try:
+            _state["tint_errors"] = tint_all(settings)
+        finally:
+            _state["tint_running"] = False
+    threading.Thread(target=work, daemon=True).start()
+
+
 def start_build(settings=None):
     with _lock:
         if _state["running"]:
@@ -365,6 +412,7 @@ def overview(settings=None, prefix="/ikigai", build=True, styles_path=None, clas
     errs = _state.get("errors") or {}
     for t in templates:
         tp, lp = thumb_paths(t, settings)
+        ttp, tlp = tint_paths(t, settings)
         ready = tp.is_file() and lp.is_file()
         missing += not ready
         st = ts.resolve(sdata, t["rel"])
@@ -386,7 +434,10 @@ def overview(settings=None, prefix="/ikigai", build=True, styles_path=None, clas
                      | {"ratio_label": BUCKETS[t["ratio"]], "ready": ready, "error": errs.get(t["rel"], ""),
                         "styles": st["styles"], "styles_source": st["source"], "auto_styles": st["auto"],
                         "thumb": f"{prefix}/api/templates/file/{tp.name}" if ready else None,
-                        "large": f"{prefix}/api/templates/file/{lp.name}" if ready else None})
+                        "large": f"{prefix}/api/templates/file/{lp.name}" if ready else None,
+                        "tint_ready": ttp.is_file() and tlp.is_file(),
+                        "tint_thumb": f"{prefix}/api/templates/file/{ttp.name}" if ttp.is_file() else None,
+                        "tint_large": f"{prefix}/api/templates/file/{tlp.name}" if tlp.is_file() else None})
     if missing and build:
         start_build(settings)
     if to_classify and auto:
@@ -394,7 +445,8 @@ def overview(settings=None, prefix="/ikigai", build=True, styles_path=None, clas
     for g in gaps:
         g["ratio_label"] = BUCKETS[g["ratio"]]
         g["build"] = tb.gap_plan(g, settings)
-    return {"items": items, "gaps": gaps, "stray_empty": stray, "building": _state["running"] or bool(missing and build),
+    return {"items": items, "gaps": gaps, "stray_empty": stray, "tint_building": _state["tint_running"],
+            "building": _state["running"] or bool(missing and build),
             "classifying": ts.job()["running"] or bool(to_classify and auto), "vocabulary": ts.labels(sdata),
             "shop_sections": {v["label"]: v["section"] for v in sdata.get("vocabulary", [])},
             "archived": archived_count(settings), "buckets": BUCKETS, "crop": "4:3",
@@ -409,7 +461,7 @@ def archived_count(settings=None):
 
 
 def thumb_file(name, settings=None):
-    if not re.fullmatch(r"Gallery_[0-9a-f]{16}_[tl]\.jpg", name):
+    if not re.fullmatch(r"Gallery_[0-9a-f]{16}_(?:t|l|at|al)\.jpg", name):
         return None
     f = cache_dir(settings) / name
     return f if f.is_file() else None
@@ -452,6 +504,12 @@ def mount(app, settings, prefix="/ikigai", styles_path=None, classify=None, auto
             return fn(*a, **k)
         except (tb.BuildError, te.EditError, tc.CheckError) as e:
             raise HTTPException(422, str(e))
+
+    @r.post("/api/templates/tint")
+    def api_tint():
+        """Art-area view: render every template with the flat orange card (background, one at a time)."""
+        start_tint_build(settings)
+        return {"started": True}
 
     @r.post("/api/templates/check")
     def api_check(body: dict = Body(default={})):

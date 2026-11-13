@@ -267,7 +267,7 @@
    "model": "gemini-3.5-flash-lite",
    "tokens": 1223
   },
-  "002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/PSD_Templates/Room_Template_window_soft_v3.psd": {
+  "002_Ratio_2x3/001_Living_Rooms/002_Modern/Archive/Teak_Sideboard/PSD_Templates/Room_Template_window_soft_v3.psd": {
    "styles": [
     "Abstract",
     "Minimalism",
@@ -277,7 +277,7 @@
    "model": "gemini-3.5-flash-lite",
    "tokens": 1238
   },
-  "002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/PSD_Templates/Room_Template_leaf_dapple_across_v3.psd": {
+  "002_Ratio_2x3/001_Living_Rooms/002_Modern/Archive/Teak_Sideboard/PSD_Templates/Room_Template_leaf_dapple_across_v3.psd": {
    "styles": [
     "Minimalism",
     "Abstract",
@@ -287,7 +287,7 @@
    "model": "gemini-3.5-flash-lite",
    "tokens": 1223
   },
-  "002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/PSD_Templates/Room_Template_golden_bars_v3.psd": {
+  "002_Ratio_2x3/001_Living_Rooms/002_Modern/Archive/Teak_Sideboard/PSD_Templates/Room_Template_golden_bars_v3.psd": {
    "styles": [
     "Minimalism",
     "Abstract",
@@ -297,7 +297,7 @@
    "model": "gemini-3.5-flash-lite",
    "tokens": 1223
   },
-  "002_Ratio_2x3/001_Living_Rooms/002_Modern/Teak_Sideboard/PSD_Templates/Room_Template_soft_v3.psd": {
+  "002_Ratio_2x3/001_Living_Rooms/002_Modern/Archive/Teak_Sideboard/PSD_Templates/Room_Template_soft_v3.psd": {
    "styles": [
     "Minimalism",
     "Abstract",
@@ -684,6 +684,16 @@
     "Mid Century"
    ],
    "key": "70870c552383fa3b",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1238
+  },
+  "002_Ratio_2x3/001_Living_Rooms/002_Modern/LVRM_Midcentury_Walnut_2x3/LVRM_Midcentury_Sideboard_2x3_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "460f3ccb011ee3a3",
    "model": "gemini-3.5-flash-lite",
    "tokens": 1238
   }

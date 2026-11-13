@@ -358,6 +358,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .tchk.await{left:auto;right:44px;background:var(--steady)}
 .tfails{margin:0;padding:6px 8px 6px 22px;background:#fbefe9;border:1px solid #efd3c8;border-radius:6px;font-size:11.5px;color:#7a2d1c;line-height:1.4}
 .tfails li{margin:2px 0}
+.ttintbtn{position:absolute;left:8px;top:34px;z-index:2;font:600 10px var(--mono);letter-spacing:.05em;border-radius:4px;padding:2px 7px;border:1px solid rgba(0,0,0,.25);background:rgba(250,247,241,.92);color:var(--ink);cursor:pointer}.ttintbtn.on{background:#d9980a;border-color:#a86f00;color:#fff}
 .tdots{position:absolute;right:8px;top:8px;z-index:3;width:30px;height:30px;border-radius:50%;border:0;background:rgba(250,247,241,.92);font:700 16px/1 var(--sans);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.18)}
 .tmenu{position:absolute;right:8px;top:42px;z-index:4;background:var(--card);border:1px solid var(--line-2);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.16);display:flex;flex-direction:column;min-width:180px;overflow:hidden}
 .tmenu button{all:unset;cursor:pointer;padding:9px 12px;font-size:13px}
@@ -382,7 +383,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 .ted .room .seg .chip{background:rgba(250,247,241,.12);color:#eee;border-color:rgba(255,255,255,.25)}
 .ted .room .seg .chip.on{background:var(--paper);color:var(--ink)}
 .ted .pic{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 12px 12px}
-.ted .pic img{max-width:100%;max-height:100%;object-fit:contain;cursor:crosshair;border-radius:4px}
+.ted .pic img{max-width:100%;max-height:100%;object-fit:contain;cursor:crosshair;border-radius:4px;display:block}
+.ted .artarea{position:absolute;pointer-events:none}
+.ted .artarea polygon{fill:rgba(255,138,40,.45);stroke:none}
 .ted .mark{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border:2px solid #ff5a3c;border-radius:50%;pointer-events:none;box-shadow:0 0 0 2px rgba(255,255,255,.7)}
 .ted .side{display:flex;flex-direction:column;min-height:0;border-left:1px solid var(--line)}
 .ted .tlog{flex:1;min-height:0;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
@@ -464,8 +467,8 @@ button{font:inherit;color:inherit;cursor:pointer}
     <div class="tbox" id="tbox" hidden><img alt=""><p></p></div>
     <div class="ted" id="ted" hidden><div class="box">
       <header><b id="ted-title">Edit with chat</b><span class="cost" id="ted-ver"></span><button class="x" data-ted="close" title="Close">×</button></header>
-      <div class="room"><div class="seg"><button class="chip on" data-ted-view="after">After</button><button class="chip" data-ted-view="before">Before</button><span class="cost" style="color:#ccc;align-self:center">Click the picture to mark a spot (e.g. "remove this").</span></div>
-        <div class="pic" id="ted-pic"><img id="ted-img" alt="Template"><i class="mark" id="ted-mark" hidden></i></div></div>
+      <div class="room"><div class="seg"><button class="chip on" data-ted-view="after">After</button><button class="chip" data-ted-view="before">Before</button><button class="chip on" id="ted-artbtn" title="Orange tint = the exact area the art fills (where the smart object is cut off)">Show art area</button><span class="cost" style="color:#ccc;align-self:center">Click the picture to mark a spot (e.g. "remove this").</span></div>
+        <div class="pic" id="ted-pic"><img id="ted-img" alt="Template"><svg id="ted-art" class="artarea" preserveAspectRatio="none" hidden><polygon id="ted-art-poly"/></svg><i class="mark" id="ted-mark" hidden></i></div></div>
       <div class="side"><div class="tlog" id="ted-log"></div>
         <div class="tlayers" id="ted-layers"></div>
         <div class="tact" id="ted-act"></div>
@@ -880,12 +883,15 @@ button{font:inherit;color:inherit;cursor:pointer}
   let tpl = null, tplSig = "", tplTimer = null, menuOpen = null, lastBuild = null;
   const openFails = new Set();
   const tf = {ratio: "", style: "", decor: ""};
-  let failOnly = false, propOpen = false;
+  let failOnly = false, propOpen = false, tintOn = false;
+  const tintMap = {};                       // per-card override of the global "Show art area" switch
+  const tintFor = rel => (rel in tintMap ? tintMap[rel] : tintOn);
   const editing = new Set();
   const nice = v => String(v || "").replace(/_/g, " ");
   const chip = (cls, kind, val, label, title) => `<button class="chip ${cls}${tf[kind] === val ? " on" : ""}" data-tf="${kind}" data-v="${esc(val)}"${title ? ` title="${esc(title)}"` : ""}>${esc(label)}</button>`;
   function tplCard(t) {
-    const img = t.ready ? `<button class="ti" data-big="${esc(t.large)}" data-cap="${esc(t.name + " · " + t.ratio_label)}"><img src="${esc(t.thumb)}" alt="${esc(t.name)}" loading="lazy"></button>`
+    const want = tintFor(t.rel), tn = want && t.tint_ready, big = tn ? t.tint_large : t.large, small = tn ? t.tint_thumb : t.thumb;
+    const img = t.ready ? `<button class="ti" data-big="${esc(big)}" data-cap="${esc(t.name + " · " + t.ratio_label + (tn ? " · amber = where the art shows" : ""))}"><img src="${esc(small)}" alt="${esc(t.name)}" loading="lazy"></button>`
       : `<div class="wait">${t.error ? "Could not render: " + esc(t.error.slice(0, 80)) : "Rendering…"}</div>`;
     const styles = t.styles.length ? t.styles.map(s => chip(t.styles_source === "auto" ? "auto" : "", "style", s, s, t.styles_source === "auto" ? "automatic guess" : "set by you (" + (tpl.shop_sections[s] || s) + ")")).join("")
       : `<span class="chip none">${t.styles_source === "manual" ? "no style" : "no style yet"}</span>`;
@@ -899,7 +905,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     const menu = menuOpen === t.rel ? `<div class="tmenu">${t.wired ? "" : `<button data-tm="edit" data-rel="${esc(t.rel)}">Edit with chat</button>`}<button data-tm="open" data-rel="${esc(t.rel)}">Open in PhotoCraft</button>${t.wired ? "" : `<button data-tm="check" data-rel="${esc(t.rel)}">Check again</button>`}</div>` : "";
     const aw = t.awaiting ? `<span class="tchk await">NEW · approve?</span>` : "";
     const awb = t.awaiting ? `<div class="tc"><button class="btn sm" data-tbd="approved" data-rel="${esc(t.rel)}">Approve template</button><button class="btn ghost sm" data-tbd="denied" data-rel="${esc(t.rel)}">Deny (to Archive)</button></div>` : "";
-    return `<article class="tcard${editing.has(t.rel) ? " edit" : ""}">${t.wired ? "" : badge}${aw}${dots}${menu}${img}<div class="tb"><div class="tn">${esc(t.name)}</div>${awb}${fails}
+    return `<article class="tcard${editing.has(t.rel) ? " edit" : ""}">${t.wired ? "" : badge}${aw}${dots}${menu}${t.ready ? `<button class="ttintbtn${want ? " on" : ""}" data-ttcard="${esc(t.rel)}" title="Show / hide the amber art area on this card">${want && !t.tint_ready ? "…" : "art area"}</button>` : ""}${img}<div class="tb"><div class="tn">${esc(t.name)}</div>${awb}${fails}
       <div class="tc">${chip("decor", "decor", t.style, t.style, "room style")}${chip("ratio", "ratio", t.ratio, t.ratio_label, "nearest standard " + t.nearest + (t.so_px ? " · slot " + t.so_px + " px" : ""))}${t.wired ? `<i>in Run mockups</i>` : ""}</div>
       <div class="td">${esc(t.desc)}</div>
       <div class="tc">${styles}${conf}<button class="tlink" data-tedit="${esc(t.rel)}">${editing.has(t.rel) ? "done" : "Styles"}</button></div>${assign}</div></article>`;
@@ -927,7 +933,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     const checked = tpl.items.filter(t => t.check && !t.wired), nf = checked.filter(t => t.check.status === "FAIL").length;
     const cj = tpl.check_job || {};
     let h = `<div class="tnums"><span><strong>${tpl.items.length}</strong>templates</span><span title="template checker: PASS / FAIL"><strong>${checked.length - nf}</strong>pass</span><span><strong>${nf}</strong>fail</span><span><strong>${tpl.gaps.length}</strong>library gaps</span><span><strong>${tpl.items.filter(t => t.styles_source === "manual").length}</strong>styled by you</span><span title="old versions and Original_ backups in Archive folders; never used"><strong>${tpl.archived}</strong>archived files</span>${tpl.building ? `<span>rendering ${tpl.items.length - ready} thumbnails…</span>` : ""}${tpl.classifying ? "<span>guessing styles…</span>" : ""}</div>`;
-    h += `<div class="tjob">${cj.running ? `<span>Checking ${cj.done}/${cj.total}… ${esc((cj.current || "").split("/").slice(-1)[0])}</span>` : `<button class="btn ghost sm" data-tcheckall>Run the checker on all</button><span>${tpl.checked_at ? "last run " + esc(tpl.checked_at.replace("T", " ").slice(0, 16)) : "not run yet"} · read-only: the checker never changes a PSD</span>`}<label class="rbox"><input type="checkbox" data-tfailonly ${failOnly ? "checked" : ""}>FAIL only</label></div>`;
+    h += `<div class="tjob">${cj.running ? `<span>Checking ${cj.done}/${cj.total}… ${esc((cj.current || "").split("/").slice(-1)[0])}</span>` : `<button class="btn ghost sm" data-tcheckall>Run the checker on all</button><span>${tpl.checked_at ? "last run " + esc(tpl.checked_at.replace("T", " ").slice(0, 16)) : "not run yet"} · read-only: the checker never changes a PSD</span>`}<label class="rbox"><input type="checkbox" data-tfailonly ${failOnly ? "checked" : ""}>FAIL only</label><label class="rbox" title="Render every template with an amber test card: amber = exactly where the art shows (mats and bevels stay visible)"><input type="checkbox" data-ttint ${tintOn ? "checked" : ""}>Show art area${tpl.items.some(x => tintFor(x.rel) && !x.tint_ready) ? " (rendering…)" : ""}</label></div>`;
     if (tpl.proposals.length) {
       const by = {};
       tpl.proposals.forEach(p => (by[p.room] = by[p.room] || []).push(p));
@@ -948,7 +954,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     const sig = JSON.stringify(tpl);
     if (!(quiet && (sig === tplSig || editing.size))) { tplSig = sig; paintTpl(); }   // background refresh never repaints under an open style picker
     clearTimeout(tplTimer);
-    const busy = tpl.building || tpl.classifying || (tpl.check_job || {}).running || (tpl.build_job || {}).running;
+    const busy = tpl.building || tpl.classifying || tpl.tint_building || tpl.items.some(x => tintFor(x.rel) && !x.tint_ready) || (tpl.check_job || {}).running || (tpl.build_job || {}).running;
     if (busy && !document.getElementById("panel-templates").hidden) tplTimer = setTimeout(() => loadTpl(true), 3000);
   }
   async function tplPost(body) {
@@ -956,6 +962,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     await loadTpl();
   }
   tplHost.addEventListener("change", e => {
+    if (e.target.closest("[data-ttint]")) { tintOn = e.target.closest("[data-ttint]").checked; Object.keys(tintMap).forEach(k => delete tintMap[k]); if (tintOn) tplAct(`${prefix}/api/templates/tint`, {}).then(() => loadTpl(true)); paintTpl(); }
     if (e.target.closest("[data-tfailonly]")) { failOnly = e.target.checked; paintTpl(); }
   });
   tplHost.addEventListener("toggle", e => {
@@ -968,6 +975,8 @@ button{font:inherit;color:inherit;cursor:pointer}
     catch (err) { let m = "That did not work."; try { m = (await err.json()).detail || m; } catch { /* */ } alert(m); return null; }
   }
   tplHost.addEventListener("click", async e => {
+    const tc = e.target.closest("[data-ttcard]");
+    if (tc) { const rel = tc.dataset.ttcard; tintMap[rel] = !tintFor(rel); if (tintMap[rel]) tplAct(`${prefix}/api/templates/tint`, {}).then(() => loadTpl(true)); paintTpl(); return; }
     const dots = e.target.closest("[data-tdots]");
     if (dots) { menuOpen = menuOpen === dots.dataset.tdots ? null : dots.dataset.tdots; paintTpl(); return; }
     const m = e.target.closest("[data-tm]");
@@ -1019,7 +1028,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 
   // ---------- Edit with chat (room left, chat right, before / after; Save / Discard on X) ----------
   const ted = document.getElementById("ted"), tedImg = document.getElementById("ted-img"), tedMark = document.getElementById("ted-mark");
-  let ed = null, edRel = null, edView = "after", edPoint = null, edBusy = false;
+  let ed = null, edRel = null, edArt = true, edView = "after", edPoint = null, edBusy = false;
   async function openEditor(rel) {
     edRel = rel; ed = null; edPoint = null; edView = "after"; tedMark.hidden = true;
     ted.hidden = false; document.getElementById("ted-ask").hidden = true;
@@ -1030,11 +1039,26 @@ button{font:inherit;color:inherit;cursor:pointer}
     if (!ed) { ted.hidden = true; return; }
     paintEditor();
   }
+  function placeArt() {                      // lay the tint exactly over the picture (the img is letterboxed in its pane)
+    const svg = document.getElementById("ted-art");
+    svg.style.left = tedImg.offsetLeft + "px"; svg.style.top = tedImg.offsetTop + "px";
+    svg.style.width = tedImg.offsetWidth + "px"; svg.style.height = tedImg.offsetHeight + "px";
+  }
+  tedImg.addEventListener("load", placeArt); window.addEventListener("resize", placeArt);
   function paintEditor() {
     if (!ed) return;
     document.getElementById("ted-title").textContent = "Edit with chat · " + ed.name;
     document.getElementById("ted-ver").textContent = ed.dirty ? `${ed.versions} edit${ed.versions === 1 ? "" : "s"}, not saved` : "no changes yet";
     tedImg.src = edView === "before" ? ed.before : ed.after;
+    const svg = document.getElementById("ted-art"), q = ed.quad;
+    if (q && q.length === 4 && ed.canvas) {
+      svg.setAttribute("viewBox", `0 0 ${ed.canvas[0]} ${ed.canvas[1]}`);
+      document.getElementById("ted-art-poly").setAttribute("points", q.map(p => p.join(",")).join(" "));
+      svg.hidden = !edArt;
+      placeArt();
+    } else svg.hidden = true;
+    document.getElementById("ted-artbtn").hidden = !(q && q.length === 4);
+    document.getElementById("ted-artbtn").classList.toggle("on", edArt);
     document.querySelectorAll("[data-ted-view]").forEach(b => b.classList.toggle("on", b.dataset.tedView === edView));
     const log = document.getElementById("ted-log");
     log.innerHTML = ed.log.map(m => `<div class="msg ${m.who === "tony" ? "tony" : "portal"}">${esc(m.text)}</div>`).join("") + (edBusy ? `<div class="msg portal thinking"><i><b></b><b></b><b></b></i>Working</div>` : "");
@@ -1071,6 +1095,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     document.getElementById("ted-say").placeholder = `Spot marked at ${edPoint[0]}, ${edPoint[1]} px: say "remove this" (or anything else)`;
   });
   ted.addEventListener("click", async e => {
+    if (e.target.closest("#ted-artbtn")) { edArt = !edArt; paintEditor(); return; }
     const v = e.target.closest("[data-ted-view]");
     if (v) { edView = v.dataset.tedView; paintEditor(); return; }
     const l = e.target.closest("[data-tlayer]");

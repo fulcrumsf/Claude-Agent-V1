@@ -26,7 +26,11 @@ Status: PLAN ONLY. Nothing below is built until Tony says go. Read with `Mockup_
 - Spec in `Mockup_Docs/Template_Layer_Rules_And_Checker_Spec.md` (opening vs art area, black/white card render test, overlay size/mask, overlay purity, sun angle, ratio, mat, hand-editable layers).
 - Run on all 43 existing templates and on every new template; PASS/FAIL with reasons on the Templates tab; failures list shown before anything is changed; fixes follow the rules (rebuild shadows from black fills, masked to the opening, measured sun angle).
 
-## 6. Frame detection upgrade (prototype first)
+## 6. Frame detection upgrade: BUILT 2026-11-11 as the standard (SAM everywhere)
+- **Standard (Tony 2026-11-10):** pixel-perfect, anti-aliased, no jagged/stair-stepped edges, no misses from shadows or soft gradients, full resolution. Flood-fill / Canny / brightness-threshold masks are not used for new builds (the old `find_insert` stays only as legacy code for tests). Full method in `Mockup_Docs/Template_Layer_Rules_And_Checker_Spec.md` ("Precision standard").
+- Built: `Portal/app/sam_frames.py` (SAM 2.1 hiera **large** on Apple MPS, ~1-4 s per photo; Gemini rough box -> SAM candidates -> material-edge alpha refinement -> sub-pixel four-corner fit -> loud failure), wired into `scene_templates.build_psd` (corners, measured lip + key-light shadows, layer masks, black/white card test <= 1 px) and into the checker's opening check (SAM opening on the BASE render; old edge search only as fallback / for mat templates). SAM lives in `~/.cache/ikigai-sam` (venv + checkpoints), run as a subprocess.
+- Measured 2026-11-11 on the blank-frame photos (Wabi bedroom excluded): Japandi_Simple 0.31 px max, Modern_BLue 0.46, Victorian_Floor 1.01, Wabi_ISO 1.07 (corner error vs an independent material-edge reference, visually checked at 12-16x); Minimal_ISO fails LOUDLY (its inner mat panel has no visible right edge in the sun), as does the angled Cradenza (a vase covers the bottom edge). Before: 4-12 px.
+- Original plan text (kept for reference):
 - Segment the insert with SAM 2 (Segment Anything, free, Apache 2.0, runs on the Mac), with Gemini vision supplying a rough box; fit four corners to the mask; verify with the checker's black/white card test; failures go to Tony with "Open in PhotoCraft".
 - Ask AI scene prompts for a plain matte white insert, no glare, no heavy shadow on it.
 - Prototype target: corner error 2 px or less (current method 4-12 px). **Do not prototype on the Wabi bedroom (already verified).** Tony will supply a template that was done wrong; test on that, then on the 5 known blank-frame photos.
@@ -38,6 +42,7 @@ Status: PLAN ONLY. Nothing below is built until Tony says go. Read with `Mockup_
 ## Rules that apply to the whole build
 - Never delete files or layers (retire by `Archive` or hide + rename "OLD ..."; Tony deletes). Never create folders except style folders under the template tree; ask for anything else.
 - Shadows: black fill, cut, blur, Multiply, masked to the opening, angle measured from the photo; never copy photo pixels.
+- Precision: every new template's corners and every mask come from SAM 2 + edge refinement at full resolution (section 6); a build fails loudly rather than guessing.
 - Restart the Portal at the end of every build and report how it was verified.
 
 ## Decisions from Tony (2026-11-10, after the plan was locked)

@@ -1,0 +1,267 @@
+{
+ "name": "LVRM_Midcentury_Sideboard_2x3",
+ "kind": "ai_scene",
+ "staged": false,
+ "psd": "LVRM_Midcentury_Sideboard_2x3_Template.psd",
+ "scene": "LVRM_Midcentury_Sideboard_2x3.png",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living room",
+ "etsy_room": "Living room",
+ "decor": "Modern",
+ "ratio": "2x3",
+ "print_ratio": "2x3",
+ "so_px": [
+  593,
+  900
+ ],
+ "so_ratio": 0.6589,
+ "quad_insert": [
+  [
+   1076.7750244140625,
+   282.8739929199219
+  ],
+  [
+   1651.303955078125,
+   243.89500427246094
+  ],
+  [
+   1651.1939697265625,
+   1144.18798828125
+  ],
+  [
+   1078.428955078125,
+   1129.5699462890625
+  ]
+ ],
+ "quad_art": [
+  [
+   1076.7750244140625,
+   282.8739929199219
+  ],
+  [
+   1651.303955078125,
+   243.89500427246094
+  ],
+  [
+   1651.1939697265625,
+   1144.18798828125
+  ],
+  [
+   1078.428955078125,
+   1129.5699462890625
+  ]
+ ],
+ "mode": "full",
+ "canvas": [
+  2400,
+  1792
+ ],
+ "light_from": "left",
+ "insert": {
+  "aspect": 0.6586,
+  "screen_aspect": 0.6576,
+  "skew": 1.063,
+  "method": "sam2",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    1072.8,
+    250.9,
+    1651.2,
+    1141.5
+   ],
+   "box_source": "gemini",
+   "sam": {
+    "prompt": "box",
+    "score": 0.987220048904419,
+    "area": 497296,
+    "dE": 2.2,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.9920307397842407,
+      "area": 499060,
+      "dE": 15.1
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9544245004653931,
+      "area": 566716,
+      "dE": 60.6
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9905185103416443,
+      "area": 511015,
+      "dE": 45.0
+     },
+     {
+      "prompt": "click",
+      "score": 0.9869263172149658,
+      "area": 501695,
+      "dE": 16.3
+     },
+     {
+      "prompt": "click",
+      "score": 0.8502009510993958,
+      "area": 573544,
+      "dE": 61.9
+     },
+     {
+      "prompt": "click",
+      "score": 0.910061240196228,
+      "area": 564419,
+      "dE": 60.6
+     },
+     {
+      "prompt": "box",
+      "score": 0.987220048904419,
+      "area": 497296,
+      "dE": 2.2
+     },
+     {
+      "prompt": "box",
+      "score": 0.9596380591392517,
+      "area": 565827,
+      "dE": 61.6
+     },
+     {
+      "prompt": "box",
+      "score": 0.9935867786407471,
+      "area": 509192,
+      "dE": 38.7
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9963,
+    "corner_shift_px": [
+     0.4,
+     1.34,
+     2.53,
+     1.75
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.16
+     },
+     "right": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.1
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.2
+     },
+     "left": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.201
+     }
+    }
+   },
+   "wall_px": 2714425
+  }
+ },
+ "shadows": {
+  "Frame Edge Shadow": {
+   "kind": "frame lip (measured on the blank insert)",
+   "sides": [
+    {
+     "side": "top",
+     "k": 0.23,
+     "w_px": 3.93
+    },
+    {
+     "side": "right",
+     "k": 0.0,
+     "w_px": 1.0
+    },
+    {
+     "side": "bottom",
+     "k": 0.0,
+     "w_px": 1.0
+    },
+    {
+     "side": "left",
+     "k": 0.405,
+     "w_px": 3.12
+    }
+   ],
+   "opacity": 0.542
+  },
+  "Light Shadow": {
+   "kind": "falloff",
+   "deg": -33.6,
+   "measured_drop": 0.138,
+   "opacity": 0.138
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    1076.77197265625,
+    282.88299560546875
+   ],
+   [
+    1651.2030029296875,
+    243.91000366210938
+   ],
+   [
+    1651.093017578125,
+    1144.092041015625
+   ],
+   [
+    1078.425048828125,
+    1129.4759521484375
+   ]
+  ],
+  "corner_err_px": [
+   0.01,
+   0.1,
+   0.14,
+   0.09
+  ],
+  "max_px": 0.14,
+  "gap_px": 0,
+  "over_px": 0
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "desc": "AI scene: mid-century modern living room, walnut sideboard, soft window light from the left, slim oak frame with a blank white insert (art cover-fits the insert)",
+ "prompt": "Photorealistic mid-century modern living room interior featuring one vertical picture frame with a blank white insert (2:3 ratio) hanging on the wall above a low walnut wood sideboard. Slim natural oak frame. The insert is plain matte white paper, completely empty, no artwork, no text, no logo, evenly lit, no glare and no heavy shadow on it. Realistic textures: warm off-white plaster wall, walnut wood grain, a few lived-in props on the sideboard that a real person would leave there (a short stack of books, a small ceramic vase with one dried branch, a ceramic bowl), nothing staged and nothing in front of the frame. Lighting is soft warm daylight from a window on the left, naturally diffused, never harsh. Camera angle: 3/4 corner view at eye level, the whole frame visible with clear wall space around it. Composition vertical, focused on the frame and wall area. No other frames, no other pictures, no mirrors, no lamps, no people, no faces, no hands, no pets.",
+ "engine": "nbpro",
+ "model": "nano-banana-pro",
+ "resolution": "2K",
+ "aspect": "4:3",
+ "credits": 18.0,
+ "made_for": {
+  "idea_id": 3,
+  "design": "Book Club Cat",
+  "slot": 3
+ },
+ "check": {
+  "status": "PASS",
+  "reasons": [],
+  "checked": "2026-11-11T02:03:43",
+  "checks": {
+   "layers": "pass",
+   "opening": "pass",
+   "card": "pass",
+   "overlay": "pass",
+   "purity": "pass",
+   "sun": "skip",
+   "ratio": "pass",
+   "mat": "skip"
+  }
+ },
+ "approved": false,
+ "created": "2026-11-11T02:04:37",
+ "folder": "Room_Templates/Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/002_Modern/LVRM_Midcentury_Walnut_2x3/"
+}
