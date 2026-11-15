@@ -1,8 +1,8 @@
 {
   "meta": {
-    "updated": "2026-10-09",
+    "updated": "2026-11-15",
     "schema_version": 1,
-    "count": 675,
+    "count": 678,
     "url_backfilled": 360,
     "artifact_url": "https://claude.ai/artifact/3D9QHYnL7EZ8eunDsHRz4R",
     "note": "Migrated from the artifact's embedded DATA array. url_backfilled counts rows where a source file was found locally and had its own url: frontmatter; the rest have url=null and still need one before URL-based dedup can catch them."
@@ -1082,7 +1082,7 @@
       "url": null,
       "kind": null,
       "category": "SEO / Analytics",
-      "does": "Open-source, pay-as-you-go Semrush/Ahrefs alternative with agent skills. Confirmed real \u2014 already sitting in your ingest queue.",
+      "does": "Open-source, pay-as-you-go Semrush/Ahrefs alternative with agent skills. Confirmed real — already sitting in your ingest queue.",
       "use_for": [],
       "pricing": null,
       "status": "bookmarked",
@@ -1099,7 +1099,7 @@
       "url": "\"https://posthog.com\"",
       "kind": null,
       "category": "SEO / Analytics",
-      "does": "Product analytics \u2014 appears only as an optional telemetry build arg inside an unrelated repo doc, not its own bookmark.",
+      "does": "Product analytics — appears only as an optional telemetry build arg inside an unrelated repo doc, not its own bookmark.",
       "use_for": [],
       "pricing": null,
       "status": "bookmarked",
@@ -1476,7 +1476,7 @@
     },
     {
       "id": "browser-use-jev-ultrafast",
-      "name": "Browser Use \u2014 Jev Ultrafast",
+      "name": "Browser Use — Jev Ultrafast",
       "url": null,
       "kind": null,
       "category": "Social / Affiliate / Commerce",
@@ -1711,7 +1711,7 @@
       "pricing": null,
       "status": "bookmarked",
       "sources": [
-        "Potion \u2014 Crypto Markets Made Simple.md"
+        "Potion — Crypto Markets Made Simple.md"
       ],
       "source_tag": "ingest",
       "first_seen": "2026-10-08",
@@ -1876,7 +1876,7 @@
       "url": "\"https://reach.social/\"",
       "kind": null,
       "category": "Social / Affiliate / Commerce",
-      "does": "(Inactive) brand\u2013creator viral campaign platform.",
+      "does": "(Inactive) brand–creator viral campaign platform.",
       "use_for": [],
       "pricing": null,
       "status": "bookmarked",
@@ -3779,7 +3779,7 @@
       "pricing": null,
       "status": "bookmarked",
       "sources": [
-        "FluidVoice \u2014 Voice-to-Text for macOS.md"
+        "FluidVoice — Voice-to-Text for macOS.md"
       ],
       "source_tag": "ingest",
       "first_seen": "2026-10-08",
@@ -3808,7 +3808,7 @@
       "url": null,
       "kind": null,
       "category": "AI Video / Image / Audio Gen",
-      "does": "Image/video generation API (stock-photo pipeline). Already connected \u2014 see API Status Board.",
+      "does": "Image/video generation API (stock-photo pipeline). Already connected — see API Status Board.",
       "use_for": [],
       "pricing": null,
       "status": "bookmarked",
@@ -6596,7 +6596,7 @@
       "url": "https://github.com/superdesigndev/treg",
       "kind": null,
       "category": "Dev / Agent Tooling",
-      "does": "\"OpenRouter for agent tools\" \u2014 one token/base URL calls thousands of priced-per-call SEO/social/enrichment/scraping/ads endpoints, plus a team's own keys/skills/CLIs, server-side credential injection. 4.9k GitHub stars, actively maintained. Claude Code plugin, MCP, Codex, Grok Bot plugin all confirmed working in the companion tutorial.",
+      "does": "\"OpenRouter for agent tools\" — one token/base URL calls thousands of priced-per-call SEO/social/enrichment/scraping/ads endpoints, plus a team's own keys/skills/CLIs, server-side credential injection. 4.9k GitHub stars, actively maintained. Claude Code plugin, MCP, Codex, Grok Bot plugin all confirmed working in the companion tutorial.",
       "use_for": [],
       "pricing": null,
       "status": "bookmarked",
@@ -8475,13 +8475,13 @@
       "does": "One-click local-AI app launcher.",
       "use_for": [],
       "pricing": null,
-      "status": "bookmarked",
+      "status": "installed",
       "sources": [
         "Pinokio.md"
       ],
       "source_tag": "library",
       "first_seen": "2026-10-08",
-      "notes": ""
+      "notes": "App at /Applications/Pinokio.app v8.3.7, home /Users/tonymacbook2025/pinokio. Fresh install 2026-11-15: no apps installed yet. Agents drive it with pterm (pinokio skill). Plan: install ComfyUI here (Metal GPU), not in Docker. Remote and Home Server left off."
     },
     {
       "id": "exo",
@@ -9505,9 +9505,11 @@
       "kind": null,
       "category": "Dev / Agent Tooling",
       "does": "Open-source workflow automation; community workflows, catalogs, AI helpers.",
-      "use_for": [],
+      "use_for": [
+        "Ikigai, Neon Parcel, Longform video workflows"
+      ],
       "pricing": null,
-      "status": "bookmarked",
+      "status": "installed",
       "sources": [
         "N8N.md",
         "N8N-Community-Workflows.md",
@@ -9525,7 +9527,7 @@
       ],
       "source_tag": "library",
       "first_seen": "2026-10-08",
-      "notes": ""
+      "notes": "Self-hosted in Docker (container n8n, image n8n-custom:2.47.7, upgraded from 2.12.3 on 2026-11-15; stable line, 3.x is early access; backup DB_BACKUP/nov_15_2026_pre_2.47.7_database.sqlite; old image n8n-custom:2.12.3 kept for rollback; 127.0.0.1:5678), public at https://n8n.robottogato.com via Cloudflare tunnel n8n-remote. 46 workflows in DB: 30 visible, 16 archived; 9 are Published (n8n 2.x uses activeVersionId, the old 'active' flag reads 0 for all). Corrected 2026-11-15 (an earlier note wrongly said none active). n8n MCP server in Claude uses https://n8n.robottogato.com/mcp-server/http. Compose: Documents/Docker/docker_config/docker-compose.yml. Verified 2026-11-15."
     },
     {
       "id": "make-com",
@@ -9760,13 +9762,13 @@
       "does": "Open-source no-code database / Airtable alternative (referenced).",
       "use_for": [],
       "pricing": null,
-      "status": "bookmarked",
+      "status": "installed",
       "sources": [
         "mentioned in Resource Library index files"
       ],
       "source_tag": "library",
       "first_seen": "2026-10-08",
-      "notes": ""
+      "notes": "Docker container baserow, data in postgres (255 MB db) + 3 named volumes. Used by 8 n8n workflows (Writer-Room, Master-Video-Creator, Longform VO, NCA Modules). Browser needs /etc/hosts entry '127.0.0.1 baserow' then http://baserow:8000 (public URL is baserow:8000; n8n reaches it inside Docker). Verified 2026-11-15."
     },
     {
       "id": "agen-cy",
@@ -10380,7 +10382,7 @@
       "pricing": null,
       "status": "bookmarked",
       "sources": [
-        "Mobbin \u2014 UI & UX design inspiration.md",
+        "Mobbin — UI & UX design inspiration.md",
         "Design.md",
         "Education.md",
         "Newsletters.md"
@@ -10770,17 +10772,17 @@
       "url": null,
       "kind": null,
       "category": "Platform / Infrastructure / Other",
-      "does": "Free/cheap hosting + AI Gateway for sites and apps. Already partial \u2014 see API Status Board.",
+      "does": "Free/cheap hosting + AI Gateway for sites and apps. Already partial — see API Status Board.",
       "use_for": [],
       "pricing": null,
-      "status": "bookmarked",
+      "status": "installed",
       "sources": [
         "I Fired GoDaddy. Claude Runs My 8 Sites for $1/Month.md",
         "Website-Rebuild.md"
       ],
       "source_tag": "both",
       "first_seen": "2026-10-08",
-      "notes": ""
+      "notes": "Zero Trust account robottogato; zone robottogato.com. Tunnel n8n-remote (remote-managed, id f66cc945-d6ae-48f1-a29d-a99f70c382a1, token in Docker/docker_config/.env as TUNNEL_TOKEN) serves n8n.robottogato.com -> http://n8n:5678 and minio.robottogato.com -> http://minio:9000. Old locally-managed tunnel n8n-local (4210bd78-...) was deleted 2026-11-15. Routes are edited in the dashboard, not in compose. Migrated 2026-11-15."
     },
     {
       "id": "firebase",
@@ -10892,7 +10894,7 @@
       "url": "\"https://www.notion.so\"",
       "kind": null,
       "category": "Platform / Infrastructure / Other",
-      "does": "Workspace used in the agency stack. Already connected \u2014 see API Status Board.",
+      "does": "Workspace used in the agency stack. Already connected — see API Status Board.",
       "use_for": [],
       "pricing": null,
       "status": "bookmarked",
@@ -10998,13 +11000,13 @@
       "does": "S3-compatible object storage.",
       "use_for": [],
       "pricing": null,
-      "status": "bookmarked",
+      "status": "installed",
       "sources": [
         "Minio.md"
       ],
       "source_tag": "library",
       "first_seen": "2026-10-08",
-      "notes": ""
+      "notes": "Docker container minio (9000/9001 local), public at https://minio.robottogato.com via tunnel. Buckets ikigai, nca-toolkit, neonparcel. Used by n8n art/watermark workflows and nca-toolkit. Verified 2026-11-15."
     },
     {
       "id": "tolaria",
@@ -11690,6 +11692,57 @@
       "source_tag": "library",
       "first_seen": "2026-10-08",
       "notes": ""
+    },
+    {
+      "id": "qdrant",
+      "name": "Qdrant",
+      "url": "\"https://qdrant.tech/\"",
+      "category": "Platform / Infrastructure / Other",
+      "does": "Vector database for AI memory/search.",
+      "status": "installed",
+      "notes": "Docker container qdrant (6333). 0 collections; kept on purpose for planned use (Tony, 2026-11-15).",
+      "sources": [
+        "docker-compose.yml"
+      ],
+      "kind": null,
+      "use_for": [],
+      "pricing": null,
+      "source_tag": "manual",
+      "first_seen": "2026-11-15"
+    },
+    {
+      "id": "docker-home-stack",
+      "name": "Docker home stack (docker_config)",
+      "url": null,
+      "category": "Platform / Infrastructure / Other",
+      "does": "Docker Desktop compose stack on the Mac, network 'unomas', file Documents/Docker/docker_config/docker-compose.yml.",
+      "status": "installed",
+      "notes": "Running (8): n8n, cloudflared, baserow, postgres, minio, nca-toolkit, qdrant, character-generator-app. Removed 2026-11-15: comfyui(cpu), mmaudio, kokoro-tts, open-webui, flowise, puppeteer, saliency-api, python-service. Docker has no GPU on Mac and 7.7 GB RAM, so GPU work (ComfyUI) goes native/Pinokio. Backups: docker-compose.yml.bak*_2026-11-14, .env.bak_2026-11-14. Leftover data folders for removed services still on disk (openwebui-data, flowise-data, kokoro-data, ComfyUI, AI_Models).",
+      "sources": [
+        "docker-compose.yml"
+      ],
+      "kind": null,
+      "use_for": [],
+      "pricing": null,
+      "source_tag": "manual",
+      "first_seen": "2026-11-15"
+    },
+    {
+      "id": "comfyui-pinokio-plan",
+      "name": "ComfyUI (planned, Pinokio)",
+      "url": null,
+      "category": "AI Video / Image / Audio Gen",
+      "does": "Local image editing for Ikigai Edit-with-chat: SAM mask + generative fill/remove (PhotoCraft Bridge AI, LaMa, Qwen Image Edit, Nano Banana).",
+      "status": "planned",
+      "notes": "No ComfyUI with models exists on this Mac as of 2026-11-15 (Docker one removed, Automations/ComfyUI has no models, Pinokio empty). Plan: Tony installs ComfyUI in Pinokio, then agent picks models/builds workflows. Bridge repo: Avgilles/photocraft-bridge-AI (runner contract xp-photocraft/runner@1); LaMa big-lama.ckpt is in Docker/AI_Models/inpaint.",
+      "sources": [
+        "000_Ingest bridge note"
+      ],
+      "kind": null,
+      "use_for": [],
+      "pricing": null,
+      "source_tag": "manual",
+      "first_seen": "2026-11-15"
     }
   ]
 }

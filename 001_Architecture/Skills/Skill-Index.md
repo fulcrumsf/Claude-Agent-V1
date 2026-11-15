@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-10-27
+created: 2026-11-15
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-10-27T16:00:13-04:00
+Generated: 2026-11-15T02:27:50-05:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -231,6 +231,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | page-cro | When the user wants to optimize, improve, or increase conversions on any marketing page — including homepage, landing pages, pricing pages, feature pages, or blog posts. Also use… | `001_Architecture/Skills/page-cro/SKILL.md` |
 | paid-ads | When the user wants help with paid advertising campaigns on Google Ads, Meta (Facebook/Instagram), LinkedIn, Twitter/X, or other ad platforms. Also use when the user mentions 'PPC… | `001_Architecture/Skills/paid-ads/SKILL.md` |
 | paywall-upgrade-cro | When the user wants to create or optimize in-app paywalls, upgrade screens, upsell modals, or feature gates. Also use when the user mentions "paywall," "upgrade screen," "upgrade… | `001_Architecture/Skills/paywall-upgrade-cro/SKILL.md` |
+| pinokio | Discover, launch, and use apps and tools for the current task. | `001_Architecture/Skills/pinokio/SKILL.md` |
 | playground | Creates interactive HTML playgrounds — self-contained single-file explorers that let users configure something visually through controls, see a live preview, and copy out a prompt… | `001_Architecture/Skills/playground/SKILL.md` |
 | plugin-settings | This skill should be used when the user asks about "plugin settings", "store plugin configuration", "user-configurable plugin", ".local.md files", "plugin state files", "read YAML… | `001_Architecture/Skills/plugin-settings/SKILL.md` |
 | plugin-structure | This skill should be used when the user asks to "create a plugin", "scaffold a plugin", "understand plugin structure", "organize plugin components", "set up plugin.json", "use ${C… | `001_Architecture/Skills/plugin-structure/SKILL.md` |

@@ -344,7 +344,7 @@
   "design": "Book Club Cat",
   "slot": 3
  },
- "approved": false,
+ "approved": true,
  "created": "2026-11-11T02:04:37",
  "folder": "Room_Templates/Portrait_Templates/002_Ratio_2x3/001_Living_Rooms/002_Modern/LVRM_Midcentury_Walnut_2x3/",
  "quad_paper": [
@@ -393,5 +393,6 @@
    "bottom": -1.42,
    "left": -1.59
   }
- }
+ },
+ "approved_at": "2026-11-14T13:00:15"
 }
