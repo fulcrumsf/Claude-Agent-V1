@@ -19,11 +19,23 @@ The patch (OpenFill_AgentOS_Engines.patch, next to this script) adds, on top of 
      the brightest area (window) gives the light direction; the model may paint up to that far past the
      selection on the side away from the light, but only darkening of the same colour (a shadow) is kept
      there, applied to the original pixels, so nothing else nearby moves. 0 = off.
+  7. Generative Fill (2026-11-15, Photoshop-style): Filter > Plug-ins > "Generative Fill…" (keyboard Ctrl+G,
+     set by the installer when free) opens the panel on Fill with "Nano Banana 2.1 - Generative Fill" picked
+     and the cursor in the text box; the Model menu lists local "Qwen Edit 2511 Lightning" second as backup.
+     Any Nano Banana engine runs the wide-crop flow (app.py _agentos_wide_fill): a crop of an exact model
+     ratio around the selection plus its growth and shadow side (at least 1024 px), the typed instruction
+     plus a fixed shadow/keep-everything-else suffix, and the answer composited back through a wide soft
+     mask (selection; model pixels where they changed inside the object's room and on plain wall/floor;
+     only the light change on textured things such as wood grain, marble or a frame). Pixels outside the
+     mask are the original. The last raw answer is kept in openfill/tmp/agentos_wide_last_0.png.
+     Test driver: photocraft_genfill_test.py (next to this script).
 
 usage:
   python3 openfill_agentos_patch.py            # check, then apply to the installed copy
   python3 openfill_agentos_patch.py --check    # only say whether it applies / is applied
   python3 openfill_agentos_patch.py --make <pristine release folder>   # rebuild the .patch file
+      (no pristine folder? copy the installed app somewhere and reverse the current patch in it:
+       patch -p1 -R -d <copy> -i OpenFill_AgentOS_Engines.patch)
 After applying: quit and reopen "PhotoCraft with OpenFill" (the companion reads the code at start).
 """
 import subprocess
@@ -43,6 +55,7 @@ FILES = [
     "openfill/backends/comfy.py",
     "openfill/backends/cloud.py",
     "openfill_photocraft/service.py",
+    "openfill_photocraft/menu.py",
     "openfill_photocraft/bar.py",
     "openfill_photocraft/panels.py",
     "openfill_photocraft/web.py",

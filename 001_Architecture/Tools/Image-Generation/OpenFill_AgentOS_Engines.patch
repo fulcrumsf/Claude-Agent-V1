@@ -72,7 +72,7 @@
 +
 +    # Agent-OS patch: a cloud engine picked for one job in the Model menu ("cloud:<provider>:<model>")
 +    AGENTOS_KEY_NAMES = {"kie": ("KIE_API_KEY", "KIE_AI_API_KEY"), "fal": ("FAL_AI_API_KEY", "FAL_KEY")}
- 
++
 +    def set_job_engine(self, choice: str | None) -> None:
 +        parts = str(choice or "").split(":", 2)
 +        self._job_cloud = (parts[1], parts[2]) if len(parts) == 3 and parts[0] == "cloud" else None
@@ -94,7 +94,7 @@
 +            except OSError:
 +                pass
 +        return ""
-+
+ 
      def cloud_backend(self) -> CloudBackend:
          s = self.settings
 +        job = getattr(self, "_job_cloud", None)
@@ -127,7 +127,15 @@
          elif model.arch == "qwen_image":
              cfg, sampler, scheduler, steps = 2.5, "euler", "simple", max(20, min(steps, 30))
          batch = 1 if model.prompt_free else max(1, min(8, int(variations)))
-@@ -1034,13 +1072,34 @@
+@@ -1029,18 +1067,42 @@
+                     "fill: removal requested but no LaMa/MAT installed; using %s with a background prompt",
+                     model_choice,
+                 )
++        # Agent-OS patch: Generative Fill with Nano Banana (cloud): wide crop + wide soft mask.
++        if self._agentos_wide_job():
++            return self._agentos_wide_fill(image, selection, prompt, variations, remove or not prompt.strip())
+         entry, model = self.resolve_model(model_choice)
+         profile = self.profile_for(model)
          full = self.io.image_rect(image)
          target = selection
          removal_intent = remove or not prompt.strip() or model.prompt_free or model.eraser
@@ -163,7 +171,7 @@
              full,
              profile,
              model.arch,
-@@ -1155,6 +1214,46 @@
+@@ -1155,6 +1217,46 @@
              full_grow=mp.grow_image,
              full_blur=min(mp.grow_image, mp.feather_image),
          )
@@ -210,7 +218,7 @@
          title = "Object Removal" if remove or model.prompt_free or model.eraser else "Generative Fill"
          # A removal's prompt is OpenFill's own (an eraser's trigger words, or "background"): not in the name.
          name = _layer_name(title, "" if removal_intent else prompt)
-@@ -1162,14 +1261,18 @@
+@@ -1162,14 +1264,18 @@
              self, title, model_display_name(entry.name) if entry else model.checkpoint, interactive=self.interactive
          )
          try:
@@ -234,7 +242,7 @@
              # A cloud result is a layer that is transparent outside the selection with its own soft
              # edge inside it; its layer mask is the selection itself, never grown past it.
              layers = self.io.insert_results(
-@@ -1177,16 +1280,19 @@
+@@ -1177,16 +1283,19 @@
                  result.images,
                  ctx,
                  name,
@@ -256,10 +264,246 @@
              self._correct_seams(image, layers, ctx, image_rgba, mask_raw, layer_grow)
          if self.settings.grain_match and not model.prompt_free and not self.uses_cloud:
              self._match_grain(image, layers, ctx, image_rgba, mask_raw, result.seed)
-@@ -1197,7 +1303,163 @@
+@@ -1196,8 +1305,399 @@
+             )
          runner.done(f"Added layer: {layers[0].get_name()}" if layers else "Done")
          self.log.info("fill: done, seed=%s, %d layer(s)", result.seed, len(layers))
++        return layers
++
++    # Agent-OS patch: Generative Fill (wide crop) -----------------------------------------------------
++    # Tested 2026-11-15 on the Ikigai living-room template: Nano Banana redraws a WIDE crop around the
++    # selection (floor and wall where the shadow falls) and is told to move the shadow; the result goes back
++    # through a wide soft mask (selection + growth + shadow side, kept only where the model changed
++    # something), so every pixel outside that mask stays the original.
++    AGENTOS_WIDE_RATIOS = ((1, 1), (2, 3), (3, 2), (3, 4), (4, 3), (4, 5), (5, 4), (9, 16), (16, 9), (21, 9))
++    AGENTOS_WIDE_MIN_SIDE = 1024  # the crop's long side at least this (when the image allows)
++    AGENTOS_WIDE_SEND_SIDE = 2048  # sent at most this big (Nano Banana answers at 2K)
++    AGENTOS_WIDE_SUFFIX = (" Change nothing else in the picture: keep the same framing, perspective, colours, light and "
++                           "sharpness everywhere else.")
++
++    def _agentos_wide_job(self) -> bool:
++        job = getattr(self, "_job_cloud", None)
++        return bool(job) and "nano-banana" in str(job[1])
++
++    def _agentos_wide_box(self, full, want):
++        """The smallest box of an exact model ratio around ``want`` (x0, y0, x1, y1), inside the image."""
++        dw, dh = max(1.0, want[2] - want[0]), max(1.0, want[3] - want[1])
++        best = None
++        for a, b in self.AGENTOS_WIDE_RATIOS:
++            r = a / b
++            bw = max(dw, dh * r)
++            bh = bw / r
++            bw, bh = int(round(bw)), int(round(bh))
++            if bw <= full.width and bh <= full.height and (best is None or bw * bh < best[0] * best[1]):
++                best = (bw, bh, f"{a}:{b}")
++        if best is None:  # the image is smaller than the wish: the biggest box of a model ratio inside it
++            for a, b in self.AGENTOS_WIDE_RATIOS:
++                r = a / b
++                bw = min(full.width, full.height * r)
++                bw, bh = int(bw), int(bw / r)
++                if best is None or bw * bh > best[0] * best[1]:
++                    best = (bw, bh, f"{a}:{b}")
++        bw, bh, ratio = best
++        cx, cy = (want[0] + want[2]) / 2, (want[1] + want[3]) / 2
++        x0 = int(min(max(full.x, round(cx - bw / 2)), full.x + full.width - bw))
++        y0 = int(min(max(full.y, round(cy - bh / 2)), full.y + full.height - bh))
++        return Rect(x0, y0, bw, bh), ratio
++
++    def _agentos_wide_fill(self, image, target, prompt: str, variations: int, removal: bool) -> list:
++        import io as _io
++
++        import numpy as np
++        from PIL import Image
++
++        from .backends.cloud import provider
++
++        full = self.io.image_rect(image)
++        side = max(target.width, target.height)
++        grow = round(side * max(0.0, float(getattr(self.settings, "grow_object_percent", 40) or 0)) / 100.0)
++        reach = round(side * max(0.0, float(getattr(self.settings, "shadow_reach_percent", 100) or 0)) / 100.0)
++        light = self._agentos_light(image, full, target) if reach > 0 else None
++        if light is not None:
++            sdx, sdy = light[0] * reach, light[1] * reach
++        else:  # evenly lit: assume the shadow falls down and a little to the sides
++            sdx, sdy = 0.0, reach * 0.5
++        zx0 = min(target.x - grow, target.x + sdx - grow)
++        zy0 = min(target.y - grow, target.y + sdy - grow)
++        zx1 = max(target.x + target.width + grow, target.x + target.width + sdx + grow)
++        zy1 = max(target.y + target.height + grow, target.y + target.height + sdy + grow)
++        margin = max(64.0, side * 0.25)
++        want = [zx0 - margin, zy0 - margin, zx1 + margin, zy1 + margin]
++        # at least AGENTOS_WIDE_MIN_SIDE on the long side, centred
++        long_side = max(want[2] - want[0], want[3] - want[1])
++        if long_side < self.AGENTOS_WIDE_MIN_SIDE:
++            extra = (self.AGENTOS_WIDE_MIN_SIDE - long_side) / 2
++            if want[2] - want[0] >= want[3] - want[1]:
++                want[0], want[2] = want[0] - extra, want[2] + extra
++            else:
++                want[1], want[3] = want[1] - extra, want[3] + extra
++        ctx, ratio = self._agentos_wide_box(full, want)
++        w, h = ctx.width, ctx.height
++        image_png, image_rgba = self.io.export_region(image, ctx)
++        _mask_png, mask_raw = self.io.export_selection_mask(image, ctx)
++
++        # where the selection sits in the crop, in words the model can follow
++        def pct(v, n):
++            return int(round(100.0 * min(max(v, 0), n) / n))
++
++        loc = (f"the area from {pct(target.x - ctx.x, w)}% to {pct(target.x + target.width - ctx.x, w)}% across "
++               f"and {pct(target.y - ctx.y, h)}% to {pct(target.y + target.height - ctx.y, h)}% down")
++        words = []
++        if light is not None:
++            if abs(light[0]) > 0.35:
++                words.append("left" if light[0] < 0 else "right")
++            if abs(light[1]) > 0.35:
++                words.append("down" if light[1] > 0 else "up")
++        toward = f", falling toward the {' and '.join(words)}" if words else ""
++        if removal:
++            what = prompt.strip()
++            instruction = (
++                f"{what + '. ' if what else ''}Remove the object in {loc} of this picture, together with its cast "
++                "shadow and any reflection of it. Rebuild what is behind it (floor, wall, skirting, lines, texture "
++                "and light) exactly as it would look without it. Do not add anything new."
++            )
++        else:
++            instruction = (
++                f"In {loc} of this picture: {prompt.strip()}. Remove the old shadow of anything that was there "
++                f"before, and give the new object a natural cast shadow that matches the existing light "
++                f"direction{toward} and the other shadows in the picture."
++            )
++        instruction += self.AGENTOS_WIDE_SUFFIX
++
++        send = Image.frombytes("RGBA", (w, h), image_rgba).convert("RGB")
++        if max(w, h) > self.AGENTOS_WIDE_SEND_SIDE:
++            f = self.AGENTOS_WIDE_SEND_SIDE / max(w, h)
++            send = send.resize((max(1, round(w * f)), max(1, round(h * f))), Image.LANCZOS)
++        buf = _io.BytesIO()
++        send.save(buf, "PNG")
++        send_png = buf.getvalue()
++        job = self._job_cloud
++        where = provider(job[0]).name
++        self.log.info("fill (wide): selection=%s crop=%s ratio %s sent %dx%d, grow %d px, shadow reach %d px "
++                      "toward (%.2f, %.2f), model %s via %s", target, ctx, ratio, send.width, send.height, grow,
++                      reach, sdx / max(1, reach), sdy / max(1, reach), job[1], where)
++        self.log.info("fill (wide): instruction: %s", instruction)
++        count = max(1, min(4, int(variations or 1)))
++
++        def _run_wide(progress, preview, cancel):
++            be = self.cloud_backend()
++            out = []
++            for i in range(count):
++                started = time.monotonic()
++                data = be.agentos_wide_edit(send_png, instruction, ratio, progress, cancel)
++                self.log.info("fill (wide): result %d/%d in %.1f s", i + 1, count, time.monotonic() - started)
++                out.append(data)
++            return out
++
++        title = "Object Removal" if removal else "Generative Fill"
++        name = _layer_name(title, prompt if not removal else "") + f" [{job[1]}]"
++        runner = self.runner_cls(self, title, f"{job[1]} ({where}, cloud)", interactive=self.interactive)
++        try:
++            raws = runner.run(_run_wide)
++            try:  # the model's own answer, kept for checking (overwritten by the next job)
++                for i, data in enumerate(raws):
++                    (Path(self.paths.temp) / f"agentos_wide_last_{i}.png").write_bytes(data)
++                    (Path(self.paths.temp) / "agentos_wide_last_crop.png").write_bytes(image_png)
++            except OSError:
++                pass
++            mask, pngs = self._agentos_wide_mask(raws, image_rgba, mask_raw, w, h, ctx, full, side, grow,
++                                                 (sdx, sdy), np, Image, _io)
++            layers = self.io.insert_results(image, pngs, ctx, name, 0.0, self.paths.temp, grow=0, mask_pixels=mask)
++        except BaseException as err:
++            runner.fail(err)
++            raise
++        runner.done(f"Added layer: {layers[0].get_name()}" if layers else "Done")
++        self.log.info("fill (wide): done, %d layer(s)", len(layers))
          return layers
++
++    def _agentos_wide_mask(self, raws, image_rgba, mask_raw, w, h, ctx, full, side, grow, shadow, np, Image, _io):
++        """The layer pixels (each result at the crop's size) and one soft mask for them: the selection
++        fully, plus, inside the wide zone (selection grown, swept along the shadow side), only where the
++        model changed the picture. Fades softly; reaches nothing outside the zone."""
++
++        def box(a, r):
++            r = int(r)
++            if r <= 0:
++                return a
++            c = np.pad(a, ((r + 1, r), (r + 1, r)), mode="edge").cumsum(0).cumsum(1)
++            k = 2 * r + 1
++            return (c[k:, k:] - c[:-k, k:] - c[k:, :-k] + c[:-k, :-k]) / (k * k)
++
++        def blur(a, r):  # three box passes: close to a Gaussian (each channel of a colour picture)
++            if a.ndim == 3:
++                return np.stack([blur(a[..., i], r) for i in range(a.shape[2])], axis=2)
++            r = max(1, int(r / 1.7))
++            return box(box(box(a, r), r), r)
++
++        def dil(m, r):
++            return box(m.astype(np.float32), max(1, int(r))) > 0.001
++
++        orig = np.frombuffer(image_rgba, np.uint8).reshape(h, w, 4)[..., :3].astype(np.float32)
++        sel = np.frombuffer(mask_raw, np.uint8).reshape(h, w) > 127
++        zone = dil(sel, grow)
++        sdx, sdy = shadow
++        swept = np.zeros_like(sel)
++        for i in range(1, 17):
++            dx, dy = int(round(sdx * i / 16)), int(round(sdy * i / 16))
++            out = np.zeros_like(sel)
++            ys, yd = (slice(0, h - dy), slice(dy, h)) if dy >= 0 else (slice(-dy, h), slice(0, h + dy))
++            xs, xd = (slice(0, w - dx), slice(dx, w)) if dx >= 0 else (slice(-dx, w), slice(0, w + dx))
++            out[yd, xd] = sel[ys, xs]
++            swept |= out
++        zone |= dil(swept, max(2, grow))  # a shadow spreads sideways too (a wide shade throws a wide shadow)
++        feather = max(8, round(side * 0.06))
++        zone_soft = np.clip(blur(zone.astype(np.float32), feather) * 2.0, 0.0, 1.0)
++        # a crop edge inside the image fades out (an image edge needs no fade)
++        ramp = float(feather * 2)
++        yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
++        edge = np.ones((h, w), np.float32)
++        if ctx.x > full.x:
++            edge = np.minimum(edge, xx / ramp)
++        if ctx.x + w < full.x + full.width:
++            edge = np.minimum(edge, (w - 1 - xx) / ramp)
++        if ctx.y > full.y:
++            edge = np.minimum(edge, yy / ramp)
++        if ctx.y + h < full.y + full.height:
++            edge = np.minimum(edge, (h - 1 - yy) / ramp)
++        zone_soft *= np.clip(edge, 0.0, 1.0)
++        core_r = max(4, round(side * 0.03))
++        core = np.clip(blur(dil(sel, core_r).astype(np.float32), core_r) * 2.0, 0.0, 1.0)
++        # the new object may be bigger than the selection, up to ``grow``; past that only light changes
++        ring = np.clip(blur(dil(sel, grow).astype(np.float32), max(4, grow // 4)) * 2.0 - 0.5, 0.0, 1.0)
++        gray = orig.mean(axis=2)
++        # how densely textured each spot is (a lone shadow edge is sparse, wood grain or marble is dense)
++        density = blur((np.abs(gray - blur(gray, 2)) > 2.0).astype(np.float32), 14)
++        smooth = np.clip((0.6 - density) / 0.2, 0.0, 1.0)
++        alpha = core.copy()
++        pngs = []
++        for data in raws:
++            with Image.open(_io.BytesIO(data), formats=["PNG", "JPEG", "WEBP"]) as im:  # only these readers
++                res = im.convert("RGB").resize((w, h), Image.LANCZOS)
++            arr = np.asarray(res, np.float32)
++            diff = box(np.abs(arr - orig).max(axis=2), 2)
++            change = np.clip((diff - 6.0) / 14.0, 0.0, 1.0)
++            change = np.clip(blur(change, max(3, feather // 3)) * 1.6, 0.0, 1.0)
++            alpha = np.maximum(alpha, change * zone_soft)
++            # Outside the object's room the model's pixels are not used (it redraws textures, frames and
++            # nearby objects a little differently): the original pixels get only the model's change of
++            # light there (a shadow added or removed).
++            # per colour channel and smooth (sunlight is warm, shade is cool), so the original's own detail stays
++            ratio = np.clip((blur(arr, 6) + 2.0) / (blur(orig, 6) + 2.0), 0.2, 4.0)
++            # plain areas (wall, floor) take the model's pixels, so a sharp old shadow edge goes away cleanly;
++            # textured ones (wood grain, marble, a frame's edge) keep the original detail
++            k = np.maximum(np.maximum(core, ring * change), change * smooth)[..., None]
++            out = arr * k + np.clip(orig * ratio, 0, 255) * (1.0 - k)
++            rgba = np.concatenate([np.clip(out + 0.5, 0, 255).astype(np.uint8), np.full((h, w, 1), 255, np.uint8)],
++                                  axis=2)
++            buf = _io.BytesIO()
++            Image.fromarray(rgba, "RGBA").save(buf, "PNG")
++            pngs.append(buf.getvalue())
++        self.log.info("fill (wide): mask %dx%d: selection %d px, zone %d px, kept %d px (alpha > 0.5)",
++                      w, h, int(sel.sum()), int(zone.sum()), int((alpha > 0.5).sum()))
++        return (np.clip(alpha, 0.0, 1.0) * 255 + 0.5).astype(np.uint8).tobytes(), pngs
 +
 +    def _agentos_light(self, image, full, target):
 +        """Agent-OS patch: where shadows fall. The brightest large area of the picture (a window or a
@@ -289,7 +533,7 @@
 +        except Exception as err:  # noqa: BLE001 - no shadow room then, the fill still works
 +            self.log.warning("fill: light direction not found (%s)", err)
 +            return None
- 
++
 +    def _agentos_shadow_zone(self, mask_raw, ctx, shadow_dir):
 +        """Agent-OS patch: the selection swept along the shadow direction (the new shadow's room) as the
 +        model mask, plus a prompt hint naming the direction."""
@@ -355,7 +599,7 @@
 +
 +            def ero(m, r):
 +                return box(m.astype(np.float32), max(1, int(r))) > 0.999
-+
+ 
 +            def rgb(data):
 +                return np.frombuffer(data, np.uint8).reshape(h, w, 4)[..., :3].astype(np.float32)
 +
@@ -599,11 +843,10 @@
              "Accept": "application/json",
              "User-Agent": f"OpenFill/{__version__}",
          }
-@@ -680,6 +699,84 @@
-             "POST", "/images/generations", json.dumps(body).encode(), "application/json", self.request_timeout
+@@ -681,6 +700,103 @@
          )
          return self._collect(data)
-+
+ 
 +    # Agent-OS patch: kie.ai and fal.ai ------------------------------------------------
 +
 +    def _post_abs(self, url: str, body: bytes, content_type: str) -> Any:
@@ -640,8 +883,11 @@
 +    def _agentos_cloud(self, prompt: str, image: bytes, mask: bytes, ratio: str, true_mask: bool) -> list[bytes]:
 +        m = self.model
 +        if self.provider.id == "fal":
-+            img, msk = _data_url(image), _data_url(mask)
-+            if true_mask:
++            img, msk = _data_url(image), (_data_url(mask) if mask else "")
++            if not mask:  # Agent-OS wide edit: the picture alone, the instruction says what to change
++                body = {"prompt": prompt, "image_urls": [img], "num_images": 1, "aspect_ratio": ratio,
++                        "output_format": "png", "resolution": "2K"}
++            elif true_mask:
 +                body: dict[str, Any] = {"prompt": prompt, "image_url": img, "num_images": 1}
 +                body["mask_image_url" if m == "fal-ai/z-image/turbo/inpaint" else "mask_url"] = msk
 +                if m == "bria/genfill/v2":
@@ -658,8 +904,11 @@
 +            return self._collect({"data": imgs or []})
 +        # kie.ai: upload, create a task, poll, download
 +        img_url = self._kie_upload(image, "image.png")
-+        msk_url = self._kie_upload(mask, "mask.png")
-+        if true_mask:
++        msk_url = self._kie_upload(mask, "mask.png") if mask else ""
++        if not mask:  # Agent-OS wide edit: the picture alone
++            inp = {"prompt": prompt, "image_input": [img_url], "aspect_ratio": ratio,
++                   "resolution": "2K", "output_format": "png"}
++        elif true_mask:
 +            inp: dict[str, Any] = {"prompt": prompt, "image_url": img_url, "mask_url": msk_url}
 +        elif m.startswith("gpt-image"):
 +            inp = {"prompt": prompt, "input_urls": [img_url, msk_url], "aspect_ratio": ratio}
@@ -681,10 +930,24 @@
 +            if d.get("state") == "fail":
 +                raise CloudRefused(f"kie.ai could not make it: {self._clean(str(d.get('failMsg') or d.get('failCode'))[:200])}")
 +        raise GenerationCancelled("cancelled while waiting for kie.ai")
- 
++
++    def agentos_wide_edit(self, image_png: bytes, prompt: str, ratio: str, progress=None, cancel=None) -> bytes:
++        """Agent-OS patch (Generative Fill, wide crop): send one picture (a wide crop around the
++        selection) and an instruction, get the model's whole redrawn picture back unmasked. The
++        caller puts it back through its own wide soft mask, so no pixel outside that mask changes."""
++        self._check_ready()
++        if progress:
++            progress(0.02, f"Sending the picture to {self.where}...")
++        raw = self._run("Waiting for", lambda: self._agentos_cloud(prompt, image_png, b"", ratio, False),
++                        progress, cancel, 1)
++        if not raw:
++            raise CloudRefused(f"{self.where} answered without a picture; try another prompt.")
++        return raw[0]
++
      # prompts --------------------------------------------------------------------------
  
-@@ -766,7 +863,7 @@
+     @staticmethod
+@@ -766,7 +882,7 @@
          pad = imaging.pad_plan(small.width, small.height, self.provider.ratios)
          sent = imaging.pad_edges(small, pad)
          sent_mask = imaging.pad_gray(small_mask, mw, mh, pad, 0)
@@ -693,7 +956,7 @@
          mode = request.mode if request.mode in ("remove", "expand") else "fill"
          prompt = self.instruction(mode, request.prompt, request.negative, true_mask)
          count = max(1, min(MAX_VARIATIONS, int(request.sampling.batch)))
-@@ -785,7 +882,12 @@
+@@ -785,7 +901,12 @@
              count,
          )
          image_png = sent.png()
@@ -726,17 +989,47 @@
              if image is not None:
                  # whatever did not reach the document is dropped
                  self._say_what_is_left(self.bridge.discard(image))
+--- a/openfill_photocraft/menu.py
++++ b/openfill_photocraft/menu.py
+@@ -30,7 +30,7 @@
+ 
+ # (action, menu label). The label is also the name of the history step the entry leaves.
+ # One entry: everything else is in the OpenFill bar it opens.
+-ENTRIES = (("panel", "OpenFill"),)
++ENTRIES = (("panel", "OpenFill"), ("genfill", "Generative Fill\u2026"))  # Agent-OS patch: Generative Fill (Ctrl+G)
+ # Entries earlier versions added (removed from a PhotoCraft that still has them).
+ OLD_ACTIONS = ("fill", "remove", "expand", "txt2img")
+ PLUGIN_PREFIX = "app.openfill."
+@@ -158,6 +158,14 @@
+             done.append(label)
+         except ControlError:
+             break
++    # Agent-OS patch: Ctrl+G opens Generative Fill..., unless that entry or Ctrl+G already has a use
++    try:
++        keys = (client.run("prefs.get") or {}).get("shortcuts") or {}
++        gid = "plugin.filter." + PLUGIN_PREFIX + "genfill"
++        if done and gid not in keys and "Ctrl+G" not in keys.values():
++            client.run("prefs.set", path="shortcuts." + gid, value="Ctrl+G")
++    except ControlError:
++        pass
+     return done
+ 
+ 
 --- a/openfill_photocraft/bar.py
 +++ b/openfill_photocraft/bar.py
-@@ -103,6 +103,15 @@
+@@ -103,6 +103,19 @@
  
  # LaMa and MAT give the same result for the same input: one variation is enough.
  PROMPT_FREE = ("lama-big", "mat-places512")
 +# Agent-OS patch (2026-11-15): cloud engines in the Model menu (label -> per-job engine id). The
 +# selection's surroundings leave this Mac for the named service; the label says so.
++# Generative Fill (Filter > Plug-ins > Generative Fill..., Ctrl+G) opens Fill on GENFILL_DEFAULT; the
++# backup is local Qwen Edit Lightning (GENFILL_BACKUP). Nano Banana runs the wide-crop flow (app.py).
++GENFILL_DEFAULT = "Nano Banana 2.1 - Generative Fill (cloud, kie.ai, ~$0.03)"
++GENFILL_BACKUP = "qwen-image-edit-2511-lightning"
 +CLOUD_ENGINES = (
++    (GENFILL_DEFAULT, "cloud:kie:nano-banana-2-1"),
 +    ("Nano Banana Pro (cloud, kie.ai, ~$0.09)", "cloud:kie:nano-banana-pro"),
-+    ("Nano Banana 2.1 (cloud, kie.ai, ~$0.02)", "cloud:kie:nano-banana-2-1"),
 +    ("Ideogram 3 Edit, true mask (cloud, kie.ai, ~$0.02)", "cloud:kie:ideogram/v3-edit"),
 +    ("Qwen Edit inpaint, true mask (cloud, fal.ai, ~$0.03)", "cloud:fal:fal-ai/qwen-image-edit/inpaint"),
 +    ("Nano Banana Pro (cloud, fal.ai, ~$0.15)", "cloud:fal:fal-ai/nano-banana-pro/edit"),
@@ -744,7 +1037,7 @@
  
  
  def removal_choices(facts: dict[str, Any]) -> dict[str, str]:
-@@ -234,7 +243,7 @@
+@@ -234,7 +247,7 @@
              "comfy_ok": comfy_ok,
              "comfy_problem": "" if comfy_ok else comfy_problem(app.settings.comfy_dir),
          }
@@ -753,7 +1046,7 @@
              facts = self._cloud_facts(facts)
              if not comfy_ok:
                  facts["gpu_vendor"] = self._gpu_vendor()
-@@ -310,7 +319,7 @@
+@@ -310,7 +323,7 @@
          facts["intel_arc"] = self._arc
          if self._vendor == "amd":
              cat.add_amd_notes(rows, app.catalog)  # what may not work on an AMD card
@@ -762,7 +1055,23 @@
              facts.update({k: v for k, v in self._cloud_facts({}).items() if k != "comfy_ok"})
          return facts
  
-@@ -1176,6 +1185,8 @@
+@@ -968,9 +981,14 @@
+             self.select_tab(action)
+         elif self.view:
+             self.select_tab(self.tab.get())
++        if action == "genfill":  # Agent-OS patch: Generative Fill... (Ctrl+G) starts on Nano Banana 2.1
++            self.select_tab("fill")
++            if GENFILL_DEFAULT in self._model_ids:
++                self.model_choice.set(GENFILL_DEFAULT)
++                self.model_box.set(GENFILL_DEFAULT)
+         if action == "remove":
+             self.generate()
+-        elif action in ("fill", "txt2img", "expand", "", "panel"):
++        elif action in ("fill", "txt2img", "expand", "", "panel", "genfill"):
+             self.root.focus_force()
+             self.prompt.focus()
+             self.prompt.select_all()
+@@ -1176,6 +1194,8 @@
          if self.tab.get() == "bgremove":
              return  # BiRefNet only cuts out backgrounds: it never becomes the active fill model
          model_id = self._model_ids.get(label)
@@ -771,12 +1080,18 @@
          facts = self.refresher.get()
          removers = {i for i, _n in (facts.get("models") or {}).get("remove", [])}
          if model_id and model_id != facts.get("active") and model_id not in removers:
-@@ -1332,6 +1343,8 @@
+@@ -1332,6 +1352,14 @@
          else:
              choices = fill_choices(facts) if tab == "fill" else {name: i for i, name in models.get(tab, [])}
              wanted = facts.get("active_name") or ""
 +        if tab in ("fill", "remove", "expand") and not facts.get("cloud") and choices:  # Agent-OS patch
-+            choices = {**choices, **dict(CLOUD_ENGINES)}
++            if tab == "fill":  # Generative Fill: Nano Banana 2.1 first (default), local Qwen Lightning second
++                first = {GENFILL_DEFAULT: dict(CLOUD_ENGINES)[GENFILL_DEFAULT]}
++                first.update({k: v for k, v in choices.items() if v == GENFILL_BACKUP})
++                choices = {**first, **choices, **dict(CLOUD_ENGINES)}
++                wanted = GENFILL_DEFAULT
++            else:
++                choices = {**choices, **dict(CLOUD_ENGINES)}
          self._model_ids = choices
          names = list(choices)
          if self.model_box.values != names:
