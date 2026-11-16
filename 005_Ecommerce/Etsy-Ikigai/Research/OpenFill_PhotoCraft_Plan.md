@@ -281,3 +281,6 @@ Verdict: no clipping, no leftover lamp or stool, no pale band at 100%. Costs: fi
 3. Big removals: LaMa smears; only the cloud engines rebuild structure well.
 4. No "Select Subject" button in PhotoCraft yet: SAM is a script, not a menu item.
 5. The Fill menu has no live preview of cost per engine beyond the label.
+
+## 2026-11-15 late: Portal "Edit with chat" uses the same method
+The Ikigai Portal editor now does pixel edits ("make the couch pink") with SAM 3.1 (find the thing by name) + the Nano Banana 2.1 wide crop + wide soft mask (`Portal/app/wide_fill.py`, Portal copy of the OpenFill flow). The PhotoCraft Generative Fill entry has no keyboard shortcut any more (Tony: use Filter > Plug-ins > Generative Fill...).

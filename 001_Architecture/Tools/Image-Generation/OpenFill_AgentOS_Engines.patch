@@ -996,25 +996,10 @@
  # (action, menu label). The label is also the name of the history step the entry leaves.
  # One entry: everything else is in the OpenFill bar it opens.
 -ENTRIES = (("panel", "OpenFill"),)
-+ENTRIES = (("panel", "OpenFill"), ("genfill", "Generative Fill\u2026"))  # Agent-OS patch: Generative Fill (Ctrl+G)
++ENTRIES = (("panel", "OpenFill"), ("genfill", "Generative Fill\u2026"))  # Agent-OS patch: Generative Fill
  # Entries earlier versions added (removed from a PhotoCraft that still has them).
  OLD_ACTIONS = ("fill", "remove", "expand", "txt2img")
  PLUGIN_PREFIX = "app.openfill."
-@@ -158,6 +158,14 @@
-             done.append(label)
-         except ControlError:
-             break
-+    # Agent-OS patch: Ctrl+G opens Generative Fill..., unless that entry or Ctrl+G already has a use
-+    try:
-+        keys = (client.run("prefs.get") or {}).get("shortcuts") or {}
-+        gid = "plugin.filter." + PLUGIN_PREFIX + "genfill"
-+        if done and gid not in keys and "Ctrl+G" not in keys.values():
-+            client.run("prefs.set", path="shortcuts." + gid, value="Ctrl+G")
-+    except ControlError:
-+        pass
-     return done
- 
- 
 --- a/openfill_photocraft/bar.py
 +++ b/openfill_photocraft/bar.py
 @@ -103,6 +103,19 @@
@@ -1023,7 +1008,7 @@
  PROMPT_FREE = ("lama-big", "mat-places512")
 +# Agent-OS patch (2026-11-15): cloud engines in the Model menu (label -> per-job engine id). The
 +# selection's surroundings leave this Mac for the named service; the label says so.
-+# Generative Fill (Filter > Plug-ins > Generative Fill..., Ctrl+G) opens Fill on GENFILL_DEFAULT; the
++# Generative Fill (Filter > Plug-ins > Generative Fill...) opens Fill on GENFILL_DEFAULT; the
 +# backup is local Qwen Edit Lightning (GENFILL_BACKUP). Nano Banana runs the wide-crop flow (app.py).
 +GENFILL_DEFAULT = "Nano Banana 2.1 - Generative Fill (cloud, kie.ai, ~$0.03)"
 +GENFILL_BACKUP = "qwen-image-edit-2511-lightning"
@@ -1059,7 +1044,7 @@
              self.select_tab(action)
          elif self.view:
              self.select_tab(self.tab.get())
-+        if action == "genfill":  # Agent-OS patch: Generative Fill... (Ctrl+G) starts on Nano Banana 2.1
++        if action == "genfill":  # Agent-OS patch: Generative Fill... starts on Nano Banana 2.1
 +            self.select_tab("fill")
 +            if GENFILL_DEFAULT in self._model_ids:
 +                self.model_choice.set(GENFILL_DEFAULT)

@@ -385,7 +385,10 @@ button{font:inherit;color:inherit;cursor:pointer}
 .ted .pic{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 12px 12px}
 .ted .pic img{max-width:100%;max-height:100%;object-fit:contain;cursor:crosshair;border-radius:4px;display:block}
 .ted .artarea{position:absolute;pointer-events:none}
-.ted .artarea polygon{fill:rgba(255,138,40,.45);stroke:none}
+.ted .artarea polygon{fill:rgba(217,152,10,.35);stroke:#a86f00;stroke-width:3;vector-effect:non-scaling-stroke}
+.ted .fillbox rect{fill:rgba(217,152,10,.12);stroke:#d9980a;stroke-width:2;stroke-dasharray:8 5;vector-effect:non-scaling-stroke}
+/* amber = Edit with chat (Tony 2026-11-15): the art shows the amber test card, the editor wears the same accent */
+.ted .box{border-top:4px solid #d9980a}.ted header b{color:#7a5200}
 .ted .mark{position:absolute;width:18px;height:18px;margin:-9px 0 0 -9px;border:2px solid #ff5a3c;border-radius:50%;pointer-events:none;box-shadow:0 0 0 2px rgba(255,255,255,.7)}
 .ted .side{display:flex;flex-direction:column;min-height:0;border-left:1px solid var(--line)}
 .ted .tlog{flex:1;min-height:0;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
@@ -467,12 +470,12 @@ button{font:inherit;color:inherit;cursor:pointer}
     <div class="tbox" id="tbox" hidden><img alt=""><p></p></div>
     <div class="ted" id="ted" hidden><div class="box">
       <header><b id="ted-title">Edit with chat</b><span class="cost" id="ted-ver"></span><button class="x" data-ted="close" title="Close">×</button></header>
-      <div class="room"><div class="seg"><button class="chip on" data-ted-view="after">After</button><button class="chip" data-ted-view="before">Before</button><button class="chip on" id="ted-artbtn" title="Orange tint = the exact area the art fills (where the smart object is cut off)">Show art area</button><span class="cost" style="color:#ccc;align-self:center">Click the picture to mark a spot (e.g. "remove this").</span></div>
-        <div class="pic" id="ted-pic"><img id="ted-img" alt="Template"><svg id="ted-art" class="artarea" preserveAspectRatio="none" hidden><polygon id="ted-art-poly"/></svg><i class="mark" id="ted-mark" hidden></i></div></div>
+      <div class="room"><div class="seg"><button class="chip on" data-ted-view="after">After</button><button class="chip" data-ted-view="before">Before</button><button class="chip" id="ted-artbtn" title="The art already shows the amber test card (amber = exactly where the art shows). This adds an outline of the art area on top.">Outline art area</button><span class="cost" style="color:#ccc;align-self:center">Amber = where the art shows. Click the picture to mark a spot or point at a thing.</span></div>
+        <div class="pic" id="ted-pic"><img id="ted-img" alt="Template"><svg id="ted-art" class="artarea" preserveAspectRatio="none" hidden><polygon id="ted-art-poly"/></svg><svg id="ted-fill" class="artarea fillbox" preserveAspectRatio="none" hidden><rect id="ted-fill-rect"/></svg><i class="mark" id="ted-mark" hidden></i></div></div>
       <div class="side"><div class="tlog" id="ted-log"></div>
         <div class="tlayers" id="ted-layers"></div>
         <div class="tact" id="ted-act"></div>
-        <form id="ted-form"><textarea id="ted-say" placeholder="e.g. Light Shadow opacity 12% · hide Glass Sheen · blur Frame Edge Shadow 3 · remove this"></textarea><button class="btn" id="ted-send">Send</button></form></div>
+        <form id="ted-form"><textarea id="ted-say" placeholder="e.g. make the couch pink · remove the lamp · Light Shadow opacity 12% · hide Glass Sheen · remove this"></textarea><button class="btn" id="ted-send">Send</button></form></div>
       <div class="ask" id="ted-ask" hidden><div><p><b>Unsaved edits.</b> Save them into the template (the old version goes to its Archive folder) or discard them?</p>
         <div class="row2"><button class="btn ghost sm" data-ted="cancel">Keep editing</button><button class="btn ghost sm" data-ted="discard">Discard</button><button class="btn sm" data-ted="save">Save</button></div></div></div>
     </div></div>
@@ -988,7 +991,7 @@ button{font:inherit;color:inherit;cursor:pointer}
         const layer = prompt("Open in PhotoCraft. Select which layer? (e.g. SHADOWS, Light Shadow; empty = none)", "");
         if (layer === null) return;
         const r = await tplAct(`${prefix}/api/templates/open`, {rel, layer: layer.trim() || null});
-        if (r) alert(`PhotoCraft ${r.app} on port ${r.port}${r.layer ? (r.selected ? ", layer '" + r.layer + "' selected" : ", could not select '" + r.layer + "'") : ""}. Save there only when you mean to.`);
+        if (r) alert(`${r.with === "OpenFill" ? "PhotoCraft with OpenFill" : "PhotoCraft"} ${r.app}${r.layer ? (r.selected ? ", layer '" + r.layer + "' selected" : ", could not select '" + r.layer + "'") : ""}.${r.with === "OpenFill" ? " Generative Fill: select an area, then Filter > Plug-ins > Generative Fill…" : ""} You save there yourself (File > Save writes the template PSD directly); save only when you mean to.`);
         return;
       }
       if (m.dataset.tm === "check") { await tplAct(`${prefix}/api/templates/check`, {rel}); return loadTpl(); }
@@ -1028,7 +1031,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 
   // ---------- Edit with chat (room left, chat right, before / after; Save / Discard on X) ----------
   const ted = document.getElementById("ted"), tedImg = document.getElementById("ted-img"), tedMark = document.getElementById("ted-mark");
-  let ed = null, edRel = null, edArt = true, edView = "after", edPoint = null, edBusy = false;
+  let ed = null, edRel = null, edArt = false, edView = "after", edPoint = null, edBusy = false;
   async function openEditor(rel) {
     edRel = rel; ed = null; edPoint = null; edView = "after"; tedMark.hidden = true;
     ted.hidden = false; document.getElementById("ted-ask").hidden = true;
@@ -1040,9 +1043,10 @@ button{font:inherit;color:inherit;cursor:pointer}
     paintEditor();
   }
   function placeArt() {                      // lay the tint exactly over the picture (the img is letterboxed in its pane)
-    const svg = document.getElementById("ted-art");
-    svg.style.left = tedImg.offsetLeft + "px"; svg.style.top = tedImg.offsetTop + "px";
-    svg.style.width = tedImg.offsetWidth + "px"; svg.style.height = tedImg.offsetHeight + "px";
+    for (const svg of [document.getElementById("ted-art"), document.getElementById("ted-fill")]) {
+      svg.style.left = tedImg.offsetLeft + "px"; svg.style.top = tedImg.offsetTop + "px";
+      svg.style.width = tedImg.offsetWidth + "px"; svg.style.height = tedImg.offsetHeight + "px";
+    }
   }
   tedImg.addEventListener("load", placeArt); window.addEventListener("resize", placeArt);
   function paintEditor() {
@@ -1058,6 +1062,13 @@ button{font:inherit;color:inherit;cursor:pointer}
       placeArt();
     } else svg.hidden = true;
     document.getElementById("ted-artbtn").hidden = !(q && q.length === 4);
+    const fsvg = document.getElementById("ted-fill"), fb = ed.pending && ed.pending.box;   // what the fill will change
+    if (fb && ed.canvas && edView === "after") {
+      fsvg.setAttribute("viewBox", `0 0 ${ed.canvas[0]} ${ed.canvas[1]}`);
+      const rr = document.getElementById("ted-fill-rect");
+      rr.setAttribute("x", fb[0]); rr.setAttribute("y", fb[1]); rr.setAttribute("width", fb[2] - fb[0]); rr.setAttribute("height", fb[3] - fb[1]);
+      fsvg.hidden = false; placeArt();
+    } else fsvg.hidden = true;
     document.getElementById("ted-artbtn").classList.toggle("on", edArt);
     document.querySelectorAll("[data-ted-view]").forEach(b => b.classList.toggle("on", b.dataset.tedView === edView));
     const log = document.getElementById("ted-log");
@@ -1065,7 +1076,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     log.scrollTop = log.scrollHeight;
     document.getElementById("ted-layers").innerHTML = "Layers (click to hide/show): " + ed.layers.filter(l => l.kind !== "Group" || ["SHADOWS", "GLARE"].includes(l.name)).map(l => `<span class="${l.visible ? "" : "off"}" data-tlayer="${esc(l.name)}" title="${esc(l.kind + " · " + (l.blend || "") + " · " + Math.round((l.opacity ?? 1) * 100) + "%")}">${esc(l.name)}</span>`).join("");
     const p = ed.pending;
-    document.getElementById("ted-act").innerHTML = (p ? `<button class="btn sm" data-ted="confirm">Confirm image edit · about ${p.credits} credits</button>` : "") +
+    document.getElementById("ted-act").innerHTML = (p ? `<button class="btn sm" data-ted="confirm">Confirm generative fill · about ${p.credits} credits (~$0.03)</button>` : "") +
       `<button class="btn ghost sm" data-ted="undo" ${ed.dirty ? "" : "disabled"}>Undo</button><button class="btn sm" data-ted="save" ${ed.dirty ? "" : "disabled"}>Save into template</button><button class="btn ghost sm" data-ted="discard">Discard</button><button class="btn ghost sm" data-ted="open">Open in PhotoCraft</button>`;
   }
   async function edCall(action, body) {
@@ -1108,7 +1119,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     if (k === "save") { const r = await edCall("save"); if (r) { closeEditor(true); alert(`Saved. The old version is in the template's Archive folder (${r.archived}); the checker is running on it.`); } else paintEditor(); return; }
     if (k === "undo") { const r = await edCall("undo"); if (r) ed = r; return paintEditor(); }
     if (k === "confirm") { const r = await edCall("confirm"); if (r) ed = r; return paintEditor(); }
-    if (k === "open") { const layer = prompt("Select which layer in PhotoCraft? (empty = none)", ""); if (layer === null) return; const r = await tplAct(`${prefix}/api/templates/open`, {rel: edRel, layer: layer.trim() || null}); if (r) alert(`PhotoCraft ${r.app} on port ${r.port}.`); }
+    if (k === "open") { const layer = prompt("Select which layer in PhotoCraft? (empty = none)", ""); if (layer === null) return; const r = await tplAct(`${prefix}/api/templates/open`, {rel: edRel, layer: layer.trim() || null}); if (r) alert(r.with === "OpenFill" ? `Opened in PhotoCraft with OpenFill (${r.app}). For a fill: select an area, then Filter > Plug-ins > Generative Fill… When you are done, save in PhotoCraft yourself (File > Save writes this template's PSD directly; nothing goes to Archive). Close this editor first, or Discard here.` : `PhotoCraft ${r.app} on port ${r.port}.`); }
   });
   document.addEventListener("keydown", e => { if (e.key === "Escape") { tbox.hidden = true; tpick.hidden = true; if (!ted.hidden) closeEditor(false); } });
 

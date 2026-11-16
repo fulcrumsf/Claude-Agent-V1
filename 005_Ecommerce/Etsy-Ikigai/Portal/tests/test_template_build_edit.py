@@ -3,6 +3,7 @@ kie.ai and PhotoCraft are faked (no credits, no app window)."""
 import json
 from pathlib import Path
 
+import numpy as np
 import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
@@ -103,8 +104,10 @@ def test_edit_session_save_archives_the_old_psd_and_discard_changes_nothing(S, t
     st = te.chat(rel, "hide BASE (room photo)", None, S)
     assert st["dirty"] and st["log"][-1]["who"] == "studio"
     st = te.chat(rel, "make the wall green", None, S, ask=lambda p: '{"reply":"Repaint.","ops":[{"op":"image_edit",'
-                                                                   '"prompt":"paint the wall sage green"}]}')
-    assert st["pending"]["credits"] == 18 and "Confirm" in st["log"][-1]["text"]          # cost shown, nothing run
+                                                                   '"prompt":"paint the wall sage green","target":"wall"}]}',
+                 sam=lambda png, word: np.pad(np.ones((200, 300)), ((100, 600), (200, 700))))
+    assert st["pending"]["credits"] == 6 and "Confirm" in st["log"][-1]["text"]           # cost shown, nothing run
+    assert st["pending"]["box"] == [200, 100, 500, 300] and st["pending"]["target"] == "wall"
     original = psd.read_bytes()
     te.discard(rel, S)
     assert psd.read_bytes() == original and not (tdir / "Archive").exists()
@@ -129,7 +132,7 @@ def test_open_in_photocraft_launches_with_control_port_and_selects_the_layer(S, 
         Path(args[args.index("--control-token-file") + 1]).write_text("t")
     monkeypatch.setattr(te, "_port_open", lambda port: up["v"])
     r = te.open_in_photocraft("002_Ratio_2x3/001_Living_Rooms/Test_Room/Test_Room.psd", "SHADOWS",
-                              dict(S, photocraft_app="/x/photocraft"), launcher,
+                              dict(S, photocraft_app="/x/photocraft", photocraft_open_with="artcraft"), launcher,
                               lambda port, tok, calls, s=None: bridged.append(calls) or [{"result": {}}])
     a = launched[0]
     assert a[1:3] == ["--control", "47811"] and "--control-token-file" in a and a[-1].endswith("Test_Room.psd")

@@ -19,8 +19,8 @@ The patch (OpenFill_AgentOS_Engines.patch, next to this script) adds, on top of 
      the brightest area (window) gives the light direction; the model may paint up to that far past the
      selection on the side away from the light, but only darkening of the same colour (a shadow) is kept
      there, applied to the original pixels, so nothing else nearby moves. 0 = off.
-  7. Generative Fill (2026-11-15, Photoshop-style): Filter > Plug-ins > "Generative Fill…" (keyboard Ctrl+G,
-     set by the installer when free) opens the panel on Fill with "Nano Banana 2.1 - Generative Fill" picked
+  7. Generative Fill (2026-11-15, Photoshop-style): Filter > Plug-ins > "Generative Fill…" (no keyboard
+     shortcut; Tony picks it from the menu) opens the panel on Fill with "Nano Banana 2.1 - Generative Fill" picked
      and the cursor in the text box; the Model menu lists local "Qwen Edit 2511 Lightning" second as backup.
      Any Nano Banana engine runs the wide-crop flow (app.py _agentos_wide_fill): a crop of an exact model
      ratio around the selection plus its growth and shadow side (at least 1024 px), the typed instruction
