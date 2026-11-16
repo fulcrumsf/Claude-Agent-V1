@@ -11,6 +11,14 @@ The patch (OpenFill_AgentOS_Engines.patch, next to this script) adds, on top of 
   4. Cloud engines in the same Model menu, per job (kie.ai Nano Banana Pro / 2.1 / Ideogram 3 Edit,
      fal.ai Qwen inpaint / Nano Banana Pro). Keys are read from ~/.env-secrets (KIE_API_KEY,
      FAL_AI_API_KEY), never printed. The result is always put back through the selection mask.
+  5. Object growth for prompted local fills (setting grow_object_percent, label "Allow object to grow (%)",
+     default 40; preremove_object, default on): LaMa first removes the old object inside the selection,
+     the model may paint up to that percent past it, and the layer mask keeps only what changed out
+     there (difference mask), so a bigger new object is not clipped and no old object shows behind it.
+  6. Room for the new shadow (setting shadow_reach_percent, label "Room for new shadow (%)", default 100):
+     the brightest area (window) gives the light direction; the model may paint up to that far past the
+     selection on the side away from the light, but only darkening of the same colour (a shadow) is kept
+     there, applied to the original pixels, so nothing else nearby moves. 0 = off.
 
 usage:
   python3 openfill_agentos_patch.py            # check, then apply to the installed copy
@@ -28,6 +36,7 @@ APP = Path.home() / "Library/Application Support/OpenFill for PhotoCraft/app"
 FILES = [
     "models/catalog.json",
     "openfill/app.py",
+    "openfill/config.py",
     "openfill/catalog.py",
     "openfill/geometry.py",
     "openfill/workflow.py",
@@ -35,6 +44,8 @@ FILES = [
     "openfill/backends/cloud.py",
     "openfill_photocraft/service.py",
     "openfill_photocraft/bar.py",
+    "openfill_photocraft/panels.py",
+    "openfill_photocraft/web.py",
     "openfill_photocraft/static/index.html",
 ]
 

@@ -72,7 +72,7 @@
 +
 +    # Agent-OS patch: a cloud engine picked for one job in the Model menu ("cloud:<provider>:<model>")
 +    AGENTOS_KEY_NAMES = {"kie": ("KIE_API_KEY", "KIE_AI_API_KEY"), "fal": ("FAL_AI_API_KEY", "FAL_KEY")}
-+
+ 
 +    def set_job_engine(self, choice: str | None) -> None:
 +        parts = str(choice or "").split(":", 2)
 +        self._job_cloud = (parts[1], parts[2]) if len(parts) == 3 and parts[0] == "cloud" else None
@@ -94,7 +94,7 @@
 +            except OSError:
 +                pass
 +        return ""
- 
++
      def cloud_backend(self) -> CloudBackend:
          s = self.settings
 +        job = getattr(self, "_job_cloud", None)
@@ -127,6 +127,315 @@
          elif model.arch == "qwen_image":
              cfg, sampler, scheduler, steps = 2.5, "euler", "simple", max(20, min(steps, 30))
          batch = 1 if model.prompt_free else max(1, min(8, int(variations)))
+@@ -1034,13 +1072,34 @@
+         full = self.io.image_rect(image)
+         target = selection
+         removal_intent = remove or not prompt.strip() or model.prompt_free or model.eraser
++        # Agent-OS patch: let a prompted local fill grow past the selection (Photoshop-like).
++        obj_pct = float(getattr(self.settings, "grow_object_percent", 0) or 0)
++        grow_obj = obj_pct > 0 and not removal_intent and not self.uses_cloud and not model.eraser
++        obj_grow = round(max(target.width, target.height) * obj_pct / 100.0) if grow_obj else 0
++        plan_target = target
++        shadow_dir = None
++        if grow_obj:
++            x0, y0 = max(full.x, target.x - obj_grow), max(full.y, target.y - obj_grow)
++            x1 = min(full.x + full.width, target.x + target.width + obj_grow)
++            y1 = min(full.y + full.height, target.y + target.height + obj_grow)
++            shadow_pct = float(getattr(self.settings, "shadow_reach_percent", 0) or 0)
++            if shadow_pct > 0:
++                shadow_dir = self._agentos_light(image, full, target)
++            if shadow_dir is not None:  # room for the new shadow on the side away from the light
++                reach = round(max(target.width, target.height) * shadow_pct / 100.0)
++                sx, sy = round(shadow_dir[0] * reach), round(shadow_dir[1] * reach)
++                shadow_dir = (shadow_dir[0], shadow_dir[1], reach, shadow_dir[2])
++                x0, y0 = max(full.x, min(x0, target.x + sx)), max(full.y, min(y0, target.y + sy))
++                x1 = min(full.x + full.width, max(x1, target.x + target.width + sx))
++                y1 = min(full.y + full.height, max(y1, target.y + target.height + sy))
++            plan_target = Rect(x0, y0, x1 - x0, y1 - y0)
+         refine = (
+             bool(self.settings.refine)
+             and model.effective_template in workflow.REFINE_TEMPLATES
+             and float(self.settings.refine_denoise) > 0
+         )
+         plan = geometry.plan_fill(
+-            target,
++            plan_target,  # Agent-OS patch: the selection grown by obj_grow (= target when off)
+             full,
+             profile,
+             model.arch,
+@@ -1155,6 +1214,46 @@
+             full_grow=mp.grow_image,
+             full_blur=min(mp.grow_image, mp.feather_image),
+         )
++        # Agent-OS patch: the model may paint the object out to obj_grow; LaMa clears the old object first.
++        pre_removal = None
++        if grow_obj:
++            request = replace(request, grow=max(mp.grow_work, round(obj_grow * ws.scale)),
++                              full_grow=max(mp.grow_image, obj_grow))
++            rem_entry = self.removal_model_available() if self.settings.preremove_object else None
++            if rem_entry is not None:
++                _rem, rem_model = self.resolve_model(rem_entry.id)
++                rp_style, rp_mode = geometry.prefill_for(True, 1.0, rem_model.arch)
++                pre_removal = workflow.PlannedInpaintRequest(
++                    image_png=image_png, mask_png=mask_png, width=ctx.width, height=ctx.height,
++                    work_width=ctx.width, work_height=ctx.height, prompt="", negative="", model=rem_model,
++                    sampling=self.sampling(rem_model, 1, seed, 1.0), mode="fill", grow=mp.grow_image,
++                    feather=min(mp.grow_image, mp.feather_image), prefill=self.settings.prefill,
++                    prefill_style=rp_style, prefill_mode=rp_mode,
++                    color_match=geometry.color_match_strength(target, ctx, full, True),
++                    full_grow=mp.grow_image, full_blur=min(mp.grow_image, mp.feather_image),
++                )
++            self.log.info("fill: object may grow %d px past the selection (%.0f%%), model mask grow %d work px, "
++                          "context %s, pre-removal %s", obj_grow, obj_pct, request.grow, ctx,
++                          rem_entry.id if pre_removal is not None else "off")
++        cleaned: dict[str, bytes] = {}
++
++        shadow_info = self._agentos_shadow_zone(mask_raw, ctx, shadow_dir) if grow_obj and shadow_dir else None
++        if shadow_info is not None:
++            request = replace(request, mask_png=shadow_info["model_png"])
++
++        def _run_fill(progress, preview, cancel):
++            be = self.backend(progress, cancel)
++            req = request
++            if shadow_info is not None:
++                req = replace(req, prompt=req.prompt + shadow_info["hint"])
++            if pre_removal is not None:
++                started = time.monotonic()
++                first = be.inpaint(pre_removal, progress, None, cancel)
++                cleaned["png"] = first.images[0]
++                req = replace(request, image_png=first.images[0])
++                self.log.info("fill: pre-removal done in %.1f s", time.monotonic() - started)
++            return be.inpaint(req, progress, preview, cancel)
++
+         title = "Object Removal" if remove or model.prompt_free or model.eraser else "Generative Fill"
+         # A removal's prompt is OpenFill's own (an eraser's trigger words, or "background"): not in the name.
+         name = _layer_name(title, "" if removal_intent else prompt)
+@@ -1162,14 +1261,18 @@
+             self, title, model_display_name(entry.name) if entry else model.checkpoint, interactive=self.interactive
+         )
+         try:
+-            result = runner.run(
+-                lambda progress, preview, cancel: self.backend(progress, cancel).inpaint(
+-                    request, progress, preview, cancel
+-                )
+-            )
++            result = runner.run(_run_fill)  # Agent-OS patch: pre-removal + fill in one job
+             self.server.touch()
+             self._after_generation(result)
+             self._debug_dump("fill", request, result, ctx)
++            grown = (
++                self._agentos_grow_mask(result.images, cleaned.get("png"), image_rgba, mask_raw, ctx, obj_grow,
++                                        layer_grow, shadow_info)
++                if grow_obj else None
++            )
++            grow_mask = grown[0] if grown else None
++            if grown:
++                result = replace(result, images=grown[1])
+             # A cloud result is a layer that is transparent outside the selection with its own soft
+             # edge inside it; its layer mask is the selection itself, never grown past it.
+             layers = self.io.insert_results(
+@@ -1177,16 +1280,19 @@
+                 result.images,
+                 ctx,
+                 name,
+-                0.0 if self.uses_cloud else float(mp.feather_image),
++                0.0 if self.uses_cloud else (4.0 if grow_mask is not None else float(mp.feather_image)),
+                 self.paths.temp,
+                 grow=0 if self.uses_cloud else layer_grow,
++                **({"mask_pixels": grow_mask} if grow_mask is not None else {}),
+             )
+         except BaseException as err:
+             runner.fail(err)
+             raise
+         # A cloud result is already blended inside the selection on this computer, and these two
+         # rewrite the layer where its mask reaches past the selection: skipped, so no pixel there changes.
+-        if self.settings.seam_correction and not model.prompt_free and not self.uses_cloud:
++        # Agent-OS patch: no seam correction on a grown object (it would pull the new object's
++        # colours toward what was beside the selection); the difference mask handles the edge.
++        if self.settings.seam_correction and not model.prompt_free and not self.uses_cloud and grow_mask is None:
+             self._correct_seams(image, layers, ctx, image_rgba, mask_raw, layer_grow)
+         if self.settings.grain_match and not model.prompt_free and not self.uses_cloud:
+             self._match_grain(image, layers, ctx, image_rgba, mask_raw, result.seed)
+@@ -1197,7 +1303,163 @@
+         runner.done(f"Added layer: {layers[0].get_name()}" if layers else "Done")
+         self.log.info("fill: done, seed=%s, %d layer(s)", result.seed, len(layers))
+         return layers
++
++    def _agentos_light(self, image, full, target):
++        """Agent-OS patch: where shadows fall. The brightest large area of the picture (a window or a
++        sunlit patch) is taken as the light; shadows point from it through the selection. Returns
++        (dx, dy, contrast) with a unit direction, or None for an evenly lit picture."""
++        try:
++            import numpy as np
++
++            _png, rgba = self.io.export_region(image, full)
++            a = np.frombuffer(rgba, np.uint8).reshape(full.height, full.width, 4)[..., :3].astype(np.float32)
++            lum = a @ np.float32([0.299, 0.587, 0.114])
++            f = 16
++            hh, ww = lum.shape[0] // f, lum.shape[1] // f
++            small = lum[: hh * f, : ww * f].reshape(hh, f, ww, f).mean((1, 3))
++            top = small >= np.percentile(small, 97)
++            contrast = float(small[top].mean() / max(1.0, np.median(small)))
++            ys, xs = np.nonzero(top)
++            lx, ly = (xs.mean() + 0.5) * f, (ys.mean() + 0.5) * f
++            cx, cy = target.x + target.width / 2, target.y + target.height / 2
++            dx, dy = cx - lx, cy - ly
++            norm = (dx * dx + dy * dy) ** 0.5
++            self.log.info("fill: light at (%d, %d), contrast %.2f, shadow direction (%.2f, %.2f)", lx, ly, contrast,
++                          dx / max(norm, 1e-6), dy / max(norm, 1e-6))
++            if contrast < 1.3 or norm < 1:
++                return None
++            return dx / norm, dy / norm, contrast
++        except Exception as err:  # noqa: BLE001 - no shadow room then, the fill still works
++            self.log.warning("fill: light direction not found (%s)", err)
++            return None
+ 
++    def _agentos_shadow_zone(self, mask_raw, ctx, shadow_dir):
++        """Agent-OS patch: the selection swept along the shadow direction (the new shadow's room) as the
++        model mask, plus a prompt hint naming the direction."""
++        try:
++            import numpy as np
++
++            from . import imaging
++
++            w, h = ctx.width, ctx.height
++            ux, uy, reach, _contrast = shadow_dir
++            sel = np.frombuffer(mask_raw, np.uint8).reshape(h, w) > 127
++            zone = sel.copy()
++            for i in range(1, 13):
++                d = reach * i / 12
++                dx, dy = int(round(ux * d)), int(round(uy * d))
++                out = np.zeros_like(sel)
++                ys, yd = (slice(0, h - dy), slice(dy, h)) if dy >= 0 else (slice(-dy, h), slice(0, h + dy))
++                xs, xd = (slice(0, w - dx), slice(dx, w)) if dx >= 0 else (slice(-dx, w), slice(0, w + dx))
++                out[yd, xd] = sel[ys, xs]
++                zone |= out
++            words = []
++            if abs(ux) > 0.35:
++                words.append("left" if ux < 0 else "right")
++            if abs(uy) > 0.35:
++                words.append("down" if uy > 0 else "up")
++            hint = (f". It casts a natural shadow toward the {' and '.join(words)}, matching the light and the "
++                    "other shadows in the room; no leftover shadow of anything that was there before")
++            self.log.info("fill: shadow room %d px toward (%.2f, %.2f): model mask %d px (selection %d px)", reach,
++                          ux, uy, int(zone.sum()), int(sel.sum()))
++            return {"model_png": imaging.encode(w, h, (zone.astype(np.uint8) * 255).tobytes(), 1), "zone": zone,
++                    "hint": hint}
++        except Exception as err:  # noqa: BLE001
++            self.log.warning("fill: shadow room not made (%s)", err)
++            return None
++
++    def _agentos_grow_mask(self, images, cleaned_png, image_rgba, mask_raw, ctx, obj_grow, base_grow, shadow=None):
++        """Agent-OS patch: layer pixels and mask for a fill whose object may grow past the selection.
++
++        Returns (mask bytes, result PNGs) or None (the plain selection mask is used then).
++        - Inside the selection (grown by ``base_grow``): the result as it is.
++        - The new object: pixels that changed in a way a shadow cannot explain (other colour or
++          brighter), connected to the selection, within ``obj_grow``.
++        - Everywhere else in reach (``obj_grow`` and the shadow room): only shadow, as the cleaned
++          picture darkened by the result's own brightness ratio, same colour. Nothing else the model
++          repainted there (a moved frame, a ghost of a nearby object) reaches the layer.
++        The reach fades out at its edge, so a long shadow ends softly."""
++        try:
++            import numpy as np
++
++            from . import imaging
++
++            w, h = ctx.width, ctx.height
++
++            def box(a, r):
++                if r <= 0:
++                    return a
++                c = np.pad(a, ((r + 1, r), (r + 1, r)), mode="edge").cumsum(0).cumsum(1)
++                k = 2 * r + 1
++                return (c[k:, k:] - c[:-k, k:] - c[k:, :-k] + c[:-k, :-k]) / (k * k)
++
++            def dil(m, r):
++                return box(m.astype(np.float32), max(1, int(r))) > 0.001
++
++            def ero(m, r):
++                return box(m.astype(np.float32), max(1, int(r))) > 0.999
++
++            def rgb(data):
++                return np.frombuffer(data, np.uint8).reshape(h, w, 4)[..., :3].astype(np.float32)
++
++            if cleaned_png:
++                pic = imaging.decode_png(cleaned_png)
++                if (pic.width, pic.height) != (w, h):
++                    return None
++                base = rgb(pic.data)
++            else:
++                base = rgb(image_rgba)
++            lum_w = np.float32([0.299, 0.587, 0.114])
++            sel = np.frombuffer(mask_raw, np.uint8).reshape(h, w) > 127
++            inner = dil(sel, base_grow)
++            obj_reach = dil(sel, obj_grow)
++            zone = (sel | shadow["zone"]) if shadow else sel
++            reach = dil(zone, obj_grow)
++            reach_soft = np.clip(box(reach.astype(np.float32), max(4, obj_grow // 4)) * 2.0 - 1.0, 0.0, 1.0)
++            # the object may show fully near the selection and fades out toward the growth limit (no straight seam)
++            obj_fade = np.clip(box(obj_reach.astype(np.float32), max(4, obj_grow // 3)) * 2.0 - 1.0, 0.0, 1.0)
++            lb = box(base @ lum_w, 3)
++            cb = base / (base.sum(2, keepdims=True) + 1.0)
++            out_images, obj_union = [], np.zeros((h, w), bool)
++            for data in images:
++                pic = imaging.decode_png(data)
++                if (pic.width, pic.height) != (w, h):
++                    return None
++                res = rgb(pic.data)
++                lr = box(res @ lum_w, 3)
++                cr = res / (res.sum(2, keepdims=True) + 1.0)
++                diff = box(np.abs(res - base).max(axis=2), 2)
++                same_hue = box(np.abs(cr - cb).max(axis=2), 2) < 0.045
++                darker = (lb - lr > 4.0) & same_hue  # a shadow: same colour, darker
++                ratio = np.where(darker, np.clip((lr + 1.0) / (lb + 1.0), 0.25, 1.0), 1.0)
++                ratio = np.clip(box(ratio, 3), 0.25, 1.0)
++                # the new object: changes a shadow cannot explain, connected to the selection
++                cand = (diff > 14.0) & ~darker & obj_reach
++                obj = inner & cand
++                for _ in range(int(obj_grow / 3) + 2):
++                    nxt = dil(obj, 3) & cand
++                    if nxt.sum() == obj.sum():
++                        break
++                    obj = nxt
++                obj = ero(dil(obj, 6), 6) & obj_reach
++                keep = np.maximum(np.clip(box(box(obj.astype(np.float32), 3), 3), 0.0, 1.0) * obj_fade,
++                                  np.clip(box(inner.astype(np.float32), 3), 0.0, 1.0))[..., None]
++                out = res * keep + (base * ratio[..., None]) * (1.0 - keep)
++                rgba = np.concatenate([np.clip(out + 0.5, 0, 255).astype(np.uint8),
++                                       np.full((h, w, 1), 255, np.uint8)], axis=2)
++                out_images.append(imaging.encode(w, h, rgba.tobytes(), 4))
++                obj_union |= obj
++            alpha = np.maximum(reach_soft, inner.astype(np.float32))
++            self.log.info(
++                "fill: grow mask %dx%d: selection %d px, object kept outside the selection %d px, "
++                "reach %d px (shadow only beyond the object)",
++                w, h, int(sel.sum()), int((obj_union & ~inner).sum()), int(reach.sum()),
++            )
++            return (alpha * 255 + 0.5).astype(np.uint8).tobytes(), out_images
++        except Exception as err:  # noqa: BLE001 - the plain selection mask still works
++            self.log.warning("fill: grow mask not made (%s); using the selection mask", err)
++            return None
++
+     def _correct_seams(
+         self,
+         image,
+--- a/openfill/config.py
++++ b/openfill/config.py
+@@ -106,6 +106,13 @@
+     feather: int = 24  # layer mask feather cap (px); actual = feather_percent
+     grow_percent: float = 15.0  # dilation as percent of the selection's larger side (covers object rims)
+     feather_percent: float = 6.0  # layer mask feather as percent of the larger side
++    # Agent-OS patch: a prompted fill may paint its object this far past the selection (percent of
++    # the selection's larger side); the old object is removed with LaMa first (one job, one layer).
++    grow_object_percent: float = 40.0
++    preremove_object: bool = True
++    # Agent-OS patch: room for the new object's cast shadow, as percent of the selection's larger side,
++    # on the side away from the brightest light in the picture (a window). 0 = off.
++    shadow_reach_percent: float = 100.0
+     prefill: bool = True
+     # Second pass at full resolution over the regenerated area when the fill
+     # was worked below 1:1 (SD 1.5 and SDXL tiers), at this denoise. Off: in
 --- a/openfill/catalog.py
 +++ b/openfill/catalog.py
 @@ -45,6 +45,7 @@
@@ -471,6 +780,38 @@
          self._model_ids = choices
          names = list(choices)
          if self.model_box.values != names:
+--- a/openfill_photocraft/panels.py
++++ b/openfill_photocraft/panels.py
+@@ -34,6 +34,8 @@
+     ("cfg", "Prompt strictness (CFG)", float),
+     ("grow_percent", "Repaint margin (%)", float),
+     ("feather_percent", "Edge softness (%)", float),
++    ("grow_object_percent", "Allow object to grow (%)", float),  # Agent-OS patch
++    ("shadow_reach_percent", "Room for new shadow (%)", float),  # Agent-OS patch; 0 = off
+     ("extra_server_args", "Extra ComfyUI options", str),
+ )
+ SECTIONS = (("models", "Models"), ("engine", "Engine"), ("generation", "Generation"))
+@@ -662,7 +664,7 @@
+         self.bar = bar
+         half = (CW - 12) // 2
+         self.fields: dict[str, ui.Field] = {}
+-        keys = (("steps", "cfg"), ("grow_percent", "feather_percent"))
++        keys = (("steps", "cfg"), ("grow_percent", "feather_percent"), ("grow_object_percent", "shadow_reach_percent"))  # Agent-OS patch
+         labels = {key: label for key, label, _kind in SETTINGS}
+         for pair in keys:
+             row = ui.frame(self)
+--- a/openfill_photocraft/web.py
++++ b/openfill_photocraft/web.py
+@@ -37,6 +37,9 @@
+     "cfg": float,
+     "grow_percent": float,
+     "feather_percent": float,
++    "grow_object_percent": float,  # Agent-OS patch
++    "preremove_object": bool,
++    "shadow_reach_percent": float,
+     "debug": bool,
+     "backend": str,
+     "cloud_provider": str,
 --- a/openfill_photocraft/static/index.html
 +++ b/openfill_photocraft/static/index.html
 @@ -262,6 +262,7 @@

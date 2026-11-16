@@ -249,6 +249,31 @@ Target "warm Qwen under 3 minutes": Lightning just makes it (153 to 181 s); stoc
 - Bridge built: `python3 001_Architecture/Tools/Image-Generation/photocraft_sam_select.py "lamp"` turns the word into a PhotoCraft selection (plan 3a). SAM selection + LaMa Remove of the lamp: about 14 s total, clean result.
 - Not compared pixel by pixel with the SAM 2.1 harness yet.
 
+### Object growth fix (2026-11-15, later)
+
+Problem: a prompted fill was masked to the selection plus about 16 to 24 px, so a bigger new object was cut off with a soft edge and parts of the old object stayed visible.
+
+Change (in the patch): new settings `grow_object_percent` (panel label "Allow object to grow (%)", default 40) and `preremove_object` (default on). For a prompted local fill, LaMa first removes the old object inside the selection (3 to 4 s, same job, still one Undo). The model may then paint up to 40% of the selection's larger side past it. The layer mask is the selection plus only the pixels that changed out there (difference against the cleaned image, holes closed, 2 px soft rim), so no repainted band shows. Removal and cloud engines are unchanged (cloud results still stay inside the selection).
+
+Test document `LVRM_grow_test.png` (a copy), before/after 100% crops in OpenFill's exchange folder (`Grow_Test_*`):
+
+| Engine | Lamp to vase with eucalyptus | Stool to oak side table with bowl |
+|---|---|---|
+| klein, 40% | 79.6 s, not clipped, lamp gone; the books under the lamp were dropped | (30% run) 75.1 s, complete table and bowl, stool gone |
+| Qwen Lightning, 40% | 162.1 s, vase stands on the books, branches complete, lamp gone | 165.7 s, complete table and bowl, stool gone; baseboard repainted white |
+
+Log numbers (40%): lamp selection 404 x 492, growth 197 px, context 1684 x 1772 at scale 0.58, kept 89,292 to 237,584 px outside the selection; stool selection 489 x 484, growth 196 px.
+
+Verdict: no clipping, no leftover lamp or stool, no pale band at 100%. Costs: fills take about 2x longer for klein (bigger context), results are a little softer (lower scale), and things inside the growth zone can change (books dropped by klein, baseboard repainted by Qwen). At 30% the klein vase was still cut at the growth limit, so 40% is the default.
+
+### Shadows (2026-11-15, later)
+
+- **Finding the old shadow automatically failed on this template.** SAM 3.1 text prompts ("the stool and its shadow", "shadow of the lamp", "shadow") select only the object, a window light stripe, or the sofa's shadow. Brightness against a LaMa probe fails too: LaMa fills a large area with grey mush, and the stool's shadow (the gaps in the sun stripes) has the same brightness as the room's ordinary shade. Not shipped. Old shadows are still removed when they lie inside the selection or the 40% growth zone; for a longer old shadow, lasso the object and its shadow together (what Photoshop's Remove also needs).
+- **Shipped: room for the new shadow.** Setting `shadow_reach_percent`, label "Room for new shadow (%)", default 100 (0 = off). The brightest area (here the window, found at about (2430, 820)) gives the direction; the model may paint up to 100% of the selection's size past it on the far side, and the prompt gets a hint ("casts a natural shadow toward the left and down"). In that zone only darkening of the same colour is kept, applied to the original pixels, so nothing else moves; the new object keeps every change connected to the selection and fades toward the 40% limit.
+- Tried and dropped: keeping every change in the zone (Qwen moved the art frame and ghosted the stool; klein painted a floor-standing vase), and allowing brightening near the object (pale ghost leaves).
+- Test document `LVRM_shadow_test.png`, crops `Shadow_Test_*` in the exchange folder. Final (visible): Qwen Lightning v5, lamp 167.6 s, stool 159.0 s. klein v5: 80.3 s and 70.1 s, but its lamp result is a floor vase in front of the table (not usable).
+- Verdict, Qwen v5: stool, old shadow gone near the table, new leg shadows run left along the floor like the room's other shadows; one invented plant-like shadow on the floor. Lamp: frame, books and stool untouched; leaf shadow on the wall to the lower left is plausible but partial; faint ghost leaf outlines left and right of the branches (visible at 100%).
+
 ### Still short of Photoshop
 
 1. Speed: Photoshop's Generative Fill returns 3 variations in about 10 to 20 s. Local here: klein about 30 s (one variation), Qwen 2.5 to 3 min. Cloud Nano Banana Pro about 60 s.
