@@ -156,10 +156,72 @@ def run(rel, settings=None, generator=None, check=True):
             _job.update(running=False, stage="")
 
 
+def _free(dest):
+    """dest, or dest with a time suffix when that name is already taken (never overwrite)."""
+    if dest.exists():
+        dest = dest.with_name(f"{dest.stem}_{datetime.now():%H%M%S}{dest.suffix}")
+    return dest
+
+
+def decide_rebuild(psd, side, decision, settings=None):
+    """A REBUILT template (sidecar <stem>.json, kind rebuild; template_gallery.REBUILD_KIND) next to the live PSD.
+    approved: the live PSD (+ its template.json and _Preview.png) moves into the folder's Archive/ as
+    <old>_before_rebuild_<date>, the sidecar becomes the folder's template.json (approved true), and Tony's style
+    choice moves to the new PSD. denied: the new PSD, its scene and sidecar move into Archive/; the live PSD stays.
+    Nothing is deleted."""
+    from . import template_styles as ts
+    man = json.loads(side.read_text())
+    if man.get("kind") != tg.REBUILD_KIND or man.get("psd") != psd.name:
+        raise BuildError("only a rebuilt template can be approved or denied here")
+    folder = psd.parent
+    arch = folder / "Archive"
+    arch.mkdir(exist_ok=True)                   # Archive folders are pre-approved (Tony 2026-11-08)
+    day = f"{datetime.now():%Y-%m-%d}"
+    rel_new = psd.relative_to(lib(settings)).as_posix()
+    if decision == "denied":
+        moved = []
+        for f in (psd, folder / (man.get("scene") or ""), side):
+            if f.is_file() and f != folder:
+                dest = _free(arch / f.name)
+                shutil.move(str(f), str(dest))
+                moved.append(dest.name)
+        return {"denied": rel_new, "archived": moved, "kept_in_use": man.get("replaces")}
+    if decision != "approved":
+        raise BuildError("decision must be approved or denied")
+    old = folder / (man.get("replaces") or "")
+    moved = []
+    if old.is_file() and old != psd:
+        for f, dest in ((old, arch / f"{old.stem}_before_rebuild_{day}.psd"),
+                        (folder / f"{old.stem}_Preview.png", arch / f"{old.stem}_Preview_before_rebuild_{day}.png")):
+            if f.is_file():
+                dest = _free(dest)
+                shutil.move(str(f), str(dest))
+                moved.append(dest.name)
+    tj = folder / stp.MANIFEST
+    if tj.is_file():
+        dest = _free(arch / f"{old.stem}_template_before_rebuild_{day}.json")
+        shutil.move(str(tj), str(dest))
+        moved.append(dest.name)
+    man.update(approved=True, approved_at=datetime.now().isoformat(timespec="seconds"))
+    tj.write_text(json.dumps(man, indent=1) + "\n")
+    shutil.move(str(side), str(_free(arch / f"{psd.stem}_rebuild_manifest_{day}.json")))   # kept as the record
+    if old.name:                                # Tony's manual styles follow the template to its new file
+        rel_old = (folder / old.name).relative_to(lib(settings)).as_posix()
+        sp = (settings or {}).get("template_styles_path") or ts.FILE
+        if Path(sp).is_file():
+            data = ts.load(sp)
+            if rel_old in (data.get("manual") or {}) and rel_new not in data["manual"]:
+                ts.set_manual(rel_new, data["manual"][rel_old], sp)
+    return {"approved": rel_new, "archived": moved}
+
+
 def decide(rel_psd, decision, settings=None):
     """approved: template.json approved true. denied: the PSD, scene and template.json move into that folder's
-    Archive/ (the folder becomes a gap again)."""
+    Archive/ (the folder becomes a gap again). A rebuilt template (sidecar manifest) goes to decide_rebuild."""
     psd = lib(settings) / rel_psd
+    side = psd.with_suffix(".json")
+    if psd.is_file() and side.is_file() and (tg.psd_manifest(psd) or {}).get("kind") == tg.REBUILD_KIND:
+        return decide_rebuild(psd, side, decision, settings)
     man_f = psd.parent / stp.MANIFEST
     if not psd.is_file() or not man_f.is_file():
         raise BuildError("no such new template")

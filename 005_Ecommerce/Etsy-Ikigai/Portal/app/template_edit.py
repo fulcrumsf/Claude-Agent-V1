@@ -154,7 +154,7 @@ def start(rel, settings=None, prefix="/ikigai"):
     layers, canvas = layers_of(psd0, settings)
     quad = None                                       # the art area, for the editor's orange onion-skin tint
     try:
-        man = json.loads((Path(t["psd"]).parent / "template.json").read_text())
+        man = tg.psd_manifest(t["psd"]) or {}             # a pending rebuild's own sidecar, else template.json
         quad = man.get("quad_art") or None
     except Exception:  # noqa: BLE001  (no manifest: no tint)
         pass

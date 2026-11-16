@@ -1,0 +1,317 @@
+{
+ "name": "LVRM_Modern_Leather_4x5_Template_Rebuild_2026-11-16",
+ "title": "LVRM_Modern_Leather_4x5_Template (rebuilt 2026-11-16)",
+ "kind": "rebuild",
+ "psd": "LVRM_Modern_Leather_4x5_Template_Rebuild_2026-11-16.psd",
+ "scene": "LVRM_Modern_Leather_4x5_Template_Rebuild_2026-11-16_Scene.png",
+ "replaces": "LVRM_Modern_Leather_4x5_Template.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Modern",
+ "style": "Modern",
+ "ratio": "iso",
+ "desc": "White wall, tan leather wingback chair, fiddle-leaf plant, black frame + mat",
+ "so_px": [
+  429,
+  593
+ ],
+ "so_ratio": 0.7234,
+ "quad_insert": [
+  [
+   821.176025390625,
+   231.99400329589844
+  ],
+  [
+   1248.7230224609375,
+   231.9239959716797
+  ],
+  [
+   1248.5240478515625,
+   823.7139892578125
+  ],
+  [
+   821.2260131835938,
+   823.7139892578125
+  ]
+ ],
+ "quad_art": [
+  [
+   820.676025390625,
+   231.49400329589844
+  ],
+  [
+   1249.2230224609375,
+   231.4239959716797
+  ],
+  [
+   1249.0240478515625,
+   824.2139892578125
+  ],
+  [
+   820.7260131835938,
+   824.2139892578125
+  ]
+ ],
+ "quad_paper": [
+  [
+   821.2249755859375,
+   232.06300354003906
+  ],
+  [
+   1248.9859619140625,
+   231.96499633789062
+  ],
+  [
+   1248.697021484375,
+   823.6900024414062
+  ],
+  [
+   821.260986328125,
+   823.6900024414062
+  ]
+ ],
+ "opening_pad_px": 0.5,
+ "mode": "full",
+ "canvas": [
+  2048,
+  2048
+ ],
+ "light_from": "right",
+ "insert": {
+  "aspect": 0.7226,
+  "screen_aspect": 0.7223,
+  "skew": 1.0,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    797.4,
+    207.4,
+    1270.6,
+    845.6
+   ],
+   "box_source": "given",
+   "sam": {
+    "prompt": "box+click",
+    "score": 0.9773869514465332,
+    "area": 251381,
+    "dE": 11.0,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.8432549238204956,
+      "area": 411473,
+      "dE": 166.0
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9773869514465332,
+      "area": 251381,
+      "dE": 11.0
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9987,
+    "corner_shift_px": [
+     1.51,
+     1.12,
+     1.98,
+     0.65
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.032
+     },
+     "right": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.114
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.035
+     },
+     "left": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.03
+     }
+    }
+   },
+   "wall_px": 0
+  },
+  "opening": {
+   "sides": {
+    "top": {
+     "mode": "lum bright",
+     "edge_px": 0.25,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.041,
+     "offset_px": 0.06
+    },
+    "right": {
+     "mode": "lum bright",
+     "edge_px": -0.25,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.069,
+     "offset_px": -0.22
+    },
+    "bottom": {
+     "mode": "lum bright",
+     "edge_px": 0.0,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.03,
+     "offset_px": 0.02
+    },
+    "left": {
+     "mode": "lum bright",
+     "edge_px": 0.0,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.027,
+     "offset_px": 0.04
+    }
+   },
+   "offset_px": {
+    "top": 0.06,
+    "right": -0.22,
+    "bottom": 0.02,
+    "left": 0.04
+   },
+   "reach_px": 10.7
+  },
+  "quad_paper": [
+   [
+    821.2249755859375,
+    232.06300354003906
+   ],
+   [
+    1248.9859619140625,
+    231.96499633789062
+   ],
+   [
+    1248.697021484375,
+    823.6900024414062
+   ],
+   [
+    821.260986328125,
+    823.6900024414062
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0.5 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.02,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.0
+    },
+    {
+     "side": "right",
+     "hard_k": 0.0
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.0
+    },
+    {
+     "side": "left",
+     "hard_k": 0.0
+    }
+   ],
+   "pad_px": 0.5
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.315,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.034,
+     "width_px": 12.75,
+     "blur_px": 12.0,
+     "fit_rms": 0.0025
+    },
+    {
+     "side": "right",
+     "soft_k": 0.433,
+     "width_px": 1.5,
+     "blur_px": 1.36,
+     "fit_rms": 0.0149
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.075,
+     "width_px": 8.75,
+     "blur_px": 12.0,
+     "fit_rms": 0.0072
+    },
+    {
+     "side": "left",
+     "soft_k": 0.04,
+     "width_px": 10.25,
+     "blur_px": 12.0,
+     "fit_rms": 0.0038
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "none",
+   "opacity": 0.0,
+   "insert_texture": 0.2724,
+   "why": "the insert is not blank paper (a print in the photo): its light cannot be measured"
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    820.7680053710938,
+    231.48399353027344
+   ],
+   [
+    1249.14501953125,
+    231.36700439453125
+   ],
+   [
+    1249.0,
+    824.1259765625
+   ],
+   [
+    820.8049926757812,
+    824.1259765625
+   ]
+  ],
+  "corner_err_px": [
+   0.09,
+   0.1,
+   0.09,
+   0.12
+  ],
+  "max_px": 0.12,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": 0.53,
+   "right": 0.45,
+   "bottom": 0.41,
+   "left": 0.41
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "rebuilt_from": "the template's own photo",
+ "credits": 0.0,
+ "approved": false,
+ "created": "2026-11-16T00:05:10"
+}

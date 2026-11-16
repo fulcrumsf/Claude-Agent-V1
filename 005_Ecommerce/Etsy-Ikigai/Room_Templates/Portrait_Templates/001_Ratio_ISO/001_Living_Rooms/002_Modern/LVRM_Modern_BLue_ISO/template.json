@@ -1,39 +1,344 @@
 {
- "name": "LVRM_Modern_BLue_ISO_Template",
- "kind": "tony_psd",
- "psd": "LVRM_Modern_BLue_ISO_Template.psd",
+ "name": "LVRM_Modern_BLue_ISO_Template_Rebuild_2026-11-16",
+ "title": "LVRM_Modern_BLue_ISO_Template (rebuilt 2026-11-16)",
+ "kind": "rebuild",
+ "psd": "LVRM_Modern_BLue_ISO_Template_Rebuild_2026-11-16.psd",
+ "scene": "LVRM_Modern_BLue_ISO_Template_Rebuild_2026-11-16_Scene.png",
+ "replaces": "LVRM_Modern_BLue_ISO_Template.psd",
  "smart_object_layer": "Place Artwork Here",
  "room": "Living Rooms",
  "decor": "Modern",
+ "style": "Modern",
  "ratio": "iso",
+ "desc": "Sky-blue wall living room, teal chesterfield, palms",
  "so_px": [
-  486,
-  679
+  489,
+  680
  ],
- "so_ratio": 0.7158,
- "quad_art": [
+ "so_ratio": 0.7191,
+ "quad_insert": [
   [
-   1121.0,
-   382.0
+   1122.1070556640625,
+   382.1080017089844
   ],
   [
-   1606.0,
-   382.0
+   1610.2010498046875,
+   382.12701416015625
   ],
   [
-   1606.0,
-   1060.0
+   1610.1390380859375,
+   1061.052001953125
   ],
   [
-   1121.0,
-   1060.0
+   1121.842041015625,
+   1060.9630126953125
   ]
  ],
+ "quad_art": [
+  [
+   1121.6070556640625,
+   381.6080017089844
+  ],
+  [
+   1610.7010498046875,
+   381.62701416015625
+  ],
+  [
+   1610.6390380859375,
+   1061.552001953125
+  ],
+  [
+   1121.342041015625,
+   1061.4630126953125
+  ]
+ ],
+ "quad_paper": [
+  [
+   1122.0689697265625,
+   381.9530029296875
+  ],
+  [
+   1609.133056640625,
+   382.01300048828125
+  ],
+  [
+   1609.133056640625,
+   1060.8480224609375
+  ],
+  [
+   1121.655029296875,
+   1060.7879638671875
+  ]
+ ],
+ "opening_pad_px": 0.5,
+ "mode": "full",
  "canvas": [
   2655,
   2000
  ],
- "desc": "Sky-blue wall living room, teal chesterfield, palms",
- "guard": "hue only (the template's own shadows are designed)",
- "measured": "2026-11-08: art quad from a black vs white card render"
+ "light_from": "right",
+ "insert": {
+  "aspect": 0.719,
+  "screen_aspect": 0.7191,
+  "skew": 1.0,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    1093.9,
+    354.9,
+    1633.1,
+    1087.1
+   ],
+   "box_source": "given",
+   "sam": {
+    "prompt": "click",
+    "score": 0.9383629560470581,
+    "area": 331357,
+    "dE": 28.2,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.991567075252533,
+      "area": 364215,
+      "dE": 75.4
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9903490543365479,
+      "area": 356522,
+      "dE": 70.9
+     },
+     {
+      "prompt": "click",
+      "score": 0.9383629560470581,
+      "area": 331357,
+      "dE": 28.2
+     },
+     {
+      "prompt": "click",
+      "score": 0.9898791313171387,
+      "area": 364051,
+      "dE": 72.2
+     },
+     {
+      "prompt": "box",
+      "score": 0.9918330907821655,
+      "area": 363937,
+      "dE": 73.1
+     },
+     {
+      "prompt": "box",
+      "score": 0.9894995093345642,
+      "area": 356361,
+      "dE": 69.1
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9999,
+    "corner_shift_px": [
+     2.11,
+     2.0,
+     2.15,
+     2.07
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.153
+     },
+     "right": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.15
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.086
+     },
+     "left": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.1
+     }
+    }
+   },
+   "wall_px": 2348852
+  },
+  "opening": {
+   "sides": {
+    "top": {
+     "mode": "chroma",
+     "edge_px": 0.5,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.073,
+     "offset_px": -0.13
+    },
+    "right": {
+     "mode": "chroma",
+     "edge_px": -0.5,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.044,
+     "offset_px": 1.04
+    },
+    "bottom": {
+     "mode": "chroma",
+     "edge_px": 0.5,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.046,
+     "offset_px": 0.19
+    },
+    "left": {
+     "mode": "chroma",
+     "edge_px": 0.0,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.067,
+     "offset_px": -0.11
+    }
+   },
+   "offset_px": {
+    "top": -0.13,
+    "right": 1.04,
+    "bottom": 0.19,
+    "left": -0.11
+   },
+   "reach_px": 12.2
+  },
+  "quad_paper": [
+   [
+    1122.0689697265625,
+    381.9530029296875
+   ],
+   [
+    1609.133056640625,
+    382.01300048828125
+   ],
+   [
+    1609.133056640625,
+    1060.8480224609375
+   ],
+   [
+    1121.655029296875,
+    1060.7879638671875
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0.5 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.604,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.337
+    },
+    {
+     "side": "right",
+     "hard_k": 0.402
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.159
+    },
+    {
+     "side": "left",
+     "hard_k": 0.107
+    }
+   ],
+   "pad_px": 0.5
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.709,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.28,
+     "width_px": -6.0,
+     "blur_px": 12.0,
+     "fit_rms": 0.0088
+    },
+    {
+     "side": "right",
+     "soft_k": 0.85,
+     "width_px": 5.0,
+     "blur_px": 4.6,
+     "fit_rms": 0.0261
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0025
+    },
+    {
+     "side": "left",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0002
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "falloff",
+   "deg": -136.7,
+   "measured_drop": 0.149,
+   "opacity": 0.149,
+   "insert_texture": 0.008,
+   "sun_line": "searched on SAM's wall mask: none"
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    1121.6669921875,
+    381.677001953125
+   ],
+   [
+    1610.7950439453125,
+    381.7070007324219
+   ],
+   [
+    1610.7120361328125,
+    1061.60302734375
+   ],
+   [
+    1121.251953125,
+    1061.4239501953125
+   ]
+  ],
+  "corner_err_px": [
+   0.09,
+   0.12,
+   0.09,
+   0.1
+  ],
+  "max_px": 0.12,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": 0.43,
+   "right": 0.58,
+   "bottom": 0.51,
+   "left": 0.52
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "rebuilt_from": "the template's own photo",
+ "credits": 0.0,
+ "approved": true,
+ "created": "2026-11-16T00:01:05",
+ "approved_at": "2026-11-16T08:19:33"
 }

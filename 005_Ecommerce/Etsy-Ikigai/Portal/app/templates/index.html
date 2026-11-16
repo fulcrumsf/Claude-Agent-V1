@@ -868,7 +868,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   }
   function paintPicker() {
     if (!tpl) return;
-    const items = tpl.items.filter(t => !pickRatio || t.ratio === pickRatio);
+    const items = tpl.items.filter(t => !t.awaiting && (!pickRatio || t.ratio === pickRatio));   // pending: never used until approved
     const bar = `<div class="tbar"><b>Ratio</b><button class="chip ${pickRatio ? "" : "on"}" data-pr="">All</button>${Object.entries(tpl.buckets).map(([k, v]) => `<button class="chip ratio ${pickRatio === k ? "on" : ""}" data-pr="${esc(k)}">${esc(v)}</button>`).join("")}</div>`;
     document.getElementById("tpick-body").innerHTML = bar + (items.length ? `<div class="tgrid">${items.map(t => `<article class="tcard" data-prel="${esc(t.rel)}">${t.ready ? `<div class="ti"><img src="${esc(t.thumb)}" alt="" loading="lazy"></div>` : `<div class="wait">Rendering…</div>`}<div class="tb"><div class="tn">${esc(t.name)}</div><div class="td">${esc(t.room)} · ${esc(t.style)} · ${esc(t.ratio_label)}</div></div></article>`).join("")}</div>` : `<p class="lead">No template in this ratio.</p>`);
   }
@@ -886,7 +886,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   let tpl = null, tplSig = "", tplTimer = null, menuOpen = null, lastBuild = null;
   const openFails = new Set();
   const tf = {ratio: "", style: "", decor: ""};
-  let failOnly = false, propOpen = false, tintOn = false;
+  let failOnly = false, newOnly = false, propOpen = false, tintOn = false;
   const tintMap = {};                       // per-card override of the global "Show art area" switch
   const tintFor = rel => (rel in tintMap ? tintMap[rel] : tintOn);
   const editing = new Set();
@@ -907,7 +907,8 @@ button{font:inherit;color:inherit;cursor:pointer}
     const dots = `<button class="tdots" data-tdots="${esc(t.rel)}" title="Edit with chat, Open in PhotoCraft, Check again">⋯</button>`;
     const menu = menuOpen === t.rel ? `<div class="tmenu">${t.wired ? "" : `<button data-tm="edit" data-rel="${esc(t.rel)}">Edit with chat</button>`}<button data-tm="open" data-rel="${esc(t.rel)}">Open in PhotoCraft</button>${t.wired ? "" : `<button data-tm="check" data-rel="${esc(t.rel)}">Check again</button>`}</div>` : "";
     const aw = t.awaiting ? `<span class="tchk await">NEW · approve?</span>` : "";
-    const awb = t.awaiting ? `<div class="tc"><button class="btn sm" data-tbd="approved" data-rel="${esc(t.rel)}">Approve template</button><button class="btn ghost sm" data-tbd="denied" data-rel="${esc(t.rel)}">Deny (to Archive)</button></div>` : "";
+    const awn = t.awaiting && t.rebuild_of ? `<div class="td">Rebuilt version of ${esc(t.rebuild_of)}. The old one stays in use until you approve; Approve moves the old one to Archive.</div>` : "";
+    const awb = t.awaiting ? `<div class="tc"><button class="btn sm" data-tbd="approved" data-rel="${esc(t.rel)}">Approve template</button><button class="btn ghost sm" data-tbd="denied" data-rel="${esc(t.rel)}">Deny (to Archive)</button></div>${awn}` : "";
     return `<article class="tcard${editing.has(t.rel) ? " edit" : ""}">${t.wired ? "" : badge}${aw}${dots}${menu}${t.ready ? `<button class="ttintbtn${want ? " on" : ""}" data-ttcard="${esc(t.rel)}" title="Show / hide the amber art area on this card">${want && !t.tint_ready ? "…" : "art area"}</button>` : ""}${img}<div class="tb"><div class="tn">${esc(t.name)}</div>${awb}${fails}
       <div class="tc">${chip("decor", "decor", t.style, t.style, "room style")}${chip("ratio", "ratio", t.ratio, t.ratio_label, "nearest standard " + t.nearest + (t.so_px ? " · slot " + t.so_px + " px" : ""))}${t.wired ? `<i>in Run mockups</i>` : ""}</div>
       <div class="td">${esc(t.desc)}</div>
@@ -926,8 +927,8 @@ button{font:inherit;color:inherit;cursor:pointer}
   function paintTpl() {
     if (!tpl) return;
     const keep = t => (!tf.ratio || t.ratio === tf.ratio) && (!tf.decor || t.style === tf.decor);
-    const items = tpl.items.filter(t => keep(t) && (!tf.style || t.styles.includes(tf.style)) && (!failOnly || (t.check && t.check.status === "FAIL")));
-    const gaps = tf.style || failOnly ? [] : tpl.gaps.filter(keep);
+    const items = tpl.items.filter(t => keep(t) && (!tf.style || t.styles.includes(tf.style)) && (!failOnly || (t.check && t.check.status === "FAIL")) && (!newOnly || t.awaiting));
+    const gaps = tf.style || failOnly || newOnly ? [] : tpl.gaps.filter(keep);
     const roomN = {};   // room folders keep Tony's NNN_ order (001_Living_Rooms first)
     [...tpl.items, ...tpl.gaps].forEach(x => { roomN[x.room] = Math.min(roomN[x.room] ?? 999, x.room_n ?? 999); });
     const rooms = [...new Set([...items.map(t => t.room), ...gaps.map(g => g.room)])].sort((a, b) => roomN[a] - roomN[b] || a.localeCompare(b));
@@ -936,7 +937,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     const checked = tpl.items.filter(t => t.check && !t.wired), nf = checked.filter(t => t.check.status === "FAIL").length;
     const cj = tpl.check_job || {};
     let h = `<div class="tnums"><span><strong>${tpl.items.length}</strong>templates</span><span title="template checker: PASS / FAIL"><strong>${checked.length - nf}</strong>pass</span><span><strong>${nf}</strong>fail</span><span><strong>${tpl.gaps.length}</strong>library gaps</span><span><strong>${tpl.items.filter(t => t.styles_source === "manual").length}</strong>styled by you</span><span title="old versions and Original_ backups in Archive folders; never used"><strong>${tpl.archived}</strong>archived files</span>${tpl.building ? `<span>rendering ${tpl.items.length - ready} thumbnails…</span>` : ""}${tpl.classifying ? "<span>guessing styles…</span>" : ""}</div>`;
-    h += `<div class="tjob">${cj.running ? `<span>Checking ${cj.done}/${cj.total}… ${esc((cj.current || "").split("/").slice(-1)[0])}</span>` : `<button class="btn ghost sm" data-tcheckall>Run the checker on all</button><span>${tpl.checked_at ? "last run " + esc(tpl.checked_at.replace("T", " ").slice(0, 16)) : "not run yet"} · read-only: the checker never changes a PSD</span>`}<label class="rbox"><input type="checkbox" data-tfailonly ${failOnly ? "checked" : ""}>FAIL only</label><label class="rbox" title="Render every template with an amber test card: amber = exactly where the art shows (mats and bevels stay visible)"><input type="checkbox" data-ttint ${tintOn ? "checked" : ""}>Show art area${tpl.items.some(x => tintFor(x.rel) && !x.tint_ready) ? " (rendering…)" : ""}</label></div>`;
+    h += `<div class="tjob">${cj.running ? `<span>Checking ${cj.done}/${cj.total}… ${esc((cj.current || "").split("/").slice(-1)[0])}</span>` : `<button class="btn ghost sm" data-tcheckall>Run the checker on all</button><span>${tpl.checked_at ? "last run " + esc(tpl.checked_at.replace("T", " ").slice(0, 16)) : "not run yet"} · read-only: the checker never changes a PSD</span>`}<label class="rbox"><input type="checkbox" data-tfailonly ${failOnly ? "checked" : ""}>FAIL only</label><label class="rbox" title="New and rebuilt templates waiting for your Approve / Deny (never used by Production until approved)"><input type="checkbox" data-tnewonly ${newOnly ? "checked" : ""}>New to approve (${tpl.items.filter(x => x.awaiting).length})</label><label class="rbox" title="Render every template with an amber test card: amber = exactly where the art shows (mats and bevels stay visible)"><input type="checkbox" data-ttint ${tintOn ? "checked" : ""}>Show art area${tpl.items.some(x => tintFor(x.rel) && !x.tint_ready) ? " (rendering…)" : ""}</label></div>`;
     if (tpl.proposals.length) {
       const by = {};
       tpl.proposals.forEach(p => (by[p.room] = by[p.room] || []).push(p));
@@ -967,6 +968,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   tplHost.addEventListener("change", e => {
     if (e.target.closest("[data-ttint]")) { tintOn = e.target.closest("[data-ttint]").checked; Object.keys(tintMap).forEach(k => delete tintMap[k]); if (tintOn) tplAct(`${prefix}/api/templates/tint`, {}).then(() => loadTpl(true)); paintTpl(); }
     if (e.target.closest("[data-tfailonly]")) { failOnly = e.target.checked; paintTpl(); }
+    if (e.target.closest("[data-tnewonly]")) { newOnly = e.target.checked; paintTpl(); }
   });
   tplHost.addEventListener("toggle", e => {
     if (e.target.matches && e.target.matches("[data-tprop]")) { propOpen = e.target.open; return; }

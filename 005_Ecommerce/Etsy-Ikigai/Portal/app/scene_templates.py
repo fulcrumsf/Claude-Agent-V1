@@ -9,7 +9,7 @@ afterwards, so one scene works for any print and the art's pixels are never redr
      (app/sam_frames.py, run in the ikigai-sam venv), then out to the OPENING = the frame's HARD inner edge with the
      shadowed paper counted as opening (sam_frames.opening_quad, Tony 2026-11-12). True width:height from the
      perspective (rooms.true_aspect). A scene whose opening is more than 3% off the print's ratio is REJECTED
-     (Regenerate), never padded with a mat. The art quad = the opening + opening_pad_px (1.5 px) under the frame.
+     (Regenerate), never padded with a mat. The art quad = the opening + opening_pad_px (0.5 px since 2026-11-15) under the frame.
      The old brightness/Canny find_insert() below is LEGACY (kept for reference and tests, never used by new builds).
   3. PhotoCraft (photocraft-cli, not Photoshop) layered PSD, hand-editable, named:
         GLARE > Glass Sheen (Screen 8%)
@@ -61,9 +61,11 @@ DEFAULTS = {"room_templates_dir": "../Room_Templates", "photocraft_bin": "photoc
             "kie_edit_script": "app/kie_edit.py",
             # SAM 2 (Tony 2026-11-10: every new template's corners + masks): its own venv outside the workspace
             "sam_python": "~/.cache/ikigai-sam/bin/python", "sam_timeout_s": 600, "card_tol_px": 1.0,
-            # Tony 2026-11-12: the art runs this far under the frame's hard inner edge (1-2 px, never more than
-            # template_checker.PAD_MAX_PX); the Frame Hard Shadow layer darkens it to the frame edge's measured tone
-            "opening_pad_px": 1.5}
+            # Tony 2026-11-12: the art runs this far under the frame's hard inner edge (never more than
+            # template_checker.PAD_MAX_PX); the Frame Hard Shadow layer darkens it to the frame edge's measured tone.
+            # 0.5 since 2026-11-15 (Tony's own hand fix of the Sideboard template: art 0.4-0.6 px under the frame,
+            # so the photo's own dark inner frame line shows)
+            "opening_pad_px": 0.5}
 LIBRARY = "Portrait_Templates"
 MANIFEST = "template.json"
 ART = "Place Artwork Here"
@@ -151,22 +153,20 @@ def style_dir(rdir, decor, create=False):
 # ---------- library templates (Tony's PSDs + saved AI scenes) ----------
 
 def load_manifest(psd):
-    f = Path(psd).parent / MANIFEST
-    if f.is_file():
-        try:
-            m = json.loads(f.read_text())
-            if m.get("psd") in (None, Path(psd).name):
-                return m
-        except ValueError:
-            return None
-    return None
+    """The manifest of this PSD: a pending rebuild's sidecar (<stem>.json) or the folder's template.json."""
+    from .template_gallery import psd_manifest
+    return psd_manifest(psd)
 
 
 def library_templates(settings=None):
-    """Every template in the tree (template_gallery.scan) with its manifest (or None)."""
+    """Every template Production may use (template_gallery.scan) with its manifest (or None). Templates waiting for
+    Tony's Approve (a gap build or a rebuild, template_gallery.is_pending) are left out: never auto-picked, never
+    pickable with +, until approved."""
     from .template_gallery import scan
     out = []
     for t in scan(settings)[0]:
+        if t.get("pending"):
+            continue
         out.append(dict(t, manifest=None if t.get("wired") else load_manifest(t["psd"])))
     return out
 
@@ -736,17 +736,18 @@ def sun_shade(img, insert_q, wall=None):
     return alpha, sl
 
 
+INSERT_TEXTURE_MAX = 0.03   # brightness spread (std) of a blank insert around its fitted light plane; above = a print
+
+
 def key_light(img, insert_q, wall=None):
-    """ONE key-light shadow with its angle MEASURED from the photo: the wall's sun line (on the SAM wall mask) when
-    there is one, else the direction and depth of the light falloff across the blank insert (a plane fitted to the
-    paper's brightness away from the lip shadow). Returns (alpha HxW, meta)."""
+    """ONE key-light shadow with its angle MEASURED from the photo: the wall's sun line when SAM's wall mask is there,
+    else the direction and depth of the light falloff across the blank insert (a plane fitted to the paper's
+    brightness away from the lip shadow). Returns (alpha HxW, meta).
+    Guards (Tony 2026-11-15): a sun line is trusted ONLY on SAM's wall mask (without it, a prop edge such as a plant
+    leaf passed for the sun and an invented diagonal shadow was painted across the art); and when the insert is not
+    blank paper (an old photo still showing a sample print) its light cannot be measured: no Light Shadow at all."""
     from . import sam_frames as sf
     H, W = img.shape[:2]
-    alpha, sl = sun_shade(img, insert_q, wall)
-    if alpha is not None:
-        return alpha, {"kind": "sun line", "deg": sl["deg"], "line": sl["line"], "measured_depth": sl["depth"],
-                       "opacity": round(float(np.clip(sl["depth"], 0.06, 0.35)), 3),
-                       "searched_on": "SAM wall mask" if wall is not None else "band around the frame"}
     q = np.float32(insert_q)
     Y = img @ W709
     m = sf.poly_coverage(_expand(q, -0.08), W, H) > 0.99
@@ -755,6 +756,25 @@ def key_light(img, insert_q, wall=None):
         return np.zeros((H, W), "float32"), {"kind": "none", "opacity": 0.0}
     A = np.c_[xs + 0.5, ys + 0.5, np.ones_like(xs)].astype("float64")
     coef, *_ = np.linalg.lstsq(A, Y[ys, xs].astype("float64"), rcond=None)
+    texture = float(np.std(Y[ys, xs] - A @ coef))
+    alpha, sl, tex_sun = None, None, None
+    if wall is not None:
+        alpha, sl = sun_shade(img, insert_q, wall)
+        if alpha is not None:                     # blank paper crossed by the sun band: plane + band explain it
+            A2 = np.c_[A, alpha[ys, xs]]
+            c2, *_ = np.linalg.lstsq(A2, Y[ys, xs].astype("float64"), rcond=None)
+            tex_sun = float(np.std(Y[ys, xs] - A2 @ c2))
+    if min(texture, tex_sun if tex_sun is not None else texture) > INSERT_TEXTURE_MAX:
+        return np.zeros((H, W), "float32"), {
+            "kind": "none", "opacity": 0.0, "insert_texture": round(texture, 4),
+            "why": "the insert is not blank paper (a print in the photo): its light cannot be measured"}
+    if alpha is not None and tex_sun <= INSERT_TEXTURE_MAX:
+        return alpha, {"kind": "sun line", "deg": sl["deg"], "line": sl["line"], "measured_depth": sl["depth"],
+                       "opacity": round(float(np.clip(sl["depth"], 0.06, 0.35)), 3),
+                       "searched_on": "SAM wall mask", "insert_texture": round(tex_sun, 4)}
+    if texture > INSERT_TEXTURE_MAX:
+        return np.zeros((H, W), "float32"), {"kind": "none", "opacity": 0.0, "insert_texture": round(texture, 4),
+                                             "why": "the insert's light is neither a plane nor the wall's sun band"}
     gy, gx = np.mgrid[0:H, 0:W].astype("float32")
     plane = coef[0] * (gx + 0.5) + coef[1] * (gy + 0.5) + coef[2]
     vals = plane[sf.poly_coverage(q, W, H) > 0.5]
@@ -765,7 +785,8 @@ def key_light(img, insert_q, wall=None):
     drop = (hi - lo) / hi
     return np.clip((hi - plane) / (hi - lo), 0, 1).astype("float32"), {
         "kind": "falloff", "deg": round(deg, 1), "measured_drop": round(drop, 3),
-        "opacity": round(float(np.clip(drop, 0.02, 0.35)), 3)}
+        "opacity": round(float(np.clip(drop, 0.02, 0.35)), 3), "insert_texture": round(texture, 4),
+        "sun_line": "searched on SAM's wall mask: none" if wall is not None else "not searched (no SAM wall mask)"}
 
 
 def make_layers(img, insert_q, art_q, so_px, mode, outdir, wall=None, pad=None):

@@ -285,4 +285,12 @@ def scene_prompt(room, decor, ratio):
             "naturally diffused, never harsh. Camera angle: 3/4 corner. Composition should be vertical, focused on "
             "the frame and wall area. no other frames. The insert is plain matte white paper, completely empty, no "
             "artwork, no text, no logo, no glare and no heavy shadow on it. No people, no faces, no hands, no pets. No lamps unless the room clearly "
-            "needs one; only props a real person would leave there, nothing staged.")
+            "needs one; only props a real person would leave there, nothing staged. " + WAINSCOT_RULE)
+
+
+# Tony 2026-11-15 (Mockup_Docs/Mockup_Style_Guide.md "Wainscoting and wall molding rule"): optional, elegant /
+# traditional rooms only, and it never touches the art.
+WAINSCOT_RULE = ("Wall paneling or wainscoting only if the room style calls for it (elegant or traditional rooms); if "
+                 "used, either keep it below waist height and fully below the frame, or make the panels larger than "
+                 "the frame with the frame hanging centred inside one panel, with clear wall space on every side; the "
+                 "frame never touches or overlaps any molding, rail or panel edge.")

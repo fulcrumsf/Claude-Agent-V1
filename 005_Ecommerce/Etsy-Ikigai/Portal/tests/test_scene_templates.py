@@ -126,10 +126,11 @@ def test_build_psd_layers_are_named_and_hand_editable(tmp_path, monkeypatch):
         im = np.asarray(Image.open(tmp_path / "w" / f))
         assert im[..., :3].max() == 0 and (im[..., 3].max() > 0 or f == "L_edge.png")
         assert im[:150, :, 3].max() == 0 and im[:, :480, 3].max() == 0          # nothing outside the frame insert
-    # the art runs 1.5 px under the frame's inner edge (Tony 2026-11-12), the opening is kept separately
+    # the art runs 0.5 px under the frame's inner edge (Tony 2026-11-12, 0.5 since his own fix 2026-11-15), the
+    # opening is kept separately
     from app import sam_frames as sf
     pads = sf.side_offsets(b["quad_insert"], b["quad_art"])
-    assert pads == pytest.approx([1.5] * 4, abs=0.02) and b["opening_pad_px"] == 1.5
+    assert pads == pytest.approx([0.5] * 4, abs=0.02) and b["opening_pad_px"] == 0.5
     assert b["so_ratio"] == pytest.approx(2 / 3, abs=0.01) and b["psd_tmp"].is_file()
 
 

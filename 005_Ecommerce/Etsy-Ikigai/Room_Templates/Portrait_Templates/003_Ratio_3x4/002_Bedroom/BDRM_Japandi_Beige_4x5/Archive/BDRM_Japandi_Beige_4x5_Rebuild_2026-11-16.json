@@ -1,0 +1,341 @@
+{
+ "name": "BDRM_Japandi_Beige_4x5_Rebuild_2026-11-16",
+ "title": "BDRM_Japandi_Beige_4x5 (rebuilt 2026-11-16)",
+ "kind": "rebuild",
+ "psd": "BDRM_Japandi_Beige_4x5_Rebuild_2026-11-16.psd",
+ "scene": "BDRM_Japandi_Beige_4x5_Rebuild_2026-11-16_Scene.png",
+ "replaces": "BDRM_Japandi_Beige_4x5.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Bedroom",
+ "decor": "Japandi",
+ "style": "Japandi",
+ "ratio": "3x4",
+ "desc": "Japandi bedroom, oak frame, soft sun",
+ "so_px": [
+  495,
+  657
+ ],
+ "so_ratio": 0.7534,
+ "quad_insert": [
+  [
+   1048.3809814453125,
+   468.7439880371094
+  ],
+  [
+   1542.2259521484375,
+   468.9410095214844
+  ],
+  [
+   1541.9449462890625,
+   1124.7120361328125
+  ],
+  [
+   1048.27294921875,
+   1124.260009765625
+  ]
+ ],
+ "quad_art": [
+  [
+   1047.8809814453125,
+   468.2439880371094
+  ],
+  [
+   1542.7259521484375,
+   468.4410095214844
+  ],
+  [
+   1542.4449462890625,
+   1125.2120361328125
+  ],
+  [
+   1047.77294921875,
+   1124.760009765625
+  ]
+ ],
+ "quad_paper": [
+  [
+   1045.2889404296875,
+   467.73699951171875
+  ],
+  [
+   1542.81298828125,
+   468.3900146484375
+  ],
+  [
+   1541.8509521484375,
+   1124.8509521484375
+  ],
+  [
+   1046.490966796875,
+   1124.3070068359375
+  ]
+ ],
+ "opening_pad_px": 0.5,
+ "mode": "full",
+ "canvas": [
+  2655,
+  2000
+ ],
+ "light_from": "left",
+ "insert": {
+  "aspect": 0.7532,
+  "screen_aspect": 0.7531,
+  "skew": 1.0,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    1018.6,
+    439.6,
+    1567.4,
+    1151.4
+   ],
+   "box_source": "given",
+   "sam": {
+    "prompt": "click",
+    "score": 0.9149875044822693,
+    "area": 322863,
+    "dE": 40.0,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.988922119140625,
+      "area": 352570,
+      "dE": 76.7
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.990577220916748,
+      "area": 341679,
+      "dE": 87.9
+     },
+     {
+      "prompt": "click",
+      "score": 0.9523976445198059,
+      "area": 353509,
+      "dE": 77.6
+     },
+     {
+      "prompt": "click",
+      "score": 0.9149875044822693,
+      "area": 322863,
+      "dE": 40.0
+     },
+     {
+      "prompt": "box",
+      "score": 0.9904407262802124,
+      "area": 353053,
+      "dE": 76.7
+     },
+     {
+      "prompt": "box",
+      "score": 0.990903913974762,
+      "area": 346568,
+      "dE": 78.1
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9989,
+    "corner_shift_px": [
+     5.53,
+     1.75,
+     0.26,
+     3.83
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.105
+     },
+     "right": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.187
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.039
+     },
+     "left": {
+      "points": 200,
+      "inliers": 0.965,
+      "rms_px": 0.157
+     }
+    }
+   },
+   "wall_px": 1584684
+  },
+  "opening": {
+   "sides": {
+    "top": {
+     "mode": "chroma",
+     "edge_px": -0.25,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.057,
+     "offset_px": -0.78
+    },
+    "right": {
+     "mode": "chroma",
+     "edge_px": 0.25,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.056,
+     "offset_px": -0.25
+    },
+    "bottom": {
+     "mode": "chroma",
+     "edge_px": 0.25,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.027,
+     "offset_px": -0.09
+    },
+    "left": {
+     "mode": "chroma",
+     "edge_px": -1.25,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.048,
+     "offset_px": -2.44
+    }
+   },
+   "offset_px": {
+    "top": -0.78,
+    "right": -0.25,
+    "bottom": -0.09,
+    "left": -2.44
+   },
+   "reach_px": 12.4
+  },
+  "quad_paper": [
+   [
+    1045.2889404296875,
+    467.73699951171875
+   ],
+   [
+    1542.81298828125,
+    468.3900146484375
+   ],
+   [
+    1541.8509521484375,
+    1124.8509521484375
+   ],
+   [
+    1046.490966796875,
+    1124.3070068359375
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0.5 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.817,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.478
+    },
+    {
+     "side": "right",
+     "hard_k": 0.213
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.245
+    },
+    {
+     "side": "left",
+     "hard_k": 0.65
+    }
+   ],
+   "pad_px": 0.5
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.416,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.118,
+     "width_px": 1.0,
+     "blur_px": 0.4,
+     "fit_rms": 0.0047
+    },
+    {
+     "side": "right",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.063,
+     "width_px": 1.0,
+     "blur_px": 0.44,
+     "fit_rms": 0.0011
+    },
+    {
+     "side": "left",
+     "soft_k": 0.369,
+     "width_px": 12.5,
+     "blur_px": 5.47,
+     "fit_rms": 0.0327
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "none",
+   "opacity": 0.0,
+   "insert_texture": 0.0356,
+   "why": "the insert is not blank paper (a print in the photo): its light cannot be measured"
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    1047.9339599609375,
+    468.1520080566406
+   ],
+   [
+    1542.833984375,
+    468.37799072265625
+   ],
+   [
+    1542.4329833984375,
+    1125.112060546875
+   ],
+   [
+    1047.85400390625,
+    1124.8709716796875
+   ]
+  ],
+  "corner_err_px": [
+   0.11,
+   0.12,
+   0.1,
+   0.14
+  ],
+  "max_px": 0.14,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": 0.58,
+   "right": 0.55,
+   "bottom": 0.51,
+   "left": 0.43
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "rebuilt_from": "the template's own photo",
+ "credits": 0.0,
+ "approved": false,
+ "created": "2026-11-16T00:02:43"
+}

@@ -14,9 +14,13 @@ Per template, PASS / FAIL with plain reasons:
               pixels beyond the opening + the 2 px pad that change = art over the frame
   3 overlay   every shadow / glare layer's effect stays inside the art opening (rendered alone over a grey card)
   4 purity    every shadow layer is neutral (black fill: R = G = B) and smooth (not copied photo pixels)
-  5 sun       the wall's sun line (light/shade edge measured on the base) vs the shadow layer's edge, within 3 deg
+  5 sun       the wall's sun line (light/shade edge measured on the base, ONLY on SAM's wall mask) vs the shadow
+              layer's edge, within 3 deg; a straight light edge on the art with no sun line confirmed on the wall
+              fails, and so does a light shadow over the art where the photo still shows a print (2026-11-15)
   6 ratio     opening ratio vs the folder's ratio within 3% (cover-fit crop limit); smart object not stretched
   7 mat       when a mat exists: uniform width on all four sides, bevel / shadow layer present
+  placement   wall molding / wainscoting: the frame never hangs over molding, and inside a wall panel it sits
+              centred with margin (no molding near the frame = pass; 2026-11-15)
   8 layers    `Place Artwork Here`, SHADOWS and GLARE present; no hidden "OLD ..." layers waiting for Tony
 
 Results: config/template_checks.json ({rel: result}), shown on the Templates tab. CLI:
@@ -57,9 +61,10 @@ STRUCT_WORDS = ("mat", "matte", "frame", "fame", "paper", "foreground", "canvas"
 # "Scene Light & Shadow ... is the blank insert from the photo"; spec item 3: Frame Edge Shadow + Scene Light & Shadow
 # were photo copies). Suspect until rebuilt as black fills (template.json "layers_verified" marks a rebuilt template).
 PHOTO_BUILT = {"Scene Light & Shadow", "Frame Edge Shadow"}
-CHECKS = ["opening", "card", "overlay", "purity", "sun", "ratio", "mat", "layers"]
+CHECKS = ["opening", "card", "overlay", "purity", "sun", "ratio", "mat", "placement", "layers"]
 LABELS = {"opening": "Opening vs art", "card": "Black/white card", "overlay": "Overlay size", "purity": "Overlay purity",
-          "sun": "Sun angle", "ratio": "Ratio", "mat": "Mat", "layers": "Layer names"}
+          "sun": "Sun angle", "ratio": "Ratio", "mat": "Mat", "placement": "Placement (wall molding)",
+          "layers": "Layer names"}
 _job = {"running": False, "done": 0, "total": 0, "current": "", "error": ""}
 _job_lock = threading.Lock()
 
@@ -368,9 +373,198 @@ def sun_line(rgb, opening_q, search=1.0, wall=None):
     return best
 
 
+# ---------- placement: wall molding / wainscoting around the frame (Tony 2026-11-15) ----------
+# Wainscoting is optional (elegant / traditional rooms only); a template WITHOUT it is never marked down. When there
+# is molding near the frame: (a) covered = a molding line seen on BOTH sides of the frame at the same position runs
+# behind it (a real frame cannot hang flat over raised molding); 4+ evenly spaced lines = wall texture (brick, boards),
+# not molding. (b) panel = molding borders left AND right AND above or below (each running past the frame on both
+# ends): FAIL when the frame is within 3% of its size of a border (touching), off-centre left/right by more than 25%
+# or up/down by more than 50%. Prototype tuned on the 44 templates of 2026-11-15 (Scripts/placement_check.py).
+PLACEMENT_OK = {   # template name part -> why Tony accepted its flag by eye (the check passes with this note)
+    "LVRM_Floor_ISO": "Tony 2026-11-15: the skirting board behind a frame leaning on the floor is fine"}
+
+
+def frame_outer(gray, V):
+    """Outer frame box (x0, y0, x1, y1, [top, right, bottom, left] widths): per side, the outermost strong brightness
+    step 1-12% of the size outside the visible art."""
+    import cv2
+    V = np.float32(V)
+    x0, y0 = V.min(0)
+    x1, y1 = V.max(0)
+    w, h = x1 - x0, y1 - y0
+    R = int(0.12 * max(w, h))
+    H, W = gray.shape
+    g = cv2.GaussianBlur(gray, (0, 0), 1.5)
+    out = []
+    for side in range(4):
+        prof = []
+        for d in range(2, R):
+            if side == 0:
+                ys, xs = int(y0 - d), np.arange(int(x0 + 0.2 * w), int(x1 - 0.2 * w))
+            elif side == 2:
+                ys, xs = int(y1 + d), np.arange(int(x0 + 0.2 * w), int(x1 - 0.2 * w))
+            elif side == 3:
+                xs, ys = int(x0 - d), np.arange(int(y0 + 0.2 * h), int(y1 - 0.2 * h))
+            else:
+                xs, ys = int(x1 + d), np.arange(int(y0 + 0.2 * h), int(y1 - 0.2 * h))
+            prof.append(float(np.median(g[np.clip(ys, 0, H - 1), np.clip(xs, 0, W - 1)])))
+        prof = np.array(prof)
+        step = np.abs(prof[3:] - prof[:-3]) if len(prof) > 3 else np.zeros(1)
+        lo = max(1, int(0.01 * max(w, h)))
+        cand = np.nonzero(step[lo:] >= 0.5 * step[lo:].max())[0] if len(step) > lo else []
+        d = (lo + cand[-1] + 4) if len(cand) and step[lo:].max() > 6 else int(0.04 * max(w, h))
+        out.append(int(d))
+    return float(x0 - out[3]), float(y0 - out[0]), float(x1 + out[1]), float(y1 + out[2]), out
+
+
+def _merge_lines(segs, vertical, tol=4.0):
+    """Nearly collinear axis-aligned segments -> lines [pos, start, end, total length, [(start, end)...]]."""
+    items = []
+    for x1, y1, x2, y2 in segs:
+        L = math.hypot(x2 - x1, y2 - y1)
+        ang = abs(math.degrees(math.atan2(y2 - y1, x2 - x1))) % 180
+        if vertical and abs(ang - 90) > 3:
+            continue
+        if not vertical and min(ang, 180 - ang) > 6:
+            continue
+        pos = (x1 + x2) / 2 if vertical else (y1 + y2) / 2
+        a, b = (min(y1, y2), max(y1, y2)) if vertical else (min(x1, x2), max(x1, x2))
+        items.append([pos, a, b, L, [(a, b)]])
+    items.sort(key=lambda it: it[0])
+    lines = []
+    for it in items:
+        if lines and abs(it[0] - lines[-1][0]) < tol:
+            l = lines[-1]
+            l[0] = (l[0] * l[3] + it[0] * it[3]) / (l[3] + it[3])
+            l[1], l[2], l[3] = min(l[1], it[1]), max(l[2], it[2]), l[3] + it[3]
+            l[4] += it[4]
+        else:
+            lines.append([it[0], it[1], it[2], it[3], list(it[4])])
+    return lines
+
+
+def placement(rgb, V):
+    """Does the frame sit physically right among the wall's molding? rgb = the scene render (art, overlays and
+    foreground hidden), V = the visible art quad. Returns {flag: [reasons], covered, gaps_px, off_centre, ...};
+    an empty flag list = pass (no molding near the frame passes)."""
+    import cv2
+    gray = (np.asarray(rgb, "float32") @ np.float32([0.299, 0.587, 0.114])).astype("float32")
+    H, W = gray.shape
+    fx0, fy0, fx1, fy1, fw = frame_outer(gray, V)
+    fwid, fhei = fx1 - fx0, fy1 - fy0
+    S = max(fwid, fhei)
+    m = np.zeros((H, W), bool)                                   # around the frame, the frame itself excluded
+    m[int(max(0, fy0 - 0.6 * fhei)):int(min(H, fy1 + 0.35 * fhei)),
+      int(max(0, fx0 - 0.6 * fwid)):int(min(W, fx1 + 0.6 * fwid))] = True
+    m[int(max(0, fy0 - 3)):int(fy1 + 3), int(max(0, fx0 - 3)):int(fx1 + 3)] = False
+    ls = cv2.createLineSegmentDetector(cv2.LSD_REFINE_STD).detect(
+        cv2.GaussianBlur(gray, (0, 0), 1.0).astype("uint8"))[0]
+    segs = []
+    for x1, y1, x2, y2 in (np.asarray(ls).reshape(-1, 4) if ls is not None else []):
+        mx, my = int((x1 + x2) / 2), int((y1 + y2) / 2)
+        if 0 <= my < H and 0 <= mx < W and m[my, mx]:
+            segs.append((float(x1), float(y1), float(x2), float(y2)))
+    vl = [l for l in _merge_lines(segs, True) if l[3] >= 0.12 * fhei]
+    hl = [l for l in _merge_lines(segs, False) if l[3] >= 0.12 * fwid]
+
+    def both_sides(sg, lo, hi, size):
+        near_lo = sum(b - a for a, b in sg if b > lo - 0.3 * size and a < lo + 4)
+        near_hi = sum(b - a for a, b in sg if a < hi + 0.3 * size and b > hi - 4)
+        return near_lo >= 0.06 * size and near_hi >= 0.06 * size
+    covered = []
+    for pos, a, b, L, sg in vl:
+        if fx0 + 0.03 * fwid < pos < fx1 - 0.03 * fwid and both_sides(sg, fy0, fy1, fhei):
+            covered.append({"dir": "vertical", "x": round(pos), "span": [round(a), round(b)], "len": round(L)})
+    for pos, a, b, L, sg in hl:
+        if fy0 + 0.03 * fhei < pos < fy1 - 0.03 * fhei and both_sides(sg, fx0, fx1, fwid):
+            covered.append({"dir": "horizontal", "y": round(pos), "span": [round(a), round(b)], "len": round(L)})
+    texture = []
+    for d_ in ("horizontal", "vertical"):                      # 4+ evenly spaced lines = wall texture, not molding
+        ps = sorted(c["y" if d_ == "horizontal" else "x"] for c in covered if c["dir"] == d_)
+        cl = []
+        for v_ in ps:
+            if cl and v_ - cl[-1][-1] < 0.04 * S:
+                cl[-1].append(v_)
+            else:
+                cl.append([v_])
+        cen = [sum(c) / len(c) for c in cl]
+        if len(cen) >= 4:
+            sp = np.diff(cen)
+            if (np.abs(sp / np.median(sp) - 1) < 0.25).sum() >= 3:
+                covered = [c for c in covered if c["dir"] != d_]
+                texture.append(d_)
+
+    def nearest(lines, lo, hi, band_lo, band_hi, before):
+        sp_ = band_hi - band_lo                 # a panel border runs past the frame on BOTH ends
+        c = [l for l in lines if (l[0] < lo if before else l[0] > hi)
+             and l[1] < band_lo - 0.015 * sp_ and l[2] > band_hi + 0.015 * sp_
+             and (band_lo - l[1]) + (l[2] - band_hi) > 0.2 * sp_]
+        if not c:
+            return None
+        l = max(c, key=lambda l: l[0]) if before else min(c, key=lambda l: l[0])
+        return round(float(lo - l[0] if before else l[0] - hi), 1)
+    gaps = {"left": nearest(vl, fx0, fx1, fy0, fy1, True), "right": nearest(vl, fx0, fx1, fy0, fy1, False),
+            "top": nearest(hl, fy0, fy1, fx0, fx1, True), "bottom": nearest(hl, fy0, fy1, fx0, fx1, False)}
+    off = {}
+    if gaps["left"] is not None and gaps["right"] is not None:
+        off["horizontal"] = round(abs(gaps["left"] - gaps["right"]) / max(gaps["left"] + gaps["right"], 1), 2)
+    if gaps["top"] is not None and gaps["bottom"] is not None:
+        off["vertical"] = round(abs(gaps["top"] - gaps["bottom"]) / max(gaps["top"] + gaps["bottom"], 1), 2)
+    panel = gaps["left"] is not None and gaps["right"] is not None and (gaps["top"] is not None or
+                                                                        gaps["bottom"] is not None)
+    flag = []
+    if covered:
+        flag.append(f"the frame hangs over {len(covered)} wall molding line(s) (the molding continues on both sides "
+                    "of it); regenerate the scene")
+    if panel:
+        touch = [k for k, g in gaps.items() if g is not None and g < 0.03 * S]
+        if touch:
+            flag.append("the frame touches the panel molding on the " + ", ".join(touch))
+        if off.get("horizontal", 0) > 0.25:
+            flag.append(f"off-centre in its wall panel left/right ({off['horizontal']:.0%})")
+        if off.get("vertical", 0) > 0.5:
+            flag.append(f"off-centre in its wall panel up/down ({off['vertical']:.0%})")
+    return {"flag": flag, "frame_outer": [round(v) for v in (fx0, fy0, fx1, fy1)], "gaps_px": gaps,
+            "off_centre": off, "panel": panel, "covered": covered, "texture": texture,
+            "lines": {"v": len(vl), "h": len(hl)}}
+
+
+def insert_texture(rgb, O):
+    """Brightness spread (0..1) of the photo inside the opening around a fitted light plane: blank paper is about
+    0.01, an old sample print far more (scene_templates.INSERT_TEXTURE_MAX)."""
+    from . import sam_frames as sf
+    from . import scene_templates as stp
+    H, W = rgb.shape[:2]
+    Y = (np.asarray(rgb, "float32") / 255.0) @ stp.W709
+    ys, xs = np.nonzero(sf.poly_coverage(stp._expand(np.float32(O), -0.08), W, H) > 0.99)
+    if len(xs) < 50:
+        return 0.0
+    A = np.c_[xs + 0.5, ys + 0.5, np.ones_like(xs)].astype("float64")
+    coef, *_ = np.linalg.lstsq(A, Y[ys, xs].astype("float64"), rcond=None)
+    return float(np.std(Y[ys, xs] - A @ coef))
+
+
+def is_falloff(effect, inside):
+    """A smooth light falloff (scene_templates.key_light 'falloff': a plane clipped to 0..1) has no light/shade edge,
+    even where it is steep: over at least a quarter of the art the effect is one plane to within 6% of its range."""
+    ys, xs = np.nonzero(inside)
+    if len(xs) < 200:
+        return False
+    v = effect[ys, xs].astype("float64")
+    rng = float(np.percentile(v, 99) - np.percentile(v, 1))
+    if rng < 1e-4:
+        return True
+    keep = (v > np.percentile(v, 1) + 0.02 * rng) & (v < np.percentile(v, 99) - 0.02 * rng)   # unclipped part
+    if keep.sum() < max(100, 0.25 * len(v)):         # a sun band ramps only in a narrow strip: not a falloff
+        return False
+    A = np.c_[xs[keep], ys[keep], np.ones(int(keep.sum()))].astype("float64")
+    coef, *_ = np.linalg.lstsq(A, v[keep], rcond=None)
+    return float(np.std(v[keep] - A @ coef)) < 0.06 * rng
+
+
 def overlay_edge(effect, inside):
     """Dominant straight diagonal edge of a shadow layer's effect map inside the art (deg) or None."""
-    if not inside.any():
+    if not inside.any() or is_falloff(effect, inside):
         return None
     e = effect.copy()
     e[~inside] = 0
@@ -649,21 +843,48 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
                                         "; ".join(spill) if spill else ("" if ov else "no shadow/glare layers"))
         res["checks"]["purity"] = _res("fail" if impure else ("pass" if ov else "skip"),
                                        "; ".join(impure) if impure else ("" if ov else "no shadow/glare layers"))
-        # 5 sun angle
-        sun = sun_line(bg, O, wall=sam_wall)                 # only on SAM's wall mask when SAM ran (no props)
+        # 5 sun angle. Tony 2026-11-15: a sun line is trusted ONLY on SAM's wall mask (the band search took a plant
+        # leaf for the sun and passed an invented diagonal shadow it had itself caused); a straight light/shade edge
+        # on the art with no sun line confirmed on the wall FAILS, and no light shadow may lie over a print
+        from . import sam_frames as sf
+        by_hand = any(n in str(psd) for n in sf.NOT_ON)       # sun line verified by hand (Wabi bedroom, 2026-11-10)
+        sun = sun_line(bg, O, wall=sam_wall) if sam_wall is not None or by_hand else None
         res["measured"]["sun"] = sun
-        res["measured"]["sun_searched_on"] = "SAM wall mask" if sam_wall is not None else "band around the frame"
-        if not sun:
-            res["checks"]["sun"] = _res("skip", "no sun line on the wall near the frame")
-        else:
-            edges = []
+        res["measured"]["sun_searched_on"] = ("SAM wall mask" if sam_wall is not None else
+                                              "band around the frame (verified by hand)" if by_hand else
+                                              "not searched (no SAM wall mask)")
+        edges = []
+        for lid, (m, tint, l) in effects.items():
+            if l.get("blend") == "Screen":
+                continue
+            e = overlay_edge(m, ins)
+            if e:
+                edges.append((l["name"], e))
+        res["measured"]["shadow_edges"] = {n: e for n, e in edges}
+        tex = insert_texture(bg, O)
+        res["measured"]["insert_texture"] = round(tex, 4)
+        from .scene_templates import INSERT_TEXTURE_MAX
+        light_over_print = []
+        if tex > INSERT_TEXTURE_MAX and not sun and not r["mats"]:   # the photo still shows a print in the frame and no
+            # sun line on the wall explains a light shadow there (a confirmed wall sun line is compared below)
             for lid, (m, tint, l) in effects.items():
-                if l.get("blend") == "Screen":
+                low_n = l.get("name", "").lower()
+                if l.get("blend") == "Screen" or "frame" in low_n or "edge" in low_n or "hard" in low_n:
                     continue
-                e = overlay_edge(m, ins)
-                if e:
-                    edges.append((l["name"], e))
-            res["measured"]["shadow_edges"] = {n: e for n, e in edges}
+                if ins.any() and float((m[ins] > 0.03).mean()) > 0.2:
+                    light_over_print.append(l["name"])
+        if light_over_print:
+            res["checks"]["sun"] = _res("fail", "light shadow over the art where the photo shows a print (its light "
+                                                "cannot be measured): " + ", ".join(f"'{n}'" for n in light_over_print))
+        elif not sun:
+            if edges:
+                n, e = edges[0]
+                res["checks"]["sun"] = _res("fail", f"'{n}' draws a straight light/shade edge ({e['deg']:.0f} deg) "
+                                                    "across the art but no sun line is confirmed on the wall"
+                                                    + ("" if sam_wall is not None else " (no SAM wall mask)"))
+            else:
+                res["checks"]["sun"] = _res("skip", "no sun line on the wall near the frame")
+        else:
             if not edges:
                 res["checks"]["sun"] = _res("skip", f"wall sun line {sun['deg']:.0f} deg; no shadow layer has a "
                                                     "straight light edge to compare (soft or no light-source shadow)")
@@ -674,6 +895,17 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
                                             (f"'{n}' edge {e['deg']:.0f} deg vs wall sun line {sun['deg']:.0f} deg "
                                              f"({d:.0f} deg off)") if d > TOL_DEG else "",
                                             wall_deg=sun["deg"], shadow_deg=e["deg"])
+        # placement: wall molding / wainscoting around the frame (no molding = pass)
+        try:
+            pl = placement(bg, V)
+            res["measured"]["placement"] = pl
+            ok = next((why for k, why in PLACEMENT_OK.items() if k in str(psd)), None)
+            if pl["flag"] and ok:
+                res["checks"]["placement"] = _res("pass", "", accepted=ok, flag=pl["flag"])
+            else:
+                res["checks"]["placement"] = _res("fail" if pl["flag"] else "pass", "; ".join(pl["flag"]))
+        except Exception as e:  # noqa: BLE001  (never blocks the other checks)
+            res["checks"]["placement"] = _res("skip", f"could not measure ({str(e)[:120]})")
         # 6 ratio
         asp = true_aspect(O, (W, H))
         res["measured"]["opening_ratio"] = round(asp, 4)

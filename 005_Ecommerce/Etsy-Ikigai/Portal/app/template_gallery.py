@@ -136,6 +136,38 @@ def light_dir(d):
     return (d / "room.json").is_file()
 
 
+# A REBUILT template waiting for Tony (2026-11-15): the new PSD sits next to the live one in the same template
+# folder, with a sidecar manifest <psd stem>.json (kind "rebuild", approved false, replaces: the live PSD's name).
+# The live PSD stays in use until Tony approves; Approve archives the old PSD + its template.json and the sidecar
+# becomes the folder's template.json; Deny moves the new files into Archive/ (app/template_build.decide).
+REBUILD_KIND = "rebuild"
+
+
+def psd_manifest(psd):
+    """The manifest that describes THIS PSD: its rebuild sidecar (<stem>.json, kind rebuild), else the folder's
+    template.json when it names this PSD (or names none). None otherwise."""
+    psd = Path(psd)
+    side = psd.with_suffix(".json")
+    for f, need_kind in ((side, REBUILD_KIND), (psd.parent / "template.json", None)):
+        if not f.is_file():
+            continue
+        try:
+            m = json.loads(f.read_text())
+        except ValueError:
+            continue
+        if not isinstance(m, dict) or (need_kind and m.get("kind") != need_kind):
+            continue
+        if m.get("psd") in (None, psd.name):
+            return m
+    return None
+
+
+def is_pending(man):
+    """A template waiting for Tony's Approve: a gap build (ai_scene) or a rebuild whose manifest says approved
+    false. Pending templates are shown with Approve / Deny and are NEVER used by Production (not even with +)."""
+    return bool(man) and man.get("kind") in ("ai_scene", REBUILD_KIND) and man.get("approved") is False
+
+
 def scan(settings=None):
     """(templates, gaps, stray_empty). Templates: dicts with rel path, ratio, room, style, name, desc... Any depth.
     gaps = every empty leaf folder in Tony's NNN_ tree (ratio / room / style): the build plan. stray_empty = empty
@@ -177,25 +209,27 @@ def scan(settings=None):
             psds = [(d / l["psd"], l) for l in room_json.get("lights", []) if (d / l["psd"]).is_file()]
         else:
             psds = [(p, None) for p in sorted(d.glob("*.psd")) if not p.name.startswith("Original_")]
-        man = {}
-        if not light_dir(d) and (d / "template.json").is_file():     # per-template manifest (app/scene_templates.py)
-            try:
-                man = json.loads((d / "template.json").read_text())
-            except ValueError:
-                man = {}
+        wired_dir = light_dir(d)
         for psd, light in psds:
-            row = rows.get(psd.name, {})
-            name = (f"{room_json['name']} - {light['label'].replace('_', ' ')}" if light else psd.stem)
+            man = {} if wired_dir else (psd_manifest(psd) or {})     # per-PSD manifest (app/scene_templates.py)
+            pending = is_pending(man)
+            # a rebuild's Directory.md row belongs to the PSD it replaces (room/look, style); SO px is its own
+            row = rows.get(psd.name) or (rows.get(man.get("replaces") or "", {}) if man.get("kind") == REBUILD_KIND
+                                         else {})
+            own_row = psd.name in rows
+            name = (f"{room_json['name']} - {light['label'].replace('_', ' ')}" if light
+                    else man.get("title") or psd.stem)
             desc = _col(row, "room / look") or (light or {}).get("kind", "") or man.get("desc", "")
             mid = parts[2:-1]                                   # optional style level(s) between room and template
             style = (" / ".join(label(p) for p in mid) if mid else None) \
-                or label(_col(row, "style") or style_from_text(name, desc) or "Unstyled")
+                or label(_col(row, "style") or man.get("style") or style_from_text(name, desc) or "Unstyled")
+            so_row = _col(row, "so px") if own_row or not man.get("so_px") else ""
             templates.append({
                 "rel": psd.relative_to(base).as_posix(), "psd": psd, "name": name, "folder": parts[-1],
                 "ratio": ratio, "room": label(parts[1]), "room_n": number(parts[1]), "style": style, "desc": desc,
                 "nearest": _col(row, "nearest") or BUCKETS[ratio],
-                "so_px": _col(row, "so px") or ("x".join(str(v) for v in man["so_px"]) if man.get("so_px") else ""),
-                "status": _col(row, "status"), "wired": bool(light),
+                "so_px": so_row or ("x".join(str(v) for v in man["so_px"]) if man.get("so_px") else ""),
+                "status": _col(row, "status"), "wired": bool(light), "pending": pending,
                 "light": light, "room_dir": d})
     return templates, gaps, stray
 
@@ -420,17 +454,13 @@ def overview(settings=None, prefix="/ikigai", build=True, styles_path=None, clas
                 and ((sdata.get("auto") or {}).get(t["rel"]) or {}).get("key") != tp.stem[8:24]:
             to_classify.append((t["rel"], tp, tp.stem[8:24]))
         chk = tc.status_for(t["rel"], checks, t["psd"])
-        man = {}
-        if not t["wired"] and (t["psd"].parent / "template.json").is_file():
-            try:
-                man = json.loads((t["psd"].parent / "template.json").read_text())
-            except ValueError:
-                man = {}
+        man = {} if t["wired"] else (psd_manifest(t["psd"]) or {})
         items.append({k: t[k] for k in ("rel", "name", "folder", "ratio", "room", "style", "desc", "nearest", "so_px",
                                          "status", "wired", "room_n")}
                      | {"check": ({k: chk.get(k) for k in ("status", "reasons", "checked", "stale", "notes")}
                                   if chk else None),
-                        "awaiting": man.get("kind") == "ai_scene" and man.get("approved") is False}
+                        "awaiting": bool(t.get("pending")),
+                        "rebuild_of": man.get("replaces") if man.get("kind") == REBUILD_KIND else None}
                      | {"ratio_label": BUCKETS[t["ratio"]], "ready": ready, "error": errs.get(t["rel"], ""),
                         "styles": st["styles"], "styles_source": st["source"], "auto_styles": st["auto"],
                         "thumb": f"{prefix}/api/templates/file/{tp.name}" if ready else None,

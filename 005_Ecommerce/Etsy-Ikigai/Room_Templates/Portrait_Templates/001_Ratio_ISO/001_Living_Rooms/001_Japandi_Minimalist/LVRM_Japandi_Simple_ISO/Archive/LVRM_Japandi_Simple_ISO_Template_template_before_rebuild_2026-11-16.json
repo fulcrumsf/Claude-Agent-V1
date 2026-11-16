@@ -1,0 +1,39 @@
+{
+ "name": "LVRM_Japandi_Simple_ISO_Template",
+ "kind": "tony_psd",
+ "psd": "LVRM_Japandi_Simple_ISO_Template.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Japandi Minimalist",
+ "ratio": "iso",
+ "so_px": [
+  442,
+  625
+ ],
+ "so_ratio": 0.7072,
+ "quad_art": [
+  [
+   1090.0,
+   269.0
+  ],
+  [
+   1531.0,
+   269.0
+  ],
+  [
+   1531.0,
+   893.0
+  ],
+  [
+   1090.0,
+   893.0
+  ]
+ ],
+ "canvas": [
+  2655,
+  2000
+ ],
+ "desc": "Japandi living room, linen sofa, blossom branches, wood shelves",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

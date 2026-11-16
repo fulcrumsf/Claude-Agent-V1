@@ -1,0 +1,39 @@
+{
+ "name": "LVRM_Modern_BLue_ISO_Template",
+ "kind": "tony_psd",
+ "psd": "LVRM_Modern_BLue_ISO_Template.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Modern",
+ "ratio": "iso",
+ "so_px": [
+  486,
+  679
+ ],
+ "so_ratio": 0.7158,
+ "quad_art": [
+  [
+   1121.0,
+   382.0
+  ],
+  [
+   1606.0,
+   382.0
+  ],
+  [
+   1606.0,
+   1060.0
+  ],
+  [
+   1121.0,
+   1060.0
+  ]
+ ],
+ "canvas": [
+  2655,
+  2000
+ ],
+ "desc": "Sky-blue wall living room, teal chesterfield, palms",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

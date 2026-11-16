@@ -696,6 +696,46 @@
    "key": "4129863b3ab272a6",
    "model": "gemini-3.5-flash-lite",
    "tokens": 1223
+  },
+  "001_Ratio_ISO/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Japandi_Simple_ISO/LVRM_Japandi_Simple_ISO_Template_Rebuild_2026-11-16.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Botanical"
+   ],
+   "key": "a4f6e69c955e96aa",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_BLue_ISO/LVRM_Modern_BLue_ISO_Template_Rebuild_2026-11-16.psd": {
+   "styles": [
+    "Abstract",
+    "Mid Century",
+    "Minimalism"
+   ],
+   "key": "132935ea21993a91",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1238
+  },
+  "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Leather_4x5/LVRM_Modern_Leather_4x5_Template_Rebuild_2026-11-16.psd": {
+   "styles": [
+    "Abstract",
+    "Minimalism",
+    "Mid Century"
+   ],
+   "key": "d517c3b2a41abb7a",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "002_Ratio_2x3/001_Living_Rooms/001_Japandi_Minimalist/001_Walnut_LVRM_ISO/001_Walnut_LVRM_ISO_Rebuild_2026-11-16.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Botanical"
+   ],
+   "key": "41b087ceed03776d",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
   }
  }
 }

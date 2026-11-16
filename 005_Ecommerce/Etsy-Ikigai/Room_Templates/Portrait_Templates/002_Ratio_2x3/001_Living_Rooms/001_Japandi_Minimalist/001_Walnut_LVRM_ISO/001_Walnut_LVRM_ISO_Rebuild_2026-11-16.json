@@ -1,0 +1,343 @@
+{
+ "name": "001_Walnut_LVRM_ISO_Rebuild_2026-11-16",
+ "title": "001_Walnut_LVRM_ISO (rebuilt 2026-11-16)",
+ "kind": "rebuild",
+ "psd": "001_Walnut_LVRM_ISO_Rebuild_2026-11-16.psd",
+ "scene": "001_Walnut_LVRM_ISO_Rebuild_2026-11-16_Scene.png",
+ "replaces": "001_Walnut_LVRM_ISO.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Japandi Minimalist",
+ "style": "Japandi Minimalist",
+ "ratio": "2x3",
+ "desc": "Bright Japandi living room, grey sofa, walnut table, slat wall",
+ "so_px": [
+  637,
+  934
+ ],
+ "so_ratio": 0.682,
+ "quad_insert": [
+  [
+   602.1799926757812,
+   152.95799255371094
+  ],
+  [
+   1238.47802734375,
+   153.08099365234375
+  ],
+  [
+   1238.7060546875,
+   1086.26904296875
+  ],
+  [
+   602.2119750976562,
+   1086.3079833984375
+  ]
+ ],
+ "quad_art": [
+  [
+   601.6799926757812,
+   152.45799255371094
+  ],
+  [
+   1238.97802734375,
+   152.58099365234375
+  ],
+  [
+   1239.2060546875,
+   1086.76904296875
+  ],
+  [
+   601.7119750976562,
+   1086.8079833984375
+  ]
+ ],
+ "quad_paper": [
+  [
+   602.864990234375,
+   153.64999389648438
+  ],
+  [
+   1237.1419677734375,
+   153.6699981689453
+  ],
+  [
+   1237.2559814453125,
+   1085.126953125
+  ],
+  [
+   603.0919799804688,
+   1084.89501953125
+  ]
+ ],
+ "opening_pad_px": 0.5,
+ "mode": "full",
+ "canvas": [
+  2655,
+  2000
+ ],
+ "light_from": "left",
+ "insert": {
+  "aspect": 0.6817,
+  "screen_aspect": 0.6819,
+  "skew": 1.0,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    562.7,
+    114.7,
+    1276.3,
+    1122.3
+   ],
+   "box_source": "given",
+   "sam": {
+    "prompt": "click",
+    "score": 0.9577677845954895,
+    "area": 592769,
+    "dE": 4.1,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.9906395673751831,
+      "area": 648985,
+      "dE": 25.1
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9891074299812317,
+      "area": 637872,
+      "dE": 30.6
+     },
+     {
+      "prompt": "click",
+      "score": 0.9577677845954895,
+      "area": 592769,
+      "dE": 4.1
+     },
+     {
+      "prompt": "click",
+      "score": 0.96851646900177,
+      "area": 649234,
+      "dE": 25.1
+     },
+     {
+      "prompt": "box",
+      "score": 0.9913138747215271,
+      "area": 648433,
+      "dE": 25.1
+     },
+     {
+      "prompt": "box",
+      "score": 0.9877883791923523,
+      "area": 636963,
+      "dE": 31.4
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9999,
+    "corner_shift_px": [
+     0.32,
+     1.07,
+     1.59,
+     1.43
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.072
+     },
+     "right": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.089
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.073
+     },
+     "left": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.071
+     }
+    }
+   },
+   "wall_px": 0
+  },
+  "opening": {
+   "sides": {
+    "top": {
+     "mode": "chroma",
+     "edge_px": 1.0,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.024,
+     "offset_px": 0.64
+    },
+    "right": {
+     "mode": "chroma",
+     "edge_px": 2.0,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.044,
+     "offset_px": 1.39
+    },
+    "bottom": {
+     "mode": "chroma",
+     "edge_px": 1.75,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.027,
+     "offset_px": 1.28
+    },
+    "left": {
+     "mode": "chroma",
+     "edge_px": 1.25,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.019,
+     "offset_px": 0.78
+    }
+   },
+   "offset_px": {
+    "top": 0.64,
+    "right": 1.39,
+    "bottom": 1.28,
+    "left": 0.78
+   },
+   "reach_px": 15.9
+  },
+  "quad_paper": [
+   [
+    602.864990234375,
+    153.64999389648438
+   ],
+   [
+    1237.1419677734375,
+    153.6699981689453
+   ],
+   [
+    1237.2559814453125,
+    1085.126953125
+   ],
+   [
+    603.0919799804688,
+    1084.89501953125
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0.5 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.653,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.262
+    },
+    {
+     "side": "right",
+     "hard_k": 0.422
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.4
+    },
+    {
+     "side": "left",
+     "hard_k": 0.388
+    }
+   ],
+   "pad_px": 0.5
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.233,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.003
+    },
+    {
+     "side": "right",
+     "soft_k": 0.223,
+     "width_px": 1.75,
+     "blur_px": 1.14,
+     "fit_rms": 0.0038
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.85,
+     "width_px": -2.0,
+     "blur_px": 2.29,
+     "fit_rms": 0.0023
+    },
+    {
+     "side": "left",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0019
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "falloff",
+   "deg": -11.7,
+   "measured_drop": 0.059,
+   "opacity": 0.059,
+   "insert_texture": 0.0055,
+   "sun_line": "not searched (no SAM wall mask)"
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    601.781005859375,
+    152.42300415039062
+   ],
+   [
+    1238.9959716796875,
+    152.64700317382812
+   ],
+   [
+    1239.1099853515625,
+    1086.8780517578125
+   ],
+   [
+    601.781005859375,
+    1086.8780517578125
+   ]
+  ],
+  "corner_err_px": [
+   0.11,
+   0.07,
+   0.14,
+   0.1
+  ],
+  "max_px": 0.14,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": 0.48,
+   "right": 0.46,
+   "bottom": 0.59,
+   "left": 0.41
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "rebuilt_from": "the template's own photo",
+ "credits": 0.0,
+ "approved": false,
+ "created": "2026-11-16T00:01:55"
+}

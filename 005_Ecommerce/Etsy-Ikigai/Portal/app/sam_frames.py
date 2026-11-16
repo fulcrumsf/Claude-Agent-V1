@@ -565,6 +565,9 @@ def verify_quad(q, alpha, q_mask, stats, max_rms=0.6, min_inliers=0.6, max_shift
 OPENING_STEP_MIN = 0.2       # a hard edge: >= 20% of the paper->frame contrast within 1.5 px (shadow ramps: <= ~12%)
 OPENING_CHROMA_MIN = 0.03    # paper->frame chromaticity contrast below this: neutral frame, brightness mode
 OPENING_LUM_MIN = 0.1        # neutral frame: at least ~10% brighter / darker than the paper
+# SAM's paper edge may run this far ONTO the frame lip, past the hard edge (Tony 2026-11-15: was 1 px; old photos
+# showed SAM 1-2.4 px over the lip, so the opening could not be measured). The opening is still the hard edge.
+OPENING_INSIDE_MAX_PX = 3.0
 
 
 def offset_quad(q, d):
@@ -639,12 +642,13 @@ def opening_quad(rgb, q_paper, reach=None):
     c_paper, l_paper = np.median(chrom[core], 0), float(np.median(lum[core]))
     feats = {"chroma": cv2.GaussianBlur(np.linalg.norm(chrom - c_paper, axis=2).astype("float32"), (0, 0), 0.6),
              "lum": cv2.GaussianBlur((l_paper - lum).astype("float32"), (0, 0), 0.6)}
-    offs = np.arange(-3.0, reach + 3.0 + 1e-6, 0.25, dtype="float32")
+    ins = OPENING_INSIDE_MAX_PX                                     # SAM may have run this far onto the lip
+    offs = np.arange(-(ins + 3.0), reach + 3.0 + 1e-6, 0.25, dtype="float32")
     lines, info = [], {"sides": {}}
     for side in range(4):
         name = SIDES[side]
         pc = _median_profile(feats["chroma"], qc, side, offs)
-        far = offs >= -2.0
+        far = offs >= -ins
         if float(pc[far].max()) >= OPENING_CHROMA_MIN:
             mode, f, prof = "chroma", feats["chroma"], pc
             lo, hi = 0.0, float(pc[far].max())
@@ -659,11 +663,11 @@ def opening_quad(rgb, q_paper, reach=None):
             lo, hi = 0.0, float((pl * sgn)[far].max())
         fn = (prof - lo) / max(hi - lo, 1e-6)
         step = np.interp(offs + 0.75, offs, fn) - np.interp(offs - 0.75, offs, fn)
-        ok = (offs >= -2.0) & (offs <= reach) & (step >= OPENING_STEP_MIN)
+        ok = (offs >= -ins) & (offs <= reach) & (step >= OPENING_STEP_MIN)
         peaks = [i for i in np.nonzero(ok)[0] if step[i] >= step[max(i - 1, 0)] and step[i] >= step[min(i + 1, len(step) - 1)]]
         if not peaks:
             raise QuadError(f"opening: {name} side: no hard frame edge within {reach:.0f} px outside the paper "
-                            f"(strongest step {float(step[(offs >= -2) & (offs <= reach)].max()):.2f})")
+                            f"(strongest step {float(step[(offs >= -ins) & (offs <= reach)].max()):.2f})")
         d0 = float(offs[peaks[0]])                                    # the innermost hard step going outward
         band = (offs >= 0.75) & (offs <= d0 - 0.75)
         if band.any() and float(np.median(fn[band])) > 0.7:
@@ -700,9 +704,9 @@ def opening_quad(rgb, q_paper, reach=None):
     offs_side = side_offsets(qc, qo)
     for name, o in zip(SIDES, offs_side):
         info["sides"][name]["offset_px"] = round(o, 2)
-        if o < -1.0 or o > reach + 1.0:
+        if o < -OPENING_INSIDE_MAX_PX or o > reach + 1.0:
             raise QuadError(f"opening: {name} side: the hard edge is {o:+.1f} px from SAM's paper edge (allowed "
-                            f"-1 .. +{reach:.0f})")
+                            f"-{OPENING_INSIDE_MAX_PX:g} .. +{reach:.0f})")
     info["offset_px"] = {n: round(o, 2) for n, o in zip(SIDES, offs_side)}
     info["reach_px"] = round(reach, 1)
     return qo + np.float32([x0, y0]), info
