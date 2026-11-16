@@ -1,0 +1,503 @@
+--- a/models/catalog.json
++++ b/models/catalog.json
+@@ -168,6 +168,51 @@
+       ]
+     },
+     {
++      "id": "flux2-klein-4b-edit",
++      "name": "FLUX.2 klein 4B - fastest local edit, 4 steps (local)",
++      "tier": "edit",
++      "capabilities": ["fill", "expand", "edit"],
++      "arch": "flux2",
++      "template": "flux2_klein_edit",
++      "page": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
++      "license": {"name": "Apache-2.0", "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B"},
++      "gated": false,
++      "source_type": "first-party",
++      "uploader": "Comfy-Org repackaging (Comfy-Org/Flux-2-Klein-4B) of black-forest-labs/FLUX.2-klein-4B; added by the Agent-OS patch",
++      "min_vram_gb": 8,
++      "requires_nodes": [],
++      "requires_models": [],
++      "files": [
++        {"role": "unet", "url": "https://huggingface.co/Comfy-Org/Flux-2-Klein-4B/resolve/main/split_files/diffusion_models/flux-2-klein-4b.safetensors", "dest": "diffusion_models/flux-2-klein-4b.safetensors", "size": 7751105712, "sha256": "ec3d4e733a771f61c052fb4856c48b336c55eaf2c65487c2a1faeb9bbda7a343", "license": "Apache-2.0"},
++        {"role": "clip1", "url": "https://huggingface.co/Comfy-Org/Flux-2-Klein-4B/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors", "dest": "text_encoders/qwen_3_4b.safetensors", "size": 8044982048, "sha256": "6c671498573ac2f7a5501502ccce8d2b08ea6ca2f661c458e708f36b36edfc5a", "license": "Apache-2.0"},
++        {"role": "vae", "url": "https://huggingface.co/Comfy-Org/Flux-2-Klein-4B/resolve/main/split_files/vae/flux2-vae.safetensors", "dest": "vae/flux2-vae.safetensors", "size": 336211292, "sha256": "868fe7b343cc8f3a19dbcfcafbc3d5f888802be3f89bd81b65b3621a066ce8f3", "license": "Apache-2.0"}
++      ]
++    },
++    {
++      "id": "qwen-image-edit-2511-lightning",
++      "name": "Qwen Edit 2511 Lightning - fast, 4 steps (local)",
++      "tier": "edit",
++      "capabilities": ["fill", "expand", "edit"],
++      "arch": "qwen_image",
++      "template": "qwen_edit",
++      "page": "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF",
++      "license": {"name": "Apache-2.0", "url": "https://huggingface.co/Qwen/Qwen-Image-Edit-2511"},
++      "gated": false,
++      "source_type": "community-quantization",
++      "uploader": "unsloth (GGUF of Qwen/Qwen-Image-Edit-2511); Comfy-Org (text encoder and VAE repackaging); lightx2v (Lightning 4-step LoRA, Apache-2.0, https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning)",
++      "min_vram_gb": 12,
++      "requires_nodes": [
++        {"repo": "https://github.com/city96/ComfyUI-GGUF", "folder": "ComfyUI-GGUF", "commit": "6ea2651e7df66d7585f6ffee804b20e92fb38b8a", "license": "Apache-2.0"}
++      ],
++      "requires_models": [],
++      "files": [
++        {"role": "unet", "url": "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF/resolve/main/qwen-image-edit-2511-Q4_K_M.gguf", "dest": "unet/qwen-image-edit-2511-Q4_K_M.gguf", "size": 12842830432, "sha256": "07951f61941a81e236cbd4a9b6f250d49626b3ba518f260135bf2e01a87cf1c8"},
++        {"role": "clip1", "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors", "dest": "text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors", "size": 9384670680, "sha256": "cb5636d852a0ea6a9075ab1bef496c0db7aef13c02350571e388aea959c5c0b4", "license": "Apache-2.0"},
++        {"role": "vae", "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors", "dest": "vae/qwen_image_vae.safetensors", "size": 253806246, "sha256": "a70580f0213e67967ee9c95f05bb400e8fb08307e017a924bf3441223e023d1f", "license": "Apache-2.0"},
++        {"role": "lora", "url": "https://huggingface.co/lightx2v/Qwen-Image-Edit-2511-Lightning/resolve/main/Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors", "dest": "loras/Qwen-Image-Edit-2511-Lightning-4steps-V1.0-bf16.safetensors", "size": 849608296, "sha256": "22226e8d05d354bb356627d428809f5afd7819399b077238a2b70a82883a904f", "license": "Apache-2.0"}
++      ]
++    },
++    {
+       "id": "qwen-image-edit-2511-gguf-q4",
+       "name": "Qwen-Image-Edit-2511 GGUF Q4_K_M (+ Qwen2.5-VL text encoder fp8, Qwen VAE)",
+       "tier": "edit",
+@@ -185,7 +230,7 @@
+       ],
+       "requires_models": [],
+       "files": [
+-        {"role": "unet", "url": "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF/resolve/main/qwen-image-edit-2511-Q4_K_M.gguf", "dest": "unet/qwen-image-edit-2511-Q4_K_M.gguf", "size": 13244758624, "sha256": "8677bac90627adbbc11efab87b1870e701c4eb3689ee865a3de8ab81b705a723"},
++        {"role": "unet", "url": "https://huggingface.co/unsloth/Qwen-Image-Edit-2511-GGUF/resolve/main/qwen-image-edit-2511-Q4_K_M.gguf", "dest": "unet/qwen-image-edit-2511-Q4_K_M.gguf", "size": 12842830432, "sha256": "07951f61941a81e236cbd4a9b6f250d49626b3ba518f260135bf2e01a87cf1c8"},
+         {"role": "clip1", "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors", "dest": "text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors", "size": 9384670680, "sha256": "cb5636d852a0ea6a9075ab1bef496c0db7aef13c02350571e388aea959c5c0b4", "license": "Apache-2.0"},
+         {"role": "vae", "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors", "dest": "vae/qwen_image_vae.safetensors", "size": 253806246, "sha256": "a70580f0213e67967ee9c95f05bb400e8fb08307e017a924bf3441223e023d1f", "license": "Apache-2.0"}
+       ]
+--- a/openfill/app.py
++++ b/openfill/app.py
+@@ -358,10 +358,40 @@
+     @property
+     def uses_cloud(self) -> bool:
+         """The user picked the cloud service: pictures go to it, and ComfyUI is never used."""
+-        return self.settings.backend == "cloud"
++        return self.settings.backend == "cloud" or bool(getattr(self, "_job_cloud", None))
++
++    # Agent-OS patch: a cloud engine picked for one job in the Model menu ("cloud:<provider>:<model>")
++    AGENTOS_KEY_NAMES = {"kie": ("KIE_API_KEY", "KIE_AI_API_KEY"), "fal": ("FAL_AI_API_KEY", "FAL_KEY")}
++
++    def set_job_engine(self, choice: str | None) -> None:
++        parts = str(choice or "").split(":", 2)
++        self._job_cloud = (parts[1], parts[2]) if len(parts) == 3 and parts[0] == "cloud" else None
++
++    @classmethod
++    def _agentos_secret(cls, provider_id: str) -> str:
++        import os
++        from pathlib import Path
++
++        for name in cls.AGENTOS_KEY_NAMES.get(provider_id, ()):
++            if os.environ.get(name):
++                return os.environ[name].strip()
++            try:
++                for line in (Path.home() / ".env-secrets").read_text(encoding="utf-8").splitlines():
++                    line = line.strip()
++                    line = line[7:].strip() if line.startswith("export ") else line
++                    if line.startswith(name + "="):
++                        return line.split("=", 1)[1].strip().strip("'\"")
++            except OSError:
++                pass
++        return ""
+ 
+     def cloud_backend(self) -> CloudBackend:
+         s = self.settings
++        job = getattr(self, "_job_cloud", None)
++        if job:
++            return CloudBackend(job[0], self._agentos_secret(job[0]), job[1], "", "images",
++                                float(s.request_timeout or 0) or 300.0, self.log,
++                                decode=getattr(self.io, "decode_image", None))
+         return CloudBackend(
+             s.cloud_provider,
+             s.cloud_api_key if s.cloud_key_usable else "",  # never sent to a service it was not entered for
+@@ -536,6 +566,9 @@
+     def cloud_model_spec(self) -> ModelSpec:
+         from .backends.cloud import provider
+ 
++        job = getattr(self, "_job_cloud", None)  # Agent-OS patch
++        if job:
++            return ModelSpec(checkpoint=f"{job[1]} ({provider(job[0]).name}, cloud)", arch="cloud", template="cloud")
+         name = self.settings.cloud_model or provider(self.settings.cloud_provider).default_model
+         return ModelSpec(checkpoint=name or "cloud model", arch="cloud", template="cloud")
+ 
+@@ -624,6 +657,11 @@
+         elif model.effective_template == "sdxl_eraser":
+             # RORem's own settings: no classifier-free guidance, 15 to 50 steps.
+             cfg, sampler, scheduler, steps = 1.0, "euler", "normal", max(20, min(steps, 30))
++        elif model.arch == "flux2":  # Agent-OS patch: FLUX.2 klein 4B (distilled): 4 steps, no CFG
++            cfg, sampler, scheduler, steps = 1.0, "euler", "simple", 4
++        elif model.arch == "qwen_image" and getattr(model, "lora", ""):
++            # Agent-OS patch: Qwen with the Lightning 4-step LoRA runs at 4 steps, cfg 1.0
++            cfg, sampler, scheduler, steps = 1.0, "euler", "simple", 4
+         elif model.arch == "qwen_image":
+             cfg, sampler, scheduler, steps = 2.5, "euler", "simple", max(20, min(steps, 30))
+         batch = 1 if model.prompt_free else max(1, min(8, int(variations)))
+--- a/openfill/catalog.py
++++ b/openfill/catalog.py
+@@ -45,6 +45,7 @@
+     "sdxl_fooocus",
+     "flux_fill",
+     "qwen_edit",
++    "flux2_klein_edit",  # Agent-OS patch
+     "inpaint_model",
+     "sdxl_eraser",
+     "flux_eraser",
+@@ -58,6 +59,7 @@
+     "sdxl": "sdxl",
+     "flux": "flux",
+     "qwen_image": "qwen_image",
++    "flux2": "flux2",  # Agent-OS patch: FLUX.2 klein
+     "inpaint_model": "inpaint_model",
+     "bg_removal": "bg_removal",
+ }
+@@ -69,6 +71,7 @@
+     "sdxl": "Stable Diffusion XL",
+     "flux-fill": "FLUX.1 Fill",
+     "qwen-edit": "Qwen-Image-Edit",
++    "flux2-klein": "FLUX.2 klein (edit)",  # Agent-OS patch
+     "removal": "Object removal",
+ }
+ FAMILY_OF_TEMPLATE = {
+@@ -76,6 +79,7 @@
+     "sdxl_fooocus": "sdxl",
+     "flux_fill": "flux-fill",
+     "qwen_edit": "qwen-edit",
++    "flux2_klein_edit": "flux2-klein",  # Agent-OS patch
+     "inpaint_model": "removal",
+     "sdxl_eraser": "removal",
+     "flux_eraser": "removal",
+--- a/openfill/geometry.py
++++ b/openfill/geometry.py
+@@ -88,6 +88,7 @@
+     "sdxl": SDXL,
+     "flux": FLUX,
+     "qwen_image": QWEN,
++    "flux2": ModelProfile("flux2", min_side=768, max_side=1024, min_context=256, multiple=16),  # Agent-OS patch
+     "inpaint_model": INPAINT_MODEL,
+     "cloud": CLOUD,
+ }
+--- a/openfill/workflow.py
++++ b/openfill/workflow.py
+@@ -769,6 +769,9 @@
+         g.add("clip", "CLIPLoader", clip_name=spec.clip1, type="qwen_image")
+     g.add("vae", "VAELoader", vae_name=spec.vae)
+     model, clip, vae = g.out("unet"), g.out("clip"), g.out("vae")
++    if spec.lora:  # Agent-OS patch: Lightning 4-step LoRA
++        g.add("lora", "LoraLoaderModelOnly", model=model, lora_name=spec.lora, strength_model=1.0)
++        model = g.out("lora")
+     g.add("shift", "ModelSamplingAuraFlow", model=model, shift=3.0)
+     g.add("cfgnorm", "CFGNorm", model=g.out("shift"), strength=1.0)
+     model = g.out("cfgnorm")
+@@ -791,12 +794,48 @@
+         latent_image=latent,
+         seed=int(seed),
+         steps=int(req.sampling.steps),
+-        cfg=float(req.sampling.cfg if 1.0 < req.sampling.cfg <= 5.0 else 2.5),
++        cfg=float(req.sampling.cfg if 1.0 <= req.sampling.cfg <= 5.0 else 2.5),  # Agent-OS patch: 1.0 allowed (Lightning)
+         sampler_name="euler",
+         scheduler="simple",
+         denoise=float(req.sampling.denoise),
+     )
+     g.add("decode", "VAEDecode", samples=g.out("sampler"), vae=vae)
++    return _finish(g, req, g.out("decode"), mask, caps, filename_prefix)
++
++
++def build_flux2_klein_edit(
++    req: InpaintRequest,
++    image_ref: str,
++    mask_ref: str,
++    seed: int,
++    caps: Capabilities,
++    filename_prefix: str = "openfill/klein",
++) -> dict:
++    """Agent-OS patch: FLUX.2 klein 4B (Apache-2.0) edit of the context region: the context is the
++    reference latent and the start latent, limited to the mask with a latent noise mask."""
++    g = Graph()
++    spec = req.model
++    g.add("unet", "UNETLoader", unet_name=spec.unet, weight_dtype="default")
++    g.add("clip", "CLIPLoader", clip_name=spec.clip1, type="flux2")
++    g.add("vae", "VAELoader", vae_name=spec.vae)
++    vae = g.out("vae")
++    image, mask = _load_inputs(g, req, image_ref, mask_ref, caps)
++    g.add("encode", "VAEEncode", pixels=image, vae=vae)
++    g.add("pos", "CLIPTextEncode", clip=g.out("clip"), text=req.prompt or "")
++    g.add("ref", "ReferenceLatent", conditioning=g.out("pos"), latent=g.out("encode"))
++    g.add("guider", "BasicGuider", model=g.out("unet"), conditioning=g.out("ref"))
++    g.add("sigmas", "Flux2Scheduler", steps=int(req.sampling.steps), width=int(req.work_width), height=int(req.work_height))
++    g.add("sampler_select", "KSamplerSelect", sampler_name="euler")
++    g.add("noise", "RandomNoise", noise_seed=int(seed))
++    g.add("noise_mask", "SetLatentNoiseMask", samples=g.out("encode"), mask=mask)
++    latent = g.out("noise_mask")
++    batch = max(1, int(req.sampling.batch))
++    if batch > 1:
++        g.add("batch", "RepeatLatentBatch", samples=latent, amount=batch)
++        latent = g.out("batch")
++    g.add("sampler", "SamplerCustomAdvanced", noise=g.out("noise"), guider=g.out("guider"),
++          sampler=g.out("sampler_select"), sigmas=g.out("sigmas"), latent_image=latent)
++    g.add("decode", "VAEDecode", samples=g.out("sampler", 0), vae=vae)
+     return _finish(g, req, g.out("decode"), mask, caps, filename_prefix)
+ 
+ 
+@@ -1016,6 +1055,7 @@
+     "sdxl_fooocus": build_inpaint,
+     "flux_fill": build_flux_fill,
+     "qwen_edit": build_qwen_edit,
++    "flux2_klein_edit": build_flux2_klein_edit,  # Agent-OS patch
+     "inpaint_model": build_removal,
+     "sdxl_eraser": build_inpaint,
+     "flux_eraser": build_inpaint,
+--- a/openfill/backends/comfy.py
++++ b/openfill/backends/comfy.py
+@@ -42,7 +42,7 @@
+ # FLUX and Qwen on a partly offloaded 8 GB card ran 87 to 151 s warm (median
+ # 112 s); the old 134 to 166 s estimate cut 3 of 31 FLUX runs. Minimum timeout
+ # for these families (any progress message still extends the deadline).
+-SLOW_ARCHS = ("flux", "qwen_image")
++SLOW_ARCHS = ("flux", "qwen_image", "flux2")  # Agent-OS patch: flux2
+ SLOW_MODEL_FLOOR = 240.0
+ # Model folders searched for the size of a request's model files.
+ MODEL_FOLDERS = (
+--- a/openfill/backends/cloud.py
++++ b/openfill/backends/cloud.py
+@@ -112,7 +112,26 @@
+ }
+ OPENAI_SIZES = {"1:1": "1024x1024", "3:2": "1536x1024", "2:3": "1024x1536"}
+ 
++# Agent-OS patch (2026-11-15): kie.ai and fal.ai as cloud engines picked per job in the panel's Model
++# menu ("cloud:<provider>:<model>"). Keys come from ~/.env-secrets (KIE_API_KEY, FAL_AI_API_KEY) and are
++# only ever sent to that provider. Models without a mask input get the crop plus a mask picture and an
++# instruction (OpenFill's own method); the result is always put back through the selection mask.
++_NB_RATIOS = ("1:1", "2:3", "3:2", "3:4", "4:3", "4:5", "5:4", "9:16", "16:9", "21:9")
++PROVIDERS["kie"] = Provider("kie", "kie.ai", "kie.ai", "https://api.kie.ai", "nano-banana-pro", _NB_RATIOS,
++                            "https://kie.ai/api-key", "https://kie.ai/billing")
++PROVIDERS["fal"] = Provider("fal", "fal.ai", "fal.ai", "https://fal.run", "fal-ai/nano-banana-pro/edit", _NB_RATIOS,
++                            "https://fal.ai/dashboard/keys", "https://fal.ai/dashboard/billing")
++KIE_UPLOAD = "https://kieai.redpandaai.co/api/file-stream-upload"
++# Models that take a real mask: "black" or "white" = the colour that marks the area to change.
++TRUE_MASK_MODELS = {
++    "ideogram/v3-edit": "black",
++    "fal-ai/ideogram/v3/edit": "black",
++    "fal-ai/qwen-image-edit/inpaint": "white",
++    "fal-ai/z-image/turbo/inpaint": "white",
++    "bria/genfill/v2": "white",
++}
+ 
++
+ def provider(provider_id: str) -> Provider:
+     return PROVIDERS.get(provider_id, PROVIDERS["openrouter"])
+ 
+@@ -330,7 +349,7 @@
+ 
+     def _headers(self, content_type: str = "application/json") -> dict[str, str]:
+         headers = {
+-            "Authorization": f"Bearer {self._key}",
++            "Authorization": f"{'Key' if self.provider.id == 'fal' else 'Bearer'} {self._key}",
+             "Accept": "application/json",
+             "User-Agent": f"OpenFill/{__version__}",
+         }
+@@ -680,6 +699,84 @@
+             "POST", "/images/generations", json.dumps(body).encode(), "application/json", self.request_timeout
+         )
+         return self._collect(data)
++
++    # Agent-OS patch: kie.ai and fal.ai ------------------------------------------------
++
++    def _post_abs(self, url: str, body: bytes, content_type: str) -> Any:
++        """POST to a full https address of the same provider (kie's upload host), key in the header."""
++        if self._cancelled.is_set():
++            raise GenerationCancelled("cancelled before the request was sent")
++        timeout = 120.0 if not self._deadline else min(120.0, max(0.1, self._deadline - time.monotonic()))
++        req = Request(url, data=body, method="POST", headers=self._headers(content_type))
++        try:
++            with build_opener(_NoRedirect).open(req, timeout=timeout) as resp:
++                return json.loads(_read_capped(resp, self.where).decode("utf-8") or "{}")
++        except HTTPError as err:
++            detail = err.read()[:2000].decode("utf-8", "replace")
++            err.close()
++            raise self._http_error(err.code, detail, err.headers) from None
++        except (OSError, URLError, ValueError) as err:
++            raise CloudUnreachable(f"Could not reach {self.where} ({self._clean(err)}).") from None
++
++    def _kie_upload(self, png: bytes, name: str) -> str:
++        boundary = "openfill-" + uuid.uuid4().hex
++        parts = [
++            f'--{boundary}\r\nContent-Disposition: form-data; name="uploadPath"\r\n\r\nopenfill\r\n'.encode(),
++            f'--{boundary}\r\nContent-Disposition: form-data; name="fileName"\r\n\r\n{uuid.uuid4().hex}_{name}\r\n'.encode(),
++            f'--{boundary}\r\nContent-Disposition: form-data; name="file"; filename="{name}"\r\n'
++            "Content-Type: image/png\r\n\r\n".encode() + png + b"\r\n",
++            f"--{boundary}--\r\n".encode(),
++        ]
++        data = self._post_abs(KIE_UPLOAD, b"".join(parts), f"multipart/form-data; boundary={boundary}")
++        url = (data.get("data") or {}).get("downloadUrl") if isinstance(data, dict) else None
++        if not url:
++            raise CloudRefused(f"kie.ai did not take the picture upload ({self._clean(str(data.get('msg'))[:200])}).")
++        return str(url)
++
++    def _agentos_cloud(self, prompt: str, image: bytes, mask: bytes, ratio: str, true_mask: bool) -> list[bytes]:
++        m = self.model
++        if self.provider.id == "fal":
++            img, msk = _data_url(image), _data_url(mask)
++            if true_mask:
++                body: dict[str, Any] = {"prompt": prompt, "image_url": img, "num_images": 1}
++                body["mask_image_url" if m == "fal-ai/z-image/turbo/inpaint" else "mask_url"] = msk
++                if m == "bria/genfill/v2":
++                    body = {"instruction": prompt, "image_url": img, "mask_url": msk}
++            else:
++                body = {"prompt": prompt, "image_urls": [img, msk], "num_images": 1, "aspect_ratio": ratio,
++                        "output_format": "png"}
++                if "nano-banana" in m:
++                    body["resolution"] = "2K"
++            data = self._send("POST", "/" + m, json.dumps(body).encode(), "application/json", self.request_timeout)
++            imgs = data.get("images") if isinstance(data, dict) else None
++            if not imgs and isinstance(data.get("image"), dict):
++                imgs = [data["image"]]
++            return self._collect({"data": imgs or []})
++        # kie.ai: upload, create a task, poll, download
++        img_url = self._kie_upload(image, "image.png")
++        msk_url = self._kie_upload(mask, "mask.png")
++        if true_mask:
++            inp: dict[str, Any] = {"prompt": prompt, "image_url": img_url, "mask_url": msk_url}
++        elif m.startswith("gpt-image"):
++            inp = {"prompt": prompt, "input_urls": [img_url, msk_url], "aspect_ratio": ratio}
++        else:
++            inp = {"prompt": prompt, "image_input": [img_url, msk_url], "aspect_ratio": ratio,
++                   "resolution": "2K", "output_format": "png"}
++        data = self._send("POST", "/api/v1/jobs/createTask", json.dumps({"model": m, "input": inp}).encode(),
++                          "application/json", self.request_timeout)
++        task = (data.get("data") or {}).get("taskId") if isinstance(data.get("data"), dict) else None
++        if data.get("code") != 200 or not task:
++            raise CloudRefused(f"kie.ai refused the job: {self._clean(str(data.get('msg'))[:200])}")
++        self._info("kie.ai task %s for %s", task, m)
++        while not self._cancelled.is_set():
++            time.sleep(2.0)
++            d = self._send("GET", f"/api/v1/jobs/recordInfo?taskId={task}", None, "", 30.0).get("data") or {}
++            if d.get("state") == "success":
++                urls = json.loads(d.get("resultJson") or "{}").get("resultUrls") or []
++                return [self._download(str(u)) for u in urls[:1]]
++            if d.get("state") == "fail":
++                raise CloudRefused(f"kie.ai could not make it: {self._clean(str(d.get('failMsg') or d.get('failCode'))[:200])}")
++        raise GenerationCancelled("cancelled while waiting for kie.ai")
+ 
+     # prompts --------------------------------------------------------------------------
+ 
+@@ -766,7 +863,7 @@
+         pad = imaging.pad_plan(small.width, small.height, self.provider.ratios)
+         sent = imaging.pad_edges(small, pad)
+         sent_mask = imaging.pad_gray(small_mask, mw, mh, pad, 0)
+-        true_mask = self.provider.id == "openai"
++        true_mask = self.provider.id == "openai" or self.model in TRUE_MASK_MODELS  # Agent-OS patch
+         mode = request.mode if request.mode in ("remove", "expand") else "fill"
+         prompt = self.instruction(mode, request.prompt, request.negative, true_mask)
+         count = max(1, min(MAX_VARIATIONS, int(request.sampling.batch)))
+@@ -785,7 +882,12 @@
+             count,
+         )
+         image_png = sent.png()
+-        if true_mask:
++        if self.provider.id in ("kie", "fal"):  # Agent-OS patch
++            colour = TRUE_MASK_MODELS.get(self.model, "white")
++            on, off = (0, 255) if colour == "black" else (255, 0)
++            mask_png = imaging.encode(pad.width, pad.height, bytes(on if v >= 128 else off for v in sent_mask), 1)
++            call = lambda: self._agentos_cloud(prompt, image_png, mask_png, pad.ratio, true_mask)  # noqa: E731
++        elif true_mask:
+             mask_png = imaging.edit_mask_png(sent_mask, pad.width, pad.height)
+             call = lambda: self._openai_edit(prompt, image_png, mask_png, pad.ratio, count)  # noqa: E731
+         else:
+--- a/openfill_photocraft/service.py
++++ b/openfill_photocraft/service.py
+@@ -373,6 +373,8 @@
+             with self.state.lock:
+                 self.state.text = "Starting the AI engine (the first time takes about a minute)..."
+             self._warm.join()  # one start of ComfyUI, not two
++        # Agent-OS patch: a cloud engine picked in the Model menu runs this one job
++        self.app.set_job_engine(p.get("removal") if kind == "fill" and p.get("remove") else p.get("model"))
+         try:
+             image = self.bridge.active_image() if kind != "txt2img" or p.get("target") == "layer" else None
+             if kind != "txt2img" and image is None:
+@@ -462,6 +464,7 @@
+                 else:
+                     self.state.message = describe(err)
+         finally:
++            self.app.set_job_engine(None)  # Agent-OS patch
+             if image is not None:
+                 # whatever did not reach the document is dropped
+                 self._say_what_is_left(self.bridge.discard(image))
+--- a/openfill_photocraft/bar.py
++++ b/openfill_photocraft/bar.py
+@@ -103,6 +103,15 @@
+ 
+ # LaMa and MAT give the same result for the same input: one variation is enough.
+ PROMPT_FREE = ("lama-big", "mat-places512")
++# Agent-OS patch (2026-11-15): cloud engines in the Model menu (label -> per-job engine id). The
++# selection's surroundings leave this Mac for the named service; the label says so.
++CLOUD_ENGINES = (
++    ("Nano Banana Pro (cloud, kie.ai, ~$0.09)", "cloud:kie:nano-banana-pro"),
++    ("Nano Banana 2.1 (cloud, kie.ai, ~$0.02)", "cloud:kie:nano-banana-2-1"),
++    ("Ideogram 3 Edit, true mask (cloud, kie.ai, ~$0.02)", "cloud:kie:ideogram/v3-edit"),
++    ("Qwen Edit inpaint, true mask (cloud, fal.ai, ~$0.03)", "cloud:fal:fal-ai/qwen-image-edit/inpaint"),
++    ("Nano Banana Pro (cloud, fal.ai, ~$0.15)", "cloud:fal:fal-ai/nano-banana-pro/edit"),
++)
+ 
+ 
+ def removal_choices(facts: dict[str, Any]) -> dict[str, str]:
+@@ -234,7 +243,7 @@
+             "comfy_ok": comfy_ok,
+             "comfy_problem": "" if comfy_ok else comfy_problem(app.settings.comfy_dir),
+         }
+-        if app.uses_cloud:
++        if app.settings.backend == "cloud":  # Agent-OS patch: not a per-job cloud engine
+             facts = self._cloud_facts(facts)
+             if not comfy_ok:
+                 facts["gpu_vendor"] = self._gpu_vendor()
+@@ -310,7 +319,7 @@
+         facts["intel_arc"] = self._arc
+         if self._vendor == "amd":
+             cat.add_amd_notes(rows, app.catalog)  # what may not work on an AMD card
+-        if app.uses_cloud:  # the local models stay listed under Models; the tools use the cloud
++        if app.settings.backend == "cloud":  # the local models stay listed under Models; the tools use the cloud
+             facts.update({k: v for k, v in self._cloud_facts({}).items() if k != "comfy_ok"})
+         return facts
+ 
+@@ -1176,6 +1185,8 @@
+         if self.tab.get() == "bgremove":
+             return  # BiRefNet only cuts out backgrounds: it never becomes the active fill model
+         model_id = self._model_ids.get(label)
++        if str(model_id or "").startswith("cloud:"):
++            return  # Agent-OS patch: a cloud engine runs per job and never becomes the active model
+         facts = self.refresher.get()
+         removers = {i for i, _n in (facts.get("models") or {}).get("remove", [])}
+         if model_id and model_id != facts.get("active") and model_id not in removers:
+@@ -1332,6 +1343,8 @@
+         else:
+             choices = fill_choices(facts) if tab == "fill" else {name: i for i, name in models.get(tab, [])}
+             wanted = facts.get("active_name") or ""
++        if tab in ("fill", "remove", "expand") and not facts.get("cloud") and choices:  # Agent-OS patch
++            choices = {**choices, **dict(CLOUD_ENGINES)}
+         self._model_ids = choices
+         names = list(choices)
+         if self.model_box.values != names:
+--- a/openfill_photocraft/static/index.html
++++ b/openfill_photocraft/static/index.html
+@@ -262,6 +262,7 @@
+   if(v==="__manage"){fillSelect();showGear("models");return}
+   if(mode==="remove"){removal=v;return}
+   if(mode==="bgremove")return;
++  cloudPick=v.startsWith("cloud:")?v:"";if(cloudPick)return; // Agent-OS patch: cloud engines are per job
+   if(v&&v!==activeId&&!removers().has(v)){try{await post("/api/models/activate",{id:v});activeId=v}catch(e){say(e.message,"bad")}}};
+ function seedOf(){const v=$("seed").value.trim();return v===""?-1:parseInt(v)}
+ function say(t,kind){note=t?{text:t,kind:kind||"bad",base:baseContext()[0]}:null;context()}
+@@ -298,6 +299,9 @@
+ 
+ // LaMa and MAT give the same result for the same input; the first one installed is Remove's default (full resolution).
+ const PROMPT_FREE=["lama-big","mat-places512"];
++// Agent-OS patch: cloud engines in the same menu. The picture (the selection's surroundings) leaves this Mac.
++const CLOUD_ENGINES=[["Nano Banana Pro (cloud, kie.ai, ~$0.09)","cloud:kie:nano-banana-pro"],["Nano Banana 2.1 (cloud, kie.ai, ~$0.02)","cloud:kie:nano-banana-2-1"],["Ideogram 3 Edit, true mask (cloud, kie.ai, ~$0.02)","cloud:kie:ideogram/v3-edit"],["Qwen Edit inpaint, true mask (cloud, fal.ai, ~$0.03)","cloud:fal:fal-ai/qwen-image-edit/inpaint"],["Nano Banana Pro (cloud, fal.ai, ~$0.15)","cloud:fal:fal-ai/nano-banana-pro/edit"]];
++let cloudPick="";
+ function usable(){return models.filter(r=>r.installed&&r.runnable&&!(r.missing_models||[]).length&&!(r.missing_nodes||[]).length)}
+ function removers(){return new Set(usable().filter(r=>(r.capabilities||[]).includes("remove")).map(r=>r.id))}
+ function removalChoices(){const inst=usable(),rem=inst.filter(r=>(r.capabilities||[]).includes("remove")),ids=new Set(rem.map(r=>r.id));
+@@ -312,7 +316,8 @@
+   else{const inst=usable();opts=inst.filter(r=>(r.capabilities||[]).includes(mode)).map(r=>[r.name,r.id]);
+     // Fill also offers the removal models: with an empty prompt they remove (LaMa and MAT ignore a prompt, erasers use their own)
+     if(mode==="fill")inst.filter(r=>(r.capabilities||[]).includes("remove")&&!(r.capabilities||[]).includes("fill")).forEach(r=>opts.push([r.name,r.id]))}
+-  const want=mode==="remove"?(opts.some(o=>o[1]===removal)?removal:(opts[0]||[])[1]):(opts.some(o=>o[1]===activeId)?activeId:(opts[0]||[])[1]);
++  if(!cloud&&["fill","remove","expand"].includes(mode))CLOUD_ENGINES.forEach(o=>opts.push(o)); // Agent-OS patch
++  const want=mode==="remove"?(opts.some(o=>o[1]===removal)?removal:(opts[0]||[])[1]):(cloudPick&&opts.some(o=>o[1]===cloudPick)?cloudPick:opts.some(o=>o[1]===activeId)?activeId:(opts[0]||[])[1]);
+   const key=JSON.stringify([opts,want]);if(s.dataset.key===key)return;s.dataset.key=key;
+   s.innerHTML="";if(!opts.length){const o=document.createElement("option");o.value="";o.textContent=models.length||!comfy?"No models installed":"Checking...";s.appendChild(o)}
+   for(const[label,value]of opts){const o=document.createElement("option");o.value=value;o.textContent=label;s.appendChild(o)}

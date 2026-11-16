@@ -2,7 +2,7 @@
   "meta": {
     "updated": "2026-11-15",
     "schema_version": 1,
-    "count": 678,
+    "count": 681,
     "url_backfilled": 360,
     "artifact_url": "https://claude.ai/artifact/3D9QHYnL7EZ8eunDsHRz4R",
     "note": "Migrated from the artifact's embedded DATA array. url_backfilled counts rows where a source file was found locally and had its own url: frontmatter; the rest have url=null and still need one before URL-based dedup can catch them."
@@ -5121,14 +5121,14 @@
       "does": "Image editing with infinite camera-angle control (HF demo).",
       "use_for": [],
       "pricing": null,
-      "status": "bookmarked",
+      "status": "installed",
       "sources": [
         "Aca-Exolore-Image-Edit-Gles-Like-Live.md",
         "Owen-Image-Edit-Angle.md"
       ],
       "source_tag": "library",
       "first_seen": "2026-10-08",
-      "notes": ""
+      "notes": " | 2026-11-15: Qwen-Image-Edit-2511 Q4_K_M gguf + Lightning 4-step LoRA installed in the Pinokio ComfyUI; 33-41 s/step on M3 Max (Lightning fill 150-180 s, stock 20-step ~18 min)."
     },
     {
       "id": "nano-banana-nano-banana-pro",
@@ -8481,7 +8481,7 @@
       ],
       "source_tag": "library",
       "first_seen": "2026-10-08",
-      "notes": "App at /Applications/Pinokio.app v8.3.7, home /Users/tonymacbook2025/pinokio. Fresh install 2026-11-15: no apps installed yet. Agents drive it with pterm (pinokio skill). Plan: install ComfyUI here (Metal GPU), not in Docker. Remote and Home Server left off."
+      "notes": "App at /Applications/Pinokio.app v8.3.7, home /Users/tonymacbook2025/pinokio. Fresh install 2026-11-15: no apps installed yet. Agents drive it with pterm (pinokio skill). Plan: install ComfyUI here (Metal GPU), not in Docker. Remote and Home Server left off. | 2026-11-15: ComfyUI 0.45.0 installed here and used by OpenFill for PhotoCraft (Qwen Edit, FLUX.2 klein 4B, LaMa, DreamShaper 8, SAM 3.1)."
     },
     {
       "id": "exo",
@@ -11743,6 +11743,67 @@
       "pricing": null,
       "source_tag": "manual",
       "first_seen": "2026-11-15"
+    },
+    {
+      "id": "photocraft-openfill",
+      "name": "OpenFill for PhotoCraft (+ Agent-OS engines patch)",
+      "url": "https://github.com/beckettharriman/openfill",
+      "kind": "app",
+      "category": "Image Editing / Generative Fill",
+      "does": "Photoshop-style Generative Fill, Remove, Expand and Create inside PhotoCraft 0.23.1, driven by the Pinokio ComfyUI; per-fill Model menu with local (FLUX.2 klein 4B, Qwen Edit Lightning, LaMa, DreamShaper) and cloud (kie.ai Nano Banana Pro/2.1, Ideogram 3 Edit; fal.ai Qwen inpaint, Nano Banana Pro) engines.",
+      "use_for": [
+        "generative fill",
+        "object removal",
+        "room template edits",
+        "Ikigai mockups"
+      ],
+      "pricing": "free local; cloud engines $0.005-$0.15 per edit",
+      "status": "installed",
+      "sources": [
+        "005_Ecommerce/Etsy-Ikigai/Research/OpenFill_PhotoCraft_Plan.md"
+      ],
+      "source_tag": "install",
+      "first_seen": "2026-11-15",
+      "notes": "Open ~/Applications/PhotoCraft with OpenFill.app after starting ComfyUI in Pinokio. Re-apply patch after updates: python3 001_Architecture/Tools/Image-Generation/openfill_agentos_patch.py. Warm times: LaMa 4-6 s, klein ~30 s, Qwen Lightning 150-180 s, Nano Banana Pro cloud ~60 s."
+    },
+    {
+      "id": "photocraft-sam-select",
+      "name": "PhotoCraft SAM 3.1 text-to-selection bridge",
+      "url": null,
+      "kind": "script",
+      "category": "Image Editing / Generative Fill",
+      "does": "Turns a typed word (e.g. 'lamp') into a soft, edge-refined PhotoCraft selection using SAM 3.1 in the Pinokio ComfyUI.",
+      "use_for": [
+        "select object by text",
+        "remove X"
+      ],
+      "pricing": "free (local)",
+      "status": "installed",
+      "sources": [
+        "001_Architecture/Tools/Image-Generation/photocraft_sam_select.py"
+      ],
+      "source_tag": "install",
+      "first_seen": "2026-11-15",
+      "notes": "python3 001_Architecture/Tools/Image-Generation/photocraft_sam_select.py \"lamp\" ; ~9 s end to end warm. SAM License (commercial use allowed)."
+    },
+    {
+      "id": "flux2-klein-4b",
+      "name": "FLUX.2 klein 4B (local, ComfyUI)",
+      "url": "https://huggingface.co/black-forest-labs/FLUX.2-klein-4B",
+      "kind": "model",
+      "category": "AI Video / Image / Audio Gen",
+      "does": "Apache-2.0 4B image edit model, 4 steps; fastest local edit on the M3 Max (~6.6 s/step at 1024 px).",
+      "use_for": [
+        "fast local generative fill"
+      ],
+      "pricing": "free (local)",
+      "status": "installed",
+      "sources": [
+        "Pinokio ComfyUI models"
+      ],
+      "source_tag": "install",
+      "first_seen": "2026-11-15",
+      "notes": "Files in /Users/tonymacbook2025/pinokio/api/comfy.git/app/models (diffusion_models, text_encoders/qwen_3_4b, vae/flux2-vae). Default Fill engine in OpenFill."
     }
   ]
 }
