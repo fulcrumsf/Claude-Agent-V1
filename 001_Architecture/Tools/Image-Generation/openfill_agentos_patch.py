@@ -79,9 +79,24 @@ def make(pristine: Path) -> int:
     return 0
 
 
+def hide_panel_key() -> None:
+    """OpenFill prints the panel address WITH its local key into companion.log; print it without the key
+    (the full address is already in page-url.txt). Safe to run every time."""
+    f = APP / "openfill_photocraft/__main__.py"
+    old = 'print(f"OpenFill for PhotoCraft is running: {url}")'
+    new = 'print(f"OpenFill for PhotoCraft is running: {base}/ (address with its key is in page-url.txt)")  # Agent-OS: never log the key'
+    try:
+        t = f.read_text(encoding="utf-8")
+        if old in t:
+            f.write_text(t.replace(old, new), encoding="utf-8")
+    except OSError:
+        pass
+
+
 def main() -> int:
     if len(sys.argv) > 2 and sys.argv[1] == "--make":
         return make(Path(sys.argv[2]))
+    hide_panel_key()
     if not APP.is_dir():
         print(f"OpenFill is not installed at {APP}")
         return 1
