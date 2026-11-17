@@ -116,7 +116,8 @@ def run(rel, settings=None, generator=None, check=True):
             _stage("finding the frame, building the PSD")
             (td / "b").mkdir()
             try:
-                built = stp.build_psd(scene, plan["ratio"], td / "b", settings)
+                built = stp.build_psd(scene, plan["ratio"], td / "b", settings,
+                                      presentation=rs.presentation_for(plan["room"], plan["decor"], plan["ratio"]))
             except stp.TemplateError as e:
                 arch = folder / "Archive"
                 arch.mkdir(exist_ok=True)               # Archive folders are pre-approved (Tony 2026-11-08)
@@ -213,6 +214,36 @@ def decide_rebuild(psd, side, decision, settings=None):
             if rel_old in (data.get("manual") or {}) and rel_new not in data["manual"]:
                 ts.set_manual(rel_new, data["manual"][rel_old], sp)
     return {"approved": rel_new, "archived": moved}
+
+
+def archive_template(rel_psd, settings=None):
+    """Retire one template (the card's "..." menu, Tony 2026-11-16): its PSD, _Preview.png, rebuild sidecar and scene
+    PNG move into the folder's Archive/ (pre-approved, never used by Production or the checker). The folder's
+    template.json goes too when it names this PSD or this is the only PSD there. Nothing is deleted."""
+    psd = lib(settings) / rel_psd
+    if not psd.is_file() or psd.suffix.lower() != ".psd" or psd.parent.name == "Archive":
+        raise BuildError("no such template")
+    folder = psd.parent
+    arch = folder / "Archive"
+    arch.mkdir(exist_ok=True)
+    others = [f for f in folder.glob("*.psd") if f != psd]
+    moved = []
+    cand = [psd, folder / f"{psd.stem}_Preview.png", folder / f"{psd.stem}_Scene.png", psd.with_suffix(".json")]
+    tj = folder / stp.MANIFEST
+    if tj.is_file():
+        try:
+            names = json.loads(tj.read_text()).get("psd")
+        except ValueError:
+            names = None
+        if names == psd.name or (not others and names in (None, psd.name)):
+            cand.append(tj)
+    for f in cand:
+        if f.is_file():
+            nm = f.name if f != tj else f"{psd.stem}_template.json"
+            dest = _free(arch / nm)
+            shutil.move(str(f), str(dest))
+            moved.append(dest.name)
+    return {"archived": rel_psd, "files": moved}
 
 
 def decide(rel_psd, decision, settings=None):

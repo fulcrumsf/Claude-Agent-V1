@@ -758,7 +758,7 @@ def load_rgb(path):
         return np.asarray(im.convert("RGB"))
 
 
-def detect(image_path, box=None, wall=False):
+def detect(image_path, box=None, wall=False, canvas=False):
     """Full pipeline on one photo. Returns (result dict, refined alpha, wall alpha or None)."""
     if any(n in str(image_path) for n in NOT_ON):
         raise SystemExit("Not on the Wabi bedroom (verified by hand).")
@@ -774,7 +774,10 @@ def detect(image_path, box=None, wall=False):
             alpha = refine_alpha(rgb, mask)
             q, stats = fit_quad(alpha, q_mask)
             ver = verify_quad(q, alpha, q_mask, stats)
-            q_open, open_info = opening_quad(rgb, q)          # the frame's hard inner edge (Tony 2026-11-12)
+            if canvas:      # stretched canvas (Tony 2026-11-16): the printed face IS the opening, no frame lip to find
+                q_open, open_info = q.copy(), {"mode": "canvas face (no frame lip)"}
+            else:
+                q_open, open_info = opening_quad(rgb, q)      # the frame's hard inner edge (Tony 2026-11-12)
             break
         except QuadError as e:
             errors.append(f"candidate {sel['area']} px: {e}")
@@ -832,11 +835,12 @@ def main(argv=None):
     ap.add_argument("--out", help="overlay PNG")
     ap.add_argument("--json", help="write the result JSON here")
     ap.add_argument("--alpha", help="16-bit PNG of the refined insert alpha")
+    ap.add_argument("--canvas", action="store_true", help="stretched canvas: the paper edge is the opening")
     ap.add_argument("--wall", help="16-bit PNG of the refined wall alpha (SAM wall segmentation)")
     a = ap.parse_args(argv)
     box = [float(v) for v in a.box.split(",")] if a.box else None
     try:
-        res, alpha, wall_a = detect(a.image, box, wall=bool(a.wall))
+        res, alpha, wall_a = detect(a.image, box, wall=bool(a.wall), canvas=a.canvas)
     except QuadError as e:
         res = {"image": a.image, "error": str(e)}
         if a.json:

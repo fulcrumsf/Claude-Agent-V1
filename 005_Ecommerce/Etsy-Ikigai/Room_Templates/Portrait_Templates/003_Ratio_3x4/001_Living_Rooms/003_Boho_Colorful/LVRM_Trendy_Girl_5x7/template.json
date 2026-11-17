@@ -1,39 +1,25 @@
 {
- "name": "LVRM_Trendy_Girl_5x7",
- "kind": "tony_psd",
- "psd": "LVRM_Trendy_Girl_5x7.psd",
+ "name": "LVRM_Trendy_Girl_5x7_Rebuild_Wainscot_2026-11-16",
+ "title": "LVRM_Trendy_Girl_5x7 (wainscot panel scene, rebuilt 2026-11-16)",
+ "kind": "rebuild",
+ "psd": "LVRM_Trendy_Girl_5x7_Rebuild_Wainscot_2026-11-16.psd",
+ "scene": "LVRM_Trendy_Girl_5x7_Rebuild_Wainscot_2026-11-16_Scene.png",
+ "replaces": "LVRM_Trendy_Girl_5x7.psd",
  "smart_object_layer": "Place Artwork Here",
  "room": "Living Rooms",
  "decor": "Boho Colorful",
+ "style": null,
  "ratio": "3x4",
- "so_px": [
-  539,
-  725
- ],
- "so_ratio": 0.7434,
- "quad_art": [
-  [
-   1028.0,
-   165.0
-  ],
-  [
-   1566.0,
-   165.0
-  ],
-  [
-   1566.0,
-   889.0
-  ],
-  [
-   1028.0,
-   889.0
-  ]
- ],
- "canvas": [
-  2000,
-  2000
- ],
  "desc": "Same Parisian room, tighter crop",
- "guard": "hue only (the template's own shadows are designed)",
- "measured": "2026-11-08: art quad from a black vs white card render"
+ "approved": true,
+ "note": "Smart object placed from the detected mat window (SAM), shadows built from measurements. Prompt in Archive/.",
+ "so_px": [
+  359,
+  507
+ ],
+ "so_ratio": 0.7081,
+ "approved_at": "2026-11-16T21:27:58",
+ "mode": "mat",
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "mat_in_photo": true
 }

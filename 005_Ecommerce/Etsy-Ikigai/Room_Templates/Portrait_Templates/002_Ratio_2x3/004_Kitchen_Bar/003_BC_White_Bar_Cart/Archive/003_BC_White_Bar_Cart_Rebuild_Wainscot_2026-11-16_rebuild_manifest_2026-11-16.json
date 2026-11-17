@@ -1,0 +1,21 @@
+{
+ "name": "003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16",
+ "title": "003_BC_White_Bar_Cart (wainscot panel scene, rebuilt 2026-11-16)",
+ "kind": "rebuild",
+ "psd": "003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16.psd",
+ "scene": "003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16_Scene.png",
+ "replaces": "003_BC_White_Bar_Cart.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Kitchen Bar",
+ "decor": "Food and Drink",
+ "style": null,
+ "ratio": "2x3",
+ "desc": "White panelled wall, black bar cart, pampas",
+ "approved": false,
+ "note": "Smart object placed from the detected mat window (SAM), shadows built from measurements. Prompt in Archive/.",
+ "so_px": [
+  335,
+  525
+ ],
+ "so_ratio": 0.6381
+}

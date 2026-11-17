@@ -58,14 +58,47 @@ def test_locked_slot_keeps_its_room_when_the_plan_changes():
 
 
 def test_scene_prompt_follows_tonys_recipe_and_never_names_the_art():
-    t = rs.scene_prompt("Bathroom", "Japandi", "iso")
-    assert t.startswith("Photorealistic japandi bathroom interior featuring one vertical picture frame with a blank "
-                        "white insert (ISO ratio).")
-    for must in ("Camera angle: 3/4 corner", "no other frames", "No people", "No lamps"):
+    t = rs.scene_prompt("Bathroom", "Japandi", "iso", presentation="frame")
+    assert t.startswith("Photorealistic japandi bathroom interior featuring one vertical piece of wall art (ISO ratio).")
+    for must in ("Camera angle: 3/4 corner", "no other frames", "No people", "No lamps", "onion-skin orange",
+                 "no mat, no matte border"):
         assert must in t
+    assert "white insert" not in t
+
+
+def test_presentations_mat_canvas_and_the_deterministic_pick():
+    m = rs.scene_prompt("Living room", "Victorian", "2x3", presentation="mat")
+    assert "WIDE off-white mat" in m and "onion-skin orange" in m
+    c = rs.scene_prompt("Living room", "Boho", "4x5", presentation="canvas")
+    assert "floater frame" in c and "never black or dark" in c and "stretched gallery canvas" in c
+    picks = {rs.presentation_for("Living room", d, r) for d in rs.PRESENTATION_WEIGHTS for r in rs.RATIOS}
+    assert picks == {"frame", "mat", "canvas"}
+    assert rs.presentation_for("Living room", "Modern", "2x3") == rs.presentation_for("Living room", "Modern", "2x3")
+    assert all(rs.presentation_for("Bedroom", "Victorian", r) != "canvas" for r in rs.RATIOS)
+    assert all(rs.presentation_for("Kids", "Kids", r) != "mat" for r in rs.RATIOS)
 
 
 def test_room_slots_are_3_and_9_to_19_and_tonys_picks_fill_3_9_10_11_12():
     assert rs.ROOM_SLOTS == [3, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] and rs.room_slots({}) == rs.ROOM_SLOTS
     p = rs.plan(["Office", "Bedroom", "Bathroom", "Living room", "Dorm"], [], "x", available=ALL)
     assert [(s["slot"], s["by"]) for s in p[:5]] == [(3, "tony"), (9, "tony"), (10, "tony"), (11, "tony"), (12, "tony")]
+
+
+def test_frame_prompt_uses_black_only_occasionally():
+    t = rs.scene_prompt("Living room", "Modern", "2x3", presentation="frame")
+    assert "black only occasionally" in t
+
+
+def test_archive_template_moves_files_and_deletes_nothing(tmp_path, monkeypatch):
+    import json
+    from app import template_build as tb
+    lib = tmp_path / "Lib"
+    f = lib / "R" / "Room" / "Style"
+    f.mkdir(parents=True)
+    (f / "A.psd").write_bytes(b"x")
+    (f / "A_Preview.png").write_bytes(b"y")
+    (f / "template.json").write_text(json.dumps({"psd": "A.psd"}))
+    monkeypatch.setattr(tb, "lib", lambda s=None: lib)
+    r = tb.archive_template("R/Room/Style/A.psd")
+    assert sorted(r["files"]) == ["A.psd", "A_Preview.png", "A_template.json"]
+    assert [p.name for p in f.iterdir()] == ["Archive"] and len(list((f / "Archive").iterdir())) == 3

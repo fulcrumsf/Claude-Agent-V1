@@ -7,7 +7,7 @@ import pytest
 from PIL import Image
 
 
-def fake_sam_detect(scene_png, work, settings=None, box=None, wall=True):
+def fake_sam_detect(scene_png, work, settings=None, box=None, wall=True, canvas=False):
     from app import sam_frames as sf
     from app import scene_templates as stp
     rgb = np.asarray(Image.open(scene_png).convert("RGB"))

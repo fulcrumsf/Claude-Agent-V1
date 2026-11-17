@@ -736,6 +736,36 @@
    "key": "41b087ceed03776d",
    "model": "gemini-3.5-flash-lite",
    "tokens": 1223
+  },
+  "002_Ratio_2x3/004_Kitchen_Bar/003_BC_White_Bar_Cart/003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "a589907dd8b8ba45",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "003_Ratio_3x4/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_5x7/LVRM_Trendy_Girl_5x7_Rebuild_Wainscot_2026-11-16.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "d193f05a5d6f8a0e",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "004_Ratio_4x5/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_4x5/LVRM_Trendy_Girl_4x5_Rebuild_Wainscot_2026-11-16.psd": {
+   "styles": [
+    "Abstract",
+    "Minimalism",
+    "Mid Century"
+   ],
+   "key": "099d61d53a1eb439",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
   }
  }
 }

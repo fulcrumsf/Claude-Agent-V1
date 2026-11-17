@@ -1,39 +1,25 @@
 {
- "name": "003_BC_White_Bar_Cart",
- "kind": "tony_psd",
- "psd": "003_BC_White_Bar_Cart.psd",
+ "name": "003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16",
+ "title": "003_BC_White_Bar_Cart (wainscot panel scene, rebuilt 2026-11-16)",
+ "kind": "rebuild",
+ "psd": "003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16.psd",
+ "scene": "003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16_Scene.png",
+ "replaces": "003_BC_White_Bar_Cart.psd",
  "smart_object_layer": "Place Artwork Here",
  "room": "Kitchen Bar",
  "decor": "Food and Drink",
+ "style": null,
  "ratio": "2x3",
- "so_px": [
-  734,
-  1099
- ],
- "so_ratio": 0.6679,
- "quad_art": [
-  [
-   653.0,
-   103.0
-  ],
-  [
-   1387.0,
-   106.0
-  ],
-  [
-   1387.0,
-   1196.0
-  ],
-  [
-   652.0,
-   1205.0
-  ]
- ],
- "canvas": [
-  2048,
-  2048
- ],
  "desc": "White panelled wall, black bar cart, pampas",
- "guard": "hue only (the template's own shadows are designed)",
- "measured": "2026-11-08: art quad from a black vs white card render"
+ "approved": true,
+ "note": "Smart object placed from the detected mat window (SAM), shadows built from measurements. Prompt in Archive/.",
+ "so_px": [
+  335,
+  525
+ ],
+ "so_ratio": 0.6381,
+ "approved_at": "2026-11-16T21:28:17",
+ "mode": "mat",
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "mat_in_photo": true
 }

@@ -905,7 +905,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     const badge = `<span class="tchk ${esc(cls)}" title="${esc(!ck ? "not checked yet" : ck.stale ? "the PSD changed since its check" : "checked " + (ck.checked || ""))}">${!ck ? "NOT CHECKED" : ck.stale ? "CHANGED" : esc(ck.status)}</span>`;
     const fails = ck && ck.status === "FAIL" && (ck.reasons || []).length ? `<details${openFails.has(t.rel) ? " open" : ""} data-tfails="${esc(t.rel)}"><summary class="tlink">${ck.reasons.length} reason${ck.reasons.length === 1 ? "" : "s"}</summary><ul class="tfails">${ck.reasons.map(x => `<li>${esc(x)}</li>`).join("")}</ul></details>` : "";
     const dots = `<button class="tdots" data-tdots="${esc(t.rel)}" title="Edit with chat, Open in PhotoCraft, Check again">⋯</button>`;
-    const menu = menuOpen === t.rel ? `<div class="tmenu">${t.wired ? "" : `<button data-tm="edit" data-rel="${esc(t.rel)}">Edit with chat</button>`}<button data-tm="open" data-rel="${esc(t.rel)}">Open in PhotoCraft</button>${t.wired ? "" : `<button data-tm="check" data-rel="${esc(t.rel)}">Check again</button>`}</div>` : "";
+    const menu = menuOpen === t.rel ? `<div class="tmenu">${t.wired ? "" : `<button data-tm="edit" data-rel="${esc(t.rel)}">Edit with chat</button>`}<button data-tm="open" data-rel="${esc(t.rel)}">Open in PhotoCraft</button>${t.wired ? "" : `<button data-tm="check" data-rel="${esc(t.rel)}">Check again</button><button data-tm="archive" data-rel="${esc(t.rel)}">Archive this template</button>`}</div>` : "";
     const aw = t.awaiting ? `<span class="tchk await">NEW · approve?</span>` : "";
     const awn = t.awaiting && t.rebuild_of ? `<div class="td">Rebuilt version of ${esc(t.rebuild_of)}. The old one stays in use until you approve; Approve moves the old one to Archive.</div>` : "";
     const awb = t.awaiting ? `<div class="tc"><button class="btn sm" data-tbd="approved" data-rel="${esc(t.rel)}">Approve template</button><button class="btn ghost sm" data-tbd="denied" data-rel="${esc(t.rel)}">Deny (to Archive)</button></div>${awn}` : "";
@@ -994,6 +994,12 @@ button{font:inherit;color:inherit;cursor:pointer}
         if (layer === null) return;
         const r = await tplAct(`${prefix}/api/templates/open`, {rel, layer: layer.trim() || null});
         if (r) alert(`${r.with === "OpenFill" ? "PhotoCraft with OpenFill" : "PhotoCraft"} ${r.app}${r.layer ? (r.selected ? ", layer '" + r.layer + "' selected" : ", could not select '" + r.layer + "'") : ""}.${r.with === "OpenFill" ? " Generative Fill: select an area, then Filter > Plug-ins > Generative Fill…" : ""} You save there yourself (File > Save writes the template PSD directly); save only when you mean to.`);
+        return;
+      }
+      if (m.dataset.tm === "archive") {
+        if (!confirm("Archive this template? Its files move into the folder's Archive (nothing is deleted) and it stops being used.")) return;
+        const r = await tplAct(`${prefix}/api/templates/archive`, {rel});
+        if (r) return loadTpl(true);
         return;
       }
       if (m.dataset.tm === "check") { await tplAct(`${prefix}/api/templates/check`, {rel}); return loadTpl(); }

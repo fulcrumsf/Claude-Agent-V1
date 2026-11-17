@@ -352,8 +352,17 @@ def render(t, settings=None, tint=False):
     with tempfile.TemporaryDirectory() as work:
         inf = info(t["psd"], settings)
         art = _find(inf.get("layers"), ART)
-        if art is None:
-            raise RuntimeError(f"no '{ART}' layer")
+        if art is None:                          # scene-only PSD (smart object not added yet): show the plain photo
+            out = Path(work) / "render.png"
+            _run(settings, ["run", str(t["psd"]), "--out", str(out)])
+            with Image.open(out) as im0:
+                im = im0.convert("RGB")
+            box = crop_box(im.width, im.height, None)
+            c = im.crop(box)
+            c.resize((640, 480), Image.LANCZOS).save(tp, quality=86)
+            lw = min(1800, c.width)
+            c.resize((lw, round(lw * 3 / 4)), Image.LANCZOS).save(lp, quality=90)
+            return tp, lp
         w, h = so_size(t, inf, settings, work)
         card = Path(work) / "card.png"
         (tint_card if tint else test_card)(w, h, card)
@@ -569,6 +578,11 @@ def mount(app, settings, prefix="/ikigai", styles_path=None, classify=None, auto
     def api_build_decide(body: dict = Body(...)):
         return JSONResponse(call(tb.decide, str(body.get("rel") or ""), str(body.get("decision") or ""), settings),
                             headers=NS)
+
+    @r.post("/api/templates/archive")
+    def api_archive(body: dict = Body(...)):
+        """{rel}: retire one template into its folder's Archive (nothing is deleted)."""
+        return JSONResponse(call(tb.archive_template, str(body.get("rel") or ""), settings), headers=NS)
 
     @r.post("/api/templates/folders")
     def api_folder(body: dict = Body(...)):

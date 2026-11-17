@@ -17,7 +17,7 @@ Per template, PASS / FAIL with plain reasons:
   5 sun       the wall's sun line (light/shade edge measured on the base, ONLY on SAM's wall mask) vs the shadow
               layer's edge, within 3 deg; a straight light edge on the art with no sun line confirmed on the wall
               fails, and so does a light shadow over the art where the photo still shows a print (2026-11-15)
-  6 ratio     opening ratio vs the folder's ratio within 3% (cover-fit crop limit); smart object not stretched
+  6 ratio     opening ratio vs the folder's ratio within 15% (cover-fit crop limit, Tony 2026-11-16); smart object not stretched
   7 mat       when a mat exists: uniform width on all four sides, bevel / shadow layer present
   placement   wall molding / wainscoting: the frame never hangs over molding, and inside a wall panel it sits
               centred with margin (no molding near the frame = pass; 2026-11-15)
@@ -50,7 +50,8 @@ TOL_PX = 3              # opening vs art, per side (old integer edge search only
 # art under the frame by more than PAD_MAX_PX + EDGE_TOL_PX = art over the frame (FAIL).
 PAD_MAX_PX = 2.0
 EDGE_TOL_PX = 0.5
-TOL_RATIO = 0.03        # cover-fit crop limit
+TOL_RATIO = 0.03        # smart object vs visible art: never stretched
+TOL_OPENING_RATIO = 0.15  # Tony 2026-11-16: an opening a bit off the folder's ratio is fine (cover-fit + crop)
 TOL_DEG = 3.0           # sun angle
 RATIO_TARGETS = {"2x3": [2 / 3], "3x4": [0.75], "4x5": [0.8], "11x14": [11 / 14], "iso": [1 / 2 ** 0.5, 5 / 7]}
 OVERLAY_BLENDS = {"Multiply", "Screen", "Overlay", "Soft Light", "Hard Light", "Linear Burn", "Color Burn",
@@ -913,8 +914,8 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
         if ratio in RATIO_TARGETS:
             tgt = min(RATIO_TARGETS[ratio], key=lambda t: abs(asp / t - 1))
             off = asp / tgt - 1
-            if abs(off) > TOL_RATIO:
-                why.append(f"opening ratio {asp:.3f} is {off:+.1%} off {ratio} ({tgt:.3f}); the crop limit is 3%")
+            if abs(off) > TOL_OPENING_RATIO:
+                why.append(f"opening ratio {asp:.3f} is {off:+.1%} off {ratio} ({tgt:.3f}); the crop limit is {TOL_OPENING_RATIO:.0%}")
         vis = true_aspect(V, (W, H))
         stretch = (so[0] / so[1]) / vis - 1
         res["measured"]["so_ratio"] = round(so[0] / so[1], 4)
@@ -923,7 +924,9 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
             why.append(f"the smart object ({so[0]}x{so[1]}) is stretched {stretch:+.1%} to its frame")
         res["checks"]["ratio"] = _res("fail" if why else "pass", "; ".join(why))
         # 7 mat
-        if not r["mats"] and (manifest or {}).get("mode") != "mat":
+        if (manifest or {}).get("mat_in_photo"):       # the mat is part of the photo (AI scene), not a built layer
+            res["checks"]["mat"] = _res("skip", "the mat is part of the photo; the art fills its window (check by eye)")
+        elif not r["mats"] and (manifest or {}).get("mode") != "mat":
             res["checks"]["mat"] = _res("skip", "no mat")
         else:
             widths = []

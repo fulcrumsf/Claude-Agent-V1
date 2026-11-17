@@ -1,0 +1,39 @@
+{
+ "name": "001_Walnut_LVRM_ISO",
+ "kind": "tony_psd",
+ "psd": "001_Walnut_LVRM_ISO.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Japandi Minimalist",
+ "ratio": "2x3",
+ "so_px": [
+  594,
+  867
+ ],
+ "so_ratio": 0.6851,
+ "quad_art": [
+  [
+   600.0,
+   152.0
+  ],
+  [
+   1239.0,
+   152.0
+  ],
+  [
+   1239.0,
+   1085.0
+  ],
+  [
+   600.0,
+   1085.0
+  ]
+ ],
+ "canvas": [
+  2655,
+  2000
+ ],
+ "desc": "Bright Japandi living room, grey sofa, walnut table, slat wall",
+ "guard": "hue only (the template's own shadows are designed)",
+ "measured": "2026-11-08: art quad from a black vs white card render"
+}

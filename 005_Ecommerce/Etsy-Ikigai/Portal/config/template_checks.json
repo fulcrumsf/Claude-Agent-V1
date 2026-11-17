@@ -9116,7 +9116,499 @@
    "status": "PASS",
    "reasons": [],
    "rel": "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Leather_4x5/LVRM_Modern_Leather_4x5_Template_Rebuild_2026-11-16.psd"
+  },
+  "002_Ratio_2x3/004_Kitchen_Bar/003_BC_White_Bar_Cart/003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16.psd": {
+   "psd": "003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16.psd",
+   "checked": "2026-11-16T21:30:41",
+   "psd_size": 25763600,
+   "psd_mtime": 1794882078,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "skip",
+     "reason": "the art sits on a flat mat (no window edge on the bottom side); see the mat check"
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "the mat is part of the photo; the art fills its window (check by eye)"
+    }
+   },
+   "measured": {
+    "canvas": [
+     1696,
+     2528
+    ],
+    "so_px": [
+     335,
+     525
+    ],
+    "visible_quad": [
+     [
+      682.0,
+      617.0
+     ],
+     [
+      1015.0,
+      617.0
+     ],
+     [
+      1015.0,
+      1142.0
+     ],
+     [
+      682.0,
+      1139.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      682.1500244140625,
+      617.5650024414062
+     ],
+     [
+      1015.8090209960938,
+      617.6259765625
+     ],
+     [
+      1015.6489868164062,
+      1142.3909912109375
+     ],
+     [
+      682.1820068359375,
+      1139.7449951171875
+     ]
+    ],
+    "opening_source": "edge search (SAM: the template has a mat)",
+    "opening_offsets": {
+     "top": -0.5,
+     "right": 0.5,
+     "bottom": null,
+     "left": -2.5
+    },
+    "opening_quad": [
+     [
+      682.0,
+      617.0
+     ],
+     [
+      1015.0,
+      617.0
+     ],
+     [
+      1015.0,
+      1142.0
+     ],
+     [
+      682.0,
+      1139.0
+     ]
+    ],
+    "opening_box": [
+     682,
+     617,
+     333,
+     525
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.0059,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      625,
+      557,
+      1071,
+      1200
+     ],
+     "gaps_px": {
+      "left": 216.8,
+      "right": 168.5,
+      "top": 300.7,
+      "bottom": null
+     },
+     "off_centre": {
+      "horizontal": 0.13
+     },
+     "panel": true,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 11,
+      "h": 1
+     }
+    },
+    "opening_ratio": 0.637,
+    "so_ratio": 0.6381,
+    "visible_ratio": 0.637
+   },
+   "status": "PASS",
+   "reasons": [],
+   "rel": "002_Ratio_2x3/004_Kitchen_Bar/003_BC_White_Bar_Cart/003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16.psd"
+  },
+  "003_Ratio_3x4/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_5x7/LVRM_Trendy_Girl_5x7_Rebuild_Wainscot_2026-11-16.psd": {
+   "psd": "LVRM_Trendy_Girl_5x7_Rebuild_Wainscot_2026-11-16.psd",
+   "checked": "2026-11-16T21:30:45",
+   "psd_size": 25887621,
+   "psd_mtime": 1794882078,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "skip",
+     "reason": "the art sits on a flat mat (no window edge on the top, right, bottom side); see the mat check"
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "the mat is part of the photo; the art fills its window (check by eye)"
+    }
+   },
+   "measured": {
+    "canvas": [
+     1792,
+     2400
+    ],
+    "so_px": [
+     359,
+     507
+    ],
+    "visible_quad": [
+     [
+      964.0,
+      591.0
+     ],
+     [
+      1292.0,
+      557.0
+     ],
+     [
+      1291.0,
+      1064.0
+     ],
+     [
+      964.0,
+      1072.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      964.531982421875,
+      590.7429809570312
+     ],
+     [
+      1293.220947265625,
+      557.7369995117188
+     ],
+     [
+      1291.363037109375,
+      1065.133056640625
+     ],
+     [
+      964.2969970703125,
+      1072.8399658203125
+     ]
+    ],
+    "opening_source": "edge search (SAM: the template has a mat)",
+    "opening_offsets": {
+     "top": null,
+     "right": null,
+     "bottom": null,
+     "left": 0.5
+    },
+    "opening_quad": [
+     [
+      964.0,
+      591.0
+     ],
+     [
+      1292.0,
+      557.0
+     ],
+     [
+      1291.0,
+      1064.0
+     ],
+     [
+      964.0,
+      1072.0
+     ]
+    ],
+    "opening_box": [
+     964,
+     557,
+     328,
+     515
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.0049,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      905,
+      508,
+      1343,
+      1131
+     ],
+     "gaps_px": {
+      "left": 66.2,
+      "right": 124.7,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {
+      "horizontal": 0.31
+     },
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 17,
+      "h": 0
+     }
+    },
+    "opening_ratio": 0.7099,
+    "so_ratio": 0.7081,
+    "visible_ratio": 0.7099
+   },
+   "status": "PASS",
+   "reasons": [],
+   "rel": "003_Ratio_3x4/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_5x7/LVRM_Trendy_Girl_5x7_Rebuild_Wainscot_2026-11-16.psd"
+  },
+  "004_Ratio_4x5/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_4x5/LVRM_Trendy_Girl_4x5_Rebuild_Wainscot_2026-11-16.psd": {
+   "psd": "LVRM_Trendy_Girl_4x5_Rebuild_Wainscot_2026-11-16.psd",
+   "checked": "2026-11-16T21:30:49",
+   "psd_size": 25452361,
+   "psd_mtime": 1794882078,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "skip",
+     "reason": "the art sits on a flat mat (no window edge on the top, right, bottom side); see the mat check"
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "the mat is part of the photo; the art fills its window (check by eye)"
+    }
+   },
+   "measured": {
+    "canvas": [
+     1856,
+     2304
+    ],
+    "so_px": [
+     414,
+     583
+    ],
+    "visible_quad": [
+     [
+      747.0,
+      501.0
+     ],
+     [
+      1159.0,
+      504.0
+     ],
+     [
+      1162.0,
+      1082.0
+     ],
+     [
+      746.0,
+      1084.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      746.947998046875,
+      501.2690124511719
+     ],
+     [
+      1159.1280517578125,
+      504.2749938964844
+     ],
+     [
+      1162.72802734375,
+      1082.5030517578125
+     ],
+     [
+      746.1290283203125,
+      1084.5379638671875
+     ]
+    ],
+    "opening_source": "edge search (SAM: the template has a mat)",
+    "opening_offsets": {
+     "top": null,
+     "right": null,
+     "bottom": null,
+     "left": 1.5
+    },
+    "opening_quad": [
+     [
+      747.0,
+      501.0
+     ],
+     [
+      1159.0,
+      504.0
+     ],
+     [
+      1162.0,
+      1082.0
+     ],
+     [
+      746.0,
+      1084.0
+     ]
+    ],
+    "opening_box": [
+     746,
+     501,
+     416,
+     583
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.0058,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      687,
+      440,
+      1217,
+      1142
+     ],
+     "gaps_px": {
+      "left": 150.8,
+      "right": 130.9,
+      "top": null,
+      "bottom": 179.7
+     },
+     "off_centre": {
+      "horizontal": 0.07
+     },
+     "panel": true,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 16,
+      "h": 4
+     }
+    },
+    "opening_ratio": 0.7097,
+    "so_ratio": 0.7101,
+    "visible_ratio": 0.7097
+   },
+   "status": "PASS",
+   "reasons": [],
+   "rel": "004_Ratio_4x5/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_4x5/LVRM_Trendy_Girl_4x5_Rebuild_Wainscot_2026-11-16.psd"
   }
  },
- "updated": "2026-11-16T03:11:19"
+ "updated": "2026-11-16T21:30:53"
 }

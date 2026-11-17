@@ -51,15 +51,16 @@ def test_no_insert_is_reported_not_guessed(tmp_path):
 
 
 def test_off_ratio_scene_is_rejected_and_art_is_cover_fit_never_padded(tmp_path):
-    """Tony 2026-11-10: cover-fit + centre crop, never stretched, never a white border; >3% off = rejected."""
+    """Tony 2026-11-10: cover-fit + centre crop, never stretched, never a white border; >15% off = rejected (was 3%; Tony 2026-11-16: a bit off the print ratio is fine)."""
     sq = [[0, 0], [100, 0], [100, 100], [0, 100]]
     with pytest.raises(stp.TemplateError, match="off the print ratio"):
-        stp.art_quad(sq, 1.0, 2 / 3)                                    # square insert for a 2x3 print: regenerate
+        stp.art_quad(sq, 1.0, 2 / 3)                                    # square insert for a 2x3 print (+50%): regenerate
     assert stp.art_quad(sq, 0.68, 2 / 3)[1] == "full"                   # 2% off: art cover-fits the insert
+    assert stp.art_quad(sq, 0.73, 2 / 3)[1] == "full"                   # 9.5% off: still believable, art cover-fits and crops
     src = tmp_path / "a.jpg"
     Image.new("RGB", (700, 990), "red").save(src)                       # ISO art (0.707)
-    with pytest.raises(stp.TemplateError, match="limit 3%"):
-        stp.fit_cover(src, (400, 600), tmp_path / "f.png")               # 2x3 slot: 6% would be cut off
+    with pytest.raises(stp.TemplateError, match="limit 15%"):
+        stp.fit_cover(src, (300, 600), tmp_path / "f.png")               # 1:2 slot: 29% would be cut off
     crop = stp.fit_cover(src, (712, 1000), tmp_path / "g.png")          # 0.712 slot: under 1% cut, edge to edge
     im = np.asarray(Image.open(tmp_path / "g.png"))
     red = lambda px: np.abs(px.astype(int) - [255, 0, 0]).max() < 6
@@ -193,7 +194,7 @@ def test_generate_new_scene_saves_template_places_jpg_and_never_overwrites(prod)
     card = p["slots"][0]
     assert card["state"] == "idle" and card["image"], card["message"]
     assert card["image"]["file"].startswith("03_Room_Living_Room_") and card["source"] == "new"
-    assert "blank white insert" in prod["gen"][0]["prompt"] and prod["gen"][0]["aspect"] == "4:3"
+    assert "onion-skin orange" in prod["gen"][0]["prompt"] and prod["gen"][0]["aspect"] == "4:3"
     folder = prod["tmp"] / "Designs" / "00121-Book Club Cat" / "03-Etsy Images"
     assert (folder / card["image"]["file"]).is_file()
     # auto-saved template: Tony's ratio + room folders, a style folder made only now, manifest beside the PSD

@@ -549,7 +549,8 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 _stage("finding the frame, building the PSD")
                 (td / "build").mkdir()
                 try:
-                    built = stp.build_psd(scene, card["ratio"], td / "build", settings)
+                    built = stp.build_psd(scene, card["ratio"], td / "build", settings,
+                                          presentation=rs.presentation_for(card["room"], card["decor"], card["ratio"]))
                 except stp.TemplateError as e:
                     folder.joinpath(ARCHIVE).mkdir(parents=True, exist_ok=True)
                     keep = folder / ARCHIVE / f"Scene_No_Insert_{slot:02d}_{datetime.now():%Y%m%d_%H%M%S}.png"

@@ -275,16 +275,63 @@ def decor_words(decor):
     return DECOR_WORDS.get(decor) or re.sub(r"[_\s]+", " ", str(decor or "modern")).strip().lower()
 
 
-def scene_prompt(room, decor, ratio):
-    """Tony's recipe (memory feedback_room_template_recipe_ai_frame_in_scene, 2026-11-08): one real frame with a
-    BLANK WHITE insert in the needed ratio; the art is never in the prompt (it is composited later, so the scene
-    works for any print). Plus the standing rules: no people, no random lamps, props only when lived-in."""
+# ---------- how the art is shown (Tony 2026-11-16) ----------
+# The printed area is drawn ONE flat onion-skin orange (SAM finds it against walls, mats and shadows; grey and white
+# failed), never white. Presentations: a plain thin frame, a frame with a wide mat, or a stretched canvas in a natural
+# wood floater frame. Chosen per room + decor, deterministic (same inputs -> same pick), weighted by what suits the look.
+INSERT_COLOUR = "onion-skin orange (a pale peachy-orange, roughly RGB 250, 215, 170)"
+PRESENTATION_WEIGHTS = {            # decor -> (frame, mat, canvas) weights
+    "Victorian": (30, 70, 0), "Neutral": (40, 40, 20), "Mid_Century": (40, 35, 25), "Japandi": (40, 30, 30),
+    "Minimal": (40, 30, 30), "Scandinavian": (40, 30, 30), "Modern": (40, 30, 30), "Boho": (35, 20, 45),
+    "Coastal": (35, 25, 40), "Botanical": (40, 30, 30), "Kids": (60, 0, 40), "Gamer": (70, 0, 30),
+    "Retro_Arcade": (70, 0, 30), "Mancave": (60, 20, 20), "Rustic_Farmhouse": (40, 20, 40)}
+PRESENTATION_DEFAULT = (50, 25, 25)
+PRESENTATIONS = ("frame", "mat", "canvas")
+
+
+def presentation_for(room, decor, ratio):
+    import hashlib
+    w = PRESENTATION_WEIGHTS.get(decor, PRESENTATION_DEFAULT)
+    n = int(hashlib.sha1(f"{room}|{decor}|{ratio}".encode()).hexdigest()[:8], 16) % sum(w)
+    for kind, x in zip(PRESENTATIONS, w):
+        if n < x:
+            return kind
+        n -= x
+    return "frame"
+
+
+_PRINT_AREA = ("The artwork's printed area is a single flat, plain, matte, empty " + INSERT_COLOUR + " surface, completely "
+               "uniform: no artwork, no text, no logo, no gradient, no glare, no reflection and no heavy shadow on it. ")
+_PRESENT_TEXT = {
+    "frame": ("The artwork hangs in a thin frame (natural oak, walnut or brass most of the time; black only occasionally, when it clearly suits the room). "
+              "The orange printed surface fills the whole frame opening right up to the inside edge of the frame on all "
+              "four sides. NEGATIVE: no mat, no matte border, no passe-partout, no white border, no margin, no inner "
+              "rectangle, no bevel line."),
+    "mat": ("The artwork hangs in a refined thin frame with a WIDE off-white mat border (passe-partout) of exactly even "
+            "width on all four sides, about 10% of the frame height, with a crisp bevelled window cut. The flat orange "
+            "printed surface sits inside the mat window; the mat is clearly lighter than the orange so the window edge "
+            "is sharp."),
+    "canvas": ("The artwork is a thick stretched gallery canvas, 1.5 to 2 inches (4-5 cm) deep, with the orange face and "
+               "clearly visible orange side edges, mounted inside a thin NATURAL LIGHT WOOD floater frame (floating "
+               "frame), a warm natural wood colour, never black or dark. The canvas sits inset inside the frame with a "
+               "narrow even visible gap of about 0.5 cm between the canvas edge and the frame's inner lip; the gap shows "
+               "only a soft light shadow (never black), so the pale wood frame, the thin gap and the orange canvas edge "
+               "are three clearly separate bands. The piece stands off the wall by the canvas depth and casts only a "
+               "soft, light, diffuse shadow on the wall. Camera: a slight 3/4 view so the depth shows.")}
+
+
+def scene_prompt(room, decor, ratio, presentation=None):
+    """Tony's recipe (memory feedback_room_template_recipe_ai_frame_in_scene, 2026-11-08, updated 2026-11-16): one
+    piece of wall art whose printed area is flat onion-skin orange, shown as a frame, a matted frame or a stretched
+    canvas in a floater frame. The art is never in the prompt (it is composited later). Standing rules: no people, no
+    random lamps, props only when lived-in."""
+    kind = presentation or presentation_for(room, decor, ratio)
     return (f"Photorealistic {decor_words(decor)} {ROOM_WORDS.get(room, room.lower())} interior "
-            f"featuring one vertical picture frame with a blank white insert ({RATIO_PROMPT[ratio]}). Realistic "
+            f"featuring one vertical piece of wall art ({RATIO_PROMPT[ratio]}). Realistic "
             "textures, subtle decor, moody and lived-in detail that feels authentic. Lighting is soft warm daylight, "
             "naturally diffused, never harsh. Camera angle: 3/4 corner. Composition should be vertical, focused on "
-            "the frame and wall area. no other frames. The insert is plain matte white paper, completely empty, no "
-            "artwork, no text, no logo, no glare and no heavy shadow on it. No people, no faces, no hands, no pets. No lamps unless the room clearly "
+            "the artwork and wall area. Only one piece of wall art, no other frames. " + _PRINT_AREA
+            + _PRESENT_TEXT[kind] + " No people, no faces, no hands, no pets. No lamps unless the room clearly "
             "needs one; only props a real person would leave there, nothing staged. " + WAINSCOT_RULE)
 
 
