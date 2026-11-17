@@ -17,7 +17,7 @@ Per template, PASS / FAIL with plain reasons:
   5 sun       the wall's sun line (light/shade edge measured on the base, ONLY on SAM's wall mask) vs the shadow
               layer's edge, within 3 deg; a straight light edge on the art with no sun line confirmed on the wall
               fails, and so does a light shadow over the art where the photo still shows a print (2026-11-15)
-  6 ratio     opening ratio vs the folder's ratio within 15% (cover-fit crop limit, Tony 2026-11-16); smart object not stretched
+  6 ratio     opening ratio vs the folder's ratio within 35% (Tony 2026-11-16: ratio barely matters); smart object not stretched
   7 mat       when a mat exists: uniform width on all four sides, bevel / shadow layer present
   placement   wall molding / wainscoting: the frame never hangs over molding, and inside a wall panel it sits
               centred with margin (no molding near the frame = pass; 2026-11-15)
@@ -51,7 +51,7 @@ TOL_PX = 3              # opening vs art, per side (old integer edge search only
 PAD_MAX_PX = 2.0
 EDGE_TOL_PX = 0.5
 TOL_RATIO = 0.03        # smart object vs visible art: never stretched
-TOL_OPENING_RATIO = 0.15  # Tony 2026-11-16: an opening a bit off the folder's ratio is fine (cover-fit + crop)
+TOL_OPENING_RATIO = 0.35  # Tony 2026-11-16 (said repeatedly): ratio does not matter; only absurd mismatches fail
 TOL_DEG = 3.0           # sun angle
 RATIO_TARGETS = {"2x3": [2 / 3], "3x4": [0.75], "4x5": [0.8], "11x14": [11 / 14], "iso": [1 / 2 ** 0.5, 5 / 7]}
 OVERLAY_BLENDS = {"Multiply", "Screen", "Overlay", "Soft Light", "Hard Light", "Linear Burn", "Color Burn",
@@ -310,7 +310,7 @@ def _lines(gray, mask, min_len, ref_h=None):
     e[~m] = 0
     L = max(8, int(min_len * f))
     ls = cv2.HoughLinesP(e, 1, np.pi / 360, threshold=max(8, int(L * 0.35)), minLineLength=L, maxLineGap=6)
-    return [] if ls is None else [[int(round(v / f)) for v in l[0]] for l in ls]
+    return [] if ls is None else [[int(round(v / f)) for v in l] for l in np.asarray(ls).reshape(-1, 4)]   # (N,1,4) or (N,4)
 
 
 def _angle(x1, y1, x2, y2):
@@ -872,6 +872,8 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
                 low_n = l.get("name", "").lower()
                 if l.get("blend") == "Screen" or "frame" in low_n or "edge" in low_n or "hard" in low_n:
                     continue
+                if low_n == "room light" and "Room Light" in str((manifest or {}).get("layers_verified", "")):
+                    continue                  # Tony 2026-11-16: whole-art level measured from the photo's paper, by design
                 if ins.any() and float((m[ins] > 0.03).mean()) > 0.2:
                     light_over_print.append(l["name"])
         if light_over_print:

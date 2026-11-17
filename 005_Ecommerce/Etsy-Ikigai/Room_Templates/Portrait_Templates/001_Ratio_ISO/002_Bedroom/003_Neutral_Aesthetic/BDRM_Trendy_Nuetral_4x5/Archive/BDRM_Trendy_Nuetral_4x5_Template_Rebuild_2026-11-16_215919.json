@@ -1,0 +1,299 @@
+{
+ "name": "BDRM_Trendy_Nuetral_4x5_Template_Rebuild_2026-11-16",
+ "title": "BDRM_Trendy_Nuetral_4x5_Template (rebuilt 2026-11-16)",
+ "kind": "rebuild",
+ "psd": "BDRM_Trendy_Nuetral_4x5_Template_Rebuild_2026-11-16.psd",
+ "scene": "BDRM_Trendy_Nuetral_4x5_Template_Rebuild_2026-11-16_Scene.png",
+ "replaces": "BDRM_Trendy_Nuetral_4x5_Template.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Bedroom",
+ "decor": "Neutral Aesthetic",
+ "style": "Neutral Aesthetic",
+ "ratio": "iso",
+ "desc": "Warm sunlit teen bedroom desk corner, oak frame + mat",
+ "so_px": [
+  545,
+  694
+ ],
+ "so_ratio": 0.7853,
+ "quad_insert": [
+  [
+   651.6900024414062,
+   201.375
+  ],
+  [
+   1194.1839599609375,
+   202.03799438476562
+  ],
+  [
+   1192.9200439453125,
+   892.4180297851562
+  ],
+  [
+   652.5360107421875,
+   894.594970703125
+  ]
+ ],
+ "quad_art": [
+  [
+   651.1890258789062,
+   200.87399291992188
+  ],
+  [
+   1194.68505859375,
+   201.53900146484375
+  ],
+  [
+   1193.4189453125,
+   892.916015625
+  ],
+  [
+   652.0369873046875,
+   895.0969848632812
+  ]
+ ],
+ "quad_paper": [
+  [
+   651.1890258789062,
+   200.875
+  ],
+  [
+   1194.68505859375,
+   201.53799438476562
+  ],
+  [
+   1193.4189453125,
+   892.916015625
+  ],
+  [
+   652.0369873046875,
+   895.0969848632812
+  ]
+ ],
+ "opening_pad_px": 0.5,
+ "mode": "full",
+ "canvas": [
+  2048,
+  2048
+ ],
+ "light_from": "right",
+ "insert": {
+  "aspect": 0.7842,
+  "screen_aspect": 0.7827,
+  "skew": 1.004,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    718.4,
+    271.4,
+    1120.6,
+    827.6
+   ],
+   "box_source": "given",
+   "sam": {
+    "prompt": "click",
+    "score": 0.4768736958503723,
+    "area": 369747,
+    "dE": 31.7,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.9904507994651794,
+      "area": 186384,
+      "dE": 57.9
+     },
+     {
+      "prompt": "click",
+      "score": 0.8251500129699707,
+      "area": 120910,
+      "dE": 31.1
+     },
+     {
+      "prompt": "click",
+      "score": 0.4768736958503723,
+      "area": 369747,
+      "dE": 31.7
+     },
+     {
+      "prompt": "click",
+      "score": 0.7341827750205994,
+      "area": 184066,
+      "dE": 50.8
+     },
+     {
+      "prompt": "box",
+      "score": 0.9910889863967896,
+      "area": 186326,
+      "dE": 57.9
+     }
+    ],
+    "skipped": [
+     "candidate 120910 px: side right: no clear edge in the mask"
+    ]
+   },
+   "verify": {
+    "iou": 0.9972,
+    "corner_shift_px": [
+     4.77,
+     7.16,
+     3.75,
+     0.55
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.172
+     },
+     "right": {
+      "points": 200,
+      "inliers": 0.675,
+      "rms_px": 0.197
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 0.98,
+      "rms_px": 0.254
+     },
+     "left": {
+      "points": 200,
+      "inliers": 0.77,
+      "rms_px": 0.224
+     }
+    }
+   },
+   "wall_px": 0
+  },
+  "opening": {
+   "mode": "paper edge fallback",
+   "why": "opening: top side: no hard frame edge within 14 px outside the paper (strongest step 0.06)"
+  },
+  "quad_paper": [
+   [
+    651.1890258789062,
+    200.875
+   ],
+   [
+    1194.68505859375,
+    201.53799438476562
+   ],
+   [
+    1193.4189453125,
+    892.916015625
+   ],
+   [
+    652.0369873046875,
+    895.0969848632812
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0.5 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.684,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.317
+    },
+    {
+     "side": "right",
+     "hard_k": 0.524
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.336
+    },
+    {
+     "side": "left",
+     "hard_k": 0.0
+    }
+   ],
+   "pad_px": 0.5
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.702,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.469,
+     "width_px": 21.5,
+     "blur_px": 4.21,
+     "fit_rms": 0.0395
+    },
+    {
+     "side": "right",
+     "soft_k": 0.439,
+     "width_px": 18.75,
+     "blur_px": 0.4,
+     "fit_rms": 0.0321
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.223,
+     "width_px": 21.5,
+     "blur_px": 1.76,
+     "fit_rms": 0.0555
+    },
+    {
+     "side": "left",
+     "soft_k": 0.09,
+     "width_px": 21.5,
+     "blur_px": 12.0,
+     "fit_rms": 0.2036
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "none",
+   "opacity": 0.0,
+   "insert_texture": 0.1038,
+   "why": "the insert is not blank paper (a print in the photo): its light cannot be measured"
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    651.1229858398438,
+    200.87399291992188
+   ],
+   [
+    1194.5469970703125,
+    201.45399475097656
+   ],
+   [
+    1193.364990234375,
+    892.9600219726562
+   ],
+   [
+    652.1400146484375,
+    895.1729736328125
+   ]
+  ],
+  "corner_err_px": [
+   0.07,
+   0.16,
+   0.07,
+   0.13
+  ],
+  "max_px": 0.16,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": 0.54,
+   "right": 0.4,
+   "bottom": 0.56,
+   "left": 0.48
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "rebuilt_from": "the template's own photo",
+ "credits": 0.0,
+ "approved": false,
+ "created": "2026-11-16T21:58:01"
+}

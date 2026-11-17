@@ -7,26 +7,26 @@
  "decor": "Modern",
  "ratio": "iso",
  "so_px": [
-  501,
-  708
+  419,
+  729
  ],
- "so_ratio": 0.7076,
+ "so_ratio": 0.5748,
  "quad_art": [
   [
+   1316.0,
+   254.0
+  ],
+  [
+   1691.0,
+   191.0
+  ],
+  [
+   1685.0,
+   919.5
+  ],
+  [
    1317.0,
-   249.0
-  ],
-  [
-   1699.0,
-   193.0
-  ],
-  [
-   1697.0,
-   928.0
-  ],
-  [
-   1320.0999755859375,
-   921.0
+   918.5
   ]
  ],
  "canvas": [
@@ -35,5 +35,6 @@
  ],
  "desc": "Angled view, walnut credenza, vases, big leaning frame, window light",
  "guard": "hue only (the template's own shadows are designed)",
- "measured": "2026-11-08: art quad from a black vs white card render"
+ "measured": "2026-11-16: art quad from a black vs white card render of Tony's hand-placed smart object; shadows rebuilt (black fill, measured)",
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)"
 }

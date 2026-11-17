@@ -1,0 +1,304 @@
+{
+ "name": "LVRM_Victorian_Floor_ISO_Template_Rebuild_2026-11-16",
+ "title": "LVRM_Victorian_Floor_ISO_Template (rebuilt 2026-11-16)",
+ "kind": "rebuild",
+ "psd": "LVRM_Victorian_Floor_ISO_Template_Rebuild_2026-11-16.psd",
+ "scene": "LVRM_Victorian_Floor_ISO_Template_Rebuild_2026-11-16_Scene.png",
+ "replaces": "LVRM_Victorian_Floor_ISO_Template.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Victorian",
+ "style": "Victorian",
+ "ratio": "iso",
+ "desc": "Empty Victorian panelled room, gilt frame leaning on herringbone floor",
+ "so_px": [
+  206,
+  297
+ ],
+ "so_ratio": 0.6936,
+ "quad_insert": [
+  [
+   1157.739013671875,
+   1096.6500244140625
+  ],
+  [
+   1359.550048828125,
+   1097.4139404296875
+  ],
+  [
+   1359.18994140625,
+   1392.427978515625
+  ],
+  [
+   1154.885986328125,
+   1392.5030517578125
+  ]
+ ],
+ "quad_art": [
+  [
+   1157.2440185546875,
+   1096.14794921875
+  ],
+  [
+   1360.051025390625,
+   1096.916015625
+  ],
+  [
+   1359.68896484375,
+   1392.927978515625
+  ],
+  [
+   1154.3809814453125,
+   1393.0030517578125
+  ]
+ ],
+ "quad_paper": [
+  [
+   1157.2440185546875,
+   1096.1490478515625
+  ],
+  [
+   1360.051025390625,
+   1096.916015625
+  ],
+  [
+   1359.68994140625,
+   1392.927978515625
+  ],
+  [
+   1154.3819580078125,
+   1393.0030517578125
+  ]
+ ],
+ "opening_pad_px": 0.5,
+ "mode": "full",
+ "canvas": [
+  2655,
+  2000
+ ],
+ "light_from": "right",
+ "insert": {
+  "aspect": 0.6913,
+  "screen_aspect": 0.6873,
+  "skew": 1.003,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    1143.2,
+    1084.2,
+    1369.8,
+    1402.8
+   ],
+   "box_source": "given",
+   "sam": {
+    "prompt": "box+click",
+    "score": 0.9836474061012268,
+    "area": 58366,
+    "dE": 1.4,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.9836474061012268,
+      "area": 58366,
+      "dE": 1.4
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9910063147544861,
+      "area": 60131,
+      "dE": 10.1
+     },
+     {
+      "prompt": "click",
+      "score": 0.9656388759613037,
+      "area": 59211,
+      "dE": 1.7
+     },
+     {
+      "prompt": "click",
+      "score": 0.2552884817123413,
+      "area": 265500,
+      "dE": 92.6
+     },
+     {
+      "prompt": "click",
+      "score": 0.41951510310173035,
+      "area": 167094,
+      "dE": 2.2
+     },
+     {
+      "prompt": "box",
+      "score": 0.9918503165245056,
+      "area": 60031,
+      "dE": 9.1
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9899,
+    "corner_shift_px": [
+     1.0,
+     2.68,
+     4.82,
+     4.09
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 0.77,
+      "rms_px": 0.22
+     },
+     "right": {
+      "points": 200,
+      "inliers": 0.81,
+      "rms_px": 0.147
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.082
+     },
+     "left": {
+      "points": 200,
+      "inliers": 0.695,
+      "rms_px": 0.317
+     }
+    }
+   },
+   "wall_px": 0
+  },
+  "opening": {
+   "mode": "paper edge fallback",
+   "why": "opening: right side: the frame has neither a colour nor a brightness difference from the paper"
+  },
+  "quad_paper": [
+   [
+    1157.2440185546875,
+    1096.1490478515625
+   ],
+   [
+    1360.051025390625,
+    1096.916015625
+   ],
+   [
+    1359.68994140625,
+    1392.927978515625
+   ],
+   [
+    1154.3819580078125,
+    1393.0030517578125
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0.5 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.459,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.322
+    },
+    {
+     "side": "right",
+     "hard_k": 0.0
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.056
+    },
+    {
+     "side": "left",
+     "hard_k": 0.202
+    }
+   ],
+   "pad_px": 0.5
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.849,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.718,
+     "width_px": 1.25,
+     "blur_px": 0.57,
+     "fit_rms": 0.006
+    },
+    {
+     "side": "right",
+     "soft_k": 0.517,
+     "width_px": 2.5,
+     "blur_px": 0.4,
+     "fit_rms": 0.0074
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.833,
+     "width_px": 1.5,
+     "blur_px": 0.8,
+     "fit_rms": 0.0066
+    },
+    {
+     "side": "left",
+     "soft_k": 0.645,
+     "width_px": 1.75,
+     "blur_px": 0.48,
+     "fit_rms": 0.0044
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "falloff",
+   "deg": 157.8,
+   "measured_drop": 0.044,
+   "opacity": 0.044,
+   "insert_texture": 0.0082,
+   "sun_line": "not searched (no SAM wall mask)"
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    1157.258056640625,
+    1096.0340576171875
+   ],
+   [
+    1360.041015625,
+    1097.0489501953125
+   ],
+   [
+    1359.823974609375,
+    1392.89794921875
+   ],
+   [
+    1154.39404296875,
+    1392.948974609375
+   ]
+  ],
+  "corner_err_px": [
+   0.12,
+   0.13,
+   0.14,
+   0.06
+  ],
+  "max_px": 0.14,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": 0.49,
+   "right": 0.56,
+   "bottom": 0.46,
+   "left": 0.49
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "rebuilt_from": "the template's own photo",
+ "credits": 0.0,
+ "approved": false,
+ "created": "2026-11-16T21:42:47"
+}

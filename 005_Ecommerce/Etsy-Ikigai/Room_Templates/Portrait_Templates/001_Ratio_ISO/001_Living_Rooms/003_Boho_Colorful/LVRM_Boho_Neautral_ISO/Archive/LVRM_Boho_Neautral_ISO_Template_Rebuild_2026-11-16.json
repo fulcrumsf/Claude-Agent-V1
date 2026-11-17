@@ -1,0 +1,293 @@
+{
+ "name": "LVRM_Boho_Neautral_ISO_Template_Rebuild_2026-11-16",
+ "title": "LVRM_Boho_Neautral_ISO_Template (rebuilt 2026-11-16)",
+ "kind": "rebuild",
+ "psd": "LVRM_Boho_Neautral_ISO_Template_Rebuild_2026-11-16.psd",
+ "scene": "LVRM_Boho_Neautral_ISO_Template_Rebuild_2026-11-16_Scene.png",
+ "replaces": "LVRM_Boho_Neautral_ISO_Template.psd",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living Rooms",
+ "decor": "Boho Colorful",
+ "style": "Boho Colorful",
+ "ratio": "iso",
+ "desc": "Soft boho-neutral living room, beige sofa, pendant, wall hoops",
+ "so_px": [
+  978,
+  1319
+ ],
+ "so_ratio": 0.7415,
+ "quad_insert": [
+  [
+   1786.5030517578125,
+   381.385986328125
+  ],
+  [
+   2762.446044921875,
+   381.625
+  ],
+  [
+   2760.837890625,
+   1698.68701171875
+  ],
+  [
+   1786.6639404296875,
+   1699.0439453125
+  ]
+ ],
+ "quad_art": [
+  [
+   1786.0030517578125,
+   380.885986328125
+  ],
+  [
+   2762.947021484375,
+   381.125
+  ],
+  [
+   2761.337890625,
+   1699.18701171875
+  ],
+  [
+   1786.1639404296875,
+   1699.5439453125
+  ]
+ ],
+ "quad_paper": [
+  [
+   1786.0030517578125,
+   380.885986328125
+  ],
+  [
+   2762.947021484375,
+   381.125
+  ],
+  [
+   2761.337890625,
+   1699.18701171875
+  ],
+  [
+   1786.1639404296875,
+   1699.5439453125
+  ]
+ ],
+ "opening_pad_px": 0.5,
+ "mode": "full",
+ "canvas": [
+  4096,
+  4096
+ ],
+ "light_from": "left",
+ "insert": {
+  "aspect": 0.7413,
+  "screen_aspect": 0.7402,
+  "skew": 1.0,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    1789.6,
+    384.6,
+    2754.4,
+    1690.4
+   ],
+   "box_source": "given",
+   "sam": {
+    "prompt": "box+click",
+    "score": 0.9736860394477844,
+    "area": 1271050,
+    "dE": 96.1,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.9736860394477844,
+      "area": 1271050,
+      "dE": 96.1
+     },
+     {
+      "prompt": "click",
+      "score": 0.03574253246188164,
+      "area": 1237672,
+      "dE": 93.9
+     },
+     {
+      "prompt": "box",
+      "score": 0.9802159667015076,
+      "area": 1272778,
+      "dE": 95.1
+     },
+     {
+      "prompt": "box",
+      "score": 0.9683418273925781,
+      "area": 1230614,
+      "dE": 97.1
+     }
+    ],
+    "skipped": [
+     "candidate 1230614 px: side right: no clear edge in the mask"
+    ]
+   },
+   "verify": {
+    "iou": 0.9986,
+    "corner_shift_px": [
+     7.45,
+     6.73,
+     2.66,
+     4.61
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.135
+     },
+     "right": {
+      "points": 200,
+      "inliers": 0.7,
+      "rms_px": 0.381
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.165
+     },
+     "left": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.056
+     }
+    }
+   },
+   "wall_px": 6671806
+  },
+  "opening": {
+   "mode": "paper edge fallback",
+   "why": "opening: top side: no hard frame edge within 16 px outside the paper (strongest step 0.13)"
+  },
+  "quad_paper": [
+   [
+    1786.0030517578125,
+    380.885986328125
+   ],
+   [
+    2762.947021484375,
+    381.125
+   ],
+   [
+    2761.337890625,
+    1699.18701171875
+   ],
+   [
+    1786.1639404296875,
+    1699.5439453125
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0.5 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.741,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.401
+    },
+    {
+     "side": "right",
+     "hard_k": 0.495
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.487
+    },
+    {
+     "side": "left",
+     "hard_k": 0.332
+    }
+   ],
+   "pad_px": 0.5
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.78,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.529,
+     "width_px": 39.0,
+     "blur_px": 12.0,
+     "fit_rms": 0.1312
+    },
+    {
+     "side": "right",
+     "soft_k": 0.535,
+     "width_px": 39.0,
+     "blur_px": 12.0,
+     "fit_rms": 0.1277
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.449,
+     "width_px": 39.0,
+     "blur_px": 12.0,
+     "fit_rms": 0.1224
+    },
+    {
+     "side": "left",
+     "soft_k": 0.488,
+     "width_px": 39.0,
+     "blur_px": 12.0,
+     "fit_rms": 0.1231
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "none",
+   "opacity": 0.0,
+   "insert_texture": 0.12,
+   "why": "the insert is not blank paper (a print in the photo): its light cannot be measured"
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    1785.9659423828125,
+    380.9429931640625
+   ],
+   [
+    2763.01611328125,
+    381.06298828125
+   ],
+   [
+    2761.406982421875,
+    1699.0789794921875
+   ],
+   [
+    1786.126953125,
+    1699.43603515625
+   ]
+  ],
+  "corner_err_px": [
+   0.07,
+   0.09,
+   0.13,
+   0.11
+  ],
+  "max_px": 0.13,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": 0.5,
+   "right": 0.57,
+   "bottom": 0.39,
+   "left": 0.54
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "rebuilt_from": "the template's own photo",
+ "credits": 0.0,
+ "approved": false,
+ "created": "2026-11-16T21:56:07"
+}

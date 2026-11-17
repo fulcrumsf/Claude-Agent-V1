@@ -560,54 +560,55 @@
   },
   "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Cradenza_Angled_ISO/LVRM_Modern_Cradenza_Angled_ISO_Template.psd": {
    "psd": "LVRM_Modern_Cradenza_Angled_ISO_Template.psd",
-   "checked": "2026-11-16T03:04:59",
-   "psd_size": 32380520,
-   "psd_mtime": 1794169149,
+   "checked": "2026-11-16T22:39:02",
+   "psd_size": 31146181,
+   "psd_mtime": 1794886550,
    "checks": {
     "layers": {
      "status": "pass",
      "reason": "",
      "overlays": [
       "Glass Sheen",
+      "Frame Hard Shadow",
       "Frame Edge Shadow",
-      "Scene Light & Shadow"
+      "Light Shadow"
      ]
     },
     "opening": {
-     "status": "fail",
-     "reason": "right art covers the frame by 9.5 px",
+     "status": "pass",
+     "reason": "",
      "offsets": [
       -0.5,
-      -9.5,
+      1.5,
       0.5,
-      0.5
+      -1.5
      ]
     },
     "card": {
-     "status": "fail",
-     "reason": "6031 px of art outside the opening (art over the frame)",
-     "gap_px": 445,
-     "over_px": 6031
+     "status": "pass",
+     "reason": "",
+     "gap_px": 314,
+     "over_px": 202
     },
     "overlay": {
      "status": "pass",
      "reason": ""
     },
     "purity": {
-     "status": "fail",
-     "reason": "'Frame Edge Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill; 'Scene Light & Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill"
+     "status": "pass",
+     "reason": ""
     },
     "sun": {
-     "status": "fail",
-     "reason": "light shadow over the art where the photo shows a print (its light cannot be measured): 'Scene Light & Shadow'"
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
     },
     "placement": {
      "status": "pass",
      "reason": ""
     },
     "ratio": {
-     "status": "fail",
-     "reason": "opening ratio 0.592 is -16.3% off iso (0.707); the crop limit is 3%; the smart object (501x708) is stretched +16.5% to its frame"
+     "status": "pass",
+     "reason": ""
     },
     "mat": {
      "status": "skip",
@@ -620,125 +621,109 @@
      2000
     ],
     "so_px": [
-     501,
-     708
+     419,
+     729
     ],
     "visible_quad": [
      [
+      1316.0,
+      254.0
+     ],
+     [
+      1691.0,
+      191.0
+     ],
+     [
+      1685.0,
+      918.0
+     ],
+     [
       1317.0,
-      249.0
-     ],
-     [
-      1699.0,
-      193.0
-     ],
-     [
-      1699.0,
-      929.0
-     ],
-     [
-      1320.0,
-      929.0
+      918.0
      ]
     ],
     "visible_quad_subpx": [
      [
-      1317.123046875,
-      249.41400146484375
+      1315.8890380859375,
+      254.16900634765625
      ],
      [
-      1700.251953125,
-      193.5290069580078
+      1691.0880126953125,
+      191.14300537109375
      ],
      [
-      1699.532958984375,
-      929.9959716796875
+      1685.0419921875,
+      919.4290161132812
      ],
      [
-      1320.196044921875,
-      929.7869873046875
+      1317.10595703125,
+      918.4409790039062
      ]
     ],
-    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 241269 px: corners disagree with the mask: top side: only 57% of the mask edge lies on one straight line; bottom s)",
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 242561 px: corners disagree with the mask: bottom side: only 39% of the mask edge lies on one straight line; quad )",
     "opening_offsets": {
      "top": -0.5,
-     "right": -9.5,
+     "right": 1.5,
      "bottom": 0.5,
-     "left": 0.5
+     "left": -1.5
     },
     "opening_quad": [
      [
-      1316.5,
-      249.60000610351562
+      1317.5,
+      254.3000030517578
      ],
      [
-      1689.5,
-      194.89999389648438
+      1692.5,
+      191.3000030517578
      ],
      [
-      1689.5,
-      929.5
+      1686.5,
+      918.5
      ],
      [
-      1319.5,
-      929.5
+      1318.5,
+      918.5
      ]
     ],
     "opening_box": [
-     1317,
-     195,
-     373,
-     735
+     1318,
+     191,
+     375,
+     727
     ],
     "sun": null,
     "sun_searched_on": "not searched (no SAM wall mask)",
-    "shadow_edges": {
-     "Scene Light & Shadow": {
-      "deg": 9.3,
-      "line": [
-       1340,
-       267,
-       1559,
-       231
-      ]
-     }
-    },
-    "insert_texture": 0.0673,
+    "shadow_edges": {},
+    "insert_texture": 0.062,
     "placement": {
      "flag": [],
      "frame_outer": [
-      1306,
-      164,
-      1725,
-      999
+      1287,
+      162,
+      1724,
+      931
      ],
      "gaps_px": {
       "left": null,
       "right": null,
       "top": null,
-      "bottom": 17.0
+      "bottom": 6.0
      },
      "off_centre": {},
      "panel": false,
      "covered": [],
      "texture": [],
      "lines": {
-      "v": 25,
-      "h": 34
+      "v": 16,
+      "h": 27
      }
     },
-    "opening_ratio": 0.5918,
-    "so_ratio": 0.7076,
-    "visible_ratio": 0.6073
+    "opening_ratio": 0.5687,
+    "so_ratio": 0.5748,
+    "visible_ratio": 0.5693
    },
-   "status": "FAIL",
-   "reasons": [
-    "Opening vs art: right art covers the frame by 9.5 px",
-    "Black/white card: 6031 px of art outside the opening (art over the frame)",
-    "Overlay purity: 'Frame Edge Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill; 'Scene Light & Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill",
-    "Sun angle: light shadow over the art where the photo shows a print (its light cannot be measured): 'Scene Light & Shadow'",
-    "Ratio: opening ratio 0.592 is -16.3% off iso (0.707); the crop limit is 3%; the smart object (501x708) is stretched +16.5% to its frame"
-   ],
+   "status": "PASS",
+   "reasons": [],
    "rel": "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Cradenza_Angled_ISO/LVRM_Modern_Cradenza_Angled_ISO_Template.psd"
   },
   "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Leather_4x5/LVRM_Modern_Leather_4x5_Template.psd": {
@@ -1107,44 +1092,47 @@
   },
   "001_Ratio_ISO/001_Living_Rooms/002_Modern/Modern_Moody_Beige/Modern_Moody_Beige.psd": {
    "psd": "Modern_Moody_Beige.psd",
-   "checked": "2026-11-16T03:05:34",
-   "psd_size": 56886013,
-   "psd_mtime": 1794169276,
+   "checked": "2026-11-16T22:52:51",
+   "psd_size": 30942288,
+   "psd_mtime": 1794887570,
    "checks": {
     "layers": {
-     "status": "fail",
-     "reason": "no SHADOWS group; no GLARE group",
+     "status": "pass",
+     "reason": "",
      "overlays": [
-      "Reflections"
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Room Light"
      ]
     },
     "opening": {
-     "status": "fail",
-     "reason": "top gap of 10.5 px; right gap of 4.5 px; bottom gap of 8.5 px; left gap of 5.5 px",
+     "status": "pass",
+     "reason": "",
      "offsets": [
-      10.5,
-      4.5,
-      8.5,
-      5.5
+      -0.5,
+      1.5,
+      0.5,
+      1.5
      ]
     },
     "card": {
-     "status": "fail",
-     "reason": "11996 px inside the opening never show art (white sliver / gap)",
-     "gap_px": 11996,
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
      "over_px": 0
     },
     "overlay": {
-     "status": "fail",
-     "reason": "'Reflections' changes 11917 px outside the art opening"
+     "status": "pass",
+     "reason": ""
     },
     "purity": {
-     "status": "fail",
-     "reason": "'Reflections' coloured (0.24, not a black fill)"
+     "status": "pass",
+     "reason": ""
     },
     "sun": {
-     "status": "fail",
-     "reason": "light shadow over the art where the photo shows a print (its light cannot be measured): 'Reflections'"
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
     },
     "placement": {
      "status": "pass",
@@ -1165,51 +1153,51 @@
      2000
     ],
     "so_px": [
-     462,
-     646
+     471,
+     663
     ],
     "visible_quad": [
      [
-      1171.0,
-      168.0
+      1167.0,
+      157.0
      ],
      [
-      1631.0,
-      168.0
+      1632.0,
+      157.0
      ],
      [
-      1631.0,
-      811.0
+      1635.0,
+      818.0
      ],
      [
-      1171.0,
-      811.0
+      1167.0,
+      819.0
      ]
     ],
     "visible_quad_subpx": [
      [
-      1171.4639892578125,
-      168.02200317382812
+      1167.0,
+      157.0
      ],
      [
-      1631.9439697265625,
-      168.1199951171875
+      1632.0,
+      157.0
      ],
      [
-      1631.708984375,
-      812.0020141601562
+      1635.0,
+      818.0
      ],
      [
-      1171.779052734375,
-      812.0020141601562
+      1167.0,
+      819.0
      ]
     ],
-    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 118418 px: corners disagree with the mask: right side: only 38% of the mask edge lies on one straight line; quad v)",
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 117868 px: corners disagree with the mask: right side: only 44% of the mask edge lies on one straight line; candid)",
     "opening_offsets": {
-     "top": 10.5,
-     "right": 4.5,
-     "bottom": 8.5,
-     "left": 5.5
+     "top": -0.5,
+     "right": 1.5,
+     "bottom": 0.5,
+     "left": 1.5
     },
     "opening_quad": [
      [
@@ -1217,12 +1205,12 @@
       157.5
      ],
      [
-      1635.5,
+      1633.5,
       157.5
      ],
      [
-      1635.5,
-      819.5
+      1636.5,
+      818.5
      ],
      [
       1165.5,
@@ -1232,7 +1220,7 @@
     "opening_box": [
      1166,
      158,
-     470,
+     471,
      662
     ],
     "sun": null,
@@ -1243,15 +1231,15 @@
      "flag": [],
      "frame_outer": [
       1117,
-      144,
+      143,
       1650,
-      832
+      834
      ],
      "gaps_px": {
       "left": null,
       "right": 283.2,
       "top": null,
-      "bottom": 203.3
+      "bottom": 201.3
      },
      "off_centre": {},
      "panel": false,
@@ -1262,24 +1250,17 @@
       "h": 5
      }
     },
-    "opening_ratio": 0.71,
-    "so_ratio": 0.7152,
-    "visible_ratio": 0.7154
+    "opening_ratio": 0.7061,
+    "so_ratio": 0.7104,
+    "visible_ratio": 0.7016
    },
-   "status": "FAIL",
-   "reasons": [
-    "Layer names: no SHADOWS group; no GLARE group",
-    "Opening vs art: top gap of 10.5 px; right gap of 4.5 px; bottom gap of 8.5 px; left gap of 5.5 px",
-    "Black/white card: 11996 px inside the opening never show art (white sliver / gap)",
-    "Overlay size: 'Reflections' changes 11917 px outside the art opening",
-    "Overlay purity: 'Reflections' coloured (0.24, not a black fill)",
-    "Sun angle: light shadow over the art where the photo shows a print (its light cannot be measured): 'Reflections'"
-   ],
+   "status": "PASS",
+   "reasons": [],
    "rel": "001_Ratio_ISO/001_Living_Rooms/002_Modern/Modern_Moody_Beige/Modern_Moody_Beige.psd"
   },
   "001_Ratio_ISO/001_Living_Rooms/003_Boho_Colorful/LVRM_Boho_Neautral_ISO/LVRM_Boho_Neautral_ISO_Template.psd": {
    "psd": "LVRM_Boho_Neautral_ISO_Template.psd",
-   "checked": "2026-11-16T03:05:40",
+   "checked": "2026-11-16T22:39:44",
    "psd_size": 54736269,
    "psd_mtime": 1794169117,
    "checks": {
@@ -1362,20 +1343,20 @@
     ],
     "visible_quad_subpx": [
      [
-      1838.0279541015625,
-      433.0260009765625
+      1838.030029296875,
+      433.0400085449219
      ],
      [
-      2706.985107421875,
-      433.0260009765625
+      2706.99609375,
+      433.0400085449219
      ],
      [
-      2706.985107421875,
-      1642.9940185546875
+      2706.99609375,
+      1642.989013671875
      ],
      [
-      1838.0279541015625,
-      1642.9940185546875
+      1838.030029296875,
+      1642.989013671875
      ]
     ],
     "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 1231495 px: side right: no clear edge in the mask; candidate 1271067 px: opening: top side: no hard frame edge wit)",
@@ -1459,7 +1440,7 @@
   },
   "001_Ratio_ISO/001_Living_Rooms/LVRM_Victorian_Floor_ISO/LVRM_Victorian_Floor_ISO_Template.psd": {
    "psd": "LVRM_Victorian_Floor_ISO_Template.psd",
-   "checked": "2026-11-16T03:05:56",
+   "checked": "2026-11-16T22:40:02",
    "psd_size": 24736905,
    "psd_mtime": 1794169178,
    "checks": {
@@ -1505,8 +1486,8 @@
      "reason": ""
     },
     "ratio": {
-     "status": "fail",
-     "reason": "opening ratio 0.677 is -4.3% off iso (0.707); the crop limit is 3%"
+     "status": "pass",
+     "reason": ""
     },
     "mat": {
      "status": "skip",
@@ -1542,20 +1523,20 @@
     ],
     "visible_quad_subpx": [
      [
-      1155.010009765625,
-      1096.125
+      1155.0140380859375,
+      1096.1259765625
      ],
      [
-      1358.927001953125,
-      1096.125
+      1358.93896484375,
+      1096.1259765625
      ],
      [
-      1358.927001953125,
-      1391.9840087890625
+      1358.93896484375,
+      1391.9759521484375
      ],
      [
-      1155.010009765625,
-      1391.9840087890625
+      1155.0140380859375,
+      1391.9759521484375
      ]
     ],
     "opening_source": "edge search (SAM: SAM found a different region (IoU 0.36 with the art))",
@@ -1627,14 +1608,13 @@
    "reasons": [
     "Opening vs art: left art covers the frame by 3.5 px",
     "Black/white card: 1089 px of art outside the opening (art over the frame)",
-    "Overlay purity: 'Frame Edge Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill; 'Scene Light & Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill",
-    "Ratio: opening ratio 0.677 is -4.3% off iso (0.707); the crop limit is 3%"
+    "Overlay purity: 'Frame Edge Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill; 'Scene Light & Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill"
    ],
    "rel": "001_Ratio_ISO/001_Living_Rooms/LVRM_Victorian_Floor_ISO/LVRM_Victorian_Floor_ISO_Template.psd"
   },
   "001_Ratio_ISO/002_Bedroom/003_Neutral_Aesthetic/BDRM_Trendy_Nuetral_4x5/BDRM_Trendy_Nuetral_4x5_Template.psd": {
    "psd": "BDRM_Trendy_Nuetral_4x5_Template.psd",
-   "checked": "2026-11-16T03:06:07",
+   "checked": "2026-11-16T22:40:15",
    "psd_size": 25419284,
    "psd_mtime": 1794169108,
    "checks": {
@@ -1717,23 +1697,23 @@
     ],
     "visible_quad_subpx": [
      [
-      738.9940185546875,
-      292.09600830078125
+      739.0079956054688,
+      292.0849914550781
      ],
      [
-      1100.9630126953125,
-      292.09600830078125
+      1100.9510498046875,
+      292.0849914550781
      ],
      [
-      1100.9630126953125,
-      807.9650268554688
+      1100.9510498046875,
+      807.97998046875
      ],
      [
-      738.9940185546875,
-      807.9650268554688
+      739.0079956054688,
+      807.97998046875
      ]
     ],
-    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 120897 px: side right: no clear edge in the mask; candidate 369759 px: opening: top side: no hard frame edge withi)",
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 120899 px: side right: no clear edge in the mask; candidate 369757 px: opening: top side: no hard frame edge withi)",
     "opening_offsets": {
      "top": 1.5,
      "right": 1.5,
@@ -1808,7 +1788,7 @@
   },
   "001_Ratio_ISO/002_Bedroom/BDRM_Girl_Peach_Trendy_2x3/BDRM_Girl_Peach_Trendy_2x3.psd": {
    "psd": "BDRM_Girl_Peach_Trendy_2x3.psd",
-   "checked": "2026-11-16T03:06:14",
+   "checked": "2026-11-16T22:40:23",
    "psd_size": 28741574,
    "psd_mtime": 1794169321,
    "checks": {
@@ -1891,20 +1871,20 @@
     ],
     "visible_quad_subpx": [
      [
-      632.0180053710938,
-      267.0400085449219
+      632.0059814453125,
+      267.05499267578125
      ],
      [
-      1229.9630126953125,
-      267.0400085449219
+      1229.9599609375,
+      267.05499267578125
      ],
      [
-      1229.9630126953125,
-      1127.97998046875
+      1229.9599609375,
+      1127.9840087890625
      ],
      [
-      632.0180053710938,
-      1127.97998046875
+      632.0059814453125,
+      1127.9840087890625
      ]
     ],
     "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: SAM 2 found no clean four-sided insert in the box))",
@@ -1942,11 +1922,11 @@
     "sun_searched_on": "not searched (no SAM wall mask)",
     "shadow_edges": {
      "Scene Light & Shadow": {
-      "deg": -44.1,
+      "deg": -44.6,
       "line": [
        937,
        869,
-       1200,
+       1196,
        1124
       ]
      }
@@ -2357,7 +2337,7 @@
   },
   "002_Ratio_2x3/001_Living_Rooms/003_Boho_Colorful/002_TealTiki_LVRM_ISO/002_TealTiki_LVRM_ISO.psd": {
    "psd": "002_TealTiki_LVRM_ISO.psd",
-   "checked": "2026-11-16T03:06:50",
+   "checked": "2026-11-16T22:40:52",
    "psd_size": 34773677,
    "psd_mtime": 1794169278,
    "checks": {
@@ -2550,7 +2530,7 @@
   },
   "002_Ratio_2x3/002_Bedroom/BDRM_Girl_Pink_Modern_2x3/BDRM_Girl_Pink_Modern_2x3_Template.psd": {
    "psd": "BDRM_Girl_Pink_Modern_2x3_Template.psd",
-   "checked": "2026-11-16T03:06:59",
+   "checked": "2026-11-16T22:41:02",
    "psd_size": 16952673,
    "psd_mtime": 1794169106,
    "checks": {
@@ -2633,20 +2613,20 @@
     ],
     "visible_quad_subpx": [
      [
-      628.0180053710938,
-      188.06900024414062
+      628.0059814453125,
+      188.05499267578125
      ],
      [
-      1247.968994140625,
-      188.06900024414062
+      1247.9630126953125,
+      188.05499267578125
      ],
      [
-      1247.968994140625,
-      1108.98095703125
+      1247.9630126953125,
+      1108.9849853515625
      ],
      [
-      628.0180053710938,
-      1108.98095703125
+      628.0059814453125,
+      1108.9849853515625
      ]
     ],
     "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 569689 px: opening: top side: no hard frame edge within 15 px outside the paper (strongest step 0.19)))",
@@ -2955,7 +2935,7 @@
   },
   "002_Ratio_2x3/006_GameRooms_Mancave/Game_Room_ISO/Game_Room_ISO.psd": {
    "psd": "Game_Room_ISO.psd",
-   "checked": "2026-11-16T03:07:14",
+   "checked": "2026-11-16T22:41:14",
    "psd_size": 26082954,
    "psd_mtime": 1794169279,
    "checks": {
@@ -2998,7 +2978,7 @@
     },
     "ratio": {
      "status": "fail",
-     "reason": "opening ratio 1.055 is +58.3% off 2x3 (0.667); the crop limit is 3%; the smart object (423x671) is stretched -30.5% to its frame"
+     "reason": "opening ratio 1.055 is +58.3% off 2x3 (0.667); the crop limit is 35%; the smart object (423x671) is stretched -30.5% to its frame"
     },
     "mat": {
      "status": "skip",
@@ -3034,7 +3014,7 @@
     ],
     "visible_quad_subpx": [
      [
-      547.5869750976562,
+      547.5880126953125,
       230.06500244140625
      ],
      [
@@ -3042,12 +3022,12 @@
       345.89898681640625
      ],
      [
-      1098.8189697265625,
-      1091.0439453125
+      1098.8179931640625,
+      1091.0799560546875
      ],
      [
       547.0,
-      1105.261962890625
+      1105.22998046875
      ]
     ],
     "opening_source": "SAM 2 (sam2.1_hiera_large)",
@@ -3135,13 +3115,13 @@
     "Layer names: no SHADOWS group; no GLARE group",
     "Opening vs art: top gap of 0.7 px between the frame's inner edge and the art (baked paper shows); right gap of 1.1 px between the frame's inner edge and the art (baked paper shows); bottom gap of 1.3 px between the frame's inner edge and the art (baked paper shows)",
     "Black/white card: 1212 px inside the opening never show art (white sliver / gap)",
-    "Ratio: opening ratio 1.055 is +58.3% off 2x3 (0.667); the crop limit is 3%; the smart object (423x671) is stretched -30.5% to its frame"
+    "Ratio: opening ratio 1.055 is +58.3% off 2x3 (0.667); the crop limit is 35%; the smart object (423x671) is stretched -30.5% to its frame"
    ],
    "rel": "002_Ratio_2x3/006_GameRooms_Mancave/Game_Room_ISO/Game_Room_ISO.psd"
   },
   "003_Ratio_3x4/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Wabi_ISO/LVRM_Wabi_ISO_Template.psd": {
    "psd": "LVRM_Wabi_ISO_Template.psd",
-   "checked": "2026-11-16T03:07:21",
+   "checked": "2026-11-16T22:41:22",
    "psd_size": 28838987,
    "psd_mtime": 1794169182,
    "checks": {
@@ -3187,8 +3167,8 @@
      "reason": ""
     },
     "ratio": {
-     "status": "fail",
-     "reason": "opening ratio 0.727 is -3.0% off 3x4 (0.750); the crop limit is 3%"
+     "status": "pass",
+     "reason": ""
     },
     "mat": {
      "status": "skip",
@@ -3337,14 +3317,13 @@
     "Opening vs art: right art covers the frame by 5.5 px (pad limit 2 px); bottom gap of 1.3 px between the frame's inner edge and the art (baked paper shows); left art covers the frame by 5.2 px (pad limit 2 px)",
     "Black/white card: 2468 px of art outside the opening (art over the frame)",
     "Overlay purity: 'Frame Edge Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill; 'Scene Light & Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill and copied photo pixels (detail matches the photo, 0.50)",
-    "Sun angle: light shadow over the art where the photo shows a print (its light cannot be measured): 'Scene Light & Shadow'",
-    "Ratio: opening ratio 0.727 is -3.0% off 3x4 (0.750); the crop limit is 3%"
+    "Sun angle: light shadow over the art where the photo shows a print (its light cannot be measured): 'Scene Light & Shadow'"
    ],
    "rel": "003_Ratio_3x4/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Wabi_ISO/LVRM_Wabi_ISO_Template.psd"
   },
   "003_Ratio_3x4/001_Living_Rooms/002_Modern/LVRM_Floor_ISO/LVRM_Floor_ISO_Template.psd": {
    "psd": "LVRM_Floor_ISO_Template.psd",
-   "checked": "2026-11-16T03:07:31",
+   "checked": "2026-11-16T22:41:33",
    "psd_size": 41900771,
    "psd_mtime": 1794169120,
    "checks": {
@@ -3394,8 +3373,8 @@
      ]
     },
     "ratio": {
-     "status": "fail",
-     "reason": "opening ratio 0.723 is -3.6% off 3x4 (0.750); the crop limit is 3%"
+     "status": "pass",
+     "reason": ""
     },
     "mat": {
      "status": "skip",
@@ -3431,20 +3410,20 @@
     ],
     "visible_quad_subpx": [
      [
-      2658.85791015625,
-      782.0330200195312
+      2658.85693359375,
+      782.0419921875
      ],
      [
-      3443.926025390625,
-      782.0330200195312
+      3443.927001953125,
+      782.0419921875
      ],
      [
-      3471.00390625,
-      1868.9930419921875
+      3471.0048828125,
+      1868.989013671875
      ],
      [
       2645.85205078125,
-      1868.9930419921875
+      1868.989013671875
      ]
     ],
     "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 943214 px: corners disagree with the mask: bottom side: only 29% of the mask edge lies on one straight line; quad )",
@@ -3589,14 +3568,13 @@
     "Opening vs art: left art covers the frame by 5.5 px",
     "Black/white card: 5873 px of art outside the opening (art over the frame)",
     "Overlay purity: 'Frame Edge Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill; 'Scene Light & Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill and coloured (0.24, not a black fill)",
-    "Sun angle: light shadow over the art where the photo shows a print (its light cannot be measured): 'Scene Light & Shadow'",
-    "Ratio: opening ratio 0.723 is -3.6% off 3x4 (0.750); the crop limit is 3%"
+    "Sun angle: light shadow over the art where the photo shows a print (its light cannot be measured): 'Scene Light & Shadow'"
    ],
    "rel": "003_Ratio_3x4/001_Living_Rooms/002_Modern/LVRM_Floor_ISO/LVRM_Floor_ISO_Template.psd"
   },
   "003_Ratio_3x4/001_Living_Rooms/002_Modern/LVRM_Modern_Color_3x4/LVRM_Modern_Color_3x4.psd": {
    "psd": "LVRM_Modern_Color_3x4.psd",
-   "checked": "2026-11-16T03:07:40",
+   "checked": "2026-11-16T22:41:44",
    "psd_size": 68953743,
    "psd_mtime": 1794169280,
    "checks": {
@@ -3672,20 +3650,20 @@
     ],
     "visible_quad_subpx": [
      [
-      1748.0589599609375,
-      859.8790283203125
+      1748.06103515625,
+      859.8660278320312
      ],
      [
-      2540.05810546875,
-      859.8790283203125
+      2540.06103515625,
+      859.8660278320312
      ],
      [
-      2540.05810546875,
-      1936.5030517578125
+      2540.06103515625,
+      1936.511962890625
      ],
      [
-      1748.0589599609375,
-      1936.5030517578125
+      1748.06103515625,
+      1936.511962890625
      ]
     ],
     "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 827722 px: corners disagree with the mask: quad vs mask overlap 0.980 (< 0.985); candidate 851869 px: opening: top)",
@@ -3763,7 +3741,7 @@
   },
   "003_Ratio_3x4/001_Living_Rooms/002_Modern/LVRM_Walnut_Beige_3x4/LVRM_Walnut_Beige_3x4.psd": {
    "psd": "LVRM_Walnut_Beige_3x4.psd",
-   "checked": "2026-11-16T03:07:55",
+   "checked": "2026-11-16T22:42:01",
    "psd_size": 94695737,
    "psd_mtime": 1794169280,
    "checks": {
@@ -3781,9 +3759,9 @@
     },
     "card": {
      "status": "fail",
-     "reason": "3292 px of art outside the opening (art over the frame)",
+     "reason": "3551 px of art outside the opening (art over the frame)",
      "gap_px": 0,
-     "over_px": 3292
+     "over_px": 3551
     },
     "overlay": {
      "status": "fail",
@@ -3802,8 +3780,8 @@
      "reason": ""
     },
     "ratio": {
-     "status": "fail",
-     "reason": "opening ratio 0.698 is -6.9% off 3x4 (0.750); the crop limit is 3%"
+     "status": "pass",
+     "reason": ""
     },
     "mat": {
      "status": "fail",
@@ -3841,19 +3819,19 @@
     "visible_quad_subpx": [
      [
       1808.93701171875,
-      872.9970092773438
+      873.0
      ],
      [
-      2539.992919921875,
-      872.9970092773438
+      2540.0009765625,
+      873.0
      ],
      [
-      2539.992919921875,
-      1921.011962890625
+      2540.0009765625,
+      1921.0040283203125
      ],
      [
       1808.93701171875,
-      1921.011962890625
+      1921.0040283203125
      ]
     ],
     "opening_source": "edge search (SAM: the template has a mat)",
@@ -3929,10 +3907,9 @@
    "status": "FAIL",
    "reasons": [
     "Layer names: no SHADOWS group; no GLARE group",
-    "Black/white card: 3292 px of art outside the opening (art over the frame)",
+    "Black/white card: 3551 px of art outside the opening (art over the frame)",
     "Overlay size: 'Glass Reflection' changes 23437 px outside the art opening",
     "Overlay purity: 'Glass Reflection' glare is coloured (0.40)",
-    "Ratio: opening ratio 0.698 is -6.9% off 3x4 (0.750); the crop limit is 3%",
     "Mat: mat width not uniform (top 4px, right 134px, bottom 138px, left 4px)"
    ],
    "rel": "003_Ratio_3x4/001_Living_Rooms/002_Modern/LVRM_Walnut_Beige_3x4/LVRM_Walnut_Beige_3x4.psd"
@@ -4206,7 +4183,7 @@
   },
   "003_Ratio_3x4/002_Bedroom/001_Modern/AI_Bedroom_Modern_20261108_230611/AI_Bedroom_Modern_20261108_230611_Template.psd": {
    "psd": "AI_Bedroom_Modern_20261108_230611_Template.psd",
-   "checked": "2026-11-16T03:08:09",
+   "checked": "2026-11-16T22:42:14",
    "psd_size": 26409120,
    "psd_mtime": 1794197171,
    "checks": {
@@ -4377,7 +4354,7 @@
   },
   "003_Ratio_3x4/002_Bedroom/BDRM_Girl_Pink_4x5/BDRM_Girl_Pink_4x5.psd": {
    "psd": "BDRM_Girl_Pink_4x5.psd",
-   "checked": "2026-11-16T03:08:12",
+   "checked": "2026-11-16T22:42:18",
    "psd_size": 28244707,
    "psd_mtime": 1794169323,
    "checks": {
@@ -4460,23 +4437,23 @@
     ],
     "visible_quad_subpx": [
      [
-      634.0180053710938,
-      368.0400085449219
+      634.0059814453125,
+      368.05499267578125
      ],
      [
-      1246.968017578125,
-      368.0400085449219
+      1246.9630126953125,
+      368.05499267578125
      ],
      [
-      1246.968017578125,
-      1181.97900390625
+      1246.9630126953125,
+      1181.9840087890625
      ],
      [
-      634.0180053710938,
-      1181.97900390625
+      634.0059814453125,
+      1181.9840087890625
      ]
     ],
-    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 494179 px: corners disagree with the mask: quad vs mask overlap 0.983 (< 0.985); candidate 503452 px: corners disa)",
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 494184 px: corners disagree with the mask: quad vs mask overlap 0.983 (< 0.985); candidate 503469 px: corners disa)",
     "opening_offsets": {
      "top": -1.5,
      "right": 2.5,
@@ -4511,12 +4488,12 @@
     "sun_searched_on": "not searched (no SAM wall mask)",
     "shadow_edges": {
      "Scene Light & Shadow": {
-      "deg": -45.0,
+      "deg": -43.8,
       "line": [
        931,
-       887,
-       1221,
-       1177
+       891,
+       1120,
+       1072
       ]
      }
     },
@@ -4557,7 +4534,7 @@
   },
   "003_Ratio_3x4/002_Bedroom/BDRM_Girl_Pink_Anime_4x5/BDRM_Girl_Pink_Anime_4x5.psd": {
    "psd": "BDRM_Girl_Pink_Anime_4x5.psd",
-   "checked": "2026-11-16T03:08:20",
+   "checked": "2026-11-16T22:42:27",
    "psd_size": 29126001,
    "psd_mtime": 1794169325,
    "checks": {
@@ -4640,23 +4617,23 @@
     ],
     "visible_quad_subpx": [
      [
-      624.0180053710938,
-      288.07000732421875
+      624.0059814453125,
+      288.05499267578125
      ],
      [
-      1238.968017578125,
-      288.07000732421875
+      1238.9630126953125,
+      288.05499267578125
      ],
      [
-      1238.968017578125,
-      1090.98095703125
+      1238.9630126953125,
+      1090.9849853515625
      ],
      [
-      624.0180053710938,
-      1090.98095703125
+      624.0059814453125,
+      1090.9849853515625
      ]
     ],
-    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 489265 px: corners disagree with the mask: quad vs mask overlap 0.982 (< 0.985); candidate 495427 px: corners disa)",
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 489288 px: corners disagree with the mask: quad vs mask overlap 0.982 (< 0.985); candidate 495428 px: corners disa)",
     "opening_offsets": {
      "top": -24.5,
      "right": -17.5,
@@ -4739,7 +4716,7 @@
   },
   "003_Ratio_3x4/002_Bedroom/BDRM_Japandi_Beige_4x5/BDRM_Japandi_Beige_4x5.psd": {
    "psd": "BDRM_Japandi_Beige_4x5.psd",
-   "checked": "2026-11-16T03:08:27",
+   "checked": "2026-11-16T22:42:35",
    "psd_size": 25679839,
    "psd_mtime": 1794169320,
    "checks": {
@@ -4757,8 +4734,8 @@
      "reason": "right gap of 2.0 px between the frame's inner edge and the art (baked paper shows)",
      "offsets": [
       -0.36,
-      2.04,
-      0.46,
+      2.05,
+      0.48,
       -0.52
      ]
     },
@@ -4826,16 +4803,16 @@
       468.34600830078125
      ],
      [
-      1540.04296875,
-      468.6159973144531
+      1540.0350341796875,
+      468.61700439453125
      ],
      [
-      1540.04296875,
-      1124.0240478515625
+      1540.0350341796875,
+      1124.008056640625
      ],
      [
       1047.73095703125,
-      1124.0240478515625
+      1124.008056640625
      ]
     ],
     "opening_source": "SAM 2 (sam2.1_hiera_large)",
@@ -4859,8 +4836,8 @@
     ],
     "opening_offsets": {
      "top": -0.36,
-     "right": 2.04,
-     "bottom": 0.46,
+     "right": 2.05,
+     "bottom": 0.48,
      "left": -0.52
     },
     "opening_quad": [
@@ -4891,12 +4868,12 @@
     "sun_searched_on": "SAM wall mask",
     "shadow_edges": {
      "Scene Light & Shadow": {
-      "deg": -22.6,
+      "deg": -27.2,
       "line": [
-       1211,
-       898,
-       1391,
-       973
+       1188,
+       611,
+       1410,
+       725
       ]
      }
     },
@@ -4939,7 +4916,7 @@
   },
   "003_Ratio_3x4/002_Bedroom/BDRM_Wabi_Vertical/BDRM_Wabi_Vertical_Template.psd": {
    "psd": "BDRM_Wabi_Vertical_Template.psd",
-   "checked": "2026-11-16T03:08:38",
+   "checked": "2026-11-16T22:42:48",
    "psd_size": 27365772,
    "psd_mtime": 1794365965,
    "checks": {
@@ -4980,7 +4957,7 @@
     "sun": {
      "status": "pass",
      "reason": "",
-     "wall_deg": 21.0,
+     "wall_deg": 21.1,
      "shadow_deg": 22.0
     },
     "placement": {
@@ -5025,20 +5002,20 @@
     ],
     "visible_quad_subpx": [
      [
-      1058.0,
-      162.98800659179688
+      1057.989990234375,
+      162.97300720214844
      ],
      [
-      1600.1090087890625,
-      162.96299743652344
+      1600.1080322265625,
+      162.9810028076172
      ],
      [
-      1600.01904296875,
-      901.0700073242188
+      1600.0179443359375,
+      901.0869750976562
      ],
      [
-      1058.0,
-      901.10302734375
+      1057.989990234375,
+      901.0869750976562
      ]
     ],
     "opening_source": "edge search (SAM: never on this template (verified by hand))",
@@ -5073,15 +5050,15 @@
      735
     ],
     "sun": {
-     "deg": 21.0,
+     "deg": 21.1,
      "line": [
-      691,
-      687,
-      978,
+      628,
+      713,
+      981,
       577
      ],
-     "contrast": 0.126,
-     "score": 38.73625518211557
+     "contrast": 0.127,
+     "score": 48.03556958719733
     },
     "sun_searched_on": "band around the frame (verified by hand)",
     "shadow_edges": {
@@ -5132,7 +5109,7 @@
   },
   "003_Ratio_3x4/004_Kitchen_Bar/001_BC_Teal_Closeup/001_BC_Teal_Closeup.psd": {
    "psd": "001_BC_Teal_Closeup.psd",
-   "checked": "2026-11-16T03:08:43",
+   "checked": "2026-11-16T22:42:53",
    "psd_size": 25206714,
    "psd_mtime": 1794169278,
    "checks": {
@@ -5219,7 +5196,7 @@
       199.5500030517578
      ],
      [
-      1386.449951171875,
+      1386.448974609375,
       1398.197998046875
      ],
      [
@@ -5297,7 +5274,7 @@
   },
   "003_Ratio_3x4/004_Kitchen_Bar/Barcart_Green_Gold_3x4/Barcart_Green_Gold_3x4.psd": {
    "psd": "Barcart_Green_Gold_3x4.psd",
-   "checked": "2026-11-16T03:08:49",
+   "checked": "2026-11-16T22:43:00",
    "psd_size": 107689923,
    "psd_mtime": 1794169316,
    "checks": {
@@ -5316,14 +5293,14 @@
      "offsets": [
       0.59,
       -0.4,
-      2.54,
-      26.3
+      2.55,
+      26.31
      ]
     },
     "card": {
      "status": "fail",
-     "reason": "30879 px inside the opening never show art (white sliver / gap)",
-     "gap_px": 30879,
+     "reason": "30657 px inside the opening never show art (white sliver / gap)",
+     "gap_px": 30657,
      "over_px": 0
     },
     "overlay": {
@@ -5343,8 +5320,8 @@
      "reason": ""
     },
     "ratio": {
-     "status": "fail",
-     "reason": "opening ratio 0.783 is +4.4% off 3x4 (0.750); the crop limit is 3%"
+     "status": "pass",
+     "reason": ""
     },
     "mat": {
      "status": "skip",
@@ -5380,7 +5357,7 @@
     ],
     "visible_quad_subpx": [
      [
-      2440.010009765625,
+      2440.013916015625,
       426.9410095214844
      ],
      [
@@ -5389,11 +5366,11 @@
      ],
      [
       3307.715087890625,
-      1564.008056640625
+      1563.9930419921875
      ],
      [
-      2440.010009765625,
-      1564.008056640625
+      2440.013916015625,
+      1563.9930419921875
      ]
     ],
     "opening_source": "SAM 2 (sam2.1_hiera_large)",
@@ -5418,8 +5395,8 @@
     "opening_offsets": {
      "top": 0.59,
      "right": -0.4,
-     "bottom": 2.54,
-     "left": 26.3
+     "bottom": 2.55,
+     "left": 26.31
     },
     "opening_quad": [
      [
@@ -5479,16 +5456,15 @@
    "status": "FAIL",
    "reasons": [
     "Opening vs art: top gap of 0.6 px between the frame's inner edge and the art (baked paper shows); bottom gap of 2.5 px between the frame's inner edge and the art (baked paper shows); left gap of 26.3 px between the frame's inner edge and the art (baked paper shows)",
-    "Black/white card: 30879 px inside the opening never show art (white sliver / gap)",
+    "Black/white card: 30657 px inside the opening never show art (white sliver / gap)",
     "Overlay purity: 'Frame Edge Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill; 'Scene Light & Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill and coloured (0.27, not a black fill) and copied photo pixels (detail matches the photo, 0.50)",
-    "Sun angle: light shadow over the art where the photo shows a print (its light cannot be measured): 'Scene Light & Shadow'",
-    "Ratio: opening ratio 0.783 is +4.4% off 3x4 (0.750); the crop limit is 3%"
+    "Sun angle: light shadow over the art where the photo shows a print (its light cannot be measured): 'Scene Light & Shadow'"
    ],
    "rel": "003_Ratio_3x4/004_Kitchen_Bar/Barcart_Green_Gold_3x4/Barcart_Green_Gold_3x4.psd"
   },
   "004_Ratio_4x5/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Gray_Japandi_4x5/LVRM_Gray_Japandi_4x5.psd": {
    "psd": "LVRM_Gray_Japandi_4x5.psd",
-   "checked": "2026-11-16T03:09:13",
+   "checked": "2026-11-16T22:43:28",
    "psd_size": 68368731,
    "psd_mtime": 1794169281,
    "checks": {
@@ -5532,8 +5508,8 @@
      "reason": ""
     },
     "ratio": {
-     "status": "fail",
-     "reason": "opening ratio 0.827 is +3.3% off 4x5 (0.800); the crop limit is 3%"
+     "status": "pass",
+     "reason": ""
     },
     "mat": {
      "status": "skip",
@@ -5569,20 +5545,20 @@
     ],
     "visible_quad_subpx": [
      [
-      1638.6300048828125,
-      681.0029907226562
+      1638.615966796875,
+      681.0120239257812
      ],
      [
-      2768.010009765625,
-      681.0029907226562
+      2768.02099609375,
+      681.0120239257812
      ],
      [
-      2768.010009765625,
-      2047.218017578125
+      2768.02099609375,
+      2047.22900390625
      ],
      [
-      1638.6300048828125,
-      2047.218017578125
+      1638.615966796875,
+      2047.22900390625
      ]
     ],
     "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 1547821 px: opening: left side: no hard frame edge within 16 px outside the paper (strongest step 0.03)))",
@@ -5649,8 +5625,7 @@
    },
    "status": "FAIL",
    "reasons": [
-    "Layer names: no SHADOWS group; no GLARE group",
-    "Ratio: opening ratio 0.827 is +3.3% off 4x5 (0.800); the crop limit is 3%"
+    "Layer names: no SHADOWS group; no GLARE group"
    ],
    "rel": "004_Ratio_4x5/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Gray_Japandi_4x5/LVRM_Gray_Japandi_4x5.psd"
   },
@@ -5842,7 +5817,7 @@
   },
   "004_Ratio_4x5/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Mint_Japandi_4x5/LVRM_Mint_Japandi_4x5.psd": {
    "psd": "LVRM_Mint_Japandi_4x5.psd",
-   "checked": "2026-11-16T03:09:35",
+   "checked": "2026-11-16T22:43:43",
    "psd_size": 96166410,
    "psd_mtime": 1794169282,
    "checks": {
@@ -6012,7 +5987,7 @@
   },
   "004_Ratio_4x5/001_Living_Rooms/002_Modern/LVRM_Beige_4x5/LVRM_Beige_4x5.psd": {
    "psd": "LVRM_Beige_4x5.psd",
-   "checked": "2026-11-16T03:09:50",
+   "checked": "2026-11-16T22:43:59",
    "psd_size": 54072145,
    "psd_mtime": 1794169282,
    "checks": {
@@ -6089,19 +6064,19 @@
     "visible_quad_subpx": [
      [
       1280.10595703125,
-      277.98199462890625
+      277.9939880371094
      ],
      [
-      1629.904052734375,
-      278.0150146484375
+      1629.906005859375,
+      278.0050048828125
      ],
      [
-      1629.958984375,
-      723.0770263671875
+      1629.9599609375,
+      723.0880126953125
      ],
      [
       1280.051025390625,
-      723.0549926757812
+      723.0449829101562
      ]
     ],
     "opening_source": "edge search (SAM: the template has a mat)",
@@ -6198,7 +6173,7 @@
   },
   "004_Ratio_4x5/001_Living_Rooms/002_Modern/LVRM_Midcentury_Wood/LVRM_Midcentury_Wood_Template.psd": {
    "psd": "LVRM_Midcentury_Wood_Template.psd",
-   "checked": "2026-11-16T03:09:52",
+   "checked": "2026-11-16T22:44:03",
    "psd_size": 24500420,
    "psd_mtime": 1794169134,
    "checks": {
@@ -6277,20 +6252,20 @@
     ],
     "visible_quad_subpx": [
      [
-      763.6950073242188,
-      514.2919921875
+      763.6939697265625,
+      514.2979736328125
      ],
      [
-      1204.3590087890625,
-      514.2919921875
+      1204.3489990234375,
+      514.2979736328125
      ],
      [
-      1204.3590087890625,
-      1065.2120361328125
+      1204.3489990234375,
+      1065.217041015625
      ],
      [
-      763.6950073242188,
-      1065.2120361328125
+      763.6939697265625,
+      1065.217041015625
      ]
     ],
     "opening_source": "edge search (SAM: the template has a mat)",
@@ -6373,7 +6348,7 @@
   },
   "004_Ratio_4x5/001_Living_Rooms/002_Modern/LVRM_Modern_Nook_4x5/LVRM_Modern_Nook_4x5.psd": {
    "psd": "LVRM_Modern_Nook_4x5.psd",
-   "checked": "2026-11-16T03:09:56",
+   "checked": "2026-11-16T22:44:07",
    "psd_size": 58717099,
    "psd_mtime": 1794169560,
    "checks": {
@@ -6419,8 +6394,8 @@
      "reason": ""
     },
     "ratio": {
-     "status": "fail",
-     "reason": "opening ratio 0.851 is +6.3% off 4x5 (0.800); the crop limit is 3%"
+     "status": "pass",
+     "reason": ""
     },
     "mat": {
      "status": "skip",
@@ -6456,20 +6431,20 @@
     ],
     "visible_quad_subpx": [
      [
-      1328.0069580078125,
-      449.0220031738281
+      1328.001953125,
+      449.02801513671875
      ],
      [
-      2602.990966796875,
-      449.0220031738281
+      2602.97900390625,
+      449.02801513671875
      ],
      [
-      2602.990966796875,
-      1935.0
+      2602.97900390625,
+      1934.989990234375
      ],
      [
-      1328.0069580078125,
-      1935.0
+      1328.001953125,
+      1934.989990234375
      ]
     ],
     "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 1253958 px: corners disagree with the mask: top side: only 34% of the mask edge lies on one straight line))",
@@ -6549,8 +6524,7 @@
     "Opening vs art: right art covers the frame by 12.5 px",
     "Black/white card: 16346 px of art outside the opening (art over the frame)",
     "Overlay purity: 'Frame Edge Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill; 'Scene Light & Shadow' built from photo pixels by the 2026-11-08 script (Directory.md), not a black fill",
-    "Sun angle: light shadow over the art where the photo shows a print (its light cannot be measured): 'Scene Light & Shadow'",
-    "Ratio: opening ratio 0.851 is +6.3% off 4x5 (0.800); the crop limit is 3%"
+    "Sun angle: light shadow over the art where the photo shows a print (its light cannot be measured): 'Scene Light & Shadow'"
    ],
    "rel": "004_Ratio_4x5/001_Living_Rooms/002_Modern/LVRM_Modern_Nook_4x5/LVRM_Modern_Nook_4x5.psd"
   },
@@ -6740,7 +6714,7 @@
   },
   "004_Ratio_4x5/001_Living_Rooms/002_Modern/LVRM_Walnut_Modern_4x5/LVRM_Walnut_Modern_4x5.psd": {
    "psd": "LVRM_Walnut_Modern_4x5.psd",
-   "checked": "2026-11-16T03:10:21",
+   "checked": "2026-11-16T22:44:24",
    "psd_size": 63604180,
    "psd_mtime": 1794169282,
    "checks": {
@@ -6829,11 +6803,11 @@
      ],
      [
       2714.0,
-      1852.0009765625
+      1852.0
      ],
      [
       1811.0,
-      1852.0009765625
+      1852.0
      ]
     ],
     "opening_source": "edge search (SAM: the template has a mat)",
@@ -7278,7 +7252,7 @@
   },
   "005_Ratio_11x14/001_Living_Rooms/003_Boho_Colorful/001_Colorful_LVRM_ISO/001_Colorful_LVRM_ISO.psd": {
    "psd": "001_Colorful_LVRM_ISO.psd",
-   "checked": "2026-11-16T03:10:45",
+   "checked": "2026-11-16T22:44:50",
    "psd_size": 39506057,
    "psd_mtime": 1794169277,
    "checks": {
@@ -7460,7 +7434,7 @@
   },
   "005_Ratio_11x14/001_Living_Rooms/003_Boho_Colorful/LVRM_Colorful_3x4/LVRM_Colorful_3x4.psd": {
    "psd": "LVRM_Colorful_3x4.psd",
-   "checked": "2026-11-16T03:10:48",
+   "checked": "2026-11-16T22:44:53",
    "psd_size": 35811218,
    "psd_mtime": 1794169281,
    "checks": {
@@ -7504,8 +7478,8 @@
      "reason": ""
     },
     "ratio": {
-     "status": "fail",
-     "reason": "opening ratio 0.756 is -3.8% off 11x14 (0.786); the crop limit is 3%"
+     "status": "pass",
+     "reason": ""
     },
     "mat": {
      "status": "fail",
@@ -7542,20 +7516,20 @@
     ],
     "visible_quad_subpx": [
      [
-      1158.8409423828125,
-      267.77301025390625
+      1158.843994140625,
+      267.7669982910156
      ],
      [
-      1896.487060546875,
-      267.77301025390625
+      1896.489990234375,
+      267.7669982910156
      ],
      [
-      1896.487060546875,
-      1244.1390380859375
+      1896.489990234375,
+      1244.1519775390625
      ],
      [
-      1158.8409423828125,
-      1244.1390380859375
+      1158.843994140625,
+      1244.1519775390625
      ]
     ],
     "opening_source": "edge search (SAM: the template has a mat)",
@@ -7645,14 +7619,13 @@
     "Layer names: no SHADOWS group; no GLARE group",
     "Black/white card: 3919 px of art outside the opening (art over the frame)",
     "Sun angle: 'Shadow' draws a straight light/shade edge (15 deg) across the art but no sun line is confirmed on the wall (no SAM wall mask)",
-    "Ratio: opening ratio 0.756 is -3.8% off 11x14 (0.786); the crop limit is 3%",
     "Mat: mat width not uniform (top 80px, right 6px, bottom 4px, left 6px); no mat bevel/shadow layer"
    ],
    "rel": "005_Ratio_11x14/001_Living_Rooms/003_Boho_Colorful/LVRM_Colorful_3x4/LVRM_Colorful_3x4.psd"
   },
   "005_Ratio_11x14/002_Bedroom/BDRM-MidCentury_ISO/BDRM-MidCentury_ISO_Template.psd": {
    "psd": "BDRM-MidCentury_ISO_Template.psd",
-   "checked": "2026-11-16T03:10:52",
+   "checked": "2026-11-16T22:44:57",
    "psd_size": 27552665,
    "psd_mtime": 1794169105,
    "checks": {
@@ -7735,20 +7708,20 @@
     ],
     "visible_quad_subpx": [
      [
-      1149.02294921875,
-      260.0710144042969
+      1149.008056640625,
+      260.07598876953125
      ],
      [
-      1568.968017578125,
-      260.0710144042969
+      1568.9530029296875,
+      260.07598876953125
      ],
      [
-      1568.968017578125,
-      800.9710083007812
+      1568.9530029296875,
+      800.9819946289062
      ],
      [
-      1149.02294921875,
-      800.9710083007812
+      1149.008056640625,
+      800.9819946289062
      ]
     ],
     "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 253315 px: corners disagree with the mask: top side: only 52% of the mask edge lies on one straight line; candidat)",
@@ -7832,7 +7805,7 @@
   },
   "005_Ratio_11x14/004_Kitchen_Bar/002_BC_Teal_ISO/002_BC_Teal_ISO.psd": {
    "psd": "002_BC_Teal_ISO.psd",
-   "checked": "2026-11-16T03:10:59",
+   "checked": "2026-11-16T22:45:06",
    "psd_size": 119046807,
    "psd_mtime": 1794169299,
    "checks": {
@@ -7915,20 +7888,20 @@
     ],
     "visible_quad_subpx": [
      [
-      2427.050048828125,
+      2427.0380859375,
       394.2749938964844
      ],
      [
-      3349.389892578125,
+      3349.388916015625,
       394.0220031738281
      ],
      [
-      3347.345947265625,
-      1589.9859619140625
+      3347.344970703125,
+      1589.9969482421875
      ],
      [
-      2427.050048828125,
-      1589.9859619140625
+      2427.0380859375,
+      1589.9969482421875
      ]
     ],
     "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 1088995 px: side right: no clear edge in the mask; candidate 1108851 px: side top: no clear edge in the mask))",
@@ -8001,7 +7974,7 @@
   },
   "002_Ratio_2x3/001_Living_Rooms/002_Modern/LVRM_Midcentury_Walnut_2x3/LVRM_Midcentury_Sideboard_2x3_Template.psd": {
    "psd": "LVRM_Midcentury_Sideboard_2x3_Template.psd",
-   "checked": "2026-11-16T03:06:40",
+   "checked": "2026-11-16T22:40:40",
    "psd_size": 25988690,
    "psd_mtime": 1794545373,
    "checks": {
@@ -8089,8 +8062,8 @@
       283.1029968261719
      ],
      [
-      1652.5369873046875,
-      243.91799926757812
+      1652.5379638671875,
+      243.91900634765625
      ],
      [
       1652.3179931640625,
@@ -8187,7 +8160,7 @@
   },
   "001_Ratio_ISO/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Japandi_Simple_ISO/LVRM_Japandi_Simple_ISO_Template_Rebuild_2026-11-16.psd": {
    "psd": "LVRM_Japandi_Simple_ISO_Template_Rebuild_2026-11-16.psd",
-   "checked": "2026-11-16T03:04:18",
+   "checked": "2026-11-16T22:38:35",
    "psd_size": 24186143,
    "psd_mtime": 1794805228,
    "checks": {
@@ -8276,11 +8249,11 @@
      ],
      [
       1533.116943359375,
-      269.0660095214844
+      269.06500244140625
      ],
      [
       1533.7259521484375,
-      892.593017578125
+      892.5919799804688
      ],
      [
       1094.073974609375,
@@ -8373,7 +8346,7 @@
   },
   "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_BLue_ISO/LVRM_Modern_BLue_ISO_Template_Rebuild_2026-11-16.psd": {
    "psd": "LVRM_Modern_BLue_ISO_Template_Rebuild_2026-11-16.psd",
-   "checked": "2026-11-16T03:04:41",
+   "checked": "2026-11-16T22:38:48",
    "psd_size": 19182721,
    "psd_mtime": 1794805264,
    "checks": {
@@ -8559,7 +8532,7 @@
   },
   "002_Ratio_2x3/001_Living_Rooms/001_Japandi_Minimalist/001_Walnut_LVRM_ISO/001_Walnut_LVRM_ISO_Rebuild_2026-11-16.psd": {
    "psd": "001_Walnut_LVRM_ISO_Rebuild_2026-11-16.psd",
-   "checked": "2026-11-16T03:06:27",
+   "checked": "2026-11-16T22:40:30",
    "psd_size": 29751593,
    "psd_mtime": 1794805314,
    "checks": {
@@ -8580,7 +8553,7 @@
       -0.41,
       -0.33,
       -0.41,
-      -0.34
+      -0.35
      ]
     },
     "card": {
@@ -8643,7 +8616,7 @@
     ],
     "visible_quad_subpx": [
      [
-      601.8519897460938,
+      601.8469848632812,
       152.5330047607422
      ],
      [
@@ -8652,10 +8625,10 @@
      ],
      [
       1239.0360107421875,
-      1086.656005859375
+      1086.655029296875
      ],
      [
-      601.8519897460938,
+      601.8469848632812,
       1086.7330322265625
      ]
     ],
@@ -8682,7 +8655,7 @@
      "top": -0.41,
      "right": -0.33,
      "bottom": -0.41,
-     "left": -0.34
+     "left": -0.35
     },
     "opening_quad": [
      [
@@ -8933,7 +8906,7 @@
   },
   "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Leather_4x5/LVRM_Modern_Leather_4x5_Template_Rebuild_2026-11-16.psd": {
    "psd": "LVRM_Modern_Leather_4x5_Template_Rebuild_2026-11-16.psd",
-   "checked": "2026-11-16T03:05:13",
+   "checked": "2026-11-16T22:39:11",
    "psd_size": 24612780,
    "psd_mtime": 1794805509,
    "checks": {
@@ -8953,7 +8926,7 @@
      "offsets": [
       -0.57,
       -0.4,
-      -0.43,
+      -0.44,
       -0.43
      ]
     },
@@ -9018,19 +8991,19 @@
     "visible_quad_subpx": [
      [
       820.7529907226562,
-      231.4409942626953
+      231.44500732421875
      ],
      [
-      1249.0980224609375,
-      231.34300231933594
+      1249.06201171875,
+      231.33999633789062
      ],
      [
-      1248.9530029296875,
-      824.14697265625
+      1248.989990234375,
+      824.1530151367188
      ],
      [
       820.7890014648438,
-      824.14697265625
+      824.1530151367188
      ]
     ],
     "opening_source": "SAM 2 (sam2.1_hiera_large)",
@@ -9055,7 +9028,7 @@
     "opening_offsets": {
      "top": -0.57,
      "right": -0.4,
-     "bottom": -0.43,
+     "bottom": -0.44,
      "left": -0.43
     },
     "opening_quad": [
@@ -9119,7 +9092,7 @@
   },
   "002_Ratio_2x3/004_Kitchen_Bar/003_BC_White_Bar_Cart/003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16.psd": {
    "psd": "003_BC_White_Bar_Cart_Rebuild_Wainscot_2026-11-16.psd",
-   "checked": "2026-11-16T21:30:41",
+   "checked": "2026-11-16T22:41:10",
    "psd_size": 25763600,
    "psd_mtime": 1794882078,
    "checks": {
@@ -9283,7 +9256,7 @@
   },
   "003_Ratio_3x4/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_5x7/LVRM_Trendy_Girl_5x7_Rebuild_Wainscot_2026-11-16.psd": {
    "psd": "LVRM_Trendy_Girl_5x7_Rebuild_Wainscot_2026-11-16.psd",
-   "checked": "2026-11-16T21:30:45",
+   "checked": "2026-11-16T22:42:10",
    "psd_size": 25887621,
    "psd_mtime": 1794882078,
    "checks": {
@@ -9447,7 +9420,7 @@
   },
   "004_Ratio_4x5/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_4x5/LVRM_Trendy_Girl_4x5_Rebuild_Wainscot_2026-11-16.psd": {
    "psd": "LVRM_Trendy_Girl_4x5_Rebuild_Wainscot_2026-11-16.psd",
-   "checked": "2026-11-16T21:30:49",
+   "checked": "2026-11-16T22:44:29",
    "psd_size": 25452361,
    "psd_mtime": 1794882078,
    "checks": {
@@ -9608,7 +9581,1539 @@
    "status": "PASS",
    "reasons": [],
    "rel": "004_Ratio_4x5/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_4x5/LVRM_Trendy_Girl_4x5_Rebuild_Wainscot_2026-11-16.psd"
+  },
+  "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Walnut_5x7/LVRM_Modern_Walnut_5x7_Template_Rebuild_2026-11-16.psd": {
+   "psd": "LVRM_Modern_Walnut_5x7_Template_Rebuild_2026-11-16.psd",
+   "checked": "2026-11-16T22:39:19",
+   "psd_size": 62184812,
+   "psd_mtime": 1794884231,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "pass",
+     "reason": "",
+     "offsets": [
+      0.5,
+      0.5,
+      0.5,
+      1.5
+     ]
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     4096,
+     4096
+    ],
+    "so_px": [
+     718,
+     1037
+    ],
+    "visible_quad": [
+     [
+      1817.0,
+      880.0
+     ],
+     [
+      2534.0,
+      880.0
+     ],
+     [
+      2535.0,
+      1916.0
+     ],
+     [
+      1818.0,
+      1916.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1816.8310546875,
+      880.5900268554688
+     ],
+     [
+      2534.928955078125,
+      879.844970703125
+     ],
+     [
+      2535.43505859375,
+      1916.8399658203125
+     ],
+     [
+      1817.842041015625,
+      1916.4019775390625
+     ]
+    ],
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 736754 px: corners disagree with the mask: quad vs mask overlap 0.984 (< 0.985)))",
+    "opening_offsets": {
+     "top": 0.5,
+     "right": 0.5,
+     "bottom": 0.5,
+     "left": 1.5
+    },
+    "opening_quad": [
+     [
+      1815.5,
+      879.5
+     ],
+     [
+      2534.5,
+      879.5
+     ],
+     [
+      2535.5,
+      1916.5
+     ],
+     [
+      1816.5,
+      1916.5
+     ]
+    ],
+    "opening_box": [
+     1815,
+     879,
+     720,
+     1037
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.2302,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1695,
+      839,
+      2576,
+      1957
+     ],
+     "gaps_px": {
+      "left": 16.4,
+      "right": 127.7,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {
+      "horizontal": 0.77
+     },
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 9,
+      "h": 9
+     }
+    },
+    "opening_ratio": 0.6933,
+    "so_ratio": 0.6924,
+    "visible_ratio": 0.6921
+   },
+   "status": "PASS",
+   "reasons": [],
+   "rel": "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Walnut_5x7/LVRM_Modern_Walnut_5x7_Template_Rebuild_2026-11-16.psd"
+  },
+  "001_Ratio_ISO/001_Living_Rooms/002_Modern/Modern_Moody_Beige/Modern_Moody_Beige_Rebuild_2026-11-16.psd": {
+   "psd": "Modern_Moody_Beige_Rebuild_2026-11-16.psd",
+   "checked": "2026-11-16T21:57:42",
+   "psd_size": 31064771,
+   "psd_mtime": 1794884261,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "fail",
+     "reason": "no frame/opening edge found on the top side (frameless, or the art covers the whole frame); check by eye"
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2655,
+     2000
+    ],
+    "so_px": [
+     315,
+     399
+    ],
+    "visible_quad": [
+     [
+      1239.0,
+      297.0
+     ],
+     [
+      1558.0,
+      298.0
+     ],
+     [
+      1560.0,
+      696.0
+     ],
+     [
+      1238.0,
+      695.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1239.6929931640625,
+      296.7720031738281
+     ],
+     [
+      1558.33203125,
+      298.260009765625
+     ],
+     [
+      1560.8599853515625,
+      696.4580078125
+     ],
+     [
+      1238.9620361328125,
+      695.8690185546875
+     ]
+    ],
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 119501 px: corners disagree with the mask: right side: only 34% of the mask edge lies on one straight line; left s)",
+    "opening_offsets": {
+     "top": null,
+     "right": -13.5,
+     "bottom": -2.5,
+     "left": -1.5
+    },
+    "opening_quad": [
+     [
+      1239.0,
+      297.0
+     ],
+     [
+      1558.0,
+      298.0
+     ],
+     [
+      1560.0,
+      696.0
+     ],
+     [
+      1238.0,
+      695.0
+     ]
+    ],
+    "opening_box": [
+     1238,
+     297,
+     322,
+     399
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.0201,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1223,
+      282,
+      1575,
+      711
+     ],
+     "gaps_px": {
+      "left": 56.9,
+      "right": 58.9,
+      "top": 123.8,
+      "bottom": 107.4
+     },
+     "off_centre": {
+      "horizontal": 0.02,
+      "vertical": 0.07
+     },
+     "panel": true,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 5,
+      "h": 5
+     }
+    },
+    "opening_ratio": 0.7937,
+    "so_ratio": 0.7895,
+    "visible_ratio": 0.7937
+   },
+   "status": "FAIL",
+   "reasons": [
+    "Opening vs art: no frame/opening edge found on the top side (frameless, or the art covers the whole frame); check by eye"
+   ],
+   "rel": "001_Ratio_ISO/001_Living_Rooms/002_Modern/Modern_Moody_Beige/Modern_Moody_Beige_Rebuild_2026-11-16.psd"
+  },
+  "001_Ratio_ISO/001_Living_Rooms/LVRM_Victorian_Floor_ISO/LVRM_Victorian_Floor_ISO_Template_Rebuild_2026-11-16.psd": {
+   "psd": "LVRM_Victorian_Floor_ISO_Template_Rebuild_2026-11-16.psd",
+   "checked": "2026-11-16T21:42:47",
+   "psd_size": 24860137,
+   "psd_mtime": 1794883366,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "fail",
+     "reason": "right art covers the frame by 3.5 px",
+     "offsets": [
+      -2.5,
+      -3.5,
+      -2.5,
+      -2.5
+     ]
+    },
+    "card": {
+     "status": "fail",
+     "reason": "1260 px of art outside the opening (art over the frame)",
+     "gap_px": 0,
+     "over_px": 1260
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2655,
+     2000
+    ],
+    "so_px": [
+     206,
+     297
+    ],
+    "visible_quad": [
+     [
+      1157.0,
+      1096.0
+     ],
+     [
+      1360.0,
+      1097.0
+     ],
+     [
+      1359.0,
+      1392.0
+     ],
+     [
+      1154.0,
+      1392.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1157.4990234375,
+      1096.56298828125
+     ],
+     [
+      1360.2840576171875,
+      1098.321044921875
+     ],
+     [
+      1360.10595703125,
+      1391.0030517578125
+     ],
+     [
+      1154.623046875,
+      1391.052978515625
+     ]
+    ],
+    "opening_source": "edge search (SAM: SAM found a different region (IoU 0.36 with the art))",
+    "opening_offsets": {
+     "top": -2.5,
+     "right": -3.5,
+     "bottom": -2.5,
+     "left": -2.5
+    },
+    "opening_quad": [
+     [
+      1159.5,
+      1098.5
+     ],
+     [
+      1356.5,
+      1099.5
+     ],
+     [
+      1355.5,
+      1389.5
+     ],
+     [
+      1156.5,
+      1389.5
+     ]
+    ],
+    "opening_box": [
+     1157,
+     1099,
+     200,
+     291
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.0082,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1143,
+      1085,
+      1371,
+      1403
+     ],
+     "gaps_px": {
+      "left": 60.9,
+      "right": 61.2,
+      "top": 72.9,
+      "bottom": 83.1
+     },
+     "off_centre": {
+      "horizontal": 0.0,
+      "vertical": 0.07
+     },
+     "panel": true,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 16,
+      "h": 14
+     }
+    },
+    "opening_ratio": 0.6853,
+    "so_ratio": 0.6936,
+    "visible_ratio": 0.6941
+   },
+   "status": "FAIL",
+   "reasons": [
+    "Opening vs art: right art covers the frame by 3.5 px",
+    "Black/white card: 1260 px of art outside the opening (art over the frame)"
+   ],
+   "rel": "001_Ratio_ISO/001_Living_Rooms/LVRM_Victorian_Floor_ISO/LVRM_Victorian_Floor_ISO_Template_Rebuild_2026-11-16.psd"
+  },
+  "001_Ratio_ISO/002_Bedroom/003_Neutral_Aesthetic/BDRM_Trendy_Nuetral_4x5/BDRM_Trendy_Nuetral_4x5_Template_Rebuild_2026-11-16.psd": {
+   "psd": "BDRM_Trendy_Nuetral_4x5_Template_Rebuild_2026-11-16.psd",
+   "checked": "2026-11-16T21:58:01",
+   "psd_size": 25137145,
+   "psd_mtime": 1794884280,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "fail",
+     "reason": "top art covers the frame by 23.5 px; right art covers the frame by 22.5 px; bottom art covers the frame by 23.5 px; left art covers the frame by 23.5 px",
+     "offsets": [
+      -23.5,
+      -22.5,
+      -23.5,
+      -23.5
+     ]
+    },
+    "card": {
+     "status": "fail",
+     "reason": "51965 px of art outside the opening (art over the frame)",
+     "gap_px": 0,
+     "over_px": 51965
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2048,
+     2048
+    ],
+    "so_px": [
+     545,
+     694
+    ],
+    "visible_quad": [
+     [
+      651.0,
+      201.0
+     ],
+     [
+      1194.0,
+      201.0
+     ],
+     [
+      1193.0,
+      892.0
+     ],
+     [
+      652.0,
+      895.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      651.0280151367188,
+      200.83999633789062
+     ],
+     [
+      1194.708984375,
+      201.10499572753906
+     ],
+     [
+      1193.5269775390625,
+      893.0269775390625
+     ],
+     [
+      652.1300048828125,
+      895.2080078125
+     ]
+    ],
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 366142 px: corners disagree with the mask: bottom side: only 58% of the mask edge lies on one straight line))",
+    "opening_offsets": {
+     "top": -23.5,
+     "right": -22.5,
+     "bottom": -23.5,
+     "left": -23.5
+    },
+    "opening_quad": [
+     [
+      674.5,
+      224.5
+     ],
+     [
+      1171.5,
+      224.5
+     ],
+     [
+      1170.5,
+      868.5999755859375
+     ],
+     [
+      675.5,
+      871.4000244140625
+     ]
+    ],
+    "opening_box": [
+     675,
+     224,
+     497,
+     647
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.1043,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      632,
+      174,
+      1251,
+      919
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": 214.9
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 12,
+      "h": 14
+     }
+    },
+    "opening_ratio": 0.77,
+    "so_ratio": 0.7853,
+    "visible_ratio": 0.7841
+   },
+   "status": "FAIL",
+   "reasons": [
+    "Opening vs art: top art covers the frame by 23.5 px; right art covers the frame by 22.5 px; bottom art covers the frame by 23.5 px; left art covers the frame by 23.5 px",
+    "Black/white card: 51965 px of art outside the opening (art over the frame)"
+   ],
+   "rel": "001_Ratio_ISO/002_Bedroom/003_Neutral_Aesthetic/BDRM_Trendy_Nuetral_4x5/BDRM_Trendy_Nuetral_4x5_Template_Rebuild_2026-11-16.psd"
+  },
+  "002_Ratio_2x3/002_Bedroom/BDRM_Girl_Pink_Modern_2x3/BDRM_Girl_Pink_Modern_2x3_Template_Rebuild_2026-11-16.psd": {
+   "psd": "BDRM_Girl_Pink_Modern_2x3_Template_Rebuild_2026-11-16.psd",
+   "checked": "2026-11-16T21:58:19",
+   "psd_size": 16409145,
+   "psd_mtime": 1794884298,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "fail",
+     "reason": "left art covers the frame by 27.5 px",
+     "offsets": [
+      0.5,
+      1.5,
+      2.5,
+      -27.5
+     ]
+    },
+    "card": {
+     "status": "fail",
+     "reason": "23917 px of art outside the opening (art over the frame)",
+     "gap_px": 587,
+     "over_px": 23917
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2000,
+     2000
+    ],
+    "so_px": [
+     615,
+     916
+    ],
+    "visible_quad": [
+     [
+      630.0,
+      188.0
+     ],
+     [
+      1245.0,
+      188.0
+     ],
+     [
+      1246.0,
+      1103.0
+     ],
+     [
+      631.0,
+      1103.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      630.97802734375,
+      188.0240020751953
+     ],
+     [
+      1245.717041015625,
+      188.1739959716797
+     ],
+     [
+      1247.1700439453125,
+      1103.85205078125
+     ],
+     [
+      631.14501953125,
+      1103.85205078125
+     ]
+    ],
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 568990 px: opening: top side: no hard frame edge within 15 px outside the paper (strongest step 0.19); candidate 5)",
+    "opening_offsets": {
+     "top": 0.5,
+     "right": 1.5,
+     "bottom": 2.5,
+     "left": -27.5
+    },
+    "opening_quad": [
+     [
+      657.5,
+      187.5
+     ],
+     [
+      1246.5,
+      187.5
+     ],
+     [
+      1247.5,
+      1105.5
+     ],
+     [
+      658.5,
+      1105.5
+     ]
+    ],
+    "opening_box": [
+     657,
+     187,
+     590,
+     918
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.1558,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      617,
+      152,
+      1312,
+      1118
+     ],
+     "gaps_px": {
+      "left": 279.7,
+      "right": null,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 20,
+      "h": 5
+     }
+    },
+    "opening_ratio": 0.6416,
+    "so_ratio": 0.6714,
+    "visible_ratio": 0.6721
+   },
+   "status": "FAIL",
+   "reasons": [
+    "Opening vs art: left art covers the frame by 27.5 px",
+    "Black/white card: 23917 px of art outside the opening (art over the frame)"
+   ],
+   "rel": "002_Ratio_2x3/002_Bedroom/BDRM_Girl_Pink_Modern_2x3/BDRM_Girl_Pink_Modern_2x3_Template_Rebuild_2026-11-16.psd"
+  },
+  "003_Ratio_3x4/001_Living_Rooms/002_Modern/LVRM_Modern_Color_3x4/LVRM_Modern_Color_3x4_Rebuild_2026-11-16.psd": {
+   "psd": "LVRM_Modern_Color_3x4_Rebuild_2026-11-16.psd",
+   "checked": "2026-11-16T21:45:33",
+   "psd_size": 49802739,
+   "psd_mtime": 1794883531,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "fail",
+     "reason": "no frame/opening edge found on the top, bottom side (frameless, or the art covers the whole frame); check by eye"
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     4096,
+     4096
+    ],
+    "so_px": [
+     796,
+     1072
+    ],
+    "visible_quad": [
+     [
+      1748.0,
+      863.0
+     ],
+     [
+      2544.0,
+      860.0
+     ],
+     [
+      2544.0,
+      1932.0
+     ],
+     [
+      1749.0,
+      1933.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1748.8360595703125,
+      862.7919921875
+     ],
+     [
+      2544.611083984375,
+      860.6060180664062
+     ],
+     [
+      2545.134033203125,
+      1932.748046875
+     ],
+     [
+      1749.0980224609375,
+      1934.1090087890625
+     ]
+    ],
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 827931 px: corners disagree with the mask: quad vs mask overlap 0.981 (< 0.985); candidate 851830 px: opening: top)",
+    "opening_offsets": {
+     "top": null,
+     "right": 4.5,
+     "bottom": null,
+     "left": 0.5
+    },
+    "opening_quad": [
+     [
+      1748.0,
+      863.0
+     ],
+     [
+      2544.0,
+      860.0
+     ],
+     [
+      2544.0,
+      1932.0
+     ],
+     [
+      1749.0,
+      1933.0
+     ]
+    ],
+    "opening_box": [
+     1748,
+     860,
+     796,
+     1073
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.0,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1706,
+      818,
+      2586,
+      1975
+     ],
+     "gaps_px": {
+      "left": 119.7,
+      "right": 125.7,
+      "top": 131.7,
+      "bottom": 139.8
+     },
+     "off_centre": {
+      "horizontal": 0.02,
+      "vertical": 0.03
+     },
+     "panel": true,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 15,
+      "h": 8
+     }
+    },
+    "opening_ratio": 0.7432,
+    "so_ratio": 0.7425,
+    "visible_ratio": 0.7432
+   },
+   "status": "FAIL",
+   "reasons": [
+    "Opening vs art: no frame/opening edge found on the top, bottom side (frameless, or the art covers the whole frame); check by eye"
+   ],
+   "rel": "003_Ratio_3x4/001_Living_Rooms/002_Modern/LVRM_Modern_Color_3x4/LVRM_Modern_Color_3x4_Rebuild_2026-11-16.psd"
+  },
+  "004_Ratio_4x5/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Gray_Japandi_4x5/LVRM_Gray_Japandi_4x5_Rebuild_2026-11-16.psd": {
+   "psd": "LVRM_Gray_Japandi_4x5_Rebuild_2026-11-16.psd",
+   "checked": "2026-11-16T21:50:16",
+   "psd_size": 51834728,
+   "psd_mtime": 1794883814,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "fail",
+     "reason": "top art covers the frame by 5.5 px; left art covers the frame by 4.5 px",
+     "offsets": [
+      -5.5,
+      0.5,
+      0.5,
+      -4.5
+     ]
+    },
+    "card": {
+     "status": "fail",
+     "reason": "8626 px of art outside the opening (art over the frame)",
+     "gap_px": 0,
+     "over_px": 8626
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     4096,
+     4096
+    ],
+    "so_px": [
+     1136,
+     1373
+    ],
+    "visible_quad": [
+     [
+      1633.0,
+      674.0
+     ],
+     [
+      2768.0,
+      674.0
+     ],
+     [
+      2768.0,
+      2047.0
+     ],
+     [
+      1633.0,
+      2047.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1633.0,
+      674.0
+     ],
+     [
+      2768.0,
+      674.0
+     ],
+     [
+      2768.0,
+      2047.0
+     ],
+     [
+      1633.0,
+      2047.0
+     ]
+    ],
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 1547809 px: opening: left side: no hard frame edge within 16 px outside the paper (strongest step 0.03)))",
+    "opening_offsets": {
+     "top": -5.5,
+     "right": 0.5,
+     "bottom": 0.5,
+     "left": -4.5
+    },
+    "opening_quad": [
+     [
+      1637.5,
+      679.5
+     ],
+     [
+      2768.5,
+      679.5
+     ],
+     [
+      2768.5,
+      2047.5
+     ],
+     [
+      1637.5,
+      2047.5
+     ]
+    ],
+    "opening_box": [
+     1638,
+     680,
+     1131,
+     1368
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.0084,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1579,
+      636,
+      2813,
+      2090
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": 302.0
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 0,
+      "h": 3
+     }
+    },
+    "opening_ratio": 0.8268,
+    "so_ratio": 0.8274,
+    "visible_ratio": 0.8267
+   },
+   "status": "FAIL",
+   "reasons": [
+    "Opening vs art: top art covers the frame by 5.5 px; left art covers the frame by 4.5 px",
+    "Black/white card: 8626 px of art outside the opening (art over the frame)"
+   ],
+   "rel": "004_Ratio_4x5/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Gray_Japandi_4x5/LVRM_Gray_Japandi_4x5_Rebuild_2026-11-16.psd"
+  },
+  "005_Ratio_11x14/001_Living_Rooms/002_Modern/LVRM_Modern_Dark_4x5/LVRM_Modern_Dark_4x5_Template_Rebuild_2026-11-16.psd": {
+   "psd": "LVRM_Modern_Dark_4x5_Template_Rebuild_2026-11-16.psd",
+   "checked": "2026-11-16T22:44:33",
+   "psd_size": 52195952,
+   "psd_mtime": 1794884328,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "pass",
+     "reason": "",
+     "offsets": [
+      0.5,
+      0.5,
+      1.5,
+      0.5
+     ]
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     4096,
+     4096
+    ],
+    "so_px": [
+     737,
+     938
+    ],
+    "visible_quad": [
+     [
+      1289.0,
+      676.0
+     ],
+     [
+      2027.0,
+      676.0
+     ],
+     [
+      2028.0,
+      1613.0
+     ],
+     [
+      1289.0,
+      1613.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1289.4229736328125,
+      676.0419921875
+     ],
+     [
+      2027.7130126953125,
+      676.2219848632812
+     ],
+     [
+      2028.5140380859375,
+      1614.1280517578125
+     ],
+     [
+      1289.0789794921875,
+      1613.947021484375
+     ]
+    ],
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 690935 px: opening: top side: the hard edge is not visible along the side (19 points)))",
+    "opening_offsets": {
+     "top": 0.5,
+     "right": 0.5,
+     "bottom": 1.5,
+     "left": 0.5
+    },
+    "opening_quad": [
+     [
+      1288.5,
+      675.5
+     ],
+     [
+      2027.5,
+      675.5
+     ],
+     [
+      2028.5,
+      1614.5
+     ],
+     [
+      1288.5,
+      1614.5
+     ]
+    ],
+    "opening_box": [
+     1288,
+     676,
+     740,
+     939
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.2215,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1252,
+      639,
+      2138,
+      1650
+     ],
+     "gaps_px": {
+      "left": 113.9,
+      "right": 37.6,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {
+      "horizontal": 0.5
+     },
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 7,
+      "h": 5
+     }
+    },
+    "opening_ratio": 0.7865,
+    "so_ratio": 0.7857,
+    "visible_ratio": 0.7871
+   },
+   "status": "PASS",
+   "reasons": [],
+   "rel": "005_Ratio_11x14/001_Living_Rooms/002_Modern/LVRM_Modern_Dark_4x5/LVRM_Modern_Dark_4x5_Template_Rebuild_2026-11-16.psd"
+  },
+  "001_Ratio_ISO/001_Living_Rooms/003_Boho_Colorful/LVRM_Boho_Neautral_ISO/LVRM_Boho_Neautral_ISO_Template_Rebuild_2026-11-16.psd": {
+   "psd": "LVRM_Boho_Neautral_ISO_Template_Rebuild_2026-11-16.psd",
+   "checked": "2026-11-16T21:56:07",
+   "psd_size": 54613338,
+   "psd_mtime": 1794884164,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "fail",
+     "reason": "right art covers the frame by 34.5 px; bottom art covers the frame by 38.5 px",
+     "offsets": [
+      1.5,
+      -34.5,
+      -38.5,
+      1.5
+     ]
+    },
+    "card": {
+     "status": "fail",
+     "reason": "79037 px of art outside the opening (art over the frame)",
+     "gap_px": 0,
+     "over_px": 79037
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "skip",
+     "reason": "no sun line on the wall near the frame"
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     4096,
+     4096
+    ],
+    "so_px": [
+     978,
+     1319
+    ],
+    "visible_quad": [
+     [
+      1786.0,
+      381.0
+     ],
+     [
+      2762.0,
+      381.0
+     ],
+     [
+      2761.0,
+      1698.0
+     ],
+     [
+      1786.0,
+      1699.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1785.91796875,
+      380.7950134277344
+     ],
+     [
+      2763.3291015625,
+      380.9739990234375
+     ],
+     [
+      2761.719970703125,
+      1699.3480224609375
+     ],
+     [
+      1785.91796875,
+      1699.7049560546875
+     ]
+    ],
+    "opening_source": "edge search (SAM: no clean blank frame insert (SAM 2: candidate 1237467 px: side bottom: no clear edge in the mask))",
+    "opening_offsets": {
+     "top": 1.5,
+     "right": -34.5,
+     "bottom": -38.5,
+     "left": 1.5
+    },
+    "opening_quad": [
+     [
+      1784.5,
+      379.5
+     ],
+     [
+      2727.5,
+      379.5
+     ],
+     [
+      2726.5,
+      1659.5
+     ],
+     [
+      1784.5,
+      1660.5
+     ]
+    ],
+    "opening_box": [
+     1784,
+     380,
+     943,
+     1281
+    ],
+    "sun": null,
+    "sun_searched_on": "not searched (no SAM wall mask)",
+    "shadow_edges": {},
+    "insert_texture": 0.1219,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1734,
+      329,
+      2814,
+      1751
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 0,
+      "h": 1
+     }
+    },
+    "opening_ratio": 0.7368,
+    "so_ratio": 0.7415,
+    "visible_ratio": 0.7411
+   },
+   "status": "FAIL",
+   "reasons": [
+    "Opening vs art: right art covers the frame by 34.5 px; bottom art covers the frame by 38.5 px",
+    "Black/white card: 79037 px of art outside the opening (art over the frame)"
+   ],
+   "rel": "001_Ratio_ISO/001_Living_Rooms/003_Boho_Colorful/LVRM_Boho_Neautral_ISO/LVRM_Boho_Neautral_ISO_Template_Rebuild_2026-11-16.psd"
   }
  },
- "updated": "2026-11-16T21:30:53"
+ "updated": "2026-11-16T22:53:01"
 }

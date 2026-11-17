@@ -623,9 +623,9 @@
     "Abstract",
     "Minimalism"
    ],
-   "key": "c1b1639854429e6c",
+   "key": "f4ae0ab7d79fe6dd",
    "model": "gemini-3.5-flash-lite",
-   "tokens": 1238
+   "tokens": 1223
   },
   "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Leather_4x5/LVRM_Modern_Leather_4x5_Template.psd": {
    "styles": [
@@ -659,11 +659,11 @@
   },
   "001_Ratio_ISO/001_Living_Rooms/002_Modern/Modern_Moody_Beige/Modern_Moody_Beige.psd": {
    "styles": [
-    "Minimalism",
     "Abstract",
+    "Minimalism",
     "Mid Century"
    ],
-   "key": "9d4f0668637f963d",
+   "key": "d1b33f36dbe41b99",
    "model": "gemini-3.5-flash-lite",
    "tokens": 1223
   },
@@ -766,6 +766,26 @@
    "key": "099d61d53a1eb439",
    "model": "gemini-3.5-flash-lite",
    "tokens": 1223
+  },
+  "001_Ratio_ISO/001_Living_Rooms/002_Modern/LVRM_Modern_Walnut_5x7/LVRM_Modern_Walnut_5x7_Template_Rebuild_2026-11-16.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "e31955dc3e935581",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "005_Ratio_11x14/001_Living_Rooms/002_Modern/LVRM_Modern_Dark_4x5/LVRM_Modern_Dark_4x5_Template_Rebuild_2026-11-16.psd": {
+   "styles": [
+    "Abstract",
+    "Minimalism",
+    "Trendy"
+   ],
+   "key": "fae53a1ef764cc59",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1222
   }
  }
 }

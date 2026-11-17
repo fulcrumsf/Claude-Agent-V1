@@ -464,7 +464,7 @@ def find_insert(rgb, target=None):
     return q, info
 
 
-def art_quad(insert_q, insert_aspect, target, tol=0.15):
+def art_quad(insert_q, insert_aspect, target, tol=0.35):
     """Where the art goes: the whole insert, when its true shape is within `tol` of the print ratio (the art is then
     cover-fit, at most `tol` cropped). Further off = the scene is rejected (Tony 2026-11-10: regenerate, never a mat
     by accident; mats exist only as template layers). Returns (quad, "full") or raises TemplateError."""
@@ -553,10 +553,13 @@ def glass(q, W, H):
 
 def placeholder(w, h, path):
     from PIL import Image
-    ph = np.full((h, w, 3), 232, "uint8")
+    # onion-skin orange (Tony 2026-11-16): against white paper, walls and mats the orange shows at a glance whether the
+    # smart object sits exactly on the frame opening when the PSD is opened in PhotoCraft
+    ph = np.empty((h, w, 3), "uint8")
+    ph[:] = (250, 215, 170)
     st = max(20, w // 12)
-    ph[:, ::st] = 150
-    ph[::st, :] = 150
+    ph[:, ::st] = (222, 158, 88)
+    ph[::st, :] = (222, 158, 88)
     Image.fromarray(ph).save(path)
 
 
@@ -567,7 +570,7 @@ HARD_BLUR_PX = 0.35      # the hard inner edge stays crisp (Gaussian sigma of it
 
 # ---------- SAM 2 (subprocess into the ikigai-sam venv) ----------
 
-def sam_detect(scene_png, work, settings=None, box=None, wall=True, canvas=False):
+def sam_detect(scene_png, work, settings=None, box=None, wall=True, canvas=False, paper=False):
     """Corners + full-resolution alpha of the blank insert (and the wall mask) from app/sam_frames.py, run with the
     SAM venv's python. Returns (result dict, insert alpha HxW 0..1, wall alpha or None). Raises TemplateError."""
     import os
@@ -583,6 +586,8 @@ def sam_detect(scene_png, work, settings=None, box=None, wall=True, canvas=False
         args += ["--wall", str(wl)]
     if canvas:
         args += ["--canvas"]
+    if paper:
+        args += ["--paper-fallback"]
     if box is not None:
         args += ["--box", ",".join(f"{float(v):.1f}" for v in box)]
     try:
@@ -959,7 +964,7 @@ def card_verify(psd, quad, settings=None, work=None, opening=None):
     return res
 
 
-def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None):
+def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None, paper=False):
     """Scene image -> layered PSD in `work` (SAM corners, measured shadows, card test). Returns the manifest fields."""
     from PIL import Image
     from .rooms import true_aspect
@@ -970,7 +975,7 @@ def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None
     target = rs.RATIO_VALUE[ratio]
     from .template_checker import PAD_MAX_PX, offset_quad
     canvas = presentation == "canvas"
-    res, _alpha, wall = sam_detect(scene_png, work, settings, box=box, canvas=canvas)
+    res, _alpha, wall = sam_detect(scene_png, work, settings, box=box, canvas=canvas, paper=paper)
     q = np.float32(res["corners"])               # the OPENING: the frame's hard inner edge, shadowed paper included
     asp = true_aspect(q, (W, H))
     l, r = math.dist(q[0], q[3]), math.dist(q[1], q[2])
@@ -1062,7 +1067,7 @@ def save_template(settings, room, decor, ratio, scene_png, built, meta):
 
 # ---------- step 4: render a template with the art ----------
 
-MAX_CROP = 0.15     # Tony 2026-11-16: a drawn frame a bit off the print ratio is fine (buyers resize); cover-fit crops up to 15%, never letterbox
+MAX_CROP = 0.35     # Tony 2026-11-16 (said repeatedly): ratio barely matters; cover-fit crops up to 35%, never letterbox
 
 
 def fit_cover(src, size, dest, max_crop=MAX_CROP):

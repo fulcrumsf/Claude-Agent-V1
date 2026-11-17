@@ -51,16 +51,17 @@ def test_no_insert_is_reported_not_guessed(tmp_path):
 
 
 def test_off_ratio_scene_is_rejected_and_art_is_cover_fit_never_padded(tmp_path):
-    """Tony 2026-11-10: cover-fit + centre crop, never stretched, never a white border; >15% off = rejected (was 3%; Tony 2026-11-16: a bit off the print ratio is fine)."""
+    """Tony 2026-11-10: cover-fit + centre crop, never stretched, never a white border; >35% off = rejected (was 3%; Tony 2026-11-16: ratio barely matters, only absurd mismatches)."""
     sq = [[0, 0], [100, 0], [100, 100], [0, 100]]
     with pytest.raises(stp.TemplateError, match="off the print ratio"):
         stp.art_quad(sq, 1.0, 2 / 3)                                    # square insert for a 2x3 print (+50%): regenerate
     assert stp.art_quad(sq, 0.68, 2 / 3)[1] == "full"                   # 2% off: art cover-fits the insert
     assert stp.art_quad(sq, 0.73, 2 / 3)[1] == "full"                   # 9.5% off: still believable, art cover-fits and crops
+    assert stp.art_quad(sq, 0.55, 2 / 3)[1] == "full"                   # 17% off: fine too
     src = tmp_path / "a.jpg"
     Image.new("RGB", (700, 990), "red").save(src)                       # ISO art (0.707)
-    with pytest.raises(stp.TemplateError, match="limit 15%"):
-        stp.fit_cover(src, (300, 600), tmp_path / "f.png")               # 1:2 slot: 29% would be cut off
+    with pytest.raises(stp.TemplateError, match="limit 35%"):
+        stp.fit_cover(src, (300, 800), tmp_path / "f.png")               # 3:8 slot: 47% would be cut off
     crop = stp.fit_cover(src, (712, 1000), tmp_path / "g.png")          # 0.712 slot: under 1% cut, edge to edge
     im = np.asarray(Image.open(tmp_path / "g.png"))
     red = lambda px: np.abs(px.astype(int) - [255, 0, 0]).max() < 6

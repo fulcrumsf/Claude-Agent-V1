@@ -7,26 +7,26 @@
  "decor": "Modern",
  "ratio": "iso",
  "so_px": [
-  462,
-  646
+  471,
+  663
  ],
- "so_ratio": 0.7152,
+ "so_ratio": 0.7104,
  "quad_art": [
   [
-   1171.0,
-   168.0
+   1165.0,
+   157.0
   ],
   [
-   1631.0,
-   168.0
+   1636.0,
+   157.0
   ],
   [
-   1631.0,
-   811.0
+   1636.0,
+   820.0
   ],
   [
-   1171.0,
-   811.0
+   1165.0,
+   820.0
   ]
  ],
  "canvas": [
@@ -35,5 +35,6 @@
  ],
  "desc": "Moody warm-beige living room, tan sectional, striped sun",
  "guard": "hue only (the template's own shadows are designed)",
- "measured": "2026-11-08: art quad from a black vs white card render"
+ "measured": "2026-11-16: art quad from a black vs white card render of Tony's hand-resized smart object; shadows rebuilt (black fill, measured) incl. Room Light (art level matched to the photo's paper)",
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers + Room Light (measured, masked)"
 }

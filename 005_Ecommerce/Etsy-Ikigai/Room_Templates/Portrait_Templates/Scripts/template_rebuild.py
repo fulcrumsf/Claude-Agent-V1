@@ -2,7 +2,7 @@
 newly generated room). The live PSD is never touched; Production never uses the rebuild until Tony clicks Approve on
 its "NEW · approve?" card in the Portal Templates tab (template_gallery.is_pending / template_build.decide_rebuild).
 
-  python template_rebuild.py <rel under Portrait_Templates> [--scene <png>] [--review <dir>] [--mat]
+  python template_rebuild.py <rel under Portrait_Templates> [--scene <png>] [--review <dir>] [--mat] [--paper]
 
 --mat (templates with a mat): the old mat layer is hidden, SAM finds the FRAME opening on the photo, and a new
 UNIFORM mat is built (Tony 2026-11-10: one width all round, bevel + shadow): a "Mat" board layer (colour sampled from
@@ -254,11 +254,11 @@ def main():
         box = [float(x0 - pad), float(y0 - pad), float(x1 + pad), float(y1 + pad)]
     (work / "b").mkdir()
     if mat_mode:
-        res0, _, _ = stp.sam_detect(scene, work / "b", s, box=box)
+        res0, _, _ = stp.sam_detect(scene, work / "b", s, box=box, paper="--paper" in sys.argv)
         board = old_mat_colour(psd, s, work, np.float32(res0["corners"]), r["art"]["id"])
         built = build_mat_psd(scene, t["ratio"], work / "b", s, box, board)
     else:
-        built = stp.build_psd(scene, t["ratio"], work / "b", s, box=box)
+        built = stp.build_psd(scene, t["ratio"], work / "b", s, box=box, paper="--paper" in sys.argv)
     stem = f"{psd.stem}_Rebuild_{DATE}"
     folder = psd.parent
     new_psd = folder / f"{stem}.psd"
