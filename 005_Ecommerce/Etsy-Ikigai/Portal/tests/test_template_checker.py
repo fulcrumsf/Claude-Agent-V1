@@ -107,3 +107,61 @@ def test_opening_verdict_accepts_the_pad_but_fails_slivers_and_more_overlap():
     assert len(over) == 1 and "covers the frame by 3.2 px" in over[0]
     assert tc.opening_verdict([2.5, -2.9, 0, 0], subpixel=False) == []              # old edge search: +-3 px
     assert tc.PAD_MAX_PX == 2.0 and tc.EDGE_TOL_PX == 0.5
+
+
+# ---------- independent edge check (Tony 2026-11-17) ----------
+
+from test_sam_frames import canvas_scene  # noqa: E402
+
+
+def test_edge_check_catches_art_on_the_canvas_side_edge_without_sam():
+    """The case that passed against itself: the art quad = face + side edge (SAM's shape). The independent check
+    reads the face edge from the scene pixels and names what the art edge sits on."""
+    img, face, both = canvas_scene()
+    st, why, sides = tc.edge_check(img, both, "canvas", tol=1.5, pad_allow=0.0)
+    assert st == "fail" and len(why) == 1 and why[0].startswith("right:") and "canvas side edge" in why[0], why
+    assert -14.5 <= sides["right"]["face_edge_px"] <= -12.5, sides["right"]
+    assert all(sides[n]["status"] == "pass" for n in ("top", "bottom", "left")), sides
+    st, why, sides = tc.edge_check(img, face, "canvas", tol=1.5, pad_allow=0.0)       # art exactly on the face
+    assert st == "pass", why
+    assert all(abs(s["face_edge_px"]) <= 1.0 for s in sides.values()), sides
+    short = face + np.float32([[4, 0], [-4, 0], [-4, 0], [4, 0]])                    # 4 px short left and right
+    st, why, sides = tc.edge_check(img, short, "canvas", tol=1.5, pad_allow=0.0)
+    assert st == "fail" and any(w.startswith("right:") and "strip of the face" in w for w in why), why
+
+
+def test_edge_check_frame_counts_shadowed_paper_as_opening_and_allows_the_pad():
+    img = framed(W=900, H=900, opening=(300, 200, 300, 400), frame=16)
+    gx = np.arange(900, dtype="float32")
+    ramp = 1 - 0.3 * np.exp(-np.clip(gx - 300, 0, None) / 3.0)                         # lip shadow on the paper (left)
+    img[200:600, 300:600] *= ramp[300:600][None, :, None]
+    o = quad(300, 200, 300, 400)
+    st, why, sides = tc.edge_check(img, o, "frame", tol=1.5, pad_allow=tc.PAD_MAX_PX)
+    assert st == "pass", (why, sides)
+    assert abs(sides["left"]["face_edge_px"]) <= 0.75, sides["left"]                     # the lip, not the ramp
+    st, why, _ = tc.edge_check(img, quad(292, 200, 308, 400), "frame", tol=1.5, pad_allow=tc.PAD_MAX_PX)
+    assert st == "fail" and why[0].startswith("left:") and "frame lip" in why[0], why    # 8 px onto the oak
+
+
+def test_edge_tolerance_is_about_one_screen_pixel_and_presentation_is_read_from_the_manifest():
+    assert tc.display_tol(2400) == 1.5 and tc.display_tol(800) == 1.0 and tc.display_tol(6000) == 2.0
+    assert tc.presentation_of({"presentation": "mat"}) == "mat"
+    assert tc.presentation_of({"insert": {"opening": {"mode": "canvas face (no frame lip)"}}}) == "canvas"
+    assert tc.presentation_of({"mode": "full"}, mats=True) == "mat" and tc.presentation_of(None) == "frame"
+    assert tc.opening_verdict([1.2, -3.2, 0, 0], tol=1.5) == []                      # within the display tolerance
+    assert tc.opening_verdict([1.2, 0, 0, 0]) != []                                  # the old 0.5 px default
+
+
+def test_edge_evidence_sheet_is_written(tmp_path):
+    img, face, both = canvas_scene()
+    _, _, sides = tc.edge_check(img, both, "canvas", tol=1.5, pad_allow=0.0)
+    p = tc.edge_evidence(img, img, both, sides, tmp_path / "ev.jpg")
+    from PIL import Image
+    with Image.open(p) as im:
+        assert im.width >= 4 * 320 and im.height >= 4 * 320
+
+
+def test_edge_check_skips_art_on_a_flat_mat_instead_of_inventing_a_gap():
+    img = np.full((900, 900, 3), (230, 228, 222), "float32")              # the art laid on a flat mat: no window edge
+    st, why, sides = tc.edge_check(img, quad(300, 200, 300, 400), "mat", tol=1.5, pad_allow=tc.PAD_MAX_PX)
+    assert st == "skip" and all(s["status"] == "unmeasured" for s in sides.values()), (why, sides)

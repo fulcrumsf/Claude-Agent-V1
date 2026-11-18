@@ -24,6 +24,9 @@ afterwards, so one scene works for any print and the art's pixels are never redr
                   wall mask when there is one, else the direction + depth of the measured light falloff across the
                   blank insert. Opacity = the measured darkening. Photo pixels are never copied into a shadow.
         Place Artwork Here (smart object on the art quad, native pixels at its true ratio)
+        Wrap Strip (placeholder)       canvas only, hidden in every render (wrap_strips.py)
+        Despill (orange bounce fix)    only the corrected pixels around the art (despill.py): the blank's orange
+                                       bounce removed from the gap / lip / side edges / bevel, luminance kept
         BASE (room photo)
   3b. card_verify(): a black and a white card rendered through the finished PSD; the visible art quad (sub-pixel fit
      on the anti-aliased difference) must sit within card_tol_px (1 px) of the art quad, reach the opening on every
@@ -551,15 +554,25 @@ def glass(q, W, H):
     return np.clip(0.55 * np.exp(-((t - 0.32) / 0.16) ** 2) + 0.25 * np.exp(-((t - 0.78) / 0.07) ** 2), 0, 1)
 
 
+CARD_FILL = (250, 215, 170)      # onion-skin orange
+CARD_GRID = (222, 158, 88)
+CARD_EDGE = (150, 62, 8)         # dark orange: the 1 px line ON the card's quad edge (Tony 2026-11-17)
+
+
 def placeholder(w, h, path):
+    """The placeholder / test card for the 'Place Artwork Here' smart object (never production art): onion-skin
+    orange (Tony 2026-11-16: against white paper, walls and mats the orange shows at a glance whether the smart object
+    sits exactly on the frame opening), a grid, and since 2026-11-17 a 1 px DARK ORANGE line in the card's outermost
+    pixel ring, i.e. exactly on the art quad's edge, so the art edge is visible in every render (for Tony, a fresh-eyes
+    review and the checker's 8x corner evidence). PSDs built before 2026-11-17 keep their old placeholder."""
     from PIL import Image
-    # onion-skin orange (Tony 2026-11-16): against white paper, walls and mats the orange shows at a glance whether the
-    # smart object sits exactly on the frame opening when the PSD is opened in PhotoCraft
     ph = np.empty((h, w, 3), "uint8")
-    ph[:] = (250, 215, 170)
+    ph[:] = CARD_FILL
     st = max(20, w // 12)
-    ph[:, ::st] = (222, 158, 88)
-    ph[::st, :] = (222, 158, 88)
+    ph[:, ::st] = CARD_GRID
+    ph[::st, :] = CARD_GRID
+    ph[0, :] = ph[-1, :] = CARD_EDGE
+    ph[:, 0] = ph[:, -1] = CARD_EDGE
     Image.fromarray(ph).save(path)
 
 
@@ -888,6 +901,14 @@ def assemble(base_png, outdir, files, art_q, out_psd, settings=None):
                 + _cmd("layer.layerMask.revealSelection", {}))         # (it consumes the selection)
     a = ["run", str(base_png), *_cmd("layer.setProps", {"name": BASE_NAME})]
     a += _cmd("layer.select", {"name": BASE_NAME})
+    if "Despill" in files:         # the orange bounce fix: corrected photo pixels only, directly above the BASE (despill)
+        from .despill import LAYER as DESPILL_LAYER
+        a += _cmd("file.placeEmbedded", {"path": P(files["Despill"]), "smartObject": False, "scale": 100})
+        a += _cmd("layer.setProps", {"name": DESPILL_LAYER, "blend": "Normal", "opacity": 1.0, "visible": True})
+    if "Wrap Strip" in files:      # canvas: the grey wrap-strip placeholder above the BASE, below the art (wrap_strips)
+        from .wrap_strips import LAYER as WRAP_LAYER
+        a += _cmd("file.placeEmbedded", {"path": P(files["Wrap Strip"]), "smartObject": False, "scale": 100})
+        a += _cmd("layer.setProps", {"name": WRAP_LAYER, "blend": "Normal", "opacity": 1.0, "visible": True})
     a += _cmd("file.placeEmbedded", {"path": P("placeholder.png"), "smartObject": True, "scale": 100})
     a += _cmd("layer.setProps", {"name": ART, "blend": "Normal"})
     a += _cmd("edit.transform", {"quad": _pts(art_q)})            # no selection is active here (deselect would fail)
@@ -993,6 +1014,17 @@ def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None
     base = work / "base.png"
     Image.fromarray(rgb).save(base)                   # flat RGB PNG (PhotoCraft opens it as the base layer)
     files = make_layers(rgb.astype("float32") / 255, q, aq, so, mode, work, wall, pad=pad)
+    from . import wrap_strips as wst
+    ws = wst.measure(rgb, aq, "canvas") if canvas else None     # gallery-wrap side strips (Tony 2026-11-17)
+    if ws:
+        wst.placeholder_png(ws, W, H, work / "L_wrap.png")
+        files["Wrap Strip"] = "L_wrap.png"
+    from . import despill as dsp
+    ds, ds_info = dsp.apply(rgb, aq)                  # orange bounce from the blank insert (Tony 2026-11-17)
+    if ds is not None:
+        dsp.layer_png(rgb, ds, work / "L_despill.png")
+        files["Despill"] = "L_despill.png"
+        ds_info["layer"] = dsp.LAYER
     psd = assemble(base, work, files, aq, work / "template.psd", settings)
     (work / "cards").mkdir(exist_ok=True)
     card = card_verify(psd, aq, settings, work / "cards", opening=q)
@@ -1000,7 +1032,9 @@ def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None
             "quad_paper": res.get("corners_paper"), "opening_pad_px": pad,
             "mode": mode, "so_px": so, "so_ratio": round(so[0] / so[1], 4), "insert": info,
             "shadows": files.get("_meta"), "card_test": card,
-            "canvas": [W, H], "light_from": light_side(rgb.astype("float32") @ W709, q)}
+            "canvas": [W, H], "light_from": light_side(rgb.astype("float32") @ W709, q),
+            "presentation": presentation or "frame", **({"wrap_strips": ws} if ws else {}),
+            **({"despill": ds_info} if ds is not None else {})}
 
 
 # ---------- step 1: the scene ----------
@@ -1054,7 +1088,8 @@ def save_template(settings, room, decor, ratio, scene_png, built, meta):
            "smart_object_layer": ART, "room": room, "etsy_room": room if room in rs.ETSY_ROOMS else None,
            "decor": decor, "ratio": ratio, "print_ratio": rs.PRINT_RATIO_TAG[ratio],
            **{k: built[k] for k in ("so_px", "so_ratio", "quad_insert", "quad_art", "mode", "canvas", "light_from")},
-           **{k: built[k] for k in ("quad_paper", "opening_pad_px") if k in built},
+           **{k: built[k] for k in ("quad_paper", "opening_pad_px", "presentation", "wrap_strips", "despill")
+              if k in built},
            "insert": built["insert"], "shadows": built.get("shadows"), "card_test": built.get("card_test"),
            "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
            "base_layer": BASE_NAME, "guard_max_cover": _cfg(settings, "room_guard_max_cover"),
@@ -1096,10 +1131,15 @@ def print_for(arts, ratio_value, tag=None):
     return pick_art(arts, ratio_value)
 
 
-def render_psd(psd, so_px, art, out_png, settings=None, work=None, max_crop=MAX_CROP):
+def render_psd(psd, so_px, art, out_png, settings=None, work=None, max_crop=MAX_CROP, manifest=None, wrap=True):
     """Swap the art into 'Place Artwork Here' and render. The art is cover-fit to the smart object's NATIVE pixels
     (read from the PSD; a template.json so_px can be wrong, e.g. the Wabi bedroom's 542x740 vs native 562x750).
-    Returns {"fitted", "cropped", "so_px"}."""
+    Canvas templates with "wrap_strips" in their manifest (app/wrap_strips.py, 2026-11-17): the placeholder strip
+    layer is hidden in the render and the mirrored, photo-shaded art band is laid over each camera-facing side (wrap
+    False = the plain render, for before/after). Every other template renders exactly as before. The despill layer
+    (app/despill.py), when the PSD has one, is part of the render like any other layer.
+    Returns {"fitted", "cropped", "so_px", "wrap_strips"}."""
+    from . import wrap_strips as wst
     work = Path(work or tempfile.mkdtemp())
     fitted = work / "fitted_art.png"
     try:
@@ -1107,11 +1147,34 @@ def render_psd(psd, so_px, art, out_png, settings=None, work=None, max_crop=MAX_
     except Exception:  # noqa: BLE001  (fall back to the manifest)
         native = list(so_px)
     cropped = fit_cover(art, tuple(native), fitted, max_crop)
-    _run(settings, ["run", str(psd), *_cmd("layer.select", {"name": ART}),
+    man = manifest if manifest is not None else (load_manifest(psd) or {})
+    strips = wst.has_strips(man)
+    hide = []
+    if strips:          # the grey placeholder is for PhotoCraft only (it is hidden whether or not strips are drawn)
+        hide = _cmd("layer.select", {"name": wst.LAYER}) + _cmd("layer.setProps", {"visible": False})
+    _run(settings, ["run", str(psd), *hide, *_cmd("layer.select", {"name": ART}),
                     *_cmd("layer.smartObjects.replaceContents", {"path": str(fitted.resolve())}), "--out", str(out_png)])
     if not Path(out_png).is_file():
         raise TemplateError(f"{Path(out_png).name} was not written")
-    return {"fitted": fitted, "cropped": cropped, "so_px": list(native)}
+    drawn = []
+    if strips and wrap:
+        from PIL import Image
+        scene = Path(psd).parent / str(man.get("scene") or "")
+        if not scene.is_file():
+            raise TemplateError(f"wrap strips need the template's scene PNG ({scene.name or 'none in the manifest'})")
+        with Image.open(out_png) as im:
+            ren = np.asarray(im.convert("RGB"))
+        with Image.open(scene) as im:
+            base = np.asarray(im.convert("RGB"))
+        from .despill import base_for
+        base = base_for(base, man)          # the PSD's despill layer sits under the strips: the same pixels here
+        with Image.open(fitted) as im:
+            fa = np.asarray(im.convert("RGB"))
+        if base.shape != ren.shape:
+            raise TemplateError(f"wrap strips: the scene {base.shape[1]}x{base.shape[0]} is not the render's size")
+        Image.fromarray(wst.composite(ren, base, fa, man["wrap_strips"], man.get("quad_art"))).save(out_png)
+        drawn = list(man["wrap_strips"]["sides"])
+    return {"fitted": fitted, "cropped": cropped, "so_px": list(native), "wrap_strips": drawn}
 
 
 # ---------- manifests for Tony's own PSDs ----------

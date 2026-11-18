@@ -712,6 +712,117 @@ def opening_quad(rgb, q_paper, reach=None):
     return qo + np.float32([x0, y0]), info
 
 
+# ---------- canvas: the printed FACE, never the side edge (Tony 2026-11-17) ----------
+# A stretched canvas in a 3/4 view shows its side edge on the camera-facing side(s). When the side edge is (nearly)
+# the face's colour SAM segments face + side edge as one shape, so the art ran ~14 px onto the side edge
+# (AI_Living_Room_Japandi_Minimalist_20261117_163603, right side). Fallback after SAM: per side, search INWARD from
+# SAM's edge for where the flat face ends: the first point (from the face plateau outward) where the colour leaves
+# the face's chromaticity by CANVAS_CHROMA_T (shading-invariant, so a soft shadow on the face is still face) or
+# brightness takes a hard step (CANVAS_LUM_STEP in log brightness within 1.5 px; a shading ramp is slower). When that
+# line lies more than CANVAS_MOVE_MIN_PX inside SAM's side, the side moves there plus CANVAS_INSET_PX inward.
+
+CANVAS_CHROMA_T = 0.03
+CANVAS_LUM_STEP = 0.12
+CANVAS_MOVE_MIN_PX = 0.75
+CANVAS_INSET_PX = 0.5
+
+
+def face_edge_1d(chrom_d, lum, offs):
+    """Where a flat face ends along one profile (offsets increasing outward, starting on the face plateau):
+    the innermost offset whose chromaticity distance from the face reaches CANVAS_CHROMA_T (linear crossing) or
+    whose log brightness takes a hard step (CANVAS_LUM_STEP over 1.5 px; placed at the step's peak). None = no end,
+    or the profile does not start on the face (a prop in front)."""
+    if float(chrom_d[0]) >= CANVAS_CHROMA_T:
+        return None
+    found = []
+    o_c = o_l = None
+    hit = np.nonzero(chrom_d >= CANVAS_CHROMA_T)[0]
+    if len(hit):
+        i = hit[0]
+        a, b = float(chrom_d[i - 1]), float(chrom_d[i])
+        o_c = float(offs[i - 1] + (offs[i] - offs[i - 1]) * (CANVAS_CHROMA_T - a) / max(b - a, 1e-9))
+    st = np.abs(np.interp(offs + 0.75, offs, lum) - np.interp(offs - 0.75, offs, lum))
+    st[(offs - 0.75 < offs[0]) | (offs + 0.75 > offs[-1])] = 0
+    hit = np.nonzero(st >= CANVAS_LUM_STEP)[0]
+    if len(hit):
+        i = j = hit[0]
+        while j + 1 < len(st) and st[j + 1] >= st[j] and offs[j + 1] - offs[i] <= 1.5:
+            j += 1
+        o_l = float(offs[j])                         # the step's steepest point = its 50% point
+    if o_c is not None and o_l is not None and 0 <= o_l - o_c <= 1.5:
+        return o_l                                   # the colour change is the shoulder of the same hard step
+    found = [o for o in (o_c, o_l) if o is not None]
+    return min(found) if found else None
+
+
+def canvas_face_quad(rgb, q_sam, reach=None):
+    """SAM's canvas quad -> the printed face (see the block comment above). Returns (quad, info). Never raises: a
+    side whose face end cannot be measured keeps SAM's line (info says why)."""
+    import cv2
+    q = order_quad(q_sam)
+    H, W = rgb.shape[:2]
+    size = min(math.dist(q[0], q[1]), math.dist(q[0], q[3]))
+    A = float(reach or np.clip(0.06 * size, 24.0, 60.0))
+    pad = int(A) + 8
+    x0, y0 = max(0, int(q[:, 0].min()) - pad), max(0, int(q[:, 1].min()) - pad)
+    x1, y1 = min(W, int(q[:, 0].max()) + pad + 1), min(H, int(q[:, 1].max()) + pad + 1)
+    img = cv2.GaussianBlur(rgb[y0:y1, x0:x1].astype("float32"), (0, 0), 0.6)
+    qc = q - np.float32([x0, y0])
+    h, w = img.shape[:2]
+    chrom = img / (img.sum(2, keepdims=True) + 0.5)
+    lum = np.log(img @ np.float32([0.2126, 0.7152, 0.0722]) + 1.0)
+    core = poly_coverage(offset_quad(qc, -A), w, h) > 0.99
+    info = {"mode": "canvas face (no frame lip)", "face_search_px": round(A, 1), "sides": {}}
+    if core.sum() < 200:
+        info["face_search"] = "face too small to measure; SAM's edge kept"
+        return q, info
+    c_face = np.median(chrom[core], 0)
+    if float(np.median(np.linalg.norm(chrom[core] - c_face, axis=1))) > CANVAS_CHROMA_T / 3:
+        info["face_search"] = "the face is not flat; SAM's edge kept"
+        return q, info
+    dmap = np.linalg.norm(chrom - c_face, axis=2).astype("float32")
+    offs = np.arange(-0.6 * A, 3.0 + 1e-6, 0.25, dtype="float32")
+    lines = []
+    for side in range(4):
+        name = SIDES[side]
+        a, b = qc[side], qc[(side + 1) % 4]
+        t = (b - a) / max(float(np.linalg.norm(b - a)), 1e-6)
+        nrm = np.float32([t[1], -t[0]])
+        if np.dot(qc.mean(0) - a, nrm) > 0:
+            nrm = -nrm                                                # outward
+        ts = np.linspace(0.06, 0.94, 200, dtype="float32")[:, None]
+        base = a + (b - a) * ts
+        P = base[:, None, :] + nrm[None, None, :] * offs[None, :, None]
+        D = _bilinear(dmap, P[..., 0] - 0.5, P[..., 1] - 0.5)
+        L = _bilinear(lum, P[..., 0] - 0.5, P[..., 1] - 0.5)
+        pts = []
+        for k in range(len(ts)):
+            e = face_edge_1d(D[k], L[k], offs)
+            if e is not None:
+                pts.append(base[k] + nrm * e)
+        st = {"points": len(pts)}
+        keep_sam = True
+        if len(pts) >= 80:
+            p0, p1, keep, rms = _robust_line(np.float32(pts), 0.75)
+            lq = [(qc[i], qc[(i + 1) % 4]) if i != side else (p0, p1) for i in range(4)]
+            o = side_offsets(qc, order_quad(_corners(lq)))[side]      # + = outside SAM's side
+            st.update(inliers=round(float(keep.mean()), 3), rms_px=round(rms, 3), face_edge_px=round(o, 2))
+            if keep.mean() >= 0.6 and rms <= 0.8 and o < -CANVAS_MOVE_MIN_PX:
+                n_in = nrm * CANVAS_INSET_PX
+                lines.append((p0 - n_in, p1 - n_in))
+                st["moved_px"] = round(o - CANVAS_INSET_PX, 2)
+                keep_sam = False
+            elif o < -CANVAS_MOVE_MIN_PX:
+                st["why_kept"] = "the face end is not one straight line"
+        else:
+            st["why_kept"] = "no face end found inside SAM's edge"
+        if keep_sam:
+            lines.append((a, b))
+        info["sides"][name] = st
+    qo = order_quad(_corners(lines))
+    return qo + np.float32([x0, y0]), info
+
+
 def edge_truth(rgb, q0, mask=None, R=8.0):
     """INDEPENDENT reference corners for the precision test (no SAM logits, no guided filter): along each side, the
     raw photo's Lab projected on the paper -> frame axis (one global colour each, material_axis weights: colour first,
@@ -774,8 +885,9 @@ def detect(image_path, box=None, wall=False, canvas=False, paper_fallback=False)
             alpha = refine_alpha(rgb, mask)
             q, stats = fit_quad(alpha, q_mask)
             ver = verify_quad(q, alpha, q_mask, stats)
-            if canvas:      # stretched canvas (Tony 2026-11-16): the printed face IS the opening, no frame lip to find
-                q_open, open_info = q.copy(), {"mode": "canvas face (no frame lip)"}
+            if canvas:      # stretched canvas (Tony 2026-11-16): the printed face IS the opening, no frame lip to find;
+                # SAM may include a same-colour side edge, so the face's own end is searched inward (2026-11-17)
+                q_open, open_info = canvas_face_quad(rgb, q)
             else:
                 try:
                     q_open, open_info = opening_quad(rgb, q)  # the frame's hard inner edge (Tony 2026-11-12)

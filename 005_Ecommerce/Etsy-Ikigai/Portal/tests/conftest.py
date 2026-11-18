@@ -29,4 +29,4 @@ def _no_sam_no_cards(monkeypatch):
 def _checker_without_sam(monkeypatch):
     """The checker tests use synthetic renders; their opening comes from the old edge search (SAM is the subprocess)."""
     from app import template_checker as tc
-    monkeypatch.setattr(tc, "sam_opening", lambda bg_png, V, settings=None, work=None, psd=None: (None, "test", None))
+    monkeypatch.setattr(tc, "sam_opening", lambda bg_png, V, settings=None, work=None, psd=None, canvas=False: (None, "test", None))

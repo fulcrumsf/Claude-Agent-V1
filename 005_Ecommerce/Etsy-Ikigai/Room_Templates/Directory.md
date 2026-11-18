@@ -37,7 +37,7 @@ Current tree (depth 3, template counts; 43 portrait PSDs; the Teak Sideboard roo
 | `003_Ratio_3x4` | `001_Living_Rooms` | Japandi_Minimalist 1, Modern 3, Boho_Colorful 1 | - |
 | `003_Ratio_3x4` | `002_Bedroom` / `004_Kitchen_Bar` | (no style folders) | 4 / 2 |
 | `004_Ratio_4x5` | `001_Living_Rooms` | Japandi_Minimalist 3, Modern 5, Boho_Colorful 1 | - |
-| `005_Ratio_11x14` | `001_Living_Rooms` | Modern 1, Boho_Colorful 2 (Japandi_Minimalist empty) | - |
+| `005_Ratio_11x14` | `001_Living_Rooms` | Modern 1, Boho_Colorful 2, Japandi_Minimalist 1 (AI canvas build 2026-11-17, `approved: false`) | - |
 | `005_Ratio_11x14` | `002_Bedroom` / `004_Kitchen_Bar` | (no style folders) | 1 / 1 |
 
 - Pick the ratio folder by the art slot's **nearest standard ratio** (SO ratio column), not the exact slot ratio. 5x7 (0.714) and ISO (0.707) share `001_Ratio_ISO`; 11x14 (0.786) goes to `005_Ratio_11x14`, 4x5 (0.800) to `004_Ratio_4x5`.
@@ -155,6 +155,7 @@ A COPY of Tony's Photoshop portrait room mockups; the originals live in iCloud (
 | `Portrait_Templates/003_Ratio_3x4/001_Living_Rooms/003_Boho_Colorful/LVRM_Trendy_Girl_5x7/LVRM_Trendy_Girl_5x7.psd` | Living_Rooms | Trendy | 539x725 | 0.743 | 0.744 | 3x4 | 3x4 | Same Parisian room, tighter crop | ready (shape converted) | SHADOWS, GLARE |
 | `Portrait_Templates/003_Ratio_3x4/001_Living_Rooms/002_Modern/LVRM_Floor_ISO/LVRM_Floor_ISO_Template.psd` | Living_Rooms | Unstyled | 805x1087 | 0.741 | 0.744 | 3x4 | 3x4 | Large leaning floor frame, black lounge chair, sunny window | made-from-PNG | SHADOWS, GLARE |
 | `Portrait_Templates/003_Ratio_3x4/001_Living_Rooms/001_Japandi_Minimalist/LVRM_Wabi_ISO/LVRM_Wabi_ISO_Template.psd` | Living_Rooms | Wabi_Sabi | 460x617 | 0.746 | 0.746 | 3x4 | 3x4 | Wabi-sabi loft, beams, brick, olive sofa, dried branches | made-from-PNG | SHADOWS, GLARE |
+| `Portrait_Templates/005_Ratio_11x14/001_Living_Rooms/001_Japandi_Minimalist/AI_Living_Room_Japandi_Minimalist_20261117_163603_Template.psd` | Living_Rooms | Japandi_Minimalist | 641x952 | 0.673 | 0.673 | 11x14 | 11x14 | AI scene (Build this): stretched orange-face canvas in a pale wood floater frame, 3/4 view; rebuilt 2026-11-17 off the canvas side edge (was 656x955; old PSD + sidecar in `Archive/`), checker PASS | AI build, not approved yet | SHADOWS, GLARE |
 | `Portrait_Templates/005_Ratio_11x14/004_Kitchen_Bar/002_BC_Teal_ISO/002_BC_Teal_ISO.psd` | Kitchen_Bar | Food_and_Drink | 925x1198 | 0.772 | 0.770 | 11x14 | 4x5/11x14 | Wide teal hallway, pink-brass bar cart | ready (shape converted) | SHADOWS, GLARE |
 | `Portrait_Templates/005_Ratio_11x14/002_Bedroom/BDRM-MidCentury_ISO/BDRM-MidCentury_ISO_Template.psd` | Bedroom | Mid_Century | 420x541 | 0.776 | 0.774 | 11x14 | 4x5/11x14 | Mid-century bedroom, cream wall, walnut nightstands, rust cushions | made-from-PNG | SHADOWS, GLARE |
 | `Portrait_Templates/005_Ratio_11x14/001_Living_Rooms/003_Boho_Colorful/001_Colorful_LVRM_ISO/001_Colorful_LVRM_ISO.psd` | Living_Rooms | Boho | 621x790 | 0.786 | 0.775 | 11x14 | 4x5/11x14 | Colourful retro/boho living room, mustard sofa, turquoise arch | ready (renamed) | group `WITH MATTE BORDER` (mat + `Shadow Overlay`), `Picture Fame` (frame), group `Glass Reflection` (hidden) |

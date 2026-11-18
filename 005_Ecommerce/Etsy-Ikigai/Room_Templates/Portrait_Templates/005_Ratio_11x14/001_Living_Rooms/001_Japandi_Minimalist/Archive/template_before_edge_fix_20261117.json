@@ -1,0 +1,314 @@
+{
+ "name": "AI_Living_Room_Japandi_Minimalist_20261117_163603",
+ "kind": "ai_scene",
+ "psd": "AI_Living_Room_Japandi_Minimalist_20261117_163603_Template.psd",
+ "scene": "AI_Living_Room_Japandi_Minimalist_20261117_163603_Scene.png",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living room",
+ "etsy_room": "Living room",
+ "decor": "Japandi_Minimalist",
+ "ratio": "11x14",
+ "so_px": [
+  656,
+  955
+ ],
+ "so_ratio": 0.6869,
+ "quad_insert": [
+  [
+   1073.072021484375,
+   206.52200317382812
+  ],
+  [
+   1694.1070556640625,
+   164.23500061035156
+  ],
+  [
+   1693.758056640625,
+   1118.9659423828125
+  ],
+  [
+   1072.3060302734375,
+   1103.7139892578125
+  ]
+ ],
+ "quad_art": [
+  [
+   1073.072021484375,
+   206.52200317382812
+  ],
+  [
+   1694.1070556640625,
+   164.23500061035156
+  ],
+  [
+   1693.758056640625,
+   1118.9659423828125
+  ],
+  [
+   1072.3060302734375,
+   1103.7139892578125
+  ]
+ ],
+ "mode": "full",
+ "canvas": [
+  2400,
+  1792
+ ],
+ "light_from": "left",
+ "insert": {
+  "aspect": 0.6869,
+  "screen_aspect": 0.6718,
+  "skew": 1.064,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    1072.8,
+    179.2,
+    1694.4,
+    1114.6
+   ],
+   "box_source": "gemini",
+   "sam": {
+    "prompt": "box+click",
+    "score": 0.988827109336853,
+    "area": 563061,
+    "dE": 2.0,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.988827109336853,
+      "area": 563061,
+      "dE": 2.0
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9448680877685547,
+      "area": 640803,
+      "dE": 24.4
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9925259351730347,
+      "area": 586659,
+      "dE": 123.5
+     },
+     {
+      "prompt": "click",
+      "score": 0.9751346111297607,
+      "area": 576370,
+      "dE": 70.1
+     },
+     {
+      "prompt": "click",
+      "score": 0.927828848361969,
+      "area": 640328,
+      "dE": 24.9
+     },
+     {
+      "prompt": "click",
+      "score": 0.9305341243743896,
+      "area": 625903,
+      "dE": 74.1
+     },
+     {
+      "prompt": "box",
+      "score": 0.9522395730018616,
+      "area": 637377,
+      "dE": 25.6
+     },
+     {
+      "prompt": "box",
+      "score": 0.9927400946617126,
+      "area": 585045,
+      "dE": 127.5
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9855,
+    "corner_shift_px": [
+     1.47,
+     2.59,
+     8.65,
+     2.69
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 0.98,
+      "rms_px": 0.149
+     },
+     "right": {
+      "points": 200,
+      "inliers": 0.98,
+      "rms_px": 0.296
+     },
+     "bottom": {
+      "points": 180,
+      "inliers": 0.817,
+      "rms_px": 0.203
+     },
+     "left": {
+      "points": 171,
+      "inliers": 0.988,
+      "rms_px": 0.277
+     }
+    }
+   },
+   "wall_px": 2367582
+  },
+  "opening": {
+   "mode": "canvas face (no frame lip)"
+  },
+  "quad_paper": [
+   [
+    1073.072021484375,
+    206.52200317382812
+   ],
+   [
+    1694.1070556640625,
+    164.23500061035156
+   ],
+   [
+    1693.758056640625,
+    1118.9659423828125
+   ],
+   [
+    1072.3060302734375,
+    1103.7139892578125
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.883,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.366
+    },
+    {
+     "side": "right",
+     "hard_k": 0.74
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.549
+    },
+    {
+     "side": "left",
+     "hard_k": 0.216
+    }
+   ],
+   "pad_px": 0.0
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.844,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.517,
+     "width_px": 0.0,
+     "blur_px": 0.8,
+     "fit_rms": 0.0014
+    },
+    {
+     "side": "right",
+     "soft_k": 0.778,
+     "width_px": 9.0,
+     "blur_px": 4.21,
+     "fit_rms": 0.0158
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.808,
+     "width_px": 0.5,
+     "blur_px": 1.92,
+     "fit_rms": 0.0081
+    },
+    {
+     "side": "left",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0001
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "falloff",
+   "deg": -5.5,
+   "measured_drop": 0.069,
+   "opacity": 0.069,
+   "insert_texture": 0.005,
+   "sun_line": "searched on SAM's wall mask: none"
+  }
+ },
+ "quad_paper": [
+  [
+   1073.072021484375,
+   206.52200317382812
+  ],
+  [
+   1694.1070556640625,
+   164.23500061035156
+  ],
+  [
+   1693.758056640625,
+   1118.9659423828125
+  ],
+  [
+   1072.3060302734375,
+   1103.7139892578125
+  ]
+ ],
+ "opening_pad_px": 0.0,
+ "card_test": {
+  "visible_quad": [
+   [
+    1073.16796875,
+    206.5229949951172
+   ],
+   [
+    1694.0699462890625,
+    164.24600219726562
+   ],
+   [
+    1693.8360595703125,
+    1118.8819580078125
+   ],
+   [
+    1072.2919921875,
+    1103.6280517578125
+   ]
+  ],
+  "corner_err_px": [
+   0.1,
+   0.04,
+   0.12,
+   0.09
+  ],
+  "max_px": 0.12,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": -0.01,
+   "right": 0.02,
+   "bottom": -0.09,
+   "left": -0.04
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "prompt": "Photorealistic japandi minimalist living room interior featuring one vertical piece of wall art (11:14 ratio). Realistic textures, subtle decor, moody and lived-in detail that feels authentic. Lighting is soft warm daylight, naturally diffused, never harsh. Camera angle: 3/4 corner. Composition should be vertical, focused on the artwork and wall area. Only one piece of wall art, no other frames. The artwork's printed area is a single flat, plain, matte, empty onion-skin orange (a pale peachy-orange, roughly RGB 250, 215, 170) surface, completely uniform: no artwork, no text, no logo, no gradient, no glare, no reflection and no heavy shadow on it. The artwork is a thick stretched gallery canvas, 1.5 to 2 inches (4-5 cm) deep, with the orange face and clearly visible orange side edges, mounted inside a thin NATURAL LIGHT WOOD floater frame (floating frame), a warm natural wood colour, never black or dark. The canvas sits inset inside the frame with a narrow even visible gap of about 0.5 cm between the canvas edge and the frame's inner lip; the gap shows only a soft light shadow (never black), so the pale wood frame, the thin gap and the orange canvas edge are three clearly separate bands. The piece stands off the wall by the canvas depth and casts only a soft, light, diffuse shadow on the wall. Camera: a slight 3/4 view so the depth shows. No people, no faces, no hands, no pets. No lamps unless the room clearly needs one; only props a real person would leave there, nothing staged. Wall paneling or wainscoting only if the room style calls for it (elegant or traditional rooms); if used, either keep it below waist height and fully below the frame, or make the panels larger than the frame with the frame hanging centred inside one panel, with clear wall space on every side; the frame never touches or overlaps any molding, rail or panel edge.",
+ "engine": "nbpro",
+ "model": "nano-banana-pro",
+ "credits": 18.0,
+ "built_for": "gap (Templates tab)",
+ "approved": false,
+ "created": "2026-11-17T16:36:03"
+}

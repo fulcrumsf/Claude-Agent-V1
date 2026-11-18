@@ -45,8 +45,11 @@ def gap_plan(g, settings=None):
     room = FOLDER_ROOM.get(room_key) or (tg.label(parts[1]) if len(parts) > 1 else "Living room")
     decor = re.sub(r"\s+", "_", tg.label(parts[-1])) if len(parts) > 2 else "Modern"
     eng = (settings or {}).get("room_scene_engine", stp.DEFAULTS["room_scene_engine"])
+    # the tile's tooltip shows the prompt with the look marked "picked at random when Build this is clicked": a
+    # sample pick here would differ from the one the build draws (and change on every refresh); run() picks it
     return {"rel": g["rel"], "room": room, "decor": decor, "ratio": g["ratio"],
-            "prompt": rs.scene_prompt(room, decor, g["ratio"]) if g["ratio"] in rs.RATIO_VALUE else None,
+            "prompt": rs.scene_prompt(room, decor, g["ratio"], look=rs.LOOK_AT_BUILD)
+            if g["ratio"] in rs.RATIO_VALUE else None, "look": "picked at random at build time (saved in template.json)",
             "credits": stp.SCENE_CREDITS.get(eng), "engine": eng,
             "path": f"Room_Templates/{stp.LIBRARY}/{g['rel']}/"}
 
@@ -102,12 +105,18 @@ def _stage(t):
         _job["stage"] = t
 
 
-def run(rel, settings=None, generator=None, check=True):
-    """Worker: draw the room, build the PSD, save it INTO the gap folder, run the checker. Releases the job."""
+def run(rel, settings=None, generator=None, check=True, look=None):
+    """Worker: draw the room, build the PSD, save it INTO the gap folder, run the checker. Releases the job.
+    look: None = a fresh weighted random look (room_slots.pick_look); an int = that seed (replay); a dict = a recorded
+    look / {axis: option} override. The look and the exact prompt sent are saved in template.json."""
     try:
         gaps = {g["rel"]: g for g in tg.scan(settings)[1]}
         plan = gap_plan(gaps[rel], settings)
         folder = lib(settings) / rel
+        look = rs.pick_look(plan["room"], plan["decor"], seed=look.get("seed") if isinstance(look, dict) else look,
+                            override=look if isinstance(look, dict) else None)
+        plan["look"] = look
+        plan["prompt"] = rs.scene_prompt(plan["room"], plan["decor"], plan["ratio"], look=look)
         with tempfile.TemporaryDirectory() as td:
             td = Path(td)
             scene = td / "scene.png"
@@ -136,10 +145,11 @@ def run(rel, settings=None, generator=None, check=True):
                    "decor": plan["decor"], "ratio": plan["ratio"],
                    **{k: built[k] for k in ("so_px", "so_ratio", "quad_insert", "quad_art", "mode", "canvas",
                                             "light_from", "insert", "shadows")},
-                   **{k: built[k] for k in ("quad_paper", "opening_pad_px") if k in built},
+                   **{k: built[k] for k in ("quad_paper", "opening_pad_px", "presentation", "wrap_strips")
+                      if k in built},
                    "card_test": built.get("card_test"),
                    "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
-                   "base_layer": stp.BASE_NAME, "prompt": plan["prompt"], "engine": plan["engine"],
+                   "base_layer": stp.BASE_NAME, "prompt": plan["prompt"], "look": plan["look"], "engine": plan["engine"],
                    "model": gen.get("model"), "credits": gen.get("credits"), "built_for": "gap (Templates tab)",
                    "approved": False, "created": datetime.now().isoformat(timespec="seconds")}
             (folder / stp.MANIFEST).write_text(json.dumps(man, indent=1) + "\n")

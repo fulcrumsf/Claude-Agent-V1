@@ -265,8 +265,12 @@ def tint_card(w, h, path):
     test_card(w, h, path)
     with Image.open(path) as im:
         r, g, b = im.convert("RGB").split()
-    Image.merge("RGB", (r.point(lambda v: round(v * TINT_MUL[0])), g.point(lambda v: round(v * TINT_MUL[1])),
-                        b.point(lambda v: round(v * TINT_MUL[2])))).save(path)
+    im = Image.merge("RGB", (r.point(lambda v: round(v * TINT_MUL[0])), g.point(lambda v: round(v * TINT_MUL[1])),
+                             b.point(lambda v: round(v * TINT_MUL[2]))))
+    from PIL import ImageDraw                    # 1 px dark-orange line on the card's edge = the art quad's edge
+    from .scene_templates import CARD_EDGE       # (Tony 2026-11-17; test renders only, never production art)
+    ImageDraw.Draw(im).rectangle([0, 0, w - 1, h - 1], outline=CARD_EDGE, width=1)
+    im.save(path)
 
 
 def test_card(w, h, path):

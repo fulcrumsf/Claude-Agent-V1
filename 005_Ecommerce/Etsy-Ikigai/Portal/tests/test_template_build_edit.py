@@ -8,7 +8,7 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
-from app import scene_templates as stp, template_build as tb, template_edit as te, template_gallery as tg
+from app import room_slots as rs, scene_templates as stp, template_build as tb, template_edit as te, template_gallery as tg
 from test_scene_templates import FakeCraft, fake_generator, scene
 
 
@@ -43,6 +43,13 @@ def test_gap_plan_and_build_into_the_gap_folder_then_deny_to_archive(S, tmp_path
     assert len(before) == 3 and not [p for p in folder.iterdir() if p.is_dir()]        # no new folder
     man = json.loads((folder / "template.json").read_text())
     assert man["approved"] is False and man["credits"] == 18 and calls[0]["prompt"].startswith("Photorealistic japandi bedroom")
+    # the light/photographer look: the tile preview says it is picked at build time; the build records the real pick
+    assert "picked at random when Build this is clicked" in plan["prompt"]
+    lk = man["look"]
+    assert set(rs.LOOK_ORDER) <= set(lk) and isinstance(lk["seed"], int)
+    assert man["prompt"] == calls[0]["prompt"] and rs.LOOK_AXES["light_style"][lk["light_style"]][1] in man["prompt"]
+    assert man["prompt"] == rs.scene_prompt("Bedroom", "Japandi", "2x3", look=rs.pick_look("Bedroom", "Japandi",
+                                                                                           seed=lk["seed"]))
     t = next(x for x in tg.scan(S)[0] if x["rel"] == tb.job()["made"])
     assert t["room"] == "Bedroom" and plan["rel"] not in {g["rel"] for g in tg.scan(S)[1]}
     tb.decide(t["rel"], "denied", S)

@@ -786,6 +786,16 @@
    "key": "fae53a1ef764cc59",
    "model": "gemini-3.5-flash-lite",
    "tokens": 1222
+  },
+  "005_Ratio_11x14/001_Living_Rooms/001_Japandi_Minimalist/AI_Living_Room_Japandi_Minimalist_20261117_163603_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "8b8d4ddeef2d86d0",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1238
   }
  }
 }

@@ -541,7 +541,8 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 if card["ratio"] not in (avail.get(card["room"]) or []):
                     raise stp.TemplateError(f"no {card['room']} folder in Room_Templates for "
                                             f"{rs.RATIO_LABEL[card['ratio']]}; pick a template with +")
-                prompt = rs.scene_prompt(card["room"], card["decor"], card["ratio"])
+                look = rs.pick_look(card["room"], card["decor"])      # weighted random, saved in template.json
+                prompt = rs.scene_prompt(card["room"], card["decor"], card["ratio"], look=look)
                 scene = td / "scene.png"
                 _stage("drawing the room (kie.ai)")
                 gen = stp.generate_scene(prompt, scene, settings, generator)
@@ -557,7 +558,7 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                     shutil.copy2(scene, keep)
                     why = str(e) if "off the print ratio" in str(e) else "the scene has no clean blank frame insert"
                     raise stp.TemplateError(f"{why} (scene kept as {ARCHIVE}/{keep.name}); Regenerate for a new scene")
-                meta = {"prompt": prompt, "engine": settings.get("room_scene_engine", "nbpro"),
+                meta = {"prompt": prompt, "look": look, "engine": settings.get("room_scene_engine", "nbpro"),
                         "model": gen.get("model"), "resolution": settings.get("room_scene_resolution", "2K"),
                         "aspect": settings.get("room_scene_aspect", "4:3"), "credits": gen.get("credits"),
                         "made_for": {"idea_id": idea_id, "design": lst["title"], "slot": slot}}
@@ -566,7 +567,7 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 man = stp.load_manifest(psd)
                 _stage("rendering the art into the room")
                 art = stp.print_for(arts, rs.RATIO_VALUE[card["ratio"]], rs.PRINT_RATIO_TAG[card["ratio"]])
-                r = stp.render_psd(psd, man["so_px"], art, render, settings, td)
+                r = stp.render_psd(psd, man["so_px"], art, render, settings, td, manifest=man)
                 g = rt.guard_quad(render, r["fitted"], man["quad_art"], tdir / man["scene"],
                                   man.get("guard_max_cover"), settings)
                 out.update(template=rel, new_template=rel, print=art.name, cropped=r["cropped"])
@@ -583,7 +584,7 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 _stage("rendering the art into the room")
                 man = stp.manifest_for_render(t, settings)
                 art = stp.print_for(arts, man["so_px"][0] / man["so_px"][1])
-                r = stp.render_psd(t["psd"], man["so_px"], art, render, settings, td)
+                r = stp.render_psd(t["psd"], man["so_px"], art, render, settings, td, manifest=man)
                 g = rt.guard_quad(render, r["fitted"], man["quad_art"], None, None, settings)
                 out.update(template=t["rel"], print=art.name, cropped=r["cropped"])
             with LOCK:

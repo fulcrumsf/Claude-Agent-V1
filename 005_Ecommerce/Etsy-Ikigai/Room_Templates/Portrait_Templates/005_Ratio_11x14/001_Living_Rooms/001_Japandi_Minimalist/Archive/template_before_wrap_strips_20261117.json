@@ -1,0 +1,350 @@
+{
+ "name": "AI_Living_Room_Japandi_Minimalist_20261117_163603",
+ "kind": "ai_scene",
+ "psd": "AI_Living_Room_Japandi_Minimalist_20261117_163603_Template.psd",
+ "scene": "AI_Living_Room_Japandi_Minimalist_20261117_163603_Scene.png",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Living room",
+ "etsy_room": "Living room",
+ "decor": "Japandi_Minimalist",
+ "ratio": "11x14",
+ "so_px": [
+  641,
+  952
+ ],
+ "so_ratio": 0.6733,
+ "quad_insert": [
+  [
+   1073.072021484375,
+   206.52200317382812
+  ],
+  [
+   1680.1490478515625,
+   165.18600463867188
+  ],
+  [
+   1680.0909423828125,
+   1117.0670166015625
+  ],
+  [
+   1072.3070068359375,
+   1102.0379638671875
+  ]
+ ],
+ "quad_art": [
+  [
+   1073.072021484375,
+   206.52200317382812
+  ],
+  [
+   1680.1490478515625,
+   165.18600463867188
+  ],
+  [
+   1680.0909423828125,
+   1117.0670166015625
+  ],
+  [
+   1072.3070068359375,
+   1102.0379638671875
+  ]
+ ],
+ "mode": "full",
+ "canvas": [
+  2400,
+  1792
+ ],
+ "light_from": "left",
+ "insert": {
+  "aspect": 0.6738,
+  "screen_aspect": 0.6585,
+  "skew": 1.063,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    1072.8,
+    179.2,
+    1694.4,
+    1114.6
+   ],
+   "box_source": "given",
+   "sam": {
+    "prompt": "box+click",
+    "score": 0.9888266324996948,
+    "area": 563045,
+    "dE": 2.0,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.9888266324996948,
+      "area": 563045,
+      "dE": 2.0
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.94486403465271,
+      "area": 640801,
+      "dE": 24.4
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9925268888473511,
+      "area": 586658,
+      "dE": 123.5
+     },
+     {
+      "prompt": "click",
+      "score": 0.9751350283622742,
+      "area": 576370,
+      "dE": 70.1
+     },
+     {
+      "prompt": "click",
+      "score": 0.9278272986412048,
+      "area": 640328,
+      "dE": 24.9
+     },
+     {
+      "prompt": "click",
+      "score": 0.9305329918861389,
+      "area": 625902,
+      "dE": 74.1
+     },
+     {
+      "prompt": "box",
+      "score": 0.9522385001182556,
+      "area": 637375,
+      "dE": 25.6
+     },
+     {
+      "prompt": "box",
+      "score": 0.9927409291267395,
+      "area": 585042,
+      "dE": 127.5
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9855,
+    "corner_shift_px": [
+     1.47,
+     2.59,
+     8.63,
+     2.72
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 0.98,
+      "rms_px": 0.149
+     },
+     "right": {
+      "points": 200,
+      "inliers": 0.98,
+      "rms_px": 0.296
+     },
+     "bottom": {
+      "points": 180,
+      "inliers": 0.817,
+      "rms_px": 0.203
+     },
+     "left": {
+      "points": 171,
+      "inliers": 0.988,
+      "rms_px": 0.277
+     }
+    }
+   },
+   "wall_px": 2367584
+  },
+  "opening": {
+   "mode": "canvas face (no frame lip)",
+   "face_search_px": 37.3,
+   "sides": {
+    "top": {
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.136,
+     "face_edge_px": -0.0
+    },
+    "right": {
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.145,
+     "face_edge_px": -13.31,
+     "moved_px": -13.81
+    },
+    "bottom": {
+     "points": 200,
+     "inliers": 0.935,
+     "rms_px": 0.141,
+     "face_edge_px": -1.12,
+     "moved_px": -1.62
+    },
+    "left": {
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.108,
+     "face_edge_px": 0.62
+    }
+   }
+  },
+  "quad_paper": [
+   [
+    1073.072021484375,
+    206.52200317382812
+   ],
+   [
+    1694.1070556640625,
+    164.23500061035156
+   ],
+   [
+    1693.758056640625,
+    1118.9659423828125
+   ],
+   [
+    1072.3050537109375,
+    1103.7139892578125
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.501,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.363
+    },
+    {
+     "side": "right",
+     "hard_k": 0.133
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.294
+    },
+    {
+     "side": "left",
+     "hard_k": 0.217
+    }
+   ],
+   "pad_px": 0.0
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.182,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.257,
+     "width_px": 0.5,
+     "blur_px": 0.62,
+     "fit_rms": 0.0008
+    },
+    {
+     "side": "right",
+     "soft_k": 0.73,
+     "width_px": -3.5,
+     "blur_px": 2.97,
+     "fit_rms": 0.0048
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.699,
+     "width_px": -1.75,
+     "blur_px": 2.72,
+     "fit_rms": 0.0022
+    },
+    {
+     "side": "left",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "falloff",
+   "deg": -5.6,
+   "measured_drop": 0.067,
+   "opacity": 0.067,
+   "insert_texture": 0.005,
+   "sun_line": "searched on SAM's wall mask: none"
+  }
+ },
+ "quad_paper": [
+  [
+   1073.072021484375,
+   206.52200317382812
+  ],
+  [
+   1694.1070556640625,
+   164.23500061035156
+  ],
+  [
+   1693.758056640625,
+   1118.9659423828125
+  ],
+  [
+   1072.3050537109375,
+   1103.7139892578125
+  ]
+ ],
+ "opening_pad_px": 0.0,
+ "card_test": {
+  "visible_quad": [
+   [
+    1073.16796875,
+    206.52499389648438
+   ],
+   [
+    1680.072021484375,
+    165.1999969482422
+   ],
+   [
+    1680.072021484375,
+    1117.0810546875
+   ],
+   [
+    1072.2939453125,
+    1102.0150146484375
+   ]
+  ],
+  "corner_err_px": [
+   0.1,
+   0.08,
+   0.02,
+   0.03
+  ],
+  "max_px": 0.1,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": -0.01,
+   "right": -0.05,
+   "bottom": -0.0,
+   "left": -0.04
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "prompt": "Photorealistic japandi minimalist living room interior featuring one vertical piece of wall art (11:14 ratio). Realistic textures, subtle decor, moody and lived-in detail that feels authentic. Lighting is soft warm daylight, naturally diffused, never harsh. Camera angle: 3/4 corner. Composition should be vertical, focused on the artwork and wall area. Only one piece of wall art, no other frames. The artwork's printed area is a single flat, plain, matte, empty onion-skin orange (a pale peachy-orange, roughly RGB 250, 215, 170) surface, completely uniform: no artwork, no text, no logo, no gradient, no glare, no reflection and no heavy shadow on it. The artwork is a thick stretched gallery canvas, 1.5 to 2 inches (4-5 cm) deep, with the orange face and clearly visible orange side edges, mounted inside a thin NATURAL LIGHT WOOD floater frame (floating frame), a warm natural wood colour, never black or dark. The canvas sits inset inside the frame with a narrow even visible gap of about 0.5 cm between the canvas edge and the frame's inner lip; the gap shows only a soft light shadow (never black), so the pale wood frame, the thin gap and the orange canvas edge are three clearly separate bands. The piece stands off the wall by the canvas depth and casts only a soft, light, diffuse shadow on the wall. Camera: a slight 3/4 view so the depth shows. No people, no faces, no hands, no pets. No lamps unless the room clearly needs one; only props a real person would leave there, nothing staged. Wall paneling or wainscoting only if the room style calls for it (elegant or traditional rooms); if used, either keep it below waist height and fully below the frame, or make the panels larger than the frame with the frame hanging centred inside one panel, with clear wall space on every side; the frame never touches or overlaps any molding, rail or panel edge.",
+ "engine": "nbpro",
+ "model": "nano-banana-pro",
+ "credits": 18.0,
+ "built_for": "gap (Templates tab)",
+ "approved": false,
+ "created": "2026-11-17T16:36:03",
+ "presentation": "canvas",
+ "rebuilt": {
+  "when": "2026-11-17T17:02:36",
+  "why": "canvas side edge: SAM took face + right side edge as one shape (art ran ~13 px onto the side edge); rebuilt from the same scene with the canvas face search (sam_frames.canvas_face_quad)",
+  "old_files": "Archive/AI_Living_Room_Japandi_Minimalist_20261117_163603_Template_before_edge_fix_20261117.psd, Archive/template_before_edge_fix_20261117.json",
+  "credits": 0
+ }
+}

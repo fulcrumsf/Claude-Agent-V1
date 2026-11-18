@@ -12,6 +12,9 @@ Per template, PASS / FAIL with plain reasons:
               +-3 px) when SAM is not installed, fails, or the template has a mat.
   2 card      black card vs white card: pixels inside the opening that do not change = a gap (white sliver);
               pixels beyond the opening + the 2 px pad that change = art over the frame
+  2b edge     INDEPENDENT of SAM and of the builder's outline (2026-11-17): the rendered art edge vs the face edge
+              read from the scene's own pixels (perpendicular colour profiles; canvas side edge / frame lip / mat
+              bevel named), +-1-2 px (about one screen pixel); 8x corner evidence JPG in the gallery cache
   3 overlay   every shadow / glare layer's effect stays inside the art opening (rendered alone over a grey card)
   4 purity    every shadow layer is neutral (black fill: R = G = B) and smooth (not copied photo pixels)
   5 sun       the wall's sun line (light/shade edge measured on the base, ONLY on SAM's wall mask) vs the shadow
@@ -62,8 +65,8 @@ STRUCT_WORDS = ("mat", "matte", "frame", "fame", "paper", "foreground", "canvas"
 # "Scene Light & Shadow ... is the blank insert from the photo"; spec item 3: Frame Edge Shadow + Scene Light & Shadow
 # were photo copies). Suspect until rebuilt as black fills (template.json "layers_verified" marks a rebuilt template).
 PHOTO_BUILT = {"Scene Light & Shadow", "Frame Edge Shadow"}
-CHECKS = ["opening", "card", "overlay", "purity", "sun", "ratio", "mat", "placement", "layers"]
-LABELS = {"opening": "Opening vs art", "card": "Black/white card", "overlay": "Overlay size", "purity": "Overlay purity",
+CHECKS = ["opening", "card", "edge", "overlay", "purity", "sun", "ratio", "mat", "placement", "layers"]
+LABELS = {"opening": "Opening vs art", "card": "Black/white card", "edge": "Edge (independent)", "overlay": "Overlay size", "purity": "Overlay purity",
           "sun": "Sun angle", "ratio": "Ratio", "mat": "Mat", "placement": "Placement (wall molding)",
           "layers": "Layer names"}
 _job = {"running": False, "done": 0, "total": 0, "current": "", "error": ""}
@@ -142,6 +145,18 @@ def roles(flat):
         if l.get("blend") in OVERLAY_BLENDS or any(w in nm for w in OVERLAY_WORDS):
             overlays.append(l)
     return {"art": art, "base": base, "overlays": overlays, "mats": mats, "foreground": fg, "art_index": ai}
+
+
+def wrap_layers(flat):
+    """The canvas wrap-strip placeholder layer(s) (wrap_strips.LAYER): below the art, never an overlay or a mat."""
+    from .wrap_strips import LAYER
+    return [l for l in flat if l.get("name") == LAYER and l.get("kind") != "Group"]
+
+
+def despill_layers(flat):
+    """The orange-despill retouch layer(s) (despill.LAYER): below the art, never an overlay, a mat or the base."""
+    from .despill import LAYER
+    return [l for l in flat if l.get("name") == LAYER and l.get("kind") != "Group"]
 
 
 def _hide(ids):
@@ -596,7 +611,7 @@ def visible_quad_subpixel(D, V):
         return np.float32(V)
 
 
-def sam_opening(bg_png, V, settings=None, work=None, psd=None):
+def sam_opening(bg_png, V, settings=None, work=None, psd=None, canvas=False):
     """The frame opening on the BASE-only render, by SAM 2 (scene_templates.sam_detect: box = the visible art +4%,
     material-edge refinement, sub-pixel corners, loud failure) plus SAM's wall mask (for the sun-line search).
     Returns (quad, model, wall alpha or None) or (None, reason, None). A SAM quad that does not overlap the art
@@ -612,7 +627,8 @@ def sam_opening(bg_png, V, settings=None, work=None, psd=None):
     x1, y1 = V.max(0)
     pad = 0.04 * max(x1 - x0, y1 - y0)
     try:
-        res, _, wall = stp.sam_detect(bg_png, work, settings, box=[x0 - pad, y0 - pad, x1 + pad, y1 + pad], wall=True)
+        res, _, wall = stp.sam_detect(bg_png, work, settings, box=[x0 - pad, y0 - pad, x1 + pad, y1 + pad], wall=True,
+                                      canvas=canvas)     # canvas: the printed face, not face + side edge (2026-11-17)
     except stp.TemplateError as e:
         return None, str(e)[:160], None
     O = np.float32(res["corners"])
@@ -648,9 +664,10 @@ def side_offsets(V, O):
     return out
 
 
-def opening_verdict(offs, subpixel=True):
+def opening_verdict(offs, subpixel=True, tol=EDGE_TOL_PX):
     """Per side offsets (top, right, bottom, left; + = the opening lies OUTSIDE the art = a gap, - = the art runs
-    under the frame). Sub-pixel SAM opening (the frame's hard inner edge): a gap beyond EDGE_TOL_PX fails (a sliver
+    under the frame). Sub-pixel SAM opening (the frame's hard inner edge): a gap beyond `tol` (EDGE_TOL_PX; the checker
+    passes display_tol, about one screen pixel, Tony 2026-11-17: 0.5 px was stricter than visible) fails (a sliver
     of baked paper/shadow shows), the art may run under the frame by up to PAD_MAX_PX (+ EDGE_TOL_PX) - the pad the
     Frame Hard Shadow layer hides - and fails beyond that. The old integer edge search keeps its +-TOL_PX.
     Returns the list of reasons (empty = pass)."""
@@ -660,11 +677,310 @@ def opening_verdict(offs, subpixel=True):
         if not subpixel:
             if abs(o) > TOL_PX:
                 bad.append(f"{n} {'art covers the frame by' if o < 0 else 'gap of'} {abs(o):.1f} px")
-        elif o > EDGE_TOL_PX:
+        elif o > tol:
             bad.append(f"{n} gap of {o:.1f} px between the frame's inner edge and the art (baked paper shows)")
-        elif o < -(PAD_MAX_PX + EDGE_TOL_PX):
+        elif o < -(PAD_MAX_PX + tol):
             bad.append(f"{n} art covers the frame by {-o:.1f} px (pad limit {PAD_MAX_PX:g} px)")
     return bad
+
+
+# ---------- independent edge check (Tony 2026-11-17) ----------
+# The builder's card test and the SAM opening check both measure against an outline SAM drew; when SAM took a canvas's
+# face + side edge as one shape, both passed while the art ran ~14 px onto the side edge. This check uses NEITHER:
+# the art edge is where the art actually renders (black/white card difference), and the face edge is read from the
+# raw scene pixels (BASE render, art and overlays hidden): at every side, colour profiles perpendicular to the art
+# edge (median over 3 segments), the face colour from a plateau well inside, then the first colour step outward.
+#   canvas  the face ends where the colour leaves the face colour (Lab, lightness weighted down so shading on the face
+#           stays face): a canvas side edge (visible only on the camera-facing sides), a gap shadow or the lip.
+#   frame / mat: the first HARD step (a shadow ramp on the paper is still opening, Tony 2026-11-12): frame lip or
+#           mat window bevel, placed at its 50% point.
+# Verdict per side: the art edge on the face edge = pass; art past it (on the side edge / lip / bevel) or short of
+# it (a strip of face shows) = FAIL with the measured px and what the art edge sits on. Tolerance = about one screen
+# pixel at normal zoom (display_tol, 1-2 px), never sub-pixel; frames/mats also allow the PAD_MAX_PX pad under the
+# lip. Evidence: 8x corner and mid-side crops (scene with the art edge cyan and the measured face edge magenta,
+# next to a render with the edge card's 1 px dark-orange line), saved as a JPG in the gallery cache.
+
+EDGE_SEGMENTS = ((0.10, 0.37), (0.37, 0.63), (0.63, 0.90))
+EDGE_DE_CANVAS = 5.0           # Lab distance (lightness x EDGE_L_WEIGHT) where a canvas face ends
+EDGE_FLAT_MAX = 4.0            # the face plateau must be this flat (90th percentile of that distance)
+EDGE_L_WEIGHT = 0.35
+EDGE_STEP_MIN = 0.2            # frame/mat: a hard step = >= 20% of the face->outside contrast within 1.5 px
+EDGE_DISPLAY_W = 1600.0        # "normal zoom": the scene fitted to about this many screen pixels
+
+
+def display_tol(W):
+    """Edge tolerance in scene px: about one screen pixel at normal zoom, never below 1 px or above 2 px."""
+    return float(np.clip(W / EDGE_DISPLAY_W, 1.0, 2.0))
+
+
+def presentation_of(manifest, mats=False):
+    """canvas / mat / frame: template.json 'presentation' (builds since 2026-11-17), else the canvas opening mode,
+    else a mat layer / mat mode, else frame."""
+    m = manifest or {}
+    if m.get("presentation") in ("canvas", "mat", "frame"):
+        return m["presentation"]
+    if "canvas" in str(((m.get("insert") or {}).get("opening") or {}).get("mode", "")):
+        return "canvas"
+    if mats or m.get("mode") == "mat" or m.get("mat_in_photo"):
+        return "mat"
+    return "frame"
+
+
+def _lab(rgb):
+    import cv2
+    return cv2.cvtColor(np.clip(np.float32(rgb) / 255.0, 0, 1), cv2.COLOR_RGB2Lab)
+
+
+def _outward(q, side):
+    a, b = q[side], q[(side + 1) % 4]
+    t = (b - a) / max(float(np.linalg.norm(b - a)), 1e-6)
+    n = np.float32([t[1], -t[0]])
+    return a, b, (-n if np.dot(q.mean(0) - a, n) > 0 else n)
+
+
+def edge_profile(lab, q, side, offs, t0, t1, n=60):
+    """Median Lab colour at `offs` (px along the outward normal of side `side`, 0 = the side line) over the part
+    t0..t1 of the side. Pixel centres sit at index + 0.5."""
+    import cv2
+    a, b, nrm = _outward(np.float32(q), side)
+    ts = np.linspace(t0, t1, n, dtype="float32")[:, None]
+    P = (a + (b - a) * ts)[:, None, :] + nrm[None, None, :] * np.float32(offs)[None, :, None]
+    xs, ys = (P[..., 0] - 0.5).astype("float32"), (P[..., 1] - 0.5).astype("float32")
+    ch = [cv2.remap(np.ascontiguousarray(lab[..., k]), xs, ys, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
+          for k in range(3)]
+    return np.median(np.stack(ch, -1), 0)
+
+
+def band_label(c, face, presentation):
+    """What a colour next to the face is, in words (Lab colours)."""
+    Lf, Cf, hf = float(face[0]), float(np.hypot(face[1], face[2])), math.degrees(math.atan2(face[2], face[1]))
+    L, C, h = float(c[0]), float(np.hypot(c[1], c[2])), math.degrees(math.atan2(c[2], c[1]))
+    dh = abs((h - hf + 180) % 360 - 180)
+    if presentation == "canvas" and dh < 35 and C >= 0.6 * Cf and L < Lf - 4:
+        return "the canvas side edge"
+    if presentation == "canvas" and C < 0.35 * max(Cf, 1) and L > Lf - 15:
+        return "the white canvas side edge"
+    if L < 0.55 * Lf:
+        return "the dark gap / shadow"
+    if presentation == "mat" and L >= Lf - 5:
+        return "the mat window bevel"
+    return "the frame lip"
+
+
+def _half_cross(prof, offs, d0):
+    """Sub-pixel 50% point of the step near d0 on a linear colour projection (edge pixels are linear mixes)."""
+    c_in = np.median(prof[(offs >= d0 - 1.75) & (offs <= d0 - 1.0)], 0)
+    c_out = np.median(prof[(offs >= d0 + 1.0) & (offs <= d0 + 1.75)], 0)
+    v = c_in - c_out
+    proj = (prof - c_out) @ (v / max(float(v @ v), 1e-6))           # 1 inside .. 0 outside
+    near = np.nonzero((offs >= d0 - 1.5) & (offs <= d0 + 1.5))[0]
+    for i in near[:-1]:
+        if proj[i] >= 0.5 > proj[i + 1]:
+            return float(offs[i] + (proj[i] - 0.5) / max(float(proj[i] - proj[i + 1]), 1e-6) * (offs[i + 1] - offs[i]))
+    return d0
+
+
+def face_end(prof, offs, presentation, plateau):
+    """Where the face ends along one median Lab profile (offsets outward, 0 = the art edge). Returns (F or None,
+    why, face colour). `plateau` = the offsets whose median is the face colour.
+    canvas: the first point where the colour leaves the face (EDGE_DE_CANVAS, lightness weighted down); when that is
+    the shoulder of a HARD step (half or more of the change within 1.5 px), the step's 50% point instead.
+    frame / mat: the first hard step (EDGE_STEP_MIN of the contrast within 1.5 px), its 50% point."""
+    face = np.median(prof[plateau], 0)
+    full = np.linalg.norm(prof - face, axis=1)
+    dE = np.linalg.norm((prof - face) * np.float32([EDGE_L_WEIGHT, 1, 1]), axis=1) if presentation == "canvas" else full
+    if float(np.percentile(dE[plateau], 90)) > EDGE_FLAT_MAX:
+        return None, "the face is not flat here (a print or a prop)", face
+    start = int(np.nonzero(plateau)[0].max()) + 1
+    at = lambda f, o: float(np.interp(o, offs, f))
+    if presentation == "canvas":
+        hit = np.nonzero(dE[start:] >= EDGE_DE_CANVAS)[0]
+        if not len(hit):
+            return float(offs[-1]), "the face runs past the measured reach", face
+        i = start + hit[0]
+        f = (EDGE_DE_CANVAS - dE[i - 1]) / max(float(dE[i] - dE[i - 1]), 1e-6)
+        o_t = float(offs[i - 1] + f * (offs[i] - offs[i - 1]))
+        win = (offs >= o_t - 0.5) & (offs <= o_t + 1.5)
+        steps = [(at(full, o + 0.75) - at(full, o - 0.75), float(o)) for o in offs[win]]
+        st, o_p = max(steps)
+        if st >= 0.5 * at(full, o_p + 1.75):                        # a hard edge, not a ramp onto the side edge
+            return _half_cross(prof, offs, o_p), "", face
+        return o_t, "", face
+    top = float(dE[start:].max())
+    if top < 6.0:          # art laid on a flat mat / same-colour paper: no window edge to measure (check by eye)
+        return None, "no edge within reach (flat mat or paper the colour of the face)", face
+    fn = dE / top
+    step = np.interp(offs + 0.75, offs, fn) - np.interp(offs - 0.75, offs, fn)
+    ok = np.zeros(len(offs), bool)
+    ok[start:] = step[start:] >= EDGE_STEP_MIN
+    peaks = [i for i in np.nonzero(ok)[0] if step[i] >= step[max(i - 1, 0)] and step[i] >= step[min(i + 1, len(step) - 1)]]
+    if not peaks:
+        return None, "no hard edge (only soft shading) within reach", face
+    return _half_cross(prof, offs, float(offs[peaks[0]])), "", face
+
+
+def edge_check(bg, V, presentation, tol, pad_allow):
+    """The independent edge check on the BASE render `bg` (RGB float, art + overlays hidden) and the visible art quad
+    V. Returns (status, reasons, per-side measurements)."""
+    q = order_quad(np.float32(V))
+    lab = _lab(bg)
+    size = min(float(np.linalg.norm(q[1] - q[0])), float(np.linalg.norm(q[3] - q[0])))
+    A = float(np.clip(0.06 * size, 24.0, 60.0))                     # inward reach (canvas side edges ~5-20 px)
+    B = float(np.clip(0.03 * size, 12.0, 30.0))                     # outward reach
+    offs = np.arange(-A, B + 1e-6, 0.25, dtype="float32")
+    plateau = offs <= -0.6 * A
+    names4 = ["top", "right", "bottom", "left"]
+    sides, why, measured = {}, [], 0
+    for i, nm in enumerate(names4):
+        segs, notes, face = [], [], None
+        for t0, t1 in EDGE_SEGMENTS:
+            prof = edge_profile(lab, q, i, offs, t0, t1)
+            F, note, face_s = face_end(prof, offs, presentation, plateau)
+            if F is not None:
+                segs.append(F)
+                face = face_s if face is None else face
+            if note:
+                notes.append(note)
+        st = {"segments_px": [round(s, 2) for s in segs]}
+        if len(segs) < 2:
+            st["status"] = "unmeasured"
+            st["why"] = notes[0] if notes else "no face edge found"
+            sides[nm] = st
+            continue
+        measured += 1
+        F = float(np.median(segs))
+        st["face_edge_px"] = round(F, 2)              # + = the face continues past the art edge, - = art past the face
+        prof = edge_profile(lab, q, i, offs, EDGE_SEGMENTS[0][0], EDGE_SEGMENTS[-1][1], n=120)
+        over = -F
+        if over > 0:
+            under = prof[(offs > F) & (offs <= 0)]
+            st["sits_on"] = band_label(np.median(under, 0), face, presentation) if len(under) else "the face edge"
+        else:
+            st["sits_on"] = "the face"
+        lim_over = pad_allow + tol
+        if over > lim_over:
+            st["status"] = "fail"
+            why.append(f"{nm}: the art edge runs {over:.1f} px past the face edge onto {st['sits_on']} "
+                       f"(limit {lim_over:.1f} px)")
+        elif -over > tol:
+            st["status"] = "fail"
+            why.append(f"{nm}: a {-over:.1f} px strip of the face shows between the art and the face edge "
+                       f"(limit {tol:.1f} px)")
+        else:
+            st["status"] = "pass"
+            st["sits_on"] = "the face edge"
+        sides[nm] = st
+    if why:
+        return "fail", why, sides
+    if measured < 2:
+        return "skip", ["the face edge could not be measured on enough sides"], sides
+    return "pass", [], sides
+
+
+def edge_evidence(bg, card_render, V, sides, out, Z=8, S=40):
+    """8x zooms of the four corners and the four side midpoints: the scene (art hidden) with the art edge in cyan
+    and the measured face edge in magenta, above the render with the edge card (its 1 px dark-orange line = the art
+    edge). Writes `out` (JPG) and returns its path."""
+    from PIL import Image, ImageDraw
+    q = order_quad(np.float32(V))
+    names4 = ["top", "right", "bottom", "left"]
+    F = [sides.get(n, {}).get("face_edge_px") for n in names4]
+    qf = offset_quad(q, [f or 0.0 for f in F])
+    spots = [("TL", q[0]), ("TR", q[1]), ("BR", q[2]), ("BL", q[3])]
+    spots += [(f"{n} mid", (q[i] + q[(i + 1) % 4]) / 2) for i, n in enumerate(names4)]
+    P = S * Z
+    head = 18 * 5
+    sheet = Image.new("RGB", (4 * (P + 8), head + 4 * (P + 22)), (250, 250, 250))
+    d0 = ImageDraw.Draw(sheet)
+    d0.text((6, 4), "cyan = art edge (rendered)   magenta = face edge measured from the scene pixels   "
+                    "lower crop = render with the edge card (1 px dark-orange line on the art edge)", fill=(30, 30, 30))
+    for k, n in enumerate(names4):
+        s = sides.get(n, {})
+        d0.text((6, 22 + 16 * k), f"{n}: {s.get('status', '?')}  face edge {s.get('face_edge_px', '-')} px  "
+                                  f"on {s.get('sits_on', s.get('why', '-'))}", fill=(150, 20, 20) if s.get("status") == "fail" else (30, 30, 30))
+    bg8, cr8 = Image.fromarray(np.uint8(np.clip(bg, 0, 255))), Image.fromarray(np.uint8(np.clip(card_render, 0, 255)))
+    for k, (lab_, (cx, cy)) in enumerate(spots):
+        x0, y0 = int(cx) - S // 2, int(cy) - S // 2
+        col, row = k % 4, k // 4
+        X, Y = col * (P + 8), head + row * 2 * (P + 22)
+        for j, src in enumerate((bg8, cr8)):
+            z = src.crop((x0, y0, x0 + S, y0 + S)).resize((P, P), Image.NEAREST)
+            if j == 0:
+                d = ImageDraw.Draw(z)
+                for Q, colr, which in ((q, (0, 230, 255), range(4)), (qf, (255, 0, 255), [i for i in range(4) if F[i] is not None])):
+                    for i in which:
+                        a, b = Q[i], Q[(i + 1) % 4]
+                        d.line([((a[0] - x0) * Z, (a[1] - y0) * Z), ((b[0] - x0) * Z, (b[1] - y0) * Z)], fill=colr, width=1)
+            sheet.paste(z, (X, Y + 16 + j * (P + 22)))
+        d0.text((X + 2, Y + 2), f"{lab_} (8x)", fill=(30, 30, 30))
+    out = Path(out)
+    sheet.save(out, quality=90)
+    return out
+
+
+def evidence_path(psd, settings=None):
+    import hashlib
+    from .template_gallery import cache_dir
+    d = Path((settings or {}).get("checker_evidence_dir") or cache_dir(settings))
+    return d / f"Edge_Check_{Path(psd).stem}_{hashlib.md5(str(Path(psd).resolve()).encode()).hexdigest()[:8]}.jpg"
+
+
+def art_edge_quad(psd, Vs, settings, td, hide, cards):
+    """Where the art really ends: black / white card renders with the shadow and glare layers HIDDEN (a strong
+    multiply shadow over the art's edge hides the coverage step from the normal card difference), sub-pixel fit.
+    Returns (quad, source)."""
+    from . import sam_frames as sf
+    try:
+        blk = render(psd, Path(td) / "e_blk.png", settings, hide=hide, card=cards["blk"])
+        wht = render(psd, Path(td) / "e_wht.png", settings, hide=hide, card=cards["wht"])
+        q, _ = sf.fit_quad(np.clip((wht - blk).mean(2) / 255.0, 0, 1).astype("float32"), np.float32(Vs), R=3.0)
+        if np.abs(q - np.float32(Vs)).max() < 6:
+            return q, "card difference, overlays hidden (sub-pixel)"
+    except Exception:  # noqa: BLE001
+        pass
+    return np.float32(Vs), "visible art quad (fallback)"
+
+
+def spill_check(bg_spill, Va, manifest=None):
+    """Leftover orange bounce from the blank insert in the thin band outside the art (app/despill.py, Tony
+    2026-11-17), on the base render the customer sees around the art (despill layer shown, art hidden). The canvas
+    wrap strips are drawn over their sides in every render, so their area is not counted. FAIL only when clearly
+    visible at normal display size (despill.LEFT_DE / LEFT_AREA). Never raises."""
+    from . import despill as dsp
+    try:
+        ex = [sd["quad"] for sd in (((manifest or {}).get("wrap_strips") or {}).get("sides") or {}).values()]
+        return dsp.leftover(np.uint8(np.clip(np.round(bg_spill), 0, 255)), Va, ex)
+    except Exception as e:  # noqa: BLE001
+        return {"status": "skip", "reason": f"could not measure ({str(e)[:120]})", "sides": {}}
+
+
+def edge_result(psd, bg, Vs, pres, tol, so, settings, td, hide=(), cards=None, bg_spill=None, manifest=None):
+    """The 'edge' check result (with the 8x evidence JPG), plus the leftover-orange measure (`bg_spill`, the base
+    render with the despill layer; default `bg`). Never raises."""
+    from . import scene_templates as stp
+    try:
+        Va, src = art_edge_quad(psd, Vs, settings, td, hide, cards) if cards else (np.float32(Vs), "visible art quad")
+        if insert_texture(bg, Va) > stp.INSERT_TEXTURE_MAX:
+            return _res("skip", "the photo shows a print in the frame (no flat face to measure)")
+        st, why, sides = edge_check(bg, Va, pres, tol, 0.0 if pres == "canvas" else PAD_MAX_PX)
+    except Exception as e:  # noqa: BLE001  (never blocks the other checks)
+        return _res("skip", f"could not measure ({str(e)[:120]})")
+    sp = spill_check(bg if bg_spill is None else bg_spill, Va, manifest)
+    if sp["status"] == "fail":
+        st, why = "fail", (why if st == "fail" else []) + [sp["reason"]]
+    out = _res(st, "; ".join(why), sides=sides, tol_px=round(tol, 2), presentation=pres,
+               art_quad=np.round(Va, 3).tolist(), art_edge_source=src, spill=sp)
+    Vs = Va
+    if (settings or {}).get("checker_evidence") is False:
+        return out
+    try:
+        card = Path(td) / "edge_card.png"
+        stp.placeholder(int(so[0]), int(so[1]), card)
+        cr = render(psd, Path(td) / "edge_r.png", settings, card=card)
+        out["evidence"] = str(edge_evidence(bg, cr, Vs, sides, evidence_path(psd, settings)))
+    except Exception as e:  # noqa: BLE001
+        out["evidence_error"] = str(e)[:160]
+    return out
 
 
 # ---------- the checks ----------
@@ -723,13 +1039,27 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
             Image.new("RGB", tuple(so), (v, v, v)).save(cards[nm])
         fg = [l["id"] for l in r["foreground"] if l["shown"]]
         ov = [l["id"] for l in r["overlays"]]
-        bg = render(psd, td / "bg.png", settings, hide=ov + fg, art_hidden=True, art_id=art_id)
+        # canvas wrap strips (app/wrap_strips.py): the grey placeholder strip is hidden on the base render, so the
+        # opening / edge / sun / placement checks read the scene's own side-edge pixels (the Portal hides it too)
+        wrap = wrap_layers(flat)
+        if wrap:
+            res["measured"]["wrap_strip_layer"] = [l["name"] for l in wrap]
+        # orange despill (app/despill.py): a retouch layer above the BASE. Hidden on the geometry render (the checks
+        # read the scene's own face / opening pixels); the leftover-orange part of the edge check reads a render
+        # WITH it (what the customer sees around the art)
+        dsl = [l["id"] for l in despill_layers(flat) if l["shown"]]
+        if dsl:
+            res["measured"]["despill_layer"] = [l["name"] for l in despill_layers(flat)]
+        bg = render(psd, td / "bg.png", settings, hide=ov + fg + [l["id"] for l in wrap] + dsl, art_hidden=True,
+                    art_id=art_id)
+        bg_spill = render(psd, td / "bg_despill.png", settings, hide=ov + fg + [l["id"] for l in wrap],
+                          art_hidden=True, art_id=art_id) if dsl else bg
         blk = render(psd, td / "blk.png", settings, hide=fg, card=cards["blk"])
         wht = render(psd, td / "wht.png", settings, hide=fg, card=cards["wht"])
         D = (wht - blk).mean(2) > 40
         V = quad_from_mask(D)
         if V is None:
-            for k in ("opening", "card", "overlay", "purity", "sun", "ratio", "mat"):
+            for k in ("opening", "card", "edge", "overlay", "purity", "sun", "ratio", "mat"):
                 res["checks"][k] = _res("fail" if k == "opening" else "skip", "the art is not visible in the render")
             return _finish(res, psd, st0)
         res["measured"]["visible_quad"] = np.round(V, 1).tolist()
@@ -742,9 +1072,13 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
         import cv2
         bgs = cv2.GaussianBlur(bg, (0, 0), 0.8)
         names4 = ["top", "right", "bottom", "left"]
+        pres = presentation_of(manifest, bool(r["mats"]))
+        res["measured"]["presentation"] = pres
+        tol = display_tol(W)
+        res["measured"]["edge_tol_px"] = round(tol, 2)
         O_sam, sam_why, sam_wall = (None, "the template has a mat", None) if (r["mats"] or (manifest or {}).get("mode")
                                                                            == "mat") \
-            else sam_opening(td / "bg.png", Vs, settings, td, psd)
+            else sam_opening(td / "bg.png", Vs, settings, td, psd, canvas=pres == "canvas")
         if O_sam is not None:
             offs = [round(float(x), 2) for x in side_offsets(Vs, O_sam)]
             found = 4
@@ -770,7 +1104,7 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
             O = V
         else:
             O = np.float32(O_sam) if O_sam is not None else offset_quad(V, offs)
-            bad = opening_verdict(offs, subpixel=O_sam is not None)
+            bad = opening_verdict(offs, subpixel=O_sam is not None, tol=tol)
             res["checks"]["opening"] = _res("fail" if bad else "pass", "; ".join(bad),
                                             offsets=[round(float(x), 2) for x in offs])
         res["measured"]["opening_quad"] = np.round(O, 1).tolist()
@@ -791,6 +1125,13 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
         if over > lim:
             why.append(f"{over} px of art outside the opening (art over the frame)")
         res["checks"]["card"] = _res("fail" if why else "pass", "; ".join(why), gap_px=gap, over_px=over)
+        # 2b independent edge check: the rendered art edge vs the face edge read from the scene pixels (no SAM, no
+        # builder outline; Tony 2026-11-17)
+        res["checks"]["edge"] = edge_result(psd, bg, Vs, pres, tol, so, settings, td, hide=ov + fg, cards=cards,
+                                            bg_spill=bg_spill, manifest=manifest)
+        ev = res["checks"]["edge"].get("evidence")
+        if res["checks"]["edge"]["status"] == "fail" and ev:
+            res.setdefault("notes", []).append(f"edge evidence (8x corners): {ev}")
         # 3 + 4 overlays: each alone over a grey card
         g0 = render(psd, td / "g0.png", settings, hide=ov + fg, card=cards["gry"])
         bg_l = bg @ np.float32([0.299, 0.587, 0.114]) / 255.0

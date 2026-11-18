@@ -160,3 +160,42 @@ def test_a_wood_band_inside_the_paper_quad_is_frame_and_the_opening_stops_at_its
 def test_offset_quad_and_side_offsets_round_trip():
     q2 = sf.offset_quad(Q, [1.5, 0.0, -2.0, 3.25])
     assert sf.side_offsets(Q, q2) == pytest.approx([1.5, 0.0, -2.0, 3.25], abs=0.01)
+
+
+def canvas_scene(side_band=14, W=900, H=800):
+    """A stretched canvas in a pale wood floater frame, 3/4 view from the right: the orange face x 280..600,
+    y 170..650, and on the right (camera-facing) side a `side_band` px side edge that darkens from orange to dark
+    brown (same hue, so SAM took face + side edge as one shape); a dark gap, then the wood lip. Returns (rgb float32,
+    face quad, face + side edge quad)."""
+    a = np.zeros((H, W, 3), "float32")
+    a[:] = (200, 195, 185)                                              # wall
+    a[140:680, 250:600 + side_band + 56] = (196, 170, 140)             # wood floater frame
+    a[152:668, 262:600 + side_band + 44] = (110, 90, 70)               # the gap (soft shadow)
+    a[170:650, 280:600] = (229, 182, 127)                              # the orange face
+    c0, c1 = np.float32([205, 140, 80]), np.float32([91, 39, 17])    # (a gentler onset than c0 reads as face for
+    for k in range(side_band):                                           # ~1-2 px in both detectors) the side edge ramp
+        a[170:650, 600 + k] = c0 + (c1 - c0) * k / max(side_band - 1, 1)
+    face = np.float32([[280, 170], [600, 170], [600, 650], [280, 650]])
+    both = np.float32([[280, 170], [600 + side_band, 170], [600 + side_band, 650], [280, 650]])
+    return a, face, both
+
+
+def test_canvas_face_search_moves_the_opening_off_a_same_colour_side_edge():
+    """Tony 2026-11-17: SAM's canvas shape included the right side edge; the inward search finds where the flat face
+    ends and moves that side there + 0.5 px inward. Sides already on the face edge keep SAM's line."""
+    img, face, both = canvas_scene()
+    q, info = sf.canvas_face_quad(np.uint8(img), both)
+    offs = sf.side_offsets(both, q)                                      # + = outside SAM's side
+    assert -15.0 <= offs[1] <= -13.75, (offs, info)                      # right: 600 - 0.5 = 599.5 (SAM had 614)
+    assert info["sides"]["right"]["moved_px"] == pytest.approx(offs[1], abs=0.05)
+    assert all(abs(o) < 0.01 for i, o in enumerate(offs) if i != 1), offs     # top, bottom, left: SAM's line kept
+    q2, info2 = sf.canvas_face_quad(np.uint8(img), face)                 # SAM already right: nothing moves
+    assert max(abs(o) for o in sf.side_offsets(face, q2)) < 0.01, info2
+
+
+def test_canvas_face_search_ignores_soft_shading_on_the_face():
+    img, face, both = canvas_scene(side_band=0)
+    h = np.arange(170, 650, dtype="float32")
+    img[170:650, 280:600] *= (1 - 0.12 * (h - 170) / 480)[:, None, None]   # a gentle light falloff on the face
+    q, info = sf.canvas_face_quad(np.uint8(img), face)
+    assert max(abs(o) for o in sf.side_offsets(face, q)) < 0.01, info

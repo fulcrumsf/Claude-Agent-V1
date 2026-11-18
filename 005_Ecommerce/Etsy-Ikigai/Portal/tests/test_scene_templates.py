@@ -10,7 +10,7 @@ import numpy as np
 import pytest
 from PIL import Image
 
-from app import prints, production, scene_templates as stp
+from app import prints, production, room_slots as rs, scene_templates as stp
 from test_prints import approved_idea, env, fake_upscayl  # noqa: F401  (fixture reuse)
 
 QUAD = [[520, 170], [760, 190], [756, 566], [524, 574]]      # the insert (true 2:3), slight 3/4 perspective
@@ -203,6 +203,9 @@ def test_generate_new_scene_saves_template_places_jpg_and_never_overwrites(prod)
     assert tdir.parent.parent.name == "001_Living_Rooms" and stp.MASTER.match(tdir.parent.name)
     man = json.loads((tdir / "template.json").read_text())
     assert man["kind"] == "ai_scene" and man["made_for"]["slot"] == 3 and man["so_px"] and man["quad_art"]
+    # Production's save path records the random light/photographer look and the exact prompt it produced
+    assert isinstance(man["look"]["seed"], int) and man["prompt"] == prod["gen"][0]["prompt"]
+    assert rs.LOOK_AXES["photographer"][man["look"]["photographer"]][1] in man["prompt"]
     assert any(tdir.glob("*_Template.psd")) and any(tdir.glob("*_Scene.png"))
     # Regenerate: the new scene is a new file beside it; the old one goes to Archive (never overwritten)
     first = card["image"]["file"]
@@ -395,3 +398,15 @@ def test_card_test_accepts_the_pad_and_fails_a_sliver_or_more_overlap(tmp_path, 
     monkeypatch.setattr(stp, "_run", CardCraft(wide))             # 3.5 px over the frame on every side
     with pytest.raises(stp.TemplateError, match="over the frame"):
         real_card_verify(tmp_path / "t.psd", wide, None, tmp_path, opening=Q)
+
+
+def test_placeholder_card_has_a_1px_dark_orange_line_on_its_quad_edge(tmp_path):
+    """Tony 2026-11-17: the placeholder / test card shows the art edge in every render (orange, grid, 1 px line)."""
+    from PIL import Image
+    p = tmp_path / "ph.png"
+    stp.placeholder(97, 131, p)
+    a = np.asarray(Image.open(p).convert("RGB"))
+    for ring in (a[0], a[-1], a[:, 0], a[:, -1]):
+        assert (ring == stp.CARD_EDGE).all()
+    assert tuple(a[5, 5]) == stp.CARD_FILL and tuple(a[1, 3]) == stp.CARD_FILL       # the line is exactly 1 px
+    assert (a[1:-1, 1:-1] == stp.CARD_EDGE).all(-1).sum() == 0
