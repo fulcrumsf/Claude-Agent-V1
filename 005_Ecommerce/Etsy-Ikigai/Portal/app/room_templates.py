@@ -275,6 +275,93 @@ def guard_quad(render_png, fitted_png, quad, base_png=None, max_cover=None, sett
             "pass": not why, "why": why}
 
 
+# ---------- the art-area gate (Tony 2026-11-19: "never any white border") ----------
+# A deterministic MEASUREMENT on every Production room render, no vision: compare the render with the art-free base
+# (the template's scene, despilled like the PSD) inside and along the art quad.
+#   1. inside the quad (2 px in from its edge): pixels the art did not replace (render == base) = a gap or the orange
+#      placeholder still showing.
+#   2. along each side, just outside the quad: a band of blank-paper colour in the BASE (the insert's orange, or a
+#      white / neutral canvas side or paper border; not for a mat, which is meant to show) that starts at the art edge,
+#      is at least wrap_strips.PAPER_MIN_W wide and ends at a step within reach, and that the render left UNCHANGED (no art, no wrap
+#      strip over it) = a white or orange bar beside the art. Slot 12, 2026-11-18: two 31 px white bars.
+GATE_SEGMENTS = 12
+GATE_SAME = 6.0                      # mean |render - base| (0..255) below this = the photo is unchanged there
+GATE_EXPOSED = 0.6                   # share of a band's pixels unchanged = that segment shows a bar
+GATE_SIDE_SEGS = 3                   # this many exposed segments on one side = the side FAILS
+GATE_INSIDE_MAX = 0.002              # share of the art area that may be unchanged (noise, a coincidentally equal pixel)
+# the paper-band test itself (colour classes, width, reach, the ending step) is wrap_strips.paper_run_1d, shared with
+# the builder (scene_templates.build_psd extends the art over such bands, so a correct build always passes)
+
+
+def art_area_gate(render, base, quad, presentation="frame"):
+    """FAIL when anything other than art shows in or along the art quad. render/base: paths or HxWx3 uint8 arrays
+    of the same size (base = the art-free scene the PSD renders on). Returns {"pass", "why", "inside_unchanged",
+    "sides": {side: {"exposed_segments", "width_px", "kind"}}}."""
+    from PIL import Image
+    from . import wrap_strips as wst
+    from .template_checker import _lab, edge_profile, offset_quad, poly_mask
+
+    def arr(x):
+        if isinstance(x, (str, Path)):
+            with Image.open(x) as im:
+                return np.asarray(im.convert("RGB"))
+        return np.asarray(x)[..., :3]
+    R, B = arr(render).astype("float32"), arr(base).astype("float32")
+    if R.shape != B.shape:
+        raise ValueError(f"render {R.shape} and base {B.shape} differ in size")
+    H, W = R.shape[:2]
+    q = np.float32(quad)
+    diff = np.abs(R - B).mean(2)
+    lab = _lab(B)
+    inner = poly_mask(offset_quad(q, -2.0), W, H) > 0.5
+    core = poly_mask(offset_quad(q, -6.0), W, H) > 0.5
+    face = np.median(lab[core], 0) if core.any() else np.float32([50, 0, 0])
+    why, sides = [], {}
+    inside = float(((diff < GATE_SAME / 2) & inner).sum() / max(int(inner.sum()), 1))
+    if inside > GATE_INSIDE_MAX:
+        why.append(f"{inside:.1%} of the art area still shows the blank / a gap (no art there)")
+    offs = wst.paper_offsets(q)
+    d3 = np.dstack([diff, diff, diff])
+    edges = np.linspace(0.04, 0.96, GATE_SEGMENTS + 1)
+    for s, nm in enumerate(("top", "right", "bottom", "left")):
+        hits, widths, kinds = 0, [], set()
+        for t0, t1 in zip(edges[:-1], edges[1:]):
+            prof = edge_profile(lab, q, s, offs, float(t0), float(t1), n=30)
+            E, orange = wst.paper_run_1d(prof, offs, face, white_ok=presentation != "mat")
+            if E is None:
+                continue
+            dp = edge_profile(d3, q, s, offs, float(t0), float(t1), n=30)[:, 0]
+            band = (offs >= 0.75) & (offs <= E - 0.75)
+            if band.any() and float(np.mean(dp[band] < GATE_SAME)) >= GATE_EXPOSED:
+                hits += 1
+                widths.append(E)
+                kinds.add("orange" if orange > 0.5 else "white")
+        if hits:
+            sides[nm] = {"exposed_segments": hits, "width_px": round(float(np.median(widths)), 1),
+                         "kind": "/".join(sorted(kinds))}
+        if hits >= GATE_SIDE_SEGS:
+            why.append(f"a {sides[nm]['kind']} bar about {sides[nm]['width_px']:.0f} px wide shows along the {nm} "
+                       f"edge of the art ({hits}/{GATE_SEGMENTS} of the side)")
+    return {"pass": not why, "why": why, "inside_unchanged": round(inside, 4), "sides": sides}
+
+
+def gate_base(manifest, tdir, render_png, psd=None, settings=None, work=None):
+    """The art-free base a render is compared with: the template's scene PNG (despilled like the PSD) when it has
+    one, else the PSD rendered with the art hidden (Tony's own PSDs). Returns an HxWx3 uint8 array."""
+    from PIL import Image
+    man = manifest or {}
+    scene = Path(tdir) / str(man.get("scene") or "") if man.get("scene") else None
+    if scene is not None and scene.is_file():
+        from .despill import base_for
+        with Image.open(scene) as im:
+            return base_for(np.asarray(im.convert("RGB")), man)
+    from . import template_checker as tc
+    out = Path(work or tempfile.mkdtemp()) / "gate_base.png"
+    tc.render(psd, out, settings, art_hidden=True)
+    with Image.open(out) as im:
+        return np.asarray(im.convert("RGB"))
+
+
 # ---------- choose the looks for one print ----------
 
 def pick_art(arts, aspect):

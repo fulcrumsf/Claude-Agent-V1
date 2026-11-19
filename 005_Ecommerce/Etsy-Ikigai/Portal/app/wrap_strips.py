@@ -1,12 +1,15 @@
 """Wrap strips for gallery-wrapped CANVAS templates (Tony 2026-11-17: "mockups must look real").
 
 On a real gallery-wrapped canvas the print wraps around the stretcher, so the side the camera sees shows the art's
-colours turning the corner. The face art stays exactly as before (cover-fit, cropped, unchanged); past each
-camera-facing face edge a narrow WRAP STRIP is added:
+colours turning the corner. The face art is cover-fit as before, except that the fit now includes the wrap depth on
+the camera-facing sides (a little more crop, see 1); past each camera-facing face edge a narrow WRAP STRIP is added:
 
-  1. band: the outer DEPTH_FRAC of the fitted art (about 1.5 in on a 30 in canvas) MIRRORED across the edge (a mirror
-     wrap: the strip continues the face edge's own pixels and runs inward from there). The visible strip is only
-     ~10-20 px wide at 2400 px, so exact depth fidelity is not needed.
+  1. band (Tony 2026-11-19: a real gallery wrap shows the art CONTINUING round the edge, never reversed): the print is
+     cover-fit over the front face PLUS the wrap depth (DEPTH_FRAC of the face's long side, about 1.5 in on a 30 in
+     canvas) on each camera-facing side (wrap_margins); the face shows the centre, and each strip shows the art's own
+     outer band past that edge in its own order (band_source), foreshortened onto the strip. (Before 2026-11-19 the
+     face's edge band was MIRRORED across the edge: lamp and cat details reflected; never again.) The visible strip is
+     only ~10-40 px wide at 2400 px, so exact depth fidelity is not needed.
   2. shape: measured from the scene's own pixels, independent of SAM (the same perpendicular Lab profiles as
      template_checker.edge_profile): per side, from the art edge (= the face edge, checked by the checker's edge
      check) outward, the run of canvas-side colour (the face pigment, as saturated or more, or a white side) and then
@@ -254,9 +257,9 @@ def far_edge_1d(prof, offs, face):
     return F, F - fe
 
 
-def measure_sides(rgb, art_q):
-    """Which sides show the canvas side, and where each one's far edge runs. Returns ({side index: (F0, F1)},
-    {side name: info})."""
+def measure_sides(rgb, art_q, skip=()):
+    """Which sides show the canvas side, and where each one's far edge runs. Sides in `skip` (a flat blank band the
+    art face is extended over, paper_bands) are never strips. Returns ({side index: (F0, F1)}, {side name: info})."""
     from .template_checker import _lab, edge_profile
     q = np.float32(art_q)
     lab = _lab(np.float32(rgb))
@@ -267,6 +270,9 @@ def measure_sides(rgb, art_q):
     edges = np.linspace(0.08, 0.92, SEGMENTS + 1)
     far, info = {}, {}
     for s in range(4):
+        if s in skip:
+            info[SIDES[s]] = {"visible": False, "why": "a flat blank band: the art face is extended over it"}
+            continue
         ts, Fs, runs, skipped = [], [], [], 0
         for t0, t1 in zip(edges[:-1], edges[1:]):
             prof = edge_profile(lab, q, s, offs, float(t0), float(t1), n=40)
@@ -314,6 +320,122 @@ def measure_sides(rgb, art_q):
             info[SIDES[drop]].update(visible=False, why="the opposite side is the camera-facing one (a box never shows "
                                                         "both)")
     return far, info
+
+
+# ---------- bare paper / canvas bands beside the art (Tony 2026-11-19: never a white border) ----------
+# The AI sometimes draws the canvas with a flat WHITE band down BOTH long sides inside the floater (slot 12, Living
+# Room Mid Century 233500: 31 px each side, symmetric, so not a perspective side). SAM finds the orange face only, so
+# the art covered the orange and the white bands stayed in every render. A band of blank colour (the insert's orange,
+# or white / neutral at least PAPER_WHITE_L of the face's lightness) that starts at the art edge, is PAPER_MIN_W+ wide
+# and ends at a step within reach is part of the blank the art must cover. The builder extends the art quad over it
+# (scene_templates.build_psd) unless it is the ONE camera-facing wrap side drawn as a strip; the render gate
+# (room_templates.art_area_gate) fails any render that still leaves such a band unchanged.
+PAPER_MIN_W = 3.0           # px: narrower = the anti-aliased edge or a lit fold
+PAPER_START_MAX = 4.0       # px: the band starts within this of the art edge (the face edge blurs over 2-4 px)
+PAPER_REACH = (0.12, 24.0, 90.0)   # share of the art's short side, min, max px
+PAPER_ORANGE_DE = 12.0      # Lab distance (lightness x 0.5) to the face = still the blank's orange
+PAPER_WHITE_C = 0.35        # white / neutral: chroma below this share of the face's ...
+PAPER_WHITE_L = 0.85        # ... and lightness at least this share of the face's (a grey gap shadow is not paper)
+PAPER_FLAT_DE = 10.0        # Lab: the band is one flat colour; this far from it = the band has ended
+PAPER_STEP_DE = 6.0         # Lab change across the band's end (the gap, the lip, a hard shadow)
+PAPER_SEG_SHARE = 0.6       # a side has a band when this share of its segments do
+
+
+def paper_offsets(q):
+    """Profile offsets (px outward from the art edge) for the paper-band test of quad q."""
+    q = np.float32(q)
+    short = min(float(np.linalg.norm(q[1] - q[0])), float(np.linalg.norm(q[3] - q[0])))
+    reach = float(np.clip(PAPER_REACH[0] * short, PAPER_REACH[1], PAPER_REACH[2]))
+    return np.arange(-2.0, reach + 1e-6, 0.25, dtype="float32")
+
+
+def paper_run_1d(prof, offs, face, white_ok=True):
+    """One outward Lab profile (offsets from paper_offsets). Returns (band end offset or None, orange share): the run
+    of blank colour that starts within PAPER_START_MAX px of the art edge and ends at a step before the reach (a run that goes on
+    past the reach is the wall, not a band). white_ok False (a mat is meant to show): only the orange counts."""
+    face = np.float32(face)
+    Lf, Cf = float(face[0]), float(np.hypot(face[1], face[2]))
+    C = np.hypot(prof[:, 1], prof[:, 2])
+    orange = np.linalg.norm((prof - face) * np.float32([0.5, 1, 1]), axis=1) < PAPER_ORANGE_DE
+    paper = orange.copy()
+    if white_ok:
+        paper |= (C < PAPER_WHITE_C * max(Cf, 1.0)) & (prof[:, 0] > PAPER_WHITE_L * Lf)
+    # every run that starts in the window (the blurred face edge can read as a short orange run first, then a mixed
+    # colour, then the white band): the longest one is the band
+    # one band = one flat colour: it ends where the colour leaves the band's own colour by PAPER_FLAT_DE (a grey gap in
+    # sunlight is still "light and neutral", but a clear step darker than the white side next to it)
+    E = None
+    for k in np.nonzero((offs >= 0.5) & (offs <= PAPER_START_MAX) & paper)[0]:
+        if k > 0 and paper[k - 1] and offs[k - 1] >= 0.5:
+            continue
+        ref = np.median(prof[k:k + 12], 0)
+        flat = paper & (np.linalg.norm(prof - ref, axis=1) < PAPER_FLAT_DE)
+        i = int(k)
+        while i + 1 < len(offs) and flat[i + 1]:
+            i += 1
+        E = max(E or 0.0, float(offs[i]))
+    if E is None or E < PAPER_MIN_W or E >= float(offs[-1]) - 1.0:
+        return None, 0.0
+    at = lambda o: np.stack([np.interp(o, offs, prof[:, k]) for k in range(3)], -1)
+    if float(np.linalg.norm(at(E + 1.0) - at(E - 0.5))) < PAPER_STEP_DE:
+        return None, 0.0
+    band = (offs >= 0.75) & (offs <= E - 0.75)
+    return E, (float(np.mean(orange[band])) if band.any() else 1.0)
+
+
+PAPER_SEGMENTS = 16
+
+
+def paper_bands(rgb, art_q, white_ok=True):
+    """Per side of the art quad, the blank band beside it in the scene: {side index: (E0, E1)} = the band's outer end
+    (px outward) at the side's start and end corners, a straight line fitted over PAPER_SEGMENTS segments (outliers
+    dropped; the band need not be parallel to the art edge). A side needs a band in PAPER_SEG_SHARE of its segments."""
+    from .template_checker import _lab, edge_profile, offset_quad, poly_mask
+    q = np.float32(art_q)
+    lab = _lab(np.float32(rgb))
+    offs = paper_offsets(q)
+    H, W = lab.shape[:2]
+    m = poly_mask(offset_quad(q, -6.0), W, H) > 0.5
+    face = np.median(lab[m], 0) if m.any() else np.median(lab.reshape(-1, 3), 0)
+    edges = np.linspace(0.02, 0.98, PAPER_SEGMENTS + 1)
+    out = {}
+    for s in range(4):
+        ts, Es = [], []
+        for t0, t1 in zip(edges[:-1], edges[1:]):
+            E, _ = paper_run_1d(edge_profile(lab, q, s, offs, float(t0), float(t1), n=24), offs, face, white_ok)
+            if E is not None:
+                ts.append(0.5 * (t0 + t1))
+                Es.append(E + 0.25)                  # cover the band's last sample up to the step
+        if len(Es) < PAPER_SEG_SHARE * PAPER_SEGMENTS:
+            continue
+        ts, Es = np.float32(ts), np.float32(Es)
+        keep = np.ones(len(Es), bool)
+        for _ in range(3):
+            c = np.polyfit(ts[keep], Es[keep], 1)
+            res = np.abs(np.polyval(c, ts) - Es)
+            new = res <= max(1.0, 2.5 * float(np.median(res[keep])))
+            if new.sum() < 3 or (new == keep).all():
+                break
+            keep = new
+        out[s] = (round(float(np.polyval(c, 0.0)), 2), round(float(np.polyval(c, 1.0)), 2))
+    return out
+
+
+def extend_quad(q, ext):
+    """Quad q with side s moved out to the line E0 (at its start corner) .. E1 (at its end corner) for each side in
+    `ext` ({side index: (E0, E1)}); other sides stay. Corners = the new side lines' intersections."""
+    q = np.float32(q)
+    lines = []
+    for s in range(4):
+        a, b, n = _side(q, s)
+        e0, e1 = ext.get(s, (0.0, 0.0))
+        p0, p1 = a + n * e0, b + n * e1
+        lines.append((p0, p1 - p0))
+    out = []
+    for i in range(4):                               # corner i = start of side i = end of side i-1
+        x = _intersect(*lines[(i - 1) % 4], *lines[i])
+        out.append(q[i] if x is None else x)
+    return np.float32(out)
 
 
 def _sample(lab, P):
@@ -467,7 +589,65 @@ def white_side(rgb, quad, art_q, s):
     return Cf >= 10.0 and Cs < WHITE_C * Cf
 
 
-def measure(rgb, art_q, presentation="canvas", depth_frac=DEPTH_FRAC, art_offsets=None):
+BEYOND_REACH = (0.06, 8.0, 30.0)   # share of the art's short side, min, max px: a canvas side past a white band
+BEYOND_NEUTRAL_C = 12.0            # Lab chroma: the side is white paint in shade (neutral), never the wood lip
+
+
+def measure_beyond(rgb, q, sides):
+    """Past each EXTENDED side of the final art quad (the face now covers the AI's white band): the narrow shaded
+    canvas side, if the scene shows one = a neutral (white paint in shade) band from the art edge to the first HARD
+    step (the gap line / the wood lip), PAPER_MIN_W+ wide, one straight line over SEGMENTS. Returns ({side: (F0, F1)},
+    {side name: info}) in measure_sides' format."""
+    from .template_checker import _half_cross, _lab, edge_profile
+    q = np.float32(q)
+    lab = _lab(np.float32(rgb))
+    short = min(float(np.linalg.norm(q[1] - q[0])), float(np.linalg.norm(q[3] - q[0])))
+    R = float(np.clip(BEYOND_REACH[0] * short, BEYOND_REACH[1], BEYOND_REACH[2]))
+    offs = np.arange(-2.0, R + 3.0 + 1e-6, 0.25, dtype="float32")
+    edges = np.linspace(0.08, 0.92, SEGMENTS + 1)
+    far, info = {}, {}
+    for s in sides:
+        ts, Fs = [], []
+        for t0, t1 in zip(edges[:-1], edges[1:]):
+            prof = edge_profile(lab, q, s, offs, float(t0), float(t1), n=40)
+            st, wide = _steps(prof, offs), _steps(prof, offs, 3.0)
+            pk = [k for k in np.nonzero((offs >= 2.0) & (offs <= R) & (st >= FAR_STEP_MIN) & (st >= HARD_SHARE * wide))[0]
+                  if st[k] >= st[k - 1] and st[k] >= st[min(k + 1, len(st) - 1)]]
+            if not pk:
+                continue
+            F = _half_cross(prof, offs, float(offs[pk[0]]))
+            band = (offs >= 0.75) & (offs <= F - 0.75)
+            if F < PAPER_MIN_W or not band.any() or \
+                    float(np.median(np.hypot(prof[band, 1], prof[band, 2]))) >= BEYOND_NEUTRAL_C:
+                continue
+            ts.append(0.5 * (t0 + t1))
+            Fs.append(F)
+        st_ = {"segments": len(Fs), "beyond_extended_face": True}
+        if len(Fs) < MIN_SEG_SHARE * SEGMENTS:
+            info[SIDES[s]] = dict(st_, visible=False)
+            continue
+        ts, Fs = np.float32(ts), np.float32(Fs)
+        med = float(np.median(Fs))
+        keep = np.abs(Fs - med) <= max(3.0, 0.3 * med)       # a segment that met a prop / a sun edge first
+        for _ in range(2):
+            c = np.polyfit(ts[keep], Fs[keep], 1)
+            res = np.abs(np.polyval(c, ts) - Fs)
+            new = res <= max(1.5, 2.5 * float(np.median(res[keep])))
+            if new.sum() < 3 or (new == keep).all():
+                break
+            keep = new
+        rms = float(np.sqrt(np.mean((np.polyval(c, ts[keep]) - Fs[keep]) ** 2)))
+        F0, F1 = float(np.polyval(c, 0.0)), float(np.polyval(c, 1.0))
+        st_.update(segments_px=[round(float(f), 2) for f in Fs], fit_rms_px=round(rms, 3))
+        if keep.sum() < MIN_SEG_SHARE * SEGMENTS or rms > FIT_MAX_RMS or min(F0, F1) < MIN_W - 1.0:
+            info[SIDES[s]] = dict(st_, visible=False, why="no straight shaded canvas side past the extended face")
+            continue
+        info[SIDES[s]] = dict(st_, visible=True, far_px=[round(F0, 2), round(F1, 2)])
+        far[s] = (F0, F1)
+    return far, info
+
+
+def measure(rgb, art_q, presentation="canvas", depth_frac=DEPTH_FRAC, art_offsets=None, exclude=(), final_q=None):
     """The template.json 'wrap_strips' entry for a scene (RGB uint8/float 0..255) and its art quad, or None when the
     template is not a canvas or no side is camera-facing.
     art_offsets (top, right, bottom, left px, + = outward; Tony 2026-11-18): the art quad of the template is art_q
@@ -479,11 +659,29 @@ def measure(rgb, art_q, presentation="canvas", depth_frac=DEPTH_FRAC, art_offset
         return None
     from .template_checker import _lab, offset_quad
     q0 = np.float32(art_q)
-    far0, info = measure_sides(rgb, q0)
+    offs = [0.0] * 4 if art_offsets is None else [float(x) for x in art_offsets]
+    if final_q is not None:
+        # Tony 2026-11-19: the art face was extended over flat blank bands (sides in `exclude`, paper_bands). Detect on
+        # the FINAL art quad: the other sides as before, and past an extended side the narrow shaded canvas side the AI
+        # drew beyond its white band (measure_beyond); a box still shows at most one of each opposite pair.
+        q0 = q = np.float32(final_q)
+        offs = [0.0] * 4
+        far0, info = measure_sides(rgb, q0, skip=tuple(exclude))
+        fb, ib = measure_beyond(rgb, q0, exclude)
+        info.update(ib)
+        for s, F in fb.items():
+            o = (s + 2) % 4
+            if o in far0:
+                ls, lo_ = (float(np.linalg.norm(q0[(k + 1) % 4] - q0[k])) for k in (s, o))
+                if ls < lo_:
+                    continue
+                far0.pop(o)
+            far0[s] = F
+    else:
+        far0, info = measure_sides(rgb, q0, skip=tuple(exclude))
+        q = np.float32(offset_quad(q0, offs)) if any(offs) else q0
     if not far0:
         return None
-    offs = [0.0] * 4 if art_offsets is None else [float(x) for x in art_offsets]
-    q = np.float32(offset_quad(q0, offs)) if any(offs) else q0
     far = {s: (F0 - offs[s], F1 - offs[s]) for s, (F0, F1) in far0.items()}
     lab = _lab(np.float32(rgb))
     ends = {}
@@ -534,18 +732,49 @@ def measure(rgb, art_q, presentation="canvas", depth_frac=DEPTH_FRAC, art_offset
 
 # ---------- rendering ----------
 
-def band_source(art, side, d):
-    """The outer d px of the art at `side`, mirrored across the edge: rows = along the side (start -> end corner of
-    the art quad side), cols = from the edge inward (col 0 = the edge's own pixels)."""
-    a = np.asarray(art)
+def wrap_margins(ws, so_size):
+    """Tony 2026-11-19 ("a real gallery wrap never shows the art reversed"): the print is cover-fit over the FRONT FACE
+    plus the wrap depth on each camera-facing side, like a real wrapped print. {side name: margin px in smart-object
+    pixels}: depth_frac x the face's long side for every side with a strip, 0 elsewhere (the face crop grows only where
+    a side shows)."""
+    d = max(2, int(round(float((ws or {}).get("depth_frac", DEPTH_FRAC)) * max(so_size))))
+    shown = set(((ws or {}).get("sides") or {}))
+    return {nm: (d if nm in shown else 0) for nm in SIDES}
+
+
+def wrap_size(so_size, margins):
+    """The size the art is cover-fit to: the face plus the margins."""
+    return (int(so_size[0]) + margins["left"] + margins["right"], int(so_size[1]) + margins["top"] + margins["bottom"])
+
+
+def face_of(ext, so_size, margins):
+    """The front face out of the wrapped art (what goes into the smart object)."""
+    l, t = margins["left"], margins["top"]
+    return np.asarray(ext)[t:t + int(so_size[1]), l:l + int(so_size[0])]
+
+
+def band_source(ext, side, d, margins=None):
+    """The art's own outer band past the face edge at `side`, in its own (unmirrored) order: rows = along the side
+    (start -> end corner of the art quad side), cols = from the face edge OUTWARD (col 0 = the art pixel right past the
+    edge, as on a real wrapped print). `ext` = the art fitted over face + margins ({side name: px}, None = all 0); a
+    side whose margin is narrower than d continues with its outermost pixels (never a reflection)."""
+    a = np.asarray(ext)
+    m = {nm: 0 for nm in SIDES} if margins is None else dict(margins)
+    need = {nm: max(0, d - m[nm]) if nm == side else 0 for nm in SIDES}
+    if any(need.values()):
+        pw = [(need["top"], need["bottom"]), (need["left"], need["right"])] + [(0, 0)] * (a.ndim - 2)
+        a = np.pad(a, pw, mode="edge")
+        m = {nm: m[nm] + need[nm] for nm in SIDES}
+    t, l = m["top"], m["left"]
+    h, w = a.shape[0] - t - m["bottom"], a.shape[1] - l - m["right"]
     if side == "right":
-        return a[:, ::-1][:, :d]
+        return a[t:t + h, l + w:l + w + d]
     if side == "left":
-        return a[::-1, :d]
+        return a[t:t + h, l - d:l][::-1, ::-1]
     if side == "top":
-        return a[:d, :].transpose(1, 0, *range(2, a.ndim))
+        return a[t - d:t, l:l + w][::-1].transpose(1, 0, *range(2, a.ndim))
     if side == "bottom":
-        return a[::-1, ::-1][:d, :].transpose(1, 0, *range(2, a.ndim))
+        return a[t + h:t + h + d, l:l + w][:, ::-1].transpose(1, 0, *range(2, a.ndim))
     raise ValueError(side)
 
 
@@ -578,22 +807,25 @@ def coverage(poly, W, H, box=None, ss=8):
     return out
 
 
-def strip_layer(ws, W, H, art=None):
-    """Full-canvas linear RGB + alpha of every strip: the mirrored band of `art` (fitted to the smart object, RGB
-    0..255) times the measured shading; with art None the neutral grey placeholder. Returns (rgb_lin, alpha)."""
+def strip_layer(ws, W, H, art=None, margins=None):
+    """Full-canvas linear RGB + alpha of every strip: the art's own outer band (band_source, unmirrored; `art` RGB
+    0..255 = the art fitted over face + `margins`, or the face alone with margins None) times the measured shading;
+    with art None the neutral grey placeholder. Returns (rgb_lin, alpha)."""
     import cv2
     rgb = np.zeros((H, W, 3), "float32")
     alpha = np.zeros((H, W), "float32")
     if art is not None:
         art_l = lin(np.asarray(art, "float32")[..., :3] / 255.0)
-        d = max(2, int(round(float(ws.get("depth_frac", DEPTH_FRAC)) * max(art_l.shape[:2]))))
+        mg = {nm: 0 for nm in SIDES} if margins is None else margins
+        face_hw = (art_l.shape[0] - mg["top"] - mg["bottom"], art_l.shape[1] - mg["left"] - mg["right"])
+        d = max(2, int(round(float(ws.get("depth_frac", DEPTH_FRAC)) * max(face_hw))))
     for nm, sd in (ws.get("sides") or {}).items():
         quad = np.float32(sd["quad"])
         wmax = max(sd["width_px"]) if sd.get("width_px") else 8.0
         L = int(math.ceil(max(float(np.linalg.norm(quad[3] - quad[0])), 4)))
         tw = max(4, int(math.ceil(wmax * 3)))
         if art is not None:
-            band = band_source(art_l, nm, min(d, art_l.shape[1] if nm in ("right", "left") else art_l.shape[0]))
+            band = band_source(art_l, nm, d, mg)
             band = cv2.resize(np.ascontiguousarray(band), (tw, band.shape[0]), interpolation=cv2.INTER_AREA)
             band = cv2.resize(band, (tw, L), interpolation=cv2.INTER_AREA if band.shape[0] > L else cv2.INTER_LINEAR)
         else:
@@ -623,7 +855,7 @@ def strip_layer(ws, W, H, art=None):
             w = float(fd["width_px"])
             quad = np.float32([a0, a0 + n * w, b0 + n * w, b0])
             L = int(math.ceil(max(float(np.linalg.norm(b0 - a0)), 4)))
-            band = band_source(art_l, nm, 2)
+            band = band_source(art_l, nm, 2, mg)
             band = cv2.resize(np.ascontiguousarray(band), (4, L), interpolation=cv2.INTER_AREA)
             x0, y0 = max(0, int(math.floor(quad[:, 0].min())) - 2), max(0, int(math.floor(quad[:, 1].min())) - 2)
             x1, y1 = min(W, int(math.ceil(quad[:, 0].max())) + 3), min(H, int(math.ceil(quad[:, 1].max())) + 3)
@@ -647,16 +879,17 @@ def has_strips(manifest):
     return bool(((manifest or {}).get("wrap_strips") or {}).get("sides"))
 
 
-def composite(render_rgb, base_rgb, fitted_art, ws, art_q=None):
+def composite(render_rgb, base_rgb, fitted_art, ws, art_q=None, margins=None):
     """The render (uint8 / float 0..255, the PSD rendered with the placeholder strip layer HIDDEN) with the wrap
-    strips laid over the side edges. out = render + alpha * (strip - base photo): the strip replaces exactly the
+    strips laid over the side edges. fitted_art = the art fitted over face + `margins` (wrap_margins; None = the face
+    alone, the bands then continue its edge pixels). out = render + alpha * (strip - base photo): the strip replaces exactly the
     photo's share of each pixel, so the face art is untouched and the seam lets no photo through. On the seam pixels
     alpha is capped at 1 - the art quad's own coverage (`art_q`, else ws["art_quad"]), so the two never overlap (an
     overlap darkened the seam into a 1 px line). Returns uint8."""
     R = np.asarray(render_rgb, "float32")[..., :3] / 255.0
     B = np.asarray(base_rgb, "float32")[..., :3] / 255.0
     H, W = R.shape[:2]
-    s_lin, a = strip_layer(ws, W, H, fitted_art)
+    s_lin, a = strip_layer(ws, W, H, fitted_art, margins)
     S = enc(np.where(a[..., None] > 1e-6, s_lin / np.maximum(a[..., None], 1e-6), 0))
     aq = art_q if art_q is not None else ws.get("art_quad")
     if aq is not None:

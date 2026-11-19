@@ -1016,26 +1016,51 @@ def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None
     q_sam = q
     if art_offsets is not None:                  # Tony 2026-11-18: per-side correction (top, right, bottom, left px,
         q = np.float32(offset_quad(q, art_offsets))   # + = outward) from the independent edge check's measurement
-    asp = true_aspect(q, (W, H))
+    pad = 0.0 if canvas else float(_cfg(settings, "opening_pad_px"))   # canvas: no frame lip to run the art under
+    if not 0 <= pad <= PAD_MAX_PX:
+        raise TemplateError(f"opening_pad_px {pad:g} is outside 0..{PAD_MAX_PX:g} px")
+    from . import wrap_strips as wst
+    # Tony 2026-11-19 (slot 12, two white bars): a flat blank band beside the face (the insert's orange, or a white
+    # canvas side / paper border drawn on BOTH opposite sides, or one that is not the measured wrap side) is part of the
+    # blank: the art covers it. Only the one camera-facing wrap side stays a strip. Mats are meant to show.
+    extended = {}
+    if presentation != "mat":
+        bands = wst.paper_bands(rgb, offset_quad(q, pad))
+        strip_sides = set(wst.measure_sides(rgb, offset_quad(q_sam, pad))[0]) if canvas and bands else set()
+        extended = {s: e for s, e in bands.items() if (s + 2) % 4 in bands or s not in strip_sides}
+        if extended:     # the art edge moves out to each band's measured outer line (bands are measured from the
+            # art quad = q + pad, so relative to q they reach pad further; the art then runs its pad past them)
+            q_band = q
+            q = wst.extend_quad(q, {s: (e0 + pad, e1 + pad) for s, (e0, e1) in extended.items()})
+
+    def _true(qq):
+        """The true (flat) ratio of a quad. After an extension the perspective estimate on the new quad is unstable
+        (its near-parallel sides moved by a few px: 0.54 -> 0.80 on slot 12, a stretched art), so it is the SAM quad's
+        estimate scaled by how much wider / taller the extension made the quad on screen."""
+        if not extended:
+            return true_aspect(qq, (W, H))
+        w_ = lambda x: (math.dist(x[0], x[1]) + math.dist(x[3], x[2])) / 2
+        h_ = lambda x: (math.dist(x[0], x[3]) + math.dist(x[1], x[2])) / 2
+        return true_aspect(q_band, (W, H)) * (w_(qq) / w_(q_band)) / (h_(qq) / h_(q_band))
+    asp = _true(q)
     l, r = math.dist(q[0], q[3]), math.dist(q[1], q[2])
     info = {"aspect": round(asp, 4),
             "screen_aspect": round(((math.dist(q[0], q[1]) + math.dist(q[3], q[2])) / 2) / ((l + r) / 2), 4),
             "skew": round(max(l, r) / max(min(l, r), 1), 3), "method": "sam2 + hard inner edge",
             "sam": {k: res.get(k) for k in ("model", "device", "box", "box_source", "sam", "verify", "wall_px")},
-            "opening": res.get("opening"), "quad_paper": res.get("corners_paper")}
+            "opening": res.get("opening"), "quad_paper": res.get("corners_paper"),
+            **({"face_extended_px": {wst.SIDES[s]: w for s, w in extended.items()},
+                "sam_quad": np.round(q_sam, 3).tolist()} if extended else {})}
     q_open, mode = art_quad(q, asp, target)                    # >3% off the print ratio: rejected (regenerate)
-    pad = 0.0 if canvas else float(_cfg(settings, "opening_pad_px"))   # canvas: no frame lip to run the art under
-    if not 0 <= pad <= PAD_MAX_PX:
-        raise TemplateError(f"opening_pad_px {pad:g} is outside 0..{PAD_MAX_PX:g} px")
-    aq = offset_quad(q_open, pad)                              # the art runs `pad` px under the frame's inner edge
-    so = so_pixels(aq, true_aspect(aq, (W, H)))                # the art quad's own true ratio: no stretch
+    aq = offset_quad(q_open, pad)                             # the art runs `pad` px under the frame's inner edge
+    so = so_pixels(aq, _true(aq))                # the art quad's own true ratio: no stretch
     base = work / "base.png"
     Image.fromarray(rgb).save(base)                   # flat RGB PNG (PhotoCraft opens it as the base layer)
     files = make_layers(rgb.astype("float32") / 255, q, aq, so, mode, work, wall, pad=pad, canvas=canvas)
-    from . import wrap_strips as wst
     # gallery-wrap side strips (Tony 2026-11-17), DETECTED on the uncorrected SAM quad and attached to the corrected
     # art edge (Tony 2026-11-18: detection on the corrected edge drew strips on the wrong sides)
-    ws = wst.measure(rgb, offset_quad(q_sam, pad), "canvas", art_offsets=art_offsets) if canvas else None
+    ws = wst.measure(rgb, offset_quad(q_sam, pad), "canvas", art_offsets=art_offsets, exclude=tuple(extended),
+                     final_q=aq if extended else None) if canvas else None
     if ws and float(np.abs(np.float32(ws["art_quad"]) - np.float32(aq)).max()) > 0.01:
         raise TemplateError("wrap strips: the strip art edge does not match the art quad")
     if ws:
@@ -1157,10 +1182,11 @@ def render_psd(psd, so_px, art, out_png, settings=None, work=None, max_crop=MAX_
     """Swap the art into 'Place Artwork Here' and render. The art is cover-fit to the smart object's NATIVE pixels
     (read from the PSD; a template.json so_px can be wrong, e.g. the Wabi bedroom's 542x740 vs native 562x750).
     Canvas templates with "wrap_strips" in their manifest (app/wrap_strips.py, 2026-11-17): the placeholder strip
-    layer is hidden in the render and the mirrored, photo-shaded art band is laid over each camera-facing side (wrap
-    False = the plain render, for before/after). Every other template renders exactly as before. The despill layer
-    (app/despill.py), when the PSD has one, is part of the render like any other layer.
-    Returns {"fitted", "cropped", "so_px", "wrap_strips"}."""
+    layer is hidden in the render, the art is cover-fit over the face plus the wrap depth on each camera-facing side,
+    and the art's own outer band (unmirrored, photo-shaded) is laid over each such side (wrap False = the plain render,
+    for before/after). Every other template renders exactly as before. The despill layer (app/despill.py), when the
+    PSD has one, is part of the render like any other layer.
+    Returns {"fitted", "cropped", "so_px", "wrap_strips"} (+ "face_cropped", "wrap_margins_px" with strips)."""
     from . import wrap_strips as wst
     work = Path(work or tempfile.mkdtemp())
     fitted = work / "fitted_art.png"
@@ -1168,9 +1194,25 @@ def render_psd(psd, so_px, art, out_png, settings=None, work=None, max_crop=MAX_
         native = so_size(psd, settings, work)
     except Exception:  # noqa: BLE001  (fall back to the manifest)
         native = list(so_px)
-    cropped = fit_cover(art, tuple(native), fitted, max_crop)
     man = manifest if manifest is not None else (load_manifest(psd) or {})
     strips = wst.has_strips(man)
+    margins, wrapped, face_crop = None, None, None
+    if strips and wrap:
+        # Tony 2026-11-19: a real wrap, never a mirror: the art is cover-fit over the face PLUS the wrap depth on each
+        # visible side; the smart object gets the face (the centre), the strips get the art's own outer bands
+        from PIL import Image
+        margins = wst.wrap_margins(man["wrap_strips"], native)
+        ext = work / "wrapped_art.png"
+        cropped = fit_cover(art, wst.wrap_size(native, margins), ext, max_crop)
+        with Image.open(ext) as im:
+            wrapped = np.asarray(im.convert("RGB"))
+        Image.fromarray(np.ascontiguousarray(wst.face_of(wrapped, native, margins))).save(fitted)
+        with Image.open(art) as im:
+            aw, ah = im.size
+        s = max(wrapped.shape[1] / aw, wrapped.shape[0] / ah)        # art px -> wrapped px
+        face_crop = round(1 - (native[0] * native[1]) / (aw * ah * s * s), 3)
+    else:
+        cropped = fit_cover(art, tuple(native), fitted, max_crop)
     hide = []
     if strips:          # the grey placeholder is for PhotoCraft only (it is hidden whether or not strips are drawn)
         hide = _cmd("layer.select", {"name": wst.LAYER}) + _cmd("layer.setProps", {"visible": False})
@@ -1190,13 +1232,15 @@ def render_psd(psd, so_px, art, out_png, settings=None, work=None, max_crop=MAX_
             base = np.asarray(im.convert("RGB"))
         from .despill import base_for
         base = base_for(base, man)          # the PSD's despill layer sits under the strips: the same pixels here
-        with Image.open(fitted) as im:
-            fa = np.asarray(im.convert("RGB"))
         if base.shape != ren.shape:
             raise TemplateError(f"wrap strips: the scene {base.shape[1]}x{base.shape[0]} is not the render's size")
-        Image.fromarray(wst.composite(ren, base, fa, man["wrap_strips"], man.get("quad_art"))).save(out_png)
+        Image.fromarray(wst.composite(ren, base, wrapped, man["wrap_strips"], man.get("quad_art"),
+                                      margins)).save(out_png)
         drawn = list(man["wrap_strips"]["sides"])
-    return {"fitted": fitted, "cropped": cropped, "so_px": list(native), "wrap_strips": drawn}
+    out = {"fitted": fitted, "cropped": cropped, "so_px": list(native), "wrap_strips": drawn}
+    if face_crop is not None:     # cropped = the share of the art not on the face OR a strip; face_cropped = not on the face
+        out.update(face_cropped=face_crop, wrap_margins_px=margins)
+    return out
 
 
 # ---------- manifests for Tony's own PSDs ----------

@@ -141,6 +141,10 @@ def prod(env, tmp_path, monkeypatch):
     root = library(tmp_path)
     env["S"].update({"room_templates_dir": str(root), "room_scene_engine": "nbpro", "room_slots": [3] + list(range(9, 20))})
     monkeypatch.setattr(stp, "_run", FakeCraft())
+    # the fake PhotoCraft never draws the art (a render = the scene), which the art-area gate rightly fails; these tests
+    # are about the card flow, so the gate passes here (test_gate_failure_is_flagged_never_a_normal_card runs it)
+    from app import production
+    monkeypatch.setattr(production, "art_gate", lambda *a, **k: {"pass": True, "why": [], "sides": {}})
     calls = []
     from fastapi import FastAPI
     from fastapi.testclient import TestClient
@@ -410,3 +414,19 @@ def test_placeholder_card_has_a_1px_dark_orange_line_on_its_quad_edge(tmp_path):
         assert (ring == stp.CARD_EDGE).all()
     assert tuple(a[5, 5]) == stp.CARD_FILL and tuple(a[1, 3]) == stp.CARD_FILL       # the line is exactly 1 px
     assert (a[1:-1, 1:-1] == stp.CARD_EDGE).all(-1).sum() == 0
+
+
+def test_gate_failure_is_flagged_never_a_normal_card(prod, monkeypatch):
+    """Tony 2026-11-19: the fake PhotoCraft never draws the art, so the real art-area gate sees the blank insert still
+    showing: the render must go to Archive as flagged, with the gate's reason on the card."""
+    from app import production
+    monkeypatch.setattr(production, "art_gate", production.__dict__["_real_art_gate"])
+    c, iid = prod["c"], prod["iid"]
+    c.post(f"/ikigai/api/production/{iid}/tags", json={"rooms": ["Living room"], "styles": ["Mid Century"]})
+    card = c.post(f"/ikigai/api/production/{iid}/slots/3/generate", json={}).json()["slots"][0]
+    assert card["image"]["flagged"] and card["image"]["where"] == "flagged"
+    assert "blank" in card["message"]
+    g = card["image"]["guard"]
+    assert g["pass"] is False and g["art_area"]["inside_unchanged"] > 0.5
+    folder = prod["tmp"] / "Designs" / "00121-Book Club Cat" / "03-Etsy Images"
+    assert not (folder / card["image"]["file"]).exists() and (folder / "Archive" / card["image"]["file"]).is_file()

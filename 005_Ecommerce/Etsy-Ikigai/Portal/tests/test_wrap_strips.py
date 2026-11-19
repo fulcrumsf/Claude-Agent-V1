@@ -66,12 +66,31 @@ def test_composite_replaces_the_orange_side_keeps_the_face_and_everything_else(t
     assert (render[110:390, 401:409, 0] > render[110:390, 401:409, 2]).all()   # (it was orange before)
 
 
-def test_band_is_the_mirrored_outer_edge_of_the_art_per_side():
-    a = np.arange(12, dtype="float32").reshape(3, 4)                    # rows y, cols x
-    assert ws.band_source(a, "right", 2).tolist() == [[3, 2], [7, 6], [11, 10]]
-    assert ws.band_source(a, "left", 2).tolist() == [[8, 9], [4, 5], [0, 1]]
-    assert ws.band_source(a, "top", 2).tolist() == [[0, 4], [1, 5], [2, 6], [3, 7]]
-    assert ws.band_source(a, "bottom", 2).tolist() == [[11, 7], [10, 6], [9, 5], [8, 4]]
+def test_band_is_the_arts_own_outer_band_never_mirrored():
+    """Tony 2026-11-19: a real gallery wrap shows the art CONTINUING round the edge. ext = the art fitted over the face
+    plus margins; each band = the art just past the face edge, col 0 next to the edge, going outward."""
+    ext = np.arange(42, dtype="float32").reshape(6, 7)                  # value = 7 * row + col
+    m = {"top": 1, "right": 2, "bottom": 1, "left": 1}                   # the face = rows 1-4, cols 1-4
+    assert ws.band_source(ext, "right", 2, m).tolist() == [[12, 13], [19, 20], [26, 27], [33, 34]]
+    assert ws.band_source(ext, "left", 1, m).tolist() == [[28], [21], [14], [7]]        # bl -> tl, outward = left
+    assert ws.band_source(ext, "top", 1, m).tolist() == [[1], [2], [3], [4]]           # tl -> tr, outward = up
+    assert ws.band_source(ext, "bottom", 1, m).tolist() == [[39], [38], [37], [36]]    # br -> bl, outward = down
+    # no margin on a side: its outermost pixels continue (a fold), never a reflection of the face
+    face = np.arange(12, dtype="float32").reshape(3, 4)
+    assert ws.band_source(face, "right", 2).tolist() == [[3, 3], [7, 7], [11, 11]]
+    # a left-to-right ramp keeps rising past the right edge (a mirror would fall back)
+    ramp = np.tile(np.arange(10, dtype="float32"), (3, 1))
+    band = ws.band_source(ramp, "right", 3, {"top": 0, "right": 3, "bottom": 0, "left": 0})
+    assert band[0].tolist() == [7, 8, 9] and ramp[0, 6] == 6
+
+
+def test_wrap_margins_only_on_visible_sides_and_the_face_is_the_centre():
+    w = {"depth_frac": 0.05, "sides": {"right": {}}}
+    m = ws.wrap_margins(w, [200, 300])
+    assert m == {"top": 0, "right": 15, "bottom": 0, "left": 0}
+    assert ws.wrap_size([200, 300], m) == (215, 300)
+    ext = np.arange(300 * 215).reshape(300, 215)
+    assert (ws.face_of(ext, [200, 300], m) == ext[:, :200]).all()
 
 
 def test_two_visible_sides_meet_on_the_box_edge():
@@ -135,6 +154,31 @@ def test_render_psd_draws_strips_only_for_templates_that_have_them(tmp_path, mon
     r2 = stp.render_psd(tmp_path / "T.psd", [200, 300], art, tmp_path / "off.png", work=tmp_path / "w2", manifest=man,
                         wrap=False)
     assert r2["wrap_strips"] == [] and ws.LAYER in " ".join(craft.calls[-1])
+
+
+def test_render_psd_wraps_the_art_round_the_side_never_mirrored(tmp_path, monkeypatch):
+    """The art is cover-fit over face + wrap depth; the smart object gets the face (left part here, the right side is
+    the visible one) and the strip continues the art past the edge: a left-to-right ramp keeps rising on the strip."""
+    craft = Craft()
+    monkeypatch.setattr(stp, "_run", craft)
+    monkeypatch.setattr(stp, "so_size", lambda *a, **k: [200, 300])
+    ramp = np.zeros((300, 215, 3), "uint8")
+    ramp[..., 0] = np.linspace(20, 235, 215).astype("uint8")[None, :]       # red rises to the right
+    ramp[..., 2] = 120
+    Image.fromarray(ramp).save(tmp_path / "art.png")
+    man = _strip_manifest(tmp_path)
+    (tmp_path / "w").mkdir()
+    r = stp.render_psd(tmp_path / "T.psd", [200, 300], tmp_path / "art.png", tmp_path / "wrap.png",
+                       work=tmp_path / "w", manifest=man)
+    assert r["wrap_margins_px"] == {"top": 0, "right": 15, "bottom": 0, "left": 0}
+    assert r["cropped"] == pytest.approx(0.0, abs=0.01) and r["face_cropped"] == pytest.approx(15 / 215, abs=0.01)
+    face = np.asarray(Image.open(r["fitted"])).astype(int)
+    assert face.shape[:2] == (300, 200) and abs(face[150, -1, 0] - int(ramp[150, 199, 0])) <= 3
+    # the strip: render with the photo's shading divided out = the art's continuation, brighter red than the face edge
+    out = np.asarray(Image.open(tmp_path / "wrap.png")).astype(float)
+    strip = out[120:380, 401:408]
+    rb = strip[..., 0] / np.maximum(strip[..., 2], 1)                    # red/blue: shading cancels out
+    assert rb.mean() > face[120:380, -1, 0].mean() / 120 + 0.05          # past the face edge's red, not back below it
 
 
 def test_assemble_puts_the_placeholder_above_the_base_below_the_art(tmp_path, monkeypatch):

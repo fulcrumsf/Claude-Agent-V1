@@ -1079,6 +1079,14 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
         O_sam, sam_why, sam_wall = (None, "the template has a mat", None) if (r["mats"] or (manifest or {}).get("mode")
                                                                            == "mat") \
             else sam_opening(td / "bg.png", Vs, settings, td, psd, canvas=pres == "canvas")
+        ext = ((manifest or {}).get("insert") or {}).get("face_extended_px")
+        if O_sam is not None and ext:
+            # Tony 2026-11-19: the builder extended the art over flat blank bands beside the face (the AI's white
+            # canvas bands, wrap_strips.paper_bands); SAM finds the face without them, so the opening is SAM's quad
+            # moved out by the same recorded band lines
+            from .wrap_strips import SIDES, extend_quad
+            O_sam = extend_quad(O_sam, {SIDES.index(k): tuple(v) for k, v in ext.items()})
+            res["measured"]["opening_extended_px"] = ext
         # 2b independent edge check (run first: a canvas's opening is read from it, below): the rendered art edge vs
         # the face edge read from the scene pixels (no SAM, no builder outline; Tony 2026-11-17)
         edge_res = edge_result(psd, bg, Vs, pres, tol, so, settings, td, hide=ov + fg, cards=cards,

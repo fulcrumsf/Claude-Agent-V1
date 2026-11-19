@@ -14630,7 +14630,330 @@
    "status": "PASS",
    "reasons": [],
    "rel": "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_225742/AI_Office_Scandinavian_20261118_225742_Template.psd"
+  },
+  "003_Ratio_3x4/001_Living_Rooms/004_Mid_Century/AI_Living_Room_Mid_Century_20261118_233500/AI_Living_Room_Mid_Century_20261118_233500_Template.psd": {
+   "psd": "AI_Living_Room_Mid_Century_20261118_233500_Template.psd",
+   "checked": "2026-11-19T00:15:00",
+   "psd_size": 26106346,
+   "psd_mtime": 1795065140,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "pass",
+     "reason": "",
+     "offsets": [
+      0.09,
+      -0.23,
+      0.43,
+      0.03
+     ]
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "edge": {
+     "status": "pass",
+     "reason": "",
+     "sides": {
+      "top": {
+       "segments_px": [
+        0.03,
+        0.13,
+        0.37
+       ],
+       "face_edge_px": 0.13,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "right": {
+       "segments_px": [],
+       "status": "unmeasured",
+       "why": "the face is not flat here (a print or a prop)"
+      },
+      "bottom": {
+       "segments_px": [
+        0.2,
+        0.26,
+        0.33
+       ],
+       "face_edge_px": 0.26,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "left": {
+       "segments_px": [],
+       "status": "unmeasured",
+       "why": "the face is not flat here (a print or a prop)"
+      }
+     },
+     "tol_px": 1.5,
+     "presentation": "canvas",
+     "art_quad": [
+      [
+       1162.2320556640625,
+       218.61599731445312
+      ],
+      [
+       1695.7860107421875,
+       184.57899475097656
+      ],
+      [
+       1693.2049560546875,
+       1103.5889892578125
+      ],
+      [
+       1160.6490478515625,
+       1082.8360595703125
+      ]
+     ],
+     "art_edge_source": "card difference, overlays hidden (sub-pixel)",
+     "spill": {
+      "status": "pass",
+      "reason": "",
+      "sides": {
+       "top": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.9,
+        "status": "pass"
+       },
+       "right": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 2.1,
+        "status": "pass"
+       },
+       "bottom": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.9,
+        "status": "pass"
+       },
+       "left": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 2.7,
+        "status": "pass"
+       }
+      },
+      "orange_px": 0,
+      "limit_display_px2": 20.0,
+      "limit_dE": 6.0
+     },
+     "evidence": "/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Living_Room_Mid_Century_20261118_233500_Template_4bf6cad9.jpg"
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "pass",
+     "reason": "",
+     "wall_deg": -26.3,
+     "shadow_deg": -26.2
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2400,
+     1792
+    ],
+    "so_px": [
+     566,
+     919
+    ],
+    "wrap_strip_layer": [
+     "Wrap Strip (placeholder)"
+    ],
+    "despill_layer": [
+     "Despill (orange bounce fix)"
+    ],
+    "visible_quad": [
+     [
+      1162.0,
+      218.0
+     ],
+     [
+      1695.0,
+      184.0
+     ],
+     [
+      1693.0,
+      1103.0
+     ],
+     [
+      1160.0,
+      1082.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1162.18505859375,
+      218.5760040283203
+     ],
+     [
+      1696.01904296875,
+      184.52999877929688
+     ],
+     [
+      1693.2149658203125,
+      1103.4200439453125
+     ],
+     [
+      1160.7080078125,
+      1082.6689453125
+     ]
+    ],
+    "presentation": "canvas",
+    "edge_tol_px": 1.5,
+    "opening_extended_px": {
+     "right": [
+      31.9,
+      35.98
+     ],
+     "left": [
+      34.62,
+      31.26
+     ]
+    },
+    "opening_source": "face edge from the independent edge check (canvas; SAM 2 sam2.1_hiera_large kept as opening_offsets_sam)",
+    "opening_quad_sam": [
+     [
+      1162.175048828125,
+      218.61399841308594
+     ],
+     [
+      1695.7840576171875,
+      184.56500244140625
+     ],
+     [
+      1693.2330322265625,
+      1103.5560302734375
+     ],
+     [
+      1160.6739501953125,
+      1082.802978515625
+     ]
+    ],
+    "opening_offsets_sam": {
+     "top": -0.03,
+     "right": -0.11,
+     "bottom": 0.13,
+     "left": 0.02
+    },
+    "opening_offsets": {
+     "top": 0.09,
+     "right": -0.23,
+     "bottom": 0.43,
+     "left": 0.03
+    },
+    "opening_quad": [
+     [
+      1162.199951171875,
+      218.60000610351562
+     ],
+     [
+      1695.800048828125,
+      184.60000610351562
+     ],
+     [
+      1693.199951171875,
+      1103.5999755859375
+     ],
+     [
+      1160.699951171875,
+      1082.800048828125
+     ]
+    ],
+    "opening_box": [
+     1161,
+     185,
+     535,
+     919
+    ],
+    "sun": {
+     "deg": -26.3,
+     "line": [
+      1797,
+      859,
+      2206,
+      1061
+     ],
+     "contrast": 0.193,
+     "score": 87.85846052946911
+    },
+    "sun_searched_on": "SAM wall mask",
+    "shadow_edges": {
+     "Light Shadow": {
+      "deg": -26.2,
+      "line": [
+       1168,
+       545,
+       1690,
+       802
+      ]
+     }
+    },
+    "insert_texture": 0.0221,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1145,
+      148,
+      1726,
+      1121
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 12,
+      "h": 9
+     }
+    },
+    "opening_ratio": 0.804,
+    "so_ratio": 0.6159,
+    "visible_ratio": 0.6159
+   },
+   "status": "PASS",
+   "reasons": [],
+   "rel": "003_Ratio_3x4/001_Living_Rooms/004_Mid_Century/AI_Living_Room_Mid_Century_20261118_233500/AI_Living_Room_Mid_Century_20261118_233500_Template.psd"
   }
  },
- "updated": "2026-11-18T22:57:56"
+ "updated": "2026-11-19T00:15:13"
 }

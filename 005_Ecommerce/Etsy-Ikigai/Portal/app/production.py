@@ -512,6 +512,49 @@ def _unique_name(folder, slot, room, decor):
     return name
 
 
+def art_gate(settings, psd, man, render, work):
+    """The art-area gate (room_templates.art_area_gate) on one render of template `psd` (manifest `man`)."""
+    from . import template_checker as tc
+    base = rt.gate_base(man, Path(psd).parent, render, psd, settings, work)
+    return rt.art_area_gate(render, base, man["quad_art"], tc.presentation_of(man))
+
+
+_real_art_gate = art_gate        # tests swap art_gate for a stub and restore this one
+
+
+def _with_gate(g, ag):
+    return {**g, "art_area": ag, "pass": bool(g["pass"] and ag["pass"]), "why": list(g["why"]) + list(ag["why"])}
+
+
+GEOMETRY_KEYS = ("so_px", "so_ratio", "quad_insert", "quad_art", "quad_paper", "mode", "canvas", "light_from",
+                 "opening_pad_px", "presentation", "wrap_strips", "despill", "insert", "shadows", "card_test")
+
+
+def rebuild_from_scene(settings, psd, man, work, why=""):
+    """Free (no credits): template `psd` rebuilt from its saved scene PNG with the current builder (which covers blank
+    bands beside the art, scene_templates.build_psd). The new PSD is saved NEXT TO the live one as a rebuild waiting
+    for Tony (<stem>_Rebuild_<stamp>.psd + sidecar <stem>.json, kind rebuild, approved false; template_gallery); the
+    live PSD is untouched until he approves. Returns (new psd, its manifest)."""
+    from . import template_gallery as tg
+    psd = Path(psd)
+    scene = psd.parent / str(man.get("scene") or "")
+    if not man.get("scene") or not scene.is_file():
+        raise stp.TemplateError("no saved scene to rebuild from")
+    work = Path(work)
+    work.mkdir(parents=True, exist_ok=True)
+    box = ((man.get("insert") or {}).get("sam") or {}).get("box")
+    built = stp.build_psd(scene, man["ratio"], work, settings, box=box, presentation=man.get("presentation"))
+    new = psd.with_name(f"{psd.stem.removesuffix('_Template')}_Rebuild_{datetime.now():%Y%m%d_%H%M%S}_Template.psd")
+    shutil.copy2(built["psd_tmp"], new)
+    side = {k: v for k, v in man.items() if k not in GEOMETRY_KEYS + ("approved", "approved_at")}
+    side.update({k: built[k] for k in GEOMETRY_KEYS if k in built})
+    side.update(kind=tg.REBUILD_KIND, psd=new.name, replaces=psd.name, approved=False,
+                rebuilt={"when": datetime.now().isoformat(timespec="seconds"), "from": man.get("scene"), "credits": 0,
+                         "why": why or "the art-area gate found blank bars beside the art"})
+    new.with_suffix(".json").write_text(__import__("json").dumps(side, indent=1) + "\n")
+    return new, side
+
+
 def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
     """Worker for one card: pick the source, render, guard, place. Always releases the job slot."""
     try:
@@ -570,6 +613,7 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 r = stp.render_psd(psd, man["so_px"], art, render, settings, td, manifest=man)
                 g = rt.guard_quad(render, r["fitted"], man["quad_art"], tdir / man["scene"],
                                   man.get("guard_max_cover"), settings)
+                g = _with_gate(g, art_gate(settings, psd, man, render, td))     # a fresh build: nothing to rebuild
                 out.update(template=rel, new_template=rel, print=art.name, cropped=r["cropped"])
             elif t.get("wired"):                           # Teak Sideboard etc.: only when Tony picks it with +
                 _stage("rendering the art into the room")
@@ -586,7 +630,29 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 art = stp.print_for(arts, man["so_px"][0] / man["so_px"][1])
                 r = stp.render_psd(t["psd"], man["so_px"], art, render, settings, td, manifest=man)
                 g = rt.guard_quad(render, r["fitted"], man["quad_art"], None, None, settings)
+                ag = art_gate(settings, t["psd"], man, render, td)
                 out.update(template=t["rel"], print=art.name, cropped=r["cropped"])
+                if not ag["pass"] and man.get("scene") and (t["psd"].parent / man["scene"]).is_file():
+                    # Tony 2026-11-19: a bar beside the art is never shown as a normal card. A library template with
+                    # its saved scene is rebuilt for free with the current builder and rendered again; the rebuild
+                    # waits in the Templates tab for his Approve (the live PSD is untouched)
+                    _stage("white bar beside the art: rebuilding the template from its saved scene (free)")
+                    try:
+                        npsd, nman = rebuild_from_scene(settings, t["psd"], man, td / "rebuild",
+                                                        "; ".join(ag["why"]))
+                        r2 = td / "render_rebuilt.png"
+                        rr = stp.render_psd(npsd, nman["so_px"], art, r2, settings, td / "rebuild", manifest=nman)
+                        g2 = rt.guard_quad(r2, rr["fitted"], nman["quad_art"], None, None, settings)
+                        ag2 = art_gate(settings, npsd, nman, r2, td / "rebuild")
+                        rel2 = npsd.relative_to(stp.library(settings)).as_posix()
+                        out["rebuilt"] = {"template": rel2, "first_render": ag, "pass": ag2["pass"]}
+                        if ag2["pass"]:
+                            shutil.copyfile(r2, render)
+                            r, g, ag = rr, g2, ag2
+                            out.update(template=rel2, cropped=rr["cropped"])
+                    except Exception as e:  # noqa: BLE001  (the first render stays, flagged with its reason)
+                        out["rebuilt"] = {"error": str(e)[:200], "first_render": ag}
+                g = _with_gate(g, ag)
             with LOCK:
                 rec = prints._record(con, lst["id"])
                 prod = _prod(rec)
