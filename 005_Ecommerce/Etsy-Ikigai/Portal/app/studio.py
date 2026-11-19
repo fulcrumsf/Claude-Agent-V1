@@ -50,7 +50,7 @@ from pydantic import BaseModel
 
 from fastapi.responses import FileResponse, JSONResponse
 
-from . import art, assistant, ideas, production, prints, taste
+from . import art, assistant, ideas, prod_chat, production, prints, taste
 from .channels import get_channel
 from .chat import Reply
 from .db import DB_LOCK, get_meta, set_meta
@@ -121,7 +121,7 @@ class ArtHooks:
             self.runner(self.queued.pop(0))
 
 
-def make_responder(con, settings, ask=None, art_hooks=None):
+def make_responder(con, settings, ask=None, art_hooks=None, prod_hooks=None):
     ask = ask or assistant.call_claude
 
     def respond(text, chat):
@@ -154,10 +154,18 @@ def make_responder(con, settings, ask=None, art_hooks=None):
                 note = (f"Tony just denied idea #{pending} “{title}”. The Portal already saved his new message as "
                         "the deny reason. Acknowledge it briefly; do not deny it again or save it as a taste_note.")
             history = chat.history(cfg_history(settings) + 1)[:-1]      # last one is this message
-            prompt = assistant.build_prompt(con, settings, history, text, getattr(chat, "selected_idea_id", None), note)
-
-        try:
-            raw = ask(prompt, settings)                                  # seconds; never hold the lock here
+            prod_id, open_slot = getattr(chat, "prod_idea_id", None), getattr(chat, "prod_slot", None)
+            try:                         # vision: the slot pictures Tony points at or names (max 2, <=1568 px)
+                images, seen = prod_chat.slot_images(con, settings, prod_id, text, open_slot)
+            except Exception as e:  # noqa: BLE001
+                print("chat slot images:", repr(e))
+                images, seen = [], []
+            prompt = assistant.build_prompt(con, settings, history, text, getattr(chat, "selected_idea_id", None), note,
+                                            prod_id, open_slot, seen)
+        if prod_hooks is not None:
+            prod_hooks.buttons = []
+        try:                                                             # seconds; never hold the lock here
+            raw = ask(prompt, settings, images=images) if images else ask(prompt, settings)
         except assistant.ChatUnavailable as e:
             if attached:
                 return Reply(f"Thanks, noted against “{title}”. ({e}, so no reply this time.)", idea_id=attached)
@@ -165,13 +173,18 @@ def make_responder(con, settings, ask=None, art_hooks=None):
 
         reply_text, actions = assistant.parse_reply(raw)
         with LOCK:
-            done, refused, changed, bare = assistant.run_actions(con, settings, actions, text, art_hooks)
+            done, refused, changed, bare = assistant.run_actions(con, settings, actions, text, art_hooks, prod_hooks,
+                                                                 prod_id)
             if bare and not attached:
                 _set_pending(con, bare[-1])
                 done.append("Want to say why? Your next message is saved as the reason.")
         if art_hooks is not None:
             art_hooks.flush()
-        return Reply(assistant.compose(reply_text, done, refused), refresh=changed, idea_id=attached)
+        buttons = []
+        if prod_hooks is not None:
+            prod_hooks.flush()
+            buttons = list(prod_hooks.buttons)
+        return Reply(assistant.compose(reply_text, done, refused), refresh=changed, idea_id=attached, buttons=buttons)
     return respond
 
 
@@ -273,7 +286,9 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
             return f" Upscale + resize did not start: {e}."
 
     hooks = ArtHooks(con, settings, runner, auto_prints)
-    responder = make_responder(con, settings, ask, hooks)
+    phooks = prod_chat.ProdHooks(con, settings, spawn, scene_generator,
+                                 (lambda t: chat.say("portal", t)) if chat is not None else None, prefix)
+    responder = make_responder(con, settings, ask, hooks, phooks)
     if chat is not None:
         chat.set_responder(responder)
 
@@ -440,21 +455,35 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
     def start_auto(idea_id):
         spawn(production.auto_styles, con, settings, idea_id, art_classify)
 
+    def with_fixes(pan):
+        """+ the "Waiting for Claude Code" fix requests of this design (Handoffs folder, status waiting)."""
+        try:
+            pan["fix_requests"] = prod_chat.fix_requests(settings, pan["idea_id"])
+        except Exception:  # noqa: BLE001
+            pan["fix_requests"] = []
+        return pan
+
     @r.get("/api/production/{idea_id}/panel")
     def api_production_panel(idea_id: int):
-        return JSONResponse(prod_call(production.panel, con, settings, idea_id, prefix, start_auto), headers=NO_STORE)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix, start_auto)),
+                            headers=NO_STORE)
+
+    @r.get("/api/fix-requests")
+    def api_fix_requests():
+        return {"items": prod_chat.fix_requests(settings)}
 
     @r.post("/api/production/{idea_id}/tags")
     def api_production_tags(idea_id: int, body: TagsIn):
         prod_call(production.save_tags, con, settings, idea_id, body.rooms, body.styles)
-        return JSONResponse(prod_call(production.panel, con, settings, idea_id, prefix, start_auto), headers=NO_STORE)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix, start_auto)),
+                            headers=NO_STORE)
 
     @r.post("/api/production/{idea_id}/slots/{slot}/generate")
     def api_production_generate(idea_id: int, slot: int, body: GenerateIn | None = None):
         tpl = body.template if body else None
         prod_call(production.start_slot, con, settings, idea_id, slot, tpl)
         spawn(production.run_slot, con, settings, idea_id, slot, tpl, scene_generator)
-        return JSONResponse(prod_call(production.panel, con, settings, idea_id, prefix), headers=NO_STORE)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix)), headers=NO_STORE)
 
     @r.post("/api/mockups/{idea_id}/run")
     def api_mockups_run(idea_id: int):

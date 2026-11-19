@@ -26,6 +26,10 @@ button{font:inherit;color:inherit;cursor:pointer}
 .shell{display:grid;grid-template-columns:minmax(0,3fr) minmax(320px,2fr);grid-template-rows:auto minmax(0,1fr);height:100vh}
 .shell.solo{grid-template-columns:minmax(0,1fr)}
 .shell.solo .details{display:none}
+.chatslot{display:flex;align-items:center;gap:6px;font:500 11px var(--mono);color:var(--ink-2);padding:0 0 6px}.chatslot[hidden]{display:none}.chatslot button{border:0;background:none;color:var(--muted);font-size:14px}
+.waitcc{border:1px dashed var(--test);border-radius:var(--r);padding:8px 12px;margin:0 0 12px;font-size:13px}.waitcc b{color:var(--test)}
+.msg.btns{display:flex;flex-wrap:wrap;gap:6px;background:none;border:0}
+.pwait{font:500 11px var(--mono);color:var(--test)}
 .work{display:flex;flex-direction:column;min-width:0;min-height:0}
 
 /* ---------- top: brand + tabs ---------- */
@@ -497,6 +501,7 @@ button{font:inherit;color:inherit;cursor:pointer}
       {% else %}<p class="hello">Ask about the ideas, approve or deny one, or tell me what you like.</p>{% endfor %}
     </div>
     <div class="chips"><button data-say="refresh">refresh</button><button data-say="status">status</button><button data-say="help">help</button></div>
+    <div class="chatslot" id="chatslot" hidden><span id="chatslot-t"></span><button type="button" id="chatslot-x" title="Stop pointing at this slot">×</button></div>
     <form class="compose" id="compose">
       <textarea id="say" name="text" placeholder="Talk to the studio…" rows="1" autocomplete="off"></textarea>
       <button aria-label="Send" id="send"><svg viewBox="0 0 20 20" width="18" height="18"><path d="M3.5 10h12M11 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -516,6 +521,13 @@ button{font:inherit;color:inherit;cursor:pointer}
   const DEFAULT_PH = "Talk to the studio…";
   const send = document.getElementById("send");
   let busy = false;
+  let chatSlot = null;
+  const slotBar = document.getElementById("chatslot");
+  window.setChatSlot = (slot, name) => {
+    chatSlot = slot || null; slotBar.hidden = !chatSlot;
+    if (chatSlot) { document.getElementById("chatslot-t").textContent = `About slot ${String(chatSlot).padStart(2, "0")}${name ? " of " + name : ""} (the chat sees its image)`; box.focus(); }
+  };
+  document.getElementById("chatslot-x").addEventListener("click", () => window.setChatSlot(null));
 
   const post = (url, body) => fetch(url, {method: "POST", headers: {"Content-Type": "application/json"},
     body: body ? JSON.stringify(body) : undefined}).then(r => r.ok ? r.json() : Promise.reject(r));
@@ -784,7 +796,10 @@ button{font:inherit;color:inherit;cursor:pointer}
     const dec = im && c.state !== "running" ? `<button class="btn sm ${st === "approved" ? "" : "ghost"}" data-pdec="approved" data-f="${esc(im.file)}">${st === "approved" ? "Approved" : "Approve"}</button>
       <button class="btn ghost sm" data-pdec="denied" data-f="${esc(im.file)}">${st === "denied" ? "Denied" : "Deny"}</button>
       ${st !== "pending" ? `<button class="btn ghost sm" data-pdec="pending" data-f="${esc(im.file)}">Undo</button>` : ""}` : "";
-    return `<article class="pcard ${esc(st)}">${head}${pic}<div class="pb">${msg}${cost && c.state !== "running" ? `<span class="pcost">${cost}</span>` : ""}${gen}${dec}<button class="plus" data-pplus="${c.slot}" title="Pick any template from the library" ${busy ? "disabled" : ""}>+</button></div></article>`;
+    const fr = (pan.fix_requests || []).find(x => x.slot === c.slot);
+    if (fr) msg += `<p class="pwait">Waiting for Claude Code</p>`;
+    const askc = `<button class="btn ghost sm" data-pchat="${c.slot}" title="Point the Studio chat at this slot (it sees the image)">Ask chat</button>`;
+    return `<article class="pcard ${esc(st)}">${head}${pic}<div class="pb">${msg}${askc}${cost && c.state !== "running" ? `<span class="pcost">${cost}</span>` : ""}${gen}${dec}<button class="plus" data-pplus="${c.slot}" title="Pick any template from the library" ${busy ? "disabled" : ""}>+</button></div></article>`;
   }
   function paintPanel() {
     if (!prodSel) { prodHost.innerHTML = prodItems.length ? `<p class="lead">Click a design above.</p>` : ""; return; }
@@ -798,6 +813,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     prodHost.innerHTML = `<section class="ppanel"><div class="phead">${pan.image_url ? `<img src="${esc(pan.image_url)}" alt="">` : ""}<div><h3>${esc(pan.name)}</h3><p>#${pan.idea_id} · ${esc(pan.title)}</p><p>${esc(pan.folder_rel)}</p></div>
       <div class="pcred"><b>${credits == null ? "…" : Math.round(credits)}</b>kie.ai credits left<br>${eng}<br>library templates are free</div></div>
       <div class="ppick"><div class="grp"><i>Rooms (up to ${pan.max_rooms})</i>${rooms}</div><div class="grp"><i>Styles</i>${styles}${auto}</div></div>
+      ${(pan.fix_requests || []).length ? `<div class="waitcc"><b>Waiting for Claude Code</b> · ${pan.fix_requests.map(f => `slot ${two(f.slot)}: “${esc(f.words)}” (${esc(f.file)})`).join(" · ")}. The next Claude Code session reads these first.</div>` : ""}
       ${pan.slots.length ? `<div class="pgrid">${pan.slots.map(slotCard).join("")}</div>` : `<p class="lead">No room fits this art yet. Pick a room above.</p>`}
       ${panErr ? `<p class="art-err">${esc(panErr)}</p>` : ""}</section>`;
   }
@@ -823,11 +839,13 @@ button{font:inherit;color:inherit;cursor:pointer}
     if (!quiet) { loadPanel(); if (credits == null) loadCredits(); }
   }
   const prodOpen = () => !document.getElementById("panel-production").hidden && !document.hidden;
+  window.prodContext = () => ({prod_idea_id: prodSel ? Number(prodSel) : null, prod_slot: chatSlot});
+  window.prodReload = () => { if (prodSel) { loadPanel(true); loadProd(true); } };
   window.addEventListener("focus", () => { if (prodOpen()) { loadProd(true); loadPanel(true); } });
   setInterval(() => { if (prodOpen() && !(pan && pan.job.running)) loadProd(true); }, 15000);
   stripHost.addEventListener("click", e => {
     const b = e.target.closest("[data-psel]"); if (!b) return;
-    prodSel = Number(b.dataset.psel); pan = null; panErr = ""; paintStrip(); loadPanel();
+    prodSel = Number(b.dataset.psel); pan = null; panErr = ""; window.setChatSlot(null); paintStrip(); loadPanel();
   });
   async function panPost(url, body) {
     panErr = "";
@@ -854,6 +872,8 @@ button{font:inherit;color:inherit;cursor:pointer}
       await loadPanel(true); return loadProd(true); }
     const p = e.target.closest("[data-pplus]");
     if (p) openPicker(Number(p.dataset.pplus));
+    const q = e.target.closest("[data-pchat]");
+    if (q) { window.setChatSlot(Number(q.dataset.pchat), pan.name); }
   });
   // "+" picker: any template from the library (the Templates tab gallery), filtered to the card's ratio first
   let pickRatio = "";
@@ -1255,11 +1275,18 @@ button{font:inherit;color:inherit;cursor:pointer}
     const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 90000);
     try {
       const r = await fetch("/api/chat", {method: "POST", headers: {"Content-Type": "application/json"}, signal: ctl.signal,
-        body: JSON.stringify({text, selected_idea_id: selected ? Number(selected) : null})});
+        body: JSON.stringify({text, selected_idea_id: selected ? Number(selected) : null, ...window.prodContext()})});
       if (!r.ok) throw r;
       const j = await r.json();
       render(j.messages);
-      if (j.refresh) reloadPanel(); else paintArt();
+      if ((j.buttons || []).length) {        // e.g. a paid regenerate: only Tony's click on it spends credits
+        const d = bubble("portal btns", j.buttons.map((b, k) => `<button class="btn sm" data-cbtn="${k}">${esc(b.label)}</button>`).join(""));
+        d.addEventListener("click", async e => { const b = e.target.closest("[data-cbtn]"); if (!b) return;
+          const spec = j.buttons[Number(b.dataset.cbtn)]; d.querySelectorAll("button").forEach(x => x.disabled = true);
+          try { await post(spec.url, spec.body || {}); b.textContent = "Started"; } catch (err) { let m = "That did not work."; try { m = (await err.json()).detail || m; } catch {} b.textContent = m; }
+          window.prodReload(); });
+      }
+      if (j.refresh) { reloadPanel(); window.prodReload(); } else paintArt();
     } catch (err) {
       wait.className = "msg portal error";
       wait.textContent = "No reply (the chat is offline or slow). Your message is kept; try again.";

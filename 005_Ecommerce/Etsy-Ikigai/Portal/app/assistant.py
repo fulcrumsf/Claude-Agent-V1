@@ -23,9 +23,9 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from . import art, ideas, taste
+from . import art, ideas, prod_chat, taste
 
-ACTIONS = ("approve", "deny", "seed", "refresh", "taste_note", "art_iterate", "art_approve", "none")
+ACTIONS = ("approve", "deny", "seed", "refresh", "taste_note", "art_iterate", "art_approve") + prod_chat.ACTIONS + ("none",)
 MAX_ACTIONS = 8
 DEFAULTS = {"chat_model": "sonnet", "chat_fallback_model": "haiku", "chat_timeout_s": 60, "chat_history": 20}
 
@@ -42,8 +42,11 @@ with 0 pending nothing new arrives until the research job imports a batch (it is
 Art (stage 2) happens in the Details panel of a banked idea: Tony clicks Build art, picks style cards and chips, \
 4 images are made; he clicks one to pick it, then tells you in this chat what to change; you start 4 new \
 variations of the picked image with art_iterate; when he is happy he approves the art (button, or art_approve). \
-Production (upscale, mockups, listing) and Performance are not built yet. Each turn you get a snapshot of the \
-dashboard; trust it over memory.
+Production (stage 4, the Production tab) makes the ROOM listing images of an upscaled design: slot 3 and slots \
+9-19, one card per slot, each image rendered from a room template (a PSD). Each render is checked by an accuracy \
+guard and an art-area gate (e.g. white bars beside the art); templates have a separate template checker. Performance \
+is not built yet. Each turn you get a snapshot of the dashboard, including the design open in Production with one \
+line per slot; trust it over memory.
 
 How to answer:
 - Short, plain words, no jargon, no filler. One to four sentences unless Tony asks for more.
@@ -73,7 +76,30 @@ screenprint_matte, halftone_stipple; treatment dressed_character, pure_silhouett
 faceted_planes, tiny_figure, contour_line. Each art_iterate makes 4 paid images, so use it only on a clear request.
 - art_approve {idea_id, image_id?}: only when Tony clearly says the art is final/approved. image_id defaults to \
 the picked image.
+Production actions (idea_id = the Production design's id from the snapshot, slot = a slot listed there):
+- slot_rerender {idea_id, slot}: render the slot again with its CURRENT template. Free. Use when Tony asks to redo or \
+re-render it, or after a fix to the template. One Production job runs at a time.
+- slot_decide {idea_id, slot, decision}: decision approve | deny | undo, only when Tony clearly says so.
+- check_template {idea_id, slot}: run the template checker on that slot's template (free; result posted later).
+- fix_request {idea_id, slot, summary}: hand the problem to Claude Code. Use it whenever Tony reports a problem you \
+cannot fix with the actions above (wrong shadow, frame, perspective, colour, template geometry, a bug, anything that \
+needs code or Photoshop work), or when he asks to send it to Claude. summary = what is wrong in one or two plain \
+sentences, from what Tony said and what you see in the image. The Portal adds his exact words, the image path, \
+template and every check result.
+- offer_regenerate {idea_id, slot}: when Tony wants a different image or a new scene. You can NOT start a paid \
+regenerate; this only puts a button in the chat, and Tony's own click spends the credits.
 - none: nothing to do (or just leave the block out).
+
+What you can and cannot do in Production, be honest about it:
+- You see a slot's picture only when it is attached to this message (Tony pointed at the slot with "Ask chat" or \
+named it, e.g. "slot 11"; at most 2, reduced to 1568 px, so tiny details may not be visible). The snapshot says \
+which images are attached. If no image is attached, say you are going by the check results, and ask him to name \
+the slot to let you see it.
+- You cannot edit PSDs, move layers, change shadows, frames or code, rename or delete files, or spend credits. For \
+those, use fix_request; never pretend you fixed something.
+- Approve, deny and undo are real; rerender and check_template are real and free.
+- When you take a Production action, one short sentence is enough: the Portal adds a line saying what it did and \
+what happens next.
 A plain remark, plan or instruction about process is a taste_note, NEVER a seed. Use the ids exactly as shown \
 in the snapshot. Never invent ids. Do not put the JSON anywhere except that final block."""
 
@@ -105,7 +131,7 @@ def _profile_md(con):
     return taste.to_markdown(taste.build_profile(con))[:4000]
 
 
-def snapshot(con, settings, selected_id=None):
+def snapshot(con, settings, selected_id=None, prod_idea_id=None, open_slot=None, attached=()):
     s = ideas.state(con, settings)
     out = [f"Counts: on list {s['shown']}, pending {s['pool']}, in bank {s['banked']}, denied {s['denied']}, "
            f"room {s['room']} of cap {s['cap']}. Last refresh {s['last_refresh'] or 'never'}.", "",
@@ -126,13 +152,18 @@ def snapshot(con, settings, selected_id=None):
                         f"{d['source']}) {d['title']}", f"Description: {_line(d['description'], 300) or '-'}",
                     f"Evidence: {json.dumps(d['evidence'], ensure_ascii=False)[:1200]}"]
             out += art.snapshot_lines(con, selected_id)
+    try:
+        out += prod_chat.snapshot_lines(con, settings, prod_idea_id, open_slot, attached)
+    except Exception as e:  # noqa: BLE001  (the chat still answers without the Production lines)
+        out += ["", f"(Production details could not be read: {_line(e, 120)})"]
     out += ["", "Taste profile:", _profile_md(con)]
     return "\n".join(out)
 
 
-def build_prompt(con, settings, history, text, selected_id=None, note=None):
+def build_prompt(con, settings, history, text, selected_id=None, note=None, prod_idea_id=None, open_slot=None,
+                 attached=()):
     convo = [f"{'Tony' if m['role'] == 'tony' else 'You'}: {_line(m['text'], 600)}" for m in history]
-    parts = ["<dashboard>", snapshot(con, settings, selected_id), "</dashboard>", "",
+    parts = ["<dashboard>", snapshot(con, settings, selected_id, prod_idea_id, open_slot, attached), "</dashboard>", "",
              "<conversation>", "\n".join(convo) or "(start)", "</conversation>", ""]
     if note:
         parts += [f"<portal_note>{note}</portal_note>", ""]
@@ -150,9 +181,12 @@ def claude_bin():
     return os.environ.get("PORTAL_CLAUDE_BIN") or shutil.which("claude") or "/opt/homebrew/bin/claude"
 
 
-def cli_args(settings, system_prompt=None, model=None, fallback=None):
+def cli_args(settings, system_prompt=None, model=None, fallback=None, stream=False):
+    """`stream`: stream-json in and out (needed to send image blocks; proven 2026-11-19 with a test image)."""
+    fmt = ["--input-format", "stream-json", "--output-format", "stream-json", "--verbose"] if stream \
+        else ["--output-format", "json"]
     args = [claude_bin(), "-p", "--safe-mode", "--tools", "", "--strict-mcp-config", "--disable-slash-commands",
-            "--no-session-persistence", "--output-format", "json", "--model", model or cfg(settings, "chat_model"),
+            "--no-session-persistence", *fmt, "--model", model or cfg(settings, "chat_model"),
             "--system-prompt", system_prompt or SYSTEM_PROMPT]
     fb = fallback if fallback is not None else cfg(settings, "chat_fallback_model")
     if fb:
@@ -160,31 +194,59 @@ def cli_args(settings, system_prompt=None, model=None, fallback=None):
     return args
 
 
-def run_cli(prompt, system_prompt, model, fallback, timeout, settings=None, who="The chat"):
+def stream_message(prompt, images):
+    """One stream-json user message: the image blocks first, then the prompt text."""
+    content = [{"type": "image", "source": {"type": "base64", "media_type": im["media_type"], "data": im["data"]}}
+               for im in images or []]
+    content.append({"type": "text", "text": prompt})
+    return json.dumps({"type": "user", "message": {"role": "user", "content": content}}) + "\n"
+
+
+def stream_result(stdout):
+    """The final `result` event of a stream-json run ({} when there is none)."""
+    out = {}
+    for ln in (stdout or "").splitlines():
+        try:
+            o = json.loads(ln)
+        except ValueError:
+            continue
+        if isinstance(o, dict) and o.get("type") == "result":
+            out = o
+    return out
+
+
+def run_cli(prompt, system_prompt, model, fallback, timeout, settings=None, who="The chat", images=None):
     """Headless `claude -p`, prompt on stdin, no tools. Returns the reply text or raises ChatUnavailable.
-    Shared by the chat and the art prompt writer (app/art.py)."""
+    Shared by the chat and the art prompt writer (app/art.py). `images` ([{media_type, data(base64)}]) are sent as
+    image blocks through stream-json input."""
     env = dict(os.environ)
     env.pop("CLAUDECODE", None)            # the Portal may have been started from a Claude Code shell
+    stream = bool(images)
     try:
-        p = subprocess.run(cli_args(settings, system_prompt, model, fallback), input=prompt, capture_output=True,
+        p = subprocess.run(cli_args(settings, system_prompt, model, fallback, stream),
+                           input=stream_message(prompt, images) if stream else prompt, capture_output=True,
                            text=True, timeout=timeout, cwd=tempfile.gettempdir(), env=env)
     except subprocess.TimeoutExpired:
         raise ChatUnavailable(f"{who} took too long to answer")
     except OSError:
         raise ChatUnavailable("The Claude app on this Mac could not be started")
-    try:
-        out = json.loads(p.stdout or "{}")
-    except ValueError:
-        out = {}
+    if stream:
+        out = stream_result(p.stdout)
+    else:
+        try:
+            out = json.loads(p.stdout or "{}")
+        except ValueError:
+            out = {}
     if p.returncode != 0 or out.get("is_error") or not isinstance(out.get("result"), str):
         raise ChatUnavailable(f"{who} could not answer just now")
     return out["result"]
 
 
-def call_claude(prompt, settings=None):
-    """The chat brain. Returns the reply text or raises ChatUnavailable."""
+def call_claude(prompt, settings=None, images=None):
+    """The chat brain. Returns the reply text or raises ChatUnavailable. With images the timeout is doubled."""
+    t = cfg(settings, "chat_timeout_s") * (2 if images else 1)
     return run_cli(prompt, SYSTEM_PROMPT, cfg(settings, "chat_model"), cfg(settings, "chat_fallback_model"),
-                   cfg(settings, "chat_timeout_s"), settings)
+                   t, settings, images=images)
 
 
 # ---------- actions ----------
@@ -226,10 +288,12 @@ def _title(con, idea_id):
     return r[0] if r else None
 
 
-def run_actions(con, settings, actions, user_text, art_hooks=None):
+def run_actions(con, settings, actions, user_text, art_hooks=None, prod_hooks=None, prod_idea_id=None):
     """Validate and execute. Returns (done lines, refused lines, changed?, denied ids without a reason).
     `art_hooks` (from app/studio.py) has iterate(idea_id, feedback, chips, user_text) and approve(idea_id, image_id);
-    each returns a done line or raises art.ArtError."""
+    each returns a done line or raises art.ArtError. `prod_hooks` (app/prod_chat.ProdHooks) runs the Production
+    actions; every design id and slot is checked against the real listing record there (unknown ones are refused)."""
+    from .production import ProductionError
     done, refused, changed, bare_denies = [], [], False, []
     if len(actions) > MAX_ACTIONS:
         refused.append(f"only the first {MAX_ACTIONS} actions were considered")
@@ -294,6 +358,15 @@ def run_actions(con, settings, actions, user_text, art_hooks=None):
                     done.append(art_hooks.approve(i, _int(a.get("image_id"))))
                 changed = True
             except art.ArtError as e:
+                refused.append(f"{kind.replace('_', ' ')}: {e}")
+        elif kind in prod_chat.ACTIONS:
+            if prod_hooks is None:
+                refused.append(f"{kind.replace('_', ' ')}: Production is not available here")
+                continue
+            try:
+                done.append(prod_hooks.run(kind, a, user_text, prod_idea_id))
+                changed = True
+            except ProductionError as e:
                 refused.append(f"{kind.replace('_', ' ')}: {e}")
         elif kind == "taste_note":
             text = _line(a.get("text"), 500)

@@ -19,6 +19,7 @@ class Reply:
     text: str
     refresh: bool = False          # tell the page to reload the active panel
     idea_id: int | None = None
+    buttons: list = field(default_factory=list)   # [{label, url, body}]: Tony's own click runs it (paid regenerate)
 
 
 @dataclass
@@ -26,6 +27,8 @@ class Chat:
     con: object
     responder: Callable[[str, "Chat"], Reply] = field(default=lambda text, chat: Reply("Noted."))
     selected_idea_id: int | None = None
+    prod_idea_id: int | None = None    # design open in the Production tab (last one the page sent)
+    prod_slot: int | None = None       # slot Tony pointed at with "Ask chat" on its card
 
     def set_responder(self, fn):
         self.responder = fn
@@ -40,12 +43,15 @@ class Chat:
             rows = self.con.execute("SELECT * FROM chat_messages ORDER BY id DESC LIMIT ?", (limit,)).fetchall()
         return [dict(r) for r in rows[::-1]]
 
-    def handle(self, text, selected_idea_id=None):
+    def handle(self, text, selected_idea_id=None, prod_idea_id=None, prod_slot=None):
         text = (text or "").strip()
         if not text:
             return Reply("")
         self.say("tony", text)
         self.selected_idea_id = selected_idea_id
+        if prod_idea_id is not None:
+            self.prod_idea_id = prod_idea_id
+        self.prod_slot = prod_slot
         try:
             reply = self.responder(text, self)
         except Exception as e:  # noqa: BLE001  never break the page; the typed text is already saved
@@ -59,6 +65,8 @@ class Chat:
 class ChatIn(BaseModel):
     text: str
     selected_idea_id: int | None = None
+    prod_idea_id: int | None = None
+    prod_slot: int | None = None
 
 
 def router(chat: Chat, prefix="/api/chat"):
@@ -70,7 +78,7 @@ def router(chat: Chat, prefix="/api/chat"):
 
     @r.post("")
     def post(body: ChatIn):
-        rep = chat.handle(body.text, body.selected_idea_id)
-        return {"reply": rep.text, "refresh": rep.refresh, "messages": chat.history()}
+        rep = chat.handle(body.text, body.selected_idea_id, body.prod_idea_id, body.prod_slot)
+        return {"reply": rep.text, "refresh": rep.refresh, "buttons": rep.buttons, "messages": chat.history()}
 
     return r
