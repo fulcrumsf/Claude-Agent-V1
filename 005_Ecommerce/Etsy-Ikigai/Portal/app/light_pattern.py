@@ -19,6 +19,7 @@ LIT_AT, SHADED_AT = 0.9, 0.62       # profile value above = sunlit, below = full
 SHADE_LO, SHADE_HI = 0.15, 0.62   # fitted profile values in this band are bar shadows; their median is the common level
 MIN_EDGE_STRENGTH = 0.012      # gradient magnitude (0..1 luminance per px, after blur) counted as a band edge
 MAX_FIT_RMS = 0.14           # log-brightness residual on the wall above which the pattern model is rejected
+DEBUG = {}                      # last fit's profiles, for diagnostics only
 MIN_DEPTH = 0.04               # shallower than this the wall has no visible pattern
 
 
@@ -69,6 +70,149 @@ def _fit(coords, logY, nbins_list):
     return c0, prof, float(np.sqrt(np.mean(res ** 2)))
 
 
+def _slats(Yr, m, px, py, lo_deg=105.0, hi_deg=155.0, min_amp=0.02):
+    """Thin regular stripes on the rectified wall (Yr, wall mask m). Returns {"factor": multiplier (0..1] at the points
+    (px, py), "deg", "period_px", "amp"} or None when the wall shows no stripes. A measurement, no photo pixels kept."""
+    import cv2
+    L = np.log(Yr.astype("float32") + 0.02)
+    hp = cv2.GaussianBlur(L, (0, 0), 1.0) - cv2.GaussianBlur(L, (0, 0), 8.0)
+    ys, xs = np.nonzero(m)
+    if len(xs) < 5000:
+        return None
+    sub = slice(None, None, 3)
+    xs_, ys_, h_ = xs[sub].astype("float64"), ys[sub].astype("float64"), hp[ys, xs][sub].astype("float64")
+    best = None
+    for deg in np.arange(lo_deg, hi_deg + 0.01, 0.25):
+        a = math.radians(deg)
+        s_ = xs_ * math.cos(a) + ys_ * math.sin(a)
+        i = (s_ - s_.min()).astype(int)
+        cnt = np.bincount(i)
+        P = np.bincount(i, weights=h_) / np.maximum(cnt, 1)
+        ok = cnt > 25
+        if ok.sum() > 100:
+            Pi = np.interp(np.arange(len(P)), np.nonzero(ok)[0], P[ok])
+            Pb = Pi - np.convolve(Pi, np.ones(15) / 15, "same")     # fine stripes only (period ~10-30 px)
+            score = float(np.var(Pb[ok][10:-10]))
+        else:
+            score = 0.0
+        if best is None or score > best[0]:
+            best = (score, deg)
+    a = math.radians(best[1])
+    fx = lambda x, y: x * math.cos(a) + y * math.sin(a)   # noqa: E731
+    # smooth ALONG the stripes (they stay, leaf shadows and plaster texture do not), and keep only the patch where the
+    # wall shows them: the median over a whole stripe line would be mostly un-striped wall and read as no stripe at all
+    k = 41
+    ker = np.zeros((k, k), "float32")
+    c = k // 2
+    cv2.line(ker, (int(round(c - c * math.cos(a + math.pi / 2))), int(round(c - c * math.sin(a + math.pi / 2)))),
+             (int(round(c + c * math.cos(a + math.pi / 2))), int(round(c + c * math.sin(a + math.pi / 2)))), 1.0, 1)
+    ker /= ker.sum()
+    r = cv2.filter2D(hp, -1, ker)
+    en = cv2.GaussianBlur(np.abs(r), (0, 0), 6.0)
+    full = cv2.GaussianBlur(np.abs(hp), (0, 0), 6.0)
+    coh = en / (full + 1e-4)                               # ~1 where the wall is striped along this angle, low on edges and blobs
+    patch = m & (coh > 0.55) & (en > 0.006)
+    inner = cv2.erode(m.astype("uint8"), np.ones((41, 41), "uint8")) > 0        # not the mask's own border or the hole's rim
+    patch = patch & inner
+    patch = cv2.morphologyEx(patch.astype("uint8"), cv2.MORPH_CLOSE, np.ones((15, 15), "uint8"))
+    nl, lab, st, _ = cv2.connectedComponentsWithStats(patch, connectivity=8)
+    if nl < 2:
+        return None
+    patch = lab == (1 + int(np.argmax(st[1:, cv2.CC_STAT_AREA])))                # the one big sun patch (not blobs, macrame)
+    DEBUG.update(patch=patch, en=en)
+    ys, xs = np.nonzero(patch)
+    if len(xs) < 2000:
+        return None
+    # the angle found on the whole wall is a few tenths of a degree off for this patch; re-pick it on the patch alone
+    # (stripes stack to full depth only at the right angle, anything else smears them out over the patch's length)
+    hv = hp[ys, xs].astype("float64")
+    xf, yf = xs.astype("float64"), ys.astype("float64")
+    best2 = None
+    for deg in np.arange(best[1] - 8.0, best[1] + 8.01, 0.1):
+        a2 = math.radians(deg)
+        s2 = xf * math.cos(a2) + yf * math.sin(a2)
+        i2 = (s2 - s2.min()).astype(int)
+        c2 = np.bincount(i2)
+        P2 = np.bincount(i2, weights=hv) / np.maximum(c2, 1)
+        ok2 = c2 > 12
+        if ok2.sum() < 60:
+            continue
+        Pi = np.interp(np.arange(len(P2)), np.nonzero(ok2)[0], P2[ok2])
+        sc = float(np.var((Pi - np.convolve(Pi, np.ones(15) / 15, "same"))[10:-10]))
+        if best2 is None or sc > best2[0]:
+            best2 = (sc, deg)
+    best = (best[0], best2[1] if best2 else best[1])
+    a = math.radians(best[1])
+    fx = lambda x, y: x * math.cos(a) + y * math.sin(a)   # noqa: E731
+    s_all = fx(xf, yf)
+    s_pts = fx(px.astype("float64"), py.astype("float64"))
+    lo_s = min(s_all.min(), s_pts.min())
+    n = int(max(s_all.max(), s_pts.max()) - lo_s) + 3
+    i = (s_all - lo_s).astype(int)
+    cnt = np.bincount(i, minlength=n)
+    sm = np.bincount(i, weights=hv, minlength=n)
+    prof = np.where(cnt > 12, sm / np.maximum(cnt, 1), np.nan)
+    okp = ~np.isnan(prof)
+    if okp.sum() < 50:
+        return None
+    prof = np.interp(np.arange(n), np.nonzero(okp)[0], prof[okp])
+    prof = np.convolve(np.r_[prof[:1], prof, prof[-1:]], [0.25, 0.5, 0.25], "valid")
+    # Blind slats are a regular stripe pattern, but their depth is only trustworthy where the wall shows a lot of them
+    # (the patch's upper edge is full of leaf shadows and penumbra). So: find the strongest run of stripes, take the
+    # period and the mean stripe shape from it, and continue that same periodic pattern over the whole patch band
+    # (from the patch's upper edge, s_edge, down), which is how the real slats continue behind the art.
+    win = 41
+    loc = np.sqrt(np.convolve((prof - np.convolve(prof, np.ones(win) / win, "same")) ** 2, np.ones(win) / win, "same"))
+    strong = loc > 0.35 * float(np.percentile(loc[okp], 95))
+    DEBUG['strong'] = int(strong.sum())
+    if strong.sum() < 40:
+        return None
+    idx = np.nonzero(strong)[0]
+    runs = np.split(idx, np.nonzero(np.diff(idx) > 3)[0] + 1)
+    run = max(runs, key=len)
+    z0, z1 = int(run[0]), int(run[-1]) + 1
+    zs = np.arange(z0, z1)
+    zp = prof[z0:z1] - np.convolve(prof, np.ones(win) / win, "same")[z0:z1]
+    best_t = None
+    wide = np.arange(n)[okp & (np.arange(n) >= int(s_all.min() - lo_s))]          # period from the whole patch, not the short strong run
+    wp = prof[wide] - np.convolve(prof, np.ones(win) / win, "same")[wide]
+    for T in np.arange(12.0, 34.0, 0.05):
+        ph = (wide / T) % 1.0
+        b8 = np.minimum((ph * 12).astype(int), 11)
+        cb = np.bincount(b8, weights=wp, minlength=12) / np.maximum(np.bincount(b8, minlength=12), 1)
+        sc = float(np.var(cb[b8]))
+        if best_t is None or sc > best_t[0]:
+            best_t = (sc, T)
+    T = best_t[1]
+    core = np.nonzero(loc > 0.7 * float(np.percentile(loc[okp], 95)))[0]           # depth only from where the stripes are clearest
+    zs = core
+    zp = prof[core] - np.convolve(prof, np.ones(win) / win, "same")[core]
+    ph = (zs / T) % 1.0
+    b12 = np.minimum((ph * 12).astype(int), 11)
+    cb = np.bincount(b12, weights=zp, minlength=12) / np.maximum(np.bincount(b12, minlength=12), 1)
+    cb = np.convolve(np.r_[cb[-1:], cb, cb[:1]], [0.25, 0.5, 0.25], "valid")
+    # the folded cycle averages away depth (small phase drift, smoothing): rescale it to the real stripe contrast, read
+    # from the pixels themselves in the clearest stripe zone (10th to 90th percentile of the high-passed wall)
+    in_core = np.isin(i, core)
+    if in_core.sum() > 500:
+        real = float(np.percentile(hv[in_core], 90) - np.percentile(hv[in_core], 10))
+        if cb.max() - cb.min() > 1e-4:
+            cb = cb * min(max(real / (cb.max() - cb.min()), 1.0), 4.0)
+    allp = (np.arange(n) / T) % 1.0
+    cs = np.interp(allp * 12 - 0.5, np.arange(-1, 13), np.r_[cb[-1:], cb, cb[:1]])
+    amp = float(cb.max() - cb.min())
+    s_edge = float(s_all.min() - lo_s)
+    ramp = np.clip((np.arange(n) - s_edge) / T, 0, 1)                   # none above the patch's upper edge, full a stripe later
+    mult = np.exp((cs - cb.max()) * ramp)
+    gate = ramp
+    DEBUG.update(sprof=prof, sgate=gate, smult=mult, s_pts=(s_pts - lo_s), s_all=(s_all - lo_s))
+    DEBUG.update(T=T, amp=amp, zone=(z0, z1), cb=cb)
+    if amp < 0.02:
+        return None
+    return {"factor": np.interp(s_pts - lo_s, np.arange(n), mult).astype("float32"), "deg": round(best[1], 2),
+            "period_px": round(float(T), 2), "amp": round(amp, 4), "s_edge": round(s_edge, 1)}
+
+
 def pattern_alpha(img, canvas_q, wall, reach=520, keep_out=90):
     """img: HxWx3 float 0..1; canvas_q: the art quad (a wall-parallel rectangle seen in perspective); wall: SAM wall
     mask (HxW float). The wall is first RECTIFIED with the canvas's own corners (a distant sun's bars are parallel on
@@ -111,7 +255,7 @@ def pattern_alpha(img, canvas_q, wall, reach=520, keep_out=90):
     cs_all = [(xs, ys)]
     xs_f, ys_f = xs.astype("float64"), ys.astype("float64")
 
-    def fit_dirs(dirs, step=1, iters=30):
+    def fit_dirs(dirs, step=1, iters=30, binw=BIN):
         """ALS for N ~ prod f_j(a_j). Returns (rms, full coords, lo, nb, profiles)."""
         sub = slice(None, None, step)
         x_, y_, N_ = xs_f[sub], ys_f[sub], N[sub]
@@ -119,8 +263,8 @@ def pattern_alpha(img, canvas_q, wall, reach=520, keep_out=90):
         full = [gx * math.cos(p_) + gy * math.sin(p_) for p_ in dirs]
         lo = [min(c.min(), f[sel].min()) for c, f in zip(ca, full)]
         hi = [max(c.max(), f[sel].max()) for c, f in zip(ca, full)]
-        nb = [int((h - l) / BIN) + 2 for l, h in zip(lo, hi)]
-        idx_w = [np.clip(((c - l) / BIN).astype(int), 0, k - 1) for c, l, k in zip(ca, lo, nb)]
+        nb = [int((h - l) / binw) + 2 for l, h in zip(lo, hi)]
+        idx_w = [np.clip(((c - l) / binw).astype(int), 0, k - 1) for c, l, k in zip(ca, lo, nb)]
         prof = [np.ones(k) for k in nb]
         for _ in range(iters):
             for j in range(len(dirs)):
@@ -163,6 +307,7 @@ def pattern_alpha(img, canvas_q, wall, reach=520, keep_out=90):
             if two[0] < best[0] * 0.85:
                 best = (two[0], [d1, t2], two[1], two[2], two[3], two[4], A0, S0)
     rms, dirs, full, lo, nb, prof, A0, S0 = best
+    DEBUG.update(prof=[np.array(x) for x in prof], dirs=dirs, A0=A0, S0=S0)
     if rms > MAX_FIT_RMS:
         return None, f"the wall's light is not a clean band pattern (fit rms {rms:.3f}, tried {tried})"
     # Tony 2026-11-18: every bar shadow of one window is cast by the same light, so all of them are the SAME darkness
@@ -174,14 +319,27 @@ def pattern_alpha(img, canvas_q, wall, reach=520, keep_out=90):
     # Every shaded area (the post, the mullions, the big diagonal shadow at the top that cuts the windows off) is
     # the same shade: a profile value is mapped to "how shaded" 0..1 (lit above LIT_AT, fully shaded below SHADED_AT,
     # smooth between, so penumbra edges stay soft) and every shaded point gets the one common level.
+    bw = BIN
     u = np.zeros(int(sel.sum()))
+    vprod = np.ones(int(sel.sum()))
     for j, (f, l, k, pr) in enumerate(zip(full, lo, nb, prof)):
-        v = pr[np.clip(((f[sel] - l) / BIN).astype(int), 0, k - 1)]
+        v = pr[np.clip(((f[sel] - l) / bw).astype(int), 0, k - 1)]
+        vprod = vprod * v
         t = np.clip((LIT_AT - v) / (LIT_AT - SHADED_AT), 0, 1)
         u = np.maximum(u, (POST_K if j == 0 else 1.0) * t * t * (3 - 2 * t))
     pf = 1 - (1 - shade) * u
     lit = A0 + S0                                           # the lit level; shade = ambient only
-    dark = np.clip(1 - (A0 + S0 * pf) / lit, 0, 1)
+    # Fine blind slats (Tony 2026-11-18, bedroom): thin regular stripes a few % deep, parallel to the patch edges, that the
+    # smooth band model above cannot hold (its crossbar angle is a few degrees off, so over the canvas length they wash
+    # out). Measure them directly: high-pass the wall in log brightness, find the angle that stacks the stripes best,
+    # take the stripe profile along that axis from the wall around the canvas, and continue it through the canvas.
+    total = A0 + S0 * pf
+    slat_info = None
+    sl = _slats(Yr, m, gx[sel], gy[sel])
+    if sl is not None:
+        total = total * sl["factor"]
+        slat_info = {k: v for k, v in sl.items() if k != "factor"}
+    dark = np.clip(1 - total / lit, 0, 1)
     depth = float(A0 and (1 - A0 / lit))
     if depth < MIN_DEPTH:
         return None, f"the wall pattern is too shallow ({depth:.3f})"
@@ -194,4 +352,4 @@ def pattern_alpha(img, canvas_q, wall, reach=520, keep_out=90):
     return alpha.astype("float32"), {"kind": "window pattern", "rectified": True,
                    "dirs_deg": [round(math.degrees(p_), 1) for p_ in dirs], "tried_rms": tried,
                    "fit_rms": round(rms, 4), "opacity": round(float(np.clip(depth, 0.06, 0.6)), 3),
-                   "measured_depth": round(depth, 3), "common_shade": round(shade, 3), "searched_on": "SAM wall mask, rectified with the canvas corners"}
+                   "measured_depth": round(depth, 3), "slats": slat_info, "common_shade": round(shade, 3), "searched_on": "SAM wall mask, rectified with the canvas corners"}

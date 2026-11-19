@@ -320,48 +320,66 @@
   },
   "Frame Edge Shadow": {
    "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
-   "opacity": 0.039,
+   "opacity": 0.227,
    "sides": [
     {
      "side": "top",
-     "soft_k": 0.05,
-     "width_px": 10.25,
-     "blur_px": 12.0,
+     "soft_k": 0.14,
+     "width_px": 2.5,
+     "blur_px": 1.5,
      "fit_rms": 0.0062
     },
     {
      "side": "right",
-     "soft_k": 0.0,
-     "width_px": 0.0,
-     "blur_px": 0.0,
+     "soft_k": 0.14,
+     "width_px": 2.5,
+     "blur_px": 1.5,
      "fit_rms": 0.0037
     },
     {
      "side": "bottom",
-     "soft_k": 0.0,
-     "width_px": 0.0,
-     "blur_px": 0.0,
+     "soft_k": 0.14,
+     "width_px": 2.5,
+     "blur_px": 1.5,
      "fit_rms": 0.0
     },
     {
      "side": "left",
-     "soft_k": 0.0,
-     "width_px": 0.0,
-     "blur_px": 0.0,
+     "soft_k": 0.14,
+     "width_px": 2.5,
+     "blur_px": 1.5,
      "fit_rms": 0.0013
     }
    ]
   },
   "Light Shadow": {
    "kind": "window pattern",
+   "rectified": true,
    "dirs_deg": [
     179.0,
-    131.0
+    126.0
    ],
-   "fit_rms": 0.0948,
-   "opacity": 0.273,
-   "measured_depth": 0.273,
-   "searched_on": "SAM wall mask around the canvas",
+   "tried_rms": [
+    [
+     "1 dir",
+     0.218
+    ],
+    [
+     "2 dirs, crossbar 126 deg",
+     0.089
+    ]
+   ],
+   "fit_rms": 0.0885,
+   "opacity": 0.6,
+   "measured_depth": 0.657,
+   "slats": {
+    "deg": 129.4,
+    "period_px": 19.15,
+    "amp": 0.195,
+    "s_edge": 799.7
+   },
+   "common_shade": 0.466,
+   "searched_on": "SAM wall mask, rectified with the canvas corners",
    "insert_texture": 0.0083
   }
  },
@@ -423,5 +441,7 @@
   "design": "Book Club Cat",
   "test": "canvas"
  },
- "approved": false
+ "approved": true,
+ "updated": "2026-11-18 blinds shadow rebuilt (rectified fit + measured slats)",
+ "approved_at": "2026-11-18T23:31:08"
 }
