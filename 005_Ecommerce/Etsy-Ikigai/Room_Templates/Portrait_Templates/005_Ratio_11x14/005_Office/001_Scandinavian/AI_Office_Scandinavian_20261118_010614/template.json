@@ -1,0 +1,923 @@
+{
+ "name": "AI_Office_Scandinavian_20261118_010614",
+ "kind": "ai_scene",
+ "psd": "AI_Office_Scandinavian_20261118_010614_Template.psd",
+ "scene": "AI_Office_Scandinavian_20261118_010614_Scene.png",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Office",
+ "etsy_room": "Office",
+ "decor": "Scandinavian",
+ "ratio": "11x14",
+ "print_ratio": "11x14",
+ "so_px": [
+  620,
+  1008
+ ],
+ "so_ratio": 0.6151,
+ "quad_insert": [
+  [
+   1199.251953125,
+   288.2860107421875
+  ],
+  [
+   1727.3759765625,
+   237.0489959716797
+  ],
+  [
+   1727.2530517578125,
+   1245.4000244140625
+  ],
+  [
+   1199.2239990234375,
+   1194.6300048828125
+  ]
+ ],
+ "quad_art": [
+  [
+   1199.251953125,
+   288.2860107421875
+  ],
+  [
+   1727.3759765625,
+   237.0489959716797
+  ],
+  [
+   1727.2530517578125,
+   1245.4000244140625
+  ],
+  [
+   1199.2239990234375,
+   1194.6300048828125
+  ]
+ ],
+ "mode": "full",
+ "canvas": [
+  2400,
+  1792
+ ],
+ "light_from": "left",
+ "quad_paper": [
+  [
+   1199.4560546875,
+   288.15399169921875
+  ],
+  [
+   1729.345947265625,
+   236.97799682617188
+  ],
+  [
+   1729.2230224609375,
+   1247.1259765625
+  ],
+  [
+   1199.4560546875,
+   1196.18994140625
+  ]
+ ],
+ "opening_pad_px": 0.0,
+ "presentation": "canvas",
+ "wrap_strips": {
+  "version": 1,
+  "depth_frac": 0.05,
+  "corner_radius_px": 2.0,
+  "layer": "Wrap Strip (placeholder)",
+  "art_quad": [
+   [
+    1199.251953125,
+    288.2860107421875
+   ],
+   [
+    1727.3759765625,
+    237.0489959716797
+   ],
+   [
+    1727.2530517578125,
+    1245.4000244140625
+   ],
+   [
+    1199.2239990234375,
+    1194.6300048828125
+   ]
+  ],
+  "sides": {
+   "right": {
+    "quad": [
+     [
+      1727.3759765625,
+      236.4510040283203
+     ],
+     [
+      1766.9129638671875,
+      249.3520050048828
+     ],
+     [
+      1766.906982421875,
+      1238.3409423828125
+     ],
+     [
+      1727.2530517578125,
+      1249.197998046875
+     ]
+    ],
+    "far_px": [
+     39.54,
+     39.65
+    ],
+    "far_px_detected": [
+     37.57,
+     37.68
+    ],
+    "ends": {
+     "1": {
+      "anchor": [
+       1729.345947265625,
+       237.09300231933594
+      ],
+      "dir": [
+       0.9506999850273132,
+       0.3102000057697296
+      ]
+     },
+     "2": {
+      "anchor": [
+       1729.2230224609375,
+       1248.6590576171875
+      ],
+      "dir": [
+       0.9645000100135803,
+       -0.26409998536109924
+      ]
+     }
+    },
+    "width_px": [
+     41.59,
+     41.11
+    ],
+    "round_corners": [
+     1,
+     2
+    ],
+    "segments_px": [
+     37.56,
+     37.59,
+     37.61,
+     37.65,
+     37.67,
+     37.65,
+     37.62,
+     37.66
+    ],
+    "fit_rms_px": 0.023,
+    "shade": [
+     [
+      0.6269999742507935,
+      0.9769999980926514,
+      0.968999981880188,
+      0.9570000171661377,
+      0.9459999799728394,
+      0.9350000023841858,
+      0.9259999990463257,
+      0.9079999923706055,
+      0.8930000066757202,
+      0.8700000047683716,
+      0.8489999771118164,
+      0.8209999799728394
+     ],
+     [
+      0.6110000014305115,
+      0.9599999785423279,
+      0.9480000138282776,
+      0.9390000104904175,
+      0.9309999942779541,
+      0.9160000085830688,
+      0.9010000228881836,
+      0.8870000243186951,
+      0.8679999709129333,
+      0.8450000286102295,
+      0.824999988079071,
+      0.7960000038146973
+     ],
+     [
+      0.5989999771118164,
+      0.9559999704360962,
+      0.949999988079071,
+      0.9369999766349792,
+      0.9269999861717224,
+      0.9139999747276306,
+      0.8980000019073486,
+      0.8790000081062317,
+      0.8610000014305115,
+      0.8429999947547913,
+      0.8230000138282776,
+      0.7950000166893005
+     ],
+     [
+      0.5899999737739563,
+      0.9430000185966492,
+      0.9309999942779541,
+      0.9190000295639038,
+      0.9100000262260437,
+      0.8980000019073486,
+      0.8809999823570251,
+      0.8659999966621399,
+      0.847000002861023,
+      0.8240000009536743,
+      0.8019999861717224,
+      0.7680000066757202
+     ],
+     [
+      0.5809999704360962,
+      0.9369999766349792,
+      0.9240000247955322,
+      0.9150000214576721,
+      0.9049999713897705,
+      0.8939999938011169,
+      0.8790000081062317,
+      0.859000027179718,
+      0.8370000123977661,
+      0.8159999847412109,
+      0.7910000085830688,
+      0.7580000162124634
+     ],
+     [
+      0.5830000042915344,
+      0.9290000200271606,
+      0.9240000247955322,
+      0.9139999747276306,
+      0.902999997138977,
+      0.8859999775886536,
+      0.8700000047683716,
+      0.8519999980926514,
+      0.8330000042915344,
+      0.8100000023841858,
+      0.7850000262260437,
+      0.7549999952316284
+     ],
+     [
+      0.5789999961853027,
+      0.9350000023841858,
+      0.9269999861717224,
+      0.9150000214576721,
+      0.9020000100135803,
+      0.8870000243186951,
+      0.871999979019165,
+      0.8550000190734863,
+      0.8349999785423279,
+      0.8109999895095825,
+      0.7850000262260437,
+      0.753000020980835
+     ],
+     [
+      0.5889999866485596,
+      0.9440000057220459,
+      0.9290000200271606,
+      0.9190000295639038,
+      0.906000018119812,
+      0.8930000066757202,
+      0.878000020980835,
+      0.8569999933242798,
+      0.8320000171661377,
+      0.8109999895095825,
+      0.7860000133514404,
+      0.753000020980835
+     ],
+     [
+      0.5839999914169312,
+      0.9409999847412109,
+      0.9279999732971191,
+      0.9169999957084656,
+      0.9049999713897705,
+      0.8939999938011169,
+      0.8759999871253967,
+      0.8550000190734863,
+      0.8349999785423279,
+      0.8119999766349792,
+      0.7879999876022339,
+      0.7549999952316284
+     ],
+     [
+      0.5929999947547913,
+      0.9480000138282776,
+      0.9409999847412109,
+      0.9259999990463257,
+      0.9139999747276306,
+      0.9010000228881836,
+      0.8830000162124634,
+      0.8650000095367432,
+      0.8429999947547913,
+      0.8180000185966492,
+      0.7900000214576721,
+      0.7580000162124634
+     ],
+     [
+      0.5920000076293945,
+      0.9490000009536743,
+      0.9369999766349792,
+      0.925000011920929,
+      0.9120000004768372,
+      0.9010000228881836,
+      0.8809999823570251,
+      0.8600000143051147,
+      0.8389999866485596,
+      0.8140000104904175,
+      0.7870000004768372,
+      0.7540000081062317
+     ],
+     [
+      0.5960000157356262,
+      0.9559999704360962,
+      0.9480000138282776,
+      0.9350000023841858,
+      0.9210000038146973,
+      0.9070000052452087,
+      0.8870000243186951,
+      0.8659999966621399,
+      0.8410000205039978,
+      0.8199999928474426,
+      0.7950000166893005,
+      0.7620000243186951
+     ],
+     [
+      0.597000002861023,
+      0.9629999995231628,
+      0.9559999704360962,
+      0.9440000057220459,
+      0.9330000281333923,
+      0.9160000085830688,
+      0.8970000147819519,
+      0.875,
+      0.8519999980926514,
+      0.8259999752044678,
+      0.7979999780654907,
+      0.765999972820282
+     ],
+     [
+      0.6039999723434448,
+      0.9729999899864197,
+      0.9589999914169312,
+      0.9470000267028809,
+      0.9340000152587891,
+      0.9179999828338623,
+      0.8980000019073486,
+      0.878000020980835,
+      0.8529999852180481,
+      0.8270000219345093,
+      0.8009999990463257,
+      0.7689999938011169
+     ],
+     [
+      0.609000027179718,
+      0.9789999723434448,
+      0.9639999866485596,
+      0.953000009059906,
+      0.9390000104904175,
+      0.9210000038146973,
+      0.8999999761581421,
+      0.8799999952316284,
+      0.859000027179718,
+      0.8339999914169312,
+      0.8100000023841858,
+      0.7749999761581421
+     ],
+     [
+      0.6069999933242798,
+      0.9890000224113464,
+      0.9750000238418579,
+      0.9629999995231628,
+      0.9470000267028809,
+      0.9330000281333923,
+      0.9139999747276306,
+      0.890999972820282,
+      0.8659999966621399,
+      0.8410000205039978,
+      0.8140000104904175,
+      0.7850000262260437
+     ],
+     [
+      0.609000027179718,
+      0.9890000224113464,
+      0.9789999723434448,
+      0.9649999737739563,
+      0.953000009059906,
+      0.9350000023841858,
+      0.9160000085830688,
+      0.8920000195503235,
+      0.8679999709129333,
+      0.8429999947547913,
+      0.8149999976158142,
+      0.781000018119812
+     ],
+     [
+      0.6100000143051147,
+      0.9890000224113464,
+      0.9800000190734863,
+      0.9679999947547913,
+      0.953000009059906,
+      0.9380000233650208,
+      0.9190000295639038,
+      0.8939999938011169,
+      0.8690000176429749,
+      0.847000002861023,
+      0.824999988079071,
+      0.7900000214576721
+     ],
+     [
+      0.6190000176429749,
+      1.0,
+      0.9980000257492065,
+      0.9829999804496765,
+      0.9670000076293945,
+      0.9509999752044678,
+      0.9300000071525574,
+      0.906000018119812,
+      0.8830000162124634,
+      0.8600000143051147,
+      0.8339999914169312,
+      0.8029999732971191
+     ],
+     [
+      0.621999979019165,
+      1.0,
+      1.0,
+      0.9909999966621399,
+      0.9750000238418579,
+      0.9599999785423279,
+      0.9369999766349792,
+      0.9169999957084656,
+      0.8930000066757202,
+      0.8679999709129333,
+      0.8420000076293945,
+      0.8100000023841858
+     ],
+     [
+      0.6159999966621399,
+      1.0,
+      1.0,
+      0.9900000095367432,
+      0.9760000109672546,
+      0.9570000171661377,
+      0.9380000233650208,
+      0.9129999876022339,
+      0.8880000114440918,
+      0.8659999966621399,
+      0.8429999947547913,
+      0.8100000023841858
+     ],
+     [
+      0.6309999823570251,
+      1.0,
+      1.0,
+      1.0,
+      0.9829999804496765,
+      0.9670000076293945,
+      0.9470000267028809,
+      0.9259999990463257,
+      0.8999999761581421,
+      0.8740000128746033,
+      0.8510000109672546,
+      0.8159999847412109
+     ],
+     [
+      0.6430000066757202,
+      1.0,
+      1.0,
+      1.0,
+      0.9919999837875366,
+      0.9739999771118164,
+      0.9559999704360962,
+      0.9330000281333923,
+      0.9089999794960022,
+      0.8809999823570251,
+      0.8550000190734863,
+      0.8270000219345093
+     ],
+     [
+      0.6639999747276306,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.9940000176429749,
+      0.9800000190734863,
+      0.9559999704360962,
+      0.9279999732971191,
+      0.902999997138977,
+      0.8799999952316284,
+      0.8529999852180481
+     ]
+    ],
+    "shade_basis": "white side: the photo's shading pattern, brightest = the face",
+    "shade_face_to_back": [
+     0.606,
+     0.784
+    ]
+   }
+  },
+  "folds": {
+   "top": {
+    "width_px": 1.62,
+    "shade": 1.15
+   },
+   "left": {
+    "width_px": 1.62,
+    "shade": 1.15
+   }
+  },
+  "art_offsets_px": [
+   2.17,
+   -1.97,
+   -1.53,
+   2.3
+  ],
+  "detected_on_quad": [
+   [
+    1201.552001953125,
+    290.2430114746094
+   ],
+   [
+    1729.345947265625,
+    239.03799438476562
+   ],
+   [
+    1729.2230224609375,
+    1247.1259765625
+   ],
+   [
+    1201.5240478515625,
+    1196.387939453125
+   ]
+  ],
+  "not_shown": {
+   "top": {
+    "segments": 0,
+    "side_run_px": 0.0,
+    "visible": false
+   },
+   "bottom": {
+    "segments": 1,
+    "side_run_px": 0.0,
+    "visible": false
+   },
+   "left": {
+    "segments": 0,
+    "side_run_px": 0.0,
+    "visible": false
+   }
+  },
+  "method": "face edge -> canvas-side colour band -> first HARD step to the wall / gap / wood lip (scene Lab profiles, 8 segments, one straight line, never both opposite sides); free ends = the measured end edge through the face corner; shading = photo luminance / face luminance (linear, no colour)",
+  "measured": "2026-11-18T01:06:11"
+ },
+ "despill": {
+  "applied": true,
+  "version": 1,
+  "band_px": 13.26,
+  "face_rgb": [
+   195,
+   118,
+   67
+  ],
+  "orange_axis": 1.443,
+  "margin": 0.15,
+  "changed_px": 8881,
+  "unmixed_px": 6272,
+  "sides": {
+   "top": {
+    "ref_chroma": [
+     1.0540000200271606,
+     0.9900000095367432,
+     0.9419999718666077
+    ],
+    "s_ref": 0.077,
+    "s_band_before": 0.074,
+    "s_band_after": 0.074,
+    "changed_px": 1074
+   },
+   "right": {
+    "ref_chroma": [
+     1.0529999732971191,
+     0.9900000095367432,
+     0.9440000057220459
+    ],
+    "s_ref": 0.076,
+    "s_band_before": 0.029,
+    "s_band_after": 0.029,
+    "changed_px": 4101
+   },
+   "bottom": {
+    "ref_chroma": [
+     1.2410000562667847,
+     0.9480000138282776,
+     0.8009999990463257
+    ],
+    "s_ref": 0.315,
+    "s_band_before": 0.432,
+    "s_band_after": 0.43,
+    "changed_px": 2404
+   },
+   "left": {
+    "ref_chroma": [
+     1.062999963760376,
+     0.9890000224113464,
+     0.9290000200271606
+    ],
+    "s_ref": 0.092,
+    "s_band_before": 0.063,
+    "s_band_after": 0.063,
+    "changed_px": 1302
+   }
+  },
+  "layer": "Despill (orange bounce fix)"
+ },
+ "insert": {
+  "aspect": 0.6148,
+  "screen_aspect": 0.5542,
+  "skew": 1.113,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    1200.0,
+    238.3,
+    1766.4,
+    1247.2
+   ],
+   "box_source": "gemini",
+   "sam": {
+    "prompt": "click",
+    "score": 0.9389225244522095,
+    "area": 504312,
+    "dE": 2.2,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.9908985495567322,
+      "area": 544326,
+      "dE": 2.4
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9923139214515686,
+      "area": 541461,
+      "dE": 2.4
+     },
+     {
+      "prompt": "click",
+      "score": 0.9389225244522095,
+      "area": 504312,
+      "dE": 2.2
+     },
+     {
+      "prompt": "click",
+      "score": 0.9833200573921204,
+      "area": 543611,
+      "dE": 2.4
+     },
+     {
+      "prompt": "box",
+      "score": 0.994326651096344,
+      "area": 543821,
+      "dE": 2.2
+     },
+     {
+      "prompt": "box",
+      "score": 0.9913288354873657,
+      "area": 539724,
+      "dE": 69.7
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9995,
+    "corner_shift_px": [
+     1.68,
+     3.3,
+     2.22,
+     1.38
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.098
+     },
+     "right": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.028
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.145
+     },
+     "left": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.043
+     }
+    }
+   },
+   "wall_px": 2647579
+  },
+  "opening": {
+   "mode": "canvas face (no frame lip)",
+   "face_search_px": 31.9,
+   "sides": {
+    "top": {
+     "points": 200,
+     "inliers": 0.85,
+     "rms_px": 0.175,
+     "face_edge_px": -1.67,
+     "moved_px": -2.17
+    },
+    "right": {
+     "points": 200,
+     "inliers": 0.56,
+     "rms_px": 0.301,
+     "face_edge_px": -1.29,
+     "why_kept": "the face end is not one straight line"
+    },
+    "bottom": {
+     "points": 200,
+     "inliers": 0.835,
+     "rms_px": 0.15,
+     "face_edge_px": -0.6
+    },
+    "left": {
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.056,
+     "face_edge_px": -1.58,
+     "moved_px": -2.08
+    }
+   }
+  },
+  "quad_paper": [
+   [
+    1199.4560546875,
+    288.15399169921875
+   ],
+   [
+    1729.345947265625,
+    236.97799682617188
+   ],
+   [
+    1729.2230224609375,
+    1247.1259765625
+   ],
+   [
+    1199.4560546875,
+    1196.18994140625
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.225,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.0
+    },
+    {
+     "side": "right",
+     "hard_k": 0.181
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.054
+    },
+    {
+     "side": "left",
+     "hard_k": 0.0
+    }
+   ],
+   "pad_px": 0.0
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.21,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.14,
+     "width_px": 2.5,
+     "blur_px": 1.5,
+     "fit_rms": 0.0006
+    },
+    {
+     "side": "right",
+     "soft_k": 0.721,
+     "width_px": -6.0,
+     "blur_px": 4.21,
+     "fit_rms": 0.0035
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.14,
+     "width_px": 2.5,
+     "blur_px": 1.5,
+     "fit_rms": 0.0005
+    },
+    {
+     "side": "left",
+     "soft_k": 0.14,
+     "width_px": 2.5,
+     "blur_px": 1.5,
+     "fit_rms": 0.0028
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "window pattern",
+   "rectified": true,
+   "dirs_deg": [
+    1.0,
+    123.0
+   ],
+   "tried_rms": [
+    [
+     "1 dir",
+     0.245
+    ],
+    [
+     "2 dirs, crossbar 123 deg",
+     0.097
+    ]
+   ],
+   "fit_rms": 0.0974,
+   "opacity": 0.451,
+   "measured_depth": 0.451,
+   "searched_on": "SAM wall mask, rectified with the canvas corners",
+   "insert_texture": 0.0041
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    1199.1729736328125,
+    288.31201171875
+   ],
+   [
+    1727.2740478515625,
+    237.08299255371094
+   ],
+   [
+    1727.1510009765625,
+    1245.3780517578125
+   ],
+   [
+    1199.1729736328125,
+    1194.614013671875
+   ]
+  ],
+  "corner_err_px": [
+   0.08,
+   0.11,
+   0.1,
+   0.05
+  ],
+  "max_px": 0.11,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": -0.02,
+   "right": -0.1,
+   "bottom": -0.01,
+   "left": 0.07
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "desc": "AI scene: scandinavian home office, blank-insert frame (art cover-fits the insert)",
+ "created": "2026-11-18T01:06:14",
+ "prompt": "Photorealistic scandinavian home office interior featuring one vertical piece of wall art (11:14 ratio). Realistic textures, subtle decor, moody and lived-in detail that feels authentic. Lighting is natural daylight from a window, falling in one consistent direction. Time and season: mid-morning, in summer, with bright, airy daylight. The window is off to one side of the art wall, so the light rakes across the wall from that side and shows its texture. Light style: soft, even daylight from a bright overcast sky, with gentle open shadows and an airy, calm feel. Photographer style: a stylish home-decor creator who stages well and understands light and framing, photographing a real home: natural, effortless styling with a little visible life (a throw casually draped, a book left open, a cup on a side table), slightly casual framing that still feels well composed, beautiful natural light that is good rather than perfect; it reads as a genuine photograph of a real, lived-in home. Whatever the light, the artwork itself hangs in calm, even light: sun patches, shadows and any blind or leaf pattern land on the floor and on the wall around the frame, while the whole printed area stays one flat, evenly lit tone; the frame, the mat or canvas edge and the wall each stay clearly distinct, with crisp, unbroken outlines. Camera angle: 3/4 corner. Composition should be vertical, focused on the artwork and wall area. Only one piece of wall art, no other frames. The artwork's printed area is a single flat, plain, empty, blank onion-skin orange (a pale peachy-orange, roughly RGB 250, 215, 170) surface with a dead-matte, non-reflective finish like unglazed matte card: one even tone from edge to edge, evenly lit across its whole face, glare-free and free of hot spots, so it reads as one clean flat colour. The orange appears only on the front face of the printed area. Its matte surface absorbs the light, so every surface next to it keeps its own natural colour in the room's own light: the frame and its inner edge stay their wood, metal or paint colour, any gap stays a natural neutral shadow, and the wall stays the wall colour. The artwork is a thick stretched gallery canvas, 1.5 to 2 inches (4-5 cm) deep, hung directly on the wall with NO frame of any kind. Only the FRONT FACE of the canvas is orange. The canvas side edges (the wrap around the stretcher bars) are plain clean WHITE, clearly a different tone from the orange face, so the front face ends in one crisp straight line where the white side edge begins; the side edges are never orange, never black: they stay clean white in the light and neutral grey where they turn into shadow. The canvas stands off the wall by its depth and casts a natural soft shadow on the wall that follows the room's light direction. Camera: a slight 3/4 view so the depth shows. No people, no faces, no hands, no pets. No lamps unless the room clearly needs one; only props a real person would leave there. Wall paneling or wainscoting only if the room style calls for it (elegant or traditional rooms); if used, either keep it below waist height and fully below the frame, or make the panels larger than the frame with the frame hanging centred inside one panel, with clear wall space on every side; the frame never touches or overlaps any molding, rail or panel edge.",
+ "look": {
+  "version": 1,
+  "seed": 4009806472,
+  "light_style": "soft_even",
+  "photographer": "lifestyle",
+  "time_of_day": "morning",
+  "season": "summer",
+  "sun_direction": "side_window"
+ },
+ "engine": "nbpro",
+ "model": "reused",
+ "credits": 18.0,
+ "made_for": {
+  "idea_id": 3,
+  "design": "Book Club Cat",
+  "test": "canvas_bare"
+ },
+ "approved": false,
+ "edge_offsets_applied_px": [
+  2.17,
+  -1.97,
+  -1.53,
+  2.3
+ ],
+ "rebuilt_from": "AI_Office_Scandinavian_20261118_003628"
+}

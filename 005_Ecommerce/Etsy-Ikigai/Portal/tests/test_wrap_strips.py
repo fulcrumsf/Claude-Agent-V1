@@ -209,3 +209,71 @@ def test_seam_pixel_is_art_plus_strip_never_a_dark_line():
     out = ws.composite(np.uint8(np.round(render)), scene, art, w, face_half).astype(int)
     seam, strip = out[150:350, 399], out[150:350, 400]
     assert (np.abs(seam - (0.5 * art[0, 0] + 0.5 * strip)) <= 3).all()
+
+
+# ---------- a PLAIN canvas hung on the wall, no frame (Tony 2026-11-18) ----------
+# White side edges next to an orange face, a pale wall that is as light as the side, the side seen as a trapezoid
+# (its free ends recede in perspective), a soft shadow beyond it, and the face's fold catching the light on top/left.
+PLAIN_SIDE = [(400, 100), (412, 104), (412, 394), (400, 400)]       # right side: top end slants down, bottom end up
+PLAIN_FACE_RGB = (195, 118, 67)
+
+
+def plain_canvas_scene(W=640, H=500, ss=4):
+    from PIL import ImageDraw
+    big = Image.new("RGB", (W * ss, H * ss), (214, 211, 207))         # pale wall, as light as the white side
+    d = ImageDraw.Draw(big)
+    S = lambda pts: [(x * ss, y * ss) for x, y in pts]
+    d.polygon(S([(412, 104), (440, 112), (440, 404), (412, 394)]), fill=(150, 142, 136))   # the canvas's shadow
+    d.polygon(S([(198, 98), (400, 98), (400, 100), (200, 100), (200, 400), (198, 400)]), fill=(250, 236, 222))  # lit fold
+    d.polygon(S(PLAIN_SIDE), fill=(232, 232, 235))                    # white side edge
+    d.polygon(S(FACE), fill=PLAIN_FACE_RGB)
+    return np.asarray(big.resize((W, H), Image.BOX))
+
+
+def test_plain_canvas_strip_is_the_white_side_only_and_its_true_trapezoid():
+    w = ws.measure(plain_canvas_scene(), FACE, "canvas")
+    assert list(w["sides"]) == ["right"]                                # the pale wall is never read as a side
+    assert set(w["not_shown"]) == {"top", "bottom", "left"}
+    sd = w["sides"]["right"]
+    assert sd["far_px"] == pytest.approx([12, 12], abs=0.6)             # ends on the side -> shadow step
+    q = np.float32(sd["quad"])
+    assert q[1] == pytest.approx([412, 104], abs=0.8)                   # free ends: the measured end edges,
+    assert q[2] == pytest.approx([412, 394], abs=0.8)                   # not the face's top / bottom lines
+    g = np.float32(sd["shade"])
+    assert sd["shade_basis"].startswith("white side") and g.max() <= 1.0  # white paint is not light: never glows
+    p = ws.placeholder_png(w, 640, 500, Path(__import__("tempfile").mkdtemp()) / "L.png")
+    a = np.asarray(Image.open(p))[..., 3] / 255.0
+    side = ws.coverage(np.float32(PLAIN_SIDE), 640, 500)
+    assert np.abs(a - side).sum() / side.sum() < 0.08                   # the PSD placeholder = the real side shape
+
+
+def test_corrected_art_edge_keeps_the_strips_on_the_measured_sides():
+    """Detection runs on the uncorrected quad; the strip's far edge stays where the photo shows it and attaches to the
+    corrected art edge (detecting on a corrected edge drew strips on the wrong sides, 2026-11-18)."""
+    scene = plain_canvas_scene()
+    q_sam = tc.offset_quad(np.float32(FACE), [-2.0, 2.0, 1.5, -2.0])  # SAM: 2 px inside top/left, onto the side right
+    offs = [2.0, -2.0, -1.5, 2.0]
+    w = ws.measure(scene, q_sam, "canvas", art_offsets=offs)
+    assert list(w["sides"]) == ["right"]
+    assert np.allclose(w["art_quad"], tc.offset_quad(q_sam, offs), atol=1e-3)
+    sd = w["sides"]["right"]
+    assert sd["far_px"] == pytest.approx([sd["far_px_detected"][0] + 2.0, sd["far_px_detected"][1] + 2.0], abs=1e-6)
+    assert np.float32(sd["quad"])[1][0] == pytest.approx(412, abs=0.8)
+
+
+def test_a_box_never_shows_two_opposite_sides():
+    far, info = ws.measure_sides(plain_canvas_scene(), FACE)
+    assert not (0 in far and 2 in far) and not (1 in far and 3 in far)
+
+
+def test_lit_fold_softens_the_unseen_edges_and_a_dark_gap_gets_none():
+    w = ws.measure(plain_canvas_scene(), FACE, "canvas")
+    assert set(w["folds"]) == {"top", "left"}                           # the lit rim, never the strip side
+    assert all(ws.FOLD_MIN <= f["width_px"] <= ws.FOLD_MAX and f["shade"] <= ws.FOLD_SHADE[1]
+               for f in w["folds"].values())
+    assert ws.measure(canvas_scene(), FACE, "canvas")["folds"] == {}    # floater: face -> dark gap, no fold
+    art = np.full((300, 200, 3), (30, 60, 230), "uint8")
+    rgb, a = ws.strip_layer(w, 640, 500, art)
+    assert a[99, 250] > 0.2 and a[97, 250] == 0                         # over the rim, fading out before the wall
+    rgb0, a0 = ws.strip_layer(w, 640, 500, None)
+    assert a0[99, 250] == 0                                             # the PSD placeholder shows strips only

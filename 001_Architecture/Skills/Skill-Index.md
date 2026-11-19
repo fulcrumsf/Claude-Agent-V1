@@ -6,14 +6,14 @@ tags:
   - agents
   - skills
   - registry
-created: 2026-11-15
+created: 2026-11-18
 source: local
 generated_by: sync_skill_index.py
 ---
 
 # Skill Index
 
-Generated: 2026-11-15T02:27:50-05:00
+Generated: 2026-11-18T22:34:32-05:00
 
 This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the shared discovery layer for Claude, Codex, and Gemini in this workspace.
 
@@ -61,6 +61,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | Tutorial-Builder | Turn a past multi-session build (pipeline, tool, workflow) into a replication blueprint and video-recording concept for the Roboto Gato YouTube channel and/or a sellable/free PDF.… | `001_Architecture/Skills/Tutorial-Builder/SKILL.md` |
 | video-analyzer | Use when Tony wants to reverse-engineer the style, pacing, editing, or narrative content of any reference video for any channel or project. Triggers on "analyze this video", "brea… | `001_Architecture/Skills/Video-Analyzer/SKILL.md` |
 | visual-storytelling | Use whenever planning, evaluating, or revising a visual story, video concept, shot list, storyboard, scene, clip sequence, narration structure, compilation, or episodic series. Se… | `001_Architecture/Skills/Visual-Storytelling/SKILL.md` |
+| Wall-Art-Shadows | How to build realistic shadows and window light for wall-art room mockups in PhotoCraft (the Ikigai Portal template PSDs). Invoke when a template's shadows look wrong or missing (… | `001_Architecture/Skills/Wall-Art-Shadows/SKILL.md` |
 | ab-test-setup | When the user wants to plan, design, or implement an A/B test or experiment. Also use when the user mentions "A/B test," "split test," "experiment," "test this change," "variant c… | `001_Architecture/Skills/ab-test-setup/SKILL.md` |
 | ad-creative | When the user wants to generate, iterate, or scale ad creative — headlines, descriptions, primary text, or full ad variations — for any paid advertising platform. Also use when th… | `001_Architecture/Skills/ad-creative/SKILL.md` |
 | agent-development | This skill should be used when the user asks to "create an agent", "add an agent", "write a subagent", "agent frontmatter", "when to use description", "agent examples", "agent too… | `001_Architecture/Skills/agent-development/SKILL.md` |
@@ -110,6 +111,7 @@ This file is generated from `001_Architecture/Skills/**/SKILL.md` and is the sha
 | frontend-design | Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates cre… | `001_Architecture/Skills/frontend-design/SKILL.md` |
 | full-output-enforcement | Overrides default LLM truncation behavior. Enforces complete code generation, bans placeholder patterns, and handles token-limit splits cleanly. Apply to any task requiring exhaus… | `001_Architecture/Skills/full-output-enforcement/SKILL.md` |
 | gemini-api-dev | Use this skill when building applications with Gemini models, Gemini API, working with multimodal content (text, images, audio, video), implementing function calling, using struct… | `001_Architecture/Skills/gemini-api-dev/SKILL.md` |
+| gepeto | Guide for building 1-click launchers and building apps with launchers built-in using Pinokio | `001_Architecture/Skills/gepeto/SKILL.md` |
 | google_veo_kie_api | Best practices for using Google Veo 3, Kling, Runway, and Kie AI APIs for video and image generation. | `001_Architecture/Skills/google_veo_kie_api/SKILL.md` |
 | graphify | Use for any question about a codebase, its architecture, file relationships, or project content — especially when graphify-out/ exists, where the question should be treated as a g… | `001_Architecture/Skills/graphify/SKILL.md` |
 | gsap | GSAP animation reference for HyperFrames. Covers gsap.to(), from(), fromTo(), easing, stagger, defaults, timelines (gsap.timeline(), position parameter, labels, nesting, playback)… | `001_Architecture/Skills/gsap/SKILL.md` |

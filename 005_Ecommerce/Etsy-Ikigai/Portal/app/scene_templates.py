@@ -576,6 +576,7 @@ def placeholder(w, h, path):
     Image.fromarray(ph).save(path)
 
 
+CANVAS_EDGE_K, CANVAS_EDGE_W, CANVAS_EDGE_BLUR = 0.14, 2.5, 1.5   # floor for the canvas face-edge falloff
 SHADOW_OPACITY = {"Frame Hard Shadow": 0.45, "Frame Edge Shadow": 0.30, "Light Shadow": 0.17}
 LAYER_PAD = 4            # shadow pixels reach this far past the art quad; the layer MASK makes the exact cut
 HARD_BLUR_PX = 0.35      # the hard inner edge stays crisp (Gaussian sigma of its inner cut)
@@ -777,6 +778,16 @@ def key_light(img, insert_q, wall=None):
     A = np.c_[xs + 0.5, ys + 0.5, np.ones_like(xs)].astype("float64")
     coef, *_ = np.linalg.lstsq(A, Y[ys, xs].astype("float64"), rcond=None)
     texture = float(np.std(Y[ys, xs] - A @ coef))
+    if wall is not None and min(texture, 1.0) <= INSERT_TEXTURE_MAX:
+        # Tony 2026-11-18: mimic the wall's visible window shadows (blind slats, mullion bars) straight across the art
+        # along their own direction, instead of one angled sun line
+        from .light_pattern import pattern_alpha
+        try:
+            pat, pinfo = pattern_alpha(img, insert_q, wall)
+        except Exception:  # noqa: BLE001  (a pattern failure never blocks a template; the sun line below is the fallback)
+            pat, pinfo = None, "pattern error"
+        if pat is not None:
+            return pat, {**pinfo, "insert_texture": round(texture, 4)}
     alpha, sl, tex_sun = None, None, None
     if wall is not None:
         alpha, sl = sun_shade(img, insert_q, wall)
@@ -809,7 +820,7 @@ def key_light(img, insert_q, wall=None):
         "sun_line": "searched on SAM's wall mask: none" if wall is not None else "not searched (no SAM wall mask)"}
 
 
-def make_layers(img, insert_q, art_q, so_px, mode, outdir, wall=None, pad=None):
+def make_layers(img, insert_q, art_q, so_px, mode, outdir, wall=None, pad=None, canvas=False):
     """Full-canvas RGBA layer PNGs into outdir (Tony's shadow rule: black fill only, cut to shape, blurred; the shadow
     reaches LAYER_PAD px past the art quad and the PSD layer MASK makes the exact cut). insert_q = the OPENING (frame's
     hard inner edge), art_q = the opening + `pad` px under the frame. Since the art covers the baked shadow, two frame
@@ -829,6 +840,10 @@ def make_layers(img, insert_q, art_q, so_px, mode, outdir, wall=None, pad=None):
     black = np.zeros((H, W, 3), "float32")
     files, meta = {}, {}
     sides = measure_edge_shadows(img, q_open, pad)
+    if canvas:      # a stretched canvas's face rounds off at its edge: never a razor cut (Tony 2026-11-18)
+        for s_ in sides:
+            if s_["soft_k"] < CANVAS_EDGE_K:
+                s_.update(soft_k=CANVAS_EDGE_K, width_px=CANVAS_EDGE_W, blur_px=CANVAS_EDGE_BLUR)
     keep_h = np.ones((H, W), "float32")
     keep_s = np.ones((H, W), "float32")
     for s, d in zip(sides, side_distance(q_open, W, H)):
@@ -985,7 +1000,7 @@ def card_verify(psd, quad, settings=None, work=None, opening=None):
     return res
 
 
-def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None, paper=False):
+def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None, paper=False, art_offsets=None):
     """Scene image -> layered PSD in `work` (SAM corners, measured shadows, card test). Returns the manifest fields."""
     from PIL import Image
     from .rooms import true_aspect
@@ -998,6 +1013,9 @@ def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None
     canvas = presentation == "canvas"
     res, _alpha, wall = sam_detect(scene_png, work, settings, box=box, canvas=canvas, paper=paper)
     q = np.float32(res["corners"])               # the OPENING: the frame's hard inner edge, shadowed paper included
+    q_sam = q
+    if art_offsets is not None:                  # Tony 2026-11-18: per-side correction (top, right, bottom, left px,
+        q = np.float32(offset_quad(q, art_offsets))   # + = outward) from the independent edge check's measurement
     asp = true_aspect(q, (W, H))
     l, r = math.dist(q[0], q[3]), math.dist(q[1], q[2])
     info = {"aspect": round(asp, 4),
@@ -1013,9 +1031,13 @@ def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None
     so = so_pixels(aq, true_aspect(aq, (W, H)))                # the art quad's own true ratio: no stretch
     base = work / "base.png"
     Image.fromarray(rgb).save(base)                   # flat RGB PNG (PhotoCraft opens it as the base layer)
-    files = make_layers(rgb.astype("float32") / 255, q, aq, so, mode, work, wall, pad=pad)
+    files = make_layers(rgb.astype("float32") / 255, q, aq, so, mode, work, wall, pad=pad, canvas=canvas)
     from . import wrap_strips as wst
-    ws = wst.measure(rgb, aq, "canvas") if canvas else None     # gallery-wrap side strips (Tony 2026-11-17)
+    # gallery-wrap side strips (Tony 2026-11-17), DETECTED on the uncorrected SAM quad and attached to the corrected
+    # art edge (Tony 2026-11-18: detection on the corrected edge drew strips on the wrong sides)
+    ws = wst.measure(rgb, offset_quad(q_sam, pad), "canvas", art_offsets=art_offsets) if canvas else None
+    if ws and float(np.abs(np.float32(ws["art_quad"]) - np.float32(aq)).max()) > 0.01:
+        raise TemplateError("wrap strips: the strip art edge does not match the art quad")
     if ws:
         wst.placeholder_png(ws, W, H, work / "L_wrap.png")
         files["Wrap Strip"] = "L_wrap.png"

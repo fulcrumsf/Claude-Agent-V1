@@ -1079,11 +1079,32 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
         O_sam, sam_why, sam_wall = (None, "the template has a mat", None) if (r["mats"] or (manifest or {}).get("mode")
                                                                            == "mat") \
             else sam_opening(td / "bg.png", Vs, settings, td, psd, canvas=pres == "canvas")
+        # 2b independent edge check (run first: a canvas's opening is read from it, below): the rendered art edge vs
+        # the face edge read from the scene pixels (no SAM, no builder outline; Tony 2026-11-17)
+        edge_res = edge_result(psd, bg, Vs, pres, tol, so, settings, td, hide=ov + fg, cards=cards,
+                               bg_spill=bg_spill, manifest=manifest)
+        face_opening, O_face = False, None   # canvas: the opening / card tests use the measured face edge (below);
+        # SAM's quad O stays the reference for the sun, overlay and texture checks (unchanged)
         if O_sam is not None:
             offs = [round(float(x), 2) for x in side_offsets(Vs, O_sam)]
             found = 4
             res["measured"]["opening_source"] = f"SAM 2 ({sam_why})"
             res["measured"]["opening_quad_sam"] = np.round(O_sam, 3).tolist()
+            esides = edge_res.get("sides") or {}
+            if pres == "canvas" and any("face_edge_px" in (esides.get(n) or {}) for n in names4):
+                # Tony 2026-11-18: on a canvas SAM's outline takes in part of the side edge (about 2 px on the
+                # camera-facing sides), so the opening and card tests failed a template whose art sits exactly on
+                # the face edge. Per side, the face edge MEASURED by the independent edge check (scene pixels) is
+                # the opening; SAM's offsets stay on record. The edge check itself keeps its stricter 0 px pad.
+                res["measured"]["opening_offsets_sam"] = {names4[i]: offs[i] for i in range(4)}
+                offs = [round(float(esides[n]["face_edge_px"]), 2) if "face_edge_px" in (esides.get(n) or {})
+                        else offs[i] for i, n in enumerate(names4)]
+                Va_e = np.float32(edge_res.get("art_quad") or Vs)       # the face edge is measured from this quad
+                O_face = np.float32(offset_quad(Va_e, offs))
+                offs = [round(float(x), 2) for x in side_offsets(Vs, O_face)]
+                face_opening = True
+                res["measured"]["opening_source"] = (f"face edge from the independent edge check (canvas; SAM 2 "
+                                                     f"{sam_why} kept as opening_offsets_sam)")
         else:
             res["measured"]["opening_source"] = f"edge search (SAM: {sam_why})"
             offs, found = [], 0
@@ -1114,8 +1135,11 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
         # 2 card test (sub-pixel SAM opening: no gap past 1 px inside it; the art's 1-2 px pad under the frame is
         # allowed, anything beyond PAD_MAX_PX + 1 counts as art over the frame)
         sub = O_sam is not None
-        inner = poly_mask(offset_quad(O, -1.0 if sub else -1.5), W, H)
-        outer = poly_mask(offset_quad(O, PAD_MAX_PX + 1.0 if sub else 1.5), W, H)
+        # a canvas opening read from the face edge: the edge check's own tolerance (about one screen pixel) inside it,
+        # since the art's outermost pixel row is anti-aliased and the measured face edge is sub-pixel
+        Oc = O_face if face_opening else O
+        inner = poly_mask(offset_quad(Oc, -max(tol, 1.0) if face_opening else (-1.0 if sub else -1.5)), W, H)
+        outer = poly_mask(offset_quad(Oc, PAD_MAX_PX + 1.0 if sub else 1.5), W, H)
         gap = int((inner & ~D).sum())
         over = int((~outer & D).sum())
         lim = 30 + 0.002 * inner.sum()
@@ -1125,10 +1149,7 @@ def check_psd(psd, ratio=None, settings=None, so_px=None, keep=None, manifest=No
         if over > lim:
             why.append(f"{over} px of art outside the opening (art over the frame)")
         res["checks"]["card"] = _res("fail" if why else "pass", "; ".join(why), gap_px=gap, over_px=over)
-        # 2b independent edge check: the rendered art edge vs the face edge read from the scene pixels (no SAM, no
-        # builder outline; Tony 2026-11-17)
-        res["checks"]["edge"] = edge_result(psd, bg, Vs, pres, tol, so, settings, td, hide=ov + fg, cards=cards,
-                                            bg_spill=bg_spill, manifest=manifest)
+        res["checks"]["edge"] = edge_res                 # 2b (measured above)
         ev = res["checks"]["edge"].get("evidence")
         if res["checks"]["edge"]["status"] == "fail" and ev:
             res.setdefault("notes", []).append(f"edge evidence (8x corners): {ev}")

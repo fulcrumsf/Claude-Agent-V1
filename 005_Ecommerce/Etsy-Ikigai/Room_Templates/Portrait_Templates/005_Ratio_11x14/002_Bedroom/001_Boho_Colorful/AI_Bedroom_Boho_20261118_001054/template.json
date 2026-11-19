@@ -1,0 +1,429 @@
+{
+ "name": "AI_Bedroom_Boho_20261118_001054",
+ "kind": "ai_scene",
+ "psd": "AI_Bedroom_Boho_20261118_001054_Template.psd",
+ "scene": "AI_Bedroom_Boho_20261118_001054_Scene.png",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Bedroom",
+ "etsy_room": "Bedroom",
+ "decor": "Boho",
+ "ratio": "11x14",
+ "print_ratio": "11x14",
+ "so_px": [
+  662,
+  852
+ ],
+ "so_ratio": 0.777,
+ "quad_insert": [
+  [
+   933.31201171875,
+   188.57200622558594
+  ],
+  [
+   1518.0830078125,
+   162.3939971923828
+  ],
+  [
+   1518.343017578125,
+   1013.9660034179688
+  ],
+  [
+   934.7039794921875,
+   1005.3079833984375
+  ]
+ ],
+ "quad_art": [
+  [
+   933.31201171875,
+   188.57200622558594
+  ],
+  [
+   1518.0830078125,
+   162.3939971923828
+  ],
+  [
+   1518.343017578125,
+   1013.9660034179688
+  ],
+  [
+   934.7039794921875,
+   1005.3079833984375
+  ]
+ ],
+ "mode": "full",
+ "canvas": [
+  2400,
+  1792
+ ],
+ "light_from": "left",
+ "quad_paper": [
+  [
+   932.1820068359375,
+   188.6230010986328
+  ],
+  [
+   1520.2540283203125,
+   162.2969970703125
+  ],
+  [
+   1520.2540283203125,
+   1015.3350219726562
+  ],
+  [
+   931.9819946289062,
+   1007.0399780273438
+  ]
+ ],
+ "opening_pad_px": 0.0,
+ "presentation": "canvas",
+ "despill": {
+  "applied": true,
+  "version": 1,
+  "band_px": 14.59,
+  "face_rgb": [
+   189,
+   119,
+   59
+  ],
+  "orange_axis": 1.387,
+  "margin": 0.15,
+  "changed_px": 22589,
+  "unmixed_px": 6962,
+  "sides": {
+   "top": {
+    "ref_chroma": [
+     1.4190000295639038,
+     0.921999990940094,
+     0.5360000133514404
+    ],
+    "s_ref": 0.618,
+    "s_band_before": 0.943,
+    "s_band_after": 0.826,
+    "changed_px": 4630
+   },
+   "right": {
+    "ref_chroma": [
+     1.6979999542236328,
+     0.8510000109672546,
+     0.42399999499320984
+    ],
+    "s_ref": 0.917,
+    "s_band_before": 1.256,
+    "s_band_after": 1.125,
+    "changed_px": 6686
+   },
+   "bottom": {
+    "ref_chroma": [
+     1.371999979019165,
+     0.9319999814033508,
+     0.578000009059906
+    ],
+    "s_ref": 0.554,
+    "s_band_before": 0.627,
+    "s_band_after": 0.627,
+    "changed_px": 2632
+   },
+   "left": {
+    "ref_chroma": [
+     1.2960000038146973,
+     0.9480000138282776,
+     0.6439999938011169
+    ],
+    "s_ref": 0.453,
+    "s_band_before": 1.064,
+    "s_band_after": 0.661,
+    "changed_px": 8641
+   }
+  },
+  "layer": "Despill (orange bounce fix)"
+ },
+ "insert": {
+  "aspect": 0.777,
+  "screen_aspect": 0.7007,
+  "skew": 1.043,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    914.4,
+    141.6,
+    1540.8,
+    1034.0
+   ],
+   "box_source": "gemini",
+   "sam": {
+    "prompt": "box+click",
+    "score": 0.9703042507171631,
+    "area": 490947,
+    "dE": 2.2,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.9703042507171631,
+      "area": 490947,
+      "dE": 2.2
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9826889038085938,
+      "area": 539347,
+      "dE": 33.4
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9764404892921448,
+      "area": 510536,
+      "dE": 58.3
+     },
+     {
+      "prompt": "click",
+      "score": 0.9818184971809387,
+      "area": 496545,
+      "dE": 21.6
+     },
+     {
+      "prompt": "click",
+      "score": 0.8527706265449524,
+      "area": 551764,
+      "dE": 35.8
+     },
+     {
+      "prompt": "click",
+      "score": 0.9508761763572693,
+      "area": 538571,
+      "dE": 35.2
+     },
+     {
+      "prompt": "box",
+      "score": 0.984463095664978,
+      "area": 535888,
+      "dE": 31.8
+     },
+     {
+      "prompt": "box",
+      "score": 0.9751487374305725,
+      "area": 509124,
+      "dE": 61.5
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9953,
+    "corner_shift_px": [
+     1.6,
+     3.42,
+     2.32,
+     1.59
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.119
+     },
+     "right": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.139
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.142
+     },
+     "left": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.085
+     }
+    }
+   },
+   "wall_px": 2112337
+  },
+  "opening": {
+   "mode": "canvas face (no frame lip)",
+   "face_search_px": 35.3,
+   "sides": {
+    "top": {
+     "points": 193,
+     "inliers": 0.176,
+     "rms_px": 0.31,
+     "face_edge_px": -5.38,
+     "why_kept": "the face end is not one straight line"
+    },
+    "right": {
+     "points": 200,
+     "inliers": 0.845,
+     "rms_px": 0.105,
+     "face_edge_px": -1.54,
+     "moved_px": -2.04
+    },
+    "bottom": {
+     "points": 199,
+     "inliers": 0.719,
+     "rms_px": 0.153,
+     "face_edge_px": -1.06,
+     "moved_px": -1.56
+    },
+    "left": {
+     "points": 200,
+     "inliers": 0.82,
+     "rms_px": 0.213,
+     "face_edge_px": -1.43,
+     "moved_px": -1.93
+    }
+   }
+  },
+  "quad_paper": [
+   [
+    932.1820068359375,
+    188.6230010986328
+   ],
+   [
+    1520.2540283203125,
+    162.2969970703125
+   ],
+   [
+    1520.2540283203125,
+    1015.3350219726562
+   ],
+   [
+    931.9819946289062,
+    1007.0399780273438
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.329,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.117
+    },
+    {
+     "side": "right",
+     "hard_k": 0.195
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.166
+    },
+    {
+     "side": "left",
+     "hard_k": 0.0
+    }
+   ],
+   "pad_px": 0.0
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.039,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.05,
+     "width_px": 10.25,
+     "blur_px": 12.0,
+     "fit_rms": 0.0062
+    },
+    {
+     "side": "right",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0037
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0
+    },
+    {
+     "side": "left",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0013
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "sun line",
+   "deg": -40.6,
+   "line": [
+    1345,
+    1103,
+    1588,
+    1311
+   ],
+   "measured_depth": 0.165,
+   "opacity": 0.165,
+   "searched_on": "SAM wall mask",
+   "insert_texture": 0.0075
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    933.3759765625,
+    188.58799743652344
+   ],
+   [
+    1518.010009765625,
+    162.40699768066406
+   ],
+   [
+    1518.218017578125,
+    1013.9959716796875
+   ],
+   [
+    934.6719970703125,
+    1005.3400268554688
+   ]
+  ],
+  "corner_err_px": [
+   0.07,
+   0.07,
+   0.13,
+   0.05
+  ],
+  "max_px": 0.13,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": -0.01,
+   "right": -0.1,
+   "bottom": 0.03,
+   "left": -0.02
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "desc": "AI scene: bohemian bedroom, blank-insert frame (art cover-fits the insert)",
+ "created": "2026-11-18T00:10:54",
+ "prompt": "Photorealistic bohemian bedroom interior featuring one vertical piece of wall art (11:14 ratio). Realistic textures, subtle decor, moody and lived-in detail that feels authentic. Lighting is natural daylight from a window, falling in one consistent direction. Time and season: mid-morning, on a fresh spring day, the sun bright and clean with a light, slightly cool warmth. The window is off to one side of the art wall, so the light rakes across the wall from that side and shows its texture. Light style: sunlight filtered through slatted blinds or the leaves of a tree outside, casting a dappled, patterned shadow across the floor and the wall to one side of the artwork. Photographer style: an architecture and interiors magazine shoot: composed, balanced framing with straight verticals, clean and considered styling with only props that belong in the room, carefully balanced exposure. Whatever the light, the artwork itself hangs in calm, even light: sun patches, shadows and any blind or leaf pattern land on the floor and on the wall around the frame, while the whole printed area stays one flat, evenly lit tone; the frame, the mat or canvas edge and the wall each stay clearly distinct, with crisp, unbroken outlines. Camera angle: 3/4 corner. Composition should be vertical, focused on the artwork and wall area. Only one piece of wall art, no other frames. The artwork's printed area is a single flat, plain, empty, blank onion-skin orange (a pale peachy-orange, roughly RGB 250, 215, 170) surface with a dead-matte, non-reflective finish like unglazed matte card: one even tone from edge to edge, evenly lit across its whole face, glare-free and free of hot spots, so it reads as one clean flat colour. The orange appears only on the front face of the printed area. Its matte surface absorbs the light, so every surface next to it keeps its own natural colour in the room's own light: the frame and its inner edge stay their wood, metal or paint colour, any gap stays a natural neutral shadow, and the wall stays the wall colour. The artwork is a thick stretched gallery canvas, 1.5 to 2 inches (4-5 cm) deep, mounted inside a thin NATURAL LIGHT WOOD floater frame (floating frame), a warm natural wood colour, never black or dark. Only the FRONT FACE of the canvas is orange. The canvas side edges (the wrap around the stretcher bars) are plain clean WHITE, clearly a different tone from the orange face, so the front face ends in one crisp straight line where the white side edge begins; the side edges are never orange, never black: they stay clean white in the light and neutral grey where they turn into shadow. The canvas sits inset inside the frame with a narrow even visible gap of about 0.5 cm between the canvas edge and the frame's inner lip; the gap holds a natural soft shadow in the neutral tones of the wood, lighter than black, so the pale wood frame, the thin gap, the white canvas side edge and the orange face are clearly separate bands. The piece stands off the wall by the canvas depth and casts a natural shadow on the wall that follows the room's light direction. Camera: a slight 3/4 view so the depth shows. No people, no faces, no hands, no pets. No lamps unless the room clearly needs one; only props a real person would leave there. Wall paneling or wainscoting only if the room style calls for it (elegant or traditional rooms); if used, either keep it below waist height and fully below the frame, or make the panels larger than the frame with the frame hanging centred inside one panel, with clear wall space on every side; the frame never touches or overlaps any molding, rail or panel edge.",
+ "look": {
+  "version": 1,
+  "seed": 1107820365,
+  "light_style": "dappled",
+  "photographer": "magazine",
+  "time_of_day": "morning",
+  "season": "spring",
+  "sun_direction": "side_window"
+ },
+ "engine": "nbpro",
+ "model": "nano-banana-pro",
+ "credits": 18.0,
+ "made_for": {
+  "idea_id": 3,
+  "design": "Book Club Cat",
+  "test": "canvas"
+ },
+ "approved": false
+}

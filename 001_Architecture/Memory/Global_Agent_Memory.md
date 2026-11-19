@@ -1471,3 +1471,5 @@ Tony judged Part 1 of the Grandma-And-Bear compilation's original manual-crop Sh
 
 - 2026-10-26: Tony's dashboard must be fully automated (no manual exports or pasted screenshots). Etsy per-shop search terms have no API anywhere; use Alura's official API (Growth plan, 20,000 credits/mo) for keyword and competitor data and Etsy API for own sales. Alura terms: no keeping its data over 24h, no using the website's internal endpoints. Details in TOOLBOX.md.
 - 2026-11-17: Canvas-in-floater room templates use wrap strips + despill layer + independent edge check (Tony-approved standard); light/photographer variety is random per generation and recorded in template.json; Templates tab hides failed by default.
+
+- 2026-11-18: Wall-art room-template shadows: follow `Skills/Wall-Art-Shadows/SKILL.md` (mimic the wall's own shadows with the art hidden; same strength for all shadows of one window, never darker than neighbours; check all canvas edges against the previous render before saying done). When Tony names a slot for a template, approve it and render it with `production.run_slot`; don't ask.

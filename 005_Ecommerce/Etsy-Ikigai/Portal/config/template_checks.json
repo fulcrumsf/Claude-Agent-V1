@@ -11116,7 +11116,7 @@
   },
   "005_Ratio_11x14/001_Living_Rooms/001_Japandi_Minimalist/AI_Living_Room_Japandi_Minimalist_20261117_163603_Template.psd": {
    "psd": "AI_Living_Room_Japandi_Minimalist_20261117_163603_Template.psd",
-   "checked": "2026-11-17T18:57:10",
+   "checked": "2026-11-18T22:31:56",
    "psd_size": 26237467,
    "psd_mtime": 1794959805,
    "checks": {
@@ -11134,10 +11134,10 @@
      "status": "pass",
      "reason": "",
      "offsets": [
-      0.12,
-      0.09,
-      0.07,
-      0.19
+      -0.02,
+      0.59,
+      0.62,
+      0.61
      ]
     },
     "card": {
@@ -11325,7 +11325,7 @@
     ],
     "presentation": "canvas",
     "edge_tol_px": 1.5,
-    "opening_source": "SAM 2 (sam2.1_hiera_large)",
+    "opening_source": "face edge from the independent edge check (canvas; SAM 2 sam2.1_hiera_large kept as opening_offsets_sam)",
     "opening_quad_sam": [
      [
       1072.7340087890625,
@@ -11344,11 +11344,17 @@
       1102.0260009765625
      ]
     ],
-    "opening_offsets": {
+    "opening_offsets_sam": {
      "top": 0.12,
      "right": 0.09,
      "bottom": 0.07,
      "left": 0.19
+    },
+    "opening_offsets": {
+     "top": -0.02,
+     "right": 0.59,
+     "bottom": 0.62,
+     "left": 0.61
     },
     "opening_quad": [
      [
@@ -11408,7 +11414,3223 @@
    "status": "PASS",
    "reasons": [],
    "rel": "005_Ratio_11x14/001_Living_Rooms/001_Japandi_Minimalist/AI_Living_Room_Japandi_Minimalist_20261117_163603_Template.psd"
+  },
+  "005_Ratio_11x14/002_Bedroom/001_Boho_Colorful/AI_Bedroom_Boho_20261118_001054/AI_Bedroom_Boho_20261118_001054_Template.psd": {
+   "psd": "AI_Bedroom_Boho_20261118_001054_Template.psd",
+   "checked": "2026-11-18T00:10:54",
+   "psd_size": 25838682,
+   "psd_mtime": 1794978653,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "pass",
+     "reason": "",
+     "offsets": [
+      -0.04,
+      0.09,
+      -0.05,
+      -0.02
+     ]
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "edge": {
+     "status": "fail",
+     "reason": "left: a 2.3 px strip of the face shows between the art and the face edge (limit 1.5 px)",
+     "sides": {
+      "top": {
+       "segments_px": [
+        -1.24,
+        -1.44,
+        -1.47
+       ],
+       "face_edge_px": -1.44,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "right": {
+       "segments_px": [
+        -0.03,
+        0.19,
+        1.03
+       ],
+       "face_edge_px": 0.19,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "bottom": {
+       "segments_px": [
+        0.6,
+        0.49,
+        0.56
+       ],
+       "face_edge_px": 0.56,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "left": {
+       "segments_px": [
+        2.98,
+        2.3,
+        1.87
+       ],
+       "face_edge_px": 2.3,
+       "sits_on": "the face",
+       "status": "fail"
+      }
+     },
+     "tol_px": 1.5,
+     "presentation": "canvas",
+     "art_quad": [
+      [
+       933.375,
+       188.58399963378906
+      ],
+      [
+       1518.010009765625,
+       162.41099548339844
+      ],
+      [
+       1518.218017578125,
+       1013.9959716796875
+      ],
+      [
+       934.6719970703125,
+       1005.3400268554688
+      ]
+     ],
+     "art_edge_source": "card difference, overlays hidden (sub-pixel)",
+     "spill": {
+      "status": "pass",
+      "reason": "",
+      "sides": {
+       "top": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 1.1,
+        "status": "pass"
+       },
+       "right": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.9,
+        "status": "pass"
+       },
+       "bottom": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.9,
+        "status": "pass"
+       },
+       "left": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.8,
+        "status": "pass"
+       }
+      },
+      "orange_px": 0,
+      "limit_display_px2": 20.0,
+      "limit_dE": 6.0
+     },
+     "evidence": "/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Bedroom_Boho_20261118_001054_Template_fbd91574.jpg"
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "pass",
+     "reason": "",
+     "wall_deg": -40.6,
+     "shadow_deg": -40.5
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2400,
+     1792
+    ],
+    "so_px": [
+     662,
+     852
+    ],
+    "despill_layer": [
+     "Despill (orange bounce fix)"
+    ],
+    "visible_quad": [
+     [
+      933.0,
+      188.0
+     ],
+     [
+      1517.0,
+      162.0
+     ],
+     [
+      1518.0,
+      1013.0
+     ],
+     [
+      935.0,
+      1005.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      933.2940063476562,
+      188.54600524902344
+     ],
+     [
+      1518.0240478515625,
+      162.3699951171875
+     ],
+     [
+      1518.2320556640625,
+      1014.0830078125
+     ],
+     [
+      934.6900024414062,
+      1005.2849731445312
+     ]
+    ],
+    "presentation": "canvas",
+    "edge_tol_px": 1.5,
+    "opening_source": "SAM 2 (sam2.1_hiera_large)",
+    "opening_quad_sam": [
+     [
+      933.3140258789062,
+      188.58900451660156
+     ],
+     [
+      1518.116943359375,
+      162.39999389648438
+     ],
+     [
+      1518.324951171875,
+      1013.9669799804688
+     ],
+     [
+      934.7039794921875,
+      1005.3099975585938
+     ]
+    ],
+    "opening_offsets": {
+     "top": -0.04,
+     "right": 0.09,
+     "bottom": -0.05,
+     "left": -0.02
+    },
+    "opening_quad": [
+     [
+      933.2999877929688,
+      188.60000610351562
+     ],
+     [
+      1518.0999755859375,
+      162.39999389648438
+     ],
+     [
+      1518.300048828125,
+      1014.0
+     ],
+     [
+      934.7000122070312,
+      1005.2999877929688
+     ]
+    ],
+    "opening_box": [
+     933,
+     162,
+     585,
+     852
+    ],
+    "sun": {
+     "deg": -40.6,
+     "line": [
+      1345,
+      1103,
+      1588,
+      1311
+     ],
+     "contrast": 0.147,
+     "score": 46.96734420889289
+    },
+    "sun_searched_on": "SAM wall mask",
+    "shadow_edges": {
+     "Light Shadow": {
+      "deg": -40.5,
+      "line": [
+       937,
+       755,
+       1230,
+       1005
+      ]
+     }
+    },
+    "insert_texture": 0.0083,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      911,
+      128,
+      1542,
+      1031
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": 307.2,
+      "top": null,
+      "bottom": 80.4
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 5,
+      "h": 7
+     }
+    },
+    "opening_ratio": 0.7738,
+    "so_ratio": 0.777,
+    "visible_ratio": 0.7807
+   },
+   "notes": [
+    "edge evidence (8x corners): /Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Bedroom_Boho_20261118_001054_Template_fbd91574.jpg"
+   ],
+   "status": "FAIL",
+   "reasons": [
+    "Edge (independent): left: a 2.3 px strip of the face shows between the art and the face edge (limit 1.5 px)"
+   ],
+   "rel": "005_Ratio_11x14/002_Bedroom/001_Boho_Colorful/AI_Bedroom_Boho_20261118_001054/AI_Bedroom_Boho_20261118_001054_Template.psd"
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_001253/AI_Office_Scandinavian_20261118_001253_Template.psd": {
+   "psd": "AI_Office_Scandinavian_20261118_001253_Template.psd",
+   "checked": "2026-11-18T00:12:53",
+   "psd_size": 25667545,
+   "psd_mtime": 1794978772,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "pass",
+     "reason": "",
+     "offsets": [
+      -0.04,
+      0.09,
+      0.18,
+      0.0
+     ]
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "edge": {
+     "status": "fail",
+     "reason": "top: a 2.2 px strip of the face shows between the art and the face edge (limit 1.5 px); right: the art edge runs 2.0 px past the face edge onto the canvas side edge (limit 1.5 px); bottom: the art edge runs 1.5 px past the face edge onto the canvas side edge (limit 1.5 px); left: a 2.3 px strip of the face shows between the art and the face edge (limit 1.5 px)",
+     "sides": {
+      "top": {
+       "segments_px": [
+        2.26,
+        2.17,
+        0.44
+       ],
+       "face_edge_px": 2.17,
+       "sits_on": "the face",
+       "status": "fail"
+      },
+      "right": {
+       "segments_px": [
+        -1.85,
+        -1.97,
+        -2.09
+       ],
+       "face_edge_px": -1.97,
+       "sits_on": "the canvas side edge",
+       "status": "fail"
+      },
+      "bottom": {
+       "segments_px": [
+        -1.73,
+        -1.53,
+        -0.26
+       ],
+       "face_edge_px": -1.53,
+       "sits_on": "the canvas side edge",
+       "status": "fail"
+      },
+      "left": {
+       "segments_px": [
+        2.3,
+        2.3,
+        2.31
+       ],
+       "face_edge_px": 2.3,
+       "sits_on": "the face",
+       "status": "fail"
+      }
+     },
+     "tol_px": 1.5,
+     "presentation": "canvas",
+     "art_quad": [
+      [
+       1201.60205078125,
+       290.2560119628906
+      ],
+      [
+       1729.241943359375,
+       239.0709991455078
+      ],
+      [
+       1729.1190185546875,
+       1247.029052734375
+      ],
+      [
+       1201.60205078125,
+       1196.3089599609375
+      ]
+     ],
+     "art_edge_source": "card difference, overlays hidden (sub-pixel)",
+     "spill": {
+      "status": "pass",
+      "reason": "",
+      "sides": {
+       "top": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "right": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.0,
+        "status": "pass"
+       },
+       "bottom": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.0,
+        "status": "pass"
+       },
+       "left": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       }
+      },
+      "orange_px": 0,
+      "limit_display_px2": 20.0,
+      "limit_dE": 6.0
+     },
+     "evidence": "/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Office_Scandinavian_20261118_001253_Template_5ba2e110.jpg"
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "pass",
+     "reason": "",
+     "wall_deg": -33.3,
+     "shadow_deg": -33.6
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "fail",
+     "reason": "the smart object (619x1008) is stretched -43.4% to its frame"
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2400,
+     1792
+    ],
+    "so_px": [
+     619,
+     1008
+    ],
+    "wrap_strip_layer": [
+     "Wrap Strip (placeholder)"
+    ],
+    "despill_layer": [
+     "Despill (orange bounce fix)"
+    ],
+    "visible_quad": [
+     [
+      1201.0,
+      290.0
+     ],
+     [
+      1729.0,
+      239.0
+     ],
+     [
+      1729.0,
+      1246.0
+     ],
+     [
+      1202.0,
+      1196.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1201.4859619140625,
+      290.20599365234375
+     ],
+     [
+      1729.3740234375,
+      238.9969940185547
+     ],
+     [
+      1729.0050048828125,
+      1246.927978515625
+     ],
+     [
+      1201.5970458984375,
+      1196.218017578125
+     ]
+    ],
+    "presentation": "canvas",
+    "edge_tol_px": 1.5,
+    "opening_source": "SAM 2 (sam2.1_hiera_large)",
+    "opening_quad_sam": [
+     [
+      1201.552001953125,
+      290.2430114746094
+     ],
+     [
+      1729.345947265625,
+      239.03799438476562
+     ],
+     [
+      1729.2230224609375,
+      1247.1259765625
+     ],
+     [
+      1201.5240478515625,
+      1196.387939453125
+     ]
+    ],
+    "opening_offsets": {
+     "top": -0.04,
+     "right": 0.09,
+     "bottom": 0.18,
+     "left": 0.0
+    },
+    "opening_quad": [
+     [
+      1201.5999755859375,
+      290.20001220703125
+     ],
+     [
+      1729.300048828125,
+      239.0
+     ],
+     [
+      1729.199951171875,
+      1247.0999755859375
+     ],
+     [
+      1201.5,
+      1196.4000244140625
+     ]
+    ],
+    "opening_box": [
+     1202,
+     239,
+     528,
+     1008
+    ],
+    "sun": {
+     "deg": -33.3,
+     "line": [
+      1951,
+      1139,
+      2213,
+      1311
+     ],
+     "contrast": 0.141,
+     "score": 44.23589207996626
+    },
+    "sun_searched_on": "SAM wall mask",
+    "shadow_edges": {
+     "Light Shadow": {
+      "deg": -33.6,
+      "line": [
+       1206,
+       648,
+       1714,
+       985
+      ]
+     }
+    },
+    "insert_texture": 0.0041,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1161,
+      199,
+      1768,
+      1282
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 3,
+      "h": 0
+     }
+    },
+    "opening_ratio": 0.6144,
+    "so_ratio": 0.6141,
+    "visible_ratio": 1.0853
+   },
+   "notes": [
+    "edge evidence (8x corners): /Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Office_Scandinavian_20261118_001253_Template_5ba2e110.jpg"
+   ],
+   "status": "FAIL",
+   "reasons": [
+    "Edge (independent): top: a 2.2 px strip of the face shows between the art and the face edge (limit 1.5 px); right: the art edge runs 2.0 px past the face edge onto the canvas side edge (limit 1.5 px); bottom: the art edge runs 1.5 px past the face edge onto the canvas side edge (limit 1.5 px); left: a 2.3 px strip of the face shows between the art and the face edge (limit 1.5 px)",
+    "Ratio: the smart object (619x1008) is stretched -43.4% to its frame"
+   ],
+   "rel": "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_001253/AI_Office_Scandinavian_20261118_001253_Template.psd"
+  },
+  "005_Ratio_11x14/002_Bedroom/001_Boho_Colorful/AI_Bedroom_Boho_20261118_002116/AI_Bedroom_Boho_20261118_002116_Template.psd": {
+   "psd": "AI_Bedroom_Boho_20261118_002116_Template.psd",
+   "checked": "2026-11-18T00:21:16",
+   "psd_size": 26442308,
+   "psd_mtime": 1794979275,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "pass",
+     "reason": "",
+     "offsets": [
+      -0.12,
+      0.06,
+      -0.05,
+      -0.07
+     ]
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "edge": {
+     "status": "fail",
+     "reason": "left: a 2.3 px strip of the face shows between the art and the face edge (limit 1.5 px)",
+     "sides": {
+      "top": {
+       "segments_px": [
+        -1.24,
+        -1.44,
+        -1.47
+       ],
+       "face_edge_px": -1.44,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "right": {
+       "segments_px": [
+        -0.03,
+        0.19,
+        1.03
+       ],
+       "face_edge_px": 0.19,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "bottom": {
+       "segments_px": [
+        0.6,
+        0.49,
+        0.56
+       ],
+       "face_edge_px": 0.56,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "left": {
+       "segments_px": [
+        2.98,
+        2.3,
+        1.87
+       ],
+       "face_edge_px": 2.3,
+       "sits_on": "the face",
+       "status": "fail"
+      }
+     },
+     "tol_px": 1.5,
+     "presentation": "canvas",
+     "art_quad": [
+      [
+       933.3759765625,
+       188.58399963378906
+      ],
+      [
+       1518.010009765625,
+       162.41099548339844
+      ],
+      [
+       1518.218017578125,
+       1013.9959716796875
+      ],
+      [
+       934.6719970703125,
+       1005.3400268554688
+      ]
+     ],
+     "art_edge_source": "card difference, overlays hidden (sub-pixel)",
+     "spill": {
+      "status": "pass",
+      "reason": "",
+      "sides": {
+       "top": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 1.1,
+        "status": "pass"
+       },
+       "right": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.9,
+        "status": "pass"
+       },
+       "bottom": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.9,
+        "status": "pass"
+       },
+       "left": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.8,
+        "status": "pass"
+       }
+      },
+      "orange_px": 0,
+      "limit_display_px2": 20.0,
+      "limit_dE": 6.0
+     },
+     "evidence": "/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Bedroom_Boho_20261118_002116_Template_45b86f87.jpg"
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "pass",
+     "reason": "",
+     "wall_deg": -40.6,
+     "shadow_deg": -40.0
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2400,
+     1792
+    ],
+    "so_px": [
+     662,
+     852
+    ],
+    "despill_layer": [
+     "Despill (orange bounce fix)"
+    ],
+    "visible_quad": [
+     [
+      933.0,
+      188.0
+     ],
+     [
+      1517.0,
+      162.0
+     ],
+     [
+      1518.0,
+      1013.0
+     ],
+     [
+      935.0,
+      1005.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      933.2150268554688,
+      188.4510040283203
+     ],
+     [
+      1518.052001953125,
+      162.29600524902344
+     ],
+     [
+      1518.260009765625,
+      1014.052001953125
+     ],
+     [
+      934.6610107421875,
+      1005.323974609375
+     ]
+    ],
+    "presentation": "canvas",
+    "edge_tol_px": 1.5,
+    "opening_source": "SAM 2 (sam2.1_hiera_large)",
+    "opening_quad_sam": [
+     [
+      933.3140258789062,
+      188.58900451660156
+     ],
+     [
+      1518.116943359375,
+      162.39999389648438
+     ],
+     [
+      1518.324951171875,
+      1013.9669799804688
+     ],
+     [
+      934.7039794921875,
+      1005.3099975585938
+     ]
+    ],
+    "opening_offsets": {
+     "top": -0.12,
+     "right": 0.06,
+     "bottom": -0.05,
+     "left": -0.07
+    },
+    "opening_quad": [
+     [
+      933.2999877929688,
+      188.60000610351562
+     ],
+     [
+      1518.0999755859375,
+      162.39999389648438
+     ],
+     [
+      1518.300048828125,
+      1014.0
+     ],
+     [
+      934.7000122070312,
+      1005.2999877929688
+     ]
+    ],
+    "opening_box": [
+     933,
+     162,
+     585,
+     852
+    ],
+    "sun": {
+     "deg": -40.6,
+     "line": [
+      1345,
+      1103,
+      1588,
+      1311
+     ],
+     "contrast": 0.147,
+     "score": 46.96734420889289
+    },
+    "sun_searched_on": "SAM wall mask",
+    "shadow_edges": {
+     "Light Shadow": {
+      "deg": -40.0,
+      "line": [
+       984,
+       789,
+       1196,
+       967
+      ]
+     }
+    },
+    "insert_texture": 0.0083,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      911,
+      128,
+      1542,
+      1031
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": 307.2,
+      "top": null,
+      "bottom": 80.4
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 5,
+      "h": 7
+     }
+    },
+    "opening_ratio": 0.7738,
+    "so_ratio": 0.777,
+    "visible_ratio": 0.7807
+   },
+   "notes": [
+    "edge evidence (8x corners): /Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Bedroom_Boho_20261118_002116_Template_45b86f87.jpg"
+   ],
+   "status": "FAIL",
+   "reasons": [
+    "Edge (independent): left: a 2.3 px strip of the face shows between the art and the face edge (limit 1.5 px)"
+   ],
+   "rel": "005_Ratio_11x14/002_Bedroom/001_Boho_Colorful/AI_Bedroom_Boho_20261118_002116/AI_Bedroom_Boho_20261118_002116_Template.psd"
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_003628/AI_Office_Scandinavian_20261118_003628_Template.psd": {
+   "psd": "AI_Office_Scandinavian_20261118_003628_Template.psd",
+   "checked": "2026-11-18T00:36:29",
+   "psd_size": 26278117,
+   "psd_mtime": 1794980187,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "pass",
+     "reason": "",
+     "offsets": [
+      -0.09,
+      0.1,
+      0.12,
+      0.02
+     ]
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "edge": {
+     "status": "fail",
+     "reason": "top: a 2.2 px strip of the face shows between the art and the face edge (limit 1.5 px); right: the art edge runs 2.0 px past the face edge onto the canvas side edge (limit 1.5 px); bottom: the art edge runs 1.5 px past the face edge onto the canvas side edge (limit 1.5 px); left: a 2.3 px strip of the face shows between the art and the face edge (limit 1.5 px)",
+     "sides": {
+      "top": {
+       "segments_px": [
+        2.26,
+        2.17,
+        0.44
+       ],
+       "face_edge_px": 2.17,
+       "sits_on": "the face",
+       "status": "fail"
+      },
+      "right": {
+       "segments_px": [
+        -1.85,
+        -1.97,
+        -2.1
+       ],
+       "face_edge_px": -1.97,
+       "sits_on": "the canvas side edge",
+       "status": "fail"
+      },
+      "bottom": {
+       "segments_px": [
+        -1.73,
+        -1.53,
+        -0.25
+       ],
+       "face_edge_px": -1.53,
+       "sits_on": "the canvas side edge",
+       "status": "fail"
+      },
+      "left": {
+       "segments_px": [
+        2.3,
+        2.3,
+        2.31
+       ],
+       "face_edge_px": 2.3,
+       "sits_on": "the face",
+       "status": "fail"
+      }
+     },
+     "tol_px": 1.5,
+     "presentation": "canvas",
+     "art_quad": [
+      [
+       1201.594970703125,
+       290.2560119628906
+      ],
+      [
+       1729.241943359375,
+       239.0709991455078
+      ],
+      [
+       1729.1190185546875,
+       1247.029052734375
+      ],
+      [
+       1201.594970703125,
+       1196.3079833984375
+      ]
+     ],
+     "art_edge_source": "card difference, overlays hidden (sub-pixel)",
+     "spill": {
+      "status": "pass",
+      "reason": "",
+      "sides": {
+       "top": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "right": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.0,
+        "status": "pass"
+       },
+       "bottom": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.0,
+        "status": "pass"
+       },
+       "left": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       }
+      },
+      "orange_px": 0,
+      "limit_display_px2": 20.0,
+      "limit_dE": 6.0
+     },
+     "evidence": "/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Office_Scandinavian_20261118_003628_Template_31197ac1.jpg"
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "pass",
+     "reason": "",
+     "wall_deg": -33.3,
+     "shadow_deg": -34.0
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "fail",
+     "reason": "the smart object (619x1008) is stretched -43.4% to its frame"
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2400,
+     1792
+    ],
+    "so_px": [
+     619,
+     1008
+    ],
+    "wrap_strip_layer": [
+     "Wrap Strip (placeholder)"
+    ],
+    "despill_layer": [
+     "Despill (orange bounce fix)"
+    ],
+    "visible_quad": [
+     [
+      1201.0,
+      290.0
+     ],
+     [
+      1729.0,
+      239.0
+     ],
+     [
+      1729.0,
+      1246.0
+     ],
+     [
+      1202.0,
+      1196.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1201.5560302734375,
+      290.17999267578125
+     ],
+     [
+      1729.3690185546875,
+      238.91400146484375
+     ],
+     [
+      1729.0,
+      1247.0140380859375
+     ],
+     [
+      1201.5560302734375,
+      1196.2359619140625
+     ]
+    ],
+    "presentation": "canvas",
+    "edge_tol_px": 1.5,
+    "opening_source": "SAM 2 (sam2.1_hiera_large)",
+    "opening_quad_sam": [
+     [
+      1201.552001953125,
+      290.2430114746094
+     ],
+     [
+      1729.345947265625,
+      239.03799438476562
+     ],
+     [
+      1729.2230224609375,
+      1247.1259765625
+     ],
+     [
+      1201.5240478515625,
+      1196.387939453125
+     ]
+    ],
+    "opening_offsets": {
+     "top": -0.09,
+     "right": 0.1,
+     "bottom": 0.12,
+     "left": 0.02
+    },
+    "opening_quad": [
+     [
+      1201.5999755859375,
+      290.20001220703125
+     ],
+     [
+      1729.300048828125,
+      239.0
+     ],
+     [
+      1729.199951171875,
+      1247.0999755859375
+     ],
+     [
+      1201.5,
+      1196.4000244140625
+     ]
+    ],
+    "opening_box": [
+     1202,
+     239,
+     528,
+     1008
+    ],
+    "sun": {
+     "deg": -33.3,
+     "line": [
+      1951,
+      1139,
+      2213,
+      1311
+     ],
+     "contrast": 0.141,
+     "score": 44.23589207996626
+    },
+    "sun_searched_on": "SAM wall mask",
+    "shadow_edges": {
+     "Light Shadow": {
+      "deg": -34.0,
+      "line": [
+       1206,
+       658,
+       1452,
+       824
+      ]
+     }
+    },
+    "insert_texture": 0.0041,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1161,
+      199,
+      1768,
+      1282
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 3,
+      "h": 0
+     }
+    },
+    "opening_ratio": 0.6144,
+    "so_ratio": 0.6141,
+    "visible_ratio": 1.0853
+   },
+   "notes": [
+    "edge evidence (8x corners): /Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Office_Scandinavian_20261118_003628_Template_31197ac1.jpg"
+   ],
+   "status": "FAIL",
+   "reasons": [
+    "Edge (independent): top: a 2.2 px strip of the face shows between the art and the face edge (limit 1.5 px); right: the art edge runs 2.0 px past the face edge onto the canvas side edge (limit 1.5 px); bottom: the art edge runs 1.5 px past the face edge onto the canvas side edge (limit 1.5 px); left: a 2.3 px strip of the face shows between the art and the face edge (limit 1.5 px)",
+    "Ratio: the smart object (619x1008) is stretched -43.4% to its frame"
+   ],
+   "rel": "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_003628/AI_Office_Scandinavian_20261118_003628_Template.psd"
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_004359/AI_Office_Scandinavian_20261118_004359_Template.psd": {
+   "psd": "AI_Office_Scandinavian_20261118_004359_Template.psd",
+   "checked": "2026-11-18T00:43:59",
+   "psd_size": 26249796,
+   "psd_mtime": 1794980638,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "fail",
+     "reason": "right gap of 2.0 px between the frame's inner edge and the art (baked paper shows); bottom gap of 1.5 px between the frame's inner edge and the art (baked paper shows)",
+     "offsets": [
+      -2.26,
+      2.05,
+      1.51,
+      -2.38
+     ]
+    },
+    "card": {
+     "status": "fail",
+     "reason": "1731 px inside the opening never show art (white sliver / gap)",
+     "gap_px": 1731,
+     "over_px": 9
+    },
+    "edge": {
+     "status": "pass",
+     "reason": "",
+     "sides": {
+      "top": {
+       "segments_px": [
+        0.13,
+        -1.68,
+        -0.1
+       ],
+       "face_edge_px": -0.1,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "right": {
+       "segments_px": [
+        0.13,
+        0.05,
+        -0.1
+       ],
+       "face_edge_px": 0.05,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "bottom": {
+       "segments_px": [
+        -0.26,
+        -0.08,
+        1.21
+       ],
+       "face_edge_px": -0.08,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "left": {
+       "segments_px": [
+        -0.14,
+        -0.14,
+        -0.13
+       ],
+       "face_edge_px": -0.14,
+       "sits_on": "the face edge",
+       "status": "pass"
+      }
+     },
+     "tol_px": 1.5,
+     "presentation": "canvas",
+     "art_quad": [
+      [
+       1199.175048828125,
+       288.31298828125
+      ],
+      [
+       1727.2740478515625,
+       237.08399963378906
+      ],
+      [
+       1727.1500244140625,
+       1245.3780517578125
+      ],
+      [
+       1199.175048828125,
+       1194.614013671875
+      ]
+     ],
+     "art_edge_source": "card difference, overlays hidden (sub-pixel)",
+     "spill": {
+      "status": "pass",
+      "reason": "",
+      "sides": {
+       "top": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.0,
+        "status": "pass"
+       },
+       "right": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 1.6,
+        "status": "pass"
+       },
+       "bottom": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "left": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.0,
+        "status": "pass"
+       }
+      },
+      "orange_px": 0,
+      "limit_display_px2": 20.0,
+      "limit_dE": 6.0
+     },
+     "evidence": "/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Office_Scandinavian_20261118_004359_Template_f60cb1e9.jpg"
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "pass",
+     "reason": "",
+     "wall_deg": -33.3,
+     "shadow_deg": -33.2
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2400,
+     1792
+    ],
+    "so_px": [
+     620,
+     1008
+    ],
+    "wrap_strip_layer": [
+     "Wrap Strip (placeholder)"
+    ],
+    "despill_layer": [
+     "Despill (orange bounce fix)"
+    ],
+    "visible_quad": [
+     [
+      1199.0,
+      288.0
+     ],
+     [
+      1727.0,
+      237.0
+     ],
+     [
+      1727.0,
+      1244.0
+     ],
+     [
+      1199.0,
+      1194.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1199.157958984375,
+      288.25201416015625
+     ],
+     [
+      1727.3570556640625,
+      236.91600036621094
+     ],
+     [
+      1727.1099853515625,
+      1245.4410400390625
+     ],
+     [
+      1199.157958984375,
+      1194.614013671875
+     ]
+    ],
+    "presentation": "canvas",
+    "edge_tol_px": 1.5,
+    "opening_source": "SAM 2 (sam2.1_hiera_large)",
+    "opening_quad_sam": [
+     [
+      1201.552001953125,
+      290.2430114746094
+     ],
+     [
+      1729.345947265625,
+      239.03799438476562
+     ],
+     [
+      1729.2230224609375,
+      1247.1259765625
+     ],
+     [
+      1201.5240478515625,
+      1196.387939453125
+     ]
+    ],
+    "opening_offsets": {
+     "top": -2.26,
+     "right": 2.05,
+     "bottom": 1.51,
+     "left": -2.38
+    },
+    "opening_quad": [
+     [
+      1201.5999755859375,
+      290.20001220703125
+     ],
+     [
+      1729.300048828125,
+      239.0
+     ],
+     [
+      1729.199951171875,
+      1247.0999755859375
+     ],
+     [
+      1201.5,
+      1196.4000244140625
+     ]
+    ],
+    "opening_box": [
+     1202,
+     239,
+     528,
+     1008
+    ],
+    "sun": {
+     "deg": -33.3,
+     "line": [
+      1951,
+      1139,
+      2213,
+      1311
+     ],
+     "contrast": 0.141,
+     "score": 44.23589207996626
+    },
+    "sun_searched_on": "SAM wall mask",
+    "shadow_edges": {
+     "Light Shadow": {
+      "deg": -33.2,
+      "line": [
+       1206,
+       663,
+       1467,
+       834
+      ]
+     }
+    },
+    "insert_texture": 0.0041,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1159,
+      197,
+      1768,
+      1281
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 3,
+      "h": 0
+     }
+    },
+    "opening_ratio": 0.6144,
+    "so_ratio": 0.6151,
+    "visible_ratio": 0.614
+   },
+   "status": "FAIL",
+   "reasons": [
+    "Opening vs art: right gap of 2.0 px between the frame's inner edge and the art (baked paper shows); bottom gap of 1.5 px between the frame's inner edge and the art (baked paper shows)",
+    "Black/white card: 1731 px inside the opening never show art (white sliver / gap)"
+   ],
+   "rel": "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_004359/AI_Office_Scandinavian_20261118_004359_Template.psd"
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_005742/AI_Office_Scandinavian_20261118_005742_Template.psd": {
+   "psd": "AI_Office_Scandinavian_20261118_005742_Template.psd",
+   "checked": "2026-11-18T00:57:42",
+   "psd_size": 26235005,
+   "psd_mtime": 1794981461,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "fail",
+     "reason": "right gap of 2.0 px between the frame's inner edge and the art (baked paper shows); bottom gap of 1.5 px between the frame's inner edge and the art (baked paper shows)",
+     "offsets": [
+      -2.26,
+      2.05,
+      1.51,
+      -2.38
+     ]
+    },
+    "card": {
+     "status": "fail",
+     "reason": "1731 px inside the opening never show art (white sliver / gap)",
+     "gap_px": 1731,
+     "over_px": 9
+    },
+    "edge": {
+     "status": "pass",
+     "reason": "",
+     "sides": {
+      "top": {
+       "segments_px": [
+        0.13,
+        -1.68,
+        -0.1
+       ],
+       "face_edge_px": -0.1,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "right": {
+       "segments_px": [
+        0.13,
+        0.05,
+        -0.1
+       ],
+       "face_edge_px": 0.05,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "bottom": {
+       "segments_px": [
+        -0.26,
+        -0.08,
+        1.21
+       ],
+       "face_edge_px": -0.08,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "left": {
+       "segments_px": [
+        -0.14,
+        -0.14,
+        -0.13
+       ],
+       "face_edge_px": -0.14,
+       "sits_on": "the face edge",
+       "status": "pass"
+      }
+     },
+     "tol_px": 1.5,
+     "presentation": "canvas",
+     "art_quad": [
+      [
+       1199.175048828125,
+       288.31298828125
+      ],
+      [
+       1727.2740478515625,
+       237.08299255371094
+      ],
+      [
+       1727.1500244140625,
+       1245.3780517578125
+      ],
+      [
+       1199.175048828125,
+       1194.614013671875
+      ]
+     ],
+     "art_edge_source": "card difference, overlays hidden (sub-pixel)",
+     "spill": {
+      "status": "pass",
+      "reason": "",
+      "sides": {
+       "top": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "right": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 1.6,
+        "status": "pass"
+       },
+       "bottom": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "left": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.4,
+        "status": "pass"
+       }
+      },
+      "orange_px": 0,
+      "limit_display_px2": 20.0,
+      "limit_dE": 6.0
+     },
+     "evidence": "/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Office_Scandinavian_20261118_005742_Template_c3ad3434.jpg"
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "pass",
+     "reason": "",
+     "wall_deg": -33.3,
+     "shadow_deg": -33.2
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2400,
+     1792
+    ],
+    "so_px": [
+     620,
+     1008
+    ],
+    "wrap_strip_layer": [
+     "Wrap Strip (placeholder)"
+    ],
+    "despill_layer": [
+     "Despill (orange bounce fix)"
+    ],
+    "visible_quad": [
+     [
+      1199.0,
+      288.0
+     ],
+     [
+      1727.0,
+      237.0
+     ],
+     [
+      1727.0,
+      1244.0
+     ],
+     [
+      1199.0,
+      1194.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1199.157958984375,
+      288.25201416015625
+     ],
+     [
+      1727.3570556640625,
+      236.91600036621094
+     ],
+     [
+      1727.1109619140625,
+      1245.4410400390625
+     ],
+     [
+      1199.157958984375,
+      1194.614013671875
+     ]
+    ],
+    "presentation": "canvas",
+    "edge_tol_px": 1.5,
+    "opening_source": "SAM 2 (sam2.1_hiera_large)",
+    "opening_quad_sam": [
+     [
+      1201.552001953125,
+      290.2430114746094
+     ],
+     [
+      1729.345947265625,
+      239.03799438476562
+     ],
+     [
+      1729.2230224609375,
+      1247.1259765625
+     ],
+     [
+      1201.5240478515625,
+      1196.387939453125
+     ]
+    ],
+    "opening_offsets": {
+     "top": -2.26,
+     "right": 2.05,
+     "bottom": 1.51,
+     "left": -2.38
+    },
+    "opening_quad": [
+     [
+      1201.5999755859375,
+      290.20001220703125
+     ],
+     [
+      1729.300048828125,
+      239.0
+     ],
+     [
+      1729.199951171875,
+      1247.0999755859375
+     ],
+     [
+      1201.5,
+      1196.4000244140625
+     ]
+    ],
+    "opening_box": [
+     1202,
+     239,
+     528,
+     1008
+    ],
+    "sun": {
+     "deg": -33.3,
+     "line": [
+      1951,
+      1139,
+      2213,
+      1311
+     ],
+     "contrast": 0.141,
+     "score": 44.23589207996626
+    },
+    "sun_searched_on": "SAM wall mask",
+    "shadow_edges": {
+     "Light Shadow": {
+      "deg": -33.2,
+      "line": [
+       1206,
+       663,
+       1467,
+       834
+      ]
+     }
+    },
+    "insert_texture": 0.0041,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1159,
+      197,
+      1768,
+      1281
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 3,
+      "h": 0
+     }
+    },
+    "opening_ratio": 0.6144,
+    "so_ratio": 0.6151,
+    "visible_ratio": 0.614
+   },
+   "status": "FAIL",
+   "reasons": [
+    "Opening vs art: right gap of 2.0 px between the frame's inner edge and the art (baked paper shows); bottom gap of 1.5 px between the frame's inner edge and the art (baked paper shows)",
+    "Black/white card: 1731 px inside the opening never show art (white sliver / gap)"
+   ],
+   "rel": "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_005742/AI_Office_Scandinavian_20261118_005742_Template.psd"
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_010614/AI_Office_Scandinavian_20261118_010614_Template.psd": {
+   "psd": "AI_Office_Scandinavian_20261118_010614_Template.psd",
+   "checked": "2026-11-18T22:32:10",
+   "psd_size": 26419959,
+   "psd_mtime": 1794981973,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "pass",
+     "reason": "",
+     "offsets": [
+      -0.21,
+      0.03,
+      -0.11,
+      -0.16
+     ]
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "edge": {
+     "status": "pass",
+     "reason": "",
+     "sides": {
+      "top": {
+       "segments_px": [
+        0.13,
+        -1.68,
+        -0.1
+       ],
+       "face_edge_px": -0.1,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "right": {
+       "segments_px": [
+        0.13,
+        0.05,
+        -0.1
+       ],
+       "face_edge_px": 0.05,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "bottom": {
+       "segments_px": [
+        -0.26,
+        -0.08,
+        1.21
+       ],
+       "face_edge_px": -0.08,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "left": {
+       "segments_px": [
+        -0.14,
+        -0.14,
+        -0.13
+       ],
+       "face_edge_px": -0.14,
+       "sits_on": "the face edge",
+       "status": "pass"
+      }
+     },
+     "tol_px": 1.5,
+     "presentation": "canvas",
+     "art_quad": [
+      [
+       1199.175048828125,
+       288.31298828125
+      ],
+      [
+       1727.2740478515625,
+       237.08299255371094
+      ],
+      [
+       1727.1500244140625,
+       1245.3780517578125
+      ],
+      [
+       1199.175048828125,
+       1194.614013671875
+      ]
+     ],
+     "art_edge_source": "card difference, overlays hidden (sub-pixel)",
+     "spill": {
+      "status": "pass",
+      "reason": "",
+      "sides": {
+       "top": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "right": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 1.6,
+        "status": "pass"
+       },
+       "bottom": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "left": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.4,
+        "status": "pass"
+       }
+      },
+      "orange_px": 0,
+      "limit_display_px2": 20.0,
+      "limit_dE": 6.0
+     },
+     "evidence": "/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Office_Scandinavian_20261118_010614_Template_bb7416fc.jpg"
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "pass",
+     "reason": "",
+     "wall_deg": -33.3,
+     "shadow_deg": -33.2
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2400,
+     1792
+    ],
+    "so_px": [
+     620,
+     1008
+    ],
+    "wrap_strip_layer": [
+     "Wrap Strip (placeholder)"
+    ],
+    "despill_layer": [
+     "Despill (orange bounce fix)"
+    ],
+    "visible_quad": [
+     [
+      1199.0,
+      288.0
+     ],
+     [
+      1727.0,
+      237.0
+     ],
+     [
+      1727.0,
+      1244.0
+     ],
+     [
+      1199.0,
+      1194.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1199.157958984375,
+      288.25201416015625
+     ],
+     [
+      1727.3570556640625,
+      236.91600036621094
+     ],
+     [
+      1727.1099853515625,
+      1245.4410400390625
+     ],
+     [
+      1199.157958984375,
+      1194.614013671875
+     ]
+    ],
+    "presentation": "canvas",
+    "edge_tol_px": 1.5,
+    "opening_source": "face edge from the independent edge check (canvas; SAM 2 sam2.1_hiera_large kept as opening_offsets_sam)",
+    "opening_quad_sam": [
+     [
+      1201.552001953125,
+      290.2430114746094
+     ],
+     [
+      1729.345947265625,
+      239.03799438476562
+     ],
+     [
+      1729.2230224609375,
+      1247.1259765625
+     ],
+     [
+      1201.5240478515625,
+      1196.387939453125
+     ]
+    ],
+    "opening_offsets_sam": {
+     "top": -2.26,
+     "right": 2.05,
+     "bottom": 1.51,
+     "left": -2.38
+    },
+    "opening_offsets": {
+     "top": -0.21,
+     "right": 0.03,
+     "bottom": -0.11,
+     "left": -0.16
+    },
+    "opening_quad": [
+     [
+      1201.5999755859375,
+      290.20001220703125
+     ],
+     [
+      1729.300048828125,
+      239.0
+     ],
+     [
+      1729.199951171875,
+      1247.0999755859375
+     ],
+     [
+      1201.5,
+      1196.4000244140625
+     ]
+    ],
+    "opening_box": [
+     1202,
+     239,
+     528,
+     1008
+    ],
+    "sun": {
+     "deg": -33.3,
+     "line": [
+      1951,
+      1139,
+      2213,
+      1311
+     ],
+     "contrast": 0.141,
+     "score": 44.23589207996626
+    },
+    "sun_searched_on": "SAM wall mask",
+    "shadow_edges": {
+     "Light Shadow": {
+      "deg": -33.2,
+      "line": [
+       1206,
+       663,
+       1467,
+       834
+      ]
+     }
+    },
+    "insert_texture": 0.0041,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1159,
+      197,
+      1768,
+      1281
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 3,
+      "h": 0
+     }
+    },
+    "opening_ratio": 0.6144,
+    "so_ratio": 0.6151,
+    "visible_ratio": 0.614
+   },
+   "status": "PASS",
+   "reasons": [],
+   "rel": "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_010614/AI_Office_Scandinavian_20261118_010614_Template.psd"
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_224242/AI_Office_Scandinavian_20261118_224242_Template.psd": {
+   "psd": "AI_Office_Scandinavian_20261118_224242_Template.psd",
+   "checked": "2026-11-18T22:42:42",
+   "psd_size": 26281883,
+   "psd_mtime": 1795059761,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "pass",
+     "reason": "",
+     "offsets": [
+      -0.19,
+      0.03,
+      -0.27,
+      -0.13
+     ]
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "edge": {
+     "status": "pass",
+     "reason": "",
+     "sides": {
+      "top": {
+       "segments_px": [
+        0.13,
+        -1.68,
+        -0.1
+       ],
+       "face_edge_px": -0.1,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "right": {
+       "segments_px": [
+        0.13,
+        0.05,
+        -0.1
+       ],
+       "face_edge_px": 0.05,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "bottom": {
+       "segments_px": [
+        -0.26,
+        -0.08,
+        -0.24
+       ],
+       "face_edge_px": -0.24,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "left": {
+       "segments_px": [
+        -0.12,
+        -0.09,
+        -0.11
+       ],
+       "face_edge_px": -0.11,
+       "sits_on": "the face edge",
+       "status": "pass"
+      }
+     },
+     "tol_px": 1.5,
+     "presentation": "canvas",
+     "art_quad": [
+      [
+       1199.1820068359375,
+       288.31201171875
+      ],
+      [
+       1727.2740478515625,
+       237.08399963378906
+      ],
+      [
+       1727.1500244140625,
+       1245.3780517578125
+      ],
+      [
+       1199.1820068359375,
+       1194.614990234375
+      ]
+     ],
+     "art_edge_source": "card difference, overlays hidden (sub-pixel)",
+     "spill": {
+      "status": "pass",
+      "reason": "",
+      "sides": {
+       "top": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "right": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 1.6,
+        "status": "pass"
+       },
+       "bottom": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "left": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.4,
+        "status": "pass"
+       }
+      },
+      "orange_px": 0,
+      "limit_display_px2": 20.0,
+      "limit_dE": 6.0
+     },
+     "evidence": "/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Office_Scandinavian_20261118_224242_Template_46e82bdc.jpg"
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "pass",
+     "reason": "",
+     "wall_deg": -33.3,
+     "shadow_deg": -32.1
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2400,
+     1792
+    ],
+    "so_px": [
+     620,
+     1008
+    ],
+    "wrap_strip_layer": [
+     "Wrap Strip (placeholder)"
+    ],
+    "despill_layer": [
+     "Despill (orange bounce fix)"
+    ],
+    "visible_quad": [
+     [
+      1199.0,
+      288.0
+     ],
+     [
+      1727.0,
+      237.0
+     ],
+     [
+      1727.0,
+      1244.0
+     ],
+     [
+      1199.0,
+      1194.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1199.1639404296875,
+      288.24700927734375
+     ],
+     [
+      1727.35595703125,
+      236.9600067138672
+     ],
+     [
+      1727.1099853515625,
+      1245.43701171875
+     ],
+     [
+      1199.1639404296875,
+      1194.6099853515625
+     ]
+    ],
+    "presentation": "canvas",
+    "edge_tol_px": 1.5,
+    "opening_source": "face edge from the independent edge check (canvas; SAM 2 sam2.1_hiera_large kept as opening_offsets_sam)",
+    "opening_quad_sam": [
+     [
+      1201.552001953125,
+      290.2430114746094
+     ],
+     [
+      1729.345947265625,
+      239.03799438476562
+     ],
+     [
+      1729.2230224609375,
+      1247.1259765625
+     ],
+     [
+      1201.5240478515625,
+      1196.387939453125
+     ]
+    ],
+    "opening_offsets_sam": {
+     "top": -2.24,
+     "right": 2.05,
+     "bottom": 1.51,
+     "left": -2.37
+    },
+    "opening_offsets": {
+     "top": -0.19,
+     "right": 0.03,
+     "bottom": -0.27,
+     "left": -0.13
+    },
+    "opening_quad": [
+     [
+      1201.5999755859375,
+      290.20001220703125
+     ],
+     [
+      1729.300048828125,
+      239.0
+     ],
+     [
+      1729.199951171875,
+      1247.0999755859375
+     ],
+     [
+      1201.5,
+      1196.4000244140625
+     ]
+    ],
+    "opening_box": [
+     1202,
+     239,
+     528,
+     1008
+    ],
+    "sun": {
+     "deg": -33.3,
+     "line": [
+      1951,
+      1139,
+      2213,
+      1311
+     ],
+     "contrast": 0.141,
+     "score": 44.23589207996626
+    },
+    "sun_searched_on": "SAM wall mask",
+    "shadow_edges": {
+     "Light Shadow": {
+      "deg": -32.1,
+      "line": [
+       1206,
+       296,
+       1487,
+       472
+      ]
+     }
+    },
+    "insert_texture": 0.0041,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1159,
+      197,
+      1768,
+      1281
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 3,
+      "h": 0
+     }
+    },
+    "opening_ratio": 0.6144,
+    "so_ratio": 0.6151,
+    "visible_ratio": 0.614
+   },
+   "status": "PASS",
+   "reasons": [],
+   "rel": "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_224242/AI_Office_Scandinavian_20261118_224242_Template.psd"
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_225100/AI_Office_Scandinavian_20261118_225100_Template.psd": {
+   "psd": "AI_Office_Scandinavian_20261118_225100_Template.psd",
+   "checked": "2026-11-18T22:51:00",
+   "psd_size": 26034432,
+   "psd_mtime": 1795060259,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "pass",
+     "reason": "",
+     "offsets": [
+      -0.21,
+      0.02,
+      -0.11,
+      -0.16
+     ]
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "edge": {
+     "status": "pass",
+     "reason": "",
+     "sides": {
+      "top": {
+       "segments_px": [
+        0.13,
+        -1.68,
+        -0.1
+       ],
+       "face_edge_px": -0.1,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "right": {
+       "segments_px": [
+        0.13,
+        0.05,
+        -0.09
+       ],
+       "face_edge_px": 0.05,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "bottom": {
+       "segments_px": [
+        -0.26,
+        -0.08,
+        1.21
+       ],
+       "face_edge_px": -0.08,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "left": {
+       "segments_px": [
+        -0.14,
+        -0.14,
+        -0.13
+       ],
+       "face_edge_px": -0.14,
+       "sits_on": "the face edge",
+       "status": "pass"
+      }
+     },
+     "tol_px": 1.5,
+     "presentation": "canvas",
+     "art_quad": [
+      [
+       1199.1700439453125,
+       288.31298828125
+      ],
+      [
+       1727.2740478515625,
+       237.08299255371094
+      ],
+      [
+       1727.1500244140625,
+       1245.3780517578125
+      ],
+      [
+       1199.1700439453125,
+       1194.613037109375
+      ]
+     ],
+     "art_edge_source": "card difference, overlays hidden (sub-pixel)",
+     "spill": {
+      "status": "pass",
+      "reason": "",
+      "sides": {
+       "top": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "right": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 1.6,
+        "status": "pass"
+       },
+       "bottom": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "left": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.4,
+        "status": "pass"
+       }
+      },
+      "orange_px": 0,
+      "limit_display_px2": 20.0,
+      "limit_dE": 6.0
+     },
+     "evidence": "/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Office_Scandinavian_20261118_225100_Template_0bb9a2e5.jpg"
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "pass",
+     "reason": "",
+     "wall_deg": -33.3,
+     "shadow_deg": -33.7
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2400,
+     1792
+    ],
+    "so_px": [
+     620,
+     1008
+    ],
+    "wrap_strip_layer": [
+     "Wrap Strip (placeholder)"
+    ],
+    "despill_layer": [
+     "Despill (orange bounce fix)"
+    ],
+    "visible_quad": [
+     [
+      1199.0,
+      288.0
+     ],
+     [
+      1727.0,
+      237.0
+     ],
+     [
+      1727.0,
+      1244.0
+     ],
+     [
+      1199.0,
+      1194.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1199.1519775390625,
+      288.2139892578125
+     ],
+     [
+      1727.364013671875,
+      236.95700073242188
+     ],
+     [
+      1727.1180419921875,
+      1245.4329833984375
+     ],
+     [
+      1199.1519775390625,
+      1194.60400390625
+     ]
+    ],
+    "presentation": "canvas",
+    "edge_tol_px": 1.5,
+    "opening_source": "face edge from the independent edge check (canvas; SAM 2 sam2.1_hiera_large kept as opening_offsets_sam)",
+    "opening_quad_sam": [
+     [
+      1201.552001953125,
+      290.2430114746094
+     ],
+     [
+      1729.345947265625,
+      239.03799438476562
+     ],
+     [
+      1729.2230224609375,
+      1247.1259765625
+     ],
+     [
+      1201.5240478515625,
+      1196.387939453125
+     ]
+    ],
+    "opening_offsets_sam": {
+     "top": -2.26,
+     "right": 2.04,
+     "bottom": 1.52,
+     "left": -2.39
+    },
+    "opening_offsets": {
+     "top": -0.21,
+     "right": 0.02,
+     "bottom": -0.11,
+     "left": -0.16
+    },
+    "opening_quad": [
+     [
+      1201.5999755859375,
+      290.20001220703125
+     ],
+     [
+      1729.300048828125,
+      239.0
+     ],
+     [
+      1729.199951171875,
+      1247.0999755859375
+     ],
+     [
+      1201.5,
+      1196.4000244140625
+     ]
+    ],
+    "opening_box": [
+     1202,
+     239,
+     528,
+     1008
+    ],
+    "sun": {
+     "deg": -33.3,
+     "line": [
+      1951,
+      1139,
+      2213,
+      1311
+     ],
+     "contrast": 0.141,
+     "score": 44.23589207996626
+    },
+    "sun_searched_on": "SAM wall mask",
+    "shadow_edges": {
+     "Light Shadow": {
+      "deg": -33.7,
+      "line": [
+       1206,
+       583,
+       1477,
+       764
+      ]
+     }
+    },
+    "insert_texture": 0.0041,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1159,
+      197,
+      1768,
+      1281
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 3,
+      "h": 0
+     }
+    },
+    "opening_ratio": 0.6144,
+    "so_ratio": 0.6151,
+    "visible_ratio": 0.614
+   },
+   "status": "PASS",
+   "reasons": [],
+   "rel": "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_225100/AI_Office_Scandinavian_20261118_225100_Template.psd"
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_225742/AI_Office_Scandinavian_20261118_225742_Template.psd": {
+   "psd": "AI_Office_Scandinavian_20261118_225742_Template.psd",
+   "checked": "2026-11-18T22:57:42",
+   "psd_size": 26043544,
+   "psd_mtime": 1795060661,
+   "checks": {
+    "layers": {
+     "status": "pass",
+     "reason": "",
+     "overlays": [
+      "Glass Sheen",
+      "Frame Hard Shadow",
+      "Frame Edge Shadow",
+      "Light Shadow"
+     ]
+    },
+    "opening": {
+     "status": "pass",
+     "reason": "",
+     "offsets": [
+      -0.21,
+      0.02,
+      -0.1,
+      -0.16
+     ]
+    },
+    "card": {
+     "status": "pass",
+     "reason": "",
+     "gap_px": 0,
+     "over_px": 0
+    },
+    "edge": {
+     "status": "pass",
+     "reason": "",
+     "sides": {
+      "top": {
+       "segments_px": [
+        0.13,
+        -1.68,
+        -0.1
+       ],
+       "face_edge_px": -0.1,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "right": {
+       "segments_px": [
+        0.13,
+        0.05,
+        -0.09
+       ],
+       "face_edge_px": 0.05,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "bottom": {
+       "segments_px": [
+        -0.26,
+        -0.08,
+        1.21
+       ],
+       "face_edge_px": -0.08,
+       "sits_on": "the face edge",
+       "status": "pass"
+      },
+      "left": {
+       "segments_px": [
+        -0.14,
+        -0.14,
+        -0.13
+       ],
+       "face_edge_px": -0.14,
+       "sits_on": "the face edge",
+       "status": "pass"
+      }
+     },
+     "tol_px": 1.5,
+     "presentation": "canvas",
+     "art_quad": [
+      [
+       1199.1700439453125,
+       288.31298828125
+      ],
+      [
+       1727.2740478515625,
+       237.08299255371094
+      ],
+      [
+       1727.1500244140625,
+       1245.3780517578125
+      ],
+      [
+       1199.1700439453125,
+       1194.613037109375
+      ]
+     ],
+     "art_edge_source": "card difference, overlays hidden (sub-pixel)",
+     "spill": {
+      "status": "pass",
+      "reason": "",
+      "sides": {
+       "top": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "right": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 1.6,
+        "status": "pass"
+       },
+       "bottom": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.7,
+        "status": "pass"
+       },
+       "left": {
+        "orange_px": 0,
+        "display_px2": 0.0,
+        "max_dE": 0.4,
+        "status": "pass"
+       }
+      },
+      "orange_px": 0,
+      "limit_display_px2": 20.0,
+      "limit_dE": 6.0
+     },
+     "evidence": "/Users/tonymacbook2025/Documents/Agent-OS/005_Ecommerce/Etsy-Ikigai/Portal/data/rooms/Edge_Check_AI_Office_Scandinavian_20261118_225742_Template_4aff91a9.jpg"
+    },
+    "overlay": {
+     "status": "pass",
+     "reason": ""
+    },
+    "purity": {
+     "status": "pass",
+     "reason": ""
+    },
+    "sun": {
+     "status": "pass",
+     "reason": "",
+     "wall_deg": -33.3,
+     "shadow_deg": -34.7
+    },
+    "placement": {
+     "status": "pass",
+     "reason": ""
+    },
+    "ratio": {
+     "status": "pass",
+     "reason": ""
+    },
+    "mat": {
+     "status": "skip",
+     "reason": "no mat"
+    }
+   },
+   "measured": {
+    "canvas": [
+     2400,
+     1792
+    ],
+    "so_px": [
+     620,
+     1008
+    ],
+    "wrap_strip_layer": [
+     "Wrap Strip (placeholder)"
+    ],
+    "despill_layer": [
+     "Despill (orange bounce fix)"
+    ],
+    "visible_quad": [
+     [
+      1199.0,
+      288.0
+     ],
+     [
+      1727.0,
+      237.0
+     ],
+     [
+      1727.0,
+      1244.0
+     ],
+     [
+      1199.0,
+      1194.0
+     ]
+    ],
+    "visible_quad_subpx": [
+     [
+      1199.1519775390625,
+      288.2139892578125
+     ],
+     [
+      1727.364013671875,
+      236.95700073242188
+     ],
+     [
+      1727.1180419921875,
+      1245.426025390625
+     ],
+     [
+      1199.1519775390625,
+      1194.5970458984375
+     ]
+    ],
+    "presentation": "canvas",
+    "edge_tol_px": 1.5,
+    "opening_source": "face edge from the independent edge check (canvas; SAM 2 sam2.1_hiera_large kept as opening_offsets_sam)",
+    "opening_quad_sam": [
+     [
+      1201.552001953125,
+      290.2430114746094
+     ],
+     [
+      1729.345947265625,
+      239.03799438476562
+     ],
+     [
+      1729.2230224609375,
+      1247.1259765625
+     ],
+     [
+      1201.5240478515625,
+      1196.387939453125
+     ]
+    ],
+    "opening_offsets_sam": {
+     "top": -2.26,
+     "right": 2.04,
+     "bottom": 1.52,
+     "left": -2.39
+    },
+    "opening_offsets": {
+     "top": -0.21,
+     "right": 0.02,
+     "bottom": -0.1,
+     "left": -0.16
+    },
+    "opening_quad": [
+     [
+      1201.5999755859375,
+      290.20001220703125
+     ],
+     [
+      1729.300048828125,
+      239.0
+     ],
+     [
+      1729.199951171875,
+      1247.0999755859375
+     ],
+     [
+      1201.5,
+      1196.4000244140625
+     ]
+    ],
+    "opening_box": [
+     1202,
+     239,
+     528,
+     1008
+    ],
+    "sun": {
+     "deg": -33.3,
+     "line": [
+      1951,
+      1139,
+      2213,
+      1311
+     ],
+     "contrast": 0.141,
+     "score": 44.23589207996626
+    },
+    "sun_searched_on": "SAM wall mask",
+    "shadow_edges": {
+     "Light Shadow": {
+      "deg": -34.7,
+      "line": [
+       1206,
+       653,
+       1467,
+       834
+      ]
+     }
+    },
+    "insert_texture": 0.0041,
+    "placement": {
+     "flag": [],
+     "frame_outer": [
+      1159,
+      197,
+      1768,
+      1281
+     ],
+     "gaps_px": {
+      "left": null,
+      "right": null,
+      "top": null,
+      "bottom": null
+     },
+     "off_centre": {},
+     "panel": false,
+     "covered": [],
+     "texture": [],
+     "lines": {
+      "v": 3,
+      "h": 0
+     }
+    },
+    "opening_ratio": 0.6144,
+    "so_ratio": 0.6151,
+    "visible_ratio": 0.614
+   },
+   "status": "PASS",
+   "reasons": [],
+   "rel": "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_225742/AI_Office_Scandinavian_20261118_225742_Template.psd"
   }
  },
- "updated": "2026-11-17T18:57:26"
+ "updated": "2026-11-18T22:57:56"
 }

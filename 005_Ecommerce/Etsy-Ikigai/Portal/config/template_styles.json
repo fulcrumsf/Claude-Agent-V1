@@ -793,7 +793,27 @@
     "Abstract",
     "Mid Century"
    ],
-   "key": "8b8d4ddeef2d86d0",
+   "key": "e95c362bf1498346",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "005_Ratio_11x14/002_Bedroom/001_Boho_Colorful/AI_Bedroom_Boho_20261118_001054/AI_Bedroom_Boho_20261118_001054_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Botanical"
+   ],
+   "key": "8b6a6588247991e0",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_001253/AI_Office_Scandinavian_20261118_001253_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Botanical"
+   ],
+   "key": "2b8535a0a5511207",
    "model": "gemini-3.5-flash-lite",
    "tokens": 1238
   }

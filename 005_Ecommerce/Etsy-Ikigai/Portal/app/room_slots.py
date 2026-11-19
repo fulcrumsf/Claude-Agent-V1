@@ -336,7 +336,17 @@ _PRESENT_TEXT = {
                "the frame's inner lip; the gap holds a natural soft shadow in the neutral tones of the wood, lighter "
                "than black, so the pale wood frame, the thin gap, the white canvas side edge and the orange face are "
                "clearly separate bands. The piece stands off the wall by the canvas depth and casts a natural shadow "
-               "on the wall that follows the room's light direction. Camera: a slight 3/4 view so the depth shows.")}
+               "on the wall that follows the room's light direction. Camera: a slight 3/4 view so the depth shows."),
+    # Tony 2026-11-18 test: a plain stretched gallery canvas hung straight on the wall, no floater frame (build_psd
+    # treats it as "canvas": same SAM face path, wrap strips and despill)
+    "canvas_bare": ("The artwork is a thick stretched gallery canvas, 1.5 to 2 inches (4-5 cm) deep, hung directly on "
+                    "the wall with NO frame of any kind. Only the FRONT FACE of the canvas is orange. The canvas side "
+                    "edges (the wrap around the stretcher bars) are plain clean WHITE, clearly a different tone from "
+                    "the orange face, so the front face ends in one crisp straight line where the white side edge "
+                    "begins; the side edges are never orange, never black: they stay clean white in the light and "
+                    "neutral grey where they turn into shadow. The canvas stands off the wall by its depth and casts a "
+                    "natural soft shadow on the wall that follows the room's light direction. Camera: a slight 3/4 "
+                    "view so the depth shows.")}
 
 
 # ---------- light and photographer variety (Tony 2026-11-17) ----------
