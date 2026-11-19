@@ -414,3 +414,29 @@ Every NEW scene gets a weighted random "look" so the library does not all look t
 - **Positive wording only** in every phrase (tested). The guard sentence is in every variant: sun patches, shadows and any blind or leaf pattern land on the floor and the wall around the frame while the printed area stays one flat, evenly lit tone, and the frame, mat or canvas edge and wall keep crisp outlines (for SAM and the independent edge check). The orange matte surface text, canvas white side edges, black-frame "only occasionally" rule, no-people rule, wainscoting rule, presentation pick and ratio logic are unchanged. Shadow layers are still measured from each image.
 - **Recorded:** `template.json` gets `"look"` ({version, seed, light_style, photographer, time_of_day, season, sun_direction}) next to the exact `"prompt"` sent, on both build paths (Templates tab "Build this" in `template_build.run`, and Production's auto-save via `scene_templates.save_template`). Replay: `pick_look(room, decor, seed=look["seed"])` or `pick_look(room, decor, override=look)`; `template_build.run(..., look=<seed or dict>)` rebuilds with a chosen look.
 - **Gap tile tooltip** (Templates tab): shows the prompt with the line "Light and photographer look: picked at random when Build this is clicked ... and saved in template.json", because the real pick happens at build time (a sample shown earlier would differ from the one built).
+
+### Scene look v2: camera, display, walls, personas (2026-11-19)
+Tony: every scene looked shot by the same photographer (hardcoded "Camera angle: 3/4 corner", beige limewash, old planks, book + mug + throw). `LOOK_VERSION = 2` adds the axes proposed in `Research/Etsy_Mockup_Look_Findings.md` (evidence: 105 top Etsy listings, 46 of Tony's templates, our generator). Reference for variety, never copies. Same code and functions as above (`LOOK_AXES`, `LOOK_ORDER`, `pick_look`, `look_weights`, `_look_fits`, `_look_gate`, `PERSONA_NUDGE`).
+
+| Axis (pick order) | Options (weight) |
+|---|---|
+| Photographer (key name kept) | 12 personas: warm lifestyle creator 40 · airy Scandi catalogue 36 · mid-century magazine 35 · editorial minimal 32 · Parisian apartment 30 · trendy renter 28 · bold colour eclectic 26 · Japandi calm 26 · moody dark academia 22 · coastal cottage 22 · country farmhouse 22 · playful nursery 17 (kids rooms only). Each brings its own props; no light, lamp, wall or floor words |
+| Display | hung over furniture 62 · floor lean 52 · leaning on furniture 47 · hung on a bare wall 36 (anchor / surface per room) |
+| Camera height | eye 71 · low (knee-hip) 57 · counter 32 · seated 28 |
+| Camera angle | straight-on 69 · slight left / right 36 each · through a doorway 35 · 3/4 corner left / right 26 each |
+| Distance | medium 63 · close vignette 59 (art at most ~60% of the height) · wide 50 |
+| Lens | 35-50 mm 87 · 24-28 mm 41 · 85 mm 10 (never seen in the data: UNTESTED) |
+| Foreground | clear 59 · sofa/chair/bed edge 50 · plant leaves 37 · side table 37 · rug/throw edge 35, always well clear of the frame |
+| Focus | deep 88 · soft far background 35 · soft nearest object 32 (art always sharp) |
+| Composition | centred 67 · left / right third 39 each · beside a window 39 · offset over furniture 32 |
+| Walls | warm white 56 · ivory 36 · greige 36 · pale grey 32 · sage 30 · teal/dusty blue 28 · deep moody 26 · blush 22 · cool colour block 20. Never orange, peach, apricot, terracotta, coral or rust |
+| Wall finish | plain 72 · panelling 40 (hung art only) · limewash 35 · shiplap 28 · wallpaper 26 (kids, vintage, boho, coastal, botanical, bathrooms) · painted brick 22 |
+| Floor | light herringbone 50 · light plank 50 · rug 39 · honey 37 · dark 30 · checker tile 24 · pale stone 24 |
+| Furniture | walnut/teak 55 · light oak 49 · colour upholstery 40 · painted 35 · rattan 32 · white/linen 28 |
+| Frame finish (frame and mat only) | light oak 69 · walnut 37 · black 33 · white 30 · antique gold 26 (vintage decors only) |
+
+- **Weight rule:** weight = round(10 x sqrt(research %)). The square root keeps the order of the data but flattens a 7:1 lead to about 2.6:1, so rare looks really appear. Black frame uses the market's 11% (Tony: black only occasionally); telephoto is fixed low.
+- **Fit rules (contradictions blocked):** floor lean never at counter height; counter height only with art on or over furniture; low camera never close under hung art (steep tilt keystones the opening); doorway shots are medium or wide, centred, nothing else in front; panelling only behind hung art centred in one panel (wainscot rule); a rug/throw never under a floor lean; soft background never when the art wall is the background; offset composition needs furniture; a window in the art wall never faces the sun; wide lens never close, 85 mm never wide; frame must contrast with the wall (blush: black or walnut only; no oak on ivory, greige, blush or limewashed white; no white frame on white or pale grey; no black or walnut on deep walls); a canvas floater on a pale warm wall is asked for in a darker honey oak. Gamer, arcade and mancave decors use only 5 fitting personas.
+- **Prompt wording:** the fixed "Camera angle: 3/4 corner" and the canvas "slight 3/4 view" are gone; the picked angle drives it. When the art leans, no sentence says it hangs. `LOOK_GUARD` plus a new `LOOK_GUARD_FRAME` (whole frame in the picture, clear wall on four sides, nothing overlapping the frame, art face flat, upright and sharp, frame stands out from the wall) are in every prompt.
+- **Old looks:** a template.json look with `"version": 1` replays with the v1 tables and gives the byte-identical old prompt (`pick_look(room, decor, override=look)`, or `seed=..., version=1`). Tested.
+- **Not yet proven:** nothing has been generated with v2. SAM and the edge check on leaning frames, doorway shots, low angles and dark walls need 2-3 real test scenes.

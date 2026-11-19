@@ -15,7 +15,8 @@ style and print ratio each ROOM listing image shows. Pure logic, no files, no ne
   - Ratio per slot by buyer popularity (2x3 35%, 3x4 25%, 4x5 25%, ISO/5x7 10%, 11x14 5%), only ratios the design
     is sold in (all five print files) and only where the template library has a folder for that room.
 Everything is deterministic: the same inputs always give the same plan. The one deliberate exception is the scene
-"look" (pick_look, Tony 2026-11-17): light and photographer style are randomised per NEW scene and saved with its seed.
+"look" (pick_look, Tony 2026-11-17, widened 2026-11-19): light, photographer/stylist persona, camera, lens, focus, foreground,
+display, composition, walls, floor, furniture and frame finish are randomised per NEW scene and saved with its seed.
 """
 import re
 
@@ -349,18 +350,52 @@ _PRESENT_TEXT = {
                     "view so the depth shows.")}
 
 
-# ---------- light and photographer variety (Tony 2026-11-17) ----------
-# Every NEW scene gets a weighted RANDOM "look": light style, photographer style, time of day, season and sun
-# direction. Room and decor only nudge the odds (multipliers clamped to 0.5-2.0, so no option ever reaches zero).
-# Picks follow LOOK_ORDER; a later axis keeps only the options that make physical sense with the earlier picks
-# (_look_fits: golden light only late in the day, a window facing away from the sun only with soft even light ...).
-# The pick is saved in template.json ("look", with its seed) so each template's look is explained and replayable:
-# pick_look(room, decor, seed=man["look"]["seed"]) or pick_look(..., override=man["look"]). Every phrase is worded in
-# the POSITIVE direction. Whatever the pick, LOOK_GUARD keeps the orange print surface flat, matte and evenly lit and
-# the frame / mat / canvas edges and the wall distinct for SAM and the independent edge check.
-LOOK_VERSION = 1
-LOOK_ORDER = ("light_style", "photographer", "time_of_day", "season", "sun_direction")
-LOOK_AXES = {   # axis -> {option: (base weight, prompt phrase)}; season phrases are (sunny, soft-light) pairs
+# ---------- scene look variety (Tony 2026-11-17, widened 2026-11-19) ----------
+# Every NEW scene gets a weighted RANDOM "look". v1 (2026-11-17) varied only the light: light style, photographer
+# (2 options), time of day, season, sun direction, and hardcoded "Camera angle: 3/4 corner", so every scene looked
+# shot by the same photographer. v2 (2026-11-19) adds camera, lens, focus, foreground, display, composition, walls,
+# floor, furniture and frame finish, and a 12-persona photographer/stylist axis (key name "photographer" kept), from
+# the research in Research/Etsy_Mockup_Look_Findings.md + Etsy_Mockup_Look_Database.json (105 top Etsy listings from
+# 37 shops, 46 of Tony's templates, 5 of our scenes). REFERENCE for variety, never copies of a listing.
+#
+# Weight rule (v2): weight = round(10 * sqrt(p)), p = the research's blended percentage for that option (market rooms
+# + Tony's templates, Findings section 4). Square-root flattening turns e.g. straight-on 48 vs 3/4 7 (a 7:1 lead)
+# into 69 vs 26 (about 2.6:1), so the over-represented looks still lead but the rare ones really appear. Two
+# deliberate exceptions: black frame uses the MARKET-only 11% (Tony's "black only occasionally" rule), and the 85 mm
+# short telephoto is fixed at 10 (about 7%) because it was never observed anywhere: UNTESTED.
+#
+# Room and decor only nudge the odds (multipliers clamped to 0.5-2.0, so a nudge never reaches zero); the persona
+# picked earlier nudges walls, floor, furniture and display the same way (PERSONA_NUDGE). Hard gates (_look_gate)
+# remove an option only where it never belongs (a nursery persona outside kids' rooms, gold frames outside vintage
+# decors ...). Picks follow LOOK_ORDER; a later axis keeps only the options that make sense with the earlier picks
+# (_look_fits: physical sense of light, camera geometry, and the pipeline safety rules below).
+#
+# Pipeline safety (orange insert + SAM + independent edge check), hard constraints:
+#   - never an orange, peach, apricot, terracotta, coral or rust wall (too close to the onion-skin orange insert);
+#   - the frame stands out from the wall in tone (frame_finish fits per wall; canvas floater gets a darker wood
+#     sentence on pale warm walls); blush walls only with a black or walnut frame;
+#   - nothing in front of the art overlaps the frame (LOOK_GUARD_FRAME, foreground at the image edge only);
+#   - the art face is flat, upright, matte, evenly lit and in sharp focus (LOOK_GUARD + _PRINT_AREA unchanged);
+#   - panelling only with hung art centred inside one panel (WAINSCOT_RULE intact); low camera never close under
+#     hung art (it would need a steep upward tilt that keystones the opening).
+#
+# The pick is saved in template.json ("look", with its seed and version). Replay: pick_look(room, decor,
+# override=man["look"]) (the recorded version is read from it) or pick_look(room, decor, seed=s, version=v). A v1 look
+# replays with the v1 tables and gives the exact v1 prompt (byte-identical, tested). Every phrase is positive wording.
+LOOK_VERSION = 2
+
+# ----- v1 tables (2026-11-17), frozen for replay of looks saved before 2026-11-19 -----
+LOOK_V1_ORDER = ("light_style", "photographer", "time_of_day", "season", "sun_direction")
+LOOK_V1_PHOTOGRAPHER = {
+    "magazine": (40, "Photographer style: an architecture and interiors magazine shoot: composed, balanced "
+                     "framing with straight verticals, clean and considered styling with only props that belong "
+                     "in the room, carefully balanced exposure."),
+    "lifestyle": (60, "Photographer style: a stylish home-decor creator who stages well and understands light "
+                      "and framing, photographing a real home: natural, effortless styling with a little visible "
+                      "life (a throw casually draped, a book left open, a cup on a side table), slightly casual "
+                      "framing that still feels well composed, beautiful natural light that is good rather than "
+                      "perfect; it reads as a genuine photograph of a real, lived-in home.")}
+_LIGHT_AXES = {   # shared by v1 and v2 (unchanged since 2026-11-17)
     "light_style": {
         # Tony's favourite (his Bedroom Wabi vertical template): the healthiest weight
         "soft_direct": (35, "Light style: direct window light with soft-edged, clearly visible shadows: warm sunlit "
@@ -374,15 +409,6 @@ LOOK_AXES = {   # axis -> {option: (base weight, prompt phrase)}; season phrases
                            "a warm amber glow on the wall."),
         "soft_even": (20, "Light style: soft, even daylight from a bright overcast sky, with gentle open shadows and "
                           "an airy, calm feel.")},
-    "photographer": {
-        "magazine": (40, "Photographer style: an architecture and interiors magazine shoot: composed, balanced "
-                         "framing with straight verticals, clean and considered styling with only props that belong "
-                         "in the room, carefully balanced exposure."),
-        "lifestyle": (60, "Photographer style: a stylish home-decor creator who stages well and understands light "
-                          "and framing, photographing a real home: natural, effortless styling with a little visible "
-                          "life (a throw casually draped, a book left open, a cup on a side table), slightly casual "
-                          "framing that still feels well composed, beautiful natural light that is good rather than "
-                          "perfect; it reads as a genuine photograph of a real, lived-in home.")},
     "time_of_day": {
         "morning": (30, "mid-morning"),
         "midday": (15, "around midday"),
@@ -404,10 +430,9 @@ LOOK_AXES = {   # axis -> {option: (base weight, prompt phrase)}; season phrases
                             "that side and shows its texture."),
         "away_from_sun": (20, "The window faces away from the sun, so the room fills with soft, reflected, open "
                               "daylight.")}}
-_SUNNY = ("soft_direct", "crisp_direct", "dappled", "golden_low")
-# decor (DECOR_ALIASES key, matched with decor_matches) or room -> {option: multiplier}; clamped to 0.5-2.0 in
-# look_weights, so nudging changes the odds but never removes an option.
-LOOK_NUDGE_DECOR = {
+LOOK_V1_AXES = {"light_style": _LIGHT_AXES["light_style"], "photographer": LOOK_V1_PHOTOGRAPHER,
+                **{a: _LIGHT_AXES[a] for a in ("time_of_day", "season", "sun_direction")}}
+LOOK_V1_NUDGE_DECOR = {
     "Japandi": {"soft_direct": 1.3, "soft_even": 1.2, "magazine": 1.2},
     "Minimal": {"soft_even": 1.3, "magazine": 1.3, "crisp_direct": 1.2},
     "Scandinavian": {"soft_even": 1.2, "morning": 1.2, "winter": 1.3},
@@ -423,7 +448,7 @@ LOOK_NUDGE_DECOR = {
     "Retro_Arcade": {"golden_low": 1.3, "lifestyle": 1.2},
     "Mancave": {"golden_low": 1.4, "autumn": 1.3, "winter": 1.2},
     "Kids": {"soft_even": 1.2, "lifestyle": 1.3, "morning": 1.3}}
-LOOK_NUDGE_ROOM = {
+LOOK_V1_NUDGE_ROOM = {
     "Bedroom": {"morning": 1.3, "soft_direct": 1.2},
     "Living room": {"late_afternoon": 1.2, "golden_hour": 1.2},
     "Office": {"morning": 1.4, "magazine": 1.2, "crisp_direct": 1.2},
@@ -435,59 +460,408 @@ LOOK_NUDGE_ROOM = {
     "Nursery": {"soft_even": 1.4, "morning": 1.2, "lifestyle": 1.2},
     "Game room": {"golden_low": 1.2, "lifestyle": 1.2},
     "Creative space": {"lifestyle": 1.4, "side_window": 1.2}}
+
+# ----- v2 tables (2026-11-19) -----
+LOOK_ORDER = ("light_style", "photographer", "time_of_day", "season", "sun_direction", "display", "camera_height",
+              "camera_angle", "distance", "lens", "foreground", "depth_of_field", "composition", "wall_palette",
+              "wall_treatment", "floor", "furniture_finish", "frame_finish")
+LOOK_AXES = {   # axis -> {option: (weight, prompt phrase)}; option names are unique across axes (nudges key on them)
+    "light_style": _LIGHT_AXES["light_style"],
+    # 12 photographer / stylist personas (replaces magazine / lifestyle). Each brings its own props, so the old
+    # throw + open book + mug trio stops repeating. No light, lamp, wall or floor words here: those are their own
+    # axes. p = persona/mood mix of market slot 1 + Tony's templates.
+    "photographer": {
+        "warm_lifestyle_creator": (40, "Photographer and stylist: a home-decor creator photographing her own lived-in "
+                                       "home: natural, unfussy styling with one or two things she really uses, "
+                                       "slightly casual framing that still feels composed."),
+        "airy_scandi_catalogue": (36, "Photographer and stylist: a bright Scandinavian interiors catalogue: pale, airy "
+                                      "and uncluttered, one green plant, crisp tidy styling."),
+        "midcentury_magazine": (35, "Photographer and stylist: a mid-century design magazine: balanced framing, a few "
+                                    "sculptural objects such as a ceramic vase and a stack of design books, warm wood "
+                                    "tones with mustard or olive accents."),
+        "editorial_minimal": (32, "Photographer and stylist: a minimalist architecture magazine: calm space, very few "
+                                  "objects, strong clean lines and generous empty wall."),
+        "parisian_apartment": (30, "Photographer and stylist: a Parisian apartment story: elegant and slightly "
+                                   "undone, one vintage chair or stool, a stack of art books, fresh stems in a simple "
+                                   "vase."),
+        "trendy_girl_apartment": (28, "Photographer and stylist: a stylish young renter's home: playful colour, a "
+                                      "fluted or curvy side piece, dried stems in a vase, a collected, lived-with "
+                                      "feel."),
+        "bold_colour_eclectic": (26, "Photographer and stylist: an eclectic, colour-confident home: patterned "
+                                     "cushions, a mix of vintage and modern pieces, a confident but considered "
+                                     "palette."),
+        "japandi_calm": (26, "Photographer and stylist: a quiet Japandi home: low wooden furniture, handmade "
+                             "ceramics, a single branch in a vase, a calm, restrained palette."),
+        "moody_dark_academia": (22, "Photographer and stylist: a moody, scholarly study: rich deep tones, old "
+                                    "leather-bound books, a brass object or two, a hushed atmosphere, while the "
+                                    "artwork itself stays softly and evenly lit."),
+        "coastal_grandmillennial": (22, "Photographer and stylist: a breezy coastal cottage: white and pale blue, "
+                                        "washed linen, a striped cushion, a woven basket."),
+        "cottage_farmhouse": (22, "Photographer and stylist: a country farmhouse: painted wood, a woven basket, a jug "
+                                  "of garden flowers, honest well-used pieces."),
+        "playful_nursery": (17, "Photographer and stylist: a soft, gentle children's room: a wooden toy shelf, pale "
+                                "colours, a knitted toy.")},   # gated: Kids / Nursery only
+    "time_of_day": _LIGHT_AXES["time_of_day"],
+    "season": _LIGHT_AXES["season"],
+    "sun_direction": _LIGHT_AXES["sun_direction"],
+    # market rooms: floor lean 58 / on furniture 19 / hung 22; Tony: hung 93 -> blended 38 / 27 / 22 / 13
+    "display": {
+        "hung_over_furniture": (62, "Display: the artwork hangs on the wall centred above the {anchor}, with clear "
+                                    "wall on every side of the frame."),
+        "floor_lean": (52, "Display: the artwork stands on the floor leaning against the wall, tilted back only "
+                           "slightly, its bottom edge resting on the floor and its face upright and flat."),
+        "lean_on_furniture": (47, "Display: the artwork rests on top of the {surface}, leaning against the wall, "
+                                  "tilted back only slightly, its face upright and flat."),
+        "hung_bare_wall": (36, "Display: the artwork hangs alone on a calm stretch of wall with generous space around "
+                               "it.")},
+    # market rooms: low 61 / eye 31; Tony: eye 96 -> blended eye 50 / low 32 / counter 10 / seated 8
+    "camera_height": {
+        "eye": (71, "Camera height: standing eye height, about 160 cm."),
+        "low": (57, "Camera height: low, about knee to hip height, looking very slightly up, verticals kept "
+                    "straight."),
+        "counter": (32, "Camera height: level with the top of the furniture under the artwork, about 90 cm."),
+        "seated": (28, "Camera height: seated eye height, about 110 cm, as if photographed from a chair or the "
+                       "bed.")},
+    # market rooms: straight 53 / slight 39 / 3/4 8; Tony 67 / 20 / 13; ours was 3/4 100 -> blended 48/13/13/7/7/12
+    "camera_angle": {
+        "straight_on": (69, "Camera: square-on to the art wall, the frame level and parallel to the picture edges, "
+                            "verticals straight."),
+        "slight_left": (36, "Camera: a slight angle from the left, about 10 degrees off square, the wall receding "
+                            "gently to the right."),
+        "slight_right": (36, "Camera: a slight angle from the right, about 10 degrees off square, the wall receding "
+                             "gently to the left."),
+        "three_quarter_left": (26, "Camera: a 3/4 corner view from the left, about 30 degrees off square, so the "
+                                   "depth of the room reads clearly."),
+        "three_quarter_right": (26, "Camera: a 3/4 corner view from the right, about 30 degrees off square, so the "
+                                    "depth of the room reads clearly."),
+        "through_doorway": (35, "Camera: standing in the next room, looking straight through an open doorway at the "
+                                "art wall; the painted door frame edges the picture on one or both sides, well clear "
+                                "of the artwork.")},
+    # market rooms: close 50 / medium 39 / wide 11; Tony: wide 44 / medium 42 / close 13 -> blended 35 / 40 / 25
+    "distance": {
+        "close": (59, "Framing: a close vignette; the artwork fills about half the image height (at most about "
+                      "60%), with one or two objects around it and clear wall around all four sides of the "
+                      "frame."),
+        "medium": (63, "Framing: a medium shot of the art wall and what sits below it, the artwork about a third of "
+                       "the image height."),
+        "wide": (50, "Framing: a wide view of the room for scale, the artwork about a fifth of the image height and "
+                     "still the clear focal point.")},
+    # market normal 100%; Tony wide 7%
+    "lens": {
+        "lens_normal": (87, "Lens: a natural 35-50 mm view with true proportions."),
+        "lens_wide": (41, "Lens: a 24-28 mm wide view that shows more of the room, verticals kept straight."),
+        # UNTESTED: telephoto was never observed in the 156 researched images; kept rare on purpose
+        "lens_short_tele": (10, "Lens: an 85 mm view from further back, the room gently compressed behind the "
+                                "art.")},
+    # market rooms 58% / Tony 80% have something at the image edge; it never touches the frame
+    "foreground": {
+        "clear_foreground": (59, "Foreground: the space in front of the art wall is clear."),
+        "furniture_edge": (50, "Foreground: the arm of a sofa, the back of a chair or the corner of a bed enters one "
+                               "edge of the picture, well clear of the frame."),
+        "plant_leaves": (37, "Foreground: a few leaves of a large houseplant enter one side of the picture, well "
+                             "clear of the frame."),
+        "side_table": (37, "Foreground: a small side table with one or two everyday objects stands at one edge of "
+                           "the picture, well clear of the frame."),
+        "throw_or_rug": (35, "Foreground: the edge of a rug or a folded throw runs along the bottom of the picture, "
+                             "well below the frame.")},
+    # market deep 96%; Tony soft foreground 9%. The art and frame are ALWAYS sharp.
+    "depth_of_field": {
+        "deep_focus": (88, "Focus: everything sharp from front to back, the artwork crisp."),
+        "soft_background": (35, "Focus: the artwork and its frame are crisp; only the far end of the room softens "
+                                "gently."),
+        "soft_foreground": (32, "Focus: the artwork and its frame are crisp; only the nearest object at the edge of "
+                                "the picture is softly out of focus.")},
+    "composition": {
+        "centred": (67, "Composition: the artwork near the centre of the picture."),
+        "thirds_left": (39, "Composition: the artwork on the left third of the picture, the room opening to the "
+                            "right."),
+        "thirds_right": (39, "Composition: the artwork on the right third of the picture, the room opening to the "
+                             "left."),
+        "beside_window": (39, "Composition: the artwork on the wall beside a window, the window partly in the "
+                              "picture and well clear of the frame."),
+        "offset_furniture": (32, "Composition: the artwork offset towards one end of the furniture below it.")},
+    # market rooms: white/cream 64, greige 17, grey 8, blush 6; Tony adds teal, blush, sage/forest, dark.
+    # NEVER orange / peach / apricot / terracotta / coral / rust (the onion-skin orange insert colour)
+    "wall_palette": {
+        "warm_white": (56, "Walls: a soft warm white."),
+        "ivory_cream": (36, "Walls: a calm ivory cream."),
+        "greige": (36, "Walls: a light warm greige."),
+        "soft_grey": (32, "Walls: a soft pale grey."),
+        "sage": (30, "Walls: a muted sage green."),
+        "dusty_blue_teal": (28, "Walls: a deep muted teal or dusty blue."),
+        "deep_moody": (26, "Walls: a deep moody colour (charcoal, deep navy or forest green)."),
+        "blush": (22, "Walls: a pale dusty pink."),                 # fits: black or walnut frame only
+        "colour_block": (20, "Walls: the art wall painted a confident colour block in a cool or deep shade (olive, "
+                             "navy, forest green or plum) that suits the furniture.")},
+    "wall_treatment": {
+        "plain_paint": (72, "The wall is smooth painted plaster."),
+        "limewash": (35, "The wall has a soft limewash plaster texture."),
+        "panelled": (40, "The wall has tall painted panelling in the wall colour; the artwork hangs centred inside "
+                         "one large panel, with clear wall on every side of the frame."),   # fits: hung only
+        "shiplap": (28, "The wall is painted vertical shiplap boards in the wall colour."),
+        "brick": (22, "The wall is painted brick in the wall colour, with a fine, even texture."),
+        "wallpaper": (26, "The wall has a quiet small-pattern wallpaper in soft tones close to the wall colour.")},
+    "floor": {
+        "light_herringbone": (50, "Floor: light oak herringbone."),
+        "light_plank": (50, "Floor: wide light oak planks."),
+        "honey_wood": (37, "Floor: honey-toned wood planks."),
+        "dark_wood": (30, "Floor: dark walnut-toned wood."),
+        "rug_floor": (39, "Floor: a large textured rug covers most of the floor."),
+        "checker_tile": (24, "Floor: classic checkerboard tile."),
+        "stone_concrete": (24, "Floor: pale polished concrete or stone.")},
+    "furniture_finish": {
+        "light_oak_wood": (49, "Furniture: light oak and ash."),
+        "walnut_teak": (55, "Furniture: warm walnut and teak."),
+        "painted_lacquer": (35, "Furniture: the main piece painted or lacquered (black, white or a soft colour)."),
+        "rattan_cane": (32, "Furniture: rattan and cane mixed with wood."),
+        "colour_upholstery": (40, "Furniture: seating upholstered in a confident colour (mustard, olive, teal, deep "
+                                  "blue or blush)."),
+        "white_cream": (28, "Furniture: white and cream with linen upholstery.")},
+    # frame and mat presentations only (a canvas keeps its natural-wood floater). Market rooms oak 64 / walnut 14 /
+    # black 11 / white 8 / gold 3; Tony oak 49 / black 27. Black uses the market 11% (Tony: black only occasionally).
+    "frame_finish": {
+        "oak_frame": (69, "a thin natural light oak frame"),
+        "black_frame": (33, "a thin black frame with a soft satin finish"),
+        "walnut_frame": (37, "a thin warm walnut frame"),
+        "white_frame": (30, "a thin white painted frame"),
+        "gold_frame": (26, "a thin antique gold frame")}}    # gated: vintage / classical decors only
+_SUNNY = ("soft_direct", "crisp_direct", "dappled", "golden_low")
+# decor (DECOR_ALIASES key, matched with decor_matches) or room -> {option: multiplier}; clamped to 0.5-2.0 in
+# look_weights, so nudging changes the odds but never removes an option.
+LOOK_NUDGE_DECOR = {
+    "Japandi": {"soft_direct": 1.3, "soft_even": 1.2, "japandi_calm": 1.8, "airy_scandi_catalogue": 1.3, "low": 1.3,
+                "floor_lean": 1.3, "close": 1.2, "limewash": 1.4},
+    "Minimal": {"soft_even": 1.3, "crisp_direct": 1.2, "editorial_minimal": 1.6, "airy_scandi_catalogue": 1.3,
+                "hung_bare_wall": 1.3},
+    "Scandinavian": {"soft_even": 1.2, "morning": 1.2, "winter": 1.3, "airy_scandi_catalogue": 1.8,
+                     "light_plank": 1.3},
+    "Modern": {"crisp_direct": 1.3, "editorial_minimal": 1.3, "warm_lifestyle_creator": 1.2, "black_frame": 1.5},
+    "Mid_Century": {"golden_low": 1.4, "late_afternoon": 1.2, "autumn": 1.2, "midcentury_magazine": 2.0,
+                    "walnut_teak": 1.6, "colour_upholstery": 1.4, "hung_over_furniture": 1.3},
+    "Boho": {"dappled": 1.6, "summer": 1.2, "trendy_girl_apartment": 1.6, "bold_colour_eclectic": 1.4,
+             "rattan_cane": 1.8, "rug_floor": 1.4, "plant_leaves": 1.4},
+    "Botanical": {"dappled": 1.8, "spring": 1.3, "plant_leaves": 1.6, "sage": 1.5, "japandi_calm": 1.2},
+    "Coastal": {"crisp_direct": 1.4, "summer": 1.5, "facing_sun": 1.2, "coastal_grandmillennial": 2.0,
+                "warm_white": 1.3, "dusty_blue_teal": 1.4, "light_plank": 1.3},
+    "Victorian": {"golden_low": 1.2, "autumn": 1.2, "parisian_apartment": 1.8, "moody_dark_academia": 1.5,
+                  "gold_frame": 1.8, "panelled": 1.6, "straight_on": 1.3},
+    "Rustic_Farmhouse": {"golden_low": 1.4, "autumn": 1.4, "cottage_farmhouse": 2.0, "warm_lifestyle_creator": 1.3,
+                         "honey_wood": 1.5, "shiplap": 1.6, "walnut_frame": 1.4},
+    "Neutral": {"soft_direct": 1.2, "warm_lifestyle_creator": 1.4, "greige": 1.4},
+    "Gamer": {"soft_even": 1.3, "golden_low": 1.2, "moody_dark_academia": 1.4, "bold_colour_eclectic": 1.4,
+              "deep_moody": 1.6, "black_frame": 1.6},
+    "Retro_Arcade": {"golden_low": 1.3, "bold_colour_eclectic": 1.6, "colour_block": 1.5},
+    "Mancave": {"golden_low": 1.4, "autumn": 1.3, "winter": 1.2, "moody_dark_academia": 1.8, "deep_moody": 1.8,
+                "dark_wood": 1.5},
+    "Kids": {"soft_even": 1.2, "morning": 1.3, "playful_nursery": 1.8, "wallpaper": 1.4, "eye": 1.2}}
+LOOK_NUDGE_ROOM = {
+    "Bedroom": {"morning": 1.3, "soft_direct": 1.2, "seated": 1.5, "hung_over_furniture": 1.3,
+                "soft_foreground": 1.3, "warm_lifestyle_creator": 1.2},
+    "Living room": {"late_afternoon": 1.2, "golden_hour": 1.2, "furniture_edge": 1.2},
+    "Office": {"morning": 1.4, "crisp_direct": 1.2, "editorial_minimal": 1.4, "lean_on_furniture": 1.4, "close": 1.3},
+    "Kitchen & dining": {"morning": 1.4, "crisp_direct": 1.2, "counter": 1.8, "lean_on_furniture": 1.5,
+                         "checker_tile": 1.6, "cottage_farmhouse": 1.3},
+    "Bathroom": {"soft_even": 1.3, "morning": 1.3, "close": 1.4, "hung_bare_wall": 1.4, "stone_concrete": 1.4},
+    "Entryway": {"editorial_minimal": 1.3, "side_window": 1.2, "lean_on_furniture": 1.3, "through_doorway": 1.5},
+    "Dorm": {"warm_lifestyle_creator": 1.5, "trendy_girl_apartment": 1.5, "late_afternoon": 1.2},
+    "Kids": {"warm_lifestyle_creator": 1.3, "soft_even": 1.2, "playful_nursery": 1.8},
+    "Nursery": {"soft_even": 1.4, "morning": 1.2, "playful_nursery": 2.0},
+    "Game room": {"golden_low": 1.2, "moody_dark_academia": 1.3, "bold_colour_eclectic": 1.3},
+    "Creative space": {"warm_lifestyle_creator": 1.4, "side_window": 1.2, "lean_on_furniture": 1.4,
+                       "bold_colour_eclectic": 1.3}}
+PERSONA_NUDGE = {   # photographer persona (picked 2nd) -> {later option: multiplier}, same clamp
+    "warm_lifestyle_creator": {"furniture_edge": 1.3, "throw_or_rug": 1.3, "hung_over_furniture": 1.2},
+    "airy_scandi_catalogue": {"warm_white": 1.5, "soft_grey": 1.3, "light_plank": 1.4, "light_oak_wood": 1.4,
+                              "plant_leaves": 1.4},
+    "midcentury_magazine": {"walnut_teak": 1.8, "colour_upholstery": 1.5, "hung_over_furniture": 1.3,
+                            "offset_furniture": 1.4},
+    "editorial_minimal": {"hung_bare_wall": 1.8, "clear_foreground": 1.5, "stone_concrete": 1.6, "centred": 1.2,
+                          "lens_wide": 1.3},
+    "parisian_apartment": {"panelled": 2.0, "light_herringbone": 2.0, "floor_lean": 1.4, "ivory_cream": 1.3},
+    "trendy_girl_apartment": {"blush": 1.8, "sage": 1.5, "rattan_cane": 1.5, "low": 1.3, "checker_tile": 1.5},
+    "bold_colour_eclectic": {"colour_block": 2.0, "dusty_blue_teal": 1.6, "colour_upholstery": 1.6,
+                             "wallpaper": 1.5},
+    "japandi_calm": {"limewash": 1.6, "light_oak_wood": 1.5, "low": 1.3, "floor_lean": 1.3,
+                     "clear_foreground": 1.3},
+    "moody_dark_academia": {"deep_moody": 2.0, "dark_wood": 1.8, "walnut_teak": 1.4, "soft_background": 1.3},
+    "coastal_grandmillennial": {"dusty_blue_teal": 1.5, "shiplap": 1.8, "white_cream": 1.6, "light_plank": 1.3},
+    "cottage_farmhouse": {"shiplap": 1.6, "honey_wood": 1.6, "painted_lacquer": 1.3, "lean_on_furniture": 1.4},
+    "playful_nursery": {"wallpaper": 1.8, "eye": 1.2, "hung_over_furniture": 1.3, "painted_lacquer": 1.3}}
 LOOK_NUDGE_RANGE = (0.5, 2.0)
+# what the art hangs over / rests on, per room (display phrases {anchor} / {surface})
+ROOM_ANCHOR = {"Living room": "sofa", "Bedroom": "bed headboard", "Dorm": "bed", "Office": "desk",
+               "Kitchen & dining": "dining table", "Bathroom": "freestanding bathtub", "Entryway": "console table",
+               "Laundry": "folding counter", "Kids": "bed", "Nursery": "crib", "Game room": "sofa",
+               "Creative space": "work table"}
+ROOM_SURFACE = {"Living room": "sideboard", "Bedroom": "dresser", "Dorm": "desk", "Office": "desk",
+                "Kitchen & dining": "kitchen counter", "Bathroom": "wooden bench", "Entryway": "console table",
+                "Laundry": "countertop", "Kids": "low bookshelf", "Nursery": "dresser", "Game room": "low media console",
+                "Creative space": "work table"}
 LOOK_AT_BUILD = "at_build"          # preview only (Templates gap tile): the look is picked when Build is clicked
 # Kept in EVERY variant (positive wording): strong or patterned shadows stay off the print surface, outlines stay crisp
 LOOK_GUARD = ("Whatever the light, the artwork itself hangs in calm, even light: sun patches, shadows and any blind or "
               "leaf pattern land on the floor and on the wall around the frame, while the whole printed area stays "
               "one flat, evenly lit tone; the frame, the mat or canvas edge and the wall each stay clearly distinct, "
               "with crisp, unbroken outlines. ")
+# v2 addition (research pipeline-safety table): four unbroken edges for SAM and the edge check, art face sharp
+LOOK_GUARD_FRAME = ("The whole frame sits inside the picture with clear wall on all four sides; nothing in front of it "
+                    "overlaps any part of the frame. The artwork face is flat, upright and in sharp focus, and the "
+                    "frame stands out clearly from the wall in tone. ")
+_HUNG = ("hung_over_furniture", "hung_bare_wall")
+_LEAN = ("floor_lean", "lean_on_furniture")
+_PALE_WARM_WALLS = ("ivory_cream", "greige", "blush")     # + warm_white with limewash (see _pale_warm)
+_VINTAGE_DECORS = ("Victorian", "Rustic_Farmhouse", "Botanical", "Neutral")
+_GAMER_PERSONAS = ("warm_lifestyle_creator", "editorial_minimal", "bold_colour_eclectic", "moody_dark_academia",
+                   "trendy_girl_apartment")
 
 
-def _look_fits(axis, key, picks):
-    """Physical sense of an option given the axes picked before it (LOOK_ORDER)."""
-    light, time = picks.get("light_style"), picks.get("time_of_day")
-    if light is None:                                       # nothing picked yet: every option is open
-        return True
-    if axis == "time_of_day":
-        return key in ("late_afternoon", "golden_hour") if light == "golden_low" else key != "golden_hour"
-    if axis == "season" and time == "late_afternoon":       # 5 pm: low autumn/winter sun, still high in summer
-        return key in ("autumn", "winter") if light == "golden_low" else key != "winter"   # 5 pm winter is dusk
-    if axis == "sun_direction":
-        return key != "facing_sun" if light == "soft_even" else key != "away_from_sun"
+def _pale_warm(look):
+    w = look.get("wall_palette")
+    return w in _PALE_WARM_WALLS or (w == "warm_white" and look.get("wall_treatment") == "limewash")
+
+
+def _look_gate(room, decor, axis, key):
+    """False where an option never belongs in this room / decor (v2). Unlike nudges, a gate removes the option."""
+    dm = lambda *ds: any(decor_matches(d, decor) for d in ds)     # noqa: E731
+    young = room in ("Kids", "Nursery")
+    if axis == "photographer":
+        if dm("Gamer", "Retro_Arcade", "Mancave") and key not in _GAMER_PERSONAS:   # a coastal gamer den reads wrong
+            return False
+        return {"playful_nursery": young, "trendy_girl_apartment": room not in ("Office", "Kids", "Nursery"),
+                "moody_dark_academia": not young, "cottage_farmhouse": room != "Game room"}.get(key, True)
+    if axis == "display":
+        return not (key == "floor_lean" and room == "Bathroom")
+    if axis == "camera_height":
+        return not (key == "seated" and room in ("Bathroom", "Entryway", "Laundry"))
+    if axis == "wall_palette":
+        return not (key == "deep_moody" and young)
+    if axis == "wall_treatment":
+        if key == "panelled":
+            return not dm("Gamer", "Retro_Arcade", "Mancave", "Kids")
+        if key == "wallpaper":
+            return young or room == "Bathroom" or dm("Kids", "Victorian", "Boho", "Coastal", "Botanical")
+        if key == "brick":
+            return room not in ("Bathroom", "Nursery")
+    if axis == "floor":
+        if key == "checker_tile":
+            return room not in ("Bedroom", "Nursery", "Kids", "Office")
+        if key == "rug_floor":
+            return room not in ("Bathroom", "Laundry")
+    if axis == "frame_finish" and key == "gold_frame":
+        return dm(*_VINTAGE_DECORS)
     return True
 
 
-def look_weights(room, decor, axis, picks=None):
-    """{option: probability} for one axis: base weight x room/decor nudges (clamped, never zero), then only the
-    options that fit the earlier picks. Tests compare the sampled frequencies with this."""
+def _look_fits(axis, key, picks):
+    """Sense of an option given the axes picked before it (LOOK_ORDER): physical light (v1 rules, unchanged), camera
+    geometry and the pipeline safety rules (v2). A missing earlier pick never rules anything out."""
+    g = picks.get
+    light, time = g("light_style"), g("time_of_day")
+    if light is not None:
+        if axis == "time_of_day":
+            return key in ("late_afternoon", "golden_hour") if light == "golden_low" else key != "golden_hour"
+        if axis == "season" and time == "late_afternoon":       # 5 pm: low autumn/winter sun, still high in summer
+            return key in ("autumn", "winter") if light == "golden_low" else key != "winter"   # 5 pm winter = dusk
+        if axis == "sun_direction":
+            return key != "facing_sun" if light == "soft_even" else key != "away_from_sun"
+    display, height, angle, dist = g("display"), g("camera_height"), g("camera_angle"), g("distance")
+    if axis == "camera_height" and display:
+        if key == "counter":                     # level with a furniture top: only when the art is on / over one
+            return display in ("lean_on_furniture", "hung_over_furniture")
+    if axis == "camera_angle" and key == "through_doorway" and height:
+        return height in ("eye", "low")
+    if axis == "distance":
+        if angle == "through_doorway" and key == "close":
+            return False
+        if height == "low" and display in _HUNG and key == "close":    # steep upward tilt would keystone the opening
+            return False
+    if axis == "lens" and dist:
+        if key == "lens_wide" and dist == "close":                     # wide lens up close bends the frame
+            return False
+        if key == "lens_short_tele" and dist == "wide":                # an 85 mm whole-room view does not fit a room
+            return False
+    if axis == "foreground":
+        if angle == "through_doorway":                                 # the door frame is the foreground
+            return key == "clear_foreground"
+        if key == "throw_or_rug" and display == "floor_lean":          # would run into the frame's bottom edge
+            return False
+    if axis == "depth_of_field":
+        if key == "soft_foreground" and g("foreground") in (None, "clear_foreground"):
+            return g("foreground") is None
+        if key == "soft_background" and (angle in ("straight_on", "through_doorway") or dist == "close"):
+            return False                                               # the art wall IS the background there
+    if axis == "composition":
+        if angle == "through_doorway":
+            return key == "centred"
+        if key == "offset_furniture" and display:
+            return display in ("hung_over_furniture", "lean_on_furniture")
+        if key == "beside_window" and g("sun_direction"):              # a window in the art wall cannot face the sun
+            return g("sun_direction") in ("side_window", "away_from_sun")  # and also light that wall
+    if axis == "wall_treatment" and key == "panelled" and display:     # WAINSCOT_RULE: centred inside one panel
+        return display in _HUNG
+    if axis == "frame_finish" and g("wall_palette"):                   # the frame must stand out from the wall
+        wall = g("wall_palette")
+        if wall == "blush":
+            return key in ("black_frame", "walnut_frame")
+        if key == "oak_frame":
+            return not _pale_warm(picks)
+        if key == "white_frame":
+            return wall not in ("warm_white", "ivory_cream", "soft_grey")
+        if key in ("black_frame", "walnut_frame"):
+            return wall != "deep_moody"
+        if key == "gold_frame":
+            return wall not in ("ivory_cream", "greige")
+    return True
+
+
+def _tables(version):
+    if version == 1:
+        return LOOK_V1_ORDER, LOOK_V1_AXES, LOOK_V1_NUDGE_DECOR, LOOK_V1_NUDGE_ROOM
+    if version == 2:
+        return LOOK_ORDER, LOOK_AXES, LOOK_NUDGE_DECOR, LOOK_NUDGE_ROOM
+    raise ValueError(f"unknown look version {version!r}; one of 1, 2")
+
+
+def look_weights(room, decor, axis, picks=None, version=LOOK_VERSION):
+    """{option: probability} for one axis: base weight x room/decor (and, v2, persona) nudges (clamped, never zero),
+    minus gated options (v2), then only the options that fit the earlier picks. Tests compare sampled frequencies
+    with this."""
+    _, axes, nd, nr = _tables(version)
+    picks = picks or {}
     lo, hi = LOOK_NUDGE_RANGE
+    pn = PERSONA_NUDGE.get(picks.get("photographer"), {}) if version >= 2 else {}
     w = {}
-    for key, (base, _) in LOOK_AXES[axis].items():
-        m = LOOK_NUDGE_ROOM.get(room, {}).get(key, 1.0)
-        for d, nudge in LOOK_NUDGE_DECOR.items():
+    for key, (base, _) in axes[axis].items():
+        if version >= 2 and not _look_gate(room, decor, axis, key):
+            continue
+        m = nr.get(room, {}).get(key, 1.0) * pn.get(key, 1.0)
+        for d, nudge in nd.items():
             if key in nudge and decor_matches(d, decor):
                 m *= nudge[key]
         w[key] = base * min(hi, max(lo, m))
-    fit = {k: v for k, v in w.items() if _look_fits(axis, k, picks or {})} or w
+    fit = {k: v for k, v in w.items() if _look_fits(axis, k, picks)} or w
     tot = sum(fit.values())
     return {k: v / tot for k, v in fit.items()}
 
 
-def pick_look(room, decor, seed=None, override=None):
+def pick_look(room, decor, seed=None, override=None, version=None):
     """One weighted random look. seed=None -> a fresh random seed (normal builds are genuinely random); the seed is
-    returned so the same look can be replayed. override = {axis: option} (e.g. a recorded look) forces those axes."""
+    returned so the same look can be replayed. override = {axis: option} (e.g. a recorded look) forces those axes;
+    a recorded look's "version" is honoured, so a v1 look saved before 2026-11-19 replays with the v1 tables.
+    version: force a table version for a seed-only replay (default LOOK_VERSION)."""
     import random
+    version = version or (override or {}).get("version") or LOOK_VERSION
+    order, axes, _, _ = _tables(version)
     if seed is None:
         seed = random.SystemRandom().randrange(2 ** 32)
     rng = random.Random(seed)
-    forced = {a: v for a, v in (override or {}).items() if a in LOOK_AXES}
+    forced = {a: v for a, v in (override or {}).items() if a in axes}
     for a, v in forced.items():
-        if v not in LOOK_AXES[a]:
-            raise ValueError(f"unknown {a} option {v!r}; one of {sorted(LOOK_AXES[a])}")
+        if v not in axes[a]:
+            raise ValueError(f"unknown {a} option {v!r}; one of {sorted(axes[a])}")
     picks = {}
-    for axis in LOOK_ORDER:
-        w = look_weights(room, decor, axis, picks)
+    for axis in order:
+        w = look_weights(room, decor, axis, picks, version)
         r = rng.random()                        # always drawn, so a forced axis never shifts the other draws
         if axis in forced:
             picks[axis] = forced[axis]
@@ -499,23 +873,79 @@ def pick_look(room, decor, seed=None, override=None):
             if r < acc:
                 picks[axis] = k
                 break
-    out = {"version": LOOK_VERSION, "seed": seed, **picks}
+    out = {"version": version, "seed": seed, **picks}
     if forced:
         out["overridden"] = sorted(forced)
     return out
 
 
-def look_text(look):
-    """The prompt sentences for a look (positive wording) + LOOK_GUARD. LOOK_AT_BUILD = preview wording."""
+def look_text(look, room=None):
+    """The prompt sentences for a look (positive wording) + LOOK_GUARD (v2 also LOOK_GUARD_FRAME). LOOK_AT_BUILD =
+    preview wording. room fills the display's {anchor} / {surface} (default sideboard)."""
     if look == LOOK_AT_BUILD:
-        return ("Light and photographer look: picked at random when Build this is clicked (light style, photographer "
-                "style, time of day, season, sun direction) and saved in template.json. " + LOOK_GUARD)
+        return ("Scene look: picked at random when Build this is clicked (light, photographer and stylist, time of "
+                "day, season, sun direction, display, camera angle, height, distance, lens, focus, foreground, "
+                "composition, wall colour and finish, floor, furniture, frame finish) and saved in template.json. "
+                + LOOK_GUARD + LOOK_GUARD_FRAME)
+    v = look.get("version", 1)
+    axes = LOOK_V1_AXES if v == 1 else LOOK_AXES
     sunny = look["light_style"] in _SUNNY
-    season = LOOK_AXES["season"][look["season"]][1][0 if sunny else 1]
-    time = LOOK_AXES["time_of_day"][look["time_of_day"]][1]
-    return (f"Time and season: {time}, {season}. {LOOK_AXES['sun_direction'][look['sun_direction']][1]} "
-            f"{LOOK_AXES['light_style'][look['light_style']][1]} {LOOK_AXES['photographer'][look['photographer']][1]} "
-            + LOOK_GUARD)
+    season = axes["season"][look["season"]][1][0 if sunny else 1]
+    time = axes["time_of_day"][look["time_of_day"]][1]
+    head = (f"Time and season: {time}, {season}. {axes['sun_direction'][look['sun_direction']][1]} "
+            f"{axes['light_style'][look['light_style']][1]} {axes['photographer'][look['photographer']][1]} ")
+    if v == 1:
+        return head + LOOK_GUARD
+    fill = {"anchor": ROOM_ANCHOR.get(room, "sideboard"), "surface": ROOM_SURFACE.get(room, "sideboard")}
+    scene = " ".join(axes[a][look[a]][1].format(**fill) for a in
+                     ("display", "camera_angle", "camera_height", "distance", "lens", "foreground", "depth_of_field",
+                      "composition", "wall_palette", "wall_treatment", "floor", "furniture_finish"))
+    return head + scene + " " + LOOK_GUARD + LOOK_GUARD_FRAME
+
+
+def _swap(text, old, new):
+    assert old in text, old          # the v1 wording moved: fail loudly rather than send a half-edited prompt
+    return text.replace(old, new)
+
+
+def _present_text_v2(kind, look):
+    """The presentation sentences for a v2 look (or a LOOK_AT_BUILD preview, look={}): no "hangs" when the art
+    leans, no fixed camera angle, the picked frame finish, a darker floater wood on pale warm walls."""
+    t = _PRESENT_TEXT[kind]
+    lean = look.get("display") in _LEAN
+    finish = LOOK_AXES["frame_finish"].get(look.get("frame_finish"), (0, None))[1]
+    if kind == "frame":
+        t = _swap(t, "The artwork hangs in a thin frame (natural oak, walnut or brass most of the time; black only "
+                     "occasionally, when it clearly suits the room).",
+                  f"The artwork is framed in {finish}." if finish else
+                  "The artwork is framed in a thin frame (natural oak, walnut or brass most of the time; black only "
+                  "occasionally, when it clearly suits the room).")
+    elif kind == "mat":
+        t = _swap(t, "The artwork hangs in a refined thin frame with",
+                  f"The artwork is framed in {finish} with" if finish else
+                  "The artwork is framed in a refined thin frame with")
+    else:
+        t = _swap(t, " Camera: a slight 3/4 view so the depth shows.", "")
+        if kind == "canvas":
+            stand = ("The piece stands off the wall by the canvas depth and casts a natural shadow on the wall that "
+                     "follows the room's light direction.")
+            if lean:
+                t = _swap(t, stand, "The piece leans against the wall and casts a natural shadow on the wall and the "
+                                    "surface below that follows the room's light direction.")
+            if _pale_warm(look):
+                t += (" The floater frame's natural wood is a mid-tone honey oak, clearly darker than the wall, so "
+                      "its outer edge stands out crisply against the wall.")
+        else:   # canvas_bare
+            if lean:
+                t = _swap(t, "hung directly on the wall with NO frame", "with NO frame")
+                t = _swap(t, "The canvas stands off the wall by its depth and casts a natural soft shadow on the wall "
+                             "that follows", "The canvas leans against the wall and casts a natural soft shadow on the "
+                                             "wall and the surface below that follows")
+        angle = look.get("camera_angle")
+        t += (" Its depth reads in the shadow it casts." if angle in ("straight_on", "through_doorway") else
+              " The side edge facing the camera shows the canvas depth." if angle else
+              " The canvas depth shows in its side edge or its shadow.")
+    return t
 
 
 def scene_prompt(room, decor, ratio, presentation=None, look=None):
@@ -523,17 +953,28 @@ def scene_prompt(room, decor, ratio, presentation=None, look=None):
     piece of wall art whose printed area is flat onion-skin orange, shown as a frame, a matted frame or a stretched
     canvas in a floater frame. The art is never in the prompt (it is composited later). Standing rules: no people, no
     random lamps, props only when lived-in. look: a pick_look() dict (callers that generate pick it first so they can
-    save it in template.json), LOOK_AT_BUILD for a preview, or None for a fresh random look."""
+    save it in template.json), LOOK_AT_BUILD for a preview, or None for a fresh random look. A v1 look (saved before
+    2026-11-19) gives the exact v1 prompt, including its fixed "Camera angle: 3/4 corner"."""
     kind = presentation or presentation_for(room, decor, ratio)
     look = look or pick_look(room, decor)
+    if look != LOOK_AT_BUILD and look.get("version", 1) == 1:
+        return (f"Photorealistic {decor_words(decor)} {ROOM_WORDS.get(room, room.lower())} interior "
+                f"featuring one vertical piece of wall art ({RATIO_PROMPT[ratio]}). Realistic "
+                "textures, subtle decor, moody and lived-in detail that feels authentic. Lighting is natural daylight "
+                "from a window, falling in one consistent direction. " + look_text(look)
+                + "Camera angle: 3/4 corner. Composition should be vertical, focused on "
+                "the artwork and wall area. Only one piece of wall art, no other frames. " + _PRINT_AREA
+                + _PRESENT_TEXT[kind] + " No people, no faces, no hands, no pets. No lamps unless the room clearly "
+                "needs one; only props a real person would leave there. " + WAINSCOT_RULE)
+    present = _present_text_v2(kind, {} if look == LOOK_AT_BUILD else look)
     return (f"Photorealistic {decor_words(decor)} {ROOM_WORDS.get(room, room.lower())} interior "
-            f"featuring one vertical piece of wall art ({RATIO_PROMPT[ratio]}). Realistic "
-            "textures, subtle decor, moody and lived-in detail that feels authentic. Lighting is natural daylight "
-            "from a window, falling in one consistent direction. " + look_text(look)
-            + "Camera angle: 3/4 corner. Composition should be vertical, focused on "
-            "the artwork and wall area. Only one piece of wall art, no other frames. " + _PRINT_AREA
-            + _PRESENT_TEXT[kind] + " No people, no faces, no hands, no pets. No lamps unless the room clearly "
-            "needs one; only props a real person would leave there. " + WAINSCOT_RULE)
+            f"featuring one vertical piece of wall art ({RATIO_PROMPT[ratio]}). Realistic textures, subtle decor and "
+            "authentic lived-in detail. Lighting is natural daylight from a window, falling in one consistent "
+            "direction. " + look_text(look, room)
+            + "The picture is a vertical (portrait) photograph with the artwork as its clear focal point. Only one "
+            "piece of wall art, no other picture frames, posters or mirrors. " + _PRINT_AREA
+            + present + " No people, no faces, no hands, no pets. No lamps unless the room clearly needs one; only "
+            "props a real person would leave there. " + WAINSCOT_RULE)
 
 
 # Tony 2026-11-15 (Mockup_Docs/Mockup_Style_Guide.md "Wainscoting and wall molding rule"): optional, elegant /

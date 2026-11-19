@@ -62,7 +62,7 @@ def test_locked_slot_keeps_its_room_when_the_plan_changes():
 def test_scene_prompt_follows_tonys_recipe_and_never_names_the_art():
     t = rs.scene_prompt("Bathroom", "Japandi", "iso", presentation="frame")
     assert t.startswith("Photorealistic japandi bathroom interior featuring one vertical piece of wall art (ISO ratio).")
-    for must in ("Camera angle: 3/4 corner", "no other frames", "No people", "No lamps", "onion-skin orange",
+    for must in ("Camera: ", "no other picture frames", "No people", "No lamps", "onion-skin orange",
                  "no mat, no matte border"):
         assert must in t
     assert "white insert" not in t
@@ -87,8 +87,13 @@ def test_room_slots_are_3_and_9_to_19_and_tonys_picks_fill_3_9_10_11_12():
 
 
 def test_frame_prompt_uses_black_only_occasionally():
-    t = rs.scene_prompt("Living room", "Modern", "2x3", presentation="frame")
-    assert "black only occasionally" in t
+    # v1 looks keep the old wording; v2 picks the finish, black weighted at the market's 11% (rs.LOOK_AXES)
+    v1 = rs.pick_look("Living room", "Modern", seed=3, version=1)
+    assert "black only occasionally" in rs.scene_prompt("Living room", "Modern", "2x3", presentation="frame", look=v1)
+    assert "black only occasionally" in rs.scene_prompt("Living room", "Modern", "2x3", presentation="frame",
+                                                        look=rs.LOOK_AT_BUILD)
+    w = rs.look_weights("Living room", "Unstyled", "frame_finish")
+    assert w["black_frame"] < 0.25 and max(w, key=w.get) == "oak_frame"
 
 
 def test_archive_template_moves_files_and_deletes_nothing(tmp_path, monkeypatch):
@@ -158,7 +163,7 @@ def test_look_weights_are_respected_over_many_seeds():
     from collections import Counter
     n = 6000
     looks = [rs.pick_look("Living room", "Unstyled", seed=s) for s in range(n)]
-    for axis in ("light_style", "photographer"):                   # picked first: unconditional
+    for axis in ("light_style", "photographer"):                   # picked first: unconditional (room gates only)
         want = rs.look_weights("Living room", "Unstyled", axis)
         got = Counter(lk[axis] for lk in looks)
         for k, p in want.items():
@@ -171,9 +176,9 @@ def test_look_weights_are_respected_over_many_seeds():
     got = Counter(lk["time_of_day"] for lk in sub)
     for k, p in want.items():
         assert abs(got[k] / len(sub) - p) < 0.05, (k, got[k] / len(sub), p)
-    # every option of every axis shows up
+    # every option of every axis that is not gated out for this room/decor shows up
     for axis, opts in rs.LOOK_AXES.items():
-        assert {lk[axis] for lk in looks} == set(opts), axis
+        assert {lk[axis] for lk in looks} == set(rs.look_weights("Living room", "Unstyled", axis)), axis
 
 
 def test_look_is_deterministic_with_a_seed_random_without_and_replayable():
@@ -184,8 +189,8 @@ def test_look_is_deterministic_with_a_seed_random_without_and_replayable():
     assert len(seeds) > 15                                         # normal builds: genuinely random
     replay = rs.pick_look("Bedroom", "Japandi", override=a)        # a recorded look replays exactly
     assert all(replay[x] == a[x] for x in rs.LOOK_ORDER)
-    one = rs.pick_look("Bedroom", "Japandi", seed=42, override={"photographer": "magazine"})
-    assert one["photographer"] == "magazine" and one["overridden"] == ["photographer"]
+    one = rs.pick_look("Bedroom", "Japandi", seed=42, override={"photographer": "editorial_minimal"})
+    assert one["photographer"] == "editorial_minimal" and one["overridden"] == ["photographer"]
     assert one["light_style"] == a["light_style"]                  # forcing one axis leaves the earlier draws alone
     with pytest.raises(ValueError):
         rs.pick_look("Bedroom", "Japandi", override={"light_style": "neon"})
@@ -196,10 +201,12 @@ def test_room_and_decor_nudges_never_zero_any_option():
     for room in ALL_ROOMS:
         for decor in ALL_DECORS:
             for axis, opts in rs.LOOK_AXES.items():
-                w = rs.look_weights(room, decor, axis)              # no earlier picks: every option open
-                assert set(w) == set(opts) and all(p > 0 for p in w.values()), (room, decor, axis)
-                base = rs.look_weights("Unstyled_Room", "Unstyled", axis)
-                for k in opts:      # nudges move the odds, within the clamp, and never remove an option
+                w = rs.look_weights(room, decor, axis)              # no earlier picks: every ungated option open
+                open_ = {k for k in opts if rs._look_gate(room, decor, axis, k)}
+                assert set(w) == open_ and all(p > 0 for p in w.values()), (room, decor, axis)
+                base = {k: v for k, v in rs.look_weights("Unstyled_Room", "Unstyled", axis).items() if k in open_}
+                base = {k: v / sum(base.values()) for k, v in base.items()}   # same option set as w (gates)
+                for k in open_ & set(base):   # nudges move the odds, within the clamp, and never remove an option
                     assert w[k] / base[k] > lo * lo * 0.9 and w[k] / base[k] < hi * hi * 1.1, (room, decor, k)
     for nudges in list(rs.LOOK_NUDGE_DECOR.values()) + list(rs.LOOK_NUDGE_ROOM.values()):
         assert all(m > 0 for m in nudges.values())
@@ -235,13 +242,14 @@ def test_prompt_carries_the_picks_in_positive_words_and_the_guardrails_always():
             assert rs.LOOK_AXES["sun_direction"][lk["sun_direction"]][1] in t
             assert any(p in t for p in rs.LOOK_AXES["season"][lk["season"]][1])
             for must in (rs.LOOK_GUARD.strip(), "evenly lit across its whole face", "one consistent direction",
-                         "The orange appears only on the front face", "No people", "no other frames",
+                         "The orange appears only on the front face", "No people", "no other picture frames",
+                         rs.LOOK_GUARD_FRAME.strip(),
                          rs.WAINSCOT_RULE):
                 assert must in t, (s, kind, must)
             if kind == "canvas":
                 assert "plain clean WHITE" in t and "never black or dark" in t
             if kind == "frame":
-                assert "black only occasionally" in t
+                assert rs.LOOK_AXES["frame_finish"][lk["frame_finish"]][1] in t
     look_words = " ".join(v[1] if isinstance(v[1], str) else " ".join(v[1])
                           for opts in rs.LOOK_AXES.values() for v in opts.values()) + rs.LOOK_GUARD
     assert not re.search(r"\b(no|not|never|without|avoid|don't)\b", look_words, re.I)   # positive wording only
