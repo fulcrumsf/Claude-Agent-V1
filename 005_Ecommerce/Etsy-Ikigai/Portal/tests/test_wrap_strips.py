@@ -321,3 +321,26 @@ def test_lit_fold_softens_the_unseen_edges_and_a_dark_gap_gets_none():
     assert a[99, 250] > 0.2 and a[97, 250] == 0                         # over the rim, fading out before the wall
     rgb0, a0 = ws.strip_layer(w, 640, 500, None)
     assert a0[99, 250] == 0                                             # the PSD placeholder shows strips only
+
+
+def test_a_tapering_strip_keeps_the_art_in_line_with_the_face():
+    """Slot 12, 2026-11-19: a strip 16 px wide at the top and 8 at the bottom was drawn with a rectangle -> strip
+    homography, which reads the taper as recession ALONG the side and slid the art up to a third of the side out of
+    line. Along the side the strip must take the face's own position at the fold."""
+    face = [[200, 100], [400, 90], [398, 420], [202, 400]]             # a perspective face
+    w = {"depth_frac": 0.05, "art_quad": face, "folds": {},
+         "sides": {"right": {"quad": [[400, 90], [416, 89], [406, 420.5], [398, 420]], "width_px": [16, 8],
+                             "shade": np.ones((ws.NV, ws.NU)).tolist(), "round_corners": [1, 2]}}}
+    art = np.zeros((300, 215, 3), "uint8")
+    art[..., 0] = np.linspace(0, 255, 300).astype("uint8")[:, None]    # red = the art row
+    m = ws.wrap_margins(w, [200, 300])
+    rgb, a = ws.strip_layer(w, 640, 500, art, m)
+    red = ws.enc(rgb[..., 0] / np.maximum(a, 1e-6)) * 255
+    import cv2
+    Hi = np.linalg.inv(cv2.getPerspectiveTransform(np.float32([[0, 0], [200, 0], [200, 300], [0, 300]]),
+                                                   np.float32(face)).astype("float64"))
+    for y in (150, 250, 350):
+        p = Hi @ np.array([399.5, y + 0.5, 1.0])
+        want = p[1] / p[2] / 300 * 255                                   # the face row at the fold, this height
+        xs = [x for x in range(398, 418) if a[y, x] > 0.9]
+        assert xs and abs(float(np.median(red[y, xs])) - want) <= 3

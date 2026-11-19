@@ -289,14 +289,54 @@ GATE_SAME = 6.0                      # mean |render - base| (0..255) below this 
 GATE_EXPOSED = 0.6                   # share of a band's pixels unchanged = that segment shows a bar
 GATE_SIDE_SEGS = 3                   # this many exposed segments on one side = the side FAILS
 GATE_INSIDE_MAX = 0.002              # share of the art area that may be unchanged (noise, a coincidentally equal pixel)
+GATE_SEAM_MIN = 0.12                 # wrap strips: face-edge vs strip-start detail correlation at least this ...
+GATE_SEAM_SHARE = 0.3                # ... and this share of the face's own correlation over the same distance
+GATE_SEAM_REF_MIN = 0.2              # a face edge with less self-correlation (flat / noisy art) is not judged
+GATE_SEAM_WIN = 41                   # px: the photo's shading is removed with a running mean this long
 # the paper-band test itself (colour classes, width, reach, the ending step) is wrap_strips.paper_run_1d, shared with
 # the builder (scene_templates.build_psd extends the art over such bands, so a correct build always passes)
 
 
-def art_area_gate(render, base, quad, presentation="frame"):
-    """FAIL when anything other than art shows in or along the art quad. render/base: paths or HxWx3 uint8 arrays
-    of the same size (base = the art-free scene the PSD renders on). Returns {"pass", "why", "inside_unchanged",
-    "sides": {side: {"exposed_segments", "width_px", "kind"}}}."""
+def seam_continuity(R, quad, strip):
+    """One wrap strip's seam (Tony 2026-11-19, slot 12: the strip showed art from the wrong place along the side).
+    Linear luminance along the side 2 px inside the face edge and just past it on the strip, each divided by its own
+    running mean (the photo's shading, light or dark, is a smooth factor), then the correlation of the detail left
+    ("corr"). "ref" = the same correlation between two lines on the FACE the same distance apart: what continuity
+    looks like for this art here. A real wrap keeps a good share of it (measured 0.5-0.6 on slots 11 and 12); a strip
+    showing the wrong part of the art falls to ~0. (A mirror is continuous at the seam too; it is excluded by
+    construction, wrap_strips.band_source.)"""
+    import cv2
+    from .template_checker import _outward
+    q = np.float32(quad)
+    s = ("top", "right", "bottom", "left").index(strip["side"])
+    a, b, n = _outward(q, s)
+    Y = np.ascontiguousarray(((np.asarray(R, "float32")[..., :3] / 255.0) ** 2.2) @ W709)
+    t = np.linspace(0.03, 0.97, max(200, int(np.linalg.norm(b - a))))[:, None]
+    P = a + (b - a) * t
+    w = float(min(strip.get("width_px") or [8.0]))
+    x = float(np.clip(0.35 * w, 1.0, 2.0))
+
+    def at(o):
+        pts = (P + n * o - 0.5).astype("float32")
+        return cv2.remap(Y, pts[None, :, 0], pts[None, :, 1], cv2.INTER_LINEAR)[0]
+
+    def detail(v):
+        k = GATE_SEAM_WIN
+        m = np.convolve(np.pad(v, k // 2, mode="edge"), np.ones(k) / k, "valid")
+        return (v / np.maximum(m, 1e-4) - 1)[k:-k]
+
+    def corr(u, v):
+        u, v = detail(u), detail(v)
+        return float(np.corrcoef(u, v)[0, 1]) if np.std(u) > 1e-6 and np.std(v) > 1e-6 else 0.0
+    f = at(-2.0)
+    return {"corr": round(corr(f, at(x)), 3), "ref": round(corr(f, at(-4.0 - x)), 3)}
+
+
+def art_area_gate(render, base, quad, presentation="frame", strips=None):
+    """FAIL when anything other than art shows in or along the art quad, or a wrap strip does not continue the face.
+    render/base: paths or HxWx3 uint8 arrays of the same size (base = the art-free scene the PSD renders on);
+    strips = the template's wrap_strips entry (or None). Returns {"pass", "why", "inside_unchanged",
+    "sides": {side: {"exposed_segments", "width_px", "kind"}}, "seams": {side: {"corr", "ref"}}}."""
     from PIL import Image
     from . import wrap_strips as wst
     from .template_checker import _lab, edge_profile, offset_quad, poly_mask
@@ -342,7 +382,15 @@ def art_area_gate(render, base, quad, presentation="frame"):
         if hits >= GATE_SIDE_SEGS:
             why.append(f"a {sides[nm]['kind']} bar about {sides[nm]['width_px']:.0f} px wide shows along the {nm} "
                        f"edge of the art ({hits}/{GATE_SEGMENTS} of the side)")
-    return {"pass": not why, "why": why, "inside_unchanged": round(inside, 4), "sides": sides}
+    seams = {}
+    for nm, sd in ((strips or {}).get("sides") or {}).items():
+        c = seam_continuity(R, q, {"side": nm, "width_px": sd.get("width_px")})
+        seams[nm] = c
+        need = max(GATE_SEAM_MIN, GATE_SEAM_SHARE * c["ref"])
+        if c["ref"] >= GATE_SEAM_REF_MIN and c["corr"] < need:
+            why.append(f"the {nm} wrap strip does not continue the art across the edge (detail match "
+                       f"{c['corr']:.2f}, need {need:.2f})")
+    return {"pass": not why, "why": why, "inside_unchanged": round(inside, 4), "sides": sides, "seams": seams}
 
 
 def gate_base(manifest, tdir, render_png, psd=None, settings=None, work=None):

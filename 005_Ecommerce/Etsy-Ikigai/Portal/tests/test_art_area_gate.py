@@ -75,3 +75,20 @@ def test_extend_quad_follows_a_slanted_band_end():
     q = ws.extend_quad(FACE, {1: (10.0, 20.0)})                       # right side: 10 px out at the top, 20 at the bottom
     assert q[1] == pytest.approx([410, 100]) and q[2] == pytest.approx([420, 400])
     assert q[0] == pytest.approx([200, 100]) and q[3] == pytest.approx([200, 400])
+
+
+def test_gate_fails_a_wrap_strip_that_does_not_continue_the_face():
+    """The seam check: detail along the face edge must carry on across the fold onto the strip."""
+    rng = np.random.default_rng(1)
+    rows = np.repeat(rng.integers(40, 230, 60), 5)[:300].astype("uint8")   # stripes along the side
+    scene = np.full((500, 640, 3), 120, "uint8")
+    r = scene.copy()
+    r[100:400, 200:400] = rows[:, None, None]
+    good = r.copy()
+    good[100:400, 400:410] = (rows[:, None, None] * 0.7).astype("uint8")   # the same stripes, shaded
+    bad = r.copy()
+    bad[100:400, 400:410] = (np.roll(rows, 97)[:, None, None] * 0.7).astype("uint8")
+    strips = {"sides": {"right": {"width_px": [10, 10]}}}
+    assert rt.art_area_gate(good, scene, FACE, "canvas", strips)["seams"]["right"]["corr"] > 0.8
+    g = rt.art_area_gate(bad, scene, FACE, "canvas", strips)
+    assert not g["pass"] and "does not continue" in g["why"][-1]

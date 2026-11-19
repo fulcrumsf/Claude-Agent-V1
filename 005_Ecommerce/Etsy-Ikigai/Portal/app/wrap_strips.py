@@ -807,7 +807,37 @@ def coverage(poly, W, H, box=None, ss=8):
     return out
 
 
-def strip_layer(ws, W, H, art=None, margins=None):
+def _band_on_strip(band, quad, art_q, face_hw, side, Hm, tw, box):
+    """The art band (rows = along the side in face pixels, start -> end; cols = depth outward) drawn on one strip
+    (box = x0, y0, x1, y1 of the canvas). Along: the strip pixel's foot on the strip's near edge (the fold), mapped
+    into the face by the art quad's own homography, so a shape on the face continues at the same place on the strip.
+    Across: the strip's measured parameterisation (Hm: tw x L rectangle -> strip, box-local), 0 at the fold."""
+    import cv2
+    x0, y0, x1, y1 = box
+    fh, fw = face_hw
+    yy, xx = np.mgrid[y0:y1, x0:x1].astype("float64") + 0.5                 # pixel centres, pixel-edge coordinates
+    A, B = np.float64(quad[0]), np.float64(quad[3])                           # the strip's near edge = the fold
+    e = B - A
+    s = np.clip(((xx - A[0]) * e[0] + (yy - A[1]) * e[1]) / max(float(e @ e), 1e-9), 0.0, 1.0)
+    fx, fy = A[0] + s * e[0], A[1] + s * e[1]
+    Hf = cv2.getPerspectiveTransform(np.float32([[0, 0], [fw, 0], [fw, fh], [0, fh]]), np.float32(art_q))
+    Hi = np.linalg.inv(Hf.astype("float64"))
+    den = Hi[2, 0] * fx + Hi[2, 1] * fy + Hi[2, 2]
+    ux = (Hi[0, 0] * fx + Hi[0, 1] * fy + Hi[0, 2]) / den                    # face (smart-object) coordinates
+    uy = (Hi[1, 0] * fx + Hi[1, 1] * fy + Hi[1, 2]) / den
+    along = {"right": uy, "left": fh - uy, "top": ux, "bottom": fw - ux}[side]
+    Hr = np.linalg.inv(Hm.astype("float64"))                                  # box-local pixel centre -> rect
+    lx, ly = xx - 0.5 - x0, yy - 0.5 - y0
+    dr = Hr[2, 0] * lx + Hr[2, 1] * ly + Hr[2, 2]
+    col = (Hr[0, 0] * lx + Hr[0, 1] * ly + Hr[0, 2]) / dr                      # 0 .. tw-1 across, pixel centres
+    u = np.clip((col + 0.5) / tw, 0.0, 1.0)
+    b = np.ascontiguousarray(band, dtype="float32")
+    mapx = (u * b.shape[1] - 0.5).astype("float32")
+    mapy = (along * b.shape[0] / (fh if side in ("right", "left") else fw) - 0.5).astype("float32")
+    return cv2.remap(b, mapx, mapy, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
+
+
+def strip_layer(ws, W, H, art=None, margins=None, art_q=None):
     """Full-canvas linear RGB + alpha of every strip: the art's own outer band (band_source, unmirrored; `art` RGB
     0..255 = the art fitted over face + `margins`, or the face alone with margins None) times the measured shading;
     with art None the neutral grey placeholder. Returns (rgb_lin, alpha)."""
@@ -819,27 +849,37 @@ def strip_layer(ws, W, H, art=None, margins=None):
         mg = {nm: 0 for nm in SIDES} if margins is None else margins
         face_hw = (art_l.shape[0] - mg["top"] - mg["bottom"], art_l.shape[1] - mg["left"] - mg["right"])
         d = max(2, int(round(float(ws.get("depth_frac", DEPTH_FRAC)) * max(face_hw))))
+    aq_art = np.float32(art_q if art_q is not None else ws["art_quad"]) if (art_q is not None or ws.get("art_quad")) \
+        else None
     for nm, sd in (ws.get("sides") or {}).items():
         quad = np.float32(sd["quad"])
         wmax = max(sd["width_px"]) if sd.get("width_px") else 8.0
         L = int(math.ceil(max(float(np.linalg.norm(quad[3] - quad[0])), 4)))
         tw = max(4, int(math.ceil(wmax * 3)))
-        if art is not None:
-            band = band_source(art_l, nm, d, mg)
-            band = cv2.resize(np.ascontiguousarray(band), (tw, band.shape[0]), interpolation=cv2.INTER_AREA)
-            band = cv2.resize(band, (tw, L), interpolation=cv2.INTER_AREA if band.shape[0] > L else cv2.INTER_LINEAR)
-        else:
-            band = np.full((L, tw, 3), PLACEHOLDER_GREY, "float32")
-        g = np.float32(sd["shade"])
-        sh = cv2.resize(g, (tw, L), interpolation=cv2.INTER_LINEAR)
-        img = band * sh[..., None]
         x0, y0 = max(0, int(math.floor(quad[:, 0].min())) - 2), max(0, int(math.floor(quad[:, 1].min())) - 2)
         x1, y1 = min(W, int(math.ceil(quad[:, 0].max())) + 3), min(H, int(math.ceil(quad[:, 1].max())) + 3)
         if x1 <= x0 or y1 <= y0:
             continue
+        g = np.float32(sd["shade"])
+        sh = cv2.resize(g, (tw, L), interpolation=cv2.INTER_LINEAR)
         Hm = _rect_h(quad - np.float32([x0, y0]), tw, L)
-        warped = cv2.warpPerspective(img, Hm, (x1 - x0, y1 - y0), flags=cv2.INTER_LINEAR,
-                                     borderMode=cv2.BORDER_REPLICATE)
+        # the photo's shading keeps the strip's own (measured) parameterisation
+        shade = cv2.warpPerspective(sh, Hm, (x1 - x0, y1 - y0), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
+        if art is not None and aq_art is not None:
+            # Tony 2026-11-19 (slot 12): the art band must line up with the face ACROSS the fold. A plain rectangle ->
+            # strip homography treats a tapering strip (16 px at the top, 8 at the bottom) as receding along its
+            # length and slid the band up to 1/3 of the side out of line with the face. Along the side, each strip
+            # pixel takes the face's own position at the fold (the art quad's homography); across, the depth.
+            band = band_source(art_l, nm, d, mg)
+            warped = _band_on_strip(band, quad, aq_art, face_hw, nm, Hm, tw, (x0, y0, x1, y1))
+        elif art is not None:
+            band = band_source(art_l, nm, d, mg)
+            band = cv2.resize(np.ascontiguousarray(band), (tw, L), interpolation=cv2.INTER_AREA)
+            warped = cv2.warpPerspective(band, Hm, (x1 - x0, y1 - y0), flags=cv2.INTER_LINEAR,
+                                         borderMode=cv2.BORDER_REPLICATE)
+        else:
+            warped = np.full((y1 - y0, x1 - x0, 3), PLACEHOLDER_GREY, "float32")
+        warped = warped * shade[..., None]
         poly = rounded_polygon(quad, sd.get("round_corners", []), float(ws.get("corner_radius_px", CORNER_R)))
         a = coverage(poly, W, H)[y0:y1, x0:x1]
         # strips tile (two visible sides share the box edge): accumulate coverage-weighted
@@ -855,15 +895,13 @@ def strip_layer(ws, W, H, art=None, margins=None):
             w = float(fd["width_px"])
             quad = np.float32([a0, a0 + n * w, b0 + n * w, b0])
             L = int(math.ceil(max(float(np.linalg.norm(b0 - a0)), 4)))
-            band = band_source(art_l, nm, 2, mg)
-            band = cv2.resize(np.ascontiguousarray(band), (4, L), interpolation=cv2.INTER_AREA)
             x0, y0 = max(0, int(math.floor(quad[:, 0].min())) - 2), max(0, int(math.floor(quad[:, 1].min())) - 2)
             x1, y1 = min(W, int(math.ceil(quad[:, 0].max())) + 3), min(H, int(math.ceil(quad[:, 1].max())) + 3)
             if x1 <= x0 or y1 <= y0:
                 continue
             Hm = _rect_h(quad - np.float32([x0, y0]), 4, L)
-            warped = cv2.warpPerspective(band * float(fd["shade"]), Hm, (x1 - x0, y1 - y0), flags=cv2.INTER_LINEAR,
-                                         borderMode=cv2.BORDER_REPLICATE)
+            warped = _band_on_strip(band_source(art_l, nm, 2, mg), quad, aq, face_hw, nm, Hm, 4,
+                                    (x0, y0, x1, y1)) * float(fd["shade"])
             yy, xx = np.mgrid[y0:y1, x0:x1].astype("float32") + 0.5
             d = ((xx - a0[0]) * n[0] + (yy - a0[1]) * n[1]) / max(w, 1e-3)
             ramp = np.clip(1.0 - d, 0.0, 1.0)
@@ -889,7 +927,7 @@ def composite(render_rgb, base_rgb, fitted_art, ws, art_q=None, margins=None):
     R = np.asarray(render_rgb, "float32")[..., :3] / 255.0
     B = np.asarray(base_rgb, "float32")[..., :3] / 255.0
     H, W = R.shape[:2]
-    s_lin, a = strip_layer(ws, W, H, fitted_art, margins)
+    s_lin, a = strip_layer(ws, W, H, fitted_art, margins, art_q)
     S = enc(np.where(a[..., None] > 1e-6, s_lin / np.maximum(a[..., None], 1e-6), 0))
     aq = art_q if art_q is not None else ws.get("art_quad")
     if aq is not None:

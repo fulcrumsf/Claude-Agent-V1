@@ -516,7 +516,7 @@ def art_gate(settings, psd, man, render, work):
     """The art-area gate (room_templates.art_area_gate) on one render of template `psd` (manifest `man`)."""
     from . import template_checker as tc
     base = rt.gate_base(man, Path(psd).parent, render, psd, settings, work)
-    return rt.art_area_gate(render, base, man["quad_art"], tc.presentation_of(man))
+    return rt.art_area_gate(render, base, man["quad_art"], tc.presentation_of(man), man.get("wrap_strips"))
 
 
 _real_art_gate = art_gate        # tests swap art_gate for a stub and restore this one
