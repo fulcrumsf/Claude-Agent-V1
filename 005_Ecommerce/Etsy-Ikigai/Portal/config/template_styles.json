@@ -816,6 +816,86 @@
    "key": "2b8535a0a5511207",
    "model": "gemini-3.5-flash-lite",
    "tokens": 1238
+  },
+  "005_Ratio_11x14/002_Bedroom/001_Boho_Colorful/AI_Bedroom_Boho_20261118_002116/AI_Bedroom_Boho_20261118_002116_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Botanical"
+   ],
+   "key": "5c65d3f30cdffa9a",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_003628/AI_Office_Scandinavian_20261118_003628_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Botanical"
+   ],
+   "key": "17ee09b82b6832b8",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_004359/AI_Office_Scandinavian_20261118_004359_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "04a47ba8e3a6dcc7",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_010614/AI_Office_Scandinavian_20261118_010614_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "f6c669b6fe91ed1e",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_224242/AI_Office_Scandinavian_20261118_224242_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Trendy"
+   ],
+   "key": "c6ad5dfefe7cbc48",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1222
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_225100/AI_Office_Scandinavian_20261118_225100_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "da41e421f9b014fb",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
+  },
+  "005_Ratio_11x14/005_Office/001_Scandinavian/AI_Office_Scandinavian_20261118_225742/AI_Office_Scandinavian_20261118_225742_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Trendy"
+   ],
+   "key": "d07ac160df5d1ab9",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1222
+  },
+  "003_Ratio_3x4/001_Living_Rooms/004_Mid_Century/AI_Living_Room_Mid_Century_20261118_233500/AI_Living_Room_Mid_Century_20261118_233500_Template.psd": {
+   "styles": [
+    "Minimalism",
+    "Abstract",
+    "Mid Century"
+   ],
+   "key": "99f0210678d50ed3",
+   "model": "gemini-3.5-flash-lite",
+   "tokens": 1223
   }
  }
 }
