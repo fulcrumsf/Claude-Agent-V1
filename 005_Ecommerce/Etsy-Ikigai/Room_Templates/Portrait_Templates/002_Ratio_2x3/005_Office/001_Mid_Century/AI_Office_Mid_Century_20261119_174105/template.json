@@ -1,0 +1,463 @@
+{
+ "name": "AI_Office_Mid_Century_20261119_174105",
+ "kind": "ai_scene",
+ "psd": "AI_Office_Mid_Century_20261119_174105_Template.psd",
+ "scene": "AI_Office_Mid_Century_20261119_174105_Scene.png",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Office",
+ "etsy_room": "Office",
+ "decor": "Mid_Century",
+ "ratio": "2x3",
+ "print_ratio": "2x3",
+ "so_px": [
+  360,
+  526
+ ],
+ "so_ratio": 0.6844,
+ "quad_insert": [
+  [
+   1019.9099731445312,
+   343.07598876953125
+  ],
+  [
+   1378.93603515625,
+   343.0820007324219
+  ],
+  [
+   1378.8079833984375,
+   867.6829833984375
+  ],
+  [
+   1020.031982421875,
+   867.8579711914062
+  ]
+ ],
+ "quad_art": [
+  [
+   1019.4099731445312,
+   342.57598876953125
+  ],
+  [
+   1379.43603515625,
+   342.5820007324219
+  ],
+  [
+   1379.3079833984375,
+   868.1829833984375
+  ],
+  [
+   1019.531982421875,
+   868.3579711914062
+  ]
+ ],
+ "mode": "full",
+ "canvas": [
+  2400,
+  1792
+ ],
+ "light_from": "right",
+ "quad_paper": [
+  [
+   1019.7979736328125,
+   343.2449951171875
+  ],
+  [
+   1381.4549560546875,
+   343.20098876953125
+  ],
+  [
+   1381.5830078125,
+   867.7219848632812
+  ],
+  [
+   1019.8939819335938,
+   867.9210205078125
+  ]
+ ],
+ "opening_pad_px": 0.5,
+ "presentation": "mat",
+ "despill": {
+  "applied": true,
+  "version": 1,
+  "band_px": 8.99,
+  "face_rgb": [
+   227,
+   187,
+   135
+  ],
+  "orange_axis": 0.702,
+  "margin": 0.15,
+  "changed_px": 3888,
+  "unmixed_px": 3337,
+  "sides": {
+   "top": {
+    "ref_chroma": [
+     1.1130000352859497,
+     0.9869999885559082,
+     0.7990000247955322
+    ],
+    "s_ref": 0.228,
+    "s_band_before": 0.211,
+    "s_band_after": 0.211,
+    "changed_px": 718
+   },
+   "right": {
+    "ref_chroma": [
+     1.0889999866485596,
+     0.9919999837875366,
+     0.8199999928474426
+    ],
+    "s_ref": 0.196,
+    "s_band_before": 0.195,
+    "s_band_after": 0.195,
+    "changed_px": 2077
+   },
+   "bottom": {
+    "ref_chroma": [
+     1.0770000219345093,
+     0.9909999966621399,
+     0.8610000014305115
+    ],
+    "s_ref": 0.157,
+    "s_band_before": 0.141,
+    "s_band_after": 0.141,
+    "changed_px": 613
+   },
+   "left": {
+    "ref_chroma": [
+     1.1130000352859497,
+     0.9869999885559082,
+     0.800000011920929
+    ],
+    "s_ref": 0.227,
+    "s_band_before": 0.196,
+    "s_band_after": 0.196,
+    "changed_px": 480
+   }
+  },
+  "layer": "Despill (orange bounce fix)"
+ },
+ "insert": {
+  "aspect": 0.6843,
+  "screen_aspect": 0.684,
+  "skew": 1.0,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    1017.6,
+    342.3,
+    1382.4,
+    867.3
+   ],
+   "box_source": "gemini",
+   "sam": {
+    "prompt": "box+click",
+    "score": 0.9913259148597717,
+    "area": 185823,
+    "dE": 1.0,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.9913259148597717,
+      "area": 185823,
+      "dE": 1.0
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.5488808751106262,
+      "area": 297284,
+      "dE": 100.4
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9923210740089417,
+      "area": 190623,
+      "dE": 5.2
+     },
+     {
+      "prompt": "click",
+      "score": 0.9682977199554443,
+      "area": 188725,
+      "dE": 2.0
+     },
+     {
+      "prompt": "click",
+      "score": 0.6815540790557861,
+      "area": 299060,
+      "dE": 102.4
+     },
+     {
+      "prompt": "click",
+      "score": 0.6850975155830383,
+      "area": 284490,
+      "dE": 96.6
+     },
+     {
+      "prompt": "box",
+      "score": 0.6257968544960022,
+      "area": 296391,
+      "dE": 101.4
+     },
+     {
+      "prompt": "box",
+      "score": 0.9933105707168579,
+      "area": 190354,
+      "dE": 4.2
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9955,
+    "corner_shift_px": [
+     1.95,
+     2.26,
+     3.21,
+     2.67
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.046
+     },
+     "right": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.049
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.059
+     },
+     "left": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.04
+     }
+    }
+   },
+   "wall_px": 2519781
+  },
+  "opening": {
+   "sides": {
+    "top": {
+     "mode": "chroma",
+     "edge_px": 0.5,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.016,
+     "offset_px": 0.14
+    },
+    "right": {
+     "mode": "chroma",
+     "edge_px": -2.25,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.025,
+     "offset_px": -2.65
+    },
+    "bottom": {
+     "mode": "chroma",
+     "edge_px": 0.0,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.033,
+     "offset_px": -0.05
+    },
+    "left": {
+     "mode": "chroma",
+     "edge_px": 0.0,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.023,
+     "offset_px": -0.12
+    }
+   },
+   "offset_px": {
+    "top": 0.14,
+    "right": -2.65,
+    "bottom": -0.05,
+    "left": -0.12
+   },
+   "reach_px": 9.0
+  },
+  "quad_paper": [
+   [
+    1019.7979736328125,
+    343.2449951171875
+   ],
+   [
+    1381.4549560546875,
+    343.20098876953125
+   ],
+   [
+    1381.5830078125,
+    867.7219848632812
+   ],
+   [
+    1019.8939819335938,
+    867.9210205078125
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0.5 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.199,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.0
+    },
+    {
+     "side": "right",
+     "hard_k": 0.199
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.0
+    },
+    {
+     "side": "left",
+     "hard_k": 0.0
+    }
+   ],
+   "pad_px": 0.5
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.103,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.112,
+     "width_px": -6.0,
+     "blur_px": 10.08,
+     "fit_rms": 0.0063
+    },
+    {
+     "side": "right",
+     "soft_k": 0.814,
+     "width_px": -0.75,
+     "blur_px": 0.96,
+     "fit_rms": 0.0018
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0006
+    },
+    {
+     "side": "left",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0014
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "window pattern",
+   "rectified": true,
+   "dirs_deg": [
+    1.0,
+    99.0
+   ],
+   "tried_rms": [
+    [
+     "1 dir",
+     0.219
+    ],
+    [
+     "2 dirs, crossbar 99 deg",
+     0.112
+    ]
+   ],
+   "fit_rms": 0.1119,
+   "opacity": 0.37,
+   "measured_depth": 0.37,
+   "slats": null,
+   "common_shade": 0.535,
+   "searched_on": "SAM wall mask, rectified with the canvas corners",
+   "insert_texture": 0.0073
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    1019.3359985351562,
+    342.6449890136719
+   ],
+   [
+    1379.39501953125,
+    342.6449890136719
+   ],
+   [
+    1379.2020263671875,
+    868.1110229492188
+   ],
+   [
+    1019.5609741210938,
+    868.2650146484375
+   ]
+  ],
+  "corner_err_px": [
+   0.1,
+   0.08,
+   0.13,
+   0.1
+  ],
+  "max_px": 0.13,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": 0.43,
+   "right": 0.43,
+   "bottom": 0.42,
+   "left": 0.52
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "desc": "AI scene: mid-century modern home office, blank-insert frame (art cover-fits the insert)",
+ "created": "2026-11-19T17:41:05",
+ "prompt": "Photorealistic mid-century modern home office interior featuring one vertical piece of wall art (2:3 ratio). Realistic textures, subtle decor and authentic lived-in detail. Lighting is natural daylight from a window, falling in one consistent direction. Time and season: mid-morning, in autumn, when the sun sits low and warm and reaches deep into the room. The window faces the sun, so sunlight falls straight in and lands on the floor and on the wall near the art. Light style: sunlight filtered through slatted blinds or the leaves of a tree outside, casting a dappled, patterned shadow across the floor and the wall to one side of the artwork. Photographer and stylist: a mid-century design magazine: balanced framing, a few sculptural objects such as a ceramic vase and a stack of design books, warm wood tones with mustard or olive accents. Display: the artwork hangs on the wall centred above the desk, with clear wall on every side of the frame. Camera: square-on to the art wall, the frame level and parallel to the picture edges, verticals straight. Camera height: low, about knee to hip height, looking very slightly up, verticals kept straight. Framing: a wide view of the room for scale, the artwork about a fifth of the image height and still the clear focal point. Lens: a 24-28 mm wide view that shows more of the room, verticals kept straight. Foreground: a small side table with one or two everyday objects stands at one edge of the picture, well clear of the frame. Focus: the artwork and its frame are crisp; only the nearest object at the edge of the picture is softly out of focus. Composition: the artwork on the left third of the picture, the room opening to the right. Walls: a soft warm white. The wall is painted vertical shiplap boards in the wall colour. Floor: a large textured rug covers most of the floor. Furniture: warm walnut and teak. Whatever the light, the artwork itself hangs in calm, even light: sun patches, shadows and any blind or leaf pattern land on the floor and on the wall around the frame, while the whole printed area stays one flat, evenly lit tone; the frame, the mat or canvas edge and the wall each stay clearly distinct, with crisp, unbroken outlines. The whole frame sits inside the picture with clear wall on all four sides; nothing in front of it overlaps any part of the frame. The artwork face is flat, upright and in sharp focus, and the frame stands out clearly from the wall in tone. The picture is a vertical (portrait) photograph with the artwork as its clear focal point. Only one piece of wall art, no other picture frames, posters or mirrors. The artwork's printed area is a single flat, plain, empty, blank onion-skin orange (a pale peachy-orange, roughly RGB 250, 215, 170) surface with a dead-matte, non-reflective finish like unglazed matte card: one even tone from edge to edge, evenly lit across its whole face, glare-free and free of hot spots, so it reads as one clean flat colour. The orange appears only on the front face of the printed area. Its matte surface absorbs the light, so every surface next to it keeps its own natural colour in the room's own light: the frame and its inner edge stay their wood, metal or paint colour, any gap stays a natural neutral shadow, and the wall stays the wall colour. The artwork is framed in a thin warm walnut frame with a WIDE off-white mat border (passe-partout) of exactly even width on all four sides, about 10% of the frame height, with a crisp bevelled window cut. The flat orange printed surface sits inside the mat window; the mat is clearly lighter than the orange so the window edge is sharp. The mat and its bevel stay their own clean off-white right up to the orange edge. Any glazing is clear, invisible museum glass. No people, no faces, no hands, no pets. No lamps unless the room clearly needs one; only props a real person would leave there. Wall paneling or wainscoting only if the room style calls for it (elegant or traditional rooms); if used, either keep it below waist height and fully below the frame, or make the panels larger than the frame with the frame hanging centred inside one panel, with clear wall space on every side; the frame never touches or overlaps any molding, rail or panel edge.",
+ "look": {
+  "version": 2,
+  "seed": 3961270850,
+  "light_style": "dappled",
+  "photographer": "midcentury_magazine",
+  "time_of_day": "morning",
+  "season": "autumn",
+  "sun_direction": "facing_sun",
+  "display": "hung_over_furniture",
+  "camera_height": "low",
+  "camera_angle": "straight_on",
+  "distance": "wide",
+  "lens": "lens_wide",
+  "foreground": "side_table",
+  "depth_of_field": "soft_foreground",
+  "composition": "thirds_left",
+  "wall_palette": "warm_white",
+  "wall_treatment": "shiplap",
+  "floor": "rug_floor",
+  "furniture_finish": "walnut_teak",
+  "frame_finish": "walnut_frame"
+ },
+ "engine": "nbpro",
+ "model": "nano-banana-pro",
+ "resolution": "2K",
+ "aspect": "4:3",
+ "credits": 18.0,
+ "made_for": {
+  "idea_id": 3,
+  "design": "Book Club Cat",
+  "slot": 14
+ }
+}
