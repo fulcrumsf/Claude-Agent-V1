@@ -31,6 +31,13 @@ black-fill shadow rule does not apply; the original BASE is untouched underneath
 every Portal render includes it (it is part of the PSD), and the checker hides it for its geometry checks (they read
 the scene's own pixels) and measures leftover orange on a render with it. Written by build_psd for new builds and by
 `python -m app.despill <template folder>` for existing ones (PSD + template.json backed up into the folder's Archive).
+
+Marker colour (Tony 2026-11-19, slot-set planner): a scene planned on a WARM wall is drawn with a pale BLUE blank
+insert instead of the orange one, so its bounce is blue. Everything above is colour-agnostic (the axis is the face's
+own colour); only the face test's hue window depends on the marker (MARKER_HUE). marker="orange" is the default
+everywhere and gives exactly the old results (golden test tests/test_marker.py). A template records a non-orange
+marker as "marker" in template.json (and in its despill info); marker_of(manifest) reads it. The PSD layer keeps its
+name LAYER for every marker (the checker finds it by that name).
 """
 import json
 import math
@@ -56,6 +63,7 @@ EDGE_IN = 3.0              # the local face sample, px inside the art edge
 COVER_TOL = 0.5            # px: pixels further than this inside the art edge are never changed
 FACE_MIN_C = 15.0          # the face is the orange blank: Lab chroma at least this ...
 FACE_HUE = (40.0, 100.0)   # ... with a hue in this range (onion-skin orange ~75 deg)
+MARKER_HUE = {"orange": FACE_HUE, "blue": (190.0, 300.0)}   # pale sky-blue blank ~261 deg (slot planner, 2026-11-19)
 FACE_FLAT = 6.0            # ... and flat (75th percentile Lab ab distance from its median; a print is not)
 MIN_AXIS = 0.2             # orange axis length (chromaticity) below this: nothing to despill
 LEFT_DE = 6.0              # leftover check: a pixel is visibly orange when (uncovered share x Lab dE) > this ...
@@ -111,8 +119,15 @@ def _geom(q, W, H, reach):
     return (x0, y0, x1, y1), P, d, side, t, sd, dist
 
 
-def face_colour(L, q):
-    """The face's linear colour (median of its plateau) when it is the flat orange blank, else (None, why)."""
+def marker_of(manifest):
+    """The blank insert's marker colour of a template: "orange" unless its template.json says otherwise."""
+    m = manifest or {}
+    return m.get("marker") or (m.get("despill") or {}).get("marker") or "orange"
+
+
+def face_colour(L, q, marker="orange"):
+    """The face's linear colour (median of its plateau) when it is the flat blank of this marker colour (orange by
+    default), else (None, why)."""
     from .template_checker import offset_quad, poly_mask
     q = np.float32(q)
     H, W = L.shape[:2]
@@ -130,8 +145,9 @@ def face_colour(L, q):
     flat = float(np.percentile(np.hypot(lab[:, 1] - lf[1], lab[:, 2] - lf[2]), 75))
     if flat > FACE_FLAT:
         return None, f"the face is not flat ({flat:.1f}): a print, not the orange blank"
-    if C < FACE_MIN_C or not FACE_HUE[0] <= h <= FACE_HUE[1]:
-        return None, f"the face is not the orange blank (Lab chroma {C:.0f}, hue {h:.0f} deg)"
+    lo, hi = MARKER_HUE[marker]
+    if C < FACE_MIN_C or not lo <= h <= hi:
+        return None, f"the face is not the {marker} blank (Lab chroma {C:.0f}, hue {h:.0f} deg)"
     return F, ""
 
 
@@ -147,14 +163,14 @@ def _remap(img, X, Y):
                      for k in range(img.shape[-1])], -1)
 
 
-def apply(rgb, art_q):
+def apply(rgb, art_q, marker="orange"):
     """Despill a scene (RGB uint8 / float 0..255) around the art quad. Returns (despilled uint8 RGB or None when there
-    is nothing to do, info dict)."""
+    is nothing to do, info dict). marker: the blank's colour ("orange" default, "blue" on warm-wall scenes)."""
     rgb = np.asarray(rgb)[..., :3]
     H, W = rgb.shape[:2]
     q = np.float32(art_q)
     Lfull = lin(np.float32(rgb) / 255.0)
-    F, why = face_colour(Lfull, q)
+    F, why = face_colour(Lfull, q, marker)
     if F is None:
         return None, {"applied": False, "why": why}
     cF = F / max(float(F @ W709), 1e-5)
@@ -242,6 +258,8 @@ def apply(rgb, art_q):
     info = {"applied": bool(changed.any()), "version": VERSION, "band_px": round(band, 2),
             "face_rgb": [int(round(float(x))) for x in enc(F) * 255], "orange_axis": round(s_face, 3),
             "margin": MARGIN, "changed_px": int(changed.sum()), "unmixed_px": n_unmix, "sides": info_sides}
+    if marker != "orange":
+        info["marker"] = marker
     return (res if changed.any() else None), info
 
 
@@ -255,7 +273,7 @@ def layer_png(rgb, despilled, path):
     return Path(path)
 
 
-def leftover(rgb, art_q, exclude=()):
+def leftover(rgb, art_q, exclude=(), marker="orange"):
     """The checker's leftover-orange measure on a render of the base (art hidden): what the despill above would still
     change there, as Lab dE x the share of each pixel the art leaves uncovered. `exclude` = polygons drawn over in
     every render (the canvas wrap strips). Per side FAIL when the visibly orange pixels (> LEFT_DE) cover LEFT_AREA
@@ -263,7 +281,7 @@ def leftover(rgb, art_q, exclude=()):
     from .wrap_strips import coverage
     rgb = np.asarray(rgb)[..., :3]
     H, W = rgb.shape[:2]
-    ds, info = apply(rgb, art_q)
+    ds, info = apply(rgb, art_q, marker)
     if not info.get("version"):
         return {"status": "skip", "reason": info.get("why", ""), "sides": {}}
     if ds is None:
@@ -301,7 +319,7 @@ def base_for(scene_rgb, manifest):
     """The base the Portal renders on: the scene, despilled when the template has the despill layer."""
     if not (manifest or {}).get("despill", {}).get("applied"):
         return scene_rgb
-    ds, _ = apply(scene_rgb, manifest["quad_art"])
+    ds, _ = apply(scene_rgb, manifest["quad_art"], marker_of(manifest))
     return scene_rgb if ds is None else ds
 
 
@@ -320,7 +338,7 @@ def add_to_template(tdir, settings=None, run=None, log=print):
     man = json.loads(mf.read_text())
     psd = tdir / man["psd"]
     rgb = np.asarray(Image.open(tdir / man["scene"]).convert("RGB"))
-    ds, inf = apply(rgb, man["quad_art"])
+    ds, inf = apply(rgb, man["quad_art"], marker_of(man))
     if ds is None:
         log(f"no despill: {inf.get('why') or 'no orange spill around the art'}")
         return inf

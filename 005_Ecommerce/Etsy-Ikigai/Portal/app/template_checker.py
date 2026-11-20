@@ -949,7 +949,7 @@ def spill_check(bg_spill, Va, manifest=None):
     from . import despill as dsp
     try:
         ex = [sd["quad"] for sd in (((manifest or {}).get("wrap_strips") or {}).get("sides") or {}).values()]
-        return dsp.leftover(np.uint8(np.clip(np.round(bg_spill), 0, 255)), Va, ex)
+        return dsp.leftover(np.uint8(np.clip(np.round(bg_spill), 0, 255)), Va, ex, dsp.marker_of(manifest))
     except Exception as e:  # noqa: BLE001
         return {"status": "skip", "reason": f"could not measure ({str(e)[:120]})", "sides": {}}
 

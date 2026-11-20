@@ -332,10 +332,12 @@ def seam_continuity(R, quad, strip):
     return {"corr": round(corr(f, at(x)), 3), "ref": round(corr(f, at(-4.0 - x)), 3)}
 
 
-def art_area_gate(render, base, quad, presentation="frame", strips=None):
+def art_area_gate(render, base, quad, presentation="frame", strips=None, marker=None):
     """FAIL when anything other than art shows in or along the art quad, or a wrap strip does not continue the face.
     render/base: paths or HxWx3 uint8 arrays of the same size (base = the art-free scene the PSD renders on);
-    strips = the template's wrap_strips entry (or None). Returns {"pass", "why", "inside_unchanged",
+    strips = the template's wrap_strips entry (or None). marker = the blank insert's colour ("orange" / "blue", Tony
+    2026-11-19; None = read from the base's face: blue when its hue is blue, else orange): a bar of the blank's colour
+    is reported as that colour. The measurement itself is colour-agnostic. Returns {"pass", "why", "inside_unchanged",
     "sides": {side: {"exposed_segments", "width_px", "kind"}}, "seams": {side: {"corr", "ref"}}}."""
     from PIL import Image
     from . import wrap_strips as wst
@@ -356,6 +358,10 @@ def art_area_gate(render, base, quad, presentation="frame", strips=None):
     inner = poly_mask(offset_quad(q, -2.0), W, H) > 0.5
     core = poly_mask(offset_quad(q, -6.0), W, H) > 0.5
     face = np.median(lab[core], 0) if core.any() else np.float32([50, 0, 0])
+    if marker is None:
+        import math
+        fh, fc = math.degrees(math.atan2(float(face[2]), float(face[1]))) % 360, float(np.hypot(face[1], face[2]))
+        marker = "blue" if fc >= 10 and 190 <= fh <= 300 else "orange"
     why, sides = [], {}
     inside = float(((diff < GATE_SAME / 2) & inner).sum() / max(int(inner.sum()), 1))
     if inside > GATE_INSIDE_MAX:
@@ -375,7 +381,7 @@ def art_area_gate(render, base, quad, presentation="frame", strips=None):
             if band.any() and float(np.mean(dp[band] < GATE_SAME)) >= GATE_EXPOSED:
                 hits += 1
                 widths.append(E)
-                kinds.add("orange" if orange > 0.5 else "white")
+                kinds.add(marker if orange > 0.5 else "white")
         if hits:
             sides[nm] = {"exposed_segments": hits, "width_px": round(float(np.median(widths)), 1),
                          "kind": "/".join(sorted(kinds))}

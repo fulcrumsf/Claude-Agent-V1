@@ -38,6 +38,8 @@ Routes (prefix /ikigai):
   POST /api/production/{id}/tags  {rooms[], styles[]} -> Tony's ticks, saved as tags on the design
   POST /api/production/{id}/slots/{slot}/generate {template?} -> one card (one job at a time)
   POST /api/production/{id}/images/{name} {decision} -> approved | denied (-> Archive) | pending (undo)
+  POST /api/production/{id}/plan {slots?, wider?} -> (re)plan the open slots' scenes (app/slot_planner.py, free;
+                                  background, claude -p); wider = plan those slots one step wider
 """
 import json
 from dataclasses import dataclass
@@ -50,7 +52,7 @@ from pydantic import BaseModel
 
 from fastapi.responses import FileResponse, JSONResponse
 
-from . import art, assistant, ideas, prod_chat, production, prints, taste
+from . import art, assistant, ideas, prod_chat, production, prints, slot_planner, taste
 from .channels import get_channel
 from .chat import Reply
 from .db import DB_LOCK, get_meta, set_meta
@@ -226,6 +228,11 @@ class GenerateIn(BaseModel):
     template: str | None = None    # "+" picker: a library template (rel path under Portrait_Templates)
 
 
+class PlanIn(BaseModel):
+    slots: list[int] | None = None   # only these open slots (default: every open slot)
+    wider: bool = False              # plan them one step wider (after two failed tight scenes)
+
+
 class PrintsIn(BaseModel):
     name: str | None = None
     redo: bool = False             # re-run upscale + resize even when done
@@ -256,16 +263,18 @@ def panel_context(con, settings, prefix="/ikigai"):
 
 
 def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None, adapter=None, spawn=None,
-          upscayl=None, mockup_build=None, scene_generator=None, art_classify=None):
+          upscayl=None, mockup_build=None, scene_generator=None, art_classify=None, planner_ask=None):
     """`writer` (prompt text -> raw reply), `adapter` (engine id -> engine adapter), `spawn` (run a worker),
     `upscayl` (one Upscayl pass: src, out, settings), `scene_generator` (kie.ai room scene) and `art_classify`
     (Gemini style guess) are injectable for tests; defaults are the Claude CLI, kie.ai, a daemon thread, the real
-    upscayl-ncnn, kie_edit.generate and template_styles.classify_art."""
+    upscayl-ncnn, kie_edit.generate and template_styles.classify_art. `planner_ask` (prompt, images -> raw reply) is
+    the slot-set planner's model call (default: claude -p, app/slot_planner.default_ask)."""
     r = APIRouter(prefix=prefix, tags=["ikigai"])
     spawn = spawn or art.spawn
     art.recover(con)
     prints.recover(con)
     production.recover(con)
+    slot_planner.recover(con)
 
     def runner(rid):
         spawn(art.run_round, con, settings, rid, writer, adapter)
@@ -455,6 +464,10 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
     def start_auto(idea_id):
         spawn(production.auto_styles, con, settings, idea_id, art_classify)
 
+    def start_plan(idea_id):
+        """The set planner in the background (setting planner_auto): no plan yet, or the inputs changed."""
+        slot_planner.auto(con, settings, idea_id, spawn, planner_ask)
+
     def with_fixes(pan):
         """+ the "Waiting for Claude Code" fix requests of this design (Handoffs folder, status waiting)."""
         try:
@@ -465,8 +478,18 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
 
     @r.get("/api/production/{idea_id}/panel")
     def api_production_panel(idea_id: int):
-        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix, start_auto)),
-                            headers=NO_STORE)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix, start_auto,
+                                                 start_plan)), headers=NO_STORE)
+
+    @r.post("/api/production/{idea_id}/plan")
+    def api_production_plan(idea_id: int, body: PlanIn | None = None):
+        body = body or PlanIn()
+        prod_call(production._ctx, con, settings, idea_id)
+        slots = [int(x) for x in body.slots] if body.slots else None
+        if not slot_planner.start(con, settings, idea_id, spawn, slots, planner_ask,
+                                  tuple(slots or ()) if body.wider else ()):
+            raise HTTPException(422, "the scenes are already being planned for this design")
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix)), headers=NO_STORE)
 
     @r.get("/api/fix-requests")
     def api_fix_requests():
@@ -475,8 +498,8 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
     @r.post("/api/production/{idea_id}/tags")
     def api_production_tags(idea_id: int, body: TagsIn):
         prod_call(production.save_tags, con, settings, idea_id, body.rooms, body.styles)
-        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix, start_auto)),
-                            headers=NO_STORE)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix, start_auto,
+                                                 start_plan)), headers=NO_STORE)
 
     @r.post("/api/production/{idea_id}/slots/{slot}/generate")
     def api_production_generate(idea_id: int, slot: int, body: GenerateIn | None = None):

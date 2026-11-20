@@ -41,5 +41,11 @@
   "room_scene_resolution": "2K",
   "room_scene_aspect": "4:3",
   "room_slots": [3, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-  "room_ratio_weights": {"2x3": 35, "3x4": 25, "4x5": 25, "iso": 10, "11x14": 5}
+  "room_ratio_weights": {"2x3": 35, "3x4": 25, "4x5": 25, "iso": 10, "11x14": 5},
+  "planner_auto": true,
+  "planner_model": "sonnet",
+  "planner_fallback_model": "haiku",
+  "planner_timeout_s": 300,
+  "planner_rounds": 3,
+  "planner_max_tight": 2
 }

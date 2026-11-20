@@ -4,13 +4,50 @@ type: plan
 domain: ecommerce
 tags: [ikigai-digital-studios, portal, production, mockups, room-templates]
 created: 2026-11-19
-status: plan only (nothing built)
+status: built 2026-11-19 (steps 1-10 to G1; G2 not approved, not run); uncommitted until the parent session commits
 ---
 
 # Slot-Set Planner: implementation plan (2026-11-19)
 
 Plan only. No code was changed while writing it. Every build step below is one small commit; nothing spends kie.ai
 credits without Tony's click.
+
+## Decisions 2026-11-19 (Tony) — these override the plan below
+1. **Portrait only.** No landscape art or frames anywhere in the planner (enums, ratios, briefs). Orientation becomes a
+   pre-production setting later; the code keeps one marked hook (`slot_planner.ORIENTATION`), nothing is built for it.
+   The 4:3 generated scene photo IS the Etsy listing photo shape: `room_scene_aspect` stays "4:3", unchanged. Planner
+   prompts describe a portrait FRAME inside a 4:3 photograph (the v2 "portrait photograph" wording stays as it is for
+   replay; it is not "fixed").
+2. **Warm walls ARE allowed.** Replaces "never orange/peach/terracotta/sand walls" (sections 6.3, 7.1, 15.1): the
+   frame-insert MARKER colour is chosen per scene, opposite the wall. Default `orange` (today's behaviour,
+   byte-identical for every existing scene and template). A planned wall on the warm side (terracotta, adobe, mustard,
+   peach, sand, tan, orange-ish, warm brown or red) gets `marker: "blue"` and the prompt asks for a pale blue blank
+   insert. Lint: warm wall => blue marker; cool / neutral wall => orange; never a blue marker on a blue / teal wall.
+   The builder supports the blue marker (insert detection, despill of a blue cast, art-area gate names a blue or orange
+   bar, no hard-coded orange left in the path). Built as its own step before the G0 gate; G0 also runs a warm-wall
+   stand-in with a recoloured blue insert (free).
+3. **Entry / hallway settings** are filed under Living_Rooms (there is no Entryway folder; no folders are created).
+4. **No kie.ai credits, no real generation.** G2 is NOT approved. The build stops after G1 (free dry plan, `claude -p`
+   planner calls only, no Fable).
+
+## Build status (2026-11-19, Claude Opus worker)
+- Steps 1-9 built in `Portal/app/slot_planner.py` (new), `production.py`, `studio.py`, `prod_chat.py`, `assistant.py`,
+  `scene_templates.py` (`shot_meta`, `wall_lab`, `build_psd(marker=)`), `despill.py` (marker hue windows),
+  `room_templates.py` (gate names a blue / orange bar), `template_checker.py` (leftover measure per marker),
+  `templates/index.html` (facts line, Show prompt, plan line, Re-plan), `config/settings.json` (planner_* keys).
+- Marker step (decision 2) built before G0. Orange path byte-identical: `tests/test_marker.py` golden hashes,
+  `tests/test_room_look_v2.py` V2 hashes + live templates replay their saved prompts.
+- Deviations: (a) the plan's "dE2000 < 25 to the insert" wall test is not used (every pale white wall is ~15 from the pale
+  orange insert); the marker follows the wall FAMILY computed from its hex (warm families -> blue). (b) An existing
+  image's scale is NOT inferred from its measured shot: the legacy library frames big wall pieces close (art ~50% of the
+  picture height, G1), so a non-brief template counts as large unless the vision describe says it stands on a surface.
+  (c) The fixed-slot vision describe is one call for all fixed images (not one per image). (d) Auto-planning on panel
+  open needs `planner_auto: true` (on in settings.json) and never retries a failed plan by itself.
+- G0 (free, SAM + PhotoCraft, 9 stand-ins incl. 2 recoloured blue on a terracotta wall): every build, guard and art-area
+  gate PASSED, art at 13-59% of picture height, despill applied (blue: 10.6k and 2.8k px). The template checker FAILED 8 of
+  9 on existing issues seen on the source templates too: 1.5-3.5 px edge strips (resampled crops) and the Office Mid Century
+  scene's Light Shadow sun angle (fails at 18% as well, so not a tight-shot problem). No builder fix made.
+- G1 dry plan for Book Club Cat: see the parent session report. G2 NOT run (no credits).
 
 ## 1. Goal
 

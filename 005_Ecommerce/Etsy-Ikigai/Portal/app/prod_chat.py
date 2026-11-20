@@ -13,6 +13,10 @@ chat, never by opening a separate Claude.
       fix_request {idea_id, slot, summary?} write Handoffs/YYYY-MM-DD_Fix-Request_Portal_Slot-NN.md for Claude Code
       offer_regenerate {idea_id, slot}      a paid regenerate NEVER runs from chat: the reply gets a button, and only
                                             Tony's click on it spends credits
+      slot_prompt_edit {idea_id, slot, scene?, fields?}  change an open slot's planned scene before any credits
+                                            (app/slot_planner.edit_brief: lint failure = refused, balance-only = saved
+                                            with a warning; rev+1, edited in chat, old version kept)
+      slot_prompt_revert {idea_id, slot}    back to the previous version of that slot's planned scene
 Fix requests are plain Markdown in the existing Handoffs folder (every Claude session reads it first). `status:
 waiting` shows as a "Waiting for Claude Code" row in Production; Claude Code sets `status: done` when fixed."""
 import base64
@@ -28,7 +32,8 @@ from .db import DB_LOCK as LOCK
 
 MAX_IMAGES = 2
 MAX_SIDE = 1568
-ACTIONS = ("slot_rerender", "slot_decide", "check_template", "fix_request", "offer_regenerate")
+ACTIONS = ("slot_rerender", "slot_decide", "check_template", "fix_request", "offer_regenerate", "slot_prompt_edit",
+           "slot_prompt_revert")
 FIX_GLOB = "*_Fix-Request_Portal_*.md"
 SLOT_WORDS = re.compile(r"\bslots?\s*#?\s*(\d{1,2}(?:\s*(?:,|and|&|\+)\s*#?\d{1,2})*)", re.I)
 
@@ -150,7 +155,7 @@ def slot_line(f):
     return "- " + " | ".join(bits)
 
 
-def snapshot_lines(con, settings, idea_id, open_slot=None, attached=()):
+def snapshot_lines(con, settings, idea_id, open_slot=None, attached=(), named=()):
     """Lines for the chat's <dashboard> snapshot about the design open in the Production tab."""
     d = design_facts(con, settings, idea_id) if idea_id else None
     if not d:
@@ -158,6 +163,13 @@ def snapshot_lines(con, settings, idea_id, open_slot=None, attached=()):
     out = ["", f"Production tab: design #{d['idea_id']} “{d['name']}” ({_line(d['title'], 90)}), "
                f"folder Designs/{d['folder'].parent.name}/03-Etsy Images. Room image slots:"]
     out += [slot_line(f) for f in d["slots"].values()] or ["- (no room images yet)"]
+    try:
+        from . import slot_planner as splan
+        with LOCK:
+            rec = prints._record(con, prints.listing_for(con, d["idea_id"])["id"])
+        out += splan.chat_lines(rec, open_slot, named or ())
+    except Exception:  # noqa: BLE001  (the chat answers without the plan lines)
+        pass
     job = prod.job_state()
     if job["running"]:
         out.append(f"A Production job is running now: slot {job['slot']} of design #{job['idea_id']} ({job['stage']}).")
@@ -315,6 +327,8 @@ class ProdHooks:
         return iid, slot, facts
 
     def run(self, kind, a, user_text, default_idea):
+        if kind in ("slot_prompt_edit", "slot_prompt_revert"):
+            return self._prompt(kind, a, default_idea)
         iid, slot, facts = self._slot(a, default_idea)
         f = facts["slots"][slot]
         if kind == "slot_decide":
@@ -363,6 +377,29 @@ class ProdHooks:
                                  "body": {}, "idea_id": iid, "slot": slot})
             return f"{note} I can't start that from chat; the button below does it when you click it."
         raise prod.ProductionError(f"unknown action {kind}")
+
+    def _prompt(self, kind, a, default_idea):
+        """Edit / revert an open slot's planned scene (never spends; Generate stays Tony's click)."""
+        from . import slot_planner as splan
+        iid, slot = _int(a.get("idea_id")) or _int(default_idea), _int(a.get("slot"))
+        if iid is None or slot is None:
+            raise prod.ProductionError("which design and slot? (open it in the Production tab or name the slot)")
+        try:
+            if kind == "slot_prompt_revert":
+                b = splan.revert_brief(self.con, self.settings, iid, slot)
+                return f"Slot {slot:02d} is back to its earlier scene ({splan.facts_line(b)}, rev {b['rev']})."
+            fields = a.get("fields") if isinstance(a.get("fields"), dict) else None
+            scene = a.get("scene") if isinstance(a.get("scene"), str) else None
+            if not fields and not scene:
+                raise prod.ProductionError("nothing to change (give the new scene text or the fields)")
+            b, warn = splan.edit_brief(self.con, self.settings, iid, slot, scene, fields)
+        except splan.EditRefused as e:
+            raise prod.ProductionError(f"slot {slot:02d}'s scene was not changed: {e}")
+        line = (f"Slot {slot:02d}'s planned scene is updated ({splan.facts_line(b)}, rev {b['rev']}); Generate on its "
+                "card sends the new prompt.")
+        if warn:
+            line += " It now breaks the set balance: " + "; ".join(warn) + "."
+        return line
 
     def _regen_label(self, iid, slot):
         try:

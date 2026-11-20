@@ -36,6 +36,9 @@ Status: PLAN ONLY. Nothing below is built until Tony says go. Read with `Mockup_
 - Prototype target: corner error 2 px or less (current method 4-12 px). **Do not prototype on the Wabi bedroom (already verified).** Tony will supply a template that was done wrong; test on that, then on the 5 known blank-frame photos.
 - Install SAM outside the workspace (user cache/venv); no new Agent-OS folders.
 
+## 6b. Slot-set planner (2026-11-19)
+- Built per `Pipeline_Docs/Slot_Set_Planner_Plan.md` (Tony's decisions of 2026-11-19 at its top): `Portal/app/slot_planner.py` plans all open room slots of a listing as one set; Generate sends the saved prompt. Status and test results are in that file.
+
 ## 7. Later / not in this build
 - Video_02 template, the "finalization" view, 2- and 3-image sets, multi-packs, description text/PDF/etsy_draft steps, copy-to-clipboard buttons.
 

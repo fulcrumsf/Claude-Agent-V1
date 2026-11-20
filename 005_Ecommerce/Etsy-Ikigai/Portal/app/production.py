@@ -28,6 +28,7 @@ from pathlib import Path
 
 from . import mockups, prints
 from . import room_slots as rs
+from . import slot_planner as splan
 from . import room_templates as rt
 from . import scene_templates as stp
 from .db import DB_LOCK as LOCK
@@ -329,13 +330,32 @@ def checker_fails(settings=None):
     return {rel for rel, r in (data.get("results") or {}).items() if r.get("status") == "FAIL"}
 
 
-def library_picks(plan, slots, lib, fails=frozenset()):
+def library_picks(plan, slots, lib, fails=frozenset(), briefs=None):
     """Which library template each card's next click uses, decided in slot order so no two cards (and no template
     already used in this listing) share one; a template a slot already tried, or one the checker FAILED, is skipped.
-    {slot: template or None}."""
+    {slot: template or None}. briefs = {slot: usable set-plan brief} (app/slot_planner.py): a "library" brief gets its
+    planned template (reserved first), a "new" brief gets None (a new scene) even when an old-style match exists;
+    slots without a brief are decided exactly as before."""
     used = {s.get("template") for s in slots.values() if s.get("template")}
     out = {}
+    briefs = briefs or {}
+    by_rel = {t["rel"]: t for t in lib}
+    reserved = {}
     for c in sorted(plan, key=lambda c: c["slot"]):
+        b = briefs.get(c["slot"])
+        if b and b.get("source") == "library":
+            t = by_rel.get(b.get("library_rel"))
+            if t is not None and t["rel"] not in fails and t["rel"] not in used:
+                reserved[c["slot"]] = t
+                used.add(t["rel"])
+    for c in sorted(plan, key=lambda c: c["slot"]):
+        b = briefs.get(c["slot"])
+        if c["slot"] in reserved:
+            out[c["slot"]] = reserved[c["slot"]]
+            continue
+        if b and b.get("source") == "new":
+            out[c["slot"]] = None
+            continue
         srec = slots.get(str(c["slot"])) or {}
         mine = srec.get("template")
         cands = [t for t in lib if stp.matches(t, c["room"], c["decor"], c["ratio"]) and t["rel"] not in fails
@@ -357,8 +377,21 @@ def _next_source(card, pick, avail, engine):
                      "(Tony makes room folders); pick a template with +"}
 
 
-def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None):
-    """Everything the big middle panel shows for one design."""
+def _briefs(rec, cards):
+    """{slot: usable set-plan brief} for these cards (slot_planner.brief_for: not stale, lint passed, plan usable)."""
+    out = {}
+    for c in cards:
+        b = splan.brief_for(rec, c["slot"])
+        if b:
+            out[c["slot"]] = b
+    return out
+
+
+def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None, start_plan=None):
+    """Everything the big middle panel shows for one design. start_plan(idea_id): the set planner's background
+    trigger (slot_planner.auto: no plan yet, or the inputs changed)."""
+    if start_plan:
+        start_plan(idea_id)
     idea, lst, rec, folder, arts = _ctx(con, settings, idea_id)
     tags = rec.get("design_tags") or {}
     if start_auto and not tags.get("styles") and tags.get("auto_for") != idea["art_image_id"]:
@@ -384,9 +417,14 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None):
               "ratio": s.get("ratio") or "2x3", "by": "earlier", "reason": "not in the current plan",
               "ratio_label": rs.RATIO_LABEL.get(s.get("ratio") or "2x3")}
              for k, s in slots.items() if int(k) not in planned and (s.get("file") or s.get("state"))]
-    picks = library_picks(plan + extra, slots, lib, checker_fails(settings))
+    usable = _briefs(rec, plan + extra)
+    picks = library_picks(plan + extra, slots, lib, checker_fails(settings), usable)
+    set_plan = splan.get_plan(rec) or {}
     for c in sorted(plan + extra, key=lambda c: c["slot"]):
         srec = slots.get(str(c["slot"])) or {}
+        b = usable.get(c["slot"])
+        if b and b.get("ratio"):
+            c = {**c, "ratio": b["ratio"], "ratio_label": rs.RATIO_LABEL.get(b["ratio"], b["ratio"])}
         name, p, where = _current_image(folder, c["slot"], srec, rec)
         img = None
         if name:
@@ -399,12 +437,20 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None):
         made_for = None
         if srec.get("file") == name and srec.get("room") and (srec.get("room"), srec.get("decor")) != (c["room"], c["decor"]):
             made_for = f"{srec.get('room')} · {srec.get('decor')}"
+        nxt = _next_source(c, picks.get(c["slot"]), avail, engine)
+        shown = b or (set_plan.get("briefs") or {}).get(str(c["slot"]))
+        cb = splan.card_brief(shown)
+        if cb is not None:
+            cb["usable"] = bool(b)
+            tight_fails = [a for a in (shown.get("attempts") or []) if a.get("result") in ("no_insert", "gate_fail")]
+            cb["offer_wider"] = bool(shown.get("shot") == "tight" and len(tight_fails) >= 2)
         cards.append({**c, "image": img, "state": state, "message": srec.get("message", ""),
                       "stage": job["stage"] if running else "",
                       "source": srec.get("source"), "template": srec.get("template"),
                       "template_name": names.get(srec.get("template")) or (srec.get("template") or "").split("/")[-1],
-                      "made_for": made_for,
-                      "next": _next_source(c, picks.get(c["slot"]), avail, engine),
+                      "made_for": made_for, "next": nxt, "brief": cb,
+                      "random_look": nxt["kind"] == "new" and not b,
+                      "shot_drift": srec.get("shot_drift") if srec.get("file") == name else None,
                       "credits_spent": srec.get("credits")})
     styles, source = effective_styles(tags)
     return {"idea_id": idea_id, "name": lst["title"], "title": idea["title"],
@@ -416,7 +462,23 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None):
             "styles_auto": (tags.get("auto_styles") or {}).get("styles") or [],
             "styles_auto_error": (tags.get("auto_styles") or {}).get("error"),
             "styles_used": styles, "styles_source": source, "slots": cards, "job": job, "engine": engine,
-            "prints": len(arts)}
+            "prints": len(arts), "set_plan": splan.panel_view(set_plan, splan.is_running(idea_id)),
+            "queue": queue_of(cards)}
+
+
+def queue_of(cards):
+    """The Generate-all hook (future button, not built): open cards in the order to make them, free library first,
+    with the credits each costs. A card with an image that is not denied is not open."""
+    q = [{"slot": c["slot"], "source": c["next"]["kind"], "credits": c["next"].get("credits") or 0,
+          "planned": bool((c.get("brief") or {}).get("usable"))}
+         for c in cards if c["next"]["kind"] != "none" and c["state"] != "running"
+         and (c["image"] is None or c["image"]["status"] == "denied")]
+    return sorted(q, key=lambda x: (x["source"] != "library", x["slot"]))
+
+
+def generate_queue(con, settings, idea_id):
+    """Ordered open slots with source and credits (library first); see queue_of."""
+    return panel(con, settings, idea_id)["queue"]
 
 
 def save_tags(con, settings, idea_id, rooms, styles):
@@ -516,7 +578,9 @@ def art_gate(settings, psd, man, render, work):
     """The art-area gate (room_templates.art_area_gate) on one render of template `psd` (manifest `man`)."""
     from . import template_checker as tc
     base = rt.gate_base(man, Path(psd).parent, render, psd, settings, work)
-    return rt.art_area_gate(render, base, man["quad_art"], tc.presentation_of(man), man.get("wrap_strips"))
+    from .despill import marker_of
+    return rt.art_area_gate(render, base, man["quad_art"], tc.presentation_of(man), man.get("wrap_strips"),
+                            marker_of(man))
 
 
 _real_art_gate = art_gate        # tests swap art_gate for a stub and restore this one
@@ -526,8 +590,9 @@ def _with_gate(g, ag):
     return {**g, "art_area": ag, "pass": bool(g["pass"] and ag["pass"]), "why": list(g["why"]) + list(ag["why"])}
 
 
+SHOT_RANK = {"tight": 0, "medium": 1, "wide": 2}
 GEOMETRY_KEYS = ("so_px", "so_ratio", "quad_insert", "quad_art", "quad_paper", "mode", "canvas", "light_from",
-                 "opening_pad_px", "presentation", "wrap_strips", "despill", "insert", "shadows", "card_test")
+                 "opening_pad_px", "presentation", "wrap_strips", "despill", "insert", "shadows", "card_test", "marker")
 
 
 def rebuild_from_scene(settings, psd, man, work, why=""):
@@ -543,7 +608,9 @@ def rebuild_from_scene(settings, psd, man, work, why=""):
     work = Path(work)
     work.mkdir(parents=True, exist_ok=True)
     box = ((man.get("insert") or {}).get("sam") or {}).get("box")
-    built = stp.build_psd(scene, man["ratio"], work, settings, box=box, presentation=man.get("presentation"))
+    from .despill import marker_of
+    built = stp.build_psd(scene, man["ratio"], work, settings, box=box, presentation=man.get("presentation"),
+                          marker=marker_of(man))
     new = psd.with_name(f"{psd.stem.removesuffix('_Template')}_Rebuild_{datetime.now():%Y%m%d_%H%M%S}_Template.psd")
     shutil.copy2(built["psd_tmp"], new)
     side = {k: v for k, v in man.items() if k not in GEOMETRY_KEYS + ("approved", "approved_at")}
@@ -555,8 +622,27 @@ def rebuild_from_scene(settings, psd, man, work, why=""):
     return new, side
 
 
+def _attempt(con, idea_id, slot, rev, entry):
+    """Append one attempt to the slot's set-plan brief (same rev only; never raises)."""
+    try:
+        with LOCK:
+            lst = prints.listing_for(con, idea_id)
+            rec = prints._record(con, lst["id"])
+            b = ((splan.get_plan(rec) or {}).get("briefs") or {}).get(str(slot))
+            if b is not None and b.get("rev") == rev:
+                b.setdefault("attempts", []).append(dict(entry, at=datetime.now().isoformat(timespec="seconds")))
+                prints._save_record(con, lst["id"], rec)
+    except Exception:  # noqa: BLE001
+        pass
+
+
 def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
-    """Worker for one card: pick the source, render, guard, place. Always releases the job slot."""
+    """Worker for one card: pick the source, render, guard, place. Always releases the job slot.
+    With a usable set-plan brief for the slot (app/slot_planner.py) and no "+" pick: a "library" brief renders its
+    planned template; a "new" brief sends its saved prompt (no random look), builds with its ratio, presentation and
+    insert marker, saves the brief (not a look) in template.json and logs the attempt on the brief. Without one,
+    everything runs exactly as before (random look)."""
+    brief, attempt = None, None
     try:
         idea, lst, rec, folder, arts = _ctx(con, settings, idea_id)
         if not arts:
@@ -573,10 +659,16 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
             source = "picked"
         else:                                   # the same choice the card showed (library_picks, slot order)
             plan_all = plan if any(c["slot"] == slot for c in plan) else plan + [card]
-            t = library_picks(plan_all, _prod(rec)["slots"], lib, checker_fails(settings)).get(slot)
+            usable = _briefs(rec, plan_all)
+            brief = usable.get(slot)
+            if brief and brief.get("ratio"):
+                card = {**card, "ratio": brief["ratio"]}
+            t = library_picks(plan_all, _prod(rec)["slots"], lib, checker_fails(settings), usable).get(slot)
             source = "library" if t else "new"
         out = {"room": card["room"], "decor": card["decor"], "ratio": card["ratio"], "source": source,
                "credits": 0, "new_template": None}
+        if brief:
+            out.update(brief_rev=brief.get("rev"), brief_source=brief.get("source"))
         with tempfile.TemporaryDirectory() as td:
             td = Path(td)
             render = td / "render.png"
@@ -584,8 +676,16 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 if card["ratio"] not in (avail.get(card["room"]) or []):
                     raise stp.TemplateError(f"no {card['room']} folder in Room_Templates for "
                                             f"{rs.RATIO_LABEL[card['ratio']]}; pick a template with +")
-                look = rs.pick_look(card["room"], card["decor"])      # weighted random, saved in template.json
-                prompt = rs.scene_prompt(card["room"], card["decor"], card["ratio"], look=look)
+                if brief and brief.get("source") == "new":    # the planned scene: its saved prompt, no random look
+                    look, prompt = None, brief["prompt"]
+                    pres = "canvas" if brief.get("presentation") in ("canvas", "canvas_bare") else brief["presentation"]
+                    marker = brief.get("marker") or "orange"
+                else:
+                    look = rs.pick_look(card["room"], card["decor"])      # weighted random, saved in template.json
+                    prompt = rs.scene_prompt(card["room"], card["decor"], card["ratio"], look=look)
+                    pres = rs.presentation_for(card["room"], card["decor"], card["ratio"])
+                    marker = "orange"
+                attempt = {"result": "not_drawn", "rev": (brief or {}).get("rev")} if brief else None
                 scene = td / "scene.png"
                 _stage("drawing the room (kie.ai)")
                 gen = stp.generate_scene(prompt, scene, settings, generator)
@@ -593,15 +693,23 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 _stage("finding the frame, building the PSD")
                 (td / "build").mkdir()
                 try:
-                    built = stp.build_psd(scene, card["ratio"], td / "build", settings,
-                                          presentation=rs.presentation_for(card["room"], card["decor"], card["ratio"]))
+                    if marker == "orange":           # byte-identical call for the orange path
+                        built = stp.build_psd(scene, card["ratio"], td / "build", settings, presentation=pres)
+                    else:
+                        built = stp.build_psd(scene, card["ratio"], td / "build", settings, presentation=pres,
+                                              marker=marker)
                 except stp.TemplateError as e:
+                    if attempt:
+                        attempt["result"] = "no_insert"
                     folder.joinpath(ARCHIVE).mkdir(parents=True, exist_ok=True)
                     keep = folder / ARCHIVE / f"Scene_No_Insert_{slot:02d}_{datetime.now():%Y%m%d_%H%M%S}.png"
                     shutil.copy2(scene, keep)
                     why = str(e) if "off the print ratio" in str(e) else "the scene has no clean blank frame insert"
                     raise stp.TemplateError(f"{why} (scene kept as {ARCHIVE}/{keep.name}); Regenerate for a new scene")
-                meta = {"prompt": prompt, "look": look, "engine": settings.get("room_scene_engine", "nbpro"),
+                meta = {"prompt": prompt, **({"look": look} if look is not None else
+                                             {"brief": {k: v for k, v in brief.items()
+                                                        if k not in ("history", "attempts", "prompt")}}),
+                        "engine": settings.get("room_scene_engine", "nbpro"),
                         "model": gen.get("model"), "resolution": settings.get("room_scene_resolution", "2K"),
                         "aspect": settings.get("room_scene_aspect", "4:3"), "credits": gen.get("credits"),
                         "made_for": {"idea_id": idea_id, "design": lst["title"], "slot": slot}}
@@ -615,6 +723,16 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                                   man.get("guard_max_cover"), settings)
                 g = _with_gate(g, art_gate(settings, psd, man, render, td))     # a fresh build: nothing to rebuild
                 out.update(template=rel, new_template=rel, print=art.name, cropped=r["cropped"])
+                if brief:
+                    m2 = stp.shot_meta(man)
+                    drift = None
+                    if m2.get("shot") and m2["shot"] != brief.get("shot"):
+                        wider = SHOT_RANK[m2["shot"]] > SHOT_RANK.get(brief.get("shot"), 1)
+                        drift = (f"drawn {'wider' if wider else 'tighter'} than planned ({m2['shot']} shot, art "
+                                 f"{m2['art_h_frac']:.0%} of the picture height; planned {brief.get('shot')})")
+                        out["shot_drift"] = drift
+                    attempt = {"result": "built" if g["pass"] else "gate_fail", "rev": brief.get("rev"),
+                               "template": rel, "drift": drift, "why": "; ".join(g["why"])[:300]}
             elif t.get("wired"):                           # Teak Sideboard etc.: only when Tony picks it with +
                 _stage("rendering the art into the room")
                 room = next(x for x in rt.rooms(settings) if x["dir"] == t["room_dir"])
@@ -675,12 +793,20 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                     tried.append(out["template"])
                 prod["slots"][str(slot)] = {**out, "file": placed.name, "guard": g, "tried": tried, "state": "done",
                                             "message": ("" if g["pass"] else "flagged by the accuracy guard: "
-                                                        + "; ".join(g["why"])),
+                                                        + "; ".join(g["why"])) + (
+                                                (" " if not g["pass"] else "") + out["shot_drift"].capitalize() + "."
+                                                if out.get("shot_drift") else ""),
                                             "made": datetime.now().isoformat(timespec="seconds"),
                                             "history": (old.get("history") or []) + ([old["file"]] if old.get("file") else [])}
                 prints._save_record(con, lst["id"], rec)
+        if attempt:
+            _attempt(con, idea_id, slot, attempt.get("rev"), attempt)
     except Exception as e:  # noqa: BLE001  (shown on the card; the job slot is always released)
         msg = str(e) if isinstance(e, (ProductionError, stp.TemplateError)) else f"Something went wrong: {e}"
+        if attempt:
+            _attempt(con, idea_id, slot, attempt.get("rev"),
+                     dict(attempt, result=attempt["result"] if attempt["result"] != "built" else "failed",
+                          why=msg[:300]))
         try:
             with LOCK:
                 lst = prints.listing_for(con, idea_id)

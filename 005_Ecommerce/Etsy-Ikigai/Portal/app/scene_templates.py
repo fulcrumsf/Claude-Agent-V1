@@ -1000,8 +1000,12 @@ def card_verify(psd, quad, settings=None, work=None, opening=None):
     return res
 
 
-def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None, paper=False, art_offsets=None):
-    """Scene image -> layered PSD in `work` (SAM corners, measured shadows, card test). Returns the manifest fields."""
+def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None, paper=False, art_offsets=None,
+              marker="orange"):
+    """Scene image -> layered PSD in `work` (SAM corners, measured shadows, card test). Returns the manifest fields.
+    marker: the blank insert's colour the scene was drawn with ("orange" default; "blue" for warm-wall scenes planned
+    by app/slot_planner.py, Tony 2026-11-19). SAM finds the insert by shape and contrast, not by colour; the despill
+    reads the marker's hue. A non-orange marker is recorded as "marker" in the result (template.json)."""
     from PIL import Image
     from .rooms import true_aspect
     work = Path(work)
@@ -1067,7 +1071,7 @@ def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None
         wst.placeholder_png(ws, W, H, work / "L_wrap.png")
         files["Wrap Strip"] = "L_wrap.png"
     from . import despill as dsp
-    ds, ds_info = dsp.apply(rgb, aq)                  # orange bounce from the blank insert (Tony 2026-11-17)
+    ds, ds_info = dsp.apply(rgb, aq, marker)          # the blank's colour bounce (orange, Tony 2026-11-17; or blue)
     if ds is not None:
         dsp.layer_png(rgb, ds, work / "L_despill.png")
         files["Despill"] = "L_despill.png"
@@ -1081,7 +1085,7 @@ def build_psd(scene_png, ratio, work, settings=None, box=None, presentation=None
             "shadows": files.get("_meta"), "card_test": card,
             "canvas": [W, H], "light_from": light_side(rgb.astype("float32") @ W709, q),
             "presentation": presentation or "frame", **({"wrap_strips": ws} if ws else {}),
-            **({"despill": ds_info} if ds is not None else {})}
+            **({"despill": ds_info} if ds is not None else {}), **({"marker": marker} if marker != "orange" else {})}
 
 
 # ---------- step 1: the scene ----------
@@ -1135,7 +1139,7 @@ def save_template(settings, room, decor, ratio, scene_png, built, meta):
            "smart_object_layer": ART, "room": room, "etsy_room": room if room in rs.ETSY_ROOMS else None,
            "decor": decor, "ratio": ratio, "print_ratio": rs.PRINT_RATIO_TAG[ratio],
            **{k: built[k] for k in ("so_px", "so_ratio", "quad_insert", "quad_art", "mode", "canvas", "light_from")},
-           **{k: built[k] for k in ("quad_paper", "opening_pad_px", "presentation", "wrap_strips", "despill")
+           **{k: built[k] for k in ("quad_paper", "opening_pad_px", "presentation", "wrap_strips", "despill", "marker")
               if k in built},
            "insert": built["insert"], "shadows": built.get("shadows"), "card_test": built.get("card_test"),
            "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
@@ -1308,6 +1312,61 @@ def ensure_manifests(settings=None, force=False, log=print):
             failed[t["rel"]] = str(e)[:200]
             log(f"FAILED {t['rel']}: {e}")
     return {"written": done, "failed": failed}
+
+
+# ---------- measured shot facts (slot-set planner, 2026-11-19; nothing is written to any file) ----------
+
+SHOT_BANDS = ((0.47, "tight"), (0.33, "medium"), (0.0, "wide"))   # art quad height / picture height -> shot
+_SHOT_CACHE = {}
+
+
+def wall_lab(img, quad, ring=(0.12, 0.28)):
+    """Median CIELAB (L 0-100, a, b) of the wall in a ring around the art quad (ring = shares of the quad's mean side
+    length outside it; past the frame moulding and a mat). img: HxWx3 uint8 in the quad's pixel space. None when the
+    ring is outside the picture."""
+    import cv2
+    from .template_checker import offset_quad, poly_mask
+    q = np.float32(quad)
+    H, W = img.shape[:2]
+    side = float(np.mean([np.linalg.norm(q[(i + 1) % 4] - q[i]) for i in range(4)]))
+    m = (poly_mask(offset_quad(q, ring[1] * side), W, H) > 0.5) & ~(poly_mask(offset_quad(q, ring[0] * side), W, H) > 0.5)
+    if m.sum() < 200:
+        return None
+    lab = cv2.cvtColor(np.float32(img[..., :3]) / 255.0, cv2.COLOR_RGB2Lab)
+    return [round(float(v), 1) for v in np.median(lab[m], 0)]
+
+
+def shot_meta(manifest, image=None):
+    """How a template frames its art, computed on the fly from what every manifest already has (quad_art + canvas;
+    Tony's PSDs get both via manifest_for_render): art_h_frac (art quad height / picture height), shot (SHOT_BANDS),
+    camera_side (the longer vertical edge is the nearer one: > 3% longer = the camera stands on that side), light_from
+    (the manifest's own), presentation, and wall_lab from `image` (the scene PNG or a render in the same pixel space,
+    optional). Cached per (image, mtime)."""
+    m = manifest or {}
+    q, cv = m.get("quad_art"), m.get("canvas")
+    if not q or not cv:
+        return {}
+    key = None
+    if image is not None and Path(image).is_file():
+        key = (str(image), Path(image).stat().st_mtime_ns, json.dumps(q))
+        if key in _SHOT_CACHE:
+            return dict(_SHOT_CACHE[key])
+    q = np.float32(q)
+    H = float(cv[1])
+    left, right = float(np.linalg.norm(q[3] - q[0])), float(np.linalg.norm(q[2] - q[1]))
+    frac = ((left + right) / 2) / max(H, 1.0)
+    shot = next(name for lim, name in SHOT_BANDS if frac >= lim)
+    side = "left" if left > 1.03 * right else "right" if right > 1.03 * left else "front"
+    out = {"art_h_frac": round(frac, 3), "shot": shot, "camera_side": side, "light_from": m.get("light_from"),
+           "presentation": m.get("presentation")}
+    if key is not None:
+        from PIL import Image
+        with Image.open(image) as im:
+            img = np.asarray(im.convert("RGB"))
+        s = img.shape[1] / float(cv[0])
+        out["wall_lab"] = wall_lab(img, q * s)
+        _SHOT_CACHE[key] = dict(out)
+    return out
 
 
 def manifest_for_render(t, settings=None):

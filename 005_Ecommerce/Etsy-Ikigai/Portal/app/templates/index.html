@@ -317,6 +317,14 @@ button{font:inherit;color:inherit;cursor:pointer}
 .pcard .pmsg{flex:1 1 100%;font-size:12px;color:var(--ink-2);margin:0}
 .pcard .pmsg.bad{color:var(--rising)}
 .pcard .pcost{font:400 11px var(--mono);color:var(--muted);flex:1 1 100%}
+.pcard .pfacts{font:500 11px var(--mono);color:var(--ink-2);padding:0 11px 7px;margin-top:-3px}
+.pcard .pfacts.stale{color:var(--muted);text-decoration:line-through}
+.pprompt{flex:1 1 100%;font-size:12px;color:var(--ink-2)}
+.pprompt summary{cursor:pointer;font:500 11px var(--mono);color:var(--muted)}
+.pprompt pre{white-space:pre-wrap;word-break:break-word;font:400 11.5px/1.5 var(--mono);background:var(--paper-2);border-radius:6px;padding:8px 9px;margin:6px 0 0}
+.pprompt .ptag{font:500 10px var(--mono);border:1px solid var(--line-2);border-radius:20px;padding:0 6px;margin-left:6px}
+.pplan{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 12px;font:400 12px var(--mono);color:var(--ink-2)}
+.pplan.bad{color:var(--rising)}
 .btn.sm{padding:6px 12px;font-size:13px}
 .plus{width:32px;height:32px;border-radius:50%;border:1px solid var(--line-2);background:transparent;font:500 18px/1 var(--sans);display:grid;place-items:center;margin-left:auto}
 .plus:hover:not(:disabled){border-color:var(--ink)}
@@ -773,6 +781,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   const stripHost = document.getElementById("prodstrip");
   const tpick = document.getElementById("tpick");
   let prodItems = [], prodSel = null, pan = null, panErr = "", prodTimer = null, credits = null, pickSlot = null;
+  const openPrompts = new Set();     // "Show prompt" open state survives the 3 s repaint (innerHTML is rebuilt)
   const two = n => String(n).padStart(2, "0");
   function paintStrip() {
     stripHost.innerHTML = prodItems.length ? prodItems.map(d => `<button class="pthumb" data-psel="${d.idea_id}" aria-pressed="${String(d.idea_id) === String(prodSel)}">${d.image_url ? `<img src="${esc(d.image_url)}" alt="" loading="lazy">` : ""}<b>${esc(d.name)}</b><span>${d.counts.approved} approved · ${d.counts.pending} waiting</span></button>`).join("")
@@ -780,7 +789,9 @@ button{font:inherit;color:inherit;cursor:pointer}
   }
   function slotCard(c) {
     const busy = pan.job.running, im = c.image, st = im ? im.status : "";
-    const head = `<div class="ph2"><b>${two(c.slot)} · ${esc(c.room)}</b><span>${esc(c.decor.replace(/_/g, " "))} · ${esc(c.ratio_label)}</span><i class="who ${c.by === "tony" ? "tony" : ""}">${c.by === "tony" ? "your pick" : c.by === "agent" ? "agent" : "earlier"}</i></div>`;
+    const br = c.brief;
+    const head = `<div class="ph2"><b>${two(c.slot)} · ${esc(c.room)}</b><span>${esc(c.decor.replace(/_/g, " "))} · ${esc(c.ratio_label)}</span><i class="who ${c.by === "tony" ? "tony" : ""}">${c.by === "tony" ? "your pick" : c.by === "agent" ? "agent" : "earlier"}</i></div>`
+      + (br ? `<div class="pfacts ${br.usable ? "" : "stale"}" title="${br.usable ? "planned scene" : "plan out of date: re-planning"}">${esc(br.facts)}${br.marker === "blue" ? " · blue insert" : ""}</div>` : "");
     let pic;
     if (c.state === "running") pic = `<div class="pimg run"><b>Making slot ${two(c.slot)}…</b><span>${esc(c.stage || "")}</span></div>`;
     else if (im) pic = `<a class="pimg" href="${esc(im.url)}" target="_blank" rel="noopener" title="Full size">${im.flagged ? `<span class="flag2">flagged</span>` : ""}<img src="${esc(im.url)}" alt="slot ${two(c.slot)}" loading="lazy"></a>`;
@@ -799,7 +810,17 @@ button{font:inherit;color:inherit;cursor:pointer}
     const fr = (pan.fix_requests || []).find(x => x.slot === c.slot);
     if (fr) msg += `<p class="pwait">Waiting for Claude Code</p>`;
     const askc = `<button class="btn ghost sm" data-pchat="${c.slot}" title="Point the Studio chat at this slot (it sees the image)">Ask chat</button>`;
-    return `<article class="pcard ${esc(st)}">${head}${pic}<div class="pb">${msg}${askc}${cost && c.state !== "running" ? `<span class="pcost">${cost}</span>` : ""}${gen}${dec}<button class="plus" data-pplus="${c.slot}" title="Pick any template from the library" ${busy ? "disabled" : ""}>+</button></div></article>`;
+    if (c.random_look && !im) msg += `<p class="pmsg">random look (no plan)</p>`;
+    if (br && br.offer_wider && !(im && im.status === "approved")) msg += `<p class="pmsg"><button class="btn ghost sm" data-pwider="${c.slot}">Plan this slot one step wider</button></p>`;
+    let pp = "";
+    if (br) {
+      const key = `${pan.idea_id}:${c.slot}`, open = openPrompts.has(key) ? " open" : "";
+      const tag = br.edited_by === "chat" ? `<span class="ptag">edited in chat</span>` : "";
+      const body = br.source === "library" ? `Library template ${esc(br.library_name || (br.library_rel || "").split("/").pop())} (free); no prompt sent.`
+        : esc(br.prompt || (br.lint && !br.lint.pass ? "No prompt: " + br.lint.why.join("; ") : "No prompt yet."));
+      pp = `<details class="pprompt" data-pprompt="${esc(key)}"${open}><summary>Show prompt${br.rev > 1 ? " · rev " + br.rev : ""}</summary>${tag}<pre>${body}</pre></details>`;
+    }
+    return `<article class="pcard ${esc(st)}">${head}${pic}<div class="pb">${msg}${pp}${askc}${cost && c.state !== "running" ? `<span class="pcost">${cost}</span>` : ""}${gen}${dec}<button class="plus" data-pplus="${c.slot}" title="Pick any template from the library" ${busy ? "disabled" : ""}>+</button></div></article>`;
   }
   function paintPanel() {
     if (!prodSel) { prodHost.innerHTML = prodItems.length ? `<p class="lead">Click a design above.</p>` : ""; return; }
@@ -810,9 +831,17 @@ button{font:inherit;color:inherit;cursor:pointer}
     const styles = pan.styles_all.map(v => `<button class="chip ${pan.styles.includes(v) ? "on" : ""}" data-pstyle="${esc(v)}">${esc(v)}</button>`).join("");
     const auto = pan.styles.length ? "" : `<span class="pnote">${pan.styles_auto.length ? "Blank: the agent uses " + esc(pan.styles_auto.join(", ")) + " (read from the art)" : pan.styles_auto_error ? "Blank: the style guess failed (" + esc(pan.styles_auto_error) + "); the agent plans without styles" : "Blank: the agent is reading the art…"}</span>`;
     const eng = pan.engine.credits_per_scene ? `new AI scene about ${pan.engine.credits_per_scene} credits ($${pan.engine.usd_per_scene})` : "new AI scene: credits shown after";
+    const sp = pan.set_plan || {status: "none"}, cst = sp.cost || {};
+    const nOpen = (pan.queue || []).length;
+    let planLine = "";
+    if (sp.status === "planning") planLine = `<div class="pplan">Planning scenes…</div>`;
+    else if (sp.status === "ready" || sp.status === "needs_attention") planLine = `<div class="pplan ${sp.status === "ready" ? "" : "bad"}">${sp.status === "ready" ? "Scene plan: ready" : "Needs attention: " + esc((sp.failures || [])[0] || sp.message || "")} · ${nOpen} open slot${nOpen === 1 ? "" : "s"} · ${cst.library || 0} library (free) · ${cst.new || 0} new ≈ ${cst.credits || 0} credits ($${(cst.usd || 0).toFixed(2)})${sp.stale ? " · out of date" : ""}<button class="btn ghost sm" data-preplan>Re-plan open slots</button></div>`;
+    else if (sp.status === "failed") planLine = `<div class="pplan bad">Scene plan failed: ${esc(sp.message || "")} · Generate uses a random look<button class="btn ghost sm" data-preplan>Re-plan open slots</button></div>`;
+    else if (nOpen) planLine = `<div class="pplan">No scene plan yet<button class="btn ghost sm" data-preplan>Plan open slots</button></div>`;
     prodHost.innerHTML = `<section class="ppanel"><div class="phead">${pan.image_url ? `<img src="${esc(pan.image_url)}" alt="">` : ""}<div><h3>${esc(pan.name)}</h3><p>#${pan.idea_id} · ${esc(pan.title)}</p><p>${esc(pan.folder_rel)}</p></div>
       <div class="pcred"><b>${credits == null ? "…" : Math.round(credits)}</b>kie.ai credits left<br>${eng}<br>library templates are free</div></div>
       <div class="ppick"><div class="grp"><i>Rooms (up to ${pan.max_rooms})</i>${rooms}</div><div class="grp"><i>Styles</i>${styles}${auto}</div></div>
+      ${planLine}
       ${(pan.fix_requests || []).length ? `<div class="waitcc"><b>Waiting for Claude Code</b> · ${pan.fix_requests.map(f => `slot ${two(f.slot)}: “${esc(f.words)}” (${esc(f.file)})`).join(" · ")}. The next Claude Code session reads these first.</div>` : ""}
       ${pan.slots.length ? `<div class="pgrid">${pan.slots.map(slotCard).join("")}</div>` : `<p class="lead">No room fits this art yet. Pick a room above.</p>`}
       ${panErr ? `<p class="art-err">${esc(panErr)}</p>` : ""}</section>`;
@@ -827,7 +856,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     catch (err) { try { panErr = (await err.json()).detail || "Could not load this design."; } catch { panErr = "Could not load this design."; } }
     paintPanel();
     clearTimeout(prodTimer);
-    const waiting = pan && (pan.job.running || (!pan.styles.length && !pan.styles_auto.length && !pan.styles_auto_error));
+    const waiting = pan && (pan.job.running || (pan.set_plan && pan.set_plan.status === "planning") || (!pan.styles.length && !pan.styles_auto.length && !pan.styles_auto_error));
     if (waiting && prodOpen()) prodTimer = setTimeout(async () => { const was = pan.job.running; await loadPanel(true); if (was && !pan.job.running) { loadCredits(); loadProd(true); } }, 3000);
   }
   let prodSig = "";
@@ -874,7 +903,16 @@ button{font:inherit;color:inherit;cursor:pointer}
     if (p) openPicker(Number(p.dataset.pplus));
     const q = e.target.closest("[data-pchat]");
     if (q) { window.setChatSlot(Number(q.dataset.pchat), pan.name); }
+    const rp = e.target.closest("[data-preplan]");
+    if (rp) { rp.disabled = true; await panPost(`${prefix}/api/production/${prodSel}/plan`, {}); return loadPanel(true); }
+    const wd = e.target.closest("[data-pwider]");
+    if (wd) { wd.disabled = true; await panPost(`${prefix}/api/production/${prodSel}/plan`, {slots: [Number(wd.dataset.pwider)], wider: true}); return loadPanel(true); }
   });
+  // "Show prompt": remember which cards are open ("toggle" does not bubble, so listen in the capture phase)
+  prodHost.addEventListener("toggle", e => {
+    const d = e.target.closest && e.target.closest("[data-pprompt]"); if (!d) return;
+    if (d.open) openPrompts.add(d.dataset.pprompt); else openPrompts.delete(d.dataset.pprompt);
+  }, true);
   // "+" picker: any template from the library (the Templates tab gallery), filtered to the card's ratio first
   let pickRatio = "";
   async function openPicker(slot) {

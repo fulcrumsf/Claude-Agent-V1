@@ -88,6 +88,12 @@ sentences, from what Tony said and what you see in the image. The Portal adds hi
 template and every check result.
 - offer_regenerate {idea_id, slot}: when Tony wants a different image or a new scene. You can NOT start a paid \
 regenerate; this only puts a button in the chat, and Tony's own click spends the credits.
+- slot_prompt_edit {idea_id, slot, scene?, fields?}: change an OPEN slot's planned scene (the "Scene plan" lines) \
+before anything is generated. scene = the full new scene text (60-160 words of plain room description; describe the \
+scene, never explain why; no people, pets, readable text or other frames). fields = only the fields Tony asks to \
+change, e.g. {"print_size": "8x10", "shot": "tight", "setting": "desk_top", "camera_side": "right", "wall": \
+{"name": "terracotta", "hex": "#C8643C"}}. The Portal checks the rules; a refusal comes back with the reason.
+- slot_prompt_revert {idea_id, slot}: back to the previous version of that slot's planned scene.
 - none: nothing to do (or just leave the block out).
 
 What you can and cannot do in Production, be honest about it:
@@ -131,7 +137,7 @@ def _profile_md(con):
     return taste.to_markdown(taste.build_profile(con))[:4000]
 
 
-def snapshot(con, settings, selected_id=None, prod_idea_id=None, open_slot=None, attached=()):
+def snapshot(con, settings, selected_id=None, prod_idea_id=None, open_slot=None, attached=(), named=()):
     s = ideas.state(con, settings)
     out = [f"Counts: on list {s['shown']}, pending {s['pool']}, in bank {s['banked']}, denied {s['denied']}, "
            f"room {s['room']} of cap {s['cap']}. Last refresh {s['last_refresh'] or 'never'}.", "",
@@ -153,7 +159,7 @@ def snapshot(con, settings, selected_id=None, prod_idea_id=None, open_slot=None,
                     f"Evidence: {json.dumps(d['evidence'], ensure_ascii=False)[:1200]}"]
             out += art.snapshot_lines(con, selected_id)
     try:
-        out += prod_chat.snapshot_lines(con, settings, prod_idea_id, open_slot, attached)
+        out += prod_chat.snapshot_lines(con, settings, prod_idea_id, open_slot, attached, named)
     except Exception as e:  # noqa: BLE001  (the chat still answers without the Production lines)
         out += ["", f"(Production details could not be read: {_line(e, 120)})"]
     out += ["", "Taste profile:", _profile_md(con)]
@@ -163,7 +169,8 @@ def snapshot(con, settings, selected_id=None, prod_idea_id=None, open_slot=None,
 def build_prompt(con, settings, history, text, selected_id=None, note=None, prod_idea_id=None, open_slot=None,
                  attached=()):
     convo = [f"{'Tony' if m['role'] == 'tony' else 'You'}: {_line(m['text'], 600)}" for m in history]
-    parts = ["<dashboard>", snapshot(con, settings, selected_id, prod_idea_id, open_slot, attached), "</dashboard>", "",
+    parts = ["<dashboard>", snapshot(con, settings, selected_id, prod_idea_id, open_slot, attached,
+                                     prod_chat.named_slots(text)), "</dashboard>", "",
              "<conversation>", "\n".join(convo) or "(start)", "</conversation>", ""]
     if note:
         parts += [f"<portal_note>{note}</portal_note>", ""]

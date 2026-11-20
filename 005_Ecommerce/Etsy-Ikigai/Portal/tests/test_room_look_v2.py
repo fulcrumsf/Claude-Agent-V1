@@ -103,6 +103,66 @@ def test_old_v1_looks_still_replay_exactly():
         rs.pick_look("Bedroom", "Japandi", override={"version": 1, "photographer": "japandi_calm"})
 
 
+# captured from the v2 code (commit 37a24938, 2026-11-19) BEFORE the slot-set planner was built: v2 looks and the
+# Templates-tab preview must replay byte-identically (Slot_Set_Planner_Plan.md test 11.1). key -> (look sha1, prompt
+# sha1 for frame, mat, canvas, canvas_bare)
+V2 = {("Bedroom", "Japandi", "3x4", 42): ("d864bae37ff732bb4847c3d471070f767eb85383",
+                                          ["9294be76002ea1d5c26ae89181e02f36234010cb",
+                                           "36a4ab285568629e4ca04493bf097868592cc254",
+                                           "c1186e57389c5e0e2aaea2076defafb28e1d8e1a",
+                                           "065a5d03be0fadf8b4add05bbb9a9fd8b4ef091e"]),
+      ("Office", "Modern", "2x3", 123456): ("f08ad1f77ae77ba29884b5b0245f84b2301ce88e",
+                                            ["5b9309506bc7b4bf5e600fbe3853a082e435b5e8",
+                                             "6f9e1f6048b6f4679deeae843186e4fe2d1c6599",
+                                             "46888daeb302e74f9954fa7744e086af75e62994",
+                                             "2334f18e7d0c99715899a6a9ccb874d907fab107"]),
+      ("Living room", "Mid_Century", "4x5", 7): ("827b840395e47e43a123b7997fc0160a738241f2",
+                                                 ["87466faf44dad462deb06897959ff400cc516ed4",
+                                                  "eb5f745e3c012f0f7830ca70874c18b48ad6880b",
+                                                  "dd56cd79dc65f8440cdb9182f616c413c34858b5",
+                                                  "81411ae669e8e40a2b0ae54683321d470812e295"]),
+      ("Kitchen & dining", "Rustic_Farmhouse", "iso", 99): ("412dbbc68b23a112a9c1ce27c6eacccd6a4dd2a8",
+                                                            ["f511909dba507637ec7eec60b132e817e4da51bd",
+                                                             "7e41734d83fcf270f109919d3cce3dc8b0524f0d",
+                                                             "77039bd5e3ba7a78a803410ff6f66328cd69abfd",
+                                                             "410a3a630c51362c7fdd081c5a46c9a7adee7be1"])}
+V2_PREVIEW = "c4c1a8aa016ced51af463d02326c3d7e70bcfc31"     # scene_prompt(Living room, Modern, 2x3, LOOK_AT_BUILD)
+V2_PRESENTATIONS = ['frame', 'frame', 'mat', 'mat', 'mat', 'frame', 'canvas', 'canvas', 'frame', 'frame', 'canvas',
+                    'canvas', 'frame', 'canvas', 'canvas', 'canvas', 'frame', 'mat', 'frame', 'mat']
+
+
+def test_v2_looks_and_prompts_replay_byte_identically():
+    for (room, decor, ratio, seed), (look_h, hashes) in V2.items():
+        lk = rs.pick_look(room, decor, seed=seed)
+        assert hashlib.sha1(repr(sorted(lk.items())).encode()).hexdigest() == look_h, (room, decor)
+        replay = rs.pick_look(room, decor, seed=lk["seed"], override=lk)
+        for kind, h in zip(("frame", "mat", "canvas", "canvas_bare"), hashes):
+            for look in (lk, replay):
+                t = rs.scene_prompt(room, decor, ratio, presentation=kind, look=look)
+                assert hashlib.sha1(t.encode()).hexdigest() == h, (room, kind)
+    t = rs.scene_prompt("Living room", "Modern", "2x3", look=rs.LOOK_AT_BUILD)
+    assert hashlib.sha1(t.encode()).hexdigest() == V2_PREVIEW
+    assert [rs.presentation_for(r, d, q) for r in ("Bedroom", "Office") for d in ("Japandi", "Modern")
+            for q in rs.RATIOS] == V2_PRESENTATIONS
+
+
+def test_live_templates_replay_their_saved_prompt():
+    """Every live template with a saved look (v1 or v2) gives back exactly its saved prompt (test 11.2)."""
+    import json
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[2] / "Room_Templates" / "Portrait_Templates"
+    files = [f for f in root.glob("**/template.json") if "Archive" not in f.parts] if root.is_dir() else []
+    looks = [(f, json.loads(f.read_text())) for f in files]
+    looks = [(f, m) for f, m in looks if m.get("look")]
+    if not looks:
+        pytest.skip("no live template library here")
+    for f, m in looks:
+        lk = rs.pick_look(m["room"], m["decor"], seed=m["look"]["seed"], override=m["look"])
+        kinds = ("canvas", "canvas_bare") if m.get("presentation") == "canvas" else (m.get("presentation") or "frame",)
+        assert any(rs.scene_prompt(m["room"], m["decor"], m["ratio"], presentation=k, look=lk) == m["prompt"]
+                   for k in kinds), f.parent.name
+
+
 def _problems(lk, room, decor):
     """Independent restatement of the hard rules (not reusing _look_fits)."""
     bad = []
