@@ -1,0 +1,47 @@
+# Mock-Up Inspiration - Cleanup Log (2026-11-20)
+
+Removed things that are not part of the photographed room (Pinterest/Etsy UI, shop labels, watermarks).
+The artwork inside the frames was left alone (a later step blanks it). Untouched originals of every edited
+file are in `Archive/` with the same filename. No upscaling or sharpening.
+
+Tools: crop = Pillow; LaMa = `big-lama.pt` from the Pinokio ComfyUI models folder, run directly with torch
+(no ComfyUI job), result pasted back only inside the mask; Nano = kie.ai Nano Banana 2.1 wide-crop fill
+(crop with an exact ratio, result pasted back only inside the mask).
+
+| id | overlay found | where | fix used | result |
+|---|---|---|---|---|
+| 0001 | Pinterest "Visit site" button + lens (visual search) button | bottom-left, bottom-right | LaMa (credenza kept, so no crop) | ok |
+| 0002 | none | - | untouched | ok |
+| 0003 | none | - | untouched | ok |
+| 0004 | none | - | untouched | ok |
+| 0005 | "Deal" bubble | top-left corner | crop top 16 px (213x302 to 213x286) | ok |
+| 0006 | "0:14" video timer | top-left corner | crop left 39 px (224x221 to 185x221; wall only) | ok |
+| 0007 | none | - | untouched | ok |
+| 0008 | "Deal" bubble | top-left corner | LaMa (a crop would cut the frame or doorway) | ok; "ART EXPLORE" watermark sits on the artwork, left for the blanking step |
+| 0009 | none | - | untouched | ok |
+| 0010 | none | - | untouched | ok |
+| 0011 | "Deal" bubble | top-left corner | LaMa (a crop would lose the left sconce) | ok |
+| 0012 | "Artexplorespace" watermark | wall/bench, lower left of room | LaMa | ok |
+| 0013 | none | - | untouched | ok |
+| 0014 | "Deal" bubble | top-left corner | crop top 17 px (211x283 to 211x266) | ok |
+| 0015 | none | - | untouched | ok |
+| 0016 | none | - | untouched | ok |
+| 0017 | none | - | untouched | ok |
+| 0018 | none | - | untouched | ok |
+| 0019 | none | - | untouched | ok |
+| 0020 | none | - | untouched | ok |
+| 0021 | "Deal" bubble | top-left corner | LaMa on the brick wall | ok |
+| 0022 | "ArtisBetter" watermark | bottom-left edge | crop bottom 17 px (220x297 to 220x280) | ok |
+| 0023 | none | - | untouched | ok |
+| 0024 | "insert your own design" circle | top-left, over window and wall | Nano (LaMa tried first, smeared the garden view) | ok |
+| 0025 | "aurethia studio" shop name | bottom centre, over floor and frame edge | LaMa | ok |
+| 0026 | faint tiled "CanvaMockupStore"-style watermarks | wall left and right of frame (7 spots) | LaMa per spot | ok on wall; marks printed inside the artwork left for the blanking step |
+| 0027 | faint "studio tres mood" watermark | bottom-left, tiles beside toilet | LaMa | ok |
+| 0028 | "EASY EDIT" + ring of small letters | right side, over frame, rug and print | LaMa on a pixel-tight text mask (Nano refused: "flagged as sensitive", not charged) | ok; a few letters of the print's own "every day" line got softened (artwork, blanked later) |
+| 0029 | carousel arrow stub | left edge, mid height | crop left 13 px (676x560 to 663x560) | ok |
+| 0030 | "insert your own design" circle | top-left, over wall and plant | LaMa | ok |
+| 0031 | none | - | untouched | ok |
+| 0032 | faint tiled mock-up store watermarks | right wall, floor bottom-right, door glass (5 spots) | LaMa per spot | ok; marks inside the artwork left for the blanking step |
+
+Totals: 5 crop, 12 inpaint (11 LaMa, 1 Nano), 15 untouched. kie.ai credits spent: 6 (one Nano call; the
+refused 0028 call cost nothing).

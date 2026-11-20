@@ -30,3 +30,20 @@ outside this folder.
 | 0020 | Screenshot 2026-11-19 at 6.06.58 PM.png | 0020_Blue_Grey_Bedroom_Red_Mushroom_Lamp_Above_Bed.png |
 | 0021 | Screenshot 2026-11-19 at 6.07.16 PM.png | 0021_Grey_Distressed_Brick_Thin_Gold_Frame_Diagonal_Sun.png |
 | 0022 | Screenshot 2026-11-19 at 6.07.23 PM.png | 0022_Exposed_Beams_Floating_Shelves_Boucle_Armchair_Wide_Shot.png |
+
+## 2026-11-20 additions
+
+Ten new screenshots renamed in place, same convention, ids continue from 0023.
+
+| id | original_filename | new_filename |
+|---|---|---|
+| 0023 | Screenshot 2026-11-20 at 2.23.08 PM.png | 0023_Sunlit_Dining_Nook_Rust_Banquette_Thin_Oak_Frame_Pendant_Lamp.png |
+| 0024 | Screenshot 2026-11-20 at 2.23.59 PM.png | 0024_Kitchen_Corner_Sink_Subway_Tile_Thin_Black_Frame_Evening_Light.png |
+| 0025 | Screenshot 2026-11-20 at 2.25.55 PM.png | 0025_Floor_Lean_Thin_Oak_Frame_Bedside_Window_Low_Angle.png |
+| 0026 | Screenshot 2026-11-20 at 2.26.17 PM.png | 0026_Floor_Lean_Thin_Oak_Frame_White_Wall_Pine_Floor_Window_Shadows.png |
+| 0027 | Screenshot 2026-11-20 at 2.27.04 PM.png | 0027_Bathroom_Tile_Wall_Thin_Oak_Frame_Above_Toilet_Shelf.png |
+| 0028 | Screenshot 2026-11-20 at 2.27.47 PM.png | 0028_Floor_Lay_Oak_Frame_Sheepskin_Rug_High_Angle.png |
+| 0029 | Screenshot 2026-11-20 at 2.28.13 PM.png | 0029_Plain_White_Wall_Thin_Gold_Frame_Straight_On.png |
+| 0030 | Screenshot 2026-11-20 at 2.28.43 PM.png | 0030_Coffee_Bar_Walnut_Dresser_Thin_Black_Frame_Floating_Shelves.png |
+| 0031 | Screenshot 2026-11-20 at 2.29.20 PM.png | 0031_Oak_Shelving_Niche_Thin_Oak_Frame_Slatted_Sun_Stripes.png |
+| 0032 | Screenshot 2026-11-20 at 2.30.22 PM.png | 0032_Floor_Lean_Thin_Oak_Frame_Herringbone_Floor_French_Door.png |
