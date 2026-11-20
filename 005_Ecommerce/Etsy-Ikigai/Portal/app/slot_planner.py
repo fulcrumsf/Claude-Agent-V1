@@ -321,7 +321,11 @@ def marker_for_wall(hx):
     brown / red, warm pink: WARM_FAMILIES), orange otherwise (default, today's path: whites, creams, greiges, greys,
     greens, blues, plums). A colour-difference test is not used: dE2000 puts every pale white within ~15 of the pale
     orange insert, and white walls with the orange insert are what all live templates are."""
-    return "blue" if wall_family(lab_of_hex(hx)) in WARM_FAMILIES else "orange"
+    lab = lab_of_hex(hx)
+    if wall_family(lab) in WARM_FAMILIES:
+        return "blue"
+    L, C, h = lch(lab)          # tolerance (Tony 2026-11-20): a visibly warm pale wall (sand, tan, beige, warm greige)
+    return "blue" if (C >= 8.5 and 35 <= h <= 100 and L >= 55) else "orange"   # is near the insert; whites/creams stay orange
 
 
 # ---------- normalise + lint one brief ----------

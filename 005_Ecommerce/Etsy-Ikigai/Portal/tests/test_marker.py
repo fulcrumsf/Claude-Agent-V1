@@ -109,3 +109,11 @@ def test_build_psd_records_a_blue_marker_and_despills_blue(tmp_path, monkeypatch
     work = tmp_path / "o"
     work.mkdir()                                                              # pytest's own temp folder
     assert "marker" not in stp.build_psd(png, "3x4", work, {}, presentation="frame")   # orange: no new key
+
+
+def test_marker_tolerance_pale_warm_walls_blue_whites_orange():
+    from app import slot_planner as sp
+    for hx in ("#D8C8A8", "#E3D8C4", "#C9B08A", "#E0D3BC", "#D9CDB8"):
+        assert sp.marker_for_wall(hx) == "blue", hx
+    for hx in ("#F3EBDD", "#F5EFE4", "#F5F2EC", "#D6CFC4", "#BDBDBD", "#DCE3D5"):
+        assert sp.marker_for_wall(hx) == "orange", hx
