@@ -850,11 +850,14 @@ button{font:inherit;color:inherit;cursor:pointer}
     try { const j = await fetch(`${prefix}/api/art/balance`).then(r => r.json()); credits = j.credits; } catch { /* keep */ }
     paintPanel();
   }
+  let lastPanSig = "";
   async function loadPanel(quiet) {
     if (!prodSel) { paintPanel(); return; }
     try { const r = await fetch(`${prefix}/api/production/${prodSel}/panel`, {cache: "no-store"}); if (!r.ok) throw r; pan = await r.json(); if (!quiet) panErr = ""; }
     catch (err) { try { panErr = (await err.json()).detail || "Could not load this design."; } catch { panErr = "Could not load this design."; } }
-    paintPanel();
+    const psig = JSON.stringify([pan, panErr, prodSel]);       // repaint only when something changed: no flashing while it plans
+    if (!(quiet && psig === lastPanSig)) paintPanel();
+    lastPanSig = psig;
     clearTimeout(prodTimer);
     const waiting = pan && (pan.job.running || (pan.set_plan && pan.set_plan.status === "planning") || (!pan.styles.length && !pan.styles_auto.length && !pan.styles_auto_error));
     if (waiting && prodOpen()) prodTimer = setTimeout(async () => { const was = pan.job.running; await loadPanel(true); if (was && !pan.job.running) { loadCredits(); loadProd(true); } }, 3000);
