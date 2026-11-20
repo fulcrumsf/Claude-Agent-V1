@@ -1184,8 +1184,9 @@ def contact_sheet(items, out_path, cell=420):
     return out_path
 
 
-def library_candidates(settings, room, used, fails, limit=8):
-    """Unused, checker-not-failed library templates of this room (any ratio with a folder), with shot_meta."""
+def library_candidates(settings, room, used, fails, limit=8, decor=None):
+    """Unused, checker-not-failed library templates of this room (any ratio with a folder), with shot_meta. With decor
+    (Tony 2026-11-20) a template must also match the slot's decor, like production.library_picks does."""
     from . import scene_templates as stp
     out = []
     want = rs.ROOM_FOLDER.get(room)
@@ -1193,6 +1194,8 @@ def library_candidates(settings, room, used, fails, limit=8):
         if t.get("wired") or t["rel"] in used or t["rel"] in fails or rs.norm(t["room"]) != want:
             continue
         man = t.get("manifest") or {}
+        if decor and not rs.decor_matches(decor, t["style"], t["name"], t.get("desc"), man.get("decor")):
+            continue
         scene = t["psd"].parent / str(man.get("scene") or "") if man.get("scene") else None
         meta = stp.shot_meta(man, scene if scene is not None and scene.is_file() else None) if man else {}
         if not meta:
@@ -1234,7 +1237,7 @@ def context(con, settings, idea_id, ask_vision=None, cached_fixed=None, work=Non
     an = prod._analysis(rec, arts)
     opens = [{"slot": c["slot"], "room": c["room"], "decor": c["decor"], "by": c.get("by"),
               "ratios": list(avail.get(c["room"]) or []),
-              "library": library_candidates(settings, c["room"], used, fails)} for c in open_slots]
+              "library": library_candidates(settings, c["room"], used, fails, decor=c["decor"])} for c in open_slots]
     images = []
     iso = next((a for a in arts if "_ISO_" in a.name), arts[0] if arts else None)
     from .prod_chat import encode_image
