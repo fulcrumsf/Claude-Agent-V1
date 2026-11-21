@@ -228,6 +228,31 @@ class TagsIn(BaseModel):
 
 class GenerateIn(BaseModel):
     template: str | None = None    # "+" picker: a library template (rel path under Portrait_Templates)
+    engine: str | None = None      # one click on another engine ("Try on Nano Banana Pro"); also saved for the card
+
+
+class PrefIn(BaseModel):
+    key: str                       # reference_share | reference_closeness | scene_engine | generate_all_cap
+    value: object = None
+
+
+class SlotEngineIn(BaseModel):
+    engine: str | None = None      # None = the panel default
+
+
+class GenerateAllIn(BaseModel):
+    key: str                       # sha1 of the estimate rows Tony saw
+    cap: int | None = None
+
+
+class AbIn(BaseModel):
+    key: str | None = None
+    value: int | None = None
+    grade: str | None = None
+
+
+class NanoIn(BaseModel):
+    ids: list[str] = []
 
 
 class GradeIn(BaseModel):
@@ -283,6 +308,8 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
     prints.recover(con)
     production.recover(con)
     slot_planner.recover(con)
+    from . import references as refs_mod
+    refs_mod.recover()
 
     def runner(rid):
         spawn(art.run_round, con, settings, rid, writer, adapter)
@@ -512,9 +539,133 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
     @r.post("/api/production/{idea_id}/slots/{slot}/generate")
     def api_production_generate(idea_id: int, slot: int, body: GenerateIn | None = None):
         tpl = body.template if body else None
+        eng = body.engine if body else None
+        if eng:                                   # "Try on Nano Banana Pro": the card's engine becomes that one
+            prod_call(production.set_slot_engine, con, settings, idea_id, slot, eng)
         prod_call(production.start_slot, con, settings, idea_id, slot, tpl)
         spawn(production.run_slot, con, settings, idea_id, slot, tpl, scene_generator)
         return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix)), headers=NO_STORE)
+
+    # ---------- controls addendum: sliders, engines, Generate all, A/B, reference Refresh ----------
+
+    @r.post("/api/prefs")
+    def api_prefs(body: PrefIn):
+        from . import prefs
+        try:
+            prefs.put(con, body.key, body.value, settings)
+        except prefs.PrefError as e:
+            raise HTTPException(422, str(e))
+        return prefs.all_prefs(con, settings)
+
+    @r.post("/api/production/{idea_id}/slots/{slot}/engine")
+    def api_production_slot_engine(idea_id: int, slot: int, body: SlotEngineIn):
+        prod_call(production.set_slot_engine, con, settings, idea_id, slot, body.engine or None)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix)), headers=NO_STORE)
+
+    @r.get("/api/production/{idea_id}/generate-all")
+    def api_generate_all_estimate(idea_id: int, cap: int | None = None):
+        return JSONResponse(prod_call(production.estimate, con, settings, idea_id, cap), headers=NO_STORE)
+
+    @r.post("/api/production/{idea_id}/generate-all")
+    def api_generate_all(idea_id: int, body: GenerateAllIn):
+        from . import prefs
+        if body.cap is not None:
+            try:
+                prefs.put(con, "generate_all_cap", body.cap, settings)
+            except prefs.PrefError as e:
+                raise HTTPException(422, str(e))
+        prod_call(production.start_batch, con, settings, idea_id, body.key, body.cap, spawn, scene_generator)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix)), headers=NO_STORE)
+
+    @r.post("/api/production/generate-all/cancel")
+    def api_generate_all_cancel():
+        return {"cancelled": production.cancel_batch(), "batch": production.batch_state()}
+
+    @r.post("/api/production/{idea_id}/slots/{slot}/abtest")
+    def api_abtest_plan(idea_id: int, slot: int):
+        """Free: three plans of this slot at closeness 20 / 60 / 100 (claude -p), in the background."""
+        prod_call(production._ctx, con, settings, idea_id)
+
+        def job():
+            try:
+                slot_planner.plan_variants(con, settings, idea_id, slot, planner_ask)
+            except Exception as e:  # noqa: BLE001
+                slot_planner._save(con, idea_id, lambda sp: sp.setdefault("abtest", {}).__setitem__(
+                    str(slot), {"status": "failed", "message": str(e)[:200]}))
+        slot_planner._save(con, idea_id, lambda sp: sp.setdefault("abtest", {}).__setitem__(
+            str(slot), {"status": "planning"}))
+        spawn(job)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix)), headers=NO_STORE)
+
+    @r.get("/api/production/{idea_id}/slots/{slot}/abtest/estimate")
+    def api_abtest_estimate(idea_id: int, slot: int):
+        est = prod_call(production.ab_estimate, con, settings, idea_id, slot)
+        est.pop("briefs", None)
+        return est
+
+    @r.post("/api/production/{idea_id}/slots/{slot}/abtest/generate")
+    def api_abtest_generate(idea_id: int, slot: int, body: AbIn):
+        prod_call(production.start_abtest, con, settings, idea_id, slot, body.key or "", spawn, scene_generator)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix)), headers=NO_STORE)
+
+    @r.post("/api/production/{idea_id}/slots/{slot}/abtest/place")
+    def api_abtest_place(idea_id: int, slot: int, body: AbIn):
+        prod_call(production.ab_place, con, settings, idea_id, slot, body.value)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix)), headers=NO_STORE)
+
+    @r.post("/api/production/{idea_id}/slots/{slot}/abtest/grade")
+    def api_abtest_grade(idea_id: int, slot: int, body: AbIn):
+        prod_call(production.ab_grade, con, settings, idea_id, slot, body.value, body.grade)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix)), headers=NO_STORE)
+
+    @r.post("/api/references/refresh")
+    def api_references_refresh():
+        from . import references
+        if not references.start_refresh(settings, spawn):
+            raise HTTPException(422, "the reference library is already refreshing")
+        return references.refresh_view(settings)
+
+    @r.get("/api/references/refresh")
+    def api_references_refresh_state():
+        from . import references
+        return JSONResponse(references.refresh_view(settings), headers=NO_STORE)
+
+    @r.post("/api/references/{rid}/ok")
+    def api_reference_ok(rid: str):
+        from . import references
+        try:
+            references.mark_ok(settings, rid)
+        except KeyError:
+            raise HTTPException(404, "no such reference")
+        return references.refresh_view(settings)
+
+    @r.post("/api/references/{rid}/archive")
+    def api_reference_archive(rid: str):
+        from . import references
+        try:
+            references.archive_ref(settings, rid)
+        except KeyError:
+            raise HTTPException(404, "no such reference")
+        return references.refresh_view(settings)
+
+    @r.post("/api/references/nano")
+    def api_reference_nano(body: NanoIn):
+        """PAID (about 6 kie.ai credits each, only on Tony's click); the cap is enforced here."""
+        from . import references
+        plan = references.nano_plan(settings, body.ids)
+        if not plan["ok"]:
+            raise HTTPException(422, f"{plan['credits']} credits is over the cap of {plan['cap']}; pick fewer images")
+        return {"results": references.nano_fill(body.ids, settings), "view": references.refresh_view(settings)}
+
+    @r.get("/api/references/check/{name}")
+    def api_reference_check(name: str):
+        from . import references
+        if not re.fullmatch(r"\d{4}_[A-Za-z0-9_\-]+_Cleanup_Check(_Original(_\d+)?)?\.png", name):
+            raise HTTPException(404, "no such image")
+        f = references.ref_dir(settings) / "Archive" / name
+        if not f.is_file():
+            raise HTTPException(404, "no such image")
+        return FileResponse(f, headers=REVALIDATE)
 
     @r.post("/api/mockups/{idea_id}/run")
     def api_mockups_run(idea_id: int):

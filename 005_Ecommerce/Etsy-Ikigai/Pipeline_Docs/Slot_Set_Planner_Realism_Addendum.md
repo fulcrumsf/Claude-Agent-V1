@@ -4,7 +4,7 @@ type: plan
 domain: ecommerce
 tags: [ikigai-digital-studios, portal, production, mockups, room-templates, slot-planner]
 created: 2026-11-20
-status: built 2026-11-21 on Tony's 'Yes, build all' (steps 1-11; one commit by the parent session; paid scenes only on Tony's click)
+status: built 2026-11-21 on Tony's 'Yes, build all' (steps 1-11; one commit by the parent session; paid scenes only on Tony's click; extended by the controls addendum 2026-11-21: REF_ENGINES now comes from engines.json ref_kind, closeness 60 = this addendum's clause verbatim)
 extends: Pipeline_Docs/Slot_Set_Planner_Plan.md
 ---
 

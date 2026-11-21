@@ -41,3 +41,11 @@ def _no_scene_scan_no_balance(monkeypatch):
                         {"pass": True, "severity": "none", "findings": [], "overlay": None, "mode": "test",
                          "notes": []})
     monkeypatch.setattr(stp, "kie_balance", lambda settings=None: None)
+
+
+@pytest.fixture(autouse=True)
+def _engine_status_in_tmp(monkeypatch, tmp_path_factory):
+    """Controls addendum: data/engine_status.json (measured costs, room gates) is written by code; tests never touch
+    the real one."""
+    from app import engines
+    monkeypatch.setattr(engines, "STATUS_PATH", tmp_path_factory.mktemp("engine_status") / "engine_status.json")

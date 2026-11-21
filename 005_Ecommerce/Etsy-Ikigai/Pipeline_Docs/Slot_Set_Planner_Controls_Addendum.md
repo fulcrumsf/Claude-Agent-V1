@@ -4,11 +4,23 @@ type: plan
 domain: ecommerce
 tags: [ikigai-digital-studios, portal, production, mockups, room-templates, slot-planner, art-engines]
 created: 2026-11-20
-status: plan only (no code changed, nothing committed, no folder created); build waits for Tony's go
+status: built 2026-11-21 on Tony's 'Yes, build all' (sections A-F + A/B, see Build status); one commit by the parent session; paid steps only on Tony's click
 extends: Pipeline_Docs/Slot_Set_Planner_Plan.md, Pipeline_Docs/Slot_Set_Planner_Realism_Addendum.md
 ---
 
 # Slot-Set Planner: controls addendum (2026-11-20)
+
+**Build status (2026-11-21).** Built: A Refresh library (normalise, low-res sweep, `claude -p` rename, overlay scan
+`scene_scan.scan_reference`, crop / LaMa with the confidence check, has_art, register tags, Looks fine / Archive it /
+capped Nano fill route, job + routes + UI); B share slider (`n_image`, `enforce_share`, tag sentence, `reference_mode`);
+C closeness slider (four bands, `prep_for`, band clauses, `ref_takeaways`, A/B variants on the batch runner); D engines
+v2 (`engines.json` v2, kie / fal / WaveSpeed adapters, price labels, `--test` CLI, `data/engine_status.json`); E room
+engine per panel and per card, upscale of small scenes, per-engine room check (gate), template.json engine fields,
+grades per engine; F Generate all (estimate, key, cap, hard-stop rules, cancel, recover, end report); G `app/prefs.py`.
+Golden locks in `tests/test_controls_golden.py`. Flux 3 fal id checked in fal's OpenAPI. Run for real on the board
+2026-11-21 (free): 0048-0050 added (0050 usable), registers on all 29. Not run (paid, Tony's click): the engine test
+round (`python -m app.engines --test ... --yes`, about 61 cr-eq), the first room scene per new engine, A/B generation,
+Nano fill.
 
 Plan only. Paths are relative to `005_Ecommerce/Etsy-Ikigai/Portal/` unless they start with `Creative_Inspiration/`,
 `Room_Templates/` or `Designs/`. Nothing here spends kie.ai credits or fal / WaveSpeed dollars without Tony's click.

@@ -328,6 +328,26 @@ button{font:inherit;color:inherit;cursor:pointer}
 .pprompt .ptag{font:500 10px var(--mono);border:1px solid var(--line-2);border-radius:20px;padding:0 6px;margin-left:6px}
 .pplan{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 12px;font:400 12px var(--mono);color:var(--ink-2)}
 .pplan.bad{color:var(--rising)}
+/* controls addendum: sliders, engines, Generate all, reference Refresh, A/B */
+.pctl{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:0 0 10px;font:400 12px var(--mono);color:var(--ink-2)}
+.pctl label{display:inline-flex;align-items:center;gap:6px}
+.pctl input[type=range]{width:110px;accent-color:var(--ink)}
+.pctl select,.pcard .peng{font:500 11px var(--mono);border:1px solid var(--line-2);border-radius:6px;padding:3px 4px;background:var(--card);color:var(--ink);max-width:100%}
+.pctl .hint{color:var(--muted)}
+.pbatch{margin:0 0 10px;padding:8px 10px;border:1px solid var(--line-2);border-radius:8px;font:400 12px var(--mono);color:var(--ink-2);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pconfirm{margin:0 0 12px;padding:10px 12px;border:1px solid var(--ink);border-radius:8px;font:400 12px/1.6 var(--mono);color:var(--ink)}
+.pconfirm table{border-collapse:collapse;width:100%;margin:6px 0}
+.pconfirm td{padding:2px 8px 2px 0;vertical-align:top}
+.pconfirm tr.skip td{color:var(--muted)}
+.pconfirm input[type=number]{width:70px;font:500 12px var(--mono)}
+.prefs{margin:0 0 10px;font:400 12px var(--mono);color:var(--ink-2)}
+.prefs summary{cursor:pointer}
+.prefs ul{margin:6px 0 0;padding-left:18px}
+.prefs li{margin:2px 0}
+.prefs li img{width:220px;display:block;margin:4px 0;border:1px solid var(--line);border-radius:4px}
+.pab{flex:1 1 100%;border-top:1px dashed var(--line-2);padding-top:6px;font:400 11px var(--mono);color:var(--ink-2)}
+.pab details{margin:4px 0}
+.pab pre{white-space:pre-wrap;max-height:160px;overflow:auto;font-size:11px}
 .btn.sm{padding:6px 12px;font-size:13px}
 .plus{width:32px;height:32px;border-radius:50%;border:1px solid var(--line-2);background:transparent;font:500 18px/1 var(--sans);display:grid;place-items:center;margin-left:auto}
 .plus:hover:not(:disabled){border-color:var(--ink)}
@@ -647,9 +667,9 @@ button{font:inherit;color:inherit;cursor:pointer}
     return `<svg viewBox="0 0 120 60" aria-hidden="true"><defs>${f}</defs><g>${art}</g><rect width="120" height="60" filter="url(#g${c.id})" fill="#000"/></svg>`;
   }
 
-  function engineLabel(e) {
-    const tag = e.default ? " · default (cheapest)" : "";
-    return `${e.label} · ${e.credits_per_image} cr ($${e.usd_per_image.toFixed(2)})${tag}${e.verified ? " · tested " + e.verified : ""}${e.ready ? "" : " · key missing"}`;
+  function engineLabel(e) {        // controls addendum D.4: label + price + tested date or "not tested yet"
+    const tag = e.default ? " · default" : "";
+    return `${e.label} · ${e.price_label}${tag} · ${e.tested ? "tested " + e.tested : "not tested yet"}${e.ready ? "" : " · key missing"}`;
   }
 
   function setupHTML(id) {
@@ -667,7 +687,7 @@ button{font:inherit;color:inherit;cursor:pointer}
     }).join("");
     const eng = u.engine || o.default_engine;
     const e = o.engines.find(x => x.id === eng) || o.engines[0];
-    const n = o.images_per_round, cr = e.credits_per_image * n;
+    const n = o.images_per_round, cr = Math.round(e.credits_per_image * n * 10) / 10;
     const plan = !u.cards.length ? `Surprise me: I pick 2 cards that fit, 2 images each` : u.cards.length === 1 ? `${n} variations of ${esc(sel[0]?.name)}` : `2 cards x 2 variations`;
     return `<p class="art-lead">Pick up to 2 style cards and any chips. Nothing picked = Surprise me.</p>
       <div class="art-sub"><span>Style cards · ${u.cards.length}/2</span><span>${plan}</span></div><div class="cards">${cards}</div>
@@ -675,14 +695,14 @@ button{font:inherit;color:inherit;cursor:pointer}
       <div class="art-sub"><span>Engine</span></div>
       <select data-art="engine" aria-label="Image engine">${o.engines.map(x => `<option value="${x.id}" ${x.id === eng ? "selected" : ""} ${x.ready ? "" : "disabled"}>${esc(engineLabel(x))}</option>`).join("")}</select>
       <div class="art-row"><button class="btn" data-art="go">Make ${n} images</button><button class="btn ghost sm" data-art="cancel">Cancel</button>
-        <span class="cost">${n} x ${e.credits_per_image} = ${cr} credits ≈ $${(cr * 0.005).toFixed(2)} · ${o.aspect_ratio} at ${o.resolution}${artBalance != null ? ` · balance ${Math.floor(artBalance)}` : ""}</span></div>
+        <span class="cost">${n} x ${e.credits_per_image} = ${e.price_est ? "≈" : ""}${cr} credits ≈ $${(cr * 0.005).toFixed(2)}${e.price_est ? (e.price_unit === "usd" ? " (estimate, paid on " + (e.provider_label === "fal" ? "fal.ai" : "WaveSpeed") + ")" : " (estimate)") : ""} · ${o.aspect_ratio} at ${o.resolution}${artBalance != null && e.provider_label === "kie" ? ` · kie balance ${Math.floor(artBalance)}` : ""}</span></div>
       ${u.err ? `<p class="art-err">${esc(u.err)}</p>` : ""}`;
   }
 
   function roundHTML(r, latest) {
     const done = r.images.filter(i => i.status === "done").length, total = r.images.length || (artOpts?.images_per_round || 4);
     const who = r.kind === "iterate" ? "Feedback round" : r.surprise ? "Surprise me" + (r.cards.length ? "" : "") : r.cards.join(" + ");
-    const cost = r.credits_spent != null ? ` · ${r.credits_spent} credits ($${(r.credits_spent * 0.005).toFixed(2)})` : "";
+    const cost = r.credits_spent != null ? ` · ${r.credits_est ? "≈" : ""}${r.credits_spent} credits ($${(r.credits_spent * 0.005).toFixed(2)}${r.credits_est ? " est." : ""})` : "";
     let h = `<div class="round"><div class="round-meta">Round ${r.round_no} · ${esc(who)} · ${esc(r.engine_label)}${cost}</div>`;
     if (r.writer_note) h += `<div class="round-meta">Picked: ${esc(r.writer_note)}</div>`;
     if (r.feedback) h += `<p class="round-fb">${esc(r.feedback)}</p>`;
@@ -807,7 +827,35 @@ button{font:inherit;color:inherit;cursor:pointer}
     else if (im && im.flagged && c.message) msg = `<p class="pmsg bad">${esc(c.message)}. Approve to use it anyway.</p>`;
     if (c.made_for) msg += `<p class="pmsg">This image was made for ${esc(c.made_for)}.</p>`;
     if (im && c.template_name && c.state !== "running") msg += `<p class="pmsg">${c.source === "new" ? "New template" : "Template"}: ${esc(c.template_name)}${im.print ? " · " + esc(im.print) : ""}${c.credits_spent ? " · " + c.credits_spent + " credits" : ""}</p>`;
-    const gen = c.next.kind === "none" ? "" : `<button class="btn sm" data-pgen="${c.slot}" ${busy ? "disabled" : ""}>${im ? "Regenerate" : "Generate"}</button>`;
+    // controls addendum: the card's engine, its room check, the reference as words, the batch row, A/B closeness
+    const ce = c.engine || {}, batchOn = pan.batch && pan.batch.running && !pan.batch.other_design;
+    if (c.next.kind === "new" && ce.label) msg += `<p class="pmsg">Engine: ${esc(ce.label)}${ce.own ? " (this card)" : ""}${ce.gate && ce.gate !== "trusted" ? " · room check: " + esc(ce.gate === "passed_1" ? "passed once" : ce.gate === "failed" ? "failed the room check twice" : ce.gate === "suspect" ? "failed once" : "not tested yet") : ""}</p>`;
+    if (br && br.reference && br.source !== "library" && br.reference_mode === "tags") msg += `<p class="pmsg">reference ${esc(br.reference)} used as words${ce.takes_ref ? "" : " (engine takes no photo)"}</p>`;
+    if (c.engine_fail) msg += `<p class="pmsg bad">${esc(c.engine_fail.why || "")}</p><button class="btn ghost sm" data-ptrynano="${c.slot}" ${busy || batchOn ? "disabled" : ""}>Try on Nano Banana Pro · 18 credits</button>`;
+    const brow = batchOn && pan.batch.kind === "all" ? (pan.batch.rows || []).find(r => r.slot === c.slot) : null;
+    if (brow) { const runRows = pan.batch.rows.filter(r => r.status !== "skipped"); const k = runRows.indexOf(brow) + 1;
+      msg += `<p class="pmsg ${brow.status === "failed" ? "bad" : ""}">${brow.status === "waiting" ? `queued ${k} of ${runRows.length}` : brow.status === "running" ? "making…" : brow.status === "skipped" ? "skipped: " + esc(brow.why) : brow.status === "failed" ? "failed: " + esc(brow.why) : esc(brow.status)}</p>`; }
+    const engSel = c.next.kind === "none" ? "" : `<select class="peng" data-peng="${c.slot}" title="Engine for this card's next new scene" ${busy || batchOn ? "disabled" : ""}><option value="">Panel default (${esc(pan.engine.label || pan.engine.id)})</option>${(pan.room_engines || []).map(e => `<option value="${esc(e.id)}" ${ce.own && ce.engine_id === e.id ? "selected" : ""}>${esc(e.label)} · ${esc(e.price_label)}${e.takes_ref ? " · takes reference photos" : ""}${e.graded ? ` · mean grade ${gradeOf(e.grade_mean)} (${e.graded} graded)` : ""}</option>`).join("")}</select>`;
+    let ab = "";
+    const abt = (pan.abtest || {})[String(c.slot)];
+    if (br && br.source !== "library" && ce.takes_ref && !(im && st === "approved")) ab = `<button class="btn ghost sm" data-pab="${c.slot}" title="Free: plan this slot three times, closeness 20 / 60 / 100, same reference and engine" ${busy || batchOn ? "disabled" : ""}>A/B closeness</button>`;
+    if (abt) {
+      if (abt.status === "planning") ab += `<div class="pab">Planning 3 variants (free)…</div>`;
+      else if (abt.status === "failed") ab += `<div class="pab bad">A/B planning failed: ${esc(abt.message || "")}</div>`;
+      else if (abt.variants) {
+        const vs = Object.entries(abt.variants).sort((a, b) => Number(a[0]) - Number(b[0]));
+        const each = abt.credits_each || 0;
+        ab += `<div class="pab">A/B closeness · reference ${esc(abt.reference || "")} · ${esc(abt.engine_label || "")}${vs.map(([v, x]) => {
+          const r = x.result || {}, key = `${pan.idea_id}:${c.slot}:ab${v}`;
+          const pic = r.file ? `<a href="${prefix}/api/production/${pan.idea_id}/file/${encodeURIComponent(r.file)}" target="_blank" rel="noopener">${esc(r.file)}</a> · ${esc(r.status || "")}${r.why ? " (" + esc(r.why) + ")" : ""}
+            <select class="pgrade" data-pabgrade="${c.slot}" data-v="${v}"><option value="">grade</option>${GRADES.map(g => `<option value="${g}"${r.grade === g ? " selected" : ""}>${g}</option>`).join("")}</select>
+            <button class="btn ghost sm" data-pabplace="${c.slot}" data-v="${v}">Put in slot ${two(c.slot)}</button>
+            <button class="btn ghost sm" data-pabdef="${v}">Make ${v} the default</button>` : "";
+          return `<details data-pprompt="${esc(key)}"${openPrompts.has(key) ? " open" : ""}><summary>closeness ${v} (${esc(x.band || "")})</summary><pre>${esc(x.prompt || (x.lint && x.lint.why ? "No prompt: " + x.lint.why.join("; ") : ""))}</pre></details>${pic}`; }).join("")}
+          ${vs.every(([, x]) => x.result && x.result.file) ? "" : `<button class="btn sm" data-pabgen="${c.slot}" ${busy || batchOn ? "disabled" : ""}>Generate 3 variants · about ${Math.round(each * vs.length)} credits</button>`}</div>`;
+      }
+    }
+    const gen = c.next.kind === "none" ? "" : `<button class="btn sm" data-pgen="${c.slot}" ${busy || batchOn ? "disabled" : ""}>${im ? "Regenerate" : "Generate"}</button>`;
     const dec = im && c.state !== "running" ? `<button class="btn sm ${st === "approved" ? "" : "ghost"}" data-pdec="approved" data-f="${esc(im.file)}">${st === "approved" ? "Approved" : "Approve"}</button>
       <button class="btn ghost sm" data-pdec="denied" data-f="${esc(im.file)}">${st === "denied" ? "Denied" : "Deny"}</button>
       ${st !== "pending" ? `<button class="btn ghost sm" data-pdec="pending" data-f="${esc(im.file)}">Undo</button>` : ""}
@@ -826,9 +874,70 @@ button{font:inherit;color:inherit;cursor:pointer}
       const refl = br.reference && br.source !== "library" ? `<div class="pref">${br.ref_thumb_url ? `<img src="${esc(br.ref_thumb_url)}" alt="" loading="lazy">` : ""}<span>Reference ${esc(br.reference)}${br.reference_flip ? " (mirrored)" : ""}${c.ref_note ? " · " + esc(c.ref_note) : ""}</span></div>` : "";
       pp = `<details class="pprompt" data-pprompt="${esc(key)}"${open}><summary>Show prompt${br.rev > 1 ? " · rev " + br.rev : ""}</summary>${tag}${refl}<pre>${body}</pre></details>`;
     }
-    return `<article class="pcard ${esc(st)}">${head}${pic}<div class="pb">${msg}${pp}${askc}${cost && c.state !== "running" ? `<span class="pcost">${cost}</span>` : ""}${gen}${dec}<button class="plus" data-pplus="${c.slot}" title="Pick any template from the library" ${busy ? "disabled" : ""}>+</button></div></article>`;
+    return `<article class="pcard ${esc(st)}">${head}${pic}<div class="pb">${msg}${pp}${askc}${cost && c.state !== "running" ? `<span class="pcost">${cost}</span>` : ""}${engSel}${gen}${dec}<button class="plus" data-pplus="${c.slot}" title="Pick any template from the library" ${busy ? "disabled" : ""}>+</button>${ab}</div></article>`;
+  }
+  function gradeOf(score) {     // a mean grade score back to the nearest letter
+    const S = {"A+": 4.3, "A": 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0, "B-": 2.7, "C+": 2.3, "C": 2.0, "C-": 1.7, "D": 1.0, "F": 0};
+    return Object.entries(S).reduce((b, [g, v]) => Math.abs(v - score) < Math.abs(S[b] - score) ? g : b, "F");
+  }
+  const BAND = v => v < 25 ? "essence" : v < 50 ? "loose" : v < 80 ? "balanced" : "close";
+  let gaEst = null, gaErr = "", pendingPaint = false;
+  const openRefDetails = new Set();
+  function controlsHTML(nOpen) {
+    const pr = pan.prefs || {reference_share: 80, reference_closeness: 60, generate_all_cap: 120};
+    const nNew = (pan.queue || []).filter(q => q.source === "new").length;
+    const nImg = Math.min(Math.floor(pr.reference_share * nNew / 100 + 0.5), nNew);
+    const sp = pan.set_plan || {}, b = pan.batch || {}, rf = pan.refresh || {};
+    const busyAny = pan.job.running || b.running || sp.status === "planning" || rf.running;
+    const badPlan = !["ready", "needs_attention"].includes(sp.status);
+    const upper = (pan.queue || []).reduce((s, q) => s + (q.upper || 0), 0);
+    const engSel = `<select data-pscene aria-label="Scene engine" title="Panel default engine for new room scenes">${(pan.room_engines || []).map(e => `<option value="${esc(e.id)}" ${pan.engine.engine_id === e.id ? "selected" : ""}>${esc(e.label)} · ${esc(e.price_label)}${e.takes_ref ? " · takes reference photos" : ""}${e.graded ? ` · mean grade ${gradeOf(e.grade_mean)} (${e.graded} graded)` : ""}</option>`).join("")}</select>`;
+    return `<div class="pctl">
+      <label title="Share of the open slots that get the reference photograph as an image (the others get its tags as words)">Reference photos for <input type="range" min="0" max="100" step="10" value="${pr.reference_share}" data-pshare><b data-psharev>${pr.reference_share}%</b> of open slots · <span data-psharen>${nImg} of ${nNew}</span></label>
+      <label title="Approximate: no engine has a numeric reference weight. Loose = camera and light only; close = the same kind of room, built new">Closeness <input type="range" min="0" max="100" step="1" value="${pr.reference_closeness}" data-pclose><b data-pclosev>${pr.reference_closeness} (${BAND(pr.reference_closeness)})</b></label>
+      <label>Scene engine ${engSel}</label>
+      <button class="btn sm" data-pgenall ${busyAny || badPlan || !nOpen ? "disabled" : ""} title="${badPlan ? "Plan the open slots first" : "Shows the exact cost first; nothing is spent until you Confirm"}">Generate all open slots · ≈${Math.round(upper)} credits</button>
+    </div>`;
+  }
+  function confirmHTML() {
+    if (!gaEst) return gaErr ? `<p class="art-err">${esc(gaErr)}</p>` : "";
+    const e = gaEst;
+    const rows = e.rows.map(r => `<tr class="${r.status === "skipped" ? "skip" : ""}"><td>${two(r.slot)}</td><td>${r.source === "library" ? esc(r.label || "library template") + " · free" : "new · " + esc(r.engine_label || "") + (r.reference ? ` · reference ${esc(r.reference)} (${r.reference_mode === "tags" ? "words" : "image"})` : "") + ` · ${r.estimated ? "≈" : ""}${r.est} cr` + (r.upper > r.est ? ` (at most ${r.upper})` : "") + (r.usd && r.provider && r.provider !== "kie" ? ` ($${Number(r.usd).toFixed(2)}, ${r.provider === "fal" ? "fal.ai" : "WaveSpeed"})` : "")}</td><td>${r.status === "skipped" ? "skipped: " + esc(r.why) : ""}</td></tr>`).join("");
+    const per = Object.entries(e.per_engine || {}).map(([k, v]) => `${esc(k)}: ${v.slots} × ≈${Math.round(v.credits / v.slots)} = ≈${Math.round(v.credits)} cr (at most ${Math.round(v.upper)})`).join(" · ");
+    return `<div class="pconfirm"><b>Generate all open slots</b> (in this order; nothing is approved automatically)<table>${rows}</table>
+      ${per ? per + "<br>" : ""}Total ≈${e.total_credits} credits, at most ${e.total_upper} ($${e.total_usd.toFixed(2)})${e.balance != null ? ` · kie.ai balance ${Math.floor(e.balance)}` : ""}<br>
+      Cap for this run <input type="number" min="0" max="1000" value="${e.cap}" data-pgacap> credits${e.over_cap ? " · the cap stops the run before a slot would pass it" : ""}
+      <div class="art-row"><button class="btn sm" data-pgago ${e.runnable ? "" : "disabled"}>Confirm</button><button class="btn ghost sm" data-pgaclose>Close</button></div></div>`;
+  }
+  function batchHTML() {
+    const b = pan.batch || {};
+    if (b.running && !b.other_design) {
+      const done = (b.rows || []).filter(r => ["done", "flagged", "failed"].includes(r.status)).length, all = (b.rows || []).filter(r => r.status !== "skipped" || r.why && r.why.startsWith("Stopped")).length;
+      return `<div class="pbatch">${b.kind === "ab" ? "Generating A/B variants" : "Generating all"}: ${done} of ${all} done · ${Math.round(b.spent)} of ≈${Math.round(b.total)} credits used${b.cancel ? " · Stopping after this slot…" : ""}<button class="btn ghost sm" data-pgacancel ${b.cancel ? "disabled" : ""}>Cancel</button></div>`;
+    }
+    if (b.running && b.other_design) return `<div class="pbatch">Generate all is running on another design.</div>`;
+    const last = (pan.batches || []).slice(-1)[0];
+    return last && last.report ? `<div class="pplan">${esc(last.report)}</div>` : "";
+  }
+  function refsHTML() {
+    const rf = pan.refresh;
+    if (!rf) return "";
+    const fin = rf.finished ? " · last refresh " + esc(rf.finished.slice(11, 16)) : "";
+    let h = rf.running ? `Refreshing references ${rf.done}/${rf.total || "?"}: ${esc(rf.current || "")} ${esc(rf.step || "")}…`
+      : `References: ${rf.usable ?? "?"} usable · ${rf.need_eye || 0} need your eye${rf.pending ? ` · ${rf.pending} new waiting` : ""}${fin}${rf.message ? " · " + esc(rf.message) : ""} <button class="btn ghost sm" data-prefresh>Refresh library</button>`;
+    const res = rf.results || [];
+    if (res.length) {
+      const eye = res.filter(r => r.status === "needs_eye");
+      const open = openRefDetails.has("res") ? " open" : "";
+      h += `<details data-prefdet="res"${open}><summary>${res.length} processed in the last refresh</summary><ul>${res.map(r => `<li>${r.id ? esc(r.id) + " · " : ""}${r.was ? "was " + esc(r.was) + " · " : ""}${r.status === "archived" ? esc(r.note || "archived") : r.status === "needs_eye" ? `needs your eye: ${esc(r.cleanup || "")} on ${r.spots} spot(s)${r.check_image ? `<img src="${prefix}/api/references/check/${encodeURIComponent(r.check_image.split("/").pop())}" alt="before / after">` : ""}<button class="btn ghost sm" data-prefok="${esc(r.id)}">Looks fine</button><button class="btn ghost sm" data-prefarch="${esc(r.id)}">Archive it</button>` : `${r.cleanup && r.cleanup !== "none" ? "cleaned (" + esc(r.cleanup) + ", " + r.spots + " spot" + (r.spots === 1 ? "" : "s") + ") · " : ""}${r.register ? esc(r.register) + " · " : ""}${r.has_art === false ? "no framed art (words / loose only) · " : ""}${r.status === "ready" ? "ready" : "unusable: " + esc((r.why || []).join("; "))}`}</li>`).join("")}</ul>${eye.length ? `<button class="btn sm" data-prefnano="${eye.map(r => r.id).join(",")}">Nano fill ${eye.length} image${eye.length === 1 ? "" : "s"} · about ${6 * eye.length} credits</button>` : ""}</details>`;
+    }
+    return `<div class="prefs">${h}</div>`;
   }
   function paintPanel() {
+    // a select or slider in the panel has focus: repaint when it is let go (innerHTML would drop Tony's choice)
+    const ae = document.activeElement;
+    if (ae && prodHost.contains(ae) && ae.matches("select, input[type=range], input[type=number]")) { pendingPaint = true; return; }
+    pendingPaint = false;
     if (!prodSel) { prodHost.innerHTML = prodItems.length ? `<p class="lead">Click a design above.</p>` : ""; return; }
     if (!pan) { prodHost.innerHTML = panErr ? `<p class="art-err">${esc(panErr)}</p>` : `<p class="lead">Loading…</p>`; return; }
     const full = pan.rooms.length >= pan.max_rooms;
@@ -841,13 +950,13 @@ button{font:inherit;color:inherit;cursor:pointer}
     const nOpen = (pan.queue || []).length;
     let planLine = "";
     if (sp.status === "planning") planLine = `<div class="pplan">Planning scenes…</div>`;
-    else if (sp.status === "ready" || sp.status === "needs_attention") planLine = `<div class="pplan ${sp.status === "ready" ? "" : "bad"}">${sp.status === "ready" ? "Scene plan: ready" : "Needs attention: " + esc((sp.failures || [])[0] || sp.message || "")} · ${nOpen} open slot${nOpen === 1 ? "" : "s"} · ${cst.library || 0} library (free) · ${cst.new || 0} new ≈ ${cst.credits || 0} credits ($${(cst.usd || 0).toFixed(2)})${sp.stale ? " · out of date" : ""}<button class="btn ghost sm" data-preplan>Re-plan open slots</button></div>`;
+    else if (sp.status === "ready" || sp.status === "needs_attention") planLine = `<div class="pplan ${sp.status === "ready" ? "" : "bad"}">${sp.status === "ready" ? "Scene plan: ready" : "Needs attention: " + esc((sp.failures || [])[0] || sp.message || "")} · ${nOpen} open slot${nOpen === 1 ? "" : "s"} · ${cst.library || 0} library (free) · ${cst.new || 0} new ≈ ${cst.credits || 0} credits ($${(cst.usd || 0).toFixed(2)})${sp.stale ? " · out of date" : ""}${sp.controls_changed && sp.controls ? ` · made at ${sp.controls.share}% / ${sp.controls.closeness}; Re-plan to apply` : ""}<button class="btn ghost sm" data-preplan>Re-plan open slots</button></div>`;
     else if (sp.status === "failed") planLine = `<div class="pplan bad">Scene plan failed: ${esc(sp.message || "")} · Generate uses a random look<button class="btn ghost sm" data-preplan>Re-plan open slots</button></div>`;
     else if (nOpen) planLine = `<div class="pplan">No scene plan yet<button class="btn ghost sm" data-preplan>Plan open slots</button></div>`;
     prodHost.innerHTML = `<section class="ppanel"><div class="phead">${pan.image_url ? `<img src="${esc(pan.image_url)}" alt="">` : ""}<div><h3>${esc(pan.name)}</h3><p>#${pan.idea_id} · ${esc(pan.title)}</p><p>${esc(pan.folder_rel)}</p></div>
       <div class="pcred"><b>${credits == null ? "…" : Math.round(credits)}</b>kie.ai credits left<br>${eng}<br>library templates are free</div></div>
       <div class="ppick"><div class="grp"><i>Rooms (up to ${pan.max_rooms})</i>${rooms}</div><div class="grp"><i>Styles</i>${styles}${auto}</div></div>
-      ${planLine}
+      ${planLine}${controlsHTML(nOpen)}${batchHTML()}${confirmHTML()}${refsHTML()}
       ${(pan.fix_requests || []).length ? `<div class="waitcc"><b>Waiting for Claude Code</b> · ${pan.fix_requests.map(f => `slot ${two(f.slot)}: “${esc(f.words)}” (${esc(f.file)})`).join(" · ")}. The next Claude Code session reads these first.</div>` : ""}
       ${pan.slots.length ? `<div class="pgrid">${pan.slots.map(slotCard).join("")}</div>` : `<p class="lead">No room fits this art yet. Pick a room above.</p>`}
       ${panErr ? `<p class="art-err">${esc(panErr)}</p>` : ""}</section>`;
@@ -865,7 +974,8 @@ button{font:inherit;color:inherit;cursor:pointer}
     if (!(quiet && psig === lastPanSig)) paintPanel();
     lastPanSig = psig;
     clearTimeout(prodTimer);
-    const waiting = pan && (pan.job.running || (pan.set_plan && pan.set_plan.status === "planning") || (!pan.styles.length && !pan.styles_auto.length && !pan.styles_auto_error));
+    const abPlanning = pan && Object.values(pan.abtest || {}).some(a => a.status === "planning");
+    const waiting = pan && (pan.job.running || (pan.batch && pan.batch.running) || (pan.refresh && pan.refresh.running) || abPlanning || (pan.set_plan && pan.set_plan.status === "planning") || (!pan.styles.length && !pan.styles_auto.length && !pan.styles_auto_error));
     if (waiting && prodOpen()) prodTimer = setTimeout(async () => { const was = pan.job.running; await loadPanel(true); if (was && !pan.job.running) { loadCredits(); loadProd(true); } }, 3000);
   }
   let prodSig = "";
@@ -922,6 +1032,77 @@ button{font:inherit;color:inherit;cursor:pointer}
     const wd = e.target.closest("[data-pwider]");
     if (wd) { wd.disabled = true; await panPost(`${prefix}/api/production/${prodSel}/plan`, {slots: [Number(wd.dataset.pwider)], wider: true}); return loadPanel(true); }
   });
+  // ---------- controls addendum: sliders, engines, Generate all, A/B, reference Refresh ----------
+  async function setPref(key, value) {
+    try { await post(`${prefix}/api/prefs`, {key, value}); }
+    catch (err) { try { panErr = (await err.json()).detail || "That did not work."; } catch { panErr = "That did not work."; } }
+    return loadPanel(true);
+  }
+  prodHost.addEventListener("input", e => {             // live value while dragging; saved on "change" only
+    const s = e.target.closest("[data-pshare]");
+    if (s) { const v = Number(s.value), nNew = (pan.queue || []).filter(q => q.source === "new").length;
+      prodHost.querySelector("[data-psharev]").textContent = v + "%";
+      prodHost.querySelector("[data-psharen]").textContent = `${Math.min(Math.floor(v * nNew / 100 + 0.5), nNew)} of ${nNew}`; }
+    const k = e.target.closest("[data-pclose]");
+    if (k) prodHost.querySelector("[data-pclosev]").textContent = `${k.value} (${BAND(Number(k.value))})`;
+  });
+  prodHost.addEventListener("change", async e => {
+    const t = e.target;
+    if (t.matches("[data-pshare]")) { t.blur(); return setPref("reference_share", Number(t.value)); }
+    if (t.matches("[data-pclose]")) { t.blur(); return setPref("reference_closeness", Number(t.value)); }
+    if (t.matches("[data-pscene]")) { t.blur(); return setPref("scene_engine", t.value); }
+    if (t.matches("[data-peng]")) { t.blur(); return panPost(`${prefix}/api/production/${prodSel}/slots/${t.dataset.peng}/engine`, {engine: t.value || null}); }
+    if (t.matches("[data-pabgrade]")) { t.blur(); return panPost(`${prefix}/api/production/${prodSel}/slots/${t.dataset.pabgrade}/abtest/grade`, {value: Number(t.dataset.v), grade: t.value || null}); }
+  });
+  prodHost.addEventListener("focusout", () => { if (pendingPaint) setTimeout(() => { if (pendingPaint) paintPanel(); }, 0); });
+  async function openEstimate() {
+    gaErr = "";
+    try { const r = await fetch(`${prefix}/api/production/${prodSel}/generate-all`, {cache: "no-store"}); if (!r.ok) throw r; gaEst = await r.json(); }
+    catch (err) { gaEst = null; try { gaErr = (await err.json()).detail || "Could not make the estimate."; } catch { gaErr = "Could not make the estimate."; } }
+    paintPanel();
+  }
+  prodHost.addEventListener("click", async e => {
+    const t = e.target;
+    if (t.closest("[data-pgenall]")) return openEstimate();
+    if (t.closest("[data-pgaclose]")) { gaEst = null; gaErr = ""; return paintPanel(); }
+    if (t.closest("[data-pgago]")) {
+      const capEl = prodHost.querySelector("[data-pgacap]"), cap = capEl ? Number(capEl.value) : null;
+      if (cap !== null && gaEst && cap !== gaEst.cap) {      // the cap changed: the estimate (and its key) is made again
+        try { const r = await fetch(`${prefix}/api/production/${prodSel}/generate-all?cap=${cap}`, {cache: "no-store"}); if (r.ok) gaEst = await r.json(); } catch { /* keep */ }
+      }
+      const key = gaEst && gaEst.key; gaEst = null;
+      await panPost(`${prefix}/api/production/${prodSel}/generate-all`, {key, cap});
+      return loadPanel(true);
+    }
+    if (t.closest("[data-pgacancel]")) { t.disabled = true; await post(`${prefix}/api/production/generate-all/cancel`, {}).catch(() => {}); return loadPanel(true); }
+    const tn = t.closest("[data-ptrynano]");
+    if (tn && confirm("Generate this slot on Nano Banana Pro for about 18 kie.ai credits?")) { tn.disabled = true; await panPost(`${prefix}/api/production/${prodSel}/slots/${tn.dataset.ptrynano}/generate`, {engine: "nano-banana-pro"}); return loadPanel(true); }
+    const ab = t.closest("[data-pab]");
+    if (ab) { ab.disabled = true; await panPost(`${prefix}/api/production/${prodSel}/slots/${ab.dataset.pab}/abtest`, {}); return loadPanel(true); }
+    const abg = t.closest("[data-pabgen]");
+    if (abg) {
+      let est; try { est = await fetch(`${prefix}/api/production/${prodSel}/slots/${abg.dataset.pabgen}/abtest/estimate`, {cache: "no-store"}).then(r => r.json()); } catch { return; }
+      if (!est || !est.key || !confirm(`Generate ${est.rows.filter(r => r.status === "waiting").length} variants for at most ${est.total_upper} credits ($${est.total_usd.toFixed(2)})? Nothing is placed or approved.`)) return;
+      abg.disabled = true; await panPost(`${prefix}/api/production/${prodSel}/slots/${abg.dataset.pabgen}/abtest/generate`, {key: est.key}); return loadPanel(true);
+    }
+    const abp = t.closest("[data-pabplace]");
+    if (abp) { abp.disabled = true; return panPost(`${prefix}/api/production/${prodSel}/slots/${abp.dataset.pabplace}/abtest/place`, {value: Number(abp.dataset.v)}); }
+    const abd = t.closest("[data-pabdef]");
+    if (abd) return setPref("reference_closeness", Number(abd.dataset.pabdef));
+    if (t.closest("[data-prefresh]")) { t.disabled = true; await post(`${prefix}/api/references/refresh`, {}).catch(() => {}); openRefDetails.add("res"); return loadPanel(true); }
+    const ok = t.closest("[data-prefok]");
+    if (ok) { await post(`${prefix}/api/references/${ok.dataset.prefok}/ok`, {}).catch(() => {}); return loadPanel(true); }
+    const ar = t.closest("[data-prefarch]");
+    if (ar && confirm(`Move reference ${ar.dataset.prefarch} and its blank to Archive?`)) { await post(`${prefix}/api/references/${ar.dataset.prefarch}/archive`, {}).catch(() => {}); return loadPanel(true); }
+    const nf = t.closest("[data-prefnano]");
+    if (nf) { const ids = nf.dataset.prefnano.split(",");
+      if (!confirm(`Nano fill ${ids.length} image(s) for about ${6 * ids.length} kie.ai credits?`)) return;
+      nf.disabled = true; await post(`${prefix}/api/references/nano`, {ids}).catch(() => {}); return loadPanel(true); }
+  });
+  prodHost.addEventListener("toggle", e => {
+    const d = e.target.closest && e.target.closest("[data-prefdet]"); if (!d) return;
+    if (d.open) openRefDetails.add(d.dataset.prefdet); else openRefDetails.delete(d.dataset.prefdet);
+  }, true);
   // "Show prompt": remember which cards are open ("toggle" does not bubble, so listen in the capture phase)
   prodHost.addEventListener("toggle", e => {
     const d = e.target.closest && e.target.closest("[data-pprompt]"); if (!d) return;

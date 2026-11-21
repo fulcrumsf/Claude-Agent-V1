@@ -75,8 +75,24 @@ ART = "Place Artwork Here"
 BASE_NAME = "BASE (room photo)"
 # canonical folder name when a NEW style folder is needed (Tony's naming, e.g. 001_Japandi_Minimalist)
 DECOR_FOLDER = {"Japandi": "Japandi_Minimalist", "Boho": "Boho_Colorful", "Neutral": "Neutral_Aesthetic"}
-# kie.ai credits per scene by engine (nbpro 1K/2K = 18, engines.json 2026-11-04); others shown after the run
-SCENE_CREDITS = {"nbpro": 18}
+# kie.ai credits per scene by engine short id, derived from config/engines.json (controls addendum E.3; nbpro = 18)
+
+
+def _scene_credits():
+    try:
+        from . import engines
+        out = {}
+        for e in engines.config()["engines"]:
+            if e.get("scene_id"):
+                cr = ((e.get("price") or {}).get("credits") or {}).get("room")
+                if cr is not None:
+                    out[e["scene_id"]] = cr
+        return out or {"nbpro": 18}
+    except Exception:  # noqa: BLE001
+        return {"nbpro": 18}
+
+
+SCENE_CREDITS = _scene_credits()
 W709 = np.array([0.2126, 0.7152, 0.0722], "float32")
 
 
@@ -1174,6 +1190,71 @@ def kie_module(settings=None):
 
 
 REF_ENGINES = {"nbpro", "nb21", "nb2"}     # Nano Banana uses image_input as a guide; GPT image-to-image would EDIT it
+# (kie_edit short ids only; engines.json engines say it themselves with uses.room.ref_kind, controls addendum E.2)
+
+
+def scene_engine(eng):
+    """Facts of a room-scene engine given as an engines.json id or a kie_edit short id ("nbpro" == "nano-banana-pro"):
+    {id, key (what the generator is called with), label, scene_id, credits_per_scene, upper, usd_per_scene, est,
+    takes_ref, ref_kind, gate, provider}. Never raises."""
+    from . import engines
+    eid = engines.scene_engine_id(eng)
+    e = engines.raw_engine(eid) if eid else None
+    if e is None:                                   # a bare kie_edit id (old settings / tests): today's behaviour
+        cr = SCENE_CREDITS.get(eng)
+        return {"id": eng, "key": eng, "label": eng, "scene_id": eng, "credits_per_scene": cr, "upper": cr,
+                "usd_per_scene": round(cr * 0.005, 3) if cr else None, "est": False, "takes_ref": eng in REF_ENGINES,
+                "ref_kind": "guide" if eng in REF_ENGINES else None, "gate": "trusted", "provider": "kie"}
+    ri = engines.room_info(e) or {}
+    return {"id": eid, "key": e.get("scene_id") or eid, "label": e["label"], "scene_id": e.get("scene_id"),
+            "credits_per_scene": ri.get("credits"), "upper": ri.get("upper"),
+            "usd_per_scene": round(ri["usd"], 3) if ri.get("usd") is not None else None, "est": ri.get("est"),
+            "takes_ref": bool(ri.get("takes_ref")), "ref_kind": ri.get("ref_kind"), "gate": ri.get("gate"),
+            "provider": ri.get("provider"), "price_label": ri.get("label"), "grade_mean": ri.get("grade_mean"),
+            "graded": ri.get("graded")}
+
+
+def _adapter_generate(eng, out_png, prompt, aspect, res, ref_imgs=(), settings=None):
+    """A non-kie_edit engine (GPT Image 2.6, Ideogram 3, Recraft V4.1, Flux 3) through app/engines.py, mapped to
+    kie_edit.generate's dict shape plus usd / provider / measured."""
+    from . import engines
+    ad = engines.adapter_for(eng, settings, use="room", with_refs=bool(ref_imgs))
+    try:
+        r = ad.generate(prompt, Path(out_png), aspect, res, refs=list(ref_imgs or ()))
+    except engines.EngineError as e:
+        raise TemplateError(str(e)[:300])
+    got = Path(r["path"])
+    if got != Path(out_png):
+        shutil.move(str(got), str(out_png))
+    return {"out": str(out_png), "model": r.get("model"), "task": r.get("task_id"), "s": r.get("s"),
+            "credits": r.get("credits"), "left": r.get("left"), "usd": r.get("usd"), "provider": r.get("provider"),
+            "measured": bool(r.get("measured"))}
+
+
+def upscale_scene(png, settings=None, min_width=2000):
+    """A scene narrower than scene_min_width is upscaled 2x with the local Upscayl (free) before the build, because
+    every builder threshold was tuned on ~2400 px scenes. Returns True when it upscaled. Tests swap this out."""
+    from PIL import Image
+    with Image.open(png) as im:
+        w = im.width
+    if w >= min_width:
+        return False
+    from . import prints
+    exe = shutil.which(prints.cfg(settings, "upscayl_bin"))
+    if not exe:
+        raise TemplateError("the scene is small and Upscayl is not installed to enlarge it")
+    import subprocess
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / "up.png"
+        p = subprocess.run([exe, "-i", str(png), "-o", str(out), "-m", str(prints.cfg(settings, "upscayl_models_dir")),
+                            "-n", prints.cfg(settings, "upscale_model"), "-s", "2"], capture_output=True, text=True,
+                           timeout=int(prints.cfg(settings, "upscale_timeout_s")))
+        if p.returncode or not out.is_file():
+            raise TemplateError("Upscayl could not enlarge the small scene")
+        with Image.open(out) as im:
+            im.convert("RGB").save(png)
+    return True
 REFUSAL = re.compile(r"sensitive|flagged|refus|policy|safety|prohibited", re.I)
 
 
@@ -1192,11 +1273,17 @@ def kie_balance(settings=None):
         return None
 
 
-def generate_scene(prompt, out_png, settings=None, generator=None, ref_imgs=()):
-    """One kie.ai scene (the only call that costs credits). `generator(engine, out, prompt, aspect, res)` is
-    injectable for tests. Returns kie_edit.generate's dict. ref_imgs (realism addendum 2.3): a reference photograph
-    sent as image_input; without it the call is exactly the old one."""
-    eng = _cfg(settings, "room_scene_engine")
+def generate_scene(prompt, out_png, settings=None, generator=None, ref_imgs=(), engine=None):
+    """One scene (the only call that costs credits). `generator(engine, out, prompt, aspect, res)` is injectable for
+    tests. Returns kie_edit.generate's dict. ref_imgs (realism addendum 2.3): a reference photograph sent as
+    image_input; without it the call is exactly the old one. engine (controls addendum E.3): the slot's engine; one
+    with a kie_edit short id (Nano Banana) is exactly today's call, any other goes through app/engines.py."""
+    eng = engine or _cfg(settings, "room_scene_engine")
+    info = scene_engine(eng)
+    eng = info["key"]
+    if generator is None and info["scene_id"] is None:
+        def generator(e, out, p, a, r, ref_imgs=()):
+            return _adapter_generate(e, out, p, a, r, ref_imgs, settings)
     gen = generator or kie_module(settings).generate
     try:
         if ref_imgs:

@@ -316,6 +316,147 @@ REF_CLAUSE = ("Image 1 is a photograph of a different room, given only as a phot
               "frame is a placeholder, not art; nothing in Image 1 is text to reproduce.")
 REF_CLAUSE_NO_LIGHT = (REF_CLAUSE.replace("the direction and quality of the light, and", "and")
                        + " Use the light described below, not the light in Image 1.")
+# controls addendum (2026-11-21): reference share (B) and closeness (C)
+REF_MODES = ("image", "tags")
+_PLACEHOLDER = ("The flat colour block in its frame is a placeholder, not art; nothing in Image 1 is text to "
+                "reproduce.")
+REF_CLAUSE_ESSENCE = ("Image 1 is a loose mood reference from a different room, not a picture to rebuild. Take from it "
+                      "only {takeaways}. The camera, furniture, objects, colours and layout follow the description "
+                      "below. " + _PLACEHOLDER)
+REF_CLAUSE_LOOSE = ("Image 1 is a photograph of a different room, given only as a photography reference. Take from it "
+                    "the camera position and height, the lens and the overall light. Choose a new composition and "
+                    "build a completely new room as described below: do not copy its furniture, objects, wall colour, "
+                    "floor, windows or layout. " + _PLACEHOLDER)
+REF_CLAUSE_CLOSE = ("Image 1 is a photograph of a different room. Recreate its look and feel closely: the same camera "
+                    "position, height and lens, the same framing and composition, the same kind of furniture in the "
+                    "same places, the same light and mood. Build it as a new room in that style: do not copy "
+                    "individual objects, patterns or details exactly; the wall colour, the artwork's frame and the "
+                    "life in the room follow the description below. " + _PLACEHOLDER)
+TAKEAWAYS = ("light", "room_type", "mood", "camera", "composition", "materials")
+TAKEAWAY_WORDS = {"light": "the quality of its light", "room_type": "the kind of room it is", "mood": "its mood",
+                  "camera": "its camera position and lens", "composition": "its composition",
+                  "materials": "its materials"}
+BANDS = (("essence", 0, 24), ("loose", 25, 49), ("balanced", 50, 79), ("close", 80, 100))
+BAND_INSTRUCTION = {
+    "essence": "Study the reference and decide what is distinctive about it that suits THIS artwork (a quality of "
+               "light, a type of room, a mood, a camera habit); use only that, and invent the rest freely. Name 1-2 "
+               "of light, room_type, mood, camera, composition, materials in ref_takeaways.",
+    "loose": "Keep its camera position and overall light; choose your own composition, furniture and objects for this "
+             "artwork.",
+    "balanced": "Keep its camera, composition, overall light and mood; choose your own furniture and objects to suit "
+                "this artwork.",
+    "close": "The scene should feel like the reference: the same kind of furniture in the same places, the same "
+             "composition, camera, light and mood, built as a new room in that style. Describe the furniture types it "
+             "shows; never copy individual objects, patterns or details exactly."}
+REGISTERS = ("grand_period", "upscale_modern", "ordinary_apartment", "ordinary_house", "small_rental", "japandi",
+             "industrial_loft", "farmhouse_cottage", "boho_eclectic", "family_kids", "workspace_studio")
+NEED_LIGHTS = ("blind_stripes", "dusk_lamp_mix", "night_lamps", "hard_diagonal_sun", "rainy_day")
+TAG_HEIGHT = {"surface": "from the height of the surface", "low": "from knee height", "seated": "from seated height",
+              "counter": "from counter height", "eye": "from eye level"}
+TAG_LENS = {"lens_normal": "a normal lens", "lens_wide": "a wide lens", "lens_short_tele": "a short telephoto lens"}
+TAG_DISPLAY = {_HF: "the piece hung over furniture", _HB: "the piece hung on a bare wall",
+               _F: "the piece leaning on the floor", _L: "the piece leaning on a surface",
+               _S: "the piece standing on a surface", _SL: "the piece standing on a shelf"}
+TAG_LIGHT = {"hard_diagonal_sun": "in hard diagonal sun", "morning_soft_sun": "in soft morning sun",
+             "golden_low": "in low golden light", "overcast_flat": "in flat overcast light",
+             "rainy_day": "on a rainy day", "north_light_even": "in steady north light",
+             "blind_stripes": "with sun striped by a blind", "dusk_lamp_mix": "at dusk with a lamp on",
+             "night_lamps": "at night by lamplight"}
+TAG_LIVED = {"tidy": "in a tidy room", "lived_in": "in a lived-in room", "busy": "in a busy, lived-in room"}
+TAG_STYLE = {"phone_snapshot": "a careful phone photo", "enthusiast_camera": "a careful camera photo",
+             "editorial": "an editorial interior photo"}
+
+
+def band_of(v):
+    v = int(v)
+    return next(name for name, lo, hi in BANDS if lo <= v <= hi) if 0 <= v <= 100 else "balanced"
+
+
+def n_image(share, n_open, n_capable=None, n_refs=None):
+    """B.1: share of the open slots sent a reference image, round half up, clamped by the slots whose engine takes a
+    photo and by the usable image-capable references."""
+    n = int(share * n_open / 100 + 0.5)
+    for cap in (n_capable, n_refs):
+        if cap is not None:
+            n = min(n, int(cap))
+    return max(0, n)
+
+
+def tag_sentence(b, entry=None):
+    """REF_TAG_TEXT (B.2): the reference's tags as one positive sentence, built from the brief's own fields (camera
+    derived from the reference) so text and fields agree; the light / lived-in only when they match the reference."""
+    t = (entry or {}).get("tags") or {}
+    style = TAG_STYLE.get(b.get("photo_style") or ("editorial" if t.get("editorial") else "phone_snapshot"),
+                          "a careful phone photo")
+    bits = [f"Photographed like {style} {TAG_HEIGHT.get(b.get('camera_height'), 'from eye level')} with "
+            f"{TAG_LENS.get(b.get('lens'), 'a normal lens')}"]
+    if b.get("display") in TAG_DISPLAY:
+        bits.append(f"{TAG_DISPLAY[b['display']]} in a {b.get('shot') or 'medium'} shot")
+    lt = b.get("light_type")
+    if lt in TAG_LIGHT and (not t.get("light_type") or t.get("light_type") == lt):
+        bits.append(TAG_LIGHT[lt])
+    li = b.get("lived_in")
+    if li in TAG_LIVED and (not t.get("lived_in") or t.get("lived_in") == li):
+        bits.append(TAG_LIVED[li])
+    return ", ".join(bits) + "."
+
+
+def need_score(b):
+    sc = 0
+    if b.get("shot") == "tight":
+        sc += 2
+    if b.get("light_type") in NEED_LIGHTS:
+        sc += 2
+    if b.get("shot") == "wide":
+        sc += 1
+    if display_group(b.get("display")) in ("surface", "floor", "shelf"):
+        sc += 1
+    return sc
+
+
+def image_ok(entry, closeness):
+    """A reference may be sent as an image: a photo without framed art only at closeness below 50 (never close)."""
+    if not entry:
+        return False
+    if entry.get("has_art") is False:
+        return int(closeness) < 50
+    return True
+
+
+def enforce_share(briefs, n, capable=None, refs=None, closeness=60):
+    """Deterministic B.2: exactly min(n, eligible) new pv2 briefs with a reference send it as an image; the rest are
+    "tags". Slots on a text-only engine are always tags. Too many -> the lowest need scores become tags; too few ->
+    the highest-scoring tags slots become image (ties by slot). Returns notes (logged as code fixes)."""
+    by_id = {e["id"]: e for e in refs or []}
+    capable = capable or {}
+    cands = {s: b for s, b in briefs.items() if b.get("pv") == PV and b.get("source") == "new" and b.get("reference")}
+    notes = []
+    elig = []
+    for s, b in sorted(cands.items()):
+        if capable.get(s, True) and image_ok(by_id.get(b["reference"]), closeness):
+            elig.append(s)
+        elif (b.get("reference_mode") or "image") == "image":
+            b["reference_mode"] = "tags"
+            notes.append(f"slot {s}: reference {b['reference']} used as words "
+                         f"({'the engine takes no photo' if not capable.get(s, True) else 'no framed art in it'})")
+    img = [s for s in elig if (cands[s].get("reference_mode") or "image") == "image"]
+    want = min(int(n), len(elig))
+    if len(img) > want:
+        for s in sorted(img, key=lambda s: (need_score(cands[s]), -int(s)))[:len(img) - want]:
+            cands[s]["reference_mode"] = "tags"
+            notes.append(f"slot {s}: reference as words (share {want} of {len(cands)})")
+    elif len(img) < want:
+        tags = [s for s in elig if s not in img]
+        for s in sorted(tags, key=lambda s: (-need_score(cands[s]), int(s)))[:want - len(img)]:
+            cands[s]["reference_mode"] = "image"
+            notes.append(f"slot {s}: reference sent as an image (share {want} of {len(cands)})")
+    for s, b in cands.items():
+        b.setdefault("reference_mode", "image")
+        if b["reference_mode"] == "tags":
+            b["ref_tag_text"] = tag_sentence(b, by_id.get(b["reference"]))
+        else:
+            b.pop("ref_tag_text", None)
+    return notes
 # compact fixed blocks (5.2): the same rules in fewer words; the full texts (rs._PRINT_AREA, _present_text_v3,
 # rs.LOOK_GUARD + PLAN_GUARD_FRAME, CLOSING) stay untouched for pv1 and for prompt_style "full"
 PRINT_AREA_C = ("The print area is one flat, blank {colour} surface, dead matte, one even tone, no glare. "
@@ -502,7 +643,7 @@ KEEP = ("slot", "source", "library_rel", "print_size", "shot", "setting", "displ
 
 
 KEEP_V2 = KEEP + ("occupant", "lived_in", "light_type", "window", "photo_style", "reference", "reference_flip",
-                  "frame_colour")
+                  "frame_colour", "reference_mode", "ref_takeaways")
 
 
 def is_v2(raw):
@@ -532,6 +673,15 @@ def _normalise_v2(raw, slot_ctx):
     ref = raw.get("reference")
     b["reference"] = str(ref).strip().zfill(4) if ref not in (None, "", "none") else None
     b["reference_flip"] = bool(raw.get("reference_flip"))
+    if raw.get("reference_mode") in REF_MODES:                 # controls addendum B (absent = "image", as before)
+        b["reference_mode"] = raw["reference_mode"]
+    else:
+        b.pop("reference_mode", None)
+    tk = [x for x in (raw.get("ref_takeaways") or []) if x in TAKEAWAYS] if isinstance(raw.get("ref_takeaways"), list) else []
+    if tk:
+        b["ref_takeaways"] = list(dict.fromkeys(tk))[:2]
+    else:
+        b.pop("ref_takeaways", None)
     fc = raw.get("frame_colour") if isinstance(raw.get("frame_colour"), dict) else None
     b["frame_colour"] = None
     if fc:
@@ -559,7 +709,10 @@ def display_group(display):
 
 
 def ref_fits(entry, b):
-    """Does a reference fit a brief: same display group, reference shot within one step of the brief's shot."""
+    """Does a reference fit a brief: same display group, reference shot within one step of the brief's shot. At the
+    loose and essence closeness bands (controls addendum C) the composition is the planner's own, so any fits."""
+    if b.get("ref_band") in ("essence", "loose"):
+        return True
     t = entry.get("tags") or {}
     if t.get("display_group") != display_group(b.get("display")):
         return False
@@ -574,6 +727,10 @@ def apply_reference(b, entry):
     equals the reference's tag). Without a reference the model's camera fields stay."""
     if not entry:
         b["ref_use"] = []
+        return b
+    band = b.get("ref_band") or "balanced"
+    if band == "essence" and "camera" not in (b.get("ref_takeaways") or []):
+        b["ref_use"] = list(b.get("ref_takeaways") or [])      # only the takeaways; the model's camera stays
         return b
     t = entry.get("tags") or {}
     side = entry.get("camera_side") or "front"
@@ -598,6 +755,10 @@ def apply_reference(b, entry):
     use = ["camera", "lens", "composition", "character"]
     if b.get("light_type") and b.get("light_type") == t.get("light_type"):
         use.append("light")
+    if band == "loose":
+        use = ["camera", "lens"]
+    elif band == "essence":
+        use = list(b.get("ref_takeaways") or [])
     b["ref_use"] = use
     return b
 
@@ -1012,8 +1173,28 @@ def window_text(b):
 
 
 def ref_clause(b):
-    """The reference clause (2.2) for a brief whose reference image is sent: with or without the reference's light."""
+    """The reference clause for a brief whose reference image is sent. balanced (default 60, and every brief saved
+    before the controls addendum): the realism clause 2.2 verbatim, with or without the reference's light; loose,
+    close and essence: the controls addendum C.3 wordings."""
+    band = b.get("ref_band") or "balanced"
+    if band == "loose":
+        return REF_CLAUSE_LOOSE
+    if band == "close":
+        return REF_CLAUSE_CLOSE
+    if band == "essence":
+        words = [TAKEAWAY_WORDS[x] for x in (b.get("ref_takeaways") or []) if x in TAKEAWAY_WORDS] or ["its mood"]
+        return REF_CLAUSE_ESSENCE.format(takeaways=" and ".join(words))
     return REF_CLAUSE if "light" in (b.get("ref_use") or []) else REF_CLAUSE_NO_LIGHT
+
+
+def ref_part(b, ref=True):
+    """What goes right after the opening line: the image clause (reference_mode image, image sent), the tag sentence
+    (reference_mode tags: no image, its tags as words), or nothing."""
+    if not b.get("reference"):
+        return ""
+    if b.get("reference_mode") == "tags":
+        return b.get("ref_tag_text") or ""
+    return ref_clause(b) if ref else ""
 
 
 def present_text_c(b):
@@ -1045,7 +1226,7 @@ def _assemble_v2(b, ref=True):
     if lt not in LAMP_TYPES and b.get("light_from") in LIGHT_FROM_C:
         light += " " + LIGHT_FROM_C[b["light_from"]]
     wall = f"Walls: {b['wall']['name'] or 'a calm wall colour'}. " + WALL_TREATMENT_TEXT[b["wall"]["treatment"]]
-    parts = [OPENING_V2, ref_clause(b) if ref and b.get("reference") else "", b["scene"]]
+    parts = [OPENING_V2, ref_part(b, ref), b["scene"]]
     if style == "compact":
         parts += [shot_text_c(b), camera_text_c(b), light, window_text(b), PHOTO_STYLE_TEXT[b["photo_style"]], wall]
         if b["wall"]["treatment"] in ("panelled", "wainscot_lower"):
@@ -1677,11 +1858,19 @@ SCHEMA = {"briefs": [{
                                            "family": "|".join(FURNITURE_FAMILIES)},
     "house": "|".join(HOUSES_V2), "buyer": "|".join(BUYERS),
     "props": ["everyday things: 1-3 for tight, at most 6 medium, 8 wide; busy needs 4+"],
-    "scene": "60-160 words"}]}
+    "scene": "60-160 words",
+    "reference_mode": "image | tags (image: the reference photograph is sent; tags: only its facts become words)",
+    "ref_takeaways": ["only at the essence closeness: 1-2 of " + " | ".join(TAKEAWAYS)]}],
+    "registers_ok": ["2-6 of " + " | ".join(REGISTERS) + ": the kinds of home this artwork fits"]}
 
 
 def cfg(settings, key):
     return (settings or {}).get(key, DEFAULTS[key])
+
+
+class Briefs(dict):
+    """parse() result: {slot: raw brief}; .registers_ok = the plan-level register list (controls addendum A.4)."""
+    registers_ok = None
 
 
 def parse(raw):
@@ -1697,13 +1886,17 @@ def parse(raw):
         items = [dict(v, slot=v.get("slot", k)) for k, v in items.items()]
     if not isinstance(items, list):
         raise ValueError("no briefs list")
-    out = {}
+    out = Briefs()
     for it in items:
         if isinstance(it, dict):
             try:
                 out[int(it.get("slot"))] = it
             except (TypeError, ValueError):
                 continue
+    ro = obj.get("registers_ok")
+    if isinstance(ro, list):
+        ro = [x for x in ro if x in REGISTERS]
+        out.registers_ok = ro[:6] or None
     return out
 
 
@@ -1729,6 +1922,8 @@ def ref_view(e):
             "light_type": t.get("light_type"), "lived_in": t.get("lived_in"), "window": t.get("window_covering"),
             "camera_side": e.get("camera_side"), "camera_height": t.get("camera_height"), "lens": t.get("lens"),
             "editorial": t.get("editorial"), "times_used": len(e.get("uses") or []),
+            **({"register": t.get("register")} if t.get("register") else {}),
+            **({"has_art": False} if e.get("has_art") is False else {}),
             **({"grades": g} if g else {})}
 
 
@@ -1782,7 +1977,27 @@ def planner_prompt(ctx, current=None, failures=None, rewrite=None, wider=()):
     if wider:
         task += (f"\nSlot(s) {', '.join(map(str, wider))}: plan one step WIDER than before (a medium shot of a small "
                  "or medium print), because the tight scene could not be built.")
+    task += controls_text(ctx)
     return head + "Inputs:\n" + json.dumps(data, ensure_ascii=False) + "\n\n" + task + "\nReturn only the JSON object."
+
+
+def controls_text(ctx):
+    """The planner lines for Tony's two sliders (controls addendum B.2, C.2) and the register list (A.4)."""
+    c = ctx.get("controls")
+    if not c or not ctx.get("refs"):
+        return ""
+    v = int(c.get("closeness", 60))
+    band = band_of(v)
+    n = c.get("n_image")
+    t = ("\nChoose registers_ok once for this artwork: 2-6 kinds of home it fits (a reference whose register is not "
+         "in the list is not used).")
+    if n is not None:
+        t += (f"\nSend the reference photograph as an image for exactly {n} of the open slots: the ones where a "
+              "photograph says what words cannot (an unusual light such as blind stripes, dusk with a lamp or hard "
+              "diagonal sun; a tight shot on a surface where scale and composition matter; depth through a "
+              "doorway). For the others set reference_mode to tags.")
+    t += f"\nHow closely each reference shapes its scene: {v} of 100 ({band}). {BAND_INSTRUCTION[band]}"
+    return t
 
 
 def default_ask(settings, system=None):
@@ -1807,12 +2022,14 @@ def _call(ask, prompt, images, log):
         return parse(ask(prompt + "\n\nYour last answer was not valid JSON. Return valid JSON only.", images))
 
 
-def _ref_score(e, b, use_count=0):
+def _ref_score(e, b, use_count=0, registers_ok=None):
     """Reassignment score (2.1): display match 3 + shot match 2 + lived-in match 1 + unused across listings 1 + mean
-    past grade 0-1 (ungraded 0.5); a reference already used in this set loses 1 per use (shortage reuse only)."""
+    past grade 0-1 (ungraded 0.5); a reference already used in this set loses 1 per use (shortage reuse only);
+    + 3 for a register in the plan's registers_ok (controls addendum A.4)."""
     from .references import mean_grade
     t = e.get("tags") or {}
-    sc = 3.0 if t.get("display_group") == display_group(b.get("display")) else 0.0
+    sc = 3.0 if registers_ok and t.get("register") in registers_ok else 0.0
+    sc += 3.0 if t.get("display_group") == display_group(b.get("display")) else 0.0
     sc += 2.0 if t.get("shot") == b.get("shot") else 0.0
     sc += 1.0 if t.get("lived_in") and t.get("lived_in") == b.get("lived_in") else 0.0
     sc += 1.0 if not e.get("uses") else 0.0
@@ -1820,7 +2037,13 @@ def _ref_score(e, b, use_count=0):
     return sc + (0.5 if g is None else g) - use_count
 
 
-def validate_references(briefs, taken, refs, order=None):
+def register_fits(e, registers_ok):
+    """A reference fits the plan's registers_ok (no list, or no register on the reference = allowed)."""
+    reg = (e.get("tags") or {}).get("register")
+    return not registers_ok or not reg or reg in registers_ok
+
+
+def validate_references(briefs, taken, refs, order=None, registers_ok=None):
     """One distinct usable reference per new pv2 brief (2.1), decided in listing order. A pick that is unknown,
     unusable, already taken (another open slot or a fixed slot's template) or does not fit (display group, shot within
     one step) is REASSIGNED by code to the best-scoring fitting free reference. When no fitting free one is left
@@ -1840,14 +2063,15 @@ def validate_references(briefs, taken, refs, order=None):
         pick = b.get("reference")
         e = by_id.get(pick)
         b["reference_reused"] = False
-        if e is not None and pick not in taken and ref_fits(e, b):
+        fits = lambda x: ref_fits(x, b) and register_fits(x, registers_ok)      # noqa: E731
+        if e is not None and pick not in taken and fits(e):
             taken.add(pick)
             count[pick] = 1
             continue
-        free = [x for x in refs if x["id"] not in taken and ref_fits(x, b)]
+        free = [x for x in refs if x["id"] not in taken and fits(x)]
         reused = False
         if not free:
-            free = [x for x in refs if ref_fits(x, b)]
+            free = [x for x in refs if fits(x)]
             reused = bool(free)
         if not free:
             if pick:
@@ -1855,8 +2079,9 @@ def validate_references(briefs, taken, refs, order=None):
                              f"{b.get('shot')} slot; text-only prompt")
             b["reference"], b["reference_flip"] = None, False
             continue
-        best = sorted(free, key=lambda x: (-_ref_score(x, b, count.get(x["id"], 0)), x["id"]))[0]
-        why = ("unknown or unusable" if e is None else "already used" if pick in taken else "does not fit the slot")
+        best = sorted(free, key=lambda x: (-_ref_score(x, b, count.get(x["id"], 0), registers_ok), x["id"]))[0]
+        why = ("unknown or unusable" if e is None else "already used" if pick in taken else
+               "does not fit the home" if not register_fits(e, registers_ok) else "does not fit the slot")
         notes.append(f"slot {s}: reference {pick or '(none)'} {why}; code picked {best['id']}"
                      + (" (reused: fewer usable references than open slots)" if reused else ""))
         b["reference"], b["reference_reused"] = best["id"], reused
@@ -1887,7 +2112,16 @@ def finish(briefs, ctx, current=None):
                 continue
             raw = dict(raw, source="new", library_rel=None)
         if is_v2(raw):
-            v2[o["slot"]] = (normalise(dict(raw, pv=PV), o), o)
+            nb = normalise(dict(raw, pv=PV), o)
+            c = ctx.get("controls")
+            if c:                                    # controls addendum C.4 (pv2 only; never on pv1 briefs)
+                nb["ref_closeness"] = int(c.get("closeness", 60))
+                nb["ref_band"] = band_of(nb["ref_closeness"])
+                if nb["ref_band"] != "essence":
+                    nb.pop("ref_takeaways", None)
+                if not o.get("takes_ref", True):
+                    nb["reference_mode"] = "tags"
+            v2[o["slot"]] = (nb, o)
             continue
         b = normalise(raw, o)
         b["lint"] = lint(b, o)
@@ -1899,12 +2133,15 @@ def finish(briefs, ctx, current=None):
         taken = set(ctx.get("fixed_refs") or ())
         taken |= {b.get("reference") for s, b in (current or {}).items()
                   if s not in v2 and b.get("reference") and not b.get("reference_reused")}
-        notes = validate_references({s: b for s, (b, _) in v2.items()}, taken, refs, ctx.get("order"))
+        notes = validate_references({s: b for s, (b, _) in v2.items()}, taken, refs, ctx.get("order"),
+                                    ctx.get("registers_ok"))
         ctx.setdefault("ref_notes", []).extend(notes)
         by_id = {e["id"]: e for e in refs or []}
         compact = ctx.get("compact", COMPACT_DEFAULT)
         for s, (b, o) in v2.items():
             apply_reference(b, by_id.get(b.get("reference")))
+            if b.get("reference") and b.get("reference_mode") == "tags":
+                b["ref_tag_text"] = tag_sentence(b, by_id.get(b["reference"]))
             b["prompt_style"] = "compact" if b.get("presentation") in compact else "full"
             b["lint"] = lint(b, dict(o, refs=refs))
             b["prompt"] = assemble(b) if b["lint"]["pass"] else None
@@ -1952,11 +2189,20 @@ def plan_set(ctx, ask, settings=None, log=print, wider=()):
     images = ctx.get("images") or []
     out = {"version": VERSION, "status": "planning", "model": cfg(settings, "planner_model"), "rounds": 0,
            "created": datetime.now().isoformat(timespec="seconds")}
+    c = ctx.get("controls")
+    if c and ctx.get("refs"):
+        cap_ok = sum(1 for o in ctx["open"] if o.get("takes_ref", True))
+        img_refs = sum(1 for e in ctx["refs"] if image_ok(e, c.get("closeness", 60)))
+        c["n_image"] = n_image(int(c.get("share", 80)), len(ctx["open"]), cap_ok, img_refs)
     try:
         got = _call(ask, planner_prompt(ctx, wider=wider), images, log)
     except Exception as e:  # noqa: BLE001  (ChatUnavailable, bad JSON twice)
         return {**out, "status": "failed", "message": f"the scene planner could not answer: {str(e)[:160]}",
                 "briefs": {}, "seconds": round(time.time() - t0)}
+    if getattr(got, "registers_ok", None):
+        ctx["registers_ok"] = got.registers_ok
+    elif ctx.get("refs") and c:
+        log("the planner gave no registers_ok; every reference register allowed")
     cur = finish(got, ctx)
     best = None
     for rnd in range(rounds + 1):
@@ -1991,6 +2237,15 @@ def plan_set(ctx, ask, settings=None, log=print, wider=()):
         chk = check_set(cur, ctx["fixed_desc"], order, avail, max_tight, ctx.get("max_night"))
         if swapped:
             log(f"library templates (free) used for slots {swapped}")
+    if c and ctx.get("refs"):                      # controls addendum B.2: the share, enforced by code
+        caps = {o["slot"]: o.get("takes_ref", True) for o in ctx["open"]}
+        share_notes = enforce_share(cur, c.get("n_image", 0), caps, ctx["refs"], c.get("closeness", 60))
+        for s, b in cur.items():
+            if b.get("pv") == PV and b.get("source") == "new" and b["lint"]["pass"]:
+                b["prompt"] = assemble(b)
+        if share_notes:
+            ctx.setdefault("ref_notes", []).extend(share_notes)
+    lint_bad = [s for s, b in cur.items() if not b["lint"]["pass"]]
     status = "ready" if chk["pass"] and not lint_bad and len(cur) == len(ctx["open"]) else "needs_attention"
     msg = "" if status == "ready" else "; ".join([f["text"] for f in chk["failures"][:3]]
                                                  + [f"slot {s}: {cur[s]['lint']['why'][0]}" for s in lint_bad[:2]])
@@ -2008,6 +2263,10 @@ def plan_set(ctx, ask, settings=None, log=print, wider=()):
                cost={"library": len(briefs) - new, "new": new, "credits_per_scene": cps, "credits": new * cps,
                      "usd": round(new * cps * 0.005, 2)},
                seconds=round(time.time() - t0), updated=datetime.now().isoformat(timespec="seconds"))
+    if c:
+        out["controls"] = {k: c.get(k) for k in ("share", "closeness", "scene_engine", "n_image")}
+        if ctx.get("registers_ok"):
+            out["registers_ok"] = list(ctx["registers_ok"])
     return out
 
 
@@ -2191,9 +2450,17 @@ def context(con, settings, idea_id, ask_vision=None, cached_fixed=None, work=Non
     tags = rec.get("design_tags") or {}
     styles, _ = prod.effective_styles(tags)
     an = prod._analysis(rec, arts)
-    opens = [{"slot": c["slot"], "room": c["room"], "decor": c["decor"], "by": c.get("by"),
-              "ratios": list(avail.get(c["room"]) or []),
-              "library": library_candidates(settings, c["room"], used, fails, decor=c["decor"])} for c in open_slots]
+    from . import prefs
+    opens = []
+    for c in open_slots:
+        se = prod.slot_engine(con, settings, rec, c["slot"])
+        opens.append({"slot": c["slot"], "room": c["room"], "decor": c["decor"], "by": c.get("by"),
+                      "ratios": list(avail.get(c["room"]) or []), "engine": se.get("engine_id"),
+                      "takes_ref": bool(se.get("takes_ref")),
+                      "library": library_candidates(settings, c["room"], used, fails, decor=c["decor"])})
+    live = prefs.all_prefs(con, settings)
+    controls = {"share": live["reference_share"], "closeness": live["reference_closeness"],
+                "scene_engine": live["scene_engine"]}
     images = []
     iso = next((a for a in arts if "_ISO_" in a.name), arts[0] if arts else None)
     from .prod_chat import encode_image
@@ -2216,7 +2483,7 @@ def context(con, settings, idea_id, ask_vision=None, cached_fixed=None, work=Non
                 has_ref_sheet = True
     fixed_refs = sorted({d.get("reference") for d in fixed_desc.values() if d.get("reference")})
     graded = graded_examples(settings) if cfg(settings, "planner_graded_examples") else []
-    eng = prod._engine(settings)
+    eng = prod._engine(settings, con)
     fx_view = {str(s): {k: v for k, v in d.items() if v is not None and k not in ("scene", "wall_lab")}
                for s, d in fixed_desc.items()}
     return {"idea_id": idea_id, "listing_id": lst["id"], "order": rs.room_slots(settings),
@@ -2228,7 +2495,7 @@ def context(con, settings, idea_id, ask_vision=None, cached_fixed=None, work=Non
             "inputs_key": _key(tags, styles, open_slots, fixed_items, p),
             "refs": refs, "fixed_refs": fixed_refs, "graded": graded, "has_sheet": has_sheet,
             "has_ref_sheet": has_ref_sheet, "compact": tuple(cfg(settings, "planner_compact") or ()),
-            "max_night": int(cfg(settings, "planner_max_night")), "ref_notes": []}
+            "max_night": int(cfg(settings, "planner_max_night")), "ref_notes": [], "controls": controls}
 
 
 def graded_examples(settings=None, good=3, bad=3, cap_words=1400):
@@ -2650,17 +2917,81 @@ def card_brief(b):
             "lint": b.get("lint"), "marker": b.get("marker"), "ratio": b.get("ratio"), "stale": b.get("stale"),
             "facts": facts_line(b), "attempts": len(b.get("attempts") or []),
             "reference": b.get("reference"), "reference_flip": bool(b.get("reference_flip")),
+            "reference_mode": (b.get("reference_mode") or "image") if b.get("reference") else None,
+            "ref_band": b.get("ref_band"), "ref_closeness": b.get("ref_closeness"),
             "drift": (b.get("attempts") or [{}])[-1].get("drift") if b.get("attempts") else None}
 
 
-def panel_view(sp, running=False):
+def panel_view(sp, running=False, live=None):
+    """The plan line. live = Tony's current slider / engine values (app/prefs.py): when the plan was made with other
+    values, controls_changed says so (a slider never re-plans by itself, controls addendum B.3)."""
     if not sp:
         return {"status": "none", "message": "", "running": running}
     chk = sp.get("check") or {}
+    c = sp.get("controls")
+    changed = False
+    if c and live:
+        changed = (c.get("share"), c.get("closeness")) != (live.get("reference_share"), live.get("reference_closeness"))
     return {"status": "planning" if running else sp.get("status"), "message": sp.get("message") or "",
             "rounds": sp.get("rounds"), "failures": [f["text"] for f in chk.get("failures") or []][:6],
             "cost": sp.get("cost"), "stale": any(b.get("stale") for b in (sp.get("briefs") or {}).values()),
-            "updated": sp.get("updated"), "running": running}
+            "updated": sp.get("updated"), "running": running, "controls": c, "controls_changed": changed}
+
+
+# ---------- A/B closeness (controls addendum C.5): three free plans of one slot ----------
+AB_VALUES = (20, 60, 100)
+
+
+def plan_variants(con, settings, idea_id, slot, ask=None, values=AB_VALUES, log=None):
+    """Re-plan ONE slot three times with the SAME reference and engine at closeness 20 / 60 / 100 (three claude -p
+    calls, free) and save them in set_plan.abtest[slot] = {reference, engine, variants: {"20": brief, ...}}. A slot
+    that is a library template or approved is planned as if open (the realism --replan route). Spends nothing."""
+    import tempfile
+    from . import production as prod
+    log = log or (lambda *_: None)
+    ask = ask or default_ask(settings)
+    sp = get_plan(_record(con, idea_id)) or {}
+    cur = (sp.get("briefs") or {}).get(str(slot)) or {}
+    with tempfile.TemporaryDirectory() as td:
+        ctx = context(con, settings, idea_id, None, sp.get("fixed"), td, replan=(int(slot),))
+    o = next((x for x in ctx["open"] if x["slot"] == int(slot)), None)
+    if o is None:
+        raise ValueError(f"slot {slot} is not a room slot of this design")
+    if not o.get("takes_ref"):
+        raise ValueError("the slot's engine takes no reference photograph; A/B closeness needs one that does")
+    ref = cur.get("reference") if cur.get("pv") == PV else None
+    usable_ids = {e["id"] for e in ctx.get("refs") or []}
+    if ref not in usable_ids:
+        ref = next(iter(sorted(usable_ids)), None)
+    if not ref:
+        raise ValueError("no usable reference photograph")
+    rec = _record(con, idea_id)
+    eng = prod.slot_engine(con, settings, rec, int(slot))
+    ctx["open"] = [o]
+    others = {int(s): b for s, b in (sp.get("briefs") or {}).items() if int(s) != int(slot) and not b.get("stale")}
+    for s, b in others.items():
+        ctx["fixed_desc"].setdefault(s, dict(descriptor(b), slot=s))
+    variants = {}
+    for v in values:
+        ctx["controls"] = {"share": 100, "closeness": int(v), "scene_engine": eng.get("engine_id"), "n_image": 1}
+        ctx["ref_notes"] = []
+        got = _call(ask, planner_prompt(ctx) + f"\nUse reference {ref} for slot {slot}.", ctx.get("images") or [], log)
+        raw = dict(got.get(int(slot)) or {}, pv=PV, slot=int(slot), source="new", library_rel=None, reference=ref,
+                   reference_mode="image")
+        b = finish({int(slot): raw}, ctx, {})[int(slot)]
+        if b.get("reference") != ref:                 # the same reference in all three, even if it fits loosely
+            b["reference"] = ref
+            apply_reference(b, next((e for e in ctx["refs"] if e["id"] == ref), None))
+            b["lint"] = lint(b, dict(o, refs=ctx.get("refs")))
+            b["prompt"] = assemble(b) if b["lint"]["pass"] else None
+        b = {k: x for k, x in b.items() if k != "_done"}
+        b.update(rev=1, edited_by="ab_test", history=[], stale=False, attempts=[])
+        variants[str(v)] = b
+    entry = {"reference": ref, "engine": eng.get("engine_id"), "engine_label": eng.get("label"),
+             "credits_each": eng.get("credits_per_scene"), "upper_each": eng.get("upper"), "variants": variants,
+             "status": "planned", "planned": _now()}
+    _save(con, idea_id, lambda sp: sp.setdefault("abtest", {}).__setitem__(str(slot), entry))
+    return entry
 
 
 # ---------- CLI: the free dry run ----------

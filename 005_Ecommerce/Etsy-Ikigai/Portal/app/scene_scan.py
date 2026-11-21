@@ -337,6 +337,69 @@ def scan(png, settings=None, art_quad=None, marker="orange", ocr_runner=None, ge
     return {"pass": sev == "none", "severity": sev, "findings": findings, "overlay": ov, "mode": mode, "notes": notes}
 
 
+# ---------- reference board overlays (controls addendum A.1 step 4) ----------
+
+REFERENCE_PROMPT = ("This is a screenshot of a room photograph saved from Pinterest, Etsy or a shop. Find every overlay "
+                    "that is NOT part of the photographed room: Pinterest \"Visit site\" or lens (visual search) "
+                    "buttons, \"Deal\" bubbles, video timers, carousel arrows or dots, shop names, tiled mock-up store "
+                    "watermarks, \"insert your own design\" circles, captions or price labels. Also give the box of the "
+                    "main framed artwork (frame included), or null when the photo has no framed art. Return JSON "
+                    "{\"overlays\": [{\"type\": \"ui_button|deal|timer|carousel|shop_name|watermark|insert_circle|"
+                    "caption\", \"box_2d\": [ymin, xmin, ymax, xmax], \"confidence\": 0..1}], \"frame_box\": "
+                    "[ymin, xmin, ymax, xmax] or null} on a 0-1000 grid. Text printed on the artwork itself is not an "
+                    "overlay. Real objects in the room (books, signs on a wall) are not overlays.")
+REF_OVERLAY_TYPES = ("ui_button", "deal", "timer", "carousel", "shop_name", "watermark", "insert_circle", "caption")
+
+
+def _box(v):
+    y0, x0, y1, x1 = [float(x) / 1000 for x in v]
+    return [x0, y0, x1, y1]
+
+
+def _hit(a, b):
+    return not (a[2] < b[0] or b[2] < a[0] or a[3] < b[1] or b[3] < a[1])
+
+
+def scan_reference(png, settings=None, ocr_runner=None, gemini_ask=None):
+    """Overlays on a reference screenshot (OCR tiles + one Gemini flash-lite call with the reference prompt). Returns
+    {"findings": [{type, box (0..1), conf, source}], "frame_box": [x0, y0, x1, y1] | None, "notes"}. Findings inside
+    the frame box are dropped (the blanking step covers the art). OCR text counts only in a corner or inside a Gemini
+    overlay box (room text such as book spines is not an overlay)."""
+    notes = []
+    gem, frame = [], None
+    try:
+        raw = (gemini_ask or _gemini_ask)(png, REFERENCE_PROMPT)
+        obj = json.loads(raw) if isinstance(raw, str) else raw
+        for it in (obj or {}).get("overlays") or []:
+            if isinstance(it, dict) and it.get("type") in REF_OVERLAY_TYPES:
+                try:
+                    gem.append({"type": it["type"], "box": _box(it["box_2d"]), "conf": float(it.get("confidence") or 0),
+                                "source": "gemini"})
+                except (TypeError, ValueError, KeyError):
+                    continue
+        if (obj or {}).get("frame_box"):
+            try:
+                frame = _box(obj["frame_box"])
+            except (TypeError, ValueError):
+                frame = None
+    except Exception as e:  # noqa: BLE001
+        notes.append(f"gemini scan skipped: {str(e)[:80]}")
+    try:
+        ocr = ocr_findings(png, settings, ocr_runner)
+    except Exception as e:  # noqa: BLE001
+        ocr = []
+        notes.append(f"OCR skipped: {str(e)[:80]}")
+    found = [g for g in gem if g["conf"] >= 0.4]
+    for h in ocr:
+        if in_corner(h["box"]) or any(_hit(h["box"], g["box"]) for g in found):
+            found.append({"type": "text", "box": [float(v) for v in h["box"]], "conf": float(h.get("conf") or 0),
+                          "source": "ocr", "text": str(h.get("text", ""))[:40]})
+    if frame is not None:
+        found = [f for f in found if not (f["box"][0] >= frame[0] and f["box"][1] >= frame[1]
+                                          and f["box"][2] <= frame[2] and f["box"][3] <= frame[3])]
+    return {"findings": found, "frame_box": frame, "notes": notes}
+
+
 def summary(res):
     """One plain line for a card / an error (the first two reasons)."""
     fs = [f for f in res.get("findings") or [] if f["severity"] == res.get("severity")] or res.get("findings") or []

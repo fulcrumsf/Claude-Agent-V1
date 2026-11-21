@@ -67,3 +67,11 @@ Fifteen new screenshots renamed in place, same convention, ids continue from 003
 | 0045 | Screenshot 2026-11-20 at 10.16.41 PM.png | 0045_White_Panelled_Office_Thin_Bronze_Frame_Marble_Desk_Olive_Tree.png |
 | 0046 | Screenshot 2026-11-20 at 10.17.33 PM.png | 0046_Dark_Parisian_Salon_Large_Black_Frame_Above_Mantel_Globe_Chandelier.png |
 | 0047 | Screenshot 2026-11-20 at 10.18.23 PM.png | 0047_Taupe_Living_Room_Thin_Gold_Frame_Above_White_Mantel_Blossom_Branch.png |
+
+## 2026-11-21 refresh
+
+| id | original_filename | new_filename |
+|---|---|---|
+| 0048 | unodosmas_Modern_living_room_with_natural_light_and_soft_shad_ab49fd22-6a9e-4e3f-a827-392d0c17000f_3.png | 0048_Living_Room_Wall_Thin_Black_Frame_Sunlit_Gray_Sofa_Blinds.png |
+| 0049 | unodosmas_Photorealistic_bathroom_interior_featuring_one_vertic_34bfb246-85fe-4021-931b-b7f023aa623f.png | 0049_Bathroom_Wall_Ornate_Gold_Frame_Large_Seascape_Freestanding_Tub.png |
+| 0050 | unodosmas_Photorealistic_bathroom_interior_featuring_one_vertic_6596c99a-7d4c-4e67-aed1-2d42e82f774e.png | 0050_Salon_Wall_Large_Cream_Frame_Herringbone_Floor_Arched_Doorways.png |

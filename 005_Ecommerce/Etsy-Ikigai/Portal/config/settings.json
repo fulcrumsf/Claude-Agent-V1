@@ -47,5 +47,13 @@
   "planner_fallback_model": "haiku",
   "planner_timeout_s": 300,
   "planner_rounds": 3,
-  "planner_max_tight": 2
+  "planner_max_tight": 2,
+  "planner_reference_share": 80,
+  "planner_reference_closeness": 60,
+  "generate_all_cap_credits": 120,
+  "scene_min_width": 2000,
+  "reference_lowres_max": 400,
+  "reference_max_side": 2048,
+  "reference_nano_max_credits": 30,
+  "reference_lama_model": "~/pinokio/api/comfy.git/app/models/inpaint/big-lama.pt"
 }

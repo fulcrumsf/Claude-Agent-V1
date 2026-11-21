@@ -175,6 +175,9 @@ def image_path(con, settings, idea_id, name):
     if name in _prod(rec)["archived"]:
         a = _archive_file(folder, name, rec)
         return a if a.is_file() else None
+    if re.fullmatch(r"AB_\d{2}_\d{1,3}_\d{8}_\d{6}\.jpg", name):        # an A/B closeness variant (Archive only)
+        a = folder / ARCHIVE / name
+        return a if a.is_file() else None
     return None
 
 
@@ -267,6 +270,14 @@ def grade(con, settings, idea_id, name, grade_value, note=None):
                                     "note": note, "at": entry["at"]})
             else:
                 stp.remove_grade(psd, idea_id, slot)
+    eid = srec.get("engine_id") if mine else None
+    if eid:
+        try:
+            from . import engines
+            engines.record_room_grade(eid, idea_id, slot, grade_value if entry else None,
+                                      stp.GRADE_SCORE.get(grade_value) if entry else None)
+        except Exception:  # noqa: BLE001  (bookkeeping never breaks a grade)
+            pass
     if ref:
         references.record_grade(settings, ref, {"idea_id": idea_id, "slot": slot, "grade": grade_value, "note": note,
                                                 "at": datetime.now().isoformat(timespec="seconds")} if entry else
@@ -375,11 +386,52 @@ def _plan(con, settings, idea, rec, folder, arts):
                    settings.get("room_ratio_weights"), locked), avail
 
 
-def _engine(settings):
-    eng = settings.get("room_scene_engine", stp.DEFAULTS["room_scene_engine"])
-    cr = stp.SCENE_CREDITS.get(eng)
-    return {"id": eng, "credits_per_scene": cr, "usd_per_scene": round(cr * 0.005, 3) if cr else None,
+def _engine(settings, con=None):
+    """The panel's room-scene engine (controls addendum E.1): Tony's `ui.scene_engine` (app/prefs.py) when set, else
+    the setting room_scene_engine. With the defaults this is exactly the old {"id": "nbpro", 18 credits, ...}."""
+    from . import prefs
+    eng = prefs.get(con, settings, "scene_engine") if con is not None else \
+        settings.get("room_scene_engine", stp.DEFAULTS["room_scene_engine"])
+    return _engine_info(settings, eng)
+
+
+def _engine_info(settings, eng):
+    info = stp.scene_engine(eng)
+    return {"id": info["key"] if info["scene_id"] else info["id"], "engine_id": info["id"], "label": info["label"],
+            "credits_per_scene": info["credits_per_scene"], "usd_per_scene": info["usd_per_scene"],
+            "upper": info["upper"], "est": info["est"], "takes_ref": info["takes_ref"], "gate": info["gate"],
+            "provider": info["provider"], "scene_id": info["scene_id"], "price_label": info.get("price_label"),
             "resolution": settings.get("room_scene_resolution", "2K")}
+
+
+def slot_engine(con, settings, rec, slot):
+    """The engine one slot uses: the card's own pick (listing record production.slot_engines) > the panel default
+    (ui.scene_engine) > the setting. "nbpro" and "nano-banana-pro" are the same engine."""
+    own = ((rec or {}).get("production") or {}).get("slot_engines", {}).get(str(slot))
+    if own:
+        return dict(_engine_info(settings, own), own=True)
+    return dict(_engine(settings, con), own=False)
+
+
+def set_slot_engine(con, settings, idea_id, slot, engine):
+    """Tony's per-card engine (None = the panel default)."""
+    from . import engines
+    if engine not in (None, ""):
+        eid = engines.scene_engine_id(engine)
+        if not eid or not (engines.room_info(engines.raw_engine(eid)) or {}):
+            raise ProductionError(f"unknown room engine {engine}")
+        engine = eid
+    with LOCK:
+        lst = prints.listing_for(con, idea_id)
+        if not lst:
+            raise ProductionError("run upscale + resize first (Art tab)")
+        rec = prints._record(con, lst["id"])
+        se = _prod(rec).setdefault("slot_engines", {})
+        if engine in (None, ""):
+            se.pop(str(slot), None)
+        else:
+            se[str(slot)] = engine
+        prints._save_record(con, lst["id"], rec)
 
 
 def checker_fails(settings=None):
@@ -468,7 +520,7 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None, start_plan=
             prints._save_record(con, lst["id"], r2)
     lib = stp.library_templates(settings)
     names = {t["rel"]: t["name"] for t in lib}
-    engine = _engine(settings)
+    engine = _engine(settings, con)
     approvals = rec.get("mockup_approvals") or {}
     slots = _prod(rec)["slots"]
     job = job_state()
@@ -499,7 +551,8 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None, start_plan=
         made_for = None
         if srec.get("file") == name and srec.get("room") and (srec.get("room"), srec.get("decor")) != (c["room"], c["decor"]):
             made_for = f"{srec.get('room')} · {srec.get('decor')}"
-        nxt = _next_source(c, picks.get(c["slot"]), avail, engine)
+        ce = slot_engine(con, settings, rec, c["slot"])
+        nxt = _next_source(c, picks.get(c["slot"]), avail, ce)
         shown = b or (set_plan.get("briefs") or {}).get(str(c["slot"]))
         cb = splan.card_brief(shown)
         if cb is not None:
@@ -516,8 +569,15 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None, start_plan=
                       "random_look": nxt["kind"] == "new" and not b,
                       "shot_drift": srec.get("shot_drift") if srec.get("file") == name else None,
                       "credits_spent": srec.get("credits"),
+                      "engine": {k: ce.get(k) for k in ("engine_id", "label", "own", "takes_ref", "gate",
+                                                        "credits_per_scene", "usd_per_scene", "upper", "est",
+                                                        "provider")},
+                      "engine_fail": srec.get("engine_fail") if srec.get("state") == "failed" or (
+                          img and img.get("flagged")) else None,
                       "ref_note": (srec.get("reference") or {}).get("note") if srec.get("file") == name else None})
     styles, source = effective_styles(tags)
+    from . import prefs
+    live = prefs.all_prefs(con, settings)
     return {"idea_id": idea_id, "name": lst["title"], "title": idea["title"],
             "image_url": prints.status(con, idea_id, settings, prefix)["image_url"],
             "folder_rel": f"Designs/{folder.parent.name}/03-Etsy Images",
@@ -527,17 +587,33 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None, start_plan=
             "styles_auto": (tags.get("auto_styles") or {}).get("styles") or [],
             "styles_auto_error": (tags.get("auto_styles") or {}).get("error"),
             "styles_used": styles, "styles_source": source, "slots": cards, "job": job, "engine": engine,
-            "prints": len(arts), "set_plan": splan.panel_view(set_plan, splan.is_running(idea_id)),
-            "queue": queue_of(cards)}
+            "prints": len(arts), "set_plan": splan.panel_view(set_plan, splan.is_running(idea_id), live),
+            "queue": queue_of(cards), "prefs": live, "room_engines": _room_engines(),
+            "batch": batch_state(idea_id), "refresh": _refresh_view(settings),
+            "batches": (_prod(rec).get("batches") or [])[-5:], "abtest": _abtest_view(set_plan, prefix)}
 
 
 def queue_of(cards):
-    """The Generate-all hook (future button, not built): open cards in the order to make them, free library first,
-    with the credits each costs. A card with an image that is not denied is not open."""
-    q = [{"slot": c["slot"], "source": c["next"]["kind"], "credits": c["next"].get("credits") or 0,
-          "planned": bool((c.get("brief") or {}).get("usable"))}
-         for c in cards if c["next"]["kind"] != "none" and c["state"] != "running"
-         and (c["image"] is None or c["image"]["status"] == "denied")]
+    """The Generate-all order (controls addendum F): open cards, free library first then slot order, with the credits
+    each costs, its engine, reference mode and upper bound. A card with an image that is not denied is not open."""
+    q = []
+    for c in cards:
+        if c["next"]["kind"] == "none" or c["state"] == "running" or not (c["image"] is None
+                                                                        or c["image"]["status"] == "denied"):
+            continue
+        e = c.get("engine") or {}
+        br = c.get("brief") or {}
+        lib = c["next"]["kind"] == "library"
+        q.append({"slot": c["slot"], "source": c["next"]["kind"], "credits": c["next"].get("credits") or 0,
+                  "planned": bool(br.get("usable")), "engine": None if lib else e.get("engine_id"),
+                  "engine_label": None if lib else e.get("label"),
+                  "upper": 0 if lib else (e.get("upper") if e.get("upper") is not None else c["next"].get("credits") or 0),
+                  "usd": 0 if lib else e.get("usd_per_scene"), "est": False if lib else bool(e.get("est")),
+                  "gate": None if lib else e.get("gate"), "reference": br.get("reference"),
+                  "provider": None if lib else e.get("provider"),
+                  "reference_mode": (br.get("reference_mode") or "image") if br.get("reference") else None,
+                  "lint_ok": (br.get("lint") or {}).get("pass", True) if br else True,
+                  "label": c["next"].get("label")})
     return sorted(q, key=lambda x: (x["source"] != "library", x["slot"]))
 
 
@@ -608,14 +684,17 @@ def job_state():
         return dict(_job)
 
 
-def start_slot(con, settings, idea_id, slot, template_rel=None):
+def start_slot(con, settings, idea_id, slot, template_rel=None, by_batch=False):
     """Claim the single job slot for this card. The caller runs run_slot in a worker. One click = Tony's approval
-    of the cost (a library template costs nothing; a new scene costs kie.ai credits)."""
+    of the cost (a library template costs nothing; a new scene costs credits). While Generate all runs, card clicks
+    are refused (the batch claims the job slot itself, by_batch=True)."""
     if slot not in rs.room_slots(settings):
         raise ProductionError("room images are slot 3 and slots 9-19")
     _ctx(con, settings, idea_id)
     if template_rel and template_rel not in {t["rel"] for t in stp.library_templates(settings)}:
         raise ProductionError("no such template in the library")
+    if not by_batch and batch_running():
+        raise ProductionError("Generate all is running")
     with _job_lock:
         if _job["running"]:
             raise ProductionError(f"slot {_job['slot']} is still being made; one at a time")
@@ -725,41 +804,56 @@ def _leak(scene, built, marker):
         return None
 
 
-def _reference_for(settings, brief, marker, td):
+def _reference_for(settings, brief, marker, td, engine=None):
     """The reference photograph to send with a planned pv2 scene (realism addendum 2.5), or None when the brief has
-    none. {"id", "png" (None = text-only), "sent", "flip", "note"}."""
+    none. {"id", "png" (None = text-only), "sent", "flip", "note"}. Controls addendum: a brief in reference_mode
+    "tags" sends no image (its tag sentence is already in the prompt); an engine that takes no photo never gets one;
+    closeness below 50 sends a smaller, blurred copy (references.prep_for)."""
     if not brief or brief.get("pv") != splan.PV or not brief.get("reference"):
         return None
     from . import references
     rid = brief["reference"]
     out = {"id": rid, "png": None, "sent": False, "flip": bool(brief.get("reference_flip")), "note": ""}
-    eng = settings.get("room_scene_engine", stp.DEFAULTS["room_scene_engine"])
-    if not splan.cfg(settings, "planner_references"):
+    if engine is None:
+        engine = _engine_info(settings, settings.get("room_scene_engine", stp.DEFAULTS["room_scene_engine"]))
+    if brief.get("reference_mode") == "tags":
+        out["note"] = "reference used as words"
+    elif not splan.cfg(settings, "planner_references"):
         out["note"] = "reference not sent (setting)"
-    elif eng not in stp.REF_ENGINES:
-        out["note"] = "reference not sent (engine)"
+    elif not engine.get("takes_ref"):
+        out["note"] = "reference used as words (engine takes no photo)" if brief.get("ref_tag_text") else \
+            "reference not sent (engine)"
     else:
         entry = (references.load(references.ref_dir(settings)).get("refs") or {}).get(rid)
         if not entry or not entry.get("blank") or not (references.ref_dir(settings) / entry["blank"]).is_file():
             out["note"] = "reference not sent (blank missing)"
         else:
             try:
-                out["png"] = references.blank_for(entry, marker or "orange", out["flip"], td, settings)
+                out["png"] = references.prep_for(entry, marker or "orange", out["flip"],
+                                                 brief.get("ref_closeness", references.DEFAULT_CLOSENESS), td, settings)
                 out["sent"] = True
             except Exception as e:  # noqa: BLE001
                 out["note"] = f"reference not sent ({str(e)[:60]})"
     return out
 
 
-def _generate(settings, prompt, scene, generator, ref, brief):
+def _gen(prompt, scene, settings, generator, engine, ref_imgs=()):
+    """generate_scene for the slot's engine; with the default engine exactly the old call."""
+    kw = {"ref_imgs": ref_imgs} if ref_imgs else {}
+    if engine is not None and engine.get("id") != settings.get("room_scene_engine", stp.DEFAULTS["room_scene_engine"]):
+        kw["engine"] = engine["id"]
+    return stp.generate_scene(prompt, scene, settings, generator, **kw)
+
+
+def _generate(settings, prompt, scene, generator, ref, brief, engine=None):
     """generate_scene with the reference image when it can be sent. A refusal ("flagged as sensitive") that did not
     move the balance is retried ONCE text-only inside the same click (so one click costs at most one scene), and the
     reference is marked kie_refused so the planner never picks it again."""
     if not ref or not ref["sent"]:
-        return stp.generate_scene(prompt, scene, settings, generator)
+        return _gen(prompt, scene, settings, generator, engine)
     before = stp.kie_balance(settings)
     try:
-        return stp.generate_scene(prompt, scene, settings, generator, ref_imgs=[ref["png"]])
+        return _gen(prompt, scene, settings, generator, engine, [ref["png"]])
     except stp.TemplateError as e:
         if not stp.is_refusal(str(e)):
             raise
@@ -770,20 +864,42 @@ def _generate(settings, prompt, scene, generator, ref, brief):
         if moved:
             raise stp.TemplateError(f"{e} (reference {ref['id']} refused; the balance moved, so no retry)")
         ref.update(sent=False, note=f"reference {ref['id']} refused by kie.ai; retried text-only")
-        return stp.generate_scene(splan.assemble(brief, ref=False), scene, settings, generator)
+        return _gen(splan.assemble(brief, ref=False), scene, settings, generator, engine)
 
 
-def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
+def _classify(msg):
+    """hard (stop a batch: key missing, auth / balance refused) | network | slot (this slot only)."""
+    m = str(msg or "").lower()
+    if "is not set" in m or "missing" in m and "key" in m:
+        return "hard"
+    if stp.is_refusal(m) and not re.search(r"credit|balance|insufficient|unauthori|forbidden|401|402|403", m):
+        return "slot"
+    if re.search(r"credit|balance|insufficient|unauthori|forbidden|\b40[123]\b|auth", m):
+        return "hard"
+    if "network" in m or "could not be reached" in m or "took too long" in m:
+        return "network"
+    return "slot"
+
+
+def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None, engine=None, brief_override=None,
+             place=True, ab=None):
     """Worker for one card: pick the source, render, guard, place. Always releases the job slot.
     With a usable set-plan brief for the slot (app/slot_planner.py) and no "+" pick: a "library" brief renders its
     planned template; a "new" brief sends its saved prompt (no random look), builds with its ratio, presentation and
     insert marker, saves the brief (not a look) in template.json and logs the attempt on the brief. Without one,
-    everything runs exactly as before (random look)."""
+    everything runs exactly as before (random look).
+    Controls addendum: engine = the slot's engine (card pick > panel default > setting); brief_override + place=False
+    = an A/B variant (the render goes to 03-Etsy Images/Archive/AB_..., the slot is untouched). Returns an outcome
+    {kind: done | flagged | failed, hard, network, credits, usd, why} (single-card callers ignore it)."""
     brief, attempt = None, None
+    spent = {"credits": None, "usd": None}
+    efail = {}
+    outcome = {"kind": "failed", "hard": False, "network": False, "credits": None, "usd": None, "why": ""}
     try:
         idea, lst, rec, folder, arts = _ctx(con, settings, idea_id)
         if not arts:
             raise stp.TemplateError("the print JPGs are missing; run upscale + resize first")
+        eng = _engine_info(settings, engine) if engine else slot_engine(con, settings, rec, slot)
         plan, avail = _plan(con, settings, idea, rec, folder, arts)
         card = next((c for c in plan if c["slot"] == slot), None)
         srec = dict(_prod(rec)["slots"].get(str(slot)) or {})
@@ -794,6 +910,10 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
         if template_rel:
             t = next(x for x in lib if x["rel"] == template_rel)
             source = "picked"
+        elif brief_override is not None:        # an A/B variant: always a new scene from this brief
+            brief = brief_override
+            card = {**card, "ratio": brief.get("ratio") or card["ratio"]}
+            t, source = None, "new"
         else:                                   # the same choice the card showed (library_picks, slot order)
             plan_all = plan if any(c["slot"] == slot for c in plan) else plan + [card]
             usable = _briefs(rec, plan_all)
@@ -824,11 +944,11 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                     marker = "orange"
                 attempt = {"result": "not_drawn", "rev": (brief or {}).get("rev")} if brief else None
                 scene = td / "scene.png"
-                ref = _reference_for(settings, brief, marker, td) if look is None else None
+                ref = _reference_for(settings, brief, marker, td, eng) if look is None else None
                 if ref and ref["png"] is None:                        # the reference could not be sent: text-only
                     prompt = splan.assemble(brief, ref=False)
-                _stage("drawing the room (kie.ai)")
-                gen = _generate(settings, prompt, scene, generator, ref, brief)
+                _stage(f"drawing the room ({eng['label'] if not eng.get('scene_id') else 'kie.ai'})")
+                gen = _generate(settings, prompt, scene, generator, ref, brief, eng)
                 if ref:
                     out["reference"] = {k: ref[k] for k in ("id", "sent", "note", "flip")}
                     if attempt:
@@ -836,6 +956,13 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                     if not ref["sent"]:
                         prompt = splan.assemble(brief, ref=False)
                 out["credits"] = gen.get("credits")
+                spent.update(credits=gen.get("credits"), usd=gen.get("usd"))
+                out["engine_id"] = eng["engine_id"]
+                if gen.get("usd") is not None and not eng.get("scene_id"):
+                    out["usd"] = gen.get("usd")
+                if not eng.get("scene_id"):                # ~1 MP engines: enlarge before the build (free, local)
+                    _stage("enlarging a small scene (Upscayl, free)")
+                    stp.upscale_scene(scene, settings, int(settings.get("scene_min_width", 2000)))
                 _stage("checking the scene for stray text (free)")
                 scan = _scan_scene(settings, scene, td)
                 if scan["severity"] == "hard":
@@ -864,6 +991,10 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                     keep = folder / ARCHIVE / f"Scene_No_Insert_{slot:02d}_{datetime.now():%Y%m%d_%H%M%S}.png"
                     shutil.copy2(scene, keep)
                     why = str(e) if "off the print ratio" in str(e) else "the scene has no clean blank frame insert"
+                    if eng.get("gate") != "trusted" and eng.get("engine_id"):
+                        _engine_check_fail(eng, f"{eng['label']} gave no clean blank insert", keep.name)
+                        efail.update(engine=eng["engine_id"], label=eng["label"],
+                                     why=f"{eng['label']} did not draw a clean, flat blank insert")
                     raise stp.TemplateError(f"{why} (scene kept as {ARCHIVE}/{keep.name}); Regenerate for a new scene")
                 leak = _leak(scene, built, marker)
                 if leak is not None and leak > scene_scan.LEAK_MAX:      # the insert colour outside the art: soft
@@ -871,16 +1002,24 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                     scan = dict(scan, findings=list(scan.get("findings") or []) + extra, severity="soft"
                                 if scan["severity"] == "none" else scan["severity"])
                     scan["pass"] = False
-                meta = {"prompt": prompt, **({"look": look} if look is not None else
-                                             {"brief": {**{k: v for k, v in brief.items()
-                                                           if k not in ("history", "attempts", "prompt")},
-                                                        **({"reference_sent": ref["sent"]} if ref else {})}}),
+                bmeta = None
+                if look is None:
+                    bmeta = {**{k: v for k, v in brief.items() if k not in ("history", "attempts", "prompt")},
+                             **({"reference_sent": ref["sent"]} if ref else {})}
+                    if brief.get("pv") == splan.PV:
+                        bmeta["engine"] = eng["engine_id"]
+                    if ab:
+                        bmeta["ab"] = ab
+                meta = {"prompt": prompt, **({"look": look} if look is not None else {"brief": bmeta}),
                         **({"text_scan": {k: scan.get(k) for k in ("pass", "severity", "findings", "mode")}}
                            if scan.get("mode") != "off" else {}),
-                        "engine": settings.get("room_scene_engine", "nbpro"),
+                        "engine": eng["id"],
                         "model": gen.get("model"), "resolution": settings.get("room_scene_resolution", "2K"),
                         "aspect": settings.get("room_scene_aspect", "4:3"), "credits": gen.get("credits"),
-                        "made_for": {"idea_id": idea_id, "design": lst["title"], "slot": slot}}
+                        "made_for": {"idea_id": idea_id, "design": lst["title"], "slot": slot},
+                        "engine_id": eng["engine_id"], "engine_provider": eng.get("provider"),
+                        "engine_model": gen.get("model"), "usd": gen.get("usd"),
+                        "cost_measured": bool(gen.get("measured", gen.get("left") is not None))}
                 tdir, psd = stp.save_template(settings, card["room"], card["decor"], card["ratio"], scene, built, meta)
                 rel = psd.relative_to(stp.library(settings)).as_posix()
                 man = stp.load_manifest(psd)
@@ -892,6 +1031,15 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 g = _with_gate(g, art_gate(settings, psd, man, render, td))     # a fresh build: nothing to rebuild
                 if scan["severity"] == "soft":         # realism 6.4: built (credits not wasted) but flagged for Tony
                     g = {**g, "pass": False, "why": list(g["why"]) + [scene_scan.summary(scan)], "text_scan": False}
+                if eng.get("gate") != "trusted" and eng.get("engine_id"):     # E.4 first-real-scene check (free)
+                    chk = engine_scene_check(scene, built, marker, scan, g)
+                    out["engine_check"] = chk
+                    if chk["pass"]:
+                        out["engine_gate"] = _engines().record_room_check(eng["engine_id"], True, "", rel)
+                    else:
+                        _engine_check_fail(eng, chk["why"], rel)
+                        out["engine_fail"] = {"engine": eng["engine_id"], "label": eng["label"], "why": chk["why"]}
+                        g = {**g, "pass": False, "why": list(g["why"]) + [chk["why"]]}
                 out.update(template=rel, new_template=rel, print=art.name, cropped=r["cropped"])
                 if ref and ref["sent"]:
                     from . import references
@@ -949,6 +1097,14 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                     except Exception as e:  # noqa: BLE001  (the first render stays, flagged with its reason)
                         out["rebuilt"] = {"error": str(e)[:200], "first_render": ag}
                 g = _with_gate(g, ag)
+            if not place:                                # an A/B variant: Archive only, the slot is untouched
+                folder.joinpath(ARCHIVE).mkdir(parents=True, exist_ok=True)
+                stamp = f"{datetime.now():%Y%m%d_%H%M%S}"
+                placed = mockups._place(render, folder / ARCHIVE / f"AB_{slot:02d}_{(ab or {}).get('value', 'x')}_{stamp}.jpg")
+                outcome.update(kind="done" if g["pass"] else "flagged", credits=spent["credits"], usd=spent["usd"],
+                               why="" if g["pass"] else "; ".join(g["why"])[:300], file=placed.name,
+                               template=out.get("template"))
+                return outcome
             with LOCK:
                 rec = prints._record(con, lst["id"])
                 prod = _prod(rec)
@@ -979,28 +1135,93 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 prints._save_record(con, lst["id"], rec)
         if attempt:
             _attempt(con, idea_id, slot, attempt.get("rev"), attempt)
+        outcome.update(kind="done" if g["pass"] else "flagged", credits=spent["credits"], usd=spent["usd"],
+                       why="" if g["pass"] else "; ".join(g["why"])[:300])
     except Exception as e:  # noqa: BLE001  (shown on the card; the job slot is always released)
         msg = str(e) if isinstance(e, (ProductionError, stp.TemplateError)) else f"Something went wrong: {e}"
+        kind = _classify(msg)
+        outcome.update(kind="failed", hard=kind == "hard", network=kind == "network", why=msg[:300],
+                       credits=spent["credits"], usd=spent["usd"])
         if attempt:
             _attempt(con, idea_id, slot, attempt.get("rev"),
                      dict(attempt, result=attempt["result"] if attempt["result"] != "built" else "failed",
                           why=msg[:300]))
-        try:
-            with LOCK:
-                lst = prints.listing_for(con, idea_id)
-                rec = prints._record(con, lst["id"])
-                s = _prod(rec)["slots"].setdefault(str(slot), {})
-                s.update(state="failed", message=msg[:400])
-                prints._save_record(con, lst["id"], rec)
-        except Exception:  # noqa: BLE001
-            pass
+        if place:
+            try:
+                with LOCK:
+                    lst = prints.listing_for(con, idea_id)
+                    rec = prints._record(con, lst["id"])
+                    s = _prod(rec)["slots"].setdefault(str(slot), {})
+                    s.update(state="failed", message=msg[:400])
+                    if efail:
+                        s["engine_fail"] = dict(efail)
+                    else:
+                        s.pop("engine_fail", None)
+                    prints._save_record(con, lst["id"], rec)
+            except Exception:  # noqa: BLE001
+                pass
     finally:
         with _job_lock:
             _job.update(running=False, idea_id=None, slot=None, stage="", started=None)
+    return outcome
+
+
+# ---------- per-engine room check (controls addendum E.4) ----------
+INSERT_DE_MAX = 20.0          # the insert's median colour within dE76 20 of the asked marker colour
+INSERT_TEXTURE_MAX = 9.0      # std of L inside the insert (a flat, evenly lit block is ~1-4; a painted picture >> 10)
+ASPECT_TOL = 0.02
+
+
+def _engines():
+    from . import engines
+    return engines
+
+
+def engine_scene_check(scene, built, marker, scan, g):
+    """The first-real-scene check of an engine not yet trusted (free): the insert is flat and in the marker colour,
+    the scene is 4:3, and guard + art-area gate + output scan passed. {pass, why, de, texture, aspect}."""
+    from PIL import Image
+    import cv2
+    import numpy as np
+    from .template_checker import offset_quad, poly_mask
+    with Image.open(scene) as im:
+        rgb = np.asarray(im.convert("RGB"))
+    H, W = rgb.shape[:2]
+    why = []
+    q = np.float32(built.get("quad_insert") or built["quad_art"])
+    side = float(np.mean([np.linalg.norm(q[(i + 1) % 4] - q[i]) for i in range(4)]))
+    m = poly_mask(offset_quad(q, -0.08 * side), W, H) > 0.5
+    de = tex = None
+    if m.sum() > 50:
+        lab = cv2.cvtColor(np.float32(rgb) / 255.0, cv2.COLOR_RGB2Lab)
+        tgt = cv2.cvtColor(np.float32([[splan.MARKER_RGB.get(marker or "orange", splan.MARKER_RGB["orange"])]]) / 255.0,
+                           cv2.COLOR_RGB2Lab)[0, 0]
+        med = np.median(lab[m], 0)
+        de = float(np.linalg.norm(med - tgt))
+        tex = float(lab[m][:, 0].std())
+        if de >= INSERT_DE_MAX:
+            why.append(f"the insert is not the {marker or 'orange'} placeholder colour (dE {de:.0f})")
+        if tex >= INSERT_TEXTURE_MAX:
+            why.append("the blank insert is not flat (painted or textured)")
+    asp = W / H
+    if abs(asp - 4 / 3) / (4 / 3) > ASPECT_TOL:
+        why.append(f"the scene is not 4:3 ({W}x{H})")
+    if not g.get("pass"):
+        why.append("the guard or art-area gate failed")
+    if (scan or {}).get("severity") not in (None, "none"):
+        why.append("the output scan found text or overlays")
+    return {"pass": not why, "why": "; ".join(why), "de": round(de, 1) if de is not None else None,
+            "texture": round(tex, 2) if tex is not None else None, "aspect": round(asp, 4)}
+
+
+def _engine_check_fail(eng, why, where=None):
+    gate = _engines().record_room_check(eng["engine_id"], False, why, where)
+    return gate
 
 
 def recover(con):
-    """On startup: a card left running by a restart is marked failed (its thread is gone)."""
+    """On startup: a card left running by a restart is marked failed (its thread is gone); a Generate-all run cut by
+    the restart is recorded as interrupted (never resumed on its own)."""
     import json
     with LOCK:
         for r in con.execute("SELECT id, record FROM listings").fetchall():
@@ -1010,9 +1231,271 @@ def recover(con):
                 if s.get("state") in ("queued", "running"):
                     s.update(state="failed", message="stopped by a Portal restart; run it again")
                     changed = True
+            live = (rec.get("production") or {}).pop("batch_live", None)
+            if live:
+                live.update(status="interrupted", stop_reason="stopped by a Portal restart (not resumed)",
+                            finished=datetime.now().isoformat(timespec="seconds"))
+                for row in live.get("rows") or []:
+                    if row.get("status") in ("waiting", "running"):
+                        row.update(status="skipped", why="interrupted by a Portal restart")
+                live["report"] = batch_report(live)
+                bs = rec["production"].setdefault("batches", [])
+                bs.append(live)
+                rec["production"]["batches"] = bs[-5:]
+                changed = True
             if changed:
                 prints._save_record(con, r["id"], rec)
 
+
+# ---------- Generate all open slots (controls addendum F) ----------
+_batch = {"running": False, "idea_id": None, "rows": [], "spent": 0.0, "cap": None, "total": 0, "cancel": False,
+          "started": None, "finished": None, "stop_reason": "", "kind": "all"}
+_batch_lock = threading.Lock()
+
+
+def batch_running():
+    with _batch_lock:
+        return bool(_batch["running"])
+
+
+def batch_state(idea_id=None):
+    with _batch_lock:
+        b = {**_batch, "rows": [dict(r, brief=None) for r in _batch["rows"]]}
+    if idea_id is not None and b.get("idea_id") not in (None, idea_id):
+        return {"running": b["running"], "idea_id": b["idea_id"], "other_design": True, "rows": []}
+    return b
+
+
+def _room_engines():
+    try:
+        from . import engines
+        return engines.room_engines()
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def _refresh_view(settings):
+    try:
+        from . import references
+        return references.refresh_view(settings)
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _abtest_view(set_plan, prefix):
+    ab = (set_plan or {}).get("abtest") or {}
+    out = {}
+    for s, v in ab.items():
+        out[s] = {"reference": v.get("reference"), "engine": v.get("engine"), "engine_label": v.get("engine_label"),
+                  "credits_each": v.get("credits_each"), "status": v.get("status"), "message": v.get("message"),
+                  "variants": {k: {"prompt": (b or {}).get("prompt"), "band": (b or {}).get("ref_band"),
+                                   "lint": (b or {}).get("lint"), "result": ((v.get("results") or {}).get(k))}
+                               for k, b in (v.get("variants") or {}).items()}}
+    return out
+
+
+def _row_key(rows):
+    import hashlib
+    import json
+    keep = [{k: r.get(k) for k in ("slot", "source", "engine", "upper", "status", "reference", "reference_mode",
+                                    "label", "why")} for r in rows]
+    return hashlib.sha1(json.dumps(keep, sort_keys=True).encode()).hexdigest()
+
+
+def estimate(con, settings, idea_id, cap=None):
+    """What Generate all would do, in run order (library first, then slot order): rows with engine, reference mode,
+    estimate and upper bound, skipped rows with reasons; totals per engine; the kie balance; the cap; key = sha1 of
+    the rows (the POST must send it back unchanged). Free."""
+    from . import engines, prefs
+    pan = panel(con, settings, idea_id)
+    sp = pan.get("set_plan") or {}
+    if pan["job"]["running"] or batch_running():
+        raise ProductionError("a slot is being made; wait for it to finish")
+    if not pan["queue"]:
+        raise ProductionError("no open slot to generate (every slot has an image waiting or approved)")
+    if sp.get("status") in ("planning",) or sp.get("running"):
+        raise ProductionError("the scenes are still being planned")
+    if sp.get("status") == "failed":
+        raise ProductionError("the scene plan failed; Re-plan open slots first")
+    rows = []
+    for q in pan["queue"]:
+        r = {"slot": q["slot"], "source": q["source"], "engine": q["engine"], "engine_label": q["engine_label"],
+             "est": q["credits"] if q["source"] == "new" else 0, "upper": q["upper"] if q["source"] == "new" else 0,
+             "usd": q["usd"] or 0, "estimated": q["est"], "reference": q["reference"],
+             "reference_mode": q["reference_mode"], "label": q["label"], "status": "waiting", "why": "",
+             "provider": q.get("provider")}
+        if q["source"] == "new" and not q["planned"]:
+            r.update(status="skipped", why="no usable plan for this slot (Re-plan open slots)")
+        elif not q["lint_ok"]:
+            r.update(status="skipped", why="its prompt failed the rules check")
+        elif q["source"] == "new" and q["gate"] not in engines.GATE_OK:
+            r.update(status="skipped", why=f"{q['engine_label']} has not passed its room check yet "
+                                           "(generate one by hand first)")
+        rows.append(r)
+    run = [r for r in rows if r["status"] == "waiting"]
+    per = {}
+    for r in run:
+        if r["source"] == "new":
+            p = per.setdefault(r["engine_label"], {"slots": 0, "credits": 0.0, "upper": 0.0, "usd": 0.0})
+            p["slots"] += 1
+            p["credits"] += r["est"] or 0
+            p["upper"] += r["upper"] or 0
+            p["usd"] += r["usd"] or 0
+    cap = prefs.get(con, settings, "generate_all_cap") if cap is None else int(cap)
+    total_up = round(sum(r["upper"] or 0 for r in run), 1)
+    return {"idea_id": idea_id, "rows": rows, "per_engine": per, "total_credits": round(sum(r["est"] or 0 for r in run), 1),
+            "total_upper": total_up, "total_usd": round(sum(r["usd"] or 0 for r in run), 3),
+            "balance": stp.kie_balance(settings), "cap": cap, "runnable": len(run),
+            "over_cap": total_up > cap, "key": _row_key(rows)}
+
+
+def start_batch(con, settings, idea_id, key, cap, spawn, generator=None):
+    """Tony's Confirm: refused when the estimate changed since he looked (key), when nothing can run, or when a job or
+    another batch is running. Claims the batch and runs it in a worker."""
+    est = estimate(con, settings, idea_id, cap)
+    if est["key"] != key:
+        raise ProductionError("the plan changed; check the new total")
+    run = [r for r in est["rows"] if r["status"] == "waiting"]
+    if not run:
+        raise ProductionError("no open slot can be generated")
+    with _batch_lock:
+        if _batch["running"]:
+            raise ProductionError("Generate all is already running")
+        if job_state()["running"]:
+            raise ProductionError("a slot is being made; wait for it to finish")
+        _batch.update(running=True, idea_id=idea_id, rows=[dict(r) for r in est["rows"]], spent=0.0, cap=est["cap"],
+                      total=est["total_upper"], cancel=False, started=datetime.now().isoformat(timespec="seconds"),
+                      finished=None, stop_reason="", kind="all")
+    _save_live(con, idea_id)
+    spawn(run_batch, con, settings, idea_id, est["cap"], generator, est["total_upper"])
+    return batch_state(idea_id)
+
+
+def cancel_batch():
+    with _batch_lock:
+        if not _batch["running"]:
+            return False
+        _batch["cancel"] = True
+        return True
+
+
+def _save_live(con, idea_id, final=False):
+    """Mirror the batch into the listing record (production.batch_live) so a restart can mark it interrupted; at the
+    end it moves to production.batches (last 5) with its plain report."""
+    try:
+        with _batch_lock:
+            snap = {k: v for k, v in _batch.items() if k not in ("running", "cancel")}
+            snap["rows"] = [{k: v for k, v in r.items() if k not in ("brief",)} for r in _batch["rows"]]
+        with LOCK:
+            lst = prints.listing_for(con, idea_id)
+            rec = prints._record(con, lst["id"])
+            p = _prod(rec)
+            if final:
+                p.pop("batch_live", None)
+                if snap.get("kind") == "all":
+                    snap["report"] = batch_report(snap)
+                    p["batches"] = (p.get("batches") or [])[-4:] + [snap]
+            else:
+                p["batch_live"] = snap
+            prints._save_record(con, lst["id"], rec)
+    except Exception:  # noqa: BLE001  (bookkeeping never stops a batch)
+        pass
+
+
+def batch_report(b):
+    rows = b.get("rows") or []
+    made = [r for r in rows if r.get("status") in ("done", "flagged")]
+    flagged = [r for r in rows if r.get("status") == "flagged"]
+    failed = [r for r in rows if r.get("status") == "failed"]
+    t = f"Generate all {'finished' if b.get('status') != 'interrupted' else 'was interrupted'}: {len(made)} made"
+    t += f" ({len(flagged)} flagged)" if flagged else ""
+    if failed:
+        t += f", {len(failed)} failed (" + "; ".join(f"slot {r['slot']}: {r.get('why') or 'failed'}"[:120]
+                                                      for r in failed[:3]) + ")"
+    if b.get("stop_reason"):
+        t += f". {b['stop_reason']}"
+    t += f". Spent {round(b.get('spent') or 0, 1):g} credits."
+    return t
+
+
+def _row_cost(res, row):
+    if res.get("credits") is not None:
+        return float(res["credits"])
+    if res.get("usd") is not None:
+        return round(float(res["usd"]) / 0.005, 1)
+    if res.get("kind") in ("done", "flagged") and row["source"] == "new":
+        return float(row.get("est") or 0)
+    return 0.0
+
+
+def run_batch(con, settings, idea_id, cap, generator=None, shown=None, place=True):
+    """Worker: one slot at a time through the single job lock. Stops before a paid slot that would pass min(cap,
+    shown total) or when the kie balance is below the slot's estimate; a hard failure (key, auth, balance, two network
+    timeouts in a row) stops the run; a slot failure does not. Cancel stops after the running slot. Never approves."""
+    limit = min(float(cap if cap is not None else 1e9), float(shown if shown is not None else 1e9))
+    net = 0
+    stop = ""
+    try:
+        while True:
+            with _batch_lock:
+                row = next((r for r in _batch["rows"] if r["status"] == "waiting"), None)
+                cancel = _batch["cancel"]
+                spent = _batch["spent"]
+            if row is None:
+                break
+            if cancel:
+                stop = f"Cancelled by you; stopped after {_last_done()}"
+                break
+            if row["source"] == "new":
+                if spent + float(row.get("upper") or 0) > limit + 1e-9:
+                    stop = (f"Stopped before slot {row['slot']}: it could cost up to {row.get('upper'):g} credits and "
+                            f"the run is capped at {limit:g} ({spent:g} used)")
+                    break
+                if row.get("provider") in ("kie", None):
+                    bal = stp.kie_balance(settings)
+                    if bal is not None and bal < float(row.get("est") or 0):
+                        stop = f"Stopped before slot {row['slot']} (kie.ai balance too low: {bal:g} credits)"
+                        break
+            with _batch_lock:
+                row["status"] = "running"
+            _save_live(con, idea_id)
+            try:
+                start_slot(con, settings, idea_id, row["slot"], by_batch=True)
+            except ProductionError as e:
+                with _batch_lock:
+                    row.update(status="failed", why=str(e))
+                continue
+            res = run_slot(con, settings, idea_id, row["slot"], None, generator, engine=row.get("engine"),
+                           brief_override=row.get("brief"), place=place, ab=row.get("ab"))
+            cost = _row_cost(res, row)
+            with _batch_lock:
+                _batch["spent"] = round(_batch["spent"] + cost, 2)
+                row.update(status=res["kind"], why=res.get("why") or "", spent=cost,
+                           **({"file": res["file"]} if res.get("file") else {}),
+                           **({"template": res["template"]} if res.get("template") else {}))
+            _save_live(con, idea_id)
+            if res.get("hard"):
+                stop = f"Stopped after slot {row['slot']} ({res.get('why') or 'the provider refused'})"[:200]
+                break
+            net = net + 1 if res.get("network") else 0
+            if net >= 2:
+                stop = f"Stopped after slot {row['slot']} (two network timeouts in a row)"
+                break
+    except Exception as e:  # noqa: BLE001
+        stop = f"Generate all stopped: {str(e)[:160]}"
+    finally:
+        with _batch_lock:
+            for r in _batch["rows"]:
+                if r["status"] == "waiting":
+                    r.update(status="skipped", why=stop or "not run")
+            _batch.update(running=False, cancel=False, stop_reason=stop,
+                          finished=datetime.now().isoformat(timespec="seconds"))
+        _save_live(con, idea_id, final=True)
+
+
+def _last_done():
+    rows = [r for r in _batch["rows"] if r["status"] not in ("waiting", "skipped")]
+    return f"slot {rows[-1]['slot']}" if rows else "no slot"
 
 # ---------- the old "Run mockups" endpoint (kept for the API; the Art tab button is gone since 2026-11-08) ----------
 
@@ -1041,3 +1524,120 @@ def run(con, settings, lid, mockup_build=None):
     if mockup_build:
         extra["mockup_build"] = mockup_build
     return run_listing(con, lid, load_config("pipeline"), lock=LOCK, stop_after="mockups", extra=extra)
+
+
+# ---------- A/B closeness (controls addendum C.5): three variants of one slot, on the batch runner ----------
+
+def ab_estimate(con, settings, idea_id, slot):
+    """The confirm box of "Generate 3 variants": one row per planned variant (place False), cost from the slot's
+    engine. Free."""
+    with LOCK:
+        lst = prints.listing_for(con, idea_id)
+        rec = prints._record(con, lst["id"]) if lst else {}
+    ab = ((splan.get_plan(rec) or {}).get("abtest") or {}).get(str(slot))
+    if not ab:
+        raise ProductionError("plan the A/B variants first (free)")
+    eng = _engine_info(settings, ab.get("engine") or "nbpro")
+    rows = []
+    for v, b in sorted((ab.get("variants") or {}).items(), key=lambda x: int(x[0])):
+        r = {"slot": int(slot), "source": "new", "engine": eng["engine_id"], "engine_label": eng["label"],
+             "est": eng["credits_per_scene"] or 0, "upper": eng["upper"] or eng["credits_per_scene"] or 0,
+             "usd": eng["usd_per_scene"] or 0, "reference": ab.get("reference"), "reference_mode": "image",
+             "label": f"closeness {v}", "status": "waiting", "why": "", "provider": eng["provider"],
+             "ab": {"slot": int(slot), "value": int(v)}}
+        if not (b or {}).get("prompt"):
+            r.update(status="skipped", why="its prompt failed the rules check")
+        rows.append(r)
+    run = [r for r in rows if r["status"] == "waiting"]
+    return {"rows": rows, "total_upper": round(sum(r["upper"] for r in run), 1),
+            "total_usd": round(sum(r["usd"] for r in run), 3), "balance": stp.kie_balance(settings),
+            "key": _row_key(rows), "briefs": ab.get("variants") or {}}
+
+
+def start_abtest(con, settings, idea_id, slot, key, spawn, generator=None):
+    est = ab_estimate(con, settings, idea_id, slot)
+    if est["key"] != key:
+        raise ProductionError("the variants changed; check the new total")
+    rows = [dict(r, brief=est["briefs"].get(str(r["ab"]["value"]))) for r in est["rows"]]
+    with _batch_lock:
+        if _batch["running"]:
+            raise ProductionError("Generate all is already running")
+        if job_state()["running"]:
+            raise ProductionError("a slot is being made; wait for it to finish")
+        _batch.update(running=True, idea_id=idea_id, rows=rows, spent=0.0, cap=est["total_upper"],
+                      total=est["total_upper"], cancel=False, started=datetime.now().isoformat(timespec="seconds"),
+                      finished=None, stop_reason="", kind="ab")
+    spawn(run_abtest, con, settings, idea_id, slot, est["total_upper"], generator)
+    return batch_state(idea_id)
+
+
+def run_abtest(con, settings, idea_id, slot, total, generator=None):
+    """The batch runner with place=False; results saved on set_plan.abtest[slot].results (nothing approved, nothing
+    placed in a slot)."""
+    run_batch(con, settings, idea_id, total, generator, total, place=False)
+    with _batch_lock:
+        rows = [dict(r, brief=None) for r in _batch["rows"]]
+    res = {str(r["ab"]["value"]): {k: r.get(k) for k in ("status", "why", "file", "template", "spent")} for r in rows
+           if r.get("ab")}
+
+    def fn(sp):
+        ab = (sp.get("abtest") or {}).get(str(slot))
+        if ab is not None:
+            ab.setdefault("results", {}).update(res)
+            ab["status"] = "generated"
+    splan._save(con, idea_id, fn)
+
+
+def ab_place(con, settings, idea_id, slot, value):
+    """"Put in slot N" (free): the variant's render is copied into the slot as a pending image (the slot's current
+    image goes to Archive as usual). Never approves."""
+    idea, lst, rec, folder, arts = _ctx(con, settings, idea_id)
+    ab = ((splan.get_plan(rec) or {}).get("abtest") or {}).get(str(slot)) or {}
+    r = (ab.get("results") or {}).get(str(value)) or {}
+    src = folder / ARCHIVE / str(r.get("file") or "")
+    if not r.get("file") or not src.is_file():
+        raise ProductionError("that variant has no image yet")
+    b = (ab.get("variants") or {}).get(str(value)) or {}
+    room, decor = b.get("room") or "Living room", b.get("decor") or "Modern"
+    with LOCK:
+        rec = prints._record(con, lst["id"])
+        prod = _prod(rec)
+        old = prod["slots"].get(str(slot)) or {}
+        old_name, _, old_where = _current_image(folder, int(slot), old, rec)
+        if old_name and old_where == "folder":
+            _to_archive(folder, old_name, rec, "replaced")
+        name = _unique_name(folder, int(slot), room, decor)
+        shutil.copy2(src, folder / name)
+        (rec.setdefault("mockup_approvals", {})).pop(name, None)
+        prod["slots"][str(slot)] = {"room": room, "decor": decor, "ratio": b.get("ratio"), "source": "new",
+                                    "template": r.get("template"), "new_template": r.get("template"), "file": name,
+                                    "state": "done", "message": f"A/B variant at closeness {value}",
+                                    "made": datetime.now().isoformat(timespec="seconds"), "engine_id": ab.get("engine"),
+                                    "ab": {"value": int(value)},
+                                    "history": (old.get("history") or []) + ([old["file"]] if old.get("file") else [])}
+        prints._save_record(con, lst["id"], rec)
+    return name
+
+
+def ab_grade(con, settings, idea_id, slot, value, grade_value):
+    """Tony's grade of one A/B variant: on the variant (set_plan.abtest) and in its template's Grades.json."""
+    if grade_value not in (None, "") and grade_value not in GRADES:
+        raise ProductionError(f"grade must be one of {', '.join(GRADES)}")
+    with LOCK:
+        lst = prints.listing_for(con, idea_id)
+        rec = prints._record(con, lst["id"])
+    ab = ((splan.get_plan(rec) or {}).get("abtest") or {}).get(str(slot)) or {}
+    tpl = ((ab.get("results") or {}).get(str(value)) or {}).get("template")
+
+    def fn(sp):
+        r = ((sp.get("abtest") or {}).get(str(slot)) or {}).setdefault("results", {}).setdefault(str(value), {})
+        r["grade"] = grade_value or None
+    splan._save(con, idea_id, fn)
+    if tpl:
+        psd = stp.library(settings) / tpl
+        if psd.is_file():
+            if grade_value:
+                stp.add_grade(psd, {"idea_id": idea_id, "design": lst["title"], "slot": int(slot), "grade": grade_value,
+                                    "note": f"A/B closeness {value}", "at": datetime.now().isoformat(timespec="seconds")})
+            else:
+                stp.remove_grade(psd, idea_id, int(slot))

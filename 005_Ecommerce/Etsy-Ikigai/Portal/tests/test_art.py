@@ -87,9 +87,12 @@ def test_options_has_six_cards_chips_and_cheapest_default(env):
     assert [c["name"] for c in o["cards"]] == ["Linework Silhouette", "Moonlit Storybook", "Hatched Mid-Century Folk",
                                                "Palette Knife Planes", "Flat Poster Block", "Ink Line + Spot Colour"]
     assert {g["id"] for g in o["chip_groups"]} == {"palette", "accent", "mood", "composition", "texture", "treatment"}
-    assert [e["label"] for e in o["engines"]] == ["GPT Image 2", "Nano Banana 2", "Nano Banana Pro"]
-    cheapest = min(o["engines"], key=lambda e: e["credits_per_image"])
-    assert o["default_engine"] == cheapest["id"] == "gpt-image-2"
+    # controls addendum D (Tony 2026-11-21): six engines in his order, GPT Image 2.6 the default; the old GPT Image 2
+    # is hidden from the pull-down but still resolves for old rounds
+    assert [e["label"] for e in o["engines"]] == ["GPT Image 2.6", "Ideogram 3", "Recraft V4.1", "Flux 3",
+                                                  "Nano Banana 2", "Nano Banana Pro"]
+    assert o["default_engine"] == "gpt-image-2-6"
+    assert engines.get_engine("gpt-image-2")["label"] == "GPT Image 2"
     # swatches come from the real style profiles
     assert all(c["swatch"] and c["sources"] for c in o["cards"])
 
@@ -157,7 +160,7 @@ def test_full_round_pick_iterate_approve_with_oversight_log(env):
         assert a in actions
     log = c.get(f"/ikigai/api/art/{i}/log").json()["log"]
     first = next(e for e in log if e["action"] == "round")["detail"]
-    assert first["engine"] == "gpt-image-2" and first["chips_set_by_tony"] == {"accent": "red_pop", "mood": "cheeky"}
+    assert first["engine"] == "gpt-image-2-6" and first["chips_set_by_tony"] == {"accent": "red_pop", "mood": "cheeky"}
     assert any(s.startswith("0005_") for s in first["source_images"])
     fb = next(e for e in log if e["action"] == "feedback")["detail"]
     assert fb["text"] == "make it more muted and less busy please" and fb["summary"] == "more muted, less busy"
@@ -192,7 +195,8 @@ def test_low_credits_and_bad_writer_spend_nothing(tmp_path):
     rid = art.start_round(con, S, i, ["flat_poster"])
     art.run_round(con, S, rid, FakeWriter(), lambda e: ad)
     r = art.idea_art(con, i)["rounds"][0]
-    assert r["status"] == "failed" and "needs about 24" in r["message"] and not ad.prompts
+    # GPT Image 2.6 (default, token-billed): the check uses its upper bound, 4 x 34 credits
+    assert r["status"] == "failed" and "needs about 136" in r["message"] and not ad.prompts
     rid = art.start_round(con, S, i, ["flat_poster"])
     w = FakeWriter(raw="sorry, I can't")
     art.run_round(con, S, rid, w, lambda e: FakeAdapter())

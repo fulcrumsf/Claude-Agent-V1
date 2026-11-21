@@ -520,16 +520,25 @@ def _run(con, settings, rid, writer, adapter_for):
         con.commit()
 
     e = engines.get_engine(r["engine"])
-    need = e["credits_per_image"] * len(ids)
+    # controls addendum D.4: the up-front check uses the engine's estimate (the upper bound for a token-billed engine)
+    # and compares only when the balance comes back as a number in the same unit; fal has no balance API (skipped)
+    need = (e.get("upper_per_image") or e["credits_per_image"] or 0) * len(ids)
     try:
         ad = adapter_for(r["engine"])
-        before = ad.credits()
+        bal = engines.balance_of(ad)
     except engines.EngineError as ex:
         _fail_images(con, ids, str(ex))
         return _fail(con, rid, f"{ex}. Nothing was spent.")
-    if before < need:
+    before = bal["amount"] if bal.get("unit") == "credits" else None
+    if before is not None and before < need:
         _fail_images(con, ids, "not enough credits")
         return _fail(con, rid, f"kie.ai has {before:g} credits; this round needs about {need:g}. Nothing was spent.")
+    if bal.get("unit") == "usd" and bal.get("amount") is not None:
+        need_usd = need * engines.config().get("usd_per_credit", 0.005)
+        if bal["amount"] < need_usd:
+            _fail_images(con, ids, "not enough balance")
+            return _fail(con, rid, f"the balance is ${bal['amount']:.2f}; this round needs about ${need_usd:.2f}. "
+                                   "Nothing was spent.")
     with LOCK:
         con.execute("UPDATE art_rounds SET credits_before=? WHERE id=?", (before, rid))
         con.commit()
@@ -568,10 +577,14 @@ def _run(con, settings, rid, writer, adapter_for):
 
     with ThreadPoolExecutor(max_workers=len(ids)) as pool:
         ok = sum(pool.map(one, ids))
-    try:
-        after = ad.credits()
-    except engines.EngineError:
-        after = None
+    after = None
+    if before is not None:
+        try:
+            after = engines.balance_of(ad)["amount"]
+        except engines.EngineError:
+            after = None
+    if before is not None and after is not None and ok and e.get("price_unit") == "tokens":
+        engines.record_cost(r["engine"], "art", (before - after) / ok)      # token-billed: measured per image
     status = "done" if ok == len(ids) else ("partial" if ok else "failed")
     msg = "" if ok == len(ids) else f"{len(ids) - ok} of {len(ids)} images failed"
     with LOCK:
@@ -676,9 +689,14 @@ def idea_art(con, idea_id, prefix="/ikigai"):
                              "error": i["error"], "url": file_url(prefix, i["path"]) if i["status"] == "done" else None,
                              "outcome": i["outcome"], "approved": bool(i["approved"]), "prompt": i["prompt"]})
             cost = (r["credits_before"] - r["credits_after"]) if r["credits_before"] is not None and r["credits_after"] is not None else None
+            eng = engines.get_engine(r["engine"]) or {}
+            est = False
+            if cost is None and eng.get("price_unit") == "usd":     # fal / WaveSpeed: the price table, marked est.
+                done = sum(1 for i in imgs if i["status"] == "done")
+                cost, est = (eng.get("credits_per_image") or 0) * done, True
             rounds.append({"id": r["id"], "round_no": r["round_no"], "kind": r["kind"], "status": r["status"],
                            "message": r["message"], "engine": r["engine"],
-                           "engine_label": (engines.get_engine(r["engine"]) or {}).get("label", r["engine"]),
+                           "engine_label": eng.get("label", r["engine"]), "credits_est": est,
                            "cards": [cards.get(c, {}).get("name", c) for c in json.loads(r["cards"])],
                            "chips": json.loads(r["chips"]), "surprise": bool(r["surprise"]),
                            "feedback": r["feedback"], "writer_note": r["writer_note"], "created_at": r["created_at"],

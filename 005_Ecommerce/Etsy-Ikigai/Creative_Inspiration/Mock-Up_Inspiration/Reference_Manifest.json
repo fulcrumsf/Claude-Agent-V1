@@ -96,7 +96,8 @@
     "lived_in": "tidy",
     "window_covering": "bare",
     "editorial": true,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "upscale_modern"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -181,7 +182,8 @@
     "lived_in": "lived_in",
     "window_covering": "no_window_in_view",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "upscale_modern"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -266,7 +268,8 @@
     "lived_in": "busy",
     "window_covering": "bare",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "ordinary_house"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -351,7 +354,8 @@
     "lived_in": "lived_in",
     "window_covering": "bare",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "ordinary_house"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -436,7 +440,8 @@
     "lived_in": "tidy",
     "window_covering": "no_window_in_view",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "japandi"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -523,7 +528,8 @@
     "lived_in": "lived_in",
     "window_covering": "no_window_in_view",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "ordinary_apartment"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -611,7 +617,8 @@
     "lived_in": null,
     "window_covering": "no_window_in_view",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "boho_eclectic"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -696,7 +703,8 @@
     "lived_in": "tidy",
     "window_covering": "no_window_in_view",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "japandi"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -781,7 +789,8 @@
     "lived_in": "busy",
     "window_covering": "no_window_in_view",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "ordinary_apartment"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -866,7 +875,8 @@
     "lived_in": "tidy",
     "window_covering": "no_window_in_view",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "japandi"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -951,7 +961,8 @@
     "lived_in": "tidy",
     "window_covering": "bare",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "grand_period"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -1062,7 +1073,8 @@
     "lived_in": "tidy",
     "window_covering": "no_window_in_view",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "japandi"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -1147,7 +1159,8 @@
     "lived_in": "tidy",
     "window_covering": "no_window_in_view",
     "editorial": true,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "japandi"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -1232,7 +1245,8 @@
     "lived_in": "tidy",
     "window_covering": "no_window_in_view",
     "editorial": true,
-    "presentation": "mat"
+    "presentation": "mat",
+    "register": "japandi"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -1317,7 +1331,8 @@
     "lived_in": "tidy",
     "window_covering": "no_window_in_view",
     "editorial": true,
-    "presentation": "canvas_bare"
+    "presentation": "canvas_bare",
+    "register": "upscale_modern"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -1402,7 +1417,8 @@
     "lived_in": "tidy",
     "window_covering": "no_window_in_view",
     "editorial": true,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "japandi"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -1501,7 +1517,8 @@
     "lived_in": "tidy",
     "window_covering": "bare",
     "editorial": false,
-    "presentation": "mat"
+    "presentation": "mat",
+    "register": "japandi"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -1586,7 +1603,8 @@
     "lived_in": "lived_in",
     "window_covering": "linen_curtains",
     "editorial": true,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "grand_period"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -1674,7 +1692,8 @@
     "lived_in": null,
     "window_covering": "no_window_in_view",
     "editorial": false,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "upscale_modern"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -1761,7 +1780,8 @@
     "lived_in": "tidy",
     "window_covering": "bare",
     "editorial": true,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "industrial_loft"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -1846,7 +1866,8 @@
     "lived_in": "lived_in",
     "window_covering": "bare",
     "editorial": false,
-    "presentation": "mat"
+    "presentation": "mat",
+    "register": "workspace_studio"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -1934,7 +1955,8 @@
     "lived_in": "tidy",
     "window_covering": "no_window_in_view",
     "editorial": true,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "grand_period"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -2019,7 +2041,8 @@
     "lived_in": "tidy",
     "window_covering": "linen_curtains",
     "editorial": true,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "upscale_modern"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -2117,7 +2140,8 @@
     "lived_in": "tidy",
     "window_covering": "bare",
     "editorial": true,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "upscale_modern"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -2204,7 +2228,8 @@
     "lived_in": "tidy",
     "window_covering": "heavy_drapes",
     "editorial": true,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "grand_period"
    },
    "tags_by": "seed_2026-11-20"
   },
@@ -2289,9 +2314,289 @@
     "lived_in": "tidy",
     "window_covering": "no_window_in_view",
     "editorial": true,
-    "presentation": "frame"
+    "presentation": "frame",
+    "register": "upscale_modern"
    },
    "tags_by": "seed_2026-11-20"
+  },
+  "0048": {
+   "source": "0048_Living_Room_Wall_Thin_Black_Frame_Sunlit_Gray_Sofa_Blinds.png",
+   "blank": "0048_Living_Room_Wall_Thin_Black_Frame_Sunlit_Gray_Sofa_Blinds_Blank.png",
+   "sha1": "5db9469d00c6a875d30cc916cb33dce5761ab51e",
+   "size": [
+    1232,
+    928
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "the fill took the frame or mat in too (2 sides)",
+    "not a portrait artwork (true aspect 2.79)"
+   ],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     561.01,
+     216.39
+    ],
+    [
+     696.35,
+     164.33
+    ],
+    [
+     696.27,
+     364.91
+    ],
+    [
+     560.21,
+     363.69
+    ]
+   ],
+   "quad": [
+    [
+     562.0,
+     217.08
+    ],
+    [
+     695.35,
+     165.79
+    ],
+    [
+     695.27,
+     363.9
+    ],
+    [
+     561.21,
+     362.69
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#9E968C",
+   "wall_lab": [
+    62.3,
+    1.3,
+    6.8
+   ],
+   "aspect": 2.79,
+   "art_h_frac": 0.185,
+   "camera_side": "right",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0083,
+   "frame_eaten_sides": 2,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "register": "upscale_modern",
+    "camera_height": "seated",
+    "lens": "lens_normal",
+    "light_type": "blind_stripes",
+    "lived_in": "tidy",
+    "window_covering": "venetian_blind",
+    "editorial": true
+   },
+   "tags_by": "vision",
+   "renamed_from": "unodosmas_Modern_living_room_with_natural_light_and_soft_shad_ab49fd22-6a9e-4e3f-a827-392d0c17000f_3.png",
+   "cleanup": {
+    "overlays": [],
+    "method": "none",
+    "confidence": "high",
+    "at": "2026-11-21T03:48:41"
+   },
+   "has_art": true
+  },
+  "0049": {
+   "source": "0049_Bathroom_Wall_Ornate_Gold_Frame_Large_Seascape_Freestanding_Tub.png",
+   "blank": "0049_Bathroom_Wall_Ornate_Gold_Frame_Large_Seascape_Freestanding_Tub_Blank.png",
+   "sha1": "5f386897a7567a8907cd0ca84e9cff4e021af31b",
+   "size": [
+    2048,
+    1543
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "not a portrait artwork (true aspect 1.19)",
+    "a mirror in the photo"
+   ],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     739.98,
+     205.4
+    ],
+    [
+     1163.97,
+     204.91
+    ],
+    [
+     1163.75,
+     562.35
+    ],
+    [
+     740.26,
+     562.17
+    ]
+   ],
+   "quad": [
+    [
+     740.98,
+     206.4
+    ],
+    [
+     1162.97,
+     205.91
+    ],
+    [
+     1162.75,
+     561.35
+    ],
+    [
+     741.26,
+     561.17
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#867E72",
+   "wall_lab": [
+    53.3,
+    0.3,
+    3.1
+   ],
+   "aspect": 1.19,
+   "art_h_frac": 0.23,
+   "camera_side": "front",
+   "light_from": "left",
+   "frames": 1,
+   "mirrors": 1,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "wide",
+    "register": "farmhouse_cottage",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "north_light_even",
+    "lived_in": "tidy",
+    "window_covering": "bare",
+    "editorial": true
+   },
+   "tags_by": "vision",
+   "renamed_from": "unodosmas_Photorealistic_bathroom_interior_featuring_one_vertic_34bfb246-85fe-4021-931b-b7f023aa623f.png",
+   "cleanup": {
+    "overlays": [],
+    "method": "none",
+    "confidence": "high",
+    "at": "2026-11-21T03:48:51"
+   },
+   "has_art": true
+  },
+  "0050": {
+   "source": "0050_Salon_Wall_Large_Cream_Frame_Herringbone_Floor_Arched_Doorways.png",
+   "blank": "0050_Salon_Wall_Large_Cream_Frame_Herringbone_Floor_Arched_Doorways_Blank.png",
+   "sha1": "83bdb056c4ba89f454c88331b9e09cfb53513f70",
+   "size": [
+    2048,
+    1543
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "mask_quad",
+   "fill_polygon": [
+    [
+     762.24,
+     219.09
+    ],
+    [
+     1219.69,
+     219.05
+    ],
+    [
+     1219.65,
+     959.39
+    ],
+    [
+     762.46,
+     959.45
+    ]
+   ],
+   "quad": [
+    [
+     763.24,
+     220.09
+    ],
+    [
+     1218.69,
+     220.05
+    ],
+    [
+     1218.65,
+     958.39
+    ],
+    [
+     763.46,
+     958.45
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#D7D9D4",
+   "wall_lab": [
+    86.3,
+    -0.9,
+    2.3
+   ],
+   "aspect": 0.617,
+   "art_h_frac": 0.479,
+   "camera_side": "front",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 1,
+   "opening": null,
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "wide",
+    "register": "grand_period",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "overcast_flat",
+    "lived_in": "tidy",
+    "window_covering": "no_window_in_view",
+    "editorial": true
+   },
+   "tags_by": "vision",
+   "renamed_from": "unodosmas_Photorealistic_bathroom_interior_featuring_one_vertic_6596c99a-7d4c-4e67-aed1-2d42e82f774e.png",
+   "cleanup": {
+    "overlays": [],
+    "method": "none",
+    "confidence": "high",
+    "at": "2026-11-21T03:48:58"
+   },
+   "has_art": true
   }
  }
 }

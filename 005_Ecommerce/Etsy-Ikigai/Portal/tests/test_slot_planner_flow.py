@@ -112,7 +112,10 @@ def test_generate_with_a_new_brief_sends_its_prompt_and_saves_the_brief(prod, mo
     card = p["slots"][0]
     assert card["brief"]["facts"] == "12x16 · medium · sideboard top · 3x4" and card["brief"]["usable"]
     assert card["ratio"] == "3x4" and not card["random_look"] and card["next"]["kind"] == "new"
-    assert p["queue"][0] == {"slot": 3, "source": "new", "credits": 18, "planned": True}
+    q0 = p["queue"][0]          # controls addendum F: rows also carry engine, reference mode and the upper bound
+    assert {k: q0[k] for k in ("slot", "source", "credits", "planned")} == {"slot": 3, "source": "new", "credits": 18,
+                                                                          "planned": True}
+    assert q0["engine"] == "nano-banana-pro" and q0["upper"] == 18 and q0["gate"] == "trusted"
     c.post(f"/ikigai/api/production/{iid}/slots/3/generate", json={})
     assert prod["gen"][0]["prompt"] == b["prompt"]
     assert seen["ratio"] == "3x4" and seen["presentation"] == "frame" and "marker" not in seen   # orange: old call
