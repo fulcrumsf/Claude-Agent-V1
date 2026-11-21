@@ -1,0 +1,507 @@
+{
+ "name": "AI_Kids_Kids_20261120_122955",
+ "kind": "ai_scene",
+ "psd": "AI_Kids_Kids_20261120_122955_Template.psd",
+ "scene": "AI_Kids_Kids_20261120_122955_Scene.png",
+ "smart_object_layer": "Place Artwork Here",
+ "room": "Kids",
+ "etsy_room": "Kids",
+ "decor": "Kids",
+ "ratio": "iso",
+ "print_ratio": "ISO_A1",
+ "so_px": [
+  520,
+  801
+ ],
+ "so_ratio": 0.6492,
+ "quad_insert": [
+  [
+   937.5670166015625,
+   479.8800048828125
+  ],
+  [
+   1391.64501953125,
+   468.6369934082031
+  ],
+  [
+   1489.8189697265625,
+   1228.635009765625
+  ],
+  [
+   1032.113037109375,
+   1274.030029296875
+  ]
+ ],
+ "quad_art": [
+  [
+   937.0059814453125,
+   479.3940124511719
+  ],
+  [
+   1392.0830078125,
+   468.1260070800781
+  ],
+  [
+   1490.3809814453125,
+   1229.08203125
+  ],
+  [
+   1031.675048828125,
+   1274.5760498046875
+  ]
+ ],
+ "mode": "full",
+ "canvas": [
+  2400,
+  1792
+ ],
+ "light_from": "right",
+ "quad_paper": [
+  [
+   937.9459838867188,
+   483.0899963378906
+  ],
+  [
+   1390.8580322265625,
+   472.00201416015625
+  ],
+  [
+   1489.60205078125,
+   1227.990966796875
+  ],
+  [
+   1032.0269775390625,
+   1273.68603515625
+  ]
+ ],
+ "opening_pad_px": 0.5,
+ "presentation": "frame",
+ "despill": {
+  "applied": true,
+  "version": 1,
+  "band_px": 11.38,
+  "face_rgb": [
+   212,
+   157,
+   97
+  ],
+  "orange_axis": 0.987,
+  "margin": 0.15,
+  "changed_px": 8890,
+  "unmixed_px": 1039,
+  "sides": {
+   "top": {
+    "ref_chroma": [
+     1.5019999742507935,
+     0.8889999985694885,
+     0.6259999871253967
+    ],
+    "s_ref": 0.629,
+    "s_band_before": 0.489,
+    "s_band_after": 0.489,
+    "changed_px": 65
+   },
+   "right": {
+    "ref_chroma": [
+     1.4739999771118164,
+     0.8970000147819519,
+     0.6209999918937683
+    ],
+    "s_ref": 0.612,
+    "s_band_before": 1.161,
+    "s_band_after": 0.76,
+    "changed_px": 8630
+   },
+   "bottom": {
+    "ref_chroma": [
+     1.524999976158142,
+     0.8880000114440918,
+     0.5649999976158142
+    ],
+    "s_ref": 0.687,
+    "s_band_before": 0.608,
+    "s_band_after": 0.608,
+    "changed_px": 195
+   },
+   "left": {
+    "ref_chroma": [
+     1.937999963760376,
+     0.7850000262260437,
+     0.36899998784065247
+    ],
+    "s_ref": 1.128,
+    "s_band_before": 0.483,
+    "s_band_after": 0.483,
+    "changed_px": 0
+   }
+  },
+  "layer": "Despill (orange bounce fix)"
+ },
+ "insert": {
+  "aspect": 0.6493,
+  "screen_aspect": 0.5837,
+  "skew": 1.044,
+  "method": "sam2 + hard inner edge",
+  "sam": {
+   "model": "sam2.1_hiera_large",
+   "device": "mps",
+   "box": [
+    938.4,
+    469.5,
+    1492.8,
+    1275.9
+   ],
+   "box_source": "gemini",
+   "sam": {
+    "prompt": "box",
+    "score": 0.9843820929527283,
+    "area": 343928,
+    "dE": 5.0,
+    "candidates": [
+     {
+      "prompt": "box+click",
+      "score": 0.9882115721702576,
+      "area": 349263,
+      "dE": 12.0
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.8827946782112122,
+      "area": 446383,
+      "dE": 37.3
+     },
+     {
+      "prompt": "box+click",
+      "score": 0.9799098968505859,
+      "area": 364388,
+      "dE": 44.0
+     },
+     {
+      "prompt": "click",
+      "score": 0.9843059778213501,
+      "area": 352077,
+      "dE": 13.0
+     },
+     {
+      "prompt": "click",
+      "score": 0.78175288438797,
+      "area": 450888,
+      "dE": 46.3
+     },
+     {
+      "prompt": "click",
+      "score": 0.8303645849227905,
+      "area": 446888,
+      "dE": 36.9
+     },
+     {
+      "prompt": "box",
+      "score": 0.9843820929527283,
+      "area": 343928,
+      "dE": 5.0
+     },
+     {
+      "prompt": "box",
+      "score": 0.8974893093109131,
+      "area": 446139,
+      "dE": 37.3
+     },
+     {
+      "prompt": "box",
+      "score": 0.9886562824249268,
+      "area": 359808,
+      "dE": 37.9
+     }
+    ]
+   },
+   "verify": {
+    "iou": 0.9859,
+    "corner_shift_px": [
+     4.89,
+     3.31,
+     6.88,
+     1.41
+    ],
+    "sides": {
+     "top": {
+      "points": 200,
+      "inliers": 0.985,
+      "rms_px": 0.24
+     },
+     "right": {
+      "points": 200,
+      "inliers": 0.97,
+      "rms_px": 0.3
+     },
+     "bottom": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.201
+     },
+     "left": {
+      "points": 200,
+      "inliers": 1.0,
+      "rms_px": 0.186
+     }
+    }
+   },
+   "wall_px": 2284763
+  },
+  "opening": {
+   "sides": {
+    "top": {
+     "mode": "chroma",
+     "edge_px": 3.25,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.127,
+     "offset_px": 3.28
+    },
+    "right": {
+     "mode": "chroma",
+     "edge_px": 1.0,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.191,
+     "offset_px": 0.67
+    },
+    "bottom": {
+     "mode": "chroma",
+     "edge_px": 0.75,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.121,
+     "offset_px": 0.51
+    },
+    "left": {
+     "mode": "chroma",
+     "edge_px": 0.0,
+     "points": 200,
+     "inliers": 1.0,
+     "rms_px": 0.189,
+     "offset_px": -0.02
+    }
+   },
+   "offset_px": {
+    "top": 3.28,
+    "right": 0.67,
+    "bottom": 0.51,
+    "left": -0.02
+   },
+   "reach_px": 11.3
+  },
+  "quad_paper": [
+   [
+    937.9459838867188,
+    483.0899963378906
+   ],
+   [
+    1390.8580322265625,
+    472.00201416015625
+   ],
+   [
+    1489.60205078125,
+    1227.990966796875
+   ],
+   [
+    1032.0269775390625,
+    1273.68603515625
+   ]
+  ]
+ },
+ "shadows": {
+  "Frame Hard Shadow": {
+   "kind": "the frame's hard inner edge over the art's 0.5 px pad (measured frame-edge tone vs the paper)",
+   "opacity": 0.723,
+   "sides": [
+    {
+     "side": "top",
+     "hard_k": 0.17
+    },
+    {
+     "side": "right",
+     "hard_k": 0.666
+    },
+    {
+     "side": "bottom",
+     "hard_k": 0.085
+    },
+    {
+     "side": "left",
+     "hard_k": 0.0
+    }
+   ],
+   "pad_px": 0.5
+  },
+  "Frame Edge Shadow": {
+   "kind": "soft shadow on the paper (per side: black band, width + blur + strength fitted to the blank insert)",
+   "opacity": 0.711,
+   "sides": [
+    {
+     "side": "top",
+     "soft_k": 0.465,
+     "width_px": 7.5,
+     "blur_px": 4.6,
+     "fit_rms": 0.0267
+    },
+    {
+     "side": "right",
+     "soft_k": 0.495,
+     "width_px": 13.0,
+     "blur_px": 1.36,
+     "fit_rms": 0.0376
+    },
+    {
+     "side": "bottom",
+     "soft_k": 0.155,
+     "width_px": 1.0,
+     "blur_px": 0.44,
+     "fit_rms": 0.0039
+    },
+    {
+     "side": "left",
+     "soft_k": 0.0,
+     "width_px": 0.0,
+     "blur_px": 0.0,
+     "fit_rms": 0.0001
+    }
+   ]
+  },
+  "Light Shadow": {
+   "kind": "window pattern",
+   "rectified": true,
+   "dirs_deg": [
+    11.0,
+    126.0
+   ],
+   "tried_rms": [
+    [
+     "1 dir",
+     0.205
+    ],
+    [
+     "2 dirs, crossbar 126 deg",
+     0.12
+    ]
+   ],
+   "fit_rms": 0.12,
+   "opacity": 0.518,
+   "measured_depth": 0.518,
+   "slats": {
+    "deg": 136.55,
+    "period_px": 29.05,
+    "amp": 0.0219,
+    "s_edge": 500.3
+   },
+   "common_shade": 0.198,
+   "searched_on": "SAM wall mask, rectified with the canvas corners",
+   "insert_texture": 0.0229
+  }
+ },
+ "card_test": {
+  "visible_quad": [
+   [
+    937.02001953125,
+    479.4070129394531
+   ],
+   [
+    1392.0550537109375,
+    468.1409912109375
+   ],
+   [
+    1490.3909912109375,
+    1229.0250244140625
+   ],
+   [
+    1031.6829833984375,
+    1274.490966796875
+   ]
+  ],
+  "corner_err_px": [
+   0.02,
+   0.03,
+   0.06,
+   0.09
+  ],
+  "max_px": 0.09,
+  "gap_px": 0,
+  "over_px": 0,
+  "pad_px": {
+   "top": 0.49,
+   "right": 0.49,
+   "bottom": 0.43,
+   "left": 0.48
+  }
+ },
+ "layers_verified": "black-fill shadows built by scene_templates.make_layers (measured, masked)",
+ "base_layer": "BASE (room photo)",
+ "guard_max_cover": 0.35,
+ "desc": "AI scene: playful kid's bedroom, blank-insert frame (art cover-fits the insert)",
+ "created": "2026-11-20T12:29:55",
+ "prompt": "Photorealistic interior photograph in a 4:3 landscape picture format, showing one portrait (vertical) piece of wall art as the clear subject. A child's bedroom in a family home, with a low painted sage dresser against a smooth pale blue grey wall. The small framed print stands on the dresser top, fills about half the picture height and sits slightly off centre. Beside it are a single natural wooden toy block and a small plain stoneware cup holding a few dried grass stems. The dresser top is clean and uncluttered, with the top edge of a drawer front cut by the bottom of the picture. The painted wood has a gentle satin finish. Behind the dresser the wall is empty, with soft leaf shadows and a soft shadow of the frame resting on it. The mood is quiet, tidy and lived in. Framing: a tight shot. The piece is a small A5 print (5.8 x 8.3 in, 14.7 x 21.1 cm); as shown, the whole piece measures about 7.3 x 9.8 in (18.5 x 24.9 cm) and fills about 45 to 65% of the picture height. Everything around it is at true everyday scale: an ordinary coffee cup beside it would stand about 39% as tall as the piece. Display: the piece stands upright on the top of a dresser on a slim easel back, tilted back at most 10 degrees, its face flat. Camera: from slightly left of the frame, about 10 to 15 degrees off square, the wall receding gently to the right, verticals straight. Camera height: level with the top of the furniture under the artwork, about 90 cm. Lens: an 85 mm view from further back, the room gently compressed behind the art. Focus: the artwork and its frame are crisp; only the far end of the room softens gently. Light style: sunlight filtered through slatted blinds or the leaves of a tree outside, casting a dappled, patterned shadow across the floor and the wall to one side of the artwork. The daylight comes from a window to the right of the frame. Shadows are soft-edged and clearly visible. Every scene shows visible shadows. Walls: pale blue grey. The wall is smooth painted plaster. The artwork's printed area is a single flat, plain, empty, blank onion-skin orange (a pale peachy-orange, roughly RGB 250, 215, 170) surface with a dead-matte, non-reflective finish like unglazed matte card: one even tone from edge to edge, evenly lit across its whole face, glare-free and free of hot spots, so it reads as one clean flat colour. The orange appears only on the front face of the printed area. Its matte surface absorbs the light, so every surface next to it keeps its own natural colour in the room's own light: the frame and its inner edge stay their wood, metal or paint colour, any gap stays a natural neutral shadow, and the wall stays the wall colour. The artwork is framed in a thin warm walnut frame. The orange printed surface fills the whole frame opening right up to the inside edge of the frame on all four sides; the frame's inner edge keeps the frame's own colour right up to the orange. Any glazing is clear, invisible museum glass. NEGATIVE: no mat, no matte border, no passe-partout, no white border, no margin, no inner rectangle, no bevel line. It stands upright on a slim easel back, tilted back at most 10 degrees. Whatever the light, the artwork itself hangs in calm, even light: sun patches, shadows and any blind or leaf pattern land on the floor and on the wall around the frame, while the whole printed area stays one flat, evenly lit tone; the frame, the mat or canvas edge and the wall each stay clearly distinct, with crisp, unbroken outlines. The whole frame sits inside the picture with clear space on all four sides of the frame; nothing in front of it overlaps any part of the frame. The artwork face is flat, upright and in sharp focus, and the frame stands out clearly in tone from what is behind it. Only one piece of art; no other frames, posters or mirrors. No people, no faces, no hands, no pets. Nothing in the picture carries readable text: no labels, logos, signs, lettering or book titles; books have plain covers or face away. No lamps unless the setting clearly needs one.",
+ "brief": {
+  "slot": 16,
+  "source": "new",
+  "library_rel": null,
+  "print_size": "A5",
+  "shot": "tight",
+  "setting": "dresser_top",
+  "display": "standing_on_surface",
+  "presentation": "frame",
+  "frame_finish": "walnut_frame",
+  "camera_side": "left",
+  "camera_height": "counter",
+  "lens": "lens_short_tele",
+  "light_style": "dappled",
+  "light_from": "right",
+  "shadow": "soft",
+  "depth_of_field": "soft_background",
+  "wall": {
+   "name": "pale blue grey",
+   "hex": "#DCE3E6",
+   "treatment": "plain_paint",
+   "family": "white_cream",
+   "lab": [
+    89.8,
+    -1.8,
+    -2.3
+   ]
+  },
+  "floor": "wide pale oak boards",
+  "furniture": {
+   "style": "kids_painted",
+   "colour": "sage",
+   "family": "painted_colour"
+  },
+  "house": "suburban_colonial",
+  "buyer": "parent",
+  "props": [
+   "small wooden toy block",
+   "plain stoneware cup with dried grass stems"
+  ],
+  "scene": "A child's bedroom in a family home, with a low painted sage dresser against a smooth pale blue grey wall. The small framed print stands on the dresser top, fills about half the picture height and sits slightly off centre. Beside it are a single natural wooden toy block and a small plain stoneware cup holding a few dried grass stems. The dresser top is clean and uncluttered, with the top edge of a drawer front cut by the bottom of the picture. The painted wood has a gentle satin finish. Behind the dresser the wall is empty, with soft leaf shadows and a soft shadow of the frame resting on it. The mood is quiet, tidy and lived in.",
+  "room": "Kids",
+  "decor": "Kids",
+  "ratio": "iso",
+  "scale": "small",
+  "marker": "orange",
+  "lint": {
+   "pass": true,
+   "why": []
+  },
+  "rev": 1,
+  "edited_by": "planner",
+  "stale": false,
+  "updated": "2026-11-20T11:09:03"
+ },
+ "engine": "nbpro",
+ "model": "nano-banana-pro",
+ "resolution": "2K",
+ "aspect": "4:3",
+ "credits": 18.0,
+ "made_for": {
+  "idea_id": 3,
+  "design": "Book Club Cat",
+  "slot": 16
+ }
+}
