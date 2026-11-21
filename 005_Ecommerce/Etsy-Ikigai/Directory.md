@@ -15,6 +15,7 @@ Ikigai Digital Studio Etsy shop (printable digital wall art): docs, the local Po
 | `Room_Templates/` | Room-mockup templates for listing images 3 and 9-19 (catalogue: `Room_Templates/Directory.md`; checker results: `Portal/config/template_checks.json`) |
 | `Designs/` | One folder per design: `<NNNNN>-<Name>/01-Printables`, `03-Etsy Images` (an `Archive/` subfolder there holds denied, replaced and guard-flagged images and scenes with no usable frame; the Portal shows only its own denied/flagged ones on the cards) |
 | `Creative_Inspiration/` | Pinterest style dumps and Style_Profiles |
+| `Needs_Processing/` | Inbox for finished artwork images from any generator (Midjourney or other) that still need upscale + resize and a Portal idea; created 2026-11-20. Raw images only; processed designs live in `Designs/` |
 | `001-Standard Package/`, `002-Includes 1to1 Ratio/` | Git-ignored working copies of the listing mockup sets (originals: `Mockup_Docs/Mockup_Originals_Locations.md`) |
 
 ## Move map (2026-11-08)
