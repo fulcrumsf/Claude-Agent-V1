@@ -30,3 +30,14 @@ def _checker_without_sam(monkeypatch):
     """The checker tests use synthetic renders; their opening comes from the old edge search (SAM is the subprocess)."""
     from app import template_checker as tc
     monkeypatch.setattr(tc, "sam_opening", lambda bg_png, V, settings=None, work=None, psd=None, canvas=False: (None, "test", None))
+
+
+@pytest.fixture(autouse=True)
+def _no_scene_scan_no_balance(monkeypatch):
+    """Realism addendum: the output scan (Vision OCR + Gemini) and the kie.ai balance read are network / OS tools;
+    run_slot gets a clean scan and an unknown balance unless a test swaps them in."""
+    from app import production, scene_templates as stp
+    monkeypatch.setattr(production, "scan_scene", lambda png, settings=None, overlay=None:
+                        {"pass": True, "severity": "none", "findings": [], "overlay": None, "mode": "test",
+                         "notes": []})
+    monkeypatch.setattr(stp, "kie_balance", lambda settings=None: None)

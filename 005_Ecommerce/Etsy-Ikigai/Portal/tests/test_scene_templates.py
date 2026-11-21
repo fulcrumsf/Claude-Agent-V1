@@ -106,8 +106,9 @@ class FakeCraft:
 
 
 def fake_generator(calls):
-    def gen(engine, out, prompt, aspect, res):
-        calls.append({"engine": engine, "prompt": prompt, "aspect": aspect, "res": res})
+    def gen(engine, out, prompt, aspect, res, ref_imgs=()):
+        calls.append({"engine": engine, "prompt": prompt, "aspect": aspect, "res": res,
+                      **({"ref_imgs": list(ref_imgs)} if ref_imgs else {})})
         scene(Path(out))
         return {"out": out, "model": "nano-banana-pro", "credits": 18.0, "left": 739.0}
     return gen

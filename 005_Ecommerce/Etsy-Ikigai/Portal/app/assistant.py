@@ -94,6 +94,8 @@ scene, never explain why; no people, pets, readable text or other frames). field
 change, e.g. {"print_size": "8x10", "shot": "tight", "setting": "desk_top", "camera_side": "right", "wall": \
 {"name": "terracotta", "hex": "#C8643C"}}. The Portal checks the rules; a refusal comes back with the reason.
 - slot_prompt_revert {idea_id, slot}: back to the previous version of that slot's planned scene.
+- slot_grade {idea_id, slot, grade, note?}: record Tony's own grade of a slot image (A+, A, A-, B+, B, B-, C+, C, \
+C-, D, F), only when his message states the grade himself; note = his reason in a few words, if he gave one.
 - none: nothing to do (or just leave the block out).
 
 What you can and cannot do in Production, be honest about it:

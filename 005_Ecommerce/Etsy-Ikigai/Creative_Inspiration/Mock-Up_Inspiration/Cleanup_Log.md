@@ -73,3 +73,16 @@ None are low-resolution (smallest longest side 720 px), so none went to Archive 
 | 0047 | faint engraved-style text watermark | mantel frieze, centre (x 288-367, y 270-282) | LaMa (branch pixels kept out of the mask) | ok |
 
 Totals: 0 crop, 1 inpaint (1 LaMa), 14 untouched. kie.ai credits spent: 0.
+
+
+## Blanked references (`_Blank.png`, realism addendum 1, 2026-11-21)
+
+`NNNN_<Same_Name>_Blank.png` next to each source = the same cleaned screenshot with the artwork filled flat with the
+insert marker colour (orange, or pale blue when the reference's own wall is warm), one pixel under the frame lip, so
+captions, watermarks and poster lettering on the art are gone. Made headless and free by
+`python -m app.references --prepare` (Portal; local SAM 2 + one Gemini flash-lite box call per reference, no kie.ai
+credits). `Reference_Manifest.json` holds per reference: fill polygon, marker, measured facts (aspect, art height share,
+camera side, light side, wall colour), the free checks and why a reference is unusable, seed tags (`tags_by`), uses and
+Tony's grades. Sources are never changed. To blank one by hand: save `<name>_Blank.png` here and set its entry's
+`blank_method` to `tony` (never overwritten). Usable after the first run: 16 of 26 (0023, 0024, 0025, 0026, 0029, 0030,
+0031, 0032, 0034, 0035, 0036, 0037, 0039, 0042, 0044, 0047).

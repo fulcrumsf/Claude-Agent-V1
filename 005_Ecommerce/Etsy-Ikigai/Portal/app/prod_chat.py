@@ -17,6 +17,7 @@ chat, never by opening a separate Claude.
                                             (app/slot_planner.edit_brief: lint failure = refused, balance-only = saved
                                             with a warning; rev+1, edited in chat, old version kept)
       slot_prompt_revert {idea_id, slot}    back to the previous version of that slot's planned scene
+      slot_grade {idea_id, slot, grade, note?}  Tony's own grade of a slot image (only when his message states it)
 Fix requests are plain Markdown in the existing Handoffs folder (every Claude session reads it first). `status:
 waiting` shows as a "Waiting for Claude Code" row in Production; Claude Code sets `status: done` when fixed."""
 import base64
@@ -33,7 +34,15 @@ from .db import DB_LOCK as LOCK
 MAX_IMAGES = 2
 MAX_SIDE = 1568
 ACTIONS = ("slot_rerender", "slot_decide", "check_template", "fix_request", "offer_regenerate", "slot_prompt_edit",
-           "slot_prompt_revert")
+           "slot_prompt_revert", "slot_grade")
+GRADE_WORD = re.compile(r"(?<![A-Za-z])([A-DF][+-]?)(?![A-Za-z])")       # capital letters only ("a" is an article)
+GRADE_WORD_LC = re.compile(r"(?<![A-Za-z])([a-df][+-])(?![A-Za-z])")       # "c+" typed in lower case
+
+
+def grade_words(text):
+    """The grades Tony's own message states (A+ ... F)."""
+    t = str(text or "")
+    return set(GRADE_WORD.findall(t)) | {x.upper() for x in GRADE_WORD_LC.findall(t)}
 FIX_GLOB = "*_Fix-Request_Portal_*.md"
 SLOT_WORDS = re.compile(r"\bslots?\s*#?\s*(\d{1,2}(?:\s*(?:,|and|&|\+)\s*#?\d{1,2})*)", re.I)
 
@@ -331,6 +340,16 @@ class ProdHooks:
             return self._prompt(kind, a, default_idea)
         iid, slot, facts = self._slot(a, default_idea)
         f = facts["slots"][slot]
+        if kind == "slot_grade":
+            g = str(a.get("grade") or "").strip().upper()
+            if g not in prod.GRADES:
+                raise prod.ProductionError(f"grade must be one of {', '.join(prod.GRADES)}")
+            if g not in grade_words(user_text):
+                raise prod.ProductionError("I only record a grade you state yourself (say e.g. \"slot 16 is a B-\")")
+            if not f["file"]:
+                raise prod.ProductionError(f"slot {slot:02d} has no image to grade")
+            prod.grade(self.con, self.settings, iid, f["file"], g, a.get("note"))
+            return f"Recorded {g} for slot {slot:02d} ({f['file']}); it is saved with the template and its prompt."
         if kind == "slot_decide":
             dec = str(a.get("decision") or "").strip().lower()
             dec = {"approve": "approved", "deny": "denied", "undo": "pending"}.get(dec, dec)

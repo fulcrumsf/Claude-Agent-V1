@@ -174,6 +174,78 @@ def library_templates(settings=None):
     return out
 
 
+# ---------- Tony's grades per template (realism addendum 7, 2026-11-20) ----------
+# Kept in a sidecar Grades.json next to template.json (template.json itself is never rewritten for a grade, so the
+# saved prompt and geometry stay byte-identical). Whitelisted keys only: no credentials, no prompts copied.
+GRADES_FILE = "Grades.json"
+GRADE_SCORE = {"A+": 4.3, "A": 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0, "B-": 2.7, "C+": 2.3, "C": 2.0, "C-": 1.7, "D": 1.0,
+               "F": 0.0}
+GRADE_KEYS = ("idea_id", "design", "slot", "grade", "note", "at")
+LIBRARY_MIN_GRADE = 2.7          # mean below B-: kept in the library, never auto-picked (Tony can still pick it with +)
+
+
+def clean_grade(entry):
+    """A grade entry with only the whitelisted keys (strings <= 40 chars, note <= 200). Raises ValueError."""
+    if entry.get("grade") not in GRADE_SCORE:
+        raise ValueError(f"grade must be one of {', '.join(GRADE_SCORE)}")
+    out = {}
+    for k in GRADE_KEYS:
+        v = entry.get(k)
+        if v is None or v == "":
+            continue
+        if k in ("idea_id", "slot"):
+            out[k] = int(v)
+        else:
+            out[k] = str(v)[:200 if k == "note" else 40]
+    return out
+
+
+def template_grades(psd):
+    p = Path(psd).parent / GRADES_FILE
+    if not p.is_file():
+        return []
+    try:
+        g = json.loads(p.read_text())
+    except ValueError:
+        return []
+    return [x for x in (g.get("grades") or []) if isinstance(x, dict) and x.get("grade") in GRADE_SCORE]
+
+
+def add_grade(psd, entry, replace_slot=True):
+    """Append (or replace the same idea + slot's) grade in the template's Grades.json. Returns the list."""
+    e = clean_grade(entry)
+    p = Path(psd).parent / GRADES_FILE
+    gs = template_grades(psd)
+    if replace_slot:
+        gs = [x for x in gs if not (x.get("idea_id") == e.get("idea_id") and x.get("slot") == e.get("slot"))]
+    gs.append(e)
+    p.write_text(json.dumps({"grades": gs}, indent=1) + "\n")
+    return gs
+
+
+def remove_grade(psd, idea_id, slot):
+    p = Path(psd).parent / GRADES_FILE
+    gs = [x for x in template_grades(psd) if not (x.get("idea_id") == idea_id and x.get("slot") == slot)]
+    if p.is_file():
+        p.write_text(json.dumps({"grades": gs}, indent=1) + "\n")
+    return gs
+
+
+def mean_grade(psd):
+    gs = template_grades(psd)
+    return round(sum(GRADE_SCORE[g["grade"]] for g in gs) / len(gs), 2) if gs else None
+
+
+def auto_pick_ok(t):
+    """A library template may be auto-picked: not graded below B- on average, and its scene passed the text scan."""
+    if t.get("wired") or not t.get("psd"):
+        return True
+    m = mean_grade(t["psd"])
+    if m is not None and m < LIBRARY_MIN_GRADE:
+        return False
+    return ((t.get("manifest") or {}).get("text_scan") or {}).get("pass", True) is not False
+
+
 def matches(t, room, decor, ratio):
     """Does a library template fit a planned slot? Same ratio bucket, same room folder, decor named by its style
     folder / Directory style / name / description. Wired rooms (Teak, computed frames) are never auto-picked."""
@@ -1101,12 +1173,35 @@ def kie_module(settings=None):
     return mod
 
 
-def generate_scene(prompt, out_png, settings=None, generator=None):
+REF_ENGINES = {"nbpro", "nb21", "nb2"}     # Nano Banana uses image_input as a guide; GPT image-to-image would EDIT it
+REFUSAL = re.compile(r"sensitive|flagged|refus|policy|safety|prohibited", re.I)
+
+
+def is_refusal(msg):
+    return bool(REFUSAL.search(str(msg or "")))
+
+
+def kie_balance(settings=None):
+    """The kie.ai credit balance (free call), or None when it cannot be read. Tests swap this out."""
+    try:
+        import httpx
+        mod = kie_module(settings)
+        with httpx.Client(timeout=30) as c:
+            return float(mod.credits(c))
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def generate_scene(prompt, out_png, settings=None, generator=None, ref_imgs=()):
     """One kie.ai scene (the only call that costs credits). `generator(engine, out, prompt, aspect, res)` is
-    injectable for tests. Returns kie_edit.generate's dict."""
+    injectable for tests. Returns kie_edit.generate's dict. ref_imgs (realism addendum 2.3): a reference photograph
+    sent as image_input; without it the call is exactly the old one."""
     eng = _cfg(settings, "room_scene_engine")
     gen = generator or kie_module(settings).generate
     try:
+        if ref_imgs:
+            return gen(eng, str(out_png), prompt, _cfg(settings, "room_scene_aspect"),
+                       _cfg(settings, "room_scene_resolution"), ref_imgs=[str(p) for p in ref_imgs])
         return gen(eng, str(out_png), prompt, _cfg(settings, "room_scene_aspect"), _cfg(settings, "room_scene_resolution"))
     except TemplateError:
         raise

@@ -322,6 +322,9 @@ button{font:inherit;color:inherit;cursor:pointer}
 .pprompt{flex:1 1 100%;font-size:12px;color:var(--ink-2)}
 .pprompt summary{cursor:pointer;font:500 11px var(--mono);color:var(--muted)}
 .pprompt pre{white-space:pre-wrap;word-break:break-word;font:400 11.5px/1.5 var(--mono);background:var(--paper-2);border-radius:6px;padding:8px 9px;margin:6px 0 0}
+.pprompt .pref{display:flex;align-items:center;gap:8px;margin:6px 0 0;font:500 11px var(--mono);color:var(--ink-2)}
+.pprompt .pref img{width:96px;height:auto;border-radius:4px;border:1px solid var(--line)}
+.pcard .pgrade{font:500 11px var(--mono);border:1px solid var(--line-2);border-radius:6px;padding:3px 4px;background:var(--card);color:var(--ink)}
 .pprompt .ptag{font:500 10px var(--mono);border:1px solid var(--line-2);border-radius:20px;padding:0 6px;margin-left:6px}
 .pplan{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 12px;font:400 12px var(--mono);color:var(--ink-2)}
 .pplan.bad{color:var(--rising)}
@@ -782,6 +785,7 @@ button{font:inherit;color:inherit;cursor:pointer}
   const tpick = document.getElementById("tpick");
   let prodItems = [], prodSel = null, pan = null, panErr = "", prodTimer = null, credits = null, pickSlot = null;
   const openPrompts = new Set();     // "Show prompt" open state survives the 3 s repaint (innerHTML is rebuilt)
+  const GRADES = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D", "F"];   // Tony's grade scale (realism addendum 7)
   const two = n => String(n).padStart(2, "0");
   function paintStrip() {
     stripHost.innerHTML = prodItems.length ? prodItems.map(d => `<button class="pthumb" data-psel="${d.idea_id}" aria-pressed="${String(d.idea_id) === String(prodSel)}">${d.image_url ? `<img src="${esc(d.image_url)}" alt="" loading="lazy">` : ""}<b>${esc(d.name)}</b><span>${d.counts.approved} approved · ${d.counts.pending} waiting</span></button>`).join("")
@@ -806,7 +810,8 @@ button{font:inherit;color:inherit;cursor:pointer}
     const gen = c.next.kind === "none" ? "" : `<button class="btn sm" data-pgen="${c.slot}" ${busy ? "disabled" : ""}>${im ? "Regenerate" : "Generate"}</button>`;
     const dec = im && c.state !== "running" ? `<button class="btn sm ${st === "approved" ? "" : "ghost"}" data-pdec="approved" data-f="${esc(im.file)}">${st === "approved" ? "Approved" : "Approve"}</button>
       <button class="btn ghost sm" data-pdec="denied" data-f="${esc(im.file)}">${st === "denied" ? "Denied" : "Deny"}</button>
-      ${st !== "pending" ? `<button class="btn ghost sm" data-pdec="pending" data-f="${esc(im.file)}">Undo</button>` : ""}` : "";
+      ${st !== "pending" ? `<button class="btn ghost sm" data-pdec="pending" data-f="${esc(im.file)}">Undo</button>` : ""}
+      <select class="pgrade" data-pgrade="${esc(im.file)}" title="Your grade of this image (saved with its prompt)"><option value="">grade</option>${GRADES.map(g => `<option value="${g}"${im.grade === g ? " selected" : ""}>${g}</option>`).join("")}</select>` : "";
     const fr = (pan.fix_requests || []).find(x => x.slot === c.slot);
     if (fr) msg += `<p class="pwait">Waiting for Claude Code</p>`;
     const askc = `<button class="btn ghost sm" data-pchat="${c.slot}" title="Point the Studio chat at this slot (it sees the image)">Ask chat</button>`;
@@ -818,7 +823,8 @@ button{font:inherit;color:inherit;cursor:pointer}
       const tag = br.edited_by === "chat" ? `<span class="ptag">edited in chat</span>` : "";
       const body = br.source === "library" ? `Library template ${esc(br.library_name || (br.library_rel || "").split("/").pop())} (free); no prompt sent.`
         : esc(br.prompt || (br.lint && !br.lint.pass ? "No prompt: " + br.lint.why.join("; ") : "No prompt yet."));
-      pp = `<details class="pprompt" data-pprompt="${esc(key)}"${open}><summary>Show prompt${br.rev > 1 ? " · rev " + br.rev : ""}</summary>${tag}<pre>${body}</pre></details>`;
+      const refl = br.reference && br.source !== "library" ? `<div class="pref">${br.ref_thumb_url ? `<img src="${esc(br.ref_thumb_url)}" alt="" loading="lazy">` : ""}<span>Reference ${esc(br.reference)}${br.reference_flip ? " (mirrored)" : ""}${c.ref_note ? " · " + esc(c.ref_note) : ""}</span></div>` : "";
+      pp = `<details class="pprompt" data-pprompt="${esc(key)}"${open}><summary>Show prompt${br.rev > 1 ? " · rev " + br.rev : ""}</summary>${tag}${refl}<pre>${body}</pre></details>`;
     }
     return `<article class="pcard ${esc(st)}">${head}${pic}<div class="pb">${msg}${pp}${askc}${cost && c.state !== "running" ? `<span class="pcost">${cost}</span>` : ""}${gen}${dec}<button class="plus" data-pplus="${c.slot}" title="Pick any template from the library" ${busy ? "disabled" : ""}>+</button></div></article>`;
   }
@@ -890,6 +896,11 @@ button{font:inherit;color:inherit;cursor:pointer}
     const v = r.dataset.proom, rooms = pan.rooms.filter(x => x !== v);
     if (r.checked) rooms.push(v);
     panPost(`${prefix}/api/production/${prodSel}/tags`, {rooms, styles: pan.styles});
+  });
+  // grade picker (realism addendum 7): the value comes back in the panel data, so the 3 s repaint keeps it
+  prodHost.addEventListener("change", e => {
+    const gr = e.target.closest("[data-pgrade]"); if (!gr) return;
+    panPost(`${prefix}/api/production/${prodSel}/grade`, {name: gr.dataset.pgrade, grade: gr.value || null});
   });
   prodHost.addEventListener("click", async e => {
     const s = e.target.closest("[data-pstyle]");

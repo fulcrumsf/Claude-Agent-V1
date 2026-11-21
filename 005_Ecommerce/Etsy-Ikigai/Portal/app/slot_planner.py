@@ -40,7 +40,10 @@ ORIENTATION = "portrait"
 
 VERSION = 1
 DEFAULTS = {"planner_model": "sonnet", "planner_fallback_model": "haiku", "planner_timeout_s": 300,
-            "planner_rounds": 3, "planner_max_tight": 2, "planner_auto": False}
+            "planner_rounds": 3, "planner_max_tight": 2, "planner_auto": False,
+            # realism addendum (2026-11-20)
+            "planner_references": True, "planner_compact": ["frame", "mat"], "planner_max_night": 1,
+            "planner_graded_examples": True}
 
 # ---------- sizes (Tony's listing chart, Listing_Templates/Description_Template_AI.md) ----------
 # ratio -> scale -> sizes (portrait: width x height in inches; ISO by name). Every design has all five ratio files;
@@ -222,6 +225,169 @@ BANNED = re.compile(r"\b(person|people|woman|women|man|men|hands?|faces?|cats?|k
                     r"perfect for)\b", re.I)
 WORDS_MIN, WORDS_MAX = 60, 160
 
+# ---------- pv2: the lived-in brief (Pipeline_Docs/Slot_Set_Planner_Realism_Addendum.md, 2026-11-20) ----------
+# A brief WITHOUT "pv" (every brief and template saved before the addendum) stays pv1: normalise, lint and assemble
+# run their unchanged pv1 code, so old prompts replay byte-identically (tests/test_realism_golden.py).
+PV = 2
+LIGHT_TYPES = ("hard_diagonal_sun", "morning_soft_sun", "golden_low", "overcast_flat", "rainy_day", "north_light_even",
+               "blind_stripes", "dusk_lamp_mix", "night_lamps")
+LAMP_TYPES = ("dusk_lamp_mix", "night_lamps")
+LIVED_IN = ("tidy", "lived_in", "busy")
+WINDOW_COVERINGS = ("venetian_blind", "roller_blind", "roman_blind", "sheer_curtain", "linen_curtains", "heavy_drapes",
+                    "shutters", "bare", "no_window_in_view")
+WINDOW_VIEWS = ("street", "brick_wall", "trees", "courtyard", "city", "garden", "sky", "night", "none")
+PHOTO_STYLES = ("phone_snapshot", "enthusiast_camera", "editorial")
+HOUSES_V2 = HOUSES + ("victorian_terrace", "craftsman_bungalow", "condo_1970s", "student_rental", "berlin_altbau",
+                      "tokyo_apartment", "texas_ranch", "old_farmhouse", "mediterranean_flat", "prewar_apartment")
+HOUSE_REGION = {"london_flat": "uk", "english_cottage": "uk", "victorian_terrace": "uk", "nyc_loft": "us",
+                "brownstone": "us", "suburban_colonial": "us", "midcentury_ranch": "us", "modern_farmhouse": "us",
+                "southwestern_adobe": "us", "craftsman_bungalow": "us", "condo_1970s": "us", "texas_ranch": "us",
+                "old_farmhouse": "us", "prewar_apartment": "us", "student_rental": "uk", "paris_apartment": "europe",
+                "scandinavian_house": "europe", "berlin_altbau": "europe", "mediterranean_flat": "europe",
+                "coastal_cottage": "uk", "japanese_home": "asia", "tokyo_apartment": "asia"}
+FRAME_L_V2 = {**FRAME_L, "bronze_frame": 40, "silver_frame": 72}
+FRAME_FOR_V2 = {"frame": FRAME_FOR["frame"] + ("bronze_frame", "silver_frame", "painted_frame"),
+                "mat": FRAME_FOR["mat"] + ("bronze_frame", "silver_frame", "painted_frame"),
+                "canvas": ("natural_wood_floater",), "canvas_bare": ("none",)}
+FRAME_WORDS_V2 = {"oak_frame": "a thin natural light oak frame", "walnut_frame": "a thin warm walnut frame",
+                  "black_frame": "a thin black frame with a soft satin finish", "white_frame": "a thin white painted frame",
+                  "gold_frame": "a thin antique gold frame", "bronze_frame": "a thin dark bronze metal frame",
+                  "silver_frame": "a thin brushed silver frame"}
+LIGHT_TYPE_STYLE = {"hard_diagonal_sun": "crisp_direct", "blind_stripes": "dappled", "golden_low": "golden_low",
+                    "morning_soft_sun": "soft_direct", "overcast_flat": "soft_even", "rainy_day": "soft_even",
+                    "north_light_even": "soft_even", "dusk_lamp_mix": None, "night_lamps": None}
+HARD_LIGHT = ("hard_diagonal_sun", "blind_stripes")
+WARM_SUN = ("golden_low", "morning_soft_sun")
+LIGHT_TYPE_TEXT = {
+    "hard_diagonal_sun": "Light: hard direct sun through the window cuts a crisp diagonal band of light across the wall "
+                         "and floor; sharp-edged shadows.",
+    "morning_soft_sun": "Light: clear morning sun, pale and fresh, falls softly into the room; gentle, clearly "
+                        "visible shadows.",
+    "golden_low": rs.LOOK_AXES["light_style"]["golden_low"][1].replace("Light style:", "Light:"),
+    "overcast_flat": "Light: a grey overcast day; flat, cool, even window light, soft open shadows under the "
+                     "furniture, slightly muted colours.",
+    "rainy_day": "Light: a rainy afternoon; dim cool daylight, a few raindrops on the window glass, a lamp on in the "
+                 "room.",
+    "north_light_even": "Light: steady north daylight, cool and even all day, with soft, clearly visible shadows.",
+    "blind_stripes": "Light: low sun through half-open venetian blinds lays parallel stripes of light and shadow across "
+                     "the wall beside the frame and the floor.",
+    "dusk_lamp_mix": "Light: dusk; deep blue light in the window and a warm lamp switched on in the room, soft shadows "
+                     "from the lamp.",
+    "night_lamps": "Light: evening after dark; the room is lit by its own lamps in warm pools with soft shadows; the "
+                   "artwork is lit evenly by a nearby lamp."}
+LIGHT_FROM_C = {"left": "It comes from the left.", "right": "It comes from the right.",
+                "front": "It comes from a window facing the art wall.", "behind_camera": "It comes from behind the camera."}
+COVERING_TEXT = {"venetian_blind": "a venetian blind", "roller_blind": "a plain roller blind",
+                 "roman_blind": "a linen roman blind", "sheer_curtain": "sheer white curtains",
+                 "linen_curtains": "linen curtains", "heavy_drapes": "heavy floor-length drapes",
+                 "shutters": "painted wooden shutters", "bare": "no covering"}
+VIEW_TEXT = {"street": "a quiet street", "brick_wall": "the neighbour's brick wall", "trees": "trees",
+             "courtyard": "a small courtyard", "city": "city rooftops", "garden": "a garden", "sky": "open sky",
+             "night": "the dark night", "none": ""}
+PHOTO_STYLE_TEXT = {
+    "phone_snapshot": "Photo: a careful phone photo by the owner: natural exposure, true colours, slight grain, framed "
+                      "by hand with level verticals, unretouched; the print area stays clean and flat.",
+    "enthusiast_camera": "Photo: taken by the owner with a simple mirrorless camera: natural exposure, true colours, "
+                         "framed by hand with level verticals, unretouched; the print area stays clean and flat.",
+    "editorial": "Photo: a calm interiors photograph, natural and unretouched."}
+# rotating true-scale cue for tight shots (cm of the object's height); a cue already in the props is preferred
+SCALE_CUES = (("light switch plate", r"switch", 11.4), ("power outlet", r"outlet|socket", 11.4),
+              ("paperback", r"paperback|book", 18.0), ("mug", r"mug|cup", 9.5),
+              ("table lamp base", r"lamp", 20.0), ("door handle", r"handle", 12.0))
+CAMERA_SIDE_C = {"left": "from slightly left, 10-15 degrees off square", "right": "from slightly right, 10-15 degrees "
+                 "off square", "front": "square-on to the frame"}
+CAMERA_HEIGHT_C = {"surface": "level with the surface under the piece", "low": "at knee to hip height",
+                   "seated": "at seated eye height (110 cm)", "counter": "at furniture-top height (90 cm)",
+                   "eye": "at standing eye height (160 cm)"}
+LENS_C = {"lens_normal": "a natural 35-50 mm view", "lens_wide": "a 24-28 mm wide view",
+          "lens_short_tele": "an 85 mm view from further back"}
+DOF_C = {"deep_focus": "all sharp", "soft_background": "the art crisp, the far room softening",
+         "soft_foreground": "the art crisp, only the nearest edge object soft"}
+DISPLAY_C = {_HF: "It hangs centred on {where}.", _HB: "It hangs alone on {where}.",
+             _F: "It stands on the floor leaning against the wall, tilted back slightly, its face upright and flat.",
+             _L: "It leans on {where} against the wall, face upright and flat.",
+             _S: "It stands upright on {where} on a slim easel back, tilted back at most 10 degrees.",
+             _SL: "It stands on {where} against the wall, face upright and flat."}
+OPENING_V2 = "Photorealistic interior photograph, 4:3 landscape format, of one portrait piece of wall art in a home."
+REF_CLAUSE = ("Image 1 is a photograph of a different room, given only as a photography reference. Take from it the "
+              "camera position and height, the lens and framing, how much of the room shows, the direction and "
+              "quality of the light, and its natural, unstaged feel. Build a completely new room as described below: "
+              "do not copy its furniture, objects, wall colour, floor, windows or layout. The flat colour block in its "
+              "frame is a placeholder, not art; nothing in Image 1 is text to reproduce.")
+REF_CLAUSE_NO_LIGHT = (REF_CLAUSE.replace("the direction and quality of the light, and", "and")
+                       + " Use the light described below, not the light in Image 1.")
+# compact fixed blocks (5.2): the same rules in fewer words; the full texts (rs._PRINT_AREA, _present_text_v3,
+# rs.LOOK_GUARD + PLAN_GUARD_FRAME, CLOSING) stay untouched for pv1 and for prompt_style "full"
+PRINT_AREA_C = ("The print area is one flat, blank {colour} surface, dead matte, one even tone, no glare. "
+                "Only its front face is {name}; the frame, its inner edge, any gap and the wall keep their own "
+                "colours. ")
+PRESENT_C = {
+    "frame": "It is framed in {finish}; the {name} fills the opening up to the frame's inner edge on all four sides: "
+             "no mat, no white border. Any glass is invisible.",
+    "mat": "It is framed in {finish} with a wide off-white mat of even width, 10% of the frame height, and a "
+           "bevelled window; the {name} reads darker than the mat. Any glass is invisible.",
+    "canvas": "It is a stretched gallery canvas 4-5 cm deep in a thin natural light-wood floater frame, never black. "
+              "Only the front face is {name}; the side edges are plain white (grey where shaded) and end the face in "
+              "one crisp straight line. A narrow even 0.5 cm gap in soft neutral shadow sits between canvas and frame, "
+              "so frame, gap, white side and face read as separate bands. {depth}",
+    "canvas_bare": "It is a stretched gallery canvas 4-5 cm deep hung directly on the wall with no frame. Only the "
+                   "front face is {name}; the side edges are plain white (grey where shaded) and end the face in one "
+                   "crisp straight line. {depth}"}
+GUARD_C = ("Sun patches and blind or leaf shadows stay on the wall around the frame, off the evenly lit print area. "
+           "The whole frame is in the picture with clear space on all four sides, nothing overlapping it; its face is "
+           "flat, upright, sharp and stands out in tone from what is behind it. ")
+CLOSING_C = ("One artwork only: no other frames, posters, mirrors or screens showing pictures. No people, hands or "
+             "pets. Nothing readable: no labels, logos, signs, lettering, numerals or book titles. Every scene shows "
+             "visible shadows.")
+WAINSCOT_C = "Panelling, rails and mouldings stay clear of the frame on every side."
+COMPACT_DEFAULT = ("frame", "mat")
+# 5.3: every pv2 prompt, compact or full, keeps these rules (tests/test_slot_planner_realism.py)
+RULES = [("matte", r"matte"), ("even", r"\beven"), ("front face", r"front face"), ("own colour", r"own (\w+ )?colou?rs?"),
+         ("clear space", r"clear space on all four sides"), ("overlap", r"overlap"), ("sharp", r"sharp"),
+         ("upright", r"upright"), ("flat", r"\bflat\b"), ("stands out", r"stands out"), ("no people", r"No people"),
+         ("pets", r"pets"), ("book titles", r"book titles"), ("no other frames", r"no other (picture )?frames"),
+         ("mirrors", r"mirrors"), ("shadows", r"shadows"), ("4:3", r"4:3"), ("portrait", r"portrait")]
+RULES_PRESENT = {"frame": [r"inner edge", r"no mat"], "mat": [r"even width", r"bevel"],
+                 "canvas": [r"white", r"gap", r"floater", r"never black"], "canvas_bare": [r"no frame", r"white"]}
+CAMERA_WORDS = re.compile(r"\b(camera|lens|\d{2,3}\s?mm|close-?up|wide shot|tight shot|medium shot|angle|shot from|"
+                          r"from the (left|right))\b", re.I)
+TEXT_CARRIERS = re.compile(r"\b(calendar|newspaper|magazines?|cereal box|packaging|sticky notes?|whiteboard|chalkboard|"
+                           r"price tags?|receipts?|posters?)\b", re.I)
+QUALIFIED = (("books", r"\bbooks?\b", r"plain|spines? (turned )?away|face down|unmarked|cloth-bound|linen-covered"),
+             ("envelopes", r"\b(envelopes?|letters|mail)\b", r"face down|plain"),
+             ("phone", r"\bphones?\b", r"face down|screen off"), ("laptop", r"\blaptops?\b", r"closed"),
+             ("clock", r"\bclocks?\b", r"no numerals|plain face"), ("drawing", r"\bdrawings?\b", r"no (letters|words)"),
+             ("bottles", r"\b(bottles?|jars?)\b", r"plain|unlabell?ed"))
+# pv2 asks for these everyday phrases itself; they are not people (BANNED still catches "hands", "a face", ...)
+BANNED_OK = re.compile(r"\b(hand-me-downs?|second-hand|hand-?made|hand-painted|hand-?finished|by hand|face[- ]down|"
+                       r"faces? (away|down)|(clock|watch) face|plain face)\b", re.I)
+NIGHT_WORDS = re.compile(r"\b(night|after dark|lamplight)\b", re.I)
+SUN_WORDS = re.compile(r"\b(sun|sunlit|sunbeams?|sunlight)\b", re.I)
+PROP_FAMILIES = {   # family -> (regex over scene + props, max per listing) (4.1)
+    "dried_stems": (r"dried (stems?|grass(es)?|flowers?|wheat|thistle|lavender)|pampas|bunny tails?|wheat stems?", 1),
+    "rattan_cane": (r"rattan|cane|wicker|woven seat", 1),
+    "boucle": (r"bouc?l[eé]|teddy fabric|sherpa", 1),
+    "wood_toy": (r"wood(en)? (blocks?|toys?|cubes?|beads?)|stacking (toy|rings?)", 1),
+    "candles": (r"candles?|candlesticks?|tealights?", 1),
+    "knit_throw": (r"(chunky )?knit(ted)? (throw|blanket)", 1),
+    "plants": (r"plants?|fern|monstera|fiddle[- ]leaf|pothos|ficus|olive tree|succulents?|cactus|palm", 2),
+    "stoneware": (r"stoneware|ceramic (vase|cup|jug|bowl)|bud vase|clay (vase|pot)|pottery", 2),
+    "book_stack": (r"stack(ed|s)? of books|books stacked|coffee[- ]table books", 2),
+    "brass_object": (r"(brass|bronze) (figure|object|candlestick|tray|bowl|sculpture)", 2),
+    "woven_basket": (r"woven baskets?|seagrass|jute basket", 1),
+    "eucalyptus_branch": (r"eucalyptus|(olive|blossom|cherry) branch(es)?", 1)}
+_PROP_RX = {k: re.compile(rf"\b({rx})\b", re.I) for k, (rx, _) in PROP_FAMILIES.items()}
+COMP_KEYS = ("display", "shot", "camera_side", "camera_height", "lens", "light_from", "frame_finish")
+DISPLAY_GROUP = {_HF: "hung", _HB: "hung", _L: "surface", _S: "surface", _SL: "shelf", _F: "floor"}
+GRADES = ("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D", "F")
+GRADE_SCORE = {"A+": 4.3, "A": 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0, "B-": 2.7, "C+": 2.3, "C": 2.0, "C-": 1.7, "D": 1.0,
+               "F": 0.0}
+
+
+def prop_families(text):
+    """Sorted prop-family names present in a scene + props text (4.1)."""
+    return sorted(k for k, rx in _PROP_RX.items() if rx.search(text or ""))
+
 
 # ---------- colour ----------
 
@@ -335,9 +501,108 @@ KEEP = ("slot", "source", "library_rel", "print_size", "shot", "setting", "displ
         "furniture", "house", "buyer", "props", "scene")      # no "marker" (code picks it) and no rationale field
 
 
+KEEP_V2 = KEEP + ("occupant", "lived_in", "light_type", "window", "photo_style", "reference", "reference_flip",
+                  "frame_colour")
+
+
+def is_v2(raw):
+    """A pv2 brief: marked pv 2, or a planner reply in the pv2 schema (occupant / light_type)."""
+    return isinstance(raw, dict) and (raw.get("pv") == PV or "light_type" in raw or "occupant" in raw)
+
+
 def normalise(raw, slot_ctx):
     """A model brief -> a clean brief: unknown keys dropped (no rationale field survives), room / decor from the slot
-    plan, ratio + scale from the print size, wall family + marker from the wall hex. Never raises."""
+    plan, ratio + scale from the print size, wall family + marker from the wall hex. Never raises.
+    A pv2 brief (is_v2) also gets the lived-in fields; light_style + shadow derived from light_type."""
+    if is_v2(raw):
+        return _normalise_v2(raw, slot_ctx)
+    return _normalise_v1(raw, slot_ctx)
+
+
+def _normalise_v2(raw, slot_ctx):
+    b = _normalise_v1(raw, slot_ctx)
+    b["pv"] = PV
+    b["props"] = [str(p)[:80] for p in (raw.get("props") or []) if str(p).strip()][:8]
+    occ = " ".join(str(raw.get("occupant") or "").split())
+    b["occupant"] = occ[:240]
+    for k in ("lived_in", "light_type", "photo_style"):
+        b[k] = raw.get(k)
+    w = raw.get("window") if isinstance(raw.get("window"), dict) else {}
+    b["window"] = {"covering": w.get("covering"), "view": w.get("view") or "none"}
+    ref = raw.get("reference")
+    b["reference"] = str(ref).strip().zfill(4) if ref not in (None, "", "none") else None
+    b["reference_flip"] = bool(raw.get("reference_flip"))
+    fc = raw.get("frame_colour") if isinstance(raw.get("frame_colour"), dict) else None
+    b["frame_colour"] = None
+    if fc:
+        try:
+            lab = lab_of_hex(fc.get("hex"))
+            b["frame_colour"] = {"name": str(fc.get("name") or "")[:30],
+                                 "hex": "#" + re.sub(r"[^0-9a-fA-F]", "", fc["hex"]).upper(),
+                                 "lab": [round(v, 1) for v in lab]}
+        except ValueError:
+            b["frame_colour"] = {"name": str(fc.get("name") or "")[:30], "hex": fc.get("hex"), "lab": None}
+    lt = b.get("light_type")
+    if lt in LIGHT_TYPES:
+        b["light_style"] = LIGHT_TYPE_STYLE[lt]
+        b["shadow"] = "hard" if lt in HARD_LIGHT else "soft"
+    else:
+        b["light_style"] = None
+    b.setdefault("depth_of_field", "deep_focus")
+    if b.get("depth_of_field") not in DOFS:
+        b["depth_of_field"] = "deep_focus"
+    return b
+
+
+def display_group(display):
+    return DISPLAY_GROUP.get(display)
+
+
+def ref_fits(entry, b):
+    """Does a reference fit a brief: same display group, reference shot within one step of the brief's shot."""
+    t = entry.get("tags") or {}
+    if t.get("display_group") != display_group(b.get("display")):
+        return False
+    if t.get("shot") in SHOT_ORDER and b.get("shot") in SHOT_ORDER:
+        return abs(SHOT_ORDER.index(t["shot"]) - SHOT_ORDER.index(b["shot"])) <= 1
+    return True
+
+
+def apply_reference(b, entry):
+    """Derive camera_side (flip swaps left / right), camera_height and lens from the reference (2.1), fixed up so the
+    pv1 camera rules still hold; ref_use = camera, lens, composition, character (+ light when the brief's light_type
+    equals the reference's tag). Without a reference the model's camera fields stay."""
+    if not entry:
+        b["ref_use"] = []
+        return b
+    t = entry.get("tags") or {}
+    side = entry.get("camera_side") or "front"
+    if b.get("reference_flip") and side in ("left", "right"):
+        side = "right" if side == "left" else "left"
+    b["camera_side"] = side
+    h = t.get("camera_height") if t.get("camera_height") in CAMERA_HEIGHTS else b.get("camera_height")
+    disp = b.get("display")
+    if h == "surface" and disp not in SURFACE_DISPLAYS:
+        h = "counter" if disp == _HF else "eye"
+    if h == "counter" and disp not in SURFACE_DISPLAYS + (_HF,):
+        h = "eye"
+    if h == "low" and disp in HUNG and b.get("shot") == "tight":
+        h = "eye"
+    b["camera_height"] = h or "eye"
+    lens = t.get("lens") if t.get("lens") in LENSES else (b.get("lens") or "lens_normal")
+    if lens == "lens_wide" and b.get("shot") == "tight":
+        lens = "lens_normal"
+    if lens == "lens_short_tele" and b.get("shot") == "wide":
+        lens = "lens_normal"
+    b["lens"] = lens
+    use = ["camera", "lens", "composition", "character"]
+    if b.get("light_type") and b.get("light_type") == t.get("light_type"):
+        use.append("light")
+    b["ref_use"] = use
+    return b
+
+
+def _normalise_v1(raw, slot_ctx):
     b = {k: raw.get(k) for k in KEEP if k in raw}
     b["slot"] = int(slot_ctx["slot"])
     b["room"], b["decor"] = slot_ctx["room"], slot_ctx["decor"]
@@ -373,7 +638,165 @@ def normalise(raw, slot_ctx):
 
 def lint(b, slot_ctx=None, settings=None):
     """Hard per-brief rules (plan 7.1 + Tony 2026-11-19). {"pass", "why": [plain reasons]}. A failing brief can not
-    be generated."""
+    be generated. pv2 briefs get the realism rules on top (_lint_v2); pv1 briefs exactly the old rules."""
+    if b.get("pv") == PV:
+        return _lint_v2(b, slot_ctx, settings)
+    return _lint_v1(b, slot_ctx, settings)
+
+
+def _lint_v2(b, slot_ctx=None, settings=None):
+    """pv2 (realism addendum 3.4): the pv1 rules with the pv2 lists (houses, frame finishes, props per shot, light_type
+    instead of light_style) + occupant, lived-in, window, photo style, camera words, text carriers, qualified objects,
+    light words vs light type, reference fit, painted frames."""
+    why = []
+    ctx = slot_ctx or {}
+    if b.get("source") == "library":
+        return {"pass": bool(b.get("library_rel")), "why": [] if b.get("library_rel") else ["library brief without a template"]}
+
+    def need(key, allowed, label=None):
+        if b.get(key) not in allowed:
+            why.append(f"{label or key} {b.get(key)!r} is not one of {', '.join(map(str, allowed))}")
+            return False
+        return True
+    if not b.get("ratio"):
+        why.append(f"print size {b.get('print_size')!r} is not in the size chart")
+    elif ctx.get("ratios") is not None and b["ratio"] not in ctx["ratios"]:
+        why.append(f"{b['ratio']} has no {b.get('room')} folder in Room_Templates (have {', '.join(ctx['ratios'])})")
+    room_settings = ROOM_SETTINGS.get(b.get("room"), list(SETTINGS))
+    if need("setting", room_settings, f"setting for {b.get('room')}"):
+        phrase, displays, scales = SETTINGS[b["setting"]]
+        need("display", displays, f"display on {b['setting']}")
+        if b.get("scale") and b["scale"] not in scales:
+            why.append(f"a {b['scale']} print does not fit {b['setting']} (only {', '.join(scales)})")
+    need("shot", SHOT_ORDER)
+    shot, disp, height = b.get("shot"), b.get("display"), b.get("camera_height")
+    if b.get("scale") and shot in SHOT_ORDER and shot not in SHOT_OK[b["scale"]]:
+        why.append(f"a {b['print_size']} ({b['scale']}) print is never shown as a {shot} shot "
+                   f"(allowed: {', '.join(SHOT_OK[b['scale']])})")
+    w = b.get("wall") or {}
+    if need("presentation", PRESENTATIONS):
+        if b["presentation"] in ("canvas", "canvas_bare") and b.get("scale") == "small":
+            why.append("canvas only for medium and large prints; small prints get a frame or a mat")
+        need("frame_finish", FRAME_FOR_V2[b["presentation"]], f"frame finish for {b['presentation']}")
+    for key, allowed in (("camera_side", CAMERA_SIDES), ("camera_height", CAMERA_HEIGHTS), ("lens", LENSES),
+                         ("light_type", LIGHT_TYPES), ("light_from", LIGHT_FROM), ("depth_of_field", DOFS),
+                         ("house", HOUSES_V2), ("buyer", BUYERS), ("marker", MARKERS), ("lived_in", LIVED_IN),
+                         ("photo_style", PHOTO_STYLES)):
+        need(key, allowed)
+    win = b.get("window") or {}
+    if win.get("covering") not in WINDOW_COVERINGS:
+        why.append(f"window covering {win.get('covering')!r} is not one of {', '.join(WINDOW_COVERINGS)}")
+    if win.get("view") not in WINDOW_VIEWS:
+        why.append(f"window view {win.get('view')!r} is not one of {', '.join(WINDOW_VIEWS)}")
+    lt = b.get("light_type")
+    if lt == "night_lamps" and win.get("covering") != "no_window_in_view" and win.get("view") != "night":
+        why.append("an evening lamp-lit scene shows a night view or no window")
+    if lt == "blind_stripes" and win.get("covering") != "venetian_blind":
+        why.append("blind stripes only with a venetian blind window covering")
+    occ = b.get("occupant") or ""
+    if not occ:
+        why.append("no occupant line (who lives there, for planning only)")
+    elif len(occ.split()) > 25:
+        why.append(f"the occupant line has {len(occ.split())} words (at most 25)")
+    fu = b.get("furniture") or {}
+    if fu.get("style") not in FURNITURE_STYLES:
+        why.append(f"furniture style {fu.get('style')!r} is not one of the listed styles")
+    if fu.get("family") not in FURNITURE_FAMILIES:
+        why.append(f"furniture colour family {fu.get('family')!r} is not one of the listed families")
+    if height == "low" and disp in HUNG and shot == "tight":
+        why.append("a low camera close under hung art keystones the opening")
+    if b.get("lens") == "lens_wide" and shot == "tight":
+        why.append("a wide lens up close bends the frame")
+    if b.get("lens") == "lens_short_tele" and shot == "wide":
+        why.append("an 85 mm lens does not fit a wide room view")
+    if height == "surface" and disp not in SURFACE_DISPLAYS:
+        why.append("surface camera height only when the piece stands on a surface")
+    if height == "counter" and disp not in SURFACE_DISPLAYS + (_HF,):
+        why.append("counter camera height only with the piece on or over furniture")
+    props = b.get("props") or []
+    cap = {"tight": 3, "medium": 6, "wide": 8}.get(shot, 6)
+    if shot == "tight" and not 1 <= len(props) <= 3:
+        why.append(f"a tight shot has 1 to 3 small props ({len(props)} given)")
+    elif len(props) > cap:
+        why.append(f"a {shot} shot has at most {cap} props ({len(props)} given)")
+    if b.get("lived_in") == "busy":
+        if shot == "tight":
+            why.append("a busy, lived-in scene needs a medium or wide shot")
+        elif len(props) < 4:
+            why.append(f"a busy scene names at least 4 everyday things ({len(props)} given)")
+    fin = b.get("frame_finish")
+    if not w.get("family"):
+        why.append(f"wall colour {w.get('hex')!r} is not a #RRGGBB hex")
+    else:
+        lab = w["lab"]
+        want = marker_for_wall(w["hex"])
+        if b.get("marker") == "blue" and w["family"] in BLUE_FAMILIES:
+            why.append(f"a blue insert marker on a {w['family'].replace('_', ' ')} wall: the marker must be opposite "
+                       "the wall")
+        elif b.get("marker") != want:
+            why.append(f"the {w['family'].replace('_', ' ')} wall needs the {want} insert marker, not {b.get('marker')}")
+        fl = FRAME_L_V2.get(fin)
+        if fin == "painted_frame":
+            fc = b.get("frame_colour") or {}
+            if not fc.get("lab"):
+                why.append("a painted frame needs frame_colour {name, hex}")
+            else:
+                fl = fc["lab"][0]
+                mk = lab_of_rgb(MARKER_RGB.get(b.get("marker") or "orange"))
+                hue_d = abs((lch(fc["lab"])[2] - lch(mk)[2] + 180) % 360 - 180)
+                if de2000(fc["lab"], mk) < 25 or (lch(fc["lab"])[1] > 15 and hue_d < 30):
+                    why.append(f"a {fc.get('name') or 'painted'} frame is too close to the {b.get('marker')} insert "
+                               "colour")
+        if fl is not None and abs(fl - lab[0]) < 15:
+            why.append(f"the {str(fin).replace('_', ' ')} does not stand out from the wall in tone (wall L* {lab[0]:.0f})")
+        if w["family"] == "blush_pink" and b.get("presentation") in ("frame", "mat") and \
+                fin not in ("black_frame", "walnut_frame", "bronze_frame"):
+            why.append("blush walls only with a black, walnut or bronze frame")
+        if w.get("treatment") not in WALL_TREATMENTS:
+            why.append(f"wall treatment {w.get('treatment')!r} is not one of the listed treatments")
+        text = (b.get("scene") or "").lower()
+        if w.get("treatment") == "panelled" and (disp not in HUNG or not re.search(r"cent(re|er)d? inside one "
+                                                                                    r"(larger )?panel", text)):
+            why.append("panelling only behind hung art, with the art centred inside one larger panel (say so)")
+        if w.get("treatment") == "wainscot_lower" and "below waist height" not in text:
+            why.append("wainscoting only below waist height (say so in the scene)")
+    scene = b.get("scene") or ""
+    n = len(scene.split())
+    if not WORDS_MIN <= n <= WORDS_MAX:
+        why.append(f"the scene text has {n} words (60 to 160)")
+    for txt, label in ((scene, "scene"), (" ".join(props), "props"), (str(b.get("floor") or ""), "floor")):
+        hit = sorted({m.group(0).lower() for m in BANNED.finditer(BANNED_OK.sub(" ", txt))})
+        if hit:
+            why.append(f"the {label} names {', '.join(hit)} (no people, pets, readable text, other frames or reasons)")
+    alltxt = scene + " " + " ".join(props)
+    cam = sorted({m.group(0).lower() for m in CAMERA_WORDS.finditer(scene)})
+    if cam:
+        why.append(f"the scene names the camera or light direction ({', '.join(cam)}); those come from the fields")
+    car = sorted({m.group(0).lower() for m in TEXT_CARRIERS.finditer(alltxt)})
+    if car:
+        why.append(f"the scene names things that carry text ({', '.join(car)})")
+    for sent in re.split(r"(?<=[.;!?])\s+", alltxt):
+        for label, obj, qual in QUALIFIED:
+            if re.search(obj, sent, re.I) and not re.search(qual, sent, re.I):
+                why.append(f"{label} must be described as unreadable in the same sentence ({qual.replace('|', ' / ')})")
+    if NIGHT_WORDS.search(scene) and lt not in LAMP_TYPES:
+        why.append("night or lamplight words with a daylight light type")
+    if SUN_WORDS.search(scene) and lt in ("overcast_flat", "rainy_day", "night_lamps"):
+        why.append(f"sun words with the {str(lt).replace('_', ' ')} light type")
+    ref = b.get("reference")
+    refs = ctx.get("refs")
+    if ref and refs is not None:
+        e = next((r for r in refs if r.get("id") == ref), None)
+        if e is None:
+            why.append(f"reference {ref} is not a usable reference")
+        elif not ref_fits(e, b):
+            t = e.get("tags") or {}
+            why.append(f"reference {ref} ({t.get('display_group')}, {t.get('shot')}) does not fit a "
+                       f"{display_group(disp)} {shot} slot")
+    return {"pass": not why, "why": list(dict.fromkeys(why))}
+
+
+def _lint_v1(b, slot_ctx=None, settings=None):
     why = []
     ctx = slot_ctx or {}
 
@@ -531,9 +954,134 @@ def shot_text(b):
     return t
 
 
-def assemble(b):
+def assemble(b, ref=True):
     """The full prompt for a NEW brief: the planner's scene + fixed blocks (portrait frame in a 4:3 photograph, shot
-    and scale, camera, light, wall, the marker print area + presentation, guards). Deterministic."""
+    and scale, camera, light, wall, the marker print area + presentation, guards). Deterministic.
+    A brief without "pv" (every brief saved before 2026-11-20) -> _assemble_v1, byte-identical. pv2 -> _assemble_v2;
+    ref=False gives the text-only prompt (no reference clause) for when the reference image is not sent."""
+    if b.get("pv") == PV:
+        return _assemble_v2(b, ref)
+    return _assemble_v1(b)
+
+
+def prompt_style(b):
+    """compact | full for a pv2 brief (saved on the brief by finish; compact for frame / mat by default)."""
+    return b.get("prompt_style") or ("compact" if b.get("presentation") in COMPACT_DEFAULT else "full")
+
+
+def scale_cue(b):
+    """(name, height cm) of the true-scale cue for a tight shot: one already in the props, else rotated by slot."""
+    txt = " ".join(b.get("props") or []) + " " + (b.get("scene") or "")
+    for name, rx, cm in SCALE_CUES:
+        if re.search(rf"\b({rx})", txt, re.I):
+            return name, cm
+    name, _, cm = SCALE_CUES[int(b.get("slot") or 0) % len(SCALE_CUES)]
+    return name, cm
+
+
+def shot_text_c(b):
+    w, h = size_in(b["print_size"])
+    ow, oh = _outer(b)
+    lo, hi = SHOTS[b["shot"]]["frac"]
+    phrase = SETTINGS[b["setting"]][0]
+    t = (f"Framing: a {b['shot']} shot; a {_fmt(w)} x {_fmt(h)} in print, about {round(ow * 2.54)} x "
+         f"{round(oh * 2.54)} cm as shown, filling {lo}-{hi}% of the picture height. "
+         + DISPLAY_C[b["display"]].format(where=hung_where(phrase) if b["display"] == _HF else phrase))
+    if b["shot"] == "tight":
+        name, cm = scale_cue(b)
+        t += f" A {name} nearby is about {round(100 * cm / (oh * 2.54))}% as tall as the piece (true scale)."
+    elif b["shot"] == "medium":
+        t += " A desk or dresser top stands about 75 cm high."
+    else:
+        t += " A sofa back stands about 85 cm high, a door 200 cm."
+    return t
+
+
+def camera_text_c(b):
+    return (f"Camera: {CAMERA_SIDE_C[b['camera_side']]}, {CAMERA_HEIGHT_C[b['camera_height']]}, "
+            f"{LENS_C[b['lens']]}, {DOF_C[b['depth_of_field']]}, verticals level.")
+
+
+def window_text(b):
+    w = b.get("window") or {}
+    cov = w.get("covering")
+    if not cov or cov == "no_window_in_view":
+        return ""
+    view = VIEW_TEXT.get(w.get("view") or "none", "")
+    return (f"The window has {COVERING_TEXT[cov]}" + (f"; outside, {view}." if view else "."))
+
+
+def ref_clause(b):
+    """The reference clause (2.2) for a brief whose reference image is sent: with or without the reference's light."""
+    return REF_CLAUSE if "light" in (b.get("ref_use") or []) else REF_CLAUSE_NO_LIGHT
+
+
+def present_text_c(b):
+    """Compact presentation sentences (5.2), marker-coloured."""
+    kind, name = b["presentation"], b.get("marker") or "orange"
+    fin = b.get("frame_finish")
+    if fin == "painted_frame":
+        finish = f"a thin {(b.get('frame_colour') or {}).get('name') or 'painted'} painted frame"
+    else:
+        finish = FRAME_WORDS_V2.get(fin, "a thin frame")
+    lean = b.get("display") in SURFACE_DISPLAYS + (_F,)
+    if kind == "canvas":
+        depth = ("It leans against the wall and casts a natural shadow on the wall and the surface below." if lean
+                 else "It stands off the wall by its depth and casts a natural shadow on the wall.")
+    else:
+        depth = ("It leans against the wall and casts a soft natural shadow." if lean else
+                 "It stands off the wall by its depth and casts a soft natural shadow on the wall.")
+    return PRESENT_C[kind].format(finish=finish, name=name, depth=depth)
+
+
+def _assemble_v2(b, ref=True):
+    """pv2 (realism addendum 3.5): opening -> reference clause (when sent) -> scene -> framing / scale -> camera ->
+    light type -> window -> photo style -> wall -> print area + presentation -> guards -> closing. The last three are
+    the compact texts or the untouched full ones (prompt_style)."""
+    style = prompt_style(b)
+    marker = b.get("marker", "orange")
+    lt = b["light_type"]
+    light = LIGHT_TYPE_TEXT[lt]
+    if lt not in LAMP_TYPES and b.get("light_from") in LIGHT_FROM_C:
+        light += " " + LIGHT_FROM_C[b["light_from"]]
+    wall = f"Walls: {b['wall']['name'] or 'a calm wall colour'}. " + WALL_TREATMENT_TEXT[b["wall"]["treatment"]]
+    parts = [OPENING_V2, ref_clause(b) if ref and b.get("reference") else "", b["scene"]]
+    if style == "compact":
+        parts += [shot_text_c(b), camera_text_c(b), light, window_text(b), PHOTO_STYLE_TEXT[b["photo_style"]], wall]
+        if b["wall"]["treatment"] in ("panelled", "wainscot_lower"):
+            parts.append(WAINSCOT_C)
+        t = " ".join(p.strip() for p in parts if p) + " "
+        colour = rs.INSERT_COLOUR if marker == "orange" else MARKER_WORDS[marker]
+        t += PRINT_AREA_C.format(colour=colour, name=marker) + present_text_c(b) + " " + GUARD_C + CLOSING_C
+        return t
+    phrase = SETTINGS[b["setting"]][0]
+    parts += [shot_text(b), DISPLAY_TEXT[b["display"]].format(where=hung_where(phrase) if b["display"] == _HF else phrase),
+              camera_text_c(b), light, window_text(b), PHOTO_STYLE_TEXT[b["photo_style"]], wall]
+    t = " ".join(p.strip() for p in parts if p) + " "
+    if b["wall"]["treatment"] in ("panelled", "wainscot_lower"):
+        t += rs.WAINSCOT_RULE + " "
+    closing = CLOSING
+    if lt in LAMP_TYPES + ("rainy_day",):          # the lamp is part of this light; the old lamp sentence would fight it
+        closing = CLOSING.replace(" No lamps unless the setting clearly needs one.", "")
+    t += print_area_text(marker) + _present_text_v3_pv2(b) + " " + rs.LOOK_GUARD + PLAN_GUARD_FRAME + closing
+    return t
+
+
+def _present_text_v3_pv2(b):
+    """The full presentation text for a pv2 brief: _present_text_v3 with the pv2 frame finishes worded."""
+    fin = b.get("frame_finish")
+    if fin in rs.LOOK_AXES["frame_finish"] or b["presentation"] in ("canvas", "canvas_bare"):
+        return _present_text_v3(b)
+    t = _present_text_v3(dict(b, frame_finish=None))
+    words = (f"a thin {(b.get('frame_colour') or {}).get('name') or 'painted'} painted frame"
+             if fin == "painted_frame" else FRAME_WORDS_V2.get(fin, "a thin frame"))
+    return t.replace("The artwork is framed in a thin frame (natural oak, walnut or brass most of the time; black only "
+                     "occasionally, when it clearly suits the room).", f"The artwork is framed in {words}.") \
+            .replace("The artwork is framed in a refined thin frame with", f"The artwork is framed in {words} with")
+
+
+def _assemble_v1(b):
+    """pv1 prompt (the 2026-11-19 function body, unchanged)."""
     phrase = SETTINGS[b["setting"]][0]
     parts = [
         "Photorealistic interior photograph in a 4:3 landscape picture format, showing one portrait (vertical) piece "
@@ -581,7 +1129,27 @@ def descriptor(b):
             "wall_loud": is_loud(lab) if lab else None,
             "furniture": f"{f.get('style')}|{f.get('colour') or '-'}" if f.get("style") else None,
             "furniture_family": f.get("family"), "house": b.get("house"), "buyer": b.get("buyer"),
-            "scene": b.get("scene") or ""}
+            "scene": b.get("scene") or "",
+            # realism addendum 3.5 / 4 (new rules only; SIM_W and similarity() are unchanged)
+            "pv": b.get("pv"), "light_type": b.get("light_type"), "warm_sun": _warm_sun(b),
+            "window_covering": (b.get("window") or {}).get("covering"), "lived_in": b.get("lived_in"),
+            "photo_style": b.get("photo_style"), "reference": b.get("reference"),
+            "reference_reused": b.get("reference_reused"), "region": HOUSE_REGION.get(b.get("house")),
+            "frame_finish": b.get("frame_finish"),
+            "prop_families": prop_families((b.get("scene") or "") + " " + " ".join(b.get("props") or []))
+            if (b.get("scene") or b.get("props")) else None}
+
+
+def _warm_sun(b):
+    if b.get("light_type"):
+        return b["light_type"] in WARM_SUN
+    if b.get("light_style"):
+        return b["light_style"] in ("soft_direct", "golden_low")
+    return None
+
+
+def comp_sig(d):
+    return [d.get(k) for k in COMP_KEYS]
 
 
 def _tokens(t):
@@ -606,9 +1174,123 @@ def _split(n, weights):
     return out
 
 
-def check_set(briefs, fixed, order=None, ratio_avail=None, max_tight=None):
+def _limit(fail, order, opens, rule, label, with_it, lim, pts, fixed_note=True):
+    """A set-wide repeat limit (realism addendum 4.2): `with_it` = slots (fixed + open) that have the thing. More than
+    `lim` -> the later OPEN slots in listing order beyond the limit are blamed; when the fixed slots alone already
+    reach the limit, every open slot adding more is blamed (never a failure on fixed slots alone)."""
+    if len(with_it) <= lim:
+        return
+    rank = {s: i for i, s in enumerate(order)}
+    fixed_with = sorted((s for s in with_it if s not in opens), key=lambda s: rank.get(s, 99))
+    open_with = sorted((s for s in with_it if s in opens), key=lambda s: rank.get(s, 99))
+    if not open_with:
+        return
+    if len(fixed_with) >= lim:
+        blamed = open_with
+        text = (f"{label} already appears in fixed slot{'s' if len(fixed_with) > 1 else ''} "
+                f"{', '.join(map(str, fixed_with))}: none in open slots (remove it from slot"
+                f"{'s' if len(blamed) > 1 else ''} {', '.join(map(str, blamed))})")
+    else:
+        blamed = open_with[lim - len(fixed_with):]
+        where = ", ".join(map(str, sorted(with_it, key=lambda s: rank.get(s, 99))))
+        text = (f"{label} appears in slots {where}; at most {lim} in the listing: remove it from slot"
+                f"{'s' if len(blamed) > 1 else ''} {', '.join(map(str, blamed))}")
+    fail(rule, text, blamed, pts)
+
+
+def _repeat_limits(allv, opens, fix, order, fail, max_night=None):
+    """The realism repeat limits (4.1 + 4.2) over the listing (fixed + open). Unknown (None) never counts."""
+    order = list(order) + [s for s in sorted(allv) if s not in order]
+    for fam, (_, lim) in PROP_FAMILIES.items():
+        _limit(fail, order, opens, "props", fam.replace("_", " "),
+               [s for s, d in allv.items() if fam in (d.get("prop_families") or [])], lim, 1.0)
+    gold = [s for s, d in allv.items() if d.get("light_type") == "golden_low" or
+            (d.get("light_type") is None and d.get("light_style") == "golden_low")]
+    _limit(fail, order, opens, "light", "warm golden low sun", gold, 1, 0.7)
+    _limit(fail, order, opens, "light", "warm sun (golden or soft morning sun)",
+           [s for s, d in allv.items() if d.get("warm_sun")], 2, 0.7)
+    recipes = {}
+    for s, d in allv.items():
+        k = (d.get("light_type") or d.get("light_style"), d.get("light_from"), d.get("shadow"))
+        if all(k):
+            recipes.setdefault(k, []).append(s)
+    for k, ss in recipes.items():
+        _limit(fail, order, opens, "light", f"the same light ({k[0].replace('_', ' ')} from the {k[1]}, {k[2]} "
+                                            "shadows)", ss, 2, 0.7)
+    cams = {}
+    for s, d in allv.items():
+        k = (d.get("camera_side"), d.get("camera_height"), d.get("lens"))
+        if all(k):
+            cams.setdefault(k, []).append(s)
+    for k, ss in cams.items():
+        _limit(fail, order, opens, "camera", f"the same camera ({k[0]}, {k[1]} height, {k[2].replace('_', ' ')})",
+               ss, 2, 0.7)
+    rank = {s: i for i, s in enumerate(order)}
+    keys = sorted(allv, key=lambda s: rank.get(s, 99))
+    for i, a in enumerate(keys):
+        for b in keys[i + 1:]:
+            if a not in opens and b not in opens:
+                continue
+            sa, sb = comp_sig(allv[a]), comp_sig(allv[b])
+            same = sum(1 for x, y in zip(sa, sb) if x is not None and x == y)
+            if same >= 5:
+                later = b if b in opens else a
+                fail("composition", f"slots {a} and {b} are the same photograph ({same} of 7: display, shot, camera "
+                                    f"side, height, lens, light side, frame finish); change slot {later}", [later], 1.0)
+    refs = {}
+    for s in keys:
+        d = allv[s]
+        if d.get("reference") and not d.get("reference_reused"):
+            refs.setdefault(d["reference"], []).append(s)
+    for r, ss in refs.items():
+        _limit(fail, order, opens, "reference", f"reference {r}", ss, 1, 1.0)
+    _limit(fail, order, opens, "windows", "a bare window",
+           [s for s, d in allv.items() if d.get("window_covering") == "bare"], 1, 0.5)
+    covs = {}
+    for s, d in allv.items():
+        c = d.get("window_covering")
+        if c and c not in ("bare", "no_window_in_view"):
+            covs.setdefault(c, []).append(s)
+    for c, ss in covs.items():
+        _limit(fail, order, opens, "windows", f"{c.replace('_', ' ')} windows", ss, 2, 0.5)
+    pv2_open = {s: d for s, d in opens.items() if d.get("pv") == PV and d.get("lived_in")}
+    if len(pv2_open) >= 3:
+        tidy = [s for s, d in pv2_open.items() if d["lived_in"] == "tidy"]
+        used = [s for s, d in pv2_open.items() if d["lived_in"] in ("lived_in", "busy")]
+        busy = sorted((s for s, d in pv2_open.items() if d["lived_in"] == "busy"), key=lambda s: rank.get(s, 99))
+        if not tidy:
+            fail("lived_in", "no open slot is tidy (the set needs a mix)", used, 0.5)
+        if len(used) * 2 < len(pv2_open):
+            fail("lived_in", f"only {len(used)} of {len(pv2_open)} open slots look lived in or busy (at least half)",
+                 tidy, 0.5)
+        if len(busy) > 2:
+            fail("lived_in", f"{len(busy)} busy slots (at most 2)", busy[2:], 0.5)
+    _limit(fail, order, opens, "photo", "an editorial photo style",
+           [s for s, d in allv.items() if d.get("photo_style") == "editorial"], 2, 0.5)
+    fins = {}
+    for s, d in allv.items():
+        f = d.get("frame_finish")
+        if f and f != "none":
+            fins.setdefault(f, []).append(s)
+    nf = sum(len(v) for v in fins.values())
+    for f, ss in fins.items():
+        lim = 3 if f == "walnut_frame" else len(allv)
+        if nf >= 5:
+            lim = min(lim, max(1, int(0.4 * nf)))
+        _limit(fail, order, opens, "frames", f"the {f.replace('_', ' ')}", ss, lim, 0.5)
+    regions = {d.get("region") for d in allv.values() if d.get("region")}
+    if len(allv) >= 6 and sum(1 for d in allv.values() if d.get("region")) >= 6 and len(regions) < 3:
+        fail("region", f"only {len(regions)} house region{'s' if len(regions) != 1 else ''} across the listing "
+                       "(at least 3: UK, US, Europe, Asia)", list(opens), 0.4)
+    _limit(fail, order, opens, "night", "an evening lamp-lit scene",
+           [s for s, d in allv.items() if d.get("light_type") == "night_lamps"], 1 if max_night is None else max_night,
+           0.5)
+
+
+def check_set(briefs, fixed, order=None, ratio_avail=None, max_tight=None, max_night=None):
     """Balance + similarity over the whole listing (plan 7.2). briefs = {slot: brief} (open slots), fixed = {slot:
     descriptor} (approved / pending images: counted, never blamed). ratio_avail = {slot: [ratios with a folder]}.
+    When an open brief is pv2 the realism repeat limits run too (_repeat_limits).
     Returns {"pass", "failures": [{"rule", "text", "slots"}], "blame": {slot: points}, "scores": {...}}."""
     opens = {int(s): descriptor(b) for s, b in briefs.items()}
     fix = {int(s): dict(d) for s, d in (fixed or {}).items()}
@@ -747,6 +1429,8 @@ def check_set(briefs, fixed, order=None, ratio_avail=None, max_tight=None):
     if max_tight is not None and len(tight) > max_tight:
         fail("tight", f"{len(tight)} tight shots; at most {max_tight} until the first tight scene is proven",
              tight[max_tight:])
+    if any(d.get("pv") == PV for d in opens.values()):
+        _repeat_limits(allv, opens, fix, order, fail, max_night)
     # pairwise
     pairs = {}
     keys = sorted(allv)
@@ -823,7 +1507,7 @@ def library_swap(briefs, fixed, cands, order=None, ratio_avail=None, max_tight=N
 
 # ---------- the planner (claude -p) ----------
 
-SYSTEM_PROMPT = """You plan the room photographs for one Etsy listing of a printable wall-art design, as three people \
+SYSTEM_PROMPT_V1 = """You plan the room photographs for one Etsy listing of a printable wall-art design, as three people \
 at once: an interior designer who furnishes believable homes, an interiors photographer who frames and lights them, \
 and a curator who decides how a buyer should first meet this artwork. You see the artwork, the photographs that \
 already exist for this listing, and the open slots you must plan.
@@ -874,7 +1558,92 @@ direction in the scene text either: those come from the fields.
 
 Output ONLY one JSON object, no prose, no reasons, no explanations."""
 
-SCHEMA = {"briefs": [{
+
+# realism addendum 3.2 (2026-11-20): the lived-in brief replaces the catalogue recipe for every new plan
+SYSTEM_PROMPT = """You plan the room photographs for one Etsy listing of a printable wall-art design. You are three \
+people at once: an interior designer who knows how real people furnish the homes they actually live in, a \
+photographer, and a curator who decides how a buyer first meets this artwork. You see the artwork, the photographs \
+that already exist for this listing, a sheet of reference photographs labelled with their ids, and the open slots you \
+must plan.
+
+The story of every photograph: someone bought this print, had it printed and framed, put it up in their own home and \
+took a nice photo of it. The home is real and lived in. It is not a showroom, a catalogue or a styled vignette.
+
+Every artwork is a PORTRAIT (vertical) piece. Every photograph is a 4:3 landscape listing photo.
+
+For each open slot, first decide who lives there and write it as "occupant": one short sentence for your own \
+planning. It is never shown and never sent to the image model, so the scene text never mentions a person. Then write \
+the scene from that life:
+- Everyday things in use, left where people leave them: a jacket over a chair back, a half-finished mug, a few plain \
+envelopes face down, a phone charger cable, shoes by a door, a child's crayon drawing with no letters, folded \
+laundry, keys in a bowl, a lamp left on. Pick what this occupant would have; never all of them.
+- Real imperfections: uneven bedding, a scuffed skirting board, a rug slightly askew, worn paint on a door frame, a \
+radiator under the window, light switches, power outlets, a plain round thermostat, door frames and hinges.
+- Real windows: venetian or roller blinds, linen curtains, sheers or shutters, and a real view (a street, the \
+neighbour's brick wall, trees, a courtyard, a city). A bare window at most once in the whole listing.
+- Furniture of different ages that was not bought as a set: a hand-me-down dresser beside a flat-pack shelf, a \
+vintage chair at a modern desk, a painted chest with worn edges.
+- Different houses and regions: a 1920s brick terrace, a 1970s condo, a rented student flat, a craftsman bungalow, a \
+converted loft, an old farmhouse kitchen, a Tokyo apartment, a Berlin Altbau, a Texas ranch house. The region shows \
+in windows, radiators, floors, outlets and light.
+- How lived-in each slot is ("tidy", "lived_in", "busy") varies across the set: a nursery may be tidy, a study or a \
+kitchen clearly used. "busy" only for medium and wide shots. Everything stays clear of the frame: clutter sits below \
+its bottom edge or toward the picture edges.
+
+The light varies across the set and is never a default warm golden glow: hard diagonal sun with crisp shadows, a grey \
+overcast day, a rainy afternoon, blue dusk with a warm lamp on, evening lit only by lamps, sun striped by venetian \
+blinds, steady north light. Warm golden low sun at most once in the whole listing.
+
+The photograph looks taken by the owner with a good phone or a simple camera: natural auto exposure, true colours, a \
+little grain in the room, framed by hand (slightly off-centre is fine, verticals level), not retouched. At most two \
+slots in the listing look editorial.
+
+Avoid the catalogue recipe. Each of these at most once in the whole listing, counting the photographs that already \
+exist: dried stems or pampas, rattan or cane, boucle, a wooden toy block or stacking toy, candles, a chunky knit \
+throw. Plants at most twice; stoneware or ceramic vases at most twice; stacks of books at most twice. Do not default \
+to walnut, oak, limewash and stoneware.
+
+References: pick ONE reference photograph for each open slot, a different one for every slot, never one already used \
+by an existing photograph. The reference gives the camera position, lens, framing and the photograph's character \
+(and its light when your light type matches it); your scene gives the room and the life in it. Choose a reference \
+whose display (hung on a wall, on a surface, on a shelf, leaning on the floor) and framing fit the slot's print size. \
+"reference_flip": true uses it mirrored. Never describe the reference's furniture or objects: build a new room.
+
+What a slot is: the room name is where it is filed. The setting is the surface or wall inside that room (a \
+nightstand, a desk, a mantel, an entry console or hallway wall, which are filed under Living room, the wall over a \
+bed, a bathroom wall). Setting and shot are separate choices.
+
+Scale drives framing. Pick a real print size from the chart for each slot. Small prints are shown TIGHT: the piece \
+stands or leans on a surface and fills about half to two thirds of the picture height, with one to three everyday \
+objects at true scale beside it. Medium prints are medium shots with the furniture below. Large prints are wider \
+shots on a wall or leaning on the floor. Across the listing aim for roughly a third small, a third medium, a third \
+large, all five ratios, several sizes; the existing photographs count, so fill what they lack.
+
+The art ties in with the room by contrast or harmony, never by matching its colours. Do not take wall or furniture \
+colours from the artwork. One or two slots may use a loud wall, a bold furniture piece or a painted frame (yellow, \
+red, deep green, bronze) when it flatters this piece. Warm walls are allowed: the pipeline picks the colour of the \
+blank print area itself.
+
+Hard rules, never broken:
+- No people, faces, hands or pets, not even mentioned in passing. One piece of art only: no other frames, posters, \
+mirrors, or screens showing pictures.
+- Nothing readable: books show plain spines or face away, envelopes face down, phones face down, laptops closed, clocks \
+without numerals; no calendars, magazines, packaging, signs, labels or logos.
+- Every scene shows visible shadows. The art face is flat, upright, in sharp focus and evenly lit.
+- The whole frame is inside the picture with clear space around it; nothing overlaps the frame.
+- The frame contrasts with the wall in tone (frame lightness: black 15, walnut 35, bronze 40, gold 60, oak 65, \
+silver 72, white 95; a painted frame by its colour; wall lightness at least 15 away). Canvas floaters are natural \
+wood, never black. Canvas only for medium and large prints.
+- Wainscoting only below waist height (say "below waist height"), or panelling with the art "centred inside one \
+larger panel" (say so).
+- Do not describe the artwork. The scene text never names the camera, lens, angle, shot size or light direction: \
+those come from the fields and the reference.
+- The scene text is 60 to 160 words of plain description of the room, its things and its life. Never explain why.
+- Prefer a listed library template when one fits the set (it is free); otherwise plan a new scene.
+
+Output ONLY one JSON object, no prose, no reasons, no explanations."""
+
+SCHEMA_V1 = {"briefs": [{
     "slot": "int", "source": "new | library", "library_rel": "rel of a listed library template, only for library",
     "print_size": "a size from the chart", "shot": "tight | medium | wide", "setting": "one of the slot's settings",
     "display": "one of that setting's displays", "presentation": "frame | mat | canvas | canvas_bare",
@@ -886,6 +1655,28 @@ SCHEMA = {"briefs": [{
     "floor": "short phrase", "furniture": {"style": "|".join(FURNITURE_STYLES), "colour": "one word",
                                            "family": "|".join(FURNITURE_FAMILIES)},
     "house": "|".join(HOUSES), "buyer": "|".join(BUYERS), "props": ["1-3 small objects for tight, at most 5"],
+    "scene": "60-160 words"}]}
+
+
+SCHEMA = {"briefs": [{
+    "pv": 2, "slot": "int", "source": "new | library", "library_rel": "rel of a listed library template, only for library",
+    "occupant": "who lives there, one short sentence (planning only, never shown, never in the scene)",
+    "reference": "id of ONE listed reference photograph (a different one per slot)", "reference_flip": "true | false",
+    "print_size": "a size from the chart", "shot": "tight | medium | wide", "setting": "one of the slot's settings",
+    "display": "one of that setting's displays", "presentation": "frame | mat | canvas | canvas_bare",
+    "frame_finish": "oak_frame | walnut_frame | black_frame | white_frame | gold_frame | bronze_frame | silver_frame | "
+                    "painted_frame (canvas: natural_wood_floater; canvas_bare: none)",
+    "frame_colour": {"name": "only for painted_frame", "hex": "#RRGGBB"},
+    "camera_side": "left | right | front (taken from the reference when one is used)",
+    "camera_height": "surface | low | seated | counter | eye", "lens": "|".join(LENSES),
+    "light_type": "|".join(LIGHT_TYPES), "light_from": "|".join(LIGHT_FROM), "depth_of_field": "|".join(DOFS),
+    "window": {"covering": "|".join(WINDOW_COVERINGS), "view": "|".join(WINDOW_VIEWS)},
+    "photo_style": "|".join(PHOTO_STYLES), "lived_in": "|".join(LIVED_IN),
+    "wall": {"name": "plain colour name", "hex": "#RRGGBB", "treatment": "|".join(WALL_TREATMENTS)},
+    "floor": "short phrase", "furniture": {"style": "|".join(FURNITURE_STYLES), "colour": "one word",
+                                           "family": "|".join(FURNITURE_FAMILIES)},
+    "house": "|".join(HOUSES_V2), "buyer": "|".join(BUYERS),
+    "props": ["everyday things: 1-3 for tight, at most 6 medium, 8 wide; busy needs 4+"],
     "scene": "60-160 words"}]}
 
 
@@ -917,11 +1708,28 @@ def parse(raw):
 
 
 def _compact(b):
-    return {k: b.get(k) for k in ("slot", "source", "library_rel", "print_size", "shot", "setting", "display",
-                                  "presentation", "frame_finish", "camera_side", "camera_height", "lens", "light_style",
-                                  "light_from", "shadow", "depth_of_field", "floor", "house", "buyer", "props", "scene")} \
+    out = {k: b.get(k) for k in ("slot", "source", "library_rel", "print_size", "shot", "setting", "display",
+                                 "presentation", "frame_finish", "camera_side", "camera_height", "lens", "light_style",
+                                 "light_from", "shadow", "depth_of_field", "floor", "house", "buyer", "props", "scene")} \
         | {"wall": {k: (b.get("wall") or {}).get(k) for k in ("name", "hex", "treatment")},
            "furniture": b.get("furniture")}
+    if b.get("pv") == PV:
+        out.update({k: b.get(k) for k in ("pv", "occupant", "reference", "reference_flip", "light_type", "window",
+                                          "photo_style", "lived_in", "frame_colour")})
+        out.pop("light_style", None)
+        out.pop("shadow", None)
+    return out
+
+
+def ref_view(e):
+    """One reference as the planner sees it: id, compact tags, measured facts, past grade."""
+    t = e.get("tags") or {}
+    g = [x.get("grade") for x in e.get("grades") or [] if x.get("grade")]
+    return {"id": e["id"], "display": t.get("display_group"), "shot": t.get("shot"), "setting": t.get("setting"),
+            "light_type": t.get("light_type"), "lived_in": t.get("lived_in"), "window": t.get("window_covering"),
+            "camera_side": e.get("camera_side"), "camera_height": t.get("camera_height"), "lens": t.get("lens"),
+            "editorial": t.get("editorial"), "times_used": len(e.get("uses") or []),
+            **({"grades": g} if g else {})}
 
 
 def planner_prompt(ctx, current=None, failures=None, rewrite=None, wider=()):
@@ -939,11 +1747,31 @@ def planner_prompt(ctx, current=None, failures=None, rewrite=None, wider=()):
                         "library": [{k: t.get(k) for k in ("rel", "ratio", "decor", "desc")} | (t.get("meta") or {})
                                     for t in o.get("library") or []][:8]}
                        for o in ctx["open"] if rewrite is None or o["slot"] in rewrite],
-        "lists": {"house": HOUSES, "buyer": BUYERS, "furniture.style": FURNITURE_STYLES,
+        "lists": {"house": HOUSES_V2, "buyer": BUYERS, "furniture.style": FURNITURE_STYLES,
                   "furniture.family": FURNITURE_FAMILIES, "wall.treatment": WALL_TREATMENTS},
         "output_schema": SCHEMA}
-    head = ("Image 1 is the artwork. Image 2 (when present) is a contact sheet of the photographs that already exist, "
-            "each labelled with its slot number.\n\n")
+    refs = ctx.get("refs")
+    if refs:
+        data["references"] = [ref_view(e) for e in refs]
+        data["references_used_by_existing_photographs"] = sorted(ctx.get("fixed_refs") or [])
+        data["display_of_each_setting_display"] = {k: v for k, v in DISPLAY_GROUP.items()}
+    if ctx.get("graded"):
+        data["tonys_past_grades"] = ctx["graded"]
+    n = 1
+    head = "Image 1 is the artwork."
+    if ctx.get("has_sheet"):
+        n += 1
+        head += f" Image {n} is a contact sheet of the photographs that already exist, each labelled with its slot number."
+    if ctx.get("has_ref_sheet"):
+        n += 1
+        head += f" Image {n} is the sheet of reference photographs, each labelled with its id."
+    if not ctx.get("has_sheet") and not ctx.get("has_ref_sheet"):
+        head = ("Image 1 is the artwork. Image 2 (when present) is a contact sheet of the photographs that already "
+                "exist, each labelled with its slot number.")
+    head += "\n\n"
+    if ctx.get("graded"):
+        head += ("tonys_past_grades: Tony's past grades of room photographs: learn what he rewards and what he marks "
+                 "down; never copy a scene.\n\n")
     if current is None:
         task = f"Plan every open slot ({', '.join(str(o['slot']) for o in ctx['open'])})."
     else:
@@ -979,9 +1807,70 @@ def _call(ask, prompt, images, log):
         return parse(ask(prompt + "\n\nYour last answer was not valid JSON. Return valid JSON only.", images))
 
 
-def finish(briefs, ctx):
-    """normalise + lint + prompt for every brief of the open slots."""
+def _ref_score(e, b, use_count=0):
+    """Reassignment score (2.1): display match 3 + shot match 2 + lived-in match 1 + unused across listings 1 + mean
+    past grade 0-1 (ungraded 0.5); a reference already used in this set loses 1 per use (shortage reuse only)."""
+    from .references import mean_grade
+    t = e.get("tags") or {}
+    sc = 3.0 if t.get("display_group") == display_group(b.get("display")) else 0.0
+    sc += 2.0 if t.get("shot") == b.get("shot") else 0.0
+    sc += 1.0 if t.get("lived_in") and t.get("lived_in") == b.get("lived_in") else 0.0
+    sc += 1.0 if not e.get("uses") else 0.0
+    g = mean_grade(e)
+    return sc + (0.5 if g is None else g) - use_count
+
+
+def validate_references(briefs, taken, refs, order=None):
+    """One distinct usable reference per new pv2 brief (2.1), decided in listing order. A pick that is unknown,
+    unusable, already taken (another open slot or a fixed slot's template) or does not fit (display group, shot within
+    one step) is REASSIGNED by code to the best-scoring fitting free reference. When no fitting free one is left
+    (fewer usable references than open slots), the least-used fitting one is reused (reference_reused); with none at all
+    the brief goes text-only (reference None). Returns notes (plain lines) and edits the briefs in place."""
+    if refs is None:
+        return []
+    by_id = {e["id"]: e for e in refs}
+    taken = set(taken or ())
+    count = {}
+    notes = []
+    rank = {s: i for i, s in enumerate(order or [])}
+    for s in sorted(briefs, key=lambda s: (rank.get(s, 99), s)):
+        b = briefs[s]
+        if b.get("source") != "new" or b.get("pv") != PV:
+            continue
+        pick = b.get("reference")
+        e = by_id.get(pick)
+        b["reference_reused"] = False
+        if e is not None and pick not in taken and ref_fits(e, b):
+            taken.add(pick)
+            count[pick] = 1
+            continue
+        free = [x for x in refs if x["id"] not in taken and ref_fits(x, b)]
+        reused = False
+        if not free:
+            free = [x for x in refs if ref_fits(x, b)]
+            reused = bool(free)
+        if not free:
+            if pick:
+                notes.append(f"slot {s}: no usable reference fits a {display_group(b.get('display'))} "
+                             f"{b.get('shot')} slot; text-only prompt")
+            b["reference"], b["reference_flip"] = None, False
+            continue
+        best = sorted(free, key=lambda x: (-_ref_score(x, b, count.get(x["id"], 0)), x["id"]))[0]
+        why = ("unknown or unusable" if e is None else "already used" if pick in taken else "does not fit the slot")
+        notes.append(f"slot {s}: reference {pick or '(none)'} {why}; code picked {best['id']}"
+                     + (" (reused: fewer usable references than open slots)" if reused else ""))
+        b["reference"], b["reference_reused"] = best["id"], reused
+        taken.add(best["id"])
+        count[best["id"]] = count.get(best["id"], 0) + 1
+    return notes
+
+
+def finish(briefs, ctx, current=None):
+    """normalise + lint + prompt for every brief of the open slots. pv2 briefs also get one distinct reference each
+    (validate_references; `current` = the other briefs of the set whose references stay taken) and their camera fields
+    derived from it."""
     out = {}
+    v2 = {}
     for o in ctx["open"]:
         raw = briefs.get(o["slot"])
         if raw is None:
@@ -997,12 +1886,58 @@ def finish(briefs, ctx):
                 out[o["slot"]] = b
                 continue
             raw = dict(raw, source="new", library_rel=None)
+        if is_v2(raw):
+            v2[o["slot"]] = (normalise(dict(raw, pv=PV), o), o)
+            continue
         b = normalise(raw, o)
         b["lint"] = lint(b, o)
         b["prompt"] = assemble(b) if b["lint"]["pass"] else None
         b["_done"] = True
         out[o["slot"]] = b
+    if v2:
+        refs = ctx.get("refs")
+        taken = set(ctx.get("fixed_refs") or ())
+        taken |= {b.get("reference") for s, b in (current or {}).items()
+                  if s not in v2 and b.get("reference") and not b.get("reference_reused")}
+        notes = validate_references({s: b for s, (b, _) in v2.items()}, taken, refs, ctx.get("order"))
+        ctx.setdefault("ref_notes", []).extend(notes)
+        by_id = {e["id"]: e for e in refs or []}
+        compact = ctx.get("compact", COMPACT_DEFAULT)
+        for s, (b, o) in v2.items():
+            apply_reference(b, by_id.get(b.get("reference")))
+            b["prompt_style"] = "compact" if b.get("presentation") in compact else "full"
+            b["lint"] = lint(b, dict(o, refs=refs))
+            b["prompt"] = assemble(b) if b["lint"]["pass"] else None
+            b["_done"] = True
+            out[s] = b
     return out
+
+
+def flip_fix(cur, ctx, chk, log=print):
+    """Free fix after the rounds: a slot blamed for the camera side whose reference can be mirrored gets
+    reference_flip toggled (camera side swaps) when that lowers the set's blame and the brief still lints."""
+    by_id = {e["id"]: e for e in ctx.get("refs") or []}
+    avail = {o["slot"]: o["ratios"] for o in ctx["open"]}
+    octx = {o["slot"]: o for o in ctx["open"]}
+    for f in [x for x in chk["failures"] if x["rule"] in ("camera", "neighbours", "composition")]:
+        for s in f["slots"]:
+            b = cur.get(s)
+            e = by_id.get((b or {}).get("reference"))
+            if not b or b.get("pv") != PV or not e or e.get("camera_side") not in ("left", "right"):
+                continue
+            nb = dict(b, reference_flip=not b.get("reference_flip"))
+            apply_reference(nb, e)
+            nb["lint"] = lint(nb, dict(octx[s], refs=ctx.get("refs")))
+            if not nb["lint"]["pass"]:
+                continue
+            nb["prompt"] = assemble(nb)
+            trial = {**cur, s: nb}
+            c2 = check_set(trial, ctx["fixed_desc"], ctx["order"], avail, ctx.get("max_tight"), ctx.get("max_night"))
+            if total_blame(c2) < total_blame(chk):
+                log(f"slot {s}: reference {nb['reference']} {'mirrored' if nb['reference_flip'] else 'unmirrored'} "
+                    f"for the camera balance (free)")
+                cur, chk = trial, c2
+    return cur, chk
 
 
 def plan_set(ctx, ask, settings=None, log=print, wider=()):
@@ -1027,7 +1962,7 @@ def plan_set(ctx, ask, settings=None, log=print, wider=()):
     for rnd in range(rounds + 1):
         out["rounds"] = rnd + 1
         missing = [o["slot"] for o in ctx["open"] if o["slot"] not in cur]
-        chk = check_set(cur, ctx["fixed_desc"], order, avail, max_tight)
+        chk = check_set(cur, ctx["fixed_desc"], order, avail, max_tight, ctx.get("max_night"))
         lint_bad = [s for s, b in cur.items() if not b["lint"]["pass"]]
         score = total_blame(chk) + 3 * len(lint_bad) + 5 * len(missing)
         if best is None or score < best[0]:
@@ -1046,13 +1981,14 @@ def plan_set(ctx, ask, settings=None, log=print, wider=()):
         except Exception as e:  # noqa: BLE001
             log(f"rewrite call failed: {e}")
             break
-        cur = {**cur, **{s: b for s, b in finish({s: got[s] for s in redo if s in got}, ctx).items()}}
+        cur = {**cur, **{s: b for s, b in finish({s: got[s] for s in redo if s in got}, ctx, cur).items()}}
     _, cur, chk = best
+    cur, chk = flip_fix(cur, ctx, chk, log)
     lint_bad = [s for s, b in cur.items() if not b["lint"]["pass"]]
     if chk["pass"] and not lint_bad:
         cands = {o["slot"]: o.get("library") or [] for o in ctx["open"]}
         cur, swapped = library_swap(cur, ctx["fixed_desc"], cands, order, avail, max_tight)
-        chk = check_set(cur, ctx["fixed_desc"], order, avail, max_tight)
+        chk = check_set(cur, ctx["fixed_desc"], order, avail, max_tight, ctx.get("max_night"))
         if swapped:
             log(f"library templates (free) used for slots {swapped}")
     status = "ready" if chk["pass"] and not lint_bad and len(cur) == len(ctx["open"]) else "needs_attention"
@@ -1065,7 +2001,9 @@ def plan_set(ctx, ask, settings=None, log=print, wider=()):
         briefs[str(s)] = b
     cps = ctx.get("credits_per_scene") or 0
     new = sum(1 for b in briefs.values() if b["source"] == "new")
-    out.update(status=status, message=msg, briefs=briefs,
+    if ctx.get("ref_notes"):
+        log("references reassigned by code: " + "; ".join(ctx["ref_notes"]))
+    out.update(status=status, message=msg, briefs=briefs, ref_notes=list(ctx.get("ref_notes") or []),
                check={"pass": chk["pass"], "failures": chk["failures"], "blame": chk["blame"], "scores": chk["scores"]},
                cost={"library": len(briefs) - new, "new": new, "credits_per_scene": cps, "credits": new * cps,
                      "usd": round(new * cps * 0.005, 2)},
@@ -1135,7 +2073,9 @@ VISION_PROMPT = ("These are existing room photographs of one Etsy wall-art listi
                  "numbers listed below. For each, answer with categorical facts only, choosing from the lists. Output "
                  "ONLY a JSON object {\"<slot>\": {\"setting\", \"display\", \"furniture_style\", \"furniture_colour\", "
                  "\"furniture_family\", \"house\", \"buyer\", \"camera_height\", \"wall_treatment\", \"light_style\", "
-                 "\"shadow\"}}; use null when unsure. No prose.")
+                 "\"shadow\", \"prop_families\" (a list), \"light_type\", \"window_covering\", \"lived_in\", "
+                 "\"warm_sun\" (true / false)}}; use null when unsure. No prose.")
+VISION_VERSION = 2
 
 
 def describe_fixed(items, ask_vision):
@@ -1146,9 +2086,10 @@ def describe_fixed(items, ask_vision):
     lists = {"setting": sorted(SETTINGS), "display": DISPLAYS, "furniture_style": FURNITURE_STYLES,
              "furniture_family": FURNITURE_FAMILIES, "house": HOUSES, "buyer": BUYERS,
              "camera_height": CAMERA_HEIGHTS, "wall_treatment": WALL_TREATMENTS, "light_style": LIGHT_STYLES,
-             "shadow": SHADOWS}
+             "shadow": SHADOWS, "light_type": LIGHT_TYPES, "window_covering": WINDOW_COVERINGS,
+             "lived_in": LIVED_IN}
     prompt = (VISION_PROMPT + "\nSlots in image order: " + ", ".join(str(s) for s, _ in items) + "\nLists: "
-              + json.dumps(lists))
+              + json.dumps(dict(lists, prop_families=sorted(PROP_FAMILIES))))
     try:
         raw = ask_vision(prompt, [encode_image(p, 900) for _, p in items])
         t = str(raw)
@@ -1161,6 +2102,11 @@ def describe_fixed(items, ask_vision):
         if isinstance(v, dict):
             out[s] = {k: v.get(k) for k in lists if v.get(k) in lists[k]} | (
                 {"furniture_colour": str(v.get("furniture_colour"))[:20]} if v.get("furniture_colour") else {})
+            fams = v.get("prop_families")
+            if isinstance(fams, list):
+                out[s]["prop_families"] = sorted({f for f in fams if f in PROP_FAMILIES})
+            if isinstance(v.get("warm_sun"), bool):
+                out[s]["warm_sun"] = v["warm_sun"]
     return out
 
 
@@ -1197,6 +2143,8 @@ def library_candidates(settings, room, used, fails, limit=8, decor=None):
     for t in stp.library_templates(settings):
         if t.get("wired") or t["rel"] in used or t["rel"] in fails or rs.norm(t["room"]) != want:
             continue
+        if not stp.auto_pick_ok(t):          # graded below B- or flagged by the text scan (realism addendum 6.4, 7)
+            continue
         man = t.get("manifest") or {}
         if decor and not rs.decor_matches(decor, t["style"], t["name"], t.get("desc"), man.get("decor")):
             continue
@@ -1214,23 +2162,27 @@ def library_candidates(settings, room, used, fails, limit=8, decor=None):
     return out
 
 
-def context(con, settings, idea_id, ask_vision=None, cached_fixed=None, work=None):
+def context(con, settings, idea_id, ask_vision=None, cached_fixed=None, work=None, replan=()):
     """Everything the planner needs for one design: design facts, fixed slot descriptors (measured + one cached
-    vision describe), ALL open slots (room + decor from rs.plan; Tony's picks honoured), library candidates, images."""
+    vision describe), ALL open slots (room + decor from rs.plan; Tony's picks honoured), library candidates, images,
+    and (realism addendum) the usable references + their sheet and Tony's graded examples. replan: decided slots
+    treated as open (the free dry run only)."""
     from . import production as prod
     idea, lst, rec, folder, arts = prod._ctx(con, settings, idea_id)
     plan, avail = prod._plan(con, settings, idea, rec, folder, arts)
     p = prod._prod(rec)
-    fixed_items, open_slots = _split_slots(idea_id, rec, folder, plan)
+    fixed_items, open_slots = _split_slots(idea_id, rec, folder, plan, replan)
     cache = dict(cached_fixed or {})
-    todo = [(s, pth) for s, pth, _, name in fixed_items if name and name not in cache and pth]
-    vis = describe_fixed(todo, ask_vision) if ask_vision else {}
+    stale = lambda ent: (ent or {}).get("vision_version") != VISION_VERSION     # noqa: E731  (v1 cache: describe once more)
+    todo = [(s, pth) for s, pth, _, name in fixed_items if name and pth and (name not in cache or stale(cache[name]))]
+    vis = describe_fixed(todo, ask_vision) if ask_vision and todo else {}
     fixed, fixed_desc = {}, {}
     for s, pth, srec, name in fixed_items:
         ent = cache.get(name)
-        if ent is None:
+        if ent is None or (s, pth) in todo:
             d = fixed_descriptor(con, settings, srec, pth, vis.get(s))
-            ent = {"descriptor": d, "file": name, "from": "measured+vision" if vis.get(s) else "measured"}
+            ent = {"descriptor": d, "file": name, "from": "measured+vision" if vis.get(s) else "measured",
+                   "vision_version": VISION_VERSION}
         d = dict(ent["descriptor"], slot=s)
         fixed[name] = ent
         fixed_desc[s] = d
@@ -1247,10 +2199,23 @@ def context(con, settings, idea_id, ask_vision=None, cached_fixed=None, work=Non
     from .prod_chat import encode_image
     if iso is not None:
         images.append(encode_image(iso, 1568))
+    has_sheet = has_ref_sheet = False
     if work is not None and fixed_items:
         sheet = contact_sheet([(s, pth) for s, pth, _, _ in fixed_items if pth], Path(work) / "contact_sheet.png")
         if sheet:
             images.append(encode_image(sheet, 1568))
+            has_sheet = True
+    refs = None
+    if cfg(settings, "planner_references"):
+        from . import references
+        refs = references.usable(settings)
+        if work is not None and refs:
+            rs_png = references.contact_sheet(refs, Path(work) / "reference_sheet.png", settings=settings)
+            if rs_png:
+                images.append(encode_image(rs_png, 1568))
+                has_ref_sheet = True
+    fixed_refs = sorted({d.get("reference") for d in fixed_desc.values() if d.get("reference")})
+    graded = graded_examples(settings) if cfg(settings, "planner_graded_examples") else []
     eng = prod._engine(settings)
     fx_view = {str(s): {k: v for k, v in d.items() if v is not None and k not in ("scene", "wall_lab")}
                for s, d in fixed_desc.items()}
@@ -1260,7 +2225,50 @@ def context(con, settings, idea_id, ask_vision=None, cached_fixed=None, work=Non
                        "accents": [a.get("name") for a in an.get("accents") or []]},
             "fixed": fx_view, "fixed_desc": fixed_desc, "fixed_cache": fixed, "open": opens, "images": images,
             "credits_per_scene": eng.get("credits_per_scene"), "max_tight": int(cfg(settings, "planner_max_tight")),
-            "inputs_key": _key(tags, styles, open_slots, fixed_items, p)}
+            "inputs_key": _key(tags, styles, open_slots, fixed_items, p),
+            "refs": refs, "fixed_refs": fixed_refs, "graded": graded, "has_sheet": has_sheet,
+            "has_ref_sheet": has_ref_sheet, "compact": tuple(cfg(settings, "planner_compact") or ()),
+            "max_night": int(cfg(settings, "planner_max_night")), "ref_notes": []}
+
+
+def graded_examples(settings=None, good=3, bad=3, cap_words=1400):
+    """Tony's graded room templates as few-shot examples (realism addendum 7): good = mean >= B+ (best first, newest on
+    ties), bad = mean <= C (worst first). Until good examples exist only the bad ones show. About 1,400 words max."""
+    from . import scene_templates as stp
+    items = []
+    for t in stp.library_templates(settings):
+        if t.get("wired") or not t.get("psd"):
+            continue
+        gs = stp.template_grades(t["psd"])
+        if not gs:
+            continue
+        mean = sum(stp.GRADE_SCORE[g["grade"]] for g in gs) / len(gs)
+        man = t.get("manifest") or {}
+        b = man.get("brief") or {}
+        ex = {"grade": "/".join(g["grade"] for g in gs), "note": next((g["note"] for g in reversed(gs)
+                                                                        if g.get("note")), None)}
+        if b:
+            ex.update(scene=b.get("scene"), setting=b.get("setting"), shot=b.get("shot"),
+                      light=b.get("light_type") or b.get("light_style"), lived_in=b.get("lived_in"),
+                      props=b.get("props"), reference=b.get("reference"))
+        else:
+            lk = man.get("look") or {}
+            ex.update(persona=lk.get("photographer"), light=lk.get("light_style"), camera=lk.get("camera_angle"),
+                      display=lk.get("display"), wall=lk.get("wall_palette"), room=man.get("room"))
+        ex = {k: v for k, v in ex.items() if v not in (None, "", [])}
+        items.append((mean, str(man.get("created") or ""), ex))
+    newest = sorted(items, key=lambda i: i[1], reverse=True)              # stable sorts: newest first on ties
+    good_l = sorted((i for i in newest if i[0] >= stp.GRADE_SCORE["B+"]), key=lambda i: -i[0])[:good]
+    bad_l = sorted((i for i in newest if i[0] <= stp.GRADE_SCORE["C"]), key=lambda i: i[0])
+    out, words = [], 0
+    for kind, lst in (("good", good_l), ("bad", bad_l[:bad])):
+        for _, _, ex in lst:
+            n = len(json.dumps(ex).split())
+            if words + n > cap_words:
+                break
+            out.append(dict(ex, kind=kind))
+            words += n
+    return out
 
 
 # ---------- storage + background jobs ----------
@@ -1346,6 +2354,8 @@ def run(con, settings, idea_id, slots=None, ask=None, wider=(), log=None, ask_vi
             ctx["open"] = plan_now
             for s, b in hold.items():                    # kept briefs (chat edits, other slots) count as fixed
                 ctx["fixed_desc"][s] = dict(descriptor(b), slot=s)
+            ctx["fixed_refs"] = sorted(set(ctx.get("fixed_refs") or [])
+                                       | {b.get("reference") for b in hold.values() if b.get("reference")})
             res = plan_set(ctx, ask, settings, log, wider) if plan_now else \
                 {"status": "ready", "briefs": {}, "message": "", "rounds": 0, "check": {"pass": True, "failures": []}}
         planned = {str(o["slot"]) for o in plan_now}
@@ -1430,8 +2440,9 @@ def _key(tags, styles, open_slots, fixed_items, p):
     return hashlib.sha1(src.encode()).hexdigest()
 
 
-def _split_slots(idea_id, rec, folder, plan):
-    """(fixed items [(slot, image path, slot record, file)], open cards) of a design's slot plan."""
+def _split_slots(idea_id, rec, folder, plan, replan=()):
+    """(fixed items [(slot, image path, slot record, file)], open cards) of a design's slot plan. replan: decided slots
+    treated as open (the free dry run)."""
     from . import production as prod
     p = prod._prod(rec)
     approvals = rec.get("mockup_approvals") or {}
@@ -1443,7 +2454,7 @@ def _split_slots(idea_id, rec, folder, plan):
         running = job["running"] and job["idea_id"] == idea_id and job["slot"] == c["slot"]
         # an image that is approved or waiting for Tony's decision (also a flagged one) is fixed; denied = open
         decided = bool(name) and approvals.get(name) != "denied" and where in ("folder", "flagged")
-        if decided or running:
+        if (decided or running) and c["slot"] not in replan:
             fixed_items.append((c["slot"], path, srec, name))
         else:
             open_slots.append(c)
@@ -1638,6 +2649,7 @@ def card_brief(b):
             "prompt": b.get("prompt"), "scene": b.get("scene"), "rev": b.get("rev"), "edited_by": b.get("edited_by"),
             "lint": b.get("lint"), "marker": b.get("marker"), "ratio": b.get("ratio"), "stale": b.get("stale"),
             "facts": facts_line(b), "attempts": len(b.get("attempts") or []),
+            "reference": b.get("reference"), "reference_flip": bool(b.get("reference_flip")),
             "drift": (b.get("attempts") or [{}])[-1].get("drift") if b.get("attempts") else None}
 
 
@@ -1653,23 +2665,29 @@ def panel_view(sp, running=False):
 
 # ---------- CLI: the free dry run ----------
 
-def dry_run(idea_id, settings=None, ask=None, out=print):
-    """Plan one design against a READ-ONLY view of the real DB and print the briefs + the check. Writes nothing."""
+def dry_run(idea_id, settings=None, ask=None, out=print, replan=()):
+    """Plan one design against a READ-ONLY view of the real DB and print the briefs + the check. Writes nothing.
+    replan: decided slots treated as open (e.g. 16,17,18,19 of Book Club Cat, whose twelve room slots all have images)."""
     import sqlite3
     import tempfile
     from .db import DB_PATH, load_config
     settings = settings or load_config("settings")
     con = sqlite3.connect(f"file:{DB_PATH}?mode=ro", uri=True, check_same_thread=False)
     con.row_factory = sqlite3.Row
+    vision = ask or default_ask(settings, VISION_SYSTEM)
     ask = ask or default_ask(settings)
+    replan = tuple(int(x) for x in replan or ())
     with tempfile.TemporaryDirectory() as td:
-        ctx = context(con, settings, idea_id, ask_vision=ask, work=td)
+        ctx = context(con, settings, idea_id, ask_vision=vision, work=td, replan=replan)
         out(f"Design #{idea_id} {ctx['design']['name']}: fixed slots {sorted(ctx['fixed_desc'])}, open slots "
-            f"{[o['slot'] for o in ctx['open']]}")
+            f"{[o['slot'] for o in ctx['open']]}" + (f" (re-planned: {list(replan)})" if replan else ""))
+        out(f"References: {len(ctx.get('refs') or [])} usable ({', '.join(e['id'] for e in ctx.get('refs') or [])}); "
+            f"used by fixed slots: {ctx.get('fixed_refs') or 'none'}; graded examples: {len(ctx.get('graded') or [])}")
         for s, d in sorted(ctx["fixed_desc"].items()):
             out(f"  fixed {s:02d}: ratio {d.get('ratio')} · {d.get('shot')} ({d.get('art_h_frac')}) · side "
-                f"{d.get('camera_side')} · light {d.get('light_from')} · {d.get('presentation')} · wall "
-                f"{d.get('wall_family')} · setting {d.get('setting')} · {d.get('house')} · {d.get('buyer')}")
+                f"{d.get('camera_side')} · light {d.get('light_type') or d.get('light_style')} from "
+                f"{d.get('light_from')} · {d.get('presentation')} · wall {d.get('wall_family')} · setting "
+                f"{d.get('setting')} · props {d.get('prop_families')} · {d.get('house')}")
         res = plan_set(ctx, ask, settings, log=lambda m: out("  .. " + m))
     out(f"\nStatus: {res['status']} after {res.get('rounds')} round(s), {res.get('seconds')} s"
         + (f" ({res['message']})" if res.get("message") else ""))
@@ -1678,18 +2696,31 @@ def dry_run(idea_id, settings=None, ask=None, out=print):
         out(f"\n--- slot {s} · {b['room']} · {b['decor']} · {b['source']}"
             + (f" {b.get('library_rel')}" if b.get("library_rel") else ""))
         out(f"    {facts_line(b)} · display {b.get('display')} · {b.get('presentation')} {b.get('frame_finish')}")
+        if b.get("pv") == PV:
+            band = ("realism clause with the reference's light" if "light" in (b.get("ref_use") or [])
+                    else "realism clause, own light")
+            out(f"    reference {b.get('reference') or 'none'}{' (mirrored)' if b.get('reference_flip') else ''}"
+                f"{' (reused)' if b.get('reference_reused') else ''} · wording: {band if b.get('reference') else 'text only'}"
+                f" · occupant: {b.get('occupant')}")
+            out(f"    lived-in {b.get('lived_in')} · light {b.get('light_type')} from {b.get('light_from')} · window "
+                f"{(b.get('window') or {}).get('covering')}/{(b.get('window') or {}).get('view')} · photo "
+                f"{b.get('photo_style')} · prompt style {b.get('prompt_style')}")
         out(f"    camera {b.get('camera_side')} / {b.get('camera_height')} / {b.get('lens')} / {b.get('depth_of_field')}"
-            f" · light {b.get('light_style')} from {b.get('light_from')}, {b.get('shadow')} shadows")
+            f" · light style {b.get('light_style')}, {b.get('shadow')} shadows")
         out(f"    wall {w.get('name')} {w.get('hex')} ({w.get('family')}, {w.get('treatment')}) · marker "
             f"{b.get('marker')} · furniture {b.get('furniture')} · {b.get('house')} · buyer {b.get('buyer')}")
+        out(f"    props {b.get('props')} · families {descriptor(b).get('prop_families')}")
         out(f"    lint: {'pass' if b['lint']['pass'] else 'FAIL ' + '; '.join(b['lint']['why'])}")
         if b.get("scene"):
-            out(f"    scene: {b['scene']}")
+            out(f"    scene ({len(b['scene'].split())} words): {b['scene']}")
         if b.get("prompt"):
-            out(f"    prompt ({len(b['prompt'].split())} words): {b['prompt']}")
+            out(f"    prompt ({len(b['prompt'].split())} words with the reference, "
+                f"{len(assemble(b, ref=False).split())} text-only): {b['prompt']}")
     chk = res.get("check") or {}
-    out(f"\nBalance check: {'PASS' if chk.get('pass') else 'FAIL'}"
-        + "".join(f"\n  - {f['text']} (slots {f['slots']})" for f in chk.get("failures") or []))
+    out(f"\nBalance + repeat-limit check: {'PASS' if chk.get('pass') else 'FAIL'}"
+        + "".join(f"\n  - [{f['rule']}] {f['text']} (slots {f['slots']})" for f in chk.get("failures") or []))
+    if res.get("ref_notes"):
+        out("Reference notes: " + "; ".join(res["ref_notes"]))
     out(f"Cost if generated: {res.get('cost')}")
     return res
 
@@ -1699,7 +2730,8 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="Slot-set planner")
     ap.add_argument("--idea", type=int, required=True)
     ap.add_argument("--dry-run", action="store_true", help="plan and print only; writes nothing")
+    ap.add_argument("--replan", help="decided slots to plan as if open, e.g. 16,17,18,19 (dry run only)")
     a = ap.parse_args()
     if not a.dry_run:
         raise SystemExit("only --dry-run is available from the command line (the Portal saves plans)")
-    dry_run(a.idea)
+    dry_run(a.idea, replan=[int(x) for x in a.replan.split(",")] if a.replan else ())

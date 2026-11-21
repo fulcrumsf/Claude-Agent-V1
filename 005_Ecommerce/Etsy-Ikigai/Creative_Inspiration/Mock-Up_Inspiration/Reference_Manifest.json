@@ -1,0 +1,2297 @@
+{
+ "version": 1,
+ "prep_version": 1,
+ "refs": {
+  "0001": {
+   "source": "0001_Walnut_Credenza_Large_Walnut_Frame_Window_Warm_Sun.png",
+   "blank": "0001_Walnut_Credenza_Large_Walnut_Frame_Window_Warm_Sun_Blank.png",
+   "sha1": "0a99ea0aa72aa5eaa3f245156fdc99583df578e7",
+   "size": [
+    1114,
+    1102
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "readable text in the room: MOD"
+   ],
+   "blank_method": "mask_quad",
+   "fill_polygon": [
+    [
+     272.95,
+     144.52
+    ],
+    [
+     854.43,
+     143.03
+    ],
+    [
+     853.79,
+     885.89
+    ],
+    [
+     274.31,
+     885.92
+    ]
+   ],
+   "quad": [
+    [
+     273.95,
+     145.51
+    ],
+    [
+     853.43,
+     144.03
+    ],
+    [
+     852.79,
+     884.89
+    ],
+    [
+     275.3,
+     884.92
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#A08769",
+   "wall_lab": [
+    58.1,
+    5.8,
+    16.5
+   ],
+   "aspect": 0.782,
+   "art_h_frac": 0.672,
+   "camera_side": "front",
+   "light_from": "left",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0375,
+   "frame_eaten_sides": 0,
+   "opening": "reference inward",
+   "room_text": [
+    {
+     "text": "MOD",
+     "conf": 1.0,
+     "box": [
+      0.3373,
+      0.9462,
+      0.4576,
+      0.9552
+     ]
+    }
+   ],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "setting": "credenza, living",
+    "room": "Living room",
+    "camera_height": "counter",
+    "lens": "lens_normal",
+    "light_type": "golden_low",
+    "lived_in": "tidy",
+    "window_covering": "bare",
+    "editorial": true,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0023": {
+   "source": "0023_Sunlit_Dining_Nook_Rust_Banquette_Thin_Oak_Frame_Pendant_Lamp.png",
+   "blank": "0023_Sunlit_Dining_Nook_Rust_Banquette_Thin_Oak_Frame_Pendant_Lamp_Blank.png",
+   "sha1": "77df9925e004b27e1aa416fe6e06916819701ecd",
+   "size": [
+    1115,
+    1283
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     493.56,
+     281.64
+    ],
+    [
+     801.48,
+     266.07
+    ],
+    [
+     797.2,
+     725.06
+    ],
+    [
+     494.15,
+     720.56
+    ]
+   ],
+   "quad": [
+    [
+     494.57,
+     282.59
+    ],
+    [
+     800.47,
+     267.12
+    ],
+    [
+     796.21,
+     724.04
+    ],
+    [
+     495.15,
+     719.58
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#C5B39E",
+   "wall_lab": [
+    74.1,
+    2.9,
+    11.3
+   ],
+   "aspect": 0.677,
+   "art_h_frac": 0.348,
+   "camera_side": "right",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "setting": "dining banquette",
+    "room": "Kitchen & dining",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "hard_diagonal_sun",
+    "lived_in": "lived_in",
+    "window_covering": "no_window_in_view",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0024": {
+   "source": "0024_Kitchen_Corner_Sink_Subway_Tile_Thin_Black_Frame_Evening_Light.png",
+   "blank": "0024_Kitchen_Corner_Sink_Subway_Tile_Thin_Black_Frame_Evening_Light_Blank.png",
+   "sha1": "07096e680de60b3a59d782b86b4ba6102f8f4527",
+   "size": [
+    1353,
+    1219
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     660.4,
+     184.75
+    ],
+    [
+     1004.81,
+     167.58
+    ],
+    [
+     1003.16,
+     659.53
+    ],
+    [
+     660.13,
+     655.12
+    ]
+   ],
+   "quad": [
+    [
+     661.4,
+     185.7
+    ],
+    [
+     1003.81,
+     168.64
+    ],
+    [
+     1002.17,
+     658.51
+    ],
+    [
+     661.13,
+     654.13
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#C7AD97",
+   "wall_lab": [
+    72.4,
+    5.9,
+    14.4
+   ],
+   "aspect": 0.734,
+   "art_h_frac": 0.393,
+   "camera_side": "right",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "reference inward",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "setting": "kitchen counter",
+    "room": "Kitchen & dining",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "dusk_lamp_mix",
+    "lived_in": "busy",
+    "window_covering": "bare",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0025": {
+   "source": "0025_Floor_Lean_Thin_Oak_Frame_Bedside_Window_Low_Angle.png",
+   "blank": "0025_Floor_Lean_Thin_Oak_Frame_Bedside_Window_Low_Angle_Blank.png",
+   "sha1": "cf627d543886b181780824c74e613a357868443f",
+   "size": [
+    603,
+    619
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     147.28,
+     102.02
+    ],
+    [
+     413.82,
+     101.31
+    ],
+    [
+     429.28,
+     499.81
+    ],
+    [
+     179.21,
+     571.08
+    ]
+   ],
+   "quad": [
+    [
+     148.35,
+     103.02
+    ],
+    [
+     412.85,
+     102.32
+    ],
+    [
+     428.25,
+     499.06
+    ],
+    [
+     180.13,
+     569.78
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#806750",
+   "wall_lab": [
+    45.1,
+    6.3,
+    16.1
+   ],
+   "aspect": 0.723,
+   "art_h_frac": 0.699,
+   "camera_side": "left",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0681,
+   "frame_eaten_sides": 0,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "floor",
+    "shot": "medium",
+    "setting": "beside bed",
+    "room": "Bedroom",
+    "camera_height": "low",
+    "lens": "lens_normal",
+    "light_type": "morning_soft_sun",
+    "lived_in": "lived_in",
+    "window_covering": "bare",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0026": {
+   "source": "0026_Floor_Lean_Thin_Oak_Frame_White_Wall_Pine_Floor_Window_Shadows.png",
+   "blank": "0026_Floor_Lean_Thin_Oak_Frame_White_Wall_Pine_Floor_Window_Shadows_Blank.png",
+   "sha1": "f1a6b77810b18d80bb9b9251019c7c45d61a5d70",
+   "size": [
+    653,
+    550
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     223.04,
+     100.36
+    ],
+    [
+     436.3,
+     100.56
+    ],
+    [
+     440.03,
+     422.56
+    ],
+    [
+     218.66,
+     422.06
+    ]
+   ],
+   "quad": [
+    [
+     224.02,
+     101.36
+    ],
+    [
+     435.32,
+     101.56
+    ],
+    [
+     439.02,
+     421.55
+    ],
+    [
+     219.67,
+     421.06
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#DAD2C0",
+   "wall_lab": [
+    84.4,
+    1.0,
+    8.7
+   ],
+   "aspect": 0.669,
+   "art_h_frac": 0.582,
+   "camera_side": "front",
+   "light_from": "left",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "floor",
+    "shot": "medium",
+    "setting": "bare wall",
+    "room": "Living room",
+    "camera_height": "low",
+    "lens": "lens_normal",
+    "light_type": "hard_diagonal_sun",
+    "lived_in": "tidy",
+    "window_covering": "no_window_in_view",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0027": {
+   "source": "0027_Bathroom_Tile_Wall_Thin_Oak_Frame_Above_Toilet_Shelf.png",
+   "blank": "0027_Bathroom_Tile_Wall_Thin_Oak_Frame_Above_Toilet_Shelf_Blank.png",
+   "sha1": "1d9587e79255928d4614c7b72322a408d6c757bd",
+   "size": [
+    581,
+    609
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "art sliver left beside the fill (11.0% of the worst side)"
+   ],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     164.07,
+     141.26
+    ],
+    [
+     404.25,
+     142.15
+    ],
+    [
+     404.13,
+     450.09
+    ],
+    [
+     164.24,
+     450.3
+    ]
+   ],
+   "quad": [
+    [
+     165.07,
+     142.27
+    ],
+    [
+     403.25,
+     143.15
+    ],
+    [
+     403.13,
+     449.09
+    ],
+    [
+     165.24,
+     449.3
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#CDBAAB",
+   "wall_lab": [
+    76.6,
+    4.1,
+    10.4
+   ],
+   "aspect": 0.777,
+   "art_h_frac": 0.503,
+   "camera_side": "front",
+   "light_from": "left",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.1097,
+   "frame_eaten_sides": 0,
+   "opening": "reference inward",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "setting": "bathroom tile, over toilet",
+    "room": "Bathroom",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "north_light_even",
+    "lived_in": "lived_in",
+    "window_covering": "no_window_in_view",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0028": {
+   "source": "0028_Floor_Lay_Oak_Frame_Sheepskin_Rug_High_Angle.png",
+   "blank": "0028_Floor_Lay_Oak_Frame_Sheepskin_Rug_High_Angle_Blank.png",
+   "sha1": "b7aa215f3a1ecd4b194660c08ba7dc0fb8af1976",
+   "size": [
+    621,
+    624
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "the artwork lies flat",
+    "frame lying flat (flat lay)"
+   ],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     99.48,
+     149.55
+    ],
+    [
+     424.49,
+     86.01
+    ],
+    [
+     547.68,
+     503.48
+    ],
+    [
+     194.06,
+     551.27
+    ]
+   ],
+   "quad": [
+    [
+     100.69,
+     150.33
+    ],
+    [
+     423.79,
+     87.17
+    ],
+    [
+     546.4,
+     502.65
+    ],
+    [
+     194.82,
+     550.16
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#D4C8BF",
+   "wall_lab": [
+    81.4,
+    2.3,
+    5.1
+   ],
+   "aspect": 0.809,
+   "art_h_frac": 0.676,
+   "camera_side": "right",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": false,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "flat",
+    "shot": "medium",
+    "setting": "rug",
+    "room": "Living room",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": null,
+    "lived_in": null,
+    "window_covering": "no_window_in_view",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0029": {
+   "source": "0029_Plain_White_Wall_Thin_Gold_Frame_Straight_On.png",
+   "blank": "0029_Plain_White_Wall_Thin_Gold_Frame_Straight_On_Blank.png",
+   "sha1": "87db913ded9af4d955a40ccc2d8f99c8422a047a",
+   "size": [
+    663,
+    560
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     198.79,
+     95.07
+    ],
+    [
+     473.68,
+     93.98
+    ],
+    [
+     473.7,
+     476.81
+    ],
+    [
+     199.68,
+     476.55
+    ]
+   ],
+   "quad": [
+    [
+     199.79,
+     96.06
+    ],
+    [
+     472.68,
+     94.98
+    ],
+    [
+     472.7,
+     475.81
+    ],
+    [
+     200.68,
+     475.55
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#EAE9E6",
+   "wall_lab": [
+    92.2,
+    -0.0,
+    2.0
+   ],
+   "aspect": 0.717,
+   "art_h_frac": 0.679,
+   "camera_side": "front",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "reference inward",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "tight",
+    "setting": "plain wall",
+    "room": "Living room",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "overcast_flat",
+    "lived_in": "tidy",
+    "window_covering": "no_window_in_view",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0030": {
+   "source": "0030_Coffee_Bar_Walnut_Dresser_Thin_Black_Frame_Floating_Shelves.png",
+   "blank": "0030_Coffee_Bar_Walnut_Dresser_Thin_Black_Frame_Floating_Shelves_Blank.png",
+   "sha1": "067f292134c443fb2b61d230315b5b49482418e4",
+   "size": [
+    576,
+    556
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     267.09,
+     281.75
+    ],
+    [
+     404.79,
+     281.7
+    ],
+    [
+     408.34,
+     476.7
+    ],
+    [
+     266.76,
+     476.67
+    ]
+   ],
+   "quad": [
+    [
+     268.09,
+     282.75
+    ],
+    [
+     403.81,
+     282.7
+    ],
+    [
+     407.32,
+     475.7
+    ],
+    [
+     267.76,
+     475.67
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#7F6F60",
+   "wall_lab": [
+    47.9,
+    2.3,
+    7.2
+   ],
+   "aspect": 0.72,
+   "art_h_frac": 0.347,
+   "camera_side": "front",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": null,
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "surface",
+    "shot": "medium",
+    "setting": "coffee bar dresser",
+    "room": "Kitchen & dining",
+    "camera_height": "counter",
+    "lens": "lens_normal",
+    "light_type": "north_light_even",
+    "lived_in": "busy",
+    "window_covering": "no_window_in_view",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0031": {
+   "source": "0031_Oak_Shelving_Niche_Thin_Oak_Frame_Slatted_Sun_Stripes.png",
+   "blank": "0031_Oak_Shelving_Niche_Thin_Oak_Frame_Slatted_Sun_Stripes_Blank.png",
+   "sha1": "b5a75492697e1cfc59fec9aa108e42ecd8cc4655",
+   "size": [
+    603,
+    603
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     188.34,
+     168.26
+    ],
+    [
+     420.86,
+     169.73
+    ],
+    [
+     423.14,
+     471.82
+    ],
+    [
+     185.96,
+     471.72
+    ]
+   ],
+   "quad": [
+    [
+     189.34,
+     169.27
+    ],
+    [
+     419.87,
+     170.73
+    ],
+    [
+     422.13,
+     470.82
+    ],
+    [
+     186.96,
+     470.72
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#734528",
+   "wall_lab": [
+    34.0,
+    14.1,
+    20.8
+   ],
+   "aspect": 0.771,
+   "art_h_frac": 0.499,
+   "camera_side": "front",
+   "light_from": "left",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "reference inward",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "shelf",
+    "shot": "tight",
+    "setting": "oak niche",
+    "room": "Living room",
+    "camera_height": "counter",
+    "lens": "lens_normal",
+    "light_type": "blind_stripes",
+    "lived_in": "tidy",
+    "window_covering": "no_window_in_view",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0032": {
+   "source": "0032_Floor_Lean_Thin_Oak_Frame_Herringbone_Floor_French_Door.png",
+   "blank": "0032_Floor_Lean_Thin_Oak_Frame_Herringbone_Floor_French_Door_Blank.png",
+   "sha1": "1cc10370c751f4b2d51529e8611ede427cd23d91",
+   "size": [
+    657,
+    564
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     264.5,
+     85.34
+    ],
+    [
+     526.91,
+     82.61
+    ],
+    [
+     527.57,
+     474.48
+    ],
+    [
+     259.83,
+     466.45
+    ]
+   ],
+   "quad": [
+    [
+     265.49,
+     86.33
+    ],
+    [
+     525.91,
+     83.62
+    ],
+    [
+     526.56,
+     473.45
+    ],
+    [
+     260.85,
+     465.48
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#B2A596",
+   "wall_lab": [
+    68.5,
+    3.9,
+    8.1
+   ],
+   "aspect": 0.681,
+   "art_h_frac": 0.682,
+   "camera_side": "front",
+   "light_from": "left",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "reference inward",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "floor",
+    "shot": "medium",
+    "setting": "beside French door",
+    "room": "Living room",
+    "camera_height": "low",
+    "lens": "lens_normal",
+    "light_type": "morning_soft_sun",
+    "lived_in": "tidy",
+    "window_covering": "bare",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0033": {
+   "source": "0033_White_Wall_Oak_Ledge_Shelf_Square_White_Frame_Stacked_Books.png",
+   "blank": "0033_White_Wall_Oak_Ledge_Shelf_Square_White_Frame_Stacked_Books_Blank.png",
+   "sha1": "4f8c52f3cd4dc42b3d421460f06441f4abe686af",
+   "size": [
+    843,
+    1098
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "the fill took the frame or mat in too (4 sides)",
+    "not a portrait artwork (true aspect 1.00)",
+    "readable text in the room: STON, IMPRESJONIŚCI",
+    "square frame, readable book spine"
+   ],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     391.9,
+     620.56
+    ],
+    [
+     580.04,
+     620.38
+    ],
+    [
+     585.11,
+     810.43
+    ],
+    [
+     395.02,
+     812.02
+    ]
+   ],
+   "quad": [
+    [
+     392.92,
+     621.56
+    ],
+    [
+     579.06,
+     621.38
+    ],
+    [
+     584.08,
+     809.43
+    ],
+    [
+     396.0,
+     811.01
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#DDDBD9",
+   "wall_lab": [
+    87.3,
+    0.3,
+    1.1
+   ],
+   "aspect": 0.996,
+   "art_h_frac": 0.172,
+   "camera_side": "front",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "square",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 4,
+   "opening": "paper edge fallback",
+   "room_text": [
+    {
+     "text": "STON",
+     "conf": 1.0,
+     "box": [
+      0.1629,
+      0.592,
+      0.2695,
+      0.8089
+     ]
+    },
+    {
+     "text": "IMPRESJONIŚCI",
+     "conf": 1.0,
+     "box": [
+      0.221,
+      0.6231,
+      0.2558,
+      0.6957
+     ]
+    }
+   ],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "shelf",
+    "shot": "tight",
+    "setting": "ledge",
+    "room": "Living room",
+    "camera_height": "counter",
+    "lens": "lens_normal",
+    "light_type": "north_light_even",
+    "lived_in": "tidy",
+    "window_covering": "no_window_in_view",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0034": {
+   "source": "0034_Cream_Wall_Walnut_Sideboard_Thin_Oak_Frame_Donut_Vase.png",
+   "blank": "0034_Cream_Wall_Walnut_Sideboard_Thin_Oak_Frame_Donut_Vase_Blank.png",
+   "sha1": "44f026fa24661c989c07d586e6e4d0fff2d17a87",
+   "size": [
+    655,
+    1067
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     225.7,
+     231.55
+    ],
+    [
+     464.73,
+     232.09
+    ],
+    [
+     465.27,
+     552.65
+    ],
+    [
+     223.59,
+     553.23
+    ]
+   ],
+   "quad": [
+    [
+     226.7,
+     232.55
+    ],
+    [
+     463.73,
+     233.09
+    ],
+    [
+     464.27,
+     551.65
+    ],
+    [
+     224.6,
+     552.22
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#D5CCC4",
+   "wall_lab": [
+    82.4,
+    2.0,
+    5.1
+   ],
+   "aspect": 0.743,
+   "art_h_frac": 0.299,
+   "camera_side": "front",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "reference inward",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "setting": "sideboard",
+    "room": "Living room",
+    "camera_height": "counter",
+    "lens": "lens_normal",
+    "light_type": "north_light_even",
+    "lived_in": "tidy",
+    "window_covering": "no_window_in_view",
+    "editorial": true,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0035": {
+   "source": "0035_White_Wall_Taupe_Sideboard_Thin_Oak_Frame_Wide_Mat_Dried_Thistle.png",
+   "blank": "0035_White_Wall_Taupe_Sideboard_Thin_Oak_Frame_Wide_Mat_Dried_Thistle_Blank.png",
+   "sha1": "f47d95f9179550a8d21c0abd7b1621fc8a2477e6",
+   "size": [
+    720,
+    907
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     197.5,
+     358.63
+    ],
+    [
+     405.44,
+     357.94
+    ],
+    [
+     405.53,
+     647.48
+    ],
+    [
+     197.7,
+     647.44
+    ]
+   ],
+   "quad": [
+    [
+     198.5,
+     359.63
+    ],
+    [
+     404.44,
+     358.94
+    ],
+    [
+     404.53,
+     646.48
+    ],
+    [
+     198.7,
+     646.45
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#E4DFDE",
+   "wall_lab": [
+    89.1,
+    1.2,
+    2.2
+   ],
+   "aspect": 0.717,
+   "art_h_frac": 0.317,
+   "camera_side": "front",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "setting": "sideboard, mat",
+    "room": "Living room",
+    "camera_height": "counter",
+    "lens": "lens_normal",
+    "light_type": "north_light_even",
+    "lived_in": "tidy",
+    "window_covering": "no_window_in_view",
+    "editorial": true,
+    "presentation": "mat"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0036": {
+   "source": "0036_Plaster_Hallway_Oversized_Textured_Canvas_Boucle_Pouf_Wood_Stool.png",
+   "blank": "0036_Plaster_Hallway_Oversized_Textured_Canvas_Boucle_Pouf_Wood_Stool_Blank.png",
+   "sha1": "1a1e5a96e1185fe43fcdfe8bd79cb0e3f6012055",
+   "size": [
+    669,
+    977
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_canvas",
+   "fill_polygon": [
+    [
+     124.67,
+     146.9
+    ],
+    [
+     449.64,
+     114.96
+    ],
+    [
+     449.25,
+     664.89
+    ],
+    [
+     124.63,
+     648.42
+    ]
+   ],
+   "quad": [
+    [
+     125.67,
+     147.81
+    ],
+    [
+     448.64,
+     116.07
+    ],
+    [
+     448.25,
+     663.84
+    ],
+    [
+     125.63,
+     647.47
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#B6AEA4",
+   "wall_lab": [
+    71.5,
+    1.3,
+    6.7
+   ],
+   "aspect": 0.736,
+   "art_h_frac": 0.536,
+   "camera_side": "right",
+   "light_from": "left",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "canvas face (no frame lip)",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "wide",
+    "setting": "hallway, oversized canvas",
+    "room": "Living room",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "overcast_flat",
+    "lived_in": "tidy",
+    "window_covering": "no_window_in_view",
+    "editorial": true,
+    "presentation": "canvas_bare"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0037": {
+   "source": "0037_Warm_White_Wall_Thin_Black_Frame_Boucle_Lounge_Chair_Window_Shadows.png",
+   "blank": "0037_Warm_White_Wall_Thin_Black_Frame_Boucle_Lounge_Chair_Window_Shadows_Blank.png",
+   "sha1": "6d77e96978aff12b5f9925c57f978f09ffa11856",
+   "size": [
+    707,
+    1023
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     226.9,
+     239.02
+    ],
+    [
+     479.93,
+     239.34
+    ],
+    [
+     479.95,
+     596.67
+    ],
+    [
+     226.88,
+     596.67
+    ]
+   ],
+   "quad": [
+    [
+     227.9,
+     240.02
+    ],
+    [
+     478.93,
+     240.33
+    ],
+    [
+     478.95,
+     595.67
+    ],
+    [
+     227.88,
+     595.67
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#D2CECC",
+   "wall_lab": [
+    82.9,
+    1.0,
+    2.6
+   ],
+   "aspect": 0.706,
+   "art_h_frac": 0.348,
+   "camera_side": "front",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "reference inward",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "setting": "lounge chair",
+    "room": "Living room",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "north_light_even",
+    "lived_in": "tidy",
+    "window_covering": "no_window_in_view",
+    "editorial": true,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0038": {
+   "source": "0038_White_Desk_Nook_Thin_White_Frame_Pendant_Lamp_Side_Window.png",
+   "blank": "0038_White_Desk_Nook_Thin_White_Frame_Pendant_Lamp_Side_Window_Blank.png",
+   "sha1": "c24c47d897f949a772a411c45d44630764f5c98a",
+   "size": [
+    766,
+    1049
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "the fill took the frame or mat in too (4 sides)",
+    "readable text in the room: TAMAN TNOWY"
+   ],
+   "blank_method": "sam_canvas",
+   "fill_polygon": [
+    [
+     235.93,
+     230.21
+    ],
+    [
+     477.08,
+     229.98
+    ],
+    [
+     477.04,
+     589.11
+    ],
+    [
+     235.98,
+     588.92
+    ]
+   ],
+   "quad": [
+    [
+     236.93,
+     231.21
+    ],
+    [
+     476.08,
+     230.98
+    ],
+    [
+     476.04,
+     588.11
+    ],
+    [
+     236.98,
+     587.92
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#D9CAC2",
+   "wall_lab": [
+    82.3,
+    2.1,
+    5.2
+   ],
+   "aspect": 0.67,
+   "art_h_frac": 0.34,
+   "camera_side": "front",
+   "light_from": "left",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 4,
+   "opening": "canvas face (no frame lip)",
+   "room_text": [
+    {
+     "text": "TAMAN TNOWY",
+     "conf": 0.3,
+     "box": [
+      0.2379,
+      0.6756,
+      0.3476,
+      0.6832
+     ]
+    }
+   ],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "setting": "desk nook",
+    "room": "Office",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "north_light_even",
+    "lived_in": "tidy",
+    "window_covering": "bare",
+    "editorial": false,
+    "presentation": "mat"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0039": {
+   "source": "0039_Panelled_Living_Room_Large_Copper_Frame_Olive_Sofa_Tall_Window.png",
+   "blank": "0039_Panelled_Living_Room_Large_Copper_Frame_Olive_Sofa_Tall_Window_Blank.png",
+   "sha1": "6c6833b207f35de6180960d2005fe01824fd1dd8",
+   "size": [
+    687,
+    722
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     115.54,
+     48.02
+    ],
+    [
+     386.65,
+     47.93
+    ],
+    [
+     384.79,
+     407.73
+    ],
+    [
+     111.85,
+     409.13
+    ]
+   ],
+   "quad": [
+    [
+     116.53,
+     49.02
+    ],
+    [
+     385.64,
+     48.94
+    ],
+    [
+     383.8,
+     406.73
+    ],
+    [
+     112.86,
+     408.12
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#AB9A83",
+   "wall_lab": [
+    64.4,
+    2.6,
+    15.3
+   ],
+   "aspect": 0.75,
+   "art_h_frac": 0.496,
+   "camera_side": "front",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "reference inward",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "wide",
+    "setting": "panelled living, curtains",
+    "room": "Living room",
+    "camera_height": "seated",
+    "lens": "lens_normal",
+    "light_type": "overcast_flat",
+    "lived_in": "lived_in",
+    "window_covering": "linen_curtains",
+    "editorial": true,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0040": {
+   "source": "0040_Bathroom_Vanity_Large_Black_Frame_Brass_Sconce_Arched_Mirror.png",
+   "blank": "0040_Bathroom_Vanity_Large_Black_Frame_Brass_Sconce_Arched_Mirror_Blank.png",
+   "sha1": "0de3bb7e22f956e66f371b2e94f54dba295bd2c5",
+   "size": [
+    701,
+    720
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "a mirror in the photo",
+    "arched mirror beside the art"
+   ],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     199.34,
+     11.83
+    ],
+    [
+     409.38,
+     78.1
+    ],
+    [
+     410.58,
+     410.01
+    ],
+    [
+     204.63,
+     431.38
+    ]
+   ],
+   "quad": [
+    [
+     200.36,
+     13.2
+    ],
+    [
+     408.38,
+     78.83
+    ],
+    [
+     409.57,
+     409.11
+    ],
+    [
+     205.62,
+     430.27
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#B4A595",
+   "wall_lab": [
+    68.6,
+    4.7,
+    12.2
+   ],
+   "aspect": 0.729,
+   "art_h_frac": 0.519,
+   "camera_side": "left",
+   "light_from": "left",
+   "frames": 1,
+   "mirrors": 1,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0014,
+   "frame_eaten_sides": 0,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "setting": "bathroom vanity",
+    "room": "Bathroom",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": null,
+    "lived_in": null,
+    "window_covering": "no_window_in_view",
+    "editorial": false,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0041": {
+   "source": "0041_Industrial_Loft_Large_Black_Frame_Camel_Sofa_Glass_Chandelier.png",
+   "blank": "0041_Industrial_Loft_Large_Black_Frame_Camel_Sofa_Glass_Chandelier_Blank.png",
+   "sha1": "41a500d41c6ca67a569f51cbd2cbb4692b516e9f",
+   "size": [
+    693,
+    724
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "2 framed pictures in the photo"
+   ],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     250.29,
+     154.02
+    ],
+    [
+     450.76,
+     154.0
+    ],
+    [
+     450.62,
+     417.54
+    ],
+    [
+     249.86,
+     417.84
+    ]
+   ],
+   "quad": [
+    [
+     251.29,
+     155.02
+    ],
+    [
+     449.76,
+     155.0
+    ],
+    [
+     449.62,
+     416.55
+    ],
+    [
+     250.86,
+     416.84
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#81795E",
+   "wall_lab": [
+    50.9,
+    0.4,
+    12.3
+   ],
+   "aspect": 0.759,
+   "art_h_frac": 0.361,
+   "camera_side": "front",
+   "light_from": "right",
+   "frames": 2,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "reference inward",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "wide",
+    "setting": "industrial loft",
+    "room": "Living room",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "overcast_flat",
+    "lived_in": "tidy",
+    "window_covering": "bare",
+    "editorial": true,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0042": {
+   "source": "0042_Charcoal_Wall_Studio_Desk_Thin_Black_Frame_White_Mat_Fiddle_Leaf.png",
+   "blank": "0042_Charcoal_Wall_Studio_Desk_Thin_Black_Frame_White_Mat_Fiddle_Leaf_Blank.png",
+   "sha1": "2f857dea2823e418ef8987aa05bb5b8dc336af4a",
+   "size": [
+    708,
+    903
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     228.88,
+     193.45
+    ],
+    [
+     473.07,
+     194.19
+    ],
+    [
+     471.09,
+     528.3
+    ],
+    [
+     231.11,
+     528.5
+    ]
+   ],
+   "quad": [
+    [
+     229.89,
+     194.45
+    ],
+    [
+     472.06,
+     195.19
+    ],
+    [
+     470.1,
+     527.3
+    ],
+    [
+     232.1,
+     527.5
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#505356",
+   "wall_lab": [
+    34.9,
+    -0.4,
+    -1.9
+   ],
+   "aspect": 0.724,
+   "art_h_frac": 0.368,
+   "camera_side": "front",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "setting": "charcoal studio desk",
+    "room": "Office",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "north_light_even",
+    "lived_in": "lived_in",
+    "window_covering": "bare",
+    "editorial": false,
+    "presentation": "mat"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0043": {
+   "source": "0043_Parisian_Hallway_Panel_Thin_Black_Frame_Mushroom_Stools_Herringbone.png",
+   "blank": "0043_Parisian_Hallway_Panel_Thin_Black_Frame_Mushroom_Stools_Herringbone_Blank.png",
+   "sha1": "7e2739da370b7a9bb27d63f0e2854e778167d6ae",
+   "size": [
+    692,
+    718
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "2 framed pictures in the photo",
+    "second frame on the left wall"
+   ],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     303.85,
+     93.68
+    ],
+    [
+     445.5,
+     93.19
+    ],
+    [
+     445.5,
+     330.24
+    ],
+    [
+     303.21,
+     329.9
+    ]
+   ],
+   "quad": [
+    [
+     304.85,
+     94.68
+    ],
+    [
+     444.5,
+     94.19
+    ],
+    [
+     444.5,
+     329.23
+    ],
+    [
+     304.21,
+     328.9
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#CAC1BB",
+   "wall_lab": [
+    78.7,
+    1.6,
+    3.5
+   ],
+   "aspect": 0.594,
+   "art_h_frac": 0.327,
+   "camera_side": "front",
+   "light_from": "left",
+   "frames": 2,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 1,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "wide",
+    "setting": "Parisian hallway, doorway",
+    "room": "Living room",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "north_light_even",
+    "lived_in": "tidy",
+    "window_covering": "no_window_in_view",
+    "editorial": true,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0044": {
+   "source": "0044_Double_Height_Living_Room_Large_Dark_Frame_Low_Sofa_Tall_Windows.png",
+   "blank": "0044_Double_Height_Living_Room_Large_Dark_Frame_Low_Sofa_Tall_Windows_Blank.png",
+   "sha1": "87d074be99f55cd149237f7de73e6c655c3d2f9d",
+   "size": [
+    582,
+    728
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     153.08,
+     63.09
+    ],
+    [
+     366.05,
+     86.44
+    ],
+    [
+     367.46,
+     362.31
+    ],
+    [
+     160.03,
+     368.22
+    ]
+   ],
+   "quad": [
+    [
+     154.1,
+     64.21
+    ],
+    [
+     365.05,
+     87.34
+    ],
+    [
+     366.46,
+     361.34
+    ],
+    [
+     161.01,
+     367.19
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#A29890",
+   "wall_lab": [
+    63.4,
+    1.7,
+    5.6
+   ],
+   "aspect": 0.755,
+   "art_h_frac": 0.396,
+   "camera_side": "left",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0083,
+   "frame_eaten_sides": 0,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "wide",
+    "setting": "double-height living",
+    "room": "Living room",
+    "camera_height": "low",
+    "lens": "lens_normal",
+    "light_type": "overcast_flat",
+    "lived_in": "tidy",
+    "window_covering": "linen_curtains",
+    "editorial": true,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0045": {
+   "source": "0045_White_Panelled_Office_Thin_Bronze_Frame_Marble_Desk_Olive_Tree.png",
+   "blank": "0045_White_Panelled_Office_Thin_Bronze_Frame_Marble_Desk_Olive_Tree_Blank.png",
+   "sha1": "f7c405a1687cd4476ee7cc81dc85a57d9d0ff001",
+   "size": [
+    675,
+    720
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "readable text in the room: BLO"
+   ],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     300.49,
+     25.04
+    ],
+    [
+     495.95,
+     23.69
+    ],
+    [
+     493.68,
+     279.24
+    ],
+    [
+     302.01,
+     279.64
+    ]
+   ],
+   "quad": [
+    [
+     301.5,
+     26.03
+    ],
+    [
+     494.94,
+     24.7
+    ],
+    [
+     492.69,
+     278.24
+    ],
+    [
+     303.0,
+     278.64
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#F5F4F1",
+   "wall_lab": [
+    95.9,
+    0.0,
+    1.3
+   ],
+   "aspect": 0.764,
+   "art_h_frac": 0.352,
+   "camera_side": "front",
+   "light_from": "left",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0,
+   "frame_eaten_sides": 0,
+   "opening": "paper edge fallback",
+   "room_text": [
+    {
+     "text": "BLO",
+     "conf": 0.3,
+     "box": [
+      0.9369,
+      0.5477,
+      0.9537,
+      0.5569
+     ]
+    }
+   ],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "medium",
+    "setting": "panelled office",
+    "room": "Office",
+    "camera_height": "eye",
+    "lens": "lens_normal",
+    "light_type": "north_light_even",
+    "lived_in": "tidy",
+    "window_covering": "bare",
+    "editorial": true,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0046": {
+   "source": "0046_Dark_Parisian_Salon_Large_Black_Frame_Above_Mantel_Globe_Chandelier.png",
+   "blank": "0046_Dark_Parisian_Salon_Large_Black_Frame_Above_Mantel_Globe_Chandelier_Blank.png",
+   "sha1": "f4c2363d3b3622f8c4e7046446fe79c4395aec42",
+   "size": [
+    667,
+    720
+   ],
+   "prep_version": 1,
+   "usable": false,
+   "why": [
+    "art sliver left beside the fill (8.8% of the worst side)"
+   ],
+   "blank_method": "mask_quad",
+   "fill_polygon": [
+    [
+     416.81,
+     151.32
+    ],
+    [
+     619.16,
+     130.54
+    ],
+    [
+     616.08,
+     425.94
+    ],
+    [
+     414.97,
+     424.34
+    ]
+   ],
+   "quad": [
+    [
+     417.81,
+     152.22
+    ],
+    [
+     618.15,
+     131.65
+    ],
+    [
+     615.09,
+     424.94
+    ],
+    [
+     415.98,
+     423.35
+    ]
+   ],
+   "marker": "orange",
+   "wall_hex": "#6D6A5D",
+   "wall_lab": [
+    44.7,
+    -0.9,
+    6.6
+   ],
+   "aspect": 0.701,
+   "art_h_frac": 0.392,
+   "camera_side": "right",
+   "light_from": "left",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0882,
+   "frame_eaten_sides": 0,
+   "opening": "paper edge fallback",
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "wide",
+    "setting": "dark salon, mantel",
+    "room": "Living room",
+    "camera_height": "eye",
+    "lens": "lens_wide",
+    "light_type": "dusk_lamp_mix",
+    "lived_in": "tidy",
+    "window_covering": "heavy_drapes",
+    "editorial": true,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  },
+  "0047": {
+   "source": "0047_Taupe_Living_Room_Thin_Gold_Frame_Above_White_Mantel_Blossom_Branch.png",
+   "blank": "0047_Taupe_Living_Room_Thin_Gold_Frame_Above_White_Mantel_Blossom_Branch_Blank.png",
+   "sha1": "b8a4ae40eab1e6f4339f59815afafc6c4b027ab5",
+   "size": [
+    688,
+    729
+   ],
+   "prep_version": 1,
+   "usable": true,
+   "why": [],
+   "blank_method": "sam_quad",
+   "fill_polygon": [
+    [
+     222.48,
+     6.84
+    ],
+    [
+     389.83,
+     5.87
+    ],
+    [
+     385.63,
+     214.71
+    ],
+    [
+     224.21,
+     214.11
+    ]
+   ],
+   "quad": [
+    [
+     223.49,
+     7.84
+    ],
+    [
+     388.81,
+     6.87
+    ],
+    [
+     384.65,
+     213.71
+    ],
+    [
+     225.2,
+     213.11
+    ]
+   ],
+   "marker": "blue",
+   "wall_hex": "#74644A",
+   "wall_lab": [
+    43.1,
+    3.0,
+    12.2
+   ],
+   "aspect": 0.816,
+   "art_h_frac": 0.283,
+   "camera_side": "front",
+   "light_from": "right",
+   "frames": 1,
+   "mirrors": 0,
+   "screens": 0,
+   "shape": "portrait",
+   "upright": true,
+   "leftover_ring": 0.0278,
+   "frame_eaten_sides": 0,
+   "opening": null,
+   "room_text": [],
+   "uses": [],
+   "grades": [],
+   "tags": {
+    "display_group": "hung",
+    "shot": "wide",
+    "setting": "taupe living, mantel",
+    "room": "Living room",
+    "camera_height": "seated",
+    "lens": "lens_normal",
+    "light_type": "overcast_flat",
+    "lived_in": "tidy",
+    "window_covering": "no_window_in_view",
+    "editorial": true,
+    "presentation": "frame"
+   },
+   "tags_by": "seed_2026-11-20"
+  }
+ }
+}

@@ -101,6 +101,43 @@ def gemini_box(image_path, model=GEMINI_MODEL, timeout=60):
     return [x0 / 1000 * W, y0 / 1000 * H, x1 / 1000 * W, y1 / 1000 * H]
 
 
+# Reference mode (realism addendum 1.2, 2026-11-20): a reference photograph of a REAL framed artwork (Tony's
+# Mock-Up_Inspiration board) is blanked to the insert colour, so the art itself (not a blank insert) is what SAM finds.
+REFERENCE_PROMPT = ("This interior photo shows framed wall art. Return JSON {\"box_2d\": [ymin, xmin, ymax, xmax], "
+                    "\"frames\": n, \"mirrors\": n, \"screens\": n, \"shape\": \"portrait|landscape|square|round|"
+                    "irregular\", \"upright\": true|false} on a 0-1000 grid: box_2d = the printed ARTWORK inside the "
+                    "main frame and inside any mat (not the moulding, not the mat); frames = how many framed pictures, "
+                    "posters or canvases are visible in the whole photo; mirrors and screens = how many mirrors and TV "
+                    "or computer screens showing a picture are visible; shape = the main artwork's shape; upright = "
+                    "true when the main artwork stands or hangs upright (false when it lies flat).")
+
+
+def gemini_reference(image_path, model=GEMINI_MODEL, timeout=60):
+    """Reference mode: (rough [x0, y0, x1, y1] box of the main artwork, {frames, mirrors, screens, shape, upright})."""
+    from PIL import Image
+    key = _gemini_key()
+    if not key:
+        raise RuntimeError("GEMINI_API_KEY is not set")
+    with Image.open(image_path) as im:
+        W, H = im.size
+    mime = "image/png" if str(image_path).lower().endswith(".png") else "image/jpeg"
+    body = {"contents": [{"parts": [{"text": REFERENCE_PROMPT}, {"inline_data": {"mime_type": mime, "data":
+                         base64.b64encode(Path(image_path).read_bytes()).decode()}}]}],
+            "generationConfig": {"responseMimeType": "application/json", "temperature": 0}}
+    req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                                 data=json.dumps(body).encode(),
+                                 headers={"Content-Type": "application/json", "x-goog-api-key": key})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        out = json.load(r)
+    obj = json.loads(out["candidates"][0]["content"]["parts"][0]["text"])
+    obj = obj if isinstance(obj, dict) else obj[0]
+    y0, x0, y1, x1 = [float(v) for v in obj["box_2d"]]
+    info = {"frames": int(obj.get("frames") or 0), "mirrors": int(obj.get("mirrors") or 0),
+            "screens": int(obj.get("screens") or 0), "shape": str(obj.get("shape") or ""),
+            "upright": bool(obj.get("upright", True))}
+    return [x0 / 1000 * W, y0 / 1000 * H, x1 / 1000 * W, y1 / 1000 * H], info
+
+
 # ---------- SAM 2 (torch; only in the ikigai-sam venv) ----------
 
 _PRED = None
@@ -208,18 +245,29 @@ def insert_candidates(rgb, box):
     return out
 
 
-def segment_insert(rgb, box):
+def segment_insert(rgb, box, reference=False):
     """The blank-insert candidates in the order to try: of the clean four-sided SAM 2 masks, those whose edge band looks
     like their core (paper up to its edge, not frame moulding: dE <= max(12, 1.5 x the best)) and at least 20% of the
     largest, SMALLEST first (the innermost opening: a mat window inside a mat is the art opening; when its edge cannot
-    be fitted the next larger one is tried). Returns [(bool mask, logits, info)]."""
+    be fitted the next larger one is tried). Returns [(bool mask, logits, info)].
+    reference=True (a real artwork, realism addendum 1.2): no edge-band filter (real art has content, so its band
+    always differs from its core); of the candidates near the Gemini box's area (0.55-1.3 x, Gemini's box often takes
+    a thin frame in too), the SMALLEST first (the art inside the frame and mat, not frame + art), then the rest by
+    closeness to the box area."""
     cands = insert_candidates(rgb, box)
     if not cands:
         raise QuadError("SAM 2 found no clean four-sided insert in the box")
-    lim = max(12.0, 1.5 * min(c["dE"] for c in cands))
-    ok = [c for c in cands if c["dE"] <= lim]
-    big = max(c["area"] for c in ok)
-    ok = sorted((c for c in ok if c["area"] >= 0.2 * big), key=lambda c: (c["area"], -c["score"]))
+    if reference:
+        barea = max(1.0, (box[2] - box[0]) * (box[3] - box[1]))
+        near = sorted((c for c in cands if 0.55 <= c["area"] / barea <= 1.3), key=lambda c: (c["area"], -c["score"]))
+        rest = sorted((c for c in cands if not 0.55 <= c["area"] / barea <= 1.3),
+                      key=lambda c: (abs(math.log(c["area"] / barea)), -c["score"]))
+        ok = near + rest
+    else:
+        lim = max(12.0, 1.5 * min(c["dE"] for c in cands))
+        ok = [c for c in cands if c["dE"] <= lim]
+        big = max(c["area"] for c in ok)
+        ok = sorted((c for c in ok if c["area"] >= 0.2 * big), key=lambda c: (c["area"], -c["score"]))
     seen, out = [], []
     for c in ok:                                  # near-identical masks from different prompts: try once
         if any(abs(c["area"] - a) < 0.01 * a for a in seen):
@@ -869,15 +917,114 @@ def load_rgb(path):
         return np.asarray(im.convert("RGB"))
 
 
-def detect(image_path, box=None, wall=False, canvas=False, paper_fallback=False):
-    """Full pipeline on one photo. Returns (result dict, refined alpha, wall alpha or None)."""
+def mask_polygon(rgb, box, min_cover=0.6, max_points=64):
+    """Reference mask mode (realism addendum 1.3): the best plain SAM mask of the box prompt that lies inside the
+    Gemini box and covers >= 60% of it, refined, dilated by 2 px, as a simplified contour (<= 64 points). Returns
+    (polygon [[x, y], ...], refined alpha) or raises QuadError."""
+    import cv2
+    H, W = rgb.shape[:2]
+    x0, y0, x1, y1 = box
+    bw, bh = x1 - x0, y1 - y0
+    grow = np.zeros((H, W), bool)
+    grow[max(0, int(y0 - 0.04 * bh)):int(y1 + 0.04 * bh) + 1, max(0, int(x0 - 0.04 * bw)):int(x1 + 0.04 * bw) + 1] = True
+    inbox = np.zeros((H, W), bool)
+    inbox[max(0, int(y0)):int(y1) + 1, max(0, int(x0)):int(x1) + 1] = True
+    logits, scores = sam_predict(rgb, box=box)
+    best = None
+    for lg, s in zip(logits, scores):
+        m = lg > 0
+        area = int(m.sum())
+        if area < 400 or (m & ~grow).sum() > 0.05 * area or (m & inbox).sum() < min_cover * inbox.sum():
+            continue
+        if best is None or s > best[1]:
+            best = (m, float(s))
+    if best is None:
+        raise QuadError("artwork not found (no SAM mask inside the box covering 60% of it)")
+    alpha = refine_alpha(rgb, best[0])
+    m = cv2.dilate((alpha > 0.5).astype("uint8"), np.ones((5, 5), "uint8"))
+    cs, _ = cv2.findContours(m, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    c = max(cs, key=cv2.contourArea)
+    eps = 0.5
+    poly = cv2.approxPolyDP(c, eps, True)
+    while len(poly) > max_points:
+        eps *= 1.4
+        poly = cv2.approxPolyDP(c, eps, True)
+    return [[float(p[0][0]), float(p[0][1])] for p in poly], alpha
+
+
+def detect(image_path, box=None, wall=False, canvas=False, paper_fallback=False, reference=False):
+    """Full pipeline on one photo. Returns (result dict, refined alpha, wall alpha or None).
+    reference=True: a reference photograph of real framed art (realism addendum 1.2): Gemini's reference prompt gives
+    the box + frame / mirror / screen counts, the paper edge is the fallback opening, and when no four-sided artwork can
+    be fitted the plain SAM mask is used (res["mask_polygon"], blank_method "mask")."""
     if any(n in str(image_path) for n in NOT_ON):
         raise SystemExit("Not on the Wabi bedroom (verified by hand).")
     rgb = load_rgb(image_path)
     t0 = time.time()
     src = "given"
+    ref_info = None
     if box is None:
-        box, src = gemini_box(image_path), "gemini"
+        if reference:
+            box, ref_info = gemini_reference(image_path)
+            src = "gemini_reference"
+        else:
+            box, src = gemini_box(image_path), "gemini"
+    if reference:
+        paper_fallback = True
+        try:
+            cands = segment_insert(rgb, box, reference=True)
+        except QuadError:
+            cands = []
+        errors = []
+
+        def ref_opening(q):
+            if canvas:
+                return canvas_face_quad(rgb, q)
+            # SAM (and Gemini's box) often take a thin frame in with the art: search for the frame's hard inner edge
+            # OUTWARD from a quad inset into the art; else the edge outward from SAM's own quad; else SAM's edge
+            size = min(math.dist(q[0], q[1]), math.dist(q[0], q[3]))
+            k = float(np.clip(0.02 * size, 6.0, 20.0))
+            try:
+                qo, info = opening_quad(rgb, offset_quad(q, -k))
+                return qo, dict(info, mode="reference inward", inset_px=round(k, 1))
+            except QuadError:
+                try:
+                    return opening_quad(rgb, q)
+                except QuadError as e:
+                    return offset_quad(q, -0.5), {"mode": "paper edge fallback", "why": str(e)[:160]}
+
+        def result(method, q, q_open, open_info, **kw):
+            return {"image": str(image_path), "box": [round(float(v), 1) for v in box], "box_source": src,
+                    "reference": ref_info, "blank_method": method, "corners": np.round(q_open, 3).tolist(),
+                    "corners_paper": np.round(q, 3).tolist(), "opening": open_info, "skipped": errors,
+                    "model": f"sam2.1_hiera_{predictor().model_name}", "device": predictor().device_name,
+                    "seconds": round(time.time() - t0, 1), **kw}
+        for mask, logits, sel in cands:
+            try:
+                q_mask = quad_from_mask(mask)
+            except QuadError as e:
+                errors.append(f"candidate {sel['area']} px: {e}")
+                continue
+            alpha = refine_alpha(rgb, mask)
+            try:      # the precise fit when the art's own edge allows it; real art content often does not
+                q, stats = fit_quad(alpha, q_mask)
+                ver = verify_quad(q, alpha, q_mask, stats)
+            except QuadError as e:
+                q, ver = q_mask, {"coarse": True, "why": str(e)[:200]}
+            q_open, open_info = ref_opening(q)
+            return result("sam_canvas" if canvas else "sam_quad", q, q_open, open_info, sam=sel, verify=ver), alpha, None
+        poly, alpha = mask_polygon(rgb, box)            # raises QuadError "artwork not found"
+        try:            # a rectangle behind a ragged mask: its robust quad, then the same opening search
+            q = quad_from_mask(alpha > 0.5)
+            q_open, open_info = ref_opening(q)
+            return result("mask_quad", q, q_open, open_info), alpha, None
+        except QuadError as e:
+            errors.append(f"mask quad: {e}")
+        res = {"image": str(image_path), "box": [round(float(v), 1) for v in box], "box_source": src,
+               "reference": ref_info, "blank_method": "mask", "mask_polygon": poly, "skipped": errors,
+               "model": f"sam2.1_hiera_{predictor().model_name}", "device": predictor().device_name,
+               "seconds": round(time.time() - t0, 1)}
+        return res, alpha, None
     errors = []
     for mask, logits, sel in segment_insert(rgb, box):
         try:
@@ -957,11 +1104,14 @@ def main(argv=None):
     ap.add_argument("--paper-fallback", action="store_true", help="use the paper edge when no hard frame edge is found")
     ap.add_argument("--canvas", action="store_true", help="stretched canvas: the paper edge is the opening")
     ap.add_argument("--wall", help="16-bit PNG of the refined wall alpha (SAM wall segmentation)")
+    ap.add_argument("--reference", action="store_true",
+                    help="a reference photo of real framed art: find the artwork (realism addendum 1.2)")
     a = ap.parse_args(argv)
     box = [float(v) for v in a.box.split(",")] if a.box else None
     try:
-        res, alpha, wall_a = detect(a.image, box, wall=bool(a.wall), canvas=a.canvas, paper_fallback=a.paper_fallback)
-    except QuadError as e:
+        res, alpha, wall_a = detect(a.image, box, wall=bool(a.wall), canvas=a.canvas, paper_fallback=a.paper_fallback,
+                                    reference=a.reference)
+    except (QuadError, RuntimeError) as e:
         res = {"image": a.image, "error": str(e)}
         if a.json:
             Path(a.json).write_text(json.dumps(res, indent=1))
@@ -975,7 +1125,7 @@ def main(argv=None):
         save_alpha(alpha, a.alpha)
     if a.wall and wall_a is not None:
         save_alpha(wall_a, a.wall)
-    if a.out:
+    if a.out and "corners" in res:
         overlay(a.image, alpha, res["corners"], a.out, res["corners_paper"])
         res["overlay"] = a.out
     if a.json:

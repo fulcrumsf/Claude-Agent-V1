@@ -38,10 +38,12 @@ Routes (prefix /ikigai):
   POST /api/production/{id}/tags  {rooms[], styles[]} -> Tony's ticks, saved as tags on the design
   POST /api/production/{id}/slots/{slot}/generate {template?} -> one card (one job at a time)
   POST /api/production/{id}/images/{name} {decision} -> approved | denied (-> Archive) | pending (undo)
+  POST /api/production/{id}/grade {name, grade, note?} -> Tony's grade of a slot image (A+ ... F, null clears)
   POST /api/production/{id}/plan {slots?, wider?} -> (re)plan the open slots' scenes (app/slot_planner.py, free;
                                   background, claude -p); wider = plan those slots one step wider
 """
 import json
+import re
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -226,6 +228,12 @@ class TagsIn(BaseModel):
 
 class GenerateIn(BaseModel):
     template: str | None = None    # "+" picker: a library template (rel path under Portrait_Templates)
+
+
+class GradeIn(BaseModel):
+    name: str                      # the slot image file
+    grade: str | None = None       # A+ ... F; None clears
+    note: str | None = None
 
 
 class PlanIn(BaseModel):
@@ -516,6 +524,26 @@ def mount(app, con, settings, chat=None, prefix="/ikigai", ask=None, writer=None
             raise HTTPException(422, str(e))
         spawn(production.run, con, settings, lid, mockup_build)
         return prints.status(con, idea_id, settings, prefix)
+
+    @r.post("/api/production/{idea_id}/grade")
+    def api_production_grade(idea_id: int, body: GradeIn):
+        """Tony's grade of one slot image (realism addendum 7): stored with the listing, the template and the
+        reference; Approve / Deny are untouched."""
+        prod_call(production.grade, con, settings, idea_id, body.name, body.grade or None, body.note)
+        return JSONResponse(with_fixes(prod_call(production.panel, con, settings, idea_id, prefix)), headers=NO_STORE)
+
+    @r.get("/api/references/{rid}/blank")
+    def api_reference_blank(rid: str):
+        """The blanked reference photograph of a planned slot (Show prompt thumbnail)."""
+        from . import references
+        if not re.fullmatch(r"\d{4}", rid):
+            raise HTTPException(404, "no such reference")
+        folder = references.ref_dir(settings)
+        e = (references.load(folder).get("refs") or {}).get(rid) or {}
+        f = folder / str(e.get("blank") or "")
+        if not e.get("blank") or not f.is_file():
+            raise HTTPException(404, "no such reference")
+        return FileResponse(f, headers=REVALIDATE)
 
     @r.get("/api/production/{idea_id}/file/{name}")
     def api_production_file(idea_id: int, name: str):

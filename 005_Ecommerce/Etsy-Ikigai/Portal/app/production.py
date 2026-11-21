@@ -26,7 +26,7 @@ import threading
 from datetime import datetime
 from pathlib import Path
 
-from . import mockups, prints
+from . import mockups, prints, scene_scan
 from . import room_slots as rs
 from . import slot_planner as splan
 from . import room_templates as rt
@@ -214,6 +214,66 @@ def decide(con, settings, idea_id, name, decision):
         prints._save_record(con, lst["id"], rec)
 
 
+# ---------- Tony's grades (realism addendum 7, 2026-11-20) ----------
+GRADES = tuple(stp.GRADE_SCORE)          # A+ ... F
+
+
+def _slot_of(name, slots):
+    """(slot number, slot record) of an image file name (NN_...), or (None, {})."""
+    m = re.match(r"^(\d{2})_", str(name))
+    if not m:
+        return None, {}
+    return int(m.group(1)), dict(slots.get(str(int(m.group(1)))) or {})
+
+
+def grade(con, settings, idea_id, name, grade_value, note=None):
+    """Tony's grade of one slot image: stored with the listing (production.grades[<file>]), in the template's
+    Grades.json (scene_templates.add_grade, whitelisted keys) and on the reference used (references manifest).
+    grade_value None clears it. Approve / Deny are untouched. Returns the stored entry (or None)."""
+    from . import references
+    if grade_value not in (None, "") and grade_value not in GRADES:
+        raise ProductionError(f"grade must be one of {', '.join(GRADES)}")
+    note = (str(note).strip()[:200] or None) if note else None
+    with LOCK:
+        lst = prints.listing_for(con, idea_id)
+        if not lst:
+            raise ProductionError("no listing for this design")
+        rec = prints._record(con, lst["id"])
+        p = _prod(rec)
+        slot, srec = _slot_of(name, p["slots"])
+        if slot is None:
+            raise ProductionError(f"{name} is not a slot image")
+        mine = srec.get("file") == name
+        rel = srec.get("template") if mine else None
+        ref = ((srec.get("reference") or {}).get("id") if mine and (srec.get("reference") or {}).get("sent") else None)
+        gs = p.setdefault("grades", {})
+        if grade_value in (None, ""):
+            old = gs.pop(name, None)
+            prints._save_record(con, lst["id"], rec)
+            entry = None
+            rel = rel or (old or {}).get("template")
+            ref = ref or (old or {}).get("reference")
+        else:
+            entry = {"grade": grade_value, **({"note": note} if note else {}),
+                     "at": datetime.now().isoformat(timespec="seconds"), "slot": slot, "template": rel,
+                     "brief_rev": srec.get("brief_rev") if mine else None, "reference": ref}
+            gs[name] = entry
+            prints._save_record(con, lst["id"], rec)
+    if rel:
+        psd = stp.library(settings) / rel
+        if psd.is_file():
+            if entry:
+                stp.add_grade(psd, {"idea_id": idea_id, "design": lst["title"], "slot": slot, "grade": grade_value,
+                                    "note": note, "at": entry["at"]})
+            else:
+                stp.remove_grade(psd, idea_id, slot)
+    if ref:
+        references.record_grade(settings, ref, {"idea_id": idea_id, "slot": slot, "grade": grade_value, "note": note,
+                                                "at": datetime.now().isoformat(timespec="seconds")} if entry else
+                                {"idea_id": idea_id, "slot": slot, "grade": None})
+    return entry
+
+
 def _archive_template(settings, slot):
     tdir = (stp.library(settings) / slot["new_template"]).parent
     if not tdir.is_dir():
@@ -359,7 +419,8 @@ def library_picks(plan, slots, lib, fails=frozenset(), briefs=None):
         srec = slots.get(str(c["slot"])) or {}
         mine = srec.get("template")
         cands = [t for t in lib if stp.matches(t, c["room"], c["decor"], c["ratio"]) and t["rel"] not in fails
-                 and t["rel"] not in used and t["rel"] != mine and t["rel"] not in (srec.get("tried") or [])]
+                 and t["rel"] not in used and t["rel"] != mine and t["rel"] not in (srec.get("tried") or [])
+                 and stp.auto_pick_ok(t)]          # graded below B- or text-scan flagged: only with "+"
         out[c["slot"]] = cands[0] if cands else None
         if cands:
             used.add(cands[0]["rel"])
@@ -429,6 +490,7 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None, start_plan=
         img = None
         if name:
             img = {"file": name, "url": _url(prefix, idea_id, p, name), "status": approvals.get(name, "pending"),
+                   "grade": ((_prod(rec).get("grades") or {}).get(name) or {}).get("grade"),
                    "where": where, "flagged": where == "flagged", "guard": srec.get("guard") if srec.get("file") == name
                    else None, "mb": round(p.stat().st_size / 1e6, 1), "print": srec.get("print")
                    if srec.get("file") == name else None}
@@ -442,6 +504,8 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None, start_plan=
         cb = splan.card_brief(shown)
         if cb is not None:
             cb["usable"] = bool(b)
+            if cb.get("reference"):
+                cb["ref_thumb_url"] = f"{prefix}/api/references/{cb['reference']}/blank"
             tight_fails = [a for a in (shown.get("attempts") or []) if a.get("result") in ("no_insert", "gate_fail")]
             cb["offer_wider"] = bool(shown.get("shot") == "tight" and len(tight_fails) >= 2)
         cards.append({**c, "image": img, "state": state, "message": srec.get("message", ""),
@@ -451,7 +515,8 @@ def panel(con, settings, idea_id, prefix="/ikigai", start_auto=None, start_plan=
                       "made_for": made_for, "next": nxt, "brief": cb,
                       "random_look": nxt["kind"] == "new" and not b,
                       "shot_drift": srec.get("shot_drift") if srec.get("file") == name else None,
-                      "credits_spent": srec.get("credits")})
+                      "credits_spent": srec.get("credits"),
+                      "ref_note": (srec.get("reference") or {}).get("note") if srec.get("file") == name else None})
     styles, source = effective_styles(tags)
     return {"idea_id": idea_id, "name": lst["title"], "title": idea["title"],
             "image_url": prints.status(con, idea_id, settings, prefix)["image_url"],
@@ -636,6 +701,78 @@ def _attempt(con, idea_id, slot, rev, entry):
         pass
 
 
+def scan_scene(png, settings=None, overlay=None):
+    """The free output scan of a new scene (app/scene_scan.py); tests swap this for a stub."""
+    return scene_scan.scan(png, settings, overlay=overlay)
+
+
+def _scan_scene(settings, scene, td):
+    try:
+        return scan_scene(scene, settings, overlay=str(Path(td) / "scan.png"))
+    except Exception as e:  # noqa: BLE001  (a broken scanner never blocks a paid scene; noted on the template)
+        return {"pass": True, "severity": "none", "findings": [], "mode": "error", "notes": [str(e)[:120]]}
+
+
+def _leak(scene, built, marker):
+    """Share of the scene within dE 12 of the insert colour outside the built art quad, or None."""
+    try:
+        from PIL import Image
+        import numpy as np
+        with Image.open(scene) as im:
+            rgb = np.asarray(im.convert("RGB"))
+        return scene_scan.marker_leak(rgb, built["quad_art"], marker or "orange")
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _reference_for(settings, brief, marker, td):
+    """The reference photograph to send with a planned pv2 scene (realism addendum 2.5), or None when the brief has
+    none. {"id", "png" (None = text-only), "sent", "flip", "note"}."""
+    if not brief or brief.get("pv") != splan.PV or not brief.get("reference"):
+        return None
+    from . import references
+    rid = brief["reference"]
+    out = {"id": rid, "png": None, "sent": False, "flip": bool(brief.get("reference_flip")), "note": ""}
+    eng = settings.get("room_scene_engine", stp.DEFAULTS["room_scene_engine"])
+    if not splan.cfg(settings, "planner_references"):
+        out["note"] = "reference not sent (setting)"
+    elif eng not in stp.REF_ENGINES:
+        out["note"] = "reference not sent (engine)"
+    else:
+        entry = (references.load(references.ref_dir(settings)).get("refs") or {}).get(rid)
+        if not entry or not entry.get("blank") or not (references.ref_dir(settings) / entry["blank"]).is_file():
+            out["note"] = "reference not sent (blank missing)"
+        else:
+            try:
+                out["png"] = references.blank_for(entry, marker or "orange", out["flip"], td, settings)
+                out["sent"] = True
+            except Exception as e:  # noqa: BLE001
+                out["note"] = f"reference not sent ({str(e)[:60]})"
+    return out
+
+
+def _generate(settings, prompt, scene, generator, ref, brief):
+    """generate_scene with the reference image when it can be sent. A refusal ("flagged as sensitive") that did not
+    move the balance is retried ONCE text-only inside the same click (so one click costs at most one scene), and the
+    reference is marked kie_refused so the planner never picks it again."""
+    if not ref or not ref["sent"]:
+        return stp.generate_scene(prompt, scene, settings, generator)
+    before = stp.kie_balance(settings)
+    try:
+        return stp.generate_scene(prompt, scene, settings, generator, ref_imgs=[ref["png"]])
+    except stp.TemplateError as e:
+        if not stp.is_refusal(str(e)):
+            raise
+        after = stp.kie_balance(settings)
+        moved = before is None or after is None or abs(after - before) > 0.01     # unknown counts as moved
+        from . import references
+        references.mark_refused(settings, ref["id"])
+        if moved:
+            raise stp.TemplateError(f"{e} (reference {ref['id']} refused; the balance moved, so no retry)")
+        ref.update(sent=False, note=f"reference {ref['id']} refused by kie.ai; retried text-only")
+        return stp.generate_scene(splan.assemble(brief, ref=False), scene, settings, generator)
+
+
 def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
     """Worker for one card: pick the source, render, guard, place. Always releases the job slot.
     With a usable set-plan brief for the slot (app/slot_planner.py) and no "+" pick: a "library" brief renders its
@@ -687,9 +824,31 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                     marker = "orange"
                 attempt = {"result": "not_drawn", "rev": (brief or {}).get("rev")} if brief else None
                 scene = td / "scene.png"
+                ref = _reference_for(settings, brief, marker, td) if look is None else None
+                if ref and ref["png"] is None:                        # the reference could not be sent: text-only
+                    prompt = splan.assemble(brief, ref=False)
                 _stage("drawing the room (kie.ai)")
-                gen = stp.generate_scene(prompt, scene, settings, generator)
+                gen = _generate(settings, prompt, scene, generator, ref, brief)
+                if ref:
+                    out["reference"] = {k: ref[k] for k in ("id", "sent", "note", "flip")}
+                    if attempt:
+                        attempt["reference_sent"] = ref["sent"]
+                    if not ref["sent"]:
+                        prompt = splan.assemble(brief, ref=False)
                 out["credits"] = gen.get("credits")
+                _stage("checking the scene for stray text (free)")
+                scan = _scan_scene(settings, scene, td)
+                if scan["severity"] == "hard":
+                    if attempt:
+                        attempt["result"] = "stray_text"
+                    folder.joinpath(ARCHIVE).mkdir(parents=True, exist_ok=True)
+                    stamp = f"{datetime.now():%Y%m%d_%H%M%S}"
+                    keep = folder / ARCHIVE / f"Scene_Stray_Text_{slot:02d}_{stamp}.png"
+                    shutil.copy2(scene, keep)
+                    if scan.get("overlay") and Path(scan["overlay"]).is_file():
+                        shutil.copy2(scan["overlay"], folder / ARCHIVE / f"Scene_Stray_Text_{slot:02d}_{stamp}_Scan.png")
+                    raise stp.TemplateError(f"{scene_scan.summary(scan)} (scene kept as {ARCHIVE}/{keep.name}); "
+                                            "Regenerate for a new scene")
                 _stage("finding the frame, building the PSD")
                 (td / "build").mkdir()
                 try:
@@ -706,9 +865,18 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                     shutil.copy2(scene, keep)
                     why = str(e) if "off the print ratio" in str(e) else "the scene has no clean blank frame insert"
                     raise stp.TemplateError(f"{why} (scene kept as {ARCHIVE}/{keep.name}); Regenerate for a new scene")
+                leak = _leak(scene, built, marker)
+                if leak is not None and leak > scene_scan.LEAK_MAX:      # the insert colour outside the art: soft
+                    extra, _ = scene_scan.classify((), (), leak)
+                    scan = dict(scan, findings=list(scan.get("findings") or []) + extra, severity="soft"
+                                if scan["severity"] == "none" else scan["severity"])
+                    scan["pass"] = False
                 meta = {"prompt": prompt, **({"look": look} if look is not None else
-                                             {"brief": {k: v for k, v in brief.items()
-                                                        if k not in ("history", "attempts", "prompt")}}),
+                                             {"brief": {**{k: v for k, v in brief.items()
+                                                           if k not in ("history", "attempts", "prompt")},
+                                                        **({"reference_sent": ref["sent"]} if ref else {})}}),
+                        **({"text_scan": {k: scan.get(k) for k in ("pass", "severity", "findings", "mode")}}
+                           if scan.get("mode") != "off" else {}),
                         "engine": settings.get("room_scene_engine", "nbpro"),
                         "model": gen.get("model"), "resolution": settings.get("room_scene_resolution", "2K"),
                         "aspect": settings.get("room_scene_aspect", "4:3"), "credits": gen.get("credits"),
@@ -722,7 +890,13 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                 g = rt.guard_quad(render, r["fitted"], man["quad_art"], tdir / man["scene"],
                                   man.get("guard_max_cover"), settings)
                 g = _with_gate(g, art_gate(settings, psd, man, render, td))     # a fresh build: nothing to rebuild
+                if scan["severity"] == "soft":         # realism 6.4: built (credits not wasted) but flagged for Tony
+                    g = {**g, "pass": False, "why": list(g["why"]) + [scene_scan.summary(scan)], "text_scan": False}
                 out.update(template=rel, new_template=rel, print=art.name, cropped=r["cropped"])
+                if ref and ref["sent"]:
+                    from . import references
+                    references.record_use(settings, ref["id"], {"idea_id": idea_id, "listing": lst["title"],
+                                                                 "slot": slot, "template": rel})
                 if brief:
                     m2 = stp.shot_meta(man)
                     drift = None
@@ -733,6 +907,10 @@ def run_slot(con, settings, idea_id, slot, template_rel=None, generator=None):
                         out["shot_drift"] = drift
                     attempt = {"result": "built" if g["pass"] else "gate_fail", "rev": brief.get("rev"),
                                "template": rel, "drift": drift, "why": "; ".join(g["why"])[:300]}
+                    if ref:
+                        attempt["reference_sent"] = ref["sent"]
+                    if scan["severity"] == "soft":
+                        attempt["result"] = "text_flag"
             elif t.get("wired"):                           # Teak Sideboard etc.: only when Tony picks it with +
                 _stage("rendering the art into the room")
                 room = next(x for x in rt.rooms(settings) if x["dir"] == t["room_dir"])

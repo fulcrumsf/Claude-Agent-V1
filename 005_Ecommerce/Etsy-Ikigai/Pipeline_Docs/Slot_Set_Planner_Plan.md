@@ -4,7 +4,7 @@ type: plan
 domain: ecommerce
 tags: [ikigai-digital-studios, portal, production, mockups, room-templates]
 created: 2026-11-19
-status: built 2026-11-19 (steps 1-10 to G1; G2 not approved, not run); uncommitted until the parent session commits
+status: built 2026-11-19 (steps 1-10 to G1; G2 not approved, not run); uncommitted until the parent session commits; realism addendum built 2026-11-21 (see Slot_Set_Planner_Realism_Addendum.md: references, lived-in pv2 briefs, repeat limits, output scan, grades)
 ---
 
 # Slot-Set Planner: implementation plan (2026-11-19)

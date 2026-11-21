@@ -58,7 +58,8 @@ def env(tmp_path, monkeypatch):
     con = connect(tmp_path / "t.db")
     (tmp_path / "Designs").mkdir()
     S = {"designs_root": str(tmp_path / "Designs"), "design_seq_floor": 120, "price_default": 6.5,
-         "upscale_model": "remacri-4x", "template_checks_path": str(tmp_path / "template_checks.json")}
+         "upscale_model": "remacri-4x", "template_checks_path": str(tmp_path / "template_checks.json"),
+         "reference_dir": str(tmp_path / "No_References")}       # realism addendum: tests never read Tony's board
     app = FastAPI()
     chat = chat_mod.Chat(con)
     app.include_router(chat_mod.router(chat))
