@@ -45,3 +45,7 @@ Tools: crop = Pillow; LaMa = `big-lama.pt` from the Pinokio ComfyUI models folde
 
 Totals: 5 crop, 12 inpaint (11 LaMa, 1 Nano), 15 untouched. kie.ai credits spent: 6 (one Nano call; the
 refused 0028 call cost nothing).
+
+
+## 2026-11-20 low-resolution sweep (Tony)
+Images 400 px or smaller on their longest side (all ~200-340 px screenshots) moved to Archive/ so only usable references stay. Where Archive already held the untouched original, the cleaned version was moved in as `<name>_Cleaned.png`. Moved: 0002, 0003, 0004, 0005, 0006, 0007, 0008, 0009, 0010, 0011, 0012, 0013, 0014, 0015, 0016, 0017, 0018, 0019, 0020, 0021, 0022.
