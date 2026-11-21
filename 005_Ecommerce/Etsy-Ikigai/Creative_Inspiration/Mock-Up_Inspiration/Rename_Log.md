@@ -47,3 +47,23 @@ Ten new screenshots renamed in place, same convention, ids continue from 0023.
 | 0030 | Screenshot 2026-11-20 at 2.28.43 PM.png | 0030_Coffee_Bar_Walnut_Dresser_Thin_Black_Frame_Floating_Shelves.png |
 | 0031 | Screenshot 2026-11-20 at 2.29.20 PM.png | 0031_Oak_Shelving_Niche_Thin_Oak_Frame_Slatted_Sun_Stripes.png |
 | 0032 | Screenshot 2026-11-20 at 2.30.22 PM.png | 0032_Floor_Lean_Thin_Oak_Frame_Herringbone_Floor_French_Door.png |
+
+Fifteen new screenshots renamed in place, same convention, ids continue from 0033.
+
+| id | original_filename | new_filename |
+|---|---|---|
+| 0033 | Screenshot 2026-11-20 at 10.08.32 PM.png | 0033_White_Wall_Oak_Ledge_Shelf_Square_White_Frame_Stacked_Books.png |
+| 0034 | Screenshot 2026-11-20 at 10.09.07 PM.png | 0034_Cream_Wall_Walnut_Sideboard_Thin_Oak_Frame_Donut_Vase.png |
+| 0035 | Screenshot 2026-11-20 at 10.09.34 PM.png | 0035_White_Wall_Taupe_Sideboard_Thin_Oak_Frame_Wide_Mat_Dried_Thistle.png |
+| 0036 | Screenshot 2026-11-20 at 10.10.25 PM.png | 0036_Plaster_Hallway_Oversized_Textured_Canvas_Boucle_Pouf_Wood_Stool.png |
+| 0037 | Screenshot 2026-11-20 at 10.10.52 PM.png | 0037_Warm_White_Wall_Thin_Black_Frame_Boucle_Lounge_Chair_Window_Shadows.png |
+| 0038 | Screenshot 2026-11-20 at 10.11.12 PM.png | 0038_White_Desk_Nook_Thin_White_Frame_Pendant_Lamp_Side_Window.png |
+| 0039 | Screenshot 2026-11-20 at 10.11.49 PM.png | 0039_Panelled_Living_Room_Large_Copper_Frame_Olive_Sofa_Tall_Window.png |
+| 0040 | Screenshot 2026-11-20 at 10.12.02 PM.png | 0040_Bathroom_Vanity_Large_Black_Frame_Brass_Sconce_Arched_Mirror.png |
+| 0041 | Screenshot 2026-11-20 at 10.12.16 PM.png | 0041_Industrial_Loft_Large_Black_Frame_Camel_Sofa_Glass_Chandelier.png |
+| 0042 | Screenshot 2026-11-20 at 10.12.49 PM.png | 0042_Charcoal_Wall_Studio_Desk_Thin_Black_Frame_White_Mat_Fiddle_Leaf.png |
+| 0043 | Screenshot 2026-11-20 at 10.13.42 PM.png | 0043_Parisian_Hallway_Panel_Thin_Black_Frame_Mushroom_Stools_Herringbone.png |
+| 0044 | Screenshot 2026-11-20 at 10.14.39 PM.png | 0044_Double_Height_Living_Room_Large_Dark_Frame_Low_Sofa_Tall_Windows.png |
+| 0045 | Screenshot 2026-11-20 at 10.16.41 PM.png | 0045_White_Panelled_Office_Thin_Bronze_Frame_Marble_Desk_Olive_Tree.png |
+| 0046 | Screenshot 2026-11-20 at 10.17.33 PM.png | 0046_Dark_Parisian_Salon_Large_Black_Frame_Above_Mantel_Globe_Chandelier.png |
+| 0047 | Screenshot 2026-11-20 at 10.18.23 PM.png | 0047_Taupe_Living_Room_Thin_Gold_Frame_Above_White_Mantel_Blossom_Branch.png |

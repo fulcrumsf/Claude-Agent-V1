@@ -49,3 +49,27 @@ refused 0028 call cost nothing).
 
 ## 2026-11-20 low-resolution sweep (Tony)
 Images 400 px or smaller on their longest side (all ~200-340 px screenshots) moved to Archive/ so only usable references stay. Where Archive already held the untouched original, the cleaned version was moved in as `<name>_Cleaned.png`. Moved: 0002, 0003, 0004, 0005, 0006, 0007, 0008, 0009, 0010, 0011, 0012, 0013, 0014, 0015, 0016, 0017, 0018, 0019, 0020, 0021, 0022.
+
+
+## 2026-11-20 batch 0033-0047 (15 new screenshots)
+None are low-resolution (smallest longest side 720 px), so none went to Archive for that reason. Each image was viewed, plus a contrast-boosted high-pass check for faint tiled watermarks (none found). Same tools and rules as above.
+
+| id | overlay found | where | fix used | result |
+|---|---|---|---|---|
+| 0033 | none | - | untouched | ok |
+| 0034 | none | - | untouched | ok |
+| 0035 | none | - | untouched | ok |
+| 0036 | none | - | untouched | ok |
+| 0037 | none | - | untouched | ok; small caption text is printed on the artwork itself, left for the blanking step |
+| 0038 | none | - | untouched | ok; "ROOTED" caption is printed on the artwork itself, left for the blanking step |
+| 0039 | none | - | untouched | ok |
+| 0040 | none | - | untouched | ok |
+| 0041 | none | - | untouched | ok |
+| 0042 | none in the room | - | untouched | ok; "Your artwork Here" placeholder text is inside the frame, left for the blanking step |
+| 0043 | none | - | untouched | ok |
+| 0044 | none | - | untouched | ok |
+| 0045 | none | - | untouched | ok |
+| 0046 | none | - | untouched | ok |
+| 0047 | faint engraved-style text watermark | mantel frieze, centre (x 288-367, y 270-282) | LaMa (branch pixels kept out of the mask) | ok |
+
+Totals: 0 crop, 1 inpaint (1 LaMa), 14 untouched. kie.ai credits spent: 0.

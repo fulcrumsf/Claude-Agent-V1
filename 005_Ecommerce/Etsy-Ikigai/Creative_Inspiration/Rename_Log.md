@@ -13,3 +13,5 @@ Append-only. Written by `001_Architecture/Scripts/inspiration_scan.py`. A file l
 | 0007 | 2026-11-04 | cfc4ca2c1bc127f099bfe8402055fe5c.jpg | 0007_Retro_Graphic_Typographic_Art_Print.jpg | mockup | 0007_Retro_Graphic_Typographic_Art_Print.md | ok |
 | 0008 | 2026-11-04 | effe592cc03d48fa0df3e241926ab62c.avif | 0008_Mid_Century_Modern_Graphic_Gouache_Portrait.avif | mockup | 0008_Mid_Century_Modern_Graphic_Gouache_Portrait.md | ok |
 | 0009 | 2026-11-04 | il_794xN.7209386450_od2w.webp | 0009_Minimalist_Retro_Line_Art_Turntable_Dancers.webp | mockup | 0009_Minimalist_Retro_Line_Art_Turntable_Dancers.md | ok |
+| 0010 | 2026-11-20 | Screenshot 2026-11-20 at 10.13.58 PM.png | 0010_Mid_Century_Biomorphic_Pictograph_Abstract_Painting.png | artwork | 0010_Mid_Century_Biomorphic_Pictograph_Abstract_Painting.md | ok |
+| 0011 | 2026-11-20 | Screenshot 2026-11-20 at 10.14.27 PM.png | 0011_Biomorphic_Abstract_Calligraphic_Wash_Painting.png | artwork | 0011_Biomorphic_Abstract_Calligraphic_Wash_Painting.md | ok |
